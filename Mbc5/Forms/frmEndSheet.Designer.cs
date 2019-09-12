@@ -65,14 +65,6 @@
             System.Windows.Forms.Label totsigsLabel;
             System.Windows.Forms.Label partmemoLabel;
             System.Windows.Forms.Label label29;
-            System.Windows.Forms.Label label31;
-            System.Windows.Forms.Label label33;
-            System.Windows.Forms.Label predateLabel;
-            System.Windows.Forms.Label initialLabel;
-            System.Windows.Forms.Label prognameLabel;
-            System.Windows.Forms.Label numsentLabel;
-            System.Windows.Forms.Label custquestLabel;
-            System.Windows.Forms.Label technoteLabel;
             System.Windows.Forms.Label specinstLabel;
             System.Windows.Forms.Label customdescLabel;
             System.Windows.Forms.Label txtcolorLabel;
@@ -86,9 +78,9 @@
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
             System.Windows.Forms.Label label35;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
             this.btnUpdateDates = new System.Windows.Forms.Button();
@@ -218,52 +210,11 @@
             this.nocopiesTextBox = new System.Windows.Forms.TextBox();
             this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.PreFlight = new System.Windows.Forms.TabPage();
-            this.predateDateBox = new CustomControls.DateBox();
             this.preflitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.technoteTextBox = new System.Windows.Forms.TextBox();
-            this.custquestTextBox = new System.Windows.Forms.TextBox();
-            this.numsentTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.cmissingCheckBox = new System.Windows.Forms.CheckBox();
-            this.pmissingCheckBox = new System.Windows.Forms.CheckBox();
-            this.dmissingCheckBox = new System.Windows.Forms.CheckBox();
-            this.chaveCheckBox = new System.Windows.Forms.CheckBox();
-            this.phaveCheckBox = new System.Windows.Forms.CheckBox();
-            this.dhavbothCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.cvrrecvCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.imglow2CheckBox = new System.Windows.Forms.CheckBox();
-            this.imglightCheckBox = new System.Windows.Forms.CheckBox();
-            this.imgdarkCheckBox = new System.Windows.Forms.CheckBox();
-            this.imglowCheckBox = new System.Windows.Forms.CheckBox();
-            this.img200CheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.dcnocutCheckBox = new System.Windows.Forms.CheckBox();
-            this.dcnotsetCheckBox = new System.Windows.Forms.CheckBox();
-            this.dcokCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.margfixCheckBox = new System.Windows.Forms.CheckBox();
-            this.margokCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.freadonlyCheckBox = new System.Windows.Forms.CheckBox();
-            this.fembedCheckBox = new System.Windows.Forms.CheckBox();
-            this.fontsmisCheckBox = new System.Windows.Forms.CheckBox();
-            this.fontsb20CheckBox = new System.Windows.Forms.CheckBox();
-            this.fontsallCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.embeddCheckBox = new System.Windows.Forms.CheckBox();
-            this.misslinksCheckBox = new System.Windows.Forms.CheckBox();
-            this.alllinksCheckBox = new System.Windows.Forms.CheckBox();
-            this.linksCheckBox = new System.Windows.Forms.CheckBox();
-            this.formatmacCheckBox = new System.Windows.Forms.CheckBox();
-            this.formatpcCheckBox = new System.Windows.Forms.CheckBox();
-            this.prognameComboBox = new System.Windows.Forms.ComboBox();
-            this.initialTextBox = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.TabPage();
+            this.btnUpdateBannerDates = new System.Windows.Forms.Button();
+            this.btnAddBanner = new System.Windows.Forms.Button();
+            this.btnPrintBannerTicket = new System.Windows.Forms.Button();
             this.bannerdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -302,9 +253,6 @@
             this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
             this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
             this.bannerdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter();
-            this.btnUpdateBannerDates = new System.Windows.Forms.Button();
-            this.btnAddBanner = new System.Windows.Forms.Button();
-            this.btnPrintBannerTicket = new System.Windows.Forms.Button();
             prodnoLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             clr1Label = new System.Windows.Forms.Label();
@@ -341,14 +289,6 @@
             totsigsLabel = new System.Windows.Forms.Label();
             partmemoLabel = new System.Windows.Forms.Label();
             label29 = new System.Windows.Forms.Label();
-            label31 = new System.Windows.Forms.Label();
-            label33 = new System.Windows.Forms.Label();
-            predateLabel = new System.Windows.Forms.Label();
-            initialLabel = new System.Windows.Forms.Label();
-            prognameLabel = new System.Windows.Forms.Label();
-            numsentLabel = new System.Windows.Forms.Label();
-            custquestLabel = new System.Windows.Forms.Label();
-            technoteLabel = new System.Windows.Forms.Label();
             specinstLabel = new System.Windows.Forms.Label();
             customdescLabel = new System.Windows.Forms.Label();
             txtcolorLabel = new System.Windows.Forms.Label();
@@ -377,15 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
-            this.PreFlight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.Banner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bannerdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerdetailBindingSource)).BeginInit();
@@ -724,79 +656,6 @@
             label29.TabIndex = 95;
             label29.Text = "Invoice#";
             // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Location = new System.Drawing.Point(146, 5);
-            label31.Name = "label31";
-            label31.Size = new System.Drawing.Size(57, 13);
-            label31.TabIndex = 99;
-            label31.Text = "Invoice#";
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Location = new System.Drawing.Point(13, 5);
-            label33.Name = "label33";
-            label33.Size = new System.Drawing.Size(41, 13);
-            label33.TabIndex = 97;
-            label33.Text = "Prod#";
-            // 
-            // predateLabel
-            // 
-            predateLabel.AutoSize = true;
-            predateLabel.Location = new System.Drawing.Point(331, 5);
-            predateLabel.Name = "predateLabel";
-            predateLabel.Size = new System.Drawing.Size(34, 13);
-            predateLabel.TabIndex = 100;
-            predateLabel.Text = "Date";
-            // 
-            // initialLabel
-            // 
-            initialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            initialLabel.AutoSize = true;
-            initialLabel.Location = new System.Drawing.Point(1000, 5);
-            initialLabel.Name = "initialLabel";
-            initialLabel.Size = new System.Drawing.Size(44, 13);
-            initialLabel.TabIndex = 101;
-            initialLabel.Text = "Initials";
-            // 
-            // prognameLabel
-            // 
-            prognameLabel.AutoSize = true;
-            prognameLabel.Location = new System.Drawing.Point(9, 38);
-            prognameLabel.Name = "prognameLabel";
-            prognameLabel.Size = new System.Drawing.Size(89, 13);
-            prognameLabel.TabIndex = 102;
-            prognameLabel.Text = "Program Name";
-            // 
-            // numsentLabel
-            // 
-            numsentLabel.AutoSize = true;
-            numsentLabel.Location = new System.Drawing.Point(40, 95);
-            numsentLabel.Name = "numsentLabel";
-            numsentLabel.Size = new System.Drawing.Size(92, 13);
-            numsentLabel.TabIndex = 112;
-            numsentLabel.Text = "# Of Files Sent";
-            // 
-            // custquestLabel
-            // 
-            custquestLabel.AutoSize = true;
-            custquestLabel.Location = new System.Drawing.Point(42, 343);
-            custquestLabel.Name = "custquestLabel";
-            custquestLabel.Size = new System.Drawing.Size(141, 13);
-            custquestLabel.TabIndex = 113;
-            custquestLabel.Text = "Questions For Customer";
-            // 
-            // technoteLabel
-            // 
-            technoteLabel.AutoSize = true;
-            technoteLabel.Location = new System.Drawing.Point(31, 457);
-            technoteLabel.Name = "technoteLabel";
-            technoteLabel.Size = new System.Drawing.Size(152, 13);
-            technoteLabel.TabIndex = 114;
-            technoteLabel.Text = "Notes From Tech Support";
-            // 
             // specinstLabel
             // 
             specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -923,7 +782,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEndSheets.Controls.Add(this.pgEndSheets);
             this.tbEndSheets.Controls.Add(this.Supplement);
-            this.tbEndSheets.Controls.Add(this.PreFlight);
             this.tbEndSheets.Controls.Add(this.Banner);
             this.tbEndSheets.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEndSheets.Location = new System.Drawing.Point(0, 0);
@@ -1244,14 +1102,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1963,14 +1821,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2269,524 +2127,10 @@
             this.label15.TabIndex = 57;
             this.label15.Text = "label7";
             // 
-            // PreFlight
-            // 
-            this.PreFlight.AutoScroll = true;
-            this.PreFlight.BackColor = System.Drawing.SystemColors.Control;
-            this.PreFlight.Controls.Add(this.predateDateBox);
-            this.PreFlight.Controls.Add(technoteLabel);
-            this.PreFlight.Controls.Add(this.technoteTextBox);
-            this.PreFlight.Controls.Add(custquestLabel);
-            this.PreFlight.Controls.Add(this.custquestTextBox);
-            this.PreFlight.Controls.Add(numsentLabel);
-            this.PreFlight.Controls.Add(this.numsentTextBox);
-            this.PreFlight.Controls.Add(this.groupBox9);
-            this.PreFlight.Controls.Add(this.groupBox8);
-            this.PreFlight.Controls.Add(this.groupBox7);
-            this.PreFlight.Controls.Add(this.groupBox6);
-            this.PreFlight.Controls.Add(this.groupBox5);
-            this.PreFlight.Controls.Add(this.groupBox4);
-            this.PreFlight.Controls.Add(this.groupBox3);
-            this.PreFlight.Controls.Add(this.formatmacCheckBox);
-            this.PreFlight.Controls.Add(this.formatpcCheckBox);
-            this.PreFlight.Controls.Add(prognameLabel);
-            this.PreFlight.Controls.Add(this.prognameComboBox);
-            this.PreFlight.Controls.Add(initialLabel);
-            this.PreFlight.Controls.Add(this.initialTextBox);
-            this.PreFlight.Controls.Add(predateLabel);
-            this.PreFlight.Controls.Add(this.label30);
-            this.PreFlight.Controls.Add(label31);
-            this.PreFlight.Controls.Add(this.label32);
-            this.PreFlight.Controls.Add(label33);
-            this.PreFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreFlight.Location = new System.Drawing.Point(4, 22);
-            this.PreFlight.Name = "PreFlight";
-            this.PreFlight.Size = new System.Drawing.Size(1105, 714);
-            this.PreFlight.TabIndex = 2;
-            this.PreFlight.Text = "PreFlight";
-            // 
-            // predateDateBox
-            // 
-            this.predateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.preflitBindingSource, "predate", true));
-            this.predateDateBox.Date = null;
-            this.predateDateBox.DateValue = null;
-            this.predateDateBox.Location = new System.Drawing.Point(371, 5);
-            this.predateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.predateDateBox.Name = "predateDateBox";
-            this.predateDateBox.Size = new System.Drawing.Size(133, 21);
-            this.predateDateBox.TabIndex = 116;
-            // 
             // preflitBindingSource
             // 
             this.preflitBindingSource.DataMember = "preflit";
             this.preflitBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // technoteTextBox
-            // 
-            this.technoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.technoteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "technote", true));
-            this.technoteTextBox.Location = new System.Drawing.Point(190, 457);
-            this.technoteTextBox.Multiline = true;
-            this.technoteTextBox.Name = "technoteTextBox";
-            this.technoteTextBox.Size = new System.Drawing.Size(550, 57);
-            this.technoteTextBox.TabIndex = 115;
-            // 
-            // custquestTextBox
-            // 
-            this.custquestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.custquestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "custquest", true));
-            this.custquestTextBox.Location = new System.Drawing.Point(190, 343);
-            this.custquestTextBox.Multiline = true;
-            this.custquestTextBox.Name = "custquestTextBox";
-            this.custquestTextBox.Size = new System.Drawing.Size(550, 93);
-            this.custquestTextBox.TabIndex = 114;
-            // 
-            // numsentTextBox
-            // 
-            this.numsentTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "numsent", true));
-            this.numsentTextBox.Location = new System.Drawing.Point(137, 92);
-            this.numsentTextBox.Name = "numsentTextBox";
-            this.numsentTextBox.Size = new System.Drawing.Size(46, 20);
-            this.numsentTextBox.TabIndex = 113;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.cmissingCheckBox);
-            this.groupBox9.Controls.Add(this.pmissingCheckBox);
-            this.groupBox9.Controls.Add(this.dmissingCheckBox);
-            this.groupBox9.Controls.Add(this.chaveCheckBox);
-            this.groupBox9.Controls.Add(this.phaveCheckBox);
-            this.groupBox9.Controls.Add(this.dhavbothCheckBox);
-            this.groupBox9.Location = new System.Drawing.Point(40, 232);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(375, 77);
-            this.groupBox9.TabIndex = 112;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Magic Preflight";
-            // 
-            // cmissingCheckBox
-            // 
-            this.cmissingCheckBox.AutoSize = true;
-            this.cmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "cmissing", true));
-            this.cmissingCheckBox.Location = new System.Drawing.Point(165, 49);
-            this.cmissingCheckBox.Name = "cmissingCheckBox";
-            this.cmissingCheckBox.Size = new System.Drawing.Size(117, 17);
-            this.cmissingCheckBox.TabIndex = 8;
-            this.cmissingCheckBox.Text = "Missing Candids";
-            this.cmissingCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // pmissingCheckBox
-            // 
-            this.pmissingCheckBox.AutoSize = true;
-            this.pmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "pmissing", true));
-            this.pmissingCheckBox.Location = new System.Drawing.Point(165, 33);
-            this.pmissingCheckBox.Name = "pmissingCheckBox";
-            this.pmissingCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.pmissingCheckBox.TabIndex = 6;
-            this.pmissingCheckBox.Text = "Missing Portraits";
-            this.pmissingCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // dmissingCheckBox
-            // 
-            this.dmissingCheckBox.AutoSize = true;
-            this.dmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dmissing", true));
-            this.dmissingCheckBox.Location = new System.Drawing.Point(165, 18);
-            this.dmissingCheckBox.Name = "dmissingCheckBox";
-            this.dmissingCheckBox.Size = new System.Drawing.Size(205, 17);
-            this.dmissingCheckBox.TabIndex = 5;
-            this.dmissingCheckBox.Text = "Missing One Or More Data Files";
-            this.dmissingCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // chaveCheckBox
-            // 
-            this.chaveCheckBox.AutoSize = true;
-            this.chaveCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "chave", true));
-            this.chaveCheckBox.Location = new System.Drawing.Point(12, 49);
-            this.chaveCheckBox.Name = "chaveCheckBox";
-            this.chaveCheckBox.Size = new System.Drawing.Size(105, 17);
-            this.chaveCheckBox.TabIndex = 4;
-            this.chaveCheckBox.Text = "Have Candids";
-            this.chaveCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // phaveCheckBox
-            // 
-            this.phaveCheckBox.AutoSize = true;
-            this.phaveCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "phave", true));
-            this.phaveCheckBox.Location = new System.Drawing.Point(12, 33);
-            this.phaveCheckBox.Name = "phaveCheckBox";
-            this.phaveCheckBox.Size = new System.Drawing.Size(107, 17);
-            this.phaveCheckBox.TabIndex = 2;
-            this.phaveCheckBox.Text = "Have Portraits";
-            this.phaveCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // dhavbothCheckBox
-            // 
-            this.dhavbothCheckBox.AutoSize = true;
-            this.dhavbothCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dhavboth", true));
-            this.dhavbothCheckBox.Location = new System.Drawing.Point(12, 18);
-            this.dhavbothCheckBox.Name = "dhavbothCheckBox";
-            this.dhavbothCheckBox.Size = new System.Drawing.Size(147, 17);
-            this.dhavbothCheckBox.TabIndex = 1;
-            this.dhavbothCheckBox.Text = "Have Both Data Files";
-            this.dhavbothCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.cvrrecvCheckBox);
-            this.groupBox8.Location = new System.Drawing.Point(314, 232);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(256, 45);
-            this.groupBox8.TabIndex = 111;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Cover Received With Book";
-            // 
-            // cvrrecvCheckBox
-            // 
-            this.cvrrecvCheckBox.AutoSize = true;
-            this.cvrrecvCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "cvrrecv", true));
-            this.cvrrecvCheckBox.Location = new System.Drawing.Point(5, 19);
-            this.cvrrecvCheckBox.Name = "cvrrecvCheckBox";
-            this.cvrrecvCheckBox.Size = new System.Drawing.Size(253, 17);
-            this.cvrrecvCheckBox.TabIndex = 1;
-            this.cvrrecvCheckBox.Text = "If YES, split from book and take to Rec.";
-            this.cvrrecvCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.imglow2CheckBox);
-            this.groupBox7.Controls.Add(this.imglightCheckBox);
-            this.groupBox7.Controls.Add(this.imgdarkCheckBox);
-            this.groupBox7.Controls.Add(this.imglowCheckBox);
-            this.groupBox7.Controls.Add(this.img200CheckBox);
-            this.groupBox7.Location = new System.Drawing.Point(511, 122);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(204, 107);
-            this.groupBox7.TabIndex = 110;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Image Quality";
-            // 
-            // imglow2CheckBox
-            // 
-            this.imglow2CheckBox.AutoSize = true;
-            this.imglow2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglow2", true));
-            this.imglow2CheckBox.Location = new System.Drawing.Point(7, 76);
-            this.imglow2CheckBox.Name = "imglow2CheckBox";
-            this.imglow2CheckBox.Size = new System.Drawing.Size(113, 17);
-            this.imglow2CheckBox.TabIndex = 5;
-            this.imglow2CheckBox.Text = "Low Resolution";
-            this.imglow2CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // imglightCheckBox
-            // 
-            this.imglightCheckBox.AutoSize = true;
-            this.imglightCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglight", true));
-            this.imglightCheckBox.Location = new System.Drawing.Point(7, 62);
-            this.imglightCheckBox.Name = "imglightCheckBox";
-            this.imglightCheckBox.Size = new System.Drawing.Size(69, 17);
-            this.imglightCheckBox.TabIndex = 4;
-            this.imglightCheckBox.Text = "to Light";
-            this.imglightCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // imgdarkCheckBox
-            // 
-            this.imgdarkCheckBox.AutoSize = true;
-            this.imgdarkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imgdark", true));
-            this.imgdarkCheckBox.Location = new System.Drawing.Point(7, 48);
-            this.imgdarkCheckBox.Name = "imgdarkCheckBox";
-            this.imgdarkCheckBox.Size = new System.Drawing.Size(72, 17);
-            this.imgdarkCheckBox.TabIndex = 3;
-            this.imgdarkCheckBox.Text = "To Dark";
-            this.imgdarkCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // imglowCheckBox
-            // 
-            this.imglowCheckBox.AutoSize = true;
-            this.imglowCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglow", true));
-            this.imglowCheckBox.Location = new System.Drawing.Point(7, 34);
-            this.imglowCheckBox.Name = "imglowCheckBox";
-            this.imglowCheckBox.Size = new System.Drawing.Size(193, 17);
-            this.imglowCheckBox.TabIndex = 2;
-            this.imglowCheckBox.Text = "Low Resolution Picture Large";
-            this.imglowCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // img200CheckBox
-            // 
-            this.img200CheckBox.AutoSize = true;
-            this.img200CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "img200", true));
-            this.img200CheckBox.Location = new System.Drawing.Point(7, 20);
-            this.img200CheckBox.Name = "img200CheckBox";
-            this.img200CheckBox.Size = new System.Drawing.Size(151, 17);
-            this.img200CheckBox.TabIndex = 1;
-            this.img200CheckBox.Text = "Resolution Above 200";
-            this.img200CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.dcnocutCheckBox);
-            this.groupBox6.Controls.Add(this.dcnotsetCheckBox);
-            this.groupBox6.Controls.Add(this.dcokCheckBox);
-            this.groupBox6.Location = new System.Drawing.Point(739, 122);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(153, 73);
-            this.groupBox6.TabIndex = 109;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Die Cut";
-            // 
-            // dcnocutCheckBox
-            // 
-            this.dcnocutCheckBox.AutoSize = true;
-            this.dcnocutCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcnocut", true));
-            this.dcnocutCheckBox.Location = new System.Drawing.Point(6, 47);
-            this.dcnocutCheckBox.Name = "dcnocutCheckBox";
-            this.dcnocutCheckBox.Size = new System.Drawing.Size(125, 17);
-            this.dcnocutCheckBox.TabIndex = 5;
-            this.dcnocutCheckBox.Text = "No Die Cut Exists";
-            this.dcnocutCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // dcnotsetCheckBox
-            // 
-            this.dcnotsetCheckBox.AutoSize = true;
-            this.dcnotsetCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcnotset", true));
-            this.dcnotsetCheckBox.Location = new System.Drawing.Point(6, 33);
-            this.dcnotsetCheckBox.Name = "dcnotsetCheckBox";
-            this.dcnotsetCheckBox.Size = new System.Drawing.Size(143, 17);
-            this.dcnotsetCheckBox.TabIndex = 3;
-            this.dcnotsetCheckBox.Text = "Not Set Up Correctly";
-            this.dcnotsetCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // dcokCheckBox
-            // 
-            this.dcokCheckBox.AutoSize = true;
-            this.dcokCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcok", true));
-            this.dcokCheckBox.Location = new System.Drawing.Point(6, 19);
-            this.dcokCheckBox.Name = "dcokCheckBox";
-            this.dcokCheckBox.Size = new System.Drawing.Size(42, 17);
-            this.dcokCheckBox.TabIndex = 1;
-            this.dcokCheckBox.Text = "Ok";
-            this.dcokCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.margfixCheckBox);
-            this.groupBox5.Controls.Add(this.margokCheckBox);
-            this.groupBox5.Location = new System.Drawing.Point(342, 122);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(144, 64);
-            this.groupBox5.TabIndex = 108;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Margins";
-            // 
-            // margfixCheckBox
-            // 
-            this.margfixCheckBox.AutoSize = true;
-            this.margfixCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "margfix", true));
-            this.margfixCheckBox.Location = new System.Drawing.Point(6, 36);
-            this.margfixCheckBox.Name = "margfixCheckBox";
-            this.margfixCheckBox.Size = new System.Drawing.Size(134, 17);
-            this.margfixCheckBox.TabIndex = 2;
-            this.margfixCheckBox.Text = "Needs To Be Fixed";
-            this.margfixCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // margokCheckBox
-            // 
-            this.margokCheckBox.AutoSize = true;
-            this.margokCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "margok", true));
-            this.margokCheckBox.Location = new System.Drawing.Point(6, 19);
-            this.margokCheckBox.Name = "margokCheckBox";
-            this.margokCheckBox.Size = new System.Drawing.Size(99, 17);
-            this.margokCheckBox.TabIndex = 1;
-            this.margokCheckBox.Text = "Correct As Is";
-            this.margokCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.freadonlyCheckBox);
-            this.groupBox4.Controls.Add(this.fembedCheckBox);
-            this.groupBox4.Controls.Add(this.fontsmisCheckBox);
-            this.groupBox4.Controls.Add(this.fontsb20CheckBox);
-            this.groupBox4.Controls.Add(this.fontsallCheckBox);
-            this.groupBox4.Location = new System.Drawing.Point(273, 122);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(145, 109);
-            this.groupBox4.TabIndex = 107;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fonts";
-            // 
-            // freadonlyCheckBox
-            // 
-            this.freadonlyCheckBox.AutoSize = true;
-            this.freadonlyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "freadonly", true));
-            this.freadonlyCheckBox.Location = new System.Drawing.Point(6, 81);
-            this.freadonlyCheckBox.Name = "freadonlyCheckBox";
-            this.freadonlyCheckBox.Size = new System.Drawing.Size(85, 17);
-            this.freadonlyCheckBox.TabIndex = 9;
-            this.freadonlyCheckBox.Text = "Read Only";
-            this.freadonlyCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // fembedCheckBox
-            // 
-            this.fembedCheckBox.AutoSize = true;
-            this.fembedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fembed", true));
-            this.fembedCheckBox.Location = new System.Drawing.Point(6, 65);
-            this.fembedCheckBox.Name = "fembedCheckBox";
-            this.fembedCheckBox.Size = new System.Drawing.Size(85, 17);
-            this.fembedCheckBox.TabIndex = 7;
-            this.fembedCheckBox.Text = "Embedded";
-            this.fembedCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // fontsmisCheckBox
-            // 
-            this.fontsmisCheckBox.AutoSize = true;
-            this.fontsmisCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsmis", true));
-            this.fontsmisCheckBox.Location = new System.Drawing.Point(6, 50);
-            this.fontsmisCheckBox.Name = "fontsmisCheckBox";
-            this.fontsmisCheckBox.Size = new System.Drawing.Size(133, 17);
-            this.fontsmisCheckBox.TabIndex = 5;
-            this.fontsmisCheckBox.Text = "Missing (list below)";
-            this.fontsmisCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // fontsb20CheckBox
-            // 
-            this.fontsb20CheckBox.AutoSize = true;
-            this.fontsb20CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsb20", true));
-            this.fontsb20CheckBox.Location = new System.Drawing.Point(6, 34);
-            this.fontsb20CheckBox.Name = "fontsb20CheckBox";
-            this.fontsb20CheckBox.Size = new System.Drawing.Size(82, 17);
-            this.fontsb20CheckBox.TabIndex = 3;
-            this.fontsb20CheckBox.Text = "On B2000";
-            this.fontsb20CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // fontsallCheckBox
-            // 
-            this.fontsallCheckBox.AutoSize = true;
-            this.fontsallCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsall", true));
-            this.fontsallCheckBox.Location = new System.Drawing.Point(6, 18);
-            this.fontsallCheckBox.Name = "fontsallCheckBox";
-            this.fontsallCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.fontsallCheckBox.TabIndex = 1;
-            this.fontsallCheckBox.Text = "All Included";
-            this.fontsallCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.embeddCheckBox);
-            this.groupBox3.Controls.Add(this.misslinksCheckBox);
-            this.groupBox3.Controls.Add(this.alllinksCheckBox);
-            this.groupBox3.Controls.Add(this.linksCheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(40, 122);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(216, 102);
-            this.groupBox3.TabIndex = 106;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "CD Preflight";
-            // 
-            // embeddCheckBox
-            // 
-            this.embeddCheckBox.AutoSize = true;
-            this.embeddCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "embedd", true));
-            this.embeddCheckBox.Location = new System.Drawing.Point(6, 67);
-            this.embeddCheckBox.Name = "embeddCheckBox";
-            this.embeddCheckBox.Size = new System.Drawing.Size(208, 17);
-            this.embeddCheckBox.TabIndex = 4;
-            this.embeddCheckBox.Text = "Embedded (does not have links)";
-            this.embeddCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // misslinksCheckBox
-            // 
-            this.misslinksCheckBox.AutoSize = true;
-            this.misslinksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "misslinks", true));
-            this.misslinksCheckBox.Location = new System.Drawing.Point(6, 51);
-            this.misslinksCheckBox.Name = "misslinksCheckBox";
-            this.misslinksCheckBox.Size = new System.Drawing.Size(102, 17);
-            this.misslinksCheckBox.TabIndex = 3;
-            this.misslinksCheckBox.Text = "Missing Links";
-            this.misslinksCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // alllinksCheckBox
-            // 
-            this.alllinksCheckBox.AutoSize = true;
-            this.alllinksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "alllinks", true));
-            this.alllinksCheckBox.Location = new System.Drawing.Point(6, 35);
-            this.alllinksCheckBox.Name = "alllinksCheckBox";
-            this.alllinksCheckBox.Size = new System.Drawing.Size(108, 17);
-            this.alllinksCheckBox.TabIndex = 2;
-            this.alllinksCheckBox.Text = "Have All Links";
-            this.alllinksCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // linksCheckBox
-            // 
-            this.linksCheckBox.AutoSize = true;
-            this.linksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "links", true));
-            this.linksCheckBox.Location = new System.Drawing.Point(6, 19);
-            this.linksCheckBox.Name = "linksCheckBox";
-            this.linksCheckBox.Size = new System.Drawing.Size(56, 17);
-            this.linksCheckBox.TabIndex = 1;
-            this.linksCheckBox.Text = "Links";
-            this.linksCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // formatmacCheckBox
-            // 
-            this.formatmacCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "formatmac", true));
-            this.formatmacCheckBox.Location = new System.Drawing.Point(396, 38);
-            this.formatmacCheckBox.Name = "formatmacCheckBox";
-            this.formatmacCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.formatmacCheckBox.TabIndex = 105;
-            this.formatmacCheckBox.Text = "MAC Format";
-            this.formatmacCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // formatpcCheckBox
-            // 
-            this.formatpcCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "formatpc", true));
-            this.formatpcCheckBox.Location = new System.Drawing.Point(296, 38);
-            this.formatpcCheckBox.Name = "formatpcCheckBox";
-            this.formatpcCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.formatpcCheckBox.TabIndex = 104;
-            this.formatpcCheckBox.Text = "PC Format";
-            this.formatpcCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // prognameComboBox
-            // 
-            this.prognameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "progname", true));
-            this.prognameComboBox.FormattingEnabled = true;
-            this.prognameComboBox.Location = new System.Drawing.Point(103, 38);
-            this.prognameComboBox.Name = "prognameComboBox";
-            this.prognameComboBox.Size = new System.Drawing.Size(169, 21);
-            this.prognameComboBox.TabIndex = 103;
-            // 
-            // initialTextBox
-            // 
-            this.initialTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.initialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "initial", true));
-            this.initialTextBox.Location = new System.Drawing.Point(1047, 5);
-            this.initialTextBox.Name = "initialTextBox";
-            this.initialTextBox.Size = new System.Drawing.Size(44, 20);
-            this.initialTextBox.TabIndex = 102;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
-            this.label30.Location = new System.Drawing.Point(209, 5);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(41, 13);
-            this.label30.TabIndex = 100;
-            this.label30.Text = "label7";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.label32.Location = new System.Drawing.Point(60, 5);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(41, 13);
-            this.label32.TabIndex = 98;
-            this.label32.Text = "label7";
             // 
             // Banner
             // 
@@ -2833,6 +2177,35 @@
             this.Banner.TabIndex = 3;
             this.Banner.Text = "Banner";
             // 
+            // btnUpdateBannerDates
+            // 
+            this.btnUpdateBannerDates.Location = new System.Drawing.Point(941, 71);
+            this.btnUpdateBannerDates.Name = "btnUpdateBannerDates";
+            this.btnUpdateBannerDates.Size = new System.Drawing.Size(107, 23);
+            this.btnUpdateBannerDates.TabIndex = 160;
+            this.btnUpdateBannerDates.Text = "Update Dates";
+            this.btnUpdateBannerDates.UseVisualStyleBackColor = true;
+            this.btnUpdateBannerDates.Click += new System.EventHandler(this.btnUpdateBannerDates_Click);
+            // 
+            // btnAddBanner
+            // 
+            this.btnAddBanner.Location = new System.Drawing.Point(941, 14);
+            this.btnAddBanner.Name = "btnAddBanner";
+            this.btnAddBanner.Size = new System.Drawing.Size(107, 23);
+            this.btnAddBanner.TabIndex = 159;
+            this.btnAddBanner.Text = "Add Banner";
+            this.btnAddBanner.UseVisualStyleBackColor = true;
+            this.btnAddBanner.Click += new System.EventHandler(this.btnAddBanner_Click);
+            // 
+            // btnPrintBannerTicket
+            // 
+            this.btnPrintBannerTicket.Location = new System.Drawing.Point(941, 43);
+            this.btnPrintBannerTicket.Name = "btnPrintBannerTicket";
+            this.btnPrintBannerTicket.Size = new System.Drawing.Size(107, 23);
+            this.btnPrintBannerTicket.TabIndex = 158;
+            this.btnPrintBannerTicket.Text = "Print Ticket";
+            this.btnPrintBannerTicket.UseVisualStyleBackColor = true;
+            // 
             // bannerdetailDataGridView
             // 
             this.bannerdetailDataGridView.AllowUserToAddRows = false;
@@ -2842,14 +2215,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bannerdetailDataGridView.AutoGenerateColumns = false;
             this.bannerdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.bannerdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bannerdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3134,35 +2507,6 @@
             // 
             this.bannerdetailTableAdapter.ClearBeforeFill = true;
             // 
-            // btnUpdateBannerDates
-            // 
-            this.btnUpdateBannerDates.Location = new System.Drawing.Point(941, 71);
-            this.btnUpdateBannerDates.Name = "btnUpdateBannerDates";
-            this.btnUpdateBannerDates.Size = new System.Drawing.Size(107, 23);
-            this.btnUpdateBannerDates.TabIndex = 160;
-            this.btnUpdateBannerDates.Text = "Update Dates";
-            this.btnUpdateBannerDates.UseVisualStyleBackColor = true;
-            this.btnUpdateBannerDates.Click += new System.EventHandler(this.btnUpdateBannerDates_Click);
-            // 
-            // btnAddBanner
-            // 
-            this.btnAddBanner.Location = new System.Drawing.Point(941, 14);
-            this.btnAddBanner.Name = "btnAddBanner";
-            this.btnAddBanner.Size = new System.Drawing.Size(107, 23);
-            this.btnAddBanner.TabIndex = 159;
-            this.btnAddBanner.Text = "Add Banner";
-            this.btnAddBanner.UseVisualStyleBackColor = true;
-            this.btnAddBanner.Click += new System.EventHandler(this.btnAddBanner_Click);
-            // 
-            // btnPrintBannerTicket
-            // 
-            this.btnPrintBannerTicket.Location = new System.Drawing.Point(941, 43);
-            this.btnPrintBannerTicket.Name = "btnPrintBannerTicket";
-            this.btnPrintBannerTicket.Size = new System.Drawing.Size(107, 23);
-            this.btnPrintBannerTicket.TabIndex = 158;
-            this.btnPrintBannerTicket.Text = "Print Ticket";
-            this.btnPrintBannerTicket.UseVisualStyleBackColor = true;
-            // 
             // frmEndSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3198,23 +2542,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
-            this.PreFlight.ResumeLayout(false);
-            this.PreFlight.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.Banner.ResumeLayout(false);
             this.Banner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bannerdetailDataGridView)).EndInit();
@@ -3229,7 +2557,6 @@
 		private System.Windows.Forms.TabControl tbEndSheets;
 		private System.Windows.Forms.TabPage pgEndSheets;
 		private System.Windows.Forms.TabPage Supplement;
-		private System.Windows.Forms.TabPage PreFlight;
 		private DataSets.dsEndSheet dsEndSheet;
 		private System.Windows.Forms.BindingSource custBindingSource;
 		private DataSets.dsEndSheetTableAdapters.custTableAdapter custTableAdapter;
@@ -3332,50 +2659,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
 		private System.Windows.Forms.Label label28;
-		private System.Windows.Forms.Label label30;
-		private System.Windows.Forms.Label label32;
 		private System.Windows.Forms.BindingSource preflitBindingSource;
 		private DataSets.dsEndSheetTableAdapters.preflitTableAdapter preflitTableAdapter;
-		private System.Windows.Forms.TextBox initialTextBox;
-		private System.Windows.Forms.CheckBox formatmacCheckBox;
-		private System.Windows.Forms.CheckBox formatpcCheckBox;
-		private System.Windows.Forms.ComboBox prognameComboBox;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.CheckBox misslinksCheckBox;
-		private System.Windows.Forms.CheckBox alllinksCheckBox;
-		private System.Windows.Forms.CheckBox linksCheckBox;
-		private System.Windows.Forms.CheckBox embeddCheckBox;
-		private System.Windows.Forms.GroupBox groupBox7;
-		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.CheckBox margfixCheckBox;
-		private System.Windows.Forms.CheckBox margokCheckBox;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.CheckBox freadonlyCheckBox;
-		private System.Windows.Forms.CheckBox fembedCheckBox;
-		private System.Windows.Forms.CheckBox fontsmisCheckBox;
-		private System.Windows.Forms.CheckBox fontsb20CheckBox;
-		private System.Windows.Forms.CheckBox fontsallCheckBox;
-		private System.Windows.Forms.CheckBox imglow2CheckBox;
-		private System.Windows.Forms.CheckBox imglightCheckBox;
-		private System.Windows.Forms.CheckBox imgdarkCheckBox;
-		private System.Windows.Forms.CheckBox imglowCheckBox;
-		private System.Windows.Forms.CheckBox img200CheckBox;
-		private System.Windows.Forms.TextBox technoteTextBox;
-		private System.Windows.Forms.TextBox custquestTextBox;
-		private System.Windows.Forms.TextBox numsentTextBox;
-		private System.Windows.Forms.GroupBox groupBox9;
-		private System.Windows.Forms.CheckBox cmissingCheckBox;
-		private System.Windows.Forms.CheckBox pmissingCheckBox;
-		private System.Windows.Forms.CheckBox dmissingCheckBox;
-		private System.Windows.Forms.CheckBox chaveCheckBox;
-		private System.Windows.Forms.CheckBox phaveCheckBox;
-		private System.Windows.Forms.CheckBox dhavbothCheckBox;
-		private System.Windows.Forms.GroupBox groupBox8;
-		private System.Windows.Forms.CheckBox cvrrecvCheckBox;
-		private System.Windows.Forms.CheckBox dcnocutCheckBox;
-		private System.Windows.Forms.CheckBox dcnotsetCheckBox;
-		private System.Windows.Forms.CheckBox dcokCheckBox;
 		private System.Windows.Forms.TabPage Banner;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.TextBox specinstTextBox1;
@@ -3422,7 +2707,6 @@
         private CustomControls.DateBox binddteDateBox;
         private CustomControls.DateBox ioutDateBox;
         private CustomControls.DateBox iinDateBox;
-        private CustomControls.DateBox predateDateBox;
         private CustomControls.DateBox bannerrecvDateBox;
         private System.Windows.Forms.BindingSource bannerdetailBindingSource;
         private DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter bannerdetailTableAdapter;
