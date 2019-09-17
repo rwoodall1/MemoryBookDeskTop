@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
+using System.Collections.Specialized;
 namespace BaseClass
 {
     public static class ExtensionMethods
@@ -18,6 +20,20 @@ namespace BaseClass
                     retval= true;
                     break;
                     
+                }
+            }
+            return retval;
+        }
+        public static bool IsInOneOfRoles(this Classes.UserPrincipal ApplicationUser, StringCollection roles)
+        {
+            bool retval = false;
+            foreach (string role in roles)
+            {
+                if (ApplicationUser.IsInRole(role))
+                {
+                    retval = true;
+                    break;
+
                 }
             }
             return retval;

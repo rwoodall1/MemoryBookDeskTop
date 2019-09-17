@@ -51,7 +51,7 @@
         <Top>0.56646in</Top>
         <Left>0.36806in</Left>
         <Height>0.25in</Height>
-        <Width>2.16667in</Width>
+        <Width>2.30209in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -70,7 +70,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First("Your guranteed delivery date is " + FormatDateTime(Fields!Guardte.Value,DateFormat.ShortDate), "dsReceivingCard")</Value>
+                <Value>=First("Your guranteed delivery date is " + IIf(IsNothing(Fields!Guardte.Value),"", FormatDateTime(Fields!Guardte.Value,DateFormat.ShortDate)), "dsReceivingCard")</Value>
                 <Style>
                   <Format>MM/dd/yyyy</Format>
                 </Style>
@@ -81,9 +81,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
         <Top>0.56646in</Top>
-        <Left>2.79781in</Left>
+        <Left>3.04781in</Left>
         <Height>0.25in</Height>
-        <Width>3.65625in</Width>
+        <Width>3.36067in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -99,7 +99,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.9566in</Top>
+        <Top>0.8816in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -117,7 +117,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.98785in</Top>
+        <Top>0.91285in</Top>
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
@@ -135,7 +135,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.62847in</Top>
+        <Top>0.57847in</Top>
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
@@ -153,7 +153,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.63889in</Top>
+        <Top>0.58889in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -227,36 +227,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Estdate">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First("delivery. our ESTIMATED (not guaranteed) delivery date is "+FormatDateTime(Fields!Estdate.Value,DateFormat.ShortDate), "dsReceivingCard")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Estdate</rd:DefaultName>
-        <Top>1.21403in</Top>
-        <Left>0.36806in</Left>
-        <Height>0.25in</Height>
-        <Width>5.31864in</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox11">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -278,7 +248,7 @@
         <Left>0.36806in</Left>
         <Height>0.40625in</Height>
         <Width>5.31864in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -309,7 +279,7 @@
         <Left>0.36806in</Left>
         <Height>0.25in</Height>
         <Width>5.52083in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -328,7 +298,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -346,7 +316,7 @@
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -364,7 +334,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>13</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -382,7 +352,7 @@
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>14</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -400,7 +370,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>15</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Spirck.Value=False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -418,7 +388,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>16</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Spirck.Value=True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -428,70 +398,6 @@
           </Border>
         </Style>
       </Image>
-      <Textbox Name="Textbox19">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First("We received your yearbook on &lt;b&gt;" + FormatDateTime(Fields!KitReceivedDate.Value,DateFormat.ShortDate)+"&lt;/b&gt;", "dsReceivingCard")</Value>
-                <MarkupType>HTML</MarkupType>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>0.30903in</Top>
-        <Left>0.07042in</Left>
-        <Height>0.25in</Height>
-        <Width>5.12767in</Width>
-        <ZIndex>18</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox22">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First("Your balance is &lt;b&gt;"+FormatCurrency(Str(Fields!Baldue.Value),2)+"&lt;/b&gt;", "dsReceivingCard")</Value>
-                <MarkupType>HTML</MarkupType>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>2.69618in</Top>
-        <Left>0.36806in</Left>
-        <Height>0.25in</Height>
-        <Width>3.74181in</Width>
-        <ZIndex>19</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox23">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -514,7 +420,7 @@
         <Left>0.36806in</Left>
         <Height>0.29813in</Height>
         <Width>3.75223in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -529,11 +435,11 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.2934in</Top>
+        <Top>3.3059in</Top>
         <Left>2.98833in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>18</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4c.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -547,11 +453,11 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.2934in</Top>
+        <Top>3.3059in</Top>
         <Left>2.99875in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>19</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4c.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -569,7 +475,7 @@
         <Left>0.39931in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>23</ZIndex>
+        <ZIndex>20</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4a.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -587,7 +493,7 @@
         <Left>0.40973in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>24</ZIndex>
+        <ZIndex>21</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4a.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -605,7 +511,7 @@
         <Left>0.39931in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>25</ZIndex>
+        <ZIndex>22</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4b.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -623,7 +529,7 @@
         <Left>0.40973in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>26</ZIndex>
+        <ZIndex>23</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck4b.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -649,10 +555,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
         <Top>2.98785in</Top>
-        <Left>0.62848in</Left>
+        <Left>0.6389in</Left>
         <Height>0.25in</Height>
-        <Width>1.67708in</Width>
-        <ZIndex>27</ZIndex>
+        <Width>2.03125in</Width>
+        <ZIndex>24</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -682,7 +588,7 @@
         <Left>0.62848in</Left>
         <Height>0.25in</Height>
         <Width>2.04167in</Width>
-        <ZIndex>28</ZIndex>
+        <ZIndex>25</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -712,7 +618,7 @@
         <Left>3.2175in</Left>
         <Height>0.25in</Height>
         <Width>1.4375in</Width>
-        <ZIndex>29</ZIndex>
+        <ZIndex>26</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -743,7 +649,7 @@
         <Left>2.99875in</Left>
         <Height>0.25in</Height>
         <Width>3.27083in</Width>
-        <ZIndex>30</ZIndex>
+        <ZIndex>27</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -758,11 +664,11 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.64062in</Top>
+        <Top>3.65312in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>31</ZIndex>
+        <ZIndex>28</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck7.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -776,11 +682,11 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.64062in</Top>
+        <Top>3.65312in</Top>
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>32</ZIndex>
+        <ZIndex>29</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck7.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -810,7 +716,7 @@
         <Left>0.36806in</Left>
         <Height>0.25in</Height>
         <Width>5.79042in</Width>
-        <ZIndex>33</ZIndex>
+        <ZIndex>30</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -829,7 +735,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>34</ZIndex>
+        <ZIndex>31</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck8.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -847,7 +753,7 @@
         <Left>0.13542in</Left>
         <Height>0.16667in</Height>
         <Width>0.17708in</Width>
-        <ZIndex>35</ZIndex>
+        <ZIndex>32</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Ck8.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -877,7 +783,7 @@
         <Left>0.36806in</Left>
         <Height>0.25in</Height>
         <Width>5.79042in</Width>
-        <ZIndex>36</ZIndex>
+        <ZIndex>33</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -907,7 +813,7 @@
         <Left>0.40973in</Left>
         <Height>0.25in</Height>
         <Width>3.73958in</Width>
-        <ZIndex>37</ZIndex>
+        <ZIndex>34</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -926,7 +832,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>38</ZIndex>
+        <ZIndex>35</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Casey_n.Value=False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -944,7 +850,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>39</ZIndex>
+        <ZIndex>36</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Casey_n.Value=True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -962,7 +868,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>40</ZIndex>
+        <ZIndex>37</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Hdbky_n.Value=False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -980,7 +886,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>41</ZIndex>
+        <ZIndex>38</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Hdbky_n.Value=True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -998,7 +904,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>42</ZIndex>
+        <ZIndex>39</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Peyn.Value=False, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -1016,7 +922,7 @@
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>43</ZIndex>
+        <ZIndex>40</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!Peyn.Value=True, "dsReceivingCard")</Hidden>
         </Visibility>
@@ -1030,13 +936,13 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
-        <Left>2.11806in</Left>
+        <Top>4.65451in</Top>
+        <Left>1.71181in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>44</ZIndex>
+        <ZIndex>41</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!SdlStich.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1048,13 +954,13 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.37326in</Top>
-        <Left>2.12848in</Left>
+        <Top>4.65451in</Top>
+        <Left>1.71181in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>45</ZIndex>
+        <ZIndex>42</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!SdlStich.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1066,13 +972,13 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
-        <Left>2.78739in</Left>
+        <Top>4.95728in</Top>
+        <Left>1.70139in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>46</ZIndex>
+        <ZIndex>43</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!AllClrck.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1084,13 +990,13 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.37326in</Top>
-        <Left>2.79781in</Left>
+        <Top>4.95728in</Top>
+        <Left>1.70139in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>47</ZIndex>
+        <ZIndex>44</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!AllClrck.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1102,13 +1008,13 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
-        <Left>3.31313in</Left>
+        <Top>5.28576in</Top>
+        <Left>1.68813in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>48</ZIndex>
+        <ZIndex>45</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!Clrpgck.Value= False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1120,13 +1026,13 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.37326in</Top>
-        <Left>3.32355in</Left>
+        <Top>5.28576in</Top>
+        <Left>1.68813in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>49</ZIndex>
+        <ZIndex>46</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!Clrpgck.Value= True, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1138,13 +1044,13 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
-        <Left>3.96181in</Left>
+        <Top>5.99354in</Top>
+        <Left>0.58776in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>50</ZIndex>
+        <ZIndex>47</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!App.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1156,13 +1062,13 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.37326in</Top>
-        <Left>3.97223in</Left>
+        <Top>5.99354in</Top>
+        <Left>0.58776in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
-        <ZIndex>51</ZIndex>
+        <ZIndex>48</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!App.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1189,7 +1095,7 @@
         <Left>0.3611in</Left>
         <Height>0.27083in</Height>
         <Width>0.70833in</Width>
-        <ZIndex>52</ZIndex>
+        <ZIndex>49</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1219,7 +1125,7 @@
         <Left>0.3611in</Left>
         <Height>0.25in</Height>
         <Width>0.70833in</Width>
-        <ZIndex>53</ZIndex>
+        <ZIndex>50</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1249,7 +1155,7 @@
         <Left>0.3611in</Left>
         <Height>0.25in</Height>
         <Width>0.5in</Width>
-        <ZIndex>54</ZIndex>
+        <ZIndex>51</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1278,8 +1184,616 @@
         <Top>5.53992in</Top>
         <Left>0.3611in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>1.125in</Width>
+        <ZIndex>52</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Estdate">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("delivery. our ESTIMATED (not guaranteed) delivery date is "+IIF(IsNothing(Fields!EstDate.Value),"",FormatDateTime(Fields!EstDate.Value,DateFormat.ShortDate)), "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Estdate</rd:DefaultName>
+        <Top>1.18625in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.25in</Height>
+        <Width>5.31864in</Width>
+        <ZIndex>53</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("We received your yearbook on &lt;b&gt;" + FormatDateTime(Fields!KitreceivedDate.Value,DateFormat.ShortDate)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>0.27291in</Top>
+        <Left>0.39931in</Left>
+        <Height>0.25in</Height>
+        <Width>5.12767in</Width>
+        <ZIndex>54</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("Your balance is &lt;b&gt;"+FormatCurrency(Fields!Baldue.Value,2)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>2.69618in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.25in</Height>
+        <Width>3.75919in</Width>
         <ZIndex>55</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Saddle Stitch</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>4.65451in</Top>
+        <Left>1.9132in</Left>
+        <Height>0.25in</Height>
+        <Width>0.94394in</Width>
+        <ZIndex>56</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox36">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>All Color Book</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>4.95728in</Top>
+        <Left>1.9132in</Left>
+        <Height>0.25in</Height>
+        <Width>0.94394in</Width>
+        <ZIndex>57</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox37">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Color Pages</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.27672in</Top>
+        <Left>1.9132in</Left>
+        <Height>0.25in</Height>
+        <Width>0.83977in</Width>
+        <ZIndex>58</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox38">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Premium Cover Upgrades</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.99354in</Top>
+        <Left>0.77526in</Left>
+        <Height>0.25in</Height>
+        <Width>1.72127in</Width>
+        <ZIndex>59</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox39">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Foil Individual Name</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>4.69826in</Top>
+        <Left>3.31313in</Left>
+        <Height>0.25in</Height>
+        <Width>1.28888in</Width>
+        <ZIndex>60</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="checkImage19">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.69826in</Top>
+        <Left>3.07563in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>61</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!foiling.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage19">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.69826in</Top>
+        <Left>3.07563in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>62</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!foiling.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage20">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.00382in</Top>
+        <Left>3.12563in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>63</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!MK.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage20">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.00382in</Top>
+        <Left>3.12563in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>64</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!MK.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage21">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.28576in</Top>
+        <Left>3.13744in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>65</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!IndivPic.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage21">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.28576in</Top>
+        <Left>3.13744in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>66</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!IndivPic.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage22">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.89062in</Top>
+        <Left>5.87979in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>67</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Insck.Value  = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage22">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.89062in</Top>
+        <Left>5.87979in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>68</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Insck.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage23">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.53992in</Top>
+        <Left>5.31448in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>69</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Mlamination.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage23">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.53992in</Top>
+        <Left>5.31448in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>70</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Mlamination.Value= True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage24">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.99354in</Top>
+        <Left>5.40639in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>71</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!GLamination.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage24">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.99354in</Top>
+        <Left>5.40639in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>72</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!GLamination.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox40">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Ink Individual Name</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>4.9802in</Top>
+        <Left>3.31313in</Left>
+        <Height>0.25in</Height>
+        <Width>1.28888in</Width>
+        <ZIndex>73</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox41">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Photo Of Individual</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.30868in</Top>
+        <Left>3.35271in</Left>
+        <Height>0.25in</Height>
+        <Width>1.2493in</Width>
+        <ZIndex>74</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox42">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Flashbax</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>4.89062in</Top>
+        <Left>6.08535in</Left>
+        <Height>0.25in</Height>
+        <Width>0.67799in</Width>
+        <ZIndex>75</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox43">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Matte Lamination</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.53992in</Top>
+        <Left>5.48049in</Left>
+        <Height>0.25in</Height>
+        <Width>1.15555in</Width>
+        <ZIndex>76</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox44">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Gloss Lamination</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.99354in</Top>
+        <Left>5.60778in</Left>
+        <Height>0.25in</Height>
+        <Width>1.15555in</Width>
+        <ZIndex>77</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1298,7 +1812,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>6.78125in</Width>
+  <Width>7.65625in</Width>
   <Page>
     <PageHeader>
       <Height>0.72396in</Height>
@@ -1384,10 +1898,10 @@
         </Border>
       </Style>
     </PageFooter>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <LeftMargin>0.25in</LeftMargin>
+    <RightMargin>0.25in</RightMargin>
+    <TopMargin>0.25in</TopMargin>
+    <BottomMargin>0.25in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -1411,6 +1925,22 @@
           <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="TotalSoldOnline">
+          <DataField>TotalSoldOnline</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalDollarsOnline">
+          <DataField>TotalDollarsOnline</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DateCreated">
+          <DataField>DateCreated</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Invno">
+          <DataField>Invno</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Schcode">
           <DataField>Schcode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1423,12 +1953,8 @@
           <DataField>Prodno</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Invno">
-          <DataField>Invno</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="KitReceivedDate">
-          <DataField>KitReceivedDate</DataField>
+        <Field Name="KitreceivedDate">
+          <DataField>KitreceivedDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Ck1">
@@ -1439,48 +1965,48 @@
           <DataField>Ck2</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="Ck3">
+          <DataField>Ck3</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck4">
+          <DataField>Ck4</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
         <Field Name="Deadline">
           <DataField>Deadline</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="Estdate">
-          <DataField>Estdate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="Ck3">
-          <DataField>Ck3</DataField>
+        <Field Name="Ck4a">
+          <DataField>Ck4a</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="EstDate">
+          <DataField>EstDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Payments">
           <DataField>Payments</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Ck4">
-          <DataField>Ck4</DataField>
+        <Field Name="Ck4b">
+          <DataField>Ck4b</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Baldue">
           <DataField>Baldue</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Ck4a">
-          <DataField>Ck4a</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="Ck4b">
-          <DataField>Ck4b</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
         <Field Name="Ck4c">
           <DataField>Ck4c</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="Ck5">
-          <DataField>Ck5</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
         <Field Name="Ck6">
           <DataField>Ck6</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck5">
+          <DataField>Ck5</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Ck7">
@@ -1495,8 +2021,8 @@
           <DataField>NoCopies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CoverType">
-          <DataField>CoverType</DataField>
+        <Field Name="Covertype">
+          <DataField>Covertype</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Ck8">
@@ -1643,12 +2169,12 @@
           <DataField>ContLname</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BContLname">
-          <DataField>BContLname</DataField>
+        <Field Name="BcontLname">
+          <DataField>BcontLname</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BContFname">
-          <DataField>BContFname</DataField>
+        <Field Name="BcontFname">
+          <DataField>BcontFname</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="QtyStud">
@@ -1727,10 +2253,6 @@
           <DataField>FrontCvin</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BackCvrin">
-          <DataField>BackCvrin</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Back">
           <DataField>Back</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1755,8 +2277,8 @@
           <DataField>Foiling</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="Mk">
-          <DataField>Mk</DataField>
+        <Field Name="MK">
+          <DataField>MK</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="App">
@@ -1775,30 +2297,22 @@
           <DataField>Peyn</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="TotalSoldOnline">
-          <DataField>TotalSoldOnline</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TotalDollarsOnline">
-          <DataField>TotalDollarsOnline</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="CoverDesc">
           <DataField>CoverDesc</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DateCreated">
-          <DataField>DateCreated</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ContractYear">
           <DataField>ContractYear</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BackCvrin">
+          <DataField>BackCvrin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Mbc5DataSet1</rd:DataSetName>
-        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Mbc5DataSet1.xsd</rd:SchemaPath>
+        <rd:DataSetName>dsRcard</rd:DataSetName>
+        <rd:SchemaPath>D:\Projects\MemoryBookDeskTop\Mbc5\DataSets\dsRcard.xsd</rd:SchemaPath>
         <rd:TableName>RCard</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

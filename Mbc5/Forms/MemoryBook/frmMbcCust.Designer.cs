@@ -145,6 +145,8 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.Label shippingNameLabel;
+            System.Windows.Forms.Label invoiceNameLabel;
             this.xSuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsXSupplies = new Mbc5.DataSets.dsXSupplies();
             this.xSuppliesDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -428,6 +430,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpSupplyItemsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter();
             this.xSuppliesDetailTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.XSuppliesDetailTableAdapter();
             this.xsuppliesTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter();
+            this.shippingNameTextBox = new System.Windows.Forms.TextBox();
+            this.invoiceNameTextBox = new System.Windows.Forms.TextBox();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -530,6 +534,8 @@ namespace Mbc5.Forms.MemoryBook {
             invoiceEmail1Label = new System.Windows.Forms.Label();
             invoiceEmail2Label = new System.Windows.Forms.Label();
             invoiceEmail3Label = new System.Windows.Forms.Label();
+            shippingNameLabel = new System.Windows.Forms.Label();
+            invoiceNameLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xSuppliesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).BeginInit();
@@ -3667,6 +3673,10 @@ namespace Mbc5.Forms.MemoryBook {
             // pg4
             // 
             this.pg4.BackColor = System.Drawing.SystemColors.Control;
+            this.pg4.Controls.Add(invoiceNameLabel);
+            this.pg4.Controls.Add(this.invoiceNameTextBox);
+            this.pg4.Controls.Add(shippingNameLabel);
+            this.pg4.Controls.Add(this.shippingNameTextBox);
             this.pg4.Controls.Add(invoiceEmail3Label);
             this.pg4.Controls.Add(this.invoiceEmail3TextBox);
             this.pg4.Controls.Add(invoiceEmail2Label);
@@ -4457,6 +4467,40 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.xsuppliesTableAdapter.ClearBeforeFill = true;
             // 
+            // shippingNameLabel
+            // 
+            shippingNameLabel.AutoSize = true;
+            shippingNameLabel.Location = new System.Drawing.Point(156, 264);
+            shippingNameLabel.Name = "shippingNameLabel";
+            shippingNameLabel.Size = new System.Drawing.Size(79, 13);
+            shippingNameLabel.TabIndex = 34;
+            shippingNameLabel.Text = "Shipping Name";
+            // 
+            // shippingNameTextBox
+            // 
+            this.shippingNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ShippingName", true));
+            this.shippingNameTextBox.Location = new System.Drawing.Point(244, 261);
+            this.shippingNameTextBox.Name = "shippingNameTextBox";
+            this.shippingNameTextBox.Size = new System.Drawing.Size(230, 20);
+            this.shippingNameTextBox.TabIndex = 35;
+            // 
+            // invoiceNameLabel
+            // 
+            invoiceNameLabel.AutoSize = true;
+            invoiceNameLabel.Location = new System.Drawing.Point(162, 64);
+            invoiceNameLabel.Name = "invoiceNameLabel";
+            invoiceNameLabel.Size = new System.Drawing.Size(73, 13);
+            invoiceNameLabel.TabIndex = 35;
+            invoiceNameLabel.Text = "Invoice Name";
+            // 
+            // invoiceNameTextBox
+            // 
+            this.invoiceNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceName", true));
+            this.invoiceNameTextBox.Location = new System.Drawing.Point(244, 61);
+            this.invoiceNameTextBox.Name = "invoiceNameTextBox";
+            this.invoiceNameTextBox.Size = new System.Drawing.Size(230, 20);
+            this.invoiceNameTextBox.TabIndex = 36;
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4832,5 +4876,7 @@ namespace Mbc5.Forms.MemoryBook {
         private CustomControls.DateBox taxExemptionReceivedDateBox;
         private CustomControls.DateBox rbdateDateBox;
         private CustomControls.DateBox xeldateDateBox;
+        private System.Windows.Forms.TextBox invoiceNameTextBox;
+        private System.Windows.Forms.TextBox shippingNameTextBox;
     }
 }

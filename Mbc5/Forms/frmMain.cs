@@ -45,7 +45,7 @@ namespace Mbc5.Forms
             tsInvno.Visible = true;
             tsProdutnNumberSearch.Visible = true;
             tsOracleCodeSearch.Visible = true;
-
+            tsJobNo.Visible = true;
             if (formName == "frmMbcCust")
             {
                 tsFirstNameSearch.Visible = true;

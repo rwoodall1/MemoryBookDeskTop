@@ -41,14 +41,9 @@
             System.Windows.Forms.Label contractYearLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceivingCard));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsRcard = new Mbc5.DataSets.dsRcard();
             this.schnameLabel1 = new System.Windows.Forms.Label();
-           
             this.ck1CheckBox = new System.Windows.Forms.CheckBox();
             this.ck2CheckBox = new System.Windows.Forms.CheckBox();
-           
-            this.totalSoldoTextBox = new System.Windows.Forms.TextBox();
             this.totalDollarTextBox = new System.Windows.Forms.TextBox();
             this.ck3CheckBox = new System.Windows.Forms.CheckBox();
             this.paymentsTextBox = new System.Windows.Forms.TextBox();
@@ -80,7 +75,6 @@
             this.comckCheckBox = new System.Windows.Forms.CheckBox();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.attnTextBox = new System.Windows.Forms.TextBox();
             this.add1TextBox = new System.Windows.Forms.TextBox();
             this.add2TextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -105,11 +99,18 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.contractYearLabel1 = new System.Windows.Forms.Label();
-            this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
             this.invnoLabel1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.deadlineLabel1 = new System.Windows.Forms.Label();
+            this.kitreceivedDateLabel2 = new System.Windows.Forms.Label();
+            this.guardteDateBox = new CustomControls.DateBox();
+            this.estDateDateBox = new CustomControls.DateBox();
+            this.totalSoldOnlineTextBox = new System.Windows.Forms.TextBox();
+            this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsRcard = new Mbc5.DataSets.dsRcard();
+            this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
             kitReceivedDateLabel = new System.Windows.Forms.Label();
             guardteLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -126,10 +127,10 @@
             dateCreatedLabel = new System.Windows.Forms.Label();
             contractYearLabel = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRcard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnRcard)).BeginInit();
             this.bnRcard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRcard)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -143,12 +144,12 @@
             this.TopPanel.Controls.Add(idLabel);
             this.TopPanel.Controls.Add(this.idLabel1);
             this.TopPanel.Controls.Add(this.schnameLabel1);
-            this.TopPanel.Size = new System.Drawing.Size(739, 56);
+            this.TopPanel.Size = new System.Drawing.Size(807, 56);
             // 
             // BottomPanel
             // 
             this.BottomPanel.Location = new System.Drawing.Point(0, 774);
-            this.BottomPanel.Size = new System.Drawing.Size(739, 10);
+            this.BottomPanel.Size = new System.Drawing.Size(807, 10);
             // 
             // kitReceivedDateLabel
             // 
@@ -173,7 +174,7 @@
             // label1
             // 
             label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(234, 116);
+            label1.Location = new System.Drawing.Point(234, 115);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(279, 18);
             label1.TabIndex = 10;
@@ -202,7 +203,7 @@
             // 
             totalSoldoLabel.AutoSize = true;
             totalSoldoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            totalSoldoLabel.Location = new System.Drawing.Point(23, 207);
+            totalSoldoLabel.Location = new System.Drawing.Point(23, 204);
             totalSoldoLabel.Name = "totalSoldoLabel";
             totalSoldoLabel.Size = new System.Drawing.Size(121, 13);
             totalSoldoLabel.TabIndex = 16;
@@ -295,16 +296,6 @@
             contractYearLabel.TabIndex = 5;
             contractYearLabel.Text = "Year";
             // 
-            // rCardBindingSource
-            // 
-            this.rCardBindingSource.DataMember = "RCard";
-            this.rCardBindingSource.DataSource = this.dsRcard;
-            // 
-            // dsRcard
-            // 
-            this.dsRcard.DataSetName = "dsRcard";
-            this.dsRcard.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // schnameLabel1
             // 
             this.schnameLabel1.AutoSize = true;
@@ -315,7 +306,6 @@
             this.schnameLabel1.Size = new System.Drawing.Size(105, 26);
             this.schnameLabel1.TabIndex = 1;
             this.schnameLabel1.Text = "Schname";
-           
             // 
             // ck1CheckBox
             // 
@@ -339,16 +329,6 @@
             this.ck2CheckBox.TabIndex = 8;
             this.ck2CheckBox.Text = "Your deadline was";
             this.ck2CheckBox.UseVisualStyleBackColor = true;
-            // 
-           
-            // 
-            // totalSoldoTextBox
-            // 
-            this.totalSoldoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalSoldOnline", true));
-            this.totalSoldoTextBox.Location = new System.Drawing.Point(151, 203);
-            this.totalSoldoTextBox.Name = "totalSoldoTextBox";
-            this.totalSoldoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalSoldoTextBox.TabIndex = 17;
             // 
             // totalDollarTextBox
             // 
@@ -661,23 +641,15 @@
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(159, 555);
+            this.nameTextBox.Location = new System.Drawing.Point(164, 555);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(226, 20);
             this.nameTextBox.TabIndex = 65;
             // 
-            // attnTextBox
-            // 
-            this.attnTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Attn", true));
-            this.attnTextBox.Location = new System.Drawing.Point(159, 578);
-            this.attnTextBox.Name = "attnTextBox";
-            this.attnTextBox.Size = new System.Drawing.Size(226, 20);
-            this.attnTextBox.TabIndex = 66;
-            // 
             // add1TextBox
             // 
             this.add1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Add1", true));
-            this.add1TextBox.Location = new System.Drawing.Point(159, 598);
+            this.add1TextBox.Location = new System.Drawing.Point(164, 581);
             this.add1TextBox.Name = "add1TextBox";
             this.add1TextBox.Size = new System.Drawing.Size(226, 20);
             this.add1TextBox.TabIndex = 67;
@@ -685,7 +657,7 @@
             // add2TextBox
             // 
             this.add2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Add2", true));
-            this.add2TextBox.Location = new System.Drawing.Point(159, 622);
+            this.add2TextBox.Location = new System.Drawing.Point(164, 605);
             this.add2TextBox.Name = "add2TextBox";
             this.add2TextBox.Size = new System.Drawing.Size(226, 20);
             this.add2TextBox.TabIndex = 68;
@@ -693,7 +665,7 @@
             // cityTextBox
             // 
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "City", true));
-            this.cityTextBox.Location = new System.Drawing.Point(159, 647);
+            this.cityTextBox.Location = new System.Drawing.Point(164, 630);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(77, 20);
             this.cityTextBox.TabIndex = 69;
@@ -701,7 +673,7 @@
             // stateTextBox
             // 
             this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "State", true));
-            this.stateTextBox.Location = new System.Drawing.Point(242, 648);
+            this.stateTextBox.Location = new System.Drawing.Point(247, 631);
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(32, 20);
             this.stateTextBox.TabIndex = 70;
@@ -709,7 +681,7 @@
             // zipTextBox
             // 
             this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Zip", true));
-            this.zipTextBox.Location = new System.Drawing.Point(280, 647);
+            this.zipTextBox.Location = new System.Drawing.Point(285, 630);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(77, 20);
             this.zipTextBox.TabIndex = 71;
@@ -774,7 +746,7 @@
             this.bnRcard.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bnRcard.Name = "bnRcard";
             this.bnRcard.PositionItem = this.bindingNavigatorPositionItem;
-            this.bnRcard.Size = new System.Drawing.Size(739, 25);
+            this.bnRcard.Size = new System.Drawing.Size(807, 25);
             this.bnRcard.TabIndex = 73;
             this.bnRcard.Text = "bindingNavigator1";
             // 
@@ -905,16 +877,6 @@
             this.contractYearLabel1.TabIndex = 6;
             this.contractYearLabel1.Text = "label9";
             // 
-            // rCardTableAdapter
-            // 
-            this.rCardTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.RCardTableAdapter = this.rCardTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // invnoLabel1
             // 
             this.invnoLabel1.AutoSize = true;
@@ -947,12 +909,87 @@
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(113, 66);
             this.reportViewer1.TabIndex = 74;
+            this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
+            // deadlineLabel1
+            // 
+            this.deadlineLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Deadline", true));
+            this.deadlineLabel1.Location = new System.Drawing.Point(132, 118);
+            this.deadlineLabel1.Name = "deadlineLabel1";
+            this.deadlineLabel1.Size = new System.Drawing.Size(100, 23);
+            this.deadlineLabel1.TabIndex = 76;
+            this.deadlineLabel1.Text = "label10";
+            // 
+            // kitreceivedDateLabel2
+            // 
+            this.kitreceivedDateLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "KitreceivedDate", true));
+            this.kitreceivedDateLabel2.Location = new System.Drawing.Point(168, 63);
+            this.kitreceivedDateLabel2.Name = "kitreceivedDateLabel2";
+            this.kitreceivedDateLabel2.Size = new System.Drawing.Size(123, 23);
+            this.kitreceivedDateLabel2.TabIndex = 78;
+            this.kitreceivedDateLabel2.Text = "label10";
+            // 
+            // guardteDateBox
+            // 
+            this.guardteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.rCardBindingSource, "Guardte", true));
+            this.guardteDateBox.Date = null;
+            this.guardteDateBox.DateValue = null;
+            this.guardteDateBox.Location = new System.Drawing.Point(391, 91);
+            this.guardteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.guardteDateBox.Name = "guardteDateBox";
+            this.guardteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.guardteDateBox.TabIndex = 79;
+            // 
+            // estDateDateBox
+            // 
+            this.estDateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.rCardBindingSource, "EstDate", true));
+            this.estDateDateBox.Date = null;
+            this.estDateDateBox.DateValue = null;
+            this.estDateDateBox.Location = new System.Drawing.Point(279, 138);
+            this.estDateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.estDateDateBox.Name = "estDateDateBox";
+            this.estDateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.estDateDateBox.TabIndex = 80;
+            // 
+            // totalSoldOnlineTextBox
+            // 
+            this.totalSoldOnlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalSoldOnline", true));
+            this.totalSoldOnlineTextBox.Location = new System.Drawing.Point(146, 204);
+            this.totalSoldOnlineTextBox.Name = "totalSoldOnlineTextBox";
+            this.totalSoldOnlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalSoldOnlineTextBox.TabIndex = 81;
+            // 
+            // rCardBindingSource
+            // 
+            this.rCardBindingSource.DataMember = "RCard";
+            this.rCardBindingSource.DataSource = this.dsRcard;
+            // 
+            // dsRcard
+            // 
+            this.dsRcard.DataSetName = "dsRcard";
+            this.dsRcard.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rCardTableAdapter
+            // 
+            this.rCardTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.RCardTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // frmReceivingCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(739, 784);
+            this.ClientSize = new System.Drawing.Size(807, 784);
+            this.Controls.Add(this.totalSoldOnlineTextBox);
+            this.Controls.Add(this.estDateDateBox);
+            this.Controls.Add(this.guardteDateBox);
+            this.Controls.Add(this.kitreceivedDateLabel2);
+            this.Controls.Add(this.deadlineLabel1);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.bnRcard);
             this.Controls.Add(this.noPayRecvTextBox);
@@ -961,7 +998,6 @@
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.add2TextBox);
             this.Controls.Add(this.add1TextBox);
-            this.Controls.Add(this.attnTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(label8);
             this.Controls.Add(this.commentTextBox);
@@ -1000,30 +1036,24 @@
             this.Controls.Add(label4);
             this.Controls.Add(this.totalDollarTextBox);
             this.Controls.Add(totalSoldoLabel);
-            this.Controls.Add(this.totalSoldoTextBox);
             this.Controls.Add(label3);
-            
             this.Controls.Add(label2);
             this.Controls.Add(label1);
             this.Controls.Add(this.ck2CheckBox);
             this.Controls.Add(guardteLabel);
             this.Controls.Add(this.ck1CheckBox);
             this.Controls.Add(kitReceivedDateLabel);
-            
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmReceivingCard";
             this.Text = "Receiving Card";
             this.Load += new System.EventHandler(this.frmReceivingCard_Load);
-          
             this.Controls.SetChildIndex(kitReceivedDateLabel, 0);
             this.Controls.SetChildIndex(this.ck1CheckBox, 0);
             this.Controls.SetChildIndex(guardteLabel, 0);
             this.Controls.SetChildIndex(this.ck2CheckBox, 0);
             this.Controls.SetChildIndex(label1, 0);
             this.Controls.SetChildIndex(label2, 0);
-           
             this.Controls.SetChildIndex(label3, 0);
-            this.Controls.SetChildIndex(this.totalSoldoTextBox, 0);
             this.Controls.SetChildIndex(totalSoldoLabel, 0);
             this.Controls.SetChildIndex(this.totalDollarTextBox, 0);
             this.Controls.SetChildIndex(label4, 0);
@@ -1062,7 +1092,6 @@
             this.Controls.SetChildIndex(this.commentTextBox, 0);
             this.Controls.SetChildIndex(label8, 0);
             this.Controls.SetChildIndex(this.nameTextBox, 0);
-            this.Controls.SetChildIndex(this.attnTextBox, 0);
             this.Controls.SetChildIndex(this.add1TextBox, 0);
             this.Controls.SetChildIndex(this.add2TextBox, 0);
             this.Controls.SetChildIndex(this.cityTextBox, 0);
@@ -1073,13 +1102,18 @@
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.bnRcard, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
+            this.Controls.SetChildIndex(this.deadlineLabel1, 0);
+            this.Controls.SetChildIndex(this.kitreceivedDateLabel2, 0);
+            this.Controls.SetChildIndex(this.guardteDateBox, 0);
+            this.Controls.SetChildIndex(this.estDateDateBox, 0);
+            this.Controls.SetChildIndex(this.totalSoldOnlineTextBox, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRcard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnRcard)).EndInit();
             this.bnRcard.ResumeLayout(false);
             this.bnRcard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRcard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1095,8 +1129,6 @@
 		
 		private System.Windows.Forms.CheckBox ck1CheckBox;
 		private System.Windows.Forms.CheckBox ck2CheckBox;
-		
-		private System.Windows.Forms.TextBox totalSoldoTextBox;
 		private System.Windows.Forms.TextBox totalDollarTextBox;
 		private System.Windows.Forms.CheckBox ck3CheckBox;
 		private System.Windows.Forms.TextBox paymentsTextBox;
@@ -1128,7 +1160,6 @@
 		private System.Windows.Forms.CheckBox comckCheckBox;
 		private System.Windows.Forms.TextBox commentTextBox;
 		private System.Windows.Forms.TextBox nameTextBox;
-		private System.Windows.Forms.TextBox attnTextBox;
 		private System.Windows.Forms.TextBox add1TextBox;
 		private System.Windows.Forms.TextBox add2TextBox;
 		private System.Windows.Forms.TextBox cityTextBox;
@@ -1156,5 +1187,10 @@
 		private System.Windows.Forms.Label invnoLabel1;
 		private System.Windows.Forms.Label label9;
 		private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-	}
+        private System.Windows.Forms.Label deadlineLabel1;
+        private System.Windows.Forms.Label kitreceivedDateLabel2;
+        private CustomControls.DateBox guardteDateBox;
+        private CustomControls.DateBox estDateDateBox;
+        private System.Windows.Forms.TextBox totalSoldOnlineTextBox;
+    }
 }

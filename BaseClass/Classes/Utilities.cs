@@ -228,7 +228,61 @@ namespace BaseClass.Classes
                 }//End for
             return vStartDate;
             }
+        public static DateTime BusinessDay(DateTime StartDate)
+        {
+            var sqlQuery = new SQLQuery();
+            var queryString = "Select * from Holidays";
+            SqlParameter[] parameters = new SqlParameter[] {
+
+            };
+            var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text, queryString, parameters);
+            if (result == null)
+            {
+                MessageBox.Show("There are no Holiday dates entered to be calculated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            var HolidayDates = new List<HolidayDate>();
+            HolidayDates = (List<HolidayDate>)result;
+            var vStartDate = StartDate;
+            //Remember we are subtracing backwards
+            //for (int i = 1; i <= NumberOfDays; i++)
+            //{
+               // vStartDate = vStartDate.AddDays(1);
+                bool oK = false;
+                while (!oK)
+                {
+                    //0=Sunday,1=Monday ect.
+                    int day = (int)vStartDate.DayOfWeek;
+                    //if Saturday go to Monday
+                    if (day == 6)
+                    {
+                        vStartDate = vStartDate.AddDays(2);
+                    }
+                    else if (day == 0)
+                    {
+                        //If Sunday go to Monday
+                        vStartDate = vStartDate.AddDays(1);
+                    }
+                    //Now check if holiday
+                    if (HolidayDates != null)
+                    {
+                        if (!HolidayDates.Exists(a => a.Holiday.Date == vStartDate.Date))
+                        {
+                            oK = true;
+                        }
+                        else { vStartDate = vStartDate.AddDays(1); }
+                    }
+                    else
+                    {
+                        oK = true;
+
+                    }
+                }//End While
+
+           // }//End for
+            return vStartDate;
         }
+    }
     public class HolidayDate {
         public DateTime Holiday{ get; set; }
 

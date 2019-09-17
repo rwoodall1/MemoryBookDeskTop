@@ -733,6 +733,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnInvoiceEmail3;
             
+            private global::System.Data.DataColumn columnInvoiceName;
+            
+            private global::System.Data.DataColumn columnShippingName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -2024,6 +2028,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceNameColumn {
+                get {
+                    return this.columnInvoiceName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingNameColumn {
+                get {
+                    return this.columnShippingName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2216,7 +2236,9 @@ namespace Mbc5.DataSets {
                         int PIN, 
                         string InvoiceEmail1, 
                         string InvoiceEmail2, 
-                        string InvoiceEmail3) {
+                        string InvoiceEmail3, 
+                        string InvoiceName, 
+                        string ShippingName) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -2375,7 +2397,9 @@ namespace Mbc5.DataSets {
                         PIN,
                         InvoiceEmail1,
                         InvoiceEmail2,
-                        InvoiceEmail3};
+                        InvoiceEmail3,
+                        InvoiceName,
+                        ShippingName};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2562,6 +2586,8 @@ namespace Mbc5.DataSets {
                 this.columnInvoiceEmail1 = base.Columns["InvoiceEmail1"];
                 this.columnInvoiceEmail2 = base.Columns["InvoiceEmail2"];
                 this.columnInvoiceEmail3 = base.Columns["InvoiceEmail3"];
+                this.columnInvoiceName = base.Columns["InvoiceName"];
+                this.columnShippingName = base.Columns["ShippingName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2881,6 +2907,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnInvoiceEmail2);
                 this.columnInvoiceEmail3 = new global::System.Data.DataColumn("InvoiceEmail3", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceEmail3);
+                this.columnInvoiceName = new global::System.Data.DataColumn("InvoiceName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceName);
+                this.columnShippingName = new global::System.Data.DataColumn("ShippingName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -3001,6 +3031,8 @@ namespace Mbc5.DataSets {
                 this.columnInvoiceEmail1.MaxLength = 150;
                 this.columnInvoiceEmail2.MaxLength = 150;
                 this.columnInvoiceEmail3.MaxLength = 150;
+                this.columnInvoiceName.MaxLength = 100;
+                this.columnShippingName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6953,6 +6985,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceName {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceName\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingName {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingName\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscstatusNull() {
                 return this.IsNull(this.tablecust.cstatusColumn);
             }
@@ -8798,6 +8862,30 @@ namespace Mbc5.DataSets {
             public void SetInvoiceEmail3Null() {
                 this[this.tablecust.InvoiceEmail3Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceNameNull() {
+                return this.IsNull(this.tablecust.InvoiceNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceNameNull() {
+                this[this.tablecust.InvoiceNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingNameNull() {
+                return this.IsNull(this.tablecust.ShippingNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingNameNull() {
+                this[this.tablecust.ShippingNameColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9803,6 +9891,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("InvoiceEmail1", "InvoiceEmail1");
             tableMapping.ColumnMappings.Add("InvoiceEmail2", "InvoiceEmail2");
             tableMapping.ColumnMappings.Add("InvoiceEmail3", "InvoiceEmail3");
+            tableMapping.ColumnMappings.Add("InvoiceName", "InvoiceName");
+            tableMapping.ColumnMappings.Add("ShippingName", "ShippingName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -10022,8 +10112,9 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "pingZipCode = @ShippingZipCode, ShippingCity = @ShippingCity, ShippingAddr2 = @S" +
                 "hippngAddr2, ShippingAddr = @ShippingAddr, taxexemptionexpirationdate = @taxexem" +
                 "ptionexpirationdate, PIN = @PIN, \r\n                         InvoiceEmail1 = @Inv" +
-                "oiceEmail1, InvoiceEmail2 = InvoiceEmail2, InvoiceEmail3 = InvoiceEmail3\r\nWHERE " +
-                "       (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
+                "oiceEmail1, InvoiceEmail2 = InvoiceEmail2, InvoiceEmail3 = InvoiceEmail3, Shippi" +
+                "ngName = @ShippingName, InvoiceName = @InvoiceName\r\nWHERE        (schcode = @sch" +
+                "code) AND (TimeStamp = @Orig_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10167,6 +10258,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taxexemptionexpirationdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "taxexemptionexpirationdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PIN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceEmail1", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceEmail1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Orig_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -10218,10 +10311,11 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "shpdte, cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.Shippi" +
                 "ngState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceStat" +
                 "e, \r\n                         cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN, " +
-                "cust.InvoiceEmail1, cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust" +
-                " LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quotes.schco" +
-                "de LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.i" +
-                "nvno\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QInvno DESC";
+                "cust.InvoiceEmail1, cust.InvoiceEmail2, cust.InvoiceEmail3, cust.InvoiceName, cu" +
+                "st.ShippingName\r\nFROM            cust LEFT OUTER JOIN\r\n                         " +
+                "quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                       " +
+                "  produtn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schcode = @schcode" +
+                ")\r\nORDER BY Qyear DESC, QInvno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -10248,8 +10342,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 ", FirstDaySchool, stage, NotTaxExempt, IsTaxExempt, taxexemptionexpirationdate, " +
                 "ShippingAddr2, ShippingCity, ShippingZipCode, ShippingState, InvoiceAddr, Invoic" +
                 "eAddr2, InvoiceCity, InvoiceState, \r\n                         InvoiceZipCode, Sh" +
-                "ippingAddr, PIN, InvoiceEmail1, InvoiceEmail2, InvoiceEmail3\r\nFROM            cu" +
-                "st\r\nWHERE        (schcode = @schcode)";
+                "ippingAddr, PIN, InvoiceEmail1, InvoiceEmail2, InvoiceEmail3, InvoiceName\r\nFROM " +
+                "           cust\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -10289,10 +10383,11 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 ".ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust." +
                 "InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, \r\n      " +
                 "                   cust.ShippingAddr, cust.schname, cust.PIN, cust.InvoiceEmail1" +
-                ", cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust LEFT OUTER JOIN\r\n" +
-                "                         quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN" +
-                "\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE       " +
-                " (cust.oraclecode = @oraclecode)\r\nORDER BY Qyear DESC";
+                ", cust.InvoiceEmail2, cust.InvoiceEmail3, cust.InvoiceName, cust.ShippingName\r\nF" +
+                "ROM            cust LEFT OUTER JOIN\r\n                         quotes ON cust.sch" +
+                "code = quotes.schcode LEFT OUTER JOIN\r\n                         produtn ON quote" +
+                "s.invno = produtn.invno\r\nWHERE        (cust.oraclecode = @oraclecode)\r\nORDER BY " +
+                "Qyear DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -10332,10 +10427,11 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "ingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.Invo" +
                 "iceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, \r\n             " +
                 "            cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN, cust.InvoiceEmail1" +
-                ", cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust LEFT OUTER JOIN\r\n" +
-                "                         quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN" +
-                "\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE       " +
-                " (cust.schname LIKE @schname + \'%\')\r\nORDER BY Qyear DESC";
+                ", cust.InvoiceEmail2, cust.InvoiceEmail3, cust.ShippingName, cust.InvoiceName\r\nF" +
+                "ROM            cust LEFT OUTER JOIN\r\n                         quotes ON cust.sch" +
+                "code = quotes.schcode LEFT OUTER JOIN\r\n                         produtn ON quote" +
+                "s.invno = produtn.invno\r\nWHERE        (cust.schname LIKE @schname + \'%\')\r\nORDER " +
+                "BY Qyear DESC";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

@@ -590,7 +590,7 @@ namespace Mbc5.Dialogs {
                                         Inner JOIN Quotes Q  ON E.Invno=Q.Invno
                                         Left Join Cust C On Q.Schcode=C.Schcode
                                         Left Join Produtn P on Q.Invno=P.Invno
-                                        Order By Q.Invoice";
+                                        Order By Invoice";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetInvnoSearch>();
                             if (endsheetresult.IsError)

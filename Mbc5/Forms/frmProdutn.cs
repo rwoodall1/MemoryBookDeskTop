@@ -25,7 +25,8 @@ using System.IO;
 using System.Reflection;
 using BaseClass;
 using Mbc5.Forms.MemoryBook;
-using Mbc5.Classes;
+using System.Collections;
+using System.Collections.Specialized;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
@@ -7244,7 +7245,20 @@ namespace Mbc5.Forms
                 btnAddReorder.Visible =false;
             }
 
-                                                                                                                         
+            //disable deadline in if not empty and not admin
+            if (!string.IsNullOrEmpty(kitrecvdDateTimePicker.Date))
+            {
+                
+                var supRole = new StringCollection();
+                    supRole.AddRange(new String[] {"SA","Administrator" });
+               
+                if (!this.ApplicationUser.IsInOneOfRoles(supRole))
+                {
+                    dedayoutDateBox.Enabled = false;
+                }
+                
+            }
+            
         }
 
        
@@ -7708,27 +7722,28 @@ namespace Mbc5.Forms
 
 		private void btnCalcDeadLine_Click(object sender, EventArgs e)
 		{
-			//if (!String.IsNullOrEmpty(dedayoutDateTimePicker.Value.ToString()))
-			//{
-			//	int wks = 0;
-			//	int days = 0;
-			//	int.TryParse(txtWeeks.Text, out wks);
-			//	int.TryParse(txtDays.Text, out days);
+            if (!String.IsNullOrEmpty(dedayinDateBox.Date))
+            {
+                int wks = 0;
+                int days = 0;
+                int.TryParse(txtWeeks.Text, out wks);
+                int.TryParse(txtDays.Text, out days);
 
 
-			//	var numDays = (wks * 5) + (days);
-   //             if (dedayoutDateTimePicker.Value!=null) {
-   //                 var result = CalulateBusinessDay.BusDaySubtract((DateTime)dedayoutDateTimePicker.Value, numDays);
-   //                 if (result != null)
-   //                 {
-   //                     dedayinDateTimePicker.Value = result;
-   //                 }
-   //             }
-			//}
-			//else { MessageBox.Show("Please enter a Deadline out Date."); }
+                var numDays = (wks * 5) + (days);
+                if (dedayinDateBox.Date != null)
+                {
+                    var result = CalulateBusinessDay.BusDaySubtract((DateTime)dedayinDateBox.DateValue, numDays);
+                    if (result != null)
+                    {
+                        dedayinDateBox.Date = result.ToShortDateString();
+                    }
+                }
+            }
+            else { MessageBox.Show("Please enter a Deadline out Date."); }
 
 
-		}
+        }
 
 		private void btnCalCS_Click(object sender, EventArgs e)
 		{
@@ -11052,6 +11067,20 @@ namespace Mbc5.Forms
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReOrder", reOrderBindingSource));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
             reportViewer1.RefreshReport();
+        }
+
+        private void dedayoutDateBox_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(dedayoutDateBox.Date))
+            {
+                var result = CalulateBusinessDay.BusinessDay((DateTime)dedayoutDateBox.DateValue);
+                if(result.ToShortDateString()!= dedayoutDateBox.Date)
+                {
+                    dedayoutDateBox.Date = result.ToShortDateString();
+                    MbcMessageBox.Information("Dead Line Out Date is a holiday or weekend! The next available date has been entered.");
+                }
+            }
+         
         }
 
 

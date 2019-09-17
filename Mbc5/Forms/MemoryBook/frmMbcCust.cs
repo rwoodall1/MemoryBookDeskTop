@@ -343,10 +343,12 @@ public override void Cancel() {
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"
                                     UPDATE Cust Set InvoiceAddr=@InvoiceAddr
+                                        ,InvoiceName=@InvoiceName
                                         ,InvoiceAddr2=@InvoiceAddr2
                                         ,InvoiceCity=@InvoiceCity
                                         ,InvoiceState=@InvoiceState
                                         ,InvoiceZipCode=@InvoiceZipCode 
+                                         ,ShippingName=@ShippingName
                                         ,ShippingAddr=@ShippingAddr
                                         ,ShippingAddr2=@ShippingAddr2
                                         ,ShippingCity=@ShippingCity
@@ -360,11 +362,13 @@ public override void Cancel() {
             try
             {
                 //use try here because this fire when closing form. combo are empty and throws and error.
+                sqlClient.AddParameter("@InvoiceName", invoiceNameTextBox.Text);
                 sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
                 sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
                 sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
                 sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString());
                 sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
+                sqlClient.AddParameter("@ShippingName", shippingNameTextBox.Text);
                 sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
                 sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
                 sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
