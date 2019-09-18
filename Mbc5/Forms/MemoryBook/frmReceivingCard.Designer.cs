@@ -40,7 +40,7 @@
             System.Windows.Forms.Label dateCreatedLabel;
             System.Windows.Forms.Label contractYearLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceivingCard));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.schnameLabel1 = new System.Windows.Forms.Label();
             this.ck1CheckBox = new System.Windows.Forms.CheckBox();
             this.ck2CheckBox = new System.Windows.Forms.CheckBox();
@@ -107,6 +107,7 @@
             this.guardteDateBox = new CustomControls.DateBox();
             this.estDateDateBox = new CustomControls.DateBox();
             this.totalSoldOnlineTextBox = new System.Windows.Forms.TextBox();
+            this.lblSchcode = new System.Windows.Forms.Label();
             this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsRcard = new Mbc5.DataSets.dsRcard();
             this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
@@ -144,12 +145,12 @@
             this.TopPanel.Controls.Add(idLabel);
             this.TopPanel.Controls.Add(this.idLabel1);
             this.TopPanel.Controls.Add(this.schnameLabel1);
-            this.TopPanel.Size = new System.Drawing.Size(807, 56);
+            this.TopPanel.Size = new System.Drawing.Size(862, 56);
             // 
             // BottomPanel
             // 
-            this.BottomPanel.Location = new System.Drawing.Point(0, 774);
-            this.BottomPanel.Size = new System.Drawing.Size(807, 10);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 791);
+            this.BottomPanel.Size = new System.Drawing.Size(862, 10);
             // 
             // kitReceivedDateLabel
             // 
@@ -739,14 +740,14 @@
             this.bindingNavigatorDeleteItem,
             this.toolStripButton3,
             this.toolStripButton1});
-            this.bnRcard.Location = new System.Drawing.Point(0, 749);
+            this.bnRcard.Location = new System.Drawing.Point(0, 766);
             this.bnRcard.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnRcard.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnRcard.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bnRcard.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bnRcard.Name = "bnRcard";
             this.bnRcard.PositionItem = this.bindingNavigatorPositionItem;
-            this.bnRcard.Size = new System.Drawing.Size(807, 25);
+            this.bnRcard.Size = new System.Drawing.Size(862, 25);
             this.bnRcard.TabIndex = 73;
             this.bnRcard.Text = "bindingNavigator1";
             // 
@@ -855,7 +856,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_ClickAsync);
             // 
             // toolStripButton1
             // 
@@ -900,11 +901,11 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource1.Name = "dsReceivingCard";
-            reportDataSource1.Value = this.rCardBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsReceivingCard";
+            reportDataSource2.Value = this.rCardBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ReceivingCard.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(571, 427);
+            this.reportViewer1.Location = new System.Drawing.Point(606, 680);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(113, 66);
@@ -960,6 +961,15 @@
             this.totalSoldOnlineTextBox.Size = new System.Drawing.Size(100, 20);
             this.totalSoldOnlineTextBox.TabIndex = 81;
             // 
+            // lblSchcode
+            // 
+            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Schcode", true));
+            this.lblSchcode.Location = new System.Drawing.Point(829, 59);
+            this.lblSchcode.Name = "lblSchcode";
+            this.lblSchcode.Size = new System.Drawing.Size(1, 1);
+            this.lblSchcode.TabIndex = 82;
+            this.lblSchcode.Text = "schcode";
+            // 
             // rCardBindingSource
             // 
             this.rCardBindingSource.DataMember = "RCard";
@@ -984,7 +994,8 @@
             // frmReceivingCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(807, 784);
+            this.ClientSize = new System.Drawing.Size(862, 801);
+            this.Controls.Add(this.lblSchcode);
             this.Controls.Add(this.totalSoldOnlineTextBox);
             this.Controls.Add(this.estDateDateBox);
             this.Controls.Add(this.guardteDateBox);
@@ -1107,6 +1118,7 @@
             this.Controls.SetChildIndex(this.guardteDateBox, 0);
             this.Controls.SetChildIndex(this.estDateDateBox, 0);
             this.Controls.SetChildIndex(this.totalSoldOnlineTextBox, 0);
+            this.Controls.SetChildIndex(this.lblSchcode, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bnRcard)).EndInit();
@@ -1192,5 +1204,6 @@
         private CustomControls.DateBox guardteDateBox;
         private CustomControls.DateBox estDateDateBox;
         private System.Windows.Forms.TextBox totalSoldOnlineTextBox;
+        private System.Windows.Forms.Label lblSchcode;
     }
 }

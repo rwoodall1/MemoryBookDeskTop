@@ -473,6 +473,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnBackCvrin;
             
+            private global::System.Data.DataColumn columnCcontemail;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public RCardDataTable() {
@@ -1284,6 +1286,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CcontemailColumn {
+                get {
+                    return this.columnCcontemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1415,7 +1425,8 @@ namespace Mbc5.DataSets {
                         bool Peyn, 
                         string CoverDesc, 
                         string ContractYear, 
-                        string BackCvrin) {
+                        string BackCvrin, 
+                        string Ccontemail) {
                 RCardRow rowRCardRow = ((RCardRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1514,7 +1525,8 @@ namespace Mbc5.DataSets {
                         Peyn,
                         CoverDesc,
                         ContractYear,
-                        BackCvrin};
+                        BackCvrin,
+                        Ccontemail};
                 rowRCardRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRCardRow);
                 return rowRCardRow;
@@ -1641,6 +1653,7 @@ namespace Mbc5.DataSets {
                 this.columnCoverDesc = base.Columns["CoverDesc"];
                 this.columnContractYear = base.Columns["ContractYear"];
                 this.columnBackCvrin = base.Columns["BackCvrin"];
+                this.columnCcontemail = base.Columns["Ccontemail"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1840,6 +1853,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnContractYear);
                 this.columnBackCvrin = new global::System.Data.DataColumn("BackCvrin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBackCvrin);
+                this.columnCcontemail = new global::System.Data.DataColumn("Ccontemail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCcontemail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1881,6 +1896,7 @@ namespace Mbc5.DataSets {
                 this.columnCoverDesc.MaxLength = 50;
                 this.columnContractYear.MaxLength = 2;
                 this.columnBackCvrin.MaxLength = 50;
+                this.columnCcontemail.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3570,6 +3586,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Ccontemail {
+                get {
+                    try {
+                        return ((string)(this[this.tableRCard.CcontemailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Ccontemail\' in table \'RCard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRCard.CcontemailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTotalSoldOnlineNull() {
                 return this.IsNull(this.tableRCard.TotalSoldOnlineColumn);
             }
@@ -4719,6 +4751,18 @@ namespace Mbc5.DataSets {
             public void SetBackCvrinNull() {
                 this[this.tableRCard.BackCvrinColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCcontemailNull() {
+                return this.IsNull(this.tableRCard.CcontemailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCcontemailNull() {
+                this[this.tableRCard.CcontemailColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -4977,6 +5021,7 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
             tableMapping.ColumnMappings.Add("CoverDesc", "CoverDesc");
             tableMapping.ColumnMappings.Add("ContractYear", "ContractYear");
             tableMapping.ColumnMappings.Add("BackCvrin", "BackCvrin");
+            tableMapping.ColumnMappings.Add("Ccontemail", "Ccontemail");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -4998,31 +5043,32 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
                 "lch], [TeacherEdtion], [TypeSet], [ImpGuides], [SchType], [Mlamination], [Freebo" +
                 "oks], [Frontcvr], [Frontcvr2], [FrontCvin], [Back], [IsFrontCvr], [IsInside], [I" +
                 "sInsbkcvr], [IsBack], [Foiling], [MK], [App], [SdlStich], [IndivPic], [Peyn], [C" +
-                "overDesc], [ContractYear], [BackCvrin]) VALUES (@TotalSoldOnline, @TotalDollarsO" +
-                "nline, @DateCreated, @Invno, @Schcode, @Schname, @Prodno, @KitreceivedDate, @Ck1" +
-                ", @Ck2, @Ck3, @Ck4, @Deadline, @Ck4a, @EstDate, @Payments, @Ck4b, @Baldue, @Ck4c" +
-                ", @Ck6, @Ck5, @Ck7, @NoPages, @NoCopies, @Covertype, @Ck8, @GLamination, @DieCut" +
-                ", @PerfBind, @Insck, @Hdbky_n, @Casey_n, @Foilck, @Spirck, @Guardte, @AllClrck, " +
-                "@Clrpgck, @Comck, @Comment, @CvrWarn, @Warnck, @Name, @Attn, @Add1, @Add2, @City" +
-                ", @State, @Zip, @DcDesc1, @DcDesc2, @NoPayRecv, @Story, @Supplement, @OurSupp, @" +
-                "Persnlz, @YirSchool, @Schemail, @Contemail, @Bcontemail, @ContFname, @ContLname," +
-                " @BcontLname, @BcontFname, @QtyStud, @QtyTeacher, @HallPass, @BookMark, @VPA, @V" +
-                "PB, @IdPouch, @StdPg, @DuraGlz, @Wallch, @TeacherEdtion, @TypeSet, @ImpGuides, @" +
-                "SchType, @Mlamination, @Freebooks, @Frontcvr, @Frontcvr2, @FrontCvin, @Back, @Is" +
-                "FrontCvr, @IsInside, @IsInsbkcvr, @IsBack, @Foiling, @MK, @App, @SdlStich, @Indi" +
-                "vPic, @Peyn, @CoverDesc, @ContractYear, @BackCvrin);\r\nSELECT Id, TotalSoldOnline" +
-                ", TotalDollarsOnline, DateCreated, Invno, Schcode, Schname, Prodno, KitreceivedD" +
-                "ate, Ck1, Ck2, Ck3, Ck4, Deadline, Ck4a, EstDate, Payments, Ck4b, Baldue, Ck4c, " +
-                "Ck6, Ck5, Ck7, NoPages, NoCopies, Covertype, Ck8, GLamination, DieCut, PerfBind," +
-                " Insck, Hdbky_n, Casey_n, Foilck, Spirck, Guardte, AllClrck, Clrpgck, Comck, Com" +
-                "ment, CvrWarn, Warnck, Name, Attn, Add1, Add2, City, State, Zip, DcDesc1, DcDesc" +
-                "2, NoPayRecv, Story, Supplement, OurSupp, Persnlz, YirSchool, Schemail, Contemai" +
-                "l, Bcontemail, ContFname, ContLname, BcontLname, BcontFname, QtyStud, QtyTeacher" +
-                ", HallPass, BookMark, VPA, VPB, IdPouch, StdPg, DuraGlz, Wallch, TeacherEdtion, " +
-                "TypeSet, ImpGuides, SchType, Mlamination, Freebooks, Frontcvr, Frontcvr2, FrontC" +
-                "vin, Back, IsFrontCvr, IsInside, IsInsbkcvr, IsBack, Foiling, MK, App, SdlStich," +
-                " IndivPic, Peyn, CoverDesc, ContractYear, BackCvrin FROM RCard WHERE (Id = SCOPE" +
-                "_IDENTITY()) ORDER BY DateCreated DESC, Invno DESC";
+                "overDesc], [ContractYear], [BackCvrin], [Ccontemail]) VALUES (@TotalSoldOnline, " +
+                "@TotalDollarsOnline, @DateCreated, @Invno, @Schcode, @Schname, @Prodno, @Kitrece" +
+                "ivedDate, @Ck1, @Ck2, @Ck3, @Ck4, @Deadline, @Ck4a, @EstDate, @Payments, @Ck4b, " +
+                "@Baldue, @Ck4c, @Ck6, @Ck5, @Ck7, @NoPages, @NoCopies, @Covertype, @Ck8, @GLamin" +
+                "ation, @DieCut, @PerfBind, @Insck, @Hdbky_n, @Casey_n, @Foilck, @Spirck, @Guardt" +
+                "e, @AllClrck, @Clrpgck, @Comck, @Comment, @CvrWarn, @Warnck, @Name, @Attn, @Add1" +
+                ", @Add2, @City, @State, @Zip, @DcDesc1, @DcDesc2, @NoPayRecv, @Story, @Supplemen" +
+                "t, @OurSupp, @Persnlz, @YirSchool, @Schemail, @Contemail, @Bcontemail, @ContFnam" +
+                "e, @ContLname, @BcontLname, @BcontFname, @QtyStud, @QtyTeacher, @HallPass, @Book" +
+                "Mark, @VPA, @VPB, @IdPouch, @StdPg, @DuraGlz, @Wallch, @TeacherEdtion, @TypeSet," +
+                " @ImpGuides, @SchType, @Mlamination, @Freebooks, @Frontcvr, @Frontcvr2, @FrontCv" +
+                "in, @Back, @IsFrontCvr, @IsInside, @IsInsbkcvr, @IsBack, @Foiling, @MK, @App, @S" +
+                "dlStich, @IndivPic, @Peyn, @CoverDesc, @ContractYear, @BackCvrin, @Ccontemail);\r" +
+                "\nSELECT Id, TotalSoldOnline, TotalDollarsOnline, DateCreated, Invno, Schcode, Sc" +
+                "hname, Prodno, KitreceivedDate, Ck1, Ck2, Ck3, Ck4, Deadline, Ck4a, EstDate, Pay" +
+                "ments, Ck4b, Baldue, Ck4c, Ck6, Ck5, Ck7, NoPages, NoCopies, Covertype, Ck8, GLa" +
+                "mination, DieCut, PerfBind, Insck, Hdbky_n, Casey_n, Foilck, Spirck, Guardte, Al" +
+                "lClrck, Clrpgck, Comck, Comment, CvrWarn, Warnck, Name, Attn, Add1, Add2, City, " +
+                "State, Zip, DcDesc1, DcDesc2, NoPayRecv, Story, Supplement, OurSupp, Persnlz, Yi" +
+                "rSchool, Schemail, Contemail, Bcontemail, ContFname, ContLname, BcontLname, Bcon" +
+                "tFname, QtyStud, QtyTeacher, HallPass, BookMark, VPA, VPB, IdPouch, StdPg, DuraG" +
+                "lz, Wallch, TeacherEdtion, TypeSet, ImpGuides, SchType, Mlamination, Freebooks, " +
+                "Frontcvr, Frontcvr2, FrontCvin, Back, IsFrontCvr, IsInside, IsInsbkcvr, IsBack, " +
+                "Foiling, MK, App, SdlStich, IndivPic, Peyn, CoverDesc, ContractYear, BackCvrin, " +
+                "Ccontemail FROM RCard WHERE (Id = SCOPE_IDENTITY()) ORDER BY DateCreated DESC, I" +
+                "nvno DESC";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalSoldOnline", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalSoldOnline", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalDollarsOnline", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalDollarsOnline", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5120,6 +5166,7 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CoverDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverDesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractYear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractYear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BackCvrin", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackCvrin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ccontemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ccontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [RCard] SET [TotalSoldOnline] = @TotalSoldOnline, [TotalDollarsOnline] = @" +
@@ -5148,19 +5195,20 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
                 ", [IsFrontCvr] = @IsFrontCvr, [IsInside] = @IsInside, [IsInsbkcvr] = @IsInsbkcvr" +
                 ", [IsBack] = @IsBack, [Foiling] = @Foiling, [MK] = @MK, [App] = @App, [SdlStich]" +
                 " = @SdlStich, [IndivPic] = @IndivPic, [Peyn] = @Peyn, [CoverDesc] = @CoverDesc, " +
-                "[ContractYear] = @ContractYear, [BackCvrin] = @BackCvrin WHERE (([Id] = @Origina" +
-                "l_Id));\r\nSELECT Id, TotalSoldOnline, TotalDollarsOnline, DateCreated, Invno, Sch" +
-                "code, Schname, Prodno, KitreceivedDate, Ck1, Ck2, Ck3, Ck4, Deadline, Ck4a, EstD" +
-                "ate, Payments, Ck4b, Baldue, Ck4c, Ck6, Ck5, Ck7, NoPages, NoCopies, Covertype, " +
-                "Ck8, GLamination, DieCut, PerfBind, Insck, Hdbky_n, Casey_n, Foilck, Spirck, Gua" +
-                "rdte, AllClrck, Clrpgck, Comck, Comment, CvrWarn, Warnck, Name, Attn, Add1, Add2" +
-                ", City, State, Zip, DcDesc1, DcDesc2, NoPayRecv, Story, Supplement, OurSupp, Per" +
-                "snlz, YirSchool, Schemail, Contemail, Bcontemail, ContFname, ContLname, BcontLna" +
-                "me, BcontFname, QtyStud, QtyTeacher, HallPass, BookMark, VPA, VPB, IdPouch, StdP" +
-                "g, DuraGlz, Wallch, TeacherEdtion, TypeSet, ImpGuides, SchType, Mlamination, Fre" +
-                "ebooks, Frontcvr, Frontcvr2, FrontCvin, Back, IsFrontCvr, IsInside, IsInsbkcvr, " +
-                "IsBack, Foiling, MK, App, SdlStich, IndivPic, Peyn, CoverDesc, ContractYear, Bac" +
-                "kCvrin FROM RCard WHERE (Id = @Id) ORDER BY DateCreated DESC, Invno DESC";
+                "[ContractYear] = @ContractYear, [BackCvrin] = @BackCvrin, [Ccontemail] = @Cconte" +
+                "mail WHERE (([Id] = @Original_Id));\r\nSELECT Id, TotalSoldOnline, TotalDollarsOnl" +
+                "ine, DateCreated, Invno, Schcode, Schname, Prodno, KitreceivedDate, Ck1, Ck2, Ck" +
+                "3, Ck4, Deadline, Ck4a, EstDate, Payments, Ck4b, Baldue, Ck4c, Ck6, Ck5, Ck7, No" +
+                "Pages, NoCopies, Covertype, Ck8, GLamination, DieCut, PerfBind, Insck, Hdbky_n, " +
+                "Casey_n, Foilck, Spirck, Guardte, AllClrck, Clrpgck, Comck, Comment, CvrWarn, Wa" +
+                "rnck, Name, Attn, Add1, Add2, City, State, Zip, DcDesc1, DcDesc2, NoPayRecv, Sto" +
+                "ry, Supplement, OurSupp, Persnlz, YirSchool, Schemail, Contemail, Bcontemail, Co" +
+                "ntFname, ContLname, BcontLname, BcontFname, QtyStud, QtyTeacher, HallPass, BookM" +
+                "ark, VPA, VPB, IdPouch, StdPg, DuraGlz, Wallch, TeacherEdtion, TypeSet, ImpGuide" +
+                "s, SchType, Mlamination, Freebooks, Frontcvr, Frontcvr2, FrontCvin, Back, IsFron" +
+                "tCvr, IsInside, IsInsbkcvr, IsBack, Foiling, MK, App, SdlStich, IndivPic, Peyn, " +
+                "CoverDesc, ContractYear, BackCvrin, Ccontemail FROM RCard WHERE (Id = @Id) ORDER" +
+                " BY DateCreated DESC, Invno DESC";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalSoldOnline", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalSoldOnline", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalDollarsOnline", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalDollarsOnline", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5258,6 +5306,7 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CoverDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverDesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractYear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractYear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BackCvrin", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackCvrin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ccontemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ccontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -5279,7 +5328,7 @@ namespace Mbc5.DataSets.dsRcardTableAdapters {
                          Covertype, Ck8, GLamination, DieCut, PerfBind, Insck, Hdbky_n, Casey_n, Foilck, Spirck, Guardte, AllClrck, Clrpgck, Comck, Comment, CvrWarn, Warnck, Name, Attn, Add1, Add2, City, State, Zip, DcDesc1, DcDesc2, NoPayRecv, 
                          Story, Supplement, OurSupp, Persnlz, YirSchool, Schemail, Contemail, Bcontemail, ContFname, ContLname, BcontLname, BcontFname, QtyStud, QtyTeacher, HallPass, BookMark, VPA, VPB, IdPouch, StdPg, DuraGlz, Wallch, 
                          TeacherEdtion, TypeSet, ImpGuides, SchType, Mlamination, Freebooks, Frontcvr, Frontcvr2, FrontCvin, Back, IsFrontCvr, IsInside, IsInsbkcvr, IsBack, Foiling, MK, App, SdlStich, IndivPic, Peyn, CoverDesc, ContractYear, 
-                         BackCvrin
+                         BackCvrin, Ccontemail
 FROM            RCard
 WHERE        (Invno = @Invno)
 ORDER BY DateCreated DESC, Invno DESC";
@@ -5474,7 +5523,8 @@ ORDER BY DateCreated DESC, Invno DESC";
                     global::System.Nullable<bool> Peyn, 
                     string CoverDesc, 
                     string ContractYear, 
-                    string BackCvrin) {
+                    string BackCvrin, 
+                    string Ccontemail) {
             if ((TotalSoldOnline.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(TotalSoldOnline.Value));
             }
@@ -6051,6 +6101,12 @@ ORDER BY DateCreated DESC, Invno DESC";
             else {
                 this.Adapter.InsertCommand.Parameters[95].Value = ((string)(BackCvrin));
             }
+            if ((Ccontemail == null)) {
+                this.Adapter.InsertCommand.Parameters[96].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[96].Value = ((string)(Ccontemail));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6168,6 +6224,7 @@ ORDER BY DateCreated DESC, Invno DESC";
                     string CoverDesc, 
                     string ContractYear, 
                     string BackCvrin, 
+                    string Ccontemail, 
                     int Original_Id, 
                     int Id) {
             if ((TotalSoldOnline.HasValue == true)) {
@@ -6746,8 +6803,14 @@ ORDER BY DateCreated DESC, Invno DESC";
             else {
                 this.Adapter.UpdateCommand.Parameters[95].Value = ((string)(BackCvrin));
             }
-            this.Adapter.UpdateCommand.Parameters[96].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[97].Value = ((int)(Id));
+            if ((Ccontemail == null)) {
+                this.Adapter.UpdateCommand.Parameters[96].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((string)(Ccontemail));
+            }
+            this.Adapter.UpdateCommand.Parameters[97].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[98].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6865,8 +6928,9 @@ ORDER BY DateCreated DESC, Invno DESC";
                     string CoverDesc, 
                     string ContractYear, 
                     string BackCvrin, 
+                    string Ccontemail, 
                     int Original_Id) {
-            return this.Update(TotalSoldOnline, TotalDollarsOnline, DateCreated, Invno, Schcode, Schname, Prodno, KitreceivedDate, Ck1, Ck2, Ck3, Ck4, Deadline, Ck4a, EstDate, Payments, Ck4b, Baldue, Ck4c, Ck6, Ck5, Ck7, NoPages, NoCopies, Covertype, Ck8, GLamination, DieCut, PerfBind, Insck, Hdbky_n, Casey_n, Foilck, Spirck, Guardte, AllClrck, Clrpgck, Comck, Comment, CvrWarn, Warnck, Name, Attn, Add1, Add2, City, State, Zip, DcDesc1, DcDesc2, NoPayRecv, Story, Supplement, OurSupp, Persnlz, YirSchool, Schemail, Contemail, Bcontemail, ContFname, ContLname, BcontLname, BcontFname, QtyStud, QtyTeacher, HallPass, BookMark, VPA, VPB, IdPouch, StdPg, DuraGlz, Wallch, TeacherEdtion, TypeSet, ImpGuides, SchType, Mlamination, Freebooks, Frontcvr, Frontcvr2, FrontCvin, Back, IsFrontCvr, IsInside, IsInsbkcvr, IsBack, Foiling, MK, App, SdlStich, IndivPic, Peyn, CoverDesc, ContractYear, BackCvrin, Original_Id, Original_Id);
+            return this.Update(TotalSoldOnline, TotalDollarsOnline, DateCreated, Invno, Schcode, Schname, Prodno, KitreceivedDate, Ck1, Ck2, Ck3, Ck4, Deadline, Ck4a, EstDate, Payments, Ck4b, Baldue, Ck4c, Ck6, Ck5, Ck7, NoPages, NoCopies, Covertype, Ck8, GLamination, DieCut, PerfBind, Insck, Hdbky_n, Casey_n, Foilck, Spirck, Guardte, AllClrck, Clrpgck, Comck, Comment, CvrWarn, Warnck, Name, Attn, Add1, Add2, City, State, Zip, DcDesc1, DcDesc2, NoPayRecv, Story, Supplement, OurSupp, Persnlz, YirSchool, Schemail, Contemail, Bcontemail, ContFname, ContLname, BcontLname, BcontFname, QtyStud, QtyTeacher, HallPass, BookMark, VPA, VPB, IdPouch, StdPg, DuraGlz, Wallch, TeacherEdtion, TypeSet, ImpGuides, SchType, Mlamination, Freebooks, Frontcvr, Frontcvr2, FrontCvin, Back, IsFrontCvr, IsInside, IsInsbkcvr, IsBack, Foiling, MK, App, SdlStich, IndivPic, Peyn, CoverDesc, ContractYear, BackCvrin, Ccontemail, Original_Id, Original_Id);
         }
     }
     

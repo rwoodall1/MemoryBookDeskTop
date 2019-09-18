@@ -9,20 +9,22 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Schname.Value, "dsReceivingCard")</Value>
+                <Value>=First(Fields!Schname.Value.ToString().Trim(), "dsReceivingCard")</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Schname</rd:DefaultName>
-        <Left>2.82906in</Left>
+        <Left>0.51799in</Left>
         <Height>0.25347in</Height>
-        <Width>1in</Width>
+        <Width>6.23485in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -366,7 +368,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
+        <Top>5.12326in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -384,7 +386,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.24826in</Top>
+        <Top>5.12326in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -828,7 +830,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.97395in</Top>
+        <Top>4.83645in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -846,7 +848,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.97395in</Top>
+        <Top>4.83645in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -864,7 +866,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.65451in</Top>
+        <Top>4.55451in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -882,7 +884,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.65451in</Top>
+        <Top>4.55451in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -900,7 +902,7 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.53992in</Top>
+        <Top>5.41492in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -918,7 +920,7 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.53992in</Top>
+        <Top>5.41492in</Top>
         <Left>0.125in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
@@ -936,8 +938,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.65451in</Top>
-        <Left>1.71181in</Left>
+        <Top>4.55451in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>41</ZIndex>
@@ -954,8 +956,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.65451in</Top>
-        <Left>1.71181in</Left>
+        <Top>4.55451in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>42</ZIndex>
@@ -972,8 +974,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.95728in</Top>
-        <Left>1.70139in</Left>
+        <Top>4.83645in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>43</ZIndex>
@@ -990,8 +992,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.95728in</Top>
-        <Left>1.70139in</Left>
+        <Top>4.83645in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>44</ZIndex>
@@ -1008,8 +1010,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.28576in</Top>
-        <Left>1.68813in</Left>
+        <Top>5.12326in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>45</ZIndex>
@@ -1026,8 +1028,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.28576in</Top>
-        <Left>1.68813in</Left>
+        <Top>5.12326in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>46</ZIndex>
@@ -1044,8 +1046,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.99354in</Top>
-        <Left>0.58776in</Left>
+        <Top>5.41492in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>47</ZIndex>
@@ -1062,8 +1064,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.99354in</Top>
-        <Left>0.58776in</Left>
+        <Top>5.41492in</Top>
+        <Left>1.58681in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>48</ZIndex>
@@ -1091,9 +1093,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox31</rd:DefaultName>
-        <Top>4.65451in</Top>
-        <Left>0.3611in</Left>
-        <Height>0.27083in</Height>
+        <Top>4.55451in</Top>
+        <Left>0.35485in</Left>
+        <Height>0.25in</Height>
         <Width>0.70833in</Width>
         <ZIndex>49</ZIndex>
         <Style>
@@ -1121,8 +1123,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
-        <Top>4.97395in</Top>
-        <Left>0.3611in</Left>
+        <Top>4.83645in</Top>
+        <Left>0.35485in</Left>
         <Height>0.25in</Height>
         <Width>0.70833in</Width>
         <ZIndex>50</ZIndex>
@@ -1151,8 +1153,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.24826in</Top>
-        <Left>0.3611in</Left>
+        <Top>5.12326in</Top>
+        <Left>0.35485in</Left>
         <Height>0.25in</Height>
         <Width>0.5in</Width>
         <ZIndex>51</ZIndex>
@@ -1181,8 +1183,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox34</rd:DefaultName>
-        <Top>5.53992in</Top>
-        <Left>0.3611in</Left>
+        <Top>5.41492in</Top>
+        <Left>0.35485in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>52</ZIndex>
@@ -1303,8 +1305,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.65451in</Top>
-        <Left>1.9132in</Left>
+        <Top>4.55451in</Top>
+        <Left>1.79445in</Left>
         <Height>0.25in</Height>
         <Width>0.94394in</Width>
         <ZIndex>56</ZIndex>
@@ -1333,8 +1335,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.95728in</Top>
-        <Left>1.9132in</Left>
+        <Top>4.83645in</Top>
+        <Left>1.79445in</Left>
         <Height>0.25in</Height>
         <Width>0.94394in</Width>
         <ZIndex>57</ZIndex>
@@ -1363,8 +1365,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.27672in</Top>
-        <Left>1.9132in</Left>
+        <Top>5.12326in</Top>
+        <Left>1.79445in</Left>
         <Height>0.25in</Height>
         <Width>0.83977in</Width>
         <ZIndex>58</ZIndex>
@@ -1393,8 +1395,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.99354in</Top>
-        <Left>0.77526in</Left>
+        <Top>5.41492in</Top>
+        <Left>1.79445in</Left>
         <Height>0.25in</Height>
         <Width>1.72127in</Width>
         <ZIndex>59</ZIndex>
@@ -1423,8 +1425,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.69826in</Top>
-        <Left>3.31313in</Left>
+        <Top>4.55451in</Top>
+        <Left>3.80616in</Left>
         <Height>0.25in</Height>
         <Width>1.28888in</Width>
         <ZIndex>60</ZIndex>
@@ -1442,13 +1444,13 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.69826in</Top>
-        <Left>3.07563in</Left>
+        <Top>4.55451in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>61</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!foiling.Value = False, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!Foiling.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1460,13 +1462,13 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.69826in</Top>
-        <Left>3.07563in</Left>
+        <Top>4.55451in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>62</ZIndex>
         <Visibility>
-          <Hidden>=First(Fields!foiling.Value = True, "dsReceivingCard")</Hidden>
+          <Hidden>=First(Fields!Foiling.Value = True, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
@@ -1478,8 +1480,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.00382in</Top>
-        <Left>3.12563in</Left>
+        <Top>4.83645in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>63</ZIndex>
@@ -1496,8 +1498,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.00382in</Top>
-        <Left>3.12563in</Left>
+        <Top>4.83645in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>64</ZIndex>
@@ -1514,8 +1516,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.28576in</Top>
-        <Left>3.13744in</Left>
+        <Top>5.12326in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>65</ZIndex>
@@ -1532,8 +1534,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.28576in</Top>
-        <Left>3.13744in</Left>
+        <Top>5.12326in</Top>
+        <Left>3.59366in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>66</ZIndex>
@@ -1550,8 +1552,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.89062in</Top>
-        <Left>5.87979in</Left>
+        <Top>4.55451in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>67</ZIndex>
@@ -1568,8 +1570,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>4.89062in</Top>
-        <Left>5.87979in</Left>
+        <Top>4.55451in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>68</ZIndex>
@@ -1586,8 +1588,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.53992in</Top>
-        <Left>5.31448in</Left>
+        <Top>4.83645in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>69</ZIndex>
@@ -1604,8 +1606,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.53992in</Top>
-        <Left>5.31448in</Left>
+        <Top>4.83645in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>70</ZIndex>
@@ -1622,8 +1624,8 @@
         <Source>Embedded</Source>
         <Value>checkbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.99354in</Top>
-        <Left>5.40639in</Left>
+        <Top>5.12326in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>71</ZIndex>
@@ -1640,8 +1642,8 @@
         <Source>Embedded</Source>
         <Value>uncheckbx</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>5.99354in</Top>
-        <Left>5.40639in</Left>
+        <Top>5.12326in</Top>
+        <Left>5.10059in</Left>
         <Height>0.16667in</Height>
         <Width>0.1875in</Width>
         <ZIndex>72</ZIndex>
@@ -1669,8 +1671,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.9802in</Top>
-        <Left>3.31313in</Left>
+        <Top>4.83645in</Top>
+        <Left>3.80616in</Left>
         <Height>0.25in</Height>
         <Width>1.28888in</Width>
         <ZIndex>73</ZIndex>
@@ -1699,8 +1701,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.30868in</Top>
-        <Left>3.35271in</Left>
+        <Top>5.12326in</Top>
+        <Left>3.80616in</Left>
         <Height>0.25in</Height>
         <Width>1.2493in</Width>
         <ZIndex>74</ZIndex>
@@ -1729,8 +1731,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.89062in</Top>
-        <Left>6.08535in</Left>
+        <Top>4.55451in</Top>
+        <Left>5.2999in</Left>
         <Height>0.25in</Height>
         <Width>0.67799in</Width>
         <ZIndex>75</ZIndex>
@@ -1759,8 +1761,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.53992in</Top>
-        <Left>5.48049in</Left>
+        <Top>4.83645in</Top>
+        <Left>5.2999in</Left>
         <Height>0.25in</Height>
         <Width>1.15555in</Width>
         <ZIndex>76</ZIndex>
@@ -1789,8 +1791,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>5.99354in</Top>
-        <Left>5.60778in</Left>
+        <Top>5.12326in</Top>
+        <Left>5.2999in</Left>
         <Height>0.25in</Height>
         <Width>1.15555in</Width>
         <ZIndex>77</ZIndex>
@@ -1804,15 +1806,225 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Comment">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Comment.Value, "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Comment</rd:DefaultName>
+        <Top>5.72048in</Top>
+        <Left>1.18402in</Left>
+        <Height>0.83333in</Height>
+        <Width>5.27143in</Width>
+        <ZIndex>78</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Year Book Shipping Address</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>6.64061in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.25in</Height>
+        <Width>1.88541in</Width>
+        <ZIndex>79</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Name">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Name.Value, "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Name</rd:DefaultName>
+        <Top>6.91839in</Top>
+        <Left>1.99875in</Left>
+        <Height>0.25in</Height>
+        <Width>4.4567in</Width>
+        <ZIndex>80</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Add1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Add1.Value, "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Add1</rd:DefaultName>
+        <Top>7.19617in</Top>
+        <Left>1.99875in</Left>
+        <Height>0.25in</Height>
+        <Width>4.4567in</Width>
+        <ZIndex>81</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Add2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Add2.Value, "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Add2</rd:DefaultName>
+        <Top>7.44617in</Top>
+        <Left>1.99875in</Left>
+        <Height>0.25in</Height>
+        <Width>4.4567in</Width>
+        <ZIndex>82</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="City">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!City.Value+","+Fields!State.Value+","+Fields!Zip.Value, "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>City</rd:DefaultName>
+        <Top>7.75173in</Top>
+        <Left>1.99875in</Left>
+        <Height>0.25in</Height>
+        <Width>4.4567in</Width>
+        <ZIndex>83</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value EvaluationMode="Constant">Comment</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>5.72048in</Top>
+        <Left>0.375in</Left>
+        <Height>0.25in</Height>
+        <Width>0.73958in</Width>
+        <ZIndex>84</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>6.76041in</Height>
+    <Height>8.05208in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>7.65625in</Width>
+  <Width>7.27083in</Width>
   <Page>
     <PageHeader>
       <Height>0.72396in</Height>
@@ -1889,9 +2101,40 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.53125in</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <Height>0.625in</Height>
       <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox16">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value EvaluationMode="Constant">&lt;i&gt;If your records do not agree with thi please cal us today.At&lt;i/&gt; &lt;b&gt;1-800-247-1526&lt;b/&gt;</Value>
+                  <MarkupType>HTML</MarkupType>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox16</rd:DefaultName>
+          <Top>0.06646in</Top>
+          <Left>1.26958in</Left>
+          <Height>0.47917in</Height>
+          <Width>5.59375in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>

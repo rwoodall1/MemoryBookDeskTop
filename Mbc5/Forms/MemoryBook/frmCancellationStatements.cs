@@ -95,7 +95,7 @@ namespace Mbc5.Forms.MemoryBook
             this.Cancellations = vCancellations;
             bsCancellations.DataSource = vCancellations;
         }
-		private async Task<ApiProcessingResult<string>>CreatekPdf(string vInvno) {
+		private async Task<ApiProcessingResult<string>>CreatePdf(string vInvno) {
             var processingResult = new ApiProcessingResult<string>();
             if (Cancellations == null || this.Cancellations.Count == 0)
             {
@@ -174,7 +174,7 @@ namespace Mbc5.Forms.MemoryBook
 
 			bool hasBadEmail = false;
 			foreach (var rec in Cancellations) {
-				var result = await CreatekPdf(rec.Invno.ToString());
+				var result = await CreatePdf(rec.Invno.ToString());
 				if (result.IsError) {
 					DialogResult dresult = MessageBox.Show("Invoice " + rec.Invno.ToString() + " Error:" + result.Errors[0].ErrorMessage + " Do you wish to continue?", "Invoices", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 					if (dresult == DialogResult.No) {

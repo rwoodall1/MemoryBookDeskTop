@@ -354,6 +354,12 @@ public override void Cancel() {
                                         ,ShippingCity=@ShippingCity
                                         ,ShippingState=@ShippingState
                                         ,ShippingZipCode=@ShippingZipCode
+                                        ,OtherName=@ShippingName
+                                        ,OtherAddr=@ShippingAddr
+                                        ,OtherAddr2=@ShippingAddr2
+                                        ,OtherCity=@ShippingCity
+                                        ,OtherState=@ShippingState
+                                        ,OtherZipCode=@ShippingZipCode
                                         ,InvoiceEmail1=@InvoiceEmail1
                                         ,InvoiceEmail2=@InvoiceEmail2
                                         ,InvoiceEmail3=@InvoiceEmail3
@@ -374,6 +380,12 @@ public override void Cancel() {
                 sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
                 sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString());
                 sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
+                sqlClient.AddParameter("@OtherName", txtOtherName.Text);
+                sqlClient.AddParameter("@OtherAddr", txtOtherAddr.Text);
+                sqlClient.AddParameter("@OtherAddr2", txtOtherAddr2.Text);
+                sqlClient.AddParameter("@OtherCity", txtOtherCity.Text);
+                sqlClient.AddParameter("@OtherState", cmbOtherState.SelectedValue.ToString());
+                sqlClient.AddParameter("@OtherZipCode", txtOtherZipCode.Text);
                 sqlClient.AddParameter("@SchCode", Schcode);
                 sqlClient.AddParameter("@InvoiceEmail1", invoiceEmail1TextBox.Text);
                 sqlClient.AddParameter("@InvoiceEmail2", invoiceEmail2TextBox.Text);
@@ -386,7 +398,7 @@ public override void Cancel() {
                         .AddObject(updateResult)
                         .MarkAsCritical()
                         .Submit();
-
+                    return;
                 }
                 //get current timestamp
                 this.Fill();
@@ -2250,6 +2262,53 @@ public override void Cancel() {
         private void reportViewer2_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
         {
             reportViewer2.PrintDialog();
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
+            txtOtherAddr.Text = vShpAddress;
+            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
+            txtOtherAddr2.Text = vShpAddress2;
+            var vShpCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
+            txtOtherCity.Text = vShpCity;
+            var vShpState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
+            cmbOtherState.SelectedValue = vShpState;
+            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            if (vShpZipcode.Length > 0)
+            {
+                txtOtherZipCode.Text = vShpZipcode.Substring(0, 5);
+            }
+            else
+            {
+                txtOtherZipCode.Text = vShpZipcode;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["Contaddr"].ToString().Trim();
+            txtOtherAddr.Text = vShpAddress;
+            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["ContAddr2"].ToString().Trim();
+            txtOtherAddr2.Text = vShpAddress2;
+            var vShpCity = ((DataRowView)custBindingSource.Current).Row["ContCity"].ToString().Trim();
+            txtOtherCity.Text = vShpCity;
+            var vShpState = ((DataRowView)custBindingSource.Current).Row["ContState"].ToString().Trim();
+            cmbOtherState.SelectedValue = vShpState;
+            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["ContZip"].ToString().Trim();
+            if (vShpZipcode.Length > 0)
+            {
+                txtOtherZipCode.Text = vShpZipcode.Substring(0, 5);
+            }
+            else
+            {
+                txtOtherZipCode.Text = vShpZipcode;
+            }
         }
 
 
