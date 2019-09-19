@@ -15,4 +15,8 @@ namespace BindingModels
         public string schstate { get; set; }
 
     }
+    public class SchCheck
+    {
+        public string Schcode { get; set; }
+    }
 }

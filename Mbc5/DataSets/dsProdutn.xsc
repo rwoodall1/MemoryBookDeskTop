@@ -155,6 +155,48 @@
             </ControlSetting>
           </ControlSettings>
         </ColumnUISetting>
+        <ColumnUISetting Name="PrePress">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Press">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Bindery1">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Bindery2">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Bindery3">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Bindery4">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="DateBox" Type="CustomControls.DateBox" AssemblyName="CustomControls, Version=1.1.1.1, Culture=neutral, PublicKeyToken=null" AssemblyCodeBase="file:///D:/Projects/MemoryBookDeskTop/Mbc5/CustomControls.dll" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5;.NETFramework,Version=v4.5.1;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.7.2" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
     <TableUISetting Name="quotes">

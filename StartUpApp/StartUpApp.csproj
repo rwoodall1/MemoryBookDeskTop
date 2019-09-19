@@ -34,6 +34,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Meridian_Jostens_Logo_282_NEW.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Exceptionless, Version=4.0.1955.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.0.1955\lib\net45\Exceptionless.dll</HintPath>
@@ -94,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mbcicon.bmp" />
+    <Content Include="Meridian_Jostens_Logo_282_NEW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

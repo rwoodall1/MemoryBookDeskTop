@@ -234,6 +234,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnProdTckt = new System.Windows.Forms.Button();
             this.btnProdChk = new System.Windows.Forms.Button();
@@ -1903,6 +1904,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.button6);
             this.splitContainer.Panel2.Controls.Add(this.reportViewer3);
             this.splitContainer.Panel2.Controls.Add(this.btnProdTckt);
             this.splitContainer.Panel2.Controls.Add(csrep2Label);
@@ -2317,7 +2319,6 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.txtFax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schfax", true));
             this.txtFax.Location = new System.Drawing.Point(310, 182);
-            this.txtFax.MaxLength = 25;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(95, 20);
             this.txtFax.TabIndex = 8;
@@ -2510,17 +2511,18 @@ namespace Mbc5.Forms.MemoryBook {
             // txtaddress
             // 
             this.txtaddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schaddr", true));
+            this.txtaddress.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.custBindingSource, "schaddr", true));
             this.txtaddress.Location = new System.Drawing.Point(57, 129);
-            this.txtaddress.MaxLength = 35;
             this.txtaddress.Name = "txtaddress";
             this.txtaddress.Size = new System.Drawing.Size(183, 20);
             this.txtaddress.TabIndex = 3;
+            this.txtaddress.Tag = "";
+            this.txtaddress.TextChanged += new System.EventHandler(this.txtaddress_TextChanged);
             // 
             // txtSchPhone
             // 
             this.txtSchPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schphone", true));
             this.txtSchPhone.Location = new System.Drawing.Point(146, 181);
-            this.txtSchPhone.MaxLength = 25;
             this.txtSchPhone.Name = "txtSchPhone";
             this.txtSchPhone.Size = new System.Drawing.Size(95, 20);
             this.txtSchPhone.TabIndex = 7;
@@ -2547,10 +2549,19 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.txtCity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcity", true));
             this.txtCity.Location = new System.Drawing.Point(57, 155);
-            this.txtCity.MaxLength = 21;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
             this.txtCity.TabIndex = 5;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(503, 257);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 26);
+            this.button6.TabIndex = 127;
+            this.button6.Text = "Update UPS Address";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // reportViewer3
             // 
@@ -2572,9 +2583,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // btnProdTckt
             // 
-            this.btnProdTckt.Location = new System.Drawing.Point(498, 286);
+            this.btnProdTckt.Location = new System.Drawing.Point(503, 286);
             this.btnProdTckt.Name = "btnProdTckt";
-            this.btnProdTckt.Size = new System.Drawing.Size(110, 23);
+            this.btnProdTckt.Size = new System.Drawing.Size(100, 23);
             this.btnProdTckt.TabIndex = 111;
             this.btnProdTckt.Text = "Production Ticket";
             this.btnProdTckt.UseVisualStyleBackColor = true;
@@ -2582,9 +2593,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // btnProdChk
             // 
-            this.btnProdChk.Location = new System.Drawing.Point(508, 311);
+            this.btnProdChk.Location = new System.Drawing.Point(503, 311);
             this.btnProdChk.Name = "btnProdChk";
-            this.btnProdChk.Size = new System.Drawing.Size(95, 23);
+            this.btnProdChk.Size = new System.Drawing.Size(100, 23);
             this.btnProdChk.TabIndex = 47;
             this.btnProdChk.Text = "Prod Chk List";
             this.btnProdChk.UseVisualStyleBackColor = true;
@@ -2840,7 +2851,7 @@ namespace Mbc5.Forms.MemoryBook {
             reportDataSource13.Value = this.custBindingSource;
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource13);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(492, 213);
+            this.reportViewer2.Location = new System.Drawing.Point(552, 170);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
             this.reportViewer2.Size = new System.Drawing.Size(63, 50);
@@ -4508,6 +4519,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.tableAdapterManager.custTableAdapter = null;
             this.tableAdapterManager.datecontTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpsListTableAdapter = null;
             // 
             // errorProvider1
             // 
@@ -5070,5 +5082,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtOtherCity;
         private System.Windows.Forms.TextBox txtOtherAddr2;
         private System.Windows.Forms.BindingSource statesBindingSource5;
+        private System.Windows.Forms.Button button6;
     }
 }

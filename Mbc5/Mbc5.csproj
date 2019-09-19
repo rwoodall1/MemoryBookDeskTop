@@ -56,6 +56,9 @@
   <PropertyGroup>
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Meridian_Jostens_Logo_282_NEW.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
       <HintPath>..\packages\Avalara.AvaTax.19.7.0.1\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
@@ -489,6 +492,7 @@
     <Content Include="Content\SystemIcons\tsPrint.Image.png" />
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
+    <Content Include="Meridian_Jostens_Logo_282_NEW.ico" />
     <Content Include="NOTES TODO.txt" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

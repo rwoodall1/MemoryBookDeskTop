@@ -107,10 +107,7 @@ namespace Mbc5.Forms
 				//LookUp Data
 				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
 				vendorTableAdapter.Fill(dsProdutn.vendor);
-				DataTable BindingVendorList = dsProdutn.Tables["vendor"].Copy();
-				cmbBindingVendor.DataSource = BindingVendorList;
-				cmbBindingVendor.DisplayMember = "vendcd";
-				cmbBindingVendor.ValueMember = "vendcd";
+				
 				Fill();
 				SetShipLabel();
 				SetEmail();
@@ -144,7 +141,37 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
         #endregion
         #region "Methods"
-       
+       private void SetPressDates()
+        {
+            var custSvcDate = cstsvcdteDateTimePicker.DateValue;
+            if (vendcdComboBox1.SelectedValue==null||string.IsNullOrEmpty(vendcdComboBox1.SelectedValue.ToString().Trim()))
+            {
+
+                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 5).ToShortDateString();
+                pressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
+                bindery1DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
+                bindery2DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
+                bindery3DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
+                bindery4DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 1).ToShortDateString();
+                prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
+                dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
+                
+            }
+            else 
+            {
+                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 13).ToShortDateString();
+                pressDateBox.Date = null;
+                bindery1DateBox.Date = null;
+                bindery2DateBox.Date = null;
+                bindery3DateBox.Date = null;
+                bindery4DateBox.Date = null;
+                prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
+                dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
+               
+            }
+
+
+        }
         private async Task<ApiProcessingResult> UpdatePartialDates()
                 {
 
@@ -7761,7 +7788,10 @@ namespace Mbc5.Forms
                 {
                      vKitrecvd = DateTime.Parse(kitrecvdDateTimePicker.Date);
                     var result = CalulateBusinessDay.BusDayAdd(vKitrecvd, numDays);
-				    txtCalcResult.Text = result.ToShortDateString();
+				  
+                    cstsvcdteDateTimePicker.Date= result.ToShortDateString();
+                    cstsvcdteDateTimePicker.Focus();
+
                 }
 				
 
@@ -10626,11 +10656,12 @@ namespace Mbc5.Forms
 
         private void cstsvcdteDateTimePicker_Leave_1(object sender, EventArgs e)
         {
-            var result = this.WipUpdate();
-            if (result.Result.IsError)
-            {
-                MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
-            }
+            SetPressDates();
+            //var result = this.WipUpdate();
+            //if (result.Result.IsError)
+            //{
+            //    MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
+            //}
         }
 
         private void btnMeridianTicket_Click(object sender, EventArgs e)
@@ -11081,6 +11112,26 @@ namespace Mbc5.Forms
                 }
             }
          
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtCalcResult_Leave(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dateBox1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCalcResult_Leave_1(object sender, EventArgs e)
+        {
+            SetPressDates();
         }
 
 
