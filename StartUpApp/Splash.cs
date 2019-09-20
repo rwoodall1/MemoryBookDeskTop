@@ -19,11 +19,12 @@ namespace StartUpApp
         {
             InitializeComponent();
         }
-
+        private string StartPath { get; set; }
         private void Splash_Shown(object sender, EventArgs e)
         {
-            label1.BringToFront();
-            VersionCheck();
+          
+            backgroundWorker1.RunWorkerAsync();
+
         }
         public void VersionCheck()
         {
@@ -39,7 +40,7 @@ namespace StartUpApp
                 var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 localfilePath = root.Replace("StartUpApp", "Mbc5");
                 var localfile = localfilePath + "\\Mbc5.exe";
-                
+                StartPath = localfilePath + "\\Mbc5.exe";
                 try
                 {
                    var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
@@ -53,8 +54,10 @@ namespace StartUpApp
                 }
                 catch (Exception ex)
                 {
-
-
+                    ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                    return;
                 }
                
             }
@@ -81,7 +84,7 @@ namespace StartUpApp
             {
                 ex.ToExceptionless()
                     .Submit();
-
+                return;
             }
 
             if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
@@ -96,19 +99,7 @@ namespace StartUpApp
                     string localfilePathDir = localfilePath.Substring(0, localfilePath.IndexOf("bin") + 3);
 
                     DirectoryCopy(serverfilePathDir, localfilePathDir, true);
-
-
-
-
-
-
-
-                    //run local
-                    Process mbc = new Process();
-                    mbc.StartInfo.FileName = localfilePath + "\\Mbc5.exe";
-                    //notePad.StartInfo.Arguments = "ProcessStart.cs"; // if you need some
-                    mbc.Start();
-                    this.Close();
+                    StartPath = localfilePath + "\\Mbc5.exe";
 
                 }
                 catch (Exception ex)
@@ -128,26 +119,16 @@ namespace StartUpApp
                          .AddObject("ServerPath:" + serverfilePath)
                          .AddObject("LocalPath:" + localfilePath)
                          .Submit();
-                    //run local
-                    Process mbc = new Process();
-                    mbc.StartInfo.FileName = localfilePath + "\\Mbc5.exe";
-                    //notePad.StartInfo.Arguments = "ProcessStart.cs"; // if you need some
-                    mbc.Start();
-                    this.Close();
+                  
+                    return;
                 }
 
             }
             if (serverVersion == localVersion || (String.IsNullOrEmpty(serverVersion) && !String.IsNullOrEmpty(localVersion)))
             {
                 //run local
-                Process mbc = new Process();
-                mbc.StartInfo.FileName = localfilePath + "\\Mbc5.exe";
 
-
-                //notePad.StartInfo.Arguments = "ProcessStart.cs"; // if you need some
-                mbc.Start();
-                this.Close();
-
+                //StartPath = localfilePath + "\\Mbc5.exe";
             }
 
         }
@@ -193,7 +174,25 @@ namespace StartUpApp
 
         private void Splash_Load(object sender, EventArgs e)
         {
-            label1.BringToFront();
+          
+        
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+        
+            VersionCheck();
+           System.Threading.Thread.Sleep(3000);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Process mbc = new Process();
+            mbc.StartInfo.FileName = StartPath;
+        this.Close();
+           
+            mbc.Start();
+         
         }
     }
 }

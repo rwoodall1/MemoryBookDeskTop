@@ -17,7 +17,11 @@ namespace StartUpApp
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new Splash());
+                
+                var startForm = new Splash();
+           
+                Application.Run(startForm);
+          
             }
             catch (Exception ex)
             {

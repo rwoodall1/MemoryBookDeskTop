@@ -35,7 +35,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Meridian_Jostens_Logo_282_NEW.ico</ApplicationIcon>
+    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Exceptionless, Version=4.0.1955.0, Culture=neutral, processorArchitecture=MSIL">
@@ -80,6 +80,9 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplashForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,8 +97,12 @@
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm1.resx">
+      <DependentUpon>SplashForm1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="mbcicon.bmp" />
     <Content Include="Meridian_Jostens_Logo_282_NEW.ico" />
   </ItemGroup>
