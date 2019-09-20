@@ -1001,6 +1001,81 @@ namespace Mbc5.Forms.Meridian {
         {
             AddSalesRecord();
         }
+
+        private void btnEmailProdTkt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(schemailTextBox.Text)){
+                MbcMessageBox.Hand("School email is not available.","");
+                return;
+            } 
+            var emailHelper = new EmailHelper();
+        
+            var subject = txtSchname.Text + " " + Schcode;
+            string vAddress = schemailTextBox.Text.Trim();
+            emailHelper.SendOutLookEmail(subject,vAddress,null,"", EmailType.Meridian);
+           
+        }
+
+        private void btnInterOfficeEmail_Click(object sender, EventArgs e)
+        {
+            
+            var emailHelper = new EmailHelper();
+
+            var subject = "Meridian" + txtSchname.Text.Trim() + " " + Schcode + " " + schstateComboBox.SelectedValue.ToString() ;
+            string vAddress = "tammy.fowler@jostens.com;";
+            string vBody = "Schcode:" + Schcode + "  School Name:" + txtSchname.Text.Trim() + "  School Email:" + schemailTextBox.Text.Trim();
+            emailHelper.SendOutLookEmail(subject, vAddress, null,vBody,EmailType.Meridian);
+        }
+
+        private void btnProdTkt_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PoNum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
+                                    Case
+                                      When Q.prodcode='MAG' THEN 'MAGNET'
+                                    CASE 
+                                      When  When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
+                                    CASE 
+                                      When  When Q.prodcode='HSP' THEN 'HS'
+                                    CASE 
+                                      When  When Q.prodcode='MSP' THEN 'MS'
+                                    CASE 
+                                      When  When Q.prodcode='ELSP' THEN 'ELSP'
+                                    CASE 
+                                      When  When Q.prodcode='PRISP' THEN 'PRISP'
+                                    
+                                    END AS SchoolType
+                            Q.stttitpgqty AS TitlePageQty,Q.vpbqty AS VinylBQty,Q.vpaqty AS VinylAQty,Q.wallchqty AS WallChartQty,Q.typesetqty AS TypeSetQty,Q.impguidqty AS ImplGuideQty,
+                           Q.duraglzqty AS DuraGlazeQty,Q.BookType,Q.NoPages,Q.qtystud AS StudentCopies,Q.qtyteacher AS TeacherCopies,Q.qtytot AS TotalCopies,Q.hallpqty AS HallPassQty,
+                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.CoverDesc,P.Prshpdte,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
+                         Cvr.desc4 AS CoverOutsideBack
+                FROM MCust C
+                LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                LEFT Join Covers Cvr ON Q.Invno=Cvr.Invno
+				 LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<MeridianProdutnTicketModel>();
+            if (dataReturned.IsError)
+            {
+                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //var data = (ProdutnTicketModel)dataReturned.Data;
+
+            //ProdutnTicketModelBindingSource.DataSource = data;
+            //Cursor.Current = Cursors.WaitCursor;
+            //reportViewer1.RefreshReport();
+            //Cursor.Current = Cursors.Default;
+        }
         //nothing below here
     }
 }

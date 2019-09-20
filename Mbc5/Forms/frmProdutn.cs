@@ -7081,15 +7081,16 @@ namespace Mbc5.Forms
 		}
 		private void SetEmail()
 		{
-			var current = (DataRowView)produtnBindingSource.Current;
-			if (current == null)
+			var current = (DataRowView)custBindingSource.Current;
+            if (current == null)
 			{
 				return;
 			}
-			SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
-			ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
-			BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
-			CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
+
+            SchEmail = current.Row["schemail"].ToString(); 
+			ContactEmail = current.Row["contemail"].ToString();            
+			BcontactEmail = current.Row["bcontemail"].ToString();                    
+			CcontactEmail = current.Row["ccontemail"].ToString();                         
 			var vAllEmails = new List<string>();
 			if (!String.IsNullOrEmpty(SchEmail))
 			{
