@@ -146,27 +146,27 @@ namespace Mbc5.Forms
             var custSvcDate = cstsvcdteDateTimePicker.DateValue;
             if (vendcdComboBox1.SelectedValue==null||string.IsNullOrEmpty(vendcdComboBox1.SelectedValue.ToString().Trim()))
             {
-
-                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 5).ToShortDateString();
-                pressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
-                bindery1DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
-                bindery2DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
-                bindery3DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 4).ToShortDateString();
-                bindery4DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 1).ToShortDateString();
                 prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
                 dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
-                
+                bindery4DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 1).ToShortDateString();
+                bindery3DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery4DateBox.DateValue, 4).ToShortDateString();
+                bindery2DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery3DateBox.DateValue, 4).ToShortDateString();
+                bindery1DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery2DateBox.DateValue, 4).ToShortDateString();
+                pressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery1DateBox.DateValue, 4).ToShortDateString();
+                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)pressDateBox.DateValue, 5).ToShortDateString();               
             }
             else 
             {
-                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 13).ToShortDateString();
+                prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
+                dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
+                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)dteWarnDate.DateValue, 13).ToShortDateString();
                 pressDateBox.Date = null;
                 bindery1DateBox.Date = null;
                 bindery2DateBox.Date = null;
                 bindery3DateBox.Date = null;
                 bindery4DateBox.Date = null;
-                prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
-                dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
+                
+                
                
             }
 

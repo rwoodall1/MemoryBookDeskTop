@@ -635,7 +635,6 @@ namespace Mbc5.Forms
             this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
             this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
-            this.txtCalcResult = new CustomControls.DateBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -2571,32 +2570,6 @@ namespace Mbc5.Forms
             booktypeLabel2.TabIndex = 181;
             booktypeLabel2.Text = "Book Type";
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dsProdutn
-            // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.EnforceConstraints = false;
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
-            // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
-            // 
-            // wipBindingSource
-            // 
-            this.wipBindingSource.DataMember = "wip";
-            this.wipBindingSource.DataSource = this.dsProdutn;
-            // 
             // prePressLabel
             // 
             prePressLabel.AutoSize = true;
@@ -2656,6 +2629,32 @@ namespace Mbc5.Forms
             bindery4Label.Size = new System.Drawing.Size(56, 13);
             bindery4Label.TabIndex = 171;
             bindery4Label.Text = "Bindery4";
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsProdutn;
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.EnforceConstraints = false;
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wipBindingSource
+            // 
+            this.wipBindingSource.DataMember = "wip";
+            this.wipBindingSource.DataSource = this.dsProdutn;
             // 
             // invoiceCustBindingSource
             // 
@@ -3083,7 +3082,6 @@ namespace Mbc5.Forms
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.txtCalcResult);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.btnCalCS);
             this.panel3.Controls.Add(this.txtCalcResult1);
@@ -6775,6 +6773,7 @@ namespace Mbc5.Forms
             this.tableAdapterManager.coverdetailTableAdapter = null;
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+            this.tableAdapterManager.mcustTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
@@ -6901,20 +6900,6 @@ namespace Mbc5.Forms
             // reorderDetailTableAdapter
             // 
             this.reorderDetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // txtCalcResult
-            // 
-            this.txtCalcResult.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "cstsvcdte", true));
-            this.txtCalcResult.Date = null;
-            this.txtCalcResult.DateValue = null;
-            this.txtCalcResult.Location = new System.Drawing.Point(63, 94);
-            this.txtCalcResult.MinimumSize = new System.Drawing.Size(114, 20);
-            this.txtCalcResult.Name = "txtCalcResult";
-            this.txtCalcResult.Size = new System.Drawing.Size(114, 21);
-            this.txtCalcResult.TabIndex = 139;
-            this.txtCalcResult.Visible = false;
-            this.txtCalcResult.Load += new System.EventHandler(this.dateBox1_Load);
-            this.txtCalcResult.Leave += new System.EventHandler(this.txtCalcResult_Leave_1);
             // 
             // frmProdutn
             // 
@@ -7387,6 +7372,5 @@ namespace Mbc5.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private CustomControls.DateBox txtCalcResult;
     }
 }
