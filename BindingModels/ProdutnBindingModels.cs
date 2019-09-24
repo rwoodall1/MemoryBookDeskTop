@@ -639,5 +639,7 @@ namespace BindingModels
             public int VinylBQty { get; set; }
             public int TypeSetQty { get; set; }
             public string SpecialInstructions { get; set; }
+            public bool PrintOnWhitePages { get; set; }
+            public bool ProofOFPages { get; set; }
     }
 }

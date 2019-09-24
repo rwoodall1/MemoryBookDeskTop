@@ -7654,7 +7654,8 @@ namespace Mbc5.Forms
 				}
 			}
 			else {
-				processingResult.IsError = true;
+                var a = dsProdutn.Tables["covers"].GetErrors();
+                processingResult.IsError = true;
 				processingResult.Errors.Add(new ApiProcessingError("Cover record failed to validate", "Cover record failed to validate", ""));
 			}
 
@@ -10137,7 +10138,8 @@ namespace Mbc5.Forms
         public override void InvoiceNumberSearch()
         {
 
-            var produtnResult = SaveProdutn();
+    
+                var produtnResult = SaveProdutn();
             if (produtnResult.IsError)
             {
                 var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

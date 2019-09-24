@@ -95,10 +95,14 @@
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label invnotesLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnInterOfficeEmail = new System.Windows.Forms.Button();
             this.lblInvno = new System.Windows.Forms.Label();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMcust = new Mbc5.DataSets.dsMcust();
@@ -223,7 +227,8 @@
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
-            this.btnInterOfficeEmail = new System.Windows.Forms.Button();
+            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -294,6 +299,7 @@
             label13 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             invnotesLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.MeridianProdutnTicketModelBindingSource)).BeginInit();
             this.merCustTab.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
@@ -312,6 +318,8 @@
             this.pg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prodTicketBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -774,7 +782,7 @@
             // 
             contlnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contlnameLabel.AutoSize = true;
-            contlnameLabel.Location = new System.Drawing.Point(381, 31);
+            contlnameLabel.Location = new System.Drawing.Point(347, 31);
             contlnameLabel.Name = "contlnameLabel";
             contlnameLabel.Size = new System.Drawing.Size(61, 13);
             contlnameLabel.TabIndex = 374;
@@ -784,7 +792,7 @@
             // 
             contaddr2Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contaddr2Label.AutoSize = true;
-            contaddr2Label.Location = new System.Drawing.Point(388, 59);
+            contaddr2Label.Location = new System.Drawing.Point(354, 59);
             contaddr2Label.Name = "contaddr2Label";
             contaddr2Label.Size = new System.Drawing.Size(54, 13);
             contaddr2Label.TabIndex = 372;
@@ -812,7 +820,7 @@
             // 
             contphnhomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contphnhomLabel.AutoSize = true;
-            contphnhomLabel.Location = new System.Drawing.Point(370, 114);
+            contphnhomLabel.Location = new System.Drawing.Point(336, 114);
             contphnhomLabel.Name = "contphnhomLabel";
             contphnhomLabel.Size = new System.Drawing.Size(72, 13);
             contphnhomLabel.TabIndex = 382;
@@ -822,7 +830,7 @@
             // 
             contzipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contzipLabel.AutoSize = true;
-            contzipLabel.Location = new System.Drawing.Point(417, 85);
+            contzipLabel.Location = new System.Drawing.Point(383, 85);
             contzipLabel.Name = "contzipLabel";
             contzipLabel.Size = new System.Drawing.Size(25, 13);
             contzipLabel.TabIndex = 380;
@@ -841,7 +849,7 @@
             // 
             contfaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contfaxLabel.AutoSize = true;
-            contfaxLabel.Location = new System.Drawing.Point(381, 141);
+            contfaxLabel.Location = new System.Drawing.Point(347, 141);
             contfaxLabel.Name = "contfaxLabel";
             contfaxLabel.Size = new System.Drawing.Size(61, 13);
             contfaxLabel.TabIndex = 388;
@@ -860,7 +868,7 @@
             // 
             contemailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contemailLabel.AutoSize = true;
-            contemailLabel.Location = new System.Drawing.Point(407, 167);
+            contemailLabel.Location = new System.Drawing.Point(373, 167);
             contemailLabel.Name = "contemailLabel";
             contemailLabel.Size = new System.Drawing.Size(35, 13);
             contemailLabel.TabIndex = 392;
@@ -888,7 +896,7 @@
             // 
             label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(370, 309);
+            label5.Location = new System.Drawing.Point(336, 309);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(72, 13);
             label5.TabIndex = 415;
@@ -898,7 +906,7 @@
             // 
             label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(381, 231);
+            label6.Location = new System.Drawing.Point(347, 231);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(61, 13);
             label6.TabIndex = 414;
@@ -917,7 +925,7 @@
             // 
             label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(407, 366);
+            label8.Location = new System.Drawing.Point(373, 366);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(35, 13);
             label8.TabIndex = 412;
@@ -927,7 +935,7 @@
             // 
             label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(381, 337);
+            label9.Location = new System.Drawing.Point(347, 337);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(61, 13);
             label9.TabIndex = 411;
@@ -946,7 +954,7 @@
             // 
             label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(417, 282);
+            label11.Location = new System.Drawing.Point(383, 282);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(25, 13);
             label11.TabIndex = 409;
@@ -965,7 +973,7 @@
             // 
             label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(388, 257);
+            label13.Location = new System.Drawing.Point(354, 257);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(54, 13);
             label13.TabIndex = 407;
@@ -989,6 +997,10 @@
             invnotesLabel.TabIndex = 120;
             invnotesLabel.Text = "Notes";
             // 
+            // MeridianProdutnTicketModelBindingSource
+            // 
+            this.MeridianProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.MeridianProdutnTicketModel);
+            // 
             // merCustTab
             // 
             this.merCustTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1006,6 +1018,7 @@
             // pg1
             // 
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.reportViewer1);
             this.pg1.Controls.Add(this.btnInterOfficeEmail);
             this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(this.lblSchcode);
@@ -1048,6 +1061,34 @@
             this.pg1.Size = new System.Drawing.Size(1172, 596);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
+            // 
+            // reportViewer1
+            // 
+            reportDataSource1.Name = "dsProdutn";
+            reportDataSource1.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(1023, 530);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(109, 60);
+            this.reportViewer1.TabIndex = 66;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
+            // btnInterOfficeEmail
+            // 
+            this.btnInterOfficeEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInterOfficeEmail.AutoSize = true;
+            this.btnInterOfficeEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnInterOfficeEmail.Image")));
+            this.btnInterOfficeEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnInterOfficeEmail.Location = new System.Drawing.Point(90, 448);
+            this.btnInterOfficeEmail.Name = "btnInterOfficeEmail";
+            this.btnInterOfficeEmail.Size = new System.Drawing.Size(31, 25);
+            this.btnInterOfficeEmail.TabIndex = 65;
+            this.btnInterOfficeEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnInterOfficeEmail.UseVisualStyleBackColor = true;
+            this.btnInterOfficeEmail.Click += new System.EventHandler(this.btnInterOfficeEmail_Click);
             // 
             // lblInvno
             // 
@@ -1095,14 +1136,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.qInvnoDataGridViewTextBoxColumn,
@@ -1882,7 +1923,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontphnho", true));
-            this.textBox1.Location = new System.Drawing.Point(444, 309);
+            this.textBox1.Location = new System.Drawing.Point(410, 309);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(232, 20);
@@ -1892,7 +1933,7 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontlname", true));
-            this.textBox2.Location = new System.Drawing.Point(444, 231);
+            this.textBox2.Location = new System.Drawing.Point(410, 231);
             this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
@@ -1911,7 +1952,7 @@
             // 
             this.txtContact2Email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContact2Email.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontemail", true));
-            this.txtContact2Email.Location = new System.Drawing.Point(444, 363);
+            this.txtContact2Email.Location = new System.Drawing.Point(410, 363);
             this.txtContact2Email.MaxLength = 50;
             this.txtContact2Email.Name = "txtContact2Email";
             this.txtContact2Email.Size = new System.Drawing.Size(232, 20);
@@ -1921,7 +1962,7 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontfax", true));
-            this.textBox5.Location = new System.Drawing.Point(444, 337);
+            this.textBox5.Location = new System.Drawing.Point(410, 337);
             this.textBox5.MaxLength = 50;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(232, 20);
@@ -1940,7 +1981,7 @@
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontzip", true));
-            this.textBox7.Location = new System.Drawing.Point(444, 282);
+            this.textBox7.Location = new System.Drawing.Point(410, 282);
             this.textBox7.MaxLength = 50;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(232, 20);
@@ -1950,7 +1991,7 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontaddr2", true));
-            this.textBox8.Location = new System.Drawing.Point(444, 257);
+            this.textBox8.Location = new System.Drawing.Point(410, 257);
             this.textBox8.MaxLength = 50;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(232, 20);
@@ -1986,7 +2027,7 @@
             // 
             this.txtContactEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContactEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contemail", true));
-            this.txtContactEmail.Location = new System.Drawing.Point(444, 167);
+            this.txtContactEmail.Location = new System.Drawing.Point(410, 167);
             this.txtContactEmail.MaxLength = 50;
             this.txtContactEmail.Name = "txtContactEmail";
             this.txtContactEmail.Size = new System.Drawing.Size(232, 20);
@@ -2005,7 +2046,7 @@
             // 
             this.contfaxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contfaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contfax", true));
-            this.contfaxTextBox.Location = new System.Drawing.Point(444, 141);
+            this.contfaxTextBox.Location = new System.Drawing.Point(410, 141);
             this.contfaxTextBox.MaxLength = 50;
             this.contfaxTextBox.Name = "contfaxTextBox";
             this.contfaxTextBox.Size = new System.Drawing.Size(232, 20);
@@ -2032,7 +2073,7 @@
             // 
             this.contphnhomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contphnhomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contphnhom", true));
-            this.contphnhomTextBox.Location = new System.Drawing.Point(444, 114);
+            this.contphnhomTextBox.Location = new System.Drawing.Point(410, 114);
             this.contphnhomTextBox.MaxLength = 50;
             this.contphnhomTextBox.Name = "contphnhomTextBox";
             this.contphnhomTextBox.Size = new System.Drawing.Size(232, 20);
@@ -2042,7 +2083,7 @@
             // 
             this.contzipTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contzipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contzip", true));
-            this.contzipTextBox.Location = new System.Drawing.Point(444, 85);
+            this.contzipTextBox.Location = new System.Drawing.Point(410, 85);
             this.contzipTextBox.MaxLength = 50;
             this.contzipTextBox.Name = "contzipTextBox";
             this.contzipTextBox.Size = new System.Drawing.Size(232, 20);
@@ -2052,7 +2093,7 @@
             // 
             this.contlnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contlnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contlname", true));
-            this.contlnameTextBox.Location = new System.Drawing.Point(444, 31);
+            this.contlnameTextBox.Location = new System.Drawing.Point(410, 31);
             this.contlnameTextBox.MaxLength = 50;
             this.contlnameTextBox.Name = "contlnameTextBox";
             this.contlnameTextBox.Size = new System.Drawing.Size(232, 20);
@@ -2065,7 +2106,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label17.Location = new System.Drawing.Point(29, 603);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(957, 3);
+            this.label17.Size = new System.Drawing.Size(923, 3);
             this.label17.TabIndex = 278;
             // 
             // btnEmailContact
@@ -2086,7 +2127,7 @@
             this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label28.Location = new System.Drawing.Point(29, 401);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(957, 3);
+            this.label28.Size = new System.Drawing.Size(923, 3);
             this.label28.TabIndex = 276;
             // 
             // label22
@@ -2106,7 +2147,7 @@
             this.lblSeperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSeperator1.Location = new System.Drawing.Point(29, 200);
             this.lblSeperator1.Name = "lblSeperator1";
-            this.lblSeperator1.Size = new System.Drawing.Size(957, 3);
+            this.lblSeperator1.Size = new System.Drawing.Size(923, 3);
             this.lblSeperator1.TabIndex = 274;
             // 
             // contfnameTextBox
@@ -2368,19 +2409,9 @@
             // 
             this.contpstnTableAdapter.ClearBeforeFill = true;
             // 
-            // btnInterOfficeEmail
+            // FullInvoiceBindingSource
             // 
-            this.btnInterOfficeEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInterOfficeEmail.AutoSize = true;
-            this.btnInterOfficeEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnInterOfficeEmail.Image")));
-            this.btnInterOfficeEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnInterOfficeEmail.Location = new System.Drawing.Point(90, 448);
-            this.btnInterOfficeEmail.Name = "btnInterOfficeEmail";
-            this.btnInterOfficeEmail.Size = new System.Drawing.Size(31, 25);
-            this.btnInterOfficeEmail.TabIndex = 65;
-            this.btnInterOfficeEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnInterOfficeEmail.UseVisualStyleBackColor = true;
-            this.btnInterOfficeEmail.Click += new System.EventHandler(this.btnInterOfficeEmail_Click);
+            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
             // 
             // frmMerCust
             // 
@@ -2399,6 +2430,7 @@
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.merCustTab, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.MeridianProdutnTicketModelBindingSource)).EndInit();
             this.merCustTab.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
@@ -2422,6 +2454,8 @@
             this.pg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prodTicketBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -2555,5 +2589,9 @@
         private CustomControls.DateBox sourdateDateBox;
         private CustomControls.DateBox contdateDateBox;
         private System.Windows.Forms.Button btnInterOfficeEmail;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
+        private System.Windows.Forms.BindingSource MeridianProdutnTicketModelBindingSource;
+        private System.Windows.Forms.BindingSource prodTicketBindingSource;
     }
     }

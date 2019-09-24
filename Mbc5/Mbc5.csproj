@@ -631,6 +631,7 @@
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
     <EmbeddedResource Include="Reports\PartialBookTicket.rdlc" />
@@ -874,6 +875,7 @@
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />

@@ -568,7 +568,14 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Invoice";
+                           
+                                cmdtext = @"Select P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode) AS Schcode,C.OracleCode,C.Contryear From Produtn P
+                                    LEFT JOIN Cust C On P.Schcode=C.Schcode 
+                                    LEFT JOIN MCust MC On P.Schcode=MC.Schcode 
+                                        Order By Invoice";
+                           
+                          
+                            
                             sqlclient.CommandText(cmdtext);
                             var result4 = sqlclient.SelectMany<ProdutnInvnoSearch>();
                             if (result4.IsError)
@@ -585,6 +592,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
 
                             break;
+                        
                         case "ENDSHEET":
                             cmdtext = @"Select E.Invno AS Invoice,C.Schname,C.Schcode,E.endshtno As EndSheetNo,C.Contryear,P.ProdNo From EndSheet E  
                                         Inner JOIN Quotes Q  ON E.Invno=Q.Invno
@@ -665,7 +673,7 @@ namespace Mbc5.Dialogs {
 							break;
 					
                         case "PRODUCTION":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode)AS Schname,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Left Join MCust MC On P.Schcode=MC.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var result2 = sqlclient.SelectMany<ProdNoSearch>();
                             if (result2.IsError)
@@ -1395,7 +1403,7 @@ namespace Mbc5.Dialogs {
         }
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
       {
-            if (e.KeyChar == 13)
+           if (e.KeyChar == 13)
             {
                 this.DialogResult = DialogResult.OK;
                 //cust form

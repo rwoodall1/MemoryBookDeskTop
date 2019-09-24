@@ -635,6 +635,8 @@ namespace Mbc5.Forms
             this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
             this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
+            this.printOnWhitePaperCheckBox = new System.Windows.Forms.CheckBox();
+            this.proofOfPagesCheckBox = new System.Windows.Forms.CheckBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -2761,7 +2763,7 @@ namespace Mbc5.Forms
             this.btnStandarCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStandarCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnStandarCoverEmail.Image")));
             this.btnStandarCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnStandarCoverEmail.Location = new System.Drawing.Point(293, 529);
+            this.btnStandarCoverEmail.Location = new System.Drawing.Point(293, 558);
             this.btnStandarCoverEmail.Name = "btnStandarCoverEmail";
             this.btnStandarCoverEmail.Size = new System.Drawing.Size(125, 38);
             this.btnStandarCoverEmail.TabIndex = 159;
@@ -2776,7 +2778,7 @@ namespace Mbc5.Forms
             this.btnspCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnspCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnspCoverEmail.Image")));
             this.btnspCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnspCoverEmail.Location = new System.Drawing.Point(174, 529);
+            this.btnspCoverEmail.Location = new System.Drawing.Point(174, 558);
             this.btnspCoverEmail.Name = "btnspCoverEmail";
             this.btnspCoverEmail.Size = new System.Drawing.Size(116, 38);
             this.btnspCoverEmail.TabIndex = 158;
@@ -3558,6 +3560,8 @@ namespace Mbc5.Forms
             // 
             // pnl11
             // 
+            this.pnl11.Controls.Add(this.proofOfPagesCheckBox);
+            this.pnl11.Controls.Add(this.printOnWhitePaperCheckBox);
             this.pnl11.Controls.Add(this.dedayoutDateBox);
             this.pnl11.Controls.Add(this.dedayinDateBox);
             this.pnl11.Controls.Add(this.listrecdCheckBox1);
@@ -3590,7 +3594,7 @@ namespace Mbc5.Forms
             this.pnl11.Enabled = false;
             this.pnl11.Location = new System.Drawing.Point(7, 80);
             this.pnl11.Name = "pnl11";
-            this.pnl11.Size = new System.Drawing.Size(275, 437);
+            this.pnl11.Size = new System.Drawing.Size(275, 471);
             this.pnl11.TabIndex = 127;
             // 
             // dedayoutDateBox
@@ -3889,7 +3893,7 @@ namespace Mbc5.Forms
             // 
             this.reccardsentCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reccardsent", true));
             this.reccardsentCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reccardsentCheckBox.Location = new System.Drawing.Point(114, 595);
+            this.reccardsentCheckBox.Location = new System.Drawing.Point(114, 624);
             this.reccardsentCheckBox.Name = "reccardsentCheckBox";
             this.reccardsentCheckBox.Size = new System.Drawing.Size(143, 21);
             this.reccardsentCheckBox.TabIndex = 105;
@@ -3899,7 +3903,7 @@ namespace Mbc5.Forms
             // btnRecvLabel
             // 
             this.btnRecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecvLabel.Location = new System.Drawing.Point(52, 622);
+            this.btnRecvLabel.Location = new System.Drawing.Point(52, 651);
             this.btnRecvLabel.Name = "btnRecvLabel";
             this.btnRecvLabel.Size = new System.Drawing.Size(126, 23);
             this.btnRecvLabel.TabIndex = 94;
@@ -3910,7 +3914,7 @@ namespace Mbc5.Forms
             // btnRecvHistory
             // 
             this.btnRecvHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecvHistory.Location = new System.Drawing.Point(16, 593);
+            this.btnRecvHistory.Location = new System.Drawing.Point(16, 622);
             this.btnRecvHistory.Name = "btnRecvHistory";
             this.btnRecvHistory.Size = new System.Drawing.Size(86, 23);
             this.btnRecvHistory.TabIndex = 93;
@@ -3924,7 +3928,7 @@ namespace Mbc5.Forms
             this.btnBkDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBkDue.Image = ((System.Drawing.Image)(resources.GetObject("btnBkDue.Image")));
             this.btnBkDue.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBkDue.Location = new System.Drawing.Point(54, 528);
+            this.btnBkDue.Location = new System.Drawing.Point(54, 557);
             this.btnBkDue.Name = "btnBkDue";
             this.btnBkDue.Size = new System.Drawing.Size(117, 38);
             this.btnBkDue.TabIndex = 38;
@@ -6901,6 +6905,28 @@ namespace Mbc5.Forms
             // 
             this.reorderDetailTableAdapter.ClearBeforeFill = true;
             // 
+            // printOnWhitePaperCheckBox
+            // 
+            this.printOnWhitePaperCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "PrintOnWhitePaper", true));
+            this.printOnWhitePaperCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printOnWhitePaperCheckBox.Location = new System.Drawing.Point(16, 426);
+            this.printOnWhitePaperCheckBox.Name = "printOnWhitePaperCheckBox";
+            this.printOnWhitePaperCheckBox.Size = new System.Drawing.Size(104, 18);
+            this.printOnWhitePaperCheckBox.TabIndex = 158;
+            this.printOnWhitePaperCheckBox.Text = "Print On White Paper";
+            this.printOnWhitePaperCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // proofOfPagesCheckBox
+            // 
+            this.proofOfPagesCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "ProofOfPages", true));
+            this.proofOfPagesCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.proofOfPagesCheckBox.Location = new System.Drawing.Point(16, 441);
+            this.proofOfPagesCheckBox.Name = "proofOfPagesCheckBox";
+            this.proofOfPagesCheckBox.Size = new System.Drawing.Size(122, 20);
+            this.proofOfPagesCheckBox.TabIndex = 159;
+            this.proofOfPagesCheckBox.Text = "Proof Of Pages";
+            this.proofOfPagesCheckBox.UseVisualStyleBackColor = true;
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -7372,5 +7398,7 @@ namespace Mbc5.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.CheckBox proofOfPagesCheckBox;
+        private System.Windows.Forms.CheckBox printOnWhitePaperCheckBox;
     }
 }

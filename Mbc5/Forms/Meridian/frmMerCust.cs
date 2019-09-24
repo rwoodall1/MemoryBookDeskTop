@@ -56,6 +56,7 @@ namespace Mbc5.Forms.Meridian {
             Fill();
             this.lblAppUser.Text = this.ApplicationUser.id;
             mcustBindingSource.ResetBindings(true);
+           
         }
 
         #region Methods
@@ -1035,24 +1036,20 @@ namespace Mbc5.Forms.Meridian {
         private void btnProdTkt_Click(object sender, EventArgs e)
         {
             var sqlClient = new SQLCustomClient();
-            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PoNum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
                                     Case
                                       When Q.prodcode='MAG' THEN 'MAGNET'
-                                    CASE 
-                                      When  When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
-                                    CASE 
-                                      When  When Q.prodcode='HSP' THEN 'HS'
-                                    CASE 
-                                      When  When Q.prodcode='MSP' THEN 'MS'
-                                    CASE 
-                                      When  When Q.prodcode='ELSP' THEN 'ELSP'
-                                    CASE 
-                                      When  When Q.prodcode='PRISP' THEN 'PRISP'
-                                    
-                                    END AS SchoolType
+                                      When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
+									  When Q.prodcode='HSP' THEN 'HS'
+                                      When Q.prodcode='LTE' THEN 'LTE'
+                                      When Q.prodcode='STE' THEN 'STE'
+                                      When Q.prodcode='MSP' THEN 'MS'
+                                      When Q.prodcode='ELSP' THEN 'ELSP'
+                                      When Q.prodcode='PRISP' THEN 'PRISP'
+                                    END AS SchoolType,
                             Q.stttitpgqty AS TitlePageQty,Q.vpbqty AS VinylBQty,Q.vpaqty AS VinylAQty,Q.wallchqty AS WallChartQty,Q.typesetqty AS TypeSetQty,Q.impguidqty AS ImplGuideQty,
                            Q.duraglzqty AS DuraGlazeQty,Q.BookType,Q.NoPages,Q.qtystud AS StudentCopies,Q.qtyteacher AS TeacherCopies,Q.qtytot AS TotalCopies,Q.hallpqty AS HallPassQty,
-                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.CoverDesc,P.Prshpdte,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
+                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.ProdNo,P.CoverDesc,P.Prshpdte,P.ProofOfPages,P.PrintOnWhitePaper,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
                          Cvr.desc4 AS CoverOutsideBack
                 FROM MCust C
                 LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
@@ -1069,12 +1066,16 @@ namespace Mbc5.Forms.Meridian {
                 return;
             }
 
-            //var data = (ProdutnTicketModel)dataReturned.Data;
+           var vData= (MeridianProdutnTicketModel)dataReturned.Data;
+            prodTicketBindingSource.DataSource = vData;
+           
+            reportViewer1.RefreshReport();
+            
+        }
 
-            //ProdutnTicketModelBindingSource.DataSource = data;
-            //Cursor.Current = Cursors.WaitCursor;
-            //reportViewer1.RefreshReport();
-            //Cursor.Current = Cursors.Default;
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
         //nothing below here
     }

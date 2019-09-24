@@ -1079,10 +1079,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnugrnd;
             
-            private global::System.Data.DataColumn columnu3day;
-            
-            private global::System.Data.DataColumn columnu2ndday;
-            
             private global::System.Data.DataColumn columnustdon;
             
             private global::System.Data.DataColumn columnuprion;
@@ -1186,6 +1182,10 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnBindery3;
             
             private global::System.Data.DataColumn columnBindery4;
+            
+            private global::System.Data.DataColumn columnPrintOnWhitePaper;
+            
+            private global::System.Data.DataColumn columnProofOfPages;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1846,22 +1846,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn u3dayColumn {
-                get {
-                    return this.columnu3day;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn u2nddayColumn {
-                get {
-                    return this.columnu2ndday;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ustdonColumn {
                 get {
                     return this.columnustdon;
@@ -2278,6 +2262,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PrintOnWhitePaperColumn {
+                get {
+                    return this.columnPrintOnWhitePaper;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProofOfPagesColumn {
+                get {
+                    return this.columnProofOfPages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2392,8 +2392,6 @@ namespace Mbc5.DataSets {
                         string bktype2, 
                         bool bledpgchk, 
                         bool ugrnd, 
-                        bool u3day, 
-                        bool u2ndday, 
                         bool ustdon, 
                         bool uprion, 
                         bool fgrnd, 
@@ -2445,7 +2443,9 @@ namespace Mbc5.DataSets {
                         System.DateTime Bindery1, 
                         System.DateTime Bindery2, 
                         System.DateTime Bindery3, 
-                        System.DateTime Bindery4) {
+                        System.DateTime Bindery4, 
+                        bool PrintOnWhitePaper, 
+                        bool ProofOfPages) {
                 produtnRow rowprodutnRow = ((produtnRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2526,8 +2526,6 @@ namespace Mbc5.DataSets {
                         bktype2,
                         bledpgchk,
                         ugrnd,
-                        u3day,
-                        u2ndday,
                         ustdon,
                         uprion,
                         fgrnd,
@@ -2579,7 +2577,9 @@ namespace Mbc5.DataSets {
                         Bindery1,
                         Bindery2,
                         Bindery3,
-                        Bindery4};
+                        Bindery4,
+                        PrintOnWhitePaper,
+                        ProofOfPages};
                 if ((parentquotesRowByquotes_produtn != null)) {
                     columnValuesArray[0] = parentquotesRowByquotes_produtn[0];
                 }
@@ -2690,8 +2690,6 @@ namespace Mbc5.DataSets {
                 this.columnbktype2 = base.Columns["bktype2"];
                 this.columnbledpgchk = base.Columns["bledpgchk"];
                 this.columnugrnd = base.Columns["ugrnd"];
-                this.columnu3day = base.Columns["u3day"];
-                this.columnu2ndday = base.Columns["u2ndday"];
                 this.columnustdon = base.Columns["ustdon"];
                 this.columnuprion = base.Columns["uprion"];
                 this.columnfgrnd = base.Columns["fgrnd"];
@@ -2744,6 +2742,8 @@ namespace Mbc5.DataSets {
                 this.columnBindery2 = base.Columns["Bindery2"];
                 this.columnBindery3 = base.Columns["Bindery3"];
                 this.columnBindery4 = base.Columns["Bindery4"];
+                this.columnPrintOnWhitePaper = base.Columns["PrintOnWhitePaper"];
+                this.columnProofOfPages = base.Columns["ProofOfPages"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2905,10 +2905,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnbledpgchk);
                 this.columnugrnd = new global::System.Data.DataColumn("ugrnd", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnugrnd);
-                this.columnu3day = new global::System.Data.DataColumn("u3day", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnu3day);
-                this.columnu2ndday = new global::System.Data.DataColumn("u2ndday", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnu2ndday);
                 this.columnustdon = new global::System.Data.DataColumn("ustdon", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnustdon);
                 this.columnuprion = new global::System.Data.DataColumn("uprion", typeof(bool), null, global::System.Data.MappingType.Element);
@@ -3013,6 +3009,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnBindery3);
                 this.columnBindery4 = new global::System.Data.DataColumn("Bindery4", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBindery4);
+                this.columnPrintOnWhitePaper = new global::System.Data.DataColumn("PrintOnWhitePaper", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrintOnWhitePaper);
+                this.columnProofOfPages = new global::System.Data.DataColumn("ProofOfPages", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProofOfPages);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -13262,38 +13262,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool u3day {
-                get {
-                    try {
-                        return ((bool)(this[this.tableprodutn.u3dayColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'u3day\' in table \'produtn\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableprodutn.u3dayColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool u2ndday {
-                get {
-                    try {
-                        return ((bool)(this[this.tableprodutn.u2nddayColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'u2ndday\' in table \'produtn\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableprodutn.u2nddayColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool ustdon {
                 get {
                     try {
@@ -14121,6 +14089,38 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tableprodutn.Bindery4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool PrintOnWhitePaper {
+                get {
+                    try {
+                        return ((bool)(this[this.tableprodutn.PrintOnWhitePaperColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrintOnWhitePaper\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.PrintOnWhitePaperColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool ProofOfPages {
+                get {
+                    try {
+                        return ((bool)(this[this.tableprodutn.ProofOfPagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProofOfPages\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.ProofOfPagesColumn] = value;
                 }
             }
             
@@ -15025,30 +15025,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isu3dayNull() {
-                return this.IsNull(this.tableprodutn.u3dayColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setu3dayNull() {
-                this[this.tableprodutn.u3dayColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isu2nddayNull() {
-                return this.IsNull(this.tableprodutn.u2nddayColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setu2nddayNull() {
-                this[this.tableprodutn.u2nddayColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsustdonNull() {
                 return this.IsNull(this.tableprodutn.ustdonColumn);
             }
@@ -15669,6 +15645,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetBindery4Null() {
                 this[this.tableprodutn.Bindery4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPrintOnWhitePaperNull() {
+                return this.IsNull(this.tableprodutn.PrintOnWhitePaperColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPrintOnWhitePaperNull() {
+                this[this.tableprodutn.PrintOnWhitePaperColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProofOfPagesNull() {
+                return this.IsNull(this.tableprodutn.ProofOfPagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProofOfPagesNull() {
+                this[this.tableprodutn.ProofOfPagesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24733,8 +24733,6 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             tableMapping.ColumnMappings.Add("bktype2", "bktype2");
             tableMapping.ColumnMappings.Add("bledpgchk", "bledpgchk");
             tableMapping.ColumnMappings.Add("ugrnd", "ugrnd");
-            tableMapping.ColumnMappings.Add("u3day", "u3day");
-            tableMapping.ColumnMappings.Add("u2ndday", "u2ndday");
             tableMapping.ColumnMappings.Add("ustdon", "ustdon");
             tableMapping.ColumnMappings.Add("uprion", "uprion");
             tableMapping.ColumnMappings.Add("fgrnd", "fgrnd");
@@ -24788,6 +24786,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             tableMapping.ColumnMappings.Add("Bindery2", "Bindery2");
             tableMapping.ColumnMappings.Add("Bindery3", "Bindery3");
             tableMapping.ColumnMappings.Add("Bindery4", "Bindery4");
+            tableMapping.ColumnMappings.Add("PrintOnWhitePaper", "PrintOnWhitePaper");
+            tableMapping.ColumnMappings.Add("ProofOfPages", "ProofOfPages");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -24815,22 +24815,23 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "DateCreated, DateModified = @DateModified, usersw = @usersw, stfpw = @stfpw, bkm" +
                 "ixed = @bkmixed, bkcoil = @bkcoil, ovride = @ovride, allclrck = @allclrck, foilc" +
                 "k = @foilck, bktype2 = @bktype2, \r\n                         bledpgchk = @bledpgc" +
-                "hk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day, u2ndday = @u2ndday, us" +
-                "tdon = @ustdon, uprion = @uprion, fgrnd = @fgrnd, f2ndday = @f2ndday, fstdon = @" +
-                "fstdon, fprion = @fprion, \r\n                         rbinit = @rbinit, rbdate = " +
-                "@rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @dcdesc2, bkgrnd = @bkgrn" +
-                "d, bindvend = @bindvend, magirdate = @magirdate, magirtrn = @magirtrn, magiregis" +
-                " = @magiregis, \r\n                         regto = @regto, pcmac = @pcmac, webina" +
-                "r = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m400, noplates = @noplates" +
-                ", theme = @theme, mk = @mk, se = @se, te = @te, dura = @dura, hallp = @hallp, ti" +
-                "tlep = @titlep, \r\n                         vinyl = @vinyl, finalcpycnt = @finalc" +
-                "pycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate, ModifiedBy = @Modifie" +
-                "dBy, Enhancements = @enhancements, PhotographerPermission = @PhotographerPermiss" +
-                "ion, \r\n                         nopages = @nopages, nocopies = @nocopies, PrePre" +
-                "ss = @PrePress, Press = @Press, Bindery1 = @Bindery1, Bindery2 = @Bindery2, Bind" +
-                "ery3 = @Bindery3, Bindery4 = @Bindery4\r\nWHERE        (invno = @Original_invno) A" +
-                "ND (@IsNull_TimeStamp = 1) AND (TimeStamp IS NULL) OR\r\n                         " +
-                "(invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp)";
+                "hk, bledpgno = @bledpgno, ugrnd = @ugrnd, ProofOfPages = @ProofOfPages, PrintOnW" +
+                "hitePaper = @PrintOnWhitePaper, ustdon = @ustdon, uprion = @uprion, fgrnd = @fgr" +
+                "nd, f2ndday = @f2ndday, \r\n                         fstdon = @fstdon, fprion = @f" +
+                "prion, rbinit = @rbinit, rbdate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, d" +
+                "cdesc2 = @dcdesc2, bkgrnd = @bkgrnd, bindvend = @bindvend, magirdate = @magirdat" +
+                "e, magirtrn = @magirtrn, \r\n                         magiregis = @magiregis, regt" +
+                "o = @regto, pcmac = @pcmac, webinar = @webinar, prfreq = @prfreq, l400 = @l400, " +
+                "m400 = @m400, noplates = @noplates, theme = @theme, mk = @mk, se = @se, te = @te" +
+                ", dura = @dura, \r\n                         hallp = @hallp, titlep = @titlep, vin" +
+                "yl = @vinyl, finalcpycnt = @finalcpycnt, pdfsent = @pdfsent, adduploaddate = @ad" +
+                "duploaddate, ModifiedBy = @ModifiedBy, Enhancements = @enhancements, \r\n         " +
+                "                PhotographerPermission = @PhotographerPermission, nopages = @nop" +
+                "ages, nocopies = @nocopies, PrePress = @PrePress, Press = @Press, Bindery1 = @Bi" +
+                "ndery1, Bindery2 = @Bindery2, Bindery3 = @Bindery3, \r\n                         B" +
+                "indery4 = @Bindery4\r\nWHERE        (invno = @Original_invno) AND (@IsNull_TimeSta" +
+                "mp = 1) AND (TimeStamp IS NULL) OR\r\n                         (invno = @Original_" +
+                "invno) AND (TimeStamp = @Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -24915,8 +24916,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bledpgchk", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "bledpgchk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bledpgno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "bledpgno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ugrnd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ugrnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@u3day", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "u3day", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@u2ndday", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "u2ndday", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProofOfPages", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ProofOfPages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrintOnWhitePaper", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "PrintOnWhitePaper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ustdon", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ustdon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uprion", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "uprion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fgrnd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "fgrnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -24954,8 +24955,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enhancements", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Enhancements", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhotographerPermission", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "PhotographerPermission", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProdNoPages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProdNoCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrePress", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "PrePress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Press", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Press", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bindery1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Bindery1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -25001,20 +25002,20 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "            produtn.milled, produtn.DateCreated, produtn.DateModified, produtn.u" +
                 "sersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.a" +
                 "llclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, \r" +
-                "\n                         produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn" +
-                ".ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn" +
-                ".fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn" +
-                ".dcdesc2, \r\n                         produtn.bkgrnd, produtn.bindvend, produtn.m" +
-                "agirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, pro" +
-                "dutn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, prod" +
-                "utn.theme, \r\n                         produtn.mk, produtn.se, produtn.te, produt" +
-                "n.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produ" +
-                "tn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, produ" +
-                "tn.Enhancements, \r\n                         produtn.PhotographerPermission, prod" +
-                "utn.PrePress, produtn.Press, produtn.Bindery1, produtn.Bindery2, produtn.Bindery" +
-                "3, produtn.Bindery4\r\nFROM            produtn LEFT OUTER JOIN\r\n                  " +
-                "       endsheet ON produtn.invno = endsheet.invno\r\nWHERE        (produtn.schcode" +
-                " = @Schcode)";
+                "\n                         produtn.ugrnd, produtn.PrintOnWhitePaper, produtn.Proo" +
+                "fOfPages, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produt" +
+                "n.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn" +
+                ".dcdesc1, \r\n                         produtn.dcdesc2, produtn.bkgrnd, produtn.bi" +
+                "ndvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, p" +
+                "rodutn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produ" +
+                "tn.noplates, \r\n                         produtn.theme, produtn.mk, produtn.se, p" +
+                "rodutn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.f" +
+                "inalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet" +
+                ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
+                "rPermission, produtn.PrePress, produtn.Press, produtn.Bindery1, produtn.Bindery2" +
+                ", produtn.Bindery3, produtn.Bindery4\r\nFROM            produtn LEFT OUTER JOIN\r\n " +
+                "                        endsheet ON produtn.invno = endsheet.invno\r\nWHERE       " +
+                " (produtn.schcode = @Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -25040,20 +25041,20 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "odutn.milled, produtn.DateCreated, produtn.DateModified, produtn.usersw, produtn" +
                 ".stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.allclrck, produ" +
                 "tn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, \r\n             " +
-                "            produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn.ustdon, produ" +
-                "tn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn.fprion, produ" +
-                "tn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, \r\n  " +
-                "                       produtn.bkgrnd, produtn.bindvend, produtn.magirdate, prod" +
-                "utn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, produtn.webinar, " +
-                "produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, \r\n " +
-                "                        produtn.mk, produtn.se, produtn.te, produtn.dura, produt" +
-                "n.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produtn.pdfsent, pr" +
-                "odutn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, produtn.Enhancement" +
-                "s, \r\n                         produtn.PhotographerPermission, produtn.Icon, prod" +
-                "utn.Press, produtn.PrePress, produtn.Bindery1, produtn.Bindery2, produtn.Bindery" +
-                "4, produtn.Bindery3\r\nFROM            produtn LEFT OUTER JOIN\r\n                  " +
-                "       endsheet ON produtn.invno = endsheet.invno\r\nWHERE        (produtn.invno =" +
-                " @Invno)";
+                "            produtn.ugrnd, produtn.ProofOfPages, produtn.PrintOnWhitePaper, prod" +
+                "utn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, prod" +
+                "utn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, \r\n  " +
+                "                       produtn.dcdesc2, produtn.bkgrnd, produtn.bindvend, produt" +
+                "n.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, " +
+                "produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, \r" +
+                "\n                         produtn.theme, produtn.mk, produtn.se, produtn.te, pro" +
+                "dutn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, pr" +
+                "odutn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, \r\n" +
+                "                         produtn.Enhancements, produtn.PhotographerPermission, p" +
+                "rodutn.Icon, produtn.Press, produtn.PrePress, produtn.Bindery1, produtn.Bindery2" +
+                ", produtn.Bindery4, produtn.Bindery3\r\nFROM            produtn LEFT OUTER JOIN\r\n " +
+                "                        endsheet ON produtn.invno = endsheet.invno\r\nWHERE       " +
+                " (produtn.invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -25079,20 +25080,20 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "            produtn.milled, produtn.DateCreated, produtn.DateModified, produtn.u" +
                 "sersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.a" +
                 "llclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, \r" +
-                "\n                         produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn" +
-                ".ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn" +
-                ".fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn" +
-                ".dcdesc2, \r\n                         produtn.bkgrnd, produtn.bindvend, produtn.m" +
-                "agirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, pro" +
-                "dutn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, prod" +
-                "utn.theme, \r\n                         produtn.mk, produtn.se, produtn.te, produt" +
-                "n.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produ" +
-                "tn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, produ" +
-                "tn.Enhancements, \r\n                         produtn.PhotographerPermission, prod" +
-                "utn.ProdCustDate, produtn.PrePress, produtn.Bindery1, produtn.Press, produtn.Bin" +
-                "dery2, produtn.Bindery3, produtn.Bindery4\r\nFROM            produtn LEFT OUTER JO" +
-                "IN\r\n                         endsheet ON produtn.invno = endsheet.invno\r\nWHERE  " +
-                "      (produtn.prodno = @Prodno)";
+                "\n                         produtn.ugrnd, produtn.PrintOnWhitePaper, produtn.Proo" +
+                "fOfPages, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produt" +
+                "n.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn" +
+                ".dcdesc1, \r\n                         produtn.dcdesc2, produtn.bkgrnd, produtn.bi" +
+                "ndvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, p" +
+                "rodutn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produ" +
+                "tn.noplates, \r\n                         produtn.theme, produtn.mk, produtn.se, p" +
+                "rodutn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.f" +
+                "inalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet" +
+                ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
+                "rPermission, produtn.ProdCustDate, produtn.PrePress, produtn.Bindery1, produtn.P" +
+                "ress, produtn.Bindery2, produtn.Bindery3, produtn.Bindery4\r\nFROM            prod" +
+                "utn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = endshe" +
+                "et.invno\r\nWHERE        (produtn.prodno = @Prodno)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
