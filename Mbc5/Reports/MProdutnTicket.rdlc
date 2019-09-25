@@ -765,6 +765,9 @@
         <Height>0.25in</Height>
         <Width>1.47184in</Width>
         <ZIndex>23</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!PrintOnWhitePages.Value=false, "dsProdutn")</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1773,6 +1776,9 @@
         <Height>0.25in</Height>
         <Width>1.55208in</Width>
         <ZIndex>54</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!ProofOFPages.Value=false, "dsProdutn")</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1851,11 +1857,10 @@
     <Height>3.85417in</Height>
     <Style />
   </Body>
-  <Width>8.09857in</Width>
+  <Width>7.96316in</Width>
   <Page>
     <PageFooter>
-      <Height>1in</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <Height>1.20833in</Height>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Textbox Name="Schcode">
@@ -1877,7 +1882,7 @@
           </Paragraphs>
           <rd:DefaultName>Schcode</rd:DefaultName>
           <Top>0.19667in</Top>
-          <Left>6.07836in</Left>
+          <Left>5.82836in</Left>
           <Height>0.25in</Height>
           <Width>1.85851in</Width>
           <Style>
@@ -1906,7 +1911,7 @@
           </Paragraphs>
           <rd:DefaultName>Schcode</rd:DefaultName>
           <Top>0.51611in</Top>
-          <Left>6.07836in</Left>
+          <Left>5.82836in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>1</ZIndex>
@@ -2006,9 +2011,17 @@
           <DataField>PONum</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="PrintOnWhitePages">
+          <DataField>PrintOnWhitePages</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
         <Field Name="ProdNo">
           <DataField>ProdNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProofOFPages">
+          <DataField>ProofOFPages</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Prshpdte">
           <DataField>Prshpdte</DataField>

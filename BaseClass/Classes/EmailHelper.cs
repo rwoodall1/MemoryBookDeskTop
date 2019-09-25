@@ -47,7 +47,7 @@ namespace BaseClass.Classes
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Memory Book Company' title='Memory Book Company' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Memory Book Company' title='Memory Book Company' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
@@ -92,11 +92,11 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 900px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 1024px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
@@ -141,11 +141,12 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 1024px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://meridianplanners.com
+' alt='Lifeline Services' title='Lifeline Services'><img src='https://www.memorybook.com/images/logos/JostensLogo.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
@@ -343,8 +344,6 @@ namespace BaseClass.Classes
                 return false;
             }
         }
-
-
         public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail,List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null ||ToAddresses=="")
             {
@@ -416,10 +415,12 @@ namespace BaseClass.Classes
                    
                     }
                     mailItem.To = vToAddresses;
-                foreach (var address in CCAddresses) {
-                    vCCAddresses = vCCAddresses + address + ";";
-                    
+                if (CCAddresses!=null) {
+                    foreach (var address in CCAddresses) {
+                        vCCAddresses = vCCAddresses + address + ";";
+
                     }
+                }
 				if (attachments != null && attachments.Count > 0)
 					foreach (OutlookAttachemt attachement in attachments) {
 						mailItem.Attachments.Add(attachement.Path, Outlook.OlAttachmentType.olByValue, 1, attachement.Name);

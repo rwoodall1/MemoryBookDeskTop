@@ -176,6 +176,45 @@ namespace BindingModels
 
 
     }
+    public class MeridianCoverTicket
+    {
+        public DateTime ScRecv { get; set; }
+        public string BarCode { get; set; }
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public string SchoolColors { get; set; }//cust 
+        public int Invno { get; set; }
+        public string Schtype { get; set; }
+        public string Prodno { get; set; }
+        public string Colors { get; set; }
+        public string CoverType { get; set; }
+        public string PlannerType { get; set; }
+        public string TypeStyle { get; set; }
+        public string Mascot { get; set; }
+        public string CoverDesc{get;set;}
+        public string Clr1 { get; set; }
+        public string Clr2 { get; set; }
+        public string Clr3 { get; set; }
+        public string Clr4 { get; set; }
+        public string Desc { get; set; }
+        public string Desc1a { get; set; }
+        public string Desc2 { get; set; }
+        public string Desc3 { get; set; }
+        public string Desc4 { get; set; }
+        public bool CustSubmtx { get; set; }//covers
+
+        public bool SpBack { get; set; }
+        public int ReqstdCpy { get; set; }
+        public bool Prfreq { get; set; }
+        public string PrtVend { get; set; }
+        public string CvrStock { get; set; }
+        public string Specinst { get; set; }
+        public string SpecCover { get; set; }
+        public int NoPages { get; set; }
+        public string Laminated { get; set; }
+        
+
+    }
     public class BinderyLabel
     {
         public string Schname { get; set; }

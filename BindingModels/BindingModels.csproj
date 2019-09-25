@@ -82,6 +82,7 @@
     <Content Include="Properties\DataSources\BidInvoiceDetail.datasource" />
     <Content Include="Properties\DataSources\InvoiceDetailBindingModel.datasource" />
     <Content Include="Properties\DataSources\MBidInvoiceDetail.datasource" />
+    <Content Include="Properties\DataSources\MeridianCoverTicket.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

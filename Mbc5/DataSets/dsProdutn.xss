@@ -13,7 +13,7 @@
     <Shape ID="DesignTable:ptbkb" ZOrder="7" X="728" Y="276" Height="54" Width="179" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:wip" ZOrder="15" X="732" Y="524" Height="54" Width="165" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="178" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:wipg" ZOrder="6" X="713" Y="362" Height="55" Width="173" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="44" OldDataTableHeight="121" SplitterPosition="25" />
-    <Shape ID="DesignTable:covers" ZOrder="17" X="720" Y="60" Height="54" Width="182" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="693" SplitterPosition="24" />
+    <Shape ID="DesignTable:covers" ZOrder="17" X="720" Y="60" Height="94" Width="182" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="693" SplitterPosition="24" />
     <Shape ID="DesignTable:WipDetail" ZOrder="16" X="980" Y="510" Height="54" Width="202" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="235" SplitterPosition="24" />
     <Shape ID="DesignTable:WipDescriptions" ZOrder="27" X="-27" Y="276" Height="54" Width="240" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="178" OldDataTableHeight="83" SplitterPosition="24" />
     <Shape ID="DesignTable:coverdetail" ZOrder="8" X="1120" Y="135" Height="57" Width="209" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="102" OldDataTableHeight="227" SplitterPosition="27" />
@@ -77,15 +77,15 @@
       <RoutePoints>
         <Point>
           <X>873</X>
-          <Y>114</Y>
+          <Y>154</Y>
         </Point>
         <Point>
           <X>873</X>
-          <Y>152</Y>
+          <Y>162</Y>
         </Point>
         <Point>
           <X>1120</X>
-          <Y>152</Y>
+          <Y>162</Y>
         </Point>
       </RoutePoints>
     </Connector>

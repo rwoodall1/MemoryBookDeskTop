@@ -1005,7 +1005,58 @@ namespace Mbc5.Forms.Meridian {
 
         private void btnEmailProdTkt_Click(object sender, EventArgs e)
         {
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
+                                    Case
+                                      When Q.prodcode='MAG' THEN 'MAGNET'
+                                      When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
+									  When Q.prodcode='HSP' THEN 'HS'
+                                      When Q.prodcode='LTE' THEN 'LTE'
+                                      When Q.prodcode='STE' THEN 'STE'
+                                      When Q.prodcode='MSP' THEN 'MS'
+                                      When Q.prodcode='ELSP' THEN 'ELSP'
+                                      When Q.prodcode='PRISP' THEN 'PRISP'
+                                    END AS SchoolType,
+                            Q.stttitpgqty AS TitlePageQty,Q.vpbqty AS VinylBQty,Q.vpaqty AS VinylAQty,Q.wallchqty AS WallChartQty,Q.typesetqty AS TypeSetQty,Q.impguidqty AS ImplGuideQty,
+                           Q.duraglzqty AS DuraGlazeQty,Q.BookType,Q.NoPages,Q.qtystud AS StudentCopies,Q.qtyteacher AS TeacherCopies,Q.qtytot AS TotalCopies,Q.hallpqty AS HallPassQty,
+                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.ProdNo,P.CoverDesc,P.Prshpdte,P.ProofOfPages,P.PrintOnWhitePaper,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
+                         Cvr.desc4 AS CoverOutsideBack
+                FROM MCust C
+                LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                LEFT Join Covers Cvr ON Q.Invno=Cvr.Invno
+				 LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
 
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<MeridianProdutnTicketModel>();
+            if (dataReturned.IsError)
+            {
+                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var vData = (MeridianProdutnTicketModel)dataReturned.Data;
+            prodTicketBindingSource.DataSource = vData;
+            var vPdfGenerator = new PdfAttachementGenerator();
+            var result = vPdfGenerator.GenerateAttachement(reportViewer1, Schcode + "-ProductionTicket.pdf");
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                return;
+            }
+            var newPath = result.Data;
+            var emailHelper = new EmailHelper();
+            string sub =txtSchname.Text.Trim()+"/"+Schcode+" Meridian Production Ticket";
+            string body = "Attached is a Meridian Production Ticket.";
+            List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+            OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "-ProductionTicket.pdf", Path = newPath };
+            Attachements.Add(Attachement);
+            List<string> Address =new List<string>();
+            Address.Add("Mark.Baughman@jostens.com");
+            Address.Add("Renette.Brown@jostens.com");
+            Address.Add("Denise.Swearingin@jostens.com");
+            emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Meridian, Attachements);
         }
 
         private void button1_Click(object sender, EventArgs e)

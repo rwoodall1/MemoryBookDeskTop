@@ -545,6 +545,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmCancellationStatements.resx">
       <DependentUpon>frmCancellationStatements.cs</DependentUpon>
@@ -629,6 +630,7 @@
     <EmbeddedResource Include="Reports\BannerTicket.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MeridianCoverTicket.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
@@ -875,6 +877,7 @@
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianCoverTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />

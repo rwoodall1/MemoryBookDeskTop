@@ -118,9 +118,6 @@ namespace Mbc5.Forms
 			{
 				MessageBox.Show(ex.Message, "Error");
 			}
-
-
-         
         }
 
         #region "Properties"
@@ -7286,7 +7283,8 @@ namespace Mbc5.Forms
                 }
                 
             }
-            
+            btnMeridianTicket.Visible = this.Company == "MER";
+            btnCoverTicket.Visible = this.Company == "MBC";
         }
 
        
@@ -10532,7 +10530,7 @@ namespace Mbc5.Forms
                     Laminated = drProd.Row["laminated"].ToString(),
                     ReqstdCpy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"],
                     NoPages = drProd.Row.IsNull("ProdNoPages") ? 0 : (int)drProd.Row["ProdNoPages"],
-                    Desc = drCover.Row["Desc_"].ToString().Trim(),
+                    Desc = drCover.Row["Desc"].ToString().Trim(),
                     Desc2 = drCover.Row["Desc2"].ToString().Trim(),
                     Desc3 = drCover.Row["Desc3"].ToString().Trim(),
                     Desc4 = drCover.Row["Desc4"].ToString().Trim(),
@@ -10669,7 +10667,70 @@ namespace Mbc5.Forms
 
         private void btnMeridianTicket_Click(object sender, EventArgs e)
         {
-            MbcMessageBox.Information("To be implemented");
+            var sqlQuery = new SQLCustomClient();
+            string cmdText = @"
+                            Select 
+							C.Schcode,
+							C.Schname,
+							C.SchColors AS SchoolColors,
+							Q.Invno,
+							Q.prodcode,     
+                                P.Prodno,
+						
+								P.CoverType,
+								P.SpecCover,
+								P.CoverDesc,
+								P.NoPages,
+								P.Laminated,
+								CV.CvrStock,
+								IIF(Q.sf=1,'SF','LF')AS PlannerType,P.TypeStyle,
+								CV.Mascot,
+                                CV.Clr1,CV.Clr2,CV.Clr3,CV.Clr4,
+					            CV.[Desc],
+								CV.Desc1a,CV.Desc2,CV.Desc3,CV.Desc4,CV.CustSubmtx,
+								P.ScRecv,
+								CV.SpBack,
+								CV.ReqstdCpy,
+								P.Prfreq,
+                                Cv.CvrStock,
+								CV.Specinst,
+								P.SpecCover,
+								CASE
+                                    WHEN Q.prodcode  ='HSP' THEN 'HS'
+                                    WHEN Q.ProdCode='MSP' THEN 'MS'
+                                    WHEN Q.ProdCode='ELSP' THEN 'ELEM'
+                                    WHEN Q.ProdCode='PRISP' THEN 'PRIM'
+                                    WHEN Q.ProdCode='LTE' THEN 'LTE'
+                                    WHEN Q.ProdCode='STE' THEN 'STE'
+                                END AS Schtype  
+								
+                            FROM MCust C 
+                            LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                            LEFT JOIN Covers CV ON Q.Invno=CV.Invno
+                            WHERE Q.Invno=@Invno
+                            ";
+            sqlQuery.CommandText(cmdText);
+            sqlQuery.AddParameter("@Invno", Invno);
+            var queryResult = sqlQuery.Select<MeridianCoverTicket>();
+            if (queryResult.IsError)
+            {
+                MbcMessageBox.Error(queryResult.Errors[0].ErrorMessage);
+                ExceptionlessClient.Default.CreateLog("Meridian Cover Ticket Error")
+                    .AddObject(queryResult)
+                    .Submit();
+                return;
+                
+            }
+            var queryData=(MeridianCoverTicket)queryResult.Data;
+            mcoverTicketBindingSource.DataSource = queryData;
+            mcoverReportViewer.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianCoverTicket.rdlc";
+            mcoverReportViewer.LocalReport.DataSources.Clear();
+            mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsMCover", mcoverTicketBindingSource));
+           mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
+           
+            mcoverReportViewer.RefreshReport();
+
         }
 
         private void btnCvrUpdate_Click(object sender, EventArgs e)
@@ -11135,6 +11196,12 @@ namespace Mbc5.Forms
         private void txtCalcResult_Leave_1(object sender, EventArgs e)
         {
             SetPressDates();
+        }
+
+        
+        private void mcoverReportViewer_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
+        {
+                try { mcoverReportViewer.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
 
