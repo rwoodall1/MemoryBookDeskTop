@@ -539,7 +539,7 @@ namespace Mbc5.Forms
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-               var result= activeform.Save();
+               activeform.Save(true);
                 
             }
             catch(Exception ex) {
@@ -1168,6 +1168,21 @@ namespace Mbc5.Forms
 
             }
         }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                 activeform.Fill();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fill is not implemented", "Fill", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+    
 
         //nothing below here
     }

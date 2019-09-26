@@ -91,6 +91,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
+            this.qtedateDateBox = new CustomControls.DateBox();
+            this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMBids = new Mbc5.DataSets.dsMBids();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -226,11 +229,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
-            this.dsMBids = new Mbc5.DataSets.dsMBids();
-            this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mbidsTableAdapter = new Mbc5.DataSets.dsMBidsTableAdapters.mbidsTableAdapter();
             this.tableAdapterManager2 = new Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager();
-            this.qtedateDateBox = new CustomControls.DateBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -283,6 +284,8 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pgBids.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.pnlTot.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -295,8 +298,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.tabBids.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -948,6 +949,27 @@ namespace Mbc5.Forms.MemoryBook {
             this.pgBids.Size = new System.Drawing.Size(1077, 705);
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
+            // 
+            // qtedateDateBox
+            // 
+            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mbidsBindingSource, "qtedate", true));
+            this.qtedateDateBox.Date = null;
+            this.qtedateDateBox.DateValue = null;
+            this.qtedateDateBox.Location = new System.Drawing.Point(625, 31);
+            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.qtedateDateBox.Name = "qtedateDateBox";
+            this.qtedateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.qtedateDateBox.TabIndex = 296;
+            // 
+            // mbidsBindingSource
+            // 
+            this.mbidsBindingSource.DataMember = "mbids";
+            this.mbidsBindingSource.DataSource = this.dsMBids;
+            // 
+            // dsMBids
+            // 
+            this.dsMBids.DataSetName = "dsMBids";
+            this.dsMBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // chkPrntAsInvoice
             // 
@@ -2517,16 +2539,6 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
-            // dsMBids
-            // 
-            this.dsMBids.DataSetName = "dsMBids";
-            this.dsMBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mbidsBindingSource
-            // 
-            this.mbidsBindingSource.DataMember = "mbids";
-            this.mbidsBindingSource.DataSource = this.dsMBids;
-            // 
             // mbidsTableAdapter
             // 
             this.mbidsTableAdapter.ClearBeforeFill = true;
@@ -2537,16 +2549,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.tableAdapterManager2.mbidsTableAdapter = this.mbidsTableAdapter;
             this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // qtedateDateBox
+            // backgroundWorker1
             // 
-            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mbidsBindingSource, "qtedate", true));
-            this.qtedateDateBox.Date = null;
-            this.qtedateDateBox.DateValue = null;
-            this.qtedateDateBox.Location = new System.Drawing.Point(625, 31);
-            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.qtedateDateBox.Name = "qtedateDateBox";
-            this.qtedateDateBox.Size = new System.Drawing.Size(133, 21);
-            this.qtedateDateBox.TabIndex = 296;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmBids
             // 
@@ -2565,6 +2571,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.Shown += new System.EventHandler(this.frmBids_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmBids_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBids_KeyPress);
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.tabBids, 0);
+            this.Controls.SetChildIndex(this.bidsBindingNavigator, 0);
             ((System.ComponentModel.ISupportInitialize)(this.BidInvoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingNavigator)).EndInit();
             this.bidsBindingNavigator.ResumeLayout(false);
@@ -2574,6 +2583,8 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pgBids.ResumeLayout(false);
             this.pgBids.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.pnlTot.ResumeLayout(false);
             this.pnlTot.PerformLayout();
@@ -2593,8 +2604,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.tabBids.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2762,5 +2771,6 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsMBidsTableAdapters.mbidsTableAdapter mbidsTableAdapter;
         private DataSets.dsMBidsTableAdapters.TableAdapterManager tableAdapterManager2;
         private CustomControls.DateBox qtedateDateBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
     }

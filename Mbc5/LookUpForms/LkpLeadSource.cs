@@ -34,7 +34,27 @@ namespace Mbc5.LookUpForms
             this.lkpLeadSourceTableAdapter.Fill(this.lookUp.lkpLeadSource);
 
         }
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
+        {
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
+        }
+        public  ApiProcessingResult<bool> Save()
         {
 			var processingResult = new ApiProcessingResult<bool>();
             this.Validate();

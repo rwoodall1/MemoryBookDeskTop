@@ -762,8 +762,27 @@ namespace Mbc5.Forms.Meridian {
             frmMerCust_Paint(this, null);
 
         }
+        public override void Save(bool ShowSpinner)
+        {
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+               // backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
 
-        public override ApiProcessingResult<bool> Save()
+            }
+
+
+        }
+        private ApiProcessingResult<bool> Save()
         {
             var processingResult = new ApiProcessingResult<bool>();
             this.lblAppUser.Text = this.ApplicationUser.id;
@@ -818,7 +837,7 @@ namespace Mbc5.Forms.Meridian {
             statesTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             contpstnTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
         }
-        private void Fill()
+       public override void Fill()
         {
             try
             {

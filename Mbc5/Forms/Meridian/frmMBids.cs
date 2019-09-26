@@ -548,9 +548,25 @@ namespace Mbc5.Forms.Meridian {
             return true;
         }
         #endregion
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
         {
-            return SaveBid();
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = SaveBid();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
         }
         private ApiProcessingResult<bool> SaveBid()
         {
@@ -603,7 +619,7 @@ namespace Mbc5.Forms.Meridian {
             retval = this.Validate();
             return retval;
         }
-        private void Fill()
+       public override void Fill()
         {
             if (Schcode != null)
             {

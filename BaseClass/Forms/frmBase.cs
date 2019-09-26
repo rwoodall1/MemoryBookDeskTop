@@ -87,7 +87,7 @@ namespace BaseClass
             
           
         }
-
+        
         public new virtual void Show()
         {
             Show(CalledShowMethod.Show, null);
@@ -204,9 +204,9 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual ApiProcessingResult<bool> Save()
+        public virtual void Save(bool FromMenu)
         {
-			return new ApiProcessingResult<bool>();
+			
         }
        
         [Browsable(true)]
@@ -245,7 +245,10 @@ namespace BaseClass
         {
 
         }
+        public virtual void Fill()
+        {
 
+        }
         public virtual void Delete()
         {
 
@@ -261,6 +264,23 @@ namespace BaseClass
 			return true;
         }
 
+        private void basePanel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
 
-	}
+                this.basePanel.Dock = DockStyle.Fill;
+                this.workingLabel.BringToFront();
+                basePanel.BringToFront();
+
+
+            }
+            else
+            {
+                this.basePanel.Dock = DockStyle.None;
+               this.workingLabel.SendToBack();
+                basePanel.SendToBack();
+            }
+        }
+    }
 }

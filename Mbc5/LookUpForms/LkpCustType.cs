@@ -30,7 +30,27 @@ namespace Mbc5.LookUpForms
 				MbcMessageBox.Error(ex.Message, "");
 			}
         }
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
+        {
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
+        }
+        public  ApiProcessingResult<bool> Save()
         {
 			var processngResult = new ApiProcessingResult<bool>();
             bool retval = true;

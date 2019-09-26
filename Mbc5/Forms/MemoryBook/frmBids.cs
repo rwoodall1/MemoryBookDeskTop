@@ -16,6 +16,7 @@ using BaseClass;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
 using Mbc5.Dialogs;
+using Exceptionless;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -108,8 +109,8 @@ namespace Mbc5.Forms.MemoryBook {
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
-        
-        private void Fill()
+
+        public override void Fill()
         {
             if (Schcode != null)
             {
@@ -168,8 +169,574 @@ namespace Mbc5.Forms.MemoryBook {
             }
             con.Enabled = true;
         }
-      
-       
+        private ApiProcessingResult CopyToSales()
+        {
+            var processingResult = new ApiProcessingResult();
+               int InvNum = this.frmMain.GetNewInvno();
+                if (InvNum < 1)
+                {
+                    
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("There was an error getting an new invoice number", "There was an error getting an new invoice number",""));
+                    return processingResult;
+                }
+                DataRowView drview = (DataRowView)this.bidsBindingSource.Current;
+                int vId = (int)drview["id"];
+                var sqlclient = new SQLCustomClient();
+                sqlclient.AddParameter("@id", vId);
+                sqlclient.AddParameter("@Invno", InvNum);
+
+                string cmdText = @"INSERT INTO [dbo].[quotes]
+                            ([invno],[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea]
+
+                            ,[book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr],[scovrde],[layn],[laminate]
+
+                            ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
+
+                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
+
+                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
+
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
+
+                             ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot],[desc4],[desc4tot],[clrpgdesc]
+							 ,[clrpgtot],[glspaper],[glsamt] ,[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
+							 
+				,[yiramt],[storyamt],[suppamt],[persamount],[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
+
+                            ,[dp1desc] ,[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]
+
+                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
+
+                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
+
+                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
+
+                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt]
+
+                            ,[opink] ,[yrdiscount] ,[luvlines],[yrdiscountamt],[luvlineamt],[fullad],[fulladamt],[halfad],[halfadamt]
+
+                            ,[quarterad] ,[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
+
+
+                            ,[prcor] ,[adcuto],[webonly],[freebooks] ,[basicpp],[IconCopies],[IconAmt] ,[extrchg],[schooltax]
+
+
+                            ,[schooltaxrate],[donotchargeschoolsalestax]
+                            
+                           )
+                   Select @Invno AS Invno,[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea],
+
+                            [book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr] ,[scovrde],[layn],[laminate]
+
+                           ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
+
+                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
+
+                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
+
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
+
+                            ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot] ,[desc4],[desc4tot],[clrpgdesc]
+							,[clrpgtot],[glspaper],[glsamt],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
+							,[yiramt],[storyamt],[suppamt],[persamount] ,[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
+                           ,[dp1desc],[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]                     
+
+                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
+                            
+                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
+
+
+                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
+
+
+                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt] 
+
+                            ,[opink],[yrdiscount],[luvlines],[yrdiscountamt],[luvlineamt],[fullad] ,[fulladamt],[halfad],[halfadamt]
+
+
+                           ,[quarterad],[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
+
+
+                            ,[prcor],[adcuto],[webonly],[freebooks],[basicpp],[IconCopies],[IconAmt],[extrchg],[schooltax],[schooltaxrate]      
+							
+							 ,[donotchargeschoolsalestax]
+                        FROM [Mbc5].[dbo].[bids] where id=@id";
+                sqlclient.CommandText(cmdText);
+                string quoteInsert;
+                try
+                {
+                    var quoteInsertResult = sqlclient.Insert();
+                    if (quoteInsertResult.IsError)
+                    {
+                    ExceptionlessClient.Default.CreateLog("Insert Error Copy To Sales")
+                      .AddObject(quoteInsertResult)
+                      .Submit();
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("There was an error creating a the sales record.", "There was an error creating a the sales record.",""));
+                        return processingResult;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                   
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("There was an error creating a the sales record.", "There was an error creating a the sales record.", ""));
+                return processingResult;
+            };
+
+                sqlclient.ClearParameters();
+
+                string vProdNo = frmMain.GetProdNo();
+
+                ;
+                if (string.IsNullOrEmpty(vProdNo))
+                {
+               
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Failed to get a production number", "Failed to get a production number", ""));
+                return processingResult;
+            }
+                sqlclient.AddParameter("@Invno", InvNum);
+                sqlclient.AddParameter("@Schcode", this.Schcode);
+                sqlclient.AddParameter("@ProdNo", vProdNo);
+                sqlclient.AddParameter("@Contryear", txtBYear.Text);
+                sqlclient.AddParameter("@Company", "MBC");
+
+                string strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+                sqlclient.CommandText(strQuery);
+                try
+                {
+                    var prodResult = sqlclient.Insert();
+                    if (prodResult.IsError)
+                    {
+                       ExceptionlessClient.Default.CreateLog("Insert Error")
+                        .AddObject(prodResult)
+                        .Submit();
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("Failed to insert production record.", "Failed to insert production record.", ""));
+                    return processingResult;
+                }
+                }
+                catch (Exception ex)
+                {
+                ex.ToExceptionless()
+                 .AddObject(ex)
+                 .Submit();
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Failed to insert production record.", "Failed to insert production record.", ""));
+                return processingResult;
+            }
+
+                sqlclient.ClearParameters();
+
+                var vCoverNumber = frmMain.GetCoverNumber();
+                var vInstructions = GetInstructions();
+                sqlclient.AddParameter("@Invno", InvNum);
+                sqlclient.AddParameter("@Schcode", this.Schcode);
+                sqlclient.AddParameter("@Specovr", vCoverNumber);
+                sqlclient.AddParameter("@Specinst", vInstructions);
+                sqlclient.AddParameter("@Company", "MBC");
+                strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+                sqlclient.CommandText(strQuery);
+
+                try
+                {
+                    var coverinsertResult = sqlclient.Insert();
+                    if (coverinsertResult.IsError)
+                    {
+                    ExceptionlessClient.Default.CreateLog("Failed to insert covers record.")
+                     .AddObject(coverinsertResult)
+                     .Submit();
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("Failed to insert covers record.", "Failed to insert covers record.", ""));
+                    return processingResult;
+                }
+                }
+                catch (Exception ex)
+                {
+                ex.ToExceptionless()
+                 .AddObject(ex)
+                 .Submit();
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Failed to insert covers record.", "Failed to insert covers record.", ""));
+                return processingResult;
+            }
+               
+            processingResult.Tag = "A sales record with Invoice# " + InvNum + " has been created.";
+            return processingResult;
+          
+        }
+        private ApiProcessingResult PrintQuote()
+        {
+            var processingResult = new ApiProcessingResult();
+            var vBidDetails = new List<BidInvoiceDetail>();
+            var vrow = new BidInvoiceDetail();
+            if (chkAllClr.Checked)
+            {
+                vrow.Description = "Color book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
+                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
+                vrow.DiscountPercentage = "";
+
+            }
+            else
+            {
+                vrow.Description = "Black and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
+                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
+                vrow.DiscountPercentage = "";
+            }
+            vBidDetails.Add(vrow);
+            if (chkHardBack.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Hard Back (sewn)",
+                    Price = Convert.ToDecimal(lblHardbackAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkCaseBind.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Case Binding (glued)",
+                    Price = Convert.ToDecimal(lblCaseamt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkPerfBind.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Perfect Bind",
+                    Price = Convert.ToDecimal(lblPerfbindAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkSpiral.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Spiral Bind",
+                    Price = Convert.ToDecimal(lblSpiralAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkSaddlStitch.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Soft Cover Stapled",
+                    Price = Convert.ToDecimal(lblSaddleAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkProfessional.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Professional",
+                    Price = Convert.ToDecimal(lblProfAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+
+            if (chkConv.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Convenient",
+                    Price = Convert.ToDecimal(lblConvAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkYir.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Flashbax",
+                    Price = Convert.ToDecimal(lblYir.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+
+
+            if (chkGlossLam.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Gloss Laminate",
+                    Price = Convert.ToDecimal(lblLaminateAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            if (chkMLaminate.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Matte Laminate",
+                    Price = Convert.ToDecimal(lblMLaminateAmt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vCoverTotal = 0;
+            decimal.TryParse(lblSpeccvrtot.Text, out vCoverTotal);
+            if (vCoverTotal > 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Special Cover",
+                    Price = Convert.ToDecimal(lblSpeccvrtot.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vFoilTotal = 0;
+            decimal.TryParse(txtFoilAd.Text, out vFoilTotal);
+            if (vFoilTotal > 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Foil (Additional)",
+                    Price = Convert.ToDecimal(txtFoilAd.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vclrDiscount = 0;
+            decimal.TryParse(txtClrTot.Text, out vclrDiscount);
+            if (vclrDiscount > 0 || vclrDiscount < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = txtClrDesc.Text,
+                    Price = Convert.ToDecimal(txtClrTot.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vMisc = 0;
+            decimal.TryParse(txtMisc.Text, out vMisc);
+            if (vMisc > 0 || vMisc < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = txtMdesc.Text,
+                    Price = Convert.ToDecimal(txtMisc.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vMisc2 = 0;
+            decimal.TryParse(txtDesc1amt.Text, out vMisc2);
+            if (vMisc2 > 0 || vMisc2 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = txtDesc1.Text,
+                    Price = Convert.ToDecimal(txtDesc1amt.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vMisc3 = 0;
+            decimal.TryParse(txtDesc3tot.Text, out vMisc3);
+            if (vMisc3 > 0 || vMisc3 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = textBox5.Text,
+                    Price = Convert.ToDecimal(txtDesc3tot.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vMisc4 = 0;
+            decimal.TryParse(txtDesc4tot.Text, out vMisc4);
+            if (vMisc4 > 0 || vMisc4 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = txtDesc4.Text,
+                    Price = Convert.ToDecimal(txtDesc4tot.Text)
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vdisc1amount = 0;
+            decimal.TryParse(lbldisc1amount.Text, out vdisc1amount);
+            if (vdisc1amount > 0 || vdisc1amount < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = dp1descComboBox.SelectedItem == null ? "" : dp1descComboBox.SelectedItem.ToString(),
+                    Price = Convert.ToDecimal(lbldisc1amount.Text),
+                    DiscountPercentage = txtDisc.Text
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vdisc2amount = 0;
+            decimal.TryParse(lbldisc2amount.Text, out vdisc2amount);
+            if (vdisc2amount > 0 || vdisc2amount < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Full pay with submission",
+                    Price = Convert.ToDecimal(lbldisc2amount.Text),
+                    DiscountPercentage = txtDp2.Text
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vOtherdiscamt = 0;
+            decimal.TryParse(otherdiscamt.Text, out vOtherdiscamt);
+            if (vOtherdiscamt > 0 || vOtherdiscamt < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = txtDp3Desc.Text,
+                    Price = Convert.ToDecimal(otherdiscamt.Text),
+                    DiscountPercentage = dp3ComboBox.SelectedItem == null ? "0" : dp3ComboBox.SelectedItem.ToString().Trim()
+
+                };
+                vBidDetails.Add(vrow);
+            }
+
+            if (chkMsStandard.Checked)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "My Story With Picture Personalization",
+                    Price = Convert.ToDecimal(lblMsTot.Text),
+                    DiscountPercentage = ""
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vperstotal = 0;
+            decimal.TryParse(lblperstotal.Text, out vperstotal);
+            if (vperstotal > 0 || vperstotal < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Personalization",
+                    Price = Convert.ToDecimal(lblperstotal.Text),
+                    DiscountPercentage = ""
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vIconTot = 0;
+            decimal.TryParse(lblIconTot.Text, out vIconTot);
+            if (vIconTot > 0 || vIconTot < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = "Icons",
+                    Price = Convert.ToDecimal(lblIconTot.Text),
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            //no tax
+            decimal vCredit = 0;
+            decimal.TryParse(txtCredits.Text, out vCredit);
+            if (vCredit > 0 || vCredit < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = cred_etcTextBox.Text + " (No Tax Calculated)",
+                    Price = Convert.ToDecimal(txtCredits.Text),
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vCredit2 = 0;
+            decimal.TryParse(txtCredits2.Text, out vCredit2);
+            if (vCredit2 > 0 || vCredit2 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = cred_etcTextBox1.Text + " (No Tax Calculated)",
+                    Price = Convert.ToDecimal(txtCredits2.Text),
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vOtherChrg = 0;
+            decimal.TryParse(txtOtherChrg.Text, out vOtherChrg);
+            if (vOtherChrg > 0 || vOtherChrg < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = textBox5.Text + " (No Tax Calculated)",
+                    Price = Convert.ToDecimal(txtOtherChrg.Text),
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vOtherChrg2 = 0;
+            decimal.TryParse(txtOtherChrg2.Text, out vOtherChrg2);
+            if (vOtherChrg2 > 0 || vOtherChrg2 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = desc22TextBox.Text + " (No Tax Calculated)",
+                    Price = Convert.ToDecimal(txtOtherChrg2.Text),
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+
+
+            BidInvoiceDetailBindingSource.DataSource = vBidDetails;
+            try
+            {
+                ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
+
+                reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
+
+
+
+                Cursor.Current = Cursors.WaitCursor;
+                ReportDataSource rds = new ReportDataSource("dsCust", custBindingSource);
+                ReportDataSource rds1 = new ReportDataSource("dsBidValues", bidsBindingSource);
+                ReportDataSource rds2 = new ReportDataSource("detailbid", BidInvoiceDetailBindingSource);
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(rds);
+                reportViewer1.LocalReport.DataSources.Add(rds1);
+                reportViewer1.LocalReport.DataSources.Add(rds2);
+
+                
+                return processingResult;
+            }
+            catch (Exception ex) {
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
+                return processingResult;
+            };
+
+            Cursor.Current = Cursors.Arrow;
+            return processingResult;
+
+        }
         //bids
         private bool SaveBid()
         {
@@ -1075,29 +1642,51 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         //General
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
+        {
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+               backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
+        }
+        public  ApiProcessingResult<bool> Save()
         {
           var processingResult=new ApiProcessingResult<bool>();
           
-            switch (tabBids.SelectedIndex)
-            {
-                case 0:
+            //switch (tabBids.SelectedIndex)
+            //{
+            //    case 0:
             
-                    {
+            //        {
 						try {
 							bidsBindingSource.EndEdit();
 							var a=bidsTableAdapter.Update(dsBids.bids);
-                            Fill();
-							MbcMessageBox.Exclamation("Bid record saved.", "Success");
+                          
+						
 						}catch(Exception ex) {
 							MbcMessageBox.Error(ex.Message, "");
 							processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
+                            return processingResult;
 						}
-                    }
-					break;
+     //               }
+					//break;
 
 
-            }
+           // }
             return processingResult;
         }
         public override bool Add()
@@ -2068,364 +2657,9 @@ namespace Mbc5.Forms.MemoryBook {
         private void btnPrntQuote_Click(object sender, EventArgs e)
          
        {
-           
-            var vBidDetails = new List<BidInvoiceDetail>();
-            var vrow = new BidInvoiceDetail();
-            if (chkAllClr.Checked)
-            {
-                vrow.Description = "Color book with "+txtNoPages.Text+" Pages "+ txtNocopies.Text+" Copies";
-                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
-                vrow.DiscountPercentage = "";
-
-            }
-            else
-            {
-                vrow.Description = "Black and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
-                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
-                vrow.DiscountPercentage = "";
-            }
-            vBidDetails.Add(vrow);
-            if (chkHardBack.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Hard Back (sewn)",
-                    Price = Convert.ToDecimal(lblHardbackAmt.Text)
-                    
-                };
-                 vBidDetails.Add(vrow);
-            }
-            if (chkCaseBind.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Case Binding (glued)",
-                    Price = Convert.ToDecimal(lblCaseamt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkPerfBind.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Perfect Bind",
-                    Price = Convert.ToDecimal(lblPerfbindAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkSpiral.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Spiral Bind",
-                    Price = Convert.ToDecimal(lblSpiralAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkSaddlStitch.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Soft Cover Stapled",
-                    Price = Convert.ToDecimal(lblSaddleAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkProfessional.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Professional",
-                    Price = Convert.ToDecimal(lblProfAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-
-            if (chkConv.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Convenient",
-                    Price = Convert.ToDecimal(lblConvAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkYir.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Flashbax",
-                    Price = Convert.ToDecimal(lblYir.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-           
-
-            if (chkGlossLam.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Gloss Laminate",
-                    Price = Convert.ToDecimal(lblLaminateAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            if (chkMLaminate.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Matte Laminate",
-                    Price = Convert.ToDecimal(lblMLaminateAmt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vCoverTotal = 0;
-            decimal.TryParse(lblSpeccvrtot.Text, out vCoverTotal);
-            if (vCoverTotal>0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Special Cover",
-                    Price = Convert.ToDecimal(lblSpeccvrtot.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vFoilTotal = 0;
-            decimal.TryParse(txtFoilAd.Text, out vFoilTotal);
-            if (vFoilTotal > 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Foil (Additional)",
-                    Price = Convert.ToDecimal(txtFoilAd.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vclrDiscount= 0;
-            decimal.TryParse(txtClrTot.Text, out vclrDiscount);
-            if (vclrDiscount > 0|| vclrDiscount < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = txtClrDesc.Text,
-                    Price = Convert.ToDecimal(txtClrTot.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vMisc = 0;
-            decimal.TryParse(txtMisc.Text, out vMisc);
-            if (vMisc > 0 || vMisc < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = txtMdesc.Text,
-                    Price = Convert.ToDecimal(txtMisc.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vMisc2 = 0;
-            decimal.TryParse(txtDesc1amt.Text, out vMisc2);
-            if (vMisc2 > 0 || vMisc2 < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = txtDesc1.Text,
-                    Price = Convert.ToDecimal(txtDesc1amt.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vMisc3 = 0;
-            decimal.TryParse(txtDesc3tot.Text, out vMisc3);
-            if (vMisc3 > 0 || vMisc3 < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = textBox5.Text,
-                    Price = Convert.ToDecimal(txtDesc3tot.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vMisc4 = 0;
-            decimal.TryParse(txtDesc4tot.Text, out vMisc4);
-            if (vMisc4 > 0 || vMisc4 < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = txtDesc4.Text,
-                    Price = Convert.ToDecimal(txtDesc4tot.Text)
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vdisc1amount = 0;
-            decimal.TryParse(lbldisc1amount.Text, out vdisc1amount);
-            if (vdisc1amount > 0 || vdisc1amount < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = dp1descComboBox.SelectedItem==null?"": dp1descComboBox.SelectedItem.ToString(),
-                    Price = Convert.ToDecimal(lbldisc1amount.Text),
-                    DiscountPercentage= txtDisc.Text
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vdisc2amount = 0;
-            decimal.TryParse(lbldisc2amount.Text, out vdisc2amount);
-            if (vdisc2amount > 0 || vdisc2amount < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Full pay with submission",
-                    Price = Convert.ToDecimal(lbldisc2amount.Text),
-                    DiscountPercentage = txtDp2.Text
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vOtherdiscamt = 0;
-            decimal.TryParse(otherdiscamt.Text, out vOtherdiscamt);
-            if (vOtherdiscamt > 0 || vOtherdiscamt < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = txtDp3Desc.Text,
-                    Price = Convert.ToDecimal(otherdiscamt.Text),
-                    DiscountPercentage = dp3ComboBox.SelectedItem == null ? "0" : dp3ComboBox.SelectedItem.ToString().Trim()
-
-                };
-                vBidDetails.Add(vrow);
-            }
-           
-            if (chkMsStandard.Checked)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "My Story With Picture Personalization",
-                    Price = Convert.ToDecimal(lblMsTot.Text),
-                    DiscountPercentage=""
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vperstotal = 0;
-            decimal.TryParse(lblperstotal.Text, out vperstotal);
-            if (vperstotal > 0 || vperstotal < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Personalization",
-                    Price = Convert.ToDecimal(lblperstotal.Text),
-                    DiscountPercentage=""
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vIconTot = 0;
-            decimal.TryParse(lblIconTot.Text, out vIconTot);
-            if (vIconTot > 0 || vIconTot < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "Icons",
-                    Price = Convert.ToDecimal(lblIconTot.Text),
-
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            //no tax
-            decimal vCredit = 0;
-            decimal.TryParse(txtCredits.Text, out vCredit);
-            if (vCredit > 0 || vCredit < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = cred_etcTextBox.Text+" (No Tax Calculated)",
-                    Price = Convert.ToDecimal(txtCredits.Text),
-
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vCredit2 = 0;
-            decimal.TryParse(txtCredits2.Text, out vCredit2);
-            if (vCredit2 > 0 || vCredit2 < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = cred_etcTextBox1.Text + " (No Tax Calculated)",
-                    Price = Convert.ToDecimal(txtCredits2.Text),
-
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vOtherChrg = 0;
-            decimal.TryParse(txtOtherChrg.Text, out vOtherChrg);
-            if (vOtherChrg > 0 || vOtherChrg < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = textBox5.Text + " (No Tax Calculated)",
-                    Price = Convert.ToDecimal(txtOtherChrg.Text),
-
-
-                };
-                vBidDetails.Add(vrow);
-            }
-            decimal vOtherChrg2 = 0;
-            decimal.TryParse(txtOtherChrg2.Text, out vOtherChrg2);
-            if (vOtherChrg2 > 0 || vOtherChrg2 < 0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = desc22TextBox.Text + " (No Tax Calculated)",
-                    Price = Convert.ToDecimal(txtOtherChrg2.Text),
-
-
-                };
-                vBidDetails.Add(vrow);
-            }
+            basePanel.Visible = true;
+            backgroundWorker1.RunWorkerAsync("PrintQuote");
             
-           
-            BidInvoiceDetailBindingSource.DataSource = vBidDetails;
-            try
-            {
-                ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
-
-                reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
-
-
-
-                Cursor.Current = Cursors.WaitCursor;
-                ReportDataSource rds = new ReportDataSource("dsCust", custBindingSource);
-                ReportDataSource rds1 = new ReportDataSource("dsBidValues",bidsBindingSource);
-                ReportDataSource rds2 = new ReportDataSource("detailbid", BidInvoiceDetailBindingSource);
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(rds);
-                reportViewer1.LocalReport.DataSources.Add(rds1);
-                reportViewer1.LocalReport.DataSources.Add(rds2);
-
-                this.reportViewer1.RefreshReport();
-            }catch(Exception ex) { };
-            
-             Cursor.Current = Cursors.Arrow;
         }
         private void prntBid()
         {
@@ -2454,177 +2688,13 @@ namespace Mbc5.Forms.MemoryBook {
             startup = false;
         }
 
-      
-
-  
-
         private void btnCopyToSales_Click(object sender, EventArgs e)
         {
-          
-             int InvNum = this.frmMain.GetNewInvno();
-            if (InvNum<1)
-            {
-                MessageBox.Show("There was an error getting an new invoice number", "Copy To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-             DataRowView drview = (DataRowView)this.bidsBindingSource.Current;
-            int vId =(int) drview["id"];
-            var sqlclient = new SQLCustomClient();
-            sqlclient.AddParameter("@id",vId);
-            sqlclient.AddParameter("@Invno", InvNum);
-          
-            string cmdText = @"INSERT INTO [dbo].[quotes]
-                            ([invno],[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea]
-
-                            ,[book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr],[scovrde],[layn],[laminate]
-
-                            ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
-
-                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
-
-                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
-
-                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
-
-                             ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot],[desc4],[desc4tot],[clrpgdesc]
-							 ,[clrpgtot],[glspaper],[glsamt] ,[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
-							 
-				,[yiramt],[storyamt],[suppamt],[persamount],[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
-
-                            ,[dp1desc] ,[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]
-
-                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
-
-                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
-
-                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
-
-                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt]
-
-                            ,[opink] ,[yrdiscount] ,[luvlines],[yrdiscountamt],[luvlineamt],[fullad],[fulladamt],[halfad],[halfadamt]
-
-                            ,[quarterad] ,[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
-
-
-                            ,[prcor] ,[adcuto],[webonly],[freebooks] ,[basicpp],[IconCopies],[IconAmt] ,[extrchg],[schooltax]
-
-
-                            ,[schooltaxrate],[donotchargeschoolsalestax]
-                            
-                           )
-                   Select @Invno AS Invno,[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea],
-
-                            [book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr] ,[scovrde],[layn],[laminate]
-
-                           ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
-
-                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
-
-                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
-
-                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
-
-                            ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot] ,[desc4],[desc4tot],[clrpgdesc]
-							,[clrpgtot],[glspaper],[glsamt],[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
-							,[yiramt],[storyamt],[suppamt],[persamount] ,[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
-                           ,[dp1desc],[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]                     
-
-                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
-                            
-                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
-
-
-                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
-
-
-                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt] 
-
-                            ,[opink],[yrdiscount],[luvlines],[yrdiscountamt],[luvlineamt],[fullad] ,[fulladamt],[halfad],[halfadamt]
-
-
-                           ,[quarterad],[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
-
-
-                            ,[prcor],[adcuto],[webonly],[freebooks],[basicpp],[IconCopies],[IconAmt],[extrchg],[schooltax],[schooltaxrate]      
-							
-							 ,[donotchargeschoolsalestax]
-                        FROM [Mbc5].[dbo].[bids] where id=@id";
-            sqlclient.CommandText(cmdText);
-            string quoteInsert;
-                try
-                {
-                   var quoteInsertResult=sqlclient.Insert();
-                if (quoteInsertResult.IsError )
-                {
-                    MessageBox.Show("There was an error creating a the sales record.", "Bid To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                }catch (Exception ex)
-                {
-
-                   MessageBox.Show("There was an error creating a the sales record.", "Bid To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            };
-          
-            sqlclient.ClearParameters();
-        
-            string vProdNo = frmMain.GetProdNo();
-
-            ;
-            if (string.IsNullOrEmpty(vProdNo))
-            {
-                MessageBox.Show("Failed to get a production number", "Copy To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            sqlclient.AddParameter("@Invno", InvNum);
-            sqlclient.AddParameter("@Schcode", this.Schcode);
-            sqlclient.AddParameter("@ProdNo", vProdNo);
-            sqlclient.AddParameter("@Contryear", txtBYear.Text);
-            sqlclient.AddParameter("@Company", "MBC");
+            basePanel.Visible = true;
+            backgroundWorker1.RunWorkerAsync("CopyToSales");
             
-          string  strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
-            sqlclient.CommandText(strQuery);
-            try
-            {
-               var prodResult = sqlclient.Insert();
-                if (prodResult.IsError)
-                {
-                    MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            
-            sqlclient.ClearParameters();
-          
-            var vCoverNumber = frmMain.GetCoverNumber();
-            var vInstructions = GetInstructions();
-            sqlclient.AddParameter("@Invno", InvNum);
-            sqlclient.AddParameter("@Schcode", this.Schcode);
-            sqlclient.AddParameter("@Specovr", vCoverNumber);
-            sqlclient.AddParameter("@Specinst",vInstructions);
-            sqlclient.AddParameter("@Company", "MBC");
-            strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-            sqlclient.CommandText(strQuery);
-          
-            try {
-               var coverinsertResult = sqlclient.Insert();
-                    if (coverinsertResult.IsError)
-                    {
-                    MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                    }
-                } catch (Exception ex)
-            {
-                MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            MessageBox.Show("A sales record with Invoice# "+InvNum +" has been created.", "Sales Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
     private string GetInstructions()
     {
         string val = "";
@@ -2801,6 +2871,61 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-        
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string Arg = e.Argument.ToString();
+
+            ApiProcessingResult<bool> taskResult;
+            var result = new ApiProcessingResult();
+            switch (Arg)
+            {
+                    case "Save":
+
+                        result = Save();
+                    result.Tag = "Fill";
+                        break;
+                case "CopyToSales":
+                    result =CopyToSales();
+                    
+                    break;
+                case "PrintQuote":
+                    result =PrintQuote();
+                    result.Tag = "RefreshReport";
+                    break;
+
+
+            }
+            System.Threading.Thread.Sleep(2000);
+            e.Result = result;
+
+           
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.basePanel.Visible = false;
+            ApiProcessingResult result = (ApiProcessingResult)e.Result;
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                return;
+            }
+            if (result.Tag == "Fill")
+            {
+                Fill();
+            }
+            if (result.Tag == "RefreshReport")
+            {
+               this.reportViewer1.RefreshReport();
+                return;
+            }
+            
+            //Checked for fill so this should work.
+            if (result.Tag.Length>0)
+            {
+                MbcMessageBox.Exclamation(result.Tag);
+            }
+            
+        }
     }
 }

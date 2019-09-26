@@ -19,6 +19,7 @@ using Mbc5.Classes;
 using BindingModels;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
+using System.Threading.Tasks;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -90,7 +91,27 @@ namespace Mbc5.Forms.MemoryBook {
 
 
  #region CrudOperations
- public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
+        {
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
+        }
+private  ApiProcessingResult<bool> Save()
 {
 	var processingResult = new ApiProcessingResult<bool>();
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
@@ -126,11 +147,19 @@ namespace Mbc5.Forms.MemoryBook {
             .Submit();
 			processingResult.IsError = true;
 			processingResult.Errors.Add(new ApiProcessingError("Record not save:"+ex.Message, "Record not save:" + ex.Message,""));
+                    return processingResult;
             }
     }
             if (CustAddressHasChanged)
             {
-                UpdateUpsAddresses();
+                var updateResult=UpdateUpsAddresses();
+                if (updateResult.IsError)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors = updateResult.Errors;
+                    return processingResult;
+                }
+               
             }
 
     return processingResult;
@@ -316,14 +345,15 @@ public override void Cancel() {
         //    }
         #endregion
  #region Methods
-    private async void UpdateUpsAddresses()
+    private  ApiProcessingResult<bool> UpdateUpsAddresses()
     {
-            try
-            {
+                var processingResult = new ApiProcessingResult<bool>();
+                try
+                {
                 var sqlquery = new SQLCustomClient();
                 var dr = (DataRowView)custBindingSource.Current;
                 var vYearBookToHome = dr.Row["yb_sth"].ToString();
-                var vOther = dr.Row["shiptocont"].ToString();
+                var vOther = dr.Row["shiptocont1"].ToString();
                 var vSchcode = dr.Row["Schcode"].ToString().Trim();
                 var vSchname = dr.Row["Schname"].ToString().Trim();
                 var vContemail = dr.Row["contemail"].ToString();
@@ -348,59 +378,59 @@ public override void Cancel() {
 
 
 
-   string updateCommandYearbook = @"UPDATE UpsList
-   SET 
-      Schame =@Schame
-      ,Attn =@Attn 
-      ,Addr1 =@Addr1 
-      ,Addr2 =@Addr2
-      ,City =@City
-      ,State =@State 
-      ,Zip =@Zip
-      ,Option1 =@Option1
-      ,Type1 =@Type1 
-      ,Fax =@Fax 
-      ,Option2 =@Option2 
-      ,Type2 =@Type2
-      ,Email =@Email 
+                string updateCommandYearbook = @"UPDATE UpsList
+                SET 
+                Schame =@Schame
+                ,Attn =@Attn 
+                ,Addr1 =@Addr1 
+                ,Addr2 =@Addr2
+                ,City =@City
+                ,State =@State 
+                ,Zip =@Zip
+                ,Option1 =@Option1
+                ,Type1 =@Type1 
+                ,Fax =@Fax 
+                ,Option2 =@Option2 
+                ,Type2 =@Type2
+                ,Email =@Email 
     
-      ,Svdesc =@Svdesc 
+                ,Svdesc =@Svdesc 
     
- WHERE Schcode=@Schcode";
+                WHERE Schcode=@Schcode";
 
- string YearbookInsert = @"
-INSERT INTO UpsList
-           (Schcode
-           ,Schame
-           ,Attn
-           ,Addr1
-           ,Addr2
-           ,City
-           ,State
-           ,Zip
-           ,Option1
-           ,Type1
-           ,Fax
-           ,Option2
-           ,Type2
-           ,Email          
-           ,Svdesc
-          )
-Values(    @Schcode
-           ,@Schame
-           ,@Attn
-           ,@Addr1
-           ,@Addr2
-           ,@City
-           ,@State
-           ,@Zip
-           ,@Option1
-           ,@Type1
-           ,@Fax
-           ,@Option2
-           ,@Type2
-           ,@Email          
-           ,@Svdesc)";
+                string YearbookInsert = @"
+                INSERT INTO UpsList
+                (Schcode
+                ,Schame
+                ,Attn
+                ,Addr1
+                ,Addr2
+                ,City
+                ,State
+                ,Zip
+                ,Option1
+                ,Type1
+                ,Fax
+                ,Option2
+                ,Type2
+                ,Email          
+                ,Svdesc
+                )
+                Values(    @Schcode
+                ,@Schame
+                ,@Attn
+                ,@Addr1
+                ,@Addr2
+                ,@City
+                ,@State
+                ,@Zip
+                ,@Option1
+                ,@Type1
+                ,@Fax
+                ,@Option2
+                ,@Type2
+                ,@Email          
+                ,@Svdesc)";
 
 
                 sqlquery.CommandText("Select Schcode from UpsList WHERE SUBSTRING(Schcode,1,6)=@Schcode");
@@ -408,138 +438,148 @@ Values(    @Schcode
                 var selectResult = sqlquery.SelectMany<SchCheck>();
                 if (selectResult.IsError)
                 {
-                    MbcMessageBox.Error("UpsUpdate failed:" + selectResult.Errors[0].ErrorMessage);
-                    ExceptionlessClient.Default.CreateLog("UpsUpdate Error")
-                        .AddObject(selectResult)
-                        .Submit();
-                    return;
+               
+                ExceptionlessClient.Default.CreateLog("UpsUpdate Error")
+                    .AddObject(selectResult)
+                    .Submit();
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("UpsUpdate failed:" + selectResult.Errors[0].ErrorMessage, "UpsUpdate failed:" + selectResult.Errors[0].ErrorMessage,""));
+                return processingResult ;
                 }
                 if (selectResult.Data == null)
                 {
-                    //Insert 2 records
-                    sqlquery.ClearParameters();
-                    sqlquery.CommandText(YearbookInsert);
-                    sqlquery.AddParameter("@Schcode", vSchcode + "Y");
-                    sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
-                    sqlquery.AddParameter("@Attn", vAttn);
-                    sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
-                    sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
-                    sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
-                    sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
-                    sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
-                    sqlquery.AddParameter("@Type1", "    ");
-                    sqlquery.AddParameter("@Option1", false);
-                    sqlquery.AddParameter("@Fax", vFax);
-                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
-                    var insertResult = sqlquery.Insert();
-                    if (insertResult.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(insertResult)
-                            .AddObject(sqlquery)
-                            .Submit();
-                        return;
+                //Insert 2 records
+                sqlquery.ClearParameters();
+                sqlquery.CommandText(YearbookInsert);
+                sqlquery.AddParameter("@Schcode", vSchcode + "Y");
+                sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
+                sqlquery.AddParameter("@Attn", vAttn);
+                sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
+                sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
+                sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
+                sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
+                sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
+                sqlquery.AddParameter("@Type1", "    ");
+                sqlquery.AddParameter("@Option1", false);
+                sqlquery.AddParameter("@Fax", vFax);
+                sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                var insertResult = sqlquery.Insert();
+                if (insertResult.IsError)
+                {
+                   
+                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                        .AddObject(insertResult)
+                        .AddObject(sqlquery)
+                        .Submit();
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, ""));
+                        return processingResult;
                     }
-                    sqlquery.ClearParameters();
-                    sqlquery.AddParameter("@Schcode", vSchcode + "K");
-                    sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
-                    sqlquery.AddParameter("@Attn", vAttn);
-                    sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
-                    sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
-                    sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
-                    sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
-                    sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
-                    sqlquery.AddParameter("@Type1", "    ");
-                    sqlquery.AddParameter("@Option1", false);
-                    sqlquery.AddParameter("@Fax", vFax);
-                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                sqlquery.ClearParameters();
+                sqlquery.AddParameter("@Schcode", vSchcode + "K");
+                sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
+                sqlquery.AddParameter("@Attn", vAttn);
+                sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
+                sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
+                sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
+                sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
+                sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
+                sqlquery.AddParameter("@Type1", "    ");
+                sqlquery.AddParameter("@Option1", false);
+                sqlquery.AddParameter("@Fax", vFax);
+                sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
 
-                    var insertResult2 = sqlquery.Insert();
-                    if (insertResult2.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(insertResult)
-                            .AddObject(sqlquery)
-                            .Submit();
-                        return;
+                var insertResult2 = sqlquery.Insert();
+                if (insertResult2.IsError)
+                {
+                    
+                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                        .AddObject(insertResult)
+                        .AddObject(sqlquery)
+                        .Submit();
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, ""));
+                        return processingResult;
                     }
-                    return;
+                return processingResult; 
                 }
                 var returnedData = (List<SchCheck>)selectResult.Data;
                 sqlquery.ClearParameters();
                 if (returnedData.Count == 2)
                 {
-                    //update y and k
-                    sqlquery.CommandText(updateCommandYearbook);
-                    sqlquery.AddParameter("@Schcode", vSchcode + "Y");
-                    sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
-                    sqlquery.AddParameter("@Attn", vAttn);
-                    sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
-                    sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
-                    sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
-                    sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
-                    sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
-                    sqlquery.AddParameter("@Type1", "    ");
-                    sqlquery.AddParameter("@Option1", false);
-                    sqlquery.AddParameter("@Fax", vFax);
-                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
-                    var updateResult = sqlquery.Update();
-                    if (updateResult.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(updateResult)
-                            .AddObject(sqlquery)
-                            .Submit();
-                        return;
+                //update y and k
+                sqlquery.CommandText(updateCommandYearbook);
+                sqlquery.AddParameter("@Schcode", vSchcode + "Y");
+                sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
+                sqlquery.AddParameter("@Attn", vAttn);
+                sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
+                sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
+                sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
+                sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
+                sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
+                sqlquery.AddParameter("@Type1", "    ");
+                sqlquery.AddParameter("@Option1", false);
+                sqlquery.AddParameter("@Fax", vFax);
+                sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                var updateResult = sqlquery.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage);
+                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                        .AddObject(updateResult)
+                        .AddObject(sqlquery)
+                        .Submit();
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, ""));
+                        return processingResult;
                     }
-                    sqlquery.ClearParameters();
-                    sqlquery.AddParameter("@Schcode", vSchcode + "K");
-                    sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
-                    sqlquery.AddParameter("@Attn", vAttn);
-                    sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
-                    sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
-                    sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
-                    sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
-                    sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
-                    sqlquery.AddParameter("@Type1", "    ");
-                    sqlquery.AddParameter("@Option1", false);
-                    sqlquery.AddParameter("@Fax", vFax);
-                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
-                    sqlquery.CommandText(YearbookInsert);
-                    var updateResult2 = sqlquery.Update();
-                    if (updateResult2.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(updateResult2)
-                            .AddObject(sqlquery)
-                            .Submit();
-                        return;
+                sqlquery.ClearParameters();
+                sqlquery.AddParameter("@Schcode", vSchcode + "K");
+                sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
+                sqlquery.AddParameter("@Attn", vAttn);
+                sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
+                sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
+                sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
+                sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
+                sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
+                sqlquery.AddParameter("@Type1", "    ");
+                sqlquery.AddParameter("@Option1", false);
+                sqlquery.AddParameter("@Fax", vFax);
+                sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                sqlquery.CommandText(YearbookInsert);
+                var updateResult2 = sqlquery.Update();
+                if (updateResult2.IsError)
+                {
+                    MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
+                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                        .AddObject(updateResult2)
+                        .AddObject(sqlquery)
+                        .Submit();
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + "Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, ""));
+                        return processingResult;
                     }
-                    return;
+                return processingResult;
 
 
                 }
                 if (returnedData.Count == 1)
                 {
-                    //update 1 and insert1
-                    if (returnedData[0].Schcode.Contains("Y"))
-                    {
+                //update 1 and insert1
+                if (returnedData[0].Schcode.Contains("Y"))
+                {
                         //update y
                         //insert K
                         sqlquery.CommandText(updateCommandYearbook);
@@ -561,12 +601,14 @@ Values(    @Schcode
                         var updateResult = sqlquery.Update();
                         if (updateResult.IsError)
                         {
-                            MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage);
-                            ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                                .AddObject(updateResult)
-                                .AddObject(sqlquery)
-                                .Submit();
-                            return;
+                                
+                                ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                                    .AddObject(updateResult)
+                                    .AddObject(sqlquery)
+                                    .Submit();
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, ""));
+                            return processingResult;
                         }
                         sqlquery.ClearParameters();
                         sqlquery.AddParameter("@Schcode", vSchcode + "K");
@@ -593,75 +635,154 @@ Values(    @Schcode
                                 .AddObject(insertResult2)
                                 .AddObject(sqlquery)
                                 .Submit();
-                            return;
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, ""));
+                            return processingResult;
                         }
-                        return;
-                    }
-                    else
-                    {
-                        //update k
-                        sqlquery.CommandText(updateCommandYearbook);
-                        sqlquery.AddParameter("@Schcode", vSchcode + "K");
-                        sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
-                        sqlquery.AddParameter("@Attn", vAttn);
-                        sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
-                        sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
-                        sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
-                        sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
-                        sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
-                        sqlquery.AddParameter("@Type1", "    ");
-                        sqlquery.AddParameter("@Option1", false);
-                        sqlquery.AddParameter("@Fax", vFax);
-                        sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                        sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                        sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                        sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                        return processingResult;
+                  }
+                else
+                {
+                    //update k
+                    sqlquery.CommandText(updateCommandYearbook);
+                    sqlquery.AddParameter("@Schcode", vSchcode + "K");
+                    sqlquery.AddParameter("@Schame", vOther == "Y" ? "Residence" : vSchname);
+                    sqlquery.AddParameter("@Attn", vAttn);
+                    sqlquery.AddParameter("@Addr1", vOther == "Y" ? vCAddr1 : vAddr1);
+                    sqlquery.AddParameter("@Addr2", vOther == "Y" ? vCAddr2 : vAddr2);
+                    sqlquery.AddParameter("@City", vOther == "Y" ? vCCity : vCity);
+                    sqlquery.AddParameter("@State", vOther == "Y" ? vCState : vState);
+                    sqlquery.AddParameter("@Zip", vOther == "Y" ? vCZip : vZip);
+                    sqlquery.AddParameter("@Type1", "    ");
+                    sqlquery.AddParameter("@Option1", false);
+                    sqlquery.AddParameter("@Fax", vFax);
+                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
                         
-                        var updateResult2 = sqlquery.Update();
-                        if (updateResult2.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
-                            ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                                .AddObject(updateResult2)
-                                .AddObject(sqlquery)
-                                .Submit();
-                            return;
+                    var updateResult2 = sqlquery.Update();
+                    if (updateResult2.IsError)
+                    {
+                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
+                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                            .AddObject(updateResult2)
+                            .AddObject(sqlquery)
+                            .Submit();
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, ""));
+                            return processingResult;
                         }
-                        //insert y
-                        sqlquery.CommandText(YearbookInsert);
-                        sqlquery.ClearParameters();
-                        sqlquery.AddParameter("@Schcode", vSchcode + "Y");
-                        sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
-                        sqlquery.AddParameter("@Attn", vAttn);
-                        sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
-                        sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
-                        sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
-                        sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
-                        sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
-                        sqlquery.AddParameter("@Type1", "    ");
-                        sqlquery.AddParameter("@Option1", false);
-                        sqlquery.AddParameter("@Fax", vFax);
-                        sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
-                        sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
-                        sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
-                        sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
-                        var insertResult = sqlquery.Insert();
-                        if (insertResult.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage);
-                            ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                                .AddObject(insertResult)
-                                .AddObject(sqlquery)
-                                .Submit();
-                            return;
+                    //insert y
+                    sqlquery.CommandText(YearbookInsert);
+                    sqlquery.ClearParameters();
+                    sqlquery.AddParameter("@Schcode", vSchcode + "Y");
+                    sqlquery.AddParameter("@Schame", vYearBookToHome == "Y" ? "Residence" : vSchname);
+                    sqlquery.AddParameter("@Attn", vAttn);
+                    sqlquery.AddParameter("@Addr1", vYearBookToHome == "Y" ? vCAddr1 : vAddr1);
+                    sqlquery.AddParameter("@Addr2", vYearBookToHome == "Y" ? vCAddr2 : vAddr2);
+                    sqlquery.AddParameter("@City", vYearBookToHome == "Y" ? vCCity : vCity);
+                    sqlquery.AddParameter("@State", vYearBookToHome == "Y" ? vCState : vState);
+                    sqlquery.AddParameter("@Zip", vYearBookToHome == "Y" ? vCZip : vZip);
+                    sqlquery.AddParameter("@Type1", "    ");
+                    sqlquery.AddParameter("@Option1", false);
+                    sqlquery.AddParameter("@Fax", vFax);
+                    sqlquery.AddParameter("@Option2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? true : false);
+                    sqlquery.AddParameter("@Type2", !string.IsNullOrEmpty(vContemail) || !string.IsNullOrEmpty(vSchemail) ? "email" : "    ");
+                    sqlquery.AddParameter("@Email", string.IsNullOrEmpty(vContemail) ? vContemail : vSchemail);
+                    sqlquery.AddParameter("@Svdesc", string.IsNullOrEmpty(vSvdesc) ? "Ground" : vSvdesc);
+                    var insertResult = sqlquery.Insert();
+                    if (insertResult.IsError)
+                    {
+                        MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage);
+                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
+                            .AddObject(insertResult)
+                            .AddObject(sqlquery)
+                            .Submit();
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, ""));
+                            return processingResult;
                         }
-                        return;
-                    }
+                    return processingResult;
                 }
-            }catch(Exception ex) {
+                }
+                }catch(Exception ex) {
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+                return processingResult;
 
             };
+            return processingResult;
+        }
+        private  ApiProcessingResult<bool> PrintProductionTicket()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
+             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
 
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+            if (dataReturned.IsError)
+            {
+               
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(dataReturned.Errors[0].ErrorMessage, dataReturned.Errors[0].ErrorMessage,""));
+                return processingResult;
+            }
+
+            var data = (ProdutnTicketModel)dataReturned.Data;
+
+            ProdutnTicketModelBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
+            processingResult.IsError = true;
+            processingResult.Errors.Add(new ApiProcessingError(dataReturned.Errors[0].ErrorMessage, dataReturned.Errors[0].ErrorMessage, ""));
+            return processingResult;
+        }
+        private  ApiProcessingResult<bool> PrintProdCheckList()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"
+                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
+                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
+                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
+                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
+                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
+                        FROM Cust C
+                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+                            Left JOIN Invoice I ON Q.Invno=I.Invno
+                            Left JOIN Recv2 R ON Q.Invno=R.Invno
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                        Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
+            if (dataReturnedResult.IsError)
+            {
+                
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(dataReturnedResult.Errors[0].ErrorMessage, dataReturnedResult.Errors[0].ErrorMessage,""));
+
+            }
+            var data = (ProductionCheckList)dataReturnedResult.Data;
+
+            ProductionCheckListBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewerCheckList.RefreshReport();
+            Cursor.Current = Cursors.Default;
+            return processingResult;
         }
         private void EmailAllContacts()
         {
@@ -761,7 +882,7 @@ Values(    @Schcode
 
             }
         }
-        private void Fill()
+       public override void Fill()
         {
 
             try
@@ -1926,32 +2047,8 @@ Values(    @Schcode
      
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
-             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
-             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
-                FROM Cust C
-                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
-				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
-				Left JOIN Recv2 R ON Q.Invno=R.Invno
-                LEFT JOIN Produtn P ON Q.Invno=P.Invno
-            Where Q.Invno=@Invno";
-
-            sqlClient.CommandText(cmdText);
-            sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
-            if (dataReturned.IsError)
-            {
-                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var data = (ProdutnTicketModel)dataReturned.Data;
-
-            ProdutnTicketModelBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewer1.RefreshReport();
-            Cursor.Current = Cursors.Default;
+            this.basePanel.Visible = true;
+            backgroundWorker1.RunWorkerAsync("PrintProductionTicket");
 
         }
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
@@ -1971,41 +2068,8 @@ Values(    @Schcode
         }
         private void btnProdChk_Click(object sender, EventArgs e)
         {
-
-            //m.newfname = cust.newfname
-            //m.newlname = cust.newlname
-
-            //m.spec1 = ''
-
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"
-                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
-                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
-                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
-                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
-                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
-                        FROM Cust C
-                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
-                            Left JOIN Invoice I ON Q.Invno=I.Invno
-                            Left JOIN Recv2 R ON Q.Invno=R.Invno
-                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
-                        Where Q.Invno=@Invno";
-
-            sqlClient.CommandText(cmdText);
-            sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
-            if (dataReturnedResult.IsError)
-            {
-                MessageBox.Show(dataReturnedResult.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            var data = (ProductionCheckList)dataReturnedResult.Data;
-
-            ProductionCheckListBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewerCheckList.RefreshReport();
-            Cursor.Current = Cursors.Default;
-
+            basePanel.Visible = true;
+            backgroundWorker1.RunWorkerAsync("PrintProdCheckList");
         }
         private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
@@ -2186,6 +2250,7 @@ Values(    @Schcode
         private void AddLog()
         {
             frmTeleLogModify frmTeleLogModify = new frmTeleLogModify("MBC", Schcode, this.frmMain);
+            frmTeleLogModify.TopMost = true;
             DialogResult result = frmTeleLogModify.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -2666,13 +2731,74 @@ Values(    @Schcode
 
         private void button6_Click(object sender, EventArgs e)
         {
-            UpdateUpsAddresses();
+            this.basePanel.Visible = true;
+            backgroundWorker1.RunWorkerAsync("UpdateUPSAddress");
+           
         }
 
         private void txtaddress_TextChanged(object sender, EventArgs e)
         {
             
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.basePanel.Visible = true;
+            
+            
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string Arg = e.Argument.ToString();
+
+           ApiProcessingResult<bool> taskResult ;
+            var result = new ApiProcessingResult();
+            switch (Arg)
+            {
+                case "UpdateUPSAddress":
+                    result = UpdateUpsAddresses();
+                   
+                    break;
+                case "PrintProductionTicket":
+                    result = PrintProductionTicket();
+                    
+
+                    break;
+                case "PrintProdCheckList":
+                    result = PrintProdCheckList();
+                 
+                    break;
+                case "Save":
+                 
+                   result = Save();
+              
+                    break;
+
+
+            }
+            System.Threading.Thread.Sleep(2000);
+            e.Result = result;
+            
+              
+           
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.basePanel.Visible = false;
+            ApiProcessingResult result = (ApiProcessingResult)e.Result;
+            if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+           
+        }
+
+        private void custDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //event must be here to bypass data errors due to background worker issue.
         }
 
 

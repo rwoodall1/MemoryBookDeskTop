@@ -482,6 +482,7 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="Content\MAIL.png" />
     <None Include="Content\school.png" />
+    <Content Include="Content\SystemIcons\refresh.png" />
     <Content Include="Content\SystemIcons\tsAdd.Image.png" />
     <Content Include="Content\SystemIcons\tsCancel.Image.png" />
     <Content Include="Content\SystemIcons\tsCopy.Image.png" />

@@ -67,7 +67,7 @@ if (e.Value != null && string.IsNullOrEmpty(e.Value.ToString()))
 }
 public override void SchCodeSearch()
 {
-var saveResult = this.Save();
+var saveResult = this.SaveSales();
 if (saveResult.IsError)
 {
 
@@ -113,7 +113,7 @@ if (result == DialogResult.OK)
 }
 public override void SchnameSearch()
 {
-var saveResult = this.Save();
+var saveResult = this.SaveSales();
 if (saveResult.IsError)
 {
 
@@ -162,7 +162,7 @@ if (result == DialogResult.OK)
 }
 public override void OracleCodeSearch()
 {
-var saveResult = this.Save();
+var saveResult = this.SaveSales();
 if (saveResult.IsError)
 {
 
@@ -209,7 +209,7 @@ if (result == DialogResult.OK)
 public override void InvoiceNumberSearch()
 {
 var invno = "0";
-var saveResult = this.Save();
+var saveResult = this.SaveSales();
 if (saveResult.IsError)
 {
 
@@ -1510,11 +1510,25 @@ if (!retval) { return retval; }
 retval = this.Validate();
 return retval;
 }
-public override ApiProcessingResult<bool> Save()
+public override void Save(bool ShowSpinner)
 {
-           
-                
-return SaveSales();
+    //so call can be made from menu
+    if (ShowSpinner)
+    {
+        basePanel.Visible = true;
+       // backgroundWorker1.RunWorkerAsync("Save");
+    }
+    else
+    {
+        var result = SaveSales();
+        if (result.IsError)
+        {
+            MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+        }
+
+    }
+
+
 }
 private ApiProcessingResult<bool> SaveSales()
 {
@@ -1570,7 +1584,7 @@ catch
 
 }
 }
-private void Fill()
+public override void Fill()
 {
 
 if (Invno != 0)
@@ -2469,7 +2483,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             //Check if invoice exist to see what to do.
             qtedateDateBox.DateValue = DateTime.Now;
             qtedateDateBox.Date = qtedateDateBox.DateValue.ToString();
-            var saveResult = Save();
+            var saveResult = SaveSales();
             if (saveResult.IsError)
             {
                 return;

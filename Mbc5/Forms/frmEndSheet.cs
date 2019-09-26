@@ -90,7 +90,7 @@ namespace Mbc5.Forms {
         #region Methods
         public override void SchCodeSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -144,7 +144,7 @@ namespace Mbc5.Forms {
         }
         public override void SchnameSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -196,7 +196,7 @@ namespace Mbc5.Forms {
         }
         public override void OracleCodeSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -246,7 +246,7 @@ namespace Mbc5.Forms {
         {
             DataRowView currentrow = (DataRowView)endsheetBindingSource.Current;
             var invno = this.Invno.ToString();  
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -288,7 +288,7 @@ namespace Mbc5.Forms {
         public override void JobNoSearch()
         {
 
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -340,7 +340,7 @@ namespace Mbc5.Forms {
         public override void ProdutnNoSearch()
         {
 
-            var saveResult = this.Save(false);
+            var saveResult = this.Save();
             if (saveResult.IsError)
             {
 
@@ -393,11 +393,28 @@ namespace Mbc5.Forms {
 
 
         }
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
         {
-            return Save(true);
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+            }
+            else
+            {
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+
+            }
+
+
         }
-        public  ApiProcessingResult<bool> Save(bool ShowMessage)
+       
+        private ApiProcessingResult<bool> Save()
 		{
 			var processingResult = new ApiProcessingResult<bool>();
 			switch (tbEndSheets.SelectedIndex)
@@ -408,12 +425,8 @@ namespace Mbc5.Forms {
 					if (endSheetResult.IsError) {
 						MbcMessageBox.Error(endSheetResult.Errors[0].ErrorMessage, "");
 						processingResult.IsError = true;
-					} else {
-                        if (ShowMessage)
-                        {
-                            MbcMessageBox.Exclamation("End sheet saved.", "Success");
-                        }
-					}
+					} 
+					
 
 					break;
 				case 1:
@@ -422,9 +435,7 @@ namespace Mbc5.Forms {
 						if (supplementResult.IsError) {
 							MbcMessageBox.Error(supplementResult.Errors[0].ErrorMessage, "");
 							processingResult.IsError = true;
-						} else {
-							MbcMessageBox.Exclamation("Supplement saved.", "Success");
-						}
+						} 
 						
 						break;
 					}
@@ -446,9 +457,7 @@ namespace Mbc5.Forms {
 						if (bannerResult.IsError) {
 							MbcMessageBox.Error(bannerResult.Errors[0].ErrorMessage, "");
 							processingResult.IsError = true;
-						} else {
-							MbcMessageBox.Exclamation("Banner saved.", "Success");
-						}
+						} 
 					
 						break;
 					}
@@ -704,7 +713,7 @@ namespace Mbc5.Forms {
 			}
 			return true;
 		}
-		private void Fill()
+		public override void Fill()
 		{
             if (Schcode != null)
             {

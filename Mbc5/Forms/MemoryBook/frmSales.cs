@@ -71,6 +71,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
+            
+            txtModifiedByPay.Text = this.ApplicationUser.id;
             pg1.AutoScroll = false;
 
             this.SetConnectionString();
@@ -85,7 +87,9 @@ namespace Mbc5.Forms.MemoryBook
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-
+            txtModifiedBy.Text = this.ApplicationUser.id;
+            txtModifiedByInv.Text = this.ApplicationUser.id;
+            txtModifiedByInvdetail.Text = this.ApplicationUser.id;
 
         }
 
@@ -166,7 +170,7 @@ namespace Mbc5.Forms.MemoryBook
         #region "Search"
         public override void SchCodeSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -213,7 +217,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void SchnameSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -262,7 +266,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void OracleCodeSearch()
         {
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -317,7 +321,7 @@ namespace Mbc5.Forms.MemoryBook
         public override void InvoiceNumberSearch()
         {
             var invno = "0";
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -366,7 +370,7 @@ namespace Mbc5.Forms.MemoryBook
         public override void JobNoSearch()
         {
 
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -421,7 +425,7 @@ namespace Mbc5.Forms.MemoryBook
         public override void ProdutnNoSearch()
         {
 
-            var saveResult = this.Save(false);
+            var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
@@ -2456,7 +2460,7 @@ namespace Mbc5.Forms.MemoryBook
                 booktypeTextBox.ReadOnly = string.IsNullOrEmpty(vKitrecvd);
             }
         }
-        private void Fill()
+        public override void Fill()
         {
             if (!string.IsNullOrEmpty(Schcode))
             {
@@ -2503,21 +2507,35 @@ namespace Mbc5.Forms.MemoryBook
             txtModifiedByPay.Text = this.ApplicationUser.id;
             SetNoticeLabels();
         }
-        public override ApiProcessingResult<bool> Save()
+        public override void Save(bool ShowSpinner)
         {
-            return Save(true);
-        }
+            //so call can be made from menu
+            if (ShowSpinner)
+            {
+                basePanel.Visible = true;
+                backgroundWorker1.RunWorkerAsync("Save"+ tabSales.SelectedIndex.ToString());
+               
+            }
+            else
+            {
+                var result = Save(tabSales.SelectedIndex);
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
 
-        public ApiProcessingResult<bool> Save(bool showSuccessMsg)
+            }
+
+
+        }
+       
+        public ApiProcessingResult<bool> Save(int vIndex)
         {
             var processingResult = new ApiProcessingResult<bool>();
-            this.Cursor = Cursors.WaitCursor;
-            txtModifiedBy.Text = this.ApplicationUser.id;
-            txtModifiedByInv.Text = this.ApplicationUser.id;
-            txtModifiedByInvdetail.Text = this.ApplicationUser.id;
-            txtModifiedByPay.Text = this.ApplicationUser.id;
+            
+            
 
-            switch (tabSales.SelectedIndex)
+                switch (vIndex)
             {
                 case 0:
                 case 1:
@@ -2528,13 +2546,7 @@ namespace Mbc5.Forms.MemoryBook
                             MbcMessageBox.Error("Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, "");
                             processingResult.IsError = true;
                         }
-                        else
-                        {
-                            if (showSuccessMsg)
-                            {
-                                MbcMessageBox.Exclamation("Sales record has been saved.", "Sales Record");
-                            }
-                        }
+                       
 
                         break;
                     }
@@ -2550,13 +2562,7 @@ namespace Mbc5.Forms.MemoryBook
                         MbcMessageBox.Error("Payment record failed to save:" + result.Errors[0].ErrorMessage, "");
                         processingResult.IsError = true;
                     }
-                    else
-                    {
-                        if (showSuccessMsg)
-                        {
-                            MbcMessageBox.Exclamation("Payment record has been saved.", "Payment Record");
-                        }
-                    }
+                    
 
                     break;
 
@@ -4033,7 +4039,7 @@ namespace Mbc5.Forms.MemoryBook
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             //Check if invoice exist to see what to do.
-            var saveResult = Save(false);
+            var saveResult = Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
                 return;
@@ -5460,6 +5466,97 @@ namespace Mbc5.Forms.MemoryBook
             {
 
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string Arg = e.Argument.ToString();
+
+            ApiProcessingResult<bool> taskResult;
+            var result = new ApiProcessingResult();
+            switch (Arg)
+            {
+                case "Save":
+                case "Save0":
+                case "Save1":
+                case "Save2":
+                case "Save3" :
+                    string num = "0";
+                    if (Arg.Length>4)
+                    {
+                        num = Arg.Substring(4, 1);
+                    }
+                    int vIndex=int.Parse(num);
+
+                    result = Save(vIndex);
+                    result.Tag = "Fill";
+                    break;
+                //case "CopyToSales":
+                //    result = CopyToSales();
+
+                //    break;
+                //case "PrintQuote":
+                //    result = PrintQuote();
+                //    result.Tag = "RefreshReport";
+                //    break;
+
+
+            }
+            System.Threading.Thread.Sleep(2000);
+            e.Result = result;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.basePanel.Visible = false;
+            ApiProcessingResult result = (ApiProcessingResult)e.Result;
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                return;
+            }
+            if (result.Tag == "Fill")
+            {
+                Fill();
+            }
+            if (result.Tag == "RefreshReport")
+            {
+                this.reportViewer1.RefreshReport();
+                return;
+            }
+
+            //Checked for fill so this should work.
+            if (result.Tag.Length > 0)
+            {
+                MbcMessageBox.Exclamation(result.Tag);
+            }
+
+        }
+
+        private void txtClrTot_Leave_1(object sender, EventArgs e)
+        {
+          
+            BookCalc();
+        }
+
+        private void txtMisc_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc1amt_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc3tot_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc4tot_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
         }
 
 

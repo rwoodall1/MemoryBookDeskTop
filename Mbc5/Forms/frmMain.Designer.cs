@@ -102,6 +102,7 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -541,6 +542,7 @@
             this.tsCancel,
             this.toolStripSeparator1,
             this.tsUndo,
+            this.toolStripButton1,
             this.toolStripSeparator2,
             this.tsPrint,
             this.tsEmail,
@@ -741,6 +743,17 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(66, 22);
+            this.toolStripButton1.Text = "Refresh";
+            this.toolStripButton1.ToolTipText = "Refresh Data";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,5 +850,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsDeptScanLabel;
         private System.Windows.Forms.ToolStripMenuItem cancelationStatementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
