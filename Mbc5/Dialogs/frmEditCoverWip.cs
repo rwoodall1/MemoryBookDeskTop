@@ -11,18 +11,22 @@ using BaseClass.Classes;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
+using BindingModels;
+using BaseClass;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditCoverWip : Form
     {
-        public frmEditCoverWip(int id, int invno)
+        public frmEditCoverWip(int id, int invno,string schcode)
         {
             InitializeComponent();
             ID = id;
             Invno = invno;
+            Schcode = schcode;
         }
         public int ID { get; set; }
         public int Invno { get; set; }
+        public string Schcode { get; set; }
         public bool Refill { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
@@ -37,56 +41,93 @@ namespace Mbc5.Dialogs
             this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
             this.coverdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
-            coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
-            var pos =coverdetailBindingSource.Find("id", ID);
-            if (pos > -1)
+            var sqlQuery = new SQLCustomClient();
+                sqlQuery.CommandText(@"
+                    Select DescripId,War,Wdr,Wtr,Wir,Invno,Id,Schcode Where Invno=@Invno
+                    ");
+            sqlQuery.AddParameter("@Invno", Invno);
+            var queryResult = sqlQuery.SelectMany<CoverDetail>();
+            if (queryResult.IsError)
             {
-                coverdetailBindingSource.Position = pos;
+                MbcMessageBox.Error("Failed to select Cover Detail Records:"+queryResult.Errors[0].ErrorMessage);
+                return;
+            }
+            var vData =(List<CoverDetail>) queryResult.Data;
+            coverdetailBindingSource.DataSource = vData;
+            if (ID != 0)
+            {
+                var pos = coverdetailBindingSource.Find("id", ID);
+                if (pos > -1)
+                {
+                    coverdetailBindingSource.Position = pos;
 
+                }
+                else
+                {
+                    MessageBox.Show("Record was not found,first available record is showing.", "Wip Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {
-                MessageBox.Show("Record was not found,first available record is showing.", "Wip Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+               
+
             }
         }
 
         private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.coverdetailBindingSource.EndEdit();
-            DataRowView row = (DataRowView)coverdetailBindingSource.Current;           
-            int descid = (int)cmbDescription.SelectedValue;
             
-            DateTime war = (DateTime)row["War"];
-            DateTime wdr = (DateTime)row["Wdr"];
-            decimal wtr = (decimal)row["Wtr"];
-           string wir = row["Wir"].ToString();
-            int invno = (int)row["Invno"];
-            int id = (int)row["id"];
-            SQLQuery sqlQuery = new SQLQuery();
-            var cmdtxt = "UPDATE CoverDetail SET DescripId = @DescripId,War =@War,Wdr =@Wdr,Wtr =@Wtr,Wir =@Wir,Invno =@Invno WHERE Id=@Id";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@DescripId",descid),
-                new SqlParameter("@War",war),
-                new SqlParameter("@Wdr",wdr),
-                new SqlParameter("@Wtr",wtr),
-                new SqlParameter("@Wir",wir),
-                new SqlParameter("@Invno",invno),
-                new SqlParameter("@Id",id)
-
-            };
-            var result=sqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdtxt, parameters);
-            if (result ==-1)
-            {
-                MessageBox.Show("There was an error updating record. The record was not saved.");
-            }
             else { MessageBox.Show("Record Saved."); }
             Refill = true;
+        }
+        private void Update() {
+           // var vRow =(int)((DataRowView)coverdetailBindingSource.Current).Row["Id"];
+     
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"
+                Update CoverDetail Set DescripId=@DescripId ,War=@War, Wdr=@Wdr,Wtr=@Wtr,Wir=@Wir Where Id=@Id
+                ");
+            sqlQuery.AddParameter("@DescripId",);
+            sqlQuery.AddParameter("@War", warDateBox.DateValue);
+            sqlQuery.AddParameter("@Wdr", wdrDateBox.DateValue);
+            sqlQuery.AddParameter("@Wtr",decimal.Parse(wtrTextBox.Text.Trim()));
+            sqlQuery.AddParameter("@Wir", wirTextBox.Text.Trim());
+            sqlQuery.AddParameter("@Id", (int)((DataRowView)coverdetailBindingSource.Current).Row["Id"]);
+           var updateResult= sqlQuery.Update();
+            if (updateResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to update record:" + updateResult.Errors[0].ErrorMessage);
+                return;
+            }
+
+
+        }
+        private void Insert()
+        {
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"
+                Insert Into CoverDetail (DescripId,War, Wdr,Wtr,Wir,Schcode,Invno) Values(@DescripId,@War,@Wdr,@Wtr,@Wir,@Schcode,@Schcode);
+                ");
+            sqlQuery.AddParameter("@DescripId",);
+            sqlQuery.AddParameter("@War", warDateBox.DateValue);
+            sqlQuery.AddParameter("@Wdr", wdrDateBox.DateValue);
+            sqlQuery.AddParameter("@Wtr", decimal.Parse(wtrTextBox.Text.Trim()));
+            sqlQuery.AddParameter("@Wir", wirTextBox.Text.Trim());
+            sqlQuery.AddParameter("@Invno", Invno);
+            sqlQuery.AddParameter("@Schcode", Schcode);
+            var updateResult = sqlQuery.Update();
+            if (updateResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to update record:" + updateResult.Errors[0].ErrorMessage);
+                return;
+            }
+
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            txtInvno.Text = Invno.ToString();
+           
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)

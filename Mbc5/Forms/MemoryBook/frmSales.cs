@@ -31,7 +31,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private bool startup = true;
         private string SchoolZipCode { get; set; }
-
+        private bool SaveSucceded { get; set; }
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
         {
             InitializeComponent();
@@ -217,12 +217,12 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void SchnameSearch()
         {
-            var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
 
                 return;
-            }
+            } else {SaveSucceded = false; }
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
             var schname = currentrow["schname"].ToString();
 
@@ -266,13 +266,14 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void OracleCodeSearch()
         {
-            var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
 
                 return;
             }
-          
+            else { SaveSucceded = false; }
+
             var oraclecode = "";
             try {
                  DataRowView currentrow = (DataRowView)custBindingSource.Current;
@@ -321,12 +322,13 @@ namespace Mbc5.Forms.MemoryBook
         public override void InvoiceNumberSearch()
         {
             var invno = "0";
-            var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
 
                 return;
             }
+            else { SaveSucceded = false; }
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
             if (currentrow != null)
             {
@@ -370,12 +372,13 @@ namespace Mbc5.Forms.MemoryBook
         public override void JobNoSearch()
         {
 
-            var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
 
                 return;
             }
+            else { SaveSucceded = false; }
 
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
             var invno = currentrow["invno"].ToString();
@@ -425,13 +428,14 @@ namespace Mbc5.Forms.MemoryBook
         public override void ProdutnNoSearch()
         {
 
-            var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
 
                 return;
             }
-          
+            else { SaveSucceded = false; }
+
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
             var prodno = currentrow["prodno"].ToString();
 
@@ -1389,28 +1393,27 @@ namespace Mbc5.Forms.MemoryBook
 
             if (quotesBindingSource.Count > 0)
             {
-                if (ValidSales())
-                {
+                
 
                     try
                     {
-                        this.Validate();
+                        
                         this.quotesBindingSource.EndEdit();
                         var aa = quotesTableAdapter.Adapter.UpdateCommand.CommandText;
                         var a = quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
-                        this.Fill();
+                  
                         UpdateProductionCopyPages();//updates production with number of copies and pages
 
                     }
                     catch (DBConcurrencyException ex1)
                     {
                        // MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
-                        this.Fill();
+                        //this.Fill();
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
                         //if (result == DialogResult.Yes)
                         //{
-                        //    Save();
+                        //    Save(false);
                         //}
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Another user has updated this record, your copy is not current. Your data is being reverted, Please re - enter your data.", "Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", ""));
@@ -1422,12 +1425,7 @@ namespace Mbc5.Forms.MemoryBook
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                     }
-                }
-                else
-                {
-                    processingResult.IsError = true;
-                    processingResult.Errors.Add(new ApiProcessingError("Sales record failed to validate.", "Sales record failed to validate.", ""));
-                }
+               
             }
             return processingResult;
         }
@@ -2509,10 +2507,60 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void Save(bool ShowSpinner)
         {
+            if (quotesBindingSource.Count < 1)
+            {
+                SaveSucceded = true;
+                return;
+            }
+            //do validation first so background thread works
+            switch (tabSales.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                    {
+                        if (!ValidSales())
+                        {
+                            MbcMessageBox.Error("Sales record failed to validate.");
+                            return;
+                        }else if (!this.Validate())
+                        {
+                            MbcMessageBox.Error("Sales record failed to validate.");
+                            return;
+                        }
+                            
+                            break;
+                    }
+
+
+                case 2:
+                    // MessageBox.Show("This function is not available in the invoice tab.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SaveSucceded = true;
+                    return;
+                    break;
+                    
+                case 3:
+                    if (!this.ValidatePayment())
+                    {
+                        return;
+                    }
+                    break;
+                case 4:
+                    // MessageBox.Show("This function is not available in the current tab.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SaveSucceded = true;
+                    return;
+                    break;
+                   
+
+            }
+
             //so call can be made from menu
             if (ShowSpinner)
             {
                 basePanel.Visible = true;
+                this.quotesBindingSource.EndEdit();
+                this.paymntBindingSource.EndEdit();
+                this.custBindingSource.EndEdit();
+               
                 backgroundWorker1.RunWorkerAsync("Save"+ tabSales.SelectedIndex.ToString());
                
             }
@@ -2522,7 +2570,10 @@ namespace Mbc5.Forms.MemoryBook
                 if (result.IsError)
                 {
                     MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                    SaveSucceded = false;
                 }
+                SaveSucceded = true;
+                Fill();
 
             }
 
@@ -2543,7 +2594,8 @@ namespace Mbc5.Forms.MemoryBook
                         var salesResult = SaveSales();
                         if (salesResult.IsError)
                         {
-                            MbcMessageBox.Error("Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, "");
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, "Sales record failed to save:" + salesResult.Errors[0].ErrorMessage,""));
                             processingResult.IsError = true;
                         }
                        
@@ -2553,13 +2605,18 @@ namespace Mbc5.Forms.MemoryBook
 
 
                 case 2:
-                    MessageBox.Show("This function is not available in the invoice tab.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("This function is not available in the invoice tab.", "This function is not available in the invoice tab.", ""));
+                    processingResult.IsError = true;
                     break;
                 case 3:
                     var result = SavePayment();
                     if (result.IsError)
                     {
-                        MbcMessageBox.Error("Payment record failed to save:" + result.Errors[0].ErrorMessage, "");
+                     
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Payment record failed to save:" + result.Errors[0].ErrorMessage, "Payment record failed to save:" + result.Errors[0].ErrorMessage, ""));
                         processingResult.IsError = true;
                     }
                     
@@ -2567,7 +2624,7 @@ namespace Mbc5.Forms.MemoryBook
                     break;
 
             }
-            this.Cursor = Cursors.Default;
+      
 
             return processingResult;
         }
@@ -4039,11 +4096,14 @@ namespace Mbc5.Forms.MemoryBook
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             //Check if invoice exist to see what to do.
-            var saveResult = Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
+            this.Save(false);
+            if (!SaveSucceded)
             {
+
                 return;
             }
+            else { SaveSucceded = false; }
+
             var sqlQuery = new SQLQuery();
             var queryString = "SELECT Invno From Invoice where Invno=@Invno ";
             SqlParameter[] parameters = new SqlParameter[] {
@@ -4299,6 +4359,8 @@ namespace Mbc5.Forms.MemoryBook
 
         private void tabSales_Deselecting(object sender, TabControlCancelEventArgs e)
         {
+
+
             if (this.tabSales.SelectedIndex == 3)
             {
                 var paymentResult = SavePayment();
@@ -4310,15 +4372,14 @@ namespace Mbc5.Forms.MemoryBook
             if (this.tabSales.SelectedIndex == 0 || this.tabSales.SelectedIndex == 1)
             {
                 var salesResult = SaveSales();
+                Fill();
                 if (salesResult.IsError)
                 {
                     e.Cancel = true;
                 }
             }
-            //if(this.tabSales.SelectedIndex == 1)
-            //{
-            //    MessageBox.Show("Do you want to save the online sales record? This will also save anything entered or changed on the sales tab.")
-            //}
+            
+
         }
 
 
@@ -4426,34 +4487,17 @@ namespace Mbc5.Forms.MemoryBook
 
         private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
         {
-            switch (tabSales.SelectedIndex)
-            {
-                case 0:
-                case 1:
-                    var salesResult = SaveSales();
-                    if (salesResult.IsError)
+           
+                  Save(false);
+                    if (!SaveSucceded)
                     {
-                        var result = MessageBox.Show("Sales record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        var result = MessageBox.Show("Record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (result == DialogResult.No)
                         {
                             e.Cancel = true;
                             return;
                         }
                     }
-                    break;
-                case 3:
-                    var paymentResult = SavePayment();
-                    if (paymentResult.IsError)
-                    {
-                        var result = MessageBox.Show("Payment record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (result == DialogResult.No)
-                        {
-                            e.Cancel = true;
-                            return;
-                        }
-                    }
-                    break;
-            }
         }
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
@@ -4473,9 +4517,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
-
+            reportViewer1.RefreshReport();
         }
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
@@ -5472,7 +5514,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             string Arg = e.Argument.ToString();
 
-            ApiProcessingResult<bool> taskResult;
+           
             var result = new ApiProcessingResult();
             switch (Arg)
             {
@@ -5491,15 +5533,7 @@ namespace Mbc5.Forms.MemoryBook
                     result = Save(vIndex);
                     result.Tag = "Fill";
                     break;
-                //case "CopyToSales":
-                //    result = CopyToSales();
-
-                //    break;
-                //case "PrintQuote":
-                //    result = PrintQuote();
-                //    result.Tag = "RefreshReport";
-                //    break;
-
+               
 
             }
             System.Threading.Thread.Sleep(2000);
@@ -5512,18 +5546,23 @@ namespace Mbc5.Forms.MemoryBook
             ApiProcessingResult result = (ApiProcessingResult)e.Result;
             if (result.IsError)
             {
+                SaveSucceded = false;
                 MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                if (result.Tag == "Fill")
+                {
+                    //currency error
+                    Fill();
+                  
+                }
                 return;
             }
             if (result.Tag == "Fill")
             {
+                SaveSucceded = true;
                 Fill();
-            }
-            if (result.Tag == "RefreshReport")
-            {
-                this.reportViewer1.RefreshReport();
                 return;
             }
+           
 
             //Checked for fill so this should work.
             if (result.Tag.Length > 0)

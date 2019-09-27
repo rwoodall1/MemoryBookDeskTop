@@ -681,4 +681,15 @@ namespace BindingModels
             public bool PrintOnWhitePages { get; set; }
             public bool ProofOFPages { get; set; }
     }
+    public class CoverDetail
+    {
+        public int DescripId { get; set; }
+        public DateTime War { get; set; }
+        public DateTime Wdr { get; set; }
+        public decimal Wtr { get; set; }
+        public string Wir { get; set; }
+        public int Invno { get; set; }
+        public int Id { get; set; }
+        public string Schcode { get; set; }
+    }
 }

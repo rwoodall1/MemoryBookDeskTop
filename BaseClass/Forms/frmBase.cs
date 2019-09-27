@@ -208,7 +208,11 @@ namespace BaseClass
         {
 			
         }
-       
+        public virtual ApiProcessingResult<bool> Save()
+        {
+            return new ApiProcessingResult<bool>();
+        }
+
         [Browsable(true)]
 		public virtual void SchCodeSearch() {
 

@@ -631,6 +631,7 @@
     <EmbeddedResource Include="Reports\BannerTicket.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
     <EmbeddedResource Include="Reports\MeridianCoverTicket.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />

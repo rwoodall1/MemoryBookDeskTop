@@ -7178,7 +7178,7 @@ namespace Mbc5.Forms
 					MbcMessageBox.Error(ex.Message, "");
 					return;
 				};
-                var aaaa = coverdetailBindingSource .Count;
+               
 
                 if ((DataRowView)coversBindingSource1.Current != null)
                 {
@@ -7187,6 +7187,8 @@ namespace Mbc5.Forms
                     if (dsProdutn.covers.Count < 1)
                     {
                         DisableControls(this.tbProdutn.TabPages[2]);
+                         btnAddPartial.Visible = true;
+                        EnableControls(btnAddPartial);
                     }
                     else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 }
@@ -7288,111 +7290,106 @@ namespace Mbc5.Forms
         }
 
 
-
-        public override void Save(bool ShowSpinner)
+        public override void Save(bool FromMenu)
         {
-            //so call can be made from menu
-            if (ShowSpinner)
-            {
-                basePanel.Visible = true;
-                // backgroundWorker1.RunWorkerAsync("Save");
-            }
-            else
-            {
-                var result = Save();
-                if (result.IsError)
-                {
-                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
-                }
-
-            }
-
-
+            //called from menu
+            var result=Save(); 
+            
         }
+
         public ApiProcessingResult<bool> Save()
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			switch (tbProdutn.SelectedIndex)
-			{
-				case 0:
-					var produtnResult = SaveProdutn();
-                    
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            switch (tbProdutn.SelectedIndex)
+            {
+                case 0:
+                    var produtnResult = SaveProdutn();
 
-                    if (produtnResult.IsError) {
-						MbcMessageBox.Error(produtnResult.Errors[0].ErrorMessage, "");
-						processingResult = produtnResult;
-					}
 
-						break;
-				case 1:
-					{
-						var wipResult = SaveWip();
-						
-						if (wipResult.IsError) {
-							MbcMessageBox.Error(wipResult.Errors[0].ErrorMessage, "");
-							processingResult = wipResult;
-						}
+                    if (produtnResult.IsError)
+                    {
+                        MbcMessageBox.Error(produtnResult.Errors[0].ErrorMessage, "");
+                        processingResult = produtnResult;
+                    }
 
-						var produtnResult1 = SaveProdutn();
-						if (produtnResult1.IsError) {
-							MbcMessageBox.Error(produtnResult1.Errors[0].ErrorMessage, "");
-							processingResult = produtnResult1;
-						}
-						break;
-					}
-				case 2:
-					{
-						var coverResult = SaveCovers();
-						
-						if (coverResult.IsError) {
-							MbcMessageBox.Error(coverResult.Errors[0].ErrorMessage, "");
-							processingResult = coverResult;
-						}
+                    break;
+                case 1:
+                    {
+                        var wipResult = SaveWip();
 
-						var produtnResult2 = SaveProdutn();
-						if (produtnResult2.IsError) {
-							MbcMessageBox.Error(produtnResult2.Errors[0].ErrorMessage, "");
-							processingResult = produtnResult2;
-						}
-						break;
-					}
+                        if (wipResult.IsError)
+                        {
+                            MbcMessageBox.Error(wipResult.Errors[0].ErrorMessage, "");
+                            processingResult = wipResult;
+                        }
 
-				case 3:
+                        var produtnResult1 = SaveProdutn();
+                        if (produtnResult1.IsError)
+                        {
+                            MbcMessageBox.Error(produtnResult1.Errors[0].ErrorMessage, "");
+                            processingResult = produtnResult1;
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        var coverResult = SaveCovers();
 
-					break;
-				case 4:
-					var partBkResult = SavePartBK();
-				
-					if (partBkResult.IsError) {
-						MbcMessageBox.Error(partBkResult.Errors[0].ErrorMessage, "");
-						processingResult = partBkResult;
-					}
+                        if (coverResult.IsError)
+                        {
+                            MbcMessageBox.Error(coverResult.Errors[0].ErrorMessage, "");
+                            processingResult = coverResult;
+                        }
 
-					var produtnResult3 = SaveProdutn();
-					if (produtnResult3.IsError) {
-						MbcMessageBox.Error(produtnResult3.Errors[0].ErrorMessage, "");
-						processingResult = produtnResult3;
-					}
-				
-				
-					break;
-				case 5:
-					var ptBkBResult = SavePtBkB();
-					
-					if (ptBkBResult.IsError) {
-						MbcMessageBox.Error(ptBkBResult.Errors[0].ErrorMessage, "");
-						processingResult = ptBkBResult;
-					}
+                        var produtnResult2 = SaveProdutn();
+                        if (produtnResult2.IsError)
+                        {
+                            MbcMessageBox.Error(produtnResult2.Errors[0].ErrorMessage, "");
+                            processingResult = produtnResult2;
+                        }
+                        break;
+                    }
 
-					var produtnResult4 = SaveProdutn();
-					if (produtnResult4.IsError) {
-						MbcMessageBox.Error(produtnResult4.Errors[0].ErrorMessage, "");
-						processingResult = produtnResult4;
-					}
-			
-					break;
+                case 3:
+
+                    break;
+                case 4:
+                    var partBkResult = SavePartBK();
+
+                    if (partBkResult.IsError)
+                    {
+                        MbcMessageBox.Error(partBkResult.Errors[0].ErrorMessage, "");
+                        processingResult = partBkResult;
+                    }
+
+                    var produtnResult3 = SaveProdutn();
+                    if (produtnResult3.IsError)
+                    {
+                        MbcMessageBox.Error(produtnResult3.Errors[0].ErrorMessage, "");
+                        processingResult = produtnResult3;
+                    }
+
+
+                    break;
+                case 5:
+                    var ptBkBResult = SavePtBkB();
+
+                    if (ptBkBResult.IsError)
+                    {
+                        MbcMessageBox.Error(ptBkBResult.Errors[0].ErrorMessage, "");
+                        processingResult = ptBkBResult;
+                    }
+
+                    var produtnResult4 = SaveProdutn();
+                    if (produtnResult4.IsError)
+                    {
+                        MbcMessageBox.Error(produtnResult4.Errors[0].ErrorMessage, "");
+                        processingResult = produtnResult4;
+                    }
+
+                    break;
                 case 6:
-                    var reOrderResult =SaveReOrder();
+                    var reOrderResult = SaveReOrder();
 
                     if (reOrderResult.IsError)
                     {
@@ -7400,12 +7397,12 @@ namespace Mbc5.Forms
                         processingResult = reOrderResult;
                     }
 
-                    
+
                     break;
             }
-			return processingResult;
-		}
-		private bool SaveOrStop()
+            return processingResult;
+        }
+        private bool SaveOrStop()
 		{
 			bool retval = true;
 			switch (tbProdutn.SelectedIndex)
@@ -9828,8 +9825,16 @@ namespace Mbc5.Forms
 
 		private void btnPrntMbOnline_Click(object sender, EventArgs e)
 		{
+            try
+            {
+             reportViewerMboOnline.RefreshReport();
+            }catch(Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message);
+            }
+          
 
-		}
+        }
 
 		private void shpdateDateTimePicker_Leave(object sender, EventArgs e)
 		{
@@ -10623,7 +10628,74 @@ namespace Mbc5.Forms
                 MbcMessageBox.Error(ex.Message, "");
             }
         }
-        
+        private void PrintMeridianCoverTicket()
+        {
+
+            var sqlQuery = new SQLCustomClient();
+            string cmdText = @"
+                            Select 
+							C.Schcode,
+							C.Schname,
+							C.SchColors AS SchoolColors,
+							Q.Invno,
+							Q.prodcode,     
+                                P.Prodno,
+						
+								P.CoverType,
+								P.SpecCover,
+								P.CoverDesc,
+								P.NoPages,
+								P.Laminated,
+								CV.CvrStock,
+								IIF(Q.sf=1,'SF','LF')AS PlannerType,P.TypeStyle,
+								CV.Mascot,
+                                CV.Clr1,CV.Clr2,CV.Clr3,CV.Clr4,
+					            CV.[Desc],
+								CV.Desc1a,CV.Desc2,CV.Desc3,CV.Desc4,CV.CustSubmtx,
+								P.ScRecv,
+								CV.SpBack,
+								CV.ReqstdCpy,
+								P.Prfreq,
+                                Cv.CvrStock,
+								CV.Specinst,
+								P.SpecCover,
+								CASE
+                                    WHEN Q.prodcode  ='HSP' THEN 'HS'
+                                    WHEN Q.ProdCode='MSP' THEN 'MS'
+                                    WHEN Q.ProdCode='ELSP' THEN 'ELEM'
+                                    WHEN Q.ProdCode='PRISP' THEN 'PRIM'
+                                    WHEN Q.ProdCode='LTE' THEN 'LTE'
+                                    WHEN Q.ProdCode='STE' THEN 'STE'
+                                END AS Schtype  
+								
+                            FROM MCust C 
+                            LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                            LEFT JOIN Covers CV ON Q.Invno=CV.Invno
+                            WHERE Q.Invno=@Invno
+                            ";
+            sqlQuery.CommandText(cmdText);
+            sqlQuery.AddParameter("@Invno", Invno);
+            var queryResult = sqlQuery.Select<MeridianCoverTicket>();
+            if (queryResult.IsError)
+            {
+                MbcMessageBox.Error(queryResult.Errors[0].ErrorMessage);
+                ExceptionlessClient.Default.CreateLog("Meridian Cover Ticket Error")
+                    .AddObject(queryResult)
+                    .Submit();
+                return;
+
+            }
+            var queryData = (MeridianCoverTicket)queryResult.Data;
+            mcoverTicketBindingSource.DataSource = queryData;
+            mcoverReportViewer.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianCoverTicket.rdlc";
+            mcoverReportViewer.LocalReport.DataSources.Clear();
+            mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsMCover", mcoverTicketBindingSource));
+            mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
+
+            mcoverReportViewer.RefreshReport();
+
+        }
         private void btnAddPhotoCd_Click(object sender, EventArgs e)
         {
             var sqlQuery = new SQLCustomClient();
@@ -10686,70 +10758,8 @@ namespace Mbc5.Forms
 
         private void btnMeridianTicket_Click(object sender, EventArgs e)
         {
-            var sqlQuery = new SQLCustomClient();
-            string cmdText = @"
-                            Select 
-							C.Schcode,
-							C.Schname,
-							C.SchColors AS SchoolColors,
-							Q.Invno,
-							Q.prodcode,     
-                                P.Prodno,
-						
-								P.CoverType,
-								P.SpecCover,
-								P.CoverDesc,
-								P.NoPages,
-								P.Laminated,
-								CV.CvrStock,
-								IIF(Q.sf=1,'SF','LF')AS PlannerType,P.TypeStyle,
-								CV.Mascot,
-                                CV.Clr1,CV.Clr2,CV.Clr3,CV.Clr4,
-					            CV.[Desc],
-								CV.Desc1a,CV.Desc2,CV.Desc3,CV.Desc4,CV.CustSubmtx,
-								P.ScRecv,
-								CV.SpBack,
-								CV.ReqstdCpy,
-								P.Prfreq,
-                                Cv.CvrStock,
-								CV.Specinst,
-								P.SpecCover,
-								CASE
-                                    WHEN Q.prodcode  ='HSP' THEN 'HS'
-                                    WHEN Q.ProdCode='MSP' THEN 'MS'
-                                    WHEN Q.ProdCode='ELSP' THEN 'ELEM'
-                                    WHEN Q.ProdCode='PRISP' THEN 'PRIM'
-                                    WHEN Q.ProdCode='LTE' THEN 'LTE'
-                                    WHEN Q.ProdCode='STE' THEN 'STE'
-                                END AS Schtype  
-								
-                            FROM MCust C 
-                            LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
-                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
-                            LEFT JOIN Covers CV ON Q.Invno=CV.Invno
-                            WHERE Q.Invno=@Invno
-                            ";
-            sqlQuery.CommandText(cmdText);
-            sqlQuery.AddParameter("@Invno", Invno);
-            var queryResult = sqlQuery.Select<MeridianCoverTicket>();
-            if (queryResult.IsError)
-            {
-                MbcMessageBox.Error(queryResult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Meridian Cover Ticket Error")
-                    .AddObject(queryResult)
-                    .Submit();
-                return;
-                
-            }
-            var queryData=(MeridianCoverTicket)queryResult.Data;
-            mcoverTicketBindingSource.DataSource = queryData;
-            mcoverReportViewer.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianCoverTicket.rdlc";
-            mcoverReportViewer.LocalReport.DataSources.Clear();
-            mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsMCover", mcoverTicketBindingSource));
-           mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
-           
-            mcoverReportViewer.RefreshReport();
 
+            PrintMeridianCoverTicket();
         }
 
         private void btnCvrUpdate_Click(object sender, EventArgs e)
@@ -11221,6 +11231,58 @@ namespace Mbc5.Forms
         private void mcoverReportViewer_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
         {
                 try { mcoverReportViewer.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+        }
+
+        private void reportViewerMboOnline_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewerMboOnline.PrintDialog();
+        }
+
+        private void btnAddCoverRec_Click(object sender, EventArgs e)
+        {
+            var vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+            var sqlQuery = new SQLCustomClient();
+
+            sqlQuery.AddParameter("@Invno", Invno);
+            sqlQuery.ClearParameters();
+            sqlQuery.CommandText(@"INSERT INTO Covers (Invno,Schcode,Company,BookType) Values(@Invno,@Schcode,@Company,@BookType)");
+            sqlQuery.AddParameter("@Invno", Invno);
+            sqlQuery.AddParameter("@Schcode", Schcode);
+            sqlQuery.AddParameter("@BookType", "MBO");
+            sqlQuery.AddParameter("@Company", txtCompany.Text);
+
+            var insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to instert Partial Book Record:" + insertResult.Errors[0].ErrorMessage);
+                return;
+            }
+            try
+            {
+                coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+                coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+                btnAddCoverRec.Visible = false;
+                EnableAllControls(this.tbProdutn.TabPages[4]);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+                return;
+            }
+        }
+
+        private void btnNewCvrScanRec_Click(object sender, EventArgs e)
+        {
+          
+    
+         
+            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(0, Invno,Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+               
+                try { coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno); } catch { }
+            }
         }
 
 

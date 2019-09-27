@@ -268,6 +268,7 @@
             // cmbDescription
             // 
             this.cmbDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "Description", true));
+            this.cmbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.wipDescriptionsBindingSource, "Id", true));
             this.cmbDescription.DataSource = this.wipDescriptionsBindingSource;
             this.cmbDescription.DisplayMember = "Description";
             this.cmbDescription.FormattingEnabled = true;
@@ -314,11 +315,14 @@
             this.tableAdapterManager.coverdetailTableAdapter = null;
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.mcustTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
+            this.tableAdapterManager.ReorderDetailTableAdapter = null;
+            this.tableAdapterManager.ReOrderTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WipDescriptionsTableAdapter = null;
             this.tableAdapterManager.WipDetailTableAdapter = null;
