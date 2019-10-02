@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 namespace Mbc5.Dialogs {
-    public partial class frmEditPartBkWip : Form {
-        public frmEditPartBkWip(int id,int invno,string schcode) {
+    public partial class frmEditReorderWip : Form {
+        public frmEditReorderWip(int id,int invno,string schcode) {
             InitializeComponent();
             ID = id;
             Invno = invno;
@@ -21,7 +21,7 @@ namespace Mbc5.Dialogs {
         public bool Refill { get; set; }
         public string Schcode { get; set; }
         
-        private void frmEditPartBkWip_Load(object sender,EventArgs e) {
+        private void frmEditPrtBkWip_Load(object sender,EventArgs e) {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             string AppConnectionString = "";
             if (Environment == "DEV")
@@ -31,22 +31,23 @@ namespace Mbc5.Dialogs {
             else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
 
             this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "PartialBook");
-            this.partBkDetailTableAdapter.EditFillBy(this.dsProdutn.PartBkDetail,Invno);
+            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "PhotosCD");
+            reorderDetailTableAdapter.EditFillBy(dsProdutn.ReorderDetail, Invno);
+     
           
             if (ID != 0)
             {
                 try
                 {
-                    var pos = partBkDetailBindingSource.Find("id", ID);
+                    var pos =reorderDetailBindingSource.Find("id", ID);
                     if (pos > -1)
                     {
-                        partBkDetailBindingSource.Position = pos;
+                        reorderDetailBindingSource.Position = pos;
 
                     }
                     else
                     {
-                        MessageBox.Show("Record was not found,first available record is showing.", "Partial BK Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Record was not found,first available record is showing.", "Reorder Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 catch (Exception ex) { };
@@ -54,48 +55,48 @@ namespace Mbc5.Dialogs {
             }
             else
             {
-                partBkDetailBindingSource.AddNew();
+                reorderDetailBindingSource.AddNew();
                 txtInvno.Text = Invno.ToString();
                 lblSchcode.Text = Schcode;
             }
-            this.Text += "  " + Schcode + "/" + Invno.ToString();
+            this.Text +="  "+ Schcode + "/" + Invno.ToString();
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+       
+        private void frmEditPrtBkWip_FormClosing(object sender, FormClosingEventArgs e)
         {
-            txtInvno.Text = Invno.ToString();
-            lblSchcode.Text = Schcode;
+            if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel; }
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (result == DialogResult.Yes)
-            {
-                partBkDetailTableAdapter.Delete(ID);
-                partBkDetailBindingSource.RemoveCurrent();
-                Refill = true;
-            }
-        }
-        private void partBkDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             if (this.Validate())
             {
                 try
                 {
-                    this.partBkDetailBindingSource.EndEdit();
-                    partBkDetailTableAdapter.Update(this.dsProdutn);
+                    this.reorderDetailBindingSource.EndEdit();
+                    reorderDetailTableAdapter.Update(dsProdutn.ReorderDetail);
                     Refill = true;
                 }
-                catch(Exception ex) { }
+                catch (Exception ex) { }
             }
-         
-
         }
 
-        private void frmEditPartBkWip_FormClosing(object sender, FormClosingEventArgs e)
+        private void bindingNavigatorDeleteItem_Click_1(object sender, EventArgs e)
         {
-            if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel;  }
+            var result = MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                reorderDetailTableAdapter.Delete(ID);
+                 reorderDetailBindingSource.RemoveCurrent();
+                Refill = true;
+            }
+        }
+
+        private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
+        {
+            txtInvno.Text = Invno.ToString();
+            lblSchcode.Text = Schcode;
         }
 
         private void wtrTextBox_Validating(object sender, CancelEventArgs e)
@@ -127,5 +128,7 @@ namespace Mbc5.Dialogs {
                 e.Cancel = true;
             }
         }
+
+       
     }
 }

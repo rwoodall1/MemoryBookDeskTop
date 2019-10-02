@@ -30,6 +30,7 @@
             System.Windows.Forms.Label wtrLabel;
             System.Windows.Forms.Label wirLabel;
             System.Windows.Forms.Label invnoLabel;
+            System.Windows.Forms.Label scanCopiesLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditWip));
             this.wipDetailBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -46,7 +47,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.wipDetailBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.cmbDescription = new System.Windows.Forms.ComboBox();
             this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wtrTextBox = new System.Windows.Forms.TextBox();
             this.wirTextBox = new System.Windows.Forms.TextBox();
@@ -56,17 +56,23 @@
             this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
             this.wdrDateBox = new CustomControls.DateBox();
             this.warDateBox = new CustomControls.DateBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.descripIdComboBox = new System.Windows.Forms.ComboBox();
+            this.scanCopiesTextBox = new System.Windows.Forms.TextBox();
+            this.lblSchcode = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             warLabel = new System.Windows.Forms.Label();
             wdrLabel = new System.Windows.Forms.Label();
             wtrLabel = new System.Windows.Forms.Label();
             wirLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
+            scanCopiesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingNavigator)).BeginInit();
             this.wipDetailBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // descriptionLabel
@@ -129,6 +135,16 @@
             invnoLabel.TabIndex = 12;
             invnoLabel.Text = "Invoice#";
             // 
+            // scanCopiesLabel
+            // 
+            scanCopiesLabel.AutoSize = true;
+            scanCopiesLabel.Location = new System.Drawing.Point(222, 171);
+            scanCopiesLabel.Name = "scanCopiesLabel";
+            scanCopiesLabel.Size = new System.Drawing.Size(70, 13);
+            scanCopiesLabel.TabIndex = 17;
+            scanCopiesLabel.Text = "Scan Copies:";
+            scanCopiesLabel.Visible = false;
+            // 
             // wipDetailBindingNavigator
             // 
             this.wipDetailBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -155,7 +171,7 @@
             this.wipDetailBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.wipDetailBindingNavigator.Name = "wipDetailBindingNavigator";
             this.wipDetailBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.wipDetailBindingNavigator.Size = new System.Drawing.Size(492, 25);
+            this.wipDetailBindingNavigator.Size = new System.Drawing.Size(369, 25);
             this.wipDetailBindingNavigator.TabIndex = 0;
             this.wipDetailBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -265,18 +281,6 @@
             this.wipDetailBindingNavigatorSaveItem.Text = "Save Data";
             this.wipDetailBindingNavigatorSaveItem.Click += new System.EventHandler(this.wipDetailBindingNavigatorSaveItem_Click);
             // 
-            // cmbDescription
-            // 
-            this.cmbDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDetailBindingSource, "Description", true));
-            this.cmbDescription.DataSource = this.wipDescriptionsBindingSource;
-            this.cmbDescription.DisplayMember = "Description";
-            this.cmbDescription.FormattingEnabled = true;
-            this.cmbDescription.Location = new System.Drawing.Point(105, 51);
-            this.cmbDescription.Name = "cmbDescription";
-            this.cmbDescription.Size = new System.Drawing.Size(225, 21);
-            this.cmbDescription.TabIndex = 3;
-            this.cmbDescription.ValueMember = "Id";
-            // 
             // wipDescriptionsBindingSource
             // 
             this.wipDescriptionsBindingSource.DataMember = "WipDescriptions";
@@ -289,6 +293,7 @@
             this.wtrTextBox.Name = "wtrTextBox";
             this.wtrTextBox.Size = new System.Drawing.Size(100, 20);
             this.wtrTextBox.TabIndex = 9;
+            this.wtrTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wtrTextBox_Validating);
             // 
             // wirTextBox
             // 
@@ -297,6 +302,7 @@
             this.wirTextBox.Name = "wirTextBox";
             this.wirTextBox.Size = new System.Drawing.Size(100, 20);
             this.wirTextBox.TabIndex = 11;
+            this.wirTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wirTextBox_Validating);
             // 
             // txtInvno
             // 
@@ -317,11 +323,14 @@
             this.tableAdapterManager.coverdetailTableAdapter = null;
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.mcustTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
+            this.tableAdapterManager.ReorderDetailTableAdapter = null;
+            this.tableAdapterManager.ReOrderTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WipDescriptionsTableAdapter = null;
             this.tableAdapterManager.WipDetailTableAdapter = this.wipDetailTableAdapter;
@@ -353,11 +362,49 @@
             this.warDateBox.Size = new System.Drawing.Size(114, 21);
             this.warDateBox.TabIndex = 15;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // descripIdComboBox
+            // 
+            this.descripIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.wipDetailBindingSource, "DescripId", true));
+            this.descripIdComboBox.DataSource = this.wipDescriptionsBindingSource;
+            this.descripIdComboBox.DisplayMember = "Description";
+            this.descripIdComboBox.FormattingEnabled = true;
+            this.descripIdComboBox.Location = new System.Drawing.Point(104, 54);
+            this.descripIdComboBox.Name = "descripIdComboBox";
+            this.descripIdComboBox.Size = new System.Drawing.Size(180, 21);
+            this.descripIdComboBox.TabIndex = 17;
+            this.descripIdComboBox.ValueMember = "Id";
+            // 
+            // scanCopiesTextBox
+            // 
+            this.scanCopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDetailBindingSource, "ScanCopies", true));
+            this.scanCopiesTextBox.Location = new System.Drawing.Point(296, 168);
+            this.scanCopiesTextBox.Name = "scanCopiesTextBox";
+            this.scanCopiesTextBox.Size = new System.Drawing.Size(53, 20);
+            this.scanCopiesTextBox.TabIndex = 18;
+            this.scanCopiesTextBox.Visible = false;
+            // 
+            // lblSchcode
+            // 
+            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDetailBindingSource, "Schcode", true));
+            this.lblSchcode.Location = new System.Drawing.Point(-2, 230);
+            this.lblSchcode.Name = "lblSchcode";
+            this.lblSchcode.Size = new System.Drawing.Size(10, 11);
+            this.lblSchcode.TabIndex = 19;
+            this.lblSchcode.Text = "label1";
+            // 
             // frmEditWip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 242);
+            this.ClientSize = new System.Drawing.Size(369, 245);
+            this.Controls.Add(this.lblSchcode);
+            this.Controls.Add(scanCopiesLabel);
+            this.Controls.Add(this.scanCopiesTextBox);
+            this.Controls.Add(this.descripIdComboBox);
             this.Controls.Add(this.warDateBox);
             this.Controls.Add(this.wdrDateBox);
             this.Controls.Add(invnoLabel);
@@ -369,7 +416,6 @@
             this.Controls.Add(wdrLabel);
             this.Controls.Add(warLabel);
             this.Controls.Add(descriptionLabel);
-            this.Controls.Add(this.cmbDescription);
             this.Controls.Add(this.wipDetailBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -384,6 +430,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,7 +454,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton wipDetailBindingNavigatorSaveItem;
-        private System.Windows.Forms.ComboBox cmbDescription;
       
         private System.Windows.Forms.TextBox wtrTextBox;
         private System.Windows.Forms.TextBox wirTextBox;
@@ -416,5 +462,9 @@
         private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
         private CustomControls.DateBox wdrDateBox;
         private CustomControls.DateBox warDateBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox descripIdComboBox;
+        private System.Windows.Forms.TextBox scanCopiesTextBox;
+        private System.Windows.Forms.Label lblSchcode;
     }
     }

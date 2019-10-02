@@ -1,5 +1,5 @@
 ﻿namespace Mbc5.Dialogs {
-    partial class frmEditCoverWip {
+    partial class frmEditPrtBkWip {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,17 +24,28 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label warLabel;
-            System.Windows.Forms.Label wdrLabel;
-            System.Windows.Forms.Label wtrLabel;
-            System.Windows.Forms.Label wirLabel;
             System.Windows.Forms.Label invnoLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditCoverWip));
-            this.coverDetailBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.coverdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            System.Windows.Forms.Label wirLabel;
+            System.Windows.Forms.Label wtrLabel;
+            System.Windows.Forms.Label wdrLabel;
+            System.Windows.Forms.Label warLabel;
+            System.Windows.Forms.Label descriptionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditPrtBkWip));
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
+            this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
+            this.txtInvno = new System.Windows.Forms.TextBox();
+            this.prtbkbdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wirTextBox = new System.Windows.Forms.TextBox();
+            this.wtrTextBox = new System.Windows.Forms.TextBox();
+            this.cmbDescription = new System.Windows.Forms.ComboBox();
+            this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wdrDateBox = new CustomControls.DateBox();
+            this.warDateBox = new CustomControls.DateBox();
+            this.lblSchcode = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+            this.prtDetailBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -46,99 +57,186 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.wipDetailBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.cmbDescription = new System.Windows.Forms.ComboBox();
-            this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wtrTextBox = new System.Windows.Forms.TextBox();
-            this.wirTextBox = new System.Windows.Forms.TextBox();
-            this.txtInvno = new System.Windows.Forms.TextBox();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
-            this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
-            this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
-            this.wdrDateBox = new CustomControls.DateBox();
-            this.warDateBox = new CustomControls.DateBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblSchcode = new System.Windows.Forms.Label();
-            descriptionLabel = new System.Windows.Forms.Label();
-            warLabel = new System.Windows.Forms.Label();
-            wdrLabel = new System.Windows.Forms.Label();
-            wtrLabel = new System.Windows.Forms.Label();
-            wirLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.coverDetailBindingNavigator)).BeginInit();
-            this.coverDetailBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
+            wirLabel = new System.Windows.Forms.Label();
+            wtrLabel = new System.Windows.Forms.Label();
+            wdrLabel = new System.Windows.Forms.Label();
+            warLabel = new System.Windows.Forms.Label();
+            descriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prtDetailBindingNavigator)).BeginInit();
+            this.prtDetailBindingNavigator.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descriptionLabel.Location = new System.Drawing.Point(23, 51);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(75, 13);
-            descriptionLabel.TabIndex = 2;
-            descriptionLabel.Text = "Description:";
-            // 
-            // warLabel
-            // 
-            warLabel.AutoSize = true;
-            warLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            warLabel.Location = new System.Drawing.Point(55, 81);
-            warLabel.Name = "warLabel";
-            warLabel.Size = new System.Drawing.Size(43, 13);
-            warLabel.TabIndex = 4;
-            warLabel.Text = "Actual";
-            // 
-            // wdrLabel
-            // 
-            wdrLabel.AutoSize = true;
-            wdrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            wdrLabel.Location = new System.Drawing.Point(68, 108);
-            wdrLabel.Name = "wdrLabel";
-            wdrLabel.Size = new System.Drawing.Size(30, 13);
-            wdrLabel.TabIndex = 6;
-            wdrLabel.Text = "Due";
-            // 
-            // wtrLabel
-            // 
-            wtrLabel.AutoSize = true;
-            wtrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            wtrLabel.Location = new System.Drawing.Point(64, 136);
-            wtrLabel.Name = "wtrLabel";
-            wtrLabel.Size = new System.Drawing.Size(34, 13);
-            wtrLabel.TabIndex = 8;
-            wtrLabel.Text = "Time";
-            // 
-            // wirLabel
-            // 
-            wirLabel.AutoSize = true;
-            wirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            wirLabel.Location = new System.Drawing.Point(54, 168);
-            wirLabel.Name = "wirLabel";
-            wirLabel.Size = new System.Drawing.Size(44, 13);
-            wirLabel.TabIndex = 10;
-            wirLabel.Text = "Initials";
             // 
             // invnoLabel
             // 
             invnoLabel.AutoSize = true;
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invnoLabel.Location = new System.Drawing.Point(41, 197);
+            invnoLabel.Location = new System.Drawing.Point(39, 195);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(57, 13);
-            invnoLabel.TabIndex = 12;
+            invnoLabel.TabIndex = 24;
             invnoLabel.Text = "Invoice#";
             // 
-            // coverDetailBindingNavigator
+            // wirLabel
             // 
-            this.coverDetailBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.coverDetailBindingNavigator.BindingSource = this.coverdetailBindingSource;
-            this.coverDetailBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.coverDetailBindingNavigator.DeleteItem = null;
-            this.coverDetailBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            wirLabel.AutoSize = true;
+            wirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            wirLabel.Location = new System.Drawing.Point(52, 166);
+            wirLabel.Name = "wirLabel";
+            wirLabel.Size = new System.Drawing.Size(44, 13);
+            wirLabel.TabIndex = 22;
+            wirLabel.Text = "Initials";
+            // 
+            // wtrLabel
+            // 
+            wtrLabel.AutoSize = true;
+            wtrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            wtrLabel.Location = new System.Drawing.Point(62, 134);
+            wtrLabel.Name = "wtrLabel";
+            wtrLabel.Size = new System.Drawing.Size(34, 13);
+            wtrLabel.TabIndex = 20;
+            wtrLabel.Text = "Time";
+            // 
+            // wdrLabel
+            // 
+            wdrLabel.AutoSize = true;
+            wdrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            wdrLabel.Location = new System.Drawing.Point(66, 106);
+            wdrLabel.Name = "wdrLabel";
+            wdrLabel.Size = new System.Drawing.Size(30, 13);
+            wdrLabel.TabIndex = 18;
+            wdrLabel.Text = "Due";
+            // 
+            // warLabel
+            // 
+            warLabel.AutoSize = true;
+            warLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            warLabel.Location = new System.Drawing.Point(53, 79);
+            warLabel.Name = "warLabel";
+            warLabel.Size = new System.Drawing.Size(43, 13);
+            warLabel.TabIndex = 16;
+            warLabel.Text = "Actual";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descriptionLabel.Location = new System.Drawing.Point(21, 49);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(75, 13);
+            descriptionLabel.TabIndex = 14;
+            descriptionLabel.Text = "Description:";
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.EnforceConstraints = false;
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // wipDescriptionsTableAdapter
+            // 
+            this.wipDescriptionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtInvno
+            // 
+            this.txtInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.prtbkbdetailBindingSource, "Invno", true));
+            this.txtInvno.Location = new System.Drawing.Point(103, 195);
+            this.txtInvno.Name = "txtInvno";
+            this.txtInvno.ReadOnly = true;
+            this.txtInvno.Size = new System.Drawing.Size(100, 20);
+            this.txtInvno.TabIndex = 25;
+            // 
+            // prtbkbdetailBindingSource
+            // 
+            this.prtbkbdetailBindingSource.DataMember = "prtbkbdetail";
+            this.prtbkbdetailBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wirTextBox
+            // 
+            this.wirTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.prtbkbdetailBindingSource, "Wir", true));
+            this.wirTextBox.Location = new System.Drawing.Point(103, 166);
+            this.wirTextBox.Name = "wirTextBox";
+            this.wirTextBox.Size = new System.Drawing.Size(100, 20);
+            this.wirTextBox.TabIndex = 23;
+            this.wirTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wirTextBox_Validating);
+            // 
+            // wtrTextBox
+            // 
+            this.wtrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.prtbkbdetailBindingSource, "Wtr", true));
+            this.wtrTextBox.Location = new System.Drawing.Point(103, 134);
+            this.wtrTextBox.Name = "wtrTextBox";
+            this.wtrTextBox.Size = new System.Drawing.Size(100, 20);
+            this.wtrTextBox.TabIndex = 21;
+            this.wtrTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wtrTextBox_Validating);
+            // 
+            // cmbDescription
+            // 
+            this.cmbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.prtbkbdetailBindingSource, "DescripId", true));
+            this.cmbDescription.DataSource = this.wipDescriptionsBindingSource;
+            this.cmbDescription.DisplayMember = "Description";
+            this.cmbDescription.FormattingEnabled = true;
+            this.cmbDescription.Location = new System.Drawing.Point(103, 49);
+            this.cmbDescription.Name = "cmbDescription";
+            this.cmbDescription.Size = new System.Drawing.Size(225, 21);
+            this.cmbDescription.TabIndex = 15;
+            this.cmbDescription.ValueMember = "Id";
+            // 
+            // wipDescriptionsBindingSource
+            // 
+            this.wipDescriptionsBindingSource.DataMember = "WipDescriptions";
+            this.wipDescriptionsBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wdrDateBox
+            // 
+            this.wdrDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.prtbkbdetailBindingSource, "Wdr", true));
+            this.wdrDateBox.Date = null;
+            this.wdrDateBox.DateValue = null;
+            this.wdrDateBox.Location = new System.Drawing.Point(103, 107);
+            this.wdrDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.wdrDateBox.Name = "wdrDateBox";
+            this.wdrDateBox.Size = new System.Drawing.Size(114, 21);
+            this.wdrDateBox.TabIndex = 26;
+            // 
+            // warDateBox
+            // 
+            this.warDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.prtbkbdetailBindingSource, "War", true));
+            this.warDateBox.Date = null;
+            this.warDateBox.DateValue = null;
+            this.warDateBox.Location = new System.Drawing.Point(103, 79);
+            this.warDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.warDateBox.Name = "warDateBox";
+            this.warDateBox.Size = new System.Drawing.Size(114, 21);
+            this.warDateBox.TabIndex = 27;
+            // 
+            // lblSchcode
+            // 
+            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.prtbkbdetailBindingSource, "Schcode", true));
+            this.lblSchcode.Location = new System.Drawing.Point(21, 208);
+            this.lblSchcode.Name = "lblSchcode";
+            this.lblSchcode.Size = new System.Drawing.Size(1, 1);
+            this.lblSchcode.TabIndex = 28;
+            this.lblSchcode.Text = "label1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // prtbkbdetailTableAdapter
+            // 
+            this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // prtDetailBindingNavigator
+            // 
+            this.prtDetailBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.prtDetailBindingNavigator.BindingSource = this.prtbkbdetailBindingSource;
+            this.prtDetailBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.prtDetailBindingNavigator.DeleteItem = null;
+            this.prtDetailBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -151,16 +249,16 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.wipDetailBindingNavigatorSaveItem});
-            this.coverDetailBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.coverDetailBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.coverDetailBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.coverDetailBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.coverDetailBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.coverDetailBindingNavigator.Name = "coverDetailBindingNavigator";
-            this.coverDetailBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.coverDetailBindingNavigator.Size = new System.Drawing.Size(481, 25);
-            this.coverDetailBindingNavigator.TabIndex = 0;
-            this.coverDetailBindingNavigator.Text = "bindingNavigator1";
+            this.prtDetailBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.prtDetailBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.prtDetailBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.prtDetailBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.prtDetailBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.prtDetailBindingNavigator.Name = "prtDetailBindingNavigator";
+            this.prtDetailBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.prtDetailBindingNavigator.Size = new System.Drawing.Size(377, 25);
+            this.prtDetailBindingNavigator.TabIndex = 29;
+            this.prtDetailBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -170,18 +268,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // coverdetailBindingSource
-            // 
-            this.coverdetailBindingSource.DataMember = "coverdetail";
-            this.coverdetailBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dsProdutn
-            // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.EnforceConstraints = false;
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click_1);
             // 
             // bindingNavigatorCountItem
             // 
@@ -258,7 +345,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_1);
             // 
             // wipDetailBindingNavigatorSaveItem
             // 
@@ -268,50 +355,6 @@
             this.wipDetailBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.wipDetailBindingNavigatorSaveItem.Text = "Save Data";
             this.wipDetailBindingNavigatorSaveItem.Click += new System.EventHandler(this.wipDetailBindingNavigatorSaveItem_Click);
-            // 
-            // cmbDescription
-            // 
-            this.cmbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.coverdetailBindingSource, "DescripId", true));
-            this.cmbDescription.DataSource = this.wipDescriptionsBindingSource;
-            this.cmbDescription.DisplayMember = "Description";
-            this.cmbDescription.FormattingEnabled = true;
-            this.cmbDescription.Location = new System.Drawing.Point(105, 51);
-            this.cmbDescription.Name = "cmbDescription";
-            this.cmbDescription.Size = new System.Drawing.Size(225, 21);
-            this.cmbDescription.TabIndex = 0;
-            this.cmbDescription.ValueMember = "Id";
-            // 
-            // wipDescriptionsBindingSource
-            // 
-            this.wipDescriptionsBindingSource.DataMember = "WipDescriptions";
-            this.wipDescriptionsBindingSource.DataSource = this.dsProdutn;
-            // 
-            // wtrTextBox
-            // 
-            this.wtrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "wtr", true));
-            this.wtrTextBox.Location = new System.Drawing.Point(105, 136);
-            this.wtrTextBox.Name = "wtrTextBox";
-            this.wtrTextBox.Size = new System.Drawing.Size(100, 20);
-            this.wtrTextBox.TabIndex = 3;
-            this.wtrTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wtrTextBox_Validating);
-            // 
-            // wirTextBox
-            // 
-            this.wirTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "wir", true));
-            this.wirTextBox.Location = new System.Drawing.Point(105, 168);
-            this.wirTextBox.Name = "wirTextBox";
-            this.wirTextBox.Size = new System.Drawing.Size(100, 20);
-            this.wirTextBox.TabIndex = 4;
-            this.wirTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.wirTextBox_Validating);
-            // 
-            // txtInvno
-            // 
-            this.txtInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "Invno", true));
-            this.txtInvno.Location = new System.Drawing.Point(105, 197);
-            this.txtInvno.Name = "txtInvno";
-            this.txtInvno.ReadOnly = true;
-            this.txtInvno.Size = new System.Drawing.Size(100, 20);
-            this.txtInvno.TabIndex = 5;
             // 
             // tableAdapterManager
             // 
@@ -324,6 +367,7 @@
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
+            this.tableAdapterManager.prtbkbdetailTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
             this.tableAdapterManager.ReorderDetailTableAdapter = null;
@@ -333,54 +377,13 @@
             this.tableAdapterManager.WipDetailTableAdapter = null;
             this.tableAdapterManager.wipTableAdapter = null;
             // 
-            // wipDescriptionsTableAdapter
-            // 
-            this.wipDescriptionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // coverdetailTableAdapter
-            // 
-            this.coverdetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // wdrDateBox
-            // 
-            this.wdrDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coverdetailBindingSource, "wdr", true));
-            this.wdrDateBox.Date = null;
-            this.wdrDateBox.DateValue = null;
-            this.wdrDateBox.Location = new System.Drawing.Point(105, 108);
-            this.wdrDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.wdrDateBox.Name = "wdrDateBox";
-            this.wdrDateBox.Size = new System.Drawing.Size(114, 21);
-            this.wdrDateBox.TabIndex = 2;
-            // 
-            // warDateBox
-            // 
-            this.warDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coverdetailBindingSource, "war", true));
-            this.warDateBox.Date = null;
-            this.warDateBox.DateValue = null;
-            this.warDateBox.Location = new System.Drawing.Point(104, 78);
-            this.warDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.warDateBox.Name = "warDateBox";
-            this.warDateBox.Size = new System.Drawing.Size(114, 21);
-            this.warDateBox.TabIndex = 1;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // lblSchcode
-            // 
-            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "schcode", true));
-            this.lblSchcode.Location = new System.Drawing.Point(-2, 245);
-            this.lblSchcode.Name = "lblSchcode";
-            this.lblSchcode.Size = new System.Drawing.Size(1, 1);
-            this.lblSchcode.TabIndex = 16;
-            this.lblSchcode.Text = "label1";
-            // 
-            // frmEditCoverWip
+            // frmEditPrtBkWip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 277);
+            this.ClientSize = new System.Drawing.Size(377, 250);
+            this.Controls.Add(this.prtDetailBindingNavigator);
+            this.Controls.Add(this.cmbDescription);
             this.Controls.Add(this.lblSchcode);
             this.Controls.Add(this.warDateBox);
             this.Controls.Add(this.wdrDateBox);
@@ -393,22 +396,18 @@
             this.Controls.Add(wdrLabel);
             this.Controls.Add(warLabel);
             this.Controls.Add(descriptionLabel);
-            this.Controls.Add(this.cmbDescription);
-            this.Controls.Add(this.coverDetailBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmEditCoverWip";
-            this.Text = "Cover WIP";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditWip_FormClosing);
-            this.Load += new System.EventHandler(this.frmEditWip_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.coverDetailBindingNavigator)).EndInit();
-            this.coverDetailBindingNavigator.ResumeLayout(false);
-            this.coverDetailBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).EndInit();
+            this.Name = "frmEditPrtBkWip";
+            this.Text = "Photo On CD Wip";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditPrtBkWip_FormClosing);
+            this.Load += new System.EventHandler(this.frmEditPrtBkWip_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prtDetailBindingNavigator)).EndInit();
+            this.prtDetailBindingNavigator.ResumeLayout(false);
+            this.prtDetailBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,11 +415,23 @@
 
         #endregion
         private DataSets.dsProdutn dsProdutn;
+        private System.Windows.Forms.TextBox txtInvno;
+        private System.Windows.Forms.TextBox wirTextBox;
+        private System.Windows.Forms.TextBox wtrTextBox;
+       
+        private System.Windows.Forms.ComboBox cmbDescription;
+        private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
+        private System.Windows.Forms.BindingSource wipDescriptionsBindingSource;
+        private CustomControls.DateBox wdrDateBox;
+        private CustomControls.DateBox warDateBox;
+        private System.Windows.Forms.Label lblSchcode;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.BindingSource prtbkbdetailBindingSource;
+        private DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter prtbkbdetailTableAdapter;
         private DataSets.dsProdutnTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator coverDetailBindingNavigator;
+        private System.Windows.Forms.BindingNavigator prtDetailBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -429,19 +440,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton wipDetailBindingNavigatorSaveItem;
-        private System.Windows.Forms.ComboBox cmbDescription;
-        
-        private System.Windows.Forms.TextBox wtrTextBox;
-        private System.Windows.Forms.TextBox wirTextBox;
-        private System.Windows.Forms.TextBox txtInvno;
-        private System.Windows.Forms.BindingSource wipDescriptionsBindingSource;
-        private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
-        private System.Windows.Forms.BindingSource coverdetailBindingSource;
-        private DataSets.dsProdutnTableAdapters.coverdetailTableAdapter coverdetailTableAdapter;
-        private CustomControls.DateBox wdrDateBox;
-        private CustomControls.DateBox warDateBox;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Label lblSchcode;
     }
     }

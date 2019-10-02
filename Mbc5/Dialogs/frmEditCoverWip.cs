@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BindingModels;
 using BaseClass;
+using Exceptionless;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditCoverWip : Form
@@ -37,93 +38,64 @@ namespace Mbc5.Dialogs
                 AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
             else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
-            
-            this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-            this.coverdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
-            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
-            var sqlQuery = new SQLCustomClient();
-                sqlQuery.CommandText(@"
-                    Select DescripId,War,Wdr,Wtr,Wir,Invno,Id,Schcode Where Invno=@Invno
-                    ");
-            sqlQuery.AddParameter("@Invno", Invno);
-            var queryResult = sqlQuery.SelectMany<CoverDetail>();
-            if (queryResult.IsError)
+            try
             {
-                MbcMessageBox.Error("Failed to select Cover Detail Records:"+queryResult.Errors[0].ErrorMessage);
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+                this.coverdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+                wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
+                coverdetailTableAdapter.EditFillBy(dsProdutn.coverdetail, Invno);
+            }
+            catch(Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                MbcMessageBox.Error("Error retrieving information:" + ex.Message);
+                this.Close();
                 return;
             }
-            var vData =(List<CoverDetail>) queryResult.Data;
-            coverdetailBindingSource.DataSource = vData;
+           
+
             if (ID != 0)
             {
-                var pos = coverdetailBindingSource.Find("id", ID);
-                if (pos > -1)
+                try
                 {
-                    coverdetailBindingSource.Position = pos;
+                    var pos = coverdetailBindingSource.Find("Id", ID);
+                    if (pos > -1)
+                    {
+                        coverdetailBindingSource.Position = pos;
 
-                }
-                else
-                {
-                    MessageBox.Show("Record was not found,first available record is showing.", "Wip Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Record was not found,first available record is showing.", "Cover Wip Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                }catch(Exception ex) { };
+
             }
             else
             {
-               
-
+                coverdetailBindingSource.AddNew();
+                txtInvno.Text = Invno.ToString() ;
+                lblSchcode.Text = Schcode;
             }
+
+
+            this.Text += "  " + Schcode + "/" + Invno.ToString();
         }
 
         private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            
-            else { MessageBox.Show("Record Saved."); }
-            Refill = true;
-        }
-        private void Update() {
-           // var vRow =(int)((DataRowView)coverdetailBindingSource.Current).Row["Id"];
-     
-            var sqlQuery = new SQLCustomClient();
-            sqlQuery.CommandText(@"
-                Update CoverDetail Set DescripId=@DescripId ,War=@War, Wdr=@Wdr,Wtr=@Wtr,Wir=@Wir Where Id=@Id
-                ");
-            sqlQuery.AddParameter("@DescripId",);
-            sqlQuery.AddParameter("@War", warDateBox.DateValue);
-            sqlQuery.AddParameter("@Wdr", wdrDateBox.DateValue);
-            sqlQuery.AddParameter("@Wtr",decimal.Parse(wtrTextBox.Text.Trim()));
-            sqlQuery.AddParameter("@Wir", wirTextBox.Text.Trim());
-            sqlQuery.AddParameter("@Id", (int)((DataRowView)coverdetailBindingSource.Current).Row["Id"]);
-           var updateResult= sqlQuery.Update();
-            if (updateResult.IsError)
+            if (this.Validate())
             {
-                MbcMessageBox.Error("Failed to update record:" + updateResult.Errors[0].ErrorMessage);
-                return;
+                coverdetailBindingSource.EndEdit();
+                var a = coverdetailTableAdapter.Update(dsProdutn.coverdetail);
+                Refill = true;
             }
-
-
+           
         }
-        private void Insert()
-        {
-            var sqlQuery = new SQLCustomClient();
-            sqlQuery.CommandText(@"
-                Insert Into CoverDetail (DescripId,War, Wdr,Wtr,Wir,Schcode,Invno) Values(@DescripId,@War,@Wdr,@Wtr,@Wir,@Schcode,@Schcode);
-                ");
-            sqlQuery.AddParameter("@DescripId",);
-            sqlQuery.AddParameter("@War", warDateBox.DateValue);
-            sqlQuery.AddParameter("@Wdr", wdrDateBox.DateValue);
-            sqlQuery.AddParameter("@Wtr", decimal.Parse(wtrTextBox.Text.Trim()));
-            sqlQuery.AddParameter("@Wir", wirTextBox.Text.Trim());
-            sqlQuery.AddParameter("@Invno", Invno);
-            sqlQuery.AddParameter("@Schcode", Schcode);
-            var updateResult = sqlQuery.Update();
-            if (updateResult.IsError)
-            {
-                MbcMessageBox.Error("Failed to update record:" + updateResult.Errors[0].ErrorMessage);
-                return;
-            }
-
-        }
+    
+      
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
@@ -147,6 +119,33 @@ namespace Mbc5.Dialogs
             if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel; ; }
         }
 
-       
+        private void wtrTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(wtrTextBox, "");
+            decimal vInt;
+            if (String.IsNullOrEmpty(wtrTextBox.Text))
+            {
+                this.errorProvider1.SetError(wtrTextBox, "Enter time.");
+                e.Cancel = true;
+            }
+
+            if (!String.IsNullOrEmpty(wtrTextBox.Text) && !decimal.TryParse(wtrTextBox.Text, out vInt))
+            {
+
+                this.errorProvider1.SetError(wtrTextBox, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
         }
+
+        private void wirTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(wirTextBox, "");
+
+            if (String.IsNullOrEmpty(wirTextBox.Text))
+            {
+                this.errorProvider1.SetError(wirTextBox, "Enter your initials");
+                e.Cancel = true;
+            }
+        }
+    }
 }

@@ -7989,12 +7989,12 @@ namespace Mbc5.Forms
 			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
 			int id = (int)row["id"];
 			int invno = (int)row["invno"];
-			frmEditWip frmeditWip = new frmEditWip(id, invno);
+			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode);
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
-			}
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, "", Invno);
+            }
 		}
 		private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
 		{
@@ -8077,25 +8077,25 @@ namespace Mbc5.Forms
 			DataRowView row = (DataRowView)coverdetailBindingSource.Current;
 			int id = (int)row["id"];
 			int invno = (int)row["invno"];
-			frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno);
+			frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno,Schcode);
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
-			}
+                coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+            }
 		}
 
 		private void partBkDetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
 			int id = (int)row["id"];
-			int invno = (int)row["invno"];
-			frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno);
+			
+            frmEditPartBkWip frmeditCoverWip = new frmEditPartBkWip(id, Invno,Schcode);
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
-			}
+                this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+            }
 		}
 
 		private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
@@ -11282,6 +11282,86 @@ namespace Mbc5.Forms
             {
                
                 try { coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno); } catch { }
+            }
+        }
+
+        private void btnAddWipRecord_Click(object sender, EventArgs e)
+        {
+            DataRowView row = (DataRowView)wipDetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode);
+            var result = frmeditWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+            }
+        }
+
+        private void btnAddPartialBKScan_Click(object sender, EventArgs e)
+        {
+            DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
+           
+            frmEditPartBkWip frmeditPartBk = new frmEditPartBkWip(0,Invno,Schcode);
+            var result = frmeditPartBk.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+            }
+        }
+
+        private void btnAddScanPhotos_Click(object sender, EventArgs e)
+        {
+            DataRowView row = (DataRowView)prtbkbdetailBindingSource.Current;
+            
+
+            frmEditPrtBkWip frmeditCoverWip = new frmEditPrtBkWip(0, Invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+
+            }
+        }
+
+        private void prtbkbdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)  prtbkbdetailBindingSource.Current;
+            int id = (int)row["id"];
+
+            frmEditPrtBkWip frmeditCoverWip = new frmEditPrtBkWip(id, Invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+            
+            }
+        }
+
+        private void btnAddReorderScan_Click(object sender, EventArgs e)
+        {
+            DataRowView row = (DataRowView)reorderDetailBindingSource.Current;
+
+
+            frmEditReorderWip frmeditCoverWip = new frmEditReorderWip(0, Invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
+
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)reorderDetailBindingSource.Current;
+            int id = (int)row["id"];
+
+            frmEditReorderWip frmeditCoverWip = new frmEditReorderWip(id, Invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
             }
         }
 
