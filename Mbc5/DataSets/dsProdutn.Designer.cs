@@ -7109,6 +7109,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnIndividualRemake;
             
+            private global::System.Data.DataColumn columnPressNumber;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coversDataTable() {
@@ -7664,6 +7666,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PressNumberColumn {
+                get {
+                    return this.columnPressNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7764,7 +7774,8 @@ namespace Mbc5.DataSets {
                         string RemakeType, 
                         int FullRemake, 
                         int ShortRemake, 
-                        int IndividualRemake) {
+                        int IndividualRemake, 
+                        int PressNumber) {
                 coversRow rowcoversRow = ((coversRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         specovr,
@@ -7831,7 +7842,8 @@ namespace Mbc5.DataSets {
                         RemakeType,
                         FullRemake,
                         ShortRemake,
-                        IndividualRemake};
+                        IndividualRemake,
+                        PressNumber};
                 if ((parentprodutnRowByprodutn_covers != null)) {
                     columnValuesArray[2] = parentprodutnRowByprodutn_covers[0];
                 }
@@ -7929,6 +7941,7 @@ namespace Mbc5.DataSets {
                 this.columnFullRemake = base.Columns["FullRemake"];
                 this.columnShortRemake = base.Columns["ShortRemake"];
                 this.columnIndividualRemake = base.Columns["IndividualRemake"];
+                this.columnPressNumber = base.Columns["PressNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8064,6 +8077,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnShortRemake);
                 this.columnIndividualRemake = new global::System.Data.DataColumn("IndividualRemake", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIndividualRemake);
+                this.columnPressNumber = new global::System.Data.DataColumn("PressNumber", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPressNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columnspecovr.MaxLength = 5;
@@ -8661,6 +8676,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnDescriptionId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public WipDescriptionsDataTable() {
@@ -8720,6 +8737,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DescriptionIdColumn {
+                get {
+                    return this.columnDescriptionId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8755,12 +8780,13 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WipDescriptionsRow AddWipDescriptionsRow(string Description, string TableName) {
+            public WipDescriptionsRow AddWipDescriptionsRow(string Description, string TableName, int DescriptionId) {
                 WipDescriptionsRow rowWipDescriptionsRow = ((WipDescriptionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
                         TableName,
-                        null};
+                        null,
+                        DescriptionId};
                 rowWipDescriptionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowWipDescriptionsRow);
                 return rowWipDescriptionsRow;
@@ -8793,6 +8819,7 @@ namespace Mbc5.DataSets {
                 this.columnDescription = base.Columns["Description"];
                 this.columnTableName = base.Columns["TableName"];
                 this.columnId = base.Columns["Id"];
+                this.columnDescriptionId = base.Columns["DescriptionId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8804,6 +8831,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnTableName);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnDescriptionId = new global::System.Data.DataColumn("DescriptionId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescriptionId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnDescription.AllowDBNull = false;
@@ -20483,6 +20512,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int PressNumber {
+                get {
+                    try {
+                        return ((int)(this[this.tablecovers.PressNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PressNumber\' in table \'covers\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecovers.PressNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public produtnRow produtnRow {
                 get {
                     return ((produtnRow)(this.GetParentRow(this.Table.ParentRelations["produtn_covers"])));
@@ -21250,6 +21295,18 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPressNumberNull() {
+                return this.IsNull(this.tablecovers.PressNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPressNumberNull() {
+                this[this.tablecovers.PressNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coverdetailRow[] GetcoverdetailRows() {
                 if ((this.Table.ChildRelations["covers_coverdetail"] == null)) {
                     return new coverdetailRow[0];
@@ -21633,6 +21690,34 @@ namespace Mbc5.DataSets {
                 set {
                     this[this.tableWipDescriptions.IdColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int DescriptionId {
+                get {
+                    try {
+                        return ((int)(this[this.tableWipDescriptions.DescriptionIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DescriptionId\' in table \'WipDescriptions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWipDescriptions.DescriptionIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDescriptionIdNull() {
+                return this.IsNull(this.tableWipDescriptions.DescriptionIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDescriptionIdNull() {
+                this[this.tableWipDescriptions.DescriptionIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -28865,6 +28950,7 @@ WHERE        (invno = @Invno)";
             tableMapping.ColumnMappings.Add("FullRemake", "FullRemake");
             tableMapping.ColumnMappings.Add("ShortRemake", "ShortRemake");
             tableMapping.ColumnMappings.Add("IndividualRemake", "IndividualRemake");
+            tableMapping.ColumnMappings.Add("PressNumber", "PressNumber");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -28877,31 +28963,32 @@ WHERE        (invno = @Invno)";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [covers] ([specovr], [schcode], [invno], [cvrstock], [remake], [prnts" +
-                "mp], [i_press], [a_press], [d_press], [t_press], [apprvdte], [desc], [desc2], [s" +
-                "pecinst], [prtvend], [prtdtesent], [prtdtebk], [lamdtesent], [lamdtebk], [dcvend" +
-                "], [dcdtesent], [dcdtebk], [othr], [othrvend], [otdtesent], [otdtebk], [prntsam]" +
-                ", [acceptd], [reqstdcpy], [reprntdte], [reprnacp], [reason], [desorgdte], [perso" +
-                "ndest], [mascot], [room], [shelf], [rack], [desc3], [finishedcopies], [desc4], [" +
-                "spback], [company], [typeset], [front], [spine], [emailed], [overprnt], [desc1a]" +
-                ", [custsubmtx], [perslist], [app], [perslistdate], [laminit], [clr1], [clr2], [c" +
-                "lr3], [clr4], [proofsent], [lamcopies], [RemakeType], [FullRemake], [ShortRemake" +
-                "], [IndividualRemake]) VALUES (@specovr, @schcode, @invno, @cvrstock, @remake, @" +
-                "prntsmp, @i_press, @a_press, @d_press, @t_press, @apprvdte, @desc, @desc2, @spec" +
-                "inst, @prtvend, @prtdtesent, @prtdtebk, @lamdtesent, @lamdtebk, @dcvend, @dcdtes" +
-                "ent, @dcdtebk, @othr, @othrvend, @otdtesent, @otdtebk, @prntsam, @acceptd, @reqs" +
-                "tdcpy, @reprntdte, @reprnacp, @reason, @desorgdte, @persondest, @mascot, @room, " +
-                "@shelf, @rack, @desc3, @finishedcopies, @desc4, @spback, @company, @typeset, @fr" +
-                "ont, @spine, @emailed, @overprnt, @desc1a, @custsubmtx, @perslist, @app, @persli" +
-                "stdate, @laminit, @clr1, @clr2, @clr3, @clr4, @proofsent, @lamcopies, @RemakeTyp" +
-                "e, @FullRemake, @ShortRemake, @IndividualRemake);\r\nSELECT specovr, schcode, invn" +
-                "o, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte, desc" +
-                ", desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, " +
-                "dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstd" +
-                "cpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, ra" +
-                "ck, desc3, finishedcopies, desc4, spback, company, typeset, front, spine, emaile" +
-                "d, overprnt, desc1a, custsubmtx, perslist, app, perslistdate, laminit, clr1, clr" +
-                "2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRem" +
-                "ake, IndividualRemake FROM covers WHERE (invno = @invno)";
+                "mp], [i_press], [a_press], [d_press], [t_press], [apprvdte], [desc2], [specinst]" +
+                ", [prtvend], [prtdtesent], [prtdtebk], [lamdtesent], [lamdtebk], [dcvend], [dcdt" +
+                "esent], [dcdtebk], [othr], [othrvend], [otdtesent], [otdtebk], [prntsam], [accep" +
+                "td], [reqstdcpy], [reprntdte], [reprnacp], [reason], [desorgdte], [persondest], " +
+                "[mascot], [room], [shelf], [rack], [desc3], [finishedcopies], [desc4], [spback]," +
+                " [company], [typeset], [front], [spine], [emailed], [overprnt], [desc1a], [custs" +
+                "ubmtx], [perslist], [app], [perslistdate], [laminit], [clr1], [clr2], [clr3], [c" +
+                "lr4], [proofsent], [lamcopies], [RemakeType], [FullRemake], [ShortRemake], [Indi" +
+                "vidualRemake], [desc], [PressNumber]) VALUES (@specovr, @schcode, @invno, @cvrst" +
+                "ock, @remake, @prntsmp, @i_press, @a_press, @d_press, @t_press, @apprvdte, @desc" +
+                "2, @specinst, @prtvend, @prtdtesent, @prtdtebk, @lamdtesent, @lamdtebk, @dcvend," +
+                " @dcdtesent, @dcdtebk, @othr, @othrvend, @otdtesent, @otdtebk, @prntsam, @accept" +
+                "d, @reqstdcpy, @reprntdte, @reprnacp, @reason, @desorgdte, @persondest, @mascot," +
+                " @room, @shelf, @rack, @desc3, @finishedcopies, @desc4, @spback, @company, @type" +
+                "set, @front, @spine, @emailed, @overprnt, @desc1a, @custsubmtx, @perslist, @app," +
+                " @perslistdate, @laminit, @clr1, @clr2, @clr3, @clr4, @proofsent, @lamcopies, @R" +
+                "emakeType, @FullRemake, @ShortRemake, @IndividualRemake, @desc, @PressNumber);\r\n" +
+                "SELECT specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_p" +
+                "ress, t_press, apprvdte, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtes" +
+                "ent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, p" +
+                "rntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, " +
+                "mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typese" +
+                "t, front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslistd" +
+                "ate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeTyp" +
+                "e, FullRemake, ShortRemake, IndividualRemake, [desc], PressNumber FROM covers WH" +
+                "ERE (invno = @invno)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specovr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -28914,7 +29001,6 @@ WHERE        (invno = @Invno)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@d_press", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "d_press", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@t_press", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "t_press", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@apprvdte", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "apprvdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specinst", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specinst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prtvend", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prtvend", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -28967,6 +29053,8 @@ WHERE        (invno = @Invno)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FullRemake", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FullRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShortRemake", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShortRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IndividualRemake", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IndividualRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PressNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE       covers\r\nSET                specovr = @specovr, schcode = @schcode, i" +
@@ -28987,10 +29075,10 @@ WHERE        (invno = @Invno)";
                 "pp, perslistdate = @perslistdate, laminit = @laminit, clr1 = @clr1, clr2 = @clr2" +
                 ", clr3 = @clr3, clr4 = @clr4, proofsent = @proofsent, lamcopies = @lamcopies, Re" +
                 "makeType = @RemakeType, \r\n                         FullRemake = @FullRemake, Sho" +
-                "rtRemake = @ShortRemake, IndividualRemake = @IndividualRemake, [desc] = @desc\r\nW" +
-                "HERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStamp" +
-                " IS NULL) OR\r\n                         (invno = @Original_invno) AND (TimeStamp " +
-                "= @Original_TimeStamp)";
+                "rtRemake = @ShortRemake, IndividualRemake = @IndividualRemake, [desc] = @desc, P" +
+                "ressNumber = @PressNumber\r\nWHERE        (invno = @Original_invno) AND (@IsNull_T" +
+                "imeStamp = 1) AND (TimeStamp IS NULL) OR\r\n                         (invno = @Ori" +
+                "ginal_invno) AND (TimeStamp = @Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specovr", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -29056,6 +29144,7 @@ WHERE        (invno = @Invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShortRemake", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ShortRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IndividualRemake", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IndividualRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PressNumber", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PressNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeStamp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -29074,18 +29163,18 @@ WHERE        (invno = @Invno)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte,  desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, 
-                         otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, front, spine, emailed, overprnt, desc1a, 
-                         custsubmtx, perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc]
+            this._commandCollection[0].CommandText = @"SELECT        specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, 
+                         otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, front, spine, emailed, overprnt, desc1a, custsubmtx, 
+                         perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc], PressNumber
 FROM            covers
 WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, 
-                         otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, front, spine, emailed, overprnt, desc1a, custsubmtx, 
-                         perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc]
+            this._commandCollection[1].CommandText = @"SELECT        FullRemake, IndividualRemake, PressNumber, RemakeType, ShortRemake, TimeStamp, a_press, acceptd, app, apprvdte, clr1, clr2, clr3, clr4, company, custsubmtx, cvrstock, d_press, dcdtebk, dcdtesent, dcvend, [desc], 
+                         desc1a, desc2, desc3, desc4, desorgdte, emailed, finishedcopies, front, i_press, invno, lamcopies, lamdtebk, lamdtesent, laminit, mascot, otdtebk, otdtesent, othr, othrvend, overprnt, perslist, perslistdate, persondest, prntsam, 
+                         prntsmp, proofsent, prtdtebk, prtdtesent, prtvend, rack, reason, remake, reprnacp, reprntdte, reqstdcpy, room, schcode, shelf, spback, specinst, specovr, spine, t_press, typeset
 FROM            covers
 WHERE        (invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
@@ -29617,6 +29706,7 @@ WHERE        (invno = @invno)";
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("TableName", "TableName");
             tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("DescriptionId", "DescriptionId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -29628,23 +29718,26 @@ WHERE        (invno = @invno)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [WipDescriptions] ([Description], [TableName]) VALUES (@Description, " +
-                "@TableName);\r\nSELECT Description, TableName, Id FROM WipDescriptions WHERE (Id =" +
-                " SCOPE_IDENTITY()) ORDER BY Description";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO WipDescriptions
+                         (Description, TableName, DescriptionId)
+VALUES        (@Description,@TableName,@DescriptionId); 
+SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = SCOPE_IDENTITY()) ORDER BY Description";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 75, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescriptionId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DescriptionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [WipDescriptions] SET [Description] = @Description, [TableName] = @TableName WHERE (([Description] = @Original_Description) AND ([TableName] = @Original_TableName) AND ([Id] = @Original_Id));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       WipDescriptions
+SET                Description = @Description, TableName = @TableName, DescriptionId = @DescriptionId
+WHERE        (Id = @Original_Id); 
 SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY Description";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TableName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 75, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescriptionId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DescriptionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29657,18 +29750,22 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Description, TableName, Id\r\nFROM            WipDescriptions\r\nWHERE " +
-                "       (TableName = @TableName)\r\nORDER BY Description";
+            this._commandCollection[0].CommandText = "SELECT        Description, TableName, Id, DescriptionId\r\nFROM            WipDescr" +
+                "iptions\r\nWHERE        (TableName = @TableName)\r\nORDER BY Description";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.NChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Description, TableName, Id\r\nFROM            WipDescriptions\r\nORDER " +
-                "BY TableName, Description";
+            this._commandCollection[1].CommandText = "SELECT        Description, TableName, Id, DescriptionId\r\nFROM            WipDescr" +
+                "iptions\r\nORDER BY DescriptionId";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        TableName\r\nFROM            WipDescriptions\r\nGROUP BY TableName";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29726,6 +29823,30 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsProdutn.WipDescriptionsDataTable GetDataBy() {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            dsProdutn.WipDescriptionsDataTable dataTable = new dsProdutn.WipDescriptionsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillGroup(dsProdutn.WipDescriptionsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsProdutn.WipDescriptionsDataTable GetDataBy1() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             dsProdutn.WipDescriptionsDataTable dataTable = new dsProdutn.WipDescriptionsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -29798,7 +29919,7 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Description, string TableName) {
+        public virtual int Insert(string Description, string TableName, global::System.Nullable<int> DescriptionId) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
@@ -29810,6 +29931,12 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(TableName));
+            }
+            if ((DescriptionId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(DescriptionId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -29831,7 +29958,7 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Description, string TableName, string Original_Description, string Original_TableName, int Original_Id, int Id) {
+        public virtual int Update(string Description, string TableName, global::System.Nullable<int> DescriptionId, int Original_Id, int Id) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
@@ -29844,20 +29971,14 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(TableName));
             }
-            if ((Original_Description == null)) {
-                throw new global::System.ArgumentNullException("Original_Description");
+            if ((DescriptionId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(DescriptionId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_TableName == null)) {
-                throw new global::System.ArgumentNullException("Original_TableName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_TableName));
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -29872,14 +29993,6 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Description, string TableName, string Original_Description, string Original_TableName, int Original_Id) {
-            return this.Update(Description, TableName, Original_Description, Original_TableName, Original_Id, Original_Id);
         }
     }
     

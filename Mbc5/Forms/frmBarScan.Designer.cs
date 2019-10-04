@@ -75,12 +75,20 @@
             this.txtSheets = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkShippedOrders = new System.Windows.Forms.CheckBox();
             this.btnDeadLineInfo = new System.Windows.Forms.Button();
             this.txtIntitials = new System.Windows.Forms.MaskedTextBox();
             this.txtBarCode = new System.Windows.Forms.MaskedTextBox();
             this.txtDept = new System.Windows.Forms.MaskedTextBox();
+            this.lblPressNumber = new System.Windows.Forms.Label();
+            this.txtPressNumber = new System.Windows.Forms.MaskedTextBox();
+            this.pnlPressNumber = new System.Windows.Forms.Panel();
+            this.pnlPressNumber.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // basePanel
+            // 
+            this.basePanel.Size = new System.Drawing.Size(22, 16);
             // 
             // lbl1
             // 
@@ -148,7 +156,7 @@
             this.txtDeptCode.Location = new System.Drawing.Point(187, 47);
             this.txtDeptCode.Name = "txtDeptCode";
             this.txtDeptCode.Size = new System.Drawing.Size(116, 20);
-            this.txtDeptCode.TabIndex = 7;
+            this.txtDeptCode.TabIndex = 1;
             this.txtDeptCode.Leave += new System.EventHandler(this.txtDeptCode_Leave);
             // 
             // label6
@@ -174,14 +182,14 @@
             this.txtTime.Location = new System.Drawing.Point(187, 151);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(47, 20);
-            this.txtTime.TabIndex = 10;
+            this.txtTime.TabIndex = 7;
             // 
             // txtInOut
             // 
             this.txtInOut.Location = new System.Drawing.Point(187, 247);
             this.txtInOut.Name = "txtInOut";
             this.txtInOut.Size = new System.Drawing.Size(47, 20);
-            this.txtInOut.TabIndex = 12;
+            this.txtInOut.TabIndex = 11;
             // 
             // label7
             // 
@@ -209,7 +217,7 @@
             this.txtSchcode.Name = "txtSchcode";
             this.txtSchcode.ReadOnly = true;
             this.txtSchcode.Size = new System.Drawing.Size(116, 20);
-            this.txtSchcode.TabIndex = 17;
+            this.txtSchcode.TabIndex = 2;
             // 
             // txtCoverNumber
             // 
@@ -217,7 +225,7 @@
             this.txtCoverNumber.Name = "txtCoverNumber";
             this.txtCoverNumber.ReadOnly = true;
             this.txtCoverNumber.Size = new System.Drawing.Size(116, 20);
-            this.txtCoverNumber.TabIndex = 18;
+            this.txtCoverNumber.TabIndex = 3;
             // 
             // txtColorPageNumber
             // 
@@ -225,7 +233,7 @@
             this.txtColorPageNumber.Name = "txtColorPageNumber";
             this.txtColorPageNumber.ReadOnly = true;
             this.txtColorPageNumber.Size = new System.Drawing.Size(89, 20);
-            this.txtColorPageNumber.TabIndex = 19;
+            this.txtColorPageNumber.TabIndex = 4;
             // 
             // label8
             // 
@@ -254,7 +262,7 @@
             this.txtExtraBooks.Name = "txtExtraBooks";
             this.txtExtraBooks.ReadOnly = true;
             this.txtExtraBooks.Size = new System.Drawing.Size(68, 20);
-            this.txtExtraBooks.TabIndex = 21;
+            this.txtExtraBooks.TabIndex = 5;
             this.txtExtraBooks.Visible = false;
             // 
             // txtSchoolName
@@ -263,7 +271,7 @@
             this.txtSchoolName.Name = "txtSchoolName";
             this.txtSchoolName.ReadOnly = true;
             this.txtSchoolName.Size = new System.Drawing.Size(300, 20);
-            this.txtSchoolName.TabIndex = 24;
+            this.txtSchoolName.TabIndex = 6;
             // 
             // label11
             // 
@@ -298,7 +306,7 @@
             this.txtCopies.Location = new System.Drawing.Point(187, 200);
             this.txtCopies.Name = "txtCopies";
             this.txtCopies.Size = new System.Drawing.Size(47, 20);
-            this.txtCopies.TabIndex = 28;
+            this.txtCopies.TabIndex = 9;
             this.txtCopies.Visible = false;
             this.txtCopies.TextChanged += new System.EventHandler(this.txtCopies_TextChanged);
             // 
@@ -328,7 +336,7 @@
             this.btnSave.Location = new System.Drawing.Point(321, 280);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
-            this.btnSave.TabIndex = 30;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -338,7 +346,7 @@
             this.btnCancel.Location = new System.Drawing.Point(415, 280);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 23);
-            this.btnCancel.TabIndex = 31;
+            this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -523,15 +531,15 @@
             this.label27.Text = "After scanning, Please verify the School Name is CORRECT, before proceeding. If I" +
     "NCORRECT, scan again .";
             // 
-            // checkBox1
+            // chkShippedOrders
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(429, 192);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(209, 17);
-            this.checkBox1.TabIndex = 51;
-            this.checkBox1.Text = "Do not send order shipped email";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkShippedOrders.AutoSize = true;
+            this.chkShippedOrders.Location = new System.Drawing.Point(429, 192);
+            this.chkShippedOrders.Name = "chkShippedOrders";
+            this.chkShippedOrders.Size = new System.Drawing.Size(209, 17);
+            this.chkShippedOrders.TabIndex = 10;
+            this.chkShippedOrders.Text = "Do not send order shipped email";
+            this.chkShippedOrders.UseVisualStyleBackColor = true;
             // 
             // btnDeadLineInfo
             // 
@@ -550,17 +558,17 @@
             this.txtIntitials.Location = new System.Drawing.Point(187, 177);
             this.txtIntitials.Mask = ">LLL";
             this.txtIntitials.Name = "txtIntitials";
-            this.txtIntitials.Size = new System.Drawing.Size(47, 20);
-            this.txtIntitials.TabIndex = 152;
+            this.txtIntitials.Size = new System.Drawing.Size(64, 20);
+            this.txtIntitials.TabIndex = 8;
             // 
             // txtBarCode
             // 
             this.txtBarCode.AsciiOnly = true;
             this.txtBarCode.Location = new System.Drawing.Point(188, 19);
-            this.txtBarCode.Mask = ">LLL000000LL";
+            this.txtBarCode.Mask = ">LLL000000CLL";
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(124, 20);
-            this.txtBarCode.TabIndex = 153;
+            this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             // 
             // txtDept
@@ -569,17 +577,48 @@
             this.txtDept.Mask = ">LLLLLL";
             this.txtDept.Name = "txtDept";
             this.txtDept.Size = new System.Drawing.Size(47, 20);
-            this.txtDept.TabIndex = 154;
+            this.txtDept.TabIndex = 12;
+            // 
+            // lblPressNumber
+            // 
+            this.lblPressNumber.AutoSize = true;
+            this.lblPressNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPressNumber.Location = new System.Drawing.Point(1, 2);
+            this.lblPressNumber.Name = "lblPressNumber";
+            this.lblPressNumber.Size = new System.Drawing.Size(46, 13);
+            this.lblPressNumber.TabIndex = 155;
+            this.lblPressNumber.Text = "Press#";
+            // 
+            // txtPressNumber
+            // 
+            this.txtPressNumber.AsciiOnly = true;
+            this.txtPressNumber.Location = new System.Drawing.Point(44, 0);
+            this.txtPressNumber.Mask = "0000000";
+            this.txtPressNumber.Name = "txtPressNumber";
+            this.txtPressNumber.Size = new System.Drawing.Size(61, 20);
+            this.txtPressNumber.TabIndex = 0;
+            this.txtPressNumber.ValidatingType = typeof(int);
+            // 
+            // pnlPressNumber
+            // 
+            this.pnlPressNumber.Controls.Add(this.txtPressNumber);
+            this.pnlPressNumber.Controls.Add(this.lblPressNumber);
+            this.pnlPressNumber.Location = new System.Drawing.Point(313, 45);
+            this.pnlPressNumber.Name = "pnlPressNumber";
+            this.pnlPressNumber.Size = new System.Drawing.Size(109, 23);
+            this.pnlPressNumber.TabIndex = 157;
+            this.pnlPressNumber.Visible = false;
             // 
             // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(904, 555);
+            this.Controls.Add(this.pnlPressNumber);
             this.Controls.Add(this.txtDept);
             this.Controls.Add(this.txtBarCode);
             this.Controls.Add(this.txtIntitials);
             this.Controls.Add(this.btnDeadLineInfo);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkShippedOrders);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.txtSheets);
@@ -630,6 +669,61 @@
             this.MaximizeBox = false;
             this.Name = "frmBarScan";
             this.Text = "";
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.lbl1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.txtDeptCode, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.txtDateTime, 0);
+            this.Controls.SetChildIndex(this.txtTime, 0);
+            this.Controls.SetChildIndex(this.txtInOut, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.txtSchcode, 0);
+            this.Controls.SetChildIndex(this.txtCoverNumber, 0);
+            this.Controls.SetChildIndex(this.txtColorPageNumber, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.txtExtraBooks, 0);
+            this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.txtSchoolName, 0);
+            this.Controls.SetChildIndex(this.label12, 0);
+            this.Controls.SetChildIndex(this.txtProdNumber, 0);
+            this.Controls.SetChildIndex(this.lblCopies, 0);
+            this.Controls.SetChildIndex(this.txtCopies, 0);
+            this.Controls.SetChildIndex(this.label14, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.label15, 0);
+            this.Controls.SetChildIndex(this.label16, 0);
+            this.Controls.SetChildIndex(this.label17, 0);
+            this.Controls.SetChildIndex(this.label18, 0);
+            this.Controls.SetChildIndex(this.label19, 0);
+            this.Controls.SetChildIndex(this.txtPlates, 0);
+            this.Controls.SetChildIndex(this.label20, 0);
+            this.Controls.SetChildIndex(this.label21, 0);
+            this.Controls.SetChildIndex(this.txtPlateNotes, 0);
+            this.Controls.SetChildIndex(this.cmbPlateReason, 0);
+            this.Controls.SetChildIndex(this.label22, 0);
+            this.Controls.SetChildIndex(this.label23, 0);
+            this.Controls.SetChildIndex(this.label24, 0);
+            this.Controls.SetChildIndex(this.txtPressNotes, 0);
+            this.Controls.SetChildIndex(this.cmbPressReason, 0);
+            this.Controls.SetChildIndex(this.txtSheets, 0);
+            this.Controls.SetChildIndex(this.label26, 0);
+            this.Controls.SetChildIndex(this.label27, 0);
+            this.Controls.SetChildIndex(this.chkShippedOrders, 0);
+            this.Controls.SetChildIndex(this.btnDeadLineInfo, 0);
+            this.Controls.SetChildIndex(this.txtIntitials, 0);
+            this.Controls.SetChildIndex(this.txtBarCode, 0);
+            this.Controls.SetChildIndex(this.txtDept, 0);
+            this.Controls.SetChildIndex(this.pnlPressNumber, 0);
+            this.pnlPressNumber.ResumeLayout(false);
+            this.pnlPressNumber.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,10 +777,13 @@
         private System.Windows.Forms.TextBox txtSheets;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkShippedOrders;
         private System.Windows.Forms.Button btnDeadLineInfo;
         private System.Windows.Forms.MaskedTextBox txtIntitials;
         private System.Windows.Forms.MaskedTextBox txtBarCode;
         private System.Windows.Forms.MaskedTextBox txtDept;
+        private System.Windows.Forms.Label lblPressNumber;
+        private System.Windows.Forms.MaskedTextBox txtPressNumber;
+        private System.Windows.Forms.Panel pnlPressNumber;
     }
 }

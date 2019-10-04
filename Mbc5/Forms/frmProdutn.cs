@@ -7152,7 +7152,11 @@ namespace Mbc5.Forms
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
-                    Company = ((DataRowView)produtnBindingSource.Current).Row["Company"].ToString();
+                    if (produtnBindingSource.Count>0)
+                    {
+                        Company = ((DataRowView)produtnBindingSource.Current).Row["Company"].ToString();
+                    }
+                
 
 				}catch(Exception ex) {
                     var a = dsProdutn.Tables["cust"].GetErrors();
@@ -7180,18 +7184,18 @@ namespace Mbc5.Forms
 				};
                
 
-                if ((DataRowView)coversBindingSource1.Current != null)
-                {
-                    var row = (DataRowView)coversBindingSource1.Current;
-                    var a = row["specinst"].ToString();
+                
                     if (dsProdutn.covers.Count < 1)
                     {
                         DisableControls(this.tbProdutn.TabPages[2]);
-                         btnAddPartial.Visible = true;
-                        EnableControls(btnAddPartial);
+                    btnAddCoverRec.Visible = true;
+                        EnableControls(btnAddCoverRec);
                     }
-                    else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-                }
+                    else {
+                    btnAddCoverRec.Visible =false;
+                    EnableAllControls(this.tbProdutn.TabPages[2]); }
+
+                
 				try {
 					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
                                      
@@ -7205,8 +7209,13 @@ namespace Mbc5.Forms
 				if (dsProdutn.wip.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[1]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[1]); }
+                    btnAddWipRec.Visible = true;
+                    EnableControls(btnAddWipRec);
+                }
+				else {
+                    btnAddWipRec.Visible = false;
+                    EnableAllControls(this.tbProdutn.TabPages[1]);
+                }
 				try {
 					this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
 					this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
@@ -7217,13 +7226,13 @@ namespace Mbc5.Forms
 				
 				if (dsProdutn.partbk.Count < 1)
 				{
-					DisableControls(this.tbProdutn.TabPages[4]);
+					DisableControls(this.tbProdutn.TabPages[3]);
                     btnAddPartial.Visible = true;
                     EnableControls(btnAddPartial);
                   
                 }
 				else { EnableAllControls(
-                    this.tbProdutn.TabPages[4]);
+                    this.tbProdutn.TabPages[3]);
                     btnAddPartial.Visible = false;
                 }
 				try         {
@@ -7237,53 +7246,56 @@ namespace Mbc5.Forms
 				
 				if (dsProdutn.ptbkb.Count < 1)
 				{
-					DisableControls(this.tbProdutn.TabPages[5]);
+					DisableControls(this.tbProdutn.TabPages[4]);
                     btnCDAdd.Visible = true;
                     EnableControls(btnCDAdd);
 				}
 				else {
-                    EnableAllControls(this.tbProdutn.TabPages[5]);
+                    EnableAllControls(this.tbProdutn.TabPages[4]);
                     btnCDAdd.Visible = false;
                 }
 
                 produtnBindingSource.ResetBindings(true);
 			}
-            try
+            if (Invno != 0)
             {
-                reOrderTableAdapter.Fill(dsProdutn.ReOrder, Invno);
-               reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
-               
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error(ex.Message, "");
-                return;
-            }
-
-            if (reOrderBindingSource.Count < 1)
-            {
-                DisableControls(this.tbProdutn.TabPages[6]);
-                btnAddReorder.Visible  = true;
-                EnableControls(btnAddReorder);
-            }
-            else
-            {
-                EnableAllControls(this.tbProdutn.TabPages[6]);
-                btnAddReorder.Visible =false;
-            }
-
-            //disable deadline in if not empty and not admin
-            if (!string.IsNullOrEmpty(kitrecvdDateTimePicker.Date))
-            {
-                
-                var supRole = new StringCollection();
-                    supRole.AddRange(new String[] {"SA","Administrator" });
-               
-                if (!this.ApplicationUser.IsInOneOfRoles(supRole))
+                try
                 {
-                    dedayoutDateBox.Enabled = false;
+                    reOrderTableAdapter.Fill(dsProdutn.ReOrder, Invno);
+                    reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
+
                 }
-                
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+
+                if (reOrderBindingSource.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[5]);
+                    btnAddReorder.Visible = true;
+                    EnableControls(btnAddReorder);
+                }
+                else
+                {
+                    EnableAllControls(this.tbProdutn.TabPages[5]);
+                    btnAddReorder.Visible = false;
+                }
+
+                //disable deadline in if not empty and not admin
+                if (!string.IsNullOrEmpty(kitrecvdDateTimePicker.Date))
+                {
+
+                    var supRole = new StringCollection();
+                    supRole.AddRange(new String[] { "SA", "Administrator" });
+
+                    if (!this.ApplicationUser.IsInOneOfRoles(supRole))
+                    {
+                        dedayoutDateBox.Enabled = false;
+                    }
+
+                }
             }
             btnMeridianTicket.Visible = this.Company == "MER";
             btnCoverTicket.Visible = this.Company == "MBC";
@@ -7350,10 +7362,8 @@ namespace Mbc5.Forms
                         break;
                     }
 
+               
                 case 3:
-
-                    break;
-                case 4:
                     var partBkResult = SavePartBK();
 
                     if (partBkResult.IsError)
@@ -7371,7 +7381,7 @@ namespace Mbc5.Forms
 
 
                     break;
-                case 5:
+                case 4:
                     var ptBkBResult = SavePtBkB();
 
                     if (ptBkBResult.IsError)
@@ -7388,7 +7398,7 @@ namespace Mbc5.Forms
                     }
 
                     break;
-                case 6:
+                case 5:
                     var reOrderResult = SaveReOrder();
 
                     if (reOrderResult.IsError)
@@ -7408,68 +7418,94 @@ namespace Mbc5.Forms
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					var produtnResult = SaveProdutn();
-					if (produtnResult.IsError)
-					{
-						var result = MessageBox.Show("Production record could not be saved"+produtnResult.Errors[0].ErrorMessage+" Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
-						{
-							retval = false;
+                    if (produtnBindingSource.Count > 0)
+                    {
+                        var produtnResult = SaveProdutn();
+                        if (produtnResult.IsError)
+                        {
+                            var result = MessageBox.Show("Production record could not be saved" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false;
 
-						}
-					}
+                            }
+                        }
+                    }
 					break;
 
 				case 1:
-					var wipResult = SaveWip();
-					if (wipResult.IsError)
-					{
-						var result = MessageBox.Show("Wip record could not be saved:"+ wipResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
-						{
-							retval = false;
-						}
-					}
+                    if (wipBindingSource.Count > 0)
+                    {
+                        var wipResult = SaveWip();
+                        if (wipResult.IsError)
+                        {
+                            var result = MessageBox.Show("Wip record could not be saved:" + wipResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false;
+                            }
+                        }
+                    }
 					break;
 
 				case 2:
-					var coverResult = SaveCovers();
-					if (coverResult.IsError)
-					{
-						var result = MessageBox.Show("Cover record could not be saved:" + coverResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
-						{
-							retval = false; ;
-						}
-					}
+                    if (coversBindingSource1.Count > 0)
+                    {
+                        var coverResult = SaveCovers();
+                        if (coverResult.IsError)
+                        {
+                            var result = MessageBox.Show("Cover record could not be saved:" + coverResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false; ;
+                            }
+                        }
+                    }
 					break;
+				case 3:
+                    if (partbkBindingSource.Count > 0)
+                    {
+                        var partBkResult = SavePartBK();
+                        if (partBkResult.IsError)
+                        {
+                            var result = MessageBox.Show("Partial Book(A) could not be saved:" + partBkResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false;
+                            }
+                        }
+                    }
+					break;
+
 				case 4:
-					var partBkResult = SavePartBK();
-					if (partBkResult.IsError)
-					{
-						var result = MessageBox.Show("Partial Book(A) could not be saved:" + partBkResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
-						{
-							retval = false;
-						}
-					}
+                    if (ptbkbBindingSource.Count>0) {
+                        var ptBkBResult = SavePtBkB();
+                        if (ptBkBResult.IsError)
+                        {
+                            var result = MessageBox.Show("Photos On CD record could not be saved:" + ptBkBResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false;
+                            }
+                        }
+                    }
 					break;
 
 				case 5:
-					var ptBkBResult = SavePtBkB();
-					if (ptBkBResult.IsError)
-					{
-						var result = MessageBox.Show("Photos On CD record could not be saved:" + ptBkBResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
-						{
-							retval = false;
-						}
-					}
-					break;
-
-				case 6:
-					
-					break;
+                    if (reOrderBindingSource.Count > 0)
+                    {
+                        var reorderResult = SaveReOrder();
+                        if (reorderResult.IsError)
+                        {
+                            var result = MessageBox.Show("Reorder record could not be saved:" + reorderResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                retval = false;
+                            }
+                        }
+                    }
+                    break;
+                  
 			}
 
 			return retval;
@@ -7670,7 +7706,7 @@ namespace Mbc5.Forms
 			else {
                 var a = dsProdutn.Tables["covers"].GetErrors();
                 processingResult.IsError = true;
-				processingResult.Errors.Add(new ApiProcessingError("Cover record failed to validate", "Cover record failed to validate", ""));
+				processingResult.Errors.Add(new ApiProcessingError("Cover record missing", "Cover record missing", ""));
 			}
 
 			return processingResult;
@@ -7946,44 +7982,7 @@ namespace Mbc5.Forms
 			}
 
 		}
-		//private void btnProdSrch_Click(object sender, EventArgs e)
-		//{
-		//	if (string.IsNullOrEmpty(txtProdNoSrch.Text))
-		//	{
-		//		return;
-		//	}
-		//	switch (tbProdutn.SelectedIndex)
-		//	{
-		//		case 0:
-		//			var produtnResult = SaveProdutn();
-		//			if (produtnResult.IsError)
-		//			{
-		//				var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+" Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-		//				if (result1 == DialogResult.No)
-		//				{
-
-		//					return;
-		//				}
-		//			}
-		//			break;
-
-
-
-		//	}
-
-		//	var sqlQuery = new SQLQuery();
-		//	string query = "Select prodno,invno,schcode from produtn where prodno=@prodno";
-		//	var parameters = new SqlParameter[] { new SqlParameter("@prodno", txtProdNoSrch.Text) };
-		//	var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-		//	if (result.Rows.Count > 0)
-		//	{
-		//		Schcode = result.Rows[0]["schcode"].ToString();
-		//		Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-		//		Fill();
-		//	}
-		//	else { MessageBox.Show("Record was not found.", "Production Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		//	frmProdutn_Paint(this, null);
-		//}
+		
         private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
@@ -8109,65 +8108,16 @@ namespace Mbc5.Forms
 		}
 		private void tbProdutn_Deselecting(object sender, TabControlCancelEventArgs e)
 		{
+           
+                if (!SaveOrStop())
+                {
+                    e.Cancel = true;
 
-			if (!SaveOrStop())
-			{
-				e.Cancel = true;
-
-			}
+                }
+            
 		}
       
-		//private void btnSchoolSearch_Click(object sender, EventArgs e)
-		//{
-		//	if (string.IsNullOrEmpty(txtSchNamesrch.Text.Trim()))
-		//	{
-		//		return;
-		//	}    
-			
-		//		//var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-		//		var sqlQuery = new SQLQuery();
-		//		var queryString = @"SELECT P.ProdNo,P.Invno, C.Schcode, C.Schname,C.Schcity,C.Schstate,C.Schzip 
-		//					 FROM Cust C
-		//						Left Join Quotes Q ON C.Schcode=Q.Schcode
-		//						Left Join Produtn P On Q.Invno=P.Invno
-  //                            WHERE P.Invno IS NOT NULL AND (C.Schname LIKE @Schname + '%')
-  //                            ORDER BY Schname,Invno";
-		//		SqlParameter[] parameters = new SqlParameter[] {
-		//	   new SqlParameter("@Schname",txtSchNamesrch.Text.Trim())
-		//	};
-		//		var dataResult = sqlQuery.ExecuteReaderAsync<ProdutnSchoolNameSearchModel>(CommandType.Text, queryString, parameters);
-		//		var records = (List<ProdutnSchoolNameSearchModel>)dataResult;
-		//	if (records == null || records.Count < 1)
-		//		{
-				
-
-		//			MessageBox.Show("No Records were found with this criteria.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		//		}
-		//		else if (records.Count > 1)
-		//		{
-			
-		//			//more than one record select which one you want
-
-		//			this.Cursor = Cursors.AppStarting;
-					
-		//			frmProdutnSelctCust frmProdutnSelectCust = new frmProdutnSelctCust(records);
-		//			DialogResult result = frmProdutnSelectCust.ShowDialog();
-		//			this.Cursor = Cursors.Default;
-		//			if (result != DialogResult.Cancel)
-		//			{
-		//			if (frmProdutnSelectCust.retval==0)
-		//			{
-		//				return;
-		//			}
-		//			this.Invno = frmProdutnSelectCust.retval;
-		//			this.Fill();
-		//			}
-					
-		//		}
-		//		txtSchNamesrch.Text = "";
-		//	    frmProdutn_Paint(this, null);
-			
-		//}
+		
 
 		#region Validation
 		private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
@@ -9785,43 +9735,7 @@ namespace Mbc5.Forms
 
 		
 
-		private void btnMbo_Click(object sender, EventArgs e)
-		{
-		//	if (string.IsNullOrEmpty(txtMbo.Text))
-		//	{
-		//		return;
-		//	}
-		//	switch (tbProdutn.SelectedIndex)
-		//	{
-		//		case 0:
-		//			var produtnResult = SaveProdutn();
-		//			if (produtnResult.IsError)
-		//			{
-		//				var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+ " Continue?", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-		//				if (result1 == DialogResult.No) {
-
-		//					return;
-		//				}
-					
-		//			}
-		//			break;
-
-		//	}
-
-		//	var sqlQuery = new SQLQuery();
-		//	string query = "Select prodno,invno,schcode from produtn where jobno=@jobno";
-		//	var parameters = new SqlParameter[] { new SqlParameter("@jobno", txtMbo.Text) };
-		//	var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-		//	if (result.Rows.Count > 0)
-		//	{
-		//		Schcode = result.Rows[0]["schcode"].ToString();
-		//		Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-		//		Fill();
-		//	}
-		//	else
-		//	{ MessageBox.Show("Record was not found.", "Production MBO Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		//	frmProdutn_Paint(this, null);
-		}
+		
 
 		private void btnPrntMbOnline_Click(object sender, EventArgs e)
 		{
@@ -10705,7 +10619,7 @@ namespace Mbc5.Forms
             sqlQuery.CommandText(@"INSERT INTO PtBkb (Invno,Schcode,Company,BookType)Values(@Invno,@Schcode,@Company,@BookType)");
             sqlQuery.AddParameter("@Invno",Invno);
             sqlQuery.AddParameter("@Schcode",Schcode);
-            sqlQuery.AddParameter("@BookType", ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString());
+            sqlQuery.AddParameter("@BookType", txtBookType.Text);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
    
            var insertResult=sqlQuery.Insert();
@@ -11088,12 +11002,12 @@ namespace Mbc5.Forms
            var vBooktype= ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
             var sqlQuery = new SQLCustomClient();
            
-            sqlQuery.AddParameter("@Invno", Invno);
+           
             sqlQuery.ClearParameters();
             sqlQuery.CommandText(@"INSERT INTO PartBk (Invno,Schcode,Company,BookType) Values(@Invno,@Schcode,@Company,@BookType)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
-            sqlQuery.AddParameter("@BookType", "MBO");
+            sqlQuery.AddParameter("@BookType", txtBookType.Text);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
          
             var insertResult = sqlQuery.Insert();
@@ -11145,7 +11059,7 @@ namespace Mbc5.Forms
             sqlQuery.CommandText(@"INSERT INTO ReOrder (Invno,Schcode,Company,BookType)Values(@Invno,@Schcode,@Company,@BookType)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
-            sqlQuery.AddParameter("@BookType", ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString());
+            sqlQuery.AddParameter("@BookType", txtBookType.Text);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
 
             var insertResult = sqlQuery.Insert();
@@ -11240,21 +11154,40 @@ namespace Mbc5.Forms
 
         private void btnAddCoverRec_Click(object sender, EventArgs e)
         {
-            var vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+            string instructions = "";
+            try
+            {
+                DataRowView current = (DataRowView)custBindingSource.Current;
+               instructions = current["spcinst"].ToString();
+            }catch(Exception ex)
+            {
+                MbcMessageBox.Hand("Customer data is not available.", "");
+                return;
+            }
+            string vBooktype = "";
+            try {
+                vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+            } catch(Exception ex)
+            {
+                MbcMessageBox.Hand("Sales data is not available.", "");
+                return;
+            }
+          
             var sqlQuery = new SQLCustomClient();
 
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.ClearParameters();
-            sqlQuery.CommandText(@"INSERT INTO Covers (Invno,Schcode,Company,BookType) Values(@Invno,@Schcode,@Company,@BookType)");
+  
+            sqlQuery.CommandText(@"INSERT INTO Covers (Invno,Schcode,Company,specovr, Specinst) Values(@Invno,@Schcode,@Company, @Specovr, @Specinst)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
-            sqlQuery.AddParameter("@BookType", "MBO");
             sqlQuery.AddParameter("@Company", txtCompany.Text);
-
+            sqlQuery.AddParameter(" @Specovr", frmMain.GetCoverNumber());
+            sqlQuery.AddParameter("@Specinst", instructions);
             var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to instert Partial Book Record:" + insertResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert Cover Record:" + insertResult.Errors[0].ErrorMessage);
                 return;
             }
             try
@@ -11262,7 +11195,7 @@ namespace Mbc5.Forms
                 coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
                 coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
                 btnAddCoverRec.Visible = false;
-                EnableAllControls(this.tbProdutn.TabPages[4]);
+                EnableAllControls(this.tbProdutn.TabPages[2]);
             }
             catch (Exception ex)
             {
@@ -11362,6 +11295,42 @@ namespace Mbc5.Forms
             if (result == DialogResult.OK)
             {
                 reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
+            }
+        }
+
+        private void btnPrntVendor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddWipRec_Click(object sender, EventArgs e)
+        {
+            
+            var sqlQuery = new SQLCustomClient();
+
+            sqlQuery.ClearParameters();
+            sqlQuery.CommandText(@"INSERT INTO WIP (Invno,Schcode) Values(@Invno,@Schcode)");
+            sqlQuery.AddParameter("@Invno", Invno);
+            sqlQuery.AddParameter("@Schcode", Schcode);
+           
+
+            var insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to insert Wip Record:" + insertResult.Errors[0].ErrorMessage);
+                return;
+            }
+            try
+            {
+                wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, "", Invno);
+                btnAddWipRec.Visible = false;
+                EnableAllControls(this.tbProdutn.TabPages[1]);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+                return;
             }
         }
 

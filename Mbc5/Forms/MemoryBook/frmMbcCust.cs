@@ -1943,11 +1943,8 @@ public override void Cancel() {
         private string GetInstructions()
         {
 
-            string val = "";
-            //custBindingSource.MoveFirst();//make sure on first row
             DataRowView current = (DataRowView)custBindingSource.Current;
             string instructions = current["spcinst"].ToString();
-
             return instructions;
 
         }

@@ -58,47 +58,47 @@ namespace Mbc5.Forms
             switch (trkType)
             {
                 case "YB":
-                    switch (txtDeptCode.Text)
+                    switch (txtDeptCode.Text.Trim())
                     {
-                        case "WAR29":
+                        case "29":
                             {
                                 lblCopies.Visible = true;
                                 txtCopies.Visible = true;
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR32":
+                        case "32":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR33":
+                        case "33":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR34":
+                        case "34":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR35":
+                        case "35":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR36":
+                        case "36":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR37":
+                        case "37":
                             {
-                                txtIntitials.Mask = ">LLLLLLL";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR38":
-                            { txtIntitials.Mask = ">LLLLLLL";
+                        case "38":
+                            { txtIntitials.Mask = ">LLL####";
                                 break;
                             }
                         default:
@@ -117,22 +117,23 @@ namespace Mbc5.Forms
                             {
                                 lblCopies.Visible = true;
                                 txtCopies.Visible = true;
-                                txtIntitials.Mask = ">####";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
                         case "LAM2":
                             {
-                                txtIntitials.Mask = ">####";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
-                        case "WAR29":
+                        case "29":
                             {
-                                txtIntitials.Mask = ">####";
+                                txtIntitials.Mask = ">LLL####";
+                                pnlPressNumber.Visible = true;
                                 break;
                             }
-                        case "WAR37":
+                        case "37":
                             {
-                                txtIntitials.Mask = ">####";
+                                txtIntitials.Mask = ">LLL####";
                                 break;
                             }
                         default:
@@ -142,7 +143,9 @@ namespace Mbc5.Forms
                             }
                     }
                     break;
-
+                default:
+                    txtIntitials.Mask = ">LLL";
+                    break;
 
 
             }
@@ -155,11 +158,22 @@ namespace Mbc5.Forms
 
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
-            
+            string vInvno = "";
+              try {
                 this.Company = txtBarCode.Text.Substring(0, 3);
-                string vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 2);
+                if (txtBarCode.Text.Length == 12||txtBarCode.Text.Length == 11)
+                {
+                    vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length -6);
+                }
+                
+                else
+                {
+                    MbcMessageBox.Error("Scan code is not in correct format");
+                    return;
+                }
+         
                 int parsedInvno = 0;
-
+              
                 var parseResult= int.TryParse(vInvno,out parsedInvno);
                 this.Invno = parsedInvno;
            if(!parseResult)
@@ -210,7 +224,8 @@ namespace Mbc5.Forms
                     }
 
             }
-
+            }
+            catch (Exception ex) { };
         }
         #region "Methods"
         private void MbScan()
@@ -282,7 +297,7 @@ namespace Mbc5.Forms
                                 sqlClient.CommandText(@"Update WIPDetail SET
                                  
                                       WAR= @WAR                                
-                                    , WIR =
+                                    , WIR =@WIR
                                       CASE When WIR IS NULL THEN @WIR ELSE WIR END
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
@@ -302,16 +317,16 @@ namespace Mbc5.Forms
                                                     ");
                                 var result1 = sqlClient.Insert();
 
-                                sqlClient.ClearParameters();
-                                sqlClient.AddParameter("@Invno", this.Invno);
-                                sqlClient.AddParameter("@DescripID", vDeptCode);
-                                sqlClient.AddParameter("@WAR",DBNull.Value);
-                                sqlClient.AddParameter("@WIR","");
-                                sqlClient.AddParameter("@Wtr", 0);
-                                sqlClient.AddParameter("@Schcode", txtSchcode.Text);
-                                sqlClient.CommandText(@" UPDATE WipDetail Set War=@WAR,Wir=@WIR,Wtr=@Wtr  Where Invno=@Invno AND DescripID=42
-                                                    ");
-                                try {var updateResult = sqlClient.Update(); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+                                //sqlClient.ClearParameters();
+                                //sqlClient.AddParameter("@Invno", this.Invno);
+                                //sqlClient.AddParameter("@DescripID", vDeptCode);
+                                //sqlClient.AddParameter("@WAR",DBNull.Value);
+                                //sqlClient.AddParameter("@WIR","");
+                                //sqlClient.AddParameter("@Wtr", 0);
+                                //sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                                //sqlClient.CommandText(@" UPDATE WipDetail Set War=@WAR,Wir=@WIR,Wtr=@Wtr  Where Invno=@Invno AND DescripID=42
+                                //                    ");
+                                //try {var updateResult = sqlClient.Update(); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
                                 
                                 break;
                             }
@@ -353,7 +368,7 @@ namespace Mbc5.Forms
                                         MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                                     }
 
-                                if (vDeptCode == 555)
+                                if (vDeptCode == 40)//40 is ship in wip derscr wiptable
                                 {
                                     MessageBox.Show("need function to email shipped data");
                                     //shipped email
@@ -713,10 +728,14 @@ namespace Mbc5.Forms
                                 try
                                 {
                                     var result = sqlClient.Update();
+                                    if (result.IsError)
+                                    {
+                                        MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    
                                 }
 
                                 sqlClient.ClearParameters();
@@ -736,6 +755,11 @@ namespace Mbc5.Forms
                                 try
                                 {
                                     var result1 = sqlClient.Insert();
+                                    if (result1.IsError)
+                                    {
+                                        MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+
                                 }
                                 catch (Exception ex)
                                 {
@@ -745,6 +769,7 @@ namespace Mbc5.Forms
                             }
 
                     }
+                    ClearScan();
                 }
                 else
                 {
@@ -1287,8 +1312,34 @@ namespace Mbc5.Forms
 
             }
 
-        }
+            pnlPressNumber.Visible = false;
 
+        }
+        private void ClearScan()
+        {
+            txtBarCode.Text = "";
+            txtDateTime.Text = "";
+            txtDeptCode.Text = "";
+            txtPressNumber.Text = "";
+            txtSchcode.Text = "";
+            txtCoverNumber.Text = "";
+            txtColorPageNumber.Text = "";
+            txtExtraBooks.Text = "";
+            txtSchoolName.Text = "";
+            txtProdNumber.Text = "";
+            txtTime.Text = "";
+            txtIntitials.Text = "";
+            chkShippedOrders.Checked = false;
+            txtInOut.Text = "";
+            txtDept.Text = "";
+            txtPlates.Text = "";
+            txtSheets.Text = "";
+            txtPlateNotes.Text = "";
+            txtPressNotes.Text = "";
+            cmbPlateReason.SelectedValue = "";
+            cmbPressReason.SelectedValue ="";
+
+        }
         #endregion
 
         private void frmBarScan_Activated(object sender, EventArgs e)
@@ -1307,6 +1358,7 @@ namespace Mbc5.Forms
             lblCopies.Visible = false;
             txtCopies.Visible = false;
         }
+     
     }
 
     }

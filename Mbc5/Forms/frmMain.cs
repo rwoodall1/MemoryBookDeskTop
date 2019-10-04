@@ -1182,7 +1182,20 @@ namespace Mbc5.Forms
                 MessageBox.Show("Fill is not implemented", "Fill", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
-    
+
+        private void wIPDescriptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmWipDescriptions form= new frmWipDescriptions(this.ApplicationUser);
+                form.MdiParent = this;
+                form.Show();
+            }
+            catch { }
+            
+            
+        }
+
 
         //nothing below here
     }

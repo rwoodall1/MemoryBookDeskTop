@@ -139,18 +139,6 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label shelfLabel;
             System.Windows.Forms.Label finishedcopiesLabel;
             System.Windows.Forms.Label label37;
-            System.Windows.Forms.Label cpnumLabel;
-            System.Windows.Forms.Label noclrpgsLabel;
-            System.Windows.Forms.Label invnoLabel3;
-            System.Windows.Forms.Label label38;
-            System.Windows.Forms.Label noclrpgsLabel1;
-            System.Windows.Forms.Label numpgsLabel;
-            System.Windows.Forms.Label label39;
-            System.Windows.Forms.Label label40;
-            System.Windows.Forms.Label wipmemoLabel1;
-            System.Windows.Forms.Label typestyleLabel2;
-            System.Windows.Forms.Label label41;
-            System.Windows.Forms.Label atoprodLabel;
             System.Windows.Forms.Label label42;
             System.Windows.Forms.Label label43;
             System.Windows.Forms.Label booktypeLabel1;
@@ -210,6 +198,7 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label bindery2Label;
             System.Windows.Forms.Label bindery3Label;
             System.Windows.Forms.Label bindery4Label;
+            System.Windows.Forms.Label pressNumberLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -411,6 +400,8 @@ namespace Mbc5.Forms
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblProdNodata = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.pressNumberTextBox = new System.Windows.Forms.TextBox();
+            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnNewCvrScanRec = new System.Windows.Forms.Button();
             this.btnAddCoverRec = new System.Windows.Forms.Button();
             this.mcoverReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -418,7 +409,6 @@ namespace Mbc5.Forms
             this.reportViewerBinderyTicket = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dbScRecvDate = new CustomControls.DateBox();
             this.desorgdteDateBox = new CustomControls.DateBox();
-            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.reprntdteDateBox = new CustomControls.DateBox();
             this.lamdtesentDateBox = new CustomControls.DateBox();
             this.otdtebkDateBox = new CustomControls.DateBox();
@@ -505,18 +495,6 @@ namespace Mbc5.Forms
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.pg4 = new System.Windows.Forms.TabPage();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.typestyleTextBox1 = new System.Windows.Forms.TextBox();
-            this.wipmemoTextBox1 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numpgsTextBox = new System.Windows.Forms.TextBox();
-            this.noclrpgsTextBox1 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.invnoLabel4 = new System.Windows.Forms.Label();
-            this.noclrpgsTextBox = new System.Windows.Forms.TextBox();
-            this.cpnumTextBox1 = new System.Windows.Forms.TextBox();
             this.pg5 = new System.Windows.Forms.TabPage();
             this.btnAddPartialBKScan = new System.Windows.Forms.Button();
             this.invnoLabel9 = new System.Windows.Forms.Label();
@@ -591,6 +569,7 @@ namespace Mbc5.Forms
             this.txtPhotoBookType = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.pg7 = new System.Windows.Forms.TabPage();
+            this.btnAddReorderScan = new System.Windows.Forms.Button();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
             this.reOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.companyLabel3 = new System.Windows.Forms.Label();
@@ -645,7 +624,7 @@ namespace Mbc5.Forms
             this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
             this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
             this.mcoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAddReorderScan = new System.Windows.Forms.Button();
+            this.btnAddWipRec = new System.Windows.Forms.Button();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -752,18 +731,6 @@ namespace Mbc5.Forms
             shelfLabel = new System.Windows.Forms.Label();
             finishedcopiesLabel = new System.Windows.Forms.Label();
             label37 = new System.Windows.Forms.Label();
-            cpnumLabel = new System.Windows.Forms.Label();
-            noclrpgsLabel = new System.Windows.Forms.Label();
-            invnoLabel3 = new System.Windows.Forms.Label();
-            label38 = new System.Windows.Forms.Label();
-            noclrpgsLabel1 = new System.Windows.Forms.Label();
-            numpgsLabel = new System.Windows.Forms.Label();
-            label39 = new System.Windows.Forms.Label();
-            label40 = new System.Windows.Forms.Label();
-            wipmemoLabel1 = new System.Windows.Forms.Label();
-            typestyleLabel2 = new System.Windows.Forms.Label();
-            label41 = new System.Windows.Forms.Label();
-            atoprodLabel = new System.Windows.Forms.Label();
             label42 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
             booktypeLabel1 = new System.Windows.Forms.Label();
@@ -823,6 +790,7 @@ namespace Mbc5.Forms
             bindery2Label = new System.Windows.Forms.Label();
             bindery3Label = new System.Windows.Forms.Label();
             bindery4Label = new System.Windows.Forms.Label();
+            pressNumberLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
@@ -856,7 +824,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
-            this.pg4.SuspendLayout();
             this.pg5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.partBkDetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partBkDetailBindingSource)).BeginInit();
@@ -1017,7 +984,7 @@ namespace Mbc5.Forms
             // 
             ptbrcvdLabel.AutoSize = true;
             ptbrcvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptbrcvdLabel.Location = new System.Drawing.Point(4, 325);
+            ptbrcvdLabel.Location = new System.Drawing.Point(1, 325);
             ptbrcvdLabel.Name = "ptbrcvdLabel";
             ptbrcvdLabel.Size = new System.Drawing.Size(169, 13);
             ptbrcvdLabel.TabIndex = 126;
@@ -1027,7 +994,7 @@ namespace Mbc5.Forms
             // 
             ptnopgsLabel.AutoSize = true;
             ptnopgsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptnopgsLabel.Location = new System.Drawing.Point(44, 303);
+            ptnopgsLabel.Location = new System.Drawing.Point(41, 303);
             ptnopgsLabel.Name = "ptnopgsLabel";
             ptnopgsLabel.Size = new System.Drawing.Size(129, 13);
             ptnopgsLabel.TabIndex = 124;
@@ -1037,7 +1004,7 @@ namespace Mbc5.Forms
             // 
             ptrecvdLabel.AutoSize = true;
             ptrecvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptrecvdLabel.Location = new System.Drawing.Point(26, 277);
+            ptrecvdLabel.Location = new System.Drawing.Point(23, 277);
             ptrecvdLabel.Name = "ptrecvdLabel";
             ptrecvdLabel.Size = new System.Drawing.Size(147, 13);
             ptrecvdLabel.TabIndex = 122;
@@ -1047,7 +1014,7 @@ namespace Mbc5.Forms
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(46, 249);
+            label3.Location = new System.Drawing.Point(43, 249);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(127, 13);
             label3.TabIndex = 121;
@@ -1057,7 +1024,7 @@ namespace Mbc5.Forms
             // 
             diecutLabel2.AutoSize = true;
             diecutLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            diecutLabel2.Location = new System.Drawing.Point(92, 226);
+            diecutLabel2.Location = new System.Drawing.Point(89, 226);
             diecutLabel2.Name = "diecutLabel2";
             diecutLabel2.Size = new System.Drawing.Size(81, 13);
             diecutLabel2.TabIndex = 120;
@@ -1067,7 +1034,7 @@ namespace Mbc5.Forms
             // 
             coilclrLabel.AutoSize = true;
             coilclrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coilclrLabel.Location = new System.Drawing.Point(112, 181);
+            coilclrLabel.Location = new System.Drawing.Point(109, 181);
             coilclrLabel.Name = "coilclrLabel";
             coilclrLabel.Size = new System.Drawing.Size(61, 13);
             coilclrLabel.TabIndex = 117;
@@ -1077,7 +1044,7 @@ namespace Mbc5.Forms
             // 
             perfbindLabel.AutoSize = true;
             perfbindLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            perfbindLabel.Location = new System.Drawing.Point(45, 159);
+            perfbindLabel.Location = new System.Drawing.Point(42, 159);
             perfbindLabel.Name = "perfbindLabel";
             perfbindLabel.Size = new System.Drawing.Size(128, 13);
             perfbindLabel.TabIndex = 115;
@@ -1087,7 +1054,7 @@ namespace Mbc5.Forms
             // 
             screcvLabel.AutoSize = true;
             screcvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            screcvLabel.Location = new System.Drawing.Point(60, 61);
+            screcvLabel.Location = new System.Drawing.Point(57, 61);
             screcvLabel.Name = "screcvLabel";
             screcvLabel.Size = new System.Drawing.Size(113, 13);
             screcvLabel.TabIndex = 103;
@@ -1097,7 +1064,7 @@ namespace Mbc5.Forms
             // 
             coverdescLabel.AutoSize = true;
             coverdescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverdescLabel.Location = new System.Drawing.Point(65, 37);
+            coverdescLabel.Location = new System.Drawing.Point(62, 37);
             coverdescLabel.Name = "coverdescLabel";
             coverdescLabel.Size = new System.Drawing.Size(108, 13);
             coverdescLabel.TabIndex = 101;
@@ -1107,7 +1074,7 @@ namespace Mbc5.Forms
             // 
             covertypeLabel.AutoSize = true;
             covertypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            covertypeLabel.Location = new System.Drawing.Point(101, 15);
+            covertypeLabel.Location = new System.Drawing.Point(98, 15);
             covertypeLabel.Name = "covertypeLabel";
             covertypeLabel.Size = new System.Drawing.Size(72, 13);
             covertypeLabel.TabIndex = 99;
@@ -1933,118 +1900,6 @@ namespace Mbc5.Forms
             label37.TabIndex = 205;
             label37.Text = "Cover#";
             // 
-            // cpnumLabel
-            // 
-            cpnumLabel.AutoSize = true;
-            cpnumLabel.Location = new System.Drawing.Point(20, 26);
-            cpnumLabel.Name = "cpnumLabel";
-            cpnumLabel.Size = new System.Drawing.Size(77, 13);
-            cpnumLabel.TabIndex = 0;
-            cpnumLabel.Text = "Color Page#";
-            // 
-            // noclrpgsLabel
-            // 
-            noclrpgsLabel.AutoSize = true;
-            noclrpgsLabel.Location = new System.Drawing.Point(26, 52);
-            noclrpgsLabel.Name = "noclrpgsLabel";
-            noclrpgsLabel.Size = new System.Drawing.Size(75, 13);
-            noclrpgsLabel.TabIndex = 2;
-            noclrpgsLabel.Text = "Color Pages";
-            // 
-            // invnoLabel3
-            // 
-            invnoLabel3.AutoSize = true;
-            invnoLabel3.Location = new System.Drawing.Point(231, 26);
-            invnoLabel3.Name = "invnoLabel3";
-            invnoLabel3.Size = new System.Drawing.Size(57, 13);
-            invnoLabel3.TabIndex = 4;
-            invnoLabel3.Text = "Invoice#";
-            // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label38.Location = new System.Drawing.Point(1086, 3);
-            label38.Name = "label38";
-            label38.Size = new System.Drawing.Size(58, 13);
-            label38.TabIndex = 10;
-            label38.Text = "Company";
-            // 
-            // noclrpgsLabel1
-            // 
-            noclrpgsLabel1.AutoSize = true;
-            noclrpgsLabel1.Location = new System.Drawing.Point(674, 29);
-            noclrpgsLabel1.Name = "noclrpgsLabel1";
-            noclrpgsLabel1.Size = new System.Drawing.Size(91, 13);
-            noclrpgsLabel1.TabIndex = 11;
-            noclrpgsLabel1.Text = "# of CP Recvd";
-            // 
-            // numpgsLabel
-            // 
-            numpgsLabel.AutoSize = true;
-            numpgsLabel.Location = new System.Drawing.Point(919, 29);
-            numpgsLabel.Name = "numpgsLabel";
-            numpgsLabel.Size = new System.Drawing.Size(83, 13);
-            numpgsLabel.TabIndex = 12;
-            numpgsLabel.Text = "#Color Pages";
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label39.Location = new System.Drawing.Point(701, 55);
-            label39.Name = "label39";
-            label39.Size = new System.Drawing.Size(66, 13);
-            label39.TabIndex = 49;
-            label39.Text = "No. Pages";
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label40.Location = new System.Drawing.Point(882, 55);
-            label40.Name = "label40";
-            label40.Size = new System.Drawing.Size(69, 13);
-            label40.TabIndex = 51;
-            label40.Text = "No. Copies";
-            // 
-            // wipmemoLabel1
-            // 
-            wipmemoLabel1.AutoSize = true;
-            wipmemoLabel1.Location = new System.Drawing.Point(726, 78);
-            wipmemoLabel1.Name = "wipmemoLabel1";
-            wipmemoLabel1.Size = new System.Drawing.Size(119, 13);
-            wipmemoLabel1.TabIndex = 52;
-            wipmemoLabel1.Text = "Special Instructions";
-            // 
-            // typestyleLabel2
-            // 
-            typestyleLabel2.AutoSize = true;
-            typestyleLabel2.Location = new System.Drawing.Point(37, 81);
-            typestyleLabel2.Name = "typestyleLabel2";
-            typestyleLabel2.Size = new System.Drawing.Size(67, 13);
-            typestyleLabel2.TabIndex = 53;
-            typestyleLabel2.Text = "Type Style";
-            // 
-            // label41
-            // 
-            label41.AutoSize = true;
-            label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label41.Location = new System.Drawing.Point(223, 81);
-            label41.Name = "label41";
-            label41.Size = new System.Drawing.Size(49, 13);
-            label41.TabIndex = 117;
-            label41.Text = "Binding";
-            // 
-            // atoprodLabel
-            // 
-            atoprodLabel.AutoSize = true;
-            atoprodLabel.Location = new System.Drawing.Point(57, 133);
-            atoprodLabel.Name = "atoprodLabel";
-            atoprodLabel.Size = new System.Drawing.Size(83, 13);
-            atoprodLabel.TabIndex = 118;
-            atoprodLabel.Text = "to Production";
-            // 
             // label42
             // 
             label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2337,7 +2192,7 @@ namespace Mbc5.Forms
             // 
             endstrecvLabel.AutoSize = true;
             endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            endstrecvLabel.Location = new System.Drawing.Point(38, 351);
+            endstrecvLabel.Location = new System.Drawing.Point(35, 351);
             endstrecvLabel.Name = "endstrecvLabel";
             endstrecvLabel.Size = new System.Drawing.Size(135, 13);
             endstrecvLabel.TabIndex = 132;
@@ -2347,7 +2202,7 @@ namespace Mbc5.Forms
             // 
             speccoverLabel.AutoSize = true;
             speccoverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            speccoverLabel.Location = new System.Drawing.Point(125, 85);
+            speccoverLabel.Location = new System.Drawing.Point(122, 85);
             speccoverLabel.Name = "speccoverLabel";
             speccoverLabel.Size = new System.Drawing.Size(48, 13);
             speccoverLabel.TabIndex = 133;
@@ -2357,7 +2212,7 @@ namespace Mbc5.Forms
             // 
             laminatedLabel.AutoSize = true;
             laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            laminatedLabel.Location = new System.Drawing.Point(115, 133);
+            laminatedLabel.Location = new System.Drawing.Point(112, 133);
             laminatedLabel.Name = "laminatedLabel";
             laminatedLabel.Size = new System.Drawing.Size(58, 13);
             laminatedLabel.TabIndex = 139;
@@ -2657,6 +2512,15 @@ namespace Mbc5.Forms
             this.wipBindingSource.DataMember = "wip";
             this.wipBindingSource.DataSource = this.dsProdutn;
             // 
+            // pressNumberLabel
+            // 
+            pressNumberLabel.AutoSize = true;
+            pressNumberLabel.Location = new System.Drawing.Point(184, 413);
+            pressNumberLabel.Name = "pressNumberLabel";
+            pressNumberLabel.Size = new System.Drawing.Size(85, 13);
+            pressNumberLabel.TabIndex = 225;
+            pressNumberLabel.Text = "Press Number";
+            // 
             // invoiceCustBindingSource
             // 
             this.invoiceCustBindingSource.DataMember = "cust";
@@ -2696,7 +2560,6 @@ namespace Mbc5.Forms
             this.tbProdutn.Controls.Add(this.pg1);
             this.tbProdutn.Controls.Add(this.pg2);
             this.tbProdutn.Controls.Add(this.pg3);
-            this.tbProdutn.Controls.Add(this.pg4);
             this.tbProdutn.Controls.Add(this.pg5);
             this.tbProdutn.Controls.Add(this.pg6);
             this.tbProdutn.Controls.Add(this.pg7);
@@ -2826,7 +2689,7 @@ namespace Mbc5.Forms
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(555, 399);
+            this.panel4.Location = new System.Drawing.Point(538, 399);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
@@ -3002,7 +2865,7 @@ namespace Mbc5.Forms
             this.btnMbo.Text = "Search MBO";
             this.btnMbo.UseVisualStyleBackColor = true;
             this.btnMbo.Visible = false;
-            this.btnMbo.Click += new System.EventHandler(this.btnMbo_Click);
+            
             // 
             // lblModifiedBy
             // 
@@ -3111,7 +2974,7 @@ namespace Mbc5.Forms
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(887, 80);
+            this.panel3.Location = new System.Drawing.Point(870, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 316);
             this.panel3.TabIndex = 130;
@@ -3214,7 +3077,7 @@ namespace Mbc5.Forms
             this.panel2.Controls.Add(warndateLabel);
             this.panel2.Controls.Add(prshpdteLabel);
             this.panel2.Controls.Add(shpdateLabel);
-            this.panel2.Location = new System.Drawing.Point(555, 82);
+            this.panel2.Location = new System.Drawing.Point(538, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 316);
             this.panel2.TabIndex = 129;
@@ -3378,6 +3241,7 @@ namespace Mbc5.Forms
             this.btnPrntVendor.TabIndex = 98;
             this.btnPrntVendor.Text = "Print Vend";
             this.btnPrntVendor.UseVisualStyleBackColor = true;
+            this.btnPrntVendor.Click += new System.EventHandler(this.btnPrntVendor_Click);
             // 
             // panel1
             // 
@@ -3410,9 +3274,9 @@ namespace Mbc5.Forms
             this.panel1.Controls.Add(this.txtCoverDescription);
             this.panel1.Controls.Add(covertypeLabel);
             this.panel1.Controls.Add(this.txtCoverType);
-            this.panel1.Location = new System.Drawing.Point(281, 80);
+            this.panel1.Location = new System.Drawing.Point(265, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 400);
+            this.panel1.Size = new System.Drawing.Size(269, 400);
             this.panel1.TabIndex = 128;
             // 
             // endstrecvDateBox
@@ -3420,7 +3284,7 @@ namespace Mbc5.Forms
             this.endstrecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "endstrecv", true));
             this.endstrecvDateBox.Date = null;
             this.endstrecvDateBox.DateValue = null;
-            this.endstrecvDateBox.Location = new System.Drawing.Point(176, 351);
+            this.endstrecvDateBox.Location = new System.Drawing.Point(173, 351);
             this.endstrecvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.endstrecvDateBox.Name = "endstrecvDateBox";
             this.endstrecvDateBox.Size = new System.Drawing.Size(114, 21);
@@ -3431,7 +3295,7 @@ namespace Mbc5.Forms
             this.ptbrcvdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptbrcvd", true));
             this.ptbrcvdDateBox.Date = null;
             this.ptbrcvdDateBox.DateValue = null;
-            this.ptbrcvdDateBox.Location = new System.Drawing.Point(177, 324);
+            this.ptbrcvdDateBox.Location = new System.Drawing.Point(174, 324);
             this.ptbrcvdDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.ptbrcvdDateBox.Name = "ptbrcvdDateBox";
             this.ptbrcvdDateBox.Size = new System.Drawing.Size(114, 21);
@@ -3442,7 +3306,7 @@ namespace Mbc5.Forms
             this.ptrecvdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
             this.ptrecvdDateBox.Date = null;
             this.ptrecvdDateBox.DateValue = null;
-            this.ptrecvdDateBox.Location = new System.Drawing.Point(176, 276);
+            this.ptrecvdDateBox.Location = new System.Drawing.Point(173, 276);
             this.ptrecvdDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.ptrecvdDateBox.Name = "ptrecvdDateBox";
             this.ptrecvdDateBox.Size = new System.Drawing.Size(114, 21);
@@ -3453,7 +3317,7 @@ namespace Mbc5.Forms
             this.cprecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipgBindingSource, "cprecv", true));
             this.cprecvDateBox.Date = null;
             this.cprecvDateBox.DateValue = null;
-            this.cprecvDateBox.Location = new System.Drawing.Point(176, 249);
+            this.cprecvDateBox.Location = new System.Drawing.Point(173, 249);
             this.cprecvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.cprecvDateBox.Name = "cprecvDateBox";
             this.cprecvDateBox.Size = new System.Drawing.Size(114, 21);
@@ -3469,7 +3333,7 @@ namespace Mbc5.Forms
             this.screcvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "screcv", true));
             this.screcvDateBox.Date = null;
             this.screcvDateBox.DateValue = null;
-            this.screcvDateBox.Location = new System.Drawing.Point(176, 57);
+            this.screcvDateBox.Location = new System.Drawing.Point(173, 57);
             this.screcvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.screcvDateBox.Name = "screcvDateBox";
             this.screcvDateBox.Size = new System.Drawing.Size(114, 21);
@@ -3478,7 +3342,7 @@ namespace Mbc5.Forms
             // laminatedTextBox
             // 
             this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-            this.laminatedTextBox.Location = new System.Drawing.Point(176, 133);
+            this.laminatedTextBox.Location = new System.Drawing.Point(173, 133);
             this.laminatedTextBox.MaxLength = 1;
             this.laminatedTextBox.Name = "laminatedTextBox";
             this.laminatedTextBox.Size = new System.Drawing.Size(33, 20);
@@ -3489,7 +3353,7 @@ namespace Mbc5.Forms
             // 
             this.speccoverTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "speccover", true));
             this.speccoverTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speccoverTextBox.Location = new System.Drawing.Point(176, 82);
+            this.speccoverTextBox.Location = new System.Drawing.Point(173, 82);
             this.speccoverTextBox.Name = "speccoverTextBox";
             this.speccoverTextBox.Size = new System.Drawing.Size(96, 20);
             this.speccoverTextBox.TabIndex = 134;
@@ -3497,7 +3361,7 @@ namespace Mbc5.Forms
             // coilclrTextBox
             // 
             this.coilclrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coilclr", true));
-            this.coilclrTextBox.Location = new System.Drawing.Point(176, 184);
+            this.coilclrTextBox.Location = new System.Drawing.Point(173, 184);
             this.coilclrTextBox.Name = "coilclrTextBox";
             this.coilclrTextBox.Size = new System.Drawing.Size(99, 20);
             this.coilclrTextBox.TabIndex = 132;
@@ -3506,7 +3370,7 @@ namespace Mbc5.Forms
             // cpnumTextBox
             // 
             this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
-            this.cpnumTextBox.Location = new System.Drawing.Point(176, 226);
+            this.cpnumTextBox.Location = new System.Drawing.Point(173, 226);
             this.cpnumTextBox.Name = "cpnumTextBox";
             this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
             this.cpnumTextBox.TabIndex = 130;
@@ -3516,16 +3380,16 @@ namespace Mbc5.Forms
             this.ptnopgsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
-            this.ptnopgsTextBox.Location = new System.Drawing.Point(176, 300);
+            this.ptnopgsTextBox.Location = new System.Drawing.Point(173, 300);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(37, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(38, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // colorpgsCheckBox
             // 
             this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "colorpgs", true));
             this.colorpgsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorpgsCheckBox.Location = new System.Drawing.Point(176, 204);
+            this.colorpgsCheckBox.Location = new System.Drawing.Point(173, 204);
             this.colorpgsCheckBox.Name = "colorpgsCheckBox";
             this.colorpgsCheckBox.Size = new System.Drawing.Size(104, 24);
             this.colorpgsCheckBox.TabIndex = 119;
@@ -3538,10 +3402,10 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPerfbind.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPerfbind.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-            this.txtPerfbind.Location = new System.Drawing.Point(176, 159);
+            this.txtPerfbind.Location = new System.Drawing.Point(173, 159);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
-            this.txtPerfbind.Size = new System.Drawing.Size(0, 20);
+            this.txtPerfbind.Size = new System.Drawing.Size(1, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
             // 
@@ -3550,9 +3414,9 @@ namespace Mbc5.Forms
             this.txtCoverDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
-            this.txtCoverDescription.Location = new System.Drawing.Point(176, 34);
+            this.txtCoverDescription.Location = new System.Drawing.Point(173, 34);
             this.txtCoverDescription.Name = "txtCoverDescription";
-            this.txtCoverDescription.Size = new System.Drawing.Size(74, 20);
+            this.txtCoverDescription.Size = new System.Drawing.Size(75, 20);
             this.txtCoverDescription.TabIndex = 102;
             // 
             // txtCoverType
@@ -3561,10 +3425,10 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCoverType.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCoverType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "covertype", true));
-            this.txtCoverType.Location = new System.Drawing.Point(176, 12);
+            this.txtCoverType.Location = new System.Drawing.Point(173, 12);
             this.txtCoverType.MaxLength = 4;
             this.txtCoverType.Name = "txtCoverType";
-            this.txtCoverType.Size = new System.Drawing.Size(74, 20);
+            this.txtCoverType.Size = new System.Drawing.Size(75, 20);
             this.txtCoverType.TabIndex = 100;
             this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
@@ -3604,7 +3468,7 @@ namespace Mbc5.Forms
             this.pnl11.Enabled = false;
             this.pnl11.Location = new System.Drawing.Point(7, 80);
             this.pnl11.Name = "pnl11";
-            this.pnl11.Size = new System.Drawing.Size(275, 471);
+            this.pnl11.Size = new System.Drawing.Size(254, 471);
             this.pnl11.TabIndex = 127;
             // 
             // proofOfPagesCheckBox
@@ -3974,7 +3838,7 @@ namespace Mbc5.Forms
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(968, 53);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(951, 53);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
@@ -3997,7 +3861,7 @@ namespace Mbc5.Forms
             this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
             this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
-            this.allclrckCheckBox.Location = new System.Drawing.Point(967, 33);
+            this.allclrckCheckBox.Location = new System.Drawing.Point(950, 33);
             this.allclrckCheckBox.Name = "allclrckCheckBox";
             this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
             this.allclrckCheckBox.TabIndex = 13;
@@ -4050,6 +3914,7 @@ namespace Mbc5.Forms
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(this.btnAddWipRec);
             this.pg2.Controls.Add(this.btnAddWipRecord);
             this.pg2.Controls.Add(this.rmbfrmDateBox);
             this.pg2.Controls.Add(this.rmbtoDateBox);
@@ -4513,6 +4378,8 @@ namespace Mbc5.Forms
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(pressNumberLabel);
+            this.pg3.Controls.Add(this.pressNumberTextBox);
             this.pg3.Controls.Add(this.btnNewCvrScanRec);
             this.pg3.Controls.Add(this.btnAddCoverRec);
             this.pg3.Controls.Add(this.mcoverReportViewer);
@@ -4647,6 +4514,19 @@ namespace Mbc5.Forms
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Special Covers";
             // 
+            // pressNumberTextBox
+            // 
+            this.pressNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "PressNumber", true));
+            this.pressNumberTextBox.Location = new System.Drawing.Point(273, 410);
+            this.pressNumberTextBox.Name = "pressNumberTextBox";
+            this.pressNumberTextBox.Size = new System.Drawing.Size(92, 20);
+            this.pressNumberTextBox.TabIndex = 226;
+            // 
+            // coversBindingSource1
+            // 
+            this.coversBindingSource1.DataMember = "covers";
+            this.coversBindingSource1.DataSource = this.dsProdutn;
+            // 
             // btnNewCvrScanRec
             // 
             this.btnNewCvrScanRec.Location = new System.Drawing.Point(54, 408);
@@ -4665,7 +4545,6 @@ namespace Mbc5.Forms
             this.btnAddCoverRec.TabIndex = 224;
             this.btnAddCoverRec.Text = "Add Cover Record";
             this.btnAddCoverRec.UseVisualStyleBackColor = true;
-            this.btnAddCoverRec.Visible = false;
             this.btnAddCoverRec.Click += new System.EventHandler(this.btnAddCoverRec_Click);
             // 
             // mcoverReportViewer
@@ -4749,11 +4628,6 @@ namespace Mbc5.Forms
             this.desorgdteDateBox.Name = "desorgdteDateBox";
             this.desorgdteDateBox.Size = new System.Drawing.Size(114, 21);
             this.desorgdteDateBox.TabIndex = 217;
-            // 
-            // coversBindingSource1
-            // 
-            this.coversBindingSource1.DataMember = "covers";
-            this.coversBindingSource1.DataSource = this.dsProdutn;
             // 
             // reprntdteDateBox
             // 
@@ -5609,136 +5483,6 @@ namespace Mbc5.Forms
             this.label21.TabIndex = 3;
             this.label21.Text = "label1";
             // 
-            // pg4
-            // 
-            this.pg4.AutoScroll = true;
-            this.pg4.BackColor = System.Drawing.SystemColors.Control;
-            this.pg4.Controls.Add(atoprodLabel);
-            this.pg4.Controls.Add(label41);
-            this.pg4.Controls.Add(this.textBox11);
-            this.pg4.Controls.Add(typestyleLabel2);
-            this.pg4.Controls.Add(this.typestyleTextBox1);
-            this.pg4.Controls.Add(wipmemoLabel1);
-            this.pg4.Controls.Add(this.wipmemoTextBox1);
-            this.pg4.Controls.Add(this.textBox10);
-            this.pg4.Controls.Add(label40);
-            this.pg4.Controls.Add(this.textBox2);
-            this.pg4.Controls.Add(label39);
-            this.pg4.Controls.Add(numpgsLabel);
-            this.pg4.Controls.Add(this.numpgsTextBox);
-            this.pg4.Controls.Add(noclrpgsLabel1);
-            this.pg4.Controls.Add(this.noclrpgsTextBox1);
-            this.pg4.Controls.Add(label38);
-            this.pg4.Controls.Add(this.textBox1);
-            this.pg4.Controls.Add(invnoLabel3);
-            this.pg4.Controls.Add(this.invnoLabel4);
-            this.pg4.Controls.Add(noclrpgsLabel);
-            this.pg4.Controls.Add(this.noclrpgsTextBox);
-            this.pg4.Controls.Add(cpnumLabel);
-            this.pg4.Controls.Add(this.cpnumTextBox1);
-            this.pg4.Location = new System.Drawing.Point(4, 22);
-            this.pg4.Name = "pg4";
-            this.pg4.Size = new System.Drawing.Size(1220, 705);
-            this.pg4.TabIndex = 3;
-            this.pg4.Text = "Color Pages";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-            this.textBox11.Location = new System.Drawing.Point(278, 81);
-            this.textBox11.MaxLength = 1;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(33, 20);
-            this.textBox11.TabIndex = 118;
-            // 
-            // typestyleTextBox1
-            // 
-            this.typestyleTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
-            this.typestyleTextBox1.Location = new System.Drawing.Point(104, 78);
-            this.typestyleTextBox1.Name = "typestyleTextBox1";
-            this.typestyleTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.typestyleTextBox1.TabIndex = 54;
-            // 
-            // wipmemoTextBox1
-            // 
-            this.wipmemoTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "wipmemo", true));
-            this.wipmemoTextBox1.Location = new System.Drawing.Point(851, 78);
-            this.wipmemoTextBox1.Multiline = true;
-            this.wipmemoTextBox1.Name = "wipmemoTextBox1";
-            this.wipmemoTextBox1.Size = new System.Drawing.Size(221, 51);
-            this.wipmemoTextBox1.TabIndex = 53;
-            // 
-            // textBox10
-            // 
-            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoCopies", true));
-            this.textBox10.Location = new System.Drawing.Point(956, 52);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 52;
-            // 
-            // textBox2
-            // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
-            this.textBox2.Location = new System.Drawing.Point(772, 52);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 50;
-            // 
-            // numpgsTextBox
-            // 
-            this.numpgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "numpgs", true));
-            this.numpgsTextBox.Location = new System.Drawing.Point(1009, 26);
-            this.numpgsTextBox.Name = "numpgsTextBox";
-            this.numpgsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.numpgsTextBox.TabIndex = 13;
-            // 
-            // noclrpgsTextBox1
-            // 
-            this.noclrpgsTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "noclrpgs", true));
-            this.noclrpgsTextBox1.Location = new System.Drawing.Point(772, 26);
-            this.noclrpgsTextBox1.Name = "noclrpgsTextBox1";
-            this.noclrpgsTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.noclrpgsTextBox1.TabIndex = 12;
-            // 
-            // textBox1
-            // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "company", true));
-            this.textBox1.Location = new System.Drawing.Point(1146, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // invnoLabel4
-            // 
-            this.invnoLabel4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "invno", true));
-            this.invnoLabel4.Location = new System.Drawing.Point(292, 26);
-            this.invnoLabel4.Name = "invnoLabel4";
-            this.invnoLabel4.Size = new System.Drawing.Size(100, 23);
-            this.invnoLabel4.TabIndex = 5;
-            this.invnoLabel4.Text = "label38";
-            // 
-            // noclrpgsTextBox
-            // 
-            this.noclrpgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "noclrpgs", true));
-            this.noclrpgsTextBox.Location = new System.Drawing.Point(104, 49);
-            this.noclrpgsTextBox.Name = "noclrpgsTextBox";
-            this.noclrpgsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.noclrpgsTextBox.TabIndex = 3;
-            // 
-            // cpnumTextBox1
-            // 
-            this.cpnumTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
-            this.cpnumTextBox1.Location = new System.Drawing.Point(104, 23);
-            this.cpnumTextBox1.Name = "cpnumTextBox1";
-            this.cpnumTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.cpnumTextBox1.TabIndex = 1;
-            // 
             // pg5
             // 
             this.pg5.BackColor = System.Drawing.SystemColors.Control;
@@ -6290,7 +6034,7 @@ namespace Mbc5.Forms
             // btnCDTicket
             // 
             this.btnCDTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCDTicket.Location = new System.Drawing.Point(1048, 123);
+            this.btnCDTicket.Location = new System.Drawing.Point(1084, 37);
             this.btnCDTicket.Name = "btnCDTicket";
             this.btnCDTicket.Size = new System.Drawing.Size(125, 23);
             this.btnCDTicket.TabIndex = 167;
@@ -6301,11 +6045,11 @@ namespace Mbc5.Forms
             // btnCDAdd
             // 
             this.btnCDAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCDAdd.Location = new System.Drawing.Point(1048, 94);
+            this.btnCDAdd.Location = new System.Drawing.Point(1048, 65);
             this.btnCDAdd.Name = "btnCDAdd";
-            this.btnCDAdd.Size = new System.Drawing.Size(86, 23);
+            this.btnCDAdd.Size = new System.Drawing.Size(161, 23);
             this.btnCDAdd.TabIndex = 165;
-            this.btnCDAdd.Text = "Add Record";
+            this.btnCDAdd.Text = "Add Photo On CD Record";
             this.btnCDAdd.UseVisualStyleBackColor = true;
             this.btnCDAdd.Click += new System.EventHandler(this.btnAddPhotoCd_Click);
             // 
@@ -6318,6 +6062,7 @@ namespace Mbc5.Forms
             this.btnCDDate.TabIndex = 164;
             this.btnCDDate.Text = "Change All Photo On CD Dates";
             this.btnCDDate.UseVisualStyleBackColor = true;
+            this.btnCDDate.Visible = false;
             this.btnCDDate.Click += new System.EventHandler(this.btnCDDate_Click);
             // 
             // nocopiesTextBox1
@@ -6626,6 +6371,16 @@ namespace Mbc5.Forms
             this.pg7.Text = "Reorder";
             this.pg7.Click += new System.EventHandler(this.pg7_Click);
             // 
+            // btnAddReorderScan
+            // 
+            this.btnAddReorderScan.Location = new System.Drawing.Point(88, 109);
+            this.btnAddReorderScan.Name = "btnAddReorderScan";
+            this.btnAddReorderScan.Size = new System.Drawing.Size(123, 23);
+            this.btnAddReorderScan.TabIndex = 228;
+            this.btnAddReorderScan.Text = "New Scan Record";
+            this.btnAddReorderScan.UseVisualStyleBackColor = true;
+            this.btnAddReorderScan.Click += new System.EventHandler(this.btnAddReorderScan_Click);
+            // 
             // booktypeTextBox
             // 
             this.booktypeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -6793,7 +6548,7 @@ namespace Mbc5.Forms
             // btnReorderTicket
             // 
             this.btnReorderTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReorderTicket.Location = new System.Drawing.Point(1090, 32);
+            this.btnReorderTicket.Location = new System.Drawing.Point(1088, 12);
             this.btnReorderTicket.Name = "btnReorderTicket";
             this.btnReorderTicket.Size = new System.Drawing.Size(125, 23);
             this.btnReorderTicket.TabIndex = 170;
@@ -6804,7 +6559,7 @@ namespace Mbc5.Forms
             // btnAddReorder
             // 
             this.btnAddReorder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddReorder.Location = new System.Drawing.Point(1090, 3);
+            this.btnAddReorder.Location = new System.Drawing.Point(1088, 35);
             this.btnAddReorder.Name = "btnAddReorder";
             this.btnAddReorder.Size = new System.Drawing.Size(127, 23);
             this.btnAddReorder.TabIndex = 169;
@@ -7017,15 +6772,15 @@ namespace Mbc5.Forms
             // 
             this.reorderDetailTableAdapter.ClearBeforeFill = true;
             // 
-            // btnAddReorderScan
+            // btnAddWipRec
             // 
-            this.btnAddReorderScan.Location = new System.Drawing.Point(88, 109);
-            this.btnAddReorderScan.Name = "btnAddReorderScan";
-            this.btnAddReorderScan.Size = new System.Drawing.Size(123, 23);
-            this.btnAddReorderScan.TabIndex = 228;
-            this.btnAddReorderScan.Text = "New Scan Record";
-            this.btnAddReorderScan.UseVisualStyleBackColor = true;
-            this.btnAddReorderScan.Click += new System.EventHandler(this.btnAddReorderScan_Click);
+            this.btnAddWipRec.Location = new System.Drawing.Point(1121, 9);
+            this.btnAddWipRec.Name = "btnAddWipRec";
+            this.btnAddWipRec.Size = new System.Drawing.Size(75, 23);
+            this.btnAddWipRec.TabIndex = 227;
+            this.btnAddWipRec.Text = "Add WIP Record";
+            this.btnAddWipRec.UseVisualStyleBackColor = true;
+            this.btnAddWipRec.Click += new System.EventHandler(this.btnAddWipRec_Click);
             // 
             // frmProdutn
             // 
@@ -7087,8 +6842,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).EndInit();
-            this.pg4.ResumeLayout(false);
-            this.pg4.PerformLayout();
             this.pg5.ResumeLayout(false);
             this.pg5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.partBkDetailDataGridView)).EndInit();
@@ -7116,7 +6869,6 @@ namespace Mbc5.Forms
         private System.Windows.Forms.TabPage pg3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TabPage pg2;
-        private System.Windows.Forms.TabPage pg4;
         private System.Windows.Forms.BindingSource custBindingSource;
         private DataSets.dsProdutn dsProdutn;
         private DataSets.dsProdutnTableAdapters.custTableAdapter custTableAdapter;
@@ -7296,18 +7048,6 @@ namespace Mbc5.Forms
         private System.Windows.Forms.BindingSource lkpBackGroundBindingSource;
         private DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter lkpBackGroundTableAdapter;
         private System.Windows.Forms.Label lblCoverNum;
-        private System.Windows.Forms.TextBox numpgsTextBox;
-        private System.Windows.Forms.TextBox noclrpgsTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label invnoLabel4;
-        private System.Windows.Forms.TextBox noclrpgsTextBox;
-        private System.Windows.Forms.TextBox cpnumTextBox1;
-        private System.Windows.Forms.TextBox wipmemoTextBox1;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox2;
-      
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox typestyleTextBox1;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button btnPartialProdTicket;
         private System.Windows.Forms.Button btnAddPartial;
@@ -7511,5 +7251,7 @@ namespace Mbc5.Forms
         private System.Windows.Forms.Button btnAddPartialBKScan;
         private System.Windows.Forms.Button btnAddScanPhotos;
         private System.Windows.Forms.Button btnAddReorderScan;
+        private System.Windows.Forms.TextBox pressNumberTextBox;
+        private System.Windows.Forms.Button btnAddWipRec;
     }
 }
