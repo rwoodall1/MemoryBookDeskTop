@@ -86,7 +86,7 @@ namespace Mbc5.Dialogs
 
         private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            if (this.Validate())
+            if (this.ValidateChildren())
             {
                 coverdetailBindingSource.EndEdit();
                 var a = coverdetailTableAdapter.Update(dsProdutn.coverdetail);

@@ -79,7 +79,7 @@ namespace Mbc5.Dialogs {
         }
         private void partBkDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            if (this.Validate())
+            if (this.ValidateChildren())
             {
                 try
                 {

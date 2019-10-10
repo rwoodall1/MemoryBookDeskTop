@@ -272,7 +272,7 @@ namespace Mbc5.Forms {
                     }
                     this.Fill();
 
-                    EnableAllControls(this);
+                    
 
                 }
                 catch (Exception ex)
@@ -723,8 +723,7 @@ namespace Mbc5.Forms {
                     quotesTableAdapter.Fill(dsEndSheet.quotes, Invno);
                     produtnTableAdapter.Fill(dsEndSheet.produtn, Invno);
                     endsheetTableAdapter.Fill(dsEndSheet.endsheet, Invno);
-                    endsheetdetailTableAdapter.Fill(dsEndSheet.endsheetdetail, Invno);
-                  
+                    endsheetdetailTableAdapter.Fill(dsEndSheet.endsheetdetail, Invno);                  
                     supplTableAdapter.FillByInvno(dsEndSheet.suppl, Invno);
                     suppdetailTableAdapter.Fill(dsEndSheet.suppdetail, Invno);
                     preflitTableAdapter.FillByInvno(dsEndSheet.preflit, Invno);
@@ -6131,8 +6130,80 @@ namespace Mbc5.Forms {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
-       
-       
+        private void btnNewEndSheetScanRec_Click(object sender, EventArgs e)
+        {
+            frmEditEndSheetWip frmeditEndSheetWip = new frmEditEndSheetWip(0, Invno, Schcode);
+            var result = frmeditEndSheetWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                try { endsheetdetailTableAdapter.Fill(dsEndSheet.endsheetdetail, Invno); } catch { }
+            }
+        }
+
+        private void endsheetdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)endsheetdetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditEndSheetWip frmEndSheetWip = new frmEditEndSheetWip(id, invno, Schcode);
+            var result = frmEndSheetWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try { endsheetdetailTableAdapter.Fill(dsEndSheet.endsheetdetail, Invno); } catch { }
+            }
+        }
+
+        private void btnAddSupplScan_Click(object sender, EventArgs e)
+        {
+            frmEditSupplementtWip EditSupplementtWip = new frmEditSupplementtWip(0, Invno, Schcode);
+            var result = EditSupplementtWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                try { suppdetailTableAdapter.Fill(dsEndSheet.suppdetail, Invno); } catch { }
+            }
+        }
+
+        private void suppdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)suppdetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditSupplementtWip EditSupplementtWip = new frmEditSupplementtWip(id, invno, Schcode);
+            var result = EditSupplementtWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try { suppdetailTableAdapter.Fill(dsEndSheet.suppdetail, Invno); } catch { }
+            }
+        }
+
+        private void btnAddBannerWip_Click(object sender, EventArgs e)
+        {
+            frmEditBannerWip EditBannerWip = new frmEditBannerWip(0, Invno, Schcode);
+            var result = EditBannerWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                try { bannerdetailTableAdapter.Fill(dsEndSheet.bannerdetail, Invno); } catch { }
+            }
+        }
+
+        private void bannerdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)bannerdetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditBannerWip EditBannerWip = new frmEditBannerWip(id, invno, Schcode);
+            var result = EditBannerWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try { bannerdetailTableAdapter.Fill(dsEndSheet.bannerdetail, Invno); } catch { }
+            }
+        }
+
+
+
         //nothing below
     }
 }

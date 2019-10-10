@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:preflit" ZOrder="16" X="553" Y="475" Height="170" Width="263" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="27" OldDataTableHeight="293" SplitterPosition="24" />
     <Shape ID="DesignTable:banner" ZOrder="15" X="804" Y="33" Height="301" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="233" />
     <Shape ID="DesignTable:endsheetdetail" ZOrder="8" X="293" Y="374" Height="248" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
-    <Shape ID="DesignTable:bannerdetail" ZOrder="6" X="1048" Y="51" Height="248" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:bannerdetail" ZOrder="6" X="1049" Y="51" Height="248" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:suppl_suppdetail" ZOrder="17" LineWidth="11">
@@ -133,7 +133,7 @@
           <Y>85</Y>
         </Point>
         <Point>
-          <X>1048</X>
+          <X>1049</X>
           <Y>85</Y>
         </Point>
       </RoutePoints>

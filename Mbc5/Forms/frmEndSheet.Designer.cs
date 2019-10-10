@@ -78,12 +78,14 @@
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
             System.Windows.Forms.Label label35;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label supnoLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
+            this.btnNewEndSheetScanRec = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnUpdateDates = new System.Windows.Forms.Button();
             this.btnAddEndSheetRecord = new System.Windows.Forms.Button();
             this.btnEndSheetTicket = new System.Windows.Forms.Button();
@@ -161,11 +163,14 @@
             this.txtSchname = new System.Windows.Forms.TextBox();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Supplement = new System.Windows.Forms.TabPage();
+            this.btnAddSupplScan = new System.Windows.Forms.Button();
+            this.supnoLabel1 = new System.Windows.Forms.Label();
+            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nocopiesTextBox1 = new System.Windows.Forms.TextBox();
             this.btnUpdateSuppDates = new System.Windows.Forms.Button();
             this.btnAddSupp = new System.Windows.Forms.Button();
             this.btnPrintSuppTicket = new System.Windows.Forms.Button();
             this.duedateDateBox = new CustomControls.DateBox();
-            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recvdteDateBox = new CustomControls.DateBox();
             this.rmbfrmDateBox = new CustomControls.DateBox();
             this.rmbtoDateBox = new CustomControls.DateBox();
@@ -210,6 +215,7 @@
             this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.TabPage();
+            this.btnAddBannerWip = new System.Windows.Forms.Button();
             this.btnUpdateBannerDates = new System.Windows.Forms.Button();
             this.btnAddBanner = new System.Windows.Forms.Button();
             this.btnPrintBannerTicket = new System.Windows.Forms.Button();
@@ -252,10 +258,7 @@
             this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
             this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
             this.bannerdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
-            this.nocopiesTextBox1 = new System.Windows.Forms.TextBox();
-            this.supnoLabel1 = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             clr1Label = new System.Windows.Forms.Label();
@@ -779,6 +782,15 @@
             label35.TabIndex = 147;
             label35.Text = "Sheet No.";
             // 
+            // supnoLabel
+            // 
+            supnoLabel.AutoSize = true;
+            supnoLabel.Location = new System.Drawing.Point(55, 55);
+            supnoLabel.Name = "supnoLabel";
+            supnoLabel.Size = new System.Drawing.Size(81, 13);
+            supnoLabel.TabIndex = 158;
+            supnoLabel.Text = "Supplement#";
+            // 
             // tbEndSheets
             // 
             this.tbEndSheets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -799,6 +811,7 @@
             // pgEndSheets
             // 
             this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+            this.pgEndSheets.Controls.Add(this.btnNewEndSheetScanRec);
             this.pgEndSheets.Controls.Add(this.reportViewer1);
             this.pgEndSheets.Controls.Add(this.btnUpdateDates);
             this.pgEndSheets.Controls.Add(this.btnAddEndSheetRecord);
@@ -885,9 +898,30 @@
             this.pgEndSheets.TabIndex = 0;
             this.pgEndSheets.Text = "End Sheet";
             // 
+            // btnNewEndSheetScanRec
+            // 
+            this.btnNewEndSheetScanRec.Location = new System.Drawing.Point(32, 431);
+            this.btnNewEndSheetScanRec.Name = "btnNewEndSheetScanRec";
+            this.btnNewEndSheetScanRec.Size = new System.Drawing.Size(123, 23);
+            this.btnNewEndSheetScanRec.TabIndex = 226;
+            this.btnNewEndSheetScanRec.Text = "New Scan Record";
+            this.btnNewEndSheetScanRec.UseVisualStyleBackColor = true;
+            this.btnNewEndSheetScanRec.Click += new System.EventHandler(this.btnNewEndSheetScanRec_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 51;
+            this.reportViewer1.Location = new System.Drawing.Point(953, 263);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(53, 57);
+            this.reportViewer1.TabIndex = 160;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
             // btnUpdateDates
             // 
-            this.btnUpdateDates.Location = new System.Drawing.Point(971, 78);
+            this.btnUpdateDates.Location = new System.Drawing.Point(977, 78);
             this.btnUpdateDates.Name = "btnUpdateDates";
             this.btnUpdateDates.Size = new System.Drawing.Size(101, 23);
             this.btnUpdateDates.TabIndex = 154;
@@ -898,7 +932,7 @@
             // 
             // btnAddEndSheetRecord
             // 
-            this.btnAddEndSheetRecord.Location = new System.Drawing.Point(971, 21);
+            this.btnAddEndSheetRecord.Location = new System.Drawing.Point(977, 21);
             this.btnAddEndSheetRecord.Name = "btnAddEndSheetRecord";
             this.btnAddEndSheetRecord.Size = new System.Drawing.Size(101, 23);
             this.btnAddEndSheetRecord.TabIndex = 153;
@@ -908,7 +942,7 @@
             // 
             // btnEndSheetTicket
             // 
-            this.btnEndSheetTicket.Location = new System.Drawing.Point(971, 50);
+            this.btnEndSheetTicket.Location = new System.Drawing.Point(977, 50);
             this.btnEndSheetTicket.Name = "btnEndSheetTicket";
             this.btnEndSheetTicket.Size = new System.Drawing.Size(101, 23);
             this.btnEndSheetTicket.TabIndex = 152;
@@ -1123,14 +1157,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1142,11 +1176,12 @@
             this.dataGridViewTextBoxColumn7});
             this.endsheetdetailDataGridView.DataSource = this.endsheetdetailBindingSource;
             this.endsheetdetailDataGridView.EnableHeadersVisualStyles = false;
-            this.endsheetdetailDataGridView.Location = new System.Drawing.Point(78, 460);
+            this.endsheetdetailDataGridView.Location = new System.Drawing.Point(22, 460);
             this.endsheetdetailDataGridView.Name = "endsheetdetailDataGridView";
             this.endsheetdetailDataGridView.RowHeadersVisible = false;
-            this.endsheetdetailDataGridView.Size = new System.Drawing.Size(862, 178);
+            this.endsheetdetailDataGridView.Size = new System.Drawing.Size(1042, 233);
             this.endsheetdetailDataGridView.TabIndex = 91;
+            this.endsheetdetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.endsheetdetailDataGridView_CellDoubleClick);
             // 
             // Description
             // 
@@ -1648,6 +1683,7 @@
             // 
             this.Supplement.AutoScroll = true;
             this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+            this.Supplement.Controls.Add(this.btnAddSupplScan);
             this.Supplement.Controls.Add(supnoLabel);
             this.Supplement.Controls.Add(this.supnoLabel1);
             this.Supplement.Controls.Add(this.nocopiesTextBox1);
@@ -1706,6 +1742,40 @@
             this.Supplement.TabIndex = 1;
             this.Supplement.Text = "Supplement";
             // 
+            // btnAddSupplScan
+            // 
+            this.btnAddSupplScan.Location = new System.Drawing.Point(67, 293);
+            this.btnAddSupplScan.Name = "btnAddSupplScan";
+            this.btnAddSupplScan.Size = new System.Drawing.Size(123, 23);
+            this.btnAddSupplScan.TabIndex = 227;
+            this.btnAddSupplScan.Text = "New Scan Record";
+            this.btnAddSupplScan.UseVisualStyleBackColor = true;
+            this.btnAddSupplScan.Click += new System.EventHandler(this.btnAddSupplScan_Click);
+            // 
+            // supnoLabel1
+            // 
+            this.supnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
+            this.supnoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supnoLabel1.Location = new System.Drawing.Point(142, 55);
+            this.supnoLabel1.Name = "supnoLabel1";
+            this.supnoLabel1.Size = new System.Drawing.Size(100, 23);
+            this.supnoLabel1.TabIndex = 159;
+            this.supnoLabel1.Text = "label30";
+            // 
+            // supplBindingSource
+            // 
+            this.supplBindingSource.DataMember = "suppl";
+            this.supplBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // nocopiesTextBox1
+            // 
+            this.nocopiesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
+            this.nocopiesTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nocopiesTextBox1.Location = new System.Drawing.Point(342, 32);
+            this.nocopiesTextBox1.Name = "nocopiesTextBox1";
+            this.nocopiesTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.nocopiesTextBox1.TabIndex = 158;
+            // 
             // btnUpdateSuppDates
             // 
             this.btnUpdateSuppDates.Location = new System.Drawing.Point(988, 88);
@@ -1749,11 +1819,6 @@
             this.duedateDateBox.Name = "duedateDateBox";
             this.duedateDateBox.Size = new System.Drawing.Size(133, 21);
             this.duedateDateBox.TabIndex = 108;
-            // 
-            // supplBindingSource
-            // 
-            this.supplBindingSource.DataMember = "suppl";
-            this.supplBindingSource.DataSource = this.dsEndSheet;
             // 
             // recvdteDateBox
             // 
@@ -1866,14 +1931,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -1885,11 +1950,12 @@
             this.dataGridViewTextBoxColumn13});
             this.suppdetailDataGridView.DataSource = this.suppdetailBindingSource;
             this.suppdetailDataGridView.EnableHeadersVisualStyles = false;
-            this.suppdetailDataGridView.Location = new System.Drawing.Point(174, 310);
+            this.suppdetailDataGridView.Location = new System.Drawing.Point(67, 325);
             this.suppdetailDataGridView.Name = "suppdetailDataGridView";
             this.suppdetailDataGridView.RowHeadersVisible = false;
-            this.suppdetailDataGridView.Size = new System.Drawing.Size(852, 249);
+            this.suppdetailDataGridView.Size = new System.Drawing.Size(996, 361);
             this.suppdetailDataGridView.TabIndex = 92;
+            this.suppdetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppdetailDataGridView_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -1964,7 +2030,7 @@
             // supplementsCheckBox
             // 
             this.supplementsCheckBox.AutoSize = true;
-            this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "supplements", true));
+            this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "supplements", true));
             this.supplementsCheckBox.Location = new System.Drawing.Point(343, 193);
             this.supplementsCheckBox.Name = "supplementsCheckBox";
             this.supplementsCheckBox.Size = new System.Drawing.Size(145, 17);
@@ -1975,7 +2041,7 @@
             // oursuppCheckBox
             // 
             this.oursuppCheckBox.AutoSize = true;
-            this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "oursupp", true));
+            this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "oursupp", true));
             this.oursuppCheckBox.Location = new System.Drawing.Point(188, 193);
             this.oursuppCheckBox.Name = "oursuppCheckBox";
             this.oursuppCheckBox.Size = new System.Drawing.Size(149, 17);
@@ -2186,6 +2252,7 @@
             // 
             this.Banner.AutoScroll = true;
             this.Banner.BackColor = System.Drawing.SystemColors.Control;
+            this.Banner.Controls.Add(this.btnAddBannerWip);
             this.Banner.Controls.Add(this.btnUpdateBannerDates);
             this.Banner.Controls.Add(this.btnAddBanner);
             this.Banner.Controls.Add(this.btnPrintBannerTicket);
@@ -2227,6 +2294,16 @@
             this.Banner.TabIndex = 3;
             this.Banner.Text = "Banner";
             // 
+            // btnAddBannerWip
+            // 
+            this.btnAddBannerWip.Location = new System.Drawing.Point(65, 351);
+            this.btnAddBannerWip.Name = "btnAddBannerWip";
+            this.btnAddBannerWip.Size = new System.Drawing.Size(123, 23);
+            this.btnAddBannerWip.TabIndex = 228;
+            this.btnAddBannerWip.Text = "New Scan Record";
+            this.btnAddBannerWip.UseVisualStyleBackColor = true;
+            this.btnAddBannerWip.Click += new System.EventHandler(this.btnAddBannerWip_Click);
+            // 
             // btnUpdateBannerDates
             // 
             this.btnUpdateBannerDates.Location = new System.Drawing.Point(941, 71);
@@ -2267,14 +2344,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bannerdetailDataGridView.AutoGenerateColumns = false;
             this.bannerdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.bannerdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bannerdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -2286,11 +2363,12 @@
             this.dataGridViewTextBoxColumn28});
             this.bannerdetailDataGridView.DataSource = this.bannerdetailBindingSource;
             this.bannerdetailDataGridView.EnableHeadersVisualStyles = false;
-            this.bannerdetailDataGridView.Location = new System.Drawing.Point(171, 369);
+            this.bannerdetailDataGridView.Location = new System.Drawing.Point(61, 380);
             this.bannerdetailDataGridView.Name = "bannerdetailDataGridView";
             this.bannerdetailDataGridView.RowHeadersVisible = false;
-            this.bannerdetailDataGridView.Size = new System.Drawing.Size(851, 220);
+            this.bannerdetailDataGridView.Size = new System.Drawing.Size(961, 327);
             this.bannerdetailDataGridView.TabIndex = 151;
+            this.bannerdetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bannerdetailDataGridView_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2565,55 +2643,19 @@
             // 
             this.bannerdetailTableAdapter.ClearBeforeFill = true;
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 51;
-            this.reportViewer1.Location = new System.Drawing.Point(1033, 263);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(53, 57);
-            this.reportViewer1.TabIndex = 160;
-            this.reportViewer1.Visible = false;
-            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.bannerdetailTableAdapter = null;
             this.tableAdapterManager.bannerTableAdapter = this.bannerTableAdapter;
             this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+            this.tableAdapterManager.endsheetdetailTableAdapter = null;
             this.tableAdapterManager.endsheetTableAdapter = this.endsheetTableAdapter;
             this.tableAdapterManager.preflitTableAdapter = this.preflitTableAdapter;
             this.tableAdapterManager.produtnTableAdapter = this.produtnTableAdapter;
+            this.tableAdapterManager.suppdetailTableAdapter = null;
             this.tableAdapterManager.supplTableAdapter = this.supplTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // nocopiesTextBox1
-            // 
-            this.nocopiesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
-            this.nocopiesTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nocopiesTextBox1.Location = new System.Drawing.Point(342, 32);
-            this.nocopiesTextBox1.Name = "nocopiesTextBox1";
-            this.nocopiesTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.nocopiesTextBox1.TabIndex = 158;
-            // 
-            // supnoLabel
-            // 
-            supnoLabel.AutoSize = true;
-            supnoLabel.Location = new System.Drawing.Point(55, 55);
-            supnoLabel.Name = "supnoLabel";
-            supnoLabel.Size = new System.Drawing.Size(81, 13);
-            supnoLabel.TabIndex = 158;
-            supnoLabel.Text = "Supplement#";
-            // 
-            // supnoLabel1
-            // 
-            this.supnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
-            this.supnoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supnoLabel1.Location = new System.Drawing.Point(142, 55);
-            this.supnoLabel1.Name = "supnoLabel1";
-            this.supnoLabel1.Size = new System.Drawing.Size(100, 23);
-            this.supnoLabel1.TabIndex = 159;
-            this.supnoLabel1.Text = "label30";
             // 
             // frmEndSheet
             // 
@@ -2631,6 +2673,8 @@
             this.Shown += new System.EventHandler(this.frmEndSheet_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmEndSheet_KeyPress);
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.tbEndSheets, 0);
             this.tbEndSheets.ResumeLayout(false);
             this.pgEndSheets.ResumeLayout(false);
             this.pgEndSheets.PerformLayout();
@@ -2837,5 +2881,8 @@
         private System.Windows.Forms.TextBox nocopiesTextBox1;
         private DataSets.dsEndSheetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Label supnoLabel1;
+        private System.Windows.Forms.Button btnNewEndSheetScanRec;
+        private System.Windows.Forms.Button btnAddSupplScan;
+        private System.Windows.Forms.Button btnAddBannerWip;
     }
 }

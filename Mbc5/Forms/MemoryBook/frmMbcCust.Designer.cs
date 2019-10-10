@@ -2588,7 +2588,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.XSuppy.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(534, 132);
+            this.reportViewer3.Location = new System.Drawing.Point(567, 51);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
             this.reportViewer3.Size = new System.Drawing.Size(93, 75);
@@ -2733,7 +2733,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.custDataGridView.Location = new System.Drawing.Point(14, 345);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
-            this.custDataGridView.Size = new System.Drawing.Size(601, 220);
+            this.custDataGridView.Size = new System.Drawing.Size(646, 220);
             this.custDataGridView.TabIndex = 5;
             this.custDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGridView_CellDoubleClick);
             this.custDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.custDataGridView_DataError);

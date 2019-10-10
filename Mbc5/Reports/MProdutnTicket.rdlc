@@ -1741,8 +1741,8 @@
         <rd:DefaultName>SpecialInstructions</rd:DefaultName>
         <Top>3.14896in</Top>
         <Left>0.23746in</Left>
-        <Height>0.66667in</Height>
-        <Width>6.51646in</Width>
+        <Height>1.92709in</Height>
+        <Width>7.23521in</Width>
         <ZIndex>53</ZIndex>
         <Style>
           <Border>
@@ -1854,7 +1854,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.85417in</Height>
+    <Height>5.23959in</Height>
     <Style />
   </Body>
   <Width>7.96316in</Width>

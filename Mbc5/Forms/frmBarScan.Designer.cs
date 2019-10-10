@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarScan));
             this.lbl1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,7 +84,12 @@
             this.lblPressNumber = new System.Windows.Forms.Label();
             this.txtPressNumber = new System.Windows.Forms.MaskedTextBox();
             this.pnlPressNumber = new System.Windows.Forms.Panel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlPressNumber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -155,7 +161,7 @@
             // 
             this.txtDeptCode.Location = new System.Drawing.Point(187, 47);
             this.txtDeptCode.Name = "txtDeptCode";
-            this.txtDeptCode.Size = new System.Drawing.Size(116, 20);
+            this.txtDeptCode.Size = new System.Drawing.Size(64, 20);
             this.txtDeptCode.TabIndex = 1;
             this.txtDeptCode.Leave += new System.EventHandler(this.txtDeptCode_Leave);
             // 
@@ -558,7 +564,7 @@
             this.txtIntitials.Location = new System.Drawing.Point(187, 177);
             this.txtIntitials.Mask = ">LLL";
             this.txtIntitials.Name = "txtIntitials";
-            this.txtIntitials.Size = new System.Drawing.Size(64, 20);
+            this.txtIntitials.Size = new System.Drawing.Size(34, 20);
             this.txtIntitials.TabIndex = 8;
             // 
             // txtBarCode
@@ -567,7 +573,7 @@
             this.txtBarCode.Location = new System.Drawing.Point(188, 19);
             this.txtBarCode.Mask = ">LLL000000CLL";
             this.txtBarCode.Name = "txtBarCode";
-            this.txtBarCode.Size = new System.Drawing.Size(124, 20);
+            this.txtBarCode.Size = new System.Drawing.Size(91, 20);
             this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             // 
@@ -598,21 +604,39 @@
             this.txtPressNumber.Size = new System.Drawing.Size(61, 20);
             this.txtPressNumber.TabIndex = 0;
             this.txtPressNumber.ValidatingType = typeof(int);
+            this.txtPressNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtPressNumber_Validating);
             // 
             // pnlPressNumber
             // 
             this.pnlPressNumber.Controls.Add(this.txtPressNumber);
             this.pnlPressNumber.Controls.Add(this.lblPressNumber);
-            this.pnlPressNumber.Location = new System.Drawing.Point(313, 45);
+            this.pnlPressNumber.Location = new System.Drawing.Point(270, 45);
             this.pnlPressNumber.Name = "pnlPressNumber";
             this.pnlPressNumber.Size = new System.Drawing.Size(109, 23);
             this.pnlPressNumber.TabIndex = 157;
             this.pnlPressNumber.Visible = false;
+            this.pnlPressNumber.Validating += new System.ComponentModel.CancelEventHandler(this.pnlPressNumber_Validating);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 47;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(822, 343);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(49, 56);
+            this.reportViewer1.TabIndex = 158;
+            this.reportViewer1.Visible = false;
             // 
             // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(904, 555);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.pnlPressNumber);
             this.Controls.Add(this.txtDept);
             this.Controls.Add(this.txtBarCode);
@@ -669,6 +693,7 @@
             this.MaximizeBox = false;
             this.Name = "frmBarScan";
             this.Text = "";
+            this.Load += new System.EventHandler(this.frmBarScan_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.lbl1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
@@ -722,8 +747,11 @@
             this.Controls.SetChildIndex(this.txtBarCode, 0);
             this.Controls.SetChildIndex(this.txtDept, 0);
             this.Controls.SetChildIndex(this.pnlPressNumber, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.pnlPressNumber.ResumeLayout(false);
             this.pnlPressNumber.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -785,5 +813,8 @@
         private System.Windows.Forms.Label lblPressNumber;
         private System.Windows.Forms.MaskedTextBox txtPressNumber;
         private System.Windows.Forms.Panel pnlPressNumber;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.BindingSource invoiceBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

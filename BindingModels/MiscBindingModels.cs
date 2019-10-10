@@ -71,11 +71,26 @@ namespace BindingModels
         public string ProdNo { get; set; }
         public string CpNum { get; set; }
         public string SchEmail { get; set; }
+        public string BContEmail { get; set; }
+        public string CContEmail{get;set;}
         public string ContEmail { get; set; }
         public int Invno { get; set; }
     }
-   
-	public class WipUpdateCheck
+    public class MerBarScanModel
+    {
+        public string SchCode { get; set; }
+        public string Schname { get; set; }
+        public string Specovr { get; set; }
+        public string ProdNo { get; set; }
+      
+        public string SchEmail { get; set; }
+        public string BContEmail { get; set; }
+        public string CContEmail { get; set; }
+        public string ContEmail { get; set; }
+        public int Invno { get; set; }
+    }
+
+    public class WipUpdateCheck
 	{
 		public int QuoteInvno { get; set; }
 		public string Schcode { get; set; }

@@ -96,7 +96,11 @@ namespace Mbc5.Forms
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
-            
+            if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
+            {
+                txtwipPressnumber.Enabled = true;
+                txtcoverPressnumber.Enabled = true;
+            }
             this.frmMain = (frmMain)this.MdiParent;
  			this.SetConnectionString();
 			try
@@ -11206,9 +11210,6 @@ namespace Mbc5.Forms
 
         private void btnNewCvrScanRec_Click(object sender, EventArgs e)
         {
-          
-    
-         
             frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(0, Invno,Schcode);
             var result = frmeditCoverWip.ShowDialog();
             if (result == DialogResult.OK)

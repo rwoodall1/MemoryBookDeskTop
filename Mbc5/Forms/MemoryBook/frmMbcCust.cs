@@ -96,8 +96,9 @@ namespace Mbc5.Forms.MemoryBook {
             //so call can be made from menu
             if (ShowSpinner)
             {
-                basePanel.Visible = true;
-                backgroundWorker1.RunWorkerAsync("Save");
+                //basePanel.Visible = true;
+                //backgroundWorker1.RunWorkerAsync("Save");
+
             }
             else
             {
@@ -742,11 +743,8 @@ public override void Cancel() {
             var data = (ProdutnTicketModel)dataReturned.Data;
 
             ProdutnTicketModelBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
             reportViewer1.RefreshReport();
-            Cursor.Current = Cursors.Default;
-            processingResult.IsError = true;
-            processingResult.Errors.Add(new ApiProcessingError(dataReturned.Errors[0].ErrorMessage, dataReturned.Errors[0].ErrorMessage, ""));
+          
             return processingResult;
         }
         private  ApiProcessingResult<bool> PrintProdCheckList()
@@ -1630,14 +1628,7 @@ public override void Cancel() {
 						return;
 					}
 
-
-					Save();
-                    //filled in save method
-					//try {
-					//	this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-					//}catch(Exception ex){
-					//	MbcMessageBox.Error(ex.Message, "");
-					//}
+                    Fill();
 					
                     this.SetInvnoSchCode();
                 };
@@ -2044,8 +2035,14 @@ public override void Cancel() {
      
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
-            this.basePanel.Visible = true;
-            backgroundWorker1.RunWorkerAsync("PrintProductionTicket");
+            //this.basePanel.Visible = true;
+            //backgroundWorker1.RunWorkerAsync("PrintProductionTicket");
+            var result=PrintProductionTicket();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            }
+
 
         }
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
@@ -2065,8 +2062,13 @@ public override void Cancel() {
         }
         private void btnProdChk_Click(object sender, EventArgs e)
         {
-            basePanel.Visible = true;
-            backgroundWorker1.RunWorkerAsync("PrintProdCheckList");
+            //basePanel.Visible = true;
+            //backgroundWorker1.RunWorkerAsync("PrintProdCheckList");
+            var result = PrintProdCheckList();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            }
         }
         private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
@@ -2360,6 +2362,7 @@ public override void Cancel() {
             try
             {
                 this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+          
                 SetInvnoSchCode();
             }
             catch (Exception ex)
@@ -2728,8 +2731,13 @@ public override void Cancel() {
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.basePanel.Visible = true;
-            backgroundWorker1.RunWorkerAsync("UpdateUPSAddress");
+            //this.basePanel.Visible = true;
+            //backgroundWorker1.RunWorkerAsync("UpdateUPSAddress");
+            var result=UpdateUpsAddresses();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            }
            
         }
 
@@ -2784,13 +2792,22 @@ public override void Cancel() {
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+         
             this.basePanel.Visible = false;
             ApiProcessingResult result = (ApiProcessingResult)e.Result;
             if (result.IsError)
                 {
                     MbcMessageBox.Error(result.Errors[0].ErrorMessage);
                 }
+            if (result.Tag == "reportViewer1refresh")
+            {
+                reportViewer1.RefreshReport();
+            }
            
+            if (result.Tag == "reportViewer3refresh")
+            {
+                reportViewer3.RefreshReport();
+            }
         }
 
         private void custDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)

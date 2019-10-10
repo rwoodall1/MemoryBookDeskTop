@@ -7,21 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseClass.Classes;
+using System.Data.Sql;
+using System.Data.SqlClient;
 using System.Configuration;
-namespace Mbc5.Dialogs {
-    public partial class frmEditPrtBkWip : Form {
-        public frmEditPrtBkWip(int id,int invno,string schcode) {
+using BindingModels;
+using BaseClass;
+using Exceptionless;
+namespace Mbc5.Dialogs
+{
+    public partial class frmEditSupplementtWip : Form
+    {
+        public frmEditSupplementtWip(int id, int invno,string schcode)
+        {
             InitializeComponent();
             ID = id;
             Invno = invno;
             Schcode = schcode;
-            }
+        }
         public int ID { get; set; }
         public int Invno { get; set; }
-        public bool Refill { get; set; }
         public string Schcode { get; set; }
-        
-        private void frmEditPrtBkWip_Load(object sender,EventArgs e) {
+        public bool Refill { get; set; }
+        private void frmEditWip_Load(object sender, EventArgs e)
+        {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             string AppConnectionString = "";
             if (Environment == "DEV")
@@ -29,43 +38,53 @@ namespace Mbc5.Dialogs {
                 AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
             else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            try
+            {
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+                this.suppdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+                wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Supplements");
+                suppdetailTableAdapter.Fill(dsEndSheet.suppdetail, Invno);
 
-            this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "PhotosCD");
-            prtbkbdetailTableAdapter.EditFillBy(dsProdutn.prtbkbdetail, Invno);
-     
-          
+
+            }
+            catch(Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                MbcMessageBox.Error("Error retrieving information:" + ex.Message);
+                this.Close();
+                return;
+            }
+           
+
             if (ID != 0)
             {
                 try
                 {
-                    var pos =prtbkbdetailBindingSource.Find("id", ID);
+                    var pos = suppdetailBindingSource.Find("Id", ID);
                     if (pos > -1)
                     {
-                        prtbkbdetailBindingSource.Position = pos;
+                        suppdetailBindingSource.Position = pos;
 
                     }
                     else
                     {
-                        MessageBox.Show("Record was not found,first available record is showing.", "Photo On CD Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Record was not found,first available record is showing.", "Supplement Wip Detail Record", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
-                catch (Exception ex) { };
+                catch(Exception ex) { };
 
             }
             else
             {
-                prtbkbdetailBindingSource.AddNew();
+                suppdetailBindingSource.AddNew();
                 txtInvno.Text = Invno.ToString();
                 lblSchcode.Text = Schcode;
             }
-            this.Text += "  " + Schcode + "/" + Invno.ToString();
-        }
 
-       
-        private void frmEditPrtBkWip_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel; }
+
+            this.Text += "  " + Schcode + "/" + Invno.ToString();
         }
 
         private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -74,29 +93,39 @@ namespace Mbc5.Dialogs {
             {
                 try
                 {
-                    this.prtbkbdetailBindingSource.EndEdit();
-                    prtbkbdetailTableAdapter.Update(this.dsProdutn);
+                    suppdetailBindingSource.EndEdit();
+                    var a = suppdetailTableAdapter.Update(dsEndSheet.suppdetail);
                     Refill = true;
                 }
                 catch (Exception ex) { }
-            }
+                }
+               
+           
         }
+    
+      
 
-        private void bindingNavigatorDeleteItem_Click_1(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (result == DialogResult.Yes)
-            {
-                // prtbkbdetailTableAdapter.Delete(ID);
-                prtbkbdetailBindingSource.RemoveCurrent();
-                Refill = true;
-            }
-        }
-
-        private void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             txtInvno.Text = Invno.ToString();
-            lblSchcode.Text = Schcode;
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            var result=MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+
+                suppdetailBindingSource.RemoveCurrent();
+                Refill = true;
+                wipDetailBindingNavigatorSaveItem_Click(null, null);
+            }
+     
+        }
+
+        private void frmEditWip_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel; ; }
         }
 
         private void wtrTextBox_Validating(object sender, CancelEventArgs e)
@@ -117,7 +146,6 @@ namespace Mbc5.Dialogs {
             }
         }
 
-      
         private void wirTextBox_Validating(object sender, CancelEventArgs e)
         {
             this.errorProvider1.SetError(wirTextBox, "");

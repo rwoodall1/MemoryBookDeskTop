@@ -57,7 +57,7 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Meridian_Jostens_Logo_282_NEW.ico</ApplicationIcon>
+    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
@@ -169,6 +169,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDateCont.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsEndSheet.cs">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsEndSheet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,11 +263,23 @@
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmEditBannerWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditBannerWip.Designer.cs">
+      <DependentUpon>frmEditBannerWip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmEditCoverWip.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\frmEditCoverWip.Designer.cs">
       <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditEndSheetWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditEndSheetWip.Designer.cs">
+      <DependentUpon>frmEditEndSheetWip.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\frmEditPartBkWip.cs">
       <SubType>Form</SubType>
@@ -283,6 +298,12 @@
     </Compile>
     <Compile Include="Dialogs\frmEditReorderWip.Designer.cs">
       <DependentUpon>frmEditReorderWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditSupplementtWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditSupplementtWip.Designer.cs">
+      <DependentUpon>frmEditSupplementtWip.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\frmEditWip.cs">
       <SubType>Form</SubType>
@@ -511,6 +532,7 @@
     <Content Include="Content\SystemIcons\tsPrint.Image.png" />
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
+    <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="Meridian_Jostens_Logo_282_NEW.ico" />
     <Content Include="NOTES TODO.txt" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -529,8 +551,14 @@
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditBannerWip.resx">
+      <DependentUpon>frmEditBannerWip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditCoverWip.resx">
       <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditEndSheetWip.resx">
+      <DependentUpon>frmEditEndSheetWip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditPartBkWip.resx">
       <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
@@ -540,6 +568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditReorderWip.resx">
       <DependentUpon>frmEditReorderWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditSupplementtWip.resx">
+      <DependentUpon>frmEditSupplementtWip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditWip.resx">
       <DependentUpon>frmEditWip.cs</DependentUpon>
@@ -656,6 +687,7 @@
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
     <EmbeddedResource Include="Reports\BannerTicket.rdlc" />
+    <EmbeddedResource Include="Reports\BarScanInvoiceMBC.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
@@ -926,9 +958,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\MemBook-Jostens Logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Outlook">

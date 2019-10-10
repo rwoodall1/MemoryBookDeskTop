@@ -433,6 +433,7 @@
             this.tableAdapterManager1.custTableAdapter = null;
             this.tableAdapterManager1.datecontTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpsListTableAdapter = null;
             // 
             // dsSales
             // 
@@ -529,6 +530,7 @@
             this.Text = "Print MBC Invoice\'s";
             this.Activated += new System.EventHandler(this.frmInvoicInq_Activated);
             this.Load += new System.EventHandler(this.frmInvoicInq_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.rdStatement, 0);
