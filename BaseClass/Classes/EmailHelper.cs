@@ -253,7 +253,7 @@ namespace BaseClass.Classes
             }
         }
 
-        public bool SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail, List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null || ToAddresses.Count<0)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -278,10 +278,19 @@ namespace BaseClass.Classes
                 IsBodyHtml = true
             };
             foreach (var address in ToAddresses) {
+                
                 mailMessage.To.Add(address);
             }
+            if (CCAddresses!=null)
+            {
+                mailMessage.To.Add(CCAddresses);
+            }
+            if (attachments != null && attachments.Count > 0)
+                foreach (OutlookAttachemt attachement in attachments)
+                {
 
-            mailMessage.To.Add(CCAddresses);
+                    mailMessage.Attachments.Add(new Attachment(attachement.Path));
+                }
             try
             {
                 smtpClient.Send(mailMessage);
@@ -344,6 +353,69 @@ namespace BaseClass.Classes
                 return false;
             }
         }
+        public bool SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail, List<string> attachments = null)
+        {
+            if (ToAddresses == null || ToAddresses.Count < 0)
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc)
+            {
+                brandedHtml = BuildEmailMBC(Body);
+            }
+            else if (TypeEmail == EmailType.Meridian)
+            {
+                brandedHtml = BuildEmailMeridian(Body);
+            }
+            else if (TypeEmail == EmailType.System)
+            {
+                brandedHtml = BuildEmailSystem(Body);
+            }
+            else if (TypeEmail == EmailType.Blank)
+            {
+                brandedHtml = "";
+            }
+            else
+            {
+                return false;
+            }
+
+            var smtpClient = new SmtpClient();
+            var mailMessage = new MailMessage
+            {
+                Subject = Subject,
+                Body = brandedHtml,
+                IsBodyHtml = true
+            };
+            foreach (var address in ToAddresses)
+            {
+                mailMessage.To.Add(address);
+            }
+
+            mailMessage.To.Add(CCAddresses);
+            if (attachments != null)
+            {
+                foreach (var attachPath in attachments)
+                {
+                    mailMessage.Attachments.Add(new Attachment(attachPath));
+                }
+            }
+            try
+            {
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
+            }
+        }
+
+
         public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail,List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null ||ToAddresses=="")
             {

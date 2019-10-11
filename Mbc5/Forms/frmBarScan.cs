@@ -9,6 +9,8 @@ using BindingModels;
 using BaseClass.Classes;
 using BaseClass;
 using BaseClass.Core;
+using Microsoft.Reporting.WinForms;
+using System.IO;
 namespace Mbc5.Forms
 {
     public partial class frmBarScan : BaseClass.frmBase
@@ -37,11 +39,11 @@ namespace Mbc5.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (! this.ValidateChildren())
-            {
+            //if (!this.ValidateChildren())
+            //{
                
-                return;
-            }
+            //    return;
+            //}
             
 
             if (!string.IsNullOrEmpty(txtDeptCode.Text) && !string.IsNullOrEmpty(txtDept.Text))
@@ -202,7 +204,7 @@ namespace Mbc5.Forms
                 case "MBC":
                     {
                         string cmdText = @"
-                        SELECT C.Schname,C.SchCode,C.SchEmail,C.ContEmail,C.BContEmail,C.ContEmail,CV.Specovr,P.ProdNo,W.CpNum,Q.Invno
+                        SELECT C.Schname,C.SchCode,RTrim(LTrim(C.SchEmail))As SchEmail,RTRim(LTrim(C.ContEmail))AS ContEmail,RTrim(LTrim(C.BContEmail))As BContEmail,RTrim(LTrim(C.CContEmail))AS CContEmail,CV.Specovr,P.ProdNo,W.CpNum,Q.Invno
                             From Cust C
                             Left Join Quotes Q On C.Schcode=Q.Schcode
                             Left Join Covers CV On Q.Invno=CV.Invno
@@ -219,7 +221,7 @@ namespace Mbc5.Forms
                         }
                             MbcModel = (MbcBarScanModel)result.Data;
 
-                        if (result == null)
+                        if (result.Data == null)
                         {
                             MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                             return;
@@ -235,8 +237,36 @@ namespace Mbc5.Forms
                     }
                 case "MER":
                     {
+                            string cmdText = @"
+                        SELECT C.Schname,C.SchCode,RTrim(LTrim(C.SchEmail))AS SchEmail,RTrim(LTrim(C.ContEmail))AS ContEmail,RTrim(LTrim(C.BContEmail))AS BContEmail,CV.Specovr,P.ProdNo,Q.Invno
+                            From MCust C
+                            Left Join MQuotes Q On C.Schcode=Q.Schcode
+                            Left Join Covers CV On Q.Invno=CV.Invno
+                            Left Join Produtn P On Q.Invno=P.Invno
+                           
+                            Where Q.Invno=@Invno
+                          ";
+                            sqlQuery.CommandText(cmdText);
+                            sqlQuery.AddParameter("@Invno", Invno);
+                            var result = sqlQuery.Select<MerBarScanModel>();
+                            if (result.IsError)
+                            {
+                                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            MerModel = (MerBarScanModel)result.Data;
 
-                        break;
+                            if (result.Data == null)
+                            {
+                                MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                return;
+                            }
+                            txtSchcode.Text = MerModel.SchCode;
+                            txtSchoolName.Text = MerModel.Schname;
+                            txtCoverNumber.Text = MerModel.Specovr;
+                            txtColorPageNumber.Text = "";
+                            txtProdNumber.Text = MerModel.ProdNo;
+                            txtDateTime.Text = DateTime.Now.ToString();
+                            break;
                     }
 
             }
@@ -387,7 +417,7 @@ namespace Mbc5.Forms
                                 if (vDeptCode == 40)//40 is ship in wip derscr wiptable
                                 {
                                     sqlClient.ClearParameters();
-                                    sqlClient.CommandText(@"Update produnt SET produtn.shpdate with @Shpdate where Invno=@Invno");
+                                    sqlClient.CommandText(@"Update produtn SET produtn.shpdate=@Shpdate where Invno=@Invno");
                                     sqlClient.AddParameter("@Invno", Invno);
                                     sqlClient.AddParameter("Shpdate", vDateTime);
                                     var shpdateResult = sqlClient.Update();
@@ -1466,10 +1496,11 @@ namespace Mbc5.Forms
                         if (vDeptCode == 40)
                         {
                                     sqlClient.ClearParameters();
-                                    sqlClient.CommandText(@"Update produnt SET produtn.shpdate with @Shpdate where Invno=@Invno");
+                                    sqlClient.CommandText(@"Update produtn SET produtn.shpdate= @Shpdate where Invno=@Invno");
                                     sqlClient.AddParameter("@Invno", Invno);
-                                    var shpdateResult = sqlClient.Update();
                                     sqlClient.AddParameter("Shpdate", vDateTime);
+                                    var shpdateResult = sqlClient.Update();
+                                    
                                     if (shpdateResult.IsError)
                                     {
                                         MbcMessageBox.Error(shpdateResult.Errors[0].ErrorMessage);
@@ -2396,7 +2427,9 @@ if (trkType == "GS")
         private void ShippedEmail(string company)
         {
             List<string> vAddresses = new List<string>();
-            var sqlClient = new SQLCustomClient;
+            var vAttachment = new OutlookAttachemt();
+            var vAttachmentList = new List<OutlookAttachemt>();
+            var sqlClient = new SQLCustomClient();
             var emailHelper = new EmailHelper();
             string vSubject ="";
             string vBody = "";
@@ -2405,7 +2438,7 @@ if (trkType == "GS")
             {
                 if (!string.IsNullOrEmpty(MbcModel.SchEmail))
                 {
-                    vAddresses.Add(MbcModel.SchEmail.Trim());
+                    vAddresses.Add(MbcModel.SchEmail);
                 }
                 if (!string.IsNullOrEmpty(MbcModel.ContEmail))
                 {
@@ -2415,18 +2448,34 @@ if (trkType == "GS")
                 {
                     vAddresses.Add(MbcModel.BContEmail.Trim());
                 }
-                if (!string.IsNullOrEmpty(MbcModel.ContEmail))
+
+                if (!string.IsNullOrEmpty(MbcModel.CContEmail))
                 {
                     vAddresses.Add(MbcModel.CContEmail.Trim());
                 }
-                var vAttachement = GenerateInvoice();
+
+                if (vAddresses.Count==0)
+                {
+                    MbcMessageBox.Error("There are no shipping email addresses to sent invoie to.");
+                    return;
+                }
+                var attachementResult = CreatekPdf(company,Invno.ToString());
+                if (attachementResult.IsError)
+                {
+                    MbcMessageBox.Error("Invoice attachement could not be created:" + attachementResult.Errors[0].ErrorMessage + "Email can not be sent.");
+                    return;
+                }
+                
+                vAttachment.Path = attachementResult.Data;
+            
+                vAttachmentList.Add(vAttachment);
                 vSubject = "Your yearbooks have shipped!";
                 vBody = @"Your yearbooks have shipped so be looking for them shortly. Thanks for a being a great customer and we look forward to working with you
                           again next year. <br/>If you have already rebooked for next year, thank you! If you are not already rebooked, please contact your Sales Consultant
                            today at <b>1-800-247-1526</b>.<br/> We appreciate your business and look forward to working with you next year to preserve your school's memories.
                            An invoice is attached for you. If you are interested, we may have extra books available for you to purchase at your original cost per book,  
                            plus $12 for shipping.<br/> The shipping is a flat fee whether you order one extra book or all of them. Please do not reply to this email.
-                           If you have questions, please contact your Customer Service Representative. <br/><a <font color=blue> href=www.memorybook.com/>Memorybook</font> </a> ";
+                           If you have questions, please contact your Customer Service Representative. <br/><a href=www.memorybook.com><font color=blue>Memorybook</font> </a> ";
 
 
             }
@@ -2434,7 +2483,7 @@ if (trkType == "GS")
             {
                 if (!string.IsNullOrEmpty(MerModel.SchEmail))
                 {
-                    vAddresses.Add(MerModel.SchEmail.Trim());
+                    vAddresses.Add(MerModel.SchEmail);
                 }
                 if (!string.IsNullOrEmpty(MerModel.ContEmail))
                 {
@@ -2444,17 +2493,28 @@ if (trkType == "GS")
                 {
                     vAddresses.Add(MerModel.BContEmail.Trim());
                 }
-                if (!string.IsNullOrEmpty(MerModel.ContEmail))
+                
+                if (vAddresses.Count == 0)
                 {
-                    vAddresses.Add(MerModel.CContEmail.Trim());
+                    MbcMessageBox.Error("There are no shipping email addresses to sent invoie to.");
+                    return;
                 }
+                var attachementResult = CreatekPdf(company, Invno.ToString());
+                if (attachementResult.IsError)
+                {
+                    MbcMessageBox.Error("Invoice attachement could not be created:" + attachementResult.Errors[0].ErrorMessage + "Email can not be sent.");
+                    return;
+                }
+                vAttachment.Path = attachementResult.Data;
+
+                vAttachmentList.Add(vAttachment);
                 vType = EmailType.Meridian;
                 vSubject = "Your planners have shipped!";
                 vBody = @"Please do not reply to this email. <br/>
                         Your planners have shipped! If you need additional planners, call <b>1-888-724-8512</b> to reorder more at a great price with fast delivery.</br>
                     Plus, don’t forget to renew your order for next year at http://www.meridianplanners.com/business-agreement. Thank you for your business and we look forward to working with you again.";
             }
-            emailHelper.SendOutLookEmail(vSubject, vAddresses, null, vBody,vType);
+            emailHelper.SendEmail(vSubject,vAddresses,null, vBody,vType, vAttachmentList);
 
         }
         private ApiProcessingResult<string> CreatekPdf( string Company,string vInvno)
@@ -2465,34 +2525,97 @@ if (trkType == "GS")
             var sqlClient = new SQLCustomClient();
             if (Company == "MBC")
             {
-                sqlClient.CommandText(@"
-				SELECT C.SchName,C.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,C.ContFName AS ContactFirstName,
-				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
+                var invoiceCmd = @"SELECT I.SchName,I.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,I.SchState,I.ContFName AS ContactFirstName,
+				I.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
 				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
-				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
+				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate           
 				FROM Invoice I
-				LEFT JOIN Cust C ON I.Schcode=C.Schcode
-				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
-				Where I.Invno =@Invno
+			    Where I.Invno =@Invno";
+                var invoiceDetailCmd = @"Select ID.descr ,ID.price,ID.discpercent FROM InvDetail ID Where ID.Invno =@Invno ";
+                sqlClient.CommandText(invoiceCmd);	
+                sqlClient.AddParameter("@Invno", vInvno);
+                var result = sqlClient.Select<FullInvoice>();
+                if (result.IsError)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                }
+                if (result.Data==null)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("An invoice for this school could not be found.", "An invoice for this school could not be found.", ""));
+                    return processingResult;
+                }
+                var InvoiceData = result.Data;
+                invoiceBindingSource.DataSource = InvoiceData;
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(invoiceDetailCmd);
+                sqlClient.AddParameter("@Invno", vInvno);
+                var detailResult=sqlClient.SelectMany<InvoiceDetailBindingModel>();
+                if (detailResult.IsError)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(detailResult.Errors[0].ErrorMessage, detailResult.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                }
+                var InvoiceDetailData = detailResult.Data;
+                InvoiceDetailBindingSource.DataSource = InvoiceDetailData;
+                //report viewer is already set to correct report and datasource here. In Meridian in needs changed
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMemInvoice.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoice", invoiceBindingSource));
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoicedetail", InvoiceDetailBindingSource));
+
+            }
+            else if (Company == "MER")
+            {
+                sqlClient.ClearParameters();
+                var invoiceCmd = @"SELECT I.InvName,I.SchCode,I.InvAddr ,I.InvAddr2,I.InvCity,I.InvState,I.InvZip,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
+                                I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.QteDate,I.Invno,I.FplnPrc,I.SubTotal,I.SalesTax,I.ShpHandling,I.FplnTot,
+                                I.Payments,I.BalDue,I.QtyStudent,I.QtyTeacher,I.SchType,I.NoPages,I.Generic,I.BasePrc,I.TeBasePrc
+			                    FROM MERInvoice I
+			                    Where I.Invno =@Invno";
 				
-				");
-            }else if (Company == "MER")
-            {
-
+                var invoiceDetailCmd = @"Select ID.Quantity ,ID.Descr,ID.UnitPrice,ID.Amount FROM MerInvDetail ID Where ID.Invno =@Invno ";
+                sqlClient.CommandText(invoiceCmd);
+                sqlClient.AddParameter("@Invno", vInvno);
+                var result = sqlClient.Select<FullMerInvoice>();
+                if (result.IsError)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                }
+                if (result.Data == null)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("An invoice for this school could not be found.", "An invoice for this school could not be found.", ""));
+                    return processingResult;
+                }
+                var InvoiceData = result.Data;
+                invoiceBindingSource.DataSource = InvoiceData;
+                sqlClient.ClearParameters();
+               sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.CommandText(invoiceDetailCmd);
+                var detailResult = sqlClient.SelectMany<MerInvoiceDetails>();
+                if (detailResult.IsError)
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(detailResult.Errors[0].ErrorMessage, detailResult.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                }
+                var InvoiceDetailData = detailResult.Data;
+                InvoiceDetailBindingSource.DataSource = InvoiceDetailData;
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMerInvoice.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoice", invoiceBindingSource));
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoicedetail", InvoiceDetailBindingSource));
 
             }
-            sqlClient.ClearParameters();
-            sqlClient.AddParameter("@Invno", vInvno);
-            var result = sqlClient.SelectMany<FullInvoice>();
-            if (result.IsError)
-            {
+            
 
-                processingResult.IsError = true;
-                processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage, ""));
-                return processingResult;
-            }
-            var InvoiceData = result.Data;
-            invoiceBindingSource.DataSource = InvoiceData;
+
             //https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
 
             Warning[] warnings;
@@ -2536,8 +2659,10 @@ if (trkType == "GS")
         private void frmBarScan_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
+  
         }
+
+     
     }
 
     }

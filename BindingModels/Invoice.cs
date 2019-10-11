@@ -91,4 +91,47 @@ namespace BindingModels
 		public string Laminate { get; set; }
 		int Freebooks { get; set; }
 	}
+    public class FullMerInvoice
+    {
+        public string InvName { get; set; }
+        public string SchCode { get; set; }
+        public string InvAddr { get; set; }
+        public string InvAddr2 { get; set; }
+        public string InvCity { get; set; }
+        public string InvState { get; set; }
+        public string InvZip { get; set; }
+        public string ShpName { get; set; }
+        public string ShpAddr { get; set; }
+        public string ShpAddr2 { get; set; }
+        public string ShpCity { get; set; }
+        public string ShpState { get; set; }
+        public string ShpZip { get; set; }
+        public string InvNotes { get; set; }
+        public DateTime ShpDate { get; set; }
+        public string PoNum { get; set; }
+        public string Contryear { get; set; }
+        public DateTime QteDate{get;set;}
+        public int Invno { get; set; }
+        public Decimal FplnPrc { get; set; }
+        public Decimal SubTotal { get; set; }
+        public Decimal SalesTax { get; set; }
+        public Decimal ShpHandling { get; set; }
+        public Decimal FplnTot { get; set; }
+        public Decimal Payments { get; set; }
+        public Decimal BalDue { get; set; }
+        public int QtyStudent { get; set; }
+        public int QtyTeacher { get; set; }
+        public string SchType { get; set; }
+        public int NoPages { get; set; }
+        public bool Generic { get; set; }
+        public decimal BasePrc { get; set; }
+        public decimal TeBasePrc { get; set; }
+    }
+    public class MerInvoiceDetails
+    {
+        public int Quantity { get; set; }
+        public string Descr { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Amount { get; set; }
+    }
 }

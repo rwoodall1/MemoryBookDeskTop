@@ -76,6 +76,7 @@ namespace BindingModels
         public string ContEmail { get; set; }
         public int Invno { get; set; }
     }
+   
     public class MerBarScanModel
     {
         public string SchCode { get; set; }

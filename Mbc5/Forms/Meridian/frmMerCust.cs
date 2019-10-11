@@ -767,8 +767,13 @@ namespace Mbc5.Forms.Meridian {
             //so call can be made from menu
             if (ShowSpinner)
             {
-                basePanel.Visible = true;
-               // backgroundWorker1.RunWorkerAsync("Save");
+                // basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
             }
             else
             {
@@ -1146,6 +1151,11 @@ namespace Mbc5.Forms.Meridian {
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Invno =(int)((DataRowView)(mcustBindingSource.Current)).Row["QInvno"];
         }
         //nothing below here
     }
