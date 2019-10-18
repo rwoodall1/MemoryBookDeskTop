@@ -363,16 +363,7 @@ namespace Mbc5.Forms
                                                     ");
                                 var result1 = sqlClient.Insert();
 
-                                //sqlClient.ClearParameters();
-                                //sqlClient.AddParameter("@Invno", this.Invno);
-                                //sqlClient.AddParameter("@DescripID", vDeptCode);
-                                //sqlClient.AddParameter("@WAR",DBNull.Value);
-                                //sqlClient.AddParameter("@WIR","");
-                                //sqlClient.AddParameter("@Wtr", 0);
-                                //sqlClient.AddParameter("@Schcode", txtSchcode.Text);
-                                //sqlClient.CommandText(@" UPDATE WipDetail Set War=@WAR,Wir=@WIR,Wtr=@Wtr  Where Invno=@Invno AND DescripID=42
-                                //                    ");
-                                //try {var updateResult = sqlClient.Update(); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+                              
                                 
                                 break;
                             }
@@ -955,6 +946,8 @@ namespace Mbc5.Forms
             }
             if (trkType == "BN")
             {
+                
+
                 // war is datetime
                 //wir is initials
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -1208,9 +1201,8 @@ namespace Mbc5.Forms
                     }
                 }
 
-            }
-            
-                if (trkType == "SP")
+            }            
+            if (trkType == "SP")
                 {
                 if (vDeptCode != 0)
                 {
@@ -1305,7 +1297,7 @@ namespace Mbc5.Forms
 
 
             }
-                if (trkType == "GS")
+            if (trkType == "GS")
                 {
                 if (vDeptCode != 0)
                 {
@@ -1397,7 +1389,7 @@ namespace Mbc5.Forms
 
             pnlPressNumber.Visible = false;
             MbcModel = null;
-
+            ClearScan();
         }
         private void MerScan()
         {
@@ -2361,7 +2353,7 @@ if (trkType == "GS")
 
             MerModel = null;
             pnlPressNumber.Visible = false;
-
+            ClearScan();
             
 
         }
@@ -2570,6 +2562,16 @@ if (trkType == "GS")
             }
             else if (Company == "MER")
             {
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMerInvoicerdlc.rdlc";
+               // reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.test1.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoice", invoiceBindingSource));
+                
+                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoicedetails", InvoiceDetailBindingSource));
+
+
+
+
                 sqlClient.ClearParameters();
                 var invoiceCmd = @"SELECT I.InvName,I.SchCode,I.InvAddr ,I.InvAddr2,I.InvCity,I.InvState,I.InvZip,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
                                 I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.QteDate,I.Invno,I.FplnPrc,I.SubTotal,I.SalesTax,I.ShpHandling,I.FplnTot,
@@ -2594,7 +2596,8 @@ if (trkType == "GS")
                     return processingResult;
                 }
                 var InvoiceData = result.Data;
-                invoiceBindingSource.DataSource = InvoiceData;
+                
+                 invoiceBindingSource.DataSource = InvoiceData;
                 sqlClient.ClearParameters();
                sqlClient.AddParameter("@Invno", vInvno);
                 sqlClient.CommandText(invoiceDetailCmd);
@@ -2607,10 +2610,8 @@ if (trkType == "GS")
                 }
                 var InvoiceDetailData = detailResult.Data;
                 InvoiceDetailBindingSource.DataSource = InvoiceDetailData;
-                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMerInvoice.rdlc";
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoice", invoiceBindingSource));
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("invoicedetail", InvoiceDetailBindingSource));
+                
+                
 
             }
             
@@ -2638,7 +2639,9 @@ if (trkType == "GS")
                 out encoding,
                 out extension,
                 out streamIds,
-                out warnings);
+                out warnings
+
+               );
                 var vPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 var newPath = vPath.Substring(0, vPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + vInvno + ".pdf";
                 using (FileStream fs = new FileStream(newPath, FileMode.Create))
@@ -2659,10 +2662,16 @@ if (trkType == "GS")
         private void frmBarScan_Load(object sender, EventArgs e)
         {
 
-  
+
+           
         }
 
-     
+        private void txtBarCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+      
     }
 
     }

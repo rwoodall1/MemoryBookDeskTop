@@ -52,13 +52,13 @@ namespace Mbc5.Forms
         {
             try
             {
-                if (this.Validate())
-                {
-                    wipDescriptionsBindingSource.EndEdit();
-                    var a=wipDescriptionsTableAdapter.Update(dsProdutn);
+                this.ValidateChildren();
+                wipDescriptionsBindingSource.EndEdit();
+                var a = wipDescriptionsTableAdapter.Update(dsProdutn.WipDescriptions);
+                wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions);
 
-                }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
 
             }

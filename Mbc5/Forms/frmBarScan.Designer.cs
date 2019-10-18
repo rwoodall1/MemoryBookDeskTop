@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarScan));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.InvoiceDetailBindingModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.InvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbl1 = new System.Windows.Forms.Label();
@@ -91,16 +93,28 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.BinderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FullMerInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingSource)).BeginInit();
             this.pnlPressNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BinderyLabelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
             // 
             this.basePanel.Size = new System.Drawing.Size(22, 16);
+            // 
+            // FullInvoiceBindingSource
+            // 
+            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
+            // 
+            // InvoiceDetailBindingModelBindingSource
+            // 
+            this.InvoiceDetailBindingModelBindingSource.DataSource = typeof(BindingModels.InvoiceDetailBindingModel);
             // 
             // lbl1
             // 
@@ -194,7 +208,7 @@
             this.txtTime.Location = new System.Drawing.Point(187, 151);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(47, 20);
-            this.txtTime.TabIndex = 2;
+            this.txtTime.TabIndex = 3;
             // 
             // txtInOut
             // 
@@ -229,7 +243,7 @@
             this.txtSchcode.Name = "txtSchcode";
             this.txtSchcode.ReadOnly = true;
             this.txtSchcode.Size = new System.Drawing.Size(116, 20);
-            this.txtSchcode.TabIndex = 2;
+            this.txtSchcode.TabIndex = 1000;
             // 
             // txtCoverNumber
             // 
@@ -237,7 +251,7 @@
             this.txtCoverNumber.Name = "txtCoverNumber";
             this.txtCoverNumber.ReadOnly = true;
             this.txtCoverNumber.Size = new System.Drawing.Size(116, 20);
-            this.txtCoverNumber.TabIndex = 3;
+            this.txtCoverNumber.TabIndex = 10000;
             // 
             // txtColorPageNumber
             // 
@@ -245,7 +259,7 @@
             this.txtColorPageNumber.Name = "txtColorPageNumber";
             this.txtColorPageNumber.ReadOnly = true;
             this.txtColorPageNumber.Size = new System.Drawing.Size(89, 20);
-            this.txtColorPageNumber.TabIndex = 4;
+            this.txtColorPageNumber.TabIndex = 10000;
             // 
             // label8
             // 
@@ -274,7 +288,7 @@
             this.txtExtraBooks.Name = "txtExtraBooks";
             this.txtExtraBooks.ReadOnly = true;
             this.txtExtraBooks.Size = new System.Drawing.Size(68, 20);
-            this.txtExtraBooks.TabIndex = 5;
+            this.txtExtraBooks.TabIndex = 1000;
             this.txtExtraBooks.Visible = false;
             // 
             // txtSchoolName
@@ -283,7 +297,7 @@
             this.txtSchoolName.Name = "txtSchoolName";
             this.txtSchoolName.ReadOnly = true;
             this.txtSchoolName.Size = new System.Drawing.Size(300, 20);
-            this.txtSchoolName.TabIndex = 6;
+            this.txtSchoolName.TabIndex = 1000;
             // 
             // label11
             // 
@@ -301,7 +315,7 @@
             this.txtProdNumber.Name = "txtProdNumber";
             this.txtProdNumber.ReadOnly = true;
             this.txtProdNumber.Size = new System.Drawing.Size(163, 20);
-            this.txtProdNumber.TabIndex = 26;
+            this.txtProdNumber.TabIndex = 10000;
             // 
             // label12
             // 
@@ -318,7 +332,7 @@
             this.txtCopies.Location = new System.Drawing.Point(187, 200);
             this.txtCopies.Name = "txtCopies";
             this.txtCopies.Size = new System.Drawing.Size(47, 20);
-            this.txtCopies.TabIndex = 4;
+            this.txtCopies.TabIndex = 5;
             this.txtCopies.Visible = false;
             this.txtCopies.TextChanged += new System.EventHandler(this.txtCopies_TextChanged);
             // 
@@ -348,7 +362,7 @@
             this.btnSave.Location = new System.Drawing.Point(321, 280);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -358,7 +372,7 @@
             this.btnCancel.Location = new System.Drawing.Point(415, 280);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 23);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -571,7 +585,7 @@
             this.txtIntitials.Mask = ">LLL";
             this.txtIntitials.Name = "txtIntitials";
             this.txtIntitials.Size = new System.Drawing.Size(34, 20);
-            this.txtIntitials.TabIndex = 3;
+            this.txtIntitials.TabIndex = 4;
             // 
             // txtBarCode
             // 
@@ -581,6 +595,7 @@
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(100, 20);
             this.txtBarCode.TabIndex = 0;
+            this.txtBarCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarCode_KeyPress);
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             // 
             // txtDept
@@ -608,7 +623,7 @@
             this.txtPressNumber.Mask = "0000000";
             this.txtPressNumber.Name = "txtPressNumber";
             this.txtPressNumber.Size = new System.Drawing.Size(61, 20);
-            this.txtPressNumber.TabIndex = 0;
+            this.txtPressNumber.TabIndex = 2;
             this.txtPressNumber.ValidatingType = typeof(int);
             this.txtPressNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtPressNumber_Validating);
             // 
@@ -630,13 +645,13 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 47;
-            reportDataSource3.Name = "invoice";
-            reportDataSource3.Value = this.invoiceBindingSource;
-            reportDataSource4.Name = "invoicedetails";
-            reportDataSource4.Value = this.InvoiceDetailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMerInvoicerdlc.rdlc";
+            reportDataSource1.Name = "invoice";
+            reportDataSource1.Value = this.FullInvoiceBindingSource;
+            reportDataSource2.Name = "invoicedetail";
+            reportDataSource2.Value = this.InvoiceDetailBindingModelBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(822, 343);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
@@ -647,6 +662,10 @@
             // BinderyLabelBindingSource
             // 
             this.BinderyLabelBindingSource.DataSource = typeof(BindingModels.BinderyLabel);
+            // 
+            // FullMerInvoiceBindingSource
+            // 
+            this.FullMerInvoiceBindingSource.DataSource = typeof(BindingModels.FullMerInvoice);
             // 
             // frmBarScan
             // 
@@ -764,12 +783,15 @@
             this.Controls.SetChildIndex(this.txtDept, 0);
             this.Controls.SetChildIndex(this.pnlPressNumber, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingSource)).EndInit();
             this.pnlPressNumber.ResumeLayout(false);
             this.pnlPressNumber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BinderyLabelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -836,5 +858,8 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource InvoiceDetailBindingSource;
         private System.Windows.Forms.BindingSource BinderyLabelBindingSource;
+        private System.Windows.Forms.BindingSource FullMerInvoiceBindingSource;
+        private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
+        private System.Windows.Forms.BindingSource InvoiceDetailBindingModelBindingSource;
     }
 }

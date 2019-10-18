@@ -44,10 +44,9 @@ namespace Mbc5.Forms.MemoryBook
         public frmSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
         {
             InitializeComponent();
-            this.DisableControls(this);
+            this.DisableControls(this.tabSales);
            
-            EnableControls(btnPoSrch);
-            EnableControls(txtPoSrch);
+            
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             this.Invno = 0;
@@ -170,13 +169,14 @@ namespace Mbc5.Forms.MemoryBook
         #region "Search"
         public override void SchCodeSearch()
         {
-            var saveResult = this.Save(tabSales.SelectedIndex);
+            if (quotesBindingSource.Count > 0) { 
+                var saveResult = this.Save(tabSales.SelectedIndex);
             if (saveResult.IsError)
             {
 
                 return;
             }
-
+        }
 
 
             var currentSchool = this.Schcode;
@@ -198,10 +198,18 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the School Code searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
                 }
                 catch (Exception ex)
@@ -217,14 +225,22 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void SchnameSearch()
         {
-            this.Save(false);
-            if (!SaveSucceded)
+            if (quotesBindingSource.Count > 0)
             {
+                var saveResult = this.Save(tabSales.SelectedIndex);
+                if (saveResult.IsError)
+                {
 
-                return;
-            } else {SaveSucceded = false; }
+                    return;
+                }
+            }
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var schname = currentrow["schname"].ToString();
+            string schname = "";
+            if (currentrow!=null)
+            {
+                schname = currentrow["schname"].ToString();
+            }
+            
 
             frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
 
@@ -244,10 +260,18 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the School Name searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
                 }
                 catch (Exception ex)
@@ -266,13 +290,15 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void OracleCodeSearch()
         {
-            this.Save(false);
-            if (!SaveSucceded)
+            if (quotesBindingSource.Count > 0)
             {
+                var saveResult = this.Save(tabSales.SelectedIndex);
+                if (saveResult.IsError)
+                {
 
-                return;
+                    return;
+                }
             }
-            else { SaveSucceded = false; }
 
             var oraclecode = "";
             try {
@@ -302,10 +328,18 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the oracle number searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
                 }
                 catch (Exception ex)
@@ -322,13 +356,15 @@ namespace Mbc5.Forms.MemoryBook
         public override void InvoiceNumberSearch()
         {
             var invno = "0";
-            this.Save(false);
-            if (!SaveSucceded)
+            if (quotesBindingSource.Count > 0)
             {
+                var saveResult = this.Save(tabSales.SelectedIndex);
+                if (saveResult.IsError)
+                {
 
-                return;
+                    return;
+                }
             }
-            else { SaveSucceded = false; }
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
             if (currentrow != null)
             {
@@ -352,11 +388,18 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the invoice number searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -372,17 +415,22 @@ namespace Mbc5.Forms.MemoryBook
         public override void JobNoSearch()
         {
 
-            this.Save(false);
-            if (!SaveSucceded)
+            if (quotesBindingSource.Count > 0)
             {
+                var saveResult = this.Save(tabSales.SelectedIndex);
+                if (saveResult.IsError)
+                {
 
-                return;
+                    return;
+                }
             }
-            else { SaveSucceded = false; }
 
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
-            var invno = currentrow["invno"].ToString();
-
+            var invno = "0";
+            if (currentrow != null)
+            {
+                 invno = currentrow["invno"].ToString();
+            }
 
             frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
 
@@ -405,10 +453,18 @@ namespace Mbc5.Forms.MemoryBook
 
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the job number searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
                 }
                 catch (Exception ex)
@@ -428,16 +484,22 @@ namespace Mbc5.Forms.MemoryBook
         public override void ProdutnNoSearch()
         {
 
-            this.Save(false);
-            if (!SaveSucceded)
+            if (quotesBindingSource.Count > 0)
             {
+                var saveResult = this.Save(tabSales.SelectedIndex);
+                if (saveResult.IsError)
+                {
 
-                return;
+                    return;
+                }
             }
-            else { SaveSucceded = false; }
 
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
-            var prodno = currentrow["prodno"].ToString();
+            string prodno = "";
+            if (currentrow != null)
+            {
+                prodno = currentrow["prodno"].ToString();
+            }
 
             frmSearch frmSearch = new frmSearch("PRODNO", "SALES", prodno);
 
@@ -458,9 +520,18 @@ namespace Mbc5.Forms.MemoryBook
 
                     Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the production number searched.");
+                        return;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
                 }
 
                 catch (Exception ex)
@@ -2484,6 +2555,10 @@ namespace Mbc5.Forms.MemoryBook
                 try
                 {
                     quotesTableAdapter.FillByInvno(dsSales.quotes, Invno);
+                    if (quotesBindingSource.Count == 0)
+                    {
+                        DisableControls(this.tabSales);
+                    }
                     xtraTableAdapter.Fill(dsExtra.xtra, Invno);
                     CalculateEach();
                     BookCalc();
@@ -2497,6 +2572,7 @@ namespace Mbc5.Forms.MemoryBook
                 }
 
             }
+            else { EnableControls(this); }
           
                
             txtModifiedBy.Text = this.ApplicationUser.id;

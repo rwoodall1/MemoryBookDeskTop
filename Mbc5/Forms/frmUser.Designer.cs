@@ -63,17 +63,18 @@
             this.idLabel1 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new Mbc5.DataSets.dsRolesTableAdapters.TableAdapterManager();
             this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.rolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -368,6 +369,8 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.rolesTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRolesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // cmbRole
@@ -383,24 +386,35 @@
             this.cmbRole.TabIndex = 32;
             this.cmbRole.ValueMember = "id";
             // 
-            // dsRoles
-            // 
-            this.dsRoles.DataSetName = "dsRoles";
-            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // rolesBindingSource
             // 
             this.rolesBindingSource.DataMember = "roles";
             this.rolesBindingSource.DataSource = this.dsRoles;
             // 
+            // dsRoles
+            // 
+            this.dsRoles.DataSetName = "dsRoles";
+            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // rolesTableAdapter
             // 
             this.rolesTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(130, 190);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Reset Password";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(665, 225);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.idLabel1);
             this.Controls.Add(this.lblId);
@@ -417,8 +431,9 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUser";
-            this.Text = " ";
+            this.Text = " User Maint";
             this.Load += new System.EventHandler(this.frmUser_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtFirstName, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -435,6 +450,7 @@
             this.Controls.SetChildIndex(this.lblId, 0);
             this.Controls.SetChildIndex(this.idLabel1, 0);
             this.Controls.SetChildIndex(this.cmbRole, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
@@ -443,8 +459,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +504,6 @@
         private DataSets.dsRoles dsRoles;
         private System.Windows.Forms.BindingSource rolesBindingSource;
         private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }

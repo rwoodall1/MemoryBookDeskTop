@@ -293,16 +293,30 @@ namespace BaseClass.Classes
                 }
             try
             {
-                smtpClient.Send(mailMessage);
+             smtpClient.Send(mailMessage);
                 return true;
             }
-            catch (Exception ex)
+            catch (SmtpFailedRecipientException ex)
             {
                 ex.ToExceptionless()
+                    .AddObject(ex)
                     .Submit();
-                MessageBox.Show("Failed to send email:" + ex.Message);
+                if (!string.IsNullOrEmpty(ex.FailedRecipient))
+                {
+                    MessageBox.Show("Failed to send  email to:" + ex.FailedRecipient+ " Be sure email address is good.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return true;
+                }
+                
+          
+            }catch(Exception ex1)
+            {
+                    ex1.ToExceptionless()
+                    .AddObject(ex1)
+                    .Submit();
+                MessageBox.Show("Failed to send  email:" + ex1.Message);
                 return false;
             }
+            return true;
         }
 
         public bool SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail, List<string> attachments = null) {

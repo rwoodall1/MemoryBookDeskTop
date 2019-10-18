@@ -218,7 +218,15 @@ namespace Mbc5.Forms
             { FindUser(txtSearch.Text); }
         }
 
-      
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            var userId = ((DataRowView)bsUser.Current).Row["id"].ToString();
+
+            frmChangePassword frmPassword = new frmChangePassword(userId,(frmMain)this.MdiParent);
+
+            frmPassword.ShowDialog();
+            this.Cursor = Cursors.Default;
+        }
     }
 }

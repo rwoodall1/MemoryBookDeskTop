@@ -33,11 +33,11 @@ this.Schcode = schcode;
 public frmMSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
 {
 InitializeComponent();
-this.DisableControls(this);
+    this.DisableControls(this.salesTabControl);
 
-//EnableControls(btnPoSrch);
-//EnableControls(txtPoSrch);
-this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+    //EnableControls(btnPoSrch);
+    //EnableControls(txtPoSrch);
+    this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
 this.ApplicationUser = userPrincipal;
 this.Invno = 0;
 this.Schcode = null;
@@ -60,20 +60,22 @@ private void frmMSales_Load(object sender, System.EventArgs e)
         mquotesBindingSource.ResetBindings(true);
     }
         #region SearchMethods
-        private void NullParseHandler(object sender, ConvertEventArgs e)
+ private void NullParseHandler(object sender, ConvertEventArgs e)
 {
 if (e.Value != null && string.IsNullOrEmpty(e.Value.ToString()))
     e.Value =DBNull.Value;
 }
 public override void SchCodeSearch()
 {
-var saveResult = this.SaveSales();
-if (saveResult.IsError)
-{
+            if (mquotesBindingSource.Count > 0)
+            {
+                var saveResult = this.SaveSales();
+                if (saveResult.IsError)
+                {
 
-    return;
-}
-
+                    return;
+                }
+            }
 
 var currentSchool = this.Schcode;
 frmSearch frmSearch = new frmSearch("Schcode", "MSALES", Schcode);
@@ -94,12 +96,22 @@ if (result == DialogResult.OK)
         }
         this.Fill();
         DataRowView current = (DataRowView)mquotesBindingSource.Current;
+               
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the School Code searched.");
+                        return;
 
-        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-        this.Schcode = current["Schcode"].ToString();
-        EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
-    }
+
+                }
     catch (Exception ex)
     {
         MbcMessageBox.Error(ex.Message, "Error");
@@ -113,12 +125,15 @@ if (result == DialogResult.OK)
 }
 public override void SchnameSearch()
 {
-var saveResult = this.SaveSales();
-if (saveResult.IsError)
-{
+    if (mquotesBindingSource.Count > 0)
+    {
+        var saveResult = this.SaveSales();
+        if (saveResult.IsError)
+        {
 
-    return;
-}
+            return;
+        }
+    }
 DataRowView currentrow = (DataRowView)mquotesBindingSource.Current;
 var schname = currentrow["schname"].ToString();
 
@@ -139,13 +154,21 @@ if (result == DialogResult.OK)
             return;
         }
         this.Fill();
-        DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the School Name searched.");
+                        return;
 
-        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-        this.Schcode = current["Schcode"].ToString();
-        EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
-    }
+                }
     catch (Exception ex)
     {
         MbcMessageBox.Error(ex.Message, "Error");
@@ -162,14 +185,22 @@ if (result == DialogResult.OK)
 }
 public override void OracleCodeSearch()
 {
-var saveResult = this.SaveSales();
-if (saveResult.IsError)
-{
+    if (mquotesBindingSource.Count > 0)
+    {
+        var saveResult = this.SaveSales();
+        if (saveResult.IsError)
+        {
 
-    return;
-}
+            return;
+        }
+    }
 DataRowView currentrow = (DataRowView)mquotesBindingSource.Current;
-var oraclecode = currentrow["oraclecode"].ToString();
+            string oraclecode = "";
+    if (currentrow!=null)
+    {
+        oraclecode = currentrow["oraclecode"].ToString();
+    }
+
 
 frmSearch frmSearch = new frmSearch("OracleCode", "MSALES", oraclecode);
 
@@ -188,13 +219,21 @@ if (result == DialogResult.OK)
             return;
         }
         this.Fill();
-        DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the oracle number searched.");
+                        return;
 
-        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-        this.Schcode = current["Schcode"].ToString();
-        EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
-    }
+                }
     catch (Exception ex)
     {
         MbcMessageBox.Error(ex.Message, "Error");
@@ -209,12 +248,14 @@ if (result == DialogResult.OK)
 public override void InvoiceNumberSearch()
 {
 var invno = "0";
-var saveResult = this.SaveSales();
-if (saveResult.IsError)
-{
+            if (mquotesBindingSource.Count>0) {
+                var saveResult = this.SaveSales();
+                if (saveResult.IsError)
+                {
 
-    return;
-}
+                    return;
+                }
+            }
 DataRowView currentrow = (DataRowView)mquotesBindingSource.Current;
 if (currentrow != null)
 {
@@ -238,12 +279,20 @@ if (result == DialogResult.OK)
         }
         this.Fill();
         DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the invoice number searched.");
+                        return;
 
-        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-        this.Schcode = current["Schcode"].ToString();
-        EnableAllControls(this);
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
 
-    }
+                }
     catch (Exception ex)
     {
         MbcMessageBox.Error(ex.Message, "Error");
@@ -255,10 +304,79 @@ if (result == DialogResult.OK)
     this.Cursor = Cursors.Default;
 }
 }
+public override void ProdutnNoSearch()
+        {
 
+            if (mquotesBindingSource.Count > 0)
+            {
+                var saveResult = this.SaveSales();
+                if (saveResult.IsError)
+                {
+
+                    return;
+                }
+            }
+
+            DataRowView currentrow = (DataRowView)mquotesBindingSource.Current;
+            string prodno = "";
+            if (currentrow!=null)
+            {
+                 prodno = currentrow["prodno"].ToString();
+            }
+           
+
+            frmSearch frmSearch = new frmSearch("PRODNO", "MSALES", prodno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)mquotesBindingSource.Current;
+                    if (current == null)
+                    {
+                        MbcMessageBox.Information("A sales record was not found that is linked to the production number searched.");
+                        return;
+
+                    }
+                    else
+                    {
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                        this.Schcode = current["Schcode"].ToString();
+                        EnableAllControls(this);
+                    }
+                    
+                }
+
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                this.Cursor = Cursors.Default;
+                frmMSales_Paint(this, null);
+
+            }
+
+
+
+        }
+       
         #endregion
-#region Methods
-#region CalcMethods
+        #region Methods
+        #region CalcMethods
         private void CalculateOptions()
         {
             if (!Validate())
@@ -1515,9 +1633,14 @@ public override void Save(bool ShowSpinner)
     //so call can be made from menu
     if (ShowSpinner)
     {
-        basePanel.Visible = true;
-       // backgroundWorker1.RunWorkerAsync("Save");
-    }
+                //basePanel.Visible = true;
+                // backgroundWorker1.RunWorkerAsync("Save");
+                var result = SaveSales();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
+            }
     else
     {
         var result = SaveSales();
@@ -1593,6 +1716,9 @@ if (Invno != 0)
     {
         this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
         mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
+        if (mquotesBindingSource.Count == 0){
+            this.DisableControls(this.salesTabControl);
+        }
         coversTableAdapter.Fill(dsMSales.covers, Invno);
         merinvoiceTableAdapter.Fill(dsMInvoice.merinvoice, Invno);
         merinvdetailTableAdapter.Fill(dsMInvoice.merinvdetail, Invno);
@@ -1605,7 +1731,8 @@ if (Invno != 0)
         MbcMessageBox.Error(ex.Message, "");
     }
 
-}
+    }
+     else { EnableControls(this); }
 
 }
 private void DisableControls(Control con)
@@ -1969,6 +2096,7 @@ private void collectionsCheckBox_CheckedChanged(object sender, System.EventArgs 
 private void frmMSales_Activated(object sender, EventArgs e)
 {
     try { frmMain.ShowSearchButtons(this.Name); } catch { }
+          
 }
 private void frmMSales_Deactivate(object sender, EventArgs e)
 {
@@ -2244,29 +2372,33 @@ private void frmMSales_FormClosing(object sender, FormClosingEventArgs e)
     {
         case 0:
         case 1:
-            var salesResult = SaveSales();
-            if (salesResult.IsError)
-            {
-                var result = MessageBox.Show("Sales record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-            }
+                    if (mquotesBindingSource.Count>0) {
+                        var salesResult = SaveSales();
+                        if (salesResult.IsError)
+                        {
+                            var result = MessageBox.Show("Sales record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+                        }
+                    }
             break;
         case 3:
-            //var paymentResult = SavePayment();
-            //if (paymentResult.IsError)
-            //{
-            //    var result = MessageBox.Show("Payment record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //    if (result == DialogResult.No)
-            //    {
-            //        e.Cancel = true;
-            //        return;
-            //    }
-            //}
-            break;
+                    if (paymntBindingSource.Count>0) {
+                        var paymentResult = SavePayment();
+                        if (paymentResult.IsError)
+                        {
+                            var result = MessageBox.Show("Payment record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.No)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+                        }
+                    }
+                    break;
     }
 }
 private void txtNoPages_Leave(object sender, EventArgs e)

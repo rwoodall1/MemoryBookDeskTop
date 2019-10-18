@@ -624,7 +624,6 @@ namespace Mbc5.Forms.MemoryBook {
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.reportViewerCheckList);
-            this.BottomPanel.Controls.Add(this.reportViewer1);
             this.BottomPanel.Controls.Add(this.txtModifiedBy);
             this.BottomPanel.Location = new System.Drawing.Point(0, 673);
             this.BottomPanel.Size = new System.Drawing.Size(1309, 10);
@@ -1920,6 +1919,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer.Panel2.Controls.Add(this.button6);
+            this.splitContainer.Panel2.Controls.Add(this.reportViewer1);
             this.splitContainer.Panel2.Controls.Add(this.reportViewer3);
             this.splitContainer.Panel2.Controls.Add(this.btnProdTckt);
             this.splitContainer.Panel2.Controls.Add(csrep2Label);
@@ -4680,10 +4680,10 @@ namespace Mbc5.Forms.MemoryBook {
             reportDataSource2.Value = this.ProdutnTicketModelBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdutnTicket.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(553, -97);
+            this.reportViewer1.Location = new System.Drawing.Point(648, 142);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(48, 157);
+            this.reportViewer1.Size = new System.Drawing.Size(48, 52);
             this.reportViewer1.TabIndex = 287;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);

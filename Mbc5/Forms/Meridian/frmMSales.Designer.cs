@@ -175,6 +175,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chkindateDateBox = new CustomControls.DateBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.qtedateDateBox = new CustomControls.DateBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblTotalOptions = new System.Windows.Forms.Label();
             this.lblSpecialCoverPrice = new System.Windows.Forms.Label();
@@ -311,7 +312,6 @@
             this.txtPaypoamt = new System.Windows.Forms.TextBox();
             this.merinvdetailTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.merinvdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.paymntTableAdapter();
-            this.qtedateDateBox = new CustomControls.DateBox();
             shpnameLabel = new System.Windows.Forms.Label();
             invnameLabel = new System.Windows.Forms.Label();
             mdescLabel = new System.Windows.Forms.Label();
@@ -1940,6 +1940,17 @@
             this.panel4.Size = new System.Drawing.Size(1028, 343);
             this.panel4.TabIndex = 200;
             // 
+            // qtedateDateBox
+            // 
+            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mquotesBindingSource, "qtedate", true));
+            this.qtedateDateBox.Date = null;
+            this.qtedateDateBox.DateValue = null;
+            this.qtedateDateBox.Location = new System.Drawing.Point(699, 105);
+            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.qtedateDateBox.Name = "qtedateDateBox";
+            this.qtedateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.qtedateDateBox.TabIndex = 158;
+            // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3426,17 +3437,6 @@
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
             // 
-            // qtedateDateBox
-            // 
-            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mquotesBindingSource, "qtedate", true));
-            this.qtedateDateBox.Date = null;
-            this.qtedateDateBox.DateValue = null;
-            this.qtedateDateBox.Location = new System.Drawing.Point(699, 105);
-            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.qtedateDateBox.Name = "qtedateDateBox";
-            this.qtedateDateBox.Size = new System.Drawing.Size(114, 21);
-            this.qtedateDateBox.TabIndex = 158;
-            // 
             // frmMSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -3451,6 +3451,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMSales_FormClosing);
             this.Load += new System.EventHandler(this.frmMSales_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmMSales_Paint);
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.salesTabControl, 0);
             ((System.ComponentModel.ISupportInitialize)(this.merinvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.merinvdetailBindingSource)).EndInit();

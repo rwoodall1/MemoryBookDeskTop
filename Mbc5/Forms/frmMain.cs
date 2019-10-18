@@ -58,14 +58,14 @@ namespace Mbc5.Forms
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
-
+                tsJobNo.Visible = false;
 
             } else if (formName == "frmSales")
             {
                
                 tsJobNo.Visible = true;
             } else if (formName == "frmMSales") {
-            
+                tsJobNo.Visible = false;
             } else if (formName=="frmProdutn") {
                 tsJobNo.Visible = true;
             } else if (formName == "frmBids")
@@ -74,7 +74,15 @@ namespace Mbc5.Forms
                 tsInvno.Visible = false;
                 tsProdutnNumberSearch.Visible = false;
                 tsOracleCodeSearch.Visible = false;
+                tsJobNo.Visible = false;
+            }
+            else if (formName == "frmMBids")
+            {
 
+                tsInvno.Visible = false;
+                tsProdutnNumberSearch.Visible = false;
+                tsOracleCodeSearch.Visible = false;
+                tsJobNo.Visible = false;
             }
             else
             {
@@ -149,6 +157,13 @@ namespace Mbc5.Forms
                         break;
 
                     }
+                case "frmMSales":
+                    {
+                        var tmpForm = (frmMSales)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+
+                    }
                 case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
@@ -165,60 +180,135 @@ namespace Mbc5.Forms
             }
             return vInvno;
         }
-        private string GetSchcode()
+        private string GetSchcode(string company)
         {
             string vSchcode = null;
-            switch (this.ActiveMdiChild.Name)
+            if (company == "MBC")
             {
-                case "frmSales":
-                    {
+                switch (this.ActiveMdiChild.Name)
+                {
+                    case "frmSales":
+                        {
 
-                        var tmpForm = (frmSales)this.ActiveMdiChild;
+                            var tmpForm = (frmSales)this.ActiveMdiChild;
 
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-                case "frmMbcCust":
-                    {
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    case "frmMbcCust":
+                        {
 
-                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+                            var tmpForm = (frmMbcCust)this.ActiveMdiChild;
 
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                  
+                    case "frmBids":
+                        {
+                            var tmpForm = (frmBids)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    
+                    case "frmProdutn":
+                        {
+                            var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    
+
+                }
+            }else if (company=="MER") {
+                switch (this.ActiveMdiChild.Name)
+                {
+                    
+                    case "frmMerCust":
+                        {
+
+                            var tmpForm = (frmMerCust)this.ActiveMdiChild;
+
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                   
+                    case "frmMBids":
+                        {
+                            var tmpForm = (frmMBids)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    case "frmMSales":
+                        {
+                            var tmpForm = (frmMSales)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    case "frmProdutn":
+                        {
+                            var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                }
+
+            }else if (company == "")
+            {
+                switch (this.ActiveMdiChild.Name)
+                {
+                    case "frmSales":
+                        {
+
+                    var tmpForm = (frmSales)this.ActiveMdiChild;
+
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
+                    case "frmMbcCust":
+                        {
+
+                    var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
+                  
+                    case "frmBids":
+                        {
+                    var tmpForm = (frmBids)this.ActiveMdiChild;
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
+                    
+                    case "frmProdutn":
+                        {
+                    var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
                 case "frmMerCust":
-                    {
+                        {
 
-                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
+                    var tmpForm = (frmMerCust)this.ActiveMdiChild;
 
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-                case "frmBids":
-                    {
-                        var tmpForm = (frmBids)this.ActiveMdiChild;
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-                case "frmMBids":
-                    {
-                        var tmpForm = (frmMBids)this.ActiveMdiChild;
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-                case "frmMSales":
-                    {
-                        var tmpForm = (frmMSales)this.ActiveMdiChild;
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-                case "frmProdutn":
-                    {
-                        var tmpForm = (frmProdutn)this.ActiveMdiChild;
-                        vSchcode = tmpForm.Schcode;
-                        break;
-                    }
-
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
+                   
+                    case "frmMBids":
+                        {
+                    var tmpForm = (frmMBids)this.ActiveMdiChild;
+                    vSchcode = tmpForm.Schcode;
+                    break;
+                }
+                    case "frmMSales":
+                        {
+                            var tmpForm = (frmMSales)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                }
             }
             return vSchcode;
 
@@ -284,7 +374,23 @@ namespace Mbc5.Forms
         }
         private void SetMenu()
         {
+            if (ApplicationUser.UserName=="BARCODE")
+            {
+                //Show barscan screen hid every thing else
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;                        
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                barScanToolStripMenuItem_Click(null, null);
 
+
+
+            }
+            else
+            {
             this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
             this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
             lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -292,6 +398,9 @@ namespace Mbc5.Forms
             meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
             mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
             cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            }
+            
+            
 
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,7 +444,7 @@ namespace Mbc5.Forms
 
             } else {
                 this.Cursor = Cursors.AppStarting;
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("MBC");
 
                 if (String.IsNullOrEmpty(vSchcode)) {
                     this.Cursor = Cursors.AppStarting;
@@ -364,10 +473,40 @@ namespace Mbc5.Forms
         private void MerToolStrip_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.AppStarting;
 
-            frmMerCust frmMer = new frmMerCust(this.ApplicationUser);
-            frmMer.MdiParent = this;
-            frmMer.Show();
-            this.Cursor = Cursors.Default;
+            if (this.ActiveMdiChild == null)
+            {
+                frmMerCust frmMer = new frmMerCust(this.ApplicationUser);
+                frmMer.MdiParent = this;
+                frmMer.Show();
+                this.Cursor = Cursors.Default;
+
+            }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                string vSchcode = GetSchcode("MER");
+
+                if (String.IsNullOrEmpty(vSchcode))
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmMerCust frmMer1 = new frmMerCust(this.ApplicationUser);
+                    frmMer1.MdiParent = this;
+                    frmMer1.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmMerCust frmCust = new frmMerCust(this.ApplicationUser, vSchcode);
+                    frmCust.MdiParent = this;
+                    frmCust.Show();
+                    this.Cursor = Cursors.Default;
+
+                }
+
+            }
         }
 
         private void bidsToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -385,7 +524,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("MBC");
                 frmBids frmSales = new frmBids(this.ApplicationUser, vSchcode);
                 frmSales.MdiParent = this;
                 frmSales.Show();
@@ -404,7 +543,7 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
             }
             else{
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("MER");
                 frmMBids frmMBids = new frmMBids(this.ApplicationUser, vSchcode);
                 frmMBids.MdiParent = this;
                 frmMBids.Show();
@@ -426,7 +565,7 @@ namespace Mbc5.Forms
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("MER");
 
                 if (vInvno == 0)
                 {
@@ -465,7 +604,7 @@ namespace Mbc5.Forms
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("MBC");
 
                 if (vInvno == 0)
                 {
@@ -500,7 +639,7 @@ namespace Mbc5.Forms
                 } else {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
-                string vSchcode = GetSchcode();
+                string vSchcode = GetSchcode("");
 
                 if (vInvno == 0) {
                     MessageBox.Show("This school does not have a production record to go to. Please search for record from Production Screen.","Production",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -657,7 +796,7 @@ namespace Mbc5.Forms
 			{
 				this.Cursor = Cursors.AppStarting;
 				int vInvno = GetInvno();
-				string vSchcode = GetSchcode();
+				string vSchcode = GetSchcode("MBC");
 
 				if (vInvno == 0)
 				{
@@ -1194,6 +1333,16 @@ namespace Mbc5.Forms
             catch { }
             
             
+        }
+
+        private void invoicesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMInvoicInq frmMInvoice = new frmMInvoicInq(this.ApplicationUser);
+            frmMInvoice.MdiParent = this;
+            frmMInvoice.Show();
+            this.Cursor = Cursors.Default;
         }
 
 

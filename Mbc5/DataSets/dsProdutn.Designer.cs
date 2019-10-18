@@ -29791,14 +29791,11 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = SCOPE_IDENTIT
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescriptionId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DescriptionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE       WipDescriptions
-SET                Description = @Description, TableName = @TableName, DescriptionId = @DescriptionId
-WHERE        (Id = @Original_Id); 
-SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY Description";
+            this._adapter.UpdateCommand.CommandText = "UPDATE       WipDescriptions\r\nSET                Description = @Description\r\nWHER" +
+                "E        (Id = @Original_Id);  \r\nSELECT Description, TableName, Id FROM WipDescr" +
+                "iptions WHERE (Id = @Id) ORDER BY Description";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 75, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescriptionId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DescriptionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -29823,7 +29820,7 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        Description, TableName, Id, DescriptionId\r\nFROM            WipDescr" +
-                "iptions\r\nORDER BY DescriptionId";
+                "iptions\r\nORDER BY TableName, DescriptionId";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
@@ -30021,27 +30018,15 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Description, string TableName, global::System.Nullable<int> DescriptionId, int Original_Id, int Id) {
+        public virtual int Update(string Description, int Original_Id, int Id) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Description));
             }
-            if ((TableName == null)) {
-                throw new global::System.ArgumentNullException("TableName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(TableName));
-            }
-            if ((DescriptionId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(DescriptionId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

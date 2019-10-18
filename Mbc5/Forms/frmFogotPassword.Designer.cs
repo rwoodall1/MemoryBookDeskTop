@@ -60,8 +60,8 @@
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(330, 26);
             this.lblInfo.TabIndex = 2;
-            this.lblInfo.Text = "Enter your user name and a reset password will be sent to you.\r\nYou will then be " +
-    "instructed to change your password when you login.";
+            this.lblInfo.Text = "Enter your email address and a reset password will be sent to you.\r\nYou will then" +
+    " be instructed to change your password when you login.";
             // 
             // btnSendPassword
             // 

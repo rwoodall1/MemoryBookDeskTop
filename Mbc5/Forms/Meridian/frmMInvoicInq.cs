@@ -19,9 +19,9 @@ using System.Threading.Tasks;
 
 namespace Mbc5.Forms.MemoryBook
 {
-    public partial class frmInvoicInq : BaseClass.Forms.bTopBottom
+    public partial class frmMInvoicInq : BaseClass.Forms.bTopBottom
     {
-        public frmInvoicInq(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
+        public frmMInvoicInq(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
         }
@@ -46,55 +46,17 @@ namespace Mbc5.Forms.MemoryBook
             dgAddressErrors.DataSource = null;
             pnlError.Visible = false;
 
-
-
-
-
             bsInvoices.Clear();
             var sqlClient = new SQLCustomClient();
-            if (rdStatement.Checked)
-            {
-                //search for bad addresses
-               
-                sqlClient.CommandText(@"
-                SELECT I.schname AS InvoiceSchoolName,C.schname As CustomerSchname, I.schcode AS SchoolCode
-                ,I.BalDue,P.invno As InvoiceNumber
-                FROM Cust C Left Join Quotes Q On C.Schcode=Q.Schcode
-                Left Join Produtn P On Q.Invno=P.Invno  
-                Left Join Invoice I On Q.Invno =I.invno 
-                WHERE(P.Shpdate IS NOT NULL )
-                AND(I.BalDue > 0)
-                AND (RTRIM(C.InvoiceAddr) != RTRIM(I.Schaddr)) 
-                OR(RTRIM(C.InvoiceState) != RTRIM(I.Schstate)))
-                ORDER BY I.Schname
-                ");
-                var result = sqlClient.SelectMany<InvoiceCheck>();
-                if (result.IsError)
-                {
-                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                var badRecords = (List<InvoiceCheck>)result.Data;
-
-                if (badRecords != null && badRecords.Count > 0)
-                {
-                    var errorList = new BindingList<InvoiceCheck>(badRecords);
-                    dgAddressErrors.DataSource = errorList;
-                    pnlError.Visible = true;
-                    MessageBox.Show("The following sales records have customer information errors in them and need invoice over rides done on them before you can proceed.", "Bad Address");
-                    return;
-                }
-                else { pnlError.Visible = false; }
-
-                sqlClient.ClearParameters();
+                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"
                    
                 SELECT P.ShpDate, I.Schname, I.Schcode, I.Baldue,
-                 C.InvoiceEmail1, C.InvoiceEmail2,C.InvoiceEmail3,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname
+                 C.SchEmail AS InvoiceEmail1, C.ContEmail AS InvoiceEmail2,C.BContEmail As InvoiceEmail3,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname
                 ,P.Invno, Q.Holdpmt, CAST(1 AS bit) AS ToPrint
-                FROM Invoice I
-                Left Join Quotes Q On I.invno=Q.invno
-                Left Join Cust C On Q.Schcode=C.Schcode
+                FROM MerInvoice I
+                Left Join MQuotes Q On I.invno=Q.invno
+                Left Join MCust C On Q.Schcode=C.Schcode
                 Left Join Produtn P On Q.Invno=P.Invno  
                  WHERE(P.Shpdate IS NOT NULL ) AND(I.Baldue > 0)
                 ORDER BY I.Schname
@@ -115,42 +77,9 @@ namespace Mbc5.Forms.MemoryBook
                     bsInvoices.DataSource = Invoices;
                 }
                 else { MbcMessageBox.Exclamation("No records were found.", ""); }
-            }else if (rdReceived.Checked)
-            {
-                sqlClient.ClearParameters();
-                sqlClient.CommandText(@"
-                      SELECT P.ShpDate, C.Schname,C.Schcode,
-                    C.InvoiceEmail1, C.InvoiceEmail2,C.InvoiceEmail3,C.Pin,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname,
-                    I.Invno,I.Baldue, Holdpmt, CAST(1 AS bit) AS ToPrint
-                    FROM  cust C Left Join 
-					Quotes Q ON C.schcode=Q.schcode
-					LEFT JOIN invoice I ON Q.invno=I.invno
-					Left JOIN Produtn P On Q.invno=P.invno      
-                    WHERE Cast(P.kitrecvd AS Date)= @kitrecvd
-                    ORDER BY C.Schname");
-
-                sqlClient.AddParameter("@kitrecvd",dteRecvDte.Value.Date.ToShortDateString());
-                var a = dteRecvDte.Value.Date.ToShortDateString();
-                var invoiceResult1 = sqlClient.SelectMany<Invoice>();
-                if (invoiceResult1.IsError)
-                {
-                    MessageBox.Show(invoiceResult1.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                var vInvoices1 = (List<Invoice>)invoiceResult1.Data;
-
-                if (vInvoices1 != null && vInvoices1.Count > 0)
-                {
-                    //var FinalInvoices = new List<Invoice>(vInvoices);
-                    this.Invoices = vInvoices1;
-                    dgInvoices.AutoGenerateColumns = false;
-                    bsInvoices.DataSource = Invoices;
-                }
-            }
-            else { MbcMessageBox.Information("Please select a statement type.", ""); }
-
-            
-
+          
+           
+           
         }
 
       
@@ -303,20 +232,19 @@ namespace Mbc5.Forms.MemoryBook
 			}
 			var sqlClient = new SQLCustomClient();
 			sqlClient.CommandText(@"
-				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
-				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
-				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
-				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
-				FROM Invoice I
-				LEFT JOIN Cust C ON I.Schcode=C.Schcode
-				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
+				SELECT I.InvName,I.SchCode,I.InvAddr,I.InvAddr2,I.InvCity,I.InvZip,I.InvState,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
+                I.QteDate,I.Invno,I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.FplnPrc,I.SubTotal,I.SchType,
+                    I.SalesTax,I.ShpHandling,I.FplnTot,I.Payments,I.BalDue,I.Schtype,I.QtyTotal,I.NoPages,I.QtyTeacher,I.QtyStudent,I.Generic,I.TeBasePrc,
+                    I.BasePrc,I.Basetot,ID.Descr,ID.UnitPrice,ID.DiscPercent,ID.Amount,ID.Quantity
+				FROM MerInvoice I
+				LEFT JOIN MerInvdetail ID ON I.Invno=ID.Invno
 				Where I.Invno IN (SELECT Item FROM @InvoiceList)
 				
 				");
 			
 			
 			sqlClient.AddParameter("@InvoiceList", vInvoiceNoList);
-			var result = sqlClient.SelectMany<FullInvoice>();
+			var result = sqlClient.SelectMany<MerMultiInvoiceModel>();
 			if (result.IsError) {
 				MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
 				return;
@@ -359,15 +287,15 @@ namespace Mbc5.Forms.MemoryBook
         private void rdReceived_CheckedChanged(object sender, EventArgs e)
         {
             bsInvoices.Clear();
-            if (rdReceived.Checked)
-            {
-                lblRecDte.Visible = true;
-                dteRecvDte.Visible = true;
-            }
-            else {
-                lblRecDte.Visible = false;
-                dteRecvDte.Visible = false;
-            }
+            //if (rdReceived.Checked)
+            //{
+            //    lblRecDte.Visible = true;
+            //    dteRecvDte.Visible = true;
+            //}
+            //else {
+            //    lblRecDte.Visible = false;
+            //    dteRecvDte.Visible = false;
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)

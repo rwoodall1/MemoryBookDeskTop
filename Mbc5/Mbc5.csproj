@@ -136,6 +136,7 @@
     <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\InputBox.cs" />
+    <Compile Include="Classes\MessageBoxEx.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\PdfAttachementGenerator.cs" />
     <Compile Include="Classes\TaxService.cs" />
@@ -389,6 +390,18 @@
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMInvoicInq.Designer.cs">
+      <DependentUpon>frmMInvoicInq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMReceivingCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMReceivingCard.Designer.cs">
+      <DependentUpon>frmMReceivingCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Meridian\frmMSales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -615,6 +628,12 @@
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
+      <DependentUpon>frmMInvoicInq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMReceivingCard.resx">
+      <DependentUpon>frmMReceivingCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
       <DependentUpon>frmMSales.cs</DependentUpon>
     </EmbeddedResource>
@@ -697,6 +716,8 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
     <EmbeddedResource Include="Reports\PartialBookTicket.rdlc" />
@@ -704,7 +725,6 @@
     <EmbeddedResource Include="Reports\Rcard1.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
-    <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
@@ -712,6 +732,7 @@
     <EmbeddedResource Include="Reports\SpecialCoverTicket.rdlc" />
     <EmbeddedResource Include="Reports\SpecialCoverTicket3rd.rdlc" />
     <EmbeddedResource Include="Reports\SupplementTicket.rdlc" />
+    <EmbeddedResource Include="Reports\test1.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>
@@ -926,6 +947,7 @@
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
+    <None Include="Messagebox.docx" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -944,6 +966,7 @@
     <None Include="Properties\DataSources\BindingModels.MeridianCoverTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MerInvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MerMultiInvoiceModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />

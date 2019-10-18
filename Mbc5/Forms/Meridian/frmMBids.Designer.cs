@@ -797,7 +797,6 @@
             this.contryearTextBox.Name = "contryearTextBox";
             this.contryearTextBox.Size = new System.Drawing.Size(32, 20);
             this.contryearTextBox.TabIndex = 218;
-     
             this.contryearTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.contryearTextBox_Validating);
             // 
             // txtBYear
@@ -2053,11 +2052,36 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1123, 700);
             this.Name = "frmMBids";
-            this.Text = "Bids";
+            this.Text = "Meridian Bids";
             this.Activated += new System.EventHandler(this.frmMBids_Activated);
             this.Deactivate += new System.EventHandler(this.frmMBids_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMBids_FormClosing);
             this.Load += new System.EventHandler(this.frmMBids_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.schcodeLabel1, 0);
+            this.Controls.SetChildIndex(schcodeLabel, 0);
+            this.Controls.SetChildIndex(this.lblSchname, 0);
+            this.Controls.SetChildIndex(this.ponumTextBox, 0);
+            this.Controls.SetChildIndex(ponumLabel, 0);
+            this.Controls.SetChildIndex(sfLabel, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.prodcodeComboBox, 0);
+            this.Controls.SetChildIndex(contryearLabel, 0);
+            this.Controls.SetChildIndex(bpyearLabel, 0);
+            this.Controls.SetChildIndex(invnoLabel, 0);
+            this.Controls.SetChildIndex(this.sourceTextBox, 0);
+            this.Controls.SetChildIndex(sourceLabel, 0);
+            this.Controls.SetChildIndex(this.txtBYear, 0);
+            this.Controls.SetChildIndex(this.contryearTextBox, 0);
+            this.Controls.SetChildIndex(this.oaCheckBox, 0);
+            this.Controls.SetChildIndex(qtedateLabel, 0);
+            this.Controls.SetChildIndex(orderDateLabel, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
+            this.Controls.SetChildIndex(this.panel4, 0);
+            this.Controls.SetChildIndex(this.qtedateDateBox, 0);
+            this.Controls.SetChildIndex(this.idLabel1, 0);
+            this.Controls.SetChildIndex(this.orderDateDateBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.MBidInvoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();

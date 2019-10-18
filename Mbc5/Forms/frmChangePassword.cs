@@ -57,13 +57,9 @@ namespace Mbc5.Forms
 
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
-          
-
              this.conn.ConnectionString = frmMain.AppConnectionString;
-               
-
             daPassWord.SelectCommand.Parameters.Clear();
-            daPassWord.SelectCommand.Parameters.AddWithValue("@id",frmMain.ApplicationUser.id);//this.userId
+            daPassWord.SelectCommand.Parameters.AddWithValue("@id", userId);//this.userId
             daPassWord.Fill(dsChangePassword);
             string a = lblId.Text;
 

@@ -93,6 +93,8 @@ namespace Mbc5.Forms
 			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             reorderDetailTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
             reOrderTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
@@ -122,6 +124,7 @@ namespace Mbc5.Forms
 			{
 				MessageBox.Show(ex.Message, "Error");
 			}
+            this.reportViewerProdticket.RefreshReport();
         }
 
         #region "Properties"
@@ -7155,6 +7158,8 @@ namespace Mbc5.Forms
 				try {
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
+                    mcustTableAdapter.Fill(dsMcust.mcust, Schcode);
+                    mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
                     if (produtnBindingSource.Count>0)
                     {
@@ -7301,7 +7306,7 @@ namespace Mbc5.Forms
 
                 }
             }
-            btnMeridianTicket.Visible = this.Company == "MER";
+     
             btnCoverTicket.Visible = this.Company == "MBC";
         }
 
@@ -7617,8 +7622,10 @@ namespace Mbc5.Forms
 					}
 					catch (DBConcurrencyException dbex)
 					{
-						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
-						if (result == DialogResult.Yes) { SaveProdutn(); }
+                        MbcMessageBox.Warning("Another user has changed data. Please review and re-enter your data.","");
+                        Fill();
+						//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
+						//if (result == DialogResult.Yes) { SaveProdutn(); }
 					}
 					catch (Exception ex)
 					{
@@ -9889,13 +9896,23 @@ namespace Mbc5.Forms
 			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
 		}
 
-		private void btnRecvHistory_Click(object sender, EventArgs e) {
-			
-				this.Cursor = Cursors.AppStarting;
-				frmReceivingCard frmReceivingCard = new frmReceivingCard(this.ApplicationUser,this.Schcode,this.Invno);
-				frmReceivingCard.MdiParent = this.MdiParent;
-				frmReceivingCard.Show();
-				this.Cursor = Cursors.Default;
+        private void btnRecvHistory_Click(object sender, EventArgs e) {
+            if (Company == "MBC")
+            {
+                this.Cursor = Cursors.AppStarting;
+                frmReceivingCard frmReceivingCard = new frmReceivingCard(this.ApplicationUser, this.Schcode, this.Invno);
+                frmReceivingCard.MdiParent = this.MdiParent;
+                frmReceivingCard.Show();
+                this.Cursor = Cursors.Default;
+            } else if (Company == "MER")
+            {
+                this.Cursor = Cursors.AppStarting;
+                frmMReceivingCard frmReceivingCard = new frmMReceivingCard(this.ApplicationUser, this.Schcode, this.Invno);
+                frmReceivingCard.MdiParent = this.MdiParent;
+                frmReceivingCard.Show();
+                this.Cursor = Cursors.Default;
+            } else { MbcMessageBox.Warning("Company was not found, can not open form.",""); }
+            
 			
 		}
 
@@ -9918,18 +9935,18 @@ namespace Mbc5.Forms
         #endregion
         public override void SchCodeSearch()
         {
-
-            var produtnResult = SaveProdutn();
-            if (produtnResult.IsError)
-            {
-                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result1 == DialogResult.No)
+            if (produtnBindingSource.Count>0) {
+                var produtnResult = SaveProdutn();
+                if (produtnResult.IsError)
                 {
+                    var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result1 == DialogResult.No)
+                    {
 
-                    return;
+                        return;
+                    }
                 }
             }
-
 
 
             var currentSchool = this.Schcode;
@@ -10263,64 +10280,70 @@ namespace Mbc5.Forms
 
         private void btnBkDue_Click(object sender, EventArgs e)
         {
-            var emailList = new List<string>();
-            DataRowView custRow = (DataRowView)custBindingSource.Current;
-            DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
-            string vDedayOut = "";
-            string vDedayIn = "";
-           string vPin ="";
-            DateTime vdate;
-            if (!prodRow.Row.IsNull("dedayout"))
-            {
-                     vdate=(DateTime)prodRow["dedayout"];
-                vDedayOut = vdate.ToString("d");
-            }
-            if (!prodRow.Row.IsNull("dedayin"))
-            {
-                 vdate = (DateTime)prodRow["dedayin"];
-                vDedayIn = vdate.ToString("d");
-            }
-            if (!custRow.Row.IsNull("PIN"))
-            {
-                vPin = ((DataRowView)custBindingSource.Current).Row["pin"].ToString();
-            }
-         
-            string vNoPages = ((DataRowView)quotesBindingSource.Current).Row["nopages"].ToString();
-            string vNoCopies= ((DataRowView)quotesBindingSource.Current).Row["nocopies"].ToString();
-            
-            string vCsName= ((DataRowView)custBindingSource.Current).Row["csname"].ToString().Trim();
-            string vCsEmail= ((DataRowView)custBindingSource.Current).Row["csemail"].ToString().Trim();
-            string vcontEmail = custRow["contemail"] != null ? custRow["contemail"].ToString().Trim() : "";
-            string vBcontEmail = custRow["bcontemail"] != null ? custRow["bcontemail"].ToString().Trim() : "";
-            string vCcontEmail = custRow["ccontemail"] != null ? custRow["ccontemail"].ToString().Trim() : "";
-            if (!string.IsNullOrEmpty(vcontEmail))
-            {
-                emailList.Add(vcontEmail);
-            }
-            if (!string.IsNullOrEmpty(vBcontEmail))
-            {
-                emailList.Add(vBcontEmail);
-            }
-            if (!string.IsNullOrEmpty(vCcontEmail))
-            {
-                emailList.Add(vCcontEmail);
-            }
-            var emailHelper = new EmailHelper();
-            string subject = "Memory Book Deadline Reminder";
-                    string body = @"The deadline for submitting your yearbook pages is right around the corner.
-                                    In order to ensure delivery of your books by "+ vDedayOut+ ", please submit " +
-                                    "your pages by " + vDedayIn + "." + " According to our records, your order is for "
-                                    + vNoPages + " pages and " + vNoCopies + " yearbooks. If this is not correct, please" +
-                                    " call 1-800-247-1526 or respond to this e-mail with any changes you may have. Payment is" +
-                                    " due upon receipt of invoice; to be issued within a week of page submission. Payments may" +
-                                    " be made online https://pay.memorybook.com/school (School Code:" + Schcode+ " and PIN:" 
-                                    + vPin + " will be needed) or by mailing a check to: <br/><strong>Memory Book Company " +
-                                    "<br/>304 Curry Drive  <br/>Sedalia, MO 65301</strong> <br/><br/>Once your pages are here and " +
-                                    "your book has entered production you will receive an email, this will confirm your order and " +
-                                    "delivery date.<br/><br/>" + vCsName + "<br/>" + vCsEmail;
+            if (Company=="MBC") {
+                var emailList = new List<string>();
+                DataRowView custRow = (DataRowView)custBindingSource.Current;
+                DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+                string vDedayOut = "";
+                string vDedayIn = "";
+                string vPin = "";
+                DateTime vdate;
+                if (!prodRow.Row.IsNull("dedayout"))
+                {
+                    vdate = (DateTime)prodRow["dedayout"];
+                    vDedayOut = vdate.ToString("d");
+                }
+                if (!prodRow.Row.IsNull("dedayin"))
+                {
+                    vdate = (DateTime)prodRow["dedayin"];
+                    vDedayIn = vdate.ToString("d");
+                }
+                if (!custRow.Row.IsNull("PIN"))
+                {
+                    vPin = ((DataRowView)custBindingSource.Current).Row["pin"].ToString();
+                }
+
+                string vNoPages = ((DataRowView)quotesBindingSource.Current).Row["nopages"].ToString();
+                string vNoCopies = ((DataRowView)quotesBindingSource.Current).Row["nocopies"].ToString();
+
+                string vCsName = ((DataRowView)custBindingSource.Current).Row["csname"].ToString().Trim();
+                string vCsEmail = ((DataRowView)custBindingSource.Current).Row["csemail"].ToString().Trim();
+                string vcontEmail = custRow["contemail"] != null ? custRow["contemail"].ToString().Trim() : "";
+                string vBcontEmail = custRow["bcontemail"] != null ? custRow["bcontemail"].ToString().Trim() : "";
+                string vCcontEmail = custRow["ccontemail"] != null ? custRow["ccontemail"].ToString().Trim() : "";
+                if (!string.IsNullOrEmpty(vcontEmail))
+                {
+                    emailList.Add(vcontEmail);
+                }
+                if (!string.IsNullOrEmpty(vBcontEmail))
+                {
+                    emailList.Add(vBcontEmail);
+                }
+                if (!string.IsNullOrEmpty(vCcontEmail))
+                {
+                    emailList.Add(vCcontEmail);
+                }
+                var emailHelper = new EmailHelper();
+                string subject = "Memory Book Deadline Reminder";
+                string body = @"The deadline for submitting your yearbook pages is right around the corner.
+                                    In order to ensure delivery of your books by " + vDedayOut + ", please submit " +
+                                "your pages by " + vDedayIn + "." + " According to our records, your order is for "
+                                + vNoPages + " pages and " + vNoCopies + " yearbooks. If this is not correct, please" +
+                                " call 1-800-247-1526 or respond to this e-mail with any changes you may have. Payment is" +
+                                " due upon receipt of invoice; to be issued within a week of page submission. Payments may" +
+                                " be made online https://pay.memorybook.com/school (School Code:" + Schcode + " and PIN:"
+                                + vPin + " will be needed) or by mailing a check to: <br/><strong>Memory Book Company " +
+                                "<br/>304 Curry Drive  <br/>Sedalia, MO 65301</strong> <br/><br/>Once your pages are here and " +
+                                "your book has entered production you will receive an email, this will confirm your order and " +
+                                "delivery date.<br/><br/>" + vCsName + "<br/>" + vCsEmail;
 
 
-            emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+                emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+            }
+            else {
+                MbcMessageBox.Information("This function not supported for a Meridian record.");
+            }
+
         }
 
         private void frmProdutn_KeyPress(object sender, KeyPressEventArgs e)
@@ -10360,7 +10383,7 @@ namespace Mbc5.Forms
             }
             if (Company == "MER")
             {
-
+                PrintMeridianCoverTicket();
             }
 
         }
@@ -11161,8 +11184,14 @@ namespace Mbc5.Forms
             string instructions = "";
             try
             {
-                DataRowView current = (DataRowView)custBindingSource.Current;
-               instructions = current["spcinst"].ToString();
+                if (Company == "MBC")
+                {
+                    DataRowView current = (DataRowView)custBindingSource.Current;
+                    instructions = current["spcinst"].ToString();
+                }else if (Company == "MER"){
+                    DataRowView current = (DataRowView)mcustBindingSource.Current;
+                    instructions = current["spcinst"].ToString();
+                }
             }catch(Exception ex)
             {
                 MbcMessageBox.Hand("Customer data is not available.", "");
@@ -11170,23 +11199,33 @@ namespace Mbc5.Forms
             }
             string vBooktype = "";
             try {
-                vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
-            } catch(Exception ex)
-            {
-                MbcMessageBox.Hand("Sales data is not available.", "");
-                return;
-            }
+                    if (Company == "MBC")
+                    {
+                        vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+                    }
+                    else if (Company == "MER")
+                    {
+                        vBooktype = ((DataRowView)mquotesBindingSource.Current).Row["BookType"].ToString();
+                    }
+
+                } catch(Exception ex)
+                    {
+                        MbcMessageBox.Hand("Sales data is not available.", "");
+                        return;
+                    }
           
             var sqlQuery = new SQLCustomClient();
 
-            sqlQuery.AddParameter("@Invno", Invno);
+            
             sqlQuery.ClearParameters();
   
             sqlQuery.CommandText(@"INSERT INTO Covers (Invno,Schcode,Company,specovr, Specinst) Values(@Invno,@Schcode,@Company, @Specovr, @Specinst)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
-            sqlQuery.AddParameter(" @Specovr", frmMain.GetCoverNumber());
+            string vCoverNum = frmMain.GetCoverNumber();
+            sqlQuery.AddParameter("@Specovr", vCoverNum);
+                                
             sqlQuery.AddParameter("@Specinst", instructions);
             var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
@@ -11335,9 +11374,140 @@ namespace Mbc5.Forms
             }
         }
 
+        private void btnEmailProdForm_Click(object sender, EventArgs e)
+        {
+            if (Company == "MBC")
+            {
+                var emailList = new List<string>();
+                DataRowView custRow = (DataRowView)custBindingSource.Current;
+                
+                string vSchname = custRow["schname"].ToString().Trim() ;
+               
+                
+                    emailList.Add("Mark.Baughman@jostens.com");
+                    emailList.Add("Renette.Brown@jostens.com");
+                    emailList.Add("Denise.Swearingin@jostens.com");
+                
+                var emailHelper = new EmailHelper();
+                string subject = vSchname+ " Production Ticket";
+                string body = @"See Attachement";
+                // var printResult = PrintMbcProductionTicket();
+                var sqlClient = new SQLCustomClient();
+                string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
+             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
 
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+                if (dataReturned.IsError)
+                {
+                    MbcMessageBox.Error("Failed to generate production ticket:" + dataReturned.Errors[0].ErrorMessage);
+                    return;
+                 
+                }
 
+                var data = (ProdutnTicketModel)dataReturned.Data;
 
+                productionTicketBindingSource.DataSource = data;
+                reportViewerProdticket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdutnTicket.rdlc";
+                reportViewerProdticket.LocalReport.DataSources.Clear();
+                reportViewerProdticket.LocalReport.DataSources.Add(new ReportDataSource("dsRptProdutn", productionTicketBindingSource));
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var printResult = vPdfGenerator.GenerateAttachement(reportViewerProdticket, Invno + " ProductionTicket.pdf");
+                var attachments = new List<OutlookAttachemt>();
+                if (!printResult.IsError)
+                {
+                   
+                    var attachment = new OutlookAttachemt()
+                    {
+                        Path = printResult.Data,
+                        Name = Invno.ToString() + "pdf"
+                    };
+                    attachments.Add(attachment);
+                }
+                else
+                {
+                    MbcMessageBox.Error("Production Ticket could not be generated:" + printResult.Errors[0].ErrorMessage);
+                    return;
+                }
+                emailHelper.SendOutLookEmail(subject, emailList,null, body, EmailType.Mbc,attachments);
+            }
+            else {
+               
+                var sqlClient = new SQLCustomClient();
+                string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
+                                    Case
+                                      When Q.prodcode='MAG' THEN 'MAGNET'
+                                      When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
+									  When Q.prodcode='HSP' THEN 'HS'
+                                      When Q.prodcode='LTE' THEN 'LTE'
+                                      When Q.prodcode='STE' THEN 'STE'
+                                      When Q.prodcode='MSP' THEN 'MS'
+                                      When Q.prodcode='ELSP' THEN 'ELSP'
+                                      When Q.prodcode='PRISP' THEN 'PRISP'
+                                    END AS SchoolType,
+                            Q.stttitpgqty AS TitlePageQty,Q.vpbqty AS VinylBQty,Q.vpaqty AS VinylAQty,Q.wallchqty AS WallChartQty,Q.typesetqty AS TypeSetQty,Q.impguidqty AS ImplGuideQty,
+                           Q.duraglzqty AS DuraGlazeQty,Q.BookType,Q.NoPages,Q.qtystud AS StudentCopies,Q.qtyteacher AS TeacherCopies,Q.qtytot AS TotalCopies,Q.hallpqty AS HallPassQty,
+                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.ProdNo,P.CoverDesc,P.Prshpdte,P.ProofOfPages,P.PrintOnWhitePaper,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
+                         Cvr.desc4 AS CoverOutsideBack
+                FROM MCust C
+                LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                LEFT Join Covers Cvr ON Q.Invno=Cvr.Invno
+				 LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var dataReturned = sqlClient.Select<MeridianProdutnTicketModel>();
+                if (dataReturned.IsError)
+                {
+                    MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var vData = (MeridianProdutnTicketModel)dataReturned.Data;
+                productionTicketBindingSource.DataSource = vData;
+                reportViewerProdticket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
+                reportViewerProdticket.LocalReport.DataSources.Clear();
+                reportViewerProdticket.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", productionTicketBindingSource));
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var result = vPdfGenerator.GenerateAttachement(reportViewerProdticket, Invno + " ProductionTicket.pdf");
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error("Production Ticket could not be generated:" + result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+                var newPath = result.Data;
+                var emailHelper = new EmailHelper();
+                string subject = vData.Schname.Trim() + " Production Ticket";
+                
+                string body = "Attached is a Meridian Production Ticket.";
+                List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Invno + " ProductionTicket.pdf", Path = newPath };
+                Attachements.Add(Attachement);
+                List<string> Address = new List<string>();
+                Address.Add("Mark.Baughman@jostens.com");
+                Address.Add("Renette.Brown@jostens.com");
+                Address.Add("Denise.Swearingin@jostens.com");
+                emailHelper.SendOutLookEmail(subject, Address, null, body, EmailType.Meridian, Attachements);
+            }
+        }
+
+      
+
+        private void pg3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
 
 
         //nothing below here  

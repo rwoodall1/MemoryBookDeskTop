@@ -20,7 +20,7 @@ using BindingModels;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
 using System.Threading.Tasks;
-
+using Mbc5.Classes;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
         private bool vMktGo = false;
@@ -93,6 +93,7 @@ namespace Mbc5.Forms.MemoryBook {
  #region CrudOperations
         public override void Save(bool ShowSpinner)
         {
+           
             //so call can be made from menu
             if (ShowSpinner)
             {
@@ -130,6 +131,7 @@ private  ApiProcessingResult<bool> Save()
            var aa= custTableAdapter.Update(dsCust);
             this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
             this.SetInvnoSchCode();
+
             retval = true;
         }
         catch (DBConcurrencyException dbex)
@@ -1041,22 +1043,30 @@ public override void Cancel() {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 				return;
 			}
-			var custSaveResult = Save();
-			if (custSaveResult.IsError) {
-				DialogResult result1 = MessageBox.Show("Record failed to save, correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-
+           
+                var custSaveResult = Save();
+                if (custSaveResult.IsError) {
+                    DialogResult result1 = MessageBox.Show("Record failed to save, correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            
 
 			frmSearch frmSearch = new frmSearch("OracleCode", "Cust", currentOracleCode);
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                string retSchcode = frmSearch.ReturnValue.Schcode;
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    return;
+                }
+			          //values preserved after close
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-					//records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                   
+                   
+				
 				} catch (Exception ex) {
 					MbcMessageBox.Error(ex.Message, "Error");
 					return;
