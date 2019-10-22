@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mbc5")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MBC5")]
+[assembly: AssemblyDescription("Customer Service/Production Tracking Program")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MemoryBook Company")]
+[assembly: AssemblyCompany("Jostens MemoryBook Company")]
 [assembly: AssemblyProduct("Mbc5")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

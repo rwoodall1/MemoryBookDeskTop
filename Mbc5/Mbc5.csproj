@@ -133,6 +133,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\InputBox.cs" />
@@ -360,6 +366,12 @@
     <Compile Include="Forms\frmEndSheet.designer.cs">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPayments.Designer.cs">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,6 +573,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
@@ -611,6 +626,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEndSheet.resx">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPayments.resx">
+      <DependentUpon>frmPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>

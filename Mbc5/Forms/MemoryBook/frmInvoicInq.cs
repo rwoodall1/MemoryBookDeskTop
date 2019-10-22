@@ -25,11 +25,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             InitializeComponent();
         }
-        private void SetConnectionString()
-        {
-            frmMain frmMain = (frmMain)this.MdiParent;
-
-        }
+        
         public frmMain frmMain { get; set; }
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
@@ -57,7 +53,7 @@ namespace Mbc5.Forms.MemoryBook
                 //search for bad addresses
                
                 sqlClient.CommandText(@"
-                SELECT I.schname AS InvoiceSchoolName,C.schname As CustomerSchname, I.schcode AS SchoolCode
+                       SELECT I.schname AS InvoiceSchoolName,C.schname As CustomerSchname, I.schcode AS SchoolCode
                 ,I.BalDue,P.invno As InvoiceNumber
                 FROM Cust C Left Join Quotes Q On C.Schcode=Q.Schcode
                 Left Join Produtn P On Q.Invno=P.Invno  
@@ -65,7 +61,7 @@ namespace Mbc5.Forms.MemoryBook
                 WHERE(P.Shpdate IS NOT NULL )
                 AND(I.BalDue > 0)
                 AND (RTRIM(C.InvoiceAddr) != RTRIM(I.Schaddr)) 
-                OR(RTRIM(C.InvoiceState) != RTRIM(I.Schstate)))
+                OR(RTRIM(C.InvoiceState) != RTRIM(I.Schstate))
                 ORDER BY I.Schname
                 ");
                 var result = sqlClient.SelectMany<InvoiceCheck>();
@@ -186,7 +182,6 @@ namespace Mbc5.Forms.MemoryBook
 				LEFT JOIN Cust C ON I.Schcode=C.Schcode
 				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
 				Where I.Invno =@Invno
-				
 				");
 			sqlClient.ClearParameters();
 			sqlClient.AddParameter("@Invno", vInvno);

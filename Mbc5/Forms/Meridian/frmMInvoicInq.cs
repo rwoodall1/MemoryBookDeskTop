@@ -107,30 +107,32 @@ namespace Mbc5.Forms.MemoryBook
 
 			var sqlClient = new SQLCustomClient();
 			sqlClient.CommandText(@"
-				SELECT C.SchName,C.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,C.ContFName AS ContactFirstName,
-				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
-				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
-				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
-				FROM Invoice I
-				LEFT JOIN Cust C ON I.Schcode=C.Schcode
-				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
+				SELECT I.InvName,I.SchCode,I.InvAddr,I.InvAddr2,I.InvCity,I.InvZip,I.InvState,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
+                I.QteDate,I.Invno,I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.FplnPrc,I.SubTotal,I.SchType,
+                    I.SalesTax,I.ShpHandling,I.FplnTot,I.Payments,I.BalDue,I.Schtype,I.QtyTotal,I.NoPages,I.QtyTeacher,I.QtyStudent,I.Generic,I.TeBasePrc,
+                    I.BasePrc,I.Basetot,ID.Descr,ID.UnitPrice,ID.DiscPercent,ID.Amount,ID.Quantity
+				FROM MerInvoice I
+				LEFT JOIN MerInvdetail ID ON I.Invno=ID.Invno
 				Where I.Invno =@Invno
 				
 				");
 			sqlClient.ClearParameters();
 			sqlClient.AddParameter("@Invno", vInvno);
-			var result = sqlClient.SelectMany<FullInvoice>();
-			if (result.IsError) {
-				
-				processingResult.IsError = true;
-				processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage,""));
-				return processingResult;
-			}
-			var InvoiceData = result.Data;
-			FullInvoiceBindingSource.DataSource = InvoiceData;
-			//https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
+	
+            var result = sqlClient.SelectMany<MerMultiInvoiceModel>();
+            if (result.IsError)
+            {
 
-			Warning[] warnings;
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage, ""));
+                return processingResult;
+            }
+            var InvoiceData = result.Data;
+            FullInvoiceBindingSource.DataSource = InvoiceData;
+
+            //https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
+
+            Warning[] warnings;
 			string[] streamIds;
 			string mimeType = string.Empty;
 			string encoding = string.Empty;
@@ -144,12 +146,13 @@ namespace Mbc5.Forms.MemoryBook
 					this.reportViewer1.LocalReport.Refresh();
 					byte[] bytes = this.reportViewer1.LocalReport.Render(
 					"PDF",
-					null,
-					out mimeType,
-					out encoding,
-					out extension,
-					out streamIds,
-					out warnings);
+                    null,
+                    out mimeType,
+                    out encoding,
+                    out extension,
+                    out streamIds,
+                    out warnings
+                    );
 				var vPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 				var newPath = vPath.Substring(0, vPath.IndexOf("Mbc5") + 4) + "\\tmp\\"+ vInvno + ".pdf";
 				using (FileStream fs = new FileStream(newPath, FileMode.Create)) {
@@ -181,9 +184,9 @@ namespace Mbc5.Forms.MemoryBook
 					}
 				}
 				var emailHelper = new EmailHelper();
-				string subject = "Memory Book Invoice # " + rec.Invno.ToString();
+				string subject ="Meridian Student Planner Invoice # "+  rec.Invno.ToString();
 				;
-				string body = "If you would like to pay online please go to https://online-pay.memorybook.com/school </br></br>If you do not have Adobe Reader to view your invoice you can download it here. http://get.adobe.com/reader/";
+				string body ="If you would like to pay online please go to <a href=http://www.meridianplanners.com/Orders/PoPayCode.aspx> <font color=blue> Meridian Planners</font></a> Use the last 6 digits of your customer number from invoice and make sure you are in the correct school payment page.  </br></br>If you do not have Adobe Reader to view your invoice you can download it here. http://get.adobe.com/reader/";
 				List<string> addresses = new List<string>();
 
 				if (!string.IsNullOrEmpty(rec.InvoiceEmail1)) {

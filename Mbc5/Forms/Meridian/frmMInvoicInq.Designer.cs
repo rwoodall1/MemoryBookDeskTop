@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -74,9 +75,9 @@
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.FullMerInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
@@ -91,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -107,6 +107,10 @@
             this.BottomPanel.Controls.Add(this.btnSearch);
             this.BottomPanel.Location = new System.Drawing.Point(0, 422);
             this.BottomPanel.Size = new System.Drawing.Size(1133, 66);
+            // 
+            // FullInvoiceBindingSource
+            // 
+            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
             // 
             // custBindingSource
             // 
@@ -464,10 +468,6 @@
             // 
             this.FullMerInvoiceBindingSource.DataSource = typeof(BindingModels.FullMerInvoice);
             // 
-            // FullInvoiceBindingSource
-            // 
-            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
-            // 
             // frmMInvoicInq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,6 +488,7 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
@@ -504,7 +505,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

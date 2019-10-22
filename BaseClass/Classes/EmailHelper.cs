@@ -232,13 +232,19 @@ namespace BaseClass.Classes
                 Body = brandedHtml,
                 IsBodyHtml = true
             };
-            foreach (var address in ToAddresses) {
-                mailMessage.To.Add(address);
+            if (ToAddresses != null && ToAddresses.Count > 0)
+            {
+                foreach (var address in ToAddresses)
+                {
+                    mailMessage.To.Add(address);
+                }
             }
-            foreach (var address in CCAddresses) {
-                mailMessage.CC.Add(address);
-            }
-
+            else { return false; }
+            if (CCAddresses != null && CCAddresses.Count > 0) { 
+                foreach (var address in CCAddresses) {
+                    mailMessage.CC.Add(address);
+                }
+              }
             try
             {
                 smtpClient.Send(mailMessage);

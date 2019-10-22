@@ -130,4 +130,15 @@ namespace BindingModels
 
 
     }
+    public class PaymentQuery
+    {
+        public int Invno { get; set; }
+        public DateTime PmtDate { get; set; }
+        public decimal Payment { get; set; }
+        public string SchName { get; set; }
+        public string SchEmail { get; set; }
+        public string ContEmail { get; set; }
+        public string Schcode { get; set; }
+
+    }
 }

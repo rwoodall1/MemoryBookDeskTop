@@ -844,12 +844,14 @@ namespace Mbc5.Forms
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            //localfilePath = root.Replace("StartUpApp", "Mbc5");
-            var localfile = root + "\\Mbc5.exe";
-            var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
-            string localVersion = localfileInfo.FileVersion;
-            MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            ////localfilePath = root.Replace("StartUpApp", "Mbc5");
+            //var localfile = root + "\\Mbc5.exe";
+            //var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+            //string localVersion = localfileInfo.FileVersion;
+            // MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AboutBox frmAbout = new AboutBox();
+            frmAbout.ShowDialog();
         }
 
        
@@ -1343,6 +1345,14 @@ namespace Mbc5.Forms
             frmMInvoice.MdiParent = this;
             frmMInvoice.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void paymentReceiptsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vReceiptform = new frmPayments(this.ApplicationUser);
+            vReceiptform.MdiParent = this;
+            vReceiptform.Show();
+                
         }
 
 
