@@ -139,6 +139,6 @@ namespace BindingModels
         public string SchEmail { get; set; }
         public string ContEmail { get; set; }
         public string Schcode { get; set; }
-
+        public bool Print { get; set; }
     }
 }

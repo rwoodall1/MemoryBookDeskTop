@@ -72,32 +72,34 @@ namespace Mbc5.Forms
             var EmailHelper = new EmailHelper();
             foreach(var rec in PaymentRecords)
             {
-                string subject = "Payment Received For Invoice #" + rec.Invno.ToString() + " by Jostens";
-                string body = @"A payment was received for Invoice #" + rec.Invno.ToString() + @"
-                    in the amount of " + rec.Payment.ToString() +@".<br/> <br/> Please note, you are receiving this notification because we've received your check or
+                if (rec.Print) {
+                    string subject = "Payment Received For Invoice #" + rec.Invno.ToString() + " by Jostens";
+                    string body = @"A payment was received for Invoice #" + rec.Invno.ToString() + @"
+                    in the amount of " + rec.Payment.ToString() + @".<br/> <br/> Please note, you are receiving this notification because we've received your check or
                    online payment. <br/> <br/><br/> We appreciate your business!";
-                var vAddresses = new List<String>();
-                if (!string.IsNullOrEmpty(rec.SchEmail))
-                {
-                    vAddresses.Add(rec.SchEmail.Trim());
-                }
-                if (!string.IsNullOrEmpty(rec.ContEmail))
-                {
-                    vAddresses.Add(rec.ContEmail.Trim());
-                }
-                var vEmailType = EmailType.Mbc;
-                if (rdMemorybook.Checked)
-                {
-                    vEmailType = EmailType.Mbc;
-                }
-                else if (rdMeridian.Checked)
-                {
-                   vEmailType = EmailType.Meridian;
-                }
-                else {
-                    MbcMessageBox.Warning("Select a company before emailing.", "");
+                    var vAddresses = new List<String>();
+                    if (!string.IsNullOrEmpty(rec.SchEmail))
+                    {
+                        vAddresses.Add(rec.SchEmail.Trim());
+                    }
+                    if (!string.IsNullOrEmpty(rec.ContEmail))
+                    {
+                        vAddresses.Add(rec.ContEmail.Trim());
+                    }
+                    var vEmailType = EmailType.Mbc;
+                    if (rdMemorybook.Checked)
+                    {
+                        vEmailType = EmailType.Mbc;
+                    }
+                    else if (rdMeridian.Checked)
+                    {
+                        vEmailType = EmailType.Meridian;
+                    }
+                    else {
+                        MbcMessageBox.Warning("Select a company before emailing.", "");
                         return; }
-                EmailHelper.SendOutLookEmail(subject, vAddresses, null, body, vEmailType);
+                    EmailHelper.SendOutLookEmail(subject, vAddresses, null, body, vEmailType);
+                }
             }
 
         }
