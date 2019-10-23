@@ -1355,6 +1355,45 @@ namespace Mbc5.Forms
                 
         }
 
+        private void receivingSurveyCompensationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+
+                var vInvno = GetInvno();
+                string vCompany = "";
+                string vSchcode = "";
+                if (this.ActiveMdiChild.Name=="frmMbcCust")
+                {
+                    vCompany = "MBC";
+                    frmMbcCust custFrm = (frmMbcCust)ActiveMdiChild;
+                    vSchcode = custFrm.Schcode;
+                }
+                else if (this.ActiveMdiChild.Name == "frmMerCust")
+                    {
+                    vCompany = "MER";
+                    frmMerCust mcustFrm = (frmMerCust)ActiveMdiChild;
+                    vSchcode = mcustFrm.Schcode;
+                }
+                    else
+                    {
+                        //don't open form
+                    }
+                frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
+                    form.MdiParent = this;
+                form.Show();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void receivingSurveyCompensationToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
 
         //nothing below here
     }

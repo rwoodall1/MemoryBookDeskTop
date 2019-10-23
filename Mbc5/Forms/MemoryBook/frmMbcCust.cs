@@ -2130,11 +2130,18 @@ public override void Cancel() {
         private void frmMbcCust_Activated(object sender, EventArgs e)
         {
 
-            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+            try {
+                frmMain.ShowSearchButtons(this.Name);
+                 frmMain.receivingSurveyCompensationToolStripMenuItem.Enabled = true;
+            } catch { }
+           
         }
         private void frmMbcCust_Deactivate(object sender, EventArgs e)
         {
-            try { frmMain.HideSearchButtons(); } catch { }
+            try { frmMain.HideSearchButtons();
+                frmMain.receivingSurveyCompensationToolStripMenuItem.Enabled = false;
+            } catch { }
+           
 
         }
         private void btnMainLog_Click(object sender, EventArgs e)

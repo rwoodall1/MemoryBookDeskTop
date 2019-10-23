@@ -133,6 +133,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\dsReceiving.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,6 +382,12 @@
     </Compile>
     <Compile Include="Forms\frmProdutn.Designer.cs">
       <DependentUpon>frmProdutn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecSurvey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecSurvey.Designer.cs">
+      <DependentUpon>frmRecSurvey.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MemoryBook\frmCancellationStatements.cs">
       <SubType>Form</SubType>
@@ -634,6 +645,9 @@
       <DependentUpon>frmProdutn.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecSurvey.resx">
+      <DependentUpon>frmRecSurvey.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmCancellationStatements.resx">
       <DependentUpon>frmCancellationStatements.cs</DependentUpon>
     </EmbeddedResource>
@@ -828,6 +842,17 @@
     </None>
     <None Include="DataSets\dsRcard.xss">
       <DependentUpon>dsRcard.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsReceiving.xsc">
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsReceiving.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReceiving.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsReceiving.xss">
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsXSupplies.xsc">
       <DependentUpon>dsXSupplies.xsd</DependentUpon>

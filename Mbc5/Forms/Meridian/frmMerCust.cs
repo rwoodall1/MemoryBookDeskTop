@@ -966,12 +966,17 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Activated(object sender, EventArgs e)
         {
-            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+            try {
+                frmMain.ShowSearchButtons(this.Name);
+                frmMain.receivingSurveyCompensationToolStripMenuItem1.Enabled = false;
+            } catch { }
         }
 
         private void frmMerCust_Deactivate(object sender, EventArgs e)
         {
-            try { frmMain.HideSearchButtons(); } catch { }
+            try { frmMain.HideSearchButtons();
+                frmMain.receivingSurveyCompensationToolStripMenuItem1.Enabled = false;
+            } catch { }
         }
 
         private void contdateDateTimePicker_CloseUp(object sender, EventArgs e)
