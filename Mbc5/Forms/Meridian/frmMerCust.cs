@@ -968,7 +968,7 @@ namespace Mbc5.Forms.Meridian {
         {
             try {
                 frmMain.ShowSearchButtons(this.Name);
-                frmMain.receivingSurveyCompensationToolStripMenuItem1.Enabled = false;
+                frmMain.receivingSurveyCompensationToolStripMenuItem1.Enabled = true;
             } catch { }
         }
 

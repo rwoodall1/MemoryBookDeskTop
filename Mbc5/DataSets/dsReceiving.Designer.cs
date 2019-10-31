@@ -1177,6 +1177,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnprodno;
             
+            private global::System.Data.DataColumn columnpartialprnt;
+            
+            private global::System.Data.DataColumn columnfullprnt;
+            
+            private global::System.Data.DataColumn columncause;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public surv2DataTable() {
@@ -1340,6 +1346,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn partialprntColumn {
+                get {
+                    return this.columnpartialprnt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn fullprntColumn {
+                get {
+                    return this.columnfullprnt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn causeColumn {
+                get {
+                    return this.columncause;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1391,7 +1421,10 @@ namespace Mbc5.DataSets {
                         byte[] timestamp_column, 
                         string schname, 
                         string contryear, 
-                        string prodno) {
+                        string prodno, 
+                        bool partialprnt, 
+                        bool fullprnt, 
+                        string cause) {
                 surv2Row rowsurv2Row = ((surv2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -1409,7 +1442,10 @@ namespace Mbc5.DataSets {
                         timestamp_column,
                         schname,
                         contryear,
-                        prodno};
+                        prodno,
+                        partialprnt,
+                        fullprnt,
+                        cause};
                 rowsurv2Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsurv2Row);
                 return rowsurv2Row;
@@ -1455,6 +1491,9 @@ namespace Mbc5.DataSets {
                 this.columnschname = base.Columns["schname"];
                 this.columncontryear = base.Columns["contryear"];
                 this.columnprodno = base.Columns["prodno"];
+                this.columnpartialprnt = base.Columns["partialprnt"];
+                this.columnfullprnt = base.Columns["fullprnt"];
+                this.columncause = base.Columns["cause"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1492,6 +1531,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columncontryear);
                 this.columnprodno = new global::System.Data.DataColumn("prodno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodno);
+                this.columnpartialprnt = new global::System.Data.DataColumn("partialprnt", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpartialprnt);
+                this.columnfullprnt = new global::System.Data.DataColumn("fullprnt", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfullprnt);
+                this.columncause = new global::System.Data.DataColumn("cause", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncause);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columnschcode.MaxLength = 6;
@@ -1509,6 +1554,7 @@ namespace Mbc5.DataSets {
                 this.columncontryear.MaxLength = 2;
                 this.columnprodno.AllowDBNull = false;
                 this.columnprodno.MaxLength = 12;
+                this.columncause.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2959,6 +3005,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool partialprnt {
+                get {
+                    try {
+                        return ((bool)(this[this.tablesurv2.partialprntColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'partialprnt\' in table \'surv2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesurv2.partialprntColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool fullprnt {
+                get {
+                    try {
+                        return ((bool)(this[this.tablesurv2.fullprntColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fullprnt\' in table \'surv2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesurv2.fullprntColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string cause {
+                get {
+                    try {
+                        return ((string)(this[this.tablesurv2.causeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cause\' in table \'surv2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesurv2.causeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablesurv2.schcodeColumn);
             }
@@ -3123,6 +3217,42 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontryearNull() {
                 this[this.tablesurv2.contryearColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IspartialprntNull() {
+                return this.IsNull(this.tablesurv2.partialprntColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetpartialprntNull() {
+                this[this.tablesurv2.partialprntColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsfullprntNull() {
+                return this.IsNull(this.tablesurv2.fullprntColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetfullprntNull() {
+                this[this.tablesurv2.fullprntColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscauseNull() {
+                return this.IsNull(this.tablesurv2.causeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcauseNull() {
+                this[this.tablesurv2.causeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3437,7 +3567,7 @@ WHERE        (recv2.invno = @Invno)";
 FROM            mquotes RIGHT OUTER JOIN
                          produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN
                          mcust ON mquotes.schcode = mcust.schcode RIGHT OUTER JOIN
-                         recv2 ON recv2.schcode = cust.schcode
+                         recv2 ON recv2.schcode = mcust.schcode
 WHERE        (recv2.invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3662,6 +3792,9 @@ WHERE        (recv2.invno = @Invno)";
             tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("prodno", "prodno");
+            tableMapping.ColumnMappings.Add("partialprnt", "partialprnt");
+            tableMapping.ColumnMappings.Add("fullprnt", "fullprnt");
+            tableMapping.ColumnMappings.Add("cause", "cause");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -3670,6 +3803,27 @@ WHERE        (recv2.invno = @Invno)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@company", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "company", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       surv2
+SET                probbook = @probbook, probreas = @probreas, comp_yn = @comp_yn, compensate = @compensate, compmemo = @compmemo, survey = @survey, surveycat = @serveycat, survexpl = @survexpl, 
+                         tobeapplied = @tobeapplied, company = @company, partialprnt = @partialprnt, fullprnt = @fullprnt, cause = @cause
+WHERE        (invno = @Invno)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@probbook", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "probbook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@probreas", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "probreas", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@comp_yn", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "comp_yn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compensate", global::System.Data.SqlDbType.Char, 30, global::System.Data.ParameterDirection.Input, 0, 0, "compensate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compmemo", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "compmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@survey", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "survey", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serveycat", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "surveycat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@survexpl", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "survexpl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tobeapplied", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "tobeapplied", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@company", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "company", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@partialprnt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "partialprnt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fullprnt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "fullprnt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cause", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "cause", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3686,7 +3840,7 @@ WHERE        (recv2.invno = @Invno)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        surv2.schcode, surv2.invno, surv2.probbook, surv2.comp_yn, surv2.probreas, surv2.compensate, surv2.compmemo, surv2.survey, surv2.surveycat, surv2.survexpl, surv2.tobeapplied, surv2.company, 
-                         surv2.timestamp_column, cust.schname, quotes.contryear, produtn.prodno
+                         surv2.timestamp_column, cust.schname, quotes.contryear, produtn.prodno, surv2.partialprnt, surv2.fullprnt, surv2.cause
 FROM            quotes RIGHT OUTER JOIN
                          produtn ON quotes.invno = produtn.invno LEFT OUTER JOIN
                          cust ON quotes.schcode = cust.schcode LEFT OUTER JOIN
@@ -3697,7 +3851,7 @@ WHERE        (surv2.invno = @Invno)";
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        surv2.schcode, surv2.invno, surv2.probbook, surv2.comp_yn, surv2.probreas, surv2.compensate, surv2.compmemo, surv2.survey, surv2.surveycat, surv2.survexpl, surv2.tobeapplied, surv2.company, 
-                         surv2.timestamp_column, mcust.schname, mquotes.contryear, produtn.prodno
+                         surv2.timestamp_column, mcust.schname, mquotes.contryear, produtn.prodno, surv2.partialprnt, surv2.fullprnt, surv2.cause
 FROM            mquotes RIGHT OUTER JOIN
                          produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN
                          mcust ON mquotes.schcode = mcust.schcode LEFT OUTER JOIN

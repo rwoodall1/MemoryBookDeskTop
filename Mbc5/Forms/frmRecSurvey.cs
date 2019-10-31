@@ -38,6 +38,7 @@ namespace Mbc5.Forms
                 try
                 {
                     recv2TableAdapter.FillMBC(dsReceiving.recv2, Invno);
+                    surv2TableAdapter.FillMBC(dsReceiving.surv2, Invno);
                 }catch(Exception ex)
                 {
                     ex.ToExceptionless()
@@ -53,7 +54,9 @@ namespace Mbc5.Forms
                 try
                 {
                     recv2TableAdapter.FillByMER(dsReceiving.recv2, Invno);
-                }catch(Exception ex)
+                    surv2TableAdapter.FillByMER(dsReceiving.surv2, Invno);
+                }
+                catch(Exception ex)
                 {
                     ex.ToExceptionless()
                        .AddObject(ex)
@@ -73,7 +76,7 @@ namespace Mbc5.Forms
                 var result = sqlClient.Insert();
                 if (result.IsError)
                 {
-                    MbcMessageBox.Error("Error creating record.");
+                    MbcMessageBox.Error("Error creating RECV2 record.");
                     tabControl1.Enabled = false; ;
                     return;
                 }
@@ -109,12 +112,64 @@ namespace Mbc5.Forms
                     }
                 }
             }
+            if (surv2BindingSource.Count == 0)
+            {
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText("INSERT INTO Surv2 (Invno,Company,Schcode) Values(@Invno,@Company,@Schcode)");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.AddParameter("@Company", Company);
+                sqlClient.AddParameter("@Schcode", Schcode);
+                var result = sqlClient.Insert();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error("Error creating Surv2 record.");
+                    tabControl1.Enabled = false; ;
+                    return;
+                }
+                if (Company == "MBC")
+                {
+                    try
+                    {
+                        surv2TableAdapter.FillMBC(dsReceiving.surv2, Invno); 
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToExceptionless()
+                            .AddObject(ex)
+                            .Submit();
+                        MbcMessageBox.Error(ex.Message);
+                        tabControl1.Enabled = false; ;
+                    }
+
+                }
+                if (Company == "MER")
+                {
+                    try
+                    {
+                        surv2TableAdapter.FillByMER(dsReceiving.surv2, Invno);
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToExceptionless()
+                           .AddObject(ex)
+                           .Submit();
+                        MbcMessageBox.Error(ex.Message);
+                        tabControl1.Enabled = false; ;
+                    }
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             recv2BindingSource.EndEdit();
            var a= recv2TableAdapter.Update(dsReceiving.recv2);
+        }
+
+        private void btnSaveSurv_Click(object sender, EventArgs e)
+        {
+            surv2BindingSource.EndEdit();
+            var a = surv2TableAdapter.Update(dsReceiving.surv2);
         }
     }
 }

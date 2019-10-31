@@ -42,10 +42,15 @@
             System.Windows.Forms.Label schoutLabel;
             System.Windows.Forms.Label label15;
             System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label12;
+            System.Windows.Forms.Label tobeappliedLabel;
+            System.Windows.Forms.Label causeLabel;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaveRecv = new System.Windows.Forms.Button();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
+            this.recv2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsReceiving = new Mbc5.DataSets.dsReceiving();
             this.tagcolorTextBox = new System.Windows.Forms.TextBox();
             this.schoutDateBox = new CustomControls.DateBox();
             this.numpgsTextBox = new System.Windows.Forms.TextBox();
@@ -80,10 +85,21 @@
             this.schnameLabel1 = new System.Windows.Forms.Label();
             this.schcodeLabel1 = new System.Windows.Forms.Label();
             this.page2 = new System.Windows.Forms.TabPage();
-            this.recv2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsReceiving = new Mbc5.DataSets.dsReceiving();
+            this.surv2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fullprntCheckBox = new System.Windows.Forms.CheckBox();
+            this.partialprntCheckBox = new System.Windows.Forms.CheckBox();
+            this.compmemoTextBox = new System.Windows.Forms.TextBox();
+            this.tobeappliedTextBox = new System.Windows.Forms.TextBox();
+            this.compensateTextBox = new System.Windows.Forms.TextBox();
+            this.comp_ynCheckBox = new System.Windows.Forms.CheckBox();
+            this.probreasTextBox = new System.Windows.Forms.TextBox();
+            this.probbookCheckBox = new System.Windows.Forms.CheckBox();
+            this.btnSaveSurv = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.recv2TableAdapter = new Mbc5.DataSets.dsReceivingTableAdapters.recv2TableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsReceivingTableAdapters.TableAdapterManager();
+            this.surv2TableAdapter = new Mbc5.DataSets.dsReceivingTableAdapters.surv2TableAdapter();
+            this.causeComboBox = new System.Windows.Forms.ComboBox();
             schcodeLabel = new System.Windows.Forms.Label();
             schnameLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
@@ -97,10 +113,15 @@
             schoutLabel = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            tobeappliedLabel = new System.Windows.Forms.Label();
+            causeLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.page1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recv2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsReceiving)).BeginInit();
+            this.page2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.surv2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -242,6 +263,35 @@
             label16.TabIndex = 47;
             label16.Text = "Tag Color";
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label12.Location = new System.Drawing.Point(5, 3);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(82, 13);
+            label12.TabIndex = 4;
+            label12.Text = "School Name";
+            // 
+            // tobeappliedLabel
+            // 
+            tobeappliedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            tobeappliedLabel.AutoSize = true;
+            tobeappliedLabel.Location = new System.Drawing.Point(269, 224);
+            tobeappliedLabel.Name = "tobeappliedLabel";
+            tobeappliedLabel.Size = new System.Drawing.Size(173, 13);
+            tobeappliedLabel.TabIndex = 62;
+            tobeappliedLabel.Text = "Year Compensation is to be applied";
+            // 
+            // causeLabel
+            // 
+            causeLabel.AutoSize = true;
+            causeLabel.Location = new System.Drawing.Point(28, 392);
+            causeLabel.Name = "causeLabel";
+            causeLabel.Size = new System.Drawing.Size(43, 13);
+            causeLabel.TabIndex = 66;
+            causeLabel.Text = "Due To";
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.page1);
@@ -257,7 +307,7 @@
             // 
             this.page1.AutoScroll = true;
             this.page1.BackColor = System.Drawing.SystemColors.Control;
-            this.page1.Controls.Add(this.button1);
+            this.page1.Controls.Add(this.btnSaveRecv);
             this.page1.Controls.Add(this.booktypeTextBox);
             this.page1.Controls.Add(this.tagcolorTextBox);
             this.page1.Controls.Add(label16);
@@ -312,16 +362,16 @@
             this.page1.TabIndex = 0;
             this.page1.Text = "Receiving";
             // 
-            // button1
+            // btnSaveRecv
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(672, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSaveRecv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveRecv.Location = new System.Drawing.Point(672, 21);
+            this.btnSaveRecv.Name = "btnSaveRecv";
+            this.btnSaveRecv.Size = new System.Drawing.Size(97, 30);
+            this.btnSaveRecv.TabIndex = 57;
+            this.btnSaveRecv.Text = "Save";
+            this.btnSaveRecv.UseVisualStyleBackColor = true;
+            this.btnSaveRecv.Click += new System.EventHandler(this.button1_Click);
             // 
             // booktypeTextBox
             // 
@@ -331,6 +381,17 @@
             this.booktypeTextBox.Name = "booktypeTextBox";
             this.booktypeTextBox.Size = new System.Drawing.Size(32, 20);
             this.booktypeTextBox.TabIndex = 53;
+            // 
+            // recv2BindingSource
+            // 
+            this.recv2BindingSource.DataMember = "recv2";
+            this.recv2BindingSource.DataSource = this.dsReceiving;
+            // 
+            // dsReceiving
+            // 
+            this.dsReceiving.DataSetName = "dsReceiving";
+            this.dsReceiving.EnforceConstraints = false;
+            this.dsReceiving.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tagcolorTextBox
             // 
@@ -666,7 +727,22 @@
             // 
             // page2
             // 
+            this.page2.AutoScroll = true;
             this.page2.BackColor = System.Drawing.SystemColors.Control;
+            this.page2.Controls.Add(this.causeComboBox);
+            this.page2.Controls.Add(causeLabel);
+            this.page2.Controls.Add(this.fullprntCheckBox);
+            this.page2.Controls.Add(this.partialprntCheckBox);
+            this.page2.Controls.Add(this.compmemoTextBox);
+            this.page2.Controls.Add(tobeappliedLabel);
+            this.page2.Controls.Add(this.tobeappliedTextBox);
+            this.page2.Controls.Add(this.compensateTextBox);
+            this.page2.Controls.Add(this.comp_ynCheckBox);
+            this.page2.Controls.Add(this.probreasTextBox);
+            this.page2.Controls.Add(this.probbookCheckBox);
+            this.page2.Controls.Add(this.btnSaveSurv);
+            this.page2.Controls.Add(label12);
+            this.page2.Controls.Add(this.label13);
             this.page2.Location = new System.Drawing.Point(4, 22);
             this.page2.Name = "page2";
             this.page2.Padding = new System.Windows.Forms.Padding(3);
@@ -674,16 +750,109 @@
             this.page2.TabIndex = 1;
             this.page2.Text = "Problems/Compensations";
             // 
-            // recv2BindingSource
+            // surv2BindingSource
             // 
-            this.recv2BindingSource.DataMember = "recv2";
-            this.recv2BindingSource.DataSource = this.dsReceiving;
+            this.surv2BindingSource.DataMember = "surv2";
+            this.surv2BindingSource.DataSource = this.dsReceiving;
             // 
-            // dsReceiving
+            // fullprntCheckBox
             // 
-            this.dsReceiving.DataSetName = "dsReceiving";
-            this.dsReceiving.EnforceConstraints = false;
-            this.dsReceiving.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.fullprntCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.surv2BindingSource, "fullprnt", true));
+            this.fullprntCheckBox.Location = new System.Drawing.Point(93, 365);
+            this.fullprntCheckBox.Name = "fullprntCheckBox";
+            this.fullprntCheckBox.Size = new System.Drawing.Size(84, 18);
+            this.fullprntCheckBox.TabIndex = 66;
+            this.fullprntCheckBox.Text = "Full Reprint";
+            this.fullprntCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // partialprntCheckBox
+            // 
+            this.partialprntCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.surv2BindingSource, "partialprnt", true));
+            this.partialprntCheckBox.Location = new System.Drawing.Point(30, 365);
+            this.partialprntCheckBox.Name = "partialprntCheckBox";
+            this.partialprntCheckBox.Size = new System.Drawing.Size(57, 18);
+            this.partialprntCheckBox.TabIndex = 65;
+            this.partialprntCheckBox.Text = "Partial";
+            this.partialprntCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // compmemoTextBox
+            // 
+            this.compmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.compmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.surv2BindingSource, "compmemo", true));
+            this.compmemoTextBox.Location = new System.Drawing.Point(29, 243);
+            this.compmemoTextBox.Multiline = true;
+            this.compmemoTextBox.Name = "compmemoTextBox";
+            this.compmemoTextBox.Size = new System.Drawing.Size(535, 116);
+            this.compmemoTextBox.TabIndex = 64;
+            // 
+            // tobeappliedTextBox
+            // 
+            this.tobeappliedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tobeappliedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.surv2BindingSource, "tobeapplied", true));
+            this.tobeappliedTextBox.Location = new System.Drawing.Point(446, 220);
+            this.tobeappliedTextBox.Name = "tobeappliedTextBox";
+            this.tobeappliedTextBox.Size = new System.Drawing.Size(32, 20);
+            this.tobeappliedTextBox.TabIndex = 63;
+            // 
+            // compensateTextBox
+            // 
+            this.compensateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.surv2BindingSource, "compensate", true));
+            this.compensateTextBox.Location = new System.Drawing.Point(139, 219);
+            this.compensateTextBox.Name = "compensateTextBox";
+            this.compensateTextBox.Size = new System.Drawing.Size(124, 20);
+            this.compensateTextBox.TabIndex = 62;
+            // 
+            // comp_ynCheckBox
+            // 
+            this.comp_ynCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.surv2BindingSource, "comp_yn", true));
+            this.comp_ynCheckBox.Location = new System.Drawing.Point(29, 219);
+            this.comp_ynCheckBox.Name = "comp_ynCheckBox";
+            this.comp_ynCheckBox.Size = new System.Drawing.Size(104, 18);
+            this.comp_ynCheckBox.TabIndex = 61;
+            this.comp_ynCheckBox.Text = "Compensation";
+            this.comp_ynCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // probreasTextBox
+            // 
+            this.probreasTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.probreasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.surv2BindingSource, "probreas", true));
+            this.probreasTextBox.Location = new System.Drawing.Point(29, 86);
+            this.probreasTextBox.Multiline = true;
+            this.probreasTextBox.Name = "probreasTextBox";
+            this.probreasTextBox.Size = new System.Drawing.Size(535, 116);
+            this.probreasTextBox.TabIndex = 60;
+            // 
+            // probbookCheckBox
+            // 
+            this.probbookCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.surv2BindingSource, "probbook", true));
+            this.probbookCheckBox.Location = new System.Drawing.Point(29, 60);
+            this.probbookCheckBox.Name = "probbookCheckBox";
+            this.probbookCheckBox.Size = new System.Drawing.Size(96, 20);
+            this.probbookCheckBox.TabIndex = 59;
+            this.probbookCheckBox.Text = "Problem Book";
+            this.probbookCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveSurv
+            // 
+            this.btnSaveSurv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveSurv.Location = new System.Drawing.Point(716, 18);
+            this.btnSaveSurv.Name = "btnSaveSurv";
+            this.btnSaveSurv.Size = new System.Drawing.Size(97, 30);
+            this.btnSaveSurv.TabIndex = 58;
+            this.btnSaveSurv.Text = "Save";
+            this.btnSaveSurv.UseVisualStyleBackColor = true;
+            this.btnSaveSurv.Click += new System.EventHandler(this.btnSaveSurv_Click);
+            // 
+            // label13
+            // 
+            this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.recv2BindingSource, "schname", true));
+            this.label13.Location = new System.Drawing.Point(96, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(237, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "label1";
             // 
             // recv2TableAdapter
             // 
@@ -695,6 +864,29 @@
             this.tableAdapterManager.recv2TableAdapter = this.recv2TableAdapter;
             this.tableAdapterManager.surv2TableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsReceivingTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // surv2TableAdapter
+            // 
+            this.surv2TableAdapter.ClearBeforeFill = true;
+            // 
+            // causeComboBox
+            // 
+            this.causeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.surv2BindingSource, "cause", true));
+            this.causeComboBox.FormattingEnabled = true;
+            this.causeComboBox.Items.AddRange(new object[] {
+            "UPS",
+            "FED EX",
+            "OTHER PLANT",
+            "CUST ACCOMMODATIONS",
+            "SALES",
+            "RECEIVING",
+            "PRE PRESS",
+            "PRESS",
+            "BINDERY"});
+            this.causeComboBox.Location = new System.Drawing.Point(77, 389);
+            this.causeComboBox.Name = "causeComboBox";
+            this.causeComboBox.Size = new System.Drawing.Size(301, 21);
+            this.causeComboBox.TabIndex = 68;
             // 
             // frmRecSurvey
             // 
@@ -712,6 +904,9 @@
             this.page1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recv2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsReceiving)).EndInit();
+            this.page2.ResumeLayout(false);
+            this.page2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.surv2BindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -758,7 +953,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox recv1TextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSaveRecv;
         private System.Windows.Forms.TextBox booktypeTextBox;
+        private System.Windows.Forms.Button btnSaveSurv;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.BindingSource surv2BindingSource;
+        private DataSets.dsReceivingTableAdapters.surv2TableAdapter surv2TableAdapter;
+        private System.Windows.Forms.TextBox tobeappliedTextBox;
+        private System.Windows.Forms.TextBox compensateTextBox;
+        private System.Windows.Forms.CheckBox comp_ynCheckBox;
+        private System.Windows.Forms.TextBox probreasTextBox;
+        private System.Windows.Forms.CheckBox probbookCheckBox;
+        private System.Windows.Forms.TextBox compmemoTextBox;
+        private System.Windows.Forms.CheckBox fullprntCheckBox;
+        private System.Windows.Forms.CheckBox partialprntCheckBox;
+        private System.Windows.Forms.ComboBox causeComboBox;
     }
 }

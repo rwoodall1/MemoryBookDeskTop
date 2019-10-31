@@ -852,7 +852,7 @@ namespace Mbc5.Forms.MemoryBook {
                     var lowCopies = 0;
                     if (copies > 125)
                     {
-                        lowCopies = copies - 25;
+                        lowCopies = copies - 24;
                     }
                     else
                     {

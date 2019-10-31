@@ -1377,7 +1377,8 @@ namespace Mbc5.Forms
                 }
                     else
                     {
-                        //don't open form
+                    //don't open form
+                    return;
                     }
                 frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
                     form.MdiParent = this;
@@ -1391,8 +1392,44 @@ namespace Mbc5.Forms
 
         private void receivingSurveyCompensationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            var vInvno = GetInvno();
+            string vCompany = "";
+            string vSchcode = "";
+            if (this.ActiveMdiChild.Name == "frmMbcCust")
+            {
+                vCompany = "MBC";
+                frmMbcCust custFrm = (frmMbcCust)ActiveMdiChild;
+                vSchcode = custFrm.Schcode;
+            }
+            else if (this.ActiveMdiChild.Name == "frmMerCust")
+            {
+                vCompany = "MER";
+                frmMerCust mcustFrm = (frmMerCust)ActiveMdiChild;
+                vSchcode = mcustFrm.Schcode;
+            }
+            else
+            {
+                //don't open form
+            }
+            frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
+            form.MdiParent = this;
+            form.Show();
         }
+
+        private void memeroyBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmInqCount(ApplicationUser,"MBC");
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void meridianInqCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmInqCount(ApplicationUser, "MER");
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
 
         //nothing below here

@@ -558,6 +558,8 @@ namespace Mbc5.Forms.MemoryBook
                 lblIncollections.Visible = vHoldPayment;
                 bool vshpdate = dr.Row.IsNull("shpdate");
                 lblShipped.Visible = !vshpdate;
+               
+
             }catch(Exception ex)
             {
 
@@ -1577,7 +1579,7 @@ namespace Mbc5.Forms.MemoryBook
                     var lowCopies = 0;
                     if (copies > 125)
                     {
-                        lowCopies = copies - 25;
+                        lowCopies = copies - 24;
                     }
                     else
                     {
