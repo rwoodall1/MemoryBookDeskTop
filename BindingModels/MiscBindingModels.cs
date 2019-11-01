@@ -24,6 +24,26 @@ namespace BindingModels
         public string DATECONT { get; set; }
         public string REASON { get; set; }
     }
+    public class MInqCountModel
+    {
+        public string CSNAME { get; set; }
+        public string SCHSTATE { get; set; }
+        public string SCHCODE { get; set; }
+        public string SOURDATE { get; set; }
+        public string INITCONT { get; set; }
+        public string SCHNAME { get; set; }
+        public string Contname { get; set; }
+        public string Email1 { get; set; }
+        public string Email2 { get; set; }
+        public string CONTRYEAR { get; set; }
+        public string Stage { get; set; }
+        public string QTEDATE { get; set; }
+        public string Category { get; set; }
+        public decimal FplnTot { get; set; }
+        public string INITIAL { get; set; }
+        public string DATECONT { get; set; }
+        public string REASON { get; set; }
+    }
     public class OnlineFlyer {
         public string SchName { get; set; }
         public string SchCode { get; set; }

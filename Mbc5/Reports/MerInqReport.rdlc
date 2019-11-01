@@ -6,12 +6,12 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>7.27083in</Width>
+              <Width>7.5in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>2.17708in</Height>
+              <Height>2.20833in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -32,8 +32,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SCHCODE</rd:DefaultName>
-                          <Top>0.29167in</Top>
-                          <Left>1.10416in</Left>
+                          <Top>0.33681in</Top>
+                          <Left>1.125in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <Style>
@@ -65,8 +65,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.29167in</Top>
-                          <Left>0.10416in</Left>
+                          <Top>0.33681in</Top>
+                          <Left>0.125in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>1</ZIndex>
@@ -81,8 +81,8 @@
                           </Style>
                         </Textbox>
                         <Line Name="Line1">
-                          <Top>2.01389in</Top>
-                          <Left>0.0868in</Left>
+                          <Top>2.05903in</Top>
+                          <Left>0.10764in</Left>
                           <Height>0in</Height>
                           <Width>7.16667in</Width>
                           <ZIndex>2</ZIndex>
@@ -108,8 +108,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SCHNAME</rd:DefaultName>
-                          <Top>0.29167in</Top>
-                          <Left>2.85764in</Left>
+                          <Top>0.33681in</Top>
+                          <Left>2.87848in</Left>
                           <Height>0.25in</Height>
                           <Width>4in</Width>
                           <ZIndex>3</ZIndex>
@@ -142,8 +142,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.29167in</Top>
-                          <Left>2.15972in</Left>
+                          <Top>0.33681in</Top>
+                          <Left>2.18056in</Left>
                           <Height>0.25in</Height>
                           <Width>0.69792in</Width>
                           <ZIndex>4</ZIndex>
@@ -164,7 +164,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ADJBEF.Value</Value>
+                                  <Value>=Fields!FplnTot.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -174,7 +174,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ADJBEF</rd:DefaultName>
-                          <Left>3.06944in</Left>
+                          <Top>0.04514in</Top>
+                          <Left>3.09028in</Left>
                           <Height>0.25in</Height>
                           <Width>0.78125in</Width>
                           <ZIndex>5</ZIndex>
@@ -207,7 +208,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Left>2.5243in</Left>
+                          <Top>0.04514in</Top>
+                          <Left>2.54514in</Left>
                           <Height>0.25in</Height>
                           <Width>0.53125in</Width>
                           <ZIndex>6</ZIndex>
@@ -240,8 +242,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>3.20485in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>3.22569in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>7</ZIndex>
@@ -274,8 +276,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>1.17708in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>1.19792in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>8</ZIndex>
@@ -308,8 +310,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>5.20485in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>5.22569in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>9</ZIndex>
@@ -338,8 +340,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>QTEDATE</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>6.21874in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>6.23958in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>10</ZIndex>
@@ -368,8 +370,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SOURDATE</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>2.17708in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>2.19792in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>11</ZIndex>
@@ -398,8 +400,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>INITCONT</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>4.20485in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>4.22569in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>12</ZIndex>
@@ -428,8 +430,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Schstate</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>0.58333in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>0.60417in</Left>
                           <Height>0.25in</Height>
                           <Width>0.52083in</Width>
                           <ZIndex>13</ZIndex>
@@ -462,8 +464,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.56944in</Top>
-                          <Left>0.10416in</Left>
+                          <Top>0.61458in</Top>
+                          <Left>0.125in</Left>
                           <Height>0.25in</Height>
                           <Width>0.47917in</Width>
                           <ZIndex>14</ZIndex>
@@ -496,8 +498,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>1.38889in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>1.43403in</Top>
+                          <Left>0.12501in</Left>
                           <Height>0.25in</Height>
                           <Width>0.80903in</Width>
                           <ZIndex>15</ZIndex>
@@ -530,8 +532,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>1.13889in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>1.18403in</Top>
+                          <Left>0.12501in</Left>
                           <Height>0.25in</Height>
                           <Width>0.80903in</Width>
                           <ZIndex>16</ZIndex>
@@ -560,7 +562,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>REASON</rd:DefaultName>
-                          <Top>1.69444in</Top>
+                          <Top>1.73958in</Top>
+                          <Left>0.02084in</Left>
                           <Height>0.25in</Height>
                           <Width>7.11458in</Width>
                           <ZIndex>17</ZIndex>
@@ -589,8 +592,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>DATECONT</rd:DefaultName>
-                          <Top>1.13889in</Top>
-                          <Left>0.91319in</Left>
+                          <Top>1.18403in</Top>
+                          <Left>0.93403in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>18</ZIndex>
@@ -619,8 +622,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Contname</rd:DefaultName>
-                          <Top>0.86111in</Top>
-                          <Left>1.2743in</Left>
+                          <Top>0.90625in</Top>
+                          <Left>1.29514in</Left>
                           <Height>0.25in</Height>
                           <Width>1.63542in</Width>
                           <ZIndex>19</ZIndex>
@@ -653,8 +656,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.86111in</Top>
-                          <Left>0.10416in</Left>
+                          <Top>0.90625in</Top>
+                          <Left>0.125in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>20</ZIndex>
@@ -683,8 +686,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Email1</rd:DefaultName>
-                          <Top>0.86111in</Top>
-                          <Left>2.90972in</Left>
+                          <Top>0.90625in</Top>
+                          <Left>2.93056in</Left>
                           <Height>0.25in</Height>
                           <Width>2.29513in</Width>
                           <ZIndex>21</ZIndex>
@@ -713,8 +716,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>INITIAL</rd:DefaultName>
-                          <Top>1.38889in</Top>
-                          <Left>1.77778in</Left>
+                          <Top>1.43403in</Top>
+                          <Left>1.79862in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>22</ZIndex>
@@ -747,8 +750,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>1.38889in</Top>
-                          <Left>0.94097in</Left>
+                          <Top>1.43403in</Top>
+                          <Left>0.96181in</Left>
                           <Height>0.25in</Height>
                           <Width>0.80903in</Width>
                           <ZIndex>23</ZIndex>
@@ -777,8 +780,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Email2</rd:DefaultName>
-                          <Top>0.86111in</Top>
-                          <Left>5.26041in</Left>
+                          <Top>0.90625in</Top>
+                          <Left>5.28125in</Left>
                           <Height>0.25in</Height>
                           <Width>1.85416in</Width>
                           <ZIndex>24</ZIndex>
@@ -807,7 +810,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>CSNAME</rd:DefaultName>
-                          <Left>0.79514in</Left>
+                          <Top>0.04514in</Top>
+                          <Left>0.81598in</Left>
                           <Height>0.25in</Height>
                           <Width>1.28819in</Width>
                           <ZIndex>25</ZIndex>
@@ -840,7 +844,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Left>0.10416in</Left>
+                          <Top>0.04514in</Top>
+                          <Left>0.125in</Left>
                           <Height>0.25in</Height>
                           <Width>0.6632in</Width>
                           <ZIndex>26</ZIndex>
@@ -873,8 +878,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.01389in</Top>
-                          <Left>4.02604in</Left>
+                          <Top>0.05903in</Top>
+                          <Left>4.04688in</Left>
                           <Height>0.25in</Height>
                           <Width>1.04167in</Width>
                           <ZIndex>27</ZIndex>
@@ -903,11 +908,75 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>CONTRYEAR</rd:DefaultName>
-                          <Top>0.01389in</Top>
-                          <Left>5.0816in</Left>
+                          <Top>0.05903in</Top>
+                          <Left>5.10244in</Left>
                           <Height>0.25in</Height>
                           <Width>0.58854in</Width>
                           <ZIndex>28</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Textbox56">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Category</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox43</rd:DefaultName>
+                          <Top>1.18403in</Top>
+                          <Left>2.54514in</Left>
+                          <Height>0.25in</Height>
+                          <Width>0.81944in</Width>
+                          <ZIndex>29</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Category">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertValue(Fields!Category.Value)</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Category</rd:DefaultName>
+                          <Top>1.19792in</Top>
+                          <Left>3.37847in</Left>
+                          <Height>0.25in</Height>
+                          <Width>2.31251in</Width>
+                          <ZIndex>30</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -945,10 +1014,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsInq</DataSetName>
-        <Top>0.12375in</Top>
-        <Left>0.11333in</Left>
-        <Height>2.17708in</Height>
-        <Width>7.27083in</Width>
+        <Height>2.20833in</Height>
+        <Width>7.5in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -956,13 +1023,14 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.40709in</Height>
+    <Height>2.22917in</Height>
     <Style />
   </Body>
-  <Width>7.4675in</Width>
+  <Width>7.5in</Width>
   <Page>
     <PageFooter>
-      <Height>0.47792in</Height>
+      <Height>0.5in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Textbox Name="Textbox72">
@@ -982,7 +1050,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Left>6.33208in</Left>
+          <Top>0.06944in</Top>
+          <Left>6.27431in</Left>
           <Height>0.17708in</Height>
           <Width>1in</Width>
           <Style>
@@ -1015,7 +1084,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>ab49d25d-abb9-4f52-bcf2-cb376ae630dd</rd:DataSourceID>
+      <rd:DataSourceID>446b7de5-4d0b-4bae-9dca-d2da9a2a8b03</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -1025,9 +1094,9 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="ADJBEF">
-          <DataField>ADJBEF</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="Category">
+          <DataField>Category</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Contname">
           <DataField>Contname</DataField>
@@ -1053,6 +1122,10 @@
           <DataField>Email2</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="FplnTot">
+          <DataField>FplnTot</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="INITCONT">
           <DataField>INITCONT</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1077,10 +1150,6 @@
           <DataField>SCHNAME</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Schstate">
-          <DataField>Schstate</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="SCHSTATE">
           <DataField>SCHSTATE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1096,8 +1165,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BindingModels</rd:DataSetName>
-        <rd:TableName>InqCountModel</rd:TableName>
-        <rd:ObjectDataSourceType>BindingModels.InqCountModel, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>MInqCountModel</rd:TableName>
+        <rd:ObjectDataSourceType>BindingModels.MInqCountModel, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -1109,7 +1178,6 @@
         Return a.ToString().Trim()
    End If
 End Function</Code>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>a6d7e97d-b3cf-461b-a9ed-c0b06a93cbc4</rd:ReportID>
+  <rd:ReportID>4bb4a0e8-bee8-4ee2-84ce-db357fac5c8b</rd:ReportID>
 </Report>

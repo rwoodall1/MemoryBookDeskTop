@@ -762,6 +762,7 @@
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MeridianCoverTicket.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
+    <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
@@ -1028,6 +1029,7 @@
     <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MerInvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.MerMultiInvoiceModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MInqCountModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />

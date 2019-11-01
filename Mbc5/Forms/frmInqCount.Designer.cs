@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.inqEndDate = new System.Windows.Forms.DateTimePicker();
             this.inqStartDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,19 +47,17 @@
             this.pnlContact = new System.Windows.Forms.Panel();
             this.pnlInquiry = new System.Windows.Forms.Panel();
             this.chkOutPut = new System.Windows.Forms.CheckBox();
-            this.ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.InqCountModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).BeginInit();
             this.pnlContact.SuspendLayout();
             this.pnlInquiry.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InqCountModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
             // 
-            this.basePanel.Location = new System.Drawing.Point(-398, -208);
+            this.basePanel.Location = new System.Drawing.Point(35, -35);
             // 
             // inqEndDate
             // 
@@ -215,10 +214,6 @@
             this.chkOutPut.Text = "Out Put To Excel";
             this.chkOutPut.UseVisualStyleBackColor = true;
             // 
-            // InqCountModelBindingSource
-            // 
-            this.InqCountModelBindingSource.DataSource = typeof(BindingModels.InqCountModel);
-            // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 53;
@@ -238,10 +233,15 @@
             // 
             this.saveFileDialog1.Title = "Save To Excel File";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmInqCount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(438, 289);
+            this.ClientSize = new System.Drawing.Size(433, 426);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.chkOutPut);
             this.Controls.Add(this.pnlInquiry);
@@ -258,6 +258,7 @@
             this.Text = "Inqiry Count";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmInqCount_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.txtContryear, 0);
@@ -267,13 +268,11 @@
             this.Controls.SetChildIndex(this.pnlInquiry, 0);
             this.Controls.SetChildIndex(this.chkOutPut, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            this.Controls.SetChildIndex(this.basePanel, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).EndInit();
             this.pnlContact.ResumeLayout(false);
             this.pnlContact.PerformLayout();
             this.pnlInquiry.ResumeLayout(false);
             this.pnlInquiry.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InqCountModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,8 +296,8 @@
         private System.Windows.Forms.Panel pnlInquiry;
         private System.Windows.Forms.CheckBox chkOutPut;
         private System.Windows.Forms.BindingSource ReportBindingSource;
-        private System.Windows.Forms.BindingSource InqCountModelBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

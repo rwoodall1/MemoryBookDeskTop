@@ -99,6 +99,11 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 //basePanel.Visible = true;
                 //backgroundWorker1.RunWorkerAsync("Save");
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
 
             }
             else

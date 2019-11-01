@@ -276,7 +276,9 @@ namespace BaseClass
                 this.basePanel.Dock = DockStyle.Fill;
                 this.workingLabel.BringToFront();
                 basePanel.BringToFront();
-
+                var t = basePanel.Height/2;
+                var s = (basePanel.Width/2)-92;
+                this.innerPanel.Location= new Point(t, s);
 
             }
             else

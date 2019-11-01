@@ -43,6 +43,8 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsMcust.MeridianCategory' table. You can move, or remove it, as needed.
+            this.meridianCategoryTableAdapter.Fill(this.dsMcust.MeridianCategory);
             this.merCustTab.TabPages[0].AutoScroll = false;
 
             this.frmMain = (frmMain)this.MdiParent;
@@ -841,6 +843,7 @@ namespace Mbc5.Forms.Meridian {
             datecontTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
             statesTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             contpstnTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
+            meridianCategoryTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
         }
        public override void Fill()
         {
@@ -849,7 +852,7 @@ namespace Mbc5.Forms.Meridian {
                
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
-              
+                this.meridianCategoryTableAdapter.Fill(dsMcust.MeridianCategory);
                 mcustTableAdapter.Fill(dsMcust.mcust, Schcode);
                 datecontTableAdapter.Fill(dsMcust.datecont, Schcode);
                 SetInvnoSchCode();
