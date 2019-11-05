@@ -91,7 +91,7 @@ namespace Mbc5.Forms
             sqlQuery.AddParameter("@ContEnd", contEndDate.Value);
             sqlQuery.AddParameter("@NotYear", contEndDate.Value);
             sqlQuery.AddParameter("@Contryear", txtContryear.Text.Trim());
-            string vSelect = @"Select C.SCHSTATE
+            string vSelect = @"Select TOP 20 C.SCHSTATE
             ,C.SCHCODE
              ,C.SCHNAME
             ,CS.CSNAME AS CSNAME
@@ -101,7 +101,7 @@ namespace Mbc5.Forms
             ,RTrim(C.contfname) +' '+RTrim(C.contlname) as Contname
             ,C.contemail as Email1
             ,C.bcontemail as Email2
-            ,C.CONTRYEAR
+            ,''''+ C.CONTRYEAR AS CONTRYEAR
             ,RTrim(C.Stage)
             ,C.SCHSTATE
             ,CONVERT(varchar(50),CONVERT(date,B.QTEDATE))AS QTEDATE
@@ -212,7 +212,7 @@ namespace Mbc5.Forms
             ,RTrim(C.contfname) +' '+RTrim(C.contlname) as Contname
             ,C.contemail as Email1
             ,C.bcontemail as Email2
-            ,C.CONTRYEAR
+            ,''''+ C.CONTRYEAR AS CONTRYEAR
             ,RTrim(C.Stage)
             ,C.SCHSTATE
             ,CONVERT(varchar(50),CONVERT(date,B.QTEDATE))AS QTEDATE
