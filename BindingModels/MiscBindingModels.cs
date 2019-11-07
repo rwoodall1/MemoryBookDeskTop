@@ -10,6 +10,7 @@ namespace BindingModels
         public string CSNAME { get; set; }
         public string SCHSTATE { get; set; }
         public string SCHCODE { get; set; }
+        public string OracleCode { get; set; }
         public string SOURDATE { get; set; }
         public string INITCONT { get; set; }
         public string SCHNAME { get; set; }
@@ -29,6 +30,7 @@ namespace BindingModels
         public string CSNAME { get; set; }
         public string SCHSTATE { get; set; }
         public string SCHCODE { get; set; }
+        public string OracleCode { get; set; }
         public string SOURDATE { get; set; }
         public string INITCONT { get; set; }
         public string SCHNAME { get; set; }

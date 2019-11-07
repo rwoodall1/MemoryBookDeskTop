@@ -373,9 +373,75 @@ public override void ProdutnNoSearch()
 
 
         }
-       
+private void UpdateProdutnCopies()
+{
+            var vBooktype = ((DataRowView)mquotesBindingSource.Current).Row["booktype"].ToString();
+            if (vBooktype == "GN")
+            {
+                return;
+            }
+            int vCopies = 0;
+           int.TryParse(lblQtyTotal.Text, out vCopies);
+            if (vCopies > 0)
+            {
+                vCopies += 2;
+            }
+            var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText("Update Produtn Set NoCopies=@NoCopies Where Invno=@Invno");
+            sqlquery.AddParameter("@NoCopies",vCopies);
+            sqlquery.AddParameter("@Invno", Invno);
+            var result = sqlquery.Update();
+            if (result.IsError)
+            {
+                ExceptionlessClient.Default.CreateLog("Error Production NoCopies")
+                    .AddObject(result)
+                    .Submit();
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Error Updating Production Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
+            }
+
+        }
         #endregion
         #region Methods
+        private void CalculatePressCopies()
+        {
+            int vPressCopies = 0;
+            int vCopies = 0;
+            int.TryParse(lblQtyTotal.Text, out vCopies);
+            if (vCopies > 0)
+            {
+                vCopies += 2;
+            }
+            int vNoPages = 0;
+          
+            int.TryParse(txtNoPages.Text, out vNoPages);
+            if (lfRadioButton.Checked)
+            {
+                vPressCopies = (vNoPages/ 4) * vCopies;
+            }
+            else
+            {
+                vPressCopies = (vNoPages / 8) * vCopies;
+            }
+          
+             
+
+            var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText("Update Produtn Set PressCopies=@PressCopies Where Invno=@Invno");
+            sqlquery.AddParameter("@PressCopies", vPressCopies);
+            sqlquery.AddParameter("@Invno", Invno);
+            var result = sqlquery.Update();
+            if (result.IsError)
+            {
+                ExceptionlessClient.Default.CreateLog("Error PressCopies")
+                    .AddObject(result)
+                    .Submit();
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Error Updating Press Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
+            }
+
+
+        }
         #region CalcMethods
         private void CalculateOptions()
         {
@@ -1672,6 +1738,8 @@ try {
         //var aa = dsMSales.Tables["mquotes"].GetErrors();
         coversBindingSource.EndEdit();
         var aaa=coversTableAdapter.Update(dsMSales.covers);
+         UpdateProdutnCopies();
+         CalculatePressCopies();
         Fill();
         processingResult.Data = true;
         return processingResult;

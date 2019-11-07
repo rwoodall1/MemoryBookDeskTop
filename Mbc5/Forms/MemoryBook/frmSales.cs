@@ -166,6 +166,31 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void CalculatePressCopies()
+        {
+            int vNoPages = 0;
+            int vNoCopies = 0;
+            int.TryParse(txtNoPages.Text, out vNoPages);
+             int.TryParse(txtNocopies.Text, out vNoCopies);
+            int vFbValue = chkFlashbax.Checked?8:0;
+            int vPressCopies = (vNoPages + (vFbValue / 4)) * vNoCopies;
+           
+            var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText("Update Produtn Set PressCopies=@PressCopies Where Invno=@Invno");
+            sqlquery.AddParameter("@PressCopies", vPressCopies);
+            sqlquery.AddParameter("@Invno",Invno);
+           var result= sqlquery.Insert();
+            if (result.IsError)
+            {
+                ExceptionlessClient.Default.CreateLog("Error PressCopies")
+                    .AddObject(result)
+                    .Submit();
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Error Updating Press Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
+            }
+
+
+        }
         #region "Search"
         public override void SchCodeSearch()
         {
@@ -1150,7 +1175,7 @@ namespace Mbc5.Forms.MemoryBook
                 Details.Add(rec);
 
             }
-            if (chkYir.Checked)
+            if (chkFlashbax.Checked)
             {
                 var rec = new InvoiceDetailBindingModel
                 {
@@ -1470,7 +1495,7 @@ namespace Mbc5.Forms.MemoryBook
 
                     try
                     {
-                        
+                        CalculatePressCopies();//save press copies into produtn, assumed success if not exceptionless will catch.
                         this.quotesBindingSource.EndEdit();
                         var aa = quotesTableAdapter.Adapter.UpdateCommand.CommandText;
                         var a = quotesTableAdapter.Update(dsSales.quotes);
@@ -2021,7 +2046,7 @@ namespace Mbc5.Forms.MemoryBook
                         }
                         //Yir
                         decimal Yir = 0;
-                        if (chkYir.Checked)
+                        if (chkFlashbax.Checked)
                         {
                             Yir = (BookOptionPricing.Ink * numberOfCopies);
                             vBookCalcTax += (Yir * this.TaxRate);

@@ -93,6 +93,7 @@ namespace Mbc5.Forms
             sqlQuery.AddParameter("@Contryear", txtContryear.Text.Trim());
             string vSelect = @"Select TOP 20 C.SCHSTATE
             ,C.SCHCODE
+          ,C.OracleCode
              ,C.SCHNAME
             ,CS.CSNAME AS CSNAME
             ,CONVERT(varchar(50),CONVERT(date,C.SOURDATE)) AS SOURDATE 
@@ -205,6 +206,7 @@ namespace Mbc5.Forms
             string vSelect = @"Select TOP 10 C.SCHSTATE
             ,C.SCHCODE
              ,C.SCHNAME
+            ,C.OracleCode
             ,CS.CSNAME AS CSNAME
             ,CONVERT(varchar(50),CONVERT(date,C.SOURDATE)) AS SOURDATE 
             ,CONVERT(varchar(50),CONVERT(date,C.INITCONT)) AS INITCONT
