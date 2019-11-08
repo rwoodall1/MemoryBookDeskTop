@@ -281,8 +281,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschcode;
             
-            private global::System.Data.DataColumn columnSalesInvno;
-            
             private global::System.Data.DataColumn columnyear;
             
             private global::System.Data.DataColumn columnprodno;
@@ -298,8 +296,6 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnextrbkshdt;
             
             private global::System.Data.DataColumn columnextrbktot;
-            
-            private global::System.Data.DataColumn columnexonhand;
             
             private global::System.Data.DataColumn columnextrbkprc;
             
@@ -323,6 +319,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnrack;
             
+            private global::System.Data.DataColumn columntimestamp_column;
+            
+            private global::System.Data.DataColumn columnXtraInvno;
+            
+            private global::System.Data.DataColumn columnexonhand;
+            
             private global::System.Data.DataColumn columnnofrontcv;
             
             private global::System.Data.DataColumn columnnobanckcv;
@@ -331,7 +333,7 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnnobackcv;
             
-            private global::System.Data.DataColumn columntimestamp_column;
+            private global::System.Data.DataColumn columnExpr1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -371,14 +373,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn schcodeColumn {
                 get {
                     return this.columnschcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SalesInvnoColumn {
-                get {
-                    return this.columnSalesInvno;
                 }
             }
             
@@ -443,14 +437,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn extrbktotColumn {
                 get {
                     return this.columnextrbktot;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn exonhandColumn {
-                get {
-                    return this.columnexonhand;
                 }
             }
             
@@ -544,6 +530,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn timestamp_columnColumn {
+                get {
+                    return this.columntimestamp_column;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn XtraInvnoColumn {
+                get {
+                    return this.columnXtraInvno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn exonhandColumn {
+                get {
+                    return this.columnexonhand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nofrontcvColumn {
                 get {
                     return this.columnnofrontcv;
@@ -576,9 +586,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn timestamp_columnColumn {
+            public global::System.Data.DataColumn Expr1Column {
                 get {
-                    return this.columntimestamp_column;
+                    return this.columnExpr1;
                 }
             }
             
@@ -621,7 +631,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public xtraRow AddxtraRow(
                         string schcode, 
-                        decimal SalesInvno, 
                         string year, 
                         string prodno, 
                         decimal extrabooks, 
@@ -630,7 +639,6 @@ namespace Mbc5.DataSets {
                         decimal exreplshpd, 
                         System.DateTime extrbkshdt, 
                         decimal extrbktot, 
-                        decimal exonhand, 
                         decimal extrbkprc, 
                         decimal baldue, 
                         decimal prev_bal, 
@@ -642,15 +650,17 @@ namespace Mbc5.DataSets {
                         string room, 
                         string shelf, 
                         string rack, 
-                        decimal nofrontcv, 
-                        decimal nobanckcv, 
-                        decimal nohandbkpgs, 
-                        decimal nobackcv, 
-                        byte[] timestamp_column) {
+                        byte[] timestamp_column, 
+                        int XtraInvno, 
+                        int exonhand, 
+                        int nofrontcv, 
+                        int nobanckcv, 
+                        int nohandbkpgs, 
+                        int nobackcv, 
+                        int Expr1) {
                 xtraRow rowxtraRow = ((xtraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
-                        SalesInvno,
                         year,
                         prodno,
                         extrabooks,
@@ -659,7 +669,6 @@ namespace Mbc5.DataSets {
                         exreplshpd,
                         extrbkshdt,
                         extrbktot,
-                        exonhand,
                         extrbkprc,
                         baldue,
                         prev_bal,
@@ -671,14 +680,25 @@ namespace Mbc5.DataSets {
                         room,
                         shelf,
                         rack,
+                        timestamp_column,
+                        XtraInvno,
+                        exonhand,
                         nofrontcv,
                         nobanckcv,
                         nohandbkpgs,
                         nobackcv,
-                        timestamp_column};
+                        Expr1};
                 rowxtraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowxtraRow);
                 return rowxtraRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public xtraRow FindByXtraInvnoExpr1(int XtraInvno, int Expr1) {
+                return ((xtraRow)(this.Rows.Find(new object[] {
+                            XtraInvno,
+                            Expr1})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -699,7 +719,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnschcode = base.Columns["schcode"];
-                this.columnSalesInvno = base.Columns["SalesInvno"];
                 this.columnyear = base.Columns["year"];
                 this.columnprodno = base.Columns["prodno"];
                 this.columnextrabooks = base.Columns["extrabooks"];
@@ -708,7 +727,6 @@ namespace Mbc5.DataSets {
                 this.columnexreplshpd = base.Columns["exreplshpd"];
                 this.columnextrbkshdt = base.Columns["extrbkshdt"];
                 this.columnextrbktot = base.Columns["extrbktot"];
-                this.columnexonhand = base.Columns["exonhand"];
                 this.columnextrbkprc = base.Columns["extrbkprc"];
                 this.columnbaldue = base.Columns["baldue"];
                 this.columnprev_bal = base.Columns["prev_bal"];
@@ -720,11 +738,14 @@ namespace Mbc5.DataSets {
                 this.columnroom = base.Columns["room"];
                 this.columnshelf = base.Columns["shelf"];
                 this.columnrack = base.Columns["rack"];
+                this.columntimestamp_column = base.Columns["timestamp_column"];
+                this.columnXtraInvno = base.Columns["XtraInvno"];
+                this.columnexonhand = base.Columns["exonhand"];
                 this.columnnofrontcv = base.Columns["nofrontcv"];
                 this.columnnobanckcv = base.Columns["nobanckcv"];
                 this.columnnohandbkpgs = base.Columns["nohandbkpgs"];
                 this.columnnobackcv = base.Columns["nobackcv"];
-                this.columntimestamp_column = base.Columns["timestamp_column"];
+                this.columnExpr1 = base.Columns["Expr1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -732,8 +753,6 @@ namespace Mbc5.DataSets {
             private void InitClass() {
                 this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschcode);
-                this.columnSalesInvno = new global::System.Data.DataColumn("SalesInvno", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSalesInvno);
                 this.columnyear = new global::System.Data.DataColumn("year", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnyear);
                 this.columnprodno = new global::System.Data.DataColumn("prodno", typeof(string), null, global::System.Data.MappingType.Element);
@@ -750,8 +769,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnextrbkshdt);
                 this.columnextrbktot = new global::System.Data.DataColumn("extrbktot", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnextrbktot);
-                this.columnexonhand = new global::System.Data.DataColumn("exonhand", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexonhand);
                 this.columnextrbkprc = new global::System.Data.DataColumn("extrbkprc", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnextrbkprc);
                 this.columnbaldue = new global::System.Data.DataColumn("baldue", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -774,20 +791,27 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnshelf);
                 this.columnrack = new global::System.Data.DataColumn("rack", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrack);
-                this.columnnofrontcv = new global::System.Data.DataColumn("nofrontcv", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnofrontcv);
-                this.columnnobanckcv = new global::System.Data.DataColumn("nobanckcv", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnobanckcv);
-                this.columnnohandbkpgs = new global::System.Data.DataColumn("nohandbkpgs", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnohandbkpgs);
-                this.columnnobackcv = new global::System.Data.DataColumn("nobackcv", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnobackcv);
                 this.columntimestamp_column = new global::System.Data.DataColumn("timestamp_column", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntimestamp_column);
+                this.columnXtraInvno = new global::System.Data.DataColumn("XtraInvno", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnXtraInvno);
+                this.columnexonhand = new global::System.Data.DataColumn("exonhand", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexonhand);
+                this.columnnofrontcv = new global::System.Data.DataColumn("nofrontcv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnofrontcv);
+                this.columnnobanckcv = new global::System.Data.DataColumn("nobanckcv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnobanckcv);
+                this.columnnohandbkpgs = new global::System.Data.DataColumn("nohandbkpgs", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnohandbkpgs);
+                this.columnnobackcv = new global::System.Data.DataColumn("nobackcv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnobackcv);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnXtraInvno,
+                                this.columnExpr1}, true));
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
-                this.columnSalesInvno.AllowDBNull = false;
-                this.columnyear.AllowDBNull = false;
                 this.columnyear.MaxLength = 2;
                 this.columnprodno.MaxLength = 11;
                 this.columnextrabooks.AllowDBNull = false;
@@ -795,7 +819,6 @@ namespace Mbc5.DataSets {
                 this.columnextrbkshpd.AllowDBNull = false;
                 this.columnexreplshpd.AllowDBNull = false;
                 this.columnextrbktot.AllowDBNull = false;
-                this.columnexonhand.AllowDBNull = false;
                 this.columnextrbkprc.AllowDBNull = false;
                 this.columnbaldue.AllowDBNull = false;
                 this.columnprev_bal.AllowDBNull = false;
@@ -807,11 +830,14 @@ namespace Mbc5.DataSets {
                 this.columnroom.MaxLength = 5;
                 this.columnshelf.MaxLength = 5;
                 this.columnrack.MaxLength = 5;
+                this.columntimestamp_column.ReadOnly = true;
+                this.columnXtraInvno.AllowDBNull = false;
+                this.columnexonhand.AllowDBNull = false;
                 this.columnnofrontcv.AllowDBNull = false;
                 this.columnnobanckcv.AllowDBNull = false;
                 this.columnnohandbkpgs.AllowDBNull = false;
                 this.columnnobackcv.AllowDBNull = false;
-                this.columntimestamp_column.ReadOnly = true;
+                this.columnExpr1.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -965,20 +991,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal SalesInvno {
-                get {
-                    return ((decimal)(this[this.tablextra.SalesInvnoColumn]));
-                }
-                set {
-                    this[this.tablextra.SalesInvnoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string year {
                 get {
-                    return ((string)(this[this.tablextra.yearColumn]));
+                    try {
+                        return ((string)(this[this.tablextra.yearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'year\' in table \'xtra\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablextra.yearColumn] = value;
@@ -1069,17 +1089,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablextra.extrbktotColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal exonhand {
-                get {
-                    return ((decimal)(this[this.tablextra.exonhandColumn]));
-                }
-                set {
-                    this[this.tablextra.exonhandColumn] = value;
                 }
             }
             
@@ -1226,50 +1235,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nofrontcv {
-                get {
-                    return ((decimal)(this[this.tablextra.nofrontcvColumn]));
-                }
-                set {
-                    this[this.tablextra.nofrontcvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nobanckcv {
-                get {
-                    return ((decimal)(this[this.tablextra.nobanckcvColumn]));
-                }
-                set {
-                    this[this.tablextra.nobanckcvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nohandbkpgs {
-                get {
-                    return ((decimal)(this[this.tablextra.nohandbkpgsColumn]));
-                }
-                set {
-                    this[this.tablextra.nohandbkpgsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nobackcv {
-                get {
-                    return ((decimal)(this[this.tablextra.nobackcvColumn]));
-                }
-                set {
-                    this[this.tablextra.nobackcvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public byte[] timestamp_column {
                 get {
                     try {
@@ -1282,6 +1247,95 @@ namespace Mbc5.DataSets {
                 set {
                     this[this.tablextra.timestamp_columnColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int XtraInvno {
+                get {
+                    return ((int)(this[this.tablextra.XtraInvnoColumn]));
+                }
+                set {
+                    this[this.tablextra.XtraInvnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int exonhand {
+                get {
+                    return ((int)(this[this.tablextra.exonhandColumn]));
+                }
+                set {
+                    this[this.tablextra.exonhandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int nofrontcv {
+                get {
+                    return ((int)(this[this.tablextra.nofrontcvColumn]));
+                }
+                set {
+                    this[this.tablextra.nofrontcvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int nobanckcv {
+                get {
+                    return ((int)(this[this.tablextra.nobanckcvColumn]));
+                }
+                set {
+                    this[this.tablextra.nobanckcvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int nohandbkpgs {
+                get {
+                    return ((int)(this[this.tablextra.nohandbkpgsColumn]));
+                }
+                set {
+                    this[this.tablextra.nohandbkpgsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int nobackcv {
+                get {
+                    return ((int)(this[this.tablextra.nobackcvColumn]));
+                }
+                set {
+                    this[this.tablextra.nobackcvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Expr1 {
+                get {
+                    return ((int)(this[this.tablextra.Expr1Column]));
+                }
+                set {
+                    this[this.tablextra.Expr1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsyearNull() {
+                return this.IsNull(this.tablextra.yearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetyearNull() {
+                this[this.tablextra.yearColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1529,7 +1583,6 @@ namespace Mbc5.DataSets.dsExtraTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "xtra";
             tableMapping.ColumnMappings.Add("schcode", "schcode");
-            tableMapping.ColumnMappings.Add("SalesInvno", "SalesInvno");
             tableMapping.ColumnMappings.Add("year", "year");
             tableMapping.ColumnMappings.Add("prodno", "prodno");
             tableMapping.ColumnMappings.Add("extrabooks", "extrabooks");
@@ -1538,7 +1591,6 @@ namespace Mbc5.DataSets.dsExtraTableAdapters {
             tableMapping.ColumnMappings.Add("exreplshpd", "exreplshpd");
             tableMapping.ColumnMappings.Add("extrbkshdt", "extrbkshdt");
             tableMapping.ColumnMappings.Add("extrbktot", "extrbktot");
-            tableMapping.ColumnMappings.Add("exonhand", "exonhand");
             tableMapping.ColumnMappings.Add("extrbkprc", "extrbkprc");
             tableMapping.ColumnMappings.Add("baldue", "baldue");
             tableMapping.ColumnMappings.Add("prev_bal", "prev_bal");
@@ -1550,27 +1602,38 @@ namespace Mbc5.DataSets.dsExtraTableAdapters {
             tableMapping.ColumnMappings.Add("room", "room");
             tableMapping.ColumnMappings.Add("shelf", "shelf");
             tableMapping.ColumnMappings.Add("rack", "rack");
+            tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
+            tableMapping.ColumnMappings.Add("XtraInvno", "XtraInvno");
+            tableMapping.ColumnMappings.Add("exonhand", "exonhand");
             tableMapping.ColumnMappings.Add("nofrontcv", "nofrontcv");
             tableMapping.ColumnMappings.Add("nobanckcv", "nobanckcv");
             tableMapping.ColumnMappings.Add("nohandbkpgs", "nohandbkpgs");
             tableMapping.ColumnMappings.Add("nobackcv", "nobackcv");
-            tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [xtra] WHERE (([XtraInvno] = @Original_XtraInvno) AND ([timestamp_col" +
+                "umn] = @Original_timestamp_column) AND ([XtraInvno] = @Original_Expr1))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_XtraInvno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XtraInvno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp_column", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp_column", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Expr1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[xtra] ([schcode], [SalesInvno], [year], [prodno], [extrabooks], [exunfinish], [extrbkshpd], [exreplshpd], [extrbkshdt], [extrbktot], [exonhand], [extrbkprc], [baldue], [prev_bal], [prev_pmts], [prev_chgs], [prev_othr], [prev_cred], [xnotes], [room], [shelf], [rack], [nofrontcv], [nobanckcv], [nohandbkpgs], [nobackcv]) VALUES (@schcode, @SalesInvno, @year, @prodno, @extrabooks, @exunfinish, @extrbkshpd, @exreplshpd, @extrbkshdt, @extrbktot, @exonhand, @extrbkprc, @baldue, @prev_bal, @prev_pmts, @prev_chgs, @prev_othr, @prev_cred, @xnotes, @room, @shelf, @rack, @nofrontcv, @nobanckcv, @nohandbkpgs, @nobackcv)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [xtra] ([schcode], [XtraInvno], [year], [prodno], [extrabooks], [exunfinish], [extrbkshpd], [exreplshpd], [extrbkshdt], [extrbktot], [exonhand], [extrbkprc], [baldue], [prev_bal], [prev_pmts], [prev_chgs], [prev_othr], [prev_cred], [xnotes], [room], [shelf], [rack], [nofrontcv], [nobanckcv], [nohandbkpgs], [nobackcv], [XtraInvno]) VALUES (@schcode, @XtraInvno, @year, @prodno, @extrabooks, @exunfinish, @extrbkshpd, @exreplshpd, @extrbkshdt, @extrbktot, @exonhand, @extrbkprc, @baldue, @prev_bal, @prev_pmts, @prev_chgs, @prev_othr, @prev_cred, @xnotes, @room, @shelf, @rack, @nofrontcv, @nobanckcv, @nohandbkpgs, @nobackcv, @Expr1)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesInvno", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 0, "SalesInvno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@XtraInvno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "XtraInvno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrabooks", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "extrabooks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exunfinish", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "exunfinish", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkshpd", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "extrbkshpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exreplshpd", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "exreplshpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkshdt", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrbkshdt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbktot", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 7, 2, "extrbktot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exonhand", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "exonhand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exonhand", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "exonhand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkprc", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 7, 2, "extrbkprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@baldue", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "baldue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_bal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "prev_bal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1578,14 +1641,52 @@ namespace Mbc5.DataSets.dsExtraTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_chgs", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "prev_chgs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_othr", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 7, 2, "prev_othr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_cred", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 7, 2, "prev_cred", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xnotes", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "xnotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@room", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "room", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shelf", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shelf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rack", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nofrontcv", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 0, "nofrontcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobanckcv", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 0, "nobanckcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nohandbkpgs", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 0, "nohandbkpgs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobackcv", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 0, "nobackcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xnotes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "xnotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@room", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "room", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shelf", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shelf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rack", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nofrontcv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nofrontcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobanckcv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nobanckcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nohandbkpgs", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nohandbkpgs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobackcv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nobackcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Expr1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       xtra
+SET                schcode = @schcode, XtraInvno = @XtraInvno, year = @year, prodno = @prodno, extrabooks = @extrabooks, exunfinish = @exunfinish, extrbkshpd = @extrbkshpd, exreplshpd = @exreplshpd, extrbkshdt = @extrbkshdt, 
+                         extrbktot = @extrbktot, exonhand = @exonhand, extrbkprc = @extrbkprc, baldue = @baldue, prev_bal = @prev_bal, prev_pmts = @prev_pmts, prev_chgs = @prev_chgs, prev_othr = @prev_othr, prev_cred = @prev_cred, 
+                         xnotes = @xnotes, room = @room, shelf = @shelf, rack = @rack, nofrontcv = @nofrontcv, nobanckcv = @nobanckcv, nohandbkpgs = @nohandbkpgs, nobackcv = @nobackcv, XtraInvno = @XtraInvno
+WHERE        (XtraInvno = @Original_XtraInvno) AND (timestamp_column = @Original_timestamp_column); 
+SELECT schcode, XtraInvno, year, prodno, extrabooks, exunfinish, extrbkshpd, exreplshpd, extrbkshdt, extrbktot, exonhand, extrbkprc, baldue, prev_bal, prev_pmts, prev_chgs, prev_othr, prev_cred, xnotes, room, shelf, rack, nofrontcv, nobanckcv, nohandbkpgs, nobackcv, timestamp_column, XtraInvno AS Expr1 FROM xtra WHERE (XtraInvno = @XtraInvno) AND (XtraInvno = @XtraInvno)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@XtraInvno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "XtraInvno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrabooks", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "extrabooks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exunfinish", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "exunfinish", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkshpd", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "extrbkshpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exreplshpd", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "exreplshpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkshdt", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "extrbkshdt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbktot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "extrbktot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@exonhand", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "exonhand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrbkprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "extrbkprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@baldue", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "baldue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_bal", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "prev_bal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_pmts", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "prev_pmts", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_chgs", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "prev_chgs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_othr", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "prev_othr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prev_cred", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "prev_cred", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xnotes", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "xnotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@room", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "room", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shelf", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "shelf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rack", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "rack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nofrontcv", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nofrontcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobanckcv", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nobanckcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nohandbkpgs", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nohandbkpgs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nobackcv", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nobackcv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_XtraInvno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "XtraInvno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp_column", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp_column", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1601,21 +1702,21 @@ namespace Mbc5.DataSets.dsExtraTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        schcode, SalesInvno, year, prodno, extrabooks, exunfinish, extrbkshpd, exreplshpd, extrbkshdt, extrbktot, exonhand, extrbkprc, baldue, prev_bal, prev_pmts, prev_chgs, prev_othr, prev_cred, xnotes, room, 
-                         shelf, rack, nofrontcv, nobanckcv, nohandbkpgs, nobackcv, timestamp_column
-FROM            dbo.xtra
-WHERE        (SalesInvno = @SalesInvno)";
+            this._commandCollection[0].CommandText = @"SELECT        schcode, XtraInvno, year, prodno, extrabooks, exunfinish, extrbkshpd, exreplshpd, extrbkshdt, extrbktot, exonhand, extrbkprc, baldue, prev_bal, prev_pmts, prev_chgs, prev_othr, prev_cred, xnotes, room, shelf, rack, nofrontcv, 
+                         nobanckcv, nohandbkpgs, nobackcv, timestamp_column, XtraInvno AS Expr1
+FROM            xtra
+WHERE        (XtraInvno = @SalesInvno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesInvno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "SalesInvno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesInvno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "XtraInvno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsExtra.xtraDataTable dataTable, decimal SalesInvno) {
+        public virtual int Fill(dsExtra.xtraDataTable dataTable, int SalesInvno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(SalesInvno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SalesInvno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1627,9 +1728,9 @@ WHERE        (SalesInvno = @SalesInvno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsExtra.xtraDataTable GetData(decimal SalesInvno) {
+        public virtual dsExtra.xtraDataTable GetData(int SalesInvno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(SalesInvno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SalesInvno));
             dsExtra.xtraDataTable dataTable = new dsExtra.xtraDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1667,10 +1768,39 @@ WHERE        (SalesInvno = @SalesInvno)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_XtraInvno, byte[] Original_timestamp_column, int Original_Expr1) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_XtraInvno));
+            if ((Original_timestamp_column == null)) {
+                throw new global::System.ArgumentNullException("Original_timestamp_column");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((byte[])(Original_timestamp_column));
+            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Expr1));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string schcode, 
-                    decimal SalesInvno, 
+                    int XtraInvno, 
                     string year, 
                     string prodno, 
                     decimal extrabooks, 
@@ -1679,7 +1809,7 @@ WHERE        (SalesInvno = @SalesInvno)";
                     decimal exreplshpd, 
                     global::System.Nullable<global::System.DateTime> extrbkshdt, 
                     decimal extrbktot, 
-                    decimal exonhand, 
+                    int exonhand, 
                     decimal extrbkprc, 
                     decimal baldue, 
                     decimal prev_bal, 
@@ -1691,19 +1821,20 @@ WHERE        (SalesInvno = @SalesInvno)";
                     string room, 
                     string shelf, 
                     string rack, 
-                    decimal nofrontcv, 
-                    decimal nobanckcv, 
-                    decimal nohandbkpgs, 
-                    decimal nobackcv) {
+                    int nofrontcv, 
+                    int nobanckcv, 
+                    int nohandbkpgs, 
+                    int nobackcv, 
+                    int Expr1) {
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(schcode));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(SalesInvno));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(XtraInvno));
             if ((year == null)) {
-                throw new global::System.ArgumentNullException("year");
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(year));
@@ -1725,7 +1856,7 @@ WHERE        (SalesInvno = @SalesInvno)";
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(extrbktot));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(exonhand));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((int)(exonhand));
             this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(extrbkprc));
             this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(baldue));
             this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(prev_bal));
@@ -1757,10 +1888,11 @@ WHERE        (SalesInvno = @SalesInvno)";
             else {
                 this.Adapter.InsertCommand.Parameters[21].Value = ((string)(rack));
             }
-            this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(nofrontcv));
-            this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(nobanckcv));
-            this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(nohandbkpgs));
-            this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(nobackcv));
+            this.Adapter.InsertCommand.Parameters[22].Value = ((int)(nofrontcv));
+            this.Adapter.InsertCommand.Parameters[23].Value = ((int)(nobanckcv));
+            this.Adapter.InsertCommand.Parameters[24].Value = ((int)(nohandbkpgs));
+            this.Adapter.InsertCommand.Parameters[25].Value = ((int)(nobackcv));
+            this.Adapter.InsertCommand.Parameters[26].Value = ((int)(Expr1));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1775,6 +1907,163 @@ WHERE        (SalesInvno = @SalesInvno)";
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string schcode, 
+                    int XtraInvno, 
+                    string year, 
+                    string prodno, 
+                    decimal extrabooks, 
+                    decimal exunfinish, 
+                    decimal extrbkshpd, 
+                    decimal exreplshpd, 
+                    global::System.Nullable<global::System.DateTime> extrbkshdt, 
+                    decimal extrbktot, 
+                    int exonhand, 
+                    decimal extrbkprc, 
+                    decimal baldue, 
+                    decimal prev_bal, 
+                    decimal prev_pmts, 
+                    decimal prev_chgs, 
+                    decimal prev_othr, 
+                    decimal prev_cred, 
+                    string xnotes, 
+                    string room, 
+                    string shelf, 
+                    string rack, 
+                    int nofrontcv, 
+                    int nobanckcv, 
+                    int nohandbkpgs, 
+                    int nobackcv, 
+                    int Original_XtraInvno, 
+                    byte[] Original_timestamp_column) {
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(schcode));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(XtraInvno));
+            if ((year == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(year));
+            }
+            if ((prodno == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(prodno));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(extrabooks));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(exunfinish));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(extrbkshpd));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(exreplshpd));
+            if ((extrbkshdt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(extrbkshdt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(extrbktot));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(exonhand));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(extrbkprc));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(baldue));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(prev_bal));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(prev_pmts));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(prev_chgs));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(prev_othr));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(prev_cred));
+            if ((xnotes == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(xnotes));
+            }
+            if ((room == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(room));
+            }
+            if ((shelf == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(shelf));
+            }
+            if ((rack == null)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(rack));
+            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(nofrontcv));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(nobanckcv));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(nohandbkpgs));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(nobackcv));
+            this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_XtraInvno));
+            if ((Original_timestamp_column == null)) {
+                throw new global::System.ArgumentNullException("Original_timestamp_column");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((byte[])(Original_timestamp_column));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string schcode, 
+                    string year, 
+                    string prodno, 
+                    decimal extrabooks, 
+                    decimal exunfinish, 
+                    decimal extrbkshpd, 
+                    decimal exreplshpd, 
+                    global::System.Nullable<global::System.DateTime> extrbkshdt, 
+                    decimal extrbktot, 
+                    int exonhand, 
+                    decimal extrbkprc, 
+                    decimal baldue, 
+                    decimal prev_bal, 
+                    decimal prev_pmts, 
+                    decimal prev_chgs, 
+                    decimal prev_othr, 
+                    decimal prev_cred, 
+                    string xnotes, 
+                    string room, 
+                    string shelf, 
+                    string rack, 
+                    int nofrontcv, 
+                    int nobanckcv, 
+                    int nohandbkpgs, 
+                    int nobackcv, 
+                    int Original_XtraInvno, 
+                    byte[] Original_timestamp_column) {
+            return this.Update(schcode, Original_XtraInvno, year, prodno, extrabooks, exunfinish, extrbkshpd, exreplshpd, extrbkshdt, extrbktot, exonhand, extrbkprc, baldue, prev_bal, prev_pmts, prev_chgs, prev_othr, prev_cred, xnotes, room, shelf, rack, nofrontcv, nobanckcv, nohandbkpgs, nobackcv, Original_XtraInvno, Original_timestamp_column);
         }
     }
     

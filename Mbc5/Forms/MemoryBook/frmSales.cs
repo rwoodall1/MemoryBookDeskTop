@@ -73,7 +73,7 @@ namespace Mbc5.Forms.MemoryBook
             
             txtModifiedByPay.Text = this.ApplicationUser.id;
             pg1.AutoScroll = false;
-
+            this.AutoScroll = false;
             this.SetConnectionString();
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
@@ -2725,6 +2725,12 @@ namespace Mbc5.Forms.MemoryBook
                     
 
                     break;
+                case 4:
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("This function is not available in the extra tab,use update button on form.", "This function is not available in the extra tab,use update button on form.", ""));
+                    processingResult.IsError = true;
+                    break;
+                   
 
             }
       
@@ -4605,7 +4611,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")"; }
             catch
             {
 
@@ -4980,9 +4986,9 @@ namespace Mbc5.Forms.MemoryBook
                 //insert
                 var currentRow = (DataRowView)quotesBindingSource.Current;
                 var price = currentRow["fbkprc"] == DBNull.Value ? 0 : Convert.ToDecimal(currentRow["fbkprc"]);
-                var cmdtext = @"Insert into Xtra (SalesInvno,Schcode,Year,Extrbkprc) values(@SalesInvno,@Schcode,@Year,@Extrbkprc)";
+                var cmdtext = @"Insert into Xtra (XtraInvno,Schcode,Year,Extrbkprc) values(@XtraInvno,@Schcode,@Year,@Extrbkprc)";
                 sqlquery.CommandText(cmdtext);
-                sqlquery.AddParameter("@SalesInvno", this.Invno);
+                sqlquery.AddParameter("@XtraInvno", this.Invno);
                 sqlquery.AddParameter("@Schcode", this.Schcode);
                 sqlquery.AddParameter("@Year", lblinvoiceYear.Text);
                 sqlquery.AddParameter("@Extrbkprc", price);
@@ -5013,9 +5019,9 @@ namespace Mbc5.Forms.MemoryBook
                                     ,[shelf] = @shelf
                                     ,[rack] = @rack
                                 
-                                Where SalesInvno=@SalesInvno";
+                                Where XtraInvno=@XtraInvno";
 
-                sqlquery.AddParameter("@SalesInvno", Invno);
+                sqlquery.AddParameter("@XtraInvno", Invno);
                 sqlquery.AddParameter("@extrabooks", extrabooksTextBox.Text==""?"0": extrabooksTextBox.Text);
                 sqlquery.AddParameter("@exunfinish", exunfinishTextBox.Text == "" ? "0" : exunfinishTextBox.Text);
                 sqlquery.AddParameter("@extrbkshpd", extrbkshpdTextBox.Text == "" ? "0" : extrbkshpdTextBox.Text);
@@ -5052,8 +5058,8 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     //getinvoices
                     var sqlquery = new SQLCustomClient();
-                    var cmdtext = @"Select X.SalesInvno AS SalesInvoice, I.Invno AS Invoice,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
-                                    Left Join Sales_ExtraInvoice SX ON X.SalesInvno=SX.SalesInvoice
+                    var cmdtext = @"Select X.XtraInvno AS XtraInvno, I.Invno AS SalesInvoice,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
+                                    Left Join Sales_ExtraInvoice SX ON X.XtraInvno=SX.SalesInvoice
                                      Left Join Invoice I ON SX.XtraInvoice=I.Invno 
                                         Where SX.SalesInvoice=@Invno";
                     sqlquery.CommandText(cmdtext);
@@ -5117,7 +5123,11 @@ namespace Mbc5.Forms.MemoryBook
         private void btnApplyInvoice_Click(object sender, EventArgs e)
         {
 
-
+            if (txtQuantity.Text==""||txtQuantity.Text=="0")
+            {
+                errorProvider1.SetError(txtQuantity, "Quantity required");
+                return;
+            }
             errorProvider1.SetError(txtQuantity, "");
             int vInvoiceQty = 0;
             int vInventoryQty = 0;
@@ -5142,8 +5152,6 @@ namespace Mbc5.Forms.MemoryBook
 
             try
             {
-
-
                 string cmdText = @"Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,invtot,baldue,contryear,allclrck,SalesTax,BeforeTaxTotal,Schname,Schaddr,Schaddr2,schcity,Schstate,Schzip,DateCreated,DateModified,ModifiedBy) 
                     VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@invtot,@baldue,@contryear,@allclrck,@SalesTax,@BeforeTaxTotal,@Schname,@Schaddr,@Schaddr2,@Schcity,@Schstate,@Schzip,GETDATE(),GETDATE(),@ModifiedBy)";
                 sqlquery.CommandText(cmdText);
@@ -5161,18 +5169,16 @@ namespace Mbc5.Forms.MemoryBook
                 sqlquery.AddParameter("@freebooks", 0);
                 sqlquery.AddParameter("@SalesTax", lblTaxTotal.Text.Replace("$", "").Replace(",", ""));
                 sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotalValue.Text.Replace("$", "").Replace(",", ""));
-                sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim());
-                sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["schaddr"].ToString().Trim());
-                sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["schaddr2"].ToString().Trim());
-                sqlquery.AddParameter("@Schcity", ((DataRowView)this.custBindingSource.Current).Row["schcity"].ToString().Trim());
-                sqlquery.AddParameter("@Schstate", ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim());
-                sqlquery.AddParameter("@Schzip", ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim());
+                sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["InvoiceName"].ToString().Trim());
+                sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim());
+                sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim());
+                sqlquery.AddParameter("@Schcity", ((DataRowView)this.custBindingSource.Current).Row["InvoiceCity"].ToString().Trim());
+                sqlquery.AddParameter("@Schstate", ((DataRowView)this.custBindingSource.Current).Row["InvoiceState"].ToString().Trim());
+                sqlquery.AddParameter("@Schzip", ((DataRowView)this.custBindingSource.Current).Row["InvoicezipCode"].ToString().Trim());
                 sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);
                 var result = sqlquery.Insert();
                 if (result.IsError)
                 {
-
-
                     MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -5236,9 +5242,9 @@ namespace Mbc5.Forms.MemoryBook
         {
             //adjust inventory
             var sqlquery = new SQLCustomClient();
-            string cmdText = @"Update Xtra Set exonhand=exonhand-@extrbkshpd,extrbkshpd=extrbkshpd+@extrbkshpd where SalesInvno=@SalesInvno";
+            string cmdText = @"Update Xtra Set exonhand=exonhand-@extrbkshpd,extrbkshpd=extrbkshpd+@extrbkshpd where XtraInvno=@XtraInvno";
             sqlquery.CommandText(cmdText);
-            sqlquery.AddParameter("@SalesInvno",Invno);
+            sqlquery.AddParameter("@XtraInvno", Invno);
            
             sqlquery.AddParameter("@extrbkshpd",txtQuantity.Text);
             var result=sqlquery.Update();
@@ -5701,6 +5707,12 @@ namespace Mbc5.Forms.MemoryBook
             BookCalc();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var eh = new EmailHelper();
+            eh.SendEmail("test", "randy.woodall@jostens.com", null, "Test Email", EmailType.System);
+        }
+
 
 
 
@@ -5709,7 +5721,7 @@ namespace Mbc5.Forms.MemoryBook
     }
     public class XtraInvoiceGrid
     {
-        public decimal SalesInvoice { get; set; }
+        public int XtraInvno { get; set; }
         public int Invoice { get; set; }
         public DateTime InvoiceDate { get; set; }
         public int Quantity { get; set; }

@@ -3638,6 +3638,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnoraclecode;
             
+            private global::System.Data.DataColumn columnInvoiceName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -3865,6 +3867,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceNameColumn {
+                get {
+                    return this.columnInvoiceName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3924,7 +3934,8 @@ namespace Mbc5.DataSets {
                         string bcontemail, 
                         string ccontemail, 
                         int PIN, 
-                        string oraclecode) {
+                        string oraclecode, 
+                        string InvoiceName) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -3950,7 +3961,8 @@ namespace Mbc5.DataSets {
                         bcontemail,
                         ccontemail,
                         PIN,
-                        oraclecode};
+                        oraclecode,
+                        InvoiceName};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -4004,6 +4016,7 @@ namespace Mbc5.DataSets {
                 this.columnccontemail = base.Columns["ccontemail"];
                 this.columnPIN = base.Columns["PIN"];
                 this.columnoraclecode = base.Columns["oraclecode"];
+                this.columnInvoiceName = base.Columns["InvoiceName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4057,6 +4070,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnPIN);
                 this.columnoraclecode = new global::System.Data.DataColumn("oraclecode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoraclecode);
+                this.columnInvoiceName = new global::System.Data.DataColumn("InvoiceName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -4085,6 +4100,7 @@ namespace Mbc5.DataSets {
                 this.columnbcontemail.MaxLength = 50;
                 this.columnccontemail.MaxLength = 50;
                 this.columnoraclecode.MaxLength = 7;
+                this.columnInvoiceName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10420,6 +10436,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceName {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceName\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -10680,6 +10712,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetoraclecodeNull() {
                 this[this.tablecust.oraclecodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceNameNull() {
+                return this.IsNull(this.tablecust.InvoiceNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceNameNull() {
+                this[this.tablecust.InvoiceNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14972,6 +15016,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("ccontemail", "ccontemail");
             tableMapping.ColumnMappings.Add("PIN", "PIN");
             tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
+            tableMapping.ColumnMappings.Add("InvoiceName", "InvoiceName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -15393,7 +15438,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        schcode, schname, contryear, csrep, mbconlinepassword, schzip, contfname, contlname, schstate, InvoiceZipCode, InvoiceState, InvoiceCity, InvoiceAddr2, InvoiceAddr, ShippingState, ShippingZipCode, ShippingCity, 
-                         ShippingAddr2, ShippingAddr, contemail, bcontemail, ccontemail, PIN, oraclecode
+                         ShippingAddr2, ShippingAddr, contemail, bcontemail, ccontemail, PIN, oraclecode, InvoiceName
 FROM            cust
 WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

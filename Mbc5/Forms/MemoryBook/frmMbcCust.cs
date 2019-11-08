@@ -66,9 +66,11 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
        
    private void frmMbcCust_Load(object sender,EventArgs e) {
-            
-            
 
+            this.AutoScroll = false;
+            this.pg1.AutoScroll = false;
+            splitContainer.Panel1.AutoScroll = false;
+            splitContainer.Panel2.AutoScroll = false;
 
             this.frmMain = (frmMain)this.MdiParent;
 

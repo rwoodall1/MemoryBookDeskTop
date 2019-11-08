@@ -7803,7 +7803,7 @@ namespace Mbc5.Forms
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)
 		{
 
-			try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+			try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")"; }
 			catch
 			{
 
