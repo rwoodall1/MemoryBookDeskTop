@@ -1043,7 +1043,7 @@
       <ReportItems>
         <Image Name="JostensLogo">
           <Source>Embedded</Source>
-          <Value>JostensLogo</Value>
+          <Value>MemBookJostensLogo</Value>
           <Sizing>FitProportional</Sizing>
           <Height>0.60417in</Height>
           <Width>2.16667in</Width>
