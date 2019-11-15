@@ -1650,6 +1650,28 @@ namespace Mbc5.Dialogs {
         {
             Search(txtSearch.Text);
         }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            var a = 1;
+            if (e.KeyCode==Keys.Down)
+            {
+                if(this.ActiveControl== txtSearch)
+                {
+                    this.dgSearch.Focus();
+                }
+            }
+        }
+
+        private void txtSearch_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Down:
+                 e.IsInputKey = true;
+                    break;
+            }
+        }
     }
    
 

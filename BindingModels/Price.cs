@@ -154,6 +154,8 @@ namespace BindingModels
         public decimal SpecialCoverPrice1 { get; set; }
         public decimal SpecialCoverPrice2 { get; set; }
         public decimal SpecialCoverPrice3 { get; set; }
+        public decimal CharacterResourceLF { get; set; }
+        public decimal CharacterResourceSF { get; set; }
 
     }
     public class JostenPricing

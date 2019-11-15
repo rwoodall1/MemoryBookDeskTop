@@ -111,7 +111,7 @@ namespace Mbc5.Forms.Meridian {
 
             }
 
-            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString();
+            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassLF : OptionPrices.HallPassSF)).ToString();
             bmarkprcTextBox.Text = (bmarkqtyTextBox.ConvertToInt() * OptionPrices.BkMrk).ToString();
             vpprcTextBox.Text = (vpaqtyTextBox.ConvertToInt() * (sfRadioButton.Checked ? OptionPrices.VpSF : OptionPrices.VpLF)).ToString();
             vpbprcTextBox.Text = (vpbqtyTextBox.ConvertToInt() * OptionPrices.VpLF).ToString();//vinyle pocket B only available if LF
@@ -119,10 +119,10 @@ namespace Mbc5.Forms.Meridian {
             stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString();
             duraglzprcTextBox.Text = (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlazeSF)).ToString();
             wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString();
-            typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString();
+            characterResourceAmtTextBox.Text = (characterResourceQtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.CharacterResourceLF : OptionPrices.CharacterResourceSF)).ToString();
             //TotalOption __________________________________________________________________
             lblTotalOptions.Text = (hallppriceTextBox.ConvertToDecimal() + bmarkprcTextBox.ConvertToDecimal() + idpouchprcTextBox.ConvertToDecimal()
-             + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + typesetprcTextBox.ConvertToDecimal()
+             + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + characterResourceAmtTextBox.ConvertToDecimal()
              + lblSpecialCoverPrice.ConvertToDecimal() + vpprcTextBox.ConvertToDecimal() + vpbprcTextBox.ConvertToDecimal()).ToString();
             //________________________________________________________________
 
@@ -1775,13 +1775,13 @@ namespace Mbc5.Forms.Meridian {
             }
 
             //--------------------------
-            if (typesetqtyTextBox.ConvertToInt() > 0)
+            if (characterResourceQtyTextBox.ConvertToInt() > 0)
             {
                 vrow = new MBidInvoiceDetail();
-                vrow.Quantity = typesetqtyTextBox.ConvertToInt();
-                vrow.Price = typesetprcTextBox.ConvertToDecimal();
+                vrow.Quantity = characterResourceQtyTextBox.ConvertToInt();
+                vrow.Price = characterResourceAmtTextBox.ConvertToDecimal();
                 vrow.UnitPrice = vrow.Price / vrow.Quantity;
-                vrow.Description = "Typesetting Service";
+                vrow.Description = "Character Resource";
                 vBidDetails.Add(vrow);
                 vrow = null;
 

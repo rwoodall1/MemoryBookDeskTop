@@ -563,6 +563,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnshpname;
             
+            private global::System.Data.DataColumn columnCharacterResourceQty;
+            
+            private global::System.Data.DataColumn columnCharacterResourcAmt;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mbidsDataTable() {
@@ -1734,6 +1738,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CharacterResourceQtyColumn {
+                get {
+                    return this.columnCharacterResourceQty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CharacterResourcAmtColumn {
+                get {
+                    return this.columnCharacterResourcAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1910,7 +1930,9 @@ namespace Mbc5.DataSets {
                         string shpcity, 
                         string shpstate, 
                         string shpzip, 
-                        string shpname) {
+                        string shpname, 
+                        int CharacterResourceQty, 
+                        decimal CharacterResourcAmt) {
                 mbidsRow rowmbidsRow = ((mbidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -2054,7 +2076,9 @@ namespace Mbc5.DataSets {
                         shpcity,
                         shpstate,
                         shpzip,
-                        shpname};
+                        shpname,
+                        CharacterResourceQty,
+                        CharacterResourcAmt};
                 rowmbidsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmbidsRow);
                 return rowmbidsRow;
@@ -2226,6 +2250,8 @@ namespace Mbc5.DataSets {
                 this.columnshpstate = base.Columns["shpstate"];
                 this.columnshpzip = base.Columns["shpzip"];
                 this.columnshpname = base.Columns["shpname"];
+                this.columnCharacterResourceQty = base.Columns["CharacterResourceQty"];
+                this.columnCharacterResourcAmt = base.Columns["CharacterResourcAmt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2515,6 +2541,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnshpzip);
                 this.columnshpname = new global::System.Data.DataColumn("shpname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnshpname);
+                this.columnCharacterResourceQty = new global::System.Data.DataColumn("CharacterResourceQty", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCharacterResourceQty);
+                this.columnCharacterResourcAmt = new global::System.Data.DataColumn("CharacterResourcAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCharacterResourcAmt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschcode.MaxLength = 50;
@@ -4973,6 +5003,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int CharacterResourceQty {
+                get {
+                    try {
+                        return ((int)(this[this.tablembids.CharacterResourceQtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CharacterResourceQty\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.CharacterResourceQtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal CharacterResourcAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablembids.CharacterResourcAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CharacterResourcAmt\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.CharacterResourcAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablembids.schcodeColumn);
             }
@@ -6662,6 +6724,30 @@ namespace Mbc5.DataSets {
             public void SetshpnameNull() {
                 this[this.tablembids.shpnameColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCharacterResourceQtyNull() {
+                return this.IsNull(this.tablembids.CharacterResourceQtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCharacterResourceQtyNull() {
+                this[this.tablembids.CharacterResourceQtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCharacterResourcAmtNull() {
+                return this.IsNull(this.tablembids.CharacterResourcAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCharacterResourcAmtNull() {
+                this[this.tablembids.CharacterResourcAmtColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -6966,6 +7052,8 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             tableMapping.ColumnMappings.Add("shpstate", "shpstate");
             tableMapping.ColumnMappings.Add("shpzip", "shpzip");
             tableMapping.ColumnMappings.Add("shpname", "shpname");
+            tableMapping.ColumnMappings.Add("CharacterResourceQty", "CharacterResourceQty");
+            tableMapping.ColumnMappings.Add("CharacterResourcAmt", "CharacterResourcAmt");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -7164,7 +7252,9 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "1p = @discdesc1p, discdesc2 = @discdesc2, discdesc2p = @discdesc2p, \r\n          " +
                 "               earlydisc = @earlydisc, earlydiscp = @earlydiscp, predisc = @pred" +
                 "isc, prediscprc = @prediscprc, ReOrder = @ReOrder, notes = @notes, adcdesc = @ad" +
-                "cdesc, adcamt = @adcamt\r\nWHERE        (Id = @Id)";
+                "cdesc, adcamt = @adcamt, \r\n                         CharacterResourceQty = @Char" +
+                "acterResourceQty, CharacterResourcAmt = @CharacterResourcAmt\r\nWHERE        (Id =" +
+                " @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtedate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "qtedate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7289,6 +7379,8 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adcdesc", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "adcdesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adcamt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "adcamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CharacterResourceQty", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CharacterResourceQty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CharacterResourcAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "CharacterResourcAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -7336,9 +7428,9 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "st.schzip, mbids.Id, mbids.SchoolTaxRate, mbids.DoNotChargeTax, mbids.ModifiedBy" +
                 ", mbids.adcdesc, mbids.adcamt, mbids.notes, \r\n                         mcust.shp" +
                 "addr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.shpname" +
-                "\r\nFROM            mbids LEFT OUTER JOIN\r\n                         mcust ON mbids" +
-                ".schcode = mcust.schcode\r\nWHERE        (mbids.schcode = @schcode)\r\nORDER BY mbid" +
-                "s.schcode DESC";
+                ", mbids.CharacterResourceQty, mbids.CharacterResourcAmt\r\nFROM            mbids L" +
+                "EFT OUTER JOIN\r\n                         mcust ON mbids.schcode = mcust.schcode\r" +
+                "\nWHERE        (mbids.schcode = @schcode)\r\nORDER BY mbids.schcode DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8399,6 +8491,8 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                     string notes, 
                     string adcdesc, 
                     global::System.Nullable<decimal> adcamt, 
+                    global::System.Nullable<int> CharacterResourceQty, 
+                    global::System.Nullable<decimal> CharacterResourcAmt, 
                     int Id) {
             if ((booktype == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -9138,7 +9232,19 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[123].Value = ((int)(Id));
+            if ((CharacterResourceQty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((int)(CharacterResourceQty.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[123].Value = global::System.DBNull.Value;
+            }
+            if ((CharacterResourcAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[124].Value = ((decimal)(CharacterResourcAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[124].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[125].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

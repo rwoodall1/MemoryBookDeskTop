@@ -5079,25 +5079,7 @@ namespace Mbc5.Forms.MemoryBook
                 }
                 else
                 {
-                    //getinvoices
-                    var sqlquery = new SQLCustomClient();
-                    var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
-                                    Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
-                                     Left Join Invoice I ON SX.XtraInvoice=I.Invno 
-                                        Where SX.SalesInvoice=@Invno Order By I.qtedate desc";
-                    sqlquery.CommandText(cmdtext);
-                    sqlquery.AddParameter("@Invno",Invno);
-                   var xtraResult=sqlquery.SelectMany<XtraInvoiceGrid>();
-                    if (xtraResult.IsError)
-                    {
-                        MbcMessageBox.Information("Failed to get Xtra Invoices", "");
-                        return;
-                    }
-                    var vXtra = (List<XtraInvoiceGrid>)xtraResult.Data;
-                    this.XrtaInvoicesGridData = vXtra;
-                    XtraInvoiceBindingSource.DataSource = this.XrtaInvoicesGridData;
-                    grdXtraInvoice.DataSource = XtraInvoiceBindingSource;
-
+                    GetXtraInvoices();
                 }
             }
         }
@@ -5184,7 +5166,10 @@ namespace Mbc5.Forms.MemoryBook
                             sqlquery.AddParameter("@schcode", this.Schcode);
                             sqlquery.AddParameter("@nocopies", txtQuantity.Text.Trim());
                             sqlquery.AddParameter("@book_each", lblBookPrice.Text.Replace("$", "").Replace(",", ""));
-                            sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotalValue.Text.Replace("$", "").Replace(",", ""));
+                            var vBookTotal = lblBookTotalValue.ConvertToDecimal();
+                            var vShipping = txtShippingCharges.ConvertToDecimal();
+                            
+                            sqlquery.AddParameter("@BeforeTaxTotal", vBookTotal+vShipping);
                             sqlquery.AddParameter("@invtot", lblInvoiceTotal.Text.Replace("$", "").Replace(",", ""));   
                                   
                             sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim());
@@ -5764,9 +5749,60 @@ namespace Mbc5.Forms.MemoryBook
           
         }
 
+        private void grdXtraInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dresult = MessageBox.Show("Are you sure you want to delete this invoice?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            if (dresult==DialogResult.No)
+            {
+                return;
+            }
+            var senderGrid = (DataGridView)sender;
 
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var vInvoice= grdXtraInvoice.Rows[e.RowIndex].Cells[1].Value.ToString();
+                DeleteXtraInvoice(vInvoice);
+            }
+        }
 
+        private void DeleteXtraInvoice(string vInvoice)
+        {
+            var sqlclient = new SQLCustomClient();
+            sqlclient.CommandText("Delete from Invoice where Invno=@Invno ");
+            sqlclient.AddParameter("@Invno", vInvoice);
+            sqlclient.ExecuteScalar();
+            sqlclient.ClearParameters();
+            sqlclient.CommandText("Delete from InvoiceDetail Where Invno=@Invno");
+            sqlclient.AddParameter("@Invno", vInvoice);
+            sqlclient.ExecuteScalar();
+            sqlclient.ClearParameters();
+            sqlclient.CommandText("Delete From Sales_ExtraInvoice Where XtraInvoice=@Invno");
+            sqlclient.AddParameter("@Invno", vInvoice);
+            sqlclient.ExecuteScalar();
+            GetXtraInvoices();
+        }
 
+        private void GetXtraInvoices()
+        {
+            var sqlquery = new SQLCustomClient();
+            var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
+                                    Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
+                                     Left Join Invoice I ON SX.XtraInvoice=I.Invno 
+                                        Where SX.SalesInvoice=@Invno Order By I.qtedate desc";
+            sqlquery.CommandText(cmdtext);
+            sqlquery.AddParameter("@Invno", Invno);
+            var xtraResult = sqlquery.SelectMany<XtraInvoiceGrid>();
+            if (xtraResult.IsError)
+            {
+                MbcMessageBox.Information("Failed to get Xtra Invoices", "");
+                return;
+            }
+            var vXtra = (List<XtraInvoiceGrid>)xtraResult.Data;
+            this.XrtaInvoicesGridData = vXtra;
+            XtraInvoiceBindingSource.DataSource = this.XrtaInvoicesGridData;
+            grdXtraInvoice.DataSource = XtraInvoiceBindingSource;
+        }
 
         //Nothing below here
     }

@@ -200,8 +200,8 @@
             this.desc2TextBox1 = new System.Windows.Forms.TextBox();
             this.impquidprcTextBox = new System.Windows.Forms.TextBox();
             this.txtImpGuideQty = new System.Windows.Forms.TextBox();
-            this.typesetprcTextBox = new System.Windows.Forms.TextBox();
-            this.typesetqtyTextBox = new System.Windows.Forms.TextBox();
+            this.characterResourceAmtTextBox = new System.Windows.Forms.TextBox();
+            this.characterResourceQtyTextBox = new System.Windows.Forms.TextBox();
             this.wallchprcTextBox = new System.Windows.Forms.TextBox();
             this.wallchqtyTextBox = new System.Windows.Forms.TextBox();
             this.duraglzprcTextBox = new System.Windows.Forms.TextBox();
@@ -1908,9 +1908,9 @@
             this.panel4.Controls.Add(this.impquidprcTextBox);
             this.panel4.Controls.Add(impguidqtyLabel);
             this.panel4.Controls.Add(this.txtImpGuideQty);
-            this.panel4.Controls.Add(this.typesetprcTextBox);
+            this.panel4.Controls.Add(this.characterResourceAmtTextBox);
             this.panel4.Controls.Add(typesetqtyLabel);
-            this.panel4.Controls.Add(this.typesetqtyTextBox);
+            this.panel4.Controls.Add(this.characterResourceQtyTextBox);
             this.panel4.Controls.Add(this.wallchprcTextBox);
             this.panel4.Controls.Add(wallchqtyLabel);
             this.panel4.Controls.Add(this.wallchqtyTextBox);
@@ -2209,23 +2209,23 @@
             this.txtImpGuideQty.TabIndex = 28;
             this.txtImpGuideQty.Leave += new System.EventHandler(this.txtImpGuideQty_Leave);
             // 
-            // typesetprcTextBox
+            // characterResourceAmtTextBox
             // 
-            this.typesetprcTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "typesetprc", true));
-            this.typesetprcTextBox.Location = new System.Drawing.Point(177, 215);
-            this.typesetprcTextBox.Name = "typesetprcTextBox";
-            this.typesetprcTextBox.ReadOnly = true;
-            this.typesetprcTextBox.Size = new System.Drawing.Size(51, 20);
-            this.typesetprcTextBox.TabIndex = 27;
+            this.characterResourceAmtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "CharacterResourcAmt", true));
+            this.characterResourceAmtTextBox.Location = new System.Drawing.Point(177, 215);
+            this.characterResourceAmtTextBox.Name = "characterResourceAmtTextBox";
+            this.characterResourceAmtTextBox.ReadOnly = true;
+            this.characterResourceAmtTextBox.Size = new System.Drawing.Size(51, 20);
+            this.characterResourceAmtTextBox.TabIndex = 27;
             // 
-            // typesetqtyTextBox
+            // characterResourceQtyTextBox
             // 
-            this.typesetqtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "typesetqty", true));
-            this.typesetqtyTextBox.Location = new System.Drawing.Point(143, 215);
-            this.typesetqtyTextBox.Name = "typesetqtyTextBox";
-            this.typesetqtyTextBox.Size = new System.Drawing.Size(28, 20);
-            this.typesetqtyTextBox.TabIndex = 25;
-            this.typesetqtyTextBox.Leave += new System.EventHandler(this.typesetqtyTextBox_Leave);
+            this.characterResourceQtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "CharacterResourceQty", true));
+            this.characterResourceQtyTextBox.Location = new System.Drawing.Point(143, 215);
+            this.characterResourceQtyTextBox.Name = "characterResourceQtyTextBox";
+            this.characterResourceQtyTextBox.Size = new System.Drawing.Size(28, 20);
+            this.characterResourceQtyTextBox.TabIndex = 25;
+            this.characterResourceQtyTextBox.Leave += new System.EventHandler(this.typesetqtyTextBox_Leave);
             // 
             // wallchprcTextBox
             // 
@@ -3528,8 +3528,8 @@
         private System.Windows.Forms.TextBox desc2TextBox1;
         private System.Windows.Forms.TextBox impquidprcTextBox;
         private System.Windows.Forms.TextBox txtImpGuideQty;
-        private System.Windows.Forms.TextBox typesetprcTextBox;
-        private System.Windows.Forms.TextBox typesetqtyTextBox;
+        private System.Windows.Forms.TextBox characterResourceAmtTextBox;
+        private System.Windows.Forms.TextBox characterResourceQtyTextBox;
         private System.Windows.Forms.TextBox wallchprcTextBox;
         private System.Windows.Forms.TextBox wallchqtyTextBox;
         private System.Windows.Forms.TextBox duraglzprcTextBox;

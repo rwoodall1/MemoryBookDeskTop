@@ -76,8 +76,8 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label mdescLabel;
             System.Windows.Forms.Label notesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.MBidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMBids = new Mbc5.DataSets.dsMBids();
@@ -117,8 +117,8 @@
             this.desc2TextBox1 = new System.Windows.Forms.TextBox();
             this.impquidprcTextBox = new System.Windows.Forms.TextBox();
             this.txtImpGuideQty = new System.Windows.Forms.TextBox();
-            this.typesetprcTextBox = new System.Windows.Forms.TextBox();
-            this.typesetqtyTextBox = new System.Windows.Forms.TextBox();
+            this.characterResourceAmtTextBox = new System.Windows.Forms.TextBox();
+            this.characterResourceQtyTextBox = new System.Windows.Forms.TextBox();
             this.wallchprcTextBox = new System.Windows.Forms.TextBox();
             this.wallchqtyTextBox = new System.Windows.Forms.TextBox();
             this.duraglzprcTextBox = new System.Windows.Forms.TextBox();
@@ -506,17 +506,17 @@
             // 
             typesetqtyLabel.AutoSize = true;
             typesetqtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            typesetqtyLabel.Location = new System.Drawing.Point(17, 215);
+            typesetqtyLabel.Location = new System.Drawing.Point(17, 219);
             typesetqtyLabel.Name = "typesetqtyLabel";
             typesetqtyLabel.Size = new System.Drawing.Size(120, 13);
             typesetqtyLabel.TabIndex = 24;
-            typesetqtyLabel.Text = "Typesetting Service";
+            typesetqtyLabel.Text = "Character Resource";
             // 
             // wallchqtyLabel
             // 
             wallchqtyLabel.AutoSize = true;
             wallchqtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            wallchqtyLabel.Location = new System.Drawing.Point(5, 195);
+            wallchqtyLabel.Location = new System.Drawing.Point(5, 196);
             wallchqtyLabel.Name = "wallchqtyLabel";
             wallchqtyLabel.Size = new System.Drawing.Size(132, 13);
             wallchqtyLabel.TabIndex = 21;
@@ -526,7 +526,7 @@
             // 
             duraglzqtyLabel.AutoSize = true;
             duraglzqtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            duraglzqtyLabel.Location = new System.Drawing.Point(71, 169);
+            duraglzqtyLabel.Location = new System.Drawing.Point(71, 173);
             duraglzqtyLabel.Name = "duraglzqtyLabel";
             duraglzqtyLabel.Size = new System.Drawing.Size(66, 13);
             duraglzqtyLabel.TabIndex = 18;
@@ -965,9 +965,9 @@
             this.panel4.Controls.Add(this.impquidprcTextBox);
             this.panel4.Controls.Add(impguidqtyLabel);
             this.panel4.Controls.Add(this.txtImpGuideQty);
-            this.panel4.Controls.Add(this.typesetprcTextBox);
+            this.panel4.Controls.Add(this.characterResourceAmtTextBox);
             this.panel4.Controls.Add(typesetqtyLabel);
-            this.panel4.Controls.Add(this.typesetqtyTextBox);
+            this.panel4.Controls.Add(this.characterResourceQtyTextBox);
             this.panel4.Controls.Add(this.wallchprcTextBox);
             this.panel4.Controls.Add(wallchqtyLabel);
             this.panel4.Controls.Add(this.wallchqtyTextBox);
@@ -999,12 +999,12 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "dsMeridianBidDetails";
-            reportDataSource1.Value = this.MBidInvoiceDetailBindingSource;
-            reportDataSource2.Name = "dsMBid";
-            reportDataSource2.Value = this.mbidsBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource3.Name = "dsMeridianBidDetails";
+            reportDataSource3.Value = this.MBidInvoiceDetailBindingSource;
+            reportDataSource4.Name = "dsMBid";
+            reportDataSource4.Value = this.mbidsBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianQuote.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(781, 277);
             this.reportViewer1.Name = "reportViewer1";
@@ -1241,25 +1241,25 @@
             this.txtImpGuideQty.Size = new System.Drawing.Size(28, 20);
             this.txtImpGuideQty.TabIndex = 28;
             // 
-            // typesetprcTextBox
+            // characterResourceAmtTextBox
             // 
-            this.typesetprcTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "typesetprc", true));
-            this.typesetprcTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typesetprcTextBox.Location = new System.Drawing.Point(177, 215);
-            this.typesetprcTextBox.Name = "typesetprcTextBox";
-            this.typesetprcTextBox.ReadOnly = true;
-            this.typesetprcTextBox.Size = new System.Drawing.Size(51, 20);
-            this.typesetprcTextBox.TabIndex = 27;
+            this.characterResourceAmtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "CharacterResourcAmt", true));
+            this.characterResourceAmtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterResourceAmtTextBox.Location = new System.Drawing.Point(177, 215);
+            this.characterResourceAmtTextBox.Name = "characterResourceAmtTextBox";
+            this.characterResourceAmtTextBox.ReadOnly = true;
+            this.characterResourceAmtTextBox.Size = new System.Drawing.Size(51, 20);
+            this.characterResourceAmtTextBox.TabIndex = 27;
             // 
-            // typesetqtyTextBox
+            // characterResourceQtyTextBox
             // 
-            this.typesetqtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "typesetqty", true));
-            this.typesetqtyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typesetqtyTextBox.Location = new System.Drawing.Point(143, 215);
-            this.typesetqtyTextBox.Name = "typesetqtyTextBox";
-            this.typesetqtyTextBox.Size = new System.Drawing.Size(28, 20);
-            this.typesetqtyTextBox.TabIndex = 25;
-            this.typesetqtyTextBox.Leave += new System.EventHandler(this.typesetqtyTextBox_Leave);
+            this.characterResourceQtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "CharacterResourceQty", true));
+            this.characterResourceQtyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterResourceQtyTextBox.Location = new System.Drawing.Point(143, 215);
+            this.characterResourceQtyTextBox.Name = "characterResourceQtyTextBox";
+            this.characterResourceQtyTextBox.Size = new System.Drawing.Size(28, 20);
+            this.characterResourceQtyTextBox.TabIndex = 25;
+            this.characterResourceQtyTextBox.Leave += new System.EventHandler(this.typesetqtyTextBox_Leave);
             // 
             // wallchprcTextBox
             // 
@@ -1295,7 +1295,7 @@
             // 
             this.duraglzqtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "duraglzqty", true));
             this.duraglzqtyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.duraglzqtyTextBox.Location = new System.Drawing.Point(144, 172);
+            this.duraglzqtyTextBox.Location = new System.Drawing.Point(144, 169);
             this.duraglzqtyTextBox.Name = "duraglzqtyTextBox";
             this.duraglzqtyTextBox.Size = new System.Drawing.Size(28, 20);
             this.duraglzqtyTextBox.TabIndex = 19;
@@ -2134,8 +2134,8 @@
         private System.Windows.Forms.TextBox desc2TextBox1;
         private System.Windows.Forms.TextBox impquidprcTextBox;
         private System.Windows.Forms.TextBox txtImpGuideQty;
-        private System.Windows.Forms.TextBox typesetprcTextBox;
-        private System.Windows.Forms.TextBox typesetqtyTextBox;
+        private System.Windows.Forms.TextBox characterResourceAmtTextBox;
+        private System.Windows.Forms.TextBox characterResourceQtyTextBox;
         private System.Windows.Forms.TextBox wallchprcTextBox;
         private System.Windows.Forms.TextBox wallchqtyTextBox;
         private System.Windows.Forms.TextBox duraglzprcTextBox;

@@ -499,7 +499,7 @@ private void UpdateProdutnCopies()
 
             }
 
-            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString();
+            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassLF : OptionPrices.HallPassSF)).ToString();
             bmarkprcTextBox.Text = (bmarkqtyTextBox.ConvertToInt() * OptionPrices.BkMrk).ToString();
             vpprcTextBox.Text = (vpaqtyTextBox.ConvertToInt() * (sfRadioButton.Checked ? OptionPrices.VpSF : OptionPrices.VpLF)).ToString();
             vpbprcTextBox.Text = (vpbqtyTextBox.ConvertToInt() * OptionPrices.VpLF).ToString();//vinyle pocket B only available if LF
@@ -507,10 +507,10 @@ private void UpdateProdutnCopies()
             stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString();
             duraglzprcTextBox.Text = (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlazeSF)).ToString();
             wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString();
-            typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString();
+            characterResourceAmtTextBox.Text = (characterResourceQtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.CharacterResourceLF : OptionPrices.CharacterResourceSF)).ToString();
             //TotalOption __________________________________________________________________
             lblTotalOptions.Text = (hallppriceTextBox.ConvertToDecimal() + bmarkprcTextBox.ConvertToDecimal() + idpouchprcTextBox.ConvertToDecimal()
-                + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + typesetprcTextBox.ConvertToDecimal()
+                + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + characterResourceAmtTextBox.ConvertToDecimal()
                 + lblSpecialCoverPrice.ConvertToDecimal() + vpprcTextBox.ConvertToDecimal() + vpbprcTextBox.ConvertToDecimal()).ToString();
             //________________________________________________________________
 
@@ -1512,16 +1512,16 @@ private void UpdateProdutnCopies()
             }
 
             //--------------------------
-            if (typesetqtyTextBox.ConvertToInt() > 0)
+            if (characterResourceQtyTextBox.ConvertToInt() > 0)
             {
                 sqlQuery.ClearParameters();
                 sqlQuery.AddParameter("@Schcode", Schcode);
                 sqlQuery.AddParameter("@Invno", Invno);
-                sqlQuery.AddParameter("@Descr", "Typesetting Service");
-                sqlQuery.AddParameter("@Amount", typesetprcTextBox.Text);
+                sqlQuery.AddParameter("@Descr", "Character Resource");
+                sqlQuery.AddParameter("@Amount", characterResourceAmtTextBox.Text);
                 sqlQuery.AddParameter("@Discpercent", DBNull.Value);
-                sqlQuery.AddParameter("@Quantity", typesetqtyTextBox.Text);
-                sqlQuery.AddParameter("@UnitPrice", (typesetprcTextBox.ConvertToDecimal() / typesetqtyTextBox.ConvertToInt()));
+                sqlQuery.AddParameter("@Quantity", characterResourceQtyTextBox.Text);
+                sqlQuery.AddParameter("@UnitPrice", (characterResourceAmtTextBox.ConvertToDecimal() / characterResourceQtyTextBox.ConvertToInt()));
                 updateDetailResult = sqlQuery.Update();
                 if (updateDetailResult.IsError)
                 {

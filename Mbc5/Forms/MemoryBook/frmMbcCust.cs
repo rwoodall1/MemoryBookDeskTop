@@ -188,6 +188,11 @@ public override bool Add() {
     return true;
     }
 public override void Delete() {
+            if (!ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administration" }))
+            {
+                MbcMessageBox.Hand("You do not have permission to remove this record.","");
+            }
+            
 
 	//should mark as deleted or remove??
 	this.txtModifiedBy.Text = this.ApplicationUser.id;
@@ -2387,7 +2392,7 @@ public override void Cancel() {
             {
                 this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
           
-                SetInvnoSchCode();
+               SetInvnoSchCode();
             }
             catch (Exception ex)
             {
