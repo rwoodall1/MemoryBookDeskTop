@@ -48,6 +48,7 @@ namespace Mbc5.Forms.MemoryBook {
         private UserPrincipal ApplicationUser { get; set; }
         public new frmMain frmMain { get; set; }
         private bool CustAddressHasChanged { get; set; }
+       
         public event PropertyChangedEventHandler PropertyChanged;
    #region "Properties"
         private bool MktGo {
@@ -122,7 +123,9 @@ namespace Mbc5.Forms.MemoryBook {
         }
 private  ApiProcessingResult<bool> Save()
 {
-	var processingResult = new ApiProcessingResult<bool>();
+
+           
+            var processingResult = new ApiProcessingResult<bool>();
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
     bool retval = false;
            
@@ -133,7 +136,8 @@ private  ApiProcessingResult<bool> Save()
     if (this.ValidateChildren(ValidationConstraints.Enabled))
     {
         this.custBindingSource.EndEdit();
-        try
+              
+                try
         {
            var aa= custTableAdapter.Update(dsCust);
             this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
@@ -143,14 +147,16 @@ private  ApiProcessingResult<bool> Save()
         }
         catch (DBConcurrencyException dbex)
         {
-              MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
-            this.Fill();
+                    MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                    this.Fill();
                     //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
-            //if (result == DialogResult.Yes) {
-            //    Save();
-            //}
-                                 
-        }catch(Exception ex) {
+                    //if (result == DialogResult.Yes)
+                    //{
+                    //    Save();
+                    //}
+
+                }
+                catch(Exception ex) {
             MessageBox.Show("School record failed to update:" + ex.Message);
             ex.ToExceptionless()
             .SetMessage("School record failed to update:" + ex.Message)
@@ -2390,9 +2396,10 @@ public override void Cancel() {
         {
             try
             {
+
                 this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-          
-               SetInvnoSchCode();
+
+                SetInvnoSchCode();
             }
             catch (Exception ex)
             {
