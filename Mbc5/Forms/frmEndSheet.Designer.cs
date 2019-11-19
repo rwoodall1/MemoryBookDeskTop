@@ -79,9 +79,9 @@
             System.Windows.Forms.Label label34;
             System.Windows.Forms.Label label35;
             System.Windows.Forms.Label supnoLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
             this.btnNewEndSheetScanRec = new System.Windows.Forms.Button();
@@ -259,6 +259,7 @@
             this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
             this.bannerdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             prodnoLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             clr1Label = new System.Windows.Forms.Label();
@@ -329,6 +330,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bannerdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // prodnoLabel
@@ -1157,14 +1159,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1440,6 +1442,7 @@
             this.frcopiesTextBox.Name = "frcopiesTextBox";
             this.frcopiesTextBox.Size = new System.Drawing.Size(64, 20);
             this.frcopiesTextBox.TabIndex = 45;
+            this.frcopiesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.frcopiesTextBox_Validating);
             // 
             // label1
             // 
@@ -1502,6 +1505,7 @@
             this.bkcopiesTextBox.Name = "bkcopiesTextBox";
             this.bkcopiesTextBox.Size = new System.Drawing.Size(64, 20);
             this.bkcopiesTextBox.TabIndex = 46;
+            this.bkcopiesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.bkcopiesTextBox_Validating);
             // 
             // bldescTextBox
             // 
@@ -1557,6 +1561,7 @@
             this.nopagesTextBox.Name = "nopagesTextBox";
             this.nopagesTextBox.Size = new System.Drawing.Size(47, 20);
             this.nopagesTextBox.TabIndex = 36;
+            this.nopagesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nopagesTextBox_Validating);
             // 
             // prntsmpCheckBox
             // 
@@ -1577,6 +1582,7 @@
             this.reqstdcpyTextBox.Name = "reqstdcpyTextBox";
             this.reqstdcpyTextBox.Size = new System.Drawing.Size(53, 20);
             this.reqstdcpyTextBox.TabIndex = 33;
+            this.reqstdcpyTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.reqstdcpyTextBox_Validating);
             // 
             // endshtnoTextBox
             // 
@@ -1775,6 +1781,7 @@
             this.nocopiesTextBox1.Name = "nocopiesTextBox1";
             this.nocopiesTextBox1.Size = new System.Drawing.Size(100, 20);
             this.nocopiesTextBox1.TabIndex = 158;
+            this.nocopiesTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.nocopiesTextBox1_Validating);
             // 
             // btnUpdateSuppDates
             // 
@@ -1931,14 +1938,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2237,6 +2244,7 @@
             this.nopagesTextBox1.Name = "nopagesTextBox1";
             this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
             this.nopagesTextBox1.TabIndex = 58;
+            this.nopagesTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.nopagesTextBox1_Validating);
             // 
             // label15
             // 
@@ -2344,14 +2352,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bannerdetailDataGridView.AutoGenerateColumns = false;
             this.bannerdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.bannerdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bannerdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -2551,6 +2559,7 @@
             this.qtyTextBox.Name = "qtyTextBox";
             this.qtyTextBox.Size = new System.Drawing.Size(100, 20);
             this.qtyTextBox.TabIndex = 129;
+            this.qtyTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.qtyTextBox_Validating);
             // 
             // button6
             // 
@@ -2657,6 +2666,10 @@
             this.tableAdapterManager.supplTableAdapter = this.supplTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmEndSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2700,6 +2713,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bannerdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2884,5 +2898,6 @@
         private System.Windows.Forms.Button btnNewEndSheetScanRec;
         private System.Windows.Forms.Button btnAddSupplScan;
         private System.Windows.Forms.Button btnAddBannerWip;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

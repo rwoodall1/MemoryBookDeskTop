@@ -5,6 +5,14 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class XtraInvoiceGrid
+    {
+        public int XtraInvno { get; set; }
+        public int SalesInvno { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public int Quantity { get; set; }
+        public decimal Total { get; set; }
+    }
     public class InqCountModel
     {
         public string CSNAME { get; set; }

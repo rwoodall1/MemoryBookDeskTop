@@ -4063,6 +4063,7 @@ namespace Mbc5.Forms
             // 
             // rmbfrmDateBox
             // 
+            this.rmbfrmDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rmbfrmDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmbfrm", true));
             this.rmbfrmDateBox.Date = null;
             this.rmbfrmDateBox.DateValue = null;
@@ -4074,6 +4075,7 @@ namespace Mbc5.Forms
             // 
             // rmbtoDateBox
             // 
+            this.rmbtoDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rmbtoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmbto", true));
             this.rmbtoDateBox.Date = null;
             this.rmbtoDateBox.DateValue = null;

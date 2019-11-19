@@ -82,5 +82,11 @@ namespace BaseClass
             int.TryParse(ctrl.Text, out retval);
             return retval;
         }
+        public static bool IsNumeric(this TextBox ctrl)
+        {
+            int vnumber = 0;
+           return int.TryParse(ctrl.Text, out vnumber);
+        }
+        
     }
 }

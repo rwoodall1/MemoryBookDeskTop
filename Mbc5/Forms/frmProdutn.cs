@@ -7036,15 +7036,48 @@ namespace Mbc5.Forms
 
 
 			string subj = "Your Planners have shipped!";
-			var row =(DataRowView) custBindingSource.Current;
-			string email =row["schemail"].ToString();
+            var emailList = new List<string>();
+            if (txtCompany.Text=="MBC")
+            {
+                var row =(DataRowView) custBindingSource.Current;
+                string email = row["schemail"].ToString();
+                string email1 = row["contemail"].ToString();
+                if (!string.IsNullOrEmpty(email))
+                {
+                    emailList.Add(email);
+                }
+                if (!string.IsNullOrEmpty(email1))
+                {
+                    emailList.Add(email1);
+                }
+            }
+            else if(txtCompany.Text == "MER")
+            {
+                var row = (DataRowView)mcustBindingSource.Current;
+                string email = row["schemail"].ToString();
+                string email1 = row["contemail"].ToString();
+                
+                if (!string.IsNullOrEmpty(email))
+                {
+                    emailList.Add(email);
+                }
+                if (!string.IsNullOrEmpty(email1))
+                {
+                    emailList.Add(email1);
+                }
+
+            }
+            if (emailList.Count == 0)
+            {
+                MbcMessageBox.Information("There are no email addresses to send a product shipped email out.", "");
+            }
 			var emailHelper = new EmailHelper();
 			EmailType type = EmailType.Mbc;
 			List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
 			OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString()+".pdf" };
 			attachment.Add(att);
 
-			emailHelper.SendOutLookEmail(subj, email,"", body, type,attachment);
+			emailHelper.SendOutLookEmail(subj, emailList,null, body, type,attachment);
 			this.Cursor = Cursors.Default;
 		}
 		private void DisableControls(Control con)
@@ -7157,8 +7190,10 @@ namespace Mbc5.Forms
 			{
 				try {
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
+                    
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
                     mcustTableAdapter.Fill(dsMcust.mcust, Schcode);
+                  
                     mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
                     if (produtnBindingSource.Count>0)
@@ -10659,7 +10694,7 @@ namespace Mbc5.Forms
                 ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
                 prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
                 btnCDAdd.Visible = false;
-                EnableAllControls(this.tbProdutn.TabPages[5]);
+                EnableAllControls(this.tbProdutn.TabPages[4]);
             }
             catch (Exception ex)
             {
@@ -11048,7 +11083,7 @@ namespace Mbc5.Forms
                 partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
                 prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
                 btnAddPartial.Visible = false;
-                EnableAllControls(this.tbProdutn.TabPages[4]);
+                EnableAllControls(this.tbProdutn.TabPages[3]);
             }
             catch (Exception ex)
             {
@@ -11100,7 +11135,7 @@ namespace Mbc5.Forms
                 reOrderTableAdapter.Fill(dsProdutn.ReOrder, Invno);
               reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
                 btnAddReorder.Visible = false;
-                EnableAllControls(this.tbProdutn.TabPages[6]);
+                EnableAllControls(this.tbProdutn.TabPages[5]);
             }
             catch (Exception ex)
             {

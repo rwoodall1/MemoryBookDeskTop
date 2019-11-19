@@ -2562,6 +2562,7 @@ namespace Mbc5.Forms.MemoryBook
             {
                 try
                 {
+                  
                     custTableAdapter.Fill(dsSales.cust, Schcode);
                     var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
 
@@ -5806,14 +5807,7 @@ namespace Mbc5.Forms.MemoryBook
 
         //Nothing below here
     }
-    public class XtraInvoiceGrid
-    {
-        public int XtraInvno { get; set; }
-        public int SalesInvno { get; set; }
-        public DateTime InvoiceDate { get; set; }
-        public int Quantity { get; set; }
-        public decimal Total { get; set; }
-    }
+   
     public class XtraInvoicePrint
     {
         public DateTime qtedate { get; set; }

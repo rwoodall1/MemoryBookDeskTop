@@ -398,8 +398,13 @@ namespace Mbc5.Forms {
             //so call can be made from menu
             if (ShowSpinner)
             {
-                basePanel.Visible = true;
+                //basePanel.Visible = true;
                 // backgroundWorker1.RunWorkerAsync("Save");
+                var result = Save();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                }
             }
             else
             {
@@ -569,8 +574,8 @@ namespace Mbc5.Forms {
 		public ApiProcessingResult<bool> SaveEndSheet()
 		{
 			var processingResult = new ApiProcessingResult<bool>();
-	
-			if (dsEndSheet.endsheet.Count > 0)
+   
+            if (dsEndSheet.endsheet.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
 				{
@@ -6201,6 +6206,89 @@ namespace Mbc5.Forms {
                 try { bannerdetailTableAdapter.Fill(dsEndSheet.bannerdetail, Invno); } catch { }
             }
         }
+
+        private void nopagesTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+         
+            errorProvider1.SetError(nopagesTextBox1, "");
+            
+                if(!nopagesTextBox1.IsNumeric())
+                {
+                nopagesTextBox1.Text="0";
+                }
+            
+        }
+
+        private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            
+            errorProvider1.SetError(nocopiesTextBox1, "");
+            
+                if (!nocopiesTextBox1.IsNumeric())
+                {
+                nocopiesTextBox1.Text = "0";
+                }
+           
+        }
+
+        private void reqstdcpyTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(reqstdcpyTextBox, "");
+            
+                if (!reqstdcpyTextBox.IsNumeric())
+                {
+                reqstdcpyTextBox.Text = "0";
+                }
+            
+        }
+
+        private void nopagesTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(nopagesTextBox, "");
+           
+                if (!nopagesTextBox.IsNumeric())
+                {
+                nopagesTextBox.Text = "0";
+                }
+            
+        }
+
+        private void frcopiesTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(frcopiesTextBox, "");
+            
+                if (!frcopiesTextBox.IsNumeric())
+                {
+
+                frcopiesTextBox.Text="0";
+                }
+            }
+        
+
+        private void bkcopiesTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(bkcopiesTextBox, "");
+           
+                if (!bkcopiesTextBox.IsNumeric())
+                {
+                bkcopiesTextBox.Text = "0";
+                }
+           
+        }
+
+        private void qtyTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(qtyTextBox, "");
+            if (qtyTextBox.Text.Trim() != "")
+            {
+                if (!qtyTextBox.IsNumeric())
+                {
+                    qtyTextBox.Text = "0";
+                }
+            }
+        }
+
+
 
 
 
