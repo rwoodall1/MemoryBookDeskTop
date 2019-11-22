@@ -9591,9 +9591,9 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "                 webonly, freebooks, IconCopies, extrchg, IconAmt, Id, schooltax" +
                 ", schooltaxrate, subtotal, donotchargeschoolsalestax, icontotal, ColorPriceOverR" +
                 "ide\r\nFROM            bids\r\nWHERE        (schcode = @schocode)\r\nORDER BY contryea" +
-                "r DESC";
+                "r DESC, oa DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        ColorPriceOverRide, IconAmt, IconCopies, Id, adcuto, adjaftr, adjaf" +

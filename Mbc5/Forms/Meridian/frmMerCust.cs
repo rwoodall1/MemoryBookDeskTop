@@ -1099,7 +1099,7 @@ namespace Mbc5.Forms.Meridian {
             } 
             var emailHelper = new EmailHelper();
         
-            var subject = txtSchname.Text + " " + Schcode;
+            var subject = txtSchname.Text.Trim() + " " + Schcode;
             string vAddress = schemailTextBox.Text.Trim();
             emailHelper.SendOutLookEmail(subject,vAddress,null,"", EmailType.Meridian);
            
@@ -1164,6 +1164,63 @@ namespace Mbc5.Forms.Meridian {
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             this.Invno =(int)((DataRowView)(mcustBindingSource.Current)).Row["QInvno"];
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EmailAllContacts();
+        }
+        private void EmailAllContacts()
+        {
+            this.Cursor = Cursors.AppStarting;
+            string body = "";
+            string subj = txtSchname.Text.Trim() + " " + Schcode + " " + schstateComboBox.SelectedValue.ToString();
+            var dr = (DataRowView)mcustBindingSource.Current;
+            var vCont1 = dr["contemail"].ToString().Trim();
+            var vCont2 = dr["bcontemail"].ToString().Trim();
+           
+            List<string> emailList = new List<string>();
+            var emailHelper = new EmailHelper();
+            if (!string.IsNullOrEmpty(vCont1))
+            {
+                emailList.Add(vCont1);
+            }
+            if (!string.IsNullOrEmpty(vCont2))
+            {
+                emailList.Add(vCont2);
+            }
+          
+            EmailType type = EmailType.Meridian;
+            emailHelper.SendOutLookEmail(subj, emailList, "", body, type);
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnEmailContact_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContactEmail.Text))
+            {
+                this.errorProvider1.SetError(txtContactEmail, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Meridian);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContactEmail, "Email address is required.");
+            }
+        }
+
+        private void btnEmailCont2_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContactEmail.Text))
+            {
+                this.errorProvider1.SetError(txtContact2Email, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContact2Email.Text, "", "", EmailType.Meridian);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContact2Email, "Email address is required.");
+            }
         }
         //nothing below here
     }

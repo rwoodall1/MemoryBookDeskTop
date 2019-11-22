@@ -168,6 +168,7 @@
             this.lblModifiedBy = new System.Windows.Forms.Label();
             this.txtSchname = new System.Windows.Forms.TextBox();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.contcityTextBox = new System.Windows.Forms.TextBox();
             this.contaddr2TextBox1 = new System.Windows.Forms.TextBox();
             this.contaddrTextBox1 = new System.Windows.Forms.TextBox();
@@ -230,6 +231,7 @@
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
             this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.meridianCategoryTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.MeridianCategoryTableAdapter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -322,6 +324,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -1768,6 +1771,7 @@
             // pg3
             // 
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.button3);
             this.pg3.Controls.Add(this.contcityTextBox);
             this.pg3.Controls.Add(this.contaddr2TextBox1);
             this.pg3.Controls.Add(this.contaddrTextBox1);
@@ -1829,6 +1833,21 @@
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Contacts";
             // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.AutoSize = true;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button3.Location = new System.Drawing.Point(827, 8);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(159, 23);
+            this.button3.TabIndex = 424;
+            this.button3.Text = "All Contacts Email";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // contcityTextBox
             // 
             this.contcityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contcity", true));
@@ -1876,6 +1895,7 @@
             this.btnEmailCont2.Size = new System.Drawing.Size(34, 23);
             this.btnEmailCont2.TabIndex = 418;
             this.btnEmailCont2.UseVisualStyleBackColor = true;
+            this.btnEmailCont2.Click += new System.EventHandler(this.btnEmailCont2_Click);
             // 
             // label15
             // 
@@ -2121,6 +2141,7 @@
             this.btnEmailContact.Size = new System.Drawing.Size(34, 23);
             this.btnEmailContact.TabIndex = 277;
             this.btnEmailContact.UseVisualStyleBackColor = true;
+            this.btnEmailContact.Click += new System.EventHandler(this.btnEmailContact_Click);
             // 
             // label28
             // 
@@ -2444,6 +2465,10 @@
             // 
             this.meridianCategoryTableAdapter.ClearBeforeFill = true;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2489,6 +2514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -2627,5 +2653,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdDescription;
         private System.Windows.Forms.BindingSource meridianCategoryBindingSource;
         private DataSets.dsMcustTableAdapters.MeridianCategoryTableAdapter meridianCategoryTableAdapter;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
     }

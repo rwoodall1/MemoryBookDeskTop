@@ -6979,7 +6979,9 @@ namespace Mbc5.Forms
                 }
         private void ShippingEmail()
 		{
-			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
 			try
 			{
@@ -7021,7 +7023,16 @@ namespace Mbc5.Forms
 			}
 
 			this.Cursor = Cursors.AppStarting;
-			string body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
+			
+            var emailList = new List<string>();
+            string subj = "";
+            string body = "";
+            EmailType type = EmailType.Mbc;
+            if (txtCompany.Text=="MBC")
+            {
+                type = EmailType.Mbc;
+                subj = "Your Yearbooks  have shipped!";
+               body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
 							Thanks for a being a great customer and we look forward to working with you again next year.
 							If you have already rebooked for next year, thank you! <p/><p>If you are not already rebooked, please 
 							contact your Sales Consultant today at 1 - 800 - 247 - 1526. We appreciate your business and look
@@ -7030,15 +7041,7 @@ namespace Mbc5.Forms
 							flat fee whether you order one extra book or all of them.<p/><p>		
 							Please do not reply to this email.  If you have questions, please contact your Customer Service Representative.	<p/>
 
-							<p>www.memorybook.com / <p>";
-
-
-
-
-			string subj = "Your Planners have shipped!";
-            var emailList = new List<string>();
-            if (txtCompany.Text=="MBC")
-            {
+							<p><a href=www.memorybook.com>Memorybook</a> <p>";
                 var row =(DataRowView) custBindingSource.Current;
                 string email = row["schemail"].ToString();
                 string email1 = row["contemail"].ToString();
@@ -7053,6 +7056,11 @@ namespace Mbc5.Forms
             }
             else if(txtCompany.Text == "MER")
             {
+               type = EmailType.Meridian;
+                subj  = "Your Planners have shipped!";
+                body = body = @"Please do not reply to this email.<br/><br/>
+                        Your planners have shipped! If you need additional planners, call 1-888-724-8512 to reorder more at a great price with fast delivery. Plus, don’t forget to renew your order for next year at <font color=blue><a href=http://www.meridianplanners.com/business-agreement> Meridian Planners</a></font>.
+                </br> Thank you for your business and we look forward to working with you again.";
                 var row = (DataRowView)mcustBindingSource.Current;
                 string email = row["schemail"].ToString();
                 string email1 = row["contemail"].ToString();
@@ -7071,13 +7079,13 @@ namespace Mbc5.Forms
             {
                 MbcMessageBox.Information("There are no email addresses to send a product shipped email out.", "");
             }
-			var emailHelper = new EmailHelper();
-			EmailType type = EmailType.Mbc;
-			List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
-			OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString()+".pdf" };
-			attachment.Add(att);
+            var emailHelper = new EmailHelper();
+           
+            List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
+            OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString() + ".pdf" };
+            attachment.Add(att);
 
-			emailHelper.SendOutLookEmail(subj, emailList,null, body, type,attachment);
+            emailHelper.SendOutLookEmail(subj, emailList,null, body, type,attachment);
 			this.Cursor = Cursors.Default;
 		}
 		private void DisableControls(Control con)
@@ -7151,6 +7159,8 @@ namespace Mbc5.Forms
 		}
         public void PrintYearBookLabel()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             //put in check for nulls
             var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
             var vRecvCardSent = ((DataRowView)this.produtnBindingSource.Current).Row["reccardsent"].ToString();
@@ -7172,7 +7182,8 @@ namespace Mbc5.Forms
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRProdutn", produtnBindingSource));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRWip", wipBindingSource));
 
-            reportViewer1.RefreshReport();   
+            reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
         }
 		//General
 		private void SetCodeInvno()
@@ -7186,7 +7197,9 @@ namespace Mbc5.Forms
 		}
 		public override void Fill()
 		{
-			if (Schcode != null)
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            if (Schcode != null)
 			{
 				try {
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
@@ -7343,6 +7356,7 @@ namespace Mbc5.Forms
             }
      
             btnCoverTicket.Visible = this.Company == "MBC";
+            Cursor.Current = Cursors.Default;
         }
 
 
@@ -7355,6 +7369,8 @@ namespace Mbc5.Forms
 
         public ApiProcessingResult<bool> Save()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var processingResult = new ApiProcessingResult<bool>();
             switch (tbProdutn.SelectedIndex)
             {
@@ -7454,6 +7470,7 @@ namespace Mbc5.Forms
 
                     break;
             }
+            Cursor.Current = Cursors.Default;
             return processingResult;
         }
         private bool SaveOrStop()
@@ -9862,7 +9879,9 @@ namespace Mbc5.Forms
 
 		private void btnspCoverEmail_Click(object sender, EventArgs e)
 		{
-			var emailList = new List<string>();
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            var emailList = new List<string>();
 			DataRowView row =(DataRowView) custBindingSource.Current;
 			string vState = row["schstate"].ToString().Trim();
 			string vcontEmail = row["contemail"] != null ? row["contemail"].ToString().Trim() : "";
@@ -9889,11 +9908,14 @@ namespace Mbc5.Forms
 
 		
 			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+            Cursor.Current = Cursors.Default;
 		}
 
 		private void btnStandarCoverEmail_Click(object sender, EventArgs e)
 		{
-			var emailList = new List<string>();
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            var emailList = new List<string>();
 			DataRowView custRow = (DataRowView)custBindingSource.Current;
 			DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
 			string vSchname = custRow["schname"].ToString().Trim();
@@ -9929,7 +9951,8 @@ namespace Mbc5.Forms
 
 			
 			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
-		}
+            Cursor.Current = Cursors.Default;
+        }
 
         private void btnRecvHistory_Click(object sender, EventArgs e) {
             if (Company == "MBC")
@@ -10315,6 +10338,8 @@ namespace Mbc5.Forms
 
         private void btnBkDue_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (Company=="MBC") {
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
@@ -10378,6 +10403,7 @@ namespace Mbc5.Forms
             else {
                 MbcMessageBox.Information("This function not supported for a Meridian record.");
             }
+            Cursor.Current = Cursors.Default;
 
         }
 
@@ -10410,6 +10436,8 @@ namespace Mbc5.Forms
 
         private void btnCoverTicket_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (Company == "MBC") {
                var dResult= MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dResult ==DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
@@ -10420,10 +10448,12 @@ namespace Mbc5.Forms
             {
                 PrintMeridianCoverTicket();
             }
-
+            Cursor.Current = Cursors.Default;
         }
         private void PrintCoverTicketDiminished()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
@@ -10488,9 +10518,12 @@ namespace Mbc5.Forms
             {
                 MbcMessageBox.Error(ex.Message, "");
             }
+            Cursor.Current = Cursors.Default;
         }
         private void PrintCoverTicket()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
@@ -10603,10 +10636,12 @@ namespace Mbc5.Forms
             {
                 MbcMessageBox.Error(ex.Message, "");
             }
+            Cursor.Current = Cursors.Default;
         }
         private void PrintMeridianCoverTicket()
         {
-
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var sqlQuery = new SQLCustomClient();
             string cmdText = @"
                             Select 
@@ -10670,6 +10705,7 @@ namespace Mbc5.Forms
             mcoverReportViewer.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
 
             mcoverReportViewer.RefreshReport();
+            Cursor.Current = Cursors.Default;
 
         }
         private void btnAddPhotoCd_Click(object sender, EventArgs e)
@@ -11413,6 +11449,8 @@ namespace Mbc5.Forms
         {
             if (Company == "MBC")
             {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
                 
@@ -11533,6 +11571,7 @@ namespace Mbc5.Forms
                 Address.Add("Denise.Swearingin@jostens.com");
                 emailHelper.SendOutLookEmail(subject, Address, null, body, EmailType.Meridian, Attachements);
             }
+            Cursor.Current = Cursors.Default;
         }
 
       

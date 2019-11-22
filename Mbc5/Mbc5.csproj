@@ -771,10 +771,10 @@
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
     <EmbeddedResource Include="Reports\PartialBookTicket.rdlc" />
     <EmbeddedResource Include="Reports\PhotoOnCDTicket.rdlc" />
+    <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\Rcard1.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
-    <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\ReOrderTicket.rdlc" />

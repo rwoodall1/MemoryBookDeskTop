@@ -555,12 +555,15 @@ namespace BaseClass.Classes
                 
                     mailItem.To =ToAddresses;
                 var vCCAddresses = "";
-                foreach (var address in CCAddresses) {
-                    vCCAddresses = vCCAddresses + address + ";";
+                if (CCAddresses != null && CCAddresses.Count!=0)
+                {
+                    foreach (var address in CCAddresses)
+                    {
+                        vCCAddresses = vCCAddresses + address + ";";
 
                     }
-                mailItem.CC = vCCAddresses;
-
+                    mailItem.CC = vCCAddresses;
+                }
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);

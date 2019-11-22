@@ -107,6 +107,10 @@
         </Field>
         <Field Name="Hndred">
           <DataField>Hndred</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="InkClr">
+          <DataField>InkClr</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Insck">
@@ -247,7 +251,7 @@
             </Paragraphs>
             <rd:DefaultName>Schcode</rd:DefaultName>
             <Top>0.11743in</Top>
-            <Left>7.11924in</Left>
+            <Left>6.35674in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <Style>
@@ -276,7 +280,7 @@
             </Paragraphs>
             <rd:DefaultName>Prodno</rd:DefaultName>
             <Top>0.4091in</Top>
-            <Left>7.11924in</Left>
+            <Left>6.35674in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>1</ZIndex>
@@ -310,7 +314,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.11743in</Top>
-            <Left>6.15048in</Left>
+            <Left>5.40048in</Left>
             <Height>0.25in</Height>
             <Width>0.91667in</Width>
             <ZIndex>2</ZIndex>
@@ -343,8 +347,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>0.43687in</Top>
-            <Left>6.33798in</Left>
+            <Top>0.4091in</Top>
+            <Left>5.58798in</Left>
             <Height>0.25in</Height>
             <Width>0.72917in</Width>
             <ZIndex>3</ZIndex>
@@ -369,7 +373,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Schname</rd:DefaultName>
@@ -403,12 +409,14 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SchAddr</rd:DefaultName>
             <Top>0.80271in</Top>
-            <Left>5.44563in</Left>
+            <Left>5.38313in</Left>
             <Height>0.25in</Height>
             <Width>1.63542in</Width>
             <ZIndex>5</ZIndex>
@@ -463,8 +471,10 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Address.</Value>
-                    <Style />
+                    <Value>Address</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -533,7 +543,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SchCity</rd:DefaultName>
@@ -698,7 +710,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ContAddr</rd:DefaultName>
@@ -728,7 +742,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ContAddr2</rd:DefaultName>
@@ -758,7 +774,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ContCity</rd:DefaultName>
@@ -788,7 +806,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ContFname</rd:DefaultName>
@@ -827,7 +847,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>2.79765in</Top>
-            <Left>3.53828in</Left>
+            <Left>3.28828in</Left>
             <Height>0.25in</Height>
             <Width>1.12263in</Width>
             <ZIndex>18</ZIndex>
@@ -860,7 +880,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.77493in</Top>
+            <Top>2.79765in</Top>
             <Left>0.38203in</Left>
             <Height>0.25in</Height>
             <Width>1.12263in</Width>
@@ -886,11 +906,13 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SchPhone</rd:DefaultName>
-            <Top>2.77493in</Top>
+            <Top>2.79765in</Top>
             <Left>1.54633in</Left>
             <Height>0.25in</Height>
             <Width>1.60417in</Width>
@@ -920,8 +942,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Contphnhom</rd:DefaultName>
-            <Top>2.77493in</Top>
-            <Left>4.70258in</Left>
+            <Top>2.79765in</Top>
+            <Left>4.45258in</Left>
             <Height>0.25in</Height>
             <Width>1.60417in</Width>
             <ZIndex>21</ZIndex>
@@ -1103,40 +1125,6 @@
               <BackgroundColor>White</BackgroundColor>
             </Style>
           </GaugePanel>
-          <Textbox Name="Textbox16">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Best Time To Call</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.79765in</Top>
-            <Left>6.6737in</Left>
-            <Height>0.25in</Height>
-            <Width>1.26329in</Width>
-            <ZIndex>24</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox17">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1156,11 +1144,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.09438in</Top>
-            <Left>0.5261in</Left>
+            <Top>3.08932in</Top>
+            <Left>0.38203in</Left>
             <Height>0.25in</Height>
             <Width>0.95079in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1186,11 +1174,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>BookType</rd:DefaultName>
-            <Top>3.09438in</Top>
-            <Left>1.54633in</Left>
+            <Top>3.08932in</Top>
+            <Left>1.36476in</Left>
             <Height>0.25in</Height>
             <Width>0.75in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1220,11 +1208,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.10827in</Top>
-            <Left>4.43064in</Left>
+            <Top>3.08932in</Top>
+            <Left>4.28657in</Left>
             <Height>0.25in</Height>
             <Width>0.63829in</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1254,11 +1242,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.09438in</Top>
-            <Left>2.50068in</Left>
+            <Top>3.08932in</Top>
+            <Left>2.35661in</Left>
             <Height>0.25in</Height>
             <Width>0.63829in</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1286,11 +1274,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NoCopies</rd:DefaultName>
-            <Top>3.10827in</Top>
-            <Left>5.09671in</Left>
+            <Top>3.08932in</Top>
+            <Left>4.95264in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1318,11 +1306,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NoPages</rd:DefaultName>
-            <Top>3.10827in</Top>
-            <Left>3.13897in</Left>
+            <Top>3.08932in</Top>
+            <Left>2.9949in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1352,11 +1340,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>0.54522in</Left>
+            <Top>3.47758in</Top>
+            <Left>0.40115in</Left>
             <Height>0.25in</Height>
             <Width>0.83731in</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1382,11 +1370,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Covertype</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>1.45198in</Left>
+            <Top>3.47758in</Top>
+            <Left>1.30791in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1416,11 +1404,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>3.55166in</Left>
+            <Top>3.47758in</Top>
+            <Left>3.40759in</Left>
             <Height>0.25in</Height>
             <Width>0.83731in</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1450,11 +1438,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>2.53083in</Left>
+            <Top>3.47758in</Top>
+            <Left>2.38676in</Left>
             <Height>0.25in</Height>
             <Width>0.67064in</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1484,11 +1472,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>4.87101in</Left>
+            <Top>3.47758in</Top>
+            <Left>4.72694in</Left>
             <Height>0.25in</Height>
             <Width>0.67064in</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>34</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1514,11 +1502,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Perfbind</rd:DefaultName>
-            <Top>3.48264in</Top>
-            <Left>5.6111in</Left>
+            <Top>3.47758in</Top>
+            <Left>5.42953in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1650,145 +1638,11 @@
               <Source>External</Source>
               <Value />
             </TopImage>
-            <Top>3.48264in</Top>
-            <Left>3.27092in</Left>
+            <Top>3.47758in</Top>
+            <Left>3.12685in</Left>
             <Height>0.25in</Height>
             <Width>0.19792in</Width>
-            <ZIndex>37</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>1.5pt</Width>
-              </Border>
-              <BackgroundColor>White</BackgroundColor>
-            </Style>
-          </GaugePanel>
-          <GaugePanel Name="GaugePanel3">
-            <StateIndicators>
-              <StateIndicator Name="Indicator1">
-                <GaugeInputValue>
-                  <Value>=IIf(First(Fields!Laminated.Value), 1, 0)</Value>
-                  <Multiplier>1</Multiplier>
-                  <DataElementOutput>NoOutput</DataElementOutput>
-                </GaugeInputValue>
-                <TransformationType>None</TransformationType>
-                <TransformationScope />
-                <MinimumValue>
-                  <Value>NaN</Value>
-                  <Multiplier>1</Multiplier>
-                </MinimumValue>
-                <MaximumValue>
-                  <Value>NaN</Value>
-                  <Multiplier>1</Multiplier>
-                </MaximumValue>
-                <IndicatorStyle>None</IndicatorStyle>
-                <IndicatorImage>
-                  <Source>External</Source>
-                  <Value />
-                </IndicatorImage>
-                <ScaleFactor>1</ScaleFactor>
-                <IndicatorStates>
-                  <IndicatorState Name="ThreeSymbolUnCircledCross">
-                    <StartValue>
-                      <Value>4</Value>
-                      <Multiplier>1</Multiplier>
-                    </StartValue>
-                    <EndValue>
-                      <Value>4</Value>
-                      <Multiplier>1</Multiplier>
-                    </EndValue>
-                    <Color>Black</Color>
-                    <ScaleFactor>1</ScaleFactor>
-                    <IndicatorStyle>TriangleDash</IndicatorStyle>
-                    <IndicatorImage>
-                      <Source>External</Source>
-                      <Value />
-                    </IndicatorImage>
-                  </IndicatorState>
-                  <IndicatorState Name="ThreeSymbolUnCircledExclamation">
-                    <StartValue>
-                      <Value>33</Value>
-                      <Multiplier>1</Multiplier>
-                    </StartValue>
-                    <EndValue>
-                      <Value>66</Value>
-                      <Multiplier>1</Multiplier>
-                    </EndValue>
-                    <Color>#e8d62e</Color>
-                    <ScaleFactor>1</ScaleFactor>
-                    <IndicatorStyle>ThreeSymbolUnCircledExclamation</IndicatorStyle>
-                    <IndicatorImage>
-                      <Source>External</Source>
-                      <Value />
-                    </IndicatorImage>
-                  </IndicatorState>
-                  <IndicatorState Name="ThreeSymbolUnCircledCheck">
-                    <StartValue>
-                      <Value>1</Value>
-                      <Multiplier>1</Multiplier>
-                    </StartValue>
-                    <EndValue>
-                      <Value>1</Value>
-                      <Multiplier>1</Multiplier>
-                    </EndValue>
-                    <Color>Black</Color>
-                    <ScaleFactor>1</ScaleFactor>
-                    <IndicatorStyle>ThreeSymbolUnCircledCheck</IndicatorStyle>
-                    <IndicatorImage>
-                      <Source>External</Source>
-                      <Value />
-                    </IndicatorImage>
-                  </IndicatorState>
-                </IndicatorStates>
-                <Angle>0</Angle>
-                <StateDataElementName />
-                <rd:IconsSet>ThreeUncircledSymbols</rd:IconsSet>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <ShadowOffset>0pt</ShadowOffset>
-                </Style>
-                <Top>4</Top>
-                <Left>4</Left>
-                <Height>92</Height>
-                <Width>92</Width>
-              </StateIndicator>
-            </StateIndicators>
-            <AutoLayout>true</AutoLayout>
-            <BackFrame>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <BackgroundColor>Gainsboro</BackgroundColor>
-                <BackgroundGradientType>None</BackgroundGradientType>
-                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
-                <BackgroundHatchType>None</BackgroundHatchType>
-                <ShadowOffset>0pt</ShadowOffset>
-              </Style>
-              <FrameBackground>
-                <Style>
-                  <BackgroundColor>Silver</BackgroundColor>
-                  <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
-                  <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
-                  <BackgroundHatchType>None</BackgroundHatchType>
-                </Style>
-              </FrameBackground>
-              <FrameImage>
-                <Source>External</Source>
-                <Value />
-              </FrameImage>
-            </BackFrame>
-            <TopImage>
-              <Source>External</Source>
-              <Value />
-            </TopImage>
-            <Top>3.48264in</Top>
-            <Left>4.45842in</Left>
-            <Height>0.25in</Height>
-            <Width>0.19792in</Width>
-            <ZIndex>38</ZIndex>
+            <ZIndex>36</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1816,11 +1670,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.875in</Top>
-            <Left>2.53083in</Left>
+            <Top>3.86994in</Top>
+            <Left>2.38676in</Left>
             <Height>0.25in</Height>
             <Width>0.7887in</Width>
-            <ZIndex>39</ZIndex>
+            <ZIndex>37</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1850,11 +1704,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.875in</Top>
-            <Left>0.54522in</Left>
+            <Top>3.86994in</Top>
+            <Left>0.40115in</Left>
             <Height>0.25in</Height>
             <Width>0.83731in</Width>
-            <ZIndex>40</ZIndex>
+            <ZIndex>38</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1880,11 +1734,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Coilclr</rd:DefaultName>
-            <Top>3.875in</Top>
-            <Left>1.45198in</Left>
+            <Top>3.86994in</Top>
+            <Left>1.28291in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>41</ZIndex>
+            <ZIndex>39</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2016,11 +1870,11 @@
               <Source>External</Source>
               <Value />
             </TopImage>
-            <Top>3.875in</Top>
-            <Left>3.38897in</Left>
+            <Top>3.86994in</Top>
+            <Left>3.2449in</Left>
             <Height>0.25in</Height>
             <Width>0.19792in</Width>
-            <ZIndex>42</ZIndex>
+            <ZIndex>40</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2048,41 +1902,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>4.18056in</Top>
-            <Left>0.54522in</Left>
+            <Top>4.1755in</Top>
+            <Left>0.40115in</Left>
             <Height>0.25in</Height>
             <Width>0.71231in</Width>
-            <ZIndex>43</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Allclrck">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Allclrck.Value, "dsProdChkList")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Allclrck</rd:DefaultName>
-            <Top>4.18056in</Top>
-            <Left>1.28531in</Left>
-            <Height>0.25in</Height>
-            <Width>1in</Width>
-            <ZIndex>44</ZIndex>
+            <ZIndex>41</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2108,11 +1932,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Cstat</rd:DefaultName>
-            <Top>4.48611in</Top>
-            <Left>2.60647in</Left>
+            <Top>4.48105in</Top>
+            <Left>2.4624in</Left>
             <Height>0.25in</Height>
             <Width>1.64133in</Width>
-            <ZIndex>45</ZIndex>
+            <ZIndex>42</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2142,41 +1966,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>4.48611in</Top>
-            <Left>0.54522in</Left>
+            <Top>4.48105in</Top>
+            <Left>0.40115in</Left>
             <Height>0.25in</Height>
             <Width>2.06125in</Width>
-            <ZIndex>46</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Hndred">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Hndred.Value, "dsProdChkList")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Hndred</rd:DefaultName>
-            <Top>5.04042in</Top>
-            <Left>5.92657in</Left>
-            <Height>0.25in</Height>
-            <Width>1in</Width>
-            <ZIndex>47</ZIndex>
+            <ZIndex>43</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2206,11 +2000,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>5.04042in</Top>
-            <Left>5.3844in</Left>
+            <Top>4.1755in</Top>
+            <Left>1.4124in</Left>
             <Height>0.25in</Height>
             <Width>0.47273in</Width>
-            <ZIndex>48</ZIndex>
+            <ZIndex>44</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2240,10 +2034,442 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>5.375in</Top>
-            <Left>5.38439in</Left>
+            <Top>4.17549in</Top>
+            <Left>2.16638in</Left>
             <Height>0.25in</Height>
             <Width>0.47273in</Width>
+            <ZIndex>45</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <GaugePanel Name="GaugePanel3">
+            <StateIndicators>
+              <StateIndicator Name="Indicator1">
+                <GaugeInputValue>
+                  <Value>=IIf(First(Fields!Laminated.Value), 1, 0)</Value>
+                  <Multiplier>1</Multiplier>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                </GaugeInputValue>
+                <TransformationType>None</TransformationType>
+                <TransformationScope />
+                <MinimumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MinimumValue>
+                <MaximumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MaximumValue>
+                <IndicatorStyle>None</IndicatorStyle>
+                <IndicatorImage>
+                  <Source>External</Source>
+                  <Value />
+                </IndicatorImage>
+                <ScaleFactor>1</ScaleFactor>
+                <IndicatorStates>
+                  <IndicatorState Name="ThreeSymbolUnCircledCross">
+                    <StartValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>TriangleDash</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledExclamation">
+                    <StartValue>
+                      <Value>33</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>66</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>#e8d62e</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledExclamation</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledCheck">
+                    <StartValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledCheck</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                </IndicatorStates>
+                <Angle>0</Angle>
+                <StateDataElementName />
+                <rd:IconsSet>ThreeUncircledSymbols</rd:IconsSet>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <ShadowOffset>0pt</ShadowOffset>
+                </Style>
+                <Top>4</Top>
+                <Left>4</Left>
+                <Height>92</Height>
+                <Width>92</Width>
+              </StateIndicator>
+            </StateIndicators>
+            <AutoLayout>true</AutoLayout>
+            <BackFrame>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>Gainsboro</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                <BackgroundHatchType>None</BackgroundHatchType>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <FrameBackground>
+                <Style>
+                  <BackgroundColor>Silver</BackgroundColor>
+                  <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                  <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                  <BackgroundHatchType>None</BackgroundHatchType>
+                </Style>
+              </FrameBackground>
+              <FrameImage>
+                <Source>External</Source>
+                <Value />
+              </FrameImage>
+            </BackFrame>
+            <TopImage>
+              <Source>External</Source>
+              <Value />
+            </TopImage>
+            <Top>3.47758in</Top>
+            <Left>4.31892in</Left>
+            <Height>0.25in</Height>
+            <Width>0.19792in</Width>
+            <ZIndex>46</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+          </GaugePanel>
+          <GaugePanel Name="GaugePanel5">
+            <StateIndicators>
+              <StateIndicator Name="Indicator1">
+                <GaugeInputValue>
+                  <Value>=IIf(First(Fields!Allclrck.Value), 1, 0)</Value>
+                  <Multiplier>1</Multiplier>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                </GaugeInputValue>
+                <TransformationType>None</TransformationType>
+                <TransformationScope />
+                <MinimumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MinimumValue>
+                <MaximumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MaximumValue>
+                <IndicatorStyle>None</IndicatorStyle>
+                <IndicatorImage>
+                  <Source>External</Source>
+                  <Value />
+                </IndicatorImage>
+                <ScaleFactor>1</ScaleFactor>
+                <IndicatorStates>
+                  <IndicatorState Name="ThreeSymbolUnCircledCross">
+                    <StartValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>TriangleDash</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledExclamation">
+                    <StartValue>
+                      <Value>33</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>66</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>#e8d62e</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledExclamation</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledCheck">
+                    <StartValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledCheck</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                </IndicatorStates>
+                <Angle>0</Angle>
+                <StateDataElementName />
+                <rd:IconsSet>ThreeUncircledSymbols</rd:IconsSet>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <ShadowOffset>0pt</ShadowOffset>
+                </Style>
+                <Top>4</Top>
+                <Left>4</Left>
+                <Height>92</Height>
+                <Width>92</Width>
+              </StateIndicator>
+            </StateIndicators>
+            <AutoLayout>true</AutoLayout>
+            <BackFrame>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>Gainsboro</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                <BackgroundHatchType>None</BackgroundHatchType>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <FrameBackground>
+                <Style>
+                  <BackgroundColor>Silver</BackgroundColor>
+                  <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                  <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                  <BackgroundHatchType>None</BackgroundHatchType>
+                </Style>
+              </FrameBackground>
+              <FrameImage>
+                <Source>External</Source>
+                <Value />
+              </FrameImage>
+            </BackFrame>
+            <TopImage>
+              <Source>External</Source>
+              <Value />
+            </TopImage>
+            <Top>4.1755in</Top>
+            <Left>1.12735in</Left>
+            <Height>0.25in</Height>
+            <Width>0.19792in</Width>
+            <ZIndex>47</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+          </GaugePanel>
+          <GaugePanel Name="GaugePanel6">
+            <StateIndicators>
+              <StateIndicator Name="Indicator1">
+                <GaugeInputValue>
+                  <Value>=IIf(First(Fields!Hndred.Value), 1, 0)</Value>
+                  <Multiplier>1</Multiplier>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                </GaugeInputValue>
+                <TransformationType>None</TransformationType>
+                <TransformationScope />
+                <MinimumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MinimumValue>
+                <MaximumValue>
+                  <Value>NaN</Value>
+                  <Multiplier>1</Multiplier>
+                </MaximumValue>
+                <IndicatorStyle>None</IndicatorStyle>
+                <IndicatorImage>
+                  <Source>External</Source>
+                  <Value />
+                </IndicatorImage>
+                <ScaleFactor>1</ScaleFactor>
+                <IndicatorStates>
+                  <IndicatorState Name="ThreeSymbolUnCircledCross">
+                    <StartValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>4</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>TriangleDash</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledExclamation">
+                    <StartValue>
+                      <Value>33</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>66</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>#e8d62e</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledExclamation</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                  <IndicatorState Name="ThreeSymbolUnCircledCheck">
+                    <StartValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </StartValue>
+                    <EndValue>
+                      <Value>1</Value>
+                      <Multiplier>1</Multiplier>
+                    </EndValue>
+                    <Color>Black</Color>
+                    <ScaleFactor>1</ScaleFactor>
+                    <IndicatorStyle>ThreeSymbolUnCircledCheck</IndicatorStyle>
+                    <IndicatorImage>
+                      <Source>External</Source>
+                      <Value />
+                    </IndicatorImage>
+                  </IndicatorState>
+                </IndicatorStates>
+                <Angle>0</Angle>
+                <StateDataElementName />
+                <rd:IconsSet>ThreeUncircledSymbols</rd:IconsSet>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <ShadowOffset>0pt</ShadowOffset>
+                </Style>
+                <Top>4</Top>
+                <Left>4</Left>
+                <Height>92</Height>
+                <Width>92</Width>
+              </StateIndicator>
+            </StateIndicators>
+            <AutoLayout>true</AutoLayout>
+            <BackFrame>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>Gainsboro</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                <BackgroundHatchType>None</BackgroundHatchType>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <FrameBackground>
+                <Style>
+                  <BackgroundColor>Silver</BackgroundColor>
+                  <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                  <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                  <BackgroundHatchType>None</BackgroundHatchType>
+                </Style>
+              </FrameBackground>
+              <FrameImage>
+                <Source>External</Source>
+                <Value />
+              </FrameImage>
+            </BackFrame>
+            <TopImage>
+              <Source>External</Source>
+              <Value />
+            </TopImage>
+            <Top>4.1755in</Top>
+            <Left>1.89902in</Left>
+            <Height>0.25in</Height>
+            <Width>0.19792in</Width>
+            <ZIndex>48</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+          </GaugePanel>
+          <Textbox Name="InkClr">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(First(Fields!InkClr.Value, "dsProdChkList")="Scan","SPEC","")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>InkClr</rd:DefaultName>
+            <Top>4.1755in</Top>
+            <Left>2.63911in</Left>
+            <Height>0.25in</Height>
+            <Width>0.48958in</Width>
             <ZIndex>49</ZIndex>
             <Style>
               <Border>
@@ -2255,12 +2481,441 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Kitrecvd">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(FormatDateTime(Fields!Kitrecvd.Value,DateFormat.ShortDate), "dsProdChkList")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Kitrecvd</rd:DefaultName>
+            <Top>4.48105in</Top>
+            <Left>5.93463in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>50</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox30">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Last Year Kit Recv Date</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>4.48105in</Top>
+            <Left>4.28657in</Left>
+            <Height>0.25in</Height>
+            <Width>1.63417in</Width>
+            <ZIndex>51</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ShipMemo">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!ShipMemo.Value, "dsProdChkList")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ShipMemo</rd:DefaultName>
+            <Top>4.80049in</Top>
+            <Left>1.68522in</Left>
+            <Height>1.53125in</Height>
+            <Width>5.24941in</Width>
+            <ZIndex>52</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Shipping Memo</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>4.80049in</Top>
+            <Left>0.40115in</Left>
+            <Height>0.25in</Height>
+            <Width>1.21462in</Width>
+            <ZIndex>53</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox43">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Production Check List</Value>
+                    <Style>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>0.13417in</Top>
+            <Left>0.51958in</Left>
+            <Height>0.39583in</Height>
+            <Width>3.47532in</Width>
+            <ZIndex>54</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>11in</Height>
+        <Height>6.64772in</Height>
         <Style />
       </Body>
-      <Width>8.78827in</Width>
+      <Width>7.98382in</Width>
       <Page>
+        <PageFooter>
+          <Height>1.90625in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Enrollment">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Sum(Fields!Enrollment.Value, "dsProdChkList")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Enrollment</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>0.98383in</Left>
+              <Height>0.25in</Height>
+              <Width>0.52083in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox32">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Enrollment</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox7</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>0.13063in</Left>
+              <Height>0.25in</Height>
+              <Width>0.8532in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox33">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>School Category</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox7</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>1.63535in</Left>
+              <Height>0.25in</Height>
+              <Width>1.35955in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Sal">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Sal.Value, "dsProdChkList")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Sal</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>2.9949in</Left>
+              <Height>0.25in</Height>
+              <Width>1in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Schcode1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Schcode.Value+"K", "dsProdChkList")</Value>
+                      <Style>
+                        <FontFamily>3 of 9 Barcode</FontFamily>
+                        <FontSize>18pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Schcode1</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>4.87214in</Left>
+              <Height>0.22222in</Height>
+              <Width>2.06249in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Schcode2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Schcode.Value + "K", "dsProdChkList")</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Schcode1</rd:DefaultName>
+              <Top>0.32083in</Top>
+              <Left>4.87214in</Left>
+              <Height>0.19792in</Height>
+              <Width>1.0486in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Spcinst">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Spcinst.Value, "dsProdChkList")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Spcinst</rd:DefaultName>
+              <Top>0.64478in</Top>
+              <Left>1.68078in</Left>
+              <Height>1.0625in</Height>
+              <Width>5.25385in</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox34">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Special Instructions</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox7</rd:DefaultName>
+              <Top>0.64478in</Top>
+              <Left>0.13063in</Left>
+              <Height>0.25in</Height>
+              <Width>1.50849in</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <LeftMargin>0.25in</LeftMargin>
         <RightMargin>0.25in</RightMargin>
         <TopMargin>0.25in</TopMargin>

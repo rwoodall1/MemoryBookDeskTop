@@ -2923,9 +2923,58 @@ namespace Mbc5.Forms.MemoryBook {
             //Checked for fill so this should work.
             if (result.Tag.Length>0)
             {
-                MbcMessageBox.Exclamation(result.Tag);
+                
             }
             
         }
+
+        private void oaCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            
+           }
+
+        private void oaCheckBox_Click(object sender, EventArgs e)
+        {
+            string curBidId = lblId.Text.Trim();
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            var sqlquery = new SQLCustomClient();
+            sqlquery.AddParameter("@schcode", Schcode);
+            sqlquery.AddParameter("@Contryear", txtYear.Text);
+            sqlquery.CommandText(@"Update Bids Set oa=0 Where schcode=@schcode and contryear=@Contryear");
+            var blankResult = sqlquery.Update();
+            if (blankResult.IsError)
+            {
+                ExceptionlessClient.Default.CreateLog("Current Bid Clear Error")
+                    .AddObject(blankResult)
+                    .MarkAsCritical()
+                    .Submit();
+                MbcMessageBox.Error("Failed to clear current bids from this school");
+                return;
+            }
+            if (oaCheckBox.Checked)
+            {
+                sqlquery.ClearParameters();
+                sqlquery.AddParameter("@Id", curBidId) ;
+                sqlquery.CommandText(@"Update Bids Set OA=1 Where Id=@Id");
+                var result = sqlquery.Update();
+                if (result.IsError)
+                {
+                    ExceptionlessClient.Default.CreateLog("Current Bid Update Error")
+                        .AddObject(blankResult)
+                        .MarkAsCritical()
+                        .Submit();
+                    MbcMessageBox.Error("Failed to update current bids for this school");
+
+                }
+            }
+            this.bidsTableAdapter.Fill(dsBids.bids, Schcode);
+            var pos =bidsBindingSource.Find("id", curBidId);
+            if (pos > -1) {
+                bidsBindingSource.Position = pos;
+            }
+
+            Cursor.Current = Cursors.Default;
+        }
     }
-}
+    }

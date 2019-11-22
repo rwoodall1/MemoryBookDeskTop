@@ -7430,7 +7430,7 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "addr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.shpname" +
                 ", mbids.CharacterResourceQty, mbids.CharacterResourcAmt\r\nFROM            mbids L" +
                 "EFT OUTER JOIN\r\n                         mcust ON mbids.schcode = mcust.schcode\r" +
-                "\nWHERE        (mbids.schcode = @schcode)\r\nORDER BY mbids.schcode DESC";
+                "\nWHERE        (mbids.schcode = @schcode)\r\nORDER BY mbids.contryear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

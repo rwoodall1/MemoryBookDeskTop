@@ -76,8 +76,8 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label mdescLabel;
             System.Windows.Forms.Label notesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.MBidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMBids = new Mbc5.DataSets.dsMBids();
@@ -250,6 +250,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineFlyerBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // basePanel
+            // 
+            this.basePanel.Size = new System.Drawing.Size(18, 21);
             // 
             // sourceLabel
             // 
@@ -994,22 +998,22 @@
             this.panel4.Controls.Add(this.hallpqtyTextBox);
             this.panel4.Location = new System.Drawing.Point(49, 321);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1100, 448);
+            this.panel4.Size = new System.Drawing.Size(1100, 284);
             this.panel4.TabIndex = 226;
             // 
             // reportViewer1
             // 
-            reportDataSource3.Name = "dsMeridianBidDetails";
-            reportDataSource3.Value = this.MBidInvoiceDetailBindingSource;
-            reportDataSource4.Name = "dsMBid";
-            reportDataSource4.Value = this.mbidsBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "dsMeridianBidDetails";
+            reportDataSource1.Value = this.MBidInvoiceDetailBindingSource;
+            reportDataSource2.Name = "dsMBid";
+            reportDataSource2.Value = this.mbidsBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianQuote.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(781, 277);
+            this.reportViewer1.Location = new System.Drawing.Point(459, 196);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(150, 107);
+            this.reportViewer1.Size = new System.Drawing.Size(115, 72);
             this.reportViewer1.TabIndex = 297;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
@@ -1075,7 +1079,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(650, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1, 446);
+            this.label13.Size = new System.Drawing.Size(1, 282);
             this.label13.TabIndex = 157;
             this.label13.Text = "label13";
             // 
@@ -2024,7 +2028,7 @@
             // frmMBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(1161, 781);
+            this.ClientSize = new System.Drawing.Size(1161, 611);
             this.Controls.Add(this.orderDateDateBox);
             this.Controls.Add(this.idLabel1);
             this.Controls.Add(this.qtedateDateBox);
@@ -2050,7 +2054,7 @@
             this.Controls.Add(schcodeLabel);
             this.Controls.Add(this.schcodeLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(1123, 700);
+            this.MinimumSize = new System.Drawing.Size(1123, 650);
             this.Name = "frmMBids";
             this.Text = "Meridian Bids";
             this.Activated += new System.EventHandler(this.frmMBids_Activated);

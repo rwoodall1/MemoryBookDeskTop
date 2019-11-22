@@ -593,6 +593,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void ReminderEmails(string type)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (type == "Half")
             {
                     var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
@@ -672,6 +674,7 @@ namespace Mbc5.Forms.MemoryBook
                 string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
                 emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
             }
+            Cursor.Current = Cursors.Default;
 
         }
         private void DisableControls(Control con)
@@ -2558,6 +2561,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void Fill()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (!string.IsNullOrEmpty(Schcode))
             {
                 try
@@ -2608,9 +2613,12 @@ namespace Mbc5.Forms.MemoryBook
             txtModifiedByInvdetail.Text = this.ApplicationUser.id;
             txtModifiedByPay.Text = this.ApplicationUser.id;
             SetNoticeLabels();
+            Cursor.Current = Cursors.Default;
         }
         public override void Save(bool ShowSpinner)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (quotesBindingSource.Count < 1)
             {
                 SaveSucceded = true;
@@ -2681,7 +2689,7 @@ namespace Mbc5.Forms.MemoryBook
 
             }
 
-
+            Cursor.Current= Cursors.Default;
         }
        
         public ApiProcessingResult<bool> Save(int vIndex)
@@ -2796,6 +2804,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         public void UpdateProductionCopyPages()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             int numBooks;
             int freeBooks = 0;
             var result = int.TryParse(this.txtNocopies.Text, out numBooks);
@@ -2822,6 +2832,7 @@ namespace Mbc5.Forms.MemoryBook
                 try { var updateResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters); } catch (Exception ex) { MbcMessageBox.Error("Failed to update production copies:" + ex.Message, ""); }
 
             }
+            Cursor.Current = Cursors.Default;
         }
         #endregion
         #region CalcEvents
@@ -4453,12 +4464,48 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnOnlineAgreement_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            
             List<string> address = new List<string>();
-            address.Add("randy@305spin.com");
-            address.Add("randy@woodalldevelopment.com");
-            EmailHelper a = new EmailHelper();
-            a.SendOutLookEmail("test", address, "", "This is a test.", EmailType.Mbc);
+            string contact1email = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "": ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+            string contact2email = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
+            string contact3email = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
+            string vJobNo = ((DataRowView)quotesBindingSource.Current).Row.IsNull("jobno") ? "" : ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
+            string vPassword = ((DataRowView)custBindingSource.Current).Row.IsNull("mbconlinepassword") ? "" : ((DataRowView)custBindingSource.Current).Row["mbconlinepassword"].ToString().Trim();
+            if (!string.IsNullOrEmpty(contact1email))
+            {
+                address.Add(contact1email.Trim());
+            }
+            if (!string.IsNullOrEmpty(contact2email))
+            {
+                address.Add(contact2email);
+            }
+            if (!string.IsNullOrEmpty(contact3email))
+            {
+                address.Add(contact3email);
+            }
 
+            string vBody= @"Thank you for signing up for Memory Book Online Parent Pay.<br/>
+            Please go to <a href=https://coverorders.memorybook.com/login> <font color=blue> Cover Orders Center </font> </a> to customize your online pay fliers to send home with students or post to your schools website.<br/>
+            User Name:" + vJobNo + @" <br/>
+            Password:Adviser<br/>
+            PLEASE NOTE YOUR SCHOOLS CODE IS:<strong> "+ Schcode + @"</strong> This is the number you will put on the flier.<br/><br/>
+            Below please find your Online Pay Advisor access information.You can copy and paste this link <a href=http://www.shop.memorybook.com/admin/><font color=blue> http://www.shop.memorybook.com/admin/ </font> </a>  into a browser to take you to the advisor log in page. 
+            <br/><br/>
+            School Code: "+Schcode+@"<br/>
+            Password: "+vPassword + @"<br/> <br/>
+
+            * View Orders Submitted<br/>
+            * Generate a report of all orders and order information";
+            var vattachementList = new List<OutlookAttachemt>();
+            var vAttachement = new OutlookAttachemt() {
+                Name = "2019 Online Pay Adviser",
+                Path =ConfigurationManager.AppSettings["AdviserFile"].ToString()  };
+            vattachementList.Add(vAttachement);
+             EmailHelper emailHelper = new EmailHelper();
+            emailHelper.SendOutLookEmail("Memory Book Online Pay", address, null, vBody, EmailType.Mbc,vattachementList);
+            Cursor.Current = Cursors.Default;
 
         }
 
@@ -4508,7 +4555,10 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnSavePayment_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             SavePayment();
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -4627,12 +4677,18 @@ namespace Mbc5.Forms.MemoryBook
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
         }
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            Cursor.Current = Cursors.Default;
 
         }
         private decimal GetTaxRateOld()
@@ -4659,6 +4715,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         private decimal GetTax(decimal vAmount)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             decimal totalTaxCharged = 0;
             try
             {
@@ -4692,6 +4750,7 @@ namespace Mbc5.Forms.MemoryBook
                 this.TaxRate = Convert.ToDecimal(lblTaxRateValue.Text);
             }
             catch { };
+            Cursor.Current = Cursors.Default;
             return totalTaxCharged;
         }
 
@@ -4908,7 +4967,8 @@ namespace Mbc5.Forms.MemoryBook
         }
         private int GetNewInvno()
         {
-
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var sqlQuery = new BaseClass.Classes.SQLQuery();
 
             SqlParameter[] parameters = new SqlParameter[] {
@@ -4939,7 +4999,7 @@ namespace Mbc5.Forms.MemoryBook
                 return 0;
 
             }
-
+            Cursor.Current = Cursors.Default;
         }
         private void CalculateXtraInvoice()
         {
@@ -5387,7 +5447,10 @@ namespace Mbc5.Forms.MemoryBook
 
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             try { reportViewer2.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            Cursor.Current = Cursors.Default;
         }
 
         
@@ -5440,6 +5503,8 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnPassword_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var emailHelper = new EmailHelper();
             string vsub = "Advisor Log In's for Online Parent Pay and Promotional Materials";
             string vSchcode = ((DataRowView)quotesBindingSource.Current).Row["schcode"].ToString().Trim();
@@ -5480,12 +5545,14 @@ namespace Mbc5.Forms.MemoryBook
                 You may also order additional promotional materials at this time through the order center.<br/><br/>Thank you.";
 
                 emailHelper.SendOutLookEmail(vsub,vEmailList,null, vBody,EmailType.Mbc);
-
+            Cursor.Current = Cursors.Default;
 
         }
 
         private void btnPrintAgreement_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             decimal vtax = 0;
             decimal.TryParse(lblSalesTax.Text.Replace("$", "").Replace(",", ""), out vtax);
             decimal vtotal = 0;
@@ -5520,17 +5587,23 @@ namespace Mbc5.Forms.MemoryBook
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsHeader", bsAgreementHeader));
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlinePay", quotesBindingSource));
             reportViewer3.RefreshReport();
-            
+            Cursor.Current = Cursors.Default;
+
         }
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            //try { reportViewer3.PrintDialog(); } catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            try { reportViewer3.PrintDialog(); } catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            Cursor.Current = Cursors.Default;
            
         }
 
         private void btnPrntFlyer_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineFlyer.rdlc";
             reportViewer3.LocalReport.DataSources.Clear();
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlineFlyer", bsOnlineFlyer));
@@ -5570,6 +5643,7 @@ namespace Mbc5.Forms.MemoryBook
                     Attachements.Add(Attachement);
                     string Address=((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
                     emailHelper.SendOutLookEmail(sub,Address, null, body, EmailType.Mbc,Attachements);
+            Cursor.Current = Cursors.Default;
 
         }
 
@@ -5786,6 +5860,8 @@ namespace Mbc5.Forms.MemoryBook
 
         private void GetXtraInvoices()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var sqlquery = new SQLCustomClient();
             var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
                                     Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
@@ -5803,11 +5879,20 @@ namespace Mbc5.Forms.MemoryBook
             this.XrtaInvoicesGridData = vXtra;
             XtraInvoiceBindingSource.DataSource = this.XrtaInvoicesGridData;
             grdXtraInvoice.DataSource = XtraInvoiceBindingSource;
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void agreerecCheckBox1_Click(object sender, EventArgs e)
+        {
+            if (agreerecCheckBox1.Checked)
+            {
+                btnOnlineAgreement_Click(agreerecCheckBox1, null);
+            }
         }
 
         //Nothing below here
     }
-   
+
     public class XtraInvoicePrint
     {
         public DateTime qtedate { get; set; }

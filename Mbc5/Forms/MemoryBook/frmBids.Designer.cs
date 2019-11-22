@@ -372,6 +372,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // sourceLabel
             // 
+            sourceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             sourceLabel.AutoSize = true;
             sourceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             sourceLabel.Location = new System.Drawing.Point(910, 61);
@@ -412,6 +413,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // yrdiscountamtLabel
             // 
+            yrdiscountamtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             yrdiscountamtLabel.AutoSize = true;
             yrdiscountamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             yrdiscountamtLabel.Location = new System.Drawing.Point(799, 60);
@@ -468,6 +470,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // adjbefLabel
             // 
+            adjbefLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             adjbefLabel.AutoSize = true;
             adjbefLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             adjbefLabel.Location = new System.Drawing.Point(694, 557);
@@ -681,7 +684,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // idLabel
             // 
+            idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             idLabel.AutoSize = true;
+            idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             idLabel.Location = new System.Drawing.Point(844, 34);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(41, 13);
@@ -690,6 +695,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // label19
             // 
+            label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label19.AutoSize = true;
             label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label19.Location = new System.Drawing.Point(716, 515);
@@ -700,6 +706,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // label23
             // 
+            label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label23.AutoSize = true;
             label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label23.Location = new System.Drawing.Point(803, 535);
@@ -719,7 +726,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // ordagryrLabel
             // 
+            ordagryrLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             ordagryrLabel.AutoSize = true;
+            ordagryrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ordagryrLabel.Location = new System.Drawing.Point(825, 106);
             ordagryrLabel.Name = "ordagryrLabel";
             ordagryrLabel.Size = new System.Drawing.Size(154, 13);
@@ -973,7 +982,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // chkPrntAsInvoice
             // 
+            this.chkPrntAsInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPrntAsInvoice.AutoSize = true;
+            this.chkPrntAsInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPrntAsInvoice.Location = new System.Drawing.Point(921, 135);
             this.chkPrntAsInvoice.Name = "chkPrntAsInvoice";
             this.chkPrntAsInvoice.Size = new System.Drawing.Size(113, 17);
@@ -993,6 +1004,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // ordagryrTextBox
             // 
+            this.ordagryrTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ordagryrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "ordagryr", true));
             this.ordagryrTextBox.Location = new System.Drawing.Point(985, 106);
             this.ordagryrTextBox.Name = "ordagryrTextBox";
@@ -1003,6 +1015,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.nbaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nbaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "nba", true));
+            this.nbaCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nbaCheckBox.Location = new System.Drawing.Point(845, 82);
             this.nbaCheckBox.Name = "nbaCheckBox";
             this.nbaCheckBox.Size = new System.Drawing.Size(56, 24);
@@ -1014,15 +1027,19 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.oaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.oaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "oa", true));
+            this.oaCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oaCheckBox.Location = new System.Drawing.Point(907, 82);
             this.oaCheckBox.Name = "oaCheckBox";
             this.oaCheckBox.Size = new System.Drawing.Size(90, 24);
             this.oaCheckBox.TabIndex = 11;
             this.oaCheckBox.Text = "Current Bid";
             this.oaCheckBox.UseVisualStyleBackColor = true;
+            this.oaCheckBox.CheckedChanged += new System.EventHandler(this.oaCheckBox_CheckedChanged);
+            this.oaCheckBox.Click += new System.EventHandler(this.oaCheckBox_Click);
             // 
             // btnCopyToSales
             // 
+            this.btnCopyToSales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyToSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyToSales.Location = new System.Drawing.Point(920, 179);
             this.btnCopyToSales.Name = "btnCopyToSales";
@@ -1034,6 +1051,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // btnCopyToNewBid
             // 
+            this.btnCopyToNewBid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyToNewBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyToNewBid.Location = new System.Drawing.Point(920, 211);
             this.btnCopyToNewBid.Name = "btnCopyToNewBid";
@@ -1047,7 +1065,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.btnPrntQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrntQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrntQuote.Location = new System.Drawing.Point(925, 152);
+            this.btnPrntQuote.Location = new System.Drawing.Point(920, 152);
             this.btnPrntQuote.Name = "btnPrntQuote";
             this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
             this.btnPrntQuote.TabIndex = 287;
@@ -1069,6 +1087,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(755, 538);
             this.label10.Name = "label10";
@@ -1078,6 +1097,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // schooltaxrateLabel1
             // 
+            this.schooltaxrateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schooltaxrateLabel1.AutoSize = true;
             this.schooltaxrateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "schooltaxrate", true));
             this.schooltaxrateLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1089,6 +1109,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lblfilnalsubtotal
             // 
+            this.lblfilnalsubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblfilnalsubtotal.AutoSize = true;
             this.lblfilnalsubtotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "subtotal", true));
             this.lblfilnalsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1100,6 +1121,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // donotchargeschoolsalestaxCheckBox
             // 
+            this.donotchargeschoolsalestaxCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.donotchargeschoolsalestaxCheckBox.AutoSize = true;
             this.donotchargeschoolsalestaxCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "donotchargeschoolsalestax", true));
             this.donotchargeschoolsalestaxCheckBox.Location = new System.Drawing.Point(563, 537);
@@ -1112,6 +1134,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lblSalesTax
             // 
+            this.lblSalesTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSalesTax.AutoSize = true;
             this.lblSalesTax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "schooltax", true));
             this.lblSalesTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1123,7 +1146,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lblId
             // 
+            this.lblId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "Id", true));
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.Location = new System.Drawing.Point(887, 34);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(100, 20);
@@ -1194,6 +1219,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // txtSource
             // 
+            this.txtSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "source", true));
             this.txtSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSource.Location = new System.Drawing.Point(967, 61);
@@ -1604,6 +1630,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lbladjbef
             // 
+            this.lbladjbef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbladjbef.AutoSize = true;
             this.lbladjbef.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "adjbef", true));
             this.lbladjbef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2404,6 +2431,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.lblPriceEach.AutoSize = true;
             this.lblPriceEach.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "book_ea", true));
+            this.lblPriceEach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPriceEach.Location = new System.Drawing.Point(346, 60);
             this.lblPriceEach.Name = "lblPriceEach";
             this.lblPriceEach.Size = new System.Drawing.Size(32, 13);
@@ -2423,6 +2451,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // cmbYrDiscountAmt
             // 
+            this.cmbYrDiscountAmt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbYrDiscountAmt.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bidsBindingSource, "yrdiscountamt", true));
             this.cmbYrDiscountAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbYrDiscountAmt.FormattingEnabled = true;
@@ -2438,6 +2467,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // chkPromo
             // 
+            this.chkPromo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPromo.AutoSize = true;
             this.chkPromo.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "yrdiscount", true));
             this.chkPromo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

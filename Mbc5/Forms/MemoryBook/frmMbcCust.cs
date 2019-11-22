@@ -88,12 +88,13 @@ namespace Mbc5.Forms.MemoryBook {
             Fill();
             this.txtModifiedBy.Text = this.ApplicationUser.id;
             custBindingSource.ResetBindings(true);
+
             
         }
 
 
 
- #region CrudOperations
+        #region CrudOperations
         public override void Save(bool ShowSpinner)
         {
            
@@ -374,7 +375,7 @@ public override void Cancel() {
                 var sqlquery = new SQLCustomClient();
                 var dr = (DataRowView)custBindingSource.Current;
                 var vYearBookToHome = dr.Row["yb_sth"].ToString();
-                var vOther = dr.Row["shiptocont1"].ToString();
+                var vOther = dr.Row["shiptocont"].ToString();
                 var vSchcode = dr.Row["Schcode"].ToString().Trim();
                 var vSchname = dr.Row["Schname"].ToString().Trim();
                 var vContemail = dr.Row["contemail"].ToString();
@@ -767,44 +768,11 @@ public override void Cancel() {
           
             return processingResult;
         }
-        private  ApiProcessingResult<bool> PrintProdCheckList()
-        {
-            var processingResult = new ApiProcessingResult<bool>();
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"
-                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
-                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
-                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
-                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
-                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
-                        FROM Cust C
-                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
-                            Left JOIN Invoice I ON Q.Invno=I.Invno
-                            Left JOIN Recv2 R ON Q.Invno=R.Invno
-                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
-                        Where Q.Invno=@Invno";
-
-            sqlClient.CommandText(cmdText);
-            sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
-            if (dataReturnedResult.IsError)
-            {
-                
-                processingResult.IsError = true;
-                processingResult.Errors.Add(new ApiProcessingError(dataReturnedResult.Errors[0].ErrorMessage, dataReturnedResult.Errors[0].ErrorMessage,""));
-
-            }
-            var data = (ProductionCheckList)dataReturnedResult.Data;
-
-            ProductionCheckListBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewerCheckList.RefreshReport();
-            Cursor.Current = Cursors.Default;
-            return processingResult;
-        }
+        
         private void EmailAllContacts()
         {
-            this.Cursor = Cursors.AppStarting;
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             string body = "";
             string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
             var dr = (DataRowView)custBindingSource.Current;
@@ -902,7 +870,8 @@ public override void Cancel() {
         }
        public override void Fill()
         {
-
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             try
             {
 
@@ -944,7 +913,7 @@ public override void Cancel() {
                     .Submit();
                 MbcMessageBox.Error(ex.Message, "");
             }
-
+            Cursor.Current = Cursors.Default;
         }
         public void PrintLabel(string vLabel)
         {
@@ -2034,6 +2003,8 @@ public override void Cancel() {
         }
         private void btnEmailContac3_Click_1(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (!String.IsNullOrEmpty(txtContact3Email.Text))
             {
                 this.errorProvider1.SetError(txtContact3Email, string.Empty);
@@ -2044,10 +2015,12 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContact3Email, "Email address is required.");
             }
-
+            Cursor.Current = Cursors.Default;
         }
         private void btnEmailCont2_Click_1(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (!String.IsNullOrEmpty(txtContact2Email.Text))
             {
                 this.errorProvider1.SetError(txtContact2Email, string.Empty);
@@ -2058,20 +2031,22 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContact2Email, "Email address is required.");
             }
-
+            Cursor.Current = Cursors.Default;
         }
      
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
             //this.basePanel.Visible = true;
             //backgroundWorker1.RunWorkerAsync("PrintProductionTicket");
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             var result=PrintProductionTicket();
             if (result.IsError)
             {
                 MbcMessageBox.Error(result.Errors[0].ErrorMessage);
             }
 
-
+            Cursor.Current = Cursors.Default;
         }
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
@@ -2090,18 +2065,47 @@ public override void Cancel() {
         }
         private void btnProdChk_Click(object sender, EventArgs e)
         {
-            //basePanel.Visible = true;
-            //backgroundWorker1.RunWorkerAsync("PrintProdCheckList");
-            var result = PrintProdCheckList();
-            if (result.IsError)
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+    
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"
+                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
+                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
+                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,Q.Inkclr,P.Invno,P.Prodno,P.Covertype,P.Diecut,
+                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
+                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout,TP.Kitrecvd
+                        FROM Cust C
+                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+                            Left JOIN Invoice I ON Q.Invno=I.Invno
+                            Left JOIN Recv2 R ON Q.Invno=R.Invno
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                            LEFT JOIN (Select TP.Kitrecvd,TP.Schcode,TP.contryear From Produtn TP )AS TP On Q.Schcode=TP.Schcode AND Convert(int,TP.contryear)=Convert(int,Q.contryear)-1
+                        Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
+            if (dataReturnedResult.IsError)
             {
-                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+                ExceptionlessClient.Default.CreateLog("ProdChkList")
+                    .AddObject(dataReturnedResult)
+                    .Submit();
+                MbcMessageBox.Error("Failed to retrieve data for Production Check List");
             }
+            var data = (ProductionCheckList)dataReturnedResult.Data;
+
+            ProductionCheckListBindingSource.DataSource = data;
+        
+            reportViewerCheckList.DataBindings.Clear();
+            reportViewerCheckList.LocalReport.DataSources.Add(new ReportDataSource("dsProdChkList", ProductionCheckListBindingSource));
+            reportViewerCheckList.RefreshReport();
+            Cursor.Current = Cursors.Default;
         }
         private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            try { reportViewerCheckList.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             Cursor.Current = Cursors.Default;
         }
         private void AddLeadName_Click(object sender, EventArgs e)
@@ -2174,7 +2178,7 @@ public override void Cancel() {
         {
 
             this.Cursor = Cursors.AppStarting;
-            string body = inofficeTextBox.Text;
+            string body = "Schcode:" + Schcode + "  School Name:" + txtSchname.Text.Trim() +"     JobNumber:"+ jobnoLabel1.Text+ "<br/><br/>"+ inofficeTextBox.Text;
             string subj = txtSchname.Text.Trim() + " " + Schcode;
             string email = "yearbook@memorybook.com";
             var emailHelper = new EmailHelper();
@@ -2185,7 +2189,8 @@ public override void Cancel() {
         }
         private void btnSchoolEmail_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             string body = "";
             string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
             var dr = (DataRowView)custBindingSource.Current;
@@ -2204,6 +2209,8 @@ public override void Cancel() {
         }
         private void btnEmailContact_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             if (!String.IsNullOrEmpty(txtContactEmail.Text))
             {
                 this.errorProvider1.SetError(txtContactEmail, string.Empty);
@@ -2214,7 +2221,7 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContactEmail, "Email address is required.");
             }
-
+            Cursor.Current = Cursors.Default;
         }
         private void txtReason_Leave(object sender, EventArgs e)
         {
@@ -2657,7 +2664,10 @@ public override void Cancel() {
 
         private void reportViewer3_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             try { reportViewer3.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -2767,14 +2777,15 @@ public override void Cancel() {
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //this.basePanel.Visible = true;
-            //backgroundWorker1.RunWorkerAsync("UpdateUPSAddress");
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+           
             var result=UpdateUpsAddresses();
             if (result.IsError)
             {
                 MbcMessageBox.Error(result.Errors[0].ErrorMessage);
             }
-           
+            Cursor.Current = Cursors.Default;
         }
 
         private void txtaddress_TextChanged(object sender, EventArgs e)
@@ -2808,7 +2819,7 @@ public override void Cancel() {
 
                     break;
                 case "PrintProdCheckList":
-                    result = PrintProdCheckList();
+                   // result = PrintProdCheckList();
                  
                     break;
                 case "Save":
@@ -2850,6 +2861,8 @@ public override void Cancel() {
         {
             //event must be here to bypass data errors due to background worker issue.
         }
+
+       
 
 
 

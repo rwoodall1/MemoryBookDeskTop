@@ -619,17 +619,19 @@ namespace BindingModels
         public string ShipMemo { get; set; }
         public int NoPages { get; set; }
         public int NoCopies { get; set; }
-        public string Contphnhom { get; set; }
+        public string Contphnhom { get; set; }      
         public bool Glspaper { get; set; }
         public bool Insck { get; set; }
         public bool Dc1 { get; set; }
         public string BookType { get; set; }
         public bool Allclrck { get; set; }
+        public string InkClr { get; set; }
         public int Invno { get; set; }
         public string Prodno { get; set; }
         public string Covertype { get; set; }
         public bool Diecut { get; set; }
         public bool Laminated { get; set; }
+        //
         public bool Contrecvd { get; set; }
         public DateTime Screcv { get; set; }
         public string Perfbind { get; set; }
@@ -643,7 +645,7 @@ namespace BindingModels
         public decimal Invtot { get; set; }
         public decimal Payments { get; set; }
         public decimal BalDue { get; set; }
-        public string Hndred { get; set; }
+        public bool Hndred { get; set; }
         public DateTime Schout { get; set; }
 
     }
