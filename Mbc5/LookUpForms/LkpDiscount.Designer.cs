@@ -30,15 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LkpDiscount));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDiscount = new System.Windows.Forms.Label();
-            this.lookUp = new Mbc5.DataSets.LookUp();
-            this.lkpDdiscntBindingSource = new System.Windows.Forms.BindingSource(this.components);
-          
-            this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpDdiscntBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -47,26 +43,32 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.lkpDdiscntBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.lkpDdiscntDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lkpDdiscntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
+            this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
+            this.lkpDiscountTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpDiscountTableAdapter();
             this.TopPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingNavigator)).BeginInit();
             this.lkpDdiscntBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
             // 
             this.TopPanel.Controls.Add(this.lblDiscount);
-            this.TopPanel.Size = new System.Drawing.Size(381, 48);
+            this.TopPanel.Size = new System.Drawing.Size(439, 60);
             // 
             // BottomPanel
             // 
             this.BottomPanel.Location = new System.Drawing.Point(0, 575);
-            this.BottomPanel.Size = new System.Drawing.Size(381, 1);
+            this.BottomPanel.Size = new System.Drawing.Size(439, 1);
             // 
             // lblDiscount
             // 
@@ -77,33 +79,6 @@
             this.lblDiscount.Size = new System.Drawing.Size(170, 29);
             this.lblDiscount.TabIndex = 0;
             this.lblDiscount.Text = "Discount Items";
-            // 
-            // lookUp
-            // 
-            this.lookUp.DataSetName = "LookUp";
-            this.lookUp.EnforceConstraints = false;
-            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lkpDdiscntBindingSource
-            // 
-            this.lkpDdiscntBindingSource.DataMember = "LkpDdiscnt";
-            this.lkpDdiscntBindingSource.DataSource = this.lookUp;
-            // 
-            // lkpDdiscntTableAdapter
-            // 
-         
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.contpstnTableAdapter = null;
-            this.tableAdapterManager.lkpCommentsTableAdapter = null;
-       
-            this.tableAdapterManager.lkpMktReferenceTableAdapter = null;
-            this.tableAdapterManager.lkpPromotionsTableAdapter = null;
-            this.tableAdapterManager.lkpTypeContTableAdapter = null;
-        
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lkpDdiscntBindingNavigator
             // 
@@ -132,7 +107,7 @@
             this.lkpDdiscntBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.lkpDdiscntBindingNavigator.Name = "lkpDdiscntBindingNavigator";
             this.lkpDdiscntBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.lkpDdiscntBindingNavigator.Size = new System.Drawing.Size(381, 25);
+            this.lkpDdiscntBindingNavigator.Size = new System.Drawing.Size(439, 25);
             this.lkpDdiscntBindingNavigator.TabIndex = 2;
             this.lkpDdiscntBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -151,15 +126,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -221,6 +187,16 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
             // lkpDdiscntBindingNavigatorSaveItem
             // 
             this.lkpDdiscntBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -236,26 +212,82 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lkpDdiscntDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lkpDdiscntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lkpDdiscntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lkpDdiscntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
+            this.nameDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn});
             this.lkpDdiscntDataGridView.DataSource = this.lkpDdiscntBindingSource;
+            this.lkpDdiscntDataGridView.EnableHeadersVisualStyles = false;
             this.lkpDdiscntDataGridView.Location = new System.Drawing.Point(0, 54);
             this.lkpDdiscntDataGridView.Name = "lkpDdiscntDataGridView";
-            this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(377, 485);
+            this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(435, 485);
             this.lkpDdiscntDataGridView.TabIndex = 3;
             // 
-            // dataGridViewTextBoxColumn1
+            // nameDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "discntdesc";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Discount Item";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // lkpDdiscntBindingSource
+            // 
+            this.lkpDdiscntBindingSource.DataMember = "lkpDiscount";
+            this.lkpDdiscntBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.EnforceConstraints = false;
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.contpstnTableAdapter = null;
+            this.tableAdapterManager.lkpBackGroundTableAdapter = null;
+            this.tableAdapterManager.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager.lkpDiscountTableAdapter = null;
+            this.tableAdapterManager.lkpLeadNameTableAdapter = null;
+            this.tableAdapterManager.lkpLeadSourceTableAdapter = null;
+            this.tableAdapterManager.lkpMktReferenceTableAdapter = null;
+            this.tableAdapterManager.lkpMultiYearOptionsTableAdapter = null;
+            this.tableAdapterManager.lkpNoRebookTableAdapter = null;
+            this.tableAdapterManager.lkpPrevPubTableAdapter = null;
+            this.tableAdapterManager.lkpPromotionsTableAdapter = null;
+            this.tableAdapterManager.lkpschtypeTableAdapter = null;
+            this.tableAdapterManager.lkpSupplyItemsTableAdapter = null;
+            this.tableAdapterManager.lkpTypeContTableAdapter = null;
+            this.tableAdapterManager.lkTypeDataTableAdapter = null;
+            this.tableAdapterManager.MeridianProductsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // lkpDiscountTableAdapter
+            // 
+            this.lkpDiscountTableAdapter.ClearBeforeFill = true;
             // 
             // LkpDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(381, 576);
+            this.ClientSize = new System.Drawing.Size(439, 576);
             this.Controls.Add(this.lkpDdiscntDataGridView);
             this.Controls.Add(this.lkpDdiscntBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -263,19 +295,20 @@
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "LkpDiscount";
             this.Text = "Discount Items";
-          
+            this.Load += new System.EventHandler(this.LkpDiscount_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.lkpDdiscntBindingNavigator, 0);
             this.Controls.SetChildIndex(this.lkpDdiscntDataGridView, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingNavigator)).EndInit();
             this.lkpDdiscntBindingNavigator.ResumeLayout(false);
             this.lkpDdiscntBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +336,8 @@
         private System.Windows.Forms.ToolStripButton lkpDdiscntBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView lkpDdiscntDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataSets.LookUpTableAdapters.lkpDiscountTableAdapter lkpDiscountTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
     }
 }

@@ -142,6 +142,10 @@ namespace Mbc5.Forms.MemoryBook
                     dgInvoices.AutoGenerateColumns = false;
                     bsInvoices.DataSource = Invoices;
                 }
+                else
+                {
+                    MbcMessageBox.Information("No records found.");
+                }
             }
             else { MbcMessageBox.Information("Please select a statement type.", ""); }
 
@@ -230,7 +234,8 @@ namespace Mbc5.Forms.MemoryBook
 			return processingResult;
 		}
 		private async void button4_ClickAsync(object sender, EventArgs e) {
-
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
 			if (Invoices == null || this.Invoices.Count == 0) {
 				MbcMessageBox.Information("There are no invoices to print or email.", "Invoices");
 				return;
@@ -243,7 +248,8 @@ namespace Mbc5.Forms.MemoryBook
 				if (result.IsError) {
 					DialogResult dresult = MessageBox.Show("Invoice " + rec.Invno.ToString() + " Error:" + result.Errors[0].ErrorMessage + " Do you wish to continue?", "Invoices", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 					if (dresult == DialogResult.No) {
-						return;
+                        Cursor.Current = Cursors.Default;
+                        return;
 					}
 				}
 				var emailHelper = new EmailHelper();
@@ -278,7 +284,8 @@ namespace Mbc5.Forms.MemoryBook
 				var msg = "The following invoice numbers failed to be emailed out:" + string.Join(",", badEmails);
 				MbcMessageBox.Information(msg, "Failed Invoice Emails");
 			}
-		}
+            Cursor.Current = Cursors.Default;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
 			var vInvoiceNoList = new List<string>();

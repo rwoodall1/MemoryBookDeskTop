@@ -33,8 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LkpBackGround));
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lkpDdiscntDataGridView = new System.Windows.Forms.DataGridView();
-            this.bkgrndNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lkpBackGroundBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -52,6 +50,8 @@
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
+            this.bkgrndNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).BeginInit();
@@ -105,20 +105,6 @@
             this.lkpDdiscntDataGridView.Name = "lkpDdiscntDataGridView";
             this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(509, 520);
             this.lkpDdiscntDataGridView.TabIndex = 3;
-            // 
-            // bkgrndNameDataGridViewTextBoxColumn
-            // 
-            this.bkgrndNameDataGridViewTextBoxColumn.DataPropertyName = "BkgrndName";
-            this.bkgrndNameDataGridViewTextBoxColumn.HeaderText = "BkgrndName";
-            this.bkgrndNameDataGridViewTextBoxColumn.Name = "bkgrndNameDataGridViewTextBoxColumn";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
             // 
             // lkpBackGroundBindingSource
             // 
@@ -266,6 +252,7 @@
             this.tableAdapterManager.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager.lkpCommentsTableAdapter = null;
             this.tableAdapterManager.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager.lkpDiscountTableAdapter = null;
             this.tableAdapterManager.lkpLeadNameTableAdapter = null;
             this.tableAdapterManager.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager.lkpMktReferenceTableAdapter = null;
@@ -274,13 +261,29 @@
             this.tableAdapterManager.lkpPrevPubTableAdapter = null;
             this.tableAdapterManager.lkpPromotionsTableAdapter = null;
             this.tableAdapterManager.lkpschtypeTableAdapter = null;
+            this.tableAdapterManager.lkpSupplyItemsTableAdapter = null;
             this.tableAdapterManager.lkpTypeContTableAdapter = null;
             this.tableAdapterManager.lkTypeDataTableAdapter = null;
+            this.tableAdapterManager.MeridianProductsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lkpBackGroundTableAdapter
             // 
             this.lkpBackGroundTableAdapter.ClearBeforeFill = true;
+            // 
+            // bkgrndNameDataGridViewTextBoxColumn
+            // 
+            this.bkgrndNameDataGridViewTextBoxColumn.DataPropertyName = "BkgrndName";
+            this.bkgrndNameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.bkgrndNameDataGridViewTextBoxColumn.Name = "bkgrndNameDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // LkpBackGround
             // 
@@ -295,6 +298,7 @@
             this.Text = "Lead Source Items";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LkpBackGround_FormClosing);
             this.Load += new System.EventHandler(this.LkpLeadSource_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.lkpDdiscntDataGridView, 0);

@@ -66,11 +66,14 @@ namespace Mbc5.Forms.MemoryBook
             this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.xtraTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpDiscountTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
             
+         
+
             txtModifiedByPay.Text = this.ApplicationUser.id;
             pg1.AutoScroll = false;
             this.AutoScroll = false;
@@ -2567,7 +2570,7 @@ namespace Mbc5.Forms.MemoryBook
             {
                 try
                 {
-                  
+                    this.lkpDiscountTableAdapter.Fill(this.lookUp.lkpDiscount);
                     custTableAdapter.Fill(dsSales.cust, Schcode);
                     var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
 

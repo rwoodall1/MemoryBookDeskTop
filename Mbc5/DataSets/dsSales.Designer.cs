@@ -745,6 +745,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnOnlinePayHasBeenIncreased;
             
+            private global::System.Data.DataColumn columnAdTurnedOff;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesDataTable() {
@@ -2364,6 +2366,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AdTurnedOffColumn {
+                get {
+                    return this.columnAdTurnedOff;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2597,7 +2607,8 @@ namespace Mbc5.DataSets {
                         System.DateTime dedayin, 
                         System.DateTime DateToIncrease, 
                         decimal PriceIncrease, 
-                        bool OnlinePayHasBeenIncreased) {
+                        bool OnlinePayHasBeenIncreased, 
+                        bool AdTurnedOff) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
@@ -2797,7 +2808,8 @@ namespace Mbc5.DataSets {
                         dedayin,
                         DateToIncrease,
                         PriceIncrease,
-                        OnlinePayHasBeenIncreased};
+                        OnlinePayHasBeenIncreased,
+                        AdTurnedOff};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -3025,6 +3037,7 @@ namespace Mbc5.DataSets {
                 this.columnDateToIncrease = base.Columns["DateToIncrease"];
                 this.columnPriceIncrease = base.Columns["PriceIncrease"];
                 this.columnOnlinePayHasBeenIncreased = base.Columns["OnlinePayHasBeenIncreased"];
+                this.columnAdTurnedOff = base.Columns["AdTurnedOff"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3426,6 +3439,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnPriceIncrease);
                 this.columnOnlinePayHasBeenIncreased = new global::System.Data.DataColumn("OnlinePayHasBeenIncreased", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOnlinePayHasBeenIncreased);
+                this.columnAdTurnedOff = new global::System.Data.DataColumn("AdTurnedOff", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAdTurnedOff);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -3457,6 +3472,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columnjobno.MaxLength = 7;
                 this.columnmsstanqty1.Caption = "msstanqty";
+                this.columnOnlinePayHasBeenIncreased.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7681,15 +7697,26 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool OnlinePayHasBeenIncreased {
                 get {
-                    try {
-                        return ((bool)(this[this.tablequotes.OnlinePayHasBeenIncreasedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OnlinePayHasBeenIncreased\' in table \'quotes\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tablequotes.OnlinePayHasBeenIncreasedColumn]));
                 }
                 set {
                     this[this.tablequotes.OnlinePayHasBeenIncreasedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool AdTurnedOff {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.AdTurnedOffColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AdTurnedOff\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.AdTurnedOffColumn] = value;
                 }
             }
             
@@ -10035,14 +10062,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOnlinePayHasBeenIncreasedNull() {
-                return this.IsNull(this.tablequotes.OnlinePayHasBeenIncreasedColumn);
+            public bool IsAdTurnedOffNull() {
+                return this.IsNull(this.tablequotes.AdTurnedOffColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOnlinePayHasBeenIncreasedNull() {
-                this[this.tablequotes.OnlinePayHasBeenIncreasedColumn] = global::System.Convert.DBNull;
+            public void SetAdTurnedOffNull() {
+                this[this.tablequotes.AdTurnedOffColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11210,6 +11237,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("DateToIncrease", "DateToIncrease");
             tableMapping.ColumnMappings.Add("PriceIncrease", "PriceIncrease");
             tableMapping.ColumnMappings.Add("OnlinePayHasBeenIncreased", "OnlinePayHasBeenIncreased");
+            tableMapping.ColumnMappings.Add("AdTurnedOff", "AdTurnedOff");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -11554,8 +11582,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "      OnlinePayTaxRate = @OnlinePayTaxRate, NoOnlinePay = @NoOnlinePay, TaxOnlin" +
                 "ePay = @TaxOnlinePay, DateToIncrease = @DateToIncrease, PriceIncrease = @PriceIn" +
                 "crease, \r\n                         OnlinePayHasBeenIncreased = @OnlinePayHasBeen" +
-                "Increased\r\nWHERE        (invno = @Original_invno) AND (TimeStamp = @Original_Tim" +
-                "eStamp)";
+                "Increased, AdTurnedOff = @AdTurnedOff\r\nWHERE        (invno = @Original_invno) AN" +
+                "D (TimeStamp = @Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11748,6 +11776,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PriceIncrease", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "PriceIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayHasBeenIncreased", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayHasBeenIncreased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdTurnedOff", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "AdTurnedOff", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -11814,9 +11843,9 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "cvd, produtn.jobno, produtn.shpdate, produtn.dedayin, quotes.OnlineTaxCollected," +
                 " quotes.OnlinePayTaxRate, quotes.NoOnlinePay, quotes.TaxOnlinePay, \r\n           " +
                 "              quotes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBe" +
-                "enIncreased\r\nFROM            quotes INNER JOIN\r\n                         produtn" +
-                " ON quotes.invno = produtn.invno\r\nWHERE        (quotes.schcode = @schcode)\r\nORDE" +
-                "R BY quotes.qtedate DESC";
+                "enIncreased, quotes.AdTurnedOff\r\nFROM            quotes INNER JOIN\r\n            " +
+                "             produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.schco" +
+                "de = @schcode)\r\nORDER BY quotes.qtedate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -11869,9 +11898,9 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "      quotes.yirsovrride, quotes.yrdiscount, quotes.yrdiscountamt, produtn.kitre" +
                 "cvd, produtn.jobno, produtn.dedayin, quotes.OnlineTaxCollected, quotes.OnlinePay" +
                 "TaxRate, quotes.NoOnlinePay, quotes.TaxOnlinePay, \r\n                         quo" +
-                "tes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBeenIncreased\r\nFROM" +
-                "            quotes INNER JOIN\r\n                         produtn ON quotes.invno " +
-                "= produtn.invno\r\nWHERE        (quotes.invno = @invno)";
+                "tes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBeenIncreased, quot" +
+                "es.AdTurnedOff\r\nFROM            quotes INNER JOIN\r\n                         prod" +
+                "utn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -13503,7 +13532,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> PriceIncrease, 
-                    global::System.Nullable<bool> OnlinePayHasBeenIncreased, 
+                    bool OnlinePayHasBeenIncreased, 
+                    global::System.Nullable<bool> AdTurnedOff, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(invno));
@@ -14641,18 +14671,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[189].Value = global::System.DBNull.Value;
             }
-            if ((OnlinePayHasBeenIncreased.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[190].Value = ((bool)(OnlinePayHasBeenIncreased.Value));
+            this.Adapter.UpdateCommand.Parameters[190].Value = ((bool)(OnlinePayHasBeenIncreased));
+            if ((AdTurnedOff.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[191].Value = ((bool)(AdTurnedOff.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[190].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[191].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[191].Value = ((int)(Original_invno));
+            this.Adapter.UpdateCommand.Parameters[192].Value = ((int)(Original_invno));
             if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[192].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[193].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[192].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[193].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -14864,10 +14895,11 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> PriceIncrease, 
-                    global::System.Nullable<bool> OnlinePayHasBeenIncreased, 
+                    bool OnlinePayHasBeenIncreased, 
+                    global::System.Nullable<bool> AdTurnedOff, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, OnlineTaxCollected, OnlinePayTaxRate, NoOnlinePay, TaxOnlinePay, DateToIncrease, PriceIncrease, OnlinePayHasBeenIncreased, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, OnlineTaxCollected, OnlinePayTaxRate, NoOnlinePay, TaxOnlinePay, DateToIncrease, PriceIncrease, OnlinePayHasBeenIncreased, AdTurnedOff, Original_invno, Original_TimeStamp);
         }
     }
     

@@ -95,9 +95,9 @@
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label invnotesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
@@ -131,7 +131,6 @@
             this.dteschendDateBox = new CustomControls.DateBox();
             this.initcontDateBox = new CustomControls.DateBox();
             this.dteschstartDateBox = new CustomControls.DateBox();
-            this.nxtdateTextBox = new System.Windows.Forms.TextBox();
             this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.josnameComboBox = new System.Windows.Forms.ComboBox();
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
@@ -232,6 +231,7 @@
             this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.meridianCategoryTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.MeridianCategoryTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -1069,9 +1069,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "dsProdutn";
-            reportDataSource1.Value = this.prodTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsProdutn";
+            reportDataSource2.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1023, 530);
             this.reportViewer1.Name = "reportViewer1";
@@ -1141,14 +1141,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QBooktype,
@@ -1286,6 +1286,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.comboBox5);
             this.panel2.Controls.Add(this.xeldateDateBox);
             this.panel2.Controls.Add(this.sourdateDateBox);
             this.panel2.Controls.Add(this.contdateDateBox);
@@ -1296,7 +1297,6 @@
             this.panel2.Controls.Add(this.dteschstartDateBox);
             this.panel2.Controls.Add(xeldateLabel);
             this.panel2.Controls.Add(nxtdateLabel);
-            this.panel2.Controls.Add(this.nxtdateTextBox);
             this.panel2.Controls.Add(dedayoutLabel);
             this.panel2.Controls.Add(contdateLabel);
             this.panel2.Controls.Add(dedayinLabel);
@@ -1416,15 +1416,6 @@
             this.dteschstartDateBox.Size = new System.Drawing.Size(138, 21);
             this.dteschstartDateBox.TabIndex = 426;
             // 
-            // nxtdateTextBox
-            // 
-            this.nxtdateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datecontBindingSource, "nxtdate", true));
-            this.nxtdateTextBox.Location = new System.Drawing.Point(383, 6);
-            this.nxtdateTextBox.Name = "nxtdateTextBox";
-            this.nxtdateTextBox.ReadOnly = true;
-            this.nxtdateTextBox.Size = new System.Drawing.Size(139, 20);
-            this.nxtdateTextBox.TabIndex = 25;
-            // 
             // datecontBindingSource
             // 
             this.datecontBindingSource.DataMember = "datecont";
@@ -1499,8 +1490,7 @@
             // 
             // categoryComboBox
             // 
-            this.categoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "category", true));
-            this.categoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.meridianCategoryBindingSource, "Val", true));
+            this.categoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mcustBindingSource, "category", true));
             this.categoryComboBox.DataSource = this.meridianCategoryBindingSource;
             this.categoryComboBox.DisplayMember = "Description";
             this.categoryComboBox.FormattingEnabled = true;
@@ -2439,6 +2429,7 @@
             this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
             this.tableAdapterManager1.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager1.lkpDiscountTableAdapter = null;
             this.tableAdapterManager1.lkpLeadNameTableAdapter = null;
             this.tableAdapterManager1.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
@@ -2468,6 +2459,16 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datecontBindingSource, "nxtdate", true));
+            this.comboBox5.Enabled = false;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(383, 7);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(139, 21);
+            this.comboBox5.TabIndex = 429;
             // 
             // frmMerCust
             // 
@@ -2561,7 +2562,6 @@
         private System.Windows.Forms.TextBox schfaxTextBox;
         private System.Windows.Forms.BindingSource datecontBindingSource;
         private DataSets.dsMcustTableAdapters.datecontTableAdapter datecontTableAdapter;
-        private System.Windows.Forms.TextBox nxtdateTextBox;
         private System.Windows.Forms.Button btnEmailProdTkt;
         private System.Windows.Forms.Button btnProdTkt;
         private System.Windows.Forms.Button button1;
@@ -2655,5 +2655,6 @@
         private DataSets.dsMcustTableAdapters.MeridianCategoryTableAdapter meridianCategoryTableAdapter;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
     }
