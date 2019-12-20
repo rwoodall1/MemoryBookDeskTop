@@ -247,6 +247,8 @@
             this.txtDisc = new System.Windows.Forms.TextBox();
             this.txtFinalbookprc = new System.Windows.Forms.TextBox();
             this.dp1descComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.txtNumtoPers = new System.Windows.Forms.TextBox();
             this.perscopiesTextBox = new System.Windows.Forms.TextBox();
             this.chkDc2 = new System.Windows.Forms.CheckBox();
@@ -428,7 +430,6 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -508,8 +509,6 @@
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
-            this.lookUp = new Mbc5.DataSets.LookUp();
-            this.lkpDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpDiscountTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpDiscountTableAdapter();
             this.tableAdapterManager3 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             label10 = new System.Windows.Forms.Label();
@@ -647,6 +646,8 @@
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlTot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpDiscountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             this.panel3.SuspendLayout();
             this.InkOverRide.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -675,8 +676,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsOnlineFlyer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineAgreementHeaderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpDiscountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -1267,7 +1266,7 @@
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             invnoLabel.Location = new System.Drawing.Point(978, 16);
             invnoLabel.Name = "invnoLabel";
-            invnoLabel.Size = new System.Drawing.Size(86, 16);
+            invnoLabel.Size = new System.Drawing.Size(90, 16);
             invnoLabel.TabIndex = 11;
             invnoLabel.Text = "Invoice No.";
             // 
@@ -2825,6 +2824,16 @@
             this.dp1descComboBox.Size = new System.Drawing.Size(121, 21);
             this.dp1descComboBox.TabIndex = 41;
             this.dp1descComboBox.ValueMember = "Name";
+            // 
+            // lkpDiscountBindingSource
+            // 
+            this.lkpDiscountBindingSource.DataMember = "lkpDiscount";
+            this.lkpDiscountBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtNumtoPers
             // 
@@ -4934,7 +4943,7 @@
             // txtInitials
             // 
             this.txtInitials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInitials.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "init_", true));
+            this.txtInitials.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "initials", true));
             this.txtInitials.Enabled = false;
             this.txtInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInitials.Location = new System.Drawing.Point(480, 46);
@@ -5030,7 +5039,6 @@
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22,
@@ -5097,13 +5105,6 @@
             this.dataGridViewTextBoxColumn18.HeaderText = "Method";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "init_";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn20
             // 
@@ -5832,16 +5833,6 @@
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
             // 
-            // lookUp
-            // 
-            this.lookUp.DataSetName = "LookUp";
-            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lkpDiscountBindingSource
-            // 
-            this.lkpDiscountBindingSource.DataMember = "lkpDiscount";
-            this.lkpDiscountBindingSource.DataSource = this.lookUp;
-            // 
             // lkpDiscountTableAdapter
             // 
             this.lkpDiscountTableAdapter.ClearBeforeFill = true;
@@ -5913,6 +5904,8 @@
             this.panel4.PerformLayout();
             this.pnlTot.ResumeLayout(false);
             this.pnlTot.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpDiscountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.InkOverRide.ResumeLayout(false);
@@ -5952,8 +5945,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsOnlineFlyer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineAgreementHeaderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpDiscountBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }

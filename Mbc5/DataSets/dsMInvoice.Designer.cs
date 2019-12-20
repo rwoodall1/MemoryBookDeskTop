@@ -1691,8 +1691,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnmethod;
             
-            private global::System.Data.DataColumn columninit_;
-            
             private global::System.Data.DataColumn columnadjmnt;
             
             private global::System.Data.DataColumn columncompamt;
@@ -1718,6 +1716,8 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnModifiedBy;
             
             private global::System.Data.DataColumn columninvno;
+            
+            private global::System.Data.DataColumn columninitials;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1805,14 +1805,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn methodColumn {
                 get {
                     return this.columnmethod;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn init_Column {
-                get {
-                    return this.columninit_;
                 }
             }
             
@@ -1922,6 +1914,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn initialsColumn {
+                get {
+                    return this.columninitials;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1965,7 +1965,6 @@ namespace Mbc5.DataSets {
                         decimal poamt, 
                         decimal refund, 
                         string method, 
-                        string init_, 
                         decimal adjmnt, 
                         decimal compamt, 
                         string compreas, 
@@ -1977,7 +1976,8 @@ namespace Mbc5.DataSets {
                         System.DateTime DateCreated, 
                         System.DateTime DateModified, 
                         string ModifiedBy, 
-                        decimal invno) {
+                        int invno, 
+                        string initials) {
                 paymntRow rowpaymntRow = ((paymntRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         code,
@@ -1987,7 +1987,6 @@ namespace Mbc5.DataSets {
                         poamt,
                         refund,
                         method,
-                        init_,
                         adjmnt,
                         compamt,
                         compreas,
@@ -2000,10 +1999,18 @@ namespace Mbc5.DataSets {
                         DateCreated,
                         DateModified,
                         ModifiedBy,
-                        invno};
+                        invno,
+                        initials};
                 rowpaymntRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpaymntRow);
                 return rowpaymntRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public paymntRow FindById(int Id) {
+                return ((paymntRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2030,7 +2037,6 @@ namespace Mbc5.DataSets {
                 this.columnpoamt = base.Columns["poamt"];
                 this.columnrefund = base.Columns["refund"];
                 this.columnmethod = base.Columns["method"];
-                this.columninit_ = base.Columns["init_"];
                 this.columnadjmnt = base.Columns["adjmnt"];
                 this.columncompamt = base.Columns["compamt"];
                 this.columncompreas = base.Columns["compreas"];
@@ -2044,6 +2050,7 @@ namespace Mbc5.DataSets {
                 this.columnDateModified = base.Columns["DateModified"];
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
                 this.columninvno = base.Columns["invno"];
+                this.columninitials = base.Columns["initials"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2063,8 +2070,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnrefund);
                 this.columnmethod = new global::System.Data.DataColumn("method", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmethod);
-                this.columninit_ = new global::System.Data.DataColumn("init_", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninit_);
                 this.columnadjmnt = new global::System.Data.DataColumn("adjmnt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnadjmnt);
                 this.columncompamt = new global::System.Data.DataColumn("compamt", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2089,17 +2094,16 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnDateModified);
                 this.columnModifiedBy = new global::System.Data.DataColumn("ModifiedBy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModifiedBy);
-                this.columninvno = new global::System.Data.DataColumn("invno", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columninvno = new global::System.Data.DataColumn("invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvno);
+                this.columninitials = new global::System.Data.DataColumn("initials", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninitials);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
                 this.columncode.AllowDBNull = false;
                 this.columncode.MaxLength = 6;
-                this.columnpayment.AllowDBNull = false;
                 this.columncheckno.MaxLength = 10;
-                this.columnpoamt.AllowDBNull = false;
-                this.columnrefund.AllowDBNull = false;
                 this.columnmethod.MaxLength = 10;
-                this.columninit_.MaxLength = 3;
-                this.columnadjmnt.AllowDBNull = false;
                 this.columncompreas.MaxLength = 2147483647;
                 this.columntransid.MaxLength = 20;
                 this.columnauthcode.MaxLength = 20;
@@ -2110,8 +2114,10 @@ namespace Mbc5.DataSets {
                 this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
                 this.columnModifiedBy.MaxLength = 128;
                 this.columninvno.AllowDBNull = false;
+                this.columninitials.MaxLength = 3;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3734,7 +3740,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal payment {
                 get {
-                    return ((decimal)(this[this.tablepaymnt.paymentColumn]));
+                    try {
+                        return ((decimal)(this[this.tablepaymnt.paymentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'payment\' in table \'paymnt\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablepaymnt.paymentColumn] = value;
@@ -3761,7 +3772,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal poamt {
                 get {
-                    return ((decimal)(this[this.tablepaymnt.poamtColumn]));
+                    try {
+                        return ((decimal)(this[this.tablepaymnt.poamtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'poamt\' in table \'paymnt\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablepaymnt.poamtColumn] = value;
@@ -3772,7 +3788,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal refund {
                 get {
-                    return ((decimal)(this[this.tablepaymnt.refundColumn]));
+                    try {
+                        return ((decimal)(this[this.tablepaymnt.refundColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'refund\' in table \'paymnt\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablepaymnt.refundColumn] = value;
@@ -3797,25 +3818,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string init_ {
-                get {
-                    try {
-                        return ((string)(this[this.tablepaymnt.init_Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'init_\' in table \'paymnt\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablepaymnt.init_Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal adjmnt {
                 get {
-                    return ((decimal)(this[this.tablepaymnt.adjmntColumn]));
+                    try {
+                        return ((decimal)(this[this.tablepaymnt.adjmntColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'adjmnt\' in table \'paymnt\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablepaymnt.adjmntColumn] = value;
@@ -3995,12 +4005,28 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal invno {
+            public int invno {
                 get {
-                    return ((decimal)(this[this.tablepaymnt.invnoColumn]));
+                    return ((int)(this[this.tablepaymnt.invnoColumn]));
                 }
                 set {
                     this[this.tablepaymnt.invnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string initials {
+                get {
+                    try {
+                        return ((string)(this[this.tablepaymnt.initialsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'initials\' in table \'paymnt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepaymnt.initialsColumn] = value;
                 }
             }
             
@@ -4018,6 +4044,18 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IspaymentNull() {
+                return this.IsNull(this.tablepaymnt.paymentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetpaymentNull() {
+                this[this.tablepaymnt.paymentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IschecknoNull() {
                 return this.IsNull(this.tablepaymnt.checknoColumn);
             }
@@ -4026,6 +4064,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetchecknoNull() {
                 this[this.tablepaymnt.checknoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IspoamtNull() {
+                return this.IsNull(this.tablepaymnt.poamtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetpoamtNull() {
+                this[this.tablepaymnt.poamtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrefundNull() {
+                return this.IsNull(this.tablepaymnt.refundColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrefundNull() {
+                this[this.tablepaymnt.refundColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4042,14 +4104,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isinit_Null() {
-                return this.IsNull(this.tablepaymnt.init_Column);
+            public bool IsadjmntNull() {
+                return this.IsNull(this.tablepaymnt.adjmntColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setinit_Null() {
-                this[this.tablepaymnt.init_Column] = global::System.Convert.DBNull;
+            public void SetadjmntNull() {
+                this[this.tablepaymnt.adjmntColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4170,6 +4232,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetModifiedByNull() {
                 this[this.tablepaymnt.ModifiedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsinitialsNull() {
+                return this.IsNull(this.tablepaymnt.initialsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetinitialsNull() {
+                this[this.tablepaymnt.initialsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5120,7 +5194,6 @@ SELECT schcode, invno, descr, Amount, discpercent, id, Quantity, UnitPrice FROM 
             tableMapping.ColumnMappings.Add("poamt", "poamt");
             tableMapping.ColumnMappings.Add("refund", "refund");
             tableMapping.ColumnMappings.Add("method", "method");
-            tableMapping.ColumnMappings.Add("init_", "init_");
             tableMapping.ColumnMappings.Add("adjmnt", "adjmnt");
             tableMapping.ColumnMappings.Add("compamt", "compamt");
             tableMapping.ColumnMappings.Add("compreas", "compreas");
@@ -5134,36 +5207,39 @@ SELECT schcode, invno, descr, Amount, discpercent, id, Quantity, UnitPrice FROM 
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
             tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
             tableMapping.ColumnMappings.Add("invno", "invno");
+            tableMapping.ColumnMappings.Add("initials", "initials");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [paymnt] ([code], [pmtdate], [payment], [checkno], [poamt], [refund], [method], [init_], [adjmnt], [compamt], [compreas], [ppfee], [transid], [authcode], [ccnum], [paytype], [DateCreated], [DateModified], [ModifiedBy], [invno]) VALUES (@code, @pmtdate, @payment, @checkno, @poamt, @refund, @method, @init_, @adjmnt, @compamt, @compreas, @ppfee, @transid, @authcode, @ccnum, @paytype, @DateCreated, @DateModified, @ModifiedBy, @invno)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO paymnt
+                         (code, pmtdate, payment, checkno, poamt, refund, method, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype, DateCreated, DateModified, ModifiedBy, invno, initials)
+VALUES        (@code,@pmtdate,@payment,@checkno,@poamt,@refund,@method,@adjmnt,@compamt,@compreas,@ppfee,@transid,@authcode,@ccnum,@paytype,@DateCreated,@DateModified,@ModifiedBy,@invno,@initials)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@code", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pmtdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pmtdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "payment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@checkno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "checkno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@poamt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "poamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refund", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "refund", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@method", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@init_", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "init_", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjmnt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "adjmnt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compamt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "compamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compreas", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "compreas", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ppfee", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "ppfee", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transid", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@authcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "authcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccnum", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccnum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paytype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paytype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@code", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pmtdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "pmtdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "payment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@checkno", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "checkno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@poamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "poamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refund", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "refund", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@method", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjmnt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "adjmnt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "compamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compreas", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "compreas", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ppfee", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 2, "ppfee", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transid", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "transid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@authcode", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "authcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccnum", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "ccnum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paytype", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "paytype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initials", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "initials", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE       paymnt
-SET                code = @code, pmtdate = @pmtdate, payment = @payment, checkno = @chckno, poamt = @poamt, refund = @refund, method = @method, adjmnt = @adjmnt, init_ = @init_, compamt = @compamt, compreas = @compreas, 
-                         ppfee = @ppfee, transid = @transid, authcode = @authcode, ccnum = @ccnum, paytype = @paytype
+SET                code = @code, pmtdate = @pmtdate, payment = @payment, checkno = @chckno, poamt = @poamt, refund = @refund, method = @method, adjmnt = @adjmnt, compamt = @compamt, compreas = @compreas, ppfee = @ppfee, 
+                         transid = @transid, authcode = @authcode, ccnum = @ccnum, paytype = @paytype, initials = @initials
 WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@code", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5174,7 +5250,6 @@ WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refund", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "refund", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@method", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjmnt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "adjmnt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@init_", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "init_", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "compamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compreas", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "compreas", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ppfee", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 2, "ppfee", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5182,7 +5257,8 @@ WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@authcode", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "authcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccnum", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "ccnum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paytype", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "paytype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initials", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "initials", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5198,12 +5274,12 @@ WHERE        (invno = @invno)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        code, pmtdate, payment, checkno, poamt, refund, method, init_, adjm" +
-                "nt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype, Id, DateCreated" +
-                ", DateModified, ModifiedBy, invno\r\nFROM            paymnt\r\nWHERE        (invno =" +
-                " @Invno)";
+            this._commandCollection[0].CommandText = "SELECT        code, pmtdate, payment, checkno, poamt, refund, method, adjmnt, com" +
+                "pamt, compreas, ppfee, transid, authcode, ccnum, paytype, Id, DateCreated, DateM" +
+                "odified, ModifiedBy, invno, initials\r\nFROM            paymnt\r\nWHERE        (invn" +
+                "o = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, " +
@@ -5216,9 +5292,9 @@ WHERE        (invno = @invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsMInvoice.paymntDataTable dataTable, decimal Invno) {
+        public virtual int Fill(dsMInvoice.paymntDataTable dataTable, int Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(Invno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -5230,9 +5306,9 @@ WHERE        (invno = @invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsMInvoice.paymntDataTable GetData(decimal Invno) {
+        public virtual dsMInvoice.paymntDataTable GetData(int Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(Invno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             dsMInvoice.paymntDataTable dataTable = new dsMInvoice.paymntDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -5286,13 +5362,12 @@ WHERE        (invno = @invno)";
         public virtual int Insert(
                     string code, 
                     global::System.Nullable<global::System.DateTime> pmtdate, 
-                    decimal payment, 
+                    global::System.Nullable<decimal> payment, 
                     string checkno, 
-                    decimal poamt, 
-                    decimal refund, 
+                    global::System.Nullable<decimal> poamt, 
+                    global::System.Nullable<decimal> refund, 
                     string method, 
-                    string init_, 
-                    decimal adjmnt, 
+                    global::System.Nullable<decimal> adjmnt, 
                     global::System.Nullable<decimal> compamt, 
                     string compreas, 
                     global::System.Nullable<decimal> ppfee, 
@@ -5303,7 +5378,8 @@ WHERE        (invno = @invno)";
                     global::System.Nullable<global::System.DateTime> DateCreated, 
                     global::System.Nullable<global::System.DateTime> DateModified, 
                     string ModifiedBy, 
-                    decimal invno) {
+                    int invno, 
+                    string initials) {
             if ((code == null)) {
                 throw new global::System.ArgumentNullException("code");
             }
@@ -5316,89 +5392,109 @@ WHERE        (invno = @invno)";
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(payment));
+            if ((payment.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(payment.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((checkno == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(checkno));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(poamt));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(refund));
+            if ((poamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(poamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((refund.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(refund.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             if ((method == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(method));
             }
-            if ((init_ == null)) {
+            if ((adjmnt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(adjmnt.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(init_));
-            }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(adjmnt));
             if ((compamt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(compamt.Value));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(compamt.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((compreas == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(compreas));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(compreas));
             }
             if ((ppfee.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(ppfee.Value));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(ppfee.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((transid == null)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(transid));
+            }
+            if ((authcode == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(transid));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(authcode));
             }
-            if ((authcode == null)) {
+            if ((ccnum == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(authcode));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(ccnum));
             }
-            if ((ccnum == null)) {
+            if ((paytype == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(ccnum));
-            }
-            if ((paytype == null)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(paytype));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(paytype));
             }
             if ((DateCreated.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((System.DateTime)(DateCreated.Value));
+                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(DateCreated.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((System.DateTime)(DateModified.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((System.DateTime)(DateModified.Value));
-            }
-            else {
+            if ((ModifiedBy == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((ModifiedBy == null)) {
-                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(ModifiedBy));
+            }
+            this.Adapter.InsertCommand.Parameters[18].Value = ((int)(invno));
+            if ((initials == null)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(ModifiedBy));
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(initials));
             }
-            this.Adapter.InsertCommand.Parameters[19].Value = ((decimal)(invno));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5422,13 +5518,12 @@ WHERE        (invno = @invno)";
         public virtual int Update(
                     string code, 
                     global::System.Nullable<global::System.DateTime> pmtdate, 
-                    decimal payment, 
+                    global::System.Nullable<decimal> payment, 
                     string chckno, 
-                    decimal poamt, 
-                    decimal refund, 
+                    global::System.Nullable<decimal> poamt, 
+                    global::System.Nullable<decimal> refund, 
                     string method, 
-                    decimal adjmnt, 
-                    string init_, 
+                    global::System.Nullable<decimal> adjmnt, 
                     global::System.Nullable<decimal> compamt, 
                     string compreas, 
                     global::System.Nullable<decimal> ppfee, 
@@ -5436,7 +5531,8 @@ WHERE        (invno = @invno)";
                     string authcode, 
                     string ccnum, 
                     string paytype, 
-                    decimal invno) {
+                    string initials, 
+                    int invno) {
             if ((code == null)) {
                 throw new global::System.ArgumentNullException("code");
             }
@@ -5449,71 +5545,91 @@ WHERE        (invno = @invno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(payment));
+            if ((payment.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(payment.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((chckno == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(chckno));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(poamt));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(refund));
+            if ((poamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(poamt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((refund.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(refund.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             if ((method == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(method));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(adjmnt));
-            if ((init_ == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((adjmnt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(adjmnt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(init_));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((compamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(compamt.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(compamt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((compreas == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(compreas));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(compreas));
             }
             if ((ppfee.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(ppfee.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(ppfee.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((transid == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(transid));
+            }
+            if ((authcode == null)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(transid));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(authcode));
             }
-            if ((authcode == null)) {
+            if ((ccnum == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(authcode));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(ccnum));
             }
-            if ((ccnum == null)) {
+            if ((paytype == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(ccnum));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(paytype));
             }
-            if ((paytype == null)) {
+            if ((initials == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(paytype));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(initials));
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(invno));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(invno));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

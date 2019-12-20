@@ -43,6 +43,8 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
+            this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
             // TODO: This line of code loads data into the 'dsMcust.MeridianCategory' table. You can move, or remove it, as needed.
             this.meridianCategoryTableAdapter.Fill(this.dsMcust.MeridianCategory);
             this.merCustTab.TabPages[0].AutoScroll = false;

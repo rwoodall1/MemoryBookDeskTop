@@ -170,7 +170,6 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label speccoverLabel;
             System.Windows.Forms.Label laminatedLabel;
             System.Windows.Forms.Label nocopiesLabel2;
-            System.Windows.Forms.Label noCopiesLabel3;
             System.Windows.Forms.Label partmemoLabel;
             System.Windows.Forms.Label typestyleLabel;
             System.Windows.Forms.Label iinitLabel;
@@ -508,7 +507,6 @@ namespace Mbc5.Forms
             this.iinDateBox1 = new CustomControls.DateBox();
             this.typestyleLabel3 = new System.Windows.Forms.Label();
             this.partmemoTextBox = new System.Windows.Forms.TextBox();
-            this.noCopiesTextBox2 = new System.Windows.Forms.TextBox();
             this.noPagesTextBox1 = new System.Windows.Forms.TextBox();
             this.partialRecvDate = new CustomControls.DateBox();
             this.partBkDetailDataGridView = new System.Windows.Forms.DataGridView();
@@ -774,7 +772,6 @@ namespace Mbc5.Forms
             speccoverLabel = new System.Windows.Forms.Label();
             laminatedLabel = new System.Windows.Forms.Label();
             nocopiesLabel2 = new System.Windows.Forms.Label();
-            noCopiesLabel3 = new System.Windows.Forms.Label();
             partmemoLabel = new System.Windows.Forms.Label();
             typestyleLabel = new System.Windows.Forms.Label();
             iinitLabel = new System.Windows.Forms.Label();
@@ -1245,7 +1242,7 @@ namespace Mbc5.Forms
             // 
             ptrecvdLabel1.AutoSize = true;
             ptrecvdLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptrecvdLabel1.Location = new System.Drawing.Point(727, 33);
+            ptrecvdLabel1.Location = new System.Drawing.Point(603, 33);
             ptrecvdLabel1.Name = "ptrecvdLabel1";
             ptrecvdLabel1.Size = new System.Drawing.Size(92, 13);
             ptrecvdLabel1.TabIndex = 137;
@@ -1923,7 +1920,7 @@ namespace Mbc5.Forms
             label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label42.AutoSize = true;
             label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label42.Location = new System.Drawing.Point(558, 33);
+            label42.Location = new System.Drawing.Point(434, 33);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(66, 13);
             label42.TabIndex = 140;
@@ -2245,15 +2242,6 @@ namespace Mbc5.Forms
             nocopiesLabel2.Size = new System.Drawing.Size(45, 13);
             nocopiesLabel2.TabIndex = 162;
             nocopiesLabel2.Text = "Copies";
-            // 
-            // noCopiesLabel3
-            // 
-            noCopiesLabel3.AutoSize = true;
-            noCopiesLabel3.Location = new System.Drawing.Point(433, 33);
-            noCopiesLabel3.Name = "noCopiesLabel3";
-            noCopiesLabel3.Size = new System.Drawing.Size(57, 13);
-            noCopiesLabel3.TabIndex = 154;
-            noCopiesLabel3.Text = "# Copies";
             // 
             // partmemoLabel
             // 
@@ -5571,8 +5559,6 @@ namespace Mbc5.Forms
             this.pg5.Controls.Add(this.typestyleLabel3);
             this.pg5.Controls.Add(partmemoLabel);
             this.pg5.Controls.Add(this.partmemoTextBox);
-            this.pg5.Controls.Add(noCopiesLabel3);
-            this.pg5.Controls.Add(this.noCopiesTextBox2);
             this.pg5.Controls.Add(this.noPagesTextBox1);
             this.pg5.Controls.Add(this.partialRecvDate);
             this.pg5.Controls.Add(this.partBkDetailDataGridView);
@@ -5680,15 +5666,6 @@ namespace Mbc5.Forms
             this.partmemoTextBox.Size = new System.Drawing.Size(659, 99);
             this.partmemoTextBox.TabIndex = 157;
             // 
-            // noCopiesTextBox2
-            // 
-            this.noCopiesTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "NoCopies", true));
-            this.noCopiesTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noCopiesTextBox2.Location = new System.Drawing.Point(494, 33);
-            this.noCopiesTextBox2.Name = "noCopiesTextBox2";
-            this.noCopiesTextBox2.Size = new System.Drawing.Size(49, 20);
-            this.noCopiesTextBox2.TabIndex = 155;
-            // 
             // noPagesTextBox1
             // 
             this.noPagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "NoPages", true));
@@ -5704,7 +5681,7 @@ namespace Mbc5.Forms
             this.partialRecvDate.Date = null;
             this.partialRecvDate.DateValue = null;
             this.partialRecvDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partialRecvDate.Location = new System.Drawing.Point(820, 33);
+            this.partialRecvDate.Location = new System.Drawing.Point(696, 33);
             this.partialRecvDate.MinimumSize = new System.Drawing.Size(133, 20);
             this.partialRecvDate.Name = "partialRecvDate";
             this.partialRecvDate.Size = new System.Drawing.Size(133, 21);
@@ -5841,7 +5818,7 @@ namespace Mbc5.Forms
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(629, 33);
+            this.textBox12.Location = new System.Drawing.Point(505, 33);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(76, 20);
@@ -6773,6 +6750,7 @@ namespace Mbc5.Forms
             this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
             this.tableAdapterManager1.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager1.lkpDiscountTableAdapter = null;
             this.tableAdapterManager1.lkpLeadNameTableAdapter = null;
             this.tableAdapterManager1.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
@@ -7276,7 +7254,6 @@ namespace Mbc5.Forms
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerBinderyLabel;
         private System.Windows.Forms.Label typestyleLabel3;
         private System.Windows.Forms.TextBox partmemoTextBox;
-        private System.Windows.Forms.TextBox noCopiesTextBox2;
         private System.Windows.Forms.TextBox noPagesTextBox1;
         private CustomControls.DateBox regisdateDateBox;
         private System.Windows.Forms.TextBox iinitTextBox1;
