@@ -43,15 +43,22 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Load(object sender, EventArgs e)
         {
+             this.frmMain = (frmMain)this.MdiParent;
+            SetConnectionString();
+
+            // TODO: This line of code loads data into the 'lookUp.lkpLeadSource' table. You can move, or remove it, as needed.
+            this.lkpLeadSourceTableAdapter.Fill(this.lookUp.lkpLeadSource);
+            // TODO: This line of code loads data into the 'lookUp.lkpJosName' table. You can move, or remove it, as needed.
+            this.lkpJosNameTableAdapter.Fill(this.lookUp.lkpJosName);
             // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
             this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
             // TODO: This line of code loads data into the 'dsMcust.MeridianCategory' table. You can move, or remove it, as needed.
             this.meridianCategoryTableAdapter.Fill(this.dsMcust.MeridianCategory);
             this.merCustTab.TabPages[0].AutoScroll = false;
+            
+           
 
-            this.frmMain = (frmMain)this.MdiParent;
-
-            SetConnectionString();
+            
 
             var vSchocode = this.Schcode;
 
@@ -64,6 +71,7 @@ namespace Mbc5.Forms.Meridian {
         }
 
         #region Methods
+       
         private void GoToSales()
         {
 
@@ -841,11 +849,15 @@ namespace Mbc5.Forms.Meridian {
    
         private void SetConnectionString()
         {
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            lkpJosNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mcustTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             datecontTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
             statesTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             contpstnTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             meridianCategoryTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
+            lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
         }
        public override void Fill()
         {

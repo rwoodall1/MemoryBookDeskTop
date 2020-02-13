@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Mbc5.Dialogs;
 using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
+using Mbc5.Forms.MixBook;
 using BaseClass.Classes;
 using BaseClass.Forms;
 using System.Diagnostics;
@@ -53,22 +54,30 @@ namespace Mbc5.Forms
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
                 tsJobNo.Visible = true;
-            } else if (formName == "frmMerCust") {
+            }
+            else if (formName == "frmMerCust")
+            {
                 tsFirstNameSearch.Visible = true;
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
                 tsJobNo.Visible = false;
 
-            } else if (formName == "frmSales")
+            }
+            else if (formName == "frmSales")
             {
-               
+
                 tsJobNo.Visible = true;
-            } else if (formName == "frmMSales") {
+            }
+            else if (formName == "frmMSales")
+            {
                 tsJobNo.Visible = false;
-            } else if (formName=="frmProdutn") {
+            }
+            else if (formName == "frmProdutn")
+            {
                 tsJobNo.Visible = true;
-            } else if (formName == "frmBids")
+            }
+            else if (formName == "frmBids")
             {
 
                 tsInvno.Visible = false;
@@ -105,18 +114,21 @@ namespace Mbc5.Forms
             tsZipCodeSearch.Visible = false;
             tsEmailSearch.Visible = false;
             tsJobNo.Visible = false;
-            tsJobNo.Visible =false;
+            tsJobNo.Visible = false;
 
         }
-        public void PrintScreen() {
+        public void PrintScreen()
+        {
             ScreenPrinter vScreenPrinter = new ScreenPrinter(this);
             vScreenPrinter.PrintScreen();
 
         }
-        public void ValidateUserRoles() {
+        public void ValidateUserRoles()
+        {
             string[] AvailableRoles = new string[] { "SA", "Administrator" };//list all roles when completed
             foreach (string role in AvailableRoles)
-                try {
+                try
+                {
                     if (this.ApplicationUser.IsInRole(role))
                         this.ValidatedUserRoles.Add(role);
                 }
@@ -203,27 +215,29 @@ namespace Mbc5.Forms
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
-                  
+
                     case "frmBids":
                         {
                             var tmpForm = (frmBids)this.ActiveMdiChild;
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
-                    
+
                     case "frmProdutn":
                         {
                             var tmpForm = (frmProdutn)this.ActiveMdiChild;
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
-                    
+
 
                 }
-            }else if (company=="MER") {
+            }
+            else if (company == "MER")
+            {
                 switch (this.ActiveMdiChild.Name)
                 {
-                    
+
                     case "frmMerCust":
                         {
 
@@ -232,7 +246,7 @@ namespace Mbc5.Forms
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
-                   
+
                     case "frmMBids":
                         {
                             var tmpForm = (frmMBids)this.ActiveMdiChild;
@@ -253,55 +267,56 @@ namespace Mbc5.Forms
                         }
                 }
 
-            }else if (company == "")
+            }
+            else if (company == "")
             {
                 switch (this.ActiveMdiChild.Name)
                 {
                     case "frmSales":
                         {
 
-                    var tmpForm = (frmSales)this.ActiveMdiChild;
+                            var tmpForm = (frmSales)this.ActiveMdiChild;
 
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
                     case "frmMbcCust":
                         {
 
-                    var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+                            var tmpForm = (frmMbcCust)this.ActiveMdiChild;
 
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
-                  
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+
                     case "frmBids":
                         {
-                    var tmpForm = (frmBids)this.ActiveMdiChild;
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
-                    
+                            var tmpForm = (frmBids)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+
                     case "frmProdutn":
                         {
-                    var tmpForm = (frmProdutn)this.ActiveMdiChild;
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
-                case "frmMerCust":
+                            var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+                    case "frmMerCust":
                         {
 
-                    var tmpForm = (frmMerCust)this.ActiveMdiChild;
+                            var tmpForm = (frmMerCust)this.ActiveMdiChild;
 
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
-                   
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
+
                     case "frmMBids":
                         {
-                    var tmpForm = (frmMBids)this.ActiveMdiChild;
-                    vSchcode = tmpForm.Schcode;
-                    break;
-                }
+                            var tmpForm = (frmMBids)this.ActiveMdiChild;
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
                     case "frmMSales":
                         {
                             var tmpForm = (frmMSales)this.ActiveMdiChild;
@@ -374,11 +389,11 @@ namespace Mbc5.Forms
         }
         private void SetMenu()
         {
-            if (ApplicationUser.UserName=="BARCODE")
+            if (ApplicationUser.UserName == "BARCODE")
             {
                 //Show barscan screen hid every thing else
                 tsMain.Visible = false;
-                toolStripMenuItem2.Visible = false;                        
+                toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
                 mBCToolStripMenuItem.Visible = false;
                 meridianToolStripMenuItem.Visible = false;
@@ -391,16 +406,16 @@ namespace Mbc5.Forms
             }
             else
             {
-            this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-            this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-            lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-            invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-            meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
-            mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
-            cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
+                mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+                cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
             }
-            
-            
+
+
 
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -433,7 +448,8 @@ namespace Mbc5.Forms
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (this.ActiveMdiChild == null) {
+            if (this.ActiveMdiChild == null)
+            {
                 this.Cursor = Cursors.AppStarting;
 
                 frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
@@ -442,11 +458,14 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
 
 
-            } else {
+            }
+            else
+            {
                 this.Cursor = Cursors.AppStarting;
                 string vSchcode = GetSchcode("MBC");
 
-                if (String.IsNullOrEmpty(vSchcode)) {
+                if (String.IsNullOrEmpty(vSchcode))
+                {
                     this.Cursor = Cursors.AppStarting;
 
                     frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
@@ -470,7 +489,8 @@ namespace Mbc5.Forms
 
         }
 
-        private void MerToolStrip_Click(object sender, EventArgs e) {
+        private void MerToolStrip_Click(object sender, EventArgs e)
+        {
             this.Cursor = Cursors.AppStarting;
 
             if (this.ActiveMdiChild == null)
@@ -509,7 +529,8 @@ namespace Mbc5.Forms
             }
         }
 
-        private void bidsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void bidsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Cursor = Cursors.AppStarting;
 
             if (this.ActiveMdiChild == null)
@@ -531,18 +552,20 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
             }
         }
-        
-        private void mbidsToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        private void mbidsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Cursor = Cursors.AppStarting;
             if (this.ActiveMdiChild == null)
             {
 
-                frmMBids frmMBids = new frmMBids(this.ApplicationUser,"124487");
+                frmMBids frmMBids = new frmMBids(this.ApplicationUser, "124487");
                 frmMBids.MdiParent = this;
                 frmMBids.Show();
                 this.Cursor = Cursors.Default;
             }
-            else{
+            else
+            {
                 string vSchcode = GetSchcode("MER");
                 frmMBids frmMBids = new frmMBids(this.ApplicationUser, vSchcode);
                 frmMBids.MdiParent = this;
@@ -551,7 +574,8 @@ namespace Mbc5.Forms
             }
         }
 
-        private void msalesToolStripMenuItem_Click(object sender,EventArgs e) {
+        private void msalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (this.ActiveMdiChild == null)
             {
                 frmMSales frmMSales = new frmMSales(this.ApplicationUser);
@@ -585,15 +609,15 @@ namespace Mbc5.Forms
                 }
 
             }
-           
+
         }
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (this.ActiveMdiChild == null)
             {
-               frmSales frmSales = new frmSales(this.ApplicationUser);
+                frmSales frmSales = new frmSales(this.ApplicationUser);
                 frmSales.MdiParent = this;
                 frmSales.Show();
                 this.Cursor = Cursors.Default;
@@ -628,34 +652,39 @@ namespace Mbc5.Forms
 
 
         }
-        private void productionWIPToolStripMenuItem_Click(object sender,EventArgs e) {
-            if (this.ActiveMdiChild == null) {
+        private void productionWIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
                 frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser);
                 frmProdutn.MdiParent = this;
                 frmProdutn.Show();
                 this.Cursor = Cursors.Default;
 
 
-                } else {
+            }
+            else
+            {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode("");
 
-                if (vInvno == 0) {
-                    MessageBox.Show("This school does not have a production record to go to. Please search for record from Production Screen.","Production",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This school does not have a production record to go to. Please search for record from Production Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
                     frmProdutn1.MdiParent = this;
                     frmProdutn1.Show();
                     this.Cursor = Cursors.Default;
-                    }
+                }
 
-                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser,vInvno,vSchcode);
+                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
                 frmProduction.MdiParent = this;
                 frmProduction.Show();
                 this.Cursor = Cursors.Default;
 
-                }
             }
+        }
         #endregion
         #region DataMaint
         private void discountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -672,69 +701,89 @@ namespace Mbc5.Forms
             this.Cut();
         }
 
-        private void tsPrintScreen_Click(object sender,EventArgs e) {
+        private void tsPrintScreen_Click(object sender, EventArgs e)
+        {
             this.PrintScreen();
-            }
-        private void tsSave_Click(object sender,EventArgs e) {
-            try {
+        }
+        private void tsSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-               activeform.Save(true);
-                
-            }
-            catch(Exception ex) {
-                MessageBox.Show("Save is not implemented","Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
-                }
-            }
+                activeform.Save(true);
 
-        private void tsAdd_Click(object sender,EventArgs e) {
-            try {
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save is not implemented", "Save", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        private void tsAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
                 activeform.Add();
-                
-                } catch (Exception ex) {
-                MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
-                }
-            }
 
-        private void tsDelete_Click(object sender,EventArgs e) {
-            try {
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Add record is not implemented for this form.", "Add", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        private void tsDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
                 activeform.Delete();
 
-                } catch (Exception ex) {
-                MessageBox.Show("Delete is not implemented for this form.","Delete",MessageBoxButtons.OK,MessageBoxIcon.Hand);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete is not implemented for this form.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
 
-        private void undoToolStripMenuItem_Click(object sender,EventArgs e) {
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.undo();
-            }
+        }
 
-        private void tsCut_Click(object sender,EventArgs e) {
+        private void tsCut_Click(object sender, EventArgs e)
+        {
             this.Cut();
-            }
+        }
 
-        private void copyToolStripMenuItem_Click(object sender,EventArgs e) {
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Copy();
-            }
+        }
 
-        private void pasteToolStripMenuItem_Click(object sender,EventArgs e) {
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Paste();
-            }
+        }
 
-        private void tsUndo_Click(object sender,EventArgs e) {
+        private void tsUndo_Click(object sender, EventArgs e)
+        {
             this.undo();
-            }
+        }
 
-        private void tsCopy_Click(object sender,EventArgs e) {
+        private void tsCopy_Click(object sender, EventArgs e)
+        {
             this.Copy();
-            }
+        }
 
-        private void tsPaste_Click(object sender,EventArgs e) {
+        private void tsPaste_Click(object sender, EventArgs e)
+        {
             this.Paste();
-            }
+        }
 
-        private void tsPrint_Click(object sender,EventArgs e) {
+        private void tsPrint_Click(object sender, EventArgs e)
+        {
             //this.PrintScreen();
             try
             {
@@ -750,27 +799,33 @@ namespace Mbc5.Forms
                     snippingToolProcess.StartInfo.FileName = "C:\\Windows\\system32\\SnippingTool.exe";
                     snippingToolProcess.Start();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
         }
 
-        private void tsEmail_Click(object sender,EventArgs e) {
-            
-            var helper = new EmailHelper();
-            helper.SendOutLookEmail("","","","",EmailType.Blank);
-            }
+        private void tsEmail_Click(object sender, EventArgs e)
+        {
 
-        private void tsCancel_Click(object sender,EventArgs e) {
-            try {
+            var helper = new EmailHelper();
+            helper.SendOutLookEmail("", "", "", "", EmailType.Blank);
+        }
+
+        private void tsCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
                 activeform.Cancel();
 
-                } catch (Exception ex) {
-               
-                }
             }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         private void scanDescriptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -781,47 +836,47 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
-		private void endSheetSupplementPreFlightToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (this.ActiveMdiChild == null)
-			{
-				frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
+        private void endSheetSupplementPreFlightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
+                frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
                 frmEndSheet.MdiParent = this;
                 frmEndSheet.Show();
-				this.Cursor = Cursors.Default;
+                this.Cursor = Cursors.Default;
 
 
-			}
-			else
-			{
-				this.Cursor = Cursors.AppStarting;
-				int vInvno = GetInvno();
-				string vSchcode = GetSchcode("MBC");
+            }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode("MBC");
 
-				if (vInvno == 0)
-				{
-					MessageBox.Show("This school does not have a end sheet record to go to. Please search for record from end sheet Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
-					frmProdutn1.MdiParent = this;
-					frmProdutn1.Show();
-					this.Cursor = Cursors.Default;
-				}
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This school does not have a end sheet record to go to. Please search for record from end sheet Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
+                    frmProdutn1.MdiParent = this;
+                    frmProdutn1.Show();
+                    this.Cursor = Cursors.Default;
+                }
 
-				frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser, vInvno, vSchcode);
-				frmEndSheet.MdiParent = this;
-				frmEndSheet.Show();
-				this.Cursor = Cursors.Default;
+                frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser, vInvno, vSchcode);
+                frmEndSheet.MdiParent = this;
+                frmEndSheet.Show();
+                this.Cursor = Cursors.Default;
 
-			}
-		}
+            }
+        }
 
 
-		#endregion
+        #endregion
         public bool Login()
         {
             frmLogin Login = new frmLogin(this);
             var _result = Login.ShowDialog();
-            if (_result == DialogResult.Cancel||_result == DialogResult.Abort)
+            if (_result == DialogResult.Cancel || _result == DialogResult.Abort)
             {
                 keepLoading = false;
                 Application.Exit();
@@ -831,8 +886,8 @@ namespace Mbc5.Forms
                 MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
-            
-            
+
+
 
             return true;
         }
@@ -854,16 +909,16 @@ namespace Mbc5.Forms
             frmAbout.ShowDialog();
         }
 
-       
+
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-                this.Cursor = Cursors.AppStarting;
 
-                frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
-                frmBarScan.MdiParent = this;
-                frmBarScan.Show();
-                this.Cursor = Cursors.Default;
+            this.Cursor = Cursors.AppStarting;
+
+            frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
+            frmBarScan.MdiParent = this;
+            frmBarScan.Show();
+            this.Cursor = Cursors.Default;
 
         }
 
@@ -896,13 +951,13 @@ namespace Mbc5.Forms
 
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			this.Cursor = Cursors.AppStarting;
+            this.Cursor = Cursors.AppStarting;
 
-			frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
-			frmInvoice.MdiParent = this;
-			frmInvoice.Show();
-			this.Cursor = Cursors.Default;
-		}
+            frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
+            frmInvoice.MdiParent = this;
+            frmInvoice.Show();
+            this.Cursor = Cursors.Default;
+        }
 
         public int GetNewInvno()
         {
@@ -930,9 +985,9 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-             ex.ToExceptionless()
-                    .SetMessage("Failed to get invoice number for a new record");
-                    
+                ex.ToExceptionless()
+                       .SetMessage("Failed to get invoice number for a new record");
+
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
 
@@ -972,8 +1027,8 @@ namespace Mbc5.Forms
                   .Submit();
 
             }
-			string vprodNum = prodNum.ToString();
-			vprodNum = " " + vprodNum;
+            string vprodNum = prodNum.ToString();
+            vprodNum = " " + vprodNum;
             return prodNum.ToString();
 
         }
@@ -1013,45 +1068,61 @@ namespace Mbc5.Forms
             return coverNum.ToString();
         }
 
-		private void tsSchcodeSearch_Click(object sender, EventArgs e) {
-			try {
-				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-			   activeform.SchCodeSearch();
+        private void tsSchcodeSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.SchCodeSearch();
 
-			} catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
 
-			}
-		}
+            }
+        }
 
-		private void tsSchnameSearch_Click(object sender, EventArgs e) {
-			try {
-				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-				activeform.SchnameSearch();
+        private void tsSchnameSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.SchnameSearch();
 
-			} catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
 
-			}
-		}
+            }
+        }
 
-		private void tsProdutnNumberSearch_Click(object sender, EventArgs e) {
-			try {
-				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-				activeform.ProdutnNoSearch();
+        private void tsProdutnNumberSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.ProdutnNoSearch();
 
-			} catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
 
-			}
-		}
+            }
+        }
 
-		private void tsOracleCodeSearch_Click(object sender, EventArgs e) {
-			try {
-				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-				activeform.OracleCodeSearch();
+        private void tsOracleCodeSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.OracleCodeSearch();
 
-			} catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
 
-			}
-		}
+            }
+        }
 
         private void tsInvno_Click(object sender, EventArgs e)
         {
@@ -1139,13 +1210,13 @@ namespace Mbc5.Forms
 
         private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-           
+
+
         }
 
         private void tsFileFolder_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name== "frmMbcCust"))
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
             {
                 var cusFrm = (frmMbcCust)this.ActiveMdiChild;
                 cusFrm.PrintLabel("FILEFOLDER");
@@ -1154,7 +1225,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
 
             }
 
@@ -1171,7 +1242,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
 
             }
 
@@ -1225,22 +1296,22 @@ namespace Mbc5.Forms
 
         private void tsDeptScanLabel_Click(object sender, EventArgs e)
         {
-           
-               this.Cursor = Cursors.AppStarting;
-                frmScanLabels frmDeptLabel = new frmScanLabels();
 
-                frmDeptLabel.ShowDialog() ;
-                this.Cursor = Cursors.Default;
-    
+            this.Cursor = Cursors.AppStarting;
+            frmScanLabels frmDeptLabel = new frmScanLabels();
+
+            frmDeptLabel.ShowDialog();
+            this.Cursor = Cursors.Default;
+
         }
 
         private void cancelationStatementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                frmCancellationStatements frmCancel = new frmCancellationStatements(this.ApplicationUser);
-                frmCancel.MdiParent = this;
-                frmCancel.Show();
-                this.Cursor = Cursors.Default;
-           
+            frmCancellationStatements frmCancel = new frmCancellationStatements(this.ApplicationUser);
+            frmCancel.MdiParent = this;
+            frmCancel.Show();
+            this.Cursor = Cursors.Default;
+
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1315,7 +1386,7 @@ namespace Mbc5.Forms
             try
             {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                 activeform.Fill();
+                activeform.Fill();
 
             }
             catch (Exception ex)
@@ -1328,13 +1399,13 @@ namespace Mbc5.Forms
         {
             try
             {
-                frmWipDescriptions form= new frmWipDescriptions(this.ApplicationUser);
+                frmWipDescriptions form = new frmWipDescriptions(this.ApplicationUser);
                 form.MdiParent = this;
                 form.Show();
             }
             catch { }
-            
-            
+
+
         }
 
         private void invoicesToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1352,7 +1423,7 @@ namespace Mbc5.Forms
             var vReceiptform = new frmPayments(this.ApplicationUser);
             vReceiptform.MdiParent = this;
             vReceiptform.Show();
-                
+
         }
 
         private void receivingSurveyCompensationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1363,25 +1434,25 @@ namespace Mbc5.Forms
                 var vInvno = GetInvno();
                 string vCompany = "";
                 string vSchcode = "";
-                if (this.ActiveMdiChild.Name=="frmMbcCust")
+                if (this.ActiveMdiChild.Name == "frmMbcCust")
                 {
                     vCompany = "MBC";
                     frmMbcCust custFrm = (frmMbcCust)ActiveMdiChild;
                     vSchcode = custFrm.Schcode;
                 }
                 else if (this.ActiveMdiChild.Name == "frmMerCust")
-                    {
+                {
                     vCompany = "MER";
                     frmMerCust mcustFrm = (frmMerCust)ActiveMdiChild;
                     vSchcode = mcustFrm.Schcode;
                 }
-                    else
-                    {
+                else
+                {
                     //don't open form
                     return;
-                    }
+                }
                 frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
-                    form.MdiParent = this;
+                form.MdiParent = this;
                 form.Show();
             }
             else
@@ -1418,7 +1489,7 @@ namespace Mbc5.Forms
 
         private void memeroyBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmInqCount(ApplicationUser,"MBC");
+            var frm = new frmInqCount(ApplicationUser, "MBC");
             frm.MdiParent = this;
             frm.Show();
         }
@@ -1430,9 +1501,22 @@ namespace Mbc5.Forms
             frm.Show();
         }
 
+        private void mixBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
 
-        //nothing below here
-    }
+            this.Cursor = Cursors.AppStarting;
+
+            frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
+            frmMBOrders.MdiParent = this;
+            frmMBOrders.Show();
+            this.Cursor = Cursors.Default;
+
+
+
+
+            //nothing below here
+        }
+     }
     }
 

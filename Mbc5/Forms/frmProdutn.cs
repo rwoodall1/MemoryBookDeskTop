@@ -95,9 +95,14 @@ namespace Mbc5.Forms
             reOrderTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
             mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
+            // TODO: This line of code loads data into the 'lookUp.lkpMascot' table. You can move, or remove it, as needed.
+            this.lkpMascotTableAdapter.Fill(this.lookUp.lkpMascot);
+
             if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
             {
                 txtwipPressnumber.Enabled = true;
@@ -7202,7 +7207,11 @@ namespace Mbc5.Forms
             if (Schcode != null)
 			{
 				try {
-				custTableAdapter.Fill(dsProdutn.cust, Schcode);
+                    // TODO: This line of code loads data into the 'lookUp.lkpCoverStock' table. You can move, or remove it, as needed.
+                    this.lkpCoverStockTableAdapter.Fill(this.lookUp.lkpCoverStock);
+                    // TODO: This line of code loads data into the 'lookUp.lkpCustType' table. You can move, or remove it, as needed.
+                    this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
+                    custTableAdapter.Fill(dsProdutn.cust, Schcode);
                     
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
                     mcustTableAdapter.Fill(dsMcust.mcust, Schcode);

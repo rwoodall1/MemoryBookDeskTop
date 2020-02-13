@@ -20,7 +20,7 @@ using BindingModels;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
 using System.Threading.Tasks;
-using Mbc5.Classes;
+
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
         private bool vMktGo = false;
@@ -1115,7 +1115,7 @@ public override void Cancel() {
 			SetInvnoSchCode();
 			frmMbcCust_Paint(this, null);
 		}
-		public override void SchCodeSearch() {
+		public  void SchCodeSearch() {
 			var currentSchool = this.Schcode;
 			if (DoPhoneLog()) {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -2560,15 +2560,7 @@ public override void Cancel() {
 
         }
 
-        private void txtSupplyQty_Validating(object sender, CancelEventArgs e)
-        {
-           
-        }
-
-        private void reportViewer2_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void pg4_Leave(object sender, EventArgs e)
         {

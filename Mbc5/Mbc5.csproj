@@ -144,6 +144,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReceiving.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\MixBookOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -517,6 +522,12 @@
     <Compile Include="Forms\frmWipDescriptions.Designer.cs">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -567,8 +578,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <None Include="Content\jobnoSearch.jpg" />
+    <None Include="Content\iconfinder_order_59488.png" />
     <Content Include="Content\MAIL.png" />
     <None Include="Content\school.png" />
+    <None Include="Content\Name.png" />
     <Content Include="Content\SystemIcons\refresh.png" />
     <Content Include="Content\SystemIcons\tsAdd.Image.png" />
     <Content Include="Content\SystemIcons\tsCancel.Image.png" />
@@ -717,6 +731,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmWipDescriptions.resx">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
@@ -1007,6 +1024,17 @@
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\MixBookOrders.xsc">
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\MixBookOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MixBookOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\MixBookOrders.xss">
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
     </None>
     <None Include="Messagebox.docx" />
     <None Include="NLog.xsd">

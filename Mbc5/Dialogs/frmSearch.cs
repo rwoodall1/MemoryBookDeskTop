@@ -32,6 +32,7 @@ namespace Mbc5.Dialogs {
         private int CurrentIndex { get; set; }
         private string SearchType { get; set; }
         private string ReturnForm { get; set; }
+        private List<MixBookOrderIdSearch> OrderId { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
@@ -1088,7 +1089,34 @@ namespace Mbc5.Dialogs {
                             break;
 
                     }
+                case "OrderId":
+                    switch (ReturnForm)
+                    {
+                        case "MIXBOOK":
+                            cmdtext = @"SELECT 
+                                              OrderId
+                                              ,Job                                            
+                                              ,ShipName                                            
+                                          FROM MixBookOrder Order By OrderId";
+                            sqlclient.CommandText(cmdtext);
+                            var resultZC = sqlclient.SelectMany<MixBookOrderIdSearch>();
+                            if (resultZC.IsError)
+                            {
+                                MbcMessageBox.Error(resultZC.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecsZC = (List<ZipCodeSearch>)resultZC.Data;
+                            this.ZipeCodeList = lRetRecsZC;
+                            bsData.DataSource = this.ZipeCodeList;
 
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
+                        case "WIP":
+
+                            break;
+                    }
                     break;
                  
             }

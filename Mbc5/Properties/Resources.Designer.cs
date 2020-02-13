@@ -63,6 +63,36 @@ namespace Mbc5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_order_59488 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_order_59488", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jobnoSearch {
+            get {
+                object obj = ResourceManager.GetObject("jobnoSearch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Name {
+            get {
+                object obj = ResourceManager.GetObject("Name", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap school {
             get {
                 object obj = ResourceManager.GetObject("school", resourceCulture);

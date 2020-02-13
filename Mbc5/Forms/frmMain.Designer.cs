@@ -66,6 +66,8 @@
             this.tsYearBookLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.customeReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paymentReceiptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.memeroyBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,8 +105,7 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
-            this.memeroyBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +133,7 @@
             this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mBCToolStripMenuItem,
             this.meridianToolStripMenuItem,
+            this.mixBookToolStripMenuItem,
             this.productionToolStripMenuItem,
             this.logOutToolStripMenuItem,
             this.exitMBCToolStripMenuItem});
@@ -149,7 +151,7 @@
             this.receivingSurveyCompensationToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // bidsToolStripMenuItem
@@ -204,7 +206,7 @@
             this.receivingSurveyCompensationToolStripMenuItem1,
             this.msalesToolStripMenuItem});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // mbidsToolStripMenuItem
@@ -250,7 +252,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -277,14 +279,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
@@ -345,7 +347,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -359,7 +361,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -412,7 +414,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             // 
             // paymentReceiptsToolStripMenuItem
@@ -421,6 +423,20 @@
             this.paymentReceiptsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.paymentReceiptsToolStripMenuItem.Text = "Payment Receipts";
             this.paymentReceiptsToolStripMenuItem.Click += new System.EventHandler(this.paymentReceiptsToolStripMenuItem_Click);
+            // 
+            // memeroyBookToolStripMenuItem
+            // 
+            this.memeroyBookToolStripMenuItem.Name = "memeroyBookToolStripMenuItem";
+            this.memeroyBookToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.memeroyBookToolStripMenuItem.Text = "Memeroy Book Inq Count";
+            this.memeroyBookToolStripMenuItem.Click += new System.EventHandler(this.memeroyBookToolStripMenuItem_Click);
+            // 
+            // meridianInqCountToolStripMenuItem
+            // 
+            this.meridianInqCountToolStripMenuItem.Name = "meridianInqCountToolStripMenuItem";
+            this.meridianInqCountToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.meridianInqCountToolStripMenuItem.Text = "Meridian Inq Count";
+            this.meridianInqCountToolStripMenuItem.Click += new System.EventHandler(this.meridianInqCountToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -762,19 +778,12 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
-            // memeroyBookToolStripMenuItem
+            // mixBookToolStripMenuItem
             // 
-            this.memeroyBookToolStripMenuItem.Name = "memeroyBookToolStripMenuItem";
-            this.memeroyBookToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.memeroyBookToolStripMenuItem.Text = "Memeroy Book Inq Count";
-            this.memeroyBookToolStripMenuItem.Click += new System.EventHandler(this.memeroyBookToolStripMenuItem_Click);
-            // 
-            // meridianInqCountToolStripMenuItem
-            // 
-            this.meridianInqCountToolStripMenuItem.Name = "meridianInqCountToolStripMenuItem";
-            this.meridianInqCountToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.meridianInqCountToolStripMenuItem.Text = "Meridian Inq Count";
-            this.meridianInqCountToolStripMenuItem.Click += new System.EventHandler(this.meridianInqCountToolStripMenuItem_Click);
+            this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookToolStripMenuItem.Text = "Mix Book";
+            this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -875,5 +884,6 @@
         public System.Windows.Forms.ToolStripMenuItem receivingSurveyCompensationToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem memeroyBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meridianInqCountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mixBookToolStripMenuItem;
     }
 }
