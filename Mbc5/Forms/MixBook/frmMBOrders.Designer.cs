@@ -61,9 +61,8 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.mixBookOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.shipAddrTextBox = new System.Windows.Forms.TextBox();
             this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
             this.shipCityTextBox = new System.Windows.Forms.TextBox();
@@ -234,6 +233,7 @@
             // 
             this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
             this.mixBookOrderBindingSource.DataSource = this.dsmixBookOrders;
+            this.mixBookOrderBindingSource.PositionChanged += new System.EventHandler(this.mixBookOrderBindingSource_PositionChanged);
             // 
             // mixBookOrderTableAdapter
             // 
@@ -342,11 +342,10 @@
             // 
             // mixBookOrderBindingNavigatorSaveItem
             // 
-            this.mixBookOrderBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mixBookOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("mixBookOrderBindingNavigatorSaveItem.Image")));
             this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
-            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save Data";
+            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
+            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
             this.mixBookOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.mixBookOrderBindingNavigatorSaveItem_Click);
             // 
             // mixBookOrderBindingNavigator
@@ -369,8 +368,7 @@
             this.bindingNavigatorDeleteItem,
             this.mixBookOrderBindingNavigatorSaveItem,
             this.toolStripButton3,
-            this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton1});
             this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -382,35 +380,25 @@
             this.mixBookOrderBindingNavigator.TabIndex = 1;
             this.mixBookOrderBindingNavigator.Text = "bindingNavigator1";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = typeof(Mbc5.Properties.Resources).Name;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Name";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Mbc5.Properties.Resources.jobnoSearch;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Job No.";
-            // 
             // toolStripButton3
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton3.Image = global::Mbc5.Properties.Resources.iconfinder_order_59488;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(70, 22);
+            this.toolStripButton3.Text = "Order Id";
             this.toolStripButton3.ToolTipText = "Order Id";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::Mbc5.Properties.Resources.Name;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 22);
+            this.toolStripButton1.Text = "Ship Name";
+            this.toolStripButton1.ToolTipText = "Name";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // shipAddrTextBox
             // 
@@ -760,7 +748,6 @@
         private DataSets.LookUpTableAdapters.statesTableAdapter statesTableAdapter;
         private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

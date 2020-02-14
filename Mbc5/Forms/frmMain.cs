@@ -188,6 +188,13 @@ namespace Mbc5.Forms
                         vInvno = tmpForm.Invno;
                         break;
                     }
+                case "frmMBOrders":
+                    {
+                        var tmpForm = (frmMBOrders)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+
+                    }
 
             }
             return vInvno;
@@ -406,6 +413,7 @@ namespace Mbc5.Forms
             }
             else
             {
+                this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -661,6 +669,25 @@ namespace Mbc5.Forms
                 frmProdutn.Show();
                 this.Cursor = Cursors.Default;
 
+
+            }else if (ActiveMdiChild.Name == "frmMBOrders")
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+               
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This book does not have a production record to go to. Please search for record from Production Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
+                    frmProdutn1.MdiParent = this;
+                    frmProdutn1.Show();
+                    this.Cursor = Cursors.Default;
+                }
+
+                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
+                frmProduction.MdiParent = this;
+                frmProduction.Show();
+                this.Cursor = Cursors.Default;
 
             }
             else

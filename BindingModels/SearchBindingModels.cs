@@ -11,7 +11,7 @@ namespace BindingModels
         public string OracleCode { get; set; }
         public int Invno { get; set; }
         public string ProdNo { get; set; }
-
+        public string OrderId { get; set;}
 
     }
     //cust
@@ -269,9 +269,16 @@ namespace BindingModels
     //Mixbooks
     public class MixBookOrderIdSearch
     {
-        int OrderId { get; set; }
-        string Job { get; set; }
-        string ShipName { get; set; }
+       public int OrderId { get; set; }
+        public string Job { get; set; }
+        public string ShipName { get; set; }
                                              
+    }
+    public class MixBookOrderShipNameSearch
+    {
+        public string ShipName { get; set; }
+        public int OrderId { get; set; }
+        public string Job { get; set; }
+
     }
 }

@@ -1560,20 +1560,11 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE       MixBookOrder
-SET                Invno = @Invno, OrderId = @OrderId, Job = @Job, ReceiveDate = @ReceiveDate, Description = @Description, ItemCode = @ItemCode, Copies = @Copies, Pages = @Pages, ShipDate = @ShipDate, 
-                         DateShipped = @DateShipped, ShipName = @ShipName, ShipAddr = @ShipAddr, ShipAddr2 = @ShipAddr2, ShipCity = @ShipCity, ShipState = @ShipState, ShipZip = @ShipZip, PhoneNumber = @PhoneNumber, 
-                         ShipMethod = @ShipMethod
-WHERE        (Invno = @Original_Invno); 
+SET                ShipDate = @ShipDate, DateShipped = @DateShipped, ShipName = @ShipName, ShipAddr = @ShipAddr, ShipAddr2 = @ShipAddr2, ShipCity = @ShipCity, ShipState = @ShipState, ShipZip = @ShipZip, 
+                         PhoneNumber = @PhoneNumber, ShipMethod = @ShipMethod
+WHERE        (OrderId = @orderid);    
 SELECT Invno, OrderId, Job, ReceiveDate, Description, ItemCode, Copies, Pages, ShipDate, DateShipped, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod FROM MixBookOrder WHERE (Invno = @Invno) ORDER BY ReceiveDate DESC";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Job", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Job", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReceiveDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ReceiveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemCode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ItemCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Copies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Copies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Pages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateShipped", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateShipped", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1584,7 +1575,8 @@ SELECT Invno, OrderId, Job, ReceiveDate, Description, ItemCode, Copies, Pages, S
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipZip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShipZip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipMethod", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShipMethod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@orderid", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1978,130 +1970,74 @@ ORDER BY ReceiveDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int Invno, 
-                    global::System.Nullable<int> OrderId, 
-                    string Job, 
-                    global::System.Nullable<global::System.DateTime> ReceiveDate, 
-                    string Description, 
-                    string ItemCode, 
-                    global::System.Nullable<int> Copies, 
-                    global::System.Nullable<int> Pages, 
-                    global::System.Nullable<global::System.DateTime> ShipDate, 
-                    global::System.Nullable<global::System.DateTime> DateShipped, 
-                    string ShipName, 
-                    string ShipAddr, 
-                    string ShipAddr2, 
-                    string ShipCity, 
-                    string ShipState, 
-                    string ShipZip, 
-                    string PhoneNumber, 
-                    string ShipMethod, 
-                    int Original_Invno) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Invno));
-            if ((OrderId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(OrderId.Value));
+        public virtual int Update(global::System.Nullable<global::System.DateTime> ShipDate, global::System.Nullable<global::System.DateTime> DateShipped, string ShipName, string ShipAddr, string ShipAddr2, string ShipCity, string ShipState, string ShipZip, string PhoneNumber, string ShipMethod, global::System.Nullable<int> orderid, int Invno) {
+            if ((ShipDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(ShipDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((DateShipped.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DateShipped.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Job == null)) {
+            if ((ShipName == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Job));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ShipName));
             }
-            if ((ReceiveDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(ReceiveDate.Value));
-            }
-            else {
+            if ((ShipAddr == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Description == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ShipAddr));
+            }
+            if ((ShipAddr2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Description));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ShipAddr2));
             }
-            if ((ItemCode == null)) {
+            if ((ShipCity == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ItemCode));
-            }
-            if ((Copies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Copies.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Pages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Pages.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((ShipDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(ShipDate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((DateShipped.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(DateShipped.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((ShipName == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(ShipName));
-            }
-            if ((ShipAddr == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(ShipAddr));
-            }
-            if ((ShipAddr2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(ShipAddr2));
-            }
-            if ((ShipCity == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(ShipCity));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ShipCity));
             }
             if ((ShipState == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(ShipState));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ShipState));
             }
             if ((ShipZip == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(ShipZip));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ShipZip));
             }
             if ((PhoneNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(PhoneNumber));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(PhoneNumber));
             }
             if ((ShipMethod == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(ShipMethod));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(ShipMethod));
             }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Invno));
+            if ((orderid.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(orderid.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Invno));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2116,32 +2052,6 @@ ORDER BY ReceiveDate DESC";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    global::System.Nullable<int> OrderId, 
-                    string Job, 
-                    global::System.Nullable<global::System.DateTime> ReceiveDate, 
-                    string Description, 
-                    string ItemCode, 
-                    global::System.Nullable<int> Copies, 
-                    global::System.Nullable<int> Pages, 
-                    global::System.Nullable<global::System.DateTime> ShipDate, 
-                    global::System.Nullable<global::System.DateTime> DateShipped, 
-                    string ShipName, 
-                    string ShipAddr, 
-                    string ShipAddr2, 
-                    string ShipCity, 
-                    string ShipState, 
-                    string ShipZip, 
-                    string PhoneNumber, 
-                    string ShipMethod, 
-                    int Original_Invno) {
-            return this.Update(Original_Invno, OrderId, Job, ReceiveDate, Description, ItemCode, Copies, Pages, ShipDate, DateShipped, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, Original_Invno);
         }
     }
     
