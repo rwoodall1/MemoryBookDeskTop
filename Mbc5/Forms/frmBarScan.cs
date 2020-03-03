@@ -17,11 +17,15 @@ namespace Mbc5.Forms
     {
         public frmBarScan(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
+            
             InitializeComponent();
+            this.ApplicationUser = userPrincipal;
         }
         string Company { get; set; }
+        UserPrincipal ApplicationUser { get; set; }
         MbcBarScanModel MbcModel { get; set; }
         MerBarScanModel MerModel{get;set;}
+        MixBookBarScanModel MbxModel { get; set; }
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
@@ -177,33 +181,35 @@ namespace Mbc5.Forms
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
             string vInvno = "";
-              try {
+            try
+            {
                 this.Company = txtBarCode.Text.Substring(0, 3);
-                if (txtBarCode.Text.Length == 12||txtBarCode.Text.Length == 11)
+                if (txtBarCode.Text.Length == 12 || txtBarCode.Text.Length == 11)
                 {
-                    vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length -6);
+                    vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
                 }
-                
+
                 else
                 {
                     MbcMessageBox.Error("Scan code is not in correct format");
                     return;
                 }
-         
+
                 int parsedInvno = 0;
-              
-                var parseResult= int.TryParse(vInvno,out parsedInvno);
+
+                var parseResult = int.TryParse(vInvno, out parsedInvno);
                 this.Invno = parsedInvno;
-           if(!parseResult)
-           { MessageBox.Show("Invalid scan code");
-                return;
-            }
-            var sqlQuery = new SQLCustomClient();
-            switch (this.Company)
-            {
-                case "MBC":
-                    {
-                        string cmdText = @"
+                if (!parseResult)
+                {
+                    MessageBox.Show("Invalid scan code");
+                    return;
+                }
+                var sqlQuery = new SQLCustomClient();
+                switch (this.Company)
+                {
+                    case "MBC":
+                        {
+                            string cmdText = @"
                         SELECT C.Schname,C.SchCode,RTrim(LTrim(C.SchEmail))As SchEmail,RTRim(LTrim(C.ContEmail))AS ContEmail,RTrim(LTrim(C.BContEmail))As BContEmail,RTrim(LTrim(C.CContEmail))AS CContEmail,CV.Specovr,P.ProdNo,W.CpNum,Q.Invno
                             From Cust C
                             Left Join Quotes Q On C.Schcode=Q.Schcode
@@ -212,31 +218,31 @@ namespace Mbc5.Forms
                             Left Join Wipg W On Q.Invno=W.Invno
                             Where Q.Invno=@Invno
                           ";
-                        sqlQuery.CommandText(cmdText);
-                        sqlQuery.AddParameter("@Invno", Invno);
-                        var result = sqlQuery.Select<MbcBarScanModel>();
-                        if (result.IsError)
-                        {
-                            MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            sqlQuery.CommandText(cmdText);
+                            sqlQuery.AddParameter("@Invno", Invno);
+                            var result = sqlQuery.Select<MbcBarScanModel>();
+                            if (result.IsError)
+                            {
+                                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             MbcModel = (MbcBarScanModel)result.Data;
 
-                        if (result.Data == null)
-                        {
-                            MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                            return;
-                        }
-                        txtSchcode.Text = MbcModel.SchCode;
-                        txtSchoolName.Text = MbcModel.Schname;
-                        txtCoverNumber.Text = MbcModel.Specovr;
-                        txtColorPageNumber.Text = MbcModel.CpNum;
-                        txtProdNumber.Text = MbcModel.ProdNo;
-                        txtDateTime.Text = DateTime.Now.ToString();
+                            if (result.Data == null)
+                            {
+                                MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                return;
+                            }
+                            txtSchcode.Text = MbcModel.SchCode;
+                            txtSchoolName.Text = MbcModel.Schname;
+                            txtCoverNumber.Text = MbcModel.Specovr;
+                            txtColorPageNumber.Text = MbcModel.CpNum;
+                            txtProdNumber.Text = MbcModel.ProdNo;
+                            txtDateTime.Text = DateTime.Now.ToString();
 
-                        break;
-                    }
-                case "MER":
-                    {
+                            break;
+                        }
+                    case "MER":
+                        {
                             string cmdText = @"
                         SELECT C.Schname,C.SchCode,RTrim(LTrim(C.SchEmail))AS SchEmail,RTrim(LTrim(C.ContEmail))AS ContEmail,RTrim(LTrim(C.BContEmail))AS BContEmail,CV.Specovr,P.ProdNo,Q.Invno
                             From MCust C
@@ -267,10 +273,46 @@ namespace Mbc5.Forms
                             txtProdNumber.Text = MerModel.ProdNo;
                             txtDateTime.Text = DateTime.Now.ToString();
                             break;
-                    }
+                        }
 
+                    case "MXB":
+                        {
+                            string cmdText = @"
+                            SELECT M.ShipName,M.OrderId,M.Job,M.Invno,P.ProdNo,C.Specovr
+                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
+                                Where M.Invno=@Invno
+                              ";
+                            sqlQuery.CommandText(cmdText);
+                            sqlQuery.AddParameter("@Invno", Invno);
+                            var result = sqlQuery.Select<MixBookBarScanModel>();
+                            if (result.IsError)
+                            {
+                                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            MbxModel = (MixBookBarScanModel)result.Data;
+
+                            if (result.Data == null)
+                            {
+                                MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                return;
+                            }
+                            txtSchcode.Text = MbxModel.Job;
+                            txtSchoolName.Text = MbxModel.ShipName;
+                            txtCoverNumber.Text = MbxModel.Specovr;
+                            txtColorPageNumber.Text = "";
+                            txtProdNumber.Text = MbxModel.ProdNo;
+                            txtDateTime.Text = DateTime.Now.ToString();
+                            this.Enabled = false;
+                            timer1.Start();
+
+
+
+                            break;
+
+                        }
+                }
             }
-            }
+
             catch (Exception ex) { };
         }
         #region "Methods"
@@ -2357,6 +2399,103 @@ if (trkType == "GS")
             
 
         }
+        private void MXBScan()
+        {
+            //update record by login
+            var sqlClient = new SQLCustomClient();
+            string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
+            string company = txtBarCode.Text.Substring(0, 3);
+                DateTime vDateTime = DateTime.Now;
+            string vWIR = "SYS";
+            if (trkType == "YB")
+            {
+                switch (this.ApplicationUser.UserName.ToUpper())
+                {
+                    case "SA":
+                        var vDeptCode = "22";
+                        //war is datetime
+                        //wir is initials
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);//we use jobn for mixbook.
+                        sqlClient.CommandText(@"Update WIPDetail SET
+                                 WAR=
+                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+                                    , WIR =
+                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
+                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        try { var mxResult = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+
+                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
+                                                    END
+                                                    ");
+
+                        var result1 = sqlClient.Insert();
+                        if (result1.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                }
+            }else if (trkType == "SC")
+            {
+                switch (this.ApplicationUser.UserName.ToUpper())
+                {
+                    case "SA":
+                        var vDeptCode = "22";
+                        //war is datetime
+                        //wir is initials
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);//we use jobn for mixbook.
+                        sqlClient.CommandText(@"Update CoverDetail SET
+                                 WAR=
+                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+                                    , WIR =
+                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
+                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        try { var mxResult = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+
+                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO CoverDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
+                                                    END
+                                                    ");
+
+                        var result1 = sqlClient.Insert();
+                        if (result1.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                }
+
+            }
+            ClearScan();
+        }
+      
         private void ClearScan()
         {
             txtBarCode.Text = "";
@@ -2671,7 +2810,15 @@ if (trkType == "GS")
             
         }
 
-      
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            
+                
+            MXBScan();
+            //ClearScan();
+            this.Enabled =true;
+        }
     }
 
     }

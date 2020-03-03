@@ -9,6 +9,7 @@ using BaseClass.Classes;
 using Mbc5.Dialogs;
 using Mbc5.Classes;
 using BaseClass;
+using System.Diagnostics;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
@@ -16,9 +17,11 @@ namespace Mbc5.Forms.MixBook
         public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator" }, userPrincipal)
         {
             InitializeComponent();
+            this.ApplicationUser = userPrincipal;
         }
         
         public int OrderId { get; set; }
+        public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
             this.Invno = 0;
@@ -134,6 +137,49 @@ namespace Mbc5.Forms.MixBook
             string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
             int.TryParse(vSInvno, out vIInvno);
             this.Invno = vIInvno;
+        }
+
+        private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(5)|| mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6))
+                if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
+                {
+                    try
+                    { Process.Start(mixBookOrderDataGridView.CurrentCell.Value.ToString()); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Url is invalid.");
+                    }
+                    ;
+                }
+                    
+        }
+
+        private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            this.Cursor = Cursors.AppStarting;
+            int vInvno = this.Invno;
+            string vSchcode = "01";
+
+            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
+            frmProdutn.MdiParent = this.MdiParent;
+            frmProdutn.Show();
+            this.Cursor = Cursors.Default;
+
+
+        }
+        
+
+        private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
+        {
+            try
+            {
+                var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[0].Value;
+                this.Invno = value;
+            }catch(Exception ex) { }
+        
+
         }
     }
 }

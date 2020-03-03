@@ -139,7 +139,14 @@ namespace BindingModels
         public string ContEmail { get; set; }
         public int Invno { get; set; }
     }
-
+    public class MixBookBarScanModel
+    {
+        public string ShipName { get; set; }
+        public string Job { get; set; }
+        public int Invno { get; set; }
+        public string ProdNo { get; set; }
+        public string Specovr { get; set; }
+    }
     public class WipUpdateCheck
 	{
 		public int QuoteInvno { get; set; }

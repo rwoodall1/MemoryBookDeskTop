@@ -1096,10 +1096,10 @@ namespace Mbc5.Dialogs {
                     {
                         case "MIXBOOK":
                             cmdtext = @"SELECT 
-                                              OrderId
+                                              ClientOrderId
                                               ,ShipName 
-                                              ,Job                                                                                      
-                                          FROM MixBookOrder Order By OrderId,Job";
+                                              ,JobId                                                                                      
+                                          FROM MixBookOrder Order By ClientOrderId,JobId";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderIdSearch>();
                             if (resultZC.IsError)
@@ -1126,9 +1126,9 @@ namespace Mbc5.Dialogs {
                         case "MIXBOOK":
                             cmdtext = @"SELECT 
                                             ShipName
-                                            ,OrderId
-                                            ,Job                                                                                       
-                                        FROM MixBookOrder Order By ShipName,Job";
+                                            ,ClientOrderId
+                                            ,JobId                                                                                       
+                                        FROM MixBookOrder Order By ShipName,JobId";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderShipNameSearch>();
                             if (resultZC.IsError)
@@ -1518,7 +1518,7 @@ namespace Mbc5.Dialogs {
                     try
                     {
 
-                        vIndex = this.OrderIdList.FindIndex(vcust => vcust.OrderId.ToString() != "0" && vcust.OrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                        vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();

@@ -269,16 +269,16 @@ namespace BindingModels
     //Mixbooks
     public class MixBookOrderIdSearch
     {
-       public int OrderId { get; set; }
-        public string Job { get; set; }
+       public int ClientOrderId { get; set; }
+        public string JobId { get; set; }
         public string ShipName { get; set; }
                                              
     }
     public class MixBookOrderShipNameSearch
     {
         public string ShipName { get; set; }
-        public int OrderId { get; set; }
-        public string Job { get; set; }
+        public int ClientOrderId { get; set; }
+        public string JobId { get; set; }
 
     }
 }

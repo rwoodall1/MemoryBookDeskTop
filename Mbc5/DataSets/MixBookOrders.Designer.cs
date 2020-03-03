@@ -281,11 +281,7 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnInvno;
             
-            private global::System.Data.DataColumn columnOrderId;
-            
-            private global::System.Data.DataColumn columnJob;
-            
-            private global::System.Data.DataColumn columnReceiveDate;
+            private global::System.Data.DataColumn columnClientOrderId;
             
             private global::System.Data.DataColumn columnDescription;
             
@@ -294,8 +290,6 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnCopies;
             
             private global::System.Data.DataColumn columnPages;
-            
-            private global::System.Data.DataColumn columnShipDate;
             
             private global::System.Data.DataColumn columnDateShipped;
             
@@ -314,6 +308,30 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnPhoneNumber;
             
             private global::System.Data.DataColumn columnShipMethod;
+            
+            private global::System.Data.DataColumn columnJobId;
+            
+            private global::System.Data.DataColumn columnExpr1;
+            
+            private global::System.Data.DataColumn columnOrderReceivedDate;
+            
+            private global::System.Data.DataColumn columnExpr2;
+            
+            private global::System.Data.DataColumn columnOrderNumber;
+            
+            private global::System.Data.DataColumn columnSize;
+            
+            private global::System.Data.DataColumn columnBacking;
+            
+            private global::System.Data.DataColumn columnFinish;
+            
+            private global::System.Data.DataColumn columnPaper;
+            
+            private global::System.Data.DataColumn columnRequestedShipDate;
+            
+            private global::System.Data.DataColumn columnCoverUrl;
+            
+            private global::System.Data.DataColumn columnBookUrl;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -358,25 +376,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OrderIdColumn {
+            public global::System.Data.DataColumn ClientOrderIdColumn {
                 get {
-                    return this.columnOrderId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn JobColumn {
-                get {
-                    return this.columnJob;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ReceiveDateColumn {
-                get {
-                    return this.columnReceiveDate;
+                    return this.columnClientOrderId;
                 }
             }
             
@@ -409,14 +411,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn PagesColumn {
                 get {
                     return this.columnPages;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShipDateColumn {
-                get {
-                    return this.columnShipDate;
                 }
             }
             
@@ -494,6 +488,102 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn JobIdColumn {
+                get {
+                    return this.columnJobId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderReceivedDateColumn {
+                get {
+                    return this.columnOrderReceivedDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Expr2Column {
+                get {
+                    return this.columnExpr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderNumberColumn {
+                get {
+                    return this.columnOrderNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SizeColumn {
+                get {
+                    return this.columnSize;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BackingColumn {
+                get {
+                    return this.columnBacking;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FinishColumn {
+                get {
+                    return this.columnFinish;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PaperColumn {
+                get {
+                    return this.columnPaper;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RequestedShipDateColumn {
+                get {
+                    return this.columnRequestedShipDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CoverUrlColumn {
+                get {
+                    return this.columnCoverUrl;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BookUrlColumn {
+                get {
+                    return this.columnBookUrl;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -531,14 +621,11 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MixBookOrderRow AddMixBookOrderRow(
                         int Invno, 
-                        int OrderId, 
-                        string Job, 
-                        System.DateTime ReceiveDate, 
+                        int ClientOrderId, 
                         string Description, 
                         string ItemCode, 
                         int Copies, 
                         int Pages, 
-                        System.DateTime ShipDate, 
                         System.DateTime DateShipped, 
                         string ShipName, 
                         string ShipAddr, 
@@ -547,18 +634,27 @@ namespace Mbc5.DataSets {
                         string ShipState, 
                         string ShipZip, 
                         string PhoneNumber, 
-                        string ShipMethod) {
+                        string ShipMethod, 
+                        string JobId, 
+                        int Expr1, 
+                        System.DateTime OrderReceivedDate, 
+                        string Expr2, 
+                        string OrderNumber, 
+                        string Size, 
+                        string Backing, 
+                        string Finish, 
+                        string Paper, 
+                        System.DateTime RequestedShipDate, 
+                        string CoverUrl, 
+                        string BookUrl) {
                 MixBookOrderRow rowMixBookOrderRow = ((MixBookOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Invno,
-                        OrderId,
-                        Job,
-                        ReceiveDate,
+                        ClientOrderId,
                         Description,
                         ItemCode,
                         Copies,
                         Pages,
-                        ShipDate,
                         DateShipped,
                         ShipName,
                         ShipAddr,
@@ -567,7 +663,19 @@ namespace Mbc5.DataSets {
                         ShipState,
                         ShipZip,
                         PhoneNumber,
-                        ShipMethod};
+                        ShipMethod,
+                        JobId,
+                        Expr1,
+                        OrderReceivedDate,
+                        Expr2,
+                        OrderNumber,
+                        Size,
+                        Backing,
+                        Finish,
+                        Paper,
+                        RequestedShipDate,
+                        CoverUrl,
+                        BookUrl};
                 rowMixBookOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMixBookOrderRow);
                 return rowMixBookOrderRow;
@@ -598,14 +706,11 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnInvno = base.Columns["Invno"];
-                this.columnOrderId = base.Columns["OrderId"];
-                this.columnJob = base.Columns["Job"];
-                this.columnReceiveDate = base.Columns["ReceiveDate"];
+                this.columnClientOrderId = base.Columns["ClientOrderId"];
                 this.columnDescription = base.Columns["Description"];
                 this.columnItemCode = base.Columns["ItemCode"];
                 this.columnCopies = base.Columns["Copies"];
                 this.columnPages = base.Columns["Pages"];
-                this.columnShipDate = base.Columns["ShipDate"];
                 this.columnDateShipped = base.Columns["DateShipped"];
                 this.columnShipName = base.Columns["ShipName"];
                 this.columnShipAddr = base.Columns["ShipAddr"];
@@ -615,6 +720,18 @@ namespace Mbc5.DataSets {
                 this.columnShipZip = base.Columns["ShipZip"];
                 this.columnPhoneNumber = base.Columns["PhoneNumber"];
                 this.columnShipMethod = base.Columns["ShipMethod"];
+                this.columnJobId = base.Columns["JobId"];
+                this.columnExpr1 = base.Columns["Expr1"];
+                this.columnOrderReceivedDate = base.Columns["OrderReceivedDate"];
+                this.columnExpr2 = base.Columns["Expr2"];
+                this.columnOrderNumber = base.Columns["OrderNumber"];
+                this.columnSize = base.Columns["Size"];
+                this.columnBacking = base.Columns["Backing"];
+                this.columnFinish = base.Columns["Finish"];
+                this.columnPaper = base.Columns["Paper"];
+                this.columnRequestedShipDate = base.Columns["RequestedShipDate"];
+                this.columnCoverUrl = base.Columns["CoverUrl"];
+                this.columnBookUrl = base.Columns["BookUrl"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -622,12 +739,8 @@ namespace Mbc5.DataSets {
             private void InitClass() {
                 this.columnInvno = new global::System.Data.DataColumn("Invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvno);
-                this.columnOrderId = new global::System.Data.DataColumn("OrderId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrderId);
-                this.columnJob = new global::System.Data.DataColumn("Job", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnJob);
-                this.columnReceiveDate = new global::System.Data.DataColumn("ReceiveDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReceiveDate);
+                this.columnClientOrderId = new global::System.Data.DataColumn("ClientOrderId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientOrderId);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
                 this.columnItemCode = new global::System.Data.DataColumn("ItemCode", typeof(string), null, global::System.Data.MappingType.Element);
@@ -636,8 +749,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnCopies);
                 this.columnPages = new global::System.Data.DataColumn("Pages", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPages);
-                this.columnShipDate = new global::System.Data.DataColumn("ShipDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShipDate);
                 this.columnDateShipped = new global::System.Data.DataColumn("DateShipped", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateShipped);
                 this.columnShipName = new global::System.Data.DataColumn("ShipName", typeof(string), null, global::System.Data.MappingType.Element);
@@ -656,11 +767,34 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnPhoneNumber);
                 this.columnShipMethod = new global::System.Data.DataColumn("ShipMethod", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnShipMethod);
+                this.columnJobId = new global::System.Data.DataColumn("JobId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJobId);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.columnOrderReceivedDate = new global::System.Data.DataColumn("OrderReceivedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderReceivedDate);
+                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr2);
+                this.columnOrderNumber = new global::System.Data.DataColumn("OrderNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderNumber);
+                this.columnSize = new global::System.Data.DataColumn("Size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSize);
+                this.columnBacking = new global::System.Data.DataColumn("Backing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBacking);
+                this.columnFinish = new global::System.Data.DataColumn("Finish", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFinish);
+                this.columnPaper = new global::System.Data.DataColumn("Paper", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaper);
+                this.columnRequestedShipDate = new global::System.Data.DataColumn("RequestedShipDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestedShipDate);
+                this.columnCoverUrl = new global::System.Data.DataColumn("CoverUrl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCoverUrl);
+                this.columnBookUrl = new global::System.Data.DataColumn("BookUrl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBookUrl);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnInvno.AllowDBNull = false;
                 this.columnInvno.Unique = true;
-                this.columnJob.MaxLength = 50;
                 this.columnDescription.MaxLength = 50;
                 this.columnItemCode.MaxLength = 50;
                 this.columnShipName.MaxLength = 100;
@@ -671,6 +805,15 @@ namespace Mbc5.DataSets {
                 this.columnShipZip.MaxLength = 50;
                 this.columnPhoneNumber.MaxLength = 50;
                 this.columnShipMethod.MaxLength = 50;
+                this.columnJobId.MaxLength = 50;
+                this.columnExpr2.MaxLength = 50;
+                this.columnOrderNumber.MaxLength = 50;
+                this.columnSize.MaxLength = 50;
+                this.columnBacking.MaxLength = 4;
+                this.columnFinish.MaxLength = 25;
+                this.columnPaper.MaxLength = 50;
+                this.columnCoverUrl.MaxLength = 2147483647;
+                this.columnBookUrl.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -824,49 +967,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int OrderId {
+            public int ClientOrderId {
                 get {
                     try {
-                        return ((int)(this[this.tableMixBookOrder.OrderIdColumn]));
+                        return ((int)(this[this.tableMixBookOrder.ClientOrderIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OrderId\' in table \'MixBookOrder\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClientOrderId\' in table \'MixBookOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMixBookOrder.OrderIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Job {
-                get {
-                    try {
-                        return ((string)(this[this.tableMixBookOrder.JobColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Job\' in table \'MixBookOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMixBookOrder.JobColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime ReceiveDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableMixBookOrder.ReceiveDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ReceiveDate\' in table \'MixBookOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMixBookOrder.ReceiveDateColumn] = value;
+                    this[this.tableMixBookOrder.ClientOrderIdColumn] = value;
                 }
             }
             
@@ -931,22 +1042,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tableMixBookOrder.PagesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime ShipDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableMixBookOrder.ShipDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShipDate\' in table \'MixBookOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMixBookOrder.ShipDateColumn] = value;
                 }
             }
             
@@ -1096,38 +1191,206 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOrderIdNull() {
-                return this.IsNull(this.tableMixBookOrder.OrderIdColumn);
+            public string JobId {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.JobIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JobId\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.JobIdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOrderIdNull() {
-                this[this.tableMixBookOrder.OrderIdColumn] = global::System.Convert.DBNull;
+            public int Expr1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableMixBookOrder.Expr1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Expr1\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.Expr1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsJobNull() {
-                return this.IsNull(this.tableMixBookOrder.JobColumn);
+            public System.DateTime OrderReceivedDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMixBookOrder.OrderReceivedDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderReceivedDate\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.OrderReceivedDateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetJobNull() {
-                this[this.tableMixBookOrder.JobColumn] = global::System.Convert.DBNull;
+            public string Expr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.Expr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Expr2\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.Expr2Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsReceiveDateNull() {
-                return this.IsNull(this.tableMixBookOrder.ReceiveDateColumn);
+            public string OrderNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.OrderNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderNumber\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.OrderNumberColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetReceiveDateNull() {
-                this[this.tableMixBookOrder.ReceiveDateColumn] = global::System.Convert.DBNull;
+            public string Size {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.SizeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Size\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.SizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Backing {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.BackingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Backing\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.BackingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Finish {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.FinishColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Finish\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.FinishColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Paper {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.PaperColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Paper\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.PaperColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime RequestedShipDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMixBookOrder.RequestedShipDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestedShipDate\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.RequestedShipDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CoverUrl {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.CoverUrlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CoverUrl\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.CoverUrlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string BookUrl {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.BookUrlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BookUrl\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.BookUrlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsClientOrderIdNull() {
+                return this.IsNull(this.tableMixBookOrder.ClientOrderIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetClientOrderIdNull() {
+                this[this.tableMixBookOrder.ClientOrderIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1176,18 +1439,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPagesNull() {
                 this[this.tableMixBookOrder.PagesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShipDateNull() {
-                return this.IsNull(this.tableMixBookOrder.ShipDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShipDateNull() {
-                this[this.tableMixBookOrder.ShipDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1296,6 +1547,150 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetShipMethodNull() {
                 this[this.tableMixBookOrder.ShipMethodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsJobIdNull() {
+                return this.IsNull(this.tableMixBookOrder.JobIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetJobIdNull() {
+                this[this.tableMixBookOrder.JobIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsExpr1Null() {
+                return this.IsNull(this.tableMixBookOrder.Expr1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetExpr1Null() {
+                this[this.tableMixBookOrder.Expr1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOrderReceivedDateNull() {
+                return this.IsNull(this.tableMixBookOrder.OrderReceivedDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOrderReceivedDateNull() {
+                this[this.tableMixBookOrder.OrderReceivedDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsExpr2Null() {
+                return this.IsNull(this.tableMixBookOrder.Expr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetExpr2Null() {
+                this[this.tableMixBookOrder.Expr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOrderNumberNull() {
+                return this.IsNull(this.tableMixBookOrder.OrderNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOrderNumberNull() {
+                this[this.tableMixBookOrder.OrderNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSizeNull() {
+                return this.IsNull(this.tableMixBookOrder.SizeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSizeNull() {
+                this[this.tableMixBookOrder.SizeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsBackingNull() {
+                return this.IsNull(this.tableMixBookOrder.BackingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetBackingNull() {
+                this[this.tableMixBookOrder.BackingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFinishNull() {
+                return this.IsNull(this.tableMixBookOrder.FinishColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFinishNull() {
+                this[this.tableMixBookOrder.FinishColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPaperNull() {
+                return this.IsNull(this.tableMixBookOrder.PaperColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPaperNull() {
+                this[this.tableMixBookOrder.PaperColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRequestedShipDateNull() {
+                return this.IsNull(this.tableMixBookOrder.RequestedShipDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRequestedShipDateNull() {
+                this[this.tableMixBookOrder.RequestedShipDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCoverUrlNull() {
+                return this.IsNull(this.tableMixBookOrder.CoverUrlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCoverUrlNull() {
+                this[this.tableMixBookOrder.CoverUrlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsBookUrlNull() {
+                return this.IsNull(this.tableMixBookOrder.BookUrlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetBookUrlNull() {
+                this[this.tableMixBookOrder.BookUrlColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1459,14 +1854,11 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "MixBookOrder";
             tableMapping.ColumnMappings.Add("Invno", "Invno");
-            tableMapping.ColumnMappings.Add("OrderId", "OrderId");
-            tableMapping.ColumnMappings.Add("Job", "Job");
-            tableMapping.ColumnMappings.Add("ReceiveDate", "ReceiveDate");
+            tableMapping.ColumnMappings.Add("OrderId", "ClientOrderId");
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("ItemCode", "ItemCode");
             tableMapping.ColumnMappings.Add("Copies", "Copies");
             tableMapping.ColumnMappings.Add("Pages", "Pages");
-            tableMapping.ColumnMappings.Add("ShipDate", "ShipDate");
             tableMapping.ColumnMappings.Add("DateShipped", "DateShipped");
             tableMapping.ColumnMappings.Add("ShipName", "ShipName");
             tableMapping.ColumnMappings.Add("ShipAddr", "ShipAddr");
@@ -1476,6 +1868,19 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("ShipZip", "ShipZip");
             tableMapping.ColumnMappings.Add("PhoneNumber", "PhoneNumber");
             tableMapping.ColumnMappings.Add("ShipMethod", "ShipMethod");
+            tableMapping.ColumnMappings.Add("ClientOrderId", "ClientOrderId");
+            tableMapping.ColumnMappings.Add("JobId", "JobId");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("OrderReceivedDate", "OrderReceivedDate");
+            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
+            tableMapping.ColumnMappings.Add("OrderNumber", "OrderNumber");
+            tableMapping.ColumnMappings.Add("Size", "Size");
+            tableMapping.ColumnMappings.Add("Backing", "Backing");
+            tableMapping.ColumnMappings.Add("Finish", "Finish");
+            tableMapping.ColumnMappings.Add("Paper", "Paper");
+            tableMapping.ColumnMappings.Add("RequestedShipDate", "RequestedShipDate");
+            tableMapping.ColumnMappings.Add("CoverUrl", "CoverUrl");
+            tableMapping.ColumnMappings.Add("BookUrl", "BookUrl");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1592,22 +1997,23 @@ SELECT Invno, OrderId, Job, ReceiveDate, Description, ItemCode, Copies, Pages, S
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Invno, OrderId, Job, ReceiveDate, Description, ItemCode, Copies, Pages, ShipDate, DateShipped, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod
+            this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, ClientOrderId AS Expr1, OrderReceivedDate, 
+                         JobId AS Expr2, OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl
 FROM            MixBookOrder
-WHERE        (OrderId = @OrderId)
-ORDER BY ReceiveDate DESC";
+WHERE        (ClientOrderId = @ClientOrderId)
+ORDER BY OrderReceivedDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(MixBookOrders.MixBookOrderDataTable dataTable, global::System.Nullable<int> OrderId) {
+        public virtual int Fill(MixBookOrders.MixBookOrderDataTable dataTable, global::System.Nullable<int> ClientOrderId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((OrderId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OrderId.Value));
+            if ((ClientOrderId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ClientOrderId.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
