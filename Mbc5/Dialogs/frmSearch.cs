@@ -1098,8 +1098,8 @@ namespace Mbc5.Dialogs {
                             cmdtext = @"SELECT 
                                               ClientOrderId
                                               ,ShipName 
-                                              ,JobId                                                                                      
-                                          FROM MixBookOrder Order By ClientOrderId,JobId";
+                                                                                                                               
+                                          FROM MixBookOrder Group By ClientOrderId,ShipName Order By ClientOrderId";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderIdSearch>();
                             if (resultZC.IsError)
@@ -1112,7 +1112,7 @@ namespace Mbc5.Dialogs {
                             bsData.DataSource = this.OrderIdList;
 
                             dgSearch.DataSource = bsData.DataSource;
-
+                            
                             txtSearch.Select();
                             break;
                         case "WIP":
@@ -1126,9 +1126,8 @@ namespace Mbc5.Dialogs {
                         case "MIXBOOK":
                             cmdtext = @"SELECT 
                                             ShipName
-                                            ,ClientOrderId
-                                            ,JobId                                                                                       
-                                        FROM MixBookOrder Order By ShipName,JobId";
+                                            ,ClientOrderId                                                                                                                                
+                                        FROM MixBookOrder Group By ShipName,ClientOrderId Order By ShipName";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderShipNameSearch>();
                             if (resultZC.IsError)
@@ -1139,7 +1138,7 @@ namespace Mbc5.Dialogs {
                             var lRetRecsZC = (List<MixBookOrderShipNameSearch>)resultZC.Data;
                             this.ShipNameList = lRetRecsZC;
                             bsData.DataSource = this.ShipNameList;
-
+                            
                             dgSearch.DataSource = bsData.DataSource;
 
                             txtSearch.Select();
@@ -1151,7 +1150,8 @@ namespace Mbc5.Dialogs {
                     break;
                  
             }
-            this.dgSearch.Columns[0].Width = 125;
+            try {this.dgSearch.Columns[0].Width = 125; } catch{ }
+            
             this.Cursor = Cursors.Default;
             if (SearchType == "PRODNO")
             {

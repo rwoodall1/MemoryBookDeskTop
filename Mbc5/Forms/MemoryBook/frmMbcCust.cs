@@ -1578,10 +1578,27 @@ public override void Cancel() {
 							MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 							return;
 						}
-						SqlParameter[] parameters1 = new SqlParameter[] {
+                        var vCoverNumber = frmMain.GetCoverNumber();
+                        SqlParameter[] parameters2 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",this.Schcode),
+                     new SqlParameter("@Specovr",vCoverNumber),
+                         new SqlParameter("@Specinst",GetInstructions() ),
+                       new SqlParameter("@Company","MBC"),
+
+                    };
+                        strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+                        var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+                        if (userResult2 != 1)
+                        {
+                            MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        var vProdNo = this.frmMain.GetProdNo();
+                        SqlParameter[] parameters1 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
-					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
+					 new SqlParameter("@ProdNo",vProdNo+" "+vCoverNumber),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
 					   new SqlParameter("@Company","MBC"),
                       new SqlParameter("@ProdCustDate",contdateDateBox.Date)
@@ -1593,20 +1610,7 @@ public override void Cancel() {
 							return;
 						}
                         
-						SqlParameter[] parameters2 = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",this.Schcode),
-					 new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
-						 new SqlParameter("@Specinst",GetInstructions() ),
-					   new SqlParameter("@Company","MBC"),
-                    
-                    };
-						strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-						var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
-						if (userResult2 != 1) {
-							MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
+						
 
 						SqlParameter[] parameters3 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),

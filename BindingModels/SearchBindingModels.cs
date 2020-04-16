@@ -270,7 +270,7 @@ namespace BindingModels
     public class MixBookOrderIdSearch
     {
        public int ClientOrderId { get; set; }
-        public string JobId { get; set; }
+        
         public string ShipName { get; set; }
                                              
     }
@@ -278,7 +278,7 @@ namespace BindingModels
     {
         public string ShipName { get; set; }
         public int ClientOrderId { get; set; }
-        public string JobId { get; set; }
+       
 
     }
 }

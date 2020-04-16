@@ -781,6 +781,7 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MultiMerInvoice.rdlc" />

@@ -10,6 +10,7 @@ using Mbc5.Dialogs;
 using Mbc5.Classes;
 using BaseClass;
 using System.Diagnostics;
+using Microsoft.Reporting.WinForms;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
@@ -32,12 +33,16 @@ namespace Mbc5.Forms.MixBook
             }
 
 
+           
         }
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.mixBookOrderBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dsmixBookOrders);
+            try
+            {
+                this.Validate();
+                this.mixBookOrderBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.dsmixBookOrders);
+            }catch(Exception ex) { }
             this.Fill();
             
         }
@@ -65,22 +70,27 @@ namespace Mbc5.Forms.MixBook
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
-                if (string.IsNullOrEmpty(retOrderId))
+                try
                 {
-                    BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                else
-                {
-                    int iOrderId = 0;
-                    if (int.TryParse(retOrderId, out iOrderId))
+                    var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                    if (string.IsNullOrEmpty(retOrderId))
                     {
-                        this.OrderId = iOrderId;
-                        Fill();
-                    } else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+                        BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
+                    }
+                    else
+                    {
+                        int iOrderId = 0;
+                        if (int.TryParse(retOrderId, out iOrderId))
+                        {
+                            this.OrderId = iOrderId;
+                            Fill();
+                        }
+                        else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
 
 
+                    }
                 }
+                catch (Exception ex) { }
             }
 
         }
@@ -152,6 +162,10 @@ namespace Mbc5.Forms.MixBook
                     }
                     ;
                 }
+            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
+            {
+                MessageBox.Show("test");
+            }
                     
         }
 
@@ -180,6 +194,14 @@ namespace Mbc5.Forms.MixBook
             }catch(Exception ex) { }
         
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //    this.reportViewer1.DataBindings.Clear();
+            //this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsmixBookOrders", mixBookOrderBindingSource));
+   
+            this.reportViewer1.RefreshReport();
         }
     }
 }
