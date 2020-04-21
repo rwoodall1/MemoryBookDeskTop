@@ -682,11 +682,12 @@
             reportDataSource1.Value = this.mixBookOrderBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(74, 225);
+            this.reportViewer1.Location = new System.Drawing.Point(390, 149);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(943, 271);
+            this.reportViewer1.Size = new System.Drawing.Size(208, 98);
             this.reportViewer1.TabIndex = 293;
+            this.reportViewer1.Visible = false;
             // 
             // frmMBOrders
             // 
@@ -724,6 +725,7 @@
             this.Name = "frmMBOrders";
             this.Text = "Mix Book Cust/Orders";
             this.Load += new System.EventHandler(this.MBOrders_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderBindingNavigator, 0);
             this.Controls.SetChildIndex(shipNameLabel, 0);
             this.Controls.SetChildIndex(shipAddrLabel, 0);
@@ -752,7 +754,6 @@
             this.Controls.SetChildIndex(this.phoneNumberTextBox, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();

@@ -15,6 +15,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
     {
+        public new frmMain frmMain { get; set; }
         public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator" }, userPrincipal)
         {
             InitializeComponent();
@@ -25,6 +26,8 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+            this.frmMain = (frmMain)this.MdiParent;
+            SetConnectionString();
             this.Invno = 0;
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             try { this.statesTableAdapter.Fill(this.lookUp.states); } catch (Exception ex)
@@ -34,6 +37,12 @@ namespace Mbc5.Forms.MixBook
 
 
            
+        }
+        private void SetConnectionString()
+        {
+           
+            statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
         }
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {

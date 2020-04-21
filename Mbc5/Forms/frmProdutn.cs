@@ -97,11 +97,12 @@ namespace Mbc5.Forms
             mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
             // TODO: This line of code loads data into the 'lookUp.lkpMascot' table. You can move, or remove it, as needed.
-            this.lkpMascotTableAdapter.Fill(this.lookUp.lkpMascot);
+           
 
             if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
             {
@@ -112,7 +113,7 @@ namespace Mbc5.Forms
  			this.SetConnectionString();
 			try
 			{
-              
+                this.lkpMascotTableAdapter.Fill(this.lookUp.lkpMascot);
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
                 this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
 				//LookUp Data
