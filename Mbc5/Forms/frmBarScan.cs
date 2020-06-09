@@ -184,15 +184,26 @@ namespace Mbc5.Forms
             try
             {
                 this.Company = txtBarCode.Text.Substring(0, 3);
-                if (txtBarCode.Text.Length == 12 || txtBarCode.Text.Length == 11)
+                if (this.Company=="MXB")
                 {
-                    vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
+                    //expecting MXB1111111YB
+                    
+                    vInvno = txtBarCode.Text.Substring(3,7);
                 }
+                else {
+                    if (txtBarCode.Text.Length == 12 )
+                    {
+                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
+                    }else if (txtBarCode.Text.Length == 11)
+                    {
+                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 5);
+                    }
 
-                else
-                {
-                    MbcMessageBox.Error("Scan code is not in correct format");
-                    return;
+                    else
+                    {
+                        MbcMessageBox.Error("Scan code is not in correct format");
+                        return;
+                    }
                 }
 
                 int parsedInvno = 0;
@@ -2419,7 +2430,7 @@ if (trkType == "GS")
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);//we use jobn for mixbook.
+                 
                         sqlClient.CommandText(@"Update WIPDetail SET
                                  WAR=
                                         CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
@@ -2438,7 +2449,7 @@ if (trkType == "GS")
                         sqlClient.AddParameter("@Jobno", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                     END
                                                     ");
 
@@ -2813,10 +2824,8 @@ if (trkType == "GS")
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            
-                
             MXBScan();
-            //ClearScan();
+           // ClearScan();
             this.Enabled =true;
         }
     }
