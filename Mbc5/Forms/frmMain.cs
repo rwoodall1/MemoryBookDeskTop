@@ -341,10 +341,9 @@ namespace Mbc5.Forms
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
             {
-                this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+                AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
-
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
 
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
@@ -414,6 +413,7 @@ namespace Mbc5.Forms
             else
             {
                 this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
+                this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -1531,19 +1531,28 @@ namespace Mbc5.Forms
         private void mixBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
 
+        private void mixBookOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Cursor = Cursors.AppStarting;
 
             frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
             frmMBOrders.MdiParent = this;
             frmMBOrders.Show();
             this.Cursor = Cursors.Default;
-
-
-
-
-            //nothing below here
         }
-     }
+
+        private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmLoadTest frmLoadTest = new frmLoadTest(this.ApplicationUser);
+            frmLoadTest.MdiParent = this;
+            frmLoadTest.Show();
+            this.Cursor = Cursors.Default;
+        }
+        //nothing below here
     }
+}
 

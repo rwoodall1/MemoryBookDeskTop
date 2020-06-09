@@ -44,6 +44,7 @@
             this.invoicesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.receivingSurveyCompensationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.msalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,8 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
-            this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixBookOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixBookLoadTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -153,6 +155,7 @@
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
             this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
+            this.mBCToolStripMenuItem.Visible = false;
             // 
             // bidsToolStripMenuItem
             // 
@@ -208,6 +211,7 @@
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
             this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
+            this.meridianToolStripMenuItem.Visible = false;
             // 
             // mbidsToolStripMenuItem
             // 
@@ -245,6 +249,16 @@
             this.msalesToolStripMenuItem.Text = "&Sales";
             this.msalesToolStripMenuItem.Click += new System.EventHandler(this.msalesToolStripMenuItem_Click);
             // 
+            // mixBookToolStripMenuItem
+            // 
+            this.mixBookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mixBookOrdersToolStripMenuItem,
+            this.mixBookLoadTestToolStripMenuItem});
+            this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookToolStripMenuItem.Text = "Mix Book";
+            this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
+            // 
             // productionToolStripMenuItem
             // 
             this.productionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -267,6 +281,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem.Name = "endSheetSupplementPreFlightToolStripMenuItem";
             this.endSheetSupplementPreFlightToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.endSheetSupplementPreFlightToolStripMenuItem.Text = "End Sheet/Supplement/PreFlight";
+            this.endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
             this.endSheetSupplementPreFlightToolStripMenuItem.Click += new System.EventHandler(this.endSheetSupplementPreFlightToolStripMenuItem_Click);
             // 
             // barScanToolStripMenuItem
@@ -416,6 +431,7 @@
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
             this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
+            this.customeReportsToolStripMenuItem.Visible = false;
             // 
             // paymentReceiptsToolStripMenuItem
             // 
@@ -778,12 +794,19 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
-            // mixBookToolStripMenuItem
+            // mixBookOrdersToolStripMenuItem
             // 
-            this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mixBookToolStripMenuItem.Text = "Mix Book";
-            this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
+            this.mixBookOrdersToolStripMenuItem.Name = "mixBookOrdersToolStripMenuItem";
+            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookOrdersToolStripMenuItem.Text = "MixBook Orders";
+            this.mixBookOrdersToolStripMenuItem.Click += new System.EventHandler(this.mixBookOrdersToolStripMenuItem_Click);
+            // 
+            // mixBookLoadTestToolStripMenuItem
+            // 
+            this.mixBookLoadTestToolStripMenuItem.Name = "mixBookLoadTestToolStripMenuItem";
+            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
+            this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -885,5 +908,7 @@
         private System.Windows.Forms.ToolStripMenuItem memeroyBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meridianInqCountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mixBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mixBookOrdersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mixBookLoadTestToolStripMenuItem;
     }
 }

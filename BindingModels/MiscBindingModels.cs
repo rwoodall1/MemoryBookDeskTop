@@ -5,6 +5,19 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class LogMetadata
+    {
+        public string RequestContentType { get; set; }
+        public string RequestUri { get; set; }
+        public string RequestMethod { get; set; }
+        public string RequestContent { get; set; }
+        public DateTime? RequestTimestamp { get; set; }
+        public string ResponseContentType { get; set; }
+        public string ResponseContent { get; set; }
+        public System.Net.HttpStatusCode ResponseStatusCode { get; set; }
+        public DateTime? ResponseTimestamp { get; set; }
+        public string Source { get; set; }
+    }
     public class XtraInvoiceGrid
     {
         public int XtraInvno { get; set; }

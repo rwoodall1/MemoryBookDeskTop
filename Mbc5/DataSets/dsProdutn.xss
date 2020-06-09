@@ -20,7 +20,7 @@
     <Shape ID="DesignTable:PartBkDetail" ZOrder="13" X="1127" Y="237" Height="54" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="82" OldDataTableHeight="178" SplitterPosition="24" />
     <Shape ID="DesignTable:prtbkbdetail" ZOrder="15" X="1127" Y="324" Height="54" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="197" SplitterPosition="24" />
     <Shape ID="DesignTable:vendor" ZOrder="14" X="-51" Y="158" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
-    <Shape ID="DesignTable:ReOrder" ZOrder="6" X="228" Y="168" Height="54" Width="193" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:ReOrder" ZOrder="6" X="228" Y="168" Height="324" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="254" />
     <Shape ID="DesignTable:ReorderDetail" ZOrder="7" X="339" Y="400" Height="55" Width="225" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="63" OldDataTableHeight="178" SplitterPosition="25" />
     <Shape ID="DesignTable:mcust" ZOrder="4" X="199" Y="317" Height="54" Width="247" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="159" OldDataTableHeight="270" SplitterPosition="24" />
   </Shapes>

@@ -31654,7 +31654,7 @@ SELECT schcode, booktype, invno, grmemo, iin, iout, idept, iinit, refdate, NoPag
             this._commandCollection[0].CommandText = "SELECT schcode, booktype,invno, grmemo, iin, iout, idept, iinit, refdate, NoPages" +
                 ", copies, Company FROM ReOrder WHERE (invno = @invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT Company, NoPages, booktype, copies, grmemo, idept, iin, iinit, invno, iout" +
@@ -31667,9 +31667,9 @@ SELECT schcode, booktype, invno, grmemo, iin, iout, idept, iinit, refdate, NoPag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsProdutn.ReOrderDataTable dataTable, decimal invno) {
+        public virtual int Fill(dsProdutn.ReOrderDataTable dataTable, int invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(invno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -31681,9 +31681,9 @@ SELECT schcode, booktype, invno, grmemo, iin, iout, idept, iinit, refdate, NoPag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsProdutn.ReOrderDataTable GetData(decimal invno) {
+        public virtual dsProdutn.ReOrderDataTable GetData(int invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(invno));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
             dsProdutn.ReOrderDataTable dataTable = new dsProdutn.ReOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

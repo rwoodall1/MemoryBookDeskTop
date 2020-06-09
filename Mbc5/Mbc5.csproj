@@ -430,6 +430,12 @@
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmLoadTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmLoadTest.Designer.cs">
+      <DependentUpon>frmLoadTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -688,6 +694,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
+      <DependentUpon>frmLoadTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
       <DependentUpon>frmMInvoicInq.cs</DependentUpon>
@@ -1106,6 +1115,14 @@
     <ProjectReference Include="..\BindingModels\BindingModels.csproj">
       <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
       <Name>BindingModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RESTModule\RESTModule.csproj">
+      <Project>{5f71fea4-8be9-4248-b6a4-d950fdeecc6e}</Project>
+      <Name>RESTModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

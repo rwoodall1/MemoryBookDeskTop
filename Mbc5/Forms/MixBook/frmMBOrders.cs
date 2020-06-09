@@ -26,6 +26,7 @@ namespace Mbc5.Forms.MixBook
         private void MBOrders_Load(object sender, EventArgs e)
         {
             this.Invno = 0;
+            SetConnectionString();
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             try { this.statesTableAdapter.Fill(this.lookUp.states); } catch (Exception ex)
             {
@@ -55,7 +56,14 @@ namespace Mbc5.Forms.MixBook
             int.TryParse(vSInvno, out vIInvno);
             this.Invno = vIInvno;
         }
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            
 
+        }
         #region Search
         private void OrderIdSearch()
         {
