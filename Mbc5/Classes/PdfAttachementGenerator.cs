@@ -7,7 +7,7 @@ using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Exceptionless;
 using BindingModels;
-using System.Threading.Tasks;
+
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
 using System.IO;

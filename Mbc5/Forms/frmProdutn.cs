@@ -72,10 +72,10 @@ namespace Mbc5.Forms
         private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
-			this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -92,7 +92,7 @@ namespace Mbc5.Forms
 			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             reorderDetailTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
-            reOrderTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            reOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;

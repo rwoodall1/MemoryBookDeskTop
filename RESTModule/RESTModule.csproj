@@ -101,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaseClass\BaseClass.csproj">
+      <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
+      <Name>BaseClass</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BindingModels\BindingModels.csproj">
       <Project>{6dcc64d1-280e-4cec-bc29-1059551bfaca}</Project>
       <Name>BindingModels</Name>

@@ -2,14 +2,15 @@
 <xs:schema id="dsSales" targetNamespace="http://tempuri.org/dsSales.xsd" xmlns:mstns="http://tempuri.org/dsSales.xsd" xmlns="http://tempuri.org/dsSales.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="quotesTableAdapter" GeneratorDataComponentClassName="quotesTableAdapter" Name="quotes" UserDataComponentName="quotesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [quotes] WHERE (([invno] = @Original_invno) AND ((@IsNull_TimeStamp = 1 AND [TimeStamp] IS NULL) OR ([TimeStamp] = @Original_TimeStamp)))</CommandText>
@@ -669,7 +670,7 @@ WHERE        (invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp)</Co
               <Mapping SourceColumn="AdTurnedOff" DataSetColumn="AdTurnedOff" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        quotes.DateCreated, quotes.ColorPriceOverRide, quotes.DateModified, quotes.IconAmt, quotes.IconCopies, quotes.ModifiedBy, quotes.TimeStamp, quotes.adcuto, quotes.adjaftr, quotes.adjaftr2, quotes.adjbef, quotes.adline, 
@@ -702,7 +703,7 @@ WHERE        (quotes.invno = @invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="custTableAdapter" GeneratorDataComponentClassName="custTableAdapter" Name="cust" UserDataComponentName="custTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [cust] WHERE (([schcode] = @Original_schcode) AND ([TimeStamp] = @Original_TimeStamp))</CommandText>
@@ -1056,7 +1057,7 @@ SELECT schcode, contryear, cstatus, source, sourdate, secsource, contdate, origs
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InvHstTableAdapter" GeneratorDataComponentClassName="InvHstTableAdapter" Name="InvHst" UserDataComponentName="InvHstTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.invoice" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.invoice" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO [dbo].[invoice] ([schcode], [invno], [qtedate], [nopages], [nocopies], [book_ea], [source], [ponum], [invtot], [payments], [baldue], [contfname], [contlname], [schname], [schaddr], [schaddr2], [schcity], [schstate], [schzip], [contryear], [poamt], [dc2], [allclrck], [laminate], [fldtype], [freebooks]) VALUES (@schcode, @invno, @qtedate, @nopages, @nocopies, @book_ea, @source, @ponum, @invtot, @payments, @baldue, @contfname, @contlname, @schname, @schaddr, @schaddr2, @schcity, @schstate, @schzip, @contryear, @poamt, @dc2, @allclrck, @laminate, @fldtype, @freebooks)</CommandText>
@@ -1118,7 +1119,7 @@ WHERE        (invno = @Invno)</CommandText>
   <xs:element name="dsSales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsSales" msprop:Generator_UserDSName="dsSales">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_UserTableName="quotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_RowEvArgName="quotesRowChangeEvent" msprop:Generator_RowClassName="quotesRow">
+        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_RowClassName="quotesRow" msprop:Generator_UserTableName="quotes" msprop:Generator_RowEvArgName="quotesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:int" />
@@ -1467,7 +1468,7 @@ WHERE        (invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -1642,7 +1643,7 @@ WHERE        (invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_RowClassName="InvHstRow" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowEvArgName="InvHstRowChangeEvent">
+        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_RowEvArgName="InvHstRowChangeEvent" msprop:Generator_RowClassName="InvHstRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />

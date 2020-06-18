@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarScan));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.InvoiceDetailBindingModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.InvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbl1 = new System.Windows.Forms.Label();
@@ -90,24 +92,34 @@
             this.pnlPressNumber = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.InvoiceDetailBindingModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BinderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FullMerInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.plnTracking = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtTrackingNo = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingSource)).BeginInit();
             this.pnlPressNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BinderyLabelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).BeginInit();
+            this.plnTracking.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
             // 
             this.basePanel.Size = new System.Drawing.Size(22, 16);
+            // 
+            // FullInvoiceBindingSource
+            // 
+            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
+            // 
+            // InvoiceDetailBindingModelBindingSource
+            // 
+            this.InvoiceDetailBindingModelBindingSource.DataSource = typeof(BindingModels.InvoiceDetailBindingModel);
             // 
             // lbl1
             // 
@@ -584,7 +596,7 @@
             // 
             this.txtBarCode.AsciiOnly = true;
             this.txtBarCode.Location = new System.Drawing.Point(188, 19);
-            this.txtBarCode.Mask = ">LLL000000CLL";
+            this.txtBarCode.Mask = ">LLL0000000CLL";
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(100, 20);
             this.txtBarCode.TabIndex = 0;
@@ -638,12 +650,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 47;
-            reportDataSource5.Name = "invoice";
-            reportDataSource5.Value = this.FullInvoiceBindingSource;
-            reportDataSource6.Name = "invoicedetail";
-            reportDataSource6.Value = this.InvoiceDetailBindingModelBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource1.Name = "invoice";
+            reportDataSource1.Value = this.FullInvoiceBindingSource;
+            reportDataSource2.Name = "invoicedetail";
+            reportDataSource2.Value = this.InvoiceDetailBindingModelBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BarScanMemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(822, 343);
             this.reportViewer1.Name = "reportViewer1";
@@ -651,14 +663,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(49, 56);
             this.reportViewer1.TabIndex = 158;
             this.reportViewer1.Visible = false;
-            // 
-            // FullInvoiceBindingSource
-            // 
-            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
-            // 
-            // InvoiceDetailBindingModelBindingSource
-            // 
-            this.InvoiceDetailBindingModelBindingSource.DataSource = typeof(BindingModels.InvoiceDetailBindingModel);
             // 
             // BinderyLabelBindingSource
             // 
@@ -673,10 +677,39 @@
             this.timer1.Interval = 3500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // plnTracking
+            // 
+            this.plnTracking.Controls.Add(this.txtTrackingNo);
+            this.plnTracking.Controls.Add(this.label13);
+            this.plnTracking.Location = new System.Drawing.Point(382, 44);
+            this.plnTracking.Name = "plnTracking";
+            this.plnTracking.Size = new System.Drawing.Size(322, 26);
+            this.plnTracking.TabIndex = 10001;
+            this.plnTracking.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1, 7);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Tracking #";
+            // 
+            // txtTrackingNo
+            // 
+            this.txtTrackingNo.Location = new System.Drawing.Point(75, 3);
+            this.txtTrackingNo.Name = "txtTrackingNo";
+            this.txtTrackingNo.Size = new System.Drawing.Size(244, 20);
+            this.txtTrackingNo.TabIndex = 4;
+            this.txtTrackingNo.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
             // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(904, 555);
+            this.Controls.Add(this.plnTracking);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.pnlPressNumber);
             this.Controls.Add(this.txtDept);
@@ -789,15 +822,18 @@
             this.Controls.SetChildIndex(this.txtDept, 0);
             this.Controls.SetChildIndex(this.pnlPressNumber, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
+            this.Controls.SetChildIndex(this.plnTracking, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingSource)).EndInit();
             this.pnlPressNumber.ResumeLayout(false);
             this.pnlPressNumber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BinderyLabelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullMerInvoiceBindingSource)).EndInit();
+            this.plnTracking.ResumeLayout(false);
+            this.plnTracking.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -868,5 +904,8 @@
         private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
         private System.Windows.Forms.BindingSource InvoiceDetailBindingModelBindingSource;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel plnTracking;
+        private System.Windows.Forms.TextBox txtTrackingNo;
+        private System.Windows.Forms.Label label13;
     }
 }

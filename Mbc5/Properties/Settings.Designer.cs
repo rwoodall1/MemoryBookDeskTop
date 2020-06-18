@@ -62,33 +62,11 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.101;Initial Catalog=Mbc5;Persist Security Info=True;User ID" +
-            "=sa;Connect Timeout=5")]
-        public string Mbc5ConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5_demo;Persist Security Info=True;User" +
+            " ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck")]
+        public string Mbc5_demoConnectionString {
             get {
-                return ((string)(this["Mbc5ConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant" +
-            "1; Connect Timeout=5")]
-        public string Mbc5ConnectionString {
-            get {
-                return ((string)(this["Mbc5ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.101;Initial Catalog=Mbc5;Persist Security Info=True;User ID" +
-            "=sa;Connect Timeout=5")]
-        public string Mbc5ConnectionString11 {
-            get {
-                return ((string)(this["Mbc5ConnectionString11"]));
+                return ((string)(this["Mbc5_demoConnectionString"]));
             }
         }
     }

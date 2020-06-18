@@ -40,12 +40,12 @@ namespace Mbc5.Dialogs {
             this.pbLoading.Visible = true;
             //var AppConnectionString = "";
             //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-          
+
             //if (Environment == "DEV")
             //{
-            //AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            //    AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
             //}
-            //else if (Environment == "PROD") {AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
+            //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
 
             SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
        

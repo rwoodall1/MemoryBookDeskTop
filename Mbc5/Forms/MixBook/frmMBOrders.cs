@@ -26,10 +26,12 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsmixBookOrders.ShipCarriers' table. You can move, or remove it, as needed.
+            
             this.frmMain = (frmMain)this.MdiParent;
             SetConnectionString();
             this.Invno = 0;
-            SetConnectionString();
+           
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             try { this.statesTableAdapter.Fill(this.lookUp.states); } catch (Exception ex)
             {
@@ -39,12 +41,7 @@ namespace Mbc5.Forms.MixBook
 
            
         }
-        private void SetConnectionString()
-        {
-           
-            statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        }
+       
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             try
@@ -59,6 +56,7 @@ namespace Mbc5.Forms.MixBook
 
         public override void Fill()
         {
+            this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
             int vIInvno = 0;
             mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
           string vSInvno  = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
@@ -67,11 +65,18 @@ namespace Mbc5.Forms.MixBook
         }
         private void SetConnectionString()
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
-            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            
+            try
+            {
+               
+                this.statesTableAdapter.Connection.ConnectionString =  frmMain.AppConnectionString;
+                this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            }catch(Exception ex) {
 
+               
+            }
+
+           
         }
         #region Search
         private void OrderIdSearch()

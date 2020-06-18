@@ -155,11 +155,15 @@ namespace BindingModels
     public class MixBookBarScanModel
     {
         public string ShipName { get; set; }
-        public string Job { get; set; }
+        public string ShipMethod { get; set; }
+        public string JobId { get; set; }
+        public int ClientOrderId { get; set; }
         public int Invno { get; set; }
         public string ProdNo { get; set; }
         public string Specovr { get; set; }
-    }
+        public string ItemId { get; set; }
+        public int Quantity { get; set; }
+      }
     public class WipUpdateCheck
 	{
 		public int QuoteInvno { get; set; }

@@ -28,9 +28,9 @@ namespace Mbc5.Dialogs
             string AppConnectionString = "";
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+                AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
             }
-            else if (Environment == "PROD") {  AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
             // TODO: This line of code loads data into the 'dsUser.mbcUsers' table. You can move, or remove it, as needed.
             this.mbcUsersTableAdapter.Connection.ConnectionString = AppConnectionString;
             this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);

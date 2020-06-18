@@ -2,14 +2,15 @@
 <xs:schema id="dsReceiving" targetNamespace="http://tempuri.org/dsReceiving.xsd" xmlns:mstns="http://tempuri.org/dsReceiving.xsd" xmlns="http://tempuri.org/dsReceiving.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="recv2TableAdapter" GeneratorDataComponentClassName="recv2TableAdapter" Name="recv2" UserDataComponentName="recv2TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillMBC" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataMBC" GeneratorSourceName="FillMBC" GetMethodModifier="Public" GetMethodName="GetDataMBC" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataMBC" UserSourceName="FillMBC">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillMBC" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataMBC" GeneratorSourceName="FillMBC" GetMethodModifier="Public" GetMethodName="GetDataMBC" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataMBC" UserSourceName="FillMBC">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO recv2
@@ -121,7 +122,7 @@ WHERE        (invno = @Invno)</CommandText>
               <Mapping SourceColumn="booktype" DataSetColumn="booktype" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.recv2" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByMER" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByMER" GeneratorSourceName="FillByMER" GetMethodModifier="Public" GetMethodName="GetDataByMER" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByMER" UserSourceName="FillByMER">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByMER" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByMER" GeneratorSourceName="FillByMER" GetMethodModifier="Public" GetMethodName="GetDataByMER" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByMER" UserSourceName="FillByMER">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        recv2.invno, recv2.schcode, recv2.recv1, recv2.recvmemo, recv2.recv2, recv2.recv2memo, recv2.recv3, recv2.recv3memo, recv2.recv4, recv2.recv4memo, recv2.ybsamp, recv2.newbox, recv2.cdbook, recv2.schout, 
@@ -142,7 +143,7 @@ WHERE        (recv2.invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="surv2TableAdapter" GeneratorDataComponentClassName="surv2TableAdapter" Name="surv2" UserDataComponentName="surv2TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillMBC" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataMBC" GeneratorSourceName="FillMBC" GetMethodModifier="Public" GetMethodName="GetDataMBC" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataMBC" UserSourceName="FillMBC">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillMBC" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataMBC" GeneratorSourceName="FillMBC" GetMethodModifier="Public" GetMethodName="GetDataMBC" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataMBC" UserSourceName="FillMBC">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO surv2
@@ -216,7 +217,7 @@ WHERE        (invno = @Invno)</CommandText>
               <Mapping SourceColumn="cause" DataSetColumn="cause" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByMER" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByMER" GeneratorSourceName="FillByMER" GetMethodModifier="Public" GetMethodName="GetDataByMER" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByMER" UserSourceName="FillByMER">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByMER" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByMER" GeneratorSourceName="FillByMER" GetMethodModifier="Public" GetMethodName="GetDataByMER" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByMER" UserSourceName="FillByMER">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        surv2.schcode, surv2.invno, surv2.probbook, surv2.comp_yn, surv2.probreas, surv2.compensate, surv2.compmemo, surv2.survey, surv2.surveycat, surv2.survexpl, surv2.tobeapplied, surv2.company, 
@@ -242,7 +243,7 @@ WHERE        (surv2.invno = @Invno)</CommandText>
   <xs:element name="dsReceiving" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReceiving" msprop:Generator_UserDSName="dsReceiving">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="recv2" msprop:Generator_TableClassName="recv2DataTable" msprop:Generator_TableVarName="tablerecv2" msprop:Generator_TablePropName="recv2" msprop:Generator_RowDeletingName="recv2RowDeleting" msprop:Generator_RowChangingName="recv2RowChanging" msprop:Generator_RowEvHandlerName="recv2RowChangeEventHandler" msprop:Generator_RowDeletedName="recv2RowDeleted" msprop:Generator_UserTableName="recv2" msprop:Generator_RowChangedName="recv2RowChanged" msprop:Generator_RowEvArgName="recv2RowChangeEvent" msprop:Generator_RowClassName="recv2Row">
+        <xs:element name="recv2" msprop:Generator_TableClassName="recv2DataTable" msprop:Generator_TableVarName="tablerecv2" msprop:Generator_RowChangedName="recv2RowChanged" msprop:Generator_TablePropName="recv2" msprop:Generator_RowDeletingName="recv2RowDeleting" msprop:Generator_RowChangingName="recv2RowChanging" msprop:Generator_RowEvHandlerName="recv2RowChangeEventHandler" msprop:Generator_RowDeletedName="recv2RowDeleted" msprop:Generator_RowClassName="recv2Row" msprop:Generator_UserTableName="recv2" msprop:Generator_RowEvArgName="recv2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />
@@ -382,7 +383,7 @@ WHERE        (surv2.invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="surv2" msprop:Generator_TableClassName="surv2DataTable" msprop:Generator_TableVarName="tablesurv2" msprop:Generator_TablePropName="surv2" msprop:Generator_RowDeletingName="surv2RowDeleting" msprop:Generator_RowChangingName="surv2RowChanging" msprop:Generator_RowEvHandlerName="surv2RowChangeEventHandler" msprop:Generator_RowDeletedName="surv2RowDeleted" msprop:Generator_UserTableName="surv2" msprop:Generator_RowChangedName="surv2RowChanged" msprop:Generator_RowEvArgName="surv2RowChangeEvent" msprop:Generator_RowClassName="surv2Row">
+        <xs:element name="surv2" msprop:Generator_TableClassName="surv2DataTable" msprop:Generator_TableVarName="tablesurv2" msprop:Generator_RowChangedName="surv2RowChanged" msprop:Generator_TablePropName="surv2" msprop:Generator_RowDeletingName="surv2RowDeleting" msprop:Generator_RowChangingName="surv2RowChanging" msprop:Generator_RowEvHandlerName="surv2RowChangeEventHandler" msprop:Generator_RowDeletedName="surv2RowDeleted" msprop:Generator_RowClassName="surv2Row" msprop:Generator_UserTableName="surv2" msprop:Generator_RowEvArgName="surv2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode" minOccurs="0">

@@ -14,6 +14,7 @@ using System.Configuration;
 using BindingModels;
 using BaseClass;
 using Exceptionless;
+using Mbc5.Forms;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditBannerWip : Form
@@ -29,19 +30,21 @@ namespace Mbc5.Dialogs
         public int Invno { get; set; }
         public string Schcode { get; set; }
         public bool Refill { get; set; }
+        public frmMain frmMain { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
+
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             string AppConnectionString = "";
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+                AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
             try
             {
-                this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-                this.bannerdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                    this.bannerdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Banners");
                 bannerdetailTableAdapter.Fill(dsEndSheet.bannerdetail,Invno);
             }

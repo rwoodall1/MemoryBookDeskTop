@@ -2,14 +2,15 @@
 <xs:schema id="dsProdutn" targetNamespace="http://tempuri.org/dsProdutn.xsd" xmlns:mstns="http://tempuri.org/dsProdutn.xsd" xmlns="http://tempuri.org/dsProdutn.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="produtnTableAdapter" GeneratorDataComponentClassName="produtnTableAdapter" Name="produtn" UserDataComponentName="produtnTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
@@ -324,7 +325,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="ProofOfPages" DataSetColumn="ProofOfPages" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
@@ -347,7 +348,7 @@ WHERE        (produtn.invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByProdNo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByProdNo" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByProdNo">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByProdNo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByProdNo" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByProdNo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
@@ -374,7 +375,7 @@ WHERE        (produtn.prodno = @Prodno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="custTableAdapter" GeneratorDataComponentClassName="custTableAdapter" Name="cust" UserDataComponentName="custTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[cust] WHERE (([schcode] = @Original_schcode) AND ([schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_cstatus = 1 AND [cstatus] IS NULL) OR ([cstatus] = @Original_cstatus)) AND ((@IsNull_origyear = 1 AND [origyear] IS NULL) OR ([origyear] = @Original_origyear)) AND ((@IsNull_rebook = 1 AND [rebook] IS NULL) OR ([rebook] = @Original_rebook)) AND ([schaddr] = @Original_schaddr) AND ((@IsNull_schaddr2 = 1 AND [schaddr2] IS NULL) OR ([schaddr2] = @Original_schaddr2)) AND ([schcity] = @Original_schcity) AND ([schstate] = @Original_schstate) AND ([schzip] = @Original_schzip) AND ((@IsNull_schphone = 1 AND [schphone] IS NULL) OR ([schphone] = @Original_schphone)) AND ((@IsNull_schfax = 1 AND [schfax] IS NULL) OR ([schfax] = @Original_schfax)) AND ((@IsNull_schemail = 1 AND [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_position = 1 AND [position] IS NULL) OR ([position] = @Original_position)) AND ((@IsNull_yb_sth = 1 AND [yb_sth] IS NULL) OR ([yb_sth] = @Original_yb_sth)) AND ((@IsNull_contfname = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)) AND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR ([contemail] = @Original_contemail)) AND ((@IsNull_bcontemail = 1 AND [bcontemail] IS NULL) OR ([bcontemail] = @Original_bcontemail)) AND ((@IsNull_ccontemail = 1 AND [ccontemail] IS NULL) OR ([ccontemail] = @Original_ccontemail)) AND ([oraclecode] = @Original_oraclecode))</CommandText>
@@ -541,7 +542,7 @@ SELECT schcode, schname, contryear, spcinst, cstatus, origyear, rebook, schaddr,
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="quotesTableAdapter" GeneratorDataComponentClassName="quotesTableAdapter" Name="quotes" UserDataComponentName="quotesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [quotes] WHERE (([invno] = @Original_invno) AND ((@IsNull_prodno = 1 AND [prodno] IS NULL) OR ([prodno] = @Original_prodno)) AND ([schcode] = @Original_schcode) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_allclrck = 1 AND [allclrck] IS NULL) OR ([allclrck] = @Original_allclrck)) AND ((@IsNull_booktype = 1 AND [booktype] IS NULL) OR ([booktype] = @Original_booktype)))</CommandText>
@@ -621,7 +622,7 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
               <Mapping SourceColumn="glspaper" DataSetColumn="glspaper" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        allclrck, booktype, glspaper, contryear, invno, nocopies, nopages, prodno, schcode
@@ -637,7 +638,7 @@ WHERE        (invno = @invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="partbkTableAdapter" GeneratorDataComponentClassName="partbkTableAdapter" Name="partbk" UserDataComponentName="partbkTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.partbk" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.partbk" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO partbk
@@ -709,7 +710,7 @@ WHERE        (invno = @Invno)</CommandText>
               <Mapping SourceColumn="Company" DataSetColumn="Company" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.partbk" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.partbk" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Company, NoCopies, NoPages, booktype, idept, iin, iinit, invno, iout, partmemo, pdtoprod, schcode, timestamp_column
@@ -725,7 +726,7 @@ WHERE        (invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ptbkbTableAdapter" GeneratorDataComponentClassName="ptbkbTableAdapter" Name="ptbkb" UserDataComponentName="ptbkbTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.ptbkb" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.ptbkb" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [ptbkb] WHERE (([timestamp_column] = @Original_timestamp_column) AND ([invno] = @Original_invno))</CommandText>
@@ -861,7 +862,7 @@ SELECT schcode, timestamp_column, invno, nocopies, booktype, manovrde, wipmemo, 
               <Mapping SourceColumn="Company" DataSetColumn="Company" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.ptbkb" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.ptbkb" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Company, NoPages, PagesReceived, binddte, bindvend, booktype, cdpass, frmbind, hdept, hin, hinit, hout, idept, iin, iinit, invno, iout, manovrde, nocopies, regisdate, regisno, rmbfrm, rmbto, rmbtot, rmpfrm, rmpto, rmptot, 
@@ -878,7 +879,7 @@ WHERE        (invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="wipTableAdapter" GeneratorDataComponentClassName="wipTableAdapter" Name="wip" UserDataComponentName="wipTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.wip" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.wip" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [wip] WHERE (([invno] = @Original_invno) AND ([timestamp_column] = @Original_timestamp_column))</CommandText>
@@ -1035,7 +1036,7 @@ WHERE        (invno = @Original_invno) AND (timestamp_column = @Original_timesta
               <Mapping SourceColumn="pressnumber" DataSetColumn="pressnumber" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.wip" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.wip" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT afrmvend, aship, binddte, bindvend, dfrmvend, dship, dtoprod, frmbind, hdept, hin, hinit, hout, i_ship, i_toprod, idept, iin, iinit, invno, iout, manovrde, merpress, outrmke, plnrtype, pressnumber, rmbfrm, rmbto, rmbtot, rmpfrm, rmpto, rmptot, schcode, t_ship, t_toprod, timestamp_column, tormke, totsigs, wipmemo FROM wip WHERE (invno = @invno)</CommandText>
@@ -1049,7 +1050,7 @@ WHERE        (invno = @Original_invno) AND (timestamp_column = @Original_timesta
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="wipgTableAdapter" GeneratorDataComponentClassName="wipgTableAdapter" Name="wipg" UserDataComponentName="wipgTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.wipg" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.wipg" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        invno, kitrecvd, atoprod, dtoprod, t_toprod, i_toprod, schcode, iout, iin, rmbto, idept, iinit, rmbfrm, wipmemo, cpnum, cprecv, clrpgs, noclrpgs, numpgs, vendcd, tovend, bakvend, dum2, dum3, incomplete, accbook, 
@@ -1098,7 +1099,7 @@ WHERE        (invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="coversTableAdapter" GeneratorDataComponentClassName="coversTableAdapter" Name="covers" UserDataComponentName="coversTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.covers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.covers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [covers] WHERE (([invno] = @Original_invno) AND ((@IsNull_TimeStamp = 1 AND [TimeStamp] IS NULL) OR ([TimeStamp] = @Original_TimeStamp)))</CommandText>
@@ -1349,7 +1350,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="PressNumber" DataSetColumn="PressNumber" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.covers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.covers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        FullRemake, IndividualRemake, PressNumber, RemakeType, ShortRemake, TimeStamp, a_press, acceptd, app, apprvdte, clr1, clr2, clr3, clr4, company, custsubmtx, cvrstock, d_press, dcdtebk, dcdtesent, dcvend, [desc], 
@@ -1367,7 +1368,7 @@ WHERE        (invno = @invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WipDetailTableAdapter" GeneratorDataComponentClassName="WipDetailTableAdapter" Name="WipDetail" UserDataComponentName="WipDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.GetWipDetail" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.GetWipDetail" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM WipDetail
@@ -1429,7 +1430,7 @@ WHERE        (id = @Id)</CommandText>
               <Mapping SourceColumn="id" DataSetColumn="id" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM WipDetail
@@ -1440,7 +1441,7 @@ WHERE        (id = @Id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.WipDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.WipDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        DescripId, War, Wdr, Wtr, Wir, Invno, scancopies, Schcode, id
@@ -1456,7 +1457,7 @@ WHERE        (Invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WipDescriptionsTableAdapter" GeneratorDataComponentClassName="WipDescriptionsTableAdapter" Name="WipDescriptions" UserDataComponentName="WipDescriptionsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [WipDescriptions] WHERE (([Description] = @Original_Description) AND ([TableName] = @Original_TableName) AND ([Id] = @Original_Id))</CommandText>
@@ -1513,7 +1514,7 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = @Id) ORDER BY
               <Mapping SourceColumn="DescriptionId" DataSetColumn="DescriptionId" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillAll">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillAll">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Description, TableName, Id, DescriptionId
@@ -1523,7 +1524,7 @@ ORDER BY TableName, DescriptionId</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillGroup" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillGroup" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillGroup">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.WipDescriptions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillGroup" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillGroup" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillGroup">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        TableName
@@ -1537,7 +1538,7 @@ GROUP BY TableName</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="coverdetailTableAdapter" GeneratorDataComponentClassName="coverdetailTableAdapter" Name="coverdetail" UserDataComponentName="coverdetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM coverdetail
@@ -1609,7 +1610,7 @@ SELECT DescripId, war, wdr, wtr, Invno, wir, schcode, id FROM coverdetail WHERE 
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.coverdetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.coverdetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText> Select DescripId,War,Wdr,Wtr,Wir,Invno,Id,Schcode From CoverDetail Where Invno=@Invno</CommandText>
@@ -1619,7 +1620,7 @@ SELECT DescripId, war, wdr, wtr, Invno, wir, schcode, id FROM coverdetail WHERE 
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description
@@ -1636,7 +1637,7 @@ WHERE        (coverdetail.invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PartBkDetailTableAdapter" GeneratorDataComponentClassName="PartBkDetailTableAdapter" Name="PartBkDetail" UserDataComponentName="PartBkDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM PartBkDetail
@@ -1701,7 +1702,7 @@ WHERE        (id = @Id)</CommandText>
               <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.PartBkDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EditFillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.PartBkDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EditFillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Schcode, Invno, War, Wdr, Wtr, Wir, id, DescripId
@@ -1713,7 +1714,7 @@ WHERE        (Invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        PartBkDetail.Invno, PartBkDetail.War, PartBkDetail.Wdr, PartBkDetail.Wtr, PartBkDetail.Wir, PartBkDetail.id, PartBkDetail.DescripId, WipDescriptions.Id AS IdDesc, WipDescriptions.Description
@@ -1726,7 +1727,7 @@ WHERE        (PartBkDetail.Invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        PartBkDetail.Schcode, PartBkDetail.Invno, PartBkDetail.War, PartBkDetail.Wdr, PartBkDetail.Wtr, PartBkDetail.Wir, PartBkDetail.id, PartBkDetail.DescripId, WipDescriptions.Id AS Expr1, WipDescriptions.Description
@@ -1743,7 +1744,7 @@ WHERE        (PartBkDetail.Invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="prtbkbdetailTableAdapter" GeneratorDataComponentClassName="prtbkbdetailTableAdapter" Name="prtbkbdetail" UserDataComponentName="prtbkbdetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM prtbkbdetail
@@ -1808,7 +1809,7 @@ WHERE        (Id = @Id)</CommandText>
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.prtbkbdetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.prtbkbdetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EditFillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        DescripId, War, Wdr, Wtr, Wir, Schcode, Invno, Id
@@ -1820,7 +1821,7 @@ WHERE        (Invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        prtbkbdetail.DescripId, prtbkbdetail.War, prtbkbdetail.Wdr, prtbkbdetail.Wtr, prtbkbdetail.Wir, prtbkbdetail.Schcode, prtbkbdetail.Invno, prtbkbdetail.Id, WipDescriptions.Description
@@ -1837,7 +1838,7 @@ WHERE        (prtbkbdetail.Invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vendorTableAdapter" GeneratorDataComponentClassName="vendorTableAdapter" Name="vendor" UserDataComponentName="vendorTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.vendor" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.vendor" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        vendcd, vname
@@ -1856,7 +1857,7 @@ ORDER BY vendcd</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReOrderTableAdapter" GeneratorDataComponentClassName="ReOrderTableAdapter" Name="ReOrder" UserDataComponentName="ReOrderTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.ReOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.ReOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [ReOrder] WHERE (((@IsNull_schcode = 1 AND [schcode] IS NULL) OR ([schcode] = @Original_schcode)) AND ((@IsNull_booktype = 1 AND [booktype] IS NULL) OR ([booktype] = @Original_booktype)) AND ([invno] = @Original_invno) AND ((@IsNull_iin = 1 AND [iin] IS NULL) OR ([iin] = @Original_iin)) AND ((@IsNull_iout = 1 AND [iout] IS NULL) OR ([iout] = @Original_iout)) AND ((@IsNull_idept = 1 AND [idept] IS NULL) OR ([idept] = @Original_idept)) AND ((@IsNull_iinit = 1 AND [iinit] IS NULL) OR ([iinit] = @Original_iinit)) AND ((@IsNull_refdate = 1 AND [refdate] IS NULL) OR ([refdate] = @Original_refdate)) AND ((@IsNull_NoPages = 1 AND [NoPages] IS NULL) OR ([NoPages] = @Original_NoPages)) AND ((@IsNull_copies = 1 AND [copies] IS NULL) OR ([copies] = @Original_copies)) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)))</CommandText>
@@ -1951,7 +1952,7 @@ SELECT schcode, booktype, invno, grmemo, iin, iout, idept, iinit, refdate, NoPag
               <Mapping SourceColumn="invno" DataSetColumn="invno1" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.ReOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.ReOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Company, NoPages, booktype, copies, grmemo, idept, iin, iinit, invno, iout, refdate, schcode FROM ReOrder WHERE (schcode = @schcode)</CommandText>
@@ -1965,7 +1966,7 @@ SELECT schcode, booktype, invno, grmemo, iin, iout, idept, iinit, refdate, NoPag
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReorderDetailTableAdapter" GeneratorDataComponentClassName="ReorderDetailTableAdapter" Name="ReorderDetail" UserDataComponentName="ReorderDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM ReorderDetail
@@ -2029,7 +2030,7 @@ WHERE        (id = @Id)</CommandText>
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.ReorderDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EditFillBy">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.ReorderDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="EditFillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EditFillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EditFillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Schcode, Invno, War, Wdr, Wtr, Wir, id, DescripId
@@ -2045,7 +2046,7 @@ WHERE        (Invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mcustTableAdapter" GeneratorDataComponentClassName="mcustTableAdapter" Name="mcust" UserDataComponentName="mcustTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM mcust

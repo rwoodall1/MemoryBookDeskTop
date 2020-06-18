@@ -11,6 +11,11 @@ using BaseClass;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
 using System.IO;
+using Mbc5.Classes;
+using RESTModule;
+using System.Threading.Tasks;
+using Exceptionless;
+using System.Configuration;
 namespace Mbc5.Forms
 {
     public partial class frmBarScan : BaseClass.frmBase
@@ -188,7 +193,7 @@ namespace Mbc5.Forms
                 {
                     //expecting MXB1111111YB
                     
-                    vInvno = txtBarCode.Text.Substring(3,7);
+                    vInvno = txtBarCode.Text.Substring(3,txtBarCode.Text.Length-5);
                 }
                 else {
                     if (txtBarCode.Text.Length == 12 )
@@ -196,7 +201,7 @@ namespace Mbc5.Forms
                         vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
                     }else if (txtBarCode.Text.Length == 11)
                     {
-                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 5);
+                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
                     }
 
                     else
@@ -289,7 +294,7 @@ namespace Mbc5.Forms
                     case "MXB":
                         {
                             string cmdText = @"
-                            SELECT M.ShipName,M.OrderId,M.Job,M.Invno,P.ProdNo,C.Specovr
+                            SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.ShipMethod,M.Copies As Quantity,P.ProdNo,C.Specovr
                                 From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
                                 Where M.Invno=@Invno
                               ";
@@ -299,6 +304,7 @@ namespace Mbc5.Forms
                             if (result.IsError)
                             {
                                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
                             MbxModel = (MixBookBarScanModel)result.Data;
 
@@ -307,15 +313,23 @@ namespace Mbc5.Forms
                                 MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                                 return;
                             }
-                            txtSchcode.Text = MbxModel.Job;
+                            txtSchcode.Text = MbxModel.JobId;
                             txtSchoolName.Text = MbxModel.ShipName;
                             txtCoverNumber.Text = MbxModel.Specovr;
                             txtColorPageNumber.Text = "";
                             txtProdNumber.Text = MbxModel.ProdNo;
                             txtDateTime.Text = DateTime.Now.ToString();
-                            this.Enabled = false;
-                            timer1.Start();
 
+                            if (this.ApplicationUser.UserName.ToUpper() != "Shipping")
+                            {
+                                this.Enabled = false;
+                                timer1.Start();
+                            }
+                            else if (this.ApplicationUser.UserName.ToUpper() == "Shipping")
+                            {
+                                this.plnTracking.Visible = true;
+                                this.txtTrackingNo.Focus();
+                            }
 
 
                             break;
@@ -2418,12 +2432,16 @@ if (trkType == "GS")
             string company = txtBarCode.Text.Substring(0, 3);
                 DateTime vDateTime = DateTime.Now;
             string vWIR = "SYS";
+            
             if (trkType == "YB")
             {
-                switch (this.ApplicationUser.UserName.ToUpper())
+                string vDeptCode = "";
+                //switch (this.ApplicationUser.UserName.ToUpper())
+                    switch ("Shipping")
                 {
+                   
                     case "SA":
-                        var vDeptCode = "22";
+                        
                         //war is datetime
                         //wir is initials
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -2458,6 +2476,62 @@ if (trkType == "GS")
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        break;
+                    case "Shipping":
+                        vDeptCode = "40";
+                        //war is datetime
+                        //wir is initials
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);//ship
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+
+                        sqlClient.CommandText(@"Update WIPDetail SET
+                                 WAR=
+                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+                                    , WIR =
+                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
+                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        try { var mxResult = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+
+                        sqlClient.AddParameter("@Jobno", txtSchcode.Text);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                        var resultShip = sqlClient.Insert();
+                        if (resultShip.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        sqlClient.ClearParameters();
+                        var vWeight = GetWeight();
+                        sqlClient.CommandText(@"Update MixbookOrder Set Dateshipped=@DateShipped,TrackingNumber=@TrackingNumber,Weight=@Weight where Invno=@Invno");
+                        sqlClient.AddParameter("@Dateshipped",DateTime.Now);
+                        sqlClient.AddParameter("@TrackingNumber",txtTrackingNo.Text.Trim());
+                        sqlClient.AddParameter("@Invno", MbxModel.Invno);
+                        sqlClient.AddParameter("@Weight", vWeight);
+                        var orderUpdateResult=sqlClient.Update();
+                        if (orderUpdateResult.IsError)
+                        {
+                            MbcMessageBox.Error("Failed to update Mixbook order with tracking number.");
+                            return;
+
+                        }
+                        //We do not do anything with the result. If it fails it will be handled on the REST Service
+                        var notificationResult=SendShippingNotification(vWeight);
+                        
+
                         break;
                 }
             }else if (trkType == "SC")
@@ -2530,6 +2604,10 @@ if (trkType == "GS")
             txtPressNotes.Text = "";
             cmbPlateReason.SelectedValue = "";
             cmbPressReason.SelectedValue ="";
+            this.plnTracking.Visible = false;
+            pnlPressNumber.Visible = false;
+            MbxModel = null;
+            txtTrackingNo.Text = "";
 
         }
         #endregion
@@ -2825,10 +2903,76 @@ if (trkType == "GS")
         {
             timer1.Stop();
             MXBScan();
-           // ClearScan();
+          ClearScan();
             this.Enabled =true;
+        }
+        public async Task<bool> SendShippingNotification(decimal vWeight)
+        {
+           
+
+            //build notification model
+            var returnNotification = new MixbookNotification();
+
+            returnNotification.Request.identifier =MbxModel.JobId;//neeeds to be set with jobid
+            returnNotification.Request.Status.occurredAt = DateTime.Now;
+            returnNotification.Request.Status.Value = "Shipped";
+     
+            returnNotification.Request.Shipment[0].trackingNumber = txtTrackingNo.Text.Trim();
+            returnNotification.Request.Shipment[0].shippedAt = DateTime.Now;
+            returnNotification.Request.Shipment[0].method = MbxModel.ShipMethod;
+            returnNotification.Request.Shipment[0].weight = vWeight;
+            returnNotification.Request.Shipment[0].Package[0].Item.identifier = MbxModel.ItemId;
+            returnNotification.Request.Shipment[0].Package[0].Item.quantity = MbxModel.Quantity;
+             //send post
+             var vReturnNotification1 = Serialize.ToXml(returnNotification);
+            var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification1);
+            if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
+            {
+                //check return and handle
+                AddMbEventLog(MbxModel.JobId, "Shipped", "Notification Succeded", vReturnNotification1, true);
+                return true;
+            }
+            else { return false; }
+            
+        }
+        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
+        {
+            var retval = "0";
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
+            sqlClient.AddParameter("@Jobid", jobId);
+            sqlClient.AddParameter("@StatusChangedTo", status);
+            sqlClient.AddParameter("@Notified", notified);
+            sqlClient.AddParameter("@Note", note);
+            sqlClient.AddParameter("@NotificationXML", notificationXML);
+            var sqlResult = sqlClient.Insert();
+            if (sqlResult.IsError)
+            {
+               
+                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
+                .AddObject(sqlResult)
+                .MarkAsCritical()
+                .Submit();
+                var emailHelper = new EmailHelper();
+                string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
+                emailHelper.SendEmail("AddMbEventLog",ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, vBody,EmailType.System);
+                return retval;
+            }
+            retval = sqlResult.Data;
+            return retval;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            MXBScan();
+            ClearScan();
+        }
+        private decimal GetWeight()
+        {
+            //place holder until I figure out for sure how to get the weight. IF we have a chart to go off I may put the weigth in when the order comes in
+            return 0;
         }
     }
 
-    }
+ }
 
