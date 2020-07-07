@@ -409,6 +409,23 @@ namespace Mbc5.Forms
 
 
 
+            }else if (ApplicationUser.UserName == "Onboard"|| ApplicationUser.UserName == "Onboard2"|| ApplicationUser.UserName == "Press"
+                || ApplicationUser.UserName == "PressCovers"|| ApplicationUser.UserName == "Binding"
+                || ApplicationUser.UserName == "Casein"|| ApplicationUser.UserName == "Quality"|| ApplicationUser.UserName == "Shipping")
+            {
+                
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = false;
             }
             else
             {
@@ -417,9 +434,10 @@ namespace Mbc5.Forms
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-               // invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-               // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
-               // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+                mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
+                // invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
+                // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
                 //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
             }
 
@@ -1550,6 +1568,16 @@ namespace Mbc5.Forms
             frmLoadTest frmLoadTest = new frmLoadTest(this.ApplicationUser);
             frmLoadTest.MdiParent = this;
             frmLoadTest.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void mixbookBarscanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMxBookBarScan frmBarScan = new frmMxBookBarScan(this.ApplicationUser);
+            frmBarScan.MdiParent = this;
+            frmBarScan.Show();
             this.Cursor = Cursors.Default;
         }
         //nothing below here

@@ -2436,8 +2436,8 @@ if (trkType == "GS")
             if (trkType == "YB")
             {
                 string vDeptCode = "";
-                //switch (this.ApplicationUser.UserName.ToUpper())
-                    switch ("Shipping")
+                switch (this.ApplicationUser.UserName.ToUpper())
+                   // switch ("Shipping")
                 {
                    
                     case "SA":
@@ -2516,7 +2516,7 @@ if (trkType == "GS")
                         }
                         sqlClient.ClearParameters();
                         var vWeight = GetWeight();
-                        sqlClient.CommandText(@"Update MixbookOrder Set Dateshipped=@DateShipped,TrackingNumber=@TrackingNumber,Weight=@Weight where Invno=@Invno");
+                        sqlClient.CommandText(@"Update MixbookOrder Set Dateshipped=@DateShipped,TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped' where Invno=@Invno");
                         sqlClient.AddParameter("@Dateshipped",DateTime.Now);
                         sqlClient.AddParameter("@TrackingNumber",txtTrackingNo.Text.Trim());
                         sqlClient.AddParameter("@Invno", MbxModel.Invno);

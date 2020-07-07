@@ -534,6 +534,12 @@
     <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookBarScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
+      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -743,6 +749,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
+      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
