@@ -7109,8 +7109,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnPressNumber;
             
-            private global::System.Data.DataColumn columnMxbLocation;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coversDataTable() {
@@ -7674,14 +7672,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MxbLocationColumn {
-                get {
-                    return this.columnMxbLocation;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7783,8 +7773,7 @@ namespace Mbc5.DataSets {
                         int FullRemake, 
                         int ShortRemake, 
                         int IndividualRemake, 
-                        int PressNumber, 
-                        string MxbLocation) {
+                        int PressNumber) {
                 coversRow rowcoversRow = ((coversRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         specovr,
@@ -7852,8 +7841,7 @@ namespace Mbc5.DataSets {
                         FullRemake,
                         ShortRemake,
                         IndividualRemake,
-                        PressNumber,
-                        MxbLocation};
+                        PressNumber};
                 if ((parentprodutnRowByprodutn_covers != null)) {
                     columnValuesArray[2] = parentprodutnRowByprodutn_covers[0];
                 }
@@ -7952,7 +7940,6 @@ namespace Mbc5.DataSets {
                 this.columnShortRemake = base.Columns["ShortRemake"];
                 this.columnIndividualRemake = base.Columns["IndividualRemake"];
                 this.columnPressNumber = base.Columns["PressNumber"];
-                this.columnMxbLocation = base.Columns["MxbLocation"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8090,8 +8077,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnIndividualRemake);
                 this.columnPressNumber = new global::System.Data.DataColumn("PressNumber", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPressNumber);
-                this.columnMxbLocation = new global::System.Data.DataColumn("MxbLocation", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMxbLocation);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columnspecovr.MaxLength = 5;
@@ -8129,7 +8114,6 @@ namespace Mbc5.DataSets {
                 this.columnlaminit.MaxLength = 3;
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnRemakeType.MaxLength = 50;
-                this.columnMxbLocation.MaxLength = 15;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8285,6 +8269,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnScanCopies;
             
+            private global::System.Data.DataColumn columnMxbLocation;
+            
             private global::System.Data.DataColumn columnSchcode;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8410,6 +8396,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MxbLocationColumn {
+                get {
+                    return this.columnMxbLocation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn SchcodeColumn {
                 get {
                     return this.columnSchcode;
@@ -8453,7 +8447,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WipDetailRow AddWipDetailRow(string Description, wipRow parentwipRowBywip_WipDetail, string TableName, System.DateTime War, System.DateTime Wdr, string Wir, decimal Wtr, int IdDesc, int DescripId, int ScanCopies, string Schcode) {
+            public WipDetailRow AddWipDetailRow(string Description, wipRow parentwipRowBywip_WipDetail, string TableName, System.DateTime War, System.DateTime Wdr, string Wir, decimal Wtr, int IdDesc, int DescripId, int ScanCopies, string MxbLocation, string Schcode) {
                 WipDetailRow rowWipDetailRow = ((WipDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
@@ -8467,6 +8461,7 @@ namespace Mbc5.DataSets {
                         IdDesc,
                         DescripId,
                         ScanCopies,
+                        MxbLocation,
                         Schcode};
                 if ((parentwipRowBywip_WipDetail != null)) {
                     columnValuesArray[1] = parentwipRowBywip_WipDetail[1];
@@ -8511,6 +8506,7 @@ namespace Mbc5.DataSets {
                 this.columnIdDesc = base.Columns["IdDesc"];
                 this.columnDescripId = base.Columns["DescripId"];
                 this.columnScanCopies = base.Columns["ScanCopies"];
+                this.columnMxbLocation = base.Columns["MxbLocation"];
                 this.columnSchcode = base.Columns["Schcode"];
             }
             
@@ -8539,6 +8535,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnDescripId);
                 this.columnScanCopies = new global::System.Data.DataColumn("ScanCopies", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnScanCopies);
+                this.columnMxbLocation = new global::System.Data.DataColumn("MxbLocation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMxbLocation);
                 this.columnSchcode = new global::System.Data.DataColumn("Schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSchcode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -9012,6 +9010,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnDescription;
             
+            private global::System.Data.DataColumn columnMxbLocation;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coverdetailDataTable() {
@@ -9127,6 +9127,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MxbLocationColumn {
+                get {
+                    return this.columnMxbLocation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9162,7 +9170,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public coverdetailRow AddcoverdetailRow(int DescripId, System.DateTime war, System.DateTime wdr, decimal wtr, coversRow parentcoversRowBycovers_coverdetail, string wir, string schcode, string TableName, string Description) {
+            public coverdetailRow AddcoverdetailRow(int DescripId, System.DateTime war, System.DateTime wdr, decimal wtr, coversRow parentcoversRowBycovers_coverdetail, string wir, string schcode, string TableName, string Description, string MxbLocation) {
                 coverdetailRow rowcoverdetailRow = ((coverdetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DescripId,
@@ -9174,7 +9182,8 @@ namespace Mbc5.DataSets {
                         null,
                         schcode,
                         TableName,
-                        Description};
+                        Description,
+                        MxbLocation};
                 if ((parentcoversRowBycovers_coverdetail != null)) {
                     columnValuesArray[4] = parentcoversRowBycovers_coverdetail[2];
                 }
@@ -9217,6 +9226,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode = base.Columns["schcode"];
                 this.columnTableName = base.Columns["TableName"];
                 this.columnDescription = base.Columns["Description"];
+                this.columnMxbLocation = base.Columns["MxbLocation"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9242,6 +9252,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnTableName);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
+                this.columnMxbLocation = new global::System.Data.DataColumn("MxbLocation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMxbLocation);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnInvno.AllowDBNull = false;
@@ -9257,6 +9269,7 @@ namespace Mbc5.DataSets {
                 this.columnTableName.MaxLength = 25;
                 this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 75;
+                this.columnMxbLocation.MaxLength = 15;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20559,22 +20572,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string MxbLocation {
-                get {
-                    try {
-                        return ((string)(this[this.tablecovers.MxbLocationColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MxbLocation\' in table \'covers\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecovers.MxbLocationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public produtnRow produtnRow {
                 get {
                     return ((produtnRow)(this.GetParentRow(this.Table.ParentRelations["produtn_covers"])));
@@ -21354,18 +21351,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMxbLocationNull() {
-                return this.IsNull(this.tablecovers.MxbLocationColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMxbLocationNull() {
-                this[this.tablecovers.MxbLocationColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coverdetailRow[] GetcoverdetailRows() {
                 if ((this.Table.ChildRelations["covers_coverdetail"] == null)) {
                     return new coverdetailRow[0];
@@ -21558,6 +21543,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MxbLocation {
+                get {
+                    try {
+                        return ((string)(this[this.tableWipDetail.MxbLocationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MxbLocation\' in table \'WipDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWipDetail.MxbLocationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Schcode {
                 get {
                     try {
@@ -21689,6 +21690,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetScanCopiesNull() {
                 this[this.tableWipDetail.ScanCopiesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMxbLocationNull() {
+                return this.IsNull(this.tableWipDetail.MxbLocationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMxbLocationNull() {
+                this[this.tableWipDetail.MxbLocationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21936,6 +21949,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MxbLocation {
+                get {
+                    try {
+                        return ((string)(this[this.tablecoverdetail.MxbLocationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MxbLocation\' in table \'coverdetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecoverdetail.MxbLocationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public coversRow coversRow {
                 get {
                     return ((coversRow)(this.GetParentRow(this.Table.ParentRelations["covers_coverdetail"])));
@@ -22015,6 +22044,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschcodeNull() {
                 this[this.tablecoverdetail.schcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMxbLocationNull() {
+                return this.IsNull(this.tablecoverdetail.MxbLocationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMxbLocationNull() {
+                this[this.tablecoverdetail.MxbLocationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -29031,7 +29072,6 @@ WHERE        (invno = @Invno)";
             tableMapping.ColumnMappings.Add("ShortRemake", "ShortRemake");
             tableMapping.ColumnMappings.Add("IndividualRemake", "IndividualRemake");
             tableMapping.ColumnMappings.Add("PressNumber", "PressNumber");
-            tableMapping.ColumnMappings.Add("MxbLocation", "MxbLocation");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -29052,24 +29092,24 @@ WHERE        (invno = @Invno)";
                 " [company], [typeset], [front], [spine], [emailed], [overprnt], [desc1a], [custs" +
                 "ubmtx], [perslist], [app], [perslistdate], [laminit], [clr1], [clr2], [clr3], [c" +
                 "lr4], [proofsent], [lamcopies], [RemakeType], [FullRemake], [ShortRemake], [Indi" +
-                "vidualRemake], [desc], [PressNumber], [MxbLocation]) VALUES (@specovr, @schcode," +
-                " @invno, @cvrstock, @remake, @prntsmp, @i_press, @a_press, @d_press, @t_press, @" +
-                "apprvdte, @desc2, @specinst, @prtvend, @prtdtesent, @prtdtebk, @lamdtesent, @lam" +
-                "dtebk, @dcvend, @dcdtesent, @dcdtebk, @othr, @othrvend, @otdtesent, @otdtebk, @p" +
-                "rntsam, @acceptd, @reqstdcpy, @reprntdte, @reprnacp, @reason, @desorgdte, @perso" +
-                "ndest, @mascot, @room, @shelf, @rack, @desc3, @finishedcopies, @desc4, @spback, " +
-                "@company, @typeset, @front, @spine, @emailed, @overprnt, @desc1a, @custsubmtx, @" +
-                "perslist, @app, @perslistdate, @laminit, @clr1, @clr2, @clr3, @clr4, @proofsent," +
-                " @lamcopies, @RemakeType, @FullRemake, @ShortRemake, @IndividualRemake, @desc, @" +
-                "PressNumber, @MxbLocation);\r\nSELECT specovr, schcode, invno, cvrstock, remake, p" +
-                "rntsmp, i_press, a_press, d_press, t_press, apprvdte, desc2, specinst, prtvend, " +
-                "prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, ot" +
-                "hrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, re" +
-                "ason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, d" +
-                "esc4, spback, company, typeset, front, spine, emailed, overprnt, desc1a, custsub" +
-                "mtx, perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, Ti" +
-                "meStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc" +
-                "], PressNumber, MxbLocation FROM covers WHERE (invno = @invno)";
+                "vidualRemake], [desc], [PressNumber]) VALUES (@specovr, @schcode, @invno, @cvrst" +
+                "ock, @remake, @prntsmp, @i_press, @a_press, @d_press, @t_press, @apprvdte, @desc" +
+                "2, @specinst, @prtvend, @prtdtesent, @prtdtebk, @lamdtesent, @lamdtebk, @dcvend," +
+                " @dcdtesent, @dcdtebk, @othr, @othrvend, @otdtesent, @otdtebk, @prntsam, @accept" +
+                "d, @reqstdcpy, @reprntdte, @reprnacp, @reason, @desorgdte, @persondest, @mascot," +
+                " @room, @shelf, @rack, @desc3, @finishedcopies, @desc4, @spback, @company, @type" +
+                "set, @front, @spine, @emailed, @overprnt, @desc1a, @custsubmtx, @perslist, @app," +
+                " @perslistdate, @laminit, @clr1, @clr2, @clr3, @clr4, @proofsent, @lamcopies, @R" +
+                "emakeType, @FullRemake, @ShortRemake, @IndividualRemake, @desc, @PressNumber);\r\n" +
+                "SELECT specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_p" +
+                "ress, t_press, apprvdte, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtes" +
+                "ent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, p" +
+                "rntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, " +
+                "mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typese" +
+                "t, front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslistd" +
+                "ate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeTyp" +
+                "e, FullRemake, ShortRemake, IndividualRemake, [desc], PressNumber FROM covers WH" +
+                "ERE (invno = @invno)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specovr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -29136,7 +29176,6 @@ WHERE        (invno = @Invno)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IndividualRemake", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IndividualRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PressNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MxbLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MxbLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [covers] SET [specovr] = @specovr, [schcode] = @schcode, [invno] = @invno," +
@@ -29157,9 +29196,9 @@ WHERE        (invno = @Invno)";
                 "nit, [clr1] = @clr1, [clr2] = @clr2, [clr3] = @clr3, [clr4] = @clr4, [proofsent]" +
                 " = @proofsent, [lamcopies] = @lamcopies, [RemakeType] = @RemakeType, [FullRemake" +
                 "] = @FullRemake, [ShortRemake] = @ShortRemake, [IndividualRemake] = @IndividualR" +
-                "emake, [desc] = @desc, [PressNumber] = @PressNumber, [MxbLocation] = @MxbLocatio" +
-                "n WHERE (([invno] = @Original_invno) AND ((@IsNull_TimeStamp = 1 AND [TimeStamp]" +
-                " IS NULL) OR ([TimeStamp] = @Original_TimeStamp)))";
+                "emake, [desc] = @desc, [PressNumber] = @PressNumber WHERE (([invno] = @Original_" +
+                "invno) AND ((@IsNull_TimeStamp = 1 AND [TimeStamp] IS NULL) OR ([TimeStamp] = @O" +
+                "riginal_TimeStamp)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specovr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -29226,7 +29265,6 @@ WHERE        (invno = @Invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IndividualRemake", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IndividualRemake", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PressNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MxbLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MxbLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeStamp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -29247,14 +29285,14 @@ WHERE        (invno = @Invno)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, 
                          otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, front, spine, emailed, overprnt, desc1a, custsubmtx, 
-                         perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc], PressNumber, MxbLocation
+                         perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp, lamcopies, RemakeType, FullRemake, ShortRemake, IndividualRemake, [desc], PressNumber
 FROM            covers
 WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT FullRemake, IndividualRemake, MxbLocation, PressNumber, RemakeType, ShortRemake, TimeStamp, a_press, acceptd, app, apprvdte, clr1, clr2, clr3, clr4, company, custsubmtx, cvrstock, d_press, dcdtebk, dcdtesent, dcvend, [desc], desc1a, desc2, desc3, desc4, desorgdte, emailed, finishedcopies, front, i_press, invno, lamcopies, lamdtebk, lamdtesent, laminit, mascot, otdtebk, otdtesent, othr, othrvend, overprnt, perslist, perslistdate, persondest, prntsam, prntsmp, proofsent, prtdtebk, prtdtesent, prtvend, rack, reason, remake, reprnacp, reprntdte, reqstdcpy, room, schcode, shelf, spback, specinst, specovr, spine, t_press, typeset FROM covers WHERE (invno = @invno)";
+            this._commandCollection[1].CommandText = @"SELECT FullRemake, IndividualRemake, PressNumber, RemakeType, ShortRemake, TimeStamp, a_press, acceptd, app, apprvdte, clr1, clr2, clr3, clr4, company, custsubmtx, cvrstock, d_press, dcdtebk, dcdtesent, dcvend, [desc], desc1a, desc2, desc3, desc4, desorgdte, emailed, finishedcopies, front, i_press, invno, lamcopies, lamdtebk, lamdtesent, laminit, mascot, otdtebk, otdtesent, othr, othrvend, overprnt, perslist, perslistdate, persondest, prntsam, prntsmp, proofsent, prtdtebk, prtdtesent, prtvend, rack, reason, remake, reprnacp, reprntdte, reqstdcpy, room, schcode, shelf, spback, specinst, specovr, spine, t_press, typeset FROM covers WHERE (invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -30190,6 +30228,7 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = SCOPE_IDENTIT
             tableMapping.ColumnMappings.Add("schcode", "schcode");
             tableMapping.ColumnMappings.Add("TableName", "TableName");
             tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("MxbLocation", "MxbLocation");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -30241,7 +30280,8 @@ SELECT DescripId, war, wdr, wtr, Invno, wir, schcode, id FROM coverdetail WHERE 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description
+            this._commandCollection[0].CommandText = @"SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description, 
+                         coverdetail.MxbLocation
 FROM            coverdetail INNER JOIN
                          WipDescriptions ON coverdetail.DescripId = WipDescriptions.DescriptionId AND WipDescriptions.TableName = 'COVERS'
 WHERE        (coverdetail.schcode = @schcode)";
@@ -30249,13 +30289,14 @@ WHERE        (coverdetail.schcode = @schcode)";
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = " Select DescripId,War,Wdr,Wtr,Wir,Invno,Id,Schcode From CoverDetail Where Invno=@" +
-                "Invno";
+            this._commandCollection[1].CommandText = "SELECT        DescripId, war, wdr, wtr, wir, Invno, id, schcode, MxbLocation\r\nFRO" +
+                "M            coverdetail\r\nWHERE        (Invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description
+            this._commandCollection[2].CommandText = @"SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description, 
+                         coverdetail.MxbLocation
 FROM            coverdetail INNER JOIN
                          WipDescriptions ON coverdetail.DescripId = WipDescriptions.DescriptionId AND WipDescriptions.TableName = 'COVERS'
 WHERE        (coverdetail.Invno = @Invno)";

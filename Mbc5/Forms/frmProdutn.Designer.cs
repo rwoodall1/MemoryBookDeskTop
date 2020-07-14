@@ -199,7 +199,6 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label pressNumberLabel;
             System.Windows.Forms.Label pressnumberLabel1;
             System.Windows.Forms.Label foilclrLabel;
-            System.Windows.Forms.Label locationLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -404,8 +403,6 @@ namespace Mbc5.Forms
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblProdNodata = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
-            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.foilclrLabel1 = new System.Windows.Forms.Label();
             this.txtcoverPressnumber = new System.Windows.Forms.TextBox();
             this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -602,6 +599,8 @@ namespace Mbc5.Forms
             this.prodNoPagesLabel2 = new System.Windows.Forms.Label();
             this.refdateDateBox = new CustomControls.DateBox();
             this.typestyleLabel5 = new System.Windows.Forms.Label();
+            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
@@ -646,7 +645,6 @@ namespace Mbc5.Forms
             this.lkpMascotTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMascotTableAdapter();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
             this.tableAdapterManager5 = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
-            this.mxbLocationLabel1 = new System.Windows.Forms.Label();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -813,7 +811,6 @@ namespace Mbc5.Forms
             pressNumberLabel = new System.Windows.Forms.Label();
             pressnumberLabel1 = new System.Windows.Forms.Label();
             foilclrLabel = new System.Windows.Forms.Label();
-            locationLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
@@ -844,8 +841,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
             this.pg3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
@@ -861,6 +856,8 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
@@ -1549,7 +1546,7 @@ namespace Mbc5.Forms
             // 
             label24.AutoSize = true;
             label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label24.Location = new System.Drawing.Point(240, 6);
+            label24.Location = new System.Drawing.Point(254, 6);
             label24.Name = "label24";
             label24.Size = new System.Drawing.Size(57, 13);
             label24.TabIndex = 11;
@@ -1644,7 +1641,7 @@ namespace Mbc5.Forms
             // screcvLabel1
             // 
             screcvLabel1.AutoSize = true;
-            screcvLabel1.Location = new System.Drawing.Point(166, 85);
+            screcvLabel1.Location = new System.Drawing.Point(215, 85);
             screcvLabel1.Name = "screcvLabel1";
             screcvLabel1.Size = new System.Drawing.Size(60, 13);
             screcvLabel1.TabIndex = 128;
@@ -2527,15 +2524,6 @@ namespace Mbc5.Forms
             foilclrLabel.Size = new System.Drawing.Size(36, 13);
             foilclrLabel.TabIndex = 226;
             foilclrLabel.Text = "Color";
-            // 
-            // locationLabel
-            // 
-            locationLabel.AutoSize = true;
-            locationLabel.Location = new System.Drawing.Point(820, 634);
-            locationLabel.Name = "locationLabel";
-            locationLabel.Size = new System.Drawing.Size(56, 13);
-            locationLabel.TabIndex = 227;
-            locationLabel.Text = "Location";
             // 
             // custBindingSource
             // 
@@ -3943,9 +3931,9 @@ namespace Mbc5.Forms
             // lblProdNo
             // 
             this.lblProdNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.lblProdNo.Location = new System.Drawing.Point(217, 9);
+            this.lblProdNo.Location = new System.Drawing.Point(216, 9);
             this.lblProdNo.Name = "lblProdNo";
-            this.lblProdNo.Size = new System.Drawing.Size(100, 16);
+            this.lblProdNo.Size = new System.Drawing.Size(126, 20);
             this.lblProdNo.TabIndex = 11;
             // 
             // lblInvno
@@ -4248,11 +4236,11 @@ namespace Mbc5.Forms
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "MxbLocation";
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn4.FillWeight = 76.14214F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Location";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
@@ -4454,8 +4442,6 @@ namespace Mbc5.Forms
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
-            this.pg3.Controls.Add(this.mxbLocationLabel1);
-            this.pg3.Controls.Add(locationLabel);
             this.pg3.Controls.Add(foilclrLabel);
             this.pg3.Controls.Add(this.foilclrLabel1);
             this.pg3.Controls.Add(pressNumberLabel);
@@ -4594,16 +4580,6 @@ namespace Mbc5.Forms
             this.pg3.Text = "Special Covers";
             this.pg3.Click += new System.EventHandler(this.pg3_Click);
             // 
-            // mixBookOrderBindingSource
-            // 
-            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
-            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
-            // 
-            // mixBookOrders
-            // 
-            this.mixBookOrders.DataSetName = "MixBookOrders";
-            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // foilclrLabel1
             // 
             this.foilclrLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "foilclr", true));
@@ -4713,7 +4689,7 @@ namespace Mbc5.Forms
             this.dbScRecvDate.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "screcv", true));
             this.dbScRecvDate.Date = null;
             this.dbScRecvDate.DateValue = null;
-            this.dbScRecvDate.Location = new System.Drawing.Point(232, 82);
+            this.dbScRecvDate.Location = new System.Drawing.Point(279, 82);
             this.dbScRecvDate.MinimumSize = new System.Drawing.Size(133, 20);
             this.dbScRecvDate.Name = "dbScRecvDate";
             this.dbScRecvDate.Size = new System.Drawing.Size(133, 21);
@@ -4811,9 +4787,9 @@ namespace Mbc5.Forms
             // 
             this.lblCoverNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "specovr", true));
             this.lblCoverNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoverNum.Location = new System.Drawing.Point(93, 85);
+            this.lblCoverNum.Location = new System.Drawing.Point(85, 85);
             this.lblCoverNum.Name = "lblCoverNum";
-            this.lblCoverNum.Size = new System.Drawing.Size(71, 20);
+            this.lblCoverNum.Size = new System.Drawing.Size(124, 20);
             this.lblCoverNum.TabIndex = 206;
             this.lblCoverNum.Text = "label1";
             // 
@@ -4893,8 +4869,8 @@ namespace Mbc5.Forms
             // 
             // dataGridViewTextBoxColumn11
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "wtr";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "MxbLocation";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Location";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
             // dataGridViewTextBoxColumn12
@@ -5583,7 +5559,7 @@ namespace Mbc5.Forms
             // 
             this.label25.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "invno", true));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(295, 6);
+            this.label25.Location = new System.Drawing.Point(309, 6);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 23);
             this.label25.TabIndex = 12;
@@ -5593,7 +5569,7 @@ namespace Mbc5.Forms
             // 
             this.label21.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(183, 6);
+            this.label21.Location = new System.Drawing.Point(178, 6);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(120, 23);
             this.label21.TabIndex = 3;
@@ -6734,6 +6710,16 @@ namespace Mbc5.Forms
             this.typestyleLabel5.TabIndex = 1;
             this.typestyleLabel5.Text = "label61";
             // 
+            // mixBookOrderBindingSource
+            // 
+            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
+            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
+            // 
+            // mixBookOrders
+            // 
+            this.mixBookOrders.DataSetName = "MixBookOrders";
+            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // vendorBindingSource
             // 
             this.vendorBindingSource.DataMember = "vendor";
@@ -6955,16 +6941,6 @@ namespace Mbc5.Forms
             this.tableAdapterManager5.ShipCarriersTableAdapter = null;
             this.tableAdapterManager5.UpdateOrder = Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // mxbLocationLabel1
-            // 
-            this.mxbLocationLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "MxbLocation", true));
-            this.mxbLocationLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mxbLocationLabel1.Location = new System.Drawing.Point(882, 634);
-            this.mxbLocationLabel1.Name = "mxbLocationLabel1";
-            this.mxbLocationLabel1.Size = new System.Drawing.Size(100, 23);
-            this.mxbLocationLabel1.TabIndex = 228;
-            this.mxbLocationLabel1.Text = "label38";
-            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -7022,8 +6998,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).EndInit();
             this.pg3.ResumeLayout(false);
             this.pg3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).EndInit();
@@ -7042,6 +7016,8 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
@@ -7393,25 +7369,11 @@ namespace Mbc5.Forms
         private CustomControls.DateBox bindery4DateBox;
         private CustomControls.DateBox bindery3DateBox;
         private CustomControls.DateBox bindery2DateBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.CheckBox proofOfPagesCheckBox;
         private System.Windows.Forms.CheckBox printOnWhitePaperCheckBox;
         private System.Windows.Forms.BindingSource mcoverTicketBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer mcoverReportViewer;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerMboOnline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
@@ -7466,6 +7428,19 @@ namespace Mbc5.Forms
         private System.Windows.Forms.BindingSource mixBookOrderBindingSource;
         private DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter mixBookOrderTableAdapter;
         private DataSets.MixBookOrdersTableAdapters.TableAdapterManager tableAdapterManager5;
-        private System.Windows.Forms.Label mxbLocationLabel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

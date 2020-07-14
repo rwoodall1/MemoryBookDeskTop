@@ -22,6 +22,7 @@ using System.Net.Http.Headers;
 using System.Configuration;
 using Exceptionless;
 using BindingModels;
+using GenCode128;
 namespace Mbc5.Forms.MemoryBook
 {
     public partial class frmLoadTest : BaseClass.frmBase
@@ -93,6 +94,38 @@ namespace Mbc5.Forms.MemoryBook
             return result;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into MixbookBarCodes (Invno,BarcodeType,Image) Values(38304801,'Cover',@Image)");
+           
+            
+            try
+            {
+                Image myimg = Code128Rendering.MakeBarcodeImage("MXB38304801YB", int.Parse("1"), true);
+                byte[] Ret;
+                try
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                       
+                        myimg.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Ret = ms.ToArray();
+                        sqlClient.AddParameter("@Image", Ret);
+                        var result = sqlClient.Insert();
+                        var c = "";
+                       // picbox.Image = Ret;
 
+                    }
+                }
+                catch (Exception) { throw; }
+                myimg.Save("D:\\tmp\\test.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+       
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, this.Text);
+            }
+        }
     }
 }

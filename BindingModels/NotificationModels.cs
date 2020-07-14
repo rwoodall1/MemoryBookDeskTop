@@ -15,10 +15,13 @@ namespace BindingModels
         {
             try
             {
-                this.Request = new MixbookNotificationRequest();
-
-                this.Request.Status = new MixbookNotificationRequestStatus();
-                this.Request.Shipment = new List<MixbookNotificationRequestShipment>();
+                this.Request = new MixbookNotificationRequest
+                {
+                    Status = new MixbookNotificationRequestStatus(),
+                    
+                    Shipment = new List<MixbookNotificationRequestShipment>()
+                   
+                };
 
                 this.Request.Shipment.Add(new MixbookNotificationRequestShipment());
                 this.Request.Shipment[0].Package = new List<MixbookNotificationRequestShipmentPackage>();
@@ -26,8 +29,10 @@ namespace BindingModels
                 this.Request.Shipment[0].Package.Add(new MixbookNotificationRequestShipmentPackage());
                 this.Request.Shipment[0].Package[0].Item = new MixbookNotificationRequestShipmentPackageItem();
 
-                this.Header = new MixbookNotificationHeader();
-                this.Header.From = new MixbookNotificationHeaderFrom();
+                this.Header = new MixbookNotificationHeader
+                {
+                    From = new MixbookNotificationHeaderFrom()
+                };
                 this.Header.From.Credential = new MixbookNotificationHeaderFromCredential();
                 this.Header.From.Credential.domain = "jostens.com";
                 this.Header.From.Credential.Identity = System.Configuration.ConfigurationManager.AppSettings["Printer"].ToString();

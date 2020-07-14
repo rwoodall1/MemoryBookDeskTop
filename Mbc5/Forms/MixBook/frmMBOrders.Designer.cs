@@ -46,9 +46,9 @@
             System.Windows.Forms.Label trackingNumberLabel;
             System.Windows.Forms.Label weightLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsmixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
@@ -74,7 +74,6 @@
             this.orderIdLabel1 = new System.Windows.Forms.Label();
             this.receiveDateLabel1 = new System.Windows.Forms.Label();
             this.schoutDateBox = new CustomControls.DateBox();
-            this.dateBox1 = new CustomControls.DateBox();
             this.shipMethodComboBox = new System.Windows.Forms.ComboBox();
             this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderDataGridView = new System.Windows.Forms.DataGridView();
@@ -101,6 +100,7 @@
             this.mixbookOrderStatusLabel2 = new System.Windows.Forms.Label();
             this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
             this.weightTextBox = new System.Windows.Forms.TextBox();
+            this.lblDateShipped = new System.Windows.Forms.Label();
             shipNameLabel = new System.Windows.Forms.Label();
             shipAddrLabel = new System.Windows.Forms.Label();
             shipAddr2Label = new System.Windows.Forms.Label();
@@ -272,6 +272,15 @@
             trackingNumberLabel.TabIndex = 295;
             trackingNumberLabel.Text = "Tracking Number";
             // 
+            // weightLabel
+            // 
+            weightLabel.AutoSize = true;
+            weightLabel.Location = new System.Drawing.Point(484, 156);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new System.Drawing.Size(41, 13);
+            weightLabel.TabIndex = 296;
+            weightLabel.Text = "Weight";
+            // 
             // mixBookOrderBindingSource
             // 
             this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
@@ -282,15 +291,6 @@
             // 
             this.dsmixBookOrders.DataSetName = "MixBookOrders";
             this.dsmixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // weightLabel
-            // 
-            weightLabel.AutoSize = true;
-            weightLabel.Location = new System.Drawing.Point(484, 156);
-            weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(41, 13);
-            weightLabel.TabIndex = 296;
-            weightLabel.Text = "Weight";
             // 
             // mixBookOrderTableAdapter
             // 
@@ -502,18 +502,6 @@
             this.schoutDateBox.Size = new System.Drawing.Size(192, 20);
             this.schoutDateBox.TabIndex = 129;
             // 
-            // dateBox1
-            // 
-            this.dateBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mixBookOrderBindingSource, "DateShipped", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "G"));
-            this.dateBox1.Date = null;
-            this.dateBox1.DateValue = null;
-            this.dateBox1.Location = new System.Drawing.Point(531, 78);
-            this.dateBox1.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dateBox1.Name = "dateBox1";
-            this.dateBox1.Size = new System.Drawing.Size(192, 20);
-            this.dateBox1.TabIndex = 130;
-            // 
             // shipMethodComboBox
             // 
             this.shipMethodComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -541,14 +529,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -627,9 +615,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverUrl";
-            dataGridViewCellStyle4.Format = "Cover";
-            dataGridViewCellStyle4.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -741,9 +729,9 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 45;
-            reportDataSource2.Name = "DsOrder";
-            reportDataSource2.Value = this.mixBookOrderBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DsOrder";
+            reportDataSource1.Value = this.mixBookOrderBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 253);
             this.reportViewer1.Name = "reportViewer1";
@@ -788,10 +776,19 @@
             this.weightTextBox.Size = new System.Drawing.Size(100, 20);
             this.weightTextBox.TabIndex = 297;
             // 
+            // lblDateShipped
+            // 
+            this.lblDateShipped.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "DateShipped", true));
+            this.lblDateShipped.Location = new System.Drawing.Point(531, 78);
+            this.lblDateShipped.Name = "lblDateShipped";
+            this.lblDateShipped.Size = new System.Drawing.Size(192, 23);
+            this.lblDateShipped.TabIndex = 298;
+            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1153, 591);
+            this.Controls.Add(this.lblDateShipped);
             this.Controls.Add(weightLabel);
             this.Controls.Add(this.weightTextBox);
             this.Controls.Add(trackingNumberLabel);
@@ -811,7 +808,6 @@
             this.Controls.Add(this.mixBookOrderDataGridView);
             this.Controls.Add(shipMethodLabel);
             this.Controls.Add(this.shipMethodComboBox);
-            this.Controls.Add(this.dateBox1);
             this.Controls.Add(dateShippedLabel);
             this.Controls.Add(shipDateLabel);
             this.Controls.Add(this.schoutDateBox);
@@ -849,7 +845,6 @@
             this.Controls.SetChildIndex(this.schoutDateBox, 0);
             this.Controls.SetChildIndex(shipDateLabel, 0);
             this.Controls.SetChildIndex(dateShippedLabel, 0);
-            this.Controls.SetChildIndex(this.dateBox1, 0);
             this.Controls.SetChildIndex(this.shipMethodComboBox, 0);
             this.Controls.SetChildIndex(shipMethodLabel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderDataGridView, 0);
@@ -869,6 +864,7 @@
             this.Controls.SetChildIndex(trackingNumberLabel, 0);
             this.Controls.SetChildIndex(this.weightTextBox, 0);
             this.Controls.SetChildIndex(weightLabel, 0);
+            this.Controls.SetChildIndex(this.lblDateShipped, 0);
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
@@ -906,7 +902,6 @@
         private System.Windows.Forms.Label orderIdLabel1;
         private System.Windows.Forms.Label receiveDateLabel1;
         private CustomControls.DateBox schoutDateBox;
-        private CustomControls.DateBox dateBox1;
         private System.Windows.Forms.ComboBox shipMethodComboBox;
         private System.Windows.Forms.DataGridView mixBookOrderDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -938,5 +933,6 @@
         private System.Windows.Forms.Label mixbookOrderStatusLabel2;
         private System.Windows.Forms.TextBox trackingNumberTextBox;
         private System.Windows.Forms.TextBox weightTextBox;
+        private System.Windows.Forms.Label lblDateShipped;
     }
 }

@@ -5,6 +5,15 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class ShippingNotificationInfo{
+        public string JobId { get; set; }
+        public string TrackingNumber { get; set; }
+        public string ItemId { get; set; }
+        public int Qty { get; set; }
+        public string ShipMethod { get; set; }
+        public int Weight { get; set; }
+
+    }
     public class LogMetadata
     {
         public string RequestContentType { get; set; }

@@ -33,6 +33,7 @@ namespace Mbc5.Forms.MixBook
         public int QuantityScanned { get; set; } = 0;
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
+            lblLastScan.Text = txtBarCode.Text;
             string vInvno = "";
             try
             {
@@ -138,7 +139,7 @@ namespace Mbc5.Forms.MixBook
                 txtDateTime.Text = "";
                 txtTrackingNo.Text = "";
                 txtWeight.Text = "";
-                txtLocation.Text = "";
+
             MbxModel = null;
             txtBarCode.Focus();
             
@@ -177,18 +178,14 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
-
+                                 WAR=@WAR, WIR=@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
                         var mxResult = sqlClient.Update();
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
-                          
+
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -206,12 +203,18 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         ClearScan();
                         break;
                     case "BINDING":
                         //war is datetime
                         //wir is initials
+                        if (string.IsNullOrEmpty(txtLocation.Text))
+                        {
+                            MbcMessageBox.Hand("Please enter a location.", "Enter Location");
+                            return;
+                        }
                         vDeptCode = "39";
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -219,16 +222,13 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                 WAR=@WAR,WIR = @WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult1 = sqlClient.Update();
-                          if(mxResult1.IsError) {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                        } 
+                        if (mxResult1.IsError) {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -246,6 +246,27 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        //Mark says orders will not be split on location so insert into one location
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@Location", txtLocation.Text);
+                        var locationresult = sqlClient.Update();
+                        if (locationresult.IsError)
+                        {
+                            MbcMessageBox.Error("Failed to update location of order.");
+                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                        }
+                        QuantityScanned += 1;
+                        lblScanQty.Text = QuantityScanned.ToString();
+                        if (QuantityScanned >= QtyToScan)
+                        {
+                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                            QuantityScanned = 0;
+                            lblScanQty.Text = QuantityScanned.ToString();
                         }
                         ClearScan();
                         break;
@@ -259,17 +280,13 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                 WAR=@WAR,WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
 
-                       
                         var mxResult2 = sqlClient.Update();
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -288,6 +305,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         ClearScan();
                         break;
@@ -301,16 +319,15 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                 WAR=@WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+
 
                         var mxResult3 = sqlClient.Update();
                         if (mxResult3.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -329,6 +346,7 @@ namespace Mbc5.Forms.MixBook
                         if (result3.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         ClearScan();
                         break;
@@ -337,28 +355,29 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         int vWeight = 0;
                         int.TryParse(txtWeight.Text, out vWeight);
-                        if (!int.TryParse(txtWeight.Text, out vWeight))
+                        if (!int.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
                         {
                             MbcMessageBox.Information("Enter a valid numeric weight.");
                             return;
                         }
-                        vDeptCode = "40";
+                        var a = this.Validate();
+                        var b = this.ValidateChildren();
+                        if (this.Validate())
+                        {
+                            vDeptCode = "40";
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
-
+                                 WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                        
                         var mxResult4 = sqlClient.Update();
                         if (mxResult4.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -377,23 +396,42 @@ namespace Mbc5.Forms.MixBook
                         if (result4.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                         }
                         sqlClient.ClearParameters();
-                       
+
                         sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@Weight",vWeight);
+                        sqlClient.AddParameter("@Weight", vWeight);
                         sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text);
                         var trackingResult = sqlClient.Update();
                         if (trackingResult.IsError)
                         {
                             MbcMessageBox.Error("Failed to update tracking number in order screen.");
+
                         }
-                        ClearScan();
+                            int weight = 0;
+                            int.TryParse(txtWeight.Text, out weight);
+                            var shipInfo = new ShippingNotificationInfo()
+                            {
+                                JobId = MbxModel.JobId,
+                                ShipMethod = MbxModel.ShipMethod,
+                                ItemId = MbxModel.ItemId,
+                                Qty = MbxModel.Quantity,
+                                TrackingNumber = txtTrackingNo.Text,
+                                Weight = weight
+                          };
+                        txtBarCode.Focus();
+                         NotifyMixbookOfShipment(shipInfo);
+                    ClearScan();
+                          
+                        
+                }
                         break;
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
-                        break;
+                            break;
+                        
                 }
             }
             else if (trkType == "SC")
@@ -405,6 +443,7 @@ namespace Mbc5.Forms.MixBook
                         if (string.IsNullOrEmpty(txtLocation.Text))
                         {
                             MbcMessageBox.Hand("Please enter a location.","Enter Location");
+                            return;
                         }
                          vDeptCode = "37";
                         //war is datetime
@@ -413,19 +452,15 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Invno", this.Invno);
+                   
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult = sqlClient.Update();
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -444,11 +479,13 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         //Mark says orders will not be split on location so insert into one location
                         sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixBookOrder Set Location=@Location Where Invno=@Invno");
+                        sqlClient.CommandText(@"Update Coverdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                         sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@Location", txtLocation.Text);
                         var locationresult = sqlClient.Update();
                         if (locationresult.IsError)
@@ -467,31 +504,22 @@ namespace Mbc5.Forms.MixBook
                         ClearScan();
                         break;
                     case "TRIMMING":
-                        if (string.IsNullOrEmpty(txtLocation.Text))
-                        {
-                            MbcMessageBox.Hand("Please enter a location.", "Enter Location");
-                            ;
-                        }
-                        vDeptCode = "35";
+                        
+                        vDeptCode = "43";
                         //war is datetime
                         //wir is initials
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult1 = sqlClient.Update();
                         if (mxResult1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -510,11 +538,13 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         //Mark says orders will not be split on location so insert into one location
                         sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixBookOrder Set Location=@Location Where Invno=@Invno");
+                        sqlClient.CommandText(@"Update Coverdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                         sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@Location", txtLocation.Text);
                         var locationresult1 = sqlClient.Update();
                         if (locationresult1.IsError)
@@ -530,9 +560,10 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+
                         ClearScan();
                         break;
-                    case "PRESSCOVERS":
+                    case "PRESS":
                         vDeptCode = "29";
                         //war is datetime
                         //wir is initials
@@ -540,15 +571,9 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
-
+                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
+                   
                         var mxResult2 = sqlClient.Update();
                         if (mxResult2.IsError)
                         {
@@ -581,7 +606,7 @@ namespace Mbc5.Forms.MixBook
                         if (string.IsNullOrEmpty(txtLocation.Text))
                         {
                             MbcMessageBox.Hand("Please enter a location.", "Enter Location");
-                            ;
+                            return;
                         }
                         vDeptCode = "38";
                         //war is datetime
@@ -590,14 +615,9 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Invno", this.Invno);
+              
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET
-                                 WAR=
-                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                                    , WIR =
-                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                      WHERE Invno=@Invno AND DescripID=@DescripID ");
+                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult4 = sqlClient.Update();
                         if (mxResult4.IsError)
@@ -624,7 +644,7 @@ namespace Mbc5.Forms.MixBook
                         }
                         //Mark says orders will not be split on location so insert into one location
                         sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixBookOrder Set Location=@Location Where Invno=@Invno");
+                        sqlClient.CommandText(@"Update MixBookOrder Set MxbLocation=@Location Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@Location", txtLocation.Text);
                         var locationresult2 = sqlClient.Update();
@@ -662,10 +682,10 @@ namespace Mbc5.Forms.MixBook
         private void frmMxBookBarScan_Load(object sender, EventArgs e)
         {
             txtQtyToScan.Text = "40"; //default
-            if (ApplicationUser.UserName == "Onboard"|| ApplicationUser.UserName == "Onboard2")
+            if (ApplicationUser.UserName == "onboard"|| ApplicationUser.UserName == "onboard2"|| ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
             {
                 pnlQty.Visible = true;
-            }else if (ApplicationUser.UserName == "Shipping")
+            }else if (ApplicationUser.UserName == "shipping")
             {
                 plnTracking.Visible = true;
             }
@@ -677,14 +697,11 @@ namespace Mbc5.Forms.MixBook
             
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            ClearScan();
-        }
+     
 
         private void plnTracking_Leave(object sender, EventArgs e)
         {
-            if (this.ApplicationUser.UserName.ToUpper() != "SHIPPING")
+            if (this.ApplicationUser.UserName.ToUpper() != "shipping")
             {
                 if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text)&& !string.IsNullOrEmpty(txtBarCode.Text)) {
                     MXBScan();
@@ -695,24 +712,101 @@ namespace Mbc5.Forms.MixBook
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
-            txtWeight.Focus();
+            
         }
 
         private void txtWeight_Validating(object sender, CancelEventArgs e)
         {
-            int vWeight;
-            if (!int.TryParse(txtWeight.Text, out vWeight)) {
-                MbcMessageBox.Information("Enter a valid numeric weight.");
+            errorProvider1.SetError(txtWeight, "");
+            int vWeight=0;
+            if (!int.TryParse(txtWeight.Text, out vWeight)||vWeight==0) {
+                
+
+                errorProvider1.SetError(txtWeight, "Please enter a  valid weight.");
+                e.Cancel = true;
             }
         }
-        //private void SetDept()
-        //{
-        //    switch (this.ApplicationUser.UserName.ToUpper())
-        //    {
-        //        case "SA":
-        //            txtDeptCode.Text = "40";
-        //            break;
-        //    }
-        //}
+
+        private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(txtTrackingNo, "");
+            if(string.IsNullOrEmpty(txtTrackingNo.Text)){
+             
+
+                errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
+                e.Cancel = true;
+            }
+           
+        }
+
+        public async Task<ApiProcessingResult> NotifyMixbookOfShipment(ShippingNotificationInfo model)
+        {
+            var processingResult = new ApiProcessingResult();
+            var returnNotification = new MixbookNotification();
+           
+            returnNotification.Request.identifier =model.JobId;//needs to be set with jobid should always have one element
+            returnNotification.Request.Status.occurredAt = DateTime.Now;
+            returnNotification.Request.Status.Value = "Shipped";
+            returnNotification.Request.Shipment[0].trackingNumber = model.TrackingNumber;
+            returnNotification.Request.Shipment[0].shippedAt = DateTime.Now;
+            returnNotification.Request.Shipment[0].method =model.ShipMethod;
+            returnNotification.Request.Shipment[0].weight = model.Weight;
+            returnNotification.Request.Shipment[0].Package[0].Item.identifier =model.ItemId;
+            returnNotification.Request.Shipment[0].Package[0].Item.quantity =model.Qty;
+            var vReturnNotification = Serialize.ToXml(returnNotification);
+
+            var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
+            if (!restServiceResult.IsError)
+            {
+                if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
+                {
+                    //if not set to notified scheduled task will try again
+                    AddMbEventLog(model.JobId, "Shipped", "", vReturnNotification, true);
+                }
+                else
+                {
+                    AddMbEventLog(model.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
+                    var emailHelper = new EmailHelper();
+                    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
+                }
+
+
+            }
+            else
+            {
+                AddMbEventLog(model.JobId, "Error", "", vReturnNotification, false);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+
+            }
+            return processingResult ;
+        }
+        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
+        {
+            var retval = "0";
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
+            sqlClient.AddParameter("@Jobid", jobId);
+            sqlClient.AddParameter("@StatusChangedTo", status);
+            sqlClient.AddParameter("@Notified", notified);
+            sqlClient.AddParameter("@Note", note);
+            sqlClient.AddParameter("@NotificationXML", notificationXML);
+            var sqlResult = sqlClient.Insert();
+            if (sqlResult.IsError)
+            {
+               
+                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
+                .AddObject(sqlResult)
+                .MarkAsCritical()
+                .Submit();
+                var emailHelper = new EmailHelper();
+                string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
+                emailHelper.SendEmail("Failed to notify item shipped","randy.woodall@jostens.com", null, vBody,EmailType.System);
+                return retval;
+            }
+            retval = sqlResult.Data;
+            return retval;
+        }
+
     }
 }

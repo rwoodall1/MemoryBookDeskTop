@@ -409,9 +409,9 @@ namespace Mbc5.Forms
 
 
 
-            }else if (ApplicationUser.UserName == "Onboard"|| ApplicationUser.UserName == "Onboard2"|| ApplicationUser.UserName == "Press"
-                || ApplicationUser.UserName == "PressCovers"|| ApplicationUser.UserName == "Binding"
-                || ApplicationUser.UserName == "Casein"|| ApplicationUser.UserName == "Quality"|| ApplicationUser.UserName == "Shipping")
+            }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
+                || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
+                || ApplicationUser.UserName == "casein"|| ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "shipping"|| ApplicationUser.UserName == "trimming")
             {
                 
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -430,7 +430,10 @@ namespace Mbc5.Forms
             else
             {
                 this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
+                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
                 this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
+                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -932,7 +935,7 @@ namespace Mbc5.Forms
                 return false;
             }
 
-
+            SetMenu();
 
             return true;
         }
