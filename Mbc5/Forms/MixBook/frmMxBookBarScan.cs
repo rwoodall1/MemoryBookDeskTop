@@ -82,7 +82,7 @@ namespace Mbc5.Forms.MixBook
                     case "MXB":
                         {
                             string cmdText = @"
-                            SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.ShipMethod,M.Copies As Quantity,P.ProdNo,C.Specovr
+                            SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.Copies As Quantity,P.ProdNo,C.Specovr
                                 From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
                                 Where M.Invno=@Invno
                               ";
@@ -101,6 +101,7 @@ namespace Mbc5.Forms.MixBook
                                 MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                                 return;
                             }
+                            
                             //txtSchcode.Text = MbxModel.JobId;
                             //txtSchoolName.Text = MbxModel.ShipName;
                             //txtCoverNumber.Text = MbxModel.Specovr;
@@ -210,11 +211,12 @@ namespace Mbc5.Forms.MixBook
                     case "BINDING":
                         //war is datetime
                         //wir is initials
-                        if (string.IsNullOrEmpty(txtLocation.Text))
+                        if (string.IsNullOrEmpty(txtLocation.Text)&& MbxModel.Backing=="HC")
                         {
                             MbcMessageBox.Hand("Please enter a location.", "Enter Location");
                             return;
                         }
+                        
                         vDeptCode = "39";
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -248,25 +250,27 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult = sqlClient.Update();
-                        if (locationresult.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
-                        }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
+                        if (MbxModel.Backing == "HC") {
+                            //Mark says orders will not be split on location so insert into one location
+                            sqlClient.ClearParameters();
+                            sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@DescripID", vDeptCode);
+                            sqlClient.AddParameter("@Location", txtLocation.Text);
+                            var locationresult = sqlClient.Update();
+                            if (locationresult.IsError)
+                            {
+                                MbcMessageBox.Error("Failed to update location of order.");
+                                ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                            }
+                            QuantityScanned += 1;
                             lblScanQty.Text = QuantityScanned.ToString();
+                            if (QuantityScanned >= QtyToScan)
+                            {
+                                MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                                QuantityScanned = 0;
+                                lblScanQty.Text = QuantityScanned.ToString();
+                            }
                         }
                         ClearScan();
                         break;

@@ -61,7 +61,7 @@
             // txtBarCode
             // 
             this.txtBarCode.AsciiOnly = true;
-            this.txtBarCode.Location = new System.Drawing.Point(169, 22);
+            this.txtBarCode.Location = new System.Drawing.Point(169, 40);
             this.txtBarCode.Mask = ">LLL0000000CLL";
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(143, 20);
@@ -70,7 +70,7 @@
             // 
             // txtDateTime
             // 
-            this.txtDateTime.Location = new System.Drawing.Point(401, 22);
+            this.txtDateTime.Location = new System.Drawing.Point(401, 40);
             this.txtDateTime.Name = "txtDateTime";
             this.txtDateTime.ReadOnly = true;
             this.txtDateTime.Size = new System.Drawing.Size(143, 20);
@@ -80,7 +80,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(318, 22);
+            this.label6.Location = new System.Drawing.Point(318, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 14;
@@ -90,7 +90,7 @@
             // 
             this.lbl1.AutoSize = true;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(39, 22);
+            this.lbl1.Location = new System.Drawing.Point(39, 40);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(124, 13);
             this.lbl1.TabIndex = 11;
@@ -98,7 +98,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(97, 120);
+            this.btnSave.Location = new System.Drawing.Point(97, 138);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
             this.btnSave.TabIndex = 6;
@@ -114,7 +114,7 @@
             this.pnlQty.Controls.Add(this.label3);
             this.pnlQty.Controls.Add(this.lblScanQty);
             this.pnlQty.Controls.Add(this.label2);
-            this.pnlQty.Location = new System.Drawing.Point(255, 48);
+            this.pnlQty.Location = new System.Drawing.Point(255, 66);
             this.pnlQty.Name = "pnlQty";
             this.pnlQty.Size = new System.Drawing.Size(299, 57);
             this.pnlQty.TabIndex = 25;
@@ -180,7 +180,7 @@
             this.plnTracking.Controls.Add(this.label5);
             this.plnTracking.Controls.Add(this.txtTrackingNo);
             this.plnTracking.Controls.Add(this.label13);
-            this.plnTracking.Location = new System.Drawing.Point(93, 48);
+            this.plnTracking.Location = new System.Drawing.Point(172, 66);
             this.plnTracking.Name = "plnTracking";
             this.plnTracking.Size = new System.Drawing.Size(374, 57);
             this.plnTracking.TabIndex = 10006;
@@ -231,7 +231,7 @@
             // lblLastScan
             // 
             this.lblLastScan.AutoSize = true;
-            this.lblLastScan.Location = new System.Drawing.Point(462, 120);
+            this.lblLastScan.Location = new System.Drawing.Point(100, 7);
             this.lblLastScan.Name = "lblLastScan";
             this.lblLastScan.Size = new System.Drawing.Size(35, 13);
             this.lblLastScan.TabIndex = 10007;
@@ -240,7 +240,7 @@
             // lbllastscanlbl
             // 
             this.lbllastscanlbl.AutoSize = true;
-            this.lbllastscanlbl.Location = new System.Drawing.Point(401, 120);
+            this.lbllastscanlbl.Location = new System.Drawing.Point(39, 7);
             this.lbllastscanlbl.Name = "lbllastscanlbl";
             this.lbllastscanlbl.Size = new System.Drawing.Size(55, 13);
             this.lbllastscanlbl.TabIndex = 10008;
@@ -266,7 +266,6 @@
             this.Text = "Mixbook Scan Form";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmMxBookBarScan_Load);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.lbl1, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtDateTime, 0);
@@ -276,6 +275,7 @@
             this.Controls.SetChildIndex(this.plnTracking, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.plnTracking.ResumeLayout(false);
