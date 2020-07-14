@@ -55,3 +55,7 @@ BaseClass/bin/Debug/BaseClass.dll
 *.dll
 Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
 Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
+/.vs/MemoryBook/v15/Server/sqlite3
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/BaseClass/obj/Debug
