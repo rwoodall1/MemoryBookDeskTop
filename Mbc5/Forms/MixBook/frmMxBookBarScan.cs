@@ -402,9 +402,20 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                         }
-                        sqlClient.ClearParameters();
+                            sqlClient.ClearParameters();
+                            sqlClient.CommandText(@"UPDATE Produtn Set Shpdate=GETDATE() where Invno=@Invno");
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            
+                            var produtnResult = sqlClient.Update();
+                            if (produtnResult.IsError)
+                            {
+                                MbcMessageBox.Error("Failed to update shipdate on production screen.");
 
-                        sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight where Invno=@Invno");
+                            }
+
+                            sqlClient.ClearParameters();
+
+                        sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE() where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@Weight", vWeight);
                         sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text);

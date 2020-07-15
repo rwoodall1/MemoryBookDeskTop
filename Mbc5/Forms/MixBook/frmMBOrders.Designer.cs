@@ -68,6 +68,7 @@
             this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -418,7 +419,8 @@
             this.bindingNavigatorDeleteItem,
             this.mixBookOrderBindingNavigatorSaveItem,
             this.toolStripButton3,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.itemIdToolStripBtn});
             this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -442,12 +444,22 @@
             // 
             // toolStripButton1
             // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(69, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 22);
             this.toolStripButton1.Text = "Ship Name";
             this.toolStripButton1.ToolTipText = "Name";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // itemIdToolStripBtn
+            // 
+            this.itemIdToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("itemIdToolStripBtn.Image")));
+            this.itemIdToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.itemIdToolStripBtn.Name = "itemIdToolStripBtn";
+            this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
+            this.itemIdToolStripBtn.Text = "Item Id";
+            this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
             // 
             // shipStateComboBox
             // 
@@ -934,5 +946,6 @@
         private System.Windows.Forms.TextBox trackingNumberTextBox;
         private System.Windows.Forms.TextBox weightTextBox;
         private System.Windows.Forms.Label lblDateShipped;
+        private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
     }
 }

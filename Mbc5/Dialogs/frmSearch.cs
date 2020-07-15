@@ -34,6 +34,7 @@ namespace Mbc5.Dialogs {
         private string ReturnForm { get; set; }
         private List<MixBookOrderIdSearch> OrderIdList { get; set; }
         private List<MixBookOrderShipNameSearch> ShipNameList { get; set; }
+        private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
@@ -1143,10 +1144,36 @@ namespace Mbc5.Dialogs {
 
                             txtSearch.Select();
                             break;
-                        case "WIP":
+                        
+                    }
+                    break;
+                case "ITEMID":
+                    switch (ReturnForm)
+                    {
+                        case "MIXBOOK":
+                            cmdtext = @"SELECT 
+                                            ItemId
+                                            ,ClientOrderId                                                                                                                                
+                                        FROM MixBookOrder  Order By ItemId";
+                            sqlclient.CommandText(cmdtext);
+                            var resultZC = sqlclient.SelectMany<MixBookOrderItemIdSearch>();
+                            if (resultZC.IsError)
+                            {
+                                MbcMessageBox.Error(resultZC.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecsZC = (List<MixBookOrderItemIdSearch>)resultZC.Data;
+                            this.ItemIdList = lRetRecsZC;
+                            bsData.DataSource = this.ItemIdList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
 
                             break;
+
                     }
+         
                     break;
                  
             }
@@ -1535,6 +1562,27 @@ namespace Mbc5.Dialogs {
 
                     }
                     break;
+                case "ITEMID":
+                    try
+                    {
+
+                        vIndex = this.ItemIdList.FindIndex(vcust => vcust.ItemId.ToString() != "0" && vcust.ItemId.ToString().Trim().StartsWith(value.ToUpper()));
+                        if (vIndex != -1)
+                        {
+                            dgSearch.ClearSelection();
+                            bsData.Position = vIndex;
+                            dgSearch.Rows[vIndex].Selected = true;
+                            dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                            CurrentIndex = vIndex;
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    break;
             }
 
 
@@ -1694,6 +1742,10 @@ namespace Mbc5.Dialogs {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     }
                     else if (SearchType == "SHIPNAME" && (ReturnForm == "MIXBOOK"))
+                    {
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
+                    else if (SearchType == "ITEMID" && (ReturnForm == "MIXBOOK"))
                     {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }

@@ -116,7 +116,38 @@ namespace Mbc5.Forms.MixBook
             }
 
         }
+        private void ItemIdSearch()
+        {
+            string vcurrentItemId = "";
+            try
+            {
+                vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+            }
+            catch { }
 
+            frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                if (string.IsNullOrEmpty(retOrderId))
+                {
+                    BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                else
+                {
+                    int iOrderId = 0;
+                    if (int.TryParse(retOrderId, out iOrderId))
+                    {
+                        this.OrderId = iOrderId;
+                        Fill();
+                    }
+                    else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+
+
+                }
+            }
+        }
         private void OrderNameSearch()
         {
             string vcurrentName = "";
@@ -224,6 +255,11 @@ namespace Mbc5.Forms.MixBook
             //this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsmixBookOrders", mixBookOrderBindingSource));
    
             this.reportViewer1.RefreshReport();
+        }
+
+        private void itemIdToolStripBtn_Click(object sender, EventArgs e)
+        {
+            ItemIdSearch();
         }
     }
 }
