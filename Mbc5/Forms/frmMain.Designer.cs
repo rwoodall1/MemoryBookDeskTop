@@ -47,6 +47,8 @@
             this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookLoadTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixbookBarscanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caseMatchScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +110,6 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
-            this.mixbookBarscanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -255,7 +256,8 @@
             this.mixBookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mixBookOrdersToolStripMenuItem,
             this.mixBookLoadTestToolStripMenuItem,
-            this.mixbookBarscanToolStripMenuItem});
+            this.mixbookBarscanToolStripMenuItem,
+            this.caseMatchScanToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
             this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
@@ -274,6 +276,20 @@
             this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
+            // 
+            // mixbookBarscanToolStripMenuItem
+            // 
+            this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
+            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
+            this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
+            // 
+            // caseMatchScanToolStripMenuItem
+            // 
+            this.caseMatchScanToolStripMenuItem.Name = "caseMatchScanToolStripMenuItem";
+            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.caseMatchScanToolStripMenuItem.Text = "Case Match Scan";
+            this.caseMatchScanToolStripMenuItem.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -819,13 +835,6 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
-            // mixbookBarscanToolStripMenuItem
-            // 
-            this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
-            this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -929,5 +938,6 @@
         private System.Windows.Forms.ToolStripMenuItem mixBookOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mixBookLoadTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mixbookBarscanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem;
     }
 }

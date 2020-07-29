@@ -48,7 +48,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>M:\UpdateExe\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -57,7 +57,8 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
@@ -152,6 +153,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmquailtyHold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
+      <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
@@ -434,6 +441,12 @@
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmCaseMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmLoadTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -610,9 +623,9 @@
     <Content Include="Content\SystemIcons\tsPrint.Image.png" />
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
-    <Content Include="mbc5_logo_282_cZq_2.ico" />
-    <Content Include="Meridian_Jostens_Logo_282_NEW.ico" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
+    <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -626,6 +639,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
+      <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -704,6 +720,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
       <DependentUpon>frmLoadTest.cs</DependentUpon>
@@ -1097,9 +1116,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Outlook">
       <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>

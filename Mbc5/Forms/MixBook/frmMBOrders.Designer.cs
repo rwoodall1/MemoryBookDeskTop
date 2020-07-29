@@ -526,6 +526,7 @@
             this.shipMethodComboBox.Size = new System.Drawing.Size(227, 21);
             this.shipMethodComboBox.TabIndex = 131;
             this.shipMethodComboBox.ValueMember = "ShipAlias";
+            this.shipMethodComboBox.SelectedValueChanged += new System.EventHandler(this.shipMethodComboBox_SelectedValueChanged);
             // 
             // shipCarriersBindingSource
             // 

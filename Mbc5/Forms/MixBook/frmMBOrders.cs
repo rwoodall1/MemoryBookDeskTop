@@ -261,5 +261,10 @@ namespace Mbc5.Forms.MixBook
         {
             ItemIdSearch();
         }
+
+        private void shipMethodComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
+        }
     }
 }

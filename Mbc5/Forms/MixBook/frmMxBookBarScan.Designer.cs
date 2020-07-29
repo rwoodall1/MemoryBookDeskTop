@@ -49,9 +49,15 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblLastScan = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
+            this.chkRemake = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtImpersonate = new System.Windows.Forms.TextBox();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlQty.SuspendLayout();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -65,7 +71,7 @@
             this.txtBarCode.Mask = ">LLL0000000CLL";
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(143, 20);
-            this.txtBarCode.TabIndex = 1;
+            this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             // 
             // txtDateTime
@@ -75,6 +81,7 @@
             this.txtDateTime.ReadOnly = true;
             this.txtDateTime.Size = new System.Drawing.Size(143, 20);
             this.txtDateTime.TabIndex = 15;
+            this.txtDateTime.TabStop = false;
             // 
             // label6
             // 
@@ -114,10 +121,10 @@
             this.pnlQty.Controls.Add(this.label3);
             this.pnlQty.Controls.Add(this.lblScanQty);
             this.pnlQty.Controls.Add(this.label2);
-            this.pnlQty.Location = new System.Drawing.Point(255, 66);
+            this.pnlQty.Location = new System.Drawing.Point(245, 63);
             this.pnlQty.Name = "pnlQty";
             this.pnlQty.Size = new System.Drawing.Size(299, 57);
-            this.pnlQty.TabIndex = 25;
+            this.pnlQty.TabIndex = 2;
             this.pnlQty.Visible = false;
             // 
             // txtLocation
@@ -125,7 +132,7 @@
             this.txtLocation.Location = new System.Drawing.Point(227, 30);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(64, 20);
-            this.txtLocation.TabIndex = 5;
+            this.txtLocation.TabIndex = 3;
             // 
             // label4
             // 
@@ -142,7 +149,7 @@
             this.txtQtyToScan.Location = new System.Drawing.Point(227, 4);
             this.txtQtyToScan.Name = "txtQtyToScan";
             this.txtQtyToScan.Size = new System.Drawing.Size(64, 20);
-            this.txtQtyToScan.TabIndex = 4;
+            this.txtQtyToScan.TabIndex = 2;
             // 
             // label3
             // 
@@ -180,10 +187,10 @@
             this.plnTracking.Controls.Add(this.label5);
             this.plnTracking.Controls.Add(this.txtTrackingNo);
             this.plnTracking.Controls.Add(this.label13);
-            this.plnTracking.Location = new System.Drawing.Point(172, 66);
+            this.plnTracking.Location = new System.Drawing.Point(160, 63);
             this.plnTracking.Name = "plnTracking";
             this.plnTracking.Size = new System.Drawing.Size(374, 57);
-            this.plnTracking.TabIndex = 10006;
+            this.plnTracking.TabIndex = 3;
             this.plnTracking.Visible = false;
             this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
             // 
@@ -192,7 +199,7 @@
             this.txtWeight.Location = new System.Drawing.Point(76, 26);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(54, 20);
-            this.txtWeight.TabIndex = 3;
+            this.txtWeight.TabIndex = 5;
             this.txtWeight.Validating += new System.ComponentModel.CancelEventHandler(this.txtWeight_Validating);
             // 
             // label5
@@ -210,7 +217,7 @@
             this.txtTrackingNo.Location = new System.Drawing.Point(75, 3);
             this.txtTrackingNo.Name = "txtTrackingNo";
             this.txtTrackingNo.Size = new System.Drawing.Size(201, 20);
-            this.txtTrackingNo.TabIndex = 2;
+            this.txtTrackingNo.TabIndex = 4;
             this.txtTrackingNo.Leave += new System.EventHandler(this.txtTrackingNo_Leave);
             this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
             // 
@@ -246,14 +253,69 @@
             this.lbllastscanlbl.TabIndex = 10008;
             this.lbllastscanlbl.Text = "Last Scan";
             // 
+            // chkRemake
+            // 
+            this.chkRemake.AutoSize = true;
+            this.chkRemake.Location = new System.Drawing.Point(550, 39);
+            this.chkRemake.Name = "chkRemake";
+            this.chkRemake.Size = new System.Drawing.Size(66, 17);
+            this.chkRemake.TabIndex = 1;
+            this.chkRemake.Text = "Remake";
+            this.chkRemake.UseVisualStyleBackColor = true;
+            this.chkRemake.Click += new System.EventHandler(this.chkRemake_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtImpersonate);
+            this.panel1.Location = new System.Drawing.Point(338, 132);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(278, 30);
+            this.panel1.TabIndex = 10012;
+            this.panel1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(5, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 10013;
+            this.label1.Text = "Impersonate";
+            // 
+            // txtImpersonate
+            // 
+            this.txtImpersonate.Enabled = false;
+            this.txtImpersonate.Location = new System.Drawing.Point(84, 5);
+            this.txtImpersonate.Name = "txtImpersonate";
+            this.txtImpersonate.Size = new System.Drawing.Size(192, 20);
+            this.txtImpersonate.TabIndex = 10012;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 35;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(27, 73);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(67, 46);
+            this.reportViewer1.TabIndex = 10014;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(664, 174);
+            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.chkRemake);
             this.Controls.Add(this.lbllastscanlbl);
+            this.Controls.Add(this.pnlQty);
             this.Controls.Add(this.lblLastScan);
             this.Controls.Add(this.plnTracking);
-            this.Controls.Add(this.pnlQty);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBarCode);
             this.Controls.Add(this.txtDateTime);
@@ -266,21 +328,26 @@
             this.Text = "Mixbook Scan Form";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmMxBookBarScan_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.lbl1, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.txtBarCode, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.pnlQty, 0);
             this.Controls.SetChildIndex(this.plnTracking, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
+            this.Controls.SetChildIndex(this.pnlQty, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
-            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.chkRemake, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +375,10 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lbllastscanlbl;
         private System.Windows.Forms.Label lblLastScan;
+        private System.Windows.Forms.CheckBox chkRemake;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtImpersonate;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

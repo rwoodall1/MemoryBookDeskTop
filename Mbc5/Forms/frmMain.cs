@@ -395,6 +395,7 @@ namespace Mbc5.Forms
         }
         private void SetMenu()
         {
+            
             if (ApplicationUser.UserName == "BARCODE")
             {
                 //Show barscan screen hid every thing else
@@ -411,9 +412,9 @@ namespace Mbc5.Forms
 
             }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
                 || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
-                || ApplicationUser.UserName == "casein"|| ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "shipping"|| ApplicationUser.UserName == "trimming")
+                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "shipping"|| ApplicationUser.UserName == "trimming")
             {
-                
+                caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
@@ -426,6 +427,23 @@ namespace Mbc5.Forms
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
+            }else if (ApplicationUser.UserName == "casein")
+            {
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+
+                caseMatchScanToolStripMenuItem_Click(null, null);
+
             }
             else
             {
@@ -433,7 +451,8 @@ namespace Mbc5.Forms
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
                 this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
                 productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-
+                productionWIPToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                systemToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -1581,6 +1600,15 @@ namespace Mbc5.Forms
             frmMxBookBarScan frmBarScan = new frmMxBookBarScan(this.ApplicationUser);
             frmBarScan.MdiParent = this;
             frmBarScan.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser);
+
+            frmCaseMatch.MdiParent = this;
+            frmCaseMatch.Show();
             this.Cursor = Cursors.Default;
         }
         //nothing below here

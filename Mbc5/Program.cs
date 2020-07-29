@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mbc5.Forms;
 using Exceptionless;
+using Mbc5.Forms.MixBook;
 
 namespace Mbc5
 {
@@ -20,8 +21,11 @@ namespace Mbc5
             ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try { Application.Run(new frmMain());
-               } catch(Exception ex)
+            try
+            {
+                Application.Run(new frmMain());
+
+            } catch(Exception ex)
             {
                 MessageBox.Show("There was an unhandled error:" + ex.Message);
 

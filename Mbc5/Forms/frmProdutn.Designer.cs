@@ -1370,7 +1370,7 @@ namespace Mbc5.Forms
             label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label17.Location = new System.Drawing.Point(634, 76);
+            label17.Location = new System.Drawing.Point(664, 76);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(34, 13);
             label17.TabIndex = 110;
@@ -1381,7 +1381,7 @@ namespace Mbc5.Forms
             label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label18.AutoSize = true;
             label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label18.Location = new System.Drawing.Point(697, 76);
+            label18.Location = new System.Drawing.Point(727, 76);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(48, 13);
             label18.TabIndex = 111;
@@ -1476,7 +1476,7 @@ namespace Mbc5.Forms
             wipmemoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             wipmemoLabel.AutoSize = true;
             wipmemoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            wipmemoLabel.Location = new System.Drawing.Point(765, 95);
+            wipmemoLabel.Location = new System.Drawing.Point(800, 95);
             wipmemoLabel.Name = "wipmemoLabel";
             wipmemoLabel.Size = new System.Drawing.Size(34, 13);
             wipmemoLabel.TabIndex = 125;
@@ -1824,7 +1824,7 @@ namespace Mbc5.Forms
             // 
             persondestLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             persondestLabel.AutoSize = true;
-            persondestLabel.Location = new System.Drawing.Point(943, 367);
+            persondestLabel.Location = new System.Drawing.Point(923, 367);
             persondestLabel.Name = "persondestLabel";
             persondestLabel.Size = new System.Drawing.Size(44, 13);
             persondestLabel.TabIndex = 172;
@@ -4064,7 +4064,7 @@ namespace Mbc5.Forms
             this.rmbfrmDateBox.Location = new System.Drawing.Point(496, 118);
             this.rmbfrmDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmbfrmDateBox.Name = "rmbfrmDateBox";
-            this.rmbfrmDateBox.Size = new System.Drawing.Size(114, 21);
+            this.rmbfrmDateBox.Size = new System.Drawing.Size(157, 21);
             this.rmbfrmDateBox.TabIndex = 142;
             // 
             // rmbtoDateBox
@@ -4076,7 +4076,7 @@ namespace Mbc5.Forms
             this.rmbtoDateBox.Location = new System.Drawing.Point(496, 94);
             this.rmbtoDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmbtoDateBox.Name = "rmbtoDateBox";
-            this.rmbtoDateBox.Size = new System.Drawing.Size(114, 21);
+            this.rmbtoDateBox.Size = new System.Drawing.Size(157, 21);
             this.rmbtoDateBox.TabIndex = 141;
             // 
             // rmpfrmDateBox
@@ -4319,10 +4319,10 @@ namespace Mbc5.Forms
             this.wipmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wipmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "wipmemo", true));
             this.wipmemoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wipmemoTextBox.Location = new System.Drawing.Point(812, 92);
+            this.wipmemoTextBox.Location = new System.Drawing.Point(847, 92);
             this.wipmemoTextBox.Multiline = true;
             this.wipmemoTextBox.Name = "wipmemoTextBox";
-            this.wipmemoTextBox.Size = new System.Drawing.Size(393, 151);
+            this.wipmemoTextBox.Size = new System.Drawing.Size(302, 151);
             this.wipmemoTextBox.TabIndex = 126;
             // 
             // rmbtotTextBox
@@ -4360,7 +4360,7 @@ namespace Mbc5.Forms
             this.iinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "iinit", true));
             this.iinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iinitTextBox.Location = new System.Drawing.Point(696, 95);
+            this.iinitTextBox.Location = new System.Drawing.Point(726, 95);
             this.iinitTextBox.MaxLength = 3;
             this.iinitTextBox.Name = "iinitTextBox";
             this.iinitTextBox.Size = new System.Drawing.Size(63, 20);
@@ -4371,7 +4371,7 @@ namespace Mbc5.Forms
             this.ideptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "idept", true));
             this.ideptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ideptTextBox.Location = new System.Drawing.Point(629, 95);
+            this.ideptTextBox.Location = new System.Drawing.Point(659, 95);
             this.ideptTextBox.MaxLength = 5;
             this.ideptTextBox.Name = "ideptTextBox";
             this.ideptTextBox.Size = new System.Drawing.Size(61, 20);
@@ -4703,7 +4703,7 @@ namespace Mbc5.Forms
             this.desorgdteDateBox.Location = new System.Drawing.Point(973, 343);
             this.desorgdteDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.desorgdteDateBox.Name = "desorgdteDateBox";
-            this.desorgdteDateBox.Size = new System.Drawing.Size(114, 21);
+            this.desorgdteDateBox.Size = new System.Drawing.Size(139, 21);
             this.desorgdteDateBox.TabIndex = 217;
             // 
             // reprntdteDateBox
@@ -4714,7 +4714,7 @@ namespace Mbc5.Forms
             this.reprntdteDateBox.Location = new System.Drawing.Point(973, 319);
             this.reprntdteDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.reprntdteDateBox.Name = "reprntdteDateBox";
-            this.reprntdteDateBox.Size = new System.Drawing.Size(114, 21);
+            this.reprntdteDateBox.Size = new System.Drawing.Size(139, 21);
             this.reprntdteDateBox.TabIndex = 216;
             // 
             // lamdtesentDateBox
@@ -5159,7 +5159,7 @@ namespace Mbc5.Forms
             // 
             this.persondestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.persondestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "persondest", true));
-            this.persondestTextBox.Location = new System.Drawing.Point(993, 364);
+            this.persondestTextBox.Location = new System.Drawing.Point(973, 364);
             this.persondestTextBox.MaxLength = 37;
             this.persondestTextBox.Name = "persondestTextBox";
             this.persondestTextBox.Size = new System.Drawing.Size(35, 20);

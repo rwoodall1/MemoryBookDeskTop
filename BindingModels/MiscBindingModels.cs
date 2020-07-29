@@ -5,6 +5,26 @@ using System.Web;
 
 namespace BindingModels
 {
+    public  class MixbookPackingSlip
+    {
+        public int Invno { get; set; }
+        public string ShipName { get; set; }
+        public string ShipAddr { get; set; }
+        public string ShipAddr2 { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
+        public string OrderNumber { get; set; }
+        public int ClientOrderId { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string Description { get; set; }
+        public string ItemCode { get; set; }
+        public string JobId { get; set; }
+        public string ItemId { get; set; }
+        public string ShipMethod { get; set; }
+        public string BarCode { get; set; }
+    }
     public class ShippingNotificationInfo{
         public string JobId { get; set; }
         public string TrackingNumber { get; set; }
@@ -173,7 +193,9 @@ namespace BindingModels
         public string ItemId { get; set; }
         public int Quantity { get; set; }
         public string Backing { get; set; }
-      }
+        public string BookPreviewUrl { get; set; }
+        public string CoverPreviewUrl { get; set; }
+    }
     public class WipUpdateCheck
 	{
 		public int QuoteInvno { get; set; }
