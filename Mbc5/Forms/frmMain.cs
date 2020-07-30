@@ -76,6 +76,7 @@ namespace Mbc5.Forms
             else if (formName == "frmProdutn")
             {
                 tsJobNo.Visible = true;
+                tsMxbClientOrderId.Visible = true;
             }
             else if (formName == "frmBids")
             {
@@ -115,7 +116,7 @@ namespace Mbc5.Forms
             tsEmailSearch.Visible = false;
             tsJobNo.Visible = false;
             tsJobNo.Visible = false;
-
+            tsMxbClientOrderId.Visible = false;
         }
         public void PrintScreen()
         {
@@ -447,6 +448,7 @@ namespace Mbc5.Forms
             }
             else
             {
+                tsMain.Visible = true;
                 this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
                 this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
@@ -723,11 +725,15 @@ namespace Mbc5.Forms
                     frmProdutn1.Show();
                     this.Cursor = Cursors.Default;
                 }
-
+                else
+                {
                 frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
                 frmProduction.MdiParent = this;
                 frmProduction.Show();
                 this.Cursor = Cursors.Default;
+                }
+
+                
 
             }
             else
@@ -1575,12 +1581,67 @@ namespace Mbc5.Forms
 
         private void mixBookOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
+            if (this.ActiveMdiChild == null)
+            {
+                this.Cursor = Cursors.AppStarting;
 
-            frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
-            frmMBOrders.MdiParent = this;
-            frmMBOrders.Show();
-            this.Cursor = Cursors.Default;
+                frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
+                frmMBOrders.MdiParent = this;
+                frmMBOrders.Show();
+                this.Cursor = Cursors.Default;
+
+            }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vClientId =0;
+                if (this.ActiveMdiChild.Name == "frmProdutn")
+                {
+                    var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                    
+                    if (tmpForm.Company=="MXB")
+                    {
+                         vClientId = tmpForm.ClientId;
+                    }
+                 
+                }
+
+                if (vClientId>0)
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser,vClientId);
+                    frmMBOrders.MdiParent = this;
+                    frmMBOrders.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
+                    frmMBOrders.MdiParent = this;
+                    frmMBOrders.Show();
+                    this.Cursor = Cursors.Default;
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+            //this.Cursor = Cursors.AppStarting;
+
+            //frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
+            //frmMBOrders.MdiParent = this;
+            //frmMBOrders.Show();
+            //this.Cursor = Cursors.Default;
         }
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1610,6 +1671,20 @@ namespace Mbc5.Forms
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void tsMxbClientOrderId_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as Mbc5.Forms.frmProdutn;
+                activeform.ClientOrderIdSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         //nothing below here
     }

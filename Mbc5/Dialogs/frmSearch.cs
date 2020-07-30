@@ -33,6 +33,7 @@ namespace Mbc5.Dialogs {
         private string SearchType { get; set; }
         private string ReturnForm { get; set; }
         private List<MixBookOrderIdSearch> OrderIdList { get; set; }
+       private List<MixBookProdOrderIdSearch> ProdOrderIdList { get; set; }
         private List<MixBookOrderShipNameSearch> ShipNameList { get; set; }
         private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
@@ -342,7 +343,7 @@ namespace Mbc5.Dialogs {
                                     return;
                                 }
                                 var lRetRecs = (List<OracleCodeSearch>)result.Data;
-                                this.OracleCodeList = lRetRecs;
+                                this.OracleCodeList = lRetRecs==null?new List<OracleCodeSearch>():lRetRecs;
                                 bsData.DataSource = this.OracleCodeList;
 
                                 dgSearch.DataSource = bsData.DataSource;
@@ -360,7 +361,7 @@ namespace Mbc5.Dialogs {
                                 return;
                             }
                             var lRetRecs1 = (List<OracleCodeSearch>)resultOC.Data;
-                            this.OracleCodeList = lRetRecs1;
+                            this.OracleCodeList = lRetRecs1 == null ? new List<OracleCodeSearch>() : lRetRecs1;
                             bsData.DataSource = this.OracleCodeList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -378,7 +379,7 @@ namespace Mbc5.Dialogs {
                                 return;
                             }
                             var lOracleCodeList = (List<OracleSalesSearch>)oracleCodeResult.Data;
-                            this.OracleSalesCodeList = lOracleCodeList;
+                            this.OracleSalesCodeList = lOracleCodeList == null ? new List<OracleSalesSearch>() : lOracleCodeList;
                             bsData.DataSource = this.OracleSalesCodeList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -396,7 +397,7 @@ namespace Mbc5.Dialogs {
                                 return;
                             }
                             var lOracleCodeList1 = (List<OracleSalesSearch>)oracleCodeResult1.Data;
-                            this.OracleSalesCodeList = lOracleCodeList1;
+                            this.OracleSalesCodeList = lOracleCodeList1 == null ? new List<OracleSalesSearch>() : lOracleCodeList1;
                             bsData.DataSource = this.OracleSalesCodeList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -419,12 +420,12 @@ namespace Mbc5.Dialogs {
                             }
                             var retVal4 = (List<EndSheetOracleCodeSearch>)endsheetresult.Data;
                             this.EndSheetOracleCodeList = retVal4;
-                            bsData.DataSource = this.EndSheetOracleCodeList;
+                            bsData.DataSource = this.EndSheetOracleCodeList == null ? new List<EndSheetOracleCodeSearch>() : retVal4;
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            cmdtext = @"Select COALESCE(C.OracleCode,'',C.Schname,C.Schcode,P.Invno As Invoice,P.ProdNo,C.Contryear From Produtn P Inner Join Cust C On P.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
+                            cmdtext = @"Select COALESCE(C.OracleCode,''),C.Schname,C.Schcode,P.Invno As Invoice,P.ProdNo,C.Contryear From Produtn P Inner Join Cust C On P.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
                             sqlclient.CommandText(cmdtext);
                             var produtnOracleCodeResult = sqlclient.SelectMany<ProdutnOracleCodeSearch>();
                             if (produtnOracleCodeResult.IsError)
@@ -433,7 +434,7 @@ namespace Mbc5.Dialogs {
                                 return;
                             }
                             var lProdutnOracleCodeList = (List<ProdutnOracleCodeSearch>)produtnOracleCodeResult.Data;
-                            this.ProdutnOracleCodeList = lProdutnOracleCodeList;
+                            this.ProdutnOracleCodeList = lProdutnOracleCodeList == null ? new List<ProdutnOracleCodeSearch>() : lProdutnOracleCodeList;
                             bsData.DataSource = this.ProdutnOracleCodeList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -711,7 +712,7 @@ namespace Mbc5.Dialogs {
                             break;
 
                         case "PRODUCTION":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode)AS Schname,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Left Join MCust MC On P.Schcode=MC.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode)AS Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Left Join MCust MC On P.Schcode=MC.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var result2 = sqlclient.SelectMany<ProdNoSearch>();
                             if (result2.IsError)
@@ -1116,8 +1117,26 @@ namespace Mbc5.Dialogs {
                             
                             txtSearch.Select();
                             break;
-                        case "WIP":
+                        case "PRODUCTION":
+                            cmdtext = @"SELECT 
+                                              ClientOrderId
+                                              ,ShipName 
+                                               ,Invno                                                                          
+                                          FROM MixBookOrder Group By ClientOrderId,ShipName,Invno Order By ClientOrderId";
+                            sqlclient.CommandText(cmdtext);
+                            var result = sqlclient.SelectMany<MixBookProdOrderIdSearch>();
+                            if (result.IsError)
+                            {
+                                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecs = (List<MixBookProdOrderIdSearch>)result.Data;
+                            ProdOrderIdList = lRetRecs;
+                            bsData.DataSource = this.ProdOrderIdList;
 
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
                             break;
                     }
                     break;
@@ -1199,6 +1218,7 @@ namespace Mbc5.Dialogs {
      {
 
             int vIndex;
+
             switch (SearchType)
             {
                   
@@ -1293,7 +1313,11 @@ namespace Mbc5.Dialogs {
                     }
                     else if (ReturnForm == "PRODUCTION")
                     {
-						vJobList = this.ProdJobCodeList.Select(x => x.JobNo).ToList();
+                        try
+                        {
+                            vJobList = this.ProdJobCodeList.Select(x => x.JobNo).ToList();
+                        }
+                        catch (Exception ex) { };
 					}
                     else if (ReturnForm == "ENDSHEET")
                     {
@@ -1542,25 +1566,50 @@ namespace Mbc5.Dialogs {
                     break;
 
                 case "ORDERID":
-                    try
+                    if (ReturnForm == "MIXBOOK")
                     {
-
-                        vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
-                        if (vIndex != -1)
+                        try
                         {
-                            dgSearch.ClearSelection();
-                            bsData.Position = vIndex;
-                            dgSearch.Rows[vIndex].Selected = true;
-                            dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
 
-                            CurrentIndex = vIndex;
+                            vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }else if (ReturnForm == "PRODUCTION")
+                    {
+                        try
+                        {
+
+                            vIndex = this.ProdOrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
 
                         }
                     }
-                    catch (Exception ex)
-                    {
-
-                    }
+                    
                     break;
                 case "ITEMID":
                     try
@@ -1591,6 +1640,7 @@ namespace Mbc5.Dialogs {
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
       {
             try
+
             {
                 if (e.KeyChar == 13)
                 {
@@ -1740,6 +1790,10 @@ namespace Mbc5.Dialogs {
                     else if (SearchType == "ORDERID" && (ReturnForm == "MIXBOOK"))
                     {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    }
+                    else if (SearchType == "ORDERID" && (ReturnForm == "PRODUCTION"))
+                    {
+                        this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
                     }
                     else if (SearchType == "SHIPNAME" && (ReturnForm == "MIXBOOK"))
                     {

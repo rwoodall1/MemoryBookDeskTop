@@ -437,10 +437,10 @@ namespace BaseClass.Classes
 
 
         public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail,List<OutlookAttachemt> attachments = null) {
-            if (ToAddresses == null ||ToAddresses=="")
-            {
-                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
+            //if (ToAddresses == null ||ToAddresses=="")
+            //{
+            //    MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //}
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
@@ -481,10 +481,10 @@ namespace BaseClass.Classes
                 }
             }
         public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail, List<OutlookAttachemt> attachments = null) {
-            if (ToAddresses == null || ToAddresses.Count < 1)
-            {
-                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
+            //if (ToAddresses == null || ToAddresses.Count < 1)
+            //{
+            //    MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //}
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
@@ -533,10 +533,10 @@ namespace BaseClass.Classes
             }
         public bool SendOutLookEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
             var brandedHtml = "";
-            if (ToAddresses == null || ToAddresses =="")
-            {
-                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
+            //if (ToAddresses == null || ToAddresses =="")
+            //{
+            //    MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //}
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
                 } else if (TypeEmail == EmailType.Meridian) {

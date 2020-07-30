@@ -1187,6 +1187,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnProofOfPages;
             
+            private global::System.Data.DataColumn columnMxbClientOrderId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public produtnDataTable() {
@@ -2278,6 +2280,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MxbClientOrderIdColumn {
+                get {
+                    return this.columnMxbClientOrderId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2445,7 +2455,8 @@ namespace Mbc5.DataSets {
                         System.DateTime Bindery3, 
                         System.DateTime Bindery4, 
                         bool PrintOnWhitePaper, 
-                        bool ProofOfPages) {
+                        bool ProofOfPages, 
+                        int MxbClientOrderId) {
                 produtnRow rowprodutnRow = ((produtnRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2579,7 +2590,8 @@ namespace Mbc5.DataSets {
                         Bindery3,
                         Bindery4,
                         PrintOnWhitePaper,
-                        ProofOfPages};
+                        ProofOfPages,
+                        MxbClientOrderId};
                 if ((parentquotesRowByquotes_produtn != null)) {
                     columnValuesArray[0] = parentquotesRowByquotes_produtn[0];
                 }
@@ -2744,6 +2756,7 @@ namespace Mbc5.DataSets {
                 this.columnBindery4 = base.Columns["Bindery4"];
                 this.columnPrintOnWhitePaper = base.Columns["PrintOnWhitePaper"];
                 this.columnProofOfPages = base.Columns["ProofOfPages"];
+                this.columnMxbClientOrderId = base.Columns["MxbClientOrderId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3013,14 +3026,14 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnPrintOnWhitePaper);
                 this.columnProofOfPages = new global::System.Data.DataColumn("ProofOfPages", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProofOfPages);
+                this.columnMxbClientOrderId = new global::System.Data.DataColumn("MxbClientOrderId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMxbClientOrderId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
                 this.columninvno.Unique = true;
                 this.columninvno.Caption = "Invoie #";
-                this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
-                this.columnprodno.AllowDBNull = false;
                 this.columnprodno.MaxLength = 12;
                 this.columncontrecvd.MaxLength = 1;
                 this.columndeadlinein.MaxLength = 1;
@@ -12115,7 +12128,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schcode {
                 get {
-                    return ((string)(this[this.tableprodutn.schcodeColumn]));
+                    try {
+                        return ((string)(this[this.tableprodutn.schcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schcode\' in table \'produtn\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableprodutn.schcodeColumn] = value;
@@ -12126,7 +12144,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string prodno {
                 get {
-                    return ((string)(this[this.tableprodutn.prodnoColumn]));
+                    try {
+                        return ((string)(this[this.tableprodutn.prodnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prodno\' in table \'produtn\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableprodutn.prodnoColumn] = value;
@@ -14194,6 +14217,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int MxbClientOrderId {
+                get {
+                    try {
+                        return ((int)(this[this.tableprodutn.MxbClientOrderIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MxbClientOrderId\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.MxbClientOrderIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_produtn"])));
@@ -14201,6 +14240,30 @@ namespace Mbc5.DataSets {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["quotes_produtn"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschcodeNull() {
+                return this.IsNull(this.tableprodutn.schcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschcodeNull() {
+                this[this.tableprodutn.schcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsprodnoNull() {
+                return this.IsNull(this.tableprodutn.prodnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetprodnoNull() {
+                this[this.tableprodutn.prodnoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15737,6 +15800,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetProofOfPagesNull() {
                 this[this.tableprodutn.ProofOfPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMxbClientOrderIdNull() {
+                return this.IsNull(this.tableprodutn.MxbClientOrderIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMxbClientOrderIdNull() {
+                this[this.tableprodutn.MxbClientOrderIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25047,6 +25122,7 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             tableMapping.ColumnMappings.Add("Bindery4", "Bindery4");
             tableMapping.ColumnMappings.Add("PrintOnWhitePaper", "PrintOnWhitePaper");
             tableMapping.ColumnMappings.Add("ProofOfPages", "ProofOfPages");
+            tableMapping.ColumnMappings.Add("MxbClientOrderId", "MxbClientOrderId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -25272,11 +25348,11 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "inalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet" +
                 ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
                 "rPermission, produtn.PrePress, produtn.Press, produtn.Bindery1, produtn.Bindery2" +
-                ", produtn.Bindery3, produtn.Bindery4\r\nFROM            produtn LEFT OUTER JOIN\r\n " +
-                "                        endsheet ON produtn.invno = endsheet.invno\r\nWHERE       " +
-                " (produtn.schcode = @Schcode)";
+                ", produtn.Bindery3, produtn.Bindery4, produtn.MxbClientOrderId\r\nFROM            " +
+                "produtn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = en" +
+                "dsheet.invno\r\nWHERE        (produtn.schcode = @Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, pr" +
@@ -25311,9 +25387,9 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "odutn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, \r\n" +
                 "                         produtn.Enhancements, produtn.PhotographerPermission, p" +
                 "rodutn.Icon, produtn.Press, produtn.PrePress, produtn.Bindery1, produtn.Bindery2" +
-                ", produtn.Bindery4, produtn.Bindery3\r\nFROM            produtn LEFT OUTER JOIN\r\n " +
-                "                        endsheet ON produtn.invno = endsheet.invno\r\nWHERE       " +
-                " (produtn.invno = @Invno)";
+                ", produtn.Bindery4, produtn.Bindery3, produtn.MxbClientOrderId\r\nFROM            " +
+                "produtn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = en" +
+                "dsheet.invno\r\nWHERE        (produtn.invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -25350,11 +25426,11 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "inalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet" +
                 ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
                 "rPermission, produtn.ProdCustDate, produtn.PrePress, produtn.Bindery1, produtn.P" +
-                "ress, produtn.Bindery2, produtn.Bindery3, produtn.Bindery4\r\nFROM            prod" +
-                "utn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = endshe" +
-                "et.invno\r\nWHERE        (produtn.prodno = @Prodno)";
+                "ress, produtn.Bindery2, produtn.Bindery3, produtn.Bindery4, produtn.MxbClientOrd" +
+                "erId\r\nFROM            produtn LEFT OUTER JOIN\r\n                         endsheet" +
+                " ON produtn.invno = endsheet.invno\r\nWHERE        (produtn.prodno = @Prodno)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prodno", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25364,7 +25440,7 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
         public virtual int Fill(dsProdutn.produtnDataTable dataTable, string Schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
@@ -25383,7 +25459,7 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
         public virtual dsProdutn.produtnDataTable GetData(string Schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
@@ -25426,7 +25502,7 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
         public virtual int FillByProdNo(dsProdutn.produtnDataTable dataTable, string Prodno) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Prodno == null)) {
-                throw new global::System.ArgumentNullException("Prodno");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Prodno));
@@ -25445,7 +25521,7 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
         public virtual dsProdutn.produtnDataTable GetDataBy(string Prodno) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Prodno == null)) {
-                throw new global::System.ArgumentNullException("Prodno");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Prodno));

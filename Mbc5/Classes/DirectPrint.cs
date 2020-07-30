@@ -48,20 +48,34 @@ namespace Mbc5.Classes
         }
         public ApiProcessingResult Export(LocalReport report, string _printer)
         {
-            return Export(report, _printer, 1, false);
+            return Export(report, _printer, 1,false, false);
+        }
+        public ApiProcessingResult Export(LocalReport report, string _printer,bool isLandScape)
+        {
+            return Export(report, _printer, 1, isLandScape, false);
         }
         public ApiProcessingResult Export(LocalReport report, string _printer,short numcopies)
         {
-            return Export(report, _printer, numcopies,false);
+            return Export(report, _printer, numcopies,false,false);
         }
-        public ApiProcessingResult Export(LocalReport report, string _printer, bool isLabel = false)
+        public ApiProcessingResult Export(LocalReport report, string _printer, short numcopies, bool isLandScape)
         {
-            return Export(report, _printer, 1, isLabel);
+            return Export(report, _printer, numcopies, isLandScape, false);
         }
-       
-            public ApiProcessingResult Export(LocalReport report, string _printer,short numcopies,bool isLabel)
+
+        public ApiProcessingResult Export(bool isLabel,LocalReport report, string _printer)
+        {
+            return Export(report, _printer, 1,true, isLabel);
+        }
+        public ApiProcessingResult Export( bool isLabel,LocalReport report, string _printer,short numcopies, bool isLandScape)
+        {
+            return Export(report, _printer,numcopies,isLandScape,isLabel);
+        }
+
+        public ApiProcessingResult Export(LocalReport report, string _printer,short numcopies,bool islandscape,bool isLabel)
         {
 			var processingResult = new ApiProcessingResult();
+          
             string deviceInfo = "";
             if (isLabel)
             {
@@ -76,16 +90,28 @@ namespace Mbc5.Classes
                 <MarginBottom>0.0in</MarginBottom>
             </DeviceInfo>";
             }
+            else if(islandscape)
+            {
+                deviceInfo = @"<DeviceInfo>
+                        <OutputFormat>EMF</OutputFormat>
+                        <PageWidth>11in</PageWidth>
+                        <PageHeight>8.5in</PageHeight>
+                        <MarginTop>0.0in</MarginTop>
+                        <MarginLeft>0.0in</MarginLeft>
+                        <MarginRight>0.0in</MarginRight>
+                        <MarginBottom>0.0in</MarginBottom>
+                    </DeviceInfo>";
+            }
             else
             {
                 deviceInfo = @"<DeviceInfo>
                         <OutputFormat>EMF</OutputFormat>
                         <PageWidth>8.5in</PageWidth>
                         <PageHeight>11in</PageHeight>
-                        <MarginTop>0.25in</MarginTop>
-                        <MarginLeft>0.25in</MarginLeft>
-                        <MarginRight>0.25in</MarginRight>
-                        <MarginBottom>0.25in</MarginBottom>
+                        <MarginTop>0.0in</MarginTop>
+                        <MarginLeft>0.0in</MarginLeft>
+                        <MarginRight>0.0in</MarginRight>
+                        <MarginBottom>0.0in</MarginBottom>
                     </DeviceInfo>";
             }
             
@@ -108,7 +134,7 @@ namespace Mbc5.Classes
             }
 
 			
-			var printResult = Print(_printer,numcopies,isLabel);
+			var printResult = Print(_printer,numcopies, islandscape, isLabel);
 			Dispose();
 			return printResult;
 
@@ -118,7 +144,7 @@ namespace Mbc5.Classes
         // Then I modified the Print method to use the default printer instead of the hardcoded 'Microsoft Office Document....' printer.
 
 
-        private ApiProcessingResult Print(string _printer,short numcopies,bool isLabel)
+        private ApiProcessingResult Print(string _printer,short numcopies,bool isLandscape,bool isLabel)
         {
 			var processingResult = new ApiProcessingResult();
 			string printerName;
@@ -145,9 +171,11 @@ namespace Mbc5.Classes
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.PrinterName = printerName;
             printDoc.PrinterSettings.Copies = numcopies;
-            if (isLabel)
+    
+            if (isLandscape)
             {
                 printDoc.DefaultPageSettings.Landscape = true;
+              
             }
            
     

@@ -68,6 +68,7 @@ namespace Mbc5.Forms
         private string CoverLabelerName { get; set; }
         public List<CoverDescriptions> CoverDescriptions { get; set; }
         public string Company { get; set; }
+        public int ClientId { get; set; }
         public new frmMain frmMain { get; set; }
         private void SetConnectionString()
 		{
@@ -130,7 +131,7 @@ namespace Mbc5.Forms
 			{
 				MessageBox.Show(ex.Message, "Error");
 			}
-            this.reportViewerProdticket.RefreshReport();
+           
         }
 
         #region "Properties"
@@ -7205,6 +7206,7 @@ namespace Mbc5.Forms
 		{
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
+            
             if (Schcode != null)
 			{
 				try {
@@ -7222,6 +7224,10 @@ namespace Mbc5.Forms
                     if (produtnBindingSource.Count>0)
                     {
                         Company = ((DataRowView)produtnBindingSource.Current).Row["Company"].ToString();
+                        if (Company=="MXB")
+                        {
+                            ClientId=(int)((DataRowView)produtnBindingSource.Current).Row["MxbClientOrderId"];
+                        }
                     }
                 
 
@@ -10069,7 +10075,12 @@ namespace Mbc5.Forms
             }
 
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var Schname = currentrow["schname"].ToString();
+            string Schname = "";
+            if (currentrow!=null)
+            {
+                Schname = currentrow["schname"].ToString();
+            }
+            
             frmSearch frmSearch = new frmSearch("Schname", "PRODUCTION", Schname);
 
             var result = frmSearch.ShowDialog();
@@ -10120,9 +10131,12 @@ namespace Mbc5.Forms
             }
 
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var oraclecode = currentrow["oraclecode"].ToString();
-
-            frmSearch frmSearch = new frmSearch("OracleCode", "PRODUCTION", oraclecode);
+            string oraclecode = "";
+            if (currentrow != null)
+            {
+                oraclecode = currentrow["oraclecode"].ToString();
+            }
+             frmSearch frmSearch = new frmSearch("OracleCode", "PRODUCTION", oraclecode);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
@@ -10233,9 +10247,14 @@ namespace Mbc5.Forms
                     return;
                 }
             }
-
+            
             DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
-            var prodno = currentrow["prodno"].ToString();
+            string prodno = "";
+            if (currentrow!=null)
+                {
+
+                    prodno = currentrow["prodno"].ToString();
+                }
 
             frmSearch frmSearch = new frmSearch("PRODNO", "PRODUCTION", prodno);
 
@@ -10327,8 +10346,64 @@ namespace Mbc5.Forms
 
 
 		}
+        public void ClientOrderIdSearch()
+        {
+            //Mixbook only
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
+            {
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
+                {
 
-        
+                    return;
+                }
+            }
+
+            //DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
+            //string jobno = "";
+            //try
+            //{
+            //    jobno = currentrow["jobno"].ToString();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION","");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = "01";//mixbook default
+ 
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+              
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                this.Cursor = Cursors.Default;
+                frmProdutn_Paint(this, null);
+
+            }
+
+
+
+        }
+
+
 
         private void dedmadeTextBox_Leave(object sender, EventArgs e)
         {

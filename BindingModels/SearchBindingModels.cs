@@ -270,15 +270,22 @@ namespace BindingModels
     public class MixBookOrderIdSearch
     {
        public int ClientOrderId { get; set; }
-        
         public string ShipName { get; set; }
-                                             
+        public int Invno { get; set; }
+
+    }
+    public class MixBookProdOrderIdSearch
+    {
+        public int ClientOrderId { get; set; }
+        public string ShipName { get; set; }
+        public int Invno { get; set; }
+
     }
     public class MixBookOrderShipNameSearch
     {
         public string ShipName { get; set; }
         public int ClientOrderId { get; set; }
-       
+      
 
     }
     public class MixBookOrderItemIdSearch

@@ -21,8 +21,14 @@ namespace Mbc5.Forms.MixBook
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        
-        public int OrderId { get; set; }
+        public frmMBOrders(UserPrincipal userPrincipal,int clientId) : base(new string[] { "SA", "Administrator" }, userPrincipal)
+        {
+            InitializeComponent();
+            this.ApplicationUser = userPrincipal;
+            this.OrderId = clientId;
+        }
+
+        public int OrderId { get; set; } = 0;
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
@@ -33,11 +39,11 @@ namespace Mbc5.Forms.MixBook
             this.Invno = 0;
            
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-            try { this.statesTableAdapter.Fill(this.lookUp.states); } catch (Exception ex)
+           
+            if (OrderId > 0)
             {
-                MbcMessageBox.Error("Failed to load States dropdown");
+                Fill();
             }
-
 
            
         }
@@ -56,12 +62,19 @@ namespace Mbc5.Forms.MixBook
 
         public override void Fill()
         {
-            this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
-            int vIInvno = 0;
-            mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
-          string vSInvno  = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
-            int.TryParse(vSInvno, out vIInvno);
-            this.Invno = vIInvno;
+            try
+            {
+                this.statesTableAdapter.Fill(this.lookUp.states);
+                this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
+                int vIInvno = 0;
+                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
+                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                int.TryParse(vSInvno, out vIInvno);
+                this.Invno = vIInvno;
+            }catch(Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message);
+            }
         }
         private void SetConnectionString()
         {
@@ -204,9 +217,10 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(5)|| mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6))
+            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6)|| mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
                 if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
                 {
+                    
                     try
                     { Process.Start(mixBookOrderDataGridView.CurrentCell.Value.ToString()); }
                     catch (Exception ex)
@@ -224,6 +238,7 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
            
             this.Cursor = Cursors.AppStarting;
             int vInvno = this.Invno;
@@ -264,7 +279,24 @@ namespace Mbc5.Forms.MixBook
 
         private void shipMethodComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+           
+        }
+
+        private void shipMethodComboBox_DropDown(object sender, EventArgs e)
+        {
             MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
+        }
+
+        private void mixBookOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6 )
+            {
+                e.Value = "Cover.pdf";
+            }
+            if (e.ColumnIndex == 7)
+            {
+                e.Value = "Book.pdf";
+            }
         }
     }
 }

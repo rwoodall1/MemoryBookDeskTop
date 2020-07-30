@@ -19,7 +19,7 @@ using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
 using System.Drawing.Printing;
-
+using Microsoft.ReportingServices.RdlObjectModel;
 namespace Mbc5.Forms.MixBook
 {
    
@@ -982,18 +982,17 @@ namespace Mbc5.Forms.MixBook
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
             reportViewer1.RefreshReport();
-
-          
-
         }
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             PrinterSettings printerName = new PrinterSettings();
             string printer = printerName.PrinterName;
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewer1.LocalReport, printer, 0);
+            var result = dp.Export(reportViewer1.LocalReport, printer, true);
 
             if (result.IsError)
             {
@@ -1001,10 +1000,6 @@ namespace Mbc5.Forms.MixBook
 
             }
 
-
-            Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
-            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             Cursor.Current = Cursors.Default;
         }
 
