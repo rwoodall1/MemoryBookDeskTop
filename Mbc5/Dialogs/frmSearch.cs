@@ -1789,7 +1789,8 @@ namespace Mbc5.Dialogs {
                     }
                     else if (SearchType == "ORDERID" && (ReturnForm == "MIXBOOK"))
                     {
-                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                       
+                      this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     }
                     else if (SearchType == "ORDERID" && (ReturnForm == "PRODUCTION"))
                     {
@@ -1849,13 +1850,8 @@ namespace Mbc5.Dialogs {
         }
         private void dgSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            //tabs 1 row so take row back off
-            if (e.KeyChar == 13)
-            {
-               CurrentIndex = dgSearch.CurrentCell.RowIndex-1;
-                txtSearch_KeyPress(sender, e);
-            }
+
+         
         }
         private void dgSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1871,7 +1867,7 @@ namespace Mbc5.Dialogs {
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            var a = 1;
+          
             if (e.KeyCode==Keys.Down)
             {
                 if(this.ActiveControl== txtSearch)
@@ -1889,6 +1885,19 @@ namespace Mbc5.Dialogs {
                  e.IsInputKey = true;
                     break;
             }
+        }
+
+        private void dgSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+            if (e.KeyValue == 13)
+            {
+                CurrentIndex = dgSearch.CurrentCell.RowIndex;
+            txtSearch_KeyPress(sender, new KeyPressEventArgs((Char)e.KeyData));
+            }
+            
+            
+
         }
     }
    

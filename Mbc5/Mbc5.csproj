@@ -70,6 +70,10 @@
     <Reference Include="CustomControls">
       <HintPath>.\CustomControls.dll</HintPath>
     </Reference>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.2.2446.31718, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+    </Reference>
     <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
@@ -116,6 +120,9 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -557,6 +564,12 @@
     <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -625,6 +638,7 @@
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="NOTES TODO.txt" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
+    <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -776,6 +790,9 @@
     <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
     </EmbeddedResource>
@@ -824,6 +841,7 @@
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MultiMerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
@@ -841,7 +859,6 @@
     <EmbeddedResource Include="Reports\SpecialCoverTicket3rd.rdlc" />
     <EmbeddedResource Include="Reports\SupplementTicket.rdlc" />
     <EmbeddedResource Include="Reports\test.rdlc" />
-    <EmbeddedResource Include="Reports\test1.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>

@@ -20,9 +20,11 @@ using System.Diagnostics;
 using Mbc5.Dialogs;
 using System.Drawing.Printing;
 using Microsoft.ReportingServices.RdlObjectModel;
+using System.Net.Sockets;
+
 namespace Mbc5.Forms.MixBook
 {
-   
+
     public partial class frmMxBookBarScan : BaseClass.frmBase
     {
         public frmMxBookBarScan(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
@@ -31,11 +33,13 @@ namespace Mbc5.Forms.MixBook
             this.ApplicationUser = userPrincipal;
             lblScanQty.Text = "0";
         }
-       
+
         public string Company { get; set; }
-       public UserPrincipal ApplicationUser { get; set; }      
-       public MixBookBarScanModel MbxModel { get; set; }
+        public UserPrincipal ApplicationUser { get; set; }
+        public MixBookBarScanModel MbxModel { get; set; }
         public int QuantityScanned { get; set; } = 0;
+        public int PkgQuantity{get;set;}=0;
+        public List<PackageData> PrintedPackageList { get; set; } = new List<PackageData>();
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
             lblLastScan.Text = txtBarCode.Text;
@@ -47,12 +51,13 @@ namespace Mbc5.Forms.MixBook
                 
                     return;
                 }
-                this.Company = txtBarCode.Text.Substring(0, 3);
+                this.Company = txtBarCode.Text.ToUpper().Substring(0, 3);
                 if (this.Company == "MXB")
                 {
                     //expecting MXB1111111YB
-
+            
                     vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
+                    
                 }
                 else
                 {
@@ -82,15 +87,16 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 var sqlQuery = new SQLCustomClient();
+               
                 switch (this.Company)
                 {
                     case "MXB":
                         {
                             string cmdText = @"
-                            SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
-                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
-                                Where M.Invno=@Invno
-                              ";
+                            SELECT M.ShipName,M.ProdInOrder,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr,WD.MxbLocation AS BookLocation
+                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
+                                Left Join Covers C ON M.Invno=C.Invno
+                                Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
                             sqlQuery.CommandText(cmdText);
                             sqlQuery.AddParameter("@Invno", Invno);
                             var result = sqlQuery.Select<MixBookBarScanModel>();
@@ -99,20 +105,36 @@ namespace Mbc5.Forms.MixBook
                                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            MbxModel = (MixBookBarScanModel)result.Data;
-
                             if (result.Data == null)
                             {
                                 MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                                 return;
                             }
-                            
+                            MbxModel = (MixBookBarScanModel)result.Data;
+                            //Not using right now
+                            //if (MbxModel.Quantity > 1)
+                            //{
+                            //    PackageData record = this.PrintedPackageList.Find(x => x.Barcode == txtBarCode.Text);
+                            //    if (record == null)
+                            //    {
+                            //        this.PrintedPackageList.Add(new PackageData()
+                            //        {
+                            //            Barcode = txtBarCode.Text,
+                            //            Copies = MbxModel.Quantity,
+                            //            Scanned = 0
+                            //        });
+                            //    }
+                            //}
+                           
+                            lblBkLocation.Text = MbxModel.BookLocation;
+
+                        
                             //txtSchcode.Text = MbxModel.JobId;
                             //txtSchoolName.Text = MbxModel.ShipName;
                             //txtCoverNumber.Text = MbxModel.Specovr;
                             //txtColorPageNumber.Text = "";
                             //txtProdNumber.Text = MbxModel.ProdNo;
-                              txtDateTime.Text = DateTime.Now.ToString();
+                            txtDateTime.Text = DateTime.Now.ToString();
                             if (this.ApplicationUser.UserName.ToUpper() == "SHIPPING")
                             {
                                 if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text))
@@ -135,7 +157,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-
+                MbcMessageBox.Error("An error has occured:" + ex.Message);
             }
         }
         private void ClearScan()
@@ -144,8 +166,9 @@ namespace Mbc5.Forms.MixBook
                 txtDateTime.Text = "";
                 txtTrackingNo.Text = "";
                 txtWeight.Text = "";
+            chkRemake.Checked = false;
 
-            MbxModel = null;
+                MbxModel = null;
             txtBarCode.Focus();
             
         }
@@ -231,12 +254,14 @@ namespace Mbc5.Forms.MixBook
                     case "BINDING":
                         //war is datetime
                         //wir is initials
+
+
                         if (string.IsNullOrEmpty(txtLocation.Text)&& MbxModel.Backing=="HC")
                         {
                             MbcMessageBox.Hand("Please enter a location.", "Enter Location");
                             return;
                         }
-                        
+                       
                         vDeptCode = "39";
                         vWIR = "BIN";
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -271,7 +296,10 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        PrintPackingList(MbxModel.ClientOrderId);
+                      
+                        PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                       
+                        
                         if (MbxModel.Backing == "HC") {
                             //Mark says orders will not be split on location so insert into one location
                             sqlClient.ClearParameters();
@@ -295,6 +323,26 @@ namespace Mbc5.Forms.MixBook
                                 lblScanQty.Text = QuantityScanned.ToString();
                             }
                         }
+                        //if (MbxModel.Quantity == 1)//not using right now
+                        //{
+                            PrintPackingList(MbxModel.ClientOrderId);
+                        //}else if (MbxModel.Quantity>1)
+                        //{
+                        //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
+                        //    if (record == null)
+                        //    {
+                        //        return;
+                        //    }
+                        //    record.Scanned += 1;
+                        //    if (record.Scanned==1)
+                        //    {
+                        //        PrintPackingList(MbxModel.ClientOrderId);
+                        //    }
+                        //    if (record.Scanned == record.Copies)
+                        //    {
+                        //        PrintedPackageList.Remove(record);
+                        //    }
+                        //}
                         ClearScan();
                         
                         break;
@@ -343,32 +391,42 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         vDeptCode = "50";
                         vWIR = "QY";
-                        if (!string.IsNullOrEmpty(MbxModel.CoverPreviewUrl) & !string.IsNullOrEmpty(MbxModel.BookPreviewUrl))
+                        string printeryPath =ConfigurationManager.AppSettings["PrintergyPath"].ToString();
+                        try
                         {
-                            Process.Start(MbxModel.CoverPreviewUrl);
-                            Process.Start(MbxModel.BookPreviewUrl);
-                            var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-                            if (dialogResult != DialogResult.Yes)
+                            if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
                             {
-
-                                MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
-                                return;
-                            }else if (dialogResult == DialogResult.Yes)
-                            {
-                                var processes = Process.GetProcessesByName("chrome");
-                                foreach (var process in processes)
+                               
+                                var ac = printeryPath + "\\" + MbxModel.PrintergyFile;
+                                Process.Start(printeryPath + "\\" + MbxModel.PrintergyFile);
+                                //Process.Start(MbxModel.BookPreviewUrl);
+                                var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                                if (dialogResult != DialogResult.Yes)
                                 {
-                                    process.Kill();
-                                    
+
+                                    MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
+                                    return;
+                                }
+                                else if (dialogResult == DialogResult.Yes)
+                                {
+                                    var processes = Process.GetProcessesByName("chrome");
+                                    foreach (var process in processes)
+                                    {
+                                        process.Kill();
+
+                                    }
                                 }
                             }
-                        }
-                        else
+                            else
+                            {
+                                MbcMessageBox.Hand("Preview file is missing. Contact a supervisor.", "Preview file is Missing");
+                                return;
+                            }
+                        }catch(Exception ex)
                         {
-                            MbcMessageBox.Hand("Preview URL's are missing. Contact a supervisor.", "Preview URL Missing");
+                            MbcMessageBox.Error("An error has occurred:" + ex.Message);
                             return;
                         }
-
 
                         string location = "";
                         var frmQH = new frmquailtyHold();
@@ -414,6 +472,44 @@ namespace Mbc5.Forms.MixBook
                                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Select MO.Invno,WD.MxbLocation From MixbookOrder MO
+                                                 Left Join WipDetail WD ON MO.Invno=WD.Invno AND WD.DescripId=50
+                                                where  MO.ClientOrderId=@ClientOrderId");
+                        sqlClient.AddParameter("@ClientOrderId", MbxModel.ClientOrderId);
+                        var orderCheck=sqlClient.SelectMany<OrderChk>();
+                        if (orderCheck.IsError)
+                        {
+                            MbcMessageBox.Error("Failed to check if order complete,please check manually.");
+                        }
+                        var data =(List<OrderChk>) orderCheck.Data;
+                       
+                        if(data!=null && data.Count > 1)
+                        {
+                            bool orderDone = true;
+                            string strLoc = "";
+                            foreach (var row in data)
+                            {
+                                
+                                if (row.MxbLocation != null)
+                                {
+                                    strLoc += row.MxbLocation + " | ";
+                                    
+                                }
+                                else
+                                {
+                                    orderDone = false;
+                                    break;
+                                }
+                            }
+                            if (orderDone)
+                            {
+                                lblBkLocation.Text = strLoc;
+                                MbcMessageBox.Information("Order is complete, all items have been scanned. "+strLoc);
+                                
+                            }
+                        }
+
                          
                         break;
                     case "SHIPPING":
@@ -755,6 +851,11 @@ namespace Mbc5.Forms.MixBook
         }
         private void ScanRamake()
         {
+            if (string.IsNullOrEmpty(txtReasonCode.Text))
+            {
+                MbcMessageBox.Stop("Scan a reason code","Reason Code");
+                return;
+            }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
             if (trkType == "SC"|| ApplicationUser.UserName.ToUpper()=="QUALITY")
@@ -842,6 +943,8 @@ namespace Mbc5.Forms.MixBook
             txtQtyToScan.Text = "40"; //default
             if (ApplicationUser.UserName == "onboard"|| ApplicationUser.UserName == "onboard2"|| ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
             {
+                lblBkLoc.Visible = true;
+                lblBkLocation.Visible = true;
                 pnlQty.Visible = true;
             }else if (ApplicationUser.UserName == "shipping")
             {
@@ -968,9 +1071,11 @@ namespace Mbc5.Forms.MixBook
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MBX'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod
-            FROM MixbookOrder MO Inner Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias  Where ClientOrderId=@ClientOrderId");
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS CoverLocation
+            FROM MixbookOrder MO
+               Inner Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
             var result=sqlClient.SelectMany<MixbookPackingSlip>();
             if (result.IsError|| result.Data==null)
@@ -983,6 +1088,48 @@ namespace Mbc5.Forms.MixBook
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
             reportViewer1.RefreshReport();
         }
+        private void PrintDataMatrix(string vbarcode,string vlocation)
+        {
+            try
+            {
+                TcpClient client = new TcpClient("10.37.16.168", 10200);
+
+                //byte[] escapeb = new byte[] { 0x1B, 0x43, 0x0D };
+                //string escape = System.Text.Encoding.ASCII.GetString(escapeb);
+                byte[] stxb = new byte[] { 0x02 };
+                string stx = System.Text.Encoding.ASCII.GetString(stxb);
+                byte[] crb = new byte[] { 0x0D };
+                string cr = System.Text.Encoding.ASCII.GetString(crb);
+                byte[] etxb = new byte[] { 0x03 };
+                string etx = System.Text.Encoding.ASCII.GetString(etxb);
+                byte[] templateb = Encoding.ASCII.GetBytes("TZmxb.00I;10");
+                string template = System.Text.Encoding.ASCII.GetString(templateb);
+                byte[] soh1b = new byte[] { 0x31, 0x01 };
+                string soh1 = System.Text.Encoding.ASCII.GetString(soh1b);
+                byte[] soh2b = new byte[] { 0x33, 0x01 };
+                string soh2 = System.Text.Encoding.ASCII.GetString(soh2b);
+                string location = vlocation;
+                string barcode = vbarcode;
+                string datas = stx + template + cr + soh1 + barcode + cr + soh2 + location + cr + etx;
+                byte[] data = Encoding.ASCII.GetBytes(datas);
+               NetworkStream stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
+                byte[] bytes = new byte[client.ReceiveBufferSize];
+
+                // Read can return anything from 0 to numBytesToRead.
+                // This method blocks until at least one byte is read.
+                stream.Read(bytes, 0, (int)client.ReceiveBufferSize);
+
+                // Returns the data received from the host to the console.
+                string returndata = Encoding.UTF8.GetString(bytes);
+                stream.Close();
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
@@ -992,7 +1139,7 @@ namespace Mbc5.Forms.MixBook
             string printer = printerName.PrinterName;
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewer1.LocalReport, printer, true);
+            var result = dp.Export(reportViewer1.LocalReport, printer,false);
 
             if (result.IsError)
             {
@@ -1005,12 +1152,34 @@ namespace Mbc5.Forms.MixBook
 
         private void chkRemake_Click(object sender, EventArgs e)
         {
-            txtBarCode.Focus();
-        }
+            if (chkRemake.Checked)
+            {
+                pnlQty.Visible = false;
+                plnTracking.Visible = false;
+                pnlRemake.Visible = true;
+                txtReasonCode.Focus();
+            }
+            else
+            {
+                pnlRemake.Visible = false;
+                if (ApplicationUser.UserName == "shipping")
+                {
+                    plnTracking.Visible = true;
+                }
+                else if (ApplicationUser.UserName == "onboard" || ApplicationUser.UserName == "onboard2" || ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+                {
 
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
+                    pnlQty.Visible = true;
+                }
 
+            }
         }
+        
+    }
+    public class PackageData
+    {
+        public string Barcode { get; set; }
+        public int Copies { get; set; }
+        public int Scanned { get; set; }
     }
 }

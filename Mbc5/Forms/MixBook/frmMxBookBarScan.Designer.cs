@@ -35,6 +35,9 @@
             this.lbl1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlQty = new System.Windows.Forms.Panel();
+            this.pnlRemake = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtQtyToScan = new System.Windows.Forms.TextBox();
@@ -54,7 +57,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtImpersonate = new System.Windows.Forms.TextBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.lblBkLoc = new System.Windows.Forms.Label();
+            this.lblBkLocation = new System.Windows.Forms.Label();
             this.pnlQty.SuspendLayout();
+            this.pnlRemake.SuspendLayout();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -67,48 +73,51 @@
             // txtBarCode
             // 
             this.txtBarCode.AsciiOnly = true;
+            this.txtBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarCode.Location = new System.Drawing.Point(169, 40);
-            this.txtBarCode.Mask = ">LLL0000000CLL";
+            this.txtBarCode.Mask = ">LLL0000000CCLL";
             this.txtBarCode.Name = "txtBarCode";
-            this.txtBarCode.Size = new System.Drawing.Size(143, 20);
+            this.txtBarCode.Size = new System.Drawing.Size(143, 22);
             this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             // 
             // txtDateTime
             // 
+            this.txtDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateTime.Location = new System.Drawing.Point(401, 40);
             this.txtDateTime.Name = "txtDateTime";
             this.txtDateTime.ReadOnly = true;
-            this.txtDateTime.Size = new System.Drawing.Size(143, 20);
+            this.txtDateTime.Size = new System.Drawing.Size(143, 22);
             this.txtDateTime.TabIndex = 15;
             this.txtDateTime.TabStop = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(318, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.Size = new System.Drawing.Size(83, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Date && Time";
             // 
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.Location = new System.Drawing.Point(39, 40);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(124, 13);
+            this.lbl1.Size = new System.Drawing.Size(132, 16);
             this.lbl1.TabIndex = 11;
             this.lbl1.Text = "Scan Book Bar code";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(97, 138);
+            this.btnSave.Location = new System.Drawing.Point(84, 163);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 0;
+            this.btnSave.TabStop = false;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -126,6 +135,33 @@
             this.pnlQty.Size = new System.Drawing.Size(299, 57);
             this.pnlQty.TabIndex = 2;
             this.pnlQty.Visible = false;
+            // 
+            // pnlRemake
+            // 
+            this.pnlRemake.Controls.Add(this.label7);
+            this.pnlRemake.Controls.Add(this.txtReasonCode);
+            this.pnlRemake.Location = new System.Drawing.Point(355, 65);
+            this.pnlRemake.Name = "pnlRemake";
+            this.pnlRemake.Size = new System.Drawing.Size(200, 29);
+            this.pnlRemake.TabIndex = 10018;
+            this.pnlRemake.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.TabIndex = 10018;
+            this.label7.Text = "Reason Code";
+            // 
+            // txtReasonCode
+            // 
+            this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
+            this.txtReasonCode.Name = "txtReasonCode";
+            this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
+            this.txtReasonCode.TabIndex = 10017;
             // 
             // txtLocation
             // 
@@ -238,27 +274,31 @@
             // lblLastScan
             // 
             this.lblLastScan.AutoSize = true;
-            this.lblLastScan.Location = new System.Drawing.Point(100, 7);
+            this.lblLastScan.BackColor = System.Drawing.Color.Gold;
+            this.lblLastScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastScan.Location = new System.Drawing.Point(112, 7);
             this.lblLastScan.Name = "lblLastScan";
-            this.lblLastScan.Size = new System.Drawing.Size(35, 13);
+            this.lblLastScan.Size = new System.Drawing.Size(46, 17);
             this.lblLastScan.TabIndex = 10007;
             this.lblLastScan.Text = "label1";
             // 
             // lbllastscanlbl
             // 
             this.lbllastscanlbl.AutoSize = true;
+            this.lbllastscanlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbllastscanlbl.Location = new System.Drawing.Point(39, 7);
             this.lbllastscanlbl.Name = "lbllastscanlbl";
-            this.lbllastscanlbl.Size = new System.Drawing.Size(55, 13);
+            this.lbllastscanlbl.Size = new System.Drawing.Size(71, 17);
             this.lbllastscanlbl.TabIndex = 10008;
             this.lbllastscanlbl.Text = "Last Scan";
             // 
             // chkRemake
             // 
             this.chkRemake.AutoSize = true;
+            this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRemake.Location = new System.Drawing.Point(550, 39);
             this.chkRemake.Name = "chkRemake";
-            this.chkRemake.Size = new System.Drawing.Size(66, 17);
+            this.chkRemake.Size = new System.Drawing.Size(79, 20);
             this.chkRemake.TabIndex = 1;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
@@ -303,12 +343,35 @@
             this.reportViewer1.TabIndex = 10014;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            // 
+            // lblBkLoc
+            // 
+            this.lblBkLoc.AutoSize = true;
+            this.lblBkLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBkLoc.Location = new System.Drawing.Point(313, 3);
+            this.lblBkLoc.Name = "lblBkLoc";
+            this.lblBkLoc.Size = new System.Drawing.Size(165, 17);
+            this.lblBkLoc.TabIndex = 10016;
+            this.lblBkLoc.Text = "Last Scan Book Location";
+            this.lblBkLoc.Visible = false;
+            // 
+            // lblBkLocation
+            // 
+            this.lblBkLocation.AutoSize = true;
+            this.lblBkLocation.BackColor = System.Drawing.Color.Gold;
+            this.lblBkLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBkLocation.Location = new System.Drawing.Point(485, 3);
+            this.lblBkLocation.Name = "lblBkLocation";
+            this.lblBkLocation.Size = new System.Drawing.Size(0, 17);
+            this.lblBkLocation.TabIndex = 10015;
             // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(664, 174);
+            this.ClientSize = new System.Drawing.Size(664, 202);
+            this.Controls.Add(this.pnlRemake);
+            this.Controls.Add(this.lblBkLoc);
+            this.Controls.Add(this.lblBkLocation);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkRemake);
@@ -341,8 +404,13 @@
             this.Controls.SetChildIndex(this.chkRemake, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
+            this.Controls.SetChildIndex(this.lblBkLocation, 0);
+            this.Controls.SetChildIndex(this.lblBkLoc, 0);
+            this.Controls.SetChildIndex(this.pnlRemake, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
+            this.pnlRemake.ResumeLayout(false);
+            this.pnlRemake.PerformLayout();
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -380,5 +448,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtImpersonate;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Label lblBkLoc;
+        private System.Windows.Forms.Label lblBkLocation;
+        private System.Windows.Forms.Panel pnlRemake;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtReasonCode;
     }
 }

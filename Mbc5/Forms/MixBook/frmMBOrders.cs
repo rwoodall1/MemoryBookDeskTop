@@ -11,6 +11,8 @@ using Mbc5.Classes;
 using BaseClass;
 using System.Diagnostics;
 using Microsoft.Reporting.WinForms;
+using BindingModels;
+using System.Drawing.Printing;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
@@ -297,6 +299,57 @@ namespace Mbc5.Forms.MixBook
             {
                 e.Value = "Book.pdf";
             }
+        }
+
+        private void btnMixbookPkgList_Click(object sender, EventArgs e)
+        {
+            int vClientOrderId = 0;
+            int.TryParse(orderIdLabel1.Text, out vClientOrderId);
+            if (vClientOrderId == 0)
+            {
+                MbcMessageBox.Error("Client Id is not in proper format");
+                return;
+            }
+            PrintPackingList(vClientOrderId);
+        }
+        private void PrintPackingList(int vClientOrderId)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MBX'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS CoverLocation
+            FROM MixbookOrder MO
+               Inner Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
+            var result = sqlClient.SelectMany<MixbookPackingSlip>();
+            if (result.IsError || result.Data == null)
+            {
+                MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+                return;
+            }
+            var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            reportViewer2.LocalReport.DataSources.Clear();
+            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            reportViewer2.RefreshReport();
+        }
+
+        private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            PrinterSettings printerName = new PrinterSettings();
+            string printer = printerName.PrinterName;
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewer2.LocalReport, printer, true);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            Cursor.Current = Cursors.Default;
         }
     }
 }

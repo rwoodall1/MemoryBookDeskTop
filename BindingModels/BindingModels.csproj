@@ -99,6 +99,7 @@
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="MiscBindingModels.cs" />
+    <Compile Include="MixbookModels.cs" />
     <Compile Include="NotificationModels.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="ProdutnBindingModels.cs" />

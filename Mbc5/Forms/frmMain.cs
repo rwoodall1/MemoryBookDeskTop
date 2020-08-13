@@ -21,6 +21,9 @@ using System.Data.SqlClient;
 using Exceptionless;
 using Exceptionless.Models;
 using BaseClass;
+using BindingModels;
+using Microsoft.Reporting.WinForms;
+
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -393,6 +396,7 @@ namespace Mbc5.Forms
 
 
 
+            this.reportViewer1.RefreshReport();
         }
         private void SetMenu()
         {
@@ -449,6 +453,7 @@ namespace Mbc5.Forms
             else
             {
                 tsMain.Visible = true;
+                mixbookReportsToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
                 this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
@@ -1685,6 +1690,59 @@ namespace Mbc5.Forms
             {
 
             }
+        }
+
+        private void wipReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWipReport frmWipReport = new frmWipReport(this.ApplicationUser);
+            frmWipReport.MdiParent = this;
+            frmWipReport.Show();
+            //var sqlClient = new SQLCustomClient();
+            //sqlClient.CommandText(@"Select TOP 1400 MO.Invno
+	           //                     ,MO.Copies,Mo.Pages,Mo.[Size]
+	           //                     ,Mo.OrderReceivedDate
+	           //                     ,MO.ClientOrderId
+	           //                     ,MO.RequestedShipDate
+	           //                     ,MO.Description
+	           //                     ,P.Kitrecvd
+	           //                      ,CD37.War AS OnBoards
+	           //                     ,CD37.MxbLocation AS Location37
+	           //                     ,CD43.War AS Trimming
+	           //                     ,CD43.MxbLocation AS Location43
+	           //                     ,WD29.War AS WipPress
+	           //                     ,WD39.War AS Binding
+	           //                     ,WD39.MxbLocation AS Location39
+	           //                     ,WD49.War AS CaseIn
+	           //                     ,WD50.War AS Quality
+	           //                     ,WD50.MxbLocation AS Location50
+	           //                     from MixBookOrder MO 
+	           //                     Left Join Produtn P On MO.Invno=P.Invno
+	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
+            //                        Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=43  ) CD43 On MO.Invno=CD43.Invno
+	           //                     Left Join (Select Invno,DescripId,War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail  Where DescripId=39  ) WD39 On MO.Invno=WD39.Invno
+	           //                     Left Join (Select Invno,DescripId,War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+	           //                     Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd");
+
+            //var orderResult = sqlClient.SelectMany<WipReportModel>();
+            //if (orderResult.IsError)
+            //{
+            //    MbcMessageBox.Error("Failed to retrieve records:" + orderResult.Errors[0].DeveloperMessage);
+            //    return;
+            //}
+            //var vOrders = (List<WipReportModel>)orderResult.Data;
+            //reportViewer1.LocalReport.DataSources.Clear();
+            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", vOrders));
+
+            //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookWipReport.rdlc";
+            //this.reportViewer1.RefreshReport();
+
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { }
         }
         //nothing below here
     }

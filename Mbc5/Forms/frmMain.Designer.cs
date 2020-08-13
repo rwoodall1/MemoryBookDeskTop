@@ -73,6 +73,8 @@
             this.paymentReceiptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memeroyBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixbookReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,6 +113,7 @@
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -387,7 +390,8 @@
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stoneFieldToolStripMenuItem,
             this.labelsToolStripMenuItem,
-            this.customeReportsToolStripMenuItem});
+            this.customeReportsToolStripMenuItem,
+            this.mixbookReportsToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(97, 20);
             this.toolStripMenuItem2.Text = "&Reports/Labels";
@@ -395,7 +399,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -409,7 +413,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -467,7 +471,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -491,6 +495,21 @@
             this.meridianInqCountToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.meridianInqCountToolStripMenuItem.Text = "Meridian Inq Count";
             this.meridianInqCountToolStripMenuItem.Click += new System.EventHandler(this.meridianInqCountToolStripMenuItem_Click);
+            // 
+            // mixbookReportsToolStripMenuItem
+            // 
+            this.mixbookReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wipReportToolStripMenuItem});
+            this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
+            // 
+            // wipReportToolStripMenuItem
+            // 
+            this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.wipReportToolStripMenuItem.Text = "Wip Report";
+            this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -847,10 +866,22 @@
             this.tsMxbClientOrderId.Visible = false;
             this.tsMxbClientOrderId.Click += new System.EventHandler(this.tsMxbClientOrderId_Click);
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 65;
+            this.reportViewer1.Location = new System.Drawing.Point(1102, 589);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(67, 64);
+            this.reportViewer1.TabIndex = 3;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1181, 674);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.mnuMain);
             this.Name = "frmMain";
@@ -859,6 +890,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Controls.SetChildIndex(this.mnuMain, 0);
             this.Controls.SetChildIndex(this.tsMain, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
@@ -952,5 +984,8 @@
         private System.Windows.Forms.ToolStripMenuItem mixbookBarscanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsMxbClientOrderId;
+        private System.Windows.Forms.ToolStripMenuItem mixbookReportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipReportToolStripMenuItem;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

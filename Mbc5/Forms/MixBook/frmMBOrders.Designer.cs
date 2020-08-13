@@ -45,10 +45,11 @@
             System.Windows.Forms.Label mixbookOrderStatusLabel;
             System.Windows.Forms.Label trackingNumberLabel;
             System.Windows.Forms.Label weightLabel;
+            System.Windows.Forms.Label notesLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsmixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
@@ -78,6 +79,14 @@
             this.shipMethodComboBox = new System.Windows.Forms.ComboBox();
             this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderDataGridView = new System.Windows.Forms.DataGridView();
+            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.shipNameTextBox = new System.Windows.Forms.TextBox();
@@ -94,14 +103,9 @@
             this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
             this.weightTextBox = new System.Windows.Forms.TextBox();
             this.lblDateShipped = new System.Windows.Forms.Label();
-            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
+            this.btnMixbookPkgList = new System.Windows.Forms.Button();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             shipNameLabel = new System.Windows.Forms.Label();
             shipAddrLabel = new System.Windows.Forms.Label();
             shipAddr2Label = new System.Windows.Forms.Label();
@@ -118,6 +122,7 @@
             mixbookOrderStatusLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
+            notesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).BeginInit();
@@ -292,6 +297,15 @@
             // 
             this.dsmixBookOrders.DataSetName = "MixBookOrders";
             this.dsmixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // notesLabel
+            // 
+            notesLabel.AutoSize = true;
+            notesLabel.Location = new System.Drawing.Point(487, 183);
+            notesLabel.Name = "notesLabel";
+            notesLabel.Size = new System.Drawing.Size(38, 13);
+            notesLabel.TabIndex = 298;
+            notesLabel.Text = "Notes:";
             // 
             // mixBookOrderTableAdapter
             // 
@@ -543,14 +557,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -563,7 +577,7 @@
             this.BookUrl});
             this.mixBookOrderDataGridView.DataSource = this.mixBookOrderBindingSource;
             this.mixBookOrderDataGridView.EnableHeadersVisualStyles = false;
-            this.mixBookOrderDataGridView.Location = new System.Drawing.Point(85, 253);
+            this.mixBookOrderDataGridView.Location = new System.Drawing.Point(85, 272);
             this.mixBookOrderDataGridView.Name = "mixBookOrderDataGridView";
             this.mixBookOrderDataGridView.ReadOnly = true;
             this.mixBookOrderDataGridView.RowHeadersWidth = 20;
@@ -573,6 +587,82 @@
             this.mixBookOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentDoubleClick);
             this.mixBookOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.mixBookOrderDataGridView_CellFormatting);
             this.mixBookOrderDataGridView.Enter += new System.EventHandler(this.mixBookOrderDataGridView_Enter);
+            // 
+            // prodticket
+            // 
+            this.prodticket.HeaderText = "";
+            this.prodticket.Name = "prodticket";
+            this.prodticket.ReadOnly = true;
+            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.prodticket.Text = "Print Ticket";
+            this.prodticket.UseColumnTextForLinkValue = true;
+            this.prodticket.Visible = false;
+            this.prodticket.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // ItemId
+            // 
+            this.ItemId.DataPropertyName = "ItemId";
+            this.ItemId.HeaderText = "Item Id";
+            this.ItemId.Name = "ItemId";
+            this.ItemId.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn5.FillWeight = 88.02047F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Copies";
+            this.dataGridViewTextBoxColumn7.FillWeight = 109.035F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Copies";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Pages";
+            this.dataGridViewTextBoxColumn8.FillWeight = 126.9036F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Pages";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 60;
+            // 
+            // CoverUrl
+            // 
+            this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
+            dataGridViewCellStyle8.Format = "Cover";
+            dataGridViewCellStyle8.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CoverUrl.HeaderText = "Cover Url";
+            this.CoverUrl.Name = "CoverUrl";
+            this.CoverUrl.ReadOnly = true;
+            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CoverUrl.Text = "";
+            // 
+            // BookUrl
+            // 
+            this.BookUrl.DataPropertyName = "BookPreviewUrl";
+            this.BookUrl.HeaderText = "Book Url";
+            this.BookUrl.Name = "BookUrl";
+            this.BookUrl.ReadOnly = true;
+            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BookUrl.Text = "";
             // 
             // statesTableAdapter
             // 
@@ -666,9 +756,9 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 45;
-            reportDataSource1.Name = "DsOrder";
-            reportDataSource1.Value = this.mixBookOrderBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource4.Name = "DsOrder";
+            reportDataSource4.Value = this.mixBookOrderBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 253);
             this.reportViewer1.Name = "reportViewer1";
@@ -721,86 +811,46 @@
             this.lblDateShipped.Size = new System.Drawing.Size(192, 23);
             this.lblDateShipped.TabIndex = 298;
             // 
-            // prodticket
+            // notesTextBox
             // 
-            this.prodticket.HeaderText = "";
-            this.prodticket.Name = "prodticket";
-            this.prodticket.ReadOnly = true;
-            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.prodticket.Text = "Print Ticket";
-            this.prodticket.UseColumnTextForLinkValue = true;
-            this.prodticket.Visible = false;
-            this.prodticket.Width = 75;
+            this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Notes", true));
+            this.notesTextBox.Location = new System.Drawing.Point(531, 180);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.Size = new System.Drawing.Size(334, 49);
+            this.notesTextBox.TabIndex = 299;
             // 
-            // dataGridViewTextBoxColumn1
+            // btnMixbookPkgList
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.btnMixbookPkgList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMixbookPkgList.Location = new System.Drawing.Point(85, 244);
+            this.btnMixbookPkgList.Name = "btnMixbookPkgList";
+            this.btnMixbookPkgList.Size = new System.Drawing.Size(153, 23);
+            this.btnMixbookPkgList.TabIndex = 300;
+            this.btnMixbookPkgList.Text = "Print Mixbook Pkg List";
+            this.btnMixbookPkgList.UseVisualStyleBackColor = true;
+            this.btnMixbookPkgList.Click += new System.EventHandler(this.btnMixbookPkgList_Click);
             // 
-            // ItemId
+            // reportViewer2
             // 
-            this.ItemId.DataPropertyName = "ItemId";
-            this.ItemId.HeaderText = "Item Id";
-            this.ItemId.Name = "ItemId";
-            this.ItemId.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Description";
-            this.dataGridViewTextBoxColumn5.FillWeight = 88.02047F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Copies";
-            this.dataGridViewTextBoxColumn7.FillWeight = 109.035F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Copies";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Pages";
-            this.dataGridViewTextBoxColumn8.FillWeight = 126.9036F;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Pages";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 60;
-            // 
-            // CoverUrl
-            // 
-            this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle2.Format = "Cover";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CoverUrl.HeaderText = "Cover Url";
-            this.CoverUrl.Name = "CoverUrl";
-            this.CoverUrl.ReadOnly = true;
-            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CoverUrl.Text = "";
-            // 
-            // BookUrl
-            // 
-            this.BookUrl.DataPropertyName = "BookPreviewUrl";
-            this.BookUrl.HeaderText = "Book Url";
-            this.BookUrl.Name = "BookUrl";
-            this.BookUrl.ReadOnly = true;
-            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BookUrl.Text = "";
+            this.reportViewer2.DocumentMapWidth = 35;
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(9, 373);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(67, 46);
+            this.reportViewer2.TabIndex = 10015;
+            this.reportViewer2.Visible = false;
+            this.reportViewer2.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer2_RenderingComplete);
             // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1153, 591);
+            this.Controls.Add(this.reportViewer2);
+            this.Controls.Add(this.btnMixbookPkgList);
+            this.Controls.Add(notesLabel);
+            this.Controls.Add(this.notesTextBox);
             this.Controls.Add(this.lblDateShipped);
             this.Controls.Add(weightLabel);
             this.Controls.Add(this.weightTextBox);
@@ -878,6 +928,10 @@
             this.Controls.SetChildIndex(this.weightTextBox, 0);
             this.Controls.SetChildIndex(weightLabel, 0);
             this.Controls.SetChildIndex(this.lblDateShipped, 0);
+            this.Controls.SetChildIndex(this.notesTextBox, 0);
+            this.Controls.SetChildIndex(notesLabel, 0);
+            this.Controls.SetChildIndex(this.btnMixbookPkgList, 0);
+            this.Controls.SetChildIndex(this.reportViewer2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
@@ -948,5 +1002,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewLinkColumn CoverUrl;
         private System.Windows.Forms.DataGridViewLinkColumn BookUrl;
+        private System.Windows.Forms.TextBox notesTextBox;
+        private System.Windows.Forms.Button btnMixbookPkgList;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
     }
 }
