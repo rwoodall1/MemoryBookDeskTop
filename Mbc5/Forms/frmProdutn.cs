@@ -73,6 +73,7 @@ namespace Mbc5.Forms
         private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
+            this.remakeReasonsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -102,8 +103,10 @@ namespace Mbc5.Forms
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
+            // TODO: This line of code loads data into the 'lookUp.RemakeReasons' table. You can move, or remove it, as needed.
+            this.remakeReasonsTableAdapter.Fill(this.lookUp.RemakeReasons);
             // TODO: This line of code loads data into the 'lookUp.lkpMascot' table. You can move, or remove it, as needed.
-           
+
 
             if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
             {
@@ -114,6 +117,7 @@ namespace Mbc5.Forms
  			this.SetConnectionString();
 			try
 			{
+                remakeReasonsTableAdapter.Fill(lookUp.RemakeReasons);
                 this.lkpMascotTableAdapter.Fill(this.lookUp.lkpMascot);
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
                 this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
