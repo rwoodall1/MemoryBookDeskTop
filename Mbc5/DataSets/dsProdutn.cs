@@ -1,13 +1,11 @@
 ﻿namespace Mbc5.DataSets {
-
-
-    partial class dsProdutn {
-        }
     }
 
-namespace Mbc5.DataSets.dsProdutnTableAdapters {
-    
-    
-    public partial class produtnTableAdapter {
+namespace Mbc5.DataSets
+{
+
+
+    public partial class dsProdutn
+    {
     }
 }

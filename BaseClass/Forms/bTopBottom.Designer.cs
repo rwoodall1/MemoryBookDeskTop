@@ -58,6 +58,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "bTopBottom";
             this.Text = "TopBottom";
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.TopPanel, 0);
+            this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.ResumeLayout(false);
 
         }

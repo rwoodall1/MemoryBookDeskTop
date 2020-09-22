@@ -166,7 +166,7 @@ namespace BaseClass
                         }
 
                     }
-                    catch
+                    catch(Exception ex)
                     {
                     }
                 }
@@ -217,21 +217,30 @@ namespace BaseClass
         //'Field 0 = Form Name
         //'Field 1 = Number of Instances
         //'Field 2 = Next available instance
-        public FormInstance GetFormInstance(string strFormName)
+        public FormAllowed AllowedInstance(string strFormName,int allowedInstances)
         {
+            var retVal = new FormAllowed() { Allowed = true };
+     
             foreach (FormInstance form in OpenForms)
             {
                 if (form.FormName == strFormName)
                 {
                     form.Instances += 1;
+                    retVal.Number = form.Instances;
                     form.NextInstance += 1;
-                    return form;
+                    if (form.Instances > allowedInstances)
+                    {
+                        retVal.Allowed = false;
+                        return retVal;
+                    }
+                
                 }
             }
 
             //form not found so add to list and return new form
             var newform = Add(strFormName);
-            return newform;
+    
+            return retVal;
 
         }
 
@@ -279,6 +288,11 @@ namespace BaseClass
 
 
         //-----------------------
+    }
+    public class FormAllowed
+    {
+        public bool Allowed { get; set; }
+        public int Number { get; set; }
     }
 
 }

@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,9 +11,27 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mbc5</RootNamespace>
     <AssemblyName>Mbc5</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,12 +42,13 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>M:\UpdateExe\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,18 +56,90 @@
   <PropertyGroup>
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Avalara.AvaTax.19.7.0.1\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.12.1.3\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomControls">
+      <HintPath>.\CustomControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.2.2446.31718, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless.Windows, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.Windows.4.3.2027\lib\net45\Exceptionless.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="GenCode128, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\GenCode128.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Outlook.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,8 +151,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\dsReceiving.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\MixBookOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmquailtyHold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
+      <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DirectPrint.cs" />
+    <Compile Include="Classes\ExceptionHandler.cs" />
+    <Compile Include="Classes\InputBox.cs" />
+    <Compile Include="Classes\MessageBoxEx.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
-    <Compile Include="Classes\Price.cs" />
+    <Compile Include="Classes\PdfAttachementGenerator.cs" />
+    <Compile Include="Classes\TaxService.cs" />
+    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="DataSets\dsBids.cs">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsBids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsChangePassword.cs">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
@@ -67,6 +196,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsCust.cs">
+      <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsCust.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -78,10 +210,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDateCont.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsEndSheet.cs">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsEndSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsExtra.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMBids.cs">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMBids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMcust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMcust.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMSales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMSales.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsProdutn.cs">
       <DependentUpon>dsProdutn.xsd</DependentUpon>
@@ -90,6 +258,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsRcard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRcard.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,15 +277,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSales.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsUser.cs">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsUser.Designer.cs">
       <DependentUpon>dsUser.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DataSets\LookUp.Designer.cs">
+    <Compile Include="DataSets\dsInvoice.cs">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsInvoice1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LookUp.xsd</DependentUpon>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsXSupplies.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\frmAddressList.cs">
       <SubType>Form</SubType>
@@ -120,17 +304,173 @@
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmEditBannerWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditBannerWip.Designer.cs">
+      <DependentUpon>frmEditBannerWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditCoverWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditCoverWip.Designer.cs">
+      <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditEndSheetWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditEndSheetWip.Designer.cs">
+      <DependentUpon>frmEditEndSheetWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.Designer.cs">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPrtBkWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPrtBkWip.Designer.cs">
+      <DependentUpon>frmEditPrtBkWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditReorderWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditReorderWip.Designer.cs">
+      <DependentUpon>frmEditReorderWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditSupplementtWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditSupplementtWip.Designer.cs">
+      <DependentUpon>frmEditSupplementtWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditWip.Designer.cs">
+      <DependentUpon>frmEditWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmProdutnSelctCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmProdutnSelctCust.Designer.cs">
+      <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmScanLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmScanLabels.Designer.cs">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmSelctCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmSelctCust.Designer.cs">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmTeleLogModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmTeleLogModify.Designer.cs">
+      <DependentUpon>frmTeleLogModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MeridianNewProdRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\MeridianNewProdRecord.Designer.cs">
+      <DependentUpon>MeridianNewProdRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBarScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBarScan.Designer.cs">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.designer.cs">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInqCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInqCount.Designer.cs">
+      <DependentUpon>frmInqCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPayments.Designer.cs">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmProdutn.Designer.cs">
       <DependentUpon>frmProdutn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRecSurvey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecSurvey.Designer.cs">
+      <DependentUpon>frmRecSurvey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmCancellationStatements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmCancellationStatements.Designer.cs">
+      <DependentUpon>frmCancellationStatements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmInvoicInq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmInvoicInq.Designer.cs">
+      <DependentUpon>frmInvoicInq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmReceivingCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmReceivingCard.Designer.cs">
+      <DependentUpon>frmReceivingCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCaseMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmLoadTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmLoadTest.Designer.cs">
+      <DependentUpon>frmLoadTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMInvoicInq.Designer.cs">
+      <DependentUpon>frmMInvoicInq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMReceivingCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMReceivingCard.Designer.cs">
+      <DependentUpon>frmMReceivingCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Meridian\frmMSales.cs">
       <SubType>Form</SubType>
@@ -198,18 +538,215 @@
     <Compile Include="Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\LookUp.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\LookUp.Designer.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Forms\frmWipDescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWipDescriptions.Designer.cs">
+      <DependentUpon>frmWipDescriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookBarScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
+      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.Designer.cs">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.Designer.cs">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.Designer.cs">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.Designer.cs">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpWipDescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpWipDescriptions.Designer.cs">
+      <DependentUpon>LkpWipDescriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
+      <DependentUpon>LkpDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <None Include="Content\jobnoSearch.jpg" />
+    <None Include="Content\iconfinder_order_59488.png" />
     <Content Include="Content\MAIL.png" />
+    <None Include="Content\school.png" />
+    <None Include="Content\Name.png" />
+    <Content Include="Content\SystemIcons\refresh.png" />
+    <Content Include="Content\SystemIcons\tsAdd.Image.png" />
+    <Content Include="Content\SystemIcons\tsCancel.Image.png" />
+    <Content Include="Content\SystemIcons\tsCopy.Image.png" />
+    <Content Include="Content\SystemIcons\tsCut.Image.png" />
+    <Content Include="Content\SystemIcons\tsDelete.Image.png" />
+    <Content Include="Content\SystemIcons\tsEmail.Image.png" />
+    <Content Include="Content\SystemIcons\tsPaste.Image.png" />
+    <Content Include="Content\SystemIcons\tsPrint.Image.png" />
+    <Content Include="Content\SystemIcons\tsSave.Image.png" />
+    <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
+    <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
+    <None Include="Resources\Whistling.wav" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
+      <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditBannerWip.resx">
+      <DependentUpon>frmEditBannerWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditCoverWip.resx">
+      <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditEndSheetWip.resx">
+      <DependentUpon>frmEditEndSheetWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditPartBkWip.resx">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditPrtBkWip.resx">
+      <DependentUpon>frmEditPrtBkWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditReorderWip.resx">
+      <DependentUpon>frmEditReorderWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditSupplementtWip.resx">
+      <DependentUpon>frmEditSupplementtWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditWip.resx">
+      <DependentUpon>frmEditWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmProdutnSelctCust.resx">
+      <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmScanLabels.resx">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmTeleLogModify.resx">
+      <DependentUpon>frmTeleLogModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\MeridianNewProdRecord.resx">
+      <DependentUpon>MeridianNewProdRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBarScan.resx">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEndSheet.resx">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInqCount.resx">
+      <DependentUpon>frmInqCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPayments.resx">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecSurvey.resx">
+      <DependentUpon>frmRecSurvey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmCancellationStatements.resx">
+      <DependentUpon>frmCancellationStatements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmInvoicInq.resx">
+      <DependentUpon>frmInvoicInq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmReceivingCard.resx">
+      <DependentUpon>frmReceivingCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
+      <DependentUpon>frmLoadTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
+      <DependentUpon>frmMInvoicInq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMReceivingCard.resx">
+      <DependentUpon>frmMReceivingCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
       <DependentUpon>frmMSales.cs</DependentUpon>
@@ -234,6 +771,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmMbcCust.resx">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
@@ -244,12 +782,199 @@
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWipDescriptions.resx">
+      <DependentUpon>frmWipDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
+      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpBackGround.resx">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpTypeStyle.resx">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadSource.resx">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpWipDescriptions.resx">
+      <DependentUpon>LkpWipDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpDiscount.resx">
+      <DependentUpon>LkpDiscount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321BinderySCLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321CoverLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321MixbookBookBlock.rdlc" />
+    <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
+    <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
+    <EmbeddedResource Include="Reports\BannerTicket.rdlc" />
+    <EmbeddedResource Include="Reports\BarScanMemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
+    <EmbeddedResource Include="Reports\BinderySC.rdlc" />
+    <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
+    <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
+    <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MeridianCoverTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
+    <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
+    <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
+    <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
+    <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
+    <EmbeddedResource Include="Reports\PartialBookTicket.rdlc" />
+    <EmbeddedResource Include="Reports\PhotoOnCDTicket.rdlc" />
+    <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
+    <EmbeddedResource Include="Reports\Rcard1.rdlc" />
+    <EmbeddedResource Include="Reports\BidQuote.rdlc" />
+    <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
+    <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
+    <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
+    <EmbeddedResource Include="Reports\ReOrderTicket.rdlc" />
+    <EmbeddedResource Include="Reports\SpecialCoverTicket.rdlc" />
+    <EmbeddedResource Include="Reports\SpecialCoverTicket3rd.rdlc" />
+    <EmbeddedResource Include="Reports\SupplementTicket.rdlc" />
+    <EmbeddedResource Include="Reports\test.rdlc" />
+    <EmbeddedResource Include="Reports\XSuppy.rdlc" />
+    <None Include="DataSets\dsCust.xsc">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCust.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\dsCust.xss">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsc">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExtra.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsExtra.xss">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMBids.xsc">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMBids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMBids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMBids.xss">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMcust.xsc">
+      <DependentUpon>dsMcust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMcust.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMcust.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMcust.xss">
+      <DependentUpon>dsMcust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMInvoice.xsc">
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMInvoice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMInvoice.xss">
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMSales.xsc">
+      <DependentUpon>dsMSales.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMSales.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMSales.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMSales.xss">
+      <DependentUpon>dsMSales.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRcard.xsc">
+      <DependentUpon>dsRcard.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRcard.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRcard.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsRcard.xss">
+      <DependentUpon>dsRcard.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsReceiving.xsc">
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsReceiving.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReceiving.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsReceiving.xss">
+      <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsXSupplies.xsc">
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsXSupplies.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsXSupplies.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsXSupplies.xss">
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\dsBids.xsc">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsBids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsBids.xss">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsChangePassword.xsc">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>
@@ -261,17 +986,6 @@
     <None Include="DataSets\dsChangePassword.xss">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsCust.xsc">
-      <DependentUpon>dsCust.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsCust.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSets\dsCust.xss">
-      <DependentUpon>dsCust.xsd</DependentUpon>
-    </None>
     <None Include="DataSets\dsDateCont.xsc">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
     </None>
@@ -282,6 +996,17 @@
     </None>
     <None Include="DataSets\dsDateCont.xss">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsc">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEndSheet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsEndSheet.xss">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsMktInfo.xsc">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
@@ -341,56 +1066,142 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DataSets\dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInvoice1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\LookUp.xsc">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
     <None Include="DataSets\LookUp.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>LookUp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
+    <None Include="DataSets\MixBookOrders.xsc">
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\MixBookOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MixBookOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\MixBookOrders.xss">
+      <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </None>
+    <None Include="Messagebox.docx" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.BinderyLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.FullMerInvoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InqCountModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InvoiceDetailBindingModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianCoverTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MerInvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MerMultiInvoiceModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MInqCountModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
+    <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.SpecialCoverTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseClass\BaseClass.csproj">
       <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
       <Name>BaseClass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BindingModels\BindingModels.csproj">
+      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
+      <Name>BindingModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RESTModule\RESTModule.csproj">
+      <Project>{5f71fea4-8be9-4248-b6a4-d950fdeecc6e}</Project>
+      <Name>RESTModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\MemBook-Jostens Logo.jpg" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

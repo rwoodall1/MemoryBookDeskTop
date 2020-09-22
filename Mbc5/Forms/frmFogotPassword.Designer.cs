@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.btnSendPassword = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -45,18 +45,18 @@
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email Address";
             // 
-            // txtEmail
+            // txtUserName
             // 
-            this.txtEmail.Location = new System.Drawing.Point(129, 67);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(232, 20);
-            this.txtEmail.TabIndex = 1;
+            this.txtUserName.Location = new System.Drawing.Point(129, 67);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(232, 20);
+            this.txtUserName.TabIndex = 1;
             // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(48, 19);
+            this.lblInfo.Location = new System.Drawing.Point(50, 9);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(330, 26);
             this.lblInfo.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSendPassword);
             this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -111,7 +111,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnSendPassword;
         private System.Windows.Forms.Button btnCancel;

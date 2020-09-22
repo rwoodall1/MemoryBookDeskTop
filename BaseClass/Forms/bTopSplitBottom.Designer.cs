@@ -70,6 +70,10 @@
             this.Controls.Add(this.TopPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "bTopSplitBottom";
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.TopPanel, 0);
+            this.Controls.SetChildIndex(this.BottomPanel, 0);
+            this.Controls.SetChildIndex(this.SplitContainer, 0);
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).EndInit();
             this.SplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);

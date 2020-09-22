@@ -40,12 +40,14 @@ namespace Mbc5.Forms
         private void SendEmail()
         {
             var smtpClient = new SmtpClient();
+          
             var mailMessage = new MailMessage
             {
                 Subject = txtSubject.Text,
                 Body = txtMsg.Text,
                 IsBodyHtml = true
             };
+       
             if (!string.IsNullOrEmpty(txtCc.Text))
             {
                 mailMessage.CC.Add(new MailAddress(txtCc.Text));
@@ -69,8 +71,8 @@ namespace Mbc5.Forms
 
             }
 
-            mailMessage.From = new MailAddress(txtFrom.Text);
-            mailMessage.To.Add(txtTo.Text);
+            mailMessage.From = new MailAddress(txtFrom.Text.Trim());
+            mailMessage.To.Add(txtTo.Text.Trim());
             try
             {
                 smtpClient.Send(mailMessage);
@@ -89,7 +91,9 @@ namespace Mbc5.Forms
 
         private void LogEmail()
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.FormConnectionString = frmMain.AppConnectionString;
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             string sql = "INSERT INTO EmailLogs (Id,ToEmail,FromId,FromEmail,Subject,Msg) VALUES(@Id,@ToEmail,@FromId,@FromEmail,@Subject,@Msg);";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Id", Guid.NewGuid().ToString());

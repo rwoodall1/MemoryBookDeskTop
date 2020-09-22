@@ -31,15 +31,23 @@ namespace Mbc5.Forms
 
         private void btnSendPassword_Click(object sender, EventArgs e)
         {
+            string AppConnectionString = "";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+               AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+
             EmailHelper vEmail = new EmailHelper();
             string pwd = RandomPasswordGenerator.Generate();
             string msg = "Login with your user name and this password:" + pwd + ". Once you login you will have to change your password.";
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(AppConnectionString);
             SqlCommand cmd = new SqlCommand("Select Id,EmailAddress from mbcUsers  where EmailAddress=@EmailAddress", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@EmailAddress", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@EmailAddress", txtUserName.Text);
 
             try
             {
@@ -49,8 +57,11 @@ namespace Mbc5.Forms
                 if (rdr.HasRows)
                 {
                     string vId = "";
+                    string vEmailAddress = "";
                     while (rdr.Read())
-                    { vId = rdr["id"].ToString(); }
+                    { vId = rdr["id"].ToString();
+                        vEmailAddress= rdr["EmailAddress"].ToString();
+                    }
                     cmd.Connection.Close();
                     cmd.Parameters.Clear();
                     cmd.CommandText = "Update mbcUsers set Password=@Password,ChangePassword=@ChangePassword where Id=@Id";
@@ -60,17 +71,17 @@ namespace Mbc5.Forms
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
-                    vEmail.SendEmail("Forgot Password", txtEmail.Text, "", msg, EmailType.System);
-
-                    MessageBox.Show("Reset Email has been sent.", "Password", MessageBoxButtons.OK);
-                    this.Hide();
-                    login.Show();
-                    this.Close();
+                    if(vEmail.SendEmail("Forgot Password", vEmailAddress, "", msg, EmailType.System))
+                    { 
+                        MessageBox.Show("Reset Email has been sent.", "Password", MessageBoxButtons.OK);
+                        this.Hide();
+                        login.Show();
+                        this.Close(); }
                 }
                 else
                 {
                     cmd.Connection.Close();
-                    MessageBox.Show("The entered email address was not found. Enter a new email address or contact your supervisor.", "Password", MessageBoxButtons.OK);
+                    MessageBox.Show("The entered user name was not found. Enter a new user name or contact your supervisor.", "Password", MessageBoxButtons.OK);
                 }
 
 

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnForgotPassword = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtusername = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.lblSuccess = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pbLoading = new System.Windows.Forms.PictureBox();
-            this.btnForgotPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
@@ -69,6 +69,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(247, 190);
             this.panel1.TabIndex = 1;
+            // 
+            // btnForgotPassword
+            // 
+            this.btnForgotPassword.Location = new System.Drawing.Point(74, 150);
+            this.btnForgotPassword.Name = "btnForgotPassword";
+            this.btnForgotPassword.Size = new System.Drawing.Size(99, 23);
+            this.btnForgotPassword.TabIndex = 4;
+            this.btnForgotPassword.Text = "&Forgot Password";
+            this.btnForgotPassword.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
             // 
             // btnCancel
             // 
@@ -114,7 +124,7 @@
             this.lblpassword.Name = "lblpassword";
             this.lblpassword.Size = new System.Drawing.Size(53, 13);
             this.lblpassword.TabIndex = 1;
-            this.lblpassword.Text = "&Passwerd";
+            this.lblpassword.Text = "&Password";
             // 
             // lblusername
             // 
@@ -150,16 +160,6 @@
             this.pbLoading.TabIndex = 3;
             this.pbLoading.TabStop = false;
             this.pbLoading.Visible = false;
-            // 
-            // btnForgotPassword
-            // 
-            this.btnForgotPassword.Location = new System.Drawing.Point(74, 150);
-            this.btnForgotPassword.Name = "btnForgotPassword";
-            this.btnForgotPassword.Size = new System.Drawing.Size(99, 23);
-            this.btnForgotPassword.TabIndex = 4;
-            this.btnForgotPassword.Text = "&Forgot Password";
-            this.btnForgotPassword.UseVisualStyleBackColor = true;
-            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
             // 
             // frmLogin
             // 

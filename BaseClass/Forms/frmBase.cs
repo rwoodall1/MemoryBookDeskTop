@@ -7,22 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaseClass.FormHandler;
+//using BaseClass.FormHandler;
 using System.Security.Principal;
 using BaseClass.Classes;
+using BaseClass.Core;
 using NLog;
 namespace BaseClass
 {
     public partial class frmBase : Form
     {
       
-        protected frmBase()
+        public frmBase()
         {
            
             InitializeComponent();
         }
         protected Logger Log { get; private set; } 
         #region "Properties" 
+
         [Browsable(true)]
         //protected Logger Log { get; private set; }
         private bool CloseForm { get; set; }
@@ -35,6 +37,7 @@ namespace BaseClass
             ShowWithOwner
         }
         public virtual string Schcode { get; set; }
+        public virtual string FormConnectionString { get; set; }
         public virtual int Invno { get; set; }
         public event EventHandler UserIsAllowed;
         public event EventHandler UserIsDenied;
@@ -84,7 +87,7 @@ namespace BaseClass
             
           
         }
-
+        
         public new virtual void Show()
         {
             Show(CalledShowMethod.Show, null);
@@ -166,15 +169,15 @@ namespace BaseClass
         {
             if (!this.DesignMode)
             {
-                   FormInstance vForm = ((ParentForm)this.MdiParent).GetFormInstance(this.Name);
-                if (vForm.Instances > this.MaxNumForms)
+                FormAllowed allowedResult= ((ParentForm)this.MdiParent).AllowedInstance(this.Name,this.MaxNumForms);
+                if (!allowedResult.Allowed)
                 {
                     //close
                     this.BeginInvoke(new MethodInvoker(this.Close));
                 }
-                if (vForm.Instances > 1)
+                if (allowedResult.Number > 1)
                 {
-                    this.Text = this.Text + "(" + vForm.Instances.ToString() + ")";
+                    this.Text = this.Text + "(" + allowedResult.Number.ToString() + ")";
                 }
             }
            
@@ -201,25 +204,89 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual void Save()
+        public virtual void Save(bool FromMenu)
+        {
+			
+        }
+        public virtual ApiProcessingResult<bool> Save()
+        {
+            return new ApiProcessingResult<bool>();
+        }
+
+        [Browsable(true)]
+		public virtual void SchCodeSearch() {
+
+		}
+		public virtual void SchnameSearch() {
+
+		}
+		public virtual void OracleCodeSearch() {
+
+		}
+		public virtual void ProdutnNoSearch() {
+
+		}
+		public virtual void InvoiceNumberSearch() {
+
+		}
+        public virtual void FirstNameSearch()
         {
 
         }
-        [Browsable(true)]
+        public virtual void LastNameSearch()
+        {
+
+        }
+        public virtual void ZipCodeSearch()
+        {
+
+        }
+        public virtual void EmailSearch()
+        {
+
+        }
+        public virtual void JobNoSearch()
+        {
+
+        }
+        public virtual void Fill()
+        {
+
+        }
         public virtual void Delete()
         {
 
         }
         [Browsable(true)]
-        public virtual void Add()
+        public virtual void Cancel() {
+
+
+            }
+        [Browsable(true)]
+        public virtual bool Add()
         {
-
+			return true;
         }
-        public virtual void Cancel()
+
+        private void basePanel_VisibleChanged(object sender, EventArgs e)
         {
+            if (!this.DesignMode)
+            {
 
+                this.basePanel.Dock = DockStyle.Fill;
+                this.workingLabel.BringToFront();
+                basePanel.BringToFront();
+                var t = basePanel.Height/2;
+                var s = (basePanel.Width/2)-92;
+                this.innerPanel.Location= new Point(t, s);
+
+            }
+            else
+            {
+                this.basePanel.Dock = DockStyle.None;
+               this.workingLabel.SendToBack();
+                basePanel.SendToBack();
+            }
         }
-
-      
     }
 }

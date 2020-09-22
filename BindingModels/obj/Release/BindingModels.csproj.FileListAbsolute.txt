@@ -49,3 +49,12 @@ F:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csproj.Cop
 F:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.dll
 F:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.pdb
 F:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csprojAssemblyReference.cache
+D:\Projects\MemoryBookDeskTop\BindingModels\bin\BindingModels.dll.config
+D:\Projects\MemoryBookDeskTop\BindingModels\bin\BindingModels.pdb
+D:\Projects\MemoryBookDeskTop\BindingModels\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Projects\MemoryBookDeskTop\BindingModels\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csprojAssemblyReference.cache
+D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csproj.CoreCompileInputs.cache
+D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csproj.CopyComplete
+D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.dll
+D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.pdb
