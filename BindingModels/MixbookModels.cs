@@ -90,7 +90,7 @@ namespace BindingModels
         public string ItemId { get; set; }
         public int Qty { get; set; }
         public string ShipMethod { get; set; }
-        public int Weight { get; set; }
+        public decimal Weight { get; set; }
 
     }
 }
