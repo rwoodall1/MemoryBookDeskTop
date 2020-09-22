@@ -637,6 +637,7 @@
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
@@ -822,6 +823,7 @@
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321BinderySCLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321CoverLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321MixbookBookBlock.rdlc" />
     <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
@@ -959,7 +961,9 @@
     <None Include="DataSets\dsXSupplies.xss">
       <DependentUpon>dsXSupplies.xsd</DependentUpon>
     </None>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataSets\dsBids.xsc">
       <DependentUpon>dsBids.xsd</DependentUpon>
     </None>

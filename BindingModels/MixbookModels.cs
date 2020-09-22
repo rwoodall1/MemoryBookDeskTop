@@ -5,6 +5,12 @@ using System.Web;
 
 namespace BindingModels
 {
+
+    public class BookBlockLabel
+    {
+        public string Barcode { get; set; }
+         public string Location { get; set; }
+    }
     public class WipReportModel
     {
         public int Invno { get; set; }       

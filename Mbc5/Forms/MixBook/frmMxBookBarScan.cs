@@ -33,7 +33,7 @@ namespace Mbc5.Forms.MixBook
             this.ApplicationUser = userPrincipal;
             lblScanQty.Text = "0";
         }
-
+        public string LabelPrinter { get; set; }
         public string Company { get; set; }
         public UserPrincipal ApplicationUser { get; set; }
         public MixBookBarScanModel MbxModel { get; set; }
@@ -296,10 +296,25 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                      
-                        PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
-                       
-                        
+                        if (!chkPrToLabeler.Checked)
+                        {
+                            PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                        }
+                        else
+                        {
+                            //Print to labeler
+                            List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                            var vData = new BookBlockLabel() { Barcode ="*"+ txtBarCode.Text+"*", Location = txtLocation.Text };
+                            listData.Add(vData);
+
+                            reportViewer2.LocalReport.DataSources.Clear();
+                            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                            dp.Export(true,reportViewer2.LocalReport,this.LabelPrinter);
+                        }
+
+
                         if (MbxModel.Backing == "HC") {
                             //Mark says orders will not be split on location so insert into one location
                             sqlClient.ClearParameters();
@@ -323,26 +338,28 @@ namespace Mbc5.Forms.MixBook
                                 lblScanQty.Text = QuantityScanned.ToString();
                             }
                         }
-                        //if (MbxModel.Quantity == 1)//not using right now
-                        //{
+                       
+                            //if (MbxModel.Quantity == 1)//not using right now
+                            //{
                             PrintPackingList(MbxModel.ClientOrderId);
-                        //}else if (MbxModel.Quantity>1)
-                        //{
-                        //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
-                        //    if (record == null)
-                        //    {
-                        //        return;
-                        //    }
-                        //    record.Scanned += 1;
-                        //    if (record.Scanned==1)
-                        //    {
-                        //        PrintPackingList(MbxModel.ClientOrderId);
-                        //    }
-                        //    if (record.Scanned == record.Copies)
-                        //    {
-                        //        PrintedPackageList.Remove(record);
-                        //    }
-                        //}
+                            //}else if (MbxModel.Quantity>1)
+                            //{
+                            //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
+                            //    if (record == null)
+                            //    {
+                            //        return;
+                            //    }
+                            //    record.Scanned += 1;
+                            //    if (record.Scanned==1)
+                            //    {
+                            //        PrintPackingList(MbxModel.ClientOrderId);
+                            //    }
+                            //    if (record.Scanned == record.Copies)
+                            //    {
+                            //        PrintedPackageList.Remove(record);
+                            //    }
+                            //}
+                        
                         ClearScan();
                         
                         break;
@@ -946,6 +963,7 @@ namespace Mbc5.Forms.MixBook
                 lblBkLoc.Visible = true;
                 lblBkLocation.Visible = true;
                 pnlQty.Visible = true;
+                if (ApplicationUser.UserName == "binding") { chkPrToLabeler.Visible = true; }
             }else if (ApplicationUser.UserName == "shipping")
             {
                 plnTracking.Visible = true;
@@ -1074,7 +1092,7 @@ namespace Mbc5.Forms.MixBook
             sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
             ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS CoverLocation
             FROM MixbookOrder MO
-               Inner Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
                 Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
             var result=sqlClient.SelectMany<MixbookPackingSlip>();
@@ -1085,6 +1103,7 @@ namespace Mbc5.Forms.MixBook
             }
          var packingSlipData=(List<MixbookPackingSlip>)result.Data;
             reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
             reportViewer1.RefreshReport();
         }
@@ -1174,7 +1193,70 @@ namespace Mbc5.Forms.MixBook
 
             }
         }
-        
+
+      
+
+        private void chkPrToLabeler_Click(object sender, EventArgs e)
+        {
+            if (chkPrToLabeler.Checked)
+            {
+                printDialog1.ShowDialog();
+                LabelPrinter = printDialog1.PrinterSettings.PrinterName;
+            }
+            else
+            {
+                LabelPrinter = "";
+            }
+        }
+
+        private void chkPrToLabeler_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearPrinter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TcpClient client = new TcpClient("10.37.16.168", 10200);
+
+                byte[] escapeb = new byte[] { 0x1B };
+                string escape = System.Text.Encoding.ASCII.GetString(escapeb);
+                byte[] stxb = new byte[] { 0x02 };
+                string stx = System.Text.Encoding.ASCII.GetString(stxb);
+                byte[] crb = new byte[] { 0x0D };
+                string cr = System.Text.Encoding.ASCII.GetString(crb);
+                byte[] etxb = new byte[] { 0x03 };
+                string etx = System.Text.Encoding.ASCII.GetString(etxb);
+                byte[] templateb = Encoding.ASCII.GetBytes("TZmxb.00I;10");
+                string template = System.Text.Encoding.ASCII.GetString(templateb);
+                byte[] soh1b = new byte[] { 0x31, 0x01 };
+                string soh1 = System.Text.Encoding.ASCII.GetString(soh1b);
+                byte[] soh2b = new byte[] { 0x33, 0x01 };
+                string soh2 = System.Text.Encoding.ASCII.GetString(soh2b);
+               
+                string datas = stx + "CLR"+etx;
+                byte[] data = Encoding.ASCII.GetBytes(datas);
+                NetworkStream stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
+                byte[] bytes = new byte[client.ReceiveBufferSize];
+
+                // Read can return anything from 0 to numBytesToRead.
+                // This method blocks until at least one byte is read.
+                stream.Read(bytes, 0, (int)client.ReceiveBufferSize);
+
+                // Returns the data received from the host to the console.
+                string returndata = Encoding.UTF8.GetString(bytes);
+                stream.Close();
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+      
     }
     public class PackageData
     {

@@ -406,7 +406,7 @@
   <Width>8.30206in</Width>
   <Page>
     <PageHeader>
-      <Height>2.56694in</Height>
+      <Height>2.66542in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -609,6 +609,39 @@
           <Height>0.25in</Height>
           <Width>2.68403in</Width>
           <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First("*"+Fields!ClientOrderId.Value.ToString()+"*", "dsMxPackingSlip")</Value>
+                  <Style>
+                    <FontFamily>3 of 9 Barcode</FontFamily>
+                    <FontSize>20pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>2.14471in</Top>
+          <Left>5.07313in</Left>
+          <Height>0.38542in</Height>
+          <Width>2.94665in</Width>
+          <ZIndex>7</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

@@ -12,7 +12,7 @@ namespace BaseClass.Classes
     public class SQLQueryProperties
     {
        
-        private static string _ConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5" : "Data Source=10.37.32.49; Initial Catalog=Mbc5_prod;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+        private static string _ConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5" : "Data Source = 10.37.32.49; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
         public SQLQueryProperties()
         {
             ConnectionString = _ConnectionString;

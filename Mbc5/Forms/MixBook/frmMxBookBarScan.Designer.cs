@@ -35,15 +35,15 @@
             this.lbl1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlQty = new System.Windows.Forms.Panel();
-            this.pnlRemake = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtQtyToScan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblScanQty = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlRemake = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.plnTracking = new System.Windows.Forms.Panel();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,6 +59,10 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
+            this.chkPrToLabeler = new System.Windows.Forms.CheckBox();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnClearPrinter = new System.Windows.Forms.Button();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
             this.plnTracking.SuspendLayout();
@@ -113,6 +117,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(84, 163);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
@@ -135,33 +140,6 @@
             this.pnlQty.Size = new System.Drawing.Size(299, 57);
             this.pnlQty.TabIndex = 2;
             this.pnlQty.Visible = false;
-            // 
-            // pnlRemake
-            // 
-            this.pnlRemake.Controls.Add(this.label7);
-            this.pnlRemake.Controls.Add(this.txtReasonCode);
-            this.pnlRemake.Location = new System.Drawing.Point(355, 65);
-            this.pnlRemake.Name = "pnlRemake";
-            this.pnlRemake.Size = new System.Drawing.Size(200, 29);
-            this.pnlRemake.TabIndex = 10018;
-            this.pnlRemake.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 13);
-            this.label7.TabIndex = 10018;
-            this.label7.Text = "Reason Code";
-            // 
-            // txtReasonCode
-            // 
-            this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
-            this.txtReasonCode.Name = "txtReasonCode";
-            this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
-            this.txtReasonCode.TabIndex = 10017;
             // 
             // txtLocation
             // 
@@ -216,6 +194,33 @@
             this.label2.Size = new System.Drawing.Size(108, 13);
             this.label2.TabIndex = 25;
             this.label2.Text = "Quantity Scanned";
+            // 
+            // pnlRemake
+            // 
+            this.pnlRemake.Controls.Add(this.label7);
+            this.pnlRemake.Controls.Add(this.txtReasonCode);
+            this.pnlRemake.Location = new System.Drawing.Point(355, 65);
+            this.pnlRemake.Name = "pnlRemake";
+            this.pnlRemake.Size = new System.Drawing.Size(200, 29);
+            this.pnlRemake.TabIndex = 10018;
+            this.pnlRemake.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.TabIndex = 10018;
+            this.label7.Text = "Reason Code";
+            // 
+            // txtReasonCode
+            // 
+            this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
+            this.txtReasonCode.Name = "txtReasonCode";
+            this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
+            this.txtReasonCode.TabIndex = 10017;
             // 
             // plnTracking
             // 
@@ -365,10 +370,54 @@
             this.lblBkLocation.Size = new System.Drawing.Size(0, 17);
             this.lblBkLocation.TabIndex = 10015;
             // 
+            // chkPrToLabeler
+            // 
+            this.chkPrToLabeler.AutoSize = true;
+            this.chkPrToLabeler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPrToLabeler.Location = new System.Drawing.Point(552, 60);
+            this.chkPrToLabeler.Name = "chkPrToLabeler";
+            this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
+            this.chkPrToLabeler.TabIndex = 10019;
+            this.chkPrToLabeler.Text = "Prnt To Labeler";
+            this.chkPrToLabeler.UseVisualStyleBackColor = true;
+            this.chkPrToLabeler.Visible = false;
+            this.chkPrToLabeler.CheckedChanged += new System.EventHandler(this.chkPrToLabeler_CheckedChanged);
+            this.chkPrToLabeler.Click += new System.EventHandler(this.chkPrToLabeler_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // reportViewer2
+            // 
+            this.reportViewer2.DocumentMapWidth = 35;
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(3, 125);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(67, 46);
+            this.reportViewer2.TabIndex = 10020;
+            this.reportViewer2.Visible = false;
+            // 
+            // btnClearPrinter
+            // 
+            this.btnClearPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearPrinter.Location = new System.Drawing.Point(186, 163);
+            this.btnClearPrinter.Name = "btnClearPrinter";
+            this.btnClearPrinter.Size = new System.Drawing.Size(87, 23);
+            this.btnClearPrinter.TabIndex = 10021;
+            this.btnClearPrinter.TabStop = false;
+            this.btnClearPrinter.Text = "Clear Printer";
+            this.btnClearPrinter.UseVisualStyleBackColor = true;
+            this.btnClearPrinter.Click += new System.EventHandler(this.btnClearPrinter_Click);
+            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(664, 202);
+            this.ClientSize = new System.Drawing.Size(691, 202);
+            this.Controls.Add(this.btnClearPrinter);
+            this.Controls.Add(this.reportViewer2);
+            this.Controls.Add(this.chkPrToLabeler);
             this.Controls.Add(this.pnlRemake);
             this.Controls.Add(this.lblBkLoc);
             this.Controls.Add(this.lblBkLocation);
@@ -407,6 +456,9 @@
             this.Controls.SetChildIndex(this.lblBkLocation, 0);
             this.Controls.SetChildIndex(this.lblBkLoc, 0);
             this.Controls.SetChildIndex(this.pnlRemake, 0);
+            this.Controls.SetChildIndex(this.chkPrToLabeler, 0);
+            this.Controls.SetChildIndex(this.reportViewer2, 0);
+            this.Controls.SetChildIndex(this.btnClearPrinter, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
@@ -453,5 +505,9 @@
         private System.Windows.Forms.Panel pnlRemake;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtReasonCode;
+        private System.Windows.Forms.CheckBox chkPrToLabeler;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.Button btnClearPrinter;
     }
 }
