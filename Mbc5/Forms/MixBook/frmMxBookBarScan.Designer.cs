@@ -63,7 +63,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnClearPrinter = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
             this.plnTracking.SuspendLayout();
@@ -284,9 +283,8 @@
             this.lblLastScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastScan.Location = new System.Drawing.Point(112, 7);
             this.lblLastScan.Name = "lblLastScan";
-            this.lblLastScan.Size = new System.Drawing.Size(46, 17);
+            this.lblLastScan.Size = new System.Drawing.Size(0, 17);
             this.lblLastScan.TabIndex = 10007;
-            this.lblLastScan.Text = "label1";
             // 
             // lbllastscanlbl
             // 
@@ -412,23 +410,10 @@
             this.btnClearPrinter.UseVisualStyleBackColor = true;
             this.btnClearPrinter.Click += new System.EventHandler(this.btnClearPrinter_Click);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(314, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 10022;
-            this.button1.TabStop = false;
-            this.button1.Text = "Clear Printer";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(691, 202);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClearPrinter);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.chkPrToLabeler);
@@ -473,7 +458,6 @@
             this.Controls.SetChildIndex(this.chkPrToLabeler, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.btnClearPrinter, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
@@ -524,6 +508,5 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Button btnClearPrinter;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -417,7 +417,7 @@ namespace Mbc5.Forms
 
             }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
                 || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
-                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "shipping"|| ApplicationUser.UserName == "trimming")
+                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "trimming")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -451,6 +451,7 @@ namespace Mbc5.Forms
 
             }else if (ApplicationUser.UserName == "shipping")
             {
+                caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
@@ -463,8 +464,7 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
-
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                shippingScanToolStripMenuItem_Click(null, null);
 
             }
             
