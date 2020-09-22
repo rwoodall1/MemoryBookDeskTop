@@ -532,9 +532,9 @@ namespace Mbc5.Forms.MixBook
                     case "SHIPPING":
                         //war is datetime
                         //wir is initials
-                        int vWeight = 0;
-                        int.TryParse(txtWeight.Text, out vWeight);
-                        if (!int.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
+                        decimal vWeight = 0;
+                        decimal.TryParse(txtWeight.Text, out vWeight);
+                        if (!decimal.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
                         {
                             MbcMessageBox.Information("Enter a valid numeric weight.");
                             return;
@@ -601,8 +601,8 @@ namespace Mbc5.Forms.MixBook
                             MbcMessageBox.Error("Failed to update tracking number in order screen.");
 
                         }
-                            int weight = 0;
-                            int.TryParse(txtWeight.Text, out weight);
+                            decimal weight = 0;
+                            decimal.TryParse(txtWeight.Text, out weight);
                             var shipInfo = new ShippingNotificationInfo()
                             {
                                 JobId = MbxModel.JobId,
@@ -995,8 +995,8 @@ namespace Mbc5.Forms.MixBook
         private void txtWeight_Validating(object sender, CancelEventArgs e)
         {
             errorProvider1.SetError(txtWeight, "");
-            int vWeight=0;
-            if (!int.TryParse(txtWeight.Text, out vWeight)||vWeight==0) {
+            decimal vWeight=0;
+            if (!decimal.TryParse(txtWeight.Text, out vWeight)||vWeight==0) {
                 
 
                 errorProvider1.SetError(txtWeight, "Please enter a  valid weight.");
