@@ -114,6 +114,7 @@
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +160,7 @@
             this.receivingSurveyCompensationToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             this.mBCToolStripMenuItem.Visible = false;
             // 
@@ -215,7 +216,7 @@
             this.receivingSurveyCompensationToolStripMenuItem1,
             this.msalesToolStripMenuItem});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             this.meridianToolStripMenuItem.Visible = false;
             // 
@@ -261,37 +262,38 @@
             this.mixBookOrdersToolStripMenuItem,
             this.mixBookLoadTestToolStripMenuItem,
             this.mixbookBarscanToolStripMenuItem,
-            this.caseMatchScanToolStripMenuItem});
+            this.caseMatchScanToolStripMenuItem,
+            this.shippingScanToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
             this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
             // 
             // mixBookOrdersToolStripMenuItem
             // 
             this.mixBookOrdersToolStripMenuItem.Name = "mixBookOrdersToolStripMenuItem";
-            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookOrdersToolStripMenuItem.Text = "MixBook Orders";
             this.mixBookOrdersToolStripMenuItem.Click += new System.EventHandler(this.mixBookOrdersToolStripMenuItem_Click);
             // 
             // mixBookLoadTestToolStripMenuItem
             // 
             this.mixBookLoadTestToolStripMenuItem.Name = "mixBookLoadTestToolStripMenuItem";
-            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
             // 
             // mixbookBarscanToolStripMenuItem
             // 
             this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
             this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
             // 
             // caseMatchScanToolStripMenuItem
             // 
             this.caseMatchScanToolStripMenuItem.Name = "caseMatchScanToolStripMenuItem";
-            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.caseMatchScanToolStripMenuItem.Text = "Case Match Scan";
             this.caseMatchScanToolStripMenuItem.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem_Click);
             // 
@@ -302,7 +304,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -330,14 +332,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
@@ -877,6 +879,13 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
+            // shippingScanToolStripMenuItem
+            // 
+            this.shippingScanToolStripMenuItem.Name = "shippingScanToolStripMenuItem";
+            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shippingScanToolStripMenuItem.Text = "Shipping Scan";
+            this.shippingScanToolStripMenuItem.Click += new System.EventHandler(this.shippingScanToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -987,5 +996,6 @@
         private System.Windows.Forms.ToolStripMenuItem mixbookReportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wipReportToolStripMenuItem;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.ToolStripMenuItem shippingScanToolStripMenuItem;
     }
 }

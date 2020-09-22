@@ -1256,7 +1256,10 @@ namespace Mbc5.Forms.MixBook
             }
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PrintPackingList(3899710);
+        }
     }
     public class PackageData
     {

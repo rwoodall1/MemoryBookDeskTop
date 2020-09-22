@@ -570,6 +570,12 @@
     <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
       <DependentUpon>frmWipReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookShipping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
+      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -793,6 +799,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
+      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>

@@ -449,7 +449,25 @@ namespace Mbc5.Forms
 
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
+            }else if (ApplicationUser.UserName == "shipping")
+            {
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+
             }
+            
             else
             {
                 tsMain.Visible = true;
@@ -1743,6 +1761,15 @@ namespace Mbc5.Forms
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { }
+        }
+
+        private void shippingScanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMxBookShipping frmMxBookShipping = new frmMxBookShipping(this.ApplicationUser);
+
+            frmMxBookShipping.MdiParent = this;
+            frmMxBookShipping.Show();
+            this.Cursor = Cursors.Default;
         }
         //nothing below here
     }
