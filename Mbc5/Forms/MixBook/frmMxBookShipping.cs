@@ -18,7 +18,7 @@ using Exceptionless;
 using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
-
+using Equin.ApplicationFramework;
 
 namespace Mbc5.Forms.MixBook
 {
@@ -28,15 +28,18 @@ namespace Mbc5.Forms.MixBook
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
-            bsItems.DataSource = Items;
+            
         }
         public UserPrincipal ApplicationUser { get; set; }
         public MixBookBarScanModel MbxModel { get; set; }
         public MixbookNotification ShipNotification { get; set; }
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
+        public bool Loading { get; set; } = true;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtClientIdLookup.Text)) {return; }
             var sqlQuery = new SQLCustomClient();
+          
             string cmdText = @"
                             SELECT M.ShipName,M.ProdInOrder,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity
                                 From MixBookOrder M 
@@ -88,20 +91,18 @@ namespace Mbc5.Forms.MixBook
 
         private void txtWeight_Leave(object sender, EventArgs e)
         {
-            plnTracking.Enabled = false;
-            txtClientIdLookup.Enabled = false;
         }
 
         private void txtWeight_DoubleClick(object sender, EventArgs e)
         {
-            plnTracking.Enabled = true;
-            txtClientIdLookup.Enabled = true;
+          
         }
 
         private void txtItemBarcode_Leave(object sender, EventArgs e)
         {
             lblLastScan.Text = txtItemBarcode.Text;
             string vInvno = "";
+           
             try
             {
                 if (string.IsNullOrEmpty(txtItemBarcode.Text))
@@ -138,12 +139,20 @@ namespace Mbc5.Forms.MixBook
                 int parsedInvno = 0;
 
                 var parseResult = int.TryParse(vInvno, out parsedInvno);
-                this.Invno = parsedInvno;
+              
                 if (!parseResult)
                 {
                     MessageBox.Show("Invalid scan code");
                     return;
                 }
+                var checkscanResult = Items.Find(x => x.Invno == parsedInvno);
+                if (checkscanResult !=null)
+                {
+                    MbcMessageBox.Information("This item is already in the shipment, scan another Item.");
+                    return;
+                }
+
+
 
                 var sqlQuery = new SQLCustomClient();
                 string cmdText = @"
@@ -179,19 +188,79 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 Items.Add(vItem);
-             
-                bsItems.DataSource = Items;
+                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
+                bsItems.DataSource = Items1;
                 custDataGridView.DataSource=bsItems;
-              
+                txtItemBarcode.Text = "";
             }
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
             }
 
+         }
 
+        private void btnShip_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnItemReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Items.Clear();
+                BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
+                bsItems.DataSource = Items1;
+                custDataGridView.DataSource = bsItems;
 
             }
+            catch(Exception ex) { }
+         
+     
+            
+        }
+
+        private void btnShipmentReset_Click(object sender, EventArgs e)
+        {
+            plnTracking.Enabled = true;
+            
+            txtClientIdLookup.Text = "";
+            txtTrackingNo.Text = "";
+            txtWeight.Text = "";
+            txtDateTime.Text = "";
+
+            Items.Clear();
+            BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
+            bsItems.DataSource = Items1;
+            custDataGridView.DataSource = bsItems;
+        }
+
+        private void plnTracking_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtClientIdLookup.Text)&& string.IsNullOrEmpty(txtItemBarcode.Text)) { return; }
+                if (this.Validate())
+                {
+                    plnTracking.Enabled = false;
+                }
+            }
+          
+   
+
+        
+
+        private void btnEnable_Click(object sender, EventArgs e)
+        {
+            plnTracking.Enabled = true;
+        }
+
+        private void frmMxBookShipping_Load(object sender, EventArgs e)
+        {
+            if (Loading)
+            {
+                Loading = false;
+         
+            }
+        }
     }
 }
