@@ -193,8 +193,10 @@ D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csproj.CopyComplet
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.dll
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.pdb
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\Microsoft.ReportViewer.Common.dll
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csc.exe
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csc.exe.config
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csc.rsp
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csi.exe
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csi.rsp
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -212,10 +214,8 @@ D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\System.Diagnostics.St
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\System.IO.FileSystem.dll
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\System.Reflection.Metadata.dll
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\vbc.exe
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\vbc.exe.config
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\vbc.rsp
-D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\VBCSCompiler.exe.config
-D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csc.exe
-D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\csi.exe
-D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\vbc.exe
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\VBCSCompiler.exe
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\VBCSCompiler.exe.config

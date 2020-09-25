@@ -30,7 +30,6 @@ D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Release\Newtonsoft.Json.dll
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Release\Exceptionless.xml
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Release\Exceptionless.Windows.xml
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Release\Newtonsoft.Json.xml
-D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.csprojAssemblyReference.cache
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.Properties.Resources.resources
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.Splash.resources
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.SplashForm1.resources

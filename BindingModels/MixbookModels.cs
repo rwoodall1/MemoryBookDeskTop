@@ -56,6 +56,16 @@ namespace BindingModels
         public string BookLocation { get; set; }
         public string PrintergyFile { get; set; }
         public int ProdInOrder { get; set; }
+        public string ShippingMethodName { get; set; }
+    }
+    public class MixBookItemScanModel
+    {
+        
+        public int ClientOrderId { get; set; }
+        public int Invno { get; set; }
+        public string ItemId { get; set; }
+        public int Quantity { get; set; }
+        public string Description { get; set; }
     }
     public class OrderChk
     {

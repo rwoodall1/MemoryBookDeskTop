@@ -241,3 +241,4 @@ M:\UpdateExe\bin\Release\roslyn\vbc.exe.config
 M:\UpdateExe\bin\Release\roslyn\vbc.rsp
 M:\UpdateExe\bin\Release\roslyn\VBCSCompiler.exe
 M:\UpdateExe\bin\Release\roslyn\VBCSCompiler.exe.config
+D:\Projects\MemoryBookDeskTop\Mbc5\obj\Release\Mbc5.Forms.MixBook.frmMxBookShipping.resources

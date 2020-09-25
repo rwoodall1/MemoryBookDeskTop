@@ -348,7 +348,7 @@ namespace Mbc5.Forms
             //    AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
             //}
             //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
-            AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -417,7 +417,7 @@ namespace Mbc5.Forms
 
             }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
                 || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
-                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "shipping"|| ApplicationUser.UserName == "trimming")
+                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "trimming")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -449,7 +449,25 @@ namespace Mbc5.Forms
 
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
+            }else if (ApplicationUser.UserName == "shipping")
+            {
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem_Click(null, null);
+
             }
+            
             else
             {
                 tsMain.Visible = true;
@@ -1743,6 +1761,15 @@ namespace Mbc5.Forms
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { }
+        }
+
+        private void shippingScanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMxBookShipping frmMxBookShipping = new frmMxBookShipping(this.ApplicationUser);
+
+            frmMxBookShipping.MdiParent = this;
+            frmMxBookShipping.Show();
+            this.Cursor = Cursors.Default;
         }
         //nothing below here
     }
