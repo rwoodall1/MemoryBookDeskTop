@@ -76,6 +76,23 @@ namespace Mbc5.Forms.MixBook
                 errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
                 e.Cancel = true;
             }
+            else
+            {
+                try
+                {
+                    string vTracking = txtTrackingNo.Text.Trim();
+                    if (MbxModel.ShipMethod.Trim() == "MX_MI")
+                    {
+                       txtTrackingNo.Text = vTracking.Substring(vTracking.IndexOf("927"), 26);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
+
+            }
         }
 
         private void txtWeight_Validating(object sender, CancelEventArgs e)
@@ -265,7 +282,8 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
                 sqlClient.AddParameter("@Weight",ShipNotification.Request.Shipment[0].weight);
-                sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text);
+                string vTracking = txtTrackingNo.Text.Trim();
+                  sqlClient.AddParameter("@TrackingNumber", vTracking);
                 var trackingResult = sqlClient.Update();
                 if (trackingResult.IsError)
                 {
