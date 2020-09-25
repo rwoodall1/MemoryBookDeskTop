@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.chkRemake = new System.Windows.Forms.CheckBox();
@@ -44,23 +44,30 @@
             this.txtTrackingNo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtClientIdLookup = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtItemBarcode = new System.Windows.Forms.TextBox();
-            this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.btnShip = new System.Windows.Forms.Button();
             this.btnItemReset = new System.Windows.Forms.Button();
             this.btnShipmentReset = new System.Windows.Forms.Button();
             this.btnEnamble = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblShpName = new System.Windows.Forms.Label();
+            this.lblShpMethod = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pnlGrid = new System.Windows.Forms.Panel();
+            this.txtItemBarcode = new System.Windows.Forms.TextBox();
+            this.custDataGridView = new System.Windows.Forms.DataGridView();
+            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt1 = new System.Windows.Forms.TextBox();
             this.plnTracking.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
+            this.pnlGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -96,7 +103,7 @@
             this.chkRemake.Location = new System.Drawing.Point(579, 50);
             this.chkRemake.Name = "chkRemake";
             this.chkRemake.Size = new System.Drawing.Size(79, 20);
-            this.chkRemake.TabIndex = 9;
+            this.chkRemake.TabIndex = 11;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
             // 
@@ -161,7 +168,8 @@
             this.plnTracking.Location = new System.Drawing.Point(38, 51);
             this.plnTracking.Name = "plnTracking";
             this.plnTracking.Size = new System.Drawing.Size(298, 82);
-            this.plnTracking.TabIndex = 1;
+            this.plnTracking.TabIndex = 0;
+            this.plnTracking.EnabledChanged += new System.EventHandler(this.plnTracking_EnabledChanged);
             this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
             // 
             // txtWeight
@@ -210,19 +218,112 @@
             this.txtClientIdLookup.TabIndex = 1;
             this.txtClientIdLookup.Leave += new System.EventHandler(this.txtClientIdLookup_Leave);
             // 
-            // label1
+            // errorProvider1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
-            this.label1.TabIndex = 10028;
-            this.label1.Text = "Scan Item Bar Code";
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnShip
+            // 
+            this.btnShip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShip.Location = new System.Drawing.Point(37, 339);
+            this.btnShip.Name = "btnShip";
+            this.btnShip.Size = new System.Drawing.Size(121, 34);
+            this.btnShip.TabIndex = 7;
+            this.btnShip.Text = "Mark As Shipped";
+            this.btnShip.UseVisualStyleBackColor = true;
+            this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
+            // 
+            // btnItemReset
+            // 
+            this.btnItemReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnItemReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemReset.Location = new System.Drawing.Point(272, 339);
+            this.btnItemReset.Name = "btnItemReset";
+            this.btnItemReset.Size = new System.Drawing.Size(121, 34);
+            this.btnItemReset.TabIndex = 8;
+            this.btnItemReset.Text = "Reset Items";
+            this.btnItemReset.UseVisualStyleBackColor = true;
+            this.btnItemReset.Click += new System.EventHandler(this.btnItemReset_Click);
+            // 
+            // btnShipmentReset
+            // 
+            this.btnShipmentReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShipmentReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShipmentReset.Location = new System.Drawing.Point(615, 339);
+            this.btnShipmentReset.Name = "btnShipmentReset";
+            this.btnShipmentReset.Size = new System.Drawing.Size(121, 34);
+            this.btnShipmentReset.TabIndex = 9;
+            this.btnShipmentReset.Text = "Reset Shipment";
+            this.btnShipmentReset.UseVisualStyleBackColor = true;
+            this.btnShipmentReset.Click += new System.EventHandler(this.btnShipmentReset_Click);
+            // 
+            // btnEnamble
+            // 
+            this.btnEnamble.Location = new System.Drawing.Point(341, 84);
+            this.btnEnamble.Name = "btnEnamble";
+            this.btnEnamble.Size = new System.Drawing.Size(17, 23);
+            this.btnEnamble.TabIndex = 10;
+            this.btnEnamble.Text = ":";
+            this.btnEnamble.UseVisualStyleBackColor = true;
+            this.btnEnamble.Click += new System.EventHandler(this.btnEnable_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(418, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 10033;
+            this.label2.Text = "Ship Name";
+            // 
+            // lblShpName
+            // 
+            this.lblShpName.AutoSize = true;
+            this.lblShpName.BackColor = System.Drawing.Color.LightYellow;
+            this.lblShpName.Location = new System.Drawing.Point(497, 94);
+            this.lblShpName.Name = "lblShpName";
+            this.lblShpName.Size = new System.Drawing.Size(0, 13);
+            this.lblShpName.TabIndex = 10034;
+            // 
+            // lblShpMethod
+            // 
+            this.lblShpMethod.AutoSize = true;
+            this.lblShpMethod.BackColor = System.Drawing.Color.LightYellow;
+            this.lblShpMethod.Location = new System.Drawing.Point(497, 111);
+            this.lblShpMethod.Name = "lblShpMethod";
+            this.lblShpMethod.Size = new System.Drawing.Size(0, 13);
+            this.lblShpMethod.TabIndex = 10036;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(408, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 10035;
+            this.label4.Text = "Ship Method";
+            // 
+            // pnlGrid
+            // 
+            this.pnlGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGrid.Controls.Add(this.txt1);
+            this.pnlGrid.Controls.Add(this.custDataGridView);
+            this.pnlGrid.Controls.Add(this.label1);
+            this.pnlGrid.Controls.Add(this.txtItemBarcode);
+            this.pnlGrid.Enabled = false;
+            this.pnlGrid.Location = new System.Drawing.Point(37, 136);
+            this.pnlGrid.Name = "pnlGrid";
+            this.pnlGrid.Size = new System.Drawing.Size(709, 179);
+            this.pnlGrid.TabIndex = 10037;
             // 
             // txtItemBarcode
             // 
-            this.txtItemBarcode.Location = new System.Drawing.Point(162, 160);
+            this.txtItemBarcode.Location = new System.Drawing.Point(152, 11);
             this.txtItemBarcode.Name = "txtItemBarcode";
             this.txtItemBarcode.Size = new System.Drawing.Size(124, 20);
             this.txtItemBarcode.TabIndex = 4;
@@ -236,14 +337,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
@@ -251,11 +352,12 @@
             this.qcontractyear,
             this.QInvno});
             this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(24, 186);
+            this.custDataGridView.Location = new System.Drawing.Point(10, 37);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
-            this.custDataGridView.Size = new System.Drawing.Size(689, 137);
-            this.custDataGridView.TabIndex = 10032;
+            this.custDataGridView.Size = new System.Drawing.Size(689, 139);
+            this.custDataGridView.TabIndex = 6;
+            this.custDataGridView.TabStop = false;
             // 
             // Invno
             // 
@@ -289,67 +391,38 @@
             this.QInvno.Name = "QInvno";
             this.QInvno.ReadOnly = true;
             // 
-            // errorProvider1
+            // label1
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.TabIndex = 10030;
+            this.label1.Text = "Scan Item Bar Code";
             // 
-            // btnShip
+            // txt1
             // 
-            this.btnShip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShip.Location = new System.Drawing.Point(24, 350);
-            this.btnShip.Name = "btnShip";
-            this.btnShip.Size = new System.Drawing.Size(121, 34);
-            this.btnShip.TabIndex = 5;
-            this.btnShip.Text = "Mark As Shipped";
-            this.btnShip.UseVisualStyleBackColor = true;
-            this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
-            // 
-            // btnItemReset
-            // 
-            this.btnItemReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnItemReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemReset.Location = new System.Drawing.Point(276, 350);
-            this.btnItemReset.Name = "btnItemReset";
-            this.btnItemReset.Size = new System.Drawing.Size(121, 34);
-            this.btnItemReset.TabIndex = 6;
-            this.btnItemReset.Text = "Reset Items";
-            this.btnItemReset.UseVisualStyleBackColor = true;
-            this.btnItemReset.Click += new System.EventHandler(this.btnItemReset_Click);
-            // 
-            // btnShipmentReset
-            // 
-            this.btnShipmentReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShipmentReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShipmentReset.Location = new System.Drawing.Point(592, 350);
-            this.btnShipmentReset.Name = "btnShipmentReset";
-            this.btnShipmentReset.Size = new System.Drawing.Size(121, 34);
-            this.btnShipmentReset.TabIndex = 7;
-            this.btnShipmentReset.Text = "Reset Shipment";
-            this.btnShipmentReset.UseVisualStyleBackColor = true;
-            this.btnShipmentReset.Click += new System.EventHandler(this.btnShipmentReset_Click);
-            // 
-            // btnEnamble
-            // 
-            this.btnEnamble.Location = new System.Drawing.Point(341, 84);
-            this.btnEnamble.Name = "btnEnamble";
-            this.btnEnamble.Size = new System.Drawing.Size(17, 23);
-            this.btnEnamble.TabIndex = 8;
-            this.btnEnamble.Text = ":";
-            this.btnEnamble.UseVisualStyleBackColor = true;
-            this.btnEnamble.Click += new System.EventHandler(this.btnEnable_Click);
+            this.txt1.BackColor = System.Drawing.SystemColors.Control;
+            this.txt1.Location = new System.Drawing.Point(285, 9);
+            this.txt1.Name = "txt1";
+            this.txt1.Size = new System.Drawing.Size(1, 20);
+            this.txt1.TabIndex = 5;
+            this.txt1.Enter += new System.EventHandler(this.txt1_Enter);
             // 
             // frmMxBookShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(758, 438);
+            this.ClientSize = new System.Drawing.Size(758, 411);
+            this.Controls.Add(this.pnlGrid);
+            this.Controls.Add(this.lblShpMethod);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblShpName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEnamble);
             this.Controls.Add(this.btnShipmentReset);
             this.Controls.Add(this.btnItemReset);
             this.Controls.Add(this.btnShip);
-            this.Controls.Add(this.custDataGridView);
-            this.Controls.Add(this.txtItemBarcode);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.plnTracking);
             this.Controls.Add(this.lblBkLoc);
             this.Controls.Add(this.lblBkLocation);
@@ -358,11 +431,10 @@
             this.Controls.Add(this.lblLastScan);
             this.Controls.Add(this.txtDateTime);
             this.Controls.Add(this.label6);
-            this.MinimumSize = new System.Drawing.Size(774, 477);
+            this.MinimumSize = new System.Drawing.Size(774, 450);
             this.Name = "frmMxBookShipping";
             this.Text = "Mixbook Shipping";
             this.Load += new System.EventHandler(this.frmMxBookShipping_Load);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
@@ -371,18 +443,23 @@
             this.Controls.SetChildIndex(this.lblBkLocation, 0);
             this.Controls.SetChildIndex(this.lblBkLoc, 0);
             this.Controls.SetChildIndex(this.plnTracking, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.txtItemBarcode, 0);
-            this.Controls.SetChildIndex(this.custDataGridView, 0);
             this.Controls.SetChildIndex(this.btnShip, 0);
             this.Controls.SetChildIndex(this.btnItemReset, 0);
             this.Controls.SetChildIndex(this.btnShipmentReset, 0);
             this.Controls.SetChildIndex(this.btnEnamble, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.lblShpName, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.lblShpMethod, 0);
+            this.Controls.SetChildIndex(this.basePanel, 0);
+            this.Controls.SetChildIndex(this.pnlGrid, 0);
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
+            this.pnlGrid.ResumeLayout(false);
+            this.pnlGrid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,19 +480,25 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTrackingNo;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtClientIdLookup;
-        private System.Windows.Forms.TextBox txtItemBarcode;
-        private System.Windows.Forms.DataGridView custDataGridView;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.BindingSource bsItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qcontractyear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
         private System.Windows.Forms.Button btnShipmentReset;
         private System.Windows.Forms.Button btnItemReset;
         private System.Windows.Forms.Button btnShip;
         private System.Windows.Forms.Button btnEnamble;
+        private System.Windows.Forms.Label lblShpName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblShpMethod;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel pnlGrid;
+        private System.Windows.Forms.TextBox txt1;
+        private System.Windows.Forms.DataGridView custDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qcontractyear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtItemBarcode;
     }
 }
