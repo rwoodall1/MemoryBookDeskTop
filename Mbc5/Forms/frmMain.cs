@@ -342,12 +342,12 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             //if (Environment == "DEV")
             //{
-            //    AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            //    AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
             //}
-            //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            //else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
@@ -472,11 +472,11 @@ namespace Mbc5.Forms
             {
                 tsMain.Visible = true;
                 mixbookReportsToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
-                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
+                this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","Mixbook"});
+                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" }); 
                 this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
-                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-                productionWIPToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
+                productionWIPToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
                 systemToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -1769,6 +1769,15 @@ namespace Mbc5.Forms
 
             frmMxBookShipping.MdiParent = this;
             frmMxBookShipping.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void shippingReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmShippingReport frmReport = new frmShippingReport(this.ApplicationUser);
+            frmReport.MdiParent = this;
+            frmReport.Show();
             this.Cursor = Cursors.Default;
         }
         //nothing below here

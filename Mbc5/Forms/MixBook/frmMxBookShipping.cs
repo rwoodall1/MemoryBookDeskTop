@@ -46,7 +46,12 @@ namespace Mbc5.Forms.MixBook
                                 Left Join ShipCarriers SC On M.ShipMethod=SC.ShipAlias
                           Where M.ClientOrderId=@ClientOrderId";
             sqlQuery.CommandText(cmdText);
-            sqlQuery.AddParameter("@ClientOrderId", txtClientIdLookup.Text);
+            int vClientId = 0;
+            if(!int.TryParse(txtClientIdLookup.Text,out vClientId))
+            {
+                MbcMessageBox.Error("ClientId is not in proper format.");
+            }
+            sqlQuery.AddParameter("@ClientOrderId", vClientId);
             var result = sqlQuery.Select<MixBookBarScanModel>();
             if (result.IsError)
             {
@@ -83,7 +88,7 @@ namespace Mbc5.Forms.MixBook
                     string vTracking = txtTrackingNo.Text.Trim();
                     if (MbxModel.ShipMethod.Trim() == "MX_MI")
                     {
-                       txtTrackingNo.Text = vTracking.Substring(vTracking.IndexOf("927"), 26);
+                       txtTrackingNo.Text = vTracking.Substring(8, 26);
                     }
                 }
                 catch (Exception ex)
@@ -110,6 +115,7 @@ namespace Mbc5.Forms.MixBook
 
         private void txtWeight_Leave(object sender, EventArgs e)
         {
+                txtItemBarcode.Focus();
         }
 
         private void txtWeight_DoubleClick(object sender, EventArgs e)
@@ -119,7 +125,8 @@ namespace Mbc5.Forms.MixBook
 
         private void txtItemBarcode_Leave(object sender, EventArgs e)
         {
-            lblLastScan.Text = txtItemBarcode.Text;
+           lblLastScan.Text = txtItemBarcode.Text;
+            txtItemBarcode.Tag = "";
             string vInvno = "";
            
             try
@@ -151,6 +158,7 @@ namespace Mbc5.Forms.MixBook
                     else
                     {
                         MbcMessageBox.Error("Scan code is not in correct format");
+                        txtItemBarcode.Tag = "Cancel";
                         return;
                     }
                 }
@@ -162,6 +170,8 @@ namespace Mbc5.Forms.MixBook
                 if (!parseResult)
                 {
                     MessageBox.Show("Invalid scan code");
+                    txtItemBarcode.Tag = "Cancel";
+
                     return;
                 }
                 var checkscanResult = Items.Find(x => x.Invno == parsedInvno);
@@ -190,6 +200,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.Data == null)
                 {
                     MbcMessageBox.Error("Record not found");
+                    txtItemBarcode.Tag = "Cancel";
                     return;
                 }
                 var vItem = (MixBookItemScanModel)result.Data;
@@ -221,11 +232,16 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            var result=NotifyMixbookOfShipment();
-            //Update wip no matter what the result is error trapping and hangfire will take care of any notifiction failures.
-            UpdateShippingWip();
-            CreateShipNotification(true);
-            SetPanels();
+            if (Items.Count > 0)
+            {
+                var result = NotifyMixbookOfShipment();
+                //Update wip no matter what the result is error trapping and hangfire will take care of any notifiction failures.
+                UpdateShippingWip();
+                CreateShipNotification(true);
+                SetPanels();
+                txtClientIdLookup.Focus();
+            }
+            else { MbcMessageBox.Error("Please scan items in the shipment."); }
 
         }
         private void UpdateShippingWip()
@@ -235,6 +251,7 @@ namespace Mbc5.Forms.MixBook
            string vWIR = "SH";
             foreach (var item in Items)
             {
+                sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update WIPDetail SET
                                     WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
                 sqlClient.AddParameter("@Invno",item.Invno);
@@ -245,6 +262,10 @@ namespace Mbc5.Forms.MixBook
                 var mxResult4 = sqlClient.Update();
                 if (mxResult4.IsError)
                 {
+                    ExceptionlessClient.Default.CreateLog("Failed to update shipping WIP")
+                        .AddObject(mxResult4)
+                        .MarkAsCritical()
+                        .Submit();
                 MessageBox.Show("Failed to update shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 }
@@ -336,6 +357,7 @@ namespace Mbc5.Forms.MixBook
                 {
                 plnTracking.Enabled = false;
                 pnlGrid.Enabled = true;
+                txtItemBarcode.Focus();
             }
             }
         private void btnEnable_Click(object sender, EventArgs e)
@@ -369,30 +391,30 @@ namespace Mbc5.Forms.MixBook
            
             var vReturnNotification = Serialize.ToXml(ShipNotification);
 
-            //var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
-            //if (!restServiceResult.IsError)
-            //{
-            //    if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
-            //    {
-            //        //if not set to notified scheduled task will try again
-            //        AddMbEventLog(MbxModel.JobId, "Shipped", "", vReturnNotification, true);
-            //    }
-            //    else
-            //    {
-            //        AddMbEventLog(MbxModel.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
-            //        var emailHelper = new EmailHelper();
-            //        emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
-            //    }
+            var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
+            if (!restServiceResult.IsError)
+            {
+                if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
+                {
+                    //if not set to notified scheduled task will try again
+                    AddMbEventLog(MbxModel.JobId, "Shipped", "", vReturnNotification, true);
+                }
+                else
+                {
+                    AddMbEventLog(MbxModel.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
+                    var emailHelper = new EmailHelper();
+                    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
+                }
 
 
-            //}
-            //else
-            //{
-            //    AddMbEventLog(MbxModel.JobId, "Error", "", vReturnNotification, false);
-            //    var emailHelper = new EmailHelper();
-            //    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+            }
+            else
+            {
+                AddMbEventLog(MbxModel.JobId, "Error", "", vReturnNotification, false);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
 
-            //}
+            }
             return processingResult;
         }
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
@@ -484,6 +506,14 @@ namespace Mbc5.Forms.MixBook
         private void plnTracking_EnabledChanged(object sender, EventArgs e)
         {
             
+        }
+       
+        private void txtItemBarcode_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtItemBarcode.Tag == "Cancel")
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -13,30 +13,27 @@ namespace BindingModels
     }
     public class WipReportModel
     {
-        public int Invno { get; set; }       
+        public int ClientOrderId { get; set; }
+        public int Invno { get; set; }  
+        public string ShipName { get; set; }
+        public string Backing { get; set; }
         public int Copies { get; set; }
         public int Pages { get; set; }
         public string Size { get; set; }
-        public DateTime OrderReceivedDate { get; set; }
-        public int ClientOrderId { get; set; }
-        public DateTime RequestedShipDate { get; set; }
-        public string Description { get; set; }       
-        
-        public DateTime OnBoards { get; set; }
-        public string Location37 { get; set; }
-       
-        public DateTime Trimming { get; set; }
-        public string Location43 { get; set; }
-        
-        public DateTime WipPress { get; set; }     
-       
-        public DateTime Binding { get; set; }
-        public string Location39 { get; set; }
-      
-        public DateTime CaseIn { get; set; }
-      
-        public DateTime Quality { get; set; }
-        public string Location50 { get; set; }
+        public string Trimming { get; set;}
+        public string TrimLoc { get; set; }
+        public string OrderReceivedDate { get; set; }
+        public string RequestedShipDate { get; set; }
+        public string Description { get; set; } 
+        public string CoverPress { get; set; }
+        public string OnBoards { get; set; }
+        public string CoverCart { get; set; }
+        public string WipPress { get; set; }     
+        public string Binding { get; set; }
+        public string PressCart { get; set; }     
+        public string CaseIn { get; set; }      
+        public string Quality { get; set; }
+        public string Location { get; set; }
     }
 
     public class MixBookBarScanModel
@@ -57,6 +54,7 @@ namespace BindingModels
         public string PrintergyFile { get; set; }
         public int ProdInOrder { get; set; }
         public string ShippingMethodName { get; set; }
+        public string MixbookOrderStatus { get; set; }
     }
     public class MixBookItemScanModel
     {
@@ -92,6 +90,7 @@ namespace BindingModels
         public string ShipMethod { get; set; }
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
+        public string BookLocation { get; set; }
     }
     public class ShippingNotificationInfo
     {

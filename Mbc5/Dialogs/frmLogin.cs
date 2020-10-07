@@ -176,5 +176,12 @@ private void btnForgotPassword_Click(object sender, EventArgs e)
           
             
 }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var a = ConfigurationManager.AppSettings["Environment"].ToString();
+            MbcMessageBox.Error(a);
+            MbcMessageBox.Error(frmMain.AppConnectionString);
+        }
     }
 }

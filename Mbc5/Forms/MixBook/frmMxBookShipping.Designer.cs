@@ -55,14 +55,14 @@
             this.lblShpMethod = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlGrid = new System.Windows.Forms.Panel();
-            this.txtItemBarcode = new System.Windows.Forms.TextBox();
+            this.txt1 = new System.Windows.Forms.TextBox();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
             this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt1 = new System.Windows.Forms.TextBox();
+            this.txtItemBarcode = new System.Windows.Forms.TextBox();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
@@ -196,7 +196,7 @@
             // 
             this.txtTrackingNo.Location = new System.Drawing.Point(75, 36);
             this.txtTrackingNo.Name = "txtTrackingNo";
-            this.txtTrackingNo.Size = new System.Drawing.Size(201, 20);
+            this.txtTrackingNo.Size = new System.Drawing.Size(220, 20);
             this.txtTrackingNo.TabIndex = 2;
             this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
             // 
@@ -321,13 +321,14 @@
             this.pnlGrid.Size = new System.Drawing.Size(709, 179);
             this.pnlGrid.TabIndex = 10037;
             // 
-            // txtItemBarcode
+            // txt1
             // 
-            this.txtItemBarcode.Location = new System.Drawing.Point(152, 11);
-            this.txtItemBarcode.Name = "txtItemBarcode";
-            this.txtItemBarcode.Size = new System.Drawing.Size(124, 20);
-            this.txtItemBarcode.TabIndex = 4;
-            this.txtItemBarcode.Leave += new System.EventHandler(this.txtItemBarcode_Leave);
+            this.txt1.BackColor = System.Drawing.SystemColors.Control;
+            this.txt1.Location = new System.Drawing.Point(285, 9);
+            this.txt1.Name = "txt1";
+            this.txt1.Size = new System.Drawing.Size(1, 20);
+            this.txt1.TabIndex = 5;
+            this.txt1.Enter += new System.EventHandler(this.txt1_Enter);
             // 
             // custDataGridView
             // 
@@ -401,14 +402,14 @@
             this.label1.TabIndex = 10030;
             this.label1.Text = "Scan Item Bar Code";
             // 
-            // txt1
+            // txtItemBarcode
             // 
-            this.txt1.BackColor = System.Drawing.SystemColors.Control;
-            this.txt1.Location = new System.Drawing.Point(285, 9);
-            this.txt1.Name = "txt1";
-            this.txt1.Size = new System.Drawing.Size(1, 20);
-            this.txt1.TabIndex = 5;
-            this.txt1.Enter += new System.EventHandler(this.txt1_Enter);
+            this.txtItemBarcode.Location = new System.Drawing.Point(152, 11);
+            this.txtItemBarcode.Name = "txtItemBarcode";
+            this.txtItemBarcode.Size = new System.Drawing.Size(124, 20);
+            this.txtItemBarcode.TabIndex = 4;
+            this.txtItemBarcode.Leave += new System.EventHandler(this.txtItemBarcode_Leave);
+            this.txtItemBarcode.Validating += new System.ComponentModel.CancelEventHandler(this.txtItemBarcode_Validating);
             // 
             // frmMxBookShipping
             // 
@@ -435,6 +436,7 @@
             this.Name = "frmMxBookShipping";
             this.Text = "Mixbook Shipping";
             this.Load += new System.EventHandler(this.frmMxBookShipping_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
@@ -451,7 +453,6 @@
             this.Controls.SetChildIndex(this.lblShpName, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.lblShpMethod, 0);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.pnlGrid, 0);
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();

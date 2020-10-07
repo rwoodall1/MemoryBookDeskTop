@@ -53,22 +53,24 @@
             this.lblLastScan = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
             this.chkRemake = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtImpersonate = new System.Windows.Forms.TextBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.lblBkLoc = new System.Windows.Forms.Label();
-            this.lblBkLocation = new System.Windows.Forms.Label();
             this.chkPrToLabeler = new System.Windows.Forms.CheckBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnClearPrinter = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.pnlBookLocation = new System.Windows.Forms.Panel();
+            this.lblBkLocation = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblHoldLocation = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pnlHoldLocation = new System.Windows.Forms.Panel();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlBookLocation.SuspendLayout();
+            this.pnlHoldLocation.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -119,7 +121,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(84, 163);
+            this.btnSave.Location = new System.Drawing.Point(84, 200);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
             this.btnSave.TabIndex = 0;
@@ -136,7 +138,7 @@
             this.pnlQty.Controls.Add(this.label3);
             this.pnlQty.Controls.Add(this.lblScanQty);
             this.pnlQty.Controls.Add(this.label2);
-            this.pnlQty.Location = new System.Drawing.Point(321, 62);
+            this.pnlQty.Location = new System.Drawing.Point(373, 96);
             this.pnlQty.Name = "pnlQty";
             this.pnlQty.Size = new System.Drawing.Size(299, 57);
             this.pnlQty.TabIndex = 2;
@@ -307,35 +309,8 @@
             this.chkRemake.TabIndex = 1;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
+            this.chkRemake.CheckedChanged += new System.EventHandler(this.chkRemake_CheckedChanged);
             this.chkRemake.Click += new System.EventHandler(this.chkRemake_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtImpersonate);
-            this.panel1.Location = new System.Drawing.Point(338, 132);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(278, 30);
-            this.panel1.TabIndex = 10012;
-            this.panel1.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 10013;
-            this.label1.Text = "Impersonate";
-            // 
-            // txtImpersonate
-            // 
-            this.txtImpersonate.Enabled = false;
-            this.txtImpersonate.Location = new System.Drawing.Point(84, 5);
-            this.txtImpersonate.Name = "txtImpersonate";
-            this.txtImpersonate.Size = new System.Drawing.Size(192, 20);
-            this.txtImpersonate.TabIndex = 10012;
             // 
             // reportViewer1
             // 
@@ -348,27 +323,6 @@
             this.reportViewer1.TabIndex = 10014;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
-            // lblBkLoc
-            // 
-            this.lblBkLoc.AutoSize = true;
-            this.lblBkLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBkLoc.Location = new System.Drawing.Point(313, 3);
-            this.lblBkLoc.Name = "lblBkLoc";
-            this.lblBkLoc.Size = new System.Drawing.Size(165, 17);
-            this.lblBkLoc.TabIndex = 10016;
-            this.lblBkLoc.Text = "Last Scan Book Location";
-            this.lblBkLoc.Visible = false;
-            // 
-            // lblBkLocation
-            // 
-            this.lblBkLocation.AutoSize = true;
-            this.lblBkLocation.BackColor = System.Drawing.Color.Gold;
-            this.lblBkLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBkLocation.Location = new System.Drawing.Point(485, 3);
-            this.lblBkLocation.Name = "lblBkLocation";
-            this.lblBkLocation.Size = new System.Drawing.Size(0, 17);
-            this.lblBkLocation.TabIndex = 10015;
             // 
             // chkPrToLabeler
             // 
@@ -402,19 +356,20 @@
             // btnClearPrinter
             // 
             this.btnClearPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearPrinter.Location = new System.Drawing.Point(186, 163);
+            this.btnClearPrinter.Location = new System.Drawing.Point(186, 200);
             this.btnClearPrinter.Name = "btnClearPrinter";
             this.btnClearPrinter.Size = new System.Drawing.Size(87, 23);
             this.btnClearPrinter.TabIndex = 10021;
             this.btnClearPrinter.TabStop = false;
             this.btnClearPrinter.Text = "Clear Printer";
             this.btnClearPrinter.UseVisualStyleBackColor = true;
+            this.btnClearPrinter.Visible = false;
             this.btnClearPrinter.Click += new System.EventHandler(this.btnClearPrinter_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(314, 168);
+            this.button1.Location = new System.Drawing.Point(314, 218);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 23);
             this.button1.TabIndex = 10022;
@@ -424,19 +379,77 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // pnlBookLocation
+            // 
+            this.pnlBookLocation.Controls.Add(this.lblBkLocation);
+            this.pnlBookLocation.Controls.Add(this.label1);
+            this.pnlBookLocation.Location = new System.Drawing.Point(385, 4);
+            this.pnlBookLocation.Name = "pnlBookLocation";
+            this.pnlBookLocation.Size = new System.Drawing.Size(265, 29);
+            this.pnlBookLocation.TabIndex = 10023;
+            this.pnlBookLocation.Visible = false;
+            // 
+            // lblBkLocation
+            // 
+            this.lblBkLocation.AutoSize = true;
+            this.lblBkLocation.BackColor = System.Drawing.Color.Gold;
+            this.lblBkLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBkLocation.Location = new System.Drawing.Point(157, 6);
+            this.lblBkLocation.Name = "lblBkLocation";
+            this.lblBkLocation.Size = new System.Drawing.Size(0, 17);
+            this.lblBkLocation.TabIndex = 10016;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(5, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Last Scan Book Location:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblHoldLocation
+            // 
+            this.lblHoldLocation.AutoSize = true;
+            this.lblHoldLocation.Location = new System.Drawing.Point(91, 5);
+            this.lblHoldLocation.Name = "lblHoldLocation";
+            this.lblHoldLocation.Size = new System.Drawing.Size(0, 13);
+            this.lblHoldLocation.TabIndex = 10024;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 13);
+            this.label8.TabIndex = 10025;
+            this.label8.Text = "Hold Location";
+            // 
+            // pnlHoldLocation
+            // 
+            this.pnlHoldLocation.Controls.Add(this.label8);
+            this.pnlHoldLocation.Controls.Add(this.lblHoldLocation);
+            this.pnlHoldLocation.Location = new System.Drawing.Point(511, 159);
+            this.pnlHoldLocation.Name = "pnlHoldLocation";
+            this.pnlHoldLocation.Size = new System.Drawing.Size(160, 30);
+            this.pnlHoldLocation.TabIndex = 10026;
+            this.pnlHoldLocation.Visible = false;
+            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(691, 202);
+            this.ClientSize = new System.Drawing.Size(691, 253);
+            this.Controls.Add(this.pnlHoldLocation);
+            this.Controls.Add(this.pnlBookLocation);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClearPrinter);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.chkPrToLabeler);
             this.Controls.Add(this.pnlRemake);
-            this.Controls.Add(this.lblBkLoc);
-            this.Controls.Add(this.lblBkLocation);
             this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkRemake);
             this.Controls.Add(this.lbllastscanlbl);
             this.Controls.Add(this.pnlQty);
@@ -465,15 +478,14 @@
             this.Controls.SetChildIndex(this.pnlQty, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
             this.Controls.SetChildIndex(this.chkRemake, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            this.Controls.SetChildIndex(this.lblBkLocation, 0);
-            this.Controls.SetChildIndex(this.lblBkLoc, 0);
             this.Controls.SetChildIndex(this.pnlRemake, 0);
             this.Controls.SetChildIndex(this.chkPrToLabeler, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.btnClearPrinter, 0);
             this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.pnlBookLocation, 0);
+            this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
@@ -481,8 +493,10 @@
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlBookLocation.ResumeLayout(false);
+            this.pnlBookLocation.PerformLayout();
+            this.pnlHoldLocation.ResumeLayout(false);
+            this.pnlHoldLocation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,12 +525,7 @@
         private System.Windows.Forms.Label lbllastscanlbl;
         private System.Windows.Forms.Label lblLastScan;
         private System.Windows.Forms.CheckBox chkRemake;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtImpersonate;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.Label lblBkLoc;
-        private System.Windows.Forms.Label lblBkLocation;
         private System.Windows.Forms.Panel pnlRemake;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtReasonCode;
@@ -525,5 +534,11 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Button btnClearPrinter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel pnlBookLocation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBkLocation;
+        private System.Windows.Forms.Panel pnlHoldLocation;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblHoldLocation;
     }
 }
