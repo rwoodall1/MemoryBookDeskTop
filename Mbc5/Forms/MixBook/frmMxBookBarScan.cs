@@ -112,6 +112,12 @@ namespace Mbc5.Forms.MixBook
                                 return;
                             }
                             MbxModel = (MixBookBarScanModel)result.Data;
+                            if (MbxModel.MixbookOrderStatus.Trim()=="Cancelled")
+                            {
+                                MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+                                ClearScan();
+                                return;
+                            }
                             //Not using right now
                             //if (MbxModel.Quantity > 1)
                             //{
@@ -414,14 +420,14 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@Invno",Invno);
                         sqlClient.CommandText(@"Select MixbookOrderStatus from MixbookOrder Where Invno=@Invno AND MixbookOrderStatus='Shipped'  ");
                        var shipCheckResult= sqlClient.SelectSingleColumn();
-                        if (!shipCheckResult.IsError)
-                        {
-                            if (shipCheckResult.Data !=null && shipCheckResult.Data!="")
-                            {
-                                MbcMessageBox.Error("This item has been marked as shipped. Notify supervisor, it could be a duplicate order.");
-                                return;
-                            }
-                        }
+                        //if (!shipCheckResult.IsError)
+                        //{
+                        //    if (shipCheckResult.Data !=null && shipCheckResult.Data!="")
+                        //    {
+                        //        MbcMessageBox.Error("This item has been marked as shipped. Notify supervisor, it could be a duplicate order.");
+                        //        return;
+                        //    }
+                        //}
                         //Check for child item on hold
                         sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", Invno);

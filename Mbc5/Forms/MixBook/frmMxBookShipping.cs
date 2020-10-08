@@ -41,7 +41,7 @@ namespace Mbc5.Forms.MixBook
             var sqlQuery = new SQLCustomClient();
           
             string cmdText = @"
-                            SELECT M.ShipName,M.ProdInOrder,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,SC.ShipName as ShippingMethodName
+                            SELECT M.ShipName,M.ProdInOrder,M.MixbookOrderStatus,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,SC.ShipName as ShippingMethodName
                                 From MixBookOrder M 
                                 Left Join ShipCarriers SC On M.ShipMethod=SC.ShipAlias
                           Where M.ClientOrderId=@ClientOrderId";
@@ -64,6 +64,12 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             MbxModel = (MixBookBarScanModel)result.Data;
+            if (MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
+            {
+                MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+              
+                return;
+            }
             this.CreateShipNotification();
             
             txtDateTime.Text = DateTime.Now.ToString();
