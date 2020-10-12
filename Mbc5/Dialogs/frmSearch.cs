@@ -1547,7 +1547,8 @@ namespace Mbc5.Dialogs {
                     try
                     {
 
-                        vIndex = this.ShipNameList.FindIndex(vcust => vcust.ShipName.ToString() != "" && vcust.ShipName.ToString().Trim().StartsWith(value.ToUpper()));
+
+                        vIndex = this.ShipNameList.FindIndex(vcust => vcust.ShipName.ToString() != "" && vcust.ShipName.ToUpper().ToString().Trim().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();

@@ -743,7 +743,7 @@ namespace Mbc5.DataSets {
                         string ShipAddr2, 
                         string TrackingNumber, 
                         string MixbookOrderStatus, 
-                        int Weight, 
+                        decimal Weight, 
                         string Country, 
                         string CoverPreviewUrl, 
                         string BookPreviewUrl, 
@@ -906,7 +906,7 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnTrackingNumber);
                 this.columnMixbookOrderStatus = new global::System.Data.DataColumn("MixbookOrderStatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMixbookOrderStatus);
-                this.columnWeight = new global::System.Data.DataColumn("Weight", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnWeight = new global::System.Data.DataColumn("Weight", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWeight);
                 this.columnCountry = new global::System.Data.DataColumn("Country", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCountry);
@@ -1838,10 +1838,10 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Weight {
+            public decimal Weight {
                 get {
                     try {
-                        return ((int)(this[this.tableMixBookOrder.WeightColumn]));
+                        return ((decimal)(this[this.tableMixBookOrder.WeightColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Weight\' in table \'MixBookOrder\' is DBNull.", e);

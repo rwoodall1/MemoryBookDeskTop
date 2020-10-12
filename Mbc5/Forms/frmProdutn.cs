@@ -10063,7 +10063,7 @@ namespace Mbc5.Forms
             frmProdutn_Paint(this, null);
             
             }
-
+            SetShipLabel();
         }
         public override void SchnameSearch()
         {
@@ -10119,6 +10119,7 @@ namespace Mbc5.Forms
                 frmProdutn_Paint(this, null);
 
             }
+            SetShipLabel();
         }
         public override void OracleCodeSearch()
         {
@@ -10175,7 +10176,7 @@ namespace Mbc5.Forms
 
             }
 
-
+            SetShipLabel();
 
         }
         public override void InvoiceNumberSearch()
@@ -10235,7 +10236,7 @@ namespace Mbc5.Forms
 
             }
 
-
+            SetShipLabel();
 
         }
         public override void ProdutnNoSearch()
@@ -10295,7 +10296,7 @@ namespace Mbc5.Forms
 
             }
 
-
+            SetShipLabel();
 
         }
 		public override void JobNoSearch() {
@@ -10347,9 +10348,9 @@ namespace Mbc5.Forms
 
 			}
 
+            SetShipLabel();
 
-
-		}
+        }
         public void ClientOrderIdSearch()
         {
             //Mixbook only
@@ -10403,7 +10404,7 @@ namespace Mbc5.Forms
 
             }
 
-
+            SetShipLabel();
 
         }
 

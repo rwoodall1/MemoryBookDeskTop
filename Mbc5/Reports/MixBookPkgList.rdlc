@@ -415,6 +415,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!BarCode.Value</Value>
+                              <MarkupType>HTML</MarkupType>
                               <Style>
                                 <FontFamily>3 of 9 Barcode</FontFamily>
                                 <FontSize>20pt</FontSize>
@@ -504,7 +505,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ShipName</rd:DefaultName>
-          <Top>1.1168in</Top>
+          <Top>1.10859in</Top>
           <Left>0.23833in</Left>
           <Height>0.845in</Height>
           <Width>3.28125in</Width>
@@ -535,7 +536,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>OrderNumber</rd:DefaultName>
-          <Top>1.1168in</Top>
+          <Top>1.10859in</Top>
           <Left>5.95153in</Left>
           <Height>0.25in</Height>
           <Width>1.34375in</Width>
@@ -569,7 +570,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.1168in</Top>
+          <Top>1.10859in</Top>
           <Left>4.38096in</Left>
           <Height>0.25in</Height>
           <Width>1.48932in</Width>
@@ -633,7 +634,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.41415in</Top>
+          <Top>1.40594in</Top>
           <Left>4.90153in</Left>
           <Height>0.25in</Height>
           <Width>0.96875in</Width>
@@ -781,7 +782,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>2.03124in</Top>
+          <Top>2.02303in</Top>
           <Left>0.23833in</Left>
           <Height>0.25in</Height>
           <Width>0.96875in</Width>
@@ -814,7 +815,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>2.03124in</Top>
+          <Top>2.02303in</Top>
           <Left>1.28833in</Left>
           <Height>0.26388in</Height>
           <Width>2.23125in</Width>

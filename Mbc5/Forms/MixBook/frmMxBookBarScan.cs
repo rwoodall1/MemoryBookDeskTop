@@ -565,35 +565,24 @@ namespace Mbc5.Forms.MixBook
 
                          
                         break;
-                    case "SHIPPING":
+                    case "TRIMMING":
+
+                        vDeptCode = "43";
+                        vWIR = "TR";
                         //war is datetime
                         //wir is initials
-                        int vWeight = 0;
-                        int.TryParse(txtWeight.Text, out vWeight);
-                        if (!int.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
-                        {
-                            MbcMessageBox.Information("Enter a valid numeric weight.");
-                            return;
-                        }
-                        var a = this.Validate();
-                        var b = this.ValidateChildren();
-                        if (this.Validate())
-                        {
-                            vDeptCode = "40";
-                            vWIR = "SH";
-                            sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
-                                        
-                        var mxResult4 = sqlClient.Update();
-                        if (mxResult4.IsError)
+                        sqlClient.CommandText(@"Update WipDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        var mxResult11 = sqlClient.Update();
+                        if (mxResult11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -604,56 +593,38 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
                                                     END
                                                     ");
 
-                        var result4 = sqlClient.Insert();
-                        if (result4.IsError)
+                        var result11 = sqlClient.Insert();
+                        if (result11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            return;
                         }
-                            sqlClient.ClearParameters();
-                            sqlClient.CommandText(@"UPDATE Produtn Set Shpdate=GETDATE() where Invno=@Invno");
-                            sqlClient.AddParameter("@Invno", this.Invno);
-                            
-                            var produtnResult = sqlClient.Update();
-                            if (produtnResult.IsError)
-                            {
-                                MbcMessageBox.Error("Failed to update shipdate on production screen.");
-
-                            }
-
-                            sqlClient.ClearParameters();
-
-                        sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE() where Invno=@Invno");
+                        //Mark says orders will not be split on location so insert into one location
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@Weight", vWeight);
-                        sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text);
-                        var trackingResult = sqlClient.Update();
-                        if (trackingResult.IsError)
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@Location", txtLocation.Text);
+                        var locationresult1 = sqlClient.Update();
+                        if (locationresult1.IsError)
                         {
-                            MbcMessageBox.Error("Failed to update tracking number in order screen.");
-
+                            MbcMessageBox.Error("Failed to update location of order.");
+                            ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
                         }
-                            int weight = 0;
-                            int.TryParse(txtWeight.Text, out weight);
-                            var shipInfo = new ShippingNotificationInfo()
-                            {
-                                JobId = MbxModel.JobId,
-                                ShipMethod = MbxModel.ShipMethod,
-                                ItemId = MbxModel.ItemId,
-                                Qty = MbxModel.Quantity,
-                                TrackingNumber = txtTrackingNo.Text,
-                                Weight = weight
-                          };
-                        txtBarCode.Focus();
-                         NotifyMixbookOfShipment(shipInfo);
-                    ClearScan();
-                          
-                        
-                }
+                        QuantityScanned += 1;
+                        lblScanQty.Text = QuantityScanned.ToString();
+                        if (QuantityScanned >= QtyToScan)
+                        {
+                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                            QuantityScanned = 0;
+                            lblScanQty.Text = QuantityScanned.ToString();
+                        }
+
+                        ClearScan();
                         break;
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
@@ -1020,6 +991,8 @@ namespace Mbc5.Forms.MixBook
                 if (ApplicationUser.UserName == "binding") {
                     chkPrToLabeler.Visible = true;
                     btnClearPrinter.Visible = true;
+                    pnlQty.Visible = true;
+                    pnlBookLocation.Visible = true;
                 }
                 if (ApplicationUser.UserName == "onboard")
                 {

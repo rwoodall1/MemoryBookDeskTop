@@ -55,6 +55,7 @@ namespace BindingModels
         public int ProdInOrder { get; set; }
         public string ShippingMethodName { get; set; }
         public string MixbookOrderStatus { get; set; }
+        
     }
     public class MixBookItemScanModel
     {
@@ -70,6 +71,7 @@ namespace BindingModels
         public string MxbLocation { get; set; }
         public int Invno { get; set; }
     }
+
     public class MixbookPackingSlip
     {
         public int Invno { get; set; }
@@ -91,6 +93,30 @@ namespace BindingModels
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
         public string BookLocation { get; set; }
+    }
+    public class MixbookRemakeTicket
+    {
+
+        public int Invno { get; set; }
+        public string ShipName { get; set; }
+        public string ShipAddr { get; set; }
+        public string ShipAddr2 { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
+        public string OrderNumber { get; set; }
+        public int ClientOrderId { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string Description { get; set; }
+        public string ItemCode { get; set; }
+        public string JobId { get; set; }
+        public string ItemId { get; set; }
+        public string ShipMethod { get; set; }
+        public string BarCode { get; set; }
+        public string Location { get; set; }
+        public string Item { get; set; }
+      
     }
     public class ShippingNotificationInfo
     {

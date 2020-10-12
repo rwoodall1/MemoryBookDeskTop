@@ -68,6 +68,13 @@ namespace Mbc5.Forms.MixBook
 
         public override void Fill()
         {
+            if (OrderId == 0)
+            {
+                dsmixBookOrders.MixBookOrder.Clear();
+        
+                   
+                return;
+            }
             try
             {
                 this.statesTableAdapter.Fill(this.lookUp.states);
@@ -330,12 +337,47 @@ namespace Mbc5.Forms.MixBook
           
 
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+
             reportViewer2.LocalReport.DataSources.Clear();
+            
             reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
 
             reportViewer2.RefreshReport();
         }
+        private void PrintRemakeTicket(int vInvno)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,'Book'As Item
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location
+            FROM MixbookOrder MO
+               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+              
+               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+                Where MO.Invno=@Invno
+				UNION
+	Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'SC*' AS BarCode,'Cover'As Item
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location
+            FROM MixbookOrder MO
+               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+               Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
+                Where MO.Invno=@Invno");
+            sqlClient.AddParameter("@Invno", vInvno);
+            var result = sqlClient.SelectMany<MixbookRemakeTicket>();
+            if (result.IsError || result.Data == null)
+            {
+                MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
+                return;
+            }
 
+
+            var packingSlipData = (List<MixbookRemakeTicket>)result.Data;
+            MixbookRemakeBindingSource.DataSource = packingSlipData;
+            reportViewer1.LocalReport.DataSources.Clear();
+        
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMixBookRemakeTkt", MixbookRemakeBindingSource));
+
+            reportViewer1.RefreshReport();
+        }
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -379,5 +421,90 @@ namespace Mbc5.Forms.MixBook
                 }
             }
         }
+
+        private void btnRemake_Click(object sender, EventArgs e)
+        {
+            int vInvno = 0;
+            int.TryParse(invnoLabel1.Text, out vInvno);
+            if (Invno == 0)
+            {
+                MbcMessageBox.Error("Invoice number is not valid");
+                return;
+            }
+            PrintRemakeTicket(vInvno);
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            PrinterSettings printerName = new PrinterSettings();
+            string printer = printerName.PrinterName;
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewer1.LocalReport, printer, 1, false);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void purgeStripButton2_Click(object sender, EventArgs e)
+        {
+            if (orderIdLabel1.Text=="") { return; }
+
+            var dialogResult = MessageBox.Show("This will remove all traces of this record from the system, are you sure you want to do this?", "Purge", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+        if(dialogResult==DialogResult.Yes) {
+
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"Delete From MixbookOrder Where ClientOrderId=@ClientOrderId");
+                sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+                var deleteResult=sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge order");
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Delete From Produtn Where MxbClientOrderId=@ClientOrderId");
+                sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+                var deleteResult1 = sqlClient.Delete();
+                if (deleteResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge Production record.");
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Delete From WipDetail Where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0,7));
+                var deleteResult11 = sqlClient.Delete();
+                if (deleteResult11.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge Wip records.");
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Delete From CoverDetail Where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
+                var deleteResult111 = sqlClient.Delete();
+                if (deleteResult111.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge cover records.");
+                    return;
+                }
+
+
+
+                MbcMessageBox.Information("Order has been purged");
+                this.OrderId = 0;
+                Fill();
+            }
+
+
+       }
     }
 }

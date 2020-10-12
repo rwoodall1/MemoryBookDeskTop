@@ -41,7 +41,6 @@ D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Debug\Exceptionless.xml
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Debug\Exceptionless.Windows.xml
 D:\Projects\MemoryBookDeskTop\StartUpApp\bin\Debug\Newtonsoft.Json.xml
-D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.csprojAssemblyReference.cache
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.Properties.Resources.resources
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.Splash.resources
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.SplashForm1.resources

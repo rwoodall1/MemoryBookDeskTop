@@ -33,6 +33,7 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         public MixBookBarScanModel MbxModel { get; set; }
         public MixbookNotification ShipNotification { get; set; }
+        public List<MixbookNotification> ShipNotifications { get; set; }
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
@@ -41,10 +42,10 @@ namespace Mbc5.Forms.MixBook
             var sqlQuery = new SQLCustomClient();
           
             string cmdText = @"
-                            SELECT M.ShipName,M.ProdInOrder,M.MixbookOrderStatus,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,SC.ShipName as ShippingMethodName
+                            SELECT M.ShipName,M.MixbookOrderStatus,M.ClientOrderId,M.ShipMethod,SC.ShipName as ShippingMethodName,M.ProdInOrder
                                 From MixBookOrder M 
                                 Left Join ShipCarriers SC On M.ShipMethod=SC.ShipAlias
-                          Where M.ClientOrderId=@ClientOrderId";
+                          Where M.ClientOrderId=@ClientOrderId AND ProdInOrder IN(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=@ClientOrderId)";
             sqlQuery.CommandText(cmdText);
             int vClientId = 0;
             if(!int.TryParse(txtClientIdLookup.Text,out vClientId))
@@ -109,8 +110,8 @@ namespace Mbc5.Forms.MixBook
         private void txtWeight_Validating(object sender, CancelEventArgs e)
         {
             errorProvider1.SetError(txtWeight, "");
-            int vWeight = 0;
-            if (!int.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
+            decimal vWeight = 0;
+            if (!decimal.TryParse(txtWeight.Text, out vWeight) || vWeight == 0)
             {
 
 
@@ -238,7 +239,12 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            if (Items.Count > 0)
+            if (Items.Count != MbxModel.ProdInOrder)
+            {
+                MbcMessageBox.Error("You have " + Items.Count.ToString() + " items in the shipment but the order has " + MbxModel.ProdInOrder.ToString() + " items. The shipment has not processed.");
+                return;
+            }
+            if (Items.Count > 0  )
             {
                 var result = NotifyMixbookOfShipment();
                 //Update wip no matter what the result is error trapping and hangfire will take care of any notifiction failures.

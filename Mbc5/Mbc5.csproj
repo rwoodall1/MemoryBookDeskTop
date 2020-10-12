@@ -651,6 +651,7 @@
     <Content Include="NOTES TODO.txt" />
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -859,6 +860,7 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTkt.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />

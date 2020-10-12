@@ -49,6 +49,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsmixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
@@ -106,6 +111,10 @@
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDownloadFiles = new System.Windows.Forms.Button();
+            this.btnRemake = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.MixbookRemakeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -123,6 +132,8 @@
             shipAddr2Label = new System.Windows.Forms.Label();
             shipAddrLabel = new System.Windows.Forms.Label();
             shipNameLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).BeginInit();
@@ -132,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).BeginInit();
             this.pnlOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -302,6 +314,14 @@
             shipNameLabel.TabIndex = 300;
             shipNameLabel.Text = "Shipping Name";
             // 
+            // MixbookPackingSlipBindingSource
+            // 
+            this.MixbookPackingSlipBindingSource.DataSource = typeof(BindingModels.MixbookPackingSlip);
+            // 
+            // MixbookRemakeTicketBindingSource
+            // 
+            this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
+            // 
             // mixBookOrderBindingSource
             // 
             this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
@@ -440,7 +460,8 @@
             this.mixBookOrderBindingNavigatorSaveItem,
             this.toolStripButton3,
             this.toolStripButton1,
-            this.itemIdToolStripBtn});
+            this.itemIdToolStripBtn,
+            this.purgeStripButton2});
             this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -661,6 +682,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
+            reportDataSource1.Name = "dsMxPackingSlip";
+            reportDataSource1.Value = this.MixbookPackingSlipBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -749,7 +773,7 @@
             this.trackingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "TrackingNumber", true));
             this.trackingNumberTextBox.Location = new System.Drawing.Point(494, 96);
             this.trackingNumberTextBox.Name = "trackingNumberTextBox";
-            this.trackingNumberTextBox.Size = new System.Drawing.Size(100, 20);
+            this.trackingNumberTextBox.Size = new System.Drawing.Size(226, 20);
             this.trackingNumberTextBox.TabIndex = 328;
             // 
             // mixbookOrderStatusLabel2
@@ -895,10 +919,54 @@
             this.btnDownloadFiles.UseVisualStyleBackColor = true;
             this.btnDownloadFiles.Click += new System.EventHandler(this.btnDownloadFiles_Click);
             // 
+            // btnRemake
+            // 
+            this.btnRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemake.Location = new System.Drawing.Point(248, 244);
+            this.btnRemake.Name = "btnRemake";
+            this.btnRemake.Size = new System.Drawing.Size(153, 23);
+            this.btnRemake.TabIndex = 10019;
+            this.btnRemake.Text = "Print Remake Ticket";
+            this.btnRemake.UseVisualStyleBackColor = true;
+            this.btnRemake.Click += new System.EventHandler(this.btnRemake_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 35;
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(9, 313);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(52, 54);
+            this.reportViewer1.TabIndex = 10020;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
+            // MixbookRemakeBindingSource
+            // 
+            this.MixbookRemakeBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
+            // 
+            // purgeStripButton2
+            // 
+            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
+            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.purgeStripButton2.Name = "purgeStripButton2";
+            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
+            this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
+            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1143, 591);
+            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.btnRemake);
             this.Controls.Add(this.btnDownloadFiles);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pnlOrder);
@@ -918,6 +986,10 @@
             this.Controls.SetChildIndex(this.pnlOrder, 0);
             this.Controls.SetChildIndex(this.btnEdit, 0);
             this.Controls.SetChildIndex(this.btnDownloadFiles, 0);
+            this.Controls.SetChildIndex(this.btnRemake, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
@@ -929,6 +1001,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).EndInit();
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -994,5 +1067,11 @@
         private System.Windows.Forms.ComboBox shipStateComboBox;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDownloadFiles;
+        private System.Windows.Forms.Button btnRemake;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource MixbookPackingSlipBindingSource;
+        private System.Windows.Forms.BindingSource MixbookRemakeBindingSource;
+        private System.Windows.Forms.BindingSource MixbookRemakeTicketBindingSource;
+        private System.Windows.Forms.ToolStripButton purgeStripButton2;
     }
 }

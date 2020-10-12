@@ -146,6 +146,7 @@ namespace Mbc5.Forms.MixBook
         private bool InsertWip()
         {
             string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+     
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
                             SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
@@ -173,7 +174,7 @@ namespace Mbc5.Forms.MixBook
             //wir is initials
             string vDeptCode = "49";
             string vWIR = "CI";
-            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
        
             sqlClient.AddParameter("@WIR", vWIR);
@@ -189,7 +190,7 @@ namespace Mbc5.Forms.MixBook
             }
             sqlClient.ClearParameters();
             sqlClient.ReturnSqlIdentityId(true);
-            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
              sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
