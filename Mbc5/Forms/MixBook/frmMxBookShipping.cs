@@ -42,7 +42,7 @@ namespace Mbc5.Forms.MixBook
             var sqlQuery = new SQLCustomClient();
           
             string cmdText = @"
-                            SELECT M.ShipName,M.MixbookOrderStatus,M.ClientOrderId,M.ShipMethod,SC.ShipName as ShippingMethodName,M.ProdInOrder
+                            SELECT M.ShipName,M.MixbookOrderStatus,M.JobId,M.ClientOrderId,M.ShipMethod,SC.ShipName as ShippingMethodName,M.ProdInOrder
                                 From MixBookOrder M 
                                 Left Join ShipCarriers SC On M.ShipMethod=SC.ShipAlias
                           Where M.ClientOrderId=@ClientOrderId AND ProdInOrder IN(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=@ClientOrderId)";
