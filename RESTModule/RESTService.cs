@@ -89,7 +89,9 @@ namespace RESTModule {
                     var requestData = new StringContent(xmlRequestData,Encoding.UTF8, "application/xml");
                     var apiResponse = new HttpResponseMessage();
                     if (actionType.ToUpper() == "POST") {
-                        apiResponse = await httpClient.PostAsync(EndPoint, requestData);
+                        
+                            apiResponse = await httpClient.PostAsync(EndPoint, requestData);
+                        
                     } else if (actionType.ToUpper() == "DELETE") {
                         apiResponse = await httpClient.DeleteAsync(EndPoint);
                     } else {
