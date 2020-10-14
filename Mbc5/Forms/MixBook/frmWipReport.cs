@@ -51,7 +51,7 @@ namespace Mbc5.Forms.MixBook
                                  ,WD39.MxbLocation AS PCart
                                  ,WD49.War AS CaseIn
                                  ,WD50.War AS Quality
-                                 ,WD50.MxbLocation AS Location50
+                                 ,WD50.MxbLocation AS Location
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
