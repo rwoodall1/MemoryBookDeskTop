@@ -298,7 +298,7 @@
             // 
             // Column19
             // 
-            this.Column19.DataPropertyName = "Location50";
+            this.Column19.DataPropertyName = "Location";
             this.Column19.HeaderText = "Location";
             this.Column19.Name = "Column19";
             this.Column19.ReadOnly = true;

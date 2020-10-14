@@ -21,7 +21,7 @@ namespace BindingModels
         public int Pages { get; set; }
   
         public string Trimming { get; set;}
-        public string TrimLoc { get; set; }
+        //public string TrimLoc { get; set; }
         public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string Description { get; set; } 
