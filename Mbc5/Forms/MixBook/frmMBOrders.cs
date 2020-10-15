@@ -411,7 +411,7 @@ namespace Mbc5.Forms.MixBook
         {
             if (!string.IsNullOrEmpty(orderIdLabel1.Text)) {
                 var sqlClient = new SQLCustomClient();
-                sqlClient.CommandText(@"Update MixbookOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId ");
+                sqlClient.CommandText(@"Update MixbookOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var result = sqlClient.Update();
                 if (result.IsError)
