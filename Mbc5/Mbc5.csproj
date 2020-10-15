@@ -564,6 +564,12 @@
     <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmShippingReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -803,6 +809,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
