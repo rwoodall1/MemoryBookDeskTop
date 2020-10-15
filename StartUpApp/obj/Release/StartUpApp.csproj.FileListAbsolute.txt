@@ -38,3 +38,4 @@ D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.csproj.CoreCompi
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.csproj.CopyComplete
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.exe
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.pdb
+D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Release\StartUpApp.csprojAssemblyReference.cache
