@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingModels", "BindingMod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUpApp", "StartUpApp\StartUpApp.csproj", "{8D4B8F3D-EA61-4461-B54B-4397714FC613}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,14 +81,6 @@ Global
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Staging|Any CPU.ActiveCfg = Release|Any CPU
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Staging|Any CPU.Build.0 = Release|Any CPU
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Debug|Any CPU.ActiveCfg = Debug
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Debug|Any CPU.Build.0 = Debug
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Dev|Any CPU.ActiveCfg = Debug
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Dev|Any CPU.Build.0 = Debug
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Release|Any CPU.ActiveCfg = Release
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Release|Any CPU.Build.0 = Release
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Staging|Any CPU.ActiveCfg = Release
-		{C3D66C6E-D80E-4112-96D0-D6F7CC5F00FD}.Staging|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
