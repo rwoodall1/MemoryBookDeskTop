@@ -36,8 +36,8 @@ namespace Mbc5.Dialogs {
 
             private void btnLogin_Click(object sender, EventArgs e)      
             {
-            
-            this.pbLoading.Visible = true;
+            ////connection
+            //this.pbLoading.Visible = true;
             //var AppConnectionString = "";
             //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
 
@@ -104,7 +104,7 @@ namespace Mbc5.Dialogs {
                 this.panel1.Visible = false;
                 this.pbLoading.Visible = false;
                 this.lblSuccess.Visible = true;
-                frmMain.Text = "Mbc5/User:" + cUser.ToUpper();
+                frmMain.Text += "/User:" + cUser.ToUpper();
                 frmMain.WindowState = FormWindowState.Maximized;
                 frmMain.ForcePasswordChange = vChangePassword;
                 this.timer1.Enabled = true;

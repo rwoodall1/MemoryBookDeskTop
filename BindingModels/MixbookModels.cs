@@ -20,8 +20,10 @@ namespace BindingModels
         public int Copies { get; set; }
         public int Pages { get; set; }
   
-        public string Trimming { get; set;}
-        //public string TrimLoc { get; set; }
+        public string CTrimming { get; set;}
+        public string CTrimLoc { get; set; }
+        public string PTrimming { get; set; }
+        public string PTrimLoc { get; set; }
         public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string Description { get; set; } 
@@ -29,7 +31,7 @@ namespace BindingModels
         public string OnBoards { get; set; }
         public string CCart { get; set; }
         public string WipPress { get; set; }     
-        public string Binding { get; set; }
+        public DateTime Binding { get; set; }
         public string PCart { get; set; }     
         public string CaseIn { get; set; }      
         public string Quality { get; set; }
