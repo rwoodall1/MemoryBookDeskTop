@@ -31,7 +31,7 @@ namespace BindingModels
         public string OnBoards { get; set; }
         public string CCart { get; set; }
         public string WipPress { get; set; }     
-        public string Binding { get; set; }
+        public DateTime Binding { get; set; }
         public string PCart { get; set; }     
         public string CaseIn { get; set; }      
         public string Quality { get; set; }

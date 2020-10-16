@@ -248,15 +248,17 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
                 return;
             }
-
-            UpdateShippingWip();
-            Items.Clear();
             Shipment.trackingNumber = txtTrackingNo.Text;
             decimal vWeight = 0;
             decimal.TryParse(txtWeight.Text, out vWeight);
             Shipment.weight = vWeight;
             Shipment.shippedAt = DateTime.Now;
             Shipment.method = MbxModel.ShipMethod;
+            UpdateShippingWip();
+            Items.Clear();
+            
+           
+          
             this.ShipNotification.Request.Shipment.Add(this.Shipment);
             var result = NotifyMixbookOfShipment();
             btnShipmentReset_Click(null, null);
@@ -330,10 +332,7 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Failed to update tracking number in order screen.");
 
                 }
-
-
             }
-
         }
 
         private void btnItemReset_Click(object sender, EventArgs e)
@@ -382,6 +381,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void plnTracking_Leave(object sender, EventArgs e)
         {
+        
             if(string.IsNullOrEmpty(txtClientIdLookup.Text)&& string.IsNullOrEmpty(txtItemBarcode.Text)) { return; }
                 if (this.Validate())
                 {

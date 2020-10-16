@@ -33,4 +33,3 @@ D:\Projects\MemoryBookDeskTop\BindingModels\obj\Debug\BindingModels.csproj.CopyC
 D:\Projects\MemoryBookDeskTop\BindingModels\obj\Debug\BindingModels.dll
 D:\Projects\MemoryBookDeskTop\BindingModels\obj\Debug\BindingModels.pdb
 D:\Projects\MemoryBookDeskTop\BindingModels\bin\BindingModels.pdb
-D:\Projects\MemoryBookDeskTop\BindingModels\obj\Debug\BindingModels.csprojAssemblyReference.cache

@@ -74,6 +74,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -114,7 +115,6 @@
             this.btnRemake = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.MixbookRemakeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -501,6 +501,15 @@
             this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
             this.itemIdToolStripBtn.Text = "Item Id";
             this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
+            // 
+            // purgeStripButton2
+            // 
+            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
+            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.purgeStripButton2.Name = "purgeStripButton2";
+            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
+            this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // statesBindingSource
             // 
@@ -910,6 +919,7 @@
             // 
             // btnDownloadFiles
             // 
+            this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDownloadFiles.Location = new System.Drawing.Point(853, 244);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
@@ -951,15 +961,6 @@
             // MixbookRemakeBindingSource
             // 
             this.MixbookRemakeBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
-            // 
-            // purgeStripButton2
-            // 
-            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
-            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.purgeStripButton2.Name = "purgeStripButton2";
-            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
-            this.purgeStripButton2.Text = "Purge";
-            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // frmMBOrders
             // 

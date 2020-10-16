@@ -60,7 +60,7 @@ namespace Mbc5.Forms.MixBook
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail  Where DescripId=39  ) WD39 On MO.Invno=WD39.Invno
+                                 Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
