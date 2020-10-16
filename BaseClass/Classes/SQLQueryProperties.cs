@@ -11,8 +11,8 @@ namespace BaseClass.Classes
 {
     public class SQLQueryProperties
     {
-        private static string _ConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-        //private static string _ConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+        //private static string _ConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+        private static string _ConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
         public SQLQueryProperties()
         {
             ConnectionString = _ConnectionString;

@@ -256,6 +256,11 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus","Press");
+                        sqlClient.Update();
                         ClearScan();
                         break;
                     case "BINDING":
@@ -311,14 +316,14 @@ namespace Mbc5.Forms.MixBook
                         {
                             //Print to labeler
                             List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                            var vData = new BookBlockLabel() { Barcode ="*"+ txtBarCode.Text+"*", Location = txtLocation.Text };
+                            var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
                             listData.Add(vData);
 
                             reportViewer2.LocalReport.DataSources.Clear();
                             reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
                             reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
                             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                            dp.Export(true,reportViewer2.LocalReport,this.LabelPrinter);
+                            dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
                         }
 
 
@@ -349,25 +354,30 @@ namespace Mbc5.Forms.MixBook
                             //if (MbxModel.Quantity == 1)//not using right now
                             //{
                             PrintPackingList(MbxModel.ClientOrderId);
-                            //}else if (MbxModel.Quantity>1)
-                            //{
-                            //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
-                            //    if (record == null)
-                            //    {
-                            //        return;
-                            //    }
-                            //    record.Scanned += 1;
-                            //    if (record.Scanned==1)
-                            //    {
-                            //        PrintPackingList(MbxModel.ClientOrderId);
-                            //    }
-                            //    if (record.Scanned == record.Copies)
-                            //    {
-                            //        PrintedPackageList.Remove(record);
-                            //    }
-                            //}
-                        
+                        //}else if (MbxModel.Quantity>1)
+                        //{
+                        //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
+                        //    if (record == null)
+                        //    {
+                        //        return;
+                        //    }
+                        //    record.Scanned += 1;
+                        //    if (record.Scanned==1)
+                        //    {
+                        //        PrintPackingList(MbxModel.ClientOrderId);
+                        //    }
+                        //    if (record.Scanned == record.Copies)
+                        //    {
+                        //        PrintedPackageList.Remove(record);
+                        //    }
+                        //}
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Binding");
+                        sqlClient.Update();
                         ClearScan();
+                      
                         
                         break;
                     case "CASEIN":
@@ -408,6 +418,12 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                    
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Casein");
+                        sqlClient.Update();
                         ClearScan();
                         break;
                     case "QUALITY":
@@ -534,6 +550,7 @@ namespace Mbc5.Forms.MixBook
                         if (orderCheck.IsError)
                         {
                             MbcMessageBox.Error("Failed to check if order complete,please check manually.");
+                            return;
                         }
                         var data =(List<OrderChk>) orderCheck.Data;
                        
@@ -563,7 +580,12 @@ namespace Mbc5.Forms.MixBook
                             }
                         }
 
-                         
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Quality");
+                        sqlClient.Update();
+                        ClearScan();
                         break;
                     case "TRIMMING":
 
@@ -623,8 +645,13 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
-
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Trimming");
+                        sqlClient.Update();
                         ClearScan();
+                    
                         break;
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
@@ -705,8 +732,8 @@ namespace Mbc5.Forms.MixBook
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        
-                        
+
+
                         //
 
                         //QuantityScanned += 1;
@@ -718,6 +745,11 @@ namespace Mbc5.Forms.MixBook
                         //    lblScanQty.Text = QuantityScanned.ToString();
                         //}
 
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "OnBoard");
+                        sqlClient.Update();
                         ClearScan();
                         break;
                     case "TRIMMING":
@@ -778,7 +810,11 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
-
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Trimming");
+                        sqlClient.Update();
                         ClearScan();
                         break;
                     case "PRESS":
@@ -816,6 +852,11 @@ namespace Mbc5.Forms.MixBook
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Press");
+                        sqlClient.Update();
                         ClearScan();
                         break;
                     case "ONBOARD2":
@@ -946,6 +987,10 @@ namespace Mbc5.Forms.MixBook
                         return;
                     }
                 }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='' where Invno=@Invno");
+                sqlClient.AddParameter("@Invno",Invno);
+                sqlClient.Update();
                 txtReasonCode.Text = "";
             }
             else if(trkType == "YB" )
@@ -970,6 +1015,10 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Failed to update wip remake date.");
                     return;
                 }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='' where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.Update();
             }
             }
 
