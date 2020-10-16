@@ -112,7 +112,7 @@ namespace Mbc5.Forms.MixBook
                                 return;
                             }
                             MbxModel = (MixBookBarScanModel)result.Data;
-                            if (MbxModel.MixbookOrderStatus.Trim()=="Cancelled")
+                            if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim()=="Cancelled")
                             {
                                 MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
                                 ClearScan();
