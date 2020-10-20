@@ -49,17 +49,14 @@
             this.Backing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CoverPress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Trimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrimLoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PTrimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PTrimLoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsWip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -98,17 +95,14 @@
             this.Backing,
             this.CoverPress,
             this.Trimming,
-            this.TrimLoc,
             this.Column10,
             this.Column11,
             this.Column14,
             this.PTrimming,
-            this.PTrimLoc,
             this.Column15,
             this.Column16,
             this.Column17,
-            this.Column18,
-            this.Column19});
+            this.Column18});
             this.dataGridView1.DataSource = this.bsWip;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(12, 76);
@@ -244,13 +238,6 @@
             this.Trimming.Name = "Trimming";
             this.Trimming.ReadOnly = true;
             // 
-            // TrimLoc
-            // 
-            this.TrimLoc.DataPropertyName = "CTrimLoc";
-            this.TrimLoc.HeaderText = "CTrimLoc";
-            this.TrimLoc.Name = "TrimLoc";
-            this.TrimLoc.ReadOnly = true;
-            // 
             // Column10
             // 
             this.Column10.DataPropertyName = "OnBoards";
@@ -279,13 +266,6 @@
             this.PTrimming.Name = "PTrimming";
             this.PTrimming.ReadOnly = true;
             // 
-            // PTrimLoc
-            // 
-            this.PTrimLoc.DataPropertyName = "PTrimLoc";
-            this.PTrimLoc.HeaderText = "PTrimLoc";
-            this.PTrimLoc.Name = "PTrimLoc";
-            this.PTrimLoc.ReadOnly = true;
-            // 
             // Column15
             // 
             this.Column15.DataPropertyName = "Binding";
@@ -313,13 +293,6 @@
             this.Column18.HeaderText = "Quality";
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "Location";
-            this.Column19.HeaderText = "Location";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
             // 
             // frmWipReport
             // 
@@ -372,16 +345,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Backing;
         private System.Windows.Forms.DataGridViewTextBoxColumn CoverPress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Trimming;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrimLoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn PTrimming;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PTrimLoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
     }
 }

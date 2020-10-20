@@ -939,6 +939,12 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Stop("Scan a reason code","Reason Code");
                 return;
             }
+            int vReason = 0;
+            if (!int.TryParse(txtReasonCode.Text,out vReason))
+            {
+                MbcMessageBox.Error("Invalid reason code.");
+                return;
+            }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
             if (trkType == "SC"|| ApplicationUser.UserName.ToUpper()=="QUALITY")
@@ -952,11 +958,12 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RemakeReason", vReason);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
@@ -976,10 +983,11 @@ namespace Mbc5.Forms.MixBook
                     }
                     sqlClient.ClearParameters();
                     string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                    sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo Where INVNO=@Invno");
+                    sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                     sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                     sqlClient.AddParameter("@Invno", this.Invno);
                     sqlClient.AddParameter("@Memo", vmemo1);
+                    sqlClient.AddParameter("@RemakeReason", vReason);
                     var updateResult1 = sqlClient.Update();
                     if (updateResult.IsError)
                     {
@@ -1171,8 +1179,6 @@ namespace Mbc5.Forms.MixBook
             retval = sqlResult.Data;
             return retval;
         }
-
-       
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();

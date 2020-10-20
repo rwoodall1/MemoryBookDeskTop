@@ -11671,7 +11671,12 @@ namespace Mbc5.Forms
 
         }
 
-        
+        private void reportViewerBinderyTicket_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 

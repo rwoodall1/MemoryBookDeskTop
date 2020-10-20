@@ -348,7 +348,7 @@ namespace Mbc5.Forms.MixBook
         {
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,'Book'As Item
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location,MO.RequestedShipDate
             FROM MixbookOrder MO
                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
               
@@ -356,7 +356,7 @@ namespace Mbc5.Forms.MixBook
                 Where MO.Invno=@Invno
 				UNION
 	Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'SC*' AS BarCode,'Cover'As Item
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location
+            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location,MO.RequestedShipDate
             FROM MixbookOrder MO
                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
@@ -368,7 +368,6 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
                 return;
             }
-
 
             var packingSlipData = (List<MixbookRemakeTicket>)result.Data;
             MixbookRemakeBindingSource.DataSource = packingSlipData;
