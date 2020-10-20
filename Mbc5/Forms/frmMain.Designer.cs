@@ -76,6 +76,7 @@
             this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixbookReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shippingReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,7 @@
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.shippingReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -509,8 +510,9 @@
             // mixbookReportsToolStripMenuItem
             // 
             this.mixbookReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wipReportToolStripMenuItem,
-            this.shippingReportToolStripMenuItem});
+            this.invoiceReportToolStripMenuItem,
+            this.shippingReportToolStripMenuItem,
+            this.wipReportToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
             this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
@@ -521,6 +523,13 @@
             this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipReportToolStripMenuItem.Text = "Wip Report";
             this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
+            // 
+            // shippingReportToolStripMenuItem
+            // 
+            this.shippingReportToolStripMenuItem.Name = "shippingReportToolStripMenuItem";
+            this.shippingReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shippingReportToolStripMenuItem.Text = "Shipping Report";
+            this.shippingReportToolStripMenuItem.Click += new System.EventHandler(this.shippingReportToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -888,12 +897,12 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
-            // shippingReportToolStripMenuItem
+            // invoiceReportToolStripMenuItem
             // 
-            this.shippingReportToolStripMenuItem.Name = "shippingReportToolStripMenuItem";
-            this.shippingReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.shippingReportToolStripMenuItem.Text = "Shipping Report";
-            this.shippingReportToolStripMenuItem.Click += new System.EventHandler(this.shippingReportToolStripMenuItem_Click);
+            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
+            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1007,5 +1016,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.ToolStripMenuItem shippingScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shippingReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
     }
 }

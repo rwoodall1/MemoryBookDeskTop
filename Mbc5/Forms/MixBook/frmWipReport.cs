@@ -12,6 +12,7 @@ using Microsoft.Reporting.WinForms;
 using Equin.ApplicationFramework;
 using CsvHelper;
 using System.IO;
+using System.Diagnostics;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmWipReport : BaseClass.frmBase
@@ -114,7 +115,7 @@ namespace Mbc5.Forms.MixBook
 
                     writer.Flush();
 
-
+                    Process.Start(saveFileDialog1.FileName);
                 }
             }
             catch (Exception ex)

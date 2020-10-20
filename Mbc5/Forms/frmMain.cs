@@ -491,6 +491,7 @@ namespace Mbc5.Forms
                 // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
                 // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
                 //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                CleanShipping();
             }
 
 
@@ -1784,6 +1785,29 @@ namespace Mbc5.Forms
             frmReport.MdiParent = this;
             frmReport.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void invoiceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser,this);
+            frmMxInvoiceReport.MdiParent = this;
+            frmMxInvoiceReport.Show();
+            this.Cursor = Cursors.Default;
+        }
+        public void CleanShipping()
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmd = @"Delete From [MixbookShipping] Where ShipperNo NOT IN ('R5556X','R5646Y')";
+            sqlClient.CommandText(cmd);
+          
+
+            var reportResult = sqlClient.Delete();
+            if (reportResult.IsError)
+            {
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage,EmailType.System);
+            }
         }
         //nothing below here
     }
