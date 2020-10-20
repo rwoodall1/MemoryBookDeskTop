@@ -206,6 +206,11 @@ namespace Mbc5.Forms.MixBook
                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@BookStatus", "CaseMatch");
+            sqlClient.Update();
             return true;
         }
     }

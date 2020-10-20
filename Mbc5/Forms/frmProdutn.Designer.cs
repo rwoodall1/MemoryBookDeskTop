@@ -4744,13 +4744,14 @@ namespace Mbc5.Forms
             this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource29);
             this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource30);
             this.reportViewerBinderyTicket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
-            this.reportViewerBinderyTicket.Location = new System.Drawing.Point(798, 119);
+            this.reportViewerBinderyTicket.Location = new System.Drawing.Point(798, 112);
             this.reportViewerBinderyTicket.Name = "reportViewerBinderyTicket";
             this.reportViewerBinderyTicket.ServerReport.BearerToken = null;
             this.reportViewerBinderyTicket.Size = new System.Drawing.Size(73, 59);
             this.reportViewerBinderyTicket.TabIndex = 220;
             this.reportViewerBinderyTicket.Visible = false;
             this.reportViewerBinderyTicket.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerBindery_RenderingComplete);
+            this.reportViewerBinderyTicket.Load += new System.EventHandler(this.reportViewerBinderyTicket_Load);
             // 
             // dbScRecvDate
             // 

@@ -1,1 +1,0 @@
-2017/10/19 14:44:37.032 Error running ExecuteNonQueryAsync. SEDSWBPSQL01  PELOCAL\randy    

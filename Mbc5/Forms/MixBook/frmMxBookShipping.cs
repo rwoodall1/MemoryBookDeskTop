@@ -32,10 +32,12 @@ namespace Mbc5.Forms.MixBook
         }
         public UserPrincipal ApplicationUser { get; set; }
         public MixBookBarScanModel MbxModel { get; set; }
-        public MixbookNotification ShipNotification { get; set; }
-        public List<MixbookNotification> ShipNotifications { get; set; }
+        public MixbookNotification ShipNotification { get; set; } 
+        public List<MixbookNotificationRequestShipment> Shipments { get; set; } = new List<MixbookNotificationRequestShipment>();
+        public MixbookNotificationRequestShipment Shipment { get; set; }
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
+        public int Itemcount { get; set; } = 0;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) {return; }
@@ -65,15 +67,15 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             MbxModel = (MixBookBarScanModel)result.Data;
-            if (MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
+            if (MbxModel.MixbookOrderStatus  != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
             {
                 MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
               
                 return;
             }
-            this.CreateShipNotification();
-            
-            txtDateTime.Text = DateTime.Now.ToString();
+           
+            this.CreateShipment();
+             txtDateTime.Text = DateTime.Now.ToString();
             lblShpName.Text = MbxModel.ShipName;
             lblShpMethod.Text = MbxModel.ShippingMethodName;
         }
@@ -211,21 +213,22 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 var vItem = (MixBookItemScanModel)result.Data;
-                if (string.IsNullOrEmpty(ShipNotification.Request.Shipment[0].Package[0].Item.identifier))
+                if (string.IsNullOrEmpty(Shipment.Package[0].Item.identifier))
                 {
-                    ShipNotification.Request.Shipment[0].Package[0].Item.identifier = vItem.ItemId;
-                    ShipNotification.Request.Shipment[0].Package[0].Item.quantity = vItem.Quantity;
+                    Shipment.Package[0].Item.identifier = vItem.ItemId;
+                    Shipment.Package[0].Item.quantity = vItem.Quantity;
                 }
                 else
                 {
                     var vPkg = new MixbookNotificationRequestShipmentPackage() {Item=new MixbookNotificationRequestShipmentPackageItem() };
                     vPkg.Item.identifier = vItem.ItemId;
                     vPkg.Item.quantity = vItem.Quantity;
-                    ShipNotification.Request.Shipment[0].Package.Add(vPkg);
+                   Shipment.Package.Add(vPkg);
                 }
 
                 Items.Add(vItem);
-                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
+                this.Itemcount += 1;
+                BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource=bsItems;
                 txtItemBarcode.Text = "";
@@ -239,21 +242,26 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            if (Items.Count != MbxModel.ProdInOrder)
+            
+            if (Itemcount!= MbxModel.ProdInOrder)
             {
-                MbcMessageBox.Error("You have " + Items.Count.ToString() + " items in the shipment but the order has " + MbxModel.ProdInOrder.ToString() + " items. The shipment has not processed.");
+                MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
                 return;
             }
-            if (Items.Count > 0  )
-            {
-                var result = NotifyMixbookOfShipment();
-                //Update wip no matter what the result is error trapping and hangfire will take care of any notifiction failures.
-                UpdateShippingWip();
-                CreateShipNotification(true);
-                SetPanels();
-                txtClientIdLookup.Focus();
-            }
-            else { MbcMessageBox.Error("Please scan items in the shipment."); }
+            Shipment.trackingNumber = txtTrackingNo.Text;
+            decimal vWeight = 0;
+            decimal.TryParse(txtWeight.Text, out vWeight);
+            Shipment.weight = vWeight;
+            Shipment.shippedAt = DateTime.Now;
+            Shipment.method = MbxModel.ShipMethod;
+            UpdateShippingWip();
+            Items.Clear();
+            
+           
+          
+            this.ShipNotification.Request.Shipment.Add(this.Shipment);
+            var result = NotifyMixbookOfShipment();
+            btnShipmentReset_Click(null, null);
 
         }
         private void UpdateShippingWip()
@@ -261,6 +269,7 @@ namespace Mbc5.Forms.MixBook
             var sqlClient = new SQLCustomClient();
             string vDeptCode = "40";
            string vWIR = "SH";
+    
             foreach (var item in Items)
             {
                 sqlClient.ClearParameters();
@@ -314,7 +323,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
-                sqlClient.AddParameter("@Weight",ShipNotification.Request.Shipment[0].weight);
+                sqlClient.AddParameter("@Weight",Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
                 string vTracking = txtTrackingNo.Text.Trim();
                   sqlClient.AddParameter("@TrackingNumber", vTracking);
                 var trackingResult = sqlClient.Update();
@@ -323,10 +332,7 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Failed to update tracking number in order screen.");
 
                 }
-
-
             }
-
         }
 
         private void btnItemReset_Click(object sender, EventArgs e)
@@ -337,13 +343,21 @@ namespace Mbc5.Forms.MixBook
                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource = bsItems;
-                ShipNotificationClearItems();
-                SetPanels();
+                txtItemBarcode.Focus();
+                Itemcount = 0;
+
+
             }
-            catch(Exception ex) { }
-         
-     
-            
+            catch(Exception ex) 
+            {
+                ex.ToExceptionless()
+                    .SetMessage("Error clearing shipment items")
+                    .MarkAsCritical()
+                    .Submit();
+
+            }
+
+
         }
 
         private void btnShipmentReset_Click(object sender, EventArgs e)
@@ -354,16 +368,20 @@ namespace Mbc5.Forms.MixBook
             txtTrackingNo.Text = "";
             txtWeight.Text = "";
             txtDateTime.Text = "";
+            Itemcount = 0;
+            CreateShipNotification();
 
+            txtClientIdLookup.Focus();
             Items.Clear();
             BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
             bsItems.DataSource = Items1;
             custDataGridView.DataSource = bsItems;
-            CreateShipNotification(true);
+            CreateShipNotification();
             SetPanels();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
         {
+        
             if(string.IsNullOrEmpty(txtClientIdLookup.Text)&& string.IsNullOrEmpty(txtItemBarcode.Text)) { return; }
                 if (this.Validate())
                 {
@@ -383,7 +401,8 @@ namespace Mbc5.Forms.MixBook
             if (Loading)
             {
                 Loading = false;
-         
+                this.CreateShipNotification();
+
             }
         }
         public async Task<ApiProcessingResult> NotifyMixbookOfShipment()
@@ -394,14 +413,7 @@ namespace Mbc5.Forms.MixBook
             ShipNotification.Request.identifier = MbxModel.JobId;//needs to be set with jobid should always have one element
             ShipNotification.Request.Status.occurredAt = DateTime.Now;
             ShipNotification.Request.Status.Value = "Shipped";
-            ShipNotification.Request.Shipment[0].trackingNumber = txtTrackingNo.Text;
-            ShipNotification.Request.Shipment[0].shippedAt = DateTime.Now;
-            ShipNotification.Request.Shipment[0].method = MbxModel.ShipMethod;
-            decimal vWeight = 0;
-            decimal.TryParse(txtWeight.Text, out vWeight);
-            ShipNotification.Request.Shipment[0].weight =vWeight;
-           
-            var vReturnNotification = Serialize.ToXml(ShipNotification);
+            var vReturnNotification = Serialize.ToXml(this.ShipNotification);
 
             var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
             if (!restServiceResult.IsError)
@@ -455,48 +467,30 @@ namespace Mbc5.Forms.MixBook
             retval = sqlResult.Data;
             return retval;
         }
-        private void CreateShipNotification() { CreateShipNotification(false); }
-        private void CreateShipNotification(bool fromButton)
+   
+        private void CreateShipNotification()
         {
-           
-            ShipNotificationClearItems();
             ShipNotification = new MixbookNotification();
             txtDateTime.Text ="";
-            if (fromButton) {
-                ShipNotificationClearItems();
-                txtClientIdLookup.Focus();
-                txtClientIdLookup.Text = "";
-                txtTrackingNo.Text = "";
-                txtWeight.Text = "";
-                txtDateTime.Text = "";
-            }
+            ShipNotification.Request.Shipment.Clear();
+            
             
         }
-        private void ShipNotificationClearItems()
+        private void CreateShipment()
         {
-
-           try
+            this.Shipment = new MixbookNotificationRequestShipment();
+            Shipment.Package = new List<MixbookNotificationRequestShipmentPackage>();
+            var pkg = new MixbookNotificationRequestShipmentPackage();
+            pkg.Item = new MixbookNotificationRequestShipmentPackageItem();
+            try
             {
-                Items.Clear();
-                BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
-                bsItems.DataSource = Items1;
-                custDataGridView.DataSource = bsItems;
-                if (ShipNotification.Request.Shipment[0].Package.Count > 1)
-                {
-                    ShipNotification.Request.Shipment[0].Package.RemoveRange(1, ShipNotification.Request.Shipment[0].Package.Count - 1);
-                }
-                ShipNotification.Request.Shipment[0].Package[0].Item.identifier = "";
-                ShipNotification.Request.Shipment[0].Package[0].Item.quantity = 0;
+                Shipment.Package.Add(pkg);
             }
-            catch (Exception ex) {
-                ex.ToExceptionless()
-                    .SetMessage("Error clearing shipment items")
-                    .MarkAsCritical()
-                    .Submit();
-                
-            }
-               
-            }
+            catch (Exception ex) { }
+          
+
+        }
+      
 
         private void txt1_Enter(object sender, EventArgs e)
         {
@@ -526,6 +520,32 @@ namespace Mbc5.Forms.MixBook
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnAddPkg_Click(object sender, EventArgs e)
+        {
+            if (Items.Count > 0)
+            {
+              
+                UpdateShippingWip();
+
+                Shipment.trackingNumber = txtTrackingNo.Text;
+                decimal vWeight = 0;
+                decimal.TryParse(txtWeight.Text, out vWeight);
+                Shipment.weight = vWeight;
+                Shipment.shippedAt = DateTime.Now;
+                Shipment.method = MbxModel.ShipMethod;
+                var tmpShipment = Shipment;
+                this.ShipNotification.Request.Shipment.Add(tmpShipment);
+                SetPanels();
+                Items.Clear();
+                BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
+                bsItems.DataSource = Items1;
+                custDataGridView.DataSource = bsItems;
+                CreateShipment();
+                txtTrackingNo.Focus();
+            }
+            else { MbcMessageBox.Error("Please scan items into the shipment."); }
         }
     }
 }
