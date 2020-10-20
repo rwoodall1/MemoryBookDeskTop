@@ -11,6 +11,7 @@ using BaseClass.Classes;
 using BaseClass;
 using System.Linq;
 using System.IO;
+using System.Diagnostics;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmShippingReport : BaseClass.frmBase
@@ -63,7 +64,9 @@ namespace Mbc5.Forms.MixBook
                 var valueLines = reportData.Select(row => string.Join(",", header.Split(',').Select(a => row.GetType().GetProperty(a).GetValue(row, null))));
                 lines.AddRange(valueLines);
                 File.WriteAllLines(path, lines.ToArray());
-            }catch(Exception ex) { MbcMessageBox.Error("Error creating csv file:" + ex.Message); }
+                Process.Start(saveFileDialog1.FileName);
+            }
+            catch(Exception ex) { MbcMessageBox.Error("Error creating csv file:" + ex.Message); }
         }
     }
     public class ShipReport

@@ -5,7 +5,28 @@ using System.Web;
 
 namespace BindingModels
 {
-
+    public class MixbookInvoiceReport
+    {
+        public int ClientOrderId { get; set; }
+        public DateTime OrderReceivedDate { get; set; }
+        public DateTime DateShipped { get; set; }
+        public string ItemCode { get; set; }
+        public string ItemId { get; set; }
+        public string Description { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public decimal Weight { get; set; }
+        public string ShipMethod { get; set; }
+        public string ShipName { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
+        public string TrackingNumber { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal UnitTotal { get; set; }
+        public decimal PageFee { get; set; }
+        public decimal Fulfillment{get;set;}
+        public decimal Total { get; set; }
+    }
     public class BookBlockLabel
     {
         public string Barcode { get; set; }
