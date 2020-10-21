@@ -45,6 +45,11 @@ namespace Mbc5.Forms.MixBook
 
         private void TextBox1_Leave(object sender, EventArgs e)
         {
+            if (chkRemoveScan.Checked)
+            {
+                RemoveScan();
+                return;
+            }
             if (Button2.BackColor != Color.Green && Button3.BackColor != Color.Green)
             {
                 MbcMessageBox.Information("Please select either Scan Covers or Scan Book Blocks");
@@ -114,7 +119,28 @@ namespace Mbc5.Forms.MixBook
                     listBox1.Refresh();
                 }
         }
+        private void RemoveScan()
+        {
+            string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
 
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"
+                                Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
+                              ";
+            sqlClient.CommandText(cmdText);
+            string vDeptCode = "49";
+            sqlClient.AddParameter("@Invno", vInvno);
+            sqlClient.AddParameter("@DescripID", vDeptCode);
+            var result = sqlClient.Delete();
+            if (result.IsError)
+            {
+                MessageBox.Show("Failed to remove scan:"+result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return ;
+            }
+            chkRemoveScan.Checked = false;
+            TextBox1.Clear();
+            TextBox1.Focus();
+        }
         private void Button5_Click(object sender, EventArgs e)
         {
             if (listBox1.Items.Count==0)
@@ -146,6 +172,7 @@ namespace Mbc5.Forms.MixBook
         private bool InsertWip()
         {
             string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+     
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
                             SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
@@ -173,7 +200,7 @@ namespace Mbc5.Forms.MixBook
             //wir is initials
             string vDeptCode = "49";
             string vWIR = "CI";
-            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
        
             sqlClient.AddParameter("@WIR", vWIR);
@@ -189,7 +216,7 @@ namespace Mbc5.Forms.MixBook
             }
             sqlClient.ClearParameters();
             sqlClient.ReturnSqlIdentityId(true);
-            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
              sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
@@ -205,6 +232,11 @@ namespace Mbc5.Forms.MixBook
                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@BookStatus", "CaseMatch");
+            sqlClient.Update();
             return true;
         }
     }

@@ -29,27 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label shipNameLabel;
-            System.Windows.Forms.Label shipAddrLabel;
-            System.Windows.Forms.Label shipAddr2Label;
-            System.Windows.Forms.Label shipCityLabel;
-            System.Windows.Forms.Label shipStateLabel;
-            System.Windows.Forms.Label shipZipLabel;
-            System.Windows.Forms.Label phoneNumberLabel;
-            System.Windows.Forms.Label orderIdLabel;
-            System.Windows.Forms.Label receiveDateLabel;
-            System.Windows.Forms.Label shipDateLabel;
-            System.Windows.Forms.Label dateShippedLabel;
-            System.Windows.Forms.Label shipMethodLabel;
-            System.Windows.Forms.Label invnoLabel;
-            System.Windows.Forms.Label mixbookOrderStatusLabel;
-            System.Windows.Forms.Label trackingNumberLabel;
-            System.Windows.Forms.Label weightLabel;
             System.Windows.Forms.Label notesLabel;
+            System.Windows.Forms.Label weightLabel;
+            System.Windows.Forms.Label trackingNumberLabel;
+            System.Windows.Forms.Label mixbookOrderStatusLabel;
+            System.Windows.Forms.Label invnoLabel;
+            System.Windows.Forms.Label shipMethodLabel;
+            System.Windows.Forms.Label dateShippedLabel;
+            System.Windows.Forms.Label shipDateLabel;
+            System.Windows.Forms.Label receiveDateLabel;
+            System.Windows.Forms.Label orderIdLabel;
+            System.Windows.Forms.Label phoneNumberLabel;
+            System.Windows.Forms.Label shipZipLabel;
+            System.Windows.Forms.Label shipStateLabel;
+            System.Windows.Forms.Label shipCityLabel;
+            System.Windows.Forms.Label shipAddr2Label;
+            System.Windows.Forms.Label shipAddrLabel;
+            System.Windows.Forms.Label shipNameLabel;
+            System.Windows.Forms.Label coverStatusLabel;
+            System.Windows.Forms.Label bookStatusLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsmixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
@@ -70,13 +76,9 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.shipStateComboBox = new System.Windows.Forms.ComboBox();
+            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
-            this.orderIdLabel1 = new System.Windows.Forms.Label();
-            this.receiveDateLabel1 = new System.Windows.Forms.Label();
-            this.schoutDateBox = new CustomControls.DateBox();
-            this.shipMethodComboBox = new System.Windows.Forms.ComboBox();
             this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderDataGridView = new System.Windows.Forms.DataGridView();
             this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -89,40 +91,55 @@
             this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
-            this.shipNameTextBox = new System.Windows.Forms.TextBox();
-            this.shipAddrTextBox = new System.Windows.Forms.TextBox();
-            this.shipCityTextBox = new System.Windows.Forms.TextBox();
-            this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
-            this.shipZipTextBox = new System.Windows.Forms.TextBox();
-            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.invnoLabel1 = new System.Windows.Forms.Label();
             this.shipCarriersTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.ShipCarriersTableAdapter();
-            this.mixbookOrderStatusLabel2 = new System.Windows.Forms.Label();
-            this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
-            this.weightTextBox = new System.Windows.Forms.TextBox();
-            this.lblDateShipped = new System.Windows.Forms.Label();
-            this.notesTextBox = new System.Windows.Forms.TextBox();
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            shipNameLabel = new System.Windows.Forms.Label();
-            shipAddrLabel = new System.Windows.Forms.Label();
-            shipAddr2Label = new System.Windows.Forms.Label();
-            shipCityLabel = new System.Windows.Forms.Label();
-            shipStateLabel = new System.Windows.Forms.Label();
-            shipZipLabel = new System.Windows.Forms.Label();
-            phoneNumberLabel = new System.Windows.Forms.Label();
-            orderIdLabel = new System.Windows.Forms.Label();
-            receiveDateLabel = new System.Windows.Forms.Label();
-            shipDateLabel = new System.Windows.Forms.Label();
-            dateShippedLabel = new System.Windows.Forms.Label();
-            shipMethodLabel = new System.Windows.Forms.Label();
-            invnoLabel = new System.Windows.Forms.Label();
-            mixbookOrderStatusLabel = new System.Windows.Forms.Label();
-            trackingNumberLabel = new System.Windows.Forms.Label();
-            weightLabel = new System.Windows.Forms.Label();
+            this.pnlOrder = new System.Windows.Forms.Panel();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
+            this.lblDateShipped = new System.Windows.Forms.Label();
+            this.weightTextBox = new System.Windows.Forms.TextBox();
+            this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
+            this.mixbookOrderStatusLabel2 = new System.Windows.Forms.Label();
+            this.invnoLabel1 = new System.Windows.Forms.Label();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.shipZipTextBox = new System.Windows.Forms.TextBox();
+            this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
+            this.shipCityTextBox = new System.Windows.Forms.TextBox();
+            this.shipAddrTextBox = new System.Windows.Forms.TextBox();
+            this.shipNameTextBox = new System.Windows.Forms.TextBox();
+            this.shipMethodComboBox = new System.Windows.Forms.ComboBox();
+            this.schoutDateBox = new CustomControls.DateBox();
+            this.receiveDateLabel1 = new System.Windows.Forms.Label();
+            this.orderIdLabel1 = new System.Windows.Forms.Label();
+            this.shipStateComboBox = new System.Windows.Forms.ComboBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDownloadFiles = new System.Windows.Forms.Button();
+            this.btnRemake = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.MixbookRemakeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.coverStatusLabel1 = new System.Windows.Forms.Label();
+            this.bookStatusLabel1 = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
+            weightLabel = new System.Windows.Forms.Label();
+            trackingNumberLabel = new System.Windows.Forms.Label();
+            mixbookOrderStatusLabel = new System.Windows.Forms.Label();
+            invnoLabel = new System.Windows.Forms.Label();
+            shipMethodLabel = new System.Windows.Forms.Label();
+            dateShippedLabel = new System.Windows.Forms.Label();
+            shipDateLabel = new System.Windows.Forms.Label();
+            receiveDateLabel = new System.Windows.Forms.Label();
+            orderIdLabel = new System.Windows.Forms.Label();
+            phoneNumberLabel = new System.Windows.Forms.Label();
+            shipZipLabel = new System.Windows.Forms.Label();
+            shipStateLabel = new System.Windows.Forms.Label();
+            shipCityLabel = new System.Windows.Forms.Label();
+            shipAddr2Label = new System.Windows.Forms.Label();
+            shipAddrLabel = new System.Windows.Forms.Label();
+            shipNameLabel = new System.Windows.Forms.Label();
+            coverStatusLabel = new System.Windows.Forms.Label();
+            bookStatusLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).BeginInit();
@@ -131,6 +148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).BeginInit();
+            this.pnlOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -138,154 +157,196 @@
             this.basePanel.Location = new System.Drawing.Point(1121, 12);
             this.basePanel.Size = new System.Drawing.Size(12, 14);
             // 
-            // shipNameLabel
+            // notesLabel
             // 
-            shipNameLabel.AutoSize = true;
-            shipNameLabel.Location = new System.Drawing.Point(71, 52);
-            shipNameLabel.Name = "shipNameLabel";
-            shipNameLabel.Size = new System.Drawing.Size(79, 13);
-            shipNameLabel.TabIndex = 3;
-            shipNameLabel.Text = "Shipping Name";
+            notesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            notesLabel.AutoSize = true;
+            notesLabel.Location = new System.Drawing.Point(460, 149);
+            notesLabel.Name = "notesLabel";
+            notesLabel.Size = new System.Drawing.Size(38, 13);
+            notesLabel.TabIndex = 332;
+            notesLabel.Text = "Notes:";
             // 
-            // shipAddrLabel
+            // weightLabel
             // 
-            shipAddrLabel.AutoSize = true;
-            shipAddrLabel.Location = new System.Drawing.Point(61, 78);
-            shipAddrLabel.Name = "shipAddrLabel";
-            shipAddrLabel.Size = new System.Drawing.Size(89, 13);
-            shipAddrLabel.TabIndex = 4;
-            shipAddrLabel.Text = "Shipping Address";
+            weightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            weightLabel.AutoSize = true;
+            weightLabel.Location = new System.Drawing.Point(457, 122);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new System.Drawing.Size(41, 13);
+            weightLabel.TabIndex = 329;
+            weightLabel.Text = "Weight";
             // 
-            // shipAddr2Label
+            // trackingNumberLabel
             // 
-            shipAddr2Label.AutoSize = true;
-            shipAddr2Label.Location = new System.Drawing.Point(55, 104);
-            shipAddr2Label.Name = "shipAddr2Label";
-            shipAddr2Label.Size = new System.Drawing.Size(95, 13);
-            shipAddr2Label.TabIndex = 6;
-            shipAddr2Label.Text = "Shipping Address2";
+            trackingNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            trackingNumberLabel.AutoSize = true;
+            trackingNumberLabel.Location = new System.Drawing.Point(409, 96);
+            trackingNumberLabel.Name = "trackingNumberLabel";
+            trackingNumberLabel.Size = new System.Drawing.Size(89, 13);
+            trackingNumberLabel.TabIndex = 327;
+            trackingNumberLabel.Text = "Tracking Number";
             // 
-            // shipCityLabel
+            // mixbookOrderStatusLabel
             // 
-            shipCityLabel.AutoSize = true;
-            shipCityLabel.Location = new System.Drawing.Point(82, 130);
-            shipCityLabel.Name = "shipCityLabel";
-            shipCityLabel.Size = new System.Drawing.Size(68, 13);
-            shipCityLabel.TabIndex = 8;
-            shipCityLabel.Text = "Shipping City";
+            mixbookOrderStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            mixbookOrderStatusLabel.AutoSize = true;
+            mixbookOrderStatusLabel.Location = new System.Drawing.Point(736, 100);
+            mixbookOrderStatusLabel.Name = "mixbookOrderStatusLabel";
+            mixbookOrderStatusLabel.Size = new System.Drawing.Size(109, 13);
+            mixbookOrderStatusLabel.TabIndex = 325;
+            mixbookOrderStatusLabel.Text = "Mixbook Order Status";
             // 
-            // shipStateLabel
+            // invnoLabel
             // 
-            shipStateLabel.AutoSize = true;
-            shipStateLabel.Location = new System.Drawing.Point(74, 156);
-            shipStateLabel.Name = "shipStateLabel";
-            shipStateLabel.Size = new System.Drawing.Size(76, 13);
-            shipStateLabel.TabIndex = 10;
-            shipStateLabel.Text = "Shipping State";
-            // 
-            // shipZipLabel
-            // 
-            shipZipLabel.AutoSize = true;
-            shipZipLabel.Location = new System.Drawing.Point(84, 183);
-            shipZipLabel.Name = "shipZipLabel";
-            shipZipLabel.Size = new System.Drawing.Size(66, 13);
-            shipZipLabel.TabIndex = 12;
-            shipZipLabel.Text = "Shipping Zip";
-            // 
-            // phoneNumberLabel
-            // 
-            phoneNumberLabel.AutoSize = true;
-            phoneNumberLabel.Location = new System.Drawing.Point(72, 209);
-            phoneNumberLabel.Name = "phoneNumberLabel";
-            phoneNumberLabel.Size = new System.Drawing.Size(78, 13);
-            phoneNumberLabel.TabIndex = 14;
-            phoneNumberLabel.Text = "Phone Number";
-            // 
-            // orderIdLabel
-            // 
-            orderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            orderIdLabel.AutoSize = true;
-            orderIdLabel.Location = new System.Drawing.Point(820, 52);
-            orderIdLabel.Name = "orderIdLabel";
-            orderIdLabel.Size = new System.Drawing.Size(45, 13);
-            orderIdLabel.TabIndex = 16;
-            orderIdLabel.Text = "Order Id";
-            // 
-            // receiveDateLabel
-            // 
-            receiveDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            receiveDateLabel.AutoSize = true;
-            receiveDateLabel.Location = new System.Drawing.Point(792, 78);
-            receiveDateLabel.Name = "receiveDateLabel";
-            receiveDateLabel.Size = new System.Drawing.Size(73, 13);
-            receiveDateLabel.TabIndex = 18;
-            receiveDateLabel.Text = "Receive Date";
-            // 
-            // shipDateLabel
-            // 
-            shipDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            shipDateLabel.AutoSize = true;
-            shipDateLabel.Location = new System.Drawing.Point(416, 52);
-            shipDateLabel.Name = "shipDateLabel";
-            shipDateLabel.Size = new System.Drawing.Size(109, 13);
-            shipDateLabel.TabIndex = 129;
-            shipDateLabel.Text = "Requested Ship Date";
-            // 
-            // dateShippedLabel
-            // 
-            dateShippedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            dateShippedLabel.AutoSize = true;
-            dateShippedLabel.Location = new System.Drawing.Point(453, 78);
-            dateShippedLabel.Name = "dateShippedLabel";
-            dateShippedLabel.Size = new System.Drawing.Size(72, 13);
-            dateShippedLabel.TabIndex = 129;
-            dateShippedLabel.Text = "Date Shipped";
+            invnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            invnoLabel.AutoSize = true;
+            invnoLabel.Location = new System.Drawing.Point(783, 70);
+            invnoLabel.Name = "invnoLabel";
+            invnoLabel.Size = new System.Drawing.Size(62, 13);
+            invnoLabel.TabIndex = 323;
+            invnoLabel.Text = "Invoice No.";
             // 
             // shipMethodLabel
             // 
             shipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shipMethodLabel.AutoSize = true;
-            shipMethodLabel.Location = new System.Drawing.Point(458, 104);
+            shipMethodLabel.Location = new System.Drawing.Point(431, 70);
             shipMethodLabel.Name = "shipMethodLabel";
             shipMethodLabel.Size = new System.Drawing.Size(67, 13);
-            shipMethodLabel.TabIndex = 130;
+            shipMethodLabel.TabIndex = 315;
             shipMethodLabel.Text = "Ship Method";
             // 
-            // invnoLabel
+            // dateShippedLabel
             // 
-            invnoLabel.AutoSize = true;
-            invnoLabel.Location = new System.Drawing.Point(803, 104);
-            invnoLabel.Name = "invnoLabel";
-            invnoLabel.Size = new System.Drawing.Size(62, 13);
-            invnoLabel.TabIndex = 293;
-            invnoLabel.Text = "Invoice No.";
+            dateShippedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            dateShippedLabel.AutoSize = true;
+            dateShippedLabel.Location = new System.Drawing.Point(426, 44);
+            dateShippedLabel.Name = "dateShippedLabel";
+            dateShippedLabel.Size = new System.Drawing.Size(72, 13);
+            dateShippedLabel.TabIndex = 314;
+            dateShippedLabel.Text = "Date Shipped";
             // 
-            // mixbookOrderStatusLabel
+            // shipDateLabel
             // 
-            mixbookOrderStatusLabel.AutoSize = true;
-            mixbookOrderStatusLabel.Location = new System.Drawing.Point(756, 134);
-            mixbookOrderStatusLabel.Name = "mixbookOrderStatusLabel";
-            mixbookOrderStatusLabel.Size = new System.Drawing.Size(109, 13);
-            mixbookOrderStatusLabel.TabIndex = 294;
-            mixbookOrderStatusLabel.Text = "Mixbook Order Status";
+            shipDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            shipDateLabel.AutoSize = true;
+            shipDateLabel.Location = new System.Drawing.Point(389, 18);
+            shipDateLabel.Name = "shipDateLabel";
+            shipDateLabel.Size = new System.Drawing.Size(109, 13);
+            shipDateLabel.TabIndex = 313;
+            shipDateLabel.Text = "Requested Ship Date";
             // 
-            // trackingNumberLabel
+            // receiveDateLabel
             // 
-            trackingNumberLabel.AutoSize = true;
-            trackingNumberLabel.Location = new System.Drawing.Point(436, 130);
-            trackingNumberLabel.Name = "trackingNumberLabel";
-            trackingNumberLabel.Size = new System.Drawing.Size(89, 13);
-            trackingNumberLabel.TabIndex = 295;
-            trackingNumberLabel.Text = "Tracking Number";
+            receiveDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            receiveDateLabel.AutoSize = true;
+            receiveDateLabel.Location = new System.Drawing.Point(772, 44);
+            receiveDateLabel.Name = "receiveDateLabel";
+            receiveDateLabel.Size = new System.Drawing.Size(73, 13);
+            receiveDateLabel.TabIndex = 310;
+            receiveDateLabel.Text = "Receive Date";
             // 
-            // weightLabel
+            // orderIdLabel
             // 
-            weightLabel.AutoSize = true;
-            weightLabel.Location = new System.Drawing.Point(484, 156);
-            weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(41, 13);
-            weightLabel.TabIndex = 296;
-            weightLabel.Text = "Weight";
+            orderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            orderIdLabel.AutoSize = true;
+            orderIdLabel.Location = new System.Drawing.Point(800, 18);
+            orderIdLabel.Name = "orderIdLabel";
+            orderIdLabel.Size = new System.Drawing.Size(45, 13);
+            orderIdLabel.TabIndex = 308;
+            orderIdLabel.Text = "Order Id";
+            // 
+            // phoneNumberLabel
+            // 
+            phoneNumberLabel.AutoSize = true;
+            phoneNumberLabel.Location = new System.Drawing.Point(24, 175);
+            phoneNumberLabel.Name = "phoneNumberLabel";
+            phoneNumberLabel.Size = new System.Drawing.Size(78, 13);
+            phoneNumberLabel.TabIndex = 307;
+            phoneNumberLabel.Text = "Phone Number";
+            // 
+            // shipZipLabel
+            // 
+            shipZipLabel.AutoSize = true;
+            shipZipLabel.Location = new System.Drawing.Point(36, 149);
+            shipZipLabel.Name = "shipZipLabel";
+            shipZipLabel.Size = new System.Drawing.Size(66, 13);
+            shipZipLabel.TabIndex = 306;
+            shipZipLabel.Text = "Shipping Zip";
+            // 
+            // shipStateLabel
+            // 
+            shipStateLabel.AutoSize = true;
+            shipStateLabel.Location = new System.Drawing.Point(26, 122);
+            shipStateLabel.Name = "shipStateLabel";
+            shipStateLabel.Size = new System.Drawing.Size(76, 13);
+            shipStateLabel.TabIndex = 304;
+            shipStateLabel.Text = "Shipping State";
+            // 
+            // shipCityLabel
+            // 
+            shipCityLabel.AutoSize = true;
+            shipCityLabel.Location = new System.Drawing.Point(34, 96);
+            shipCityLabel.Name = "shipCityLabel";
+            shipCityLabel.Size = new System.Drawing.Size(68, 13);
+            shipCityLabel.TabIndex = 303;
+            shipCityLabel.Text = "Shipping City";
+            // 
+            // shipAddr2Label
+            // 
+            shipAddr2Label.AutoSize = true;
+            shipAddr2Label.Location = new System.Drawing.Point(7, 70);
+            shipAddr2Label.Name = "shipAddr2Label";
+            shipAddr2Label.Size = new System.Drawing.Size(95, 13);
+            shipAddr2Label.TabIndex = 302;
+            shipAddr2Label.Text = "Shipping Address2";
+            // 
+            // shipAddrLabel
+            // 
+            shipAddrLabel.AutoSize = true;
+            shipAddrLabel.Location = new System.Drawing.Point(13, 44);
+            shipAddrLabel.Name = "shipAddrLabel";
+            shipAddrLabel.Size = new System.Drawing.Size(89, 13);
+            shipAddrLabel.TabIndex = 301;
+            shipAddrLabel.Text = "Shipping Address";
+            // 
+            // shipNameLabel
+            // 
+            shipNameLabel.AutoSize = true;
+            shipNameLabel.Location = new System.Drawing.Point(23, 18);
+            shipNameLabel.Name = "shipNameLabel";
+            shipNameLabel.Size = new System.Drawing.Size(79, 13);
+            shipNameLabel.TabIndex = 300;
+            shipNameLabel.Text = "Shipping Name";
+            // 
+            // MixbookPackingSlipBindingSource
+            // 
+            this.MixbookPackingSlipBindingSource.DataSource = typeof(BindingModels.MixbookPackingSlip);
+            // 
+            // MixbookRemakeTicketBindingSource
+            // 
+            this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
+            // 
+            // coverStatusLabel
+            // 
+            coverStatusLabel.AutoSize = true;
+            coverStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            coverStatusLabel.Location = new System.Drawing.Point(95, 505);
+            coverStatusLabel.Name = "coverStatusLabel";
+            coverStatusLabel.Size = new System.Drawing.Size(84, 13);
+            coverStatusLabel.TabIndex = 10020;
+            coverStatusLabel.Text = "Cover Status:";
+            // 
+            // bookStatusLabel
+            // 
+            bookStatusLabel.AutoSize = true;
+            bookStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            bookStatusLabel.Location = new System.Drawing.Point(709, 505);
+            bookStatusLabel.Name = "bookStatusLabel";
+            bookStatusLabel.Size = new System.Drawing.Size(80, 13);
+            bookStatusLabel.TabIndex = 10021;
+            bookStatusLabel.Text = "Book Status:";
             // 
             // mixBookOrderBindingSource
             // 
@@ -297,15 +358,6 @@
             // 
             this.dsmixBookOrders.DataSetName = "MixBookOrders";
             this.dsmixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // notesLabel
-            // 
-            notesLabel.AutoSize = true;
-            notesLabel.Location = new System.Drawing.Point(487, 183);
-            notesLabel.Name = "notesLabel";
-            notesLabel.Size = new System.Drawing.Size(38, 13);
-            notesLabel.TabIndex = 298;
-            notesLabel.Text = "Notes:";
             // 
             // mixBookOrderTableAdapter
             // 
@@ -434,7 +486,8 @@
             this.mixBookOrderBindingNavigatorSaveItem,
             this.toolStripButton3,
             this.toolStripButton1,
-            this.itemIdToolStripBtn});
+            this.itemIdToolStripBtn,
+            this.purgeStripButton2});
             this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -475,18 +528,14 @@
             this.itemIdToolStripBtn.Text = "Item Id";
             this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
             // 
-            // shipStateComboBox
+            // purgeStripButton2
             // 
-            this.shipStateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipState", true));
-            this.shipStateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mixBookOrderBindingSource, "ShipState", true));
-            this.shipStateComboBox.DataSource = this.statesBindingSource;
-            this.shipStateComboBox.DisplayMember = "Name";
-            this.shipStateComboBox.FormattingEnabled = true;
-            this.shipStateComboBox.Location = new System.Drawing.Point(156, 156);
-            this.shipStateComboBox.Name = "shipStateComboBox";
-            this.shipStateComboBox.Size = new System.Drawing.Size(126, 21);
-            this.shipStateComboBox.TabIndex = 11;
-            this.shipStateComboBox.ValueMember = "Abrev";
+            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
+            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.purgeStripButton2.Name = "purgeStripButton2";
+            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
+            this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // statesBindingSource
             // 
@@ -497,51 +546,6 @@
             // 
             this.lookUp.DataSetName = "LookUp";
             this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // orderIdLabel1
-            // 
-            this.orderIdLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ClientOrderId", true));
-            this.orderIdLabel1.Location = new System.Drawing.Point(875, 52);
-            this.orderIdLabel1.Name = "orderIdLabel1";
-            this.orderIdLabel1.Size = new System.Drawing.Size(100, 23);
-            this.orderIdLabel1.TabIndex = 17;
-            // 
-            // receiveDateLabel1
-            // 
-            this.receiveDateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.receiveDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "OrderReceivedDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.receiveDateLabel1.Location = new System.Drawing.Point(875, 78);
-            this.receiveDateLabel1.Name = "receiveDateLabel1";
-            this.receiveDateLabel1.Size = new System.Drawing.Size(139, 23);
-            this.receiveDateLabel1.TabIndex = 19;
-            // 
-            // schoutDateBox
-            // 
-            this.schoutDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.schoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mixBookOrderBindingSource, "RequestedShipDate", true));
-            this.schoutDateBox.Date = null;
-            this.schoutDateBox.DateValue = null;
-            this.schoutDateBox.Location = new System.Drawing.Point(531, 52);
-            this.schoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.schoutDateBox.Name = "schoutDateBox";
-            this.schoutDateBox.Size = new System.Drawing.Size(192, 20);
-            this.schoutDateBox.TabIndex = 129;
-            // 
-            // shipMethodComboBox
-            // 
-            this.shipMethodComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.shipMethodComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mixBookOrderBindingSource, "ShipMethod", true));
-            this.shipMethodComboBox.DataSource = this.shipCarriersBindingSource;
-            this.shipMethodComboBox.DisplayMember = "ShipName";
-            this.shipMethodComboBox.FormattingEnabled = true;
-            this.shipMethodComboBox.Location = new System.Drawing.Point(531, 104);
-            this.shipMethodComboBox.Name = "shipMethodComboBox";
-            this.shipMethodComboBox.Size = new System.Drawing.Size(227, 21);
-            this.shipMethodComboBox.TabIndex = 131;
-            this.shipMethodComboBox.ValueMember = "ShipAlias";
-            this.shipMethodComboBox.DropDown += new System.EventHandler(this.shipMethodComboBox_DropDown);
-            this.shipMethodComboBox.SelectedValueChanged += new System.EventHandler(this.shipMethodComboBox_SelectedValueChanged);
             // 
             // shipCarriersBindingSource
             // 
@@ -557,14 +561,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -644,9 +648,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle8.Format = "Cover";
-            dataGridViewCellStyle8.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -692,133 +696,12 @@
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.lkTypeDataTableAdapter = null;
             this.tableAdapterManager1.MeridianProductsTableAdapter = null;
+            this.tableAdapterManager1.RemakeReasonsTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // shipNameTextBox
-            // 
-            this.shipNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipName", true));
-            this.shipNameTextBox.Location = new System.Drawing.Point(156, 52);
-            this.shipNameTextBox.Name = "shipNameTextBox";
-            this.shipNameTextBox.Size = new System.Drawing.Size(251, 20);
-            this.shipNameTextBox.TabIndex = 132;
-            // 
-            // shipAddrTextBox
-            // 
-            this.shipAddrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipAddr", true));
-            this.shipAddrTextBox.Location = new System.Drawing.Point(156, 78);
-            this.shipAddrTextBox.Name = "shipAddrTextBox";
-            this.shipAddrTextBox.Size = new System.Drawing.Size(251, 20);
-            this.shipAddrTextBox.TabIndex = 133;
-            // 
-            // shipCityTextBox
-            // 
-            this.shipCityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipCity", true));
-            this.shipCityTextBox.Location = new System.Drawing.Point(156, 130);
-            this.shipCityTextBox.Name = "shipCityTextBox";
-            this.shipCityTextBox.Size = new System.Drawing.Size(251, 20);
-            this.shipCityTextBox.TabIndex = 134;
-            // 
-            // shipAddr2TextBox
-            // 
-            this.shipAddr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipAddr2", true));
-            this.shipAddr2TextBox.Location = new System.Drawing.Point(156, 104);
-            this.shipAddr2TextBox.Name = "shipAddr2TextBox";
-            this.shipAddr2TextBox.Size = new System.Drawing.Size(251, 20);
-            this.shipAddr2TextBox.TabIndex = 135;
-            // 
-            // shipZipTextBox
-            // 
-            this.shipZipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipZip", true));
-            this.shipZipTextBox.Location = new System.Drawing.Point(156, 180);
-            this.shipZipTextBox.Name = "shipZipTextBox";
-            this.shipZipTextBox.Size = new System.Drawing.Size(126, 20);
-            this.shipZipTextBox.TabIndex = 136;
-            // 
-            // phoneNumberTextBox
-            // 
-            this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "PhoneNumber", true));
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(156, 209);
-            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(126, 20);
-            this.phoneNumberTextBox.TabIndex = 137;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(234, 511);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 27);
-            this.button1.TabIndex = 138;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 45;
-            reportDataSource4.Name = "DsOrder";
-            reportDataSource4.Value = this.mixBookOrderBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 253);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(76, 95);
-            this.reportViewer1.TabIndex = 293;
-            this.reportViewer1.Visible = false;
-            // 
-            // invnoLabel1
-            // 
-            this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Invno", true));
-            this.invnoLabel1.Location = new System.Drawing.Point(875, 104);
-            this.invnoLabel1.Name = "invnoLabel1";
-            this.invnoLabel1.Size = new System.Drawing.Size(100, 18);
-            this.invnoLabel1.TabIndex = 294;
             // 
             // shipCarriersTableAdapter
             // 
             this.shipCarriersTableAdapter.ClearBeforeFill = true;
-            // 
-            // mixbookOrderStatusLabel2
-            // 
-            this.mixbookOrderStatusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "MixbookOrderStatus", true));
-            this.mixbookOrderStatusLabel2.Location = new System.Drawing.Point(875, 134);
-            this.mixbookOrderStatusLabel2.Name = "mixbookOrderStatusLabel2";
-            this.mixbookOrderStatusLabel2.Size = new System.Drawing.Size(228, 29);
-            this.mixbookOrderStatusLabel2.TabIndex = 295;
-            // 
-            // trackingNumberTextBox
-            // 
-            this.trackingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "TrackingNumber", true));
-            this.trackingNumberTextBox.Location = new System.Drawing.Point(531, 130);
-            this.trackingNumberTextBox.Name = "trackingNumberTextBox";
-            this.trackingNumberTextBox.Size = new System.Drawing.Size(100, 20);
-            this.trackingNumberTextBox.TabIndex = 296;
-            // 
-            // weightTextBox
-            // 
-            this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Weight", true));
-            this.weightTextBox.Location = new System.Drawing.Point(531, 156);
-            this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(100, 20);
-            this.weightTextBox.TabIndex = 297;
-            // 
-            // lblDateShipped
-            // 
-            this.lblDateShipped.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "DateShipped", true));
-            this.lblDateShipped.Location = new System.Drawing.Point(531, 78);
-            this.lblDateShipped.Name = "lblDateShipped";
-            this.lblDateShipped.Size = new System.Drawing.Size(192, 23);
-            this.lblDateShipped.TabIndex = 298;
-            // 
-            // notesTextBox
-            // 
-            this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Notes", true));
-            this.notesTextBox.Location = new System.Drawing.Point(531, 180);
-            this.notesTextBox.Multiline = true;
-            this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(334, 49);
-            this.notesTextBox.TabIndex = 299;
             // 
             // btnMixbookPkgList
             // 
@@ -834,6 +717,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
+            reportDataSource1.Name = "dsMxPackingSlip";
+            reportDataSource1.Value = this.MixbookPackingSlipBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -843,95 +729,318 @@
             this.reportViewer2.Visible = false;
             this.reportViewer2.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer2_RenderingComplete);
             // 
+            // pnlOrder
+            // 
+            this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(notesLabel);
+            this.pnlOrder.Controls.Add(this.notesTextBox);
+            this.pnlOrder.Controls.Add(this.lblDateShipped);
+            this.pnlOrder.Controls.Add(weightLabel);
+            this.pnlOrder.Controls.Add(this.weightTextBox);
+            this.pnlOrder.Controls.Add(trackingNumberLabel);
+            this.pnlOrder.Controls.Add(this.trackingNumberTextBox);
+            this.pnlOrder.Controls.Add(this.mixbookOrderStatusLabel2);
+            this.pnlOrder.Controls.Add(mixbookOrderStatusLabel);
+            this.pnlOrder.Controls.Add(invnoLabel);
+            this.pnlOrder.Controls.Add(this.invnoLabel1);
+            this.pnlOrder.Controls.Add(this.phoneNumberTextBox);
+            this.pnlOrder.Controls.Add(this.shipZipTextBox);
+            this.pnlOrder.Controls.Add(this.shipAddr2TextBox);
+            this.pnlOrder.Controls.Add(this.shipCityTextBox);
+            this.pnlOrder.Controls.Add(this.shipAddrTextBox);
+            this.pnlOrder.Controls.Add(this.shipNameTextBox);
+            this.pnlOrder.Controls.Add(shipMethodLabel);
+            this.pnlOrder.Controls.Add(this.shipMethodComboBox);
+            this.pnlOrder.Controls.Add(dateShippedLabel);
+            this.pnlOrder.Controls.Add(shipDateLabel);
+            this.pnlOrder.Controls.Add(this.schoutDateBox);
+            this.pnlOrder.Controls.Add(receiveDateLabel);
+            this.pnlOrder.Controls.Add(this.receiveDateLabel1);
+            this.pnlOrder.Controls.Add(orderIdLabel);
+            this.pnlOrder.Controls.Add(this.orderIdLabel1);
+            this.pnlOrder.Controls.Add(phoneNumberLabel);
+            this.pnlOrder.Controls.Add(shipZipLabel);
+            this.pnlOrder.Controls.Add(shipStateLabel);
+            this.pnlOrder.Controls.Add(this.shipStateComboBox);
+            this.pnlOrder.Controls.Add(shipCityLabel);
+            this.pnlOrder.Controls.Add(shipAddr2Label);
+            this.pnlOrder.Controls.Add(shipAddrLabel);
+            this.pnlOrder.Controls.Add(shipNameLabel);
+            this.pnlOrder.Enabled = false;
+            this.pnlOrder.Location = new System.Drawing.Point(47, 28);
+            this.pnlOrder.Name = "pnlOrder";
+            this.pnlOrder.Size = new System.Drawing.Size(1079, 212);
+            this.pnlOrder.TabIndex = 10016;
+            // 
+            // notesTextBox
+            // 
+            this.notesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Notes", true));
+            this.notesTextBox.Location = new System.Drawing.Point(504, 146);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.Size = new System.Drawing.Size(334, 49);
+            this.notesTextBox.TabIndex = 333;
+            // 
+            // lblDateShipped
+            // 
+            this.lblDateShipped.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDateShipped.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "DateShipped", true));
+            this.lblDateShipped.Location = new System.Drawing.Point(504, 44);
+            this.lblDateShipped.Name = "lblDateShipped";
+            this.lblDateShipped.Size = new System.Drawing.Size(192, 23);
+            this.lblDateShipped.TabIndex = 331;
+            // 
+            // weightTextBox
+            // 
+            this.weightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Weight", true));
+            this.weightTextBox.Location = new System.Drawing.Point(504, 122);
+            this.weightTextBox.Name = "weightTextBox";
+            this.weightTextBox.Size = new System.Drawing.Size(100, 20);
+            this.weightTextBox.TabIndex = 330;
+            // 
+            // trackingNumberTextBox
+            // 
+            this.trackingNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "TrackingNumber", true));
+            this.trackingNumberTextBox.Location = new System.Drawing.Point(504, 96);
+            this.trackingNumberTextBox.Name = "trackingNumberTextBox";
+            this.trackingNumberTextBox.Size = new System.Drawing.Size(226, 20);
+            this.trackingNumberTextBox.TabIndex = 328;
+            // 
+            // mixbookOrderStatusLabel2
+            // 
+            this.mixbookOrderStatusLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mixbookOrderStatusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "MixbookOrderStatus", true));
+            this.mixbookOrderStatusLabel2.Location = new System.Drawing.Point(855, 100);
+            this.mixbookOrderStatusLabel2.Name = "mixbookOrderStatusLabel2";
+            this.mixbookOrderStatusLabel2.Size = new System.Drawing.Size(216, 29);
+            this.mixbookOrderStatusLabel2.TabIndex = 326;
+            // 
+            // invnoLabel1
+            // 
+            this.invnoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Invno", true));
+            this.invnoLabel1.Location = new System.Drawing.Point(855, 70);
+            this.invnoLabel1.Name = "invnoLabel1";
+            this.invnoLabel1.Size = new System.Drawing.Size(100, 18);
+            this.invnoLabel1.TabIndex = 324;
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "PhoneNumber", true));
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(108, 175);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(126, 20);
+            this.phoneNumberTextBox.TabIndex = 322;
+            // 
+            // shipZipTextBox
+            // 
+            this.shipZipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipZip", true));
+            this.shipZipTextBox.Location = new System.Drawing.Point(108, 146);
+            this.shipZipTextBox.Name = "shipZipTextBox";
+            this.shipZipTextBox.Size = new System.Drawing.Size(126, 20);
+            this.shipZipTextBox.TabIndex = 321;
+            // 
+            // shipAddr2TextBox
+            // 
+            this.shipAddr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipAddr2", true));
+            this.shipAddr2TextBox.Location = new System.Drawing.Point(108, 70);
+            this.shipAddr2TextBox.Name = "shipAddr2TextBox";
+            this.shipAddr2TextBox.Size = new System.Drawing.Size(251, 20);
+            this.shipAddr2TextBox.TabIndex = 320;
+            // 
+            // shipCityTextBox
+            // 
+            this.shipCityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipCity", true));
+            this.shipCityTextBox.Location = new System.Drawing.Point(108, 96);
+            this.shipCityTextBox.Name = "shipCityTextBox";
+            this.shipCityTextBox.Size = new System.Drawing.Size(251, 20);
+            this.shipCityTextBox.TabIndex = 319;
+            // 
+            // shipAddrTextBox
+            // 
+            this.shipAddrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipAddr", true));
+            this.shipAddrTextBox.Location = new System.Drawing.Point(108, 44);
+            this.shipAddrTextBox.Name = "shipAddrTextBox";
+            this.shipAddrTextBox.Size = new System.Drawing.Size(251, 20);
+            this.shipAddrTextBox.TabIndex = 318;
+            // 
+            // shipNameTextBox
+            // 
+            this.shipNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipName", true));
+            this.shipNameTextBox.Location = new System.Drawing.Point(108, 18);
+            this.shipNameTextBox.Name = "shipNameTextBox";
+            this.shipNameTextBox.Size = new System.Drawing.Size(251, 20);
+            this.shipNameTextBox.TabIndex = 317;
+            // 
+            // shipMethodComboBox
+            // 
+            this.shipMethodComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.shipMethodComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mixBookOrderBindingSource, "ShipMethod", true));
+            this.shipMethodComboBox.DataSource = this.shipCarriersBindingSource;
+            this.shipMethodComboBox.DisplayMember = "ShipName";
+            this.shipMethodComboBox.FormattingEnabled = true;
+            this.shipMethodComboBox.Location = new System.Drawing.Point(504, 70);
+            this.shipMethodComboBox.Name = "shipMethodComboBox";
+            this.shipMethodComboBox.Size = new System.Drawing.Size(227, 21);
+            this.shipMethodComboBox.TabIndex = 316;
+            this.shipMethodComboBox.ValueMember = "ShipAlias";
+            // 
+            // schoutDateBox
+            // 
+            this.schoutDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.schoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mixBookOrderBindingSource, "RequestedShipDate", true));
+            this.schoutDateBox.Date = null;
+            this.schoutDateBox.DateValue = null;
+            this.schoutDateBox.Location = new System.Drawing.Point(504, 18);
+            this.schoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.schoutDateBox.Name = "schoutDateBox";
+            this.schoutDateBox.Size = new System.Drawing.Size(192, 20);
+            this.schoutDateBox.TabIndex = 312;
+            // 
+            // receiveDateLabel1
+            // 
+            this.receiveDateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.receiveDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "OrderReceivedDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.receiveDateLabel1.Location = new System.Drawing.Point(855, 44);
+            this.receiveDateLabel1.Name = "receiveDateLabel1";
+            this.receiveDateLabel1.Size = new System.Drawing.Size(139, 23);
+            this.receiveDateLabel1.TabIndex = 311;
+            // 
+            // orderIdLabel1
+            // 
+            this.orderIdLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ClientOrderId", true));
+            this.orderIdLabel1.Location = new System.Drawing.Point(855, 18);
+            this.orderIdLabel1.Name = "orderIdLabel1";
+            this.orderIdLabel1.Size = new System.Drawing.Size(100, 23);
+            this.orderIdLabel1.TabIndex = 309;
+            // 
+            // shipStateComboBox
+            // 
+            this.shipStateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ShipState", true));
+            this.shipStateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mixBookOrderBindingSource, "ShipState", true));
+            this.shipStateComboBox.DataSource = this.statesBindingSource;
+            this.shipStateComboBox.DisplayMember = "Name";
+            this.shipStateComboBox.FormattingEnabled = true;
+            this.shipStateComboBox.Location = new System.Drawing.Point(108, 122);
+            this.shipStateComboBox.Name = "shipStateComboBox";
+            this.shipStateComboBox.Size = new System.Drawing.Size(126, 21);
+            this.shipStateComboBox.TabIndex = 305;
+            this.shipStateComboBox.ValueMember = "Abrev";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(9, 31);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(37, 23);
+            this.btnEdit.TabIndex = 10017;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnDownloadFiles
+            // 
+            this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloadFiles.Location = new System.Drawing.Point(863, 244);
+            this.btnDownloadFiles.Name = "btnDownloadFiles";
+            this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
+            this.btnDownloadFiles.TabIndex = 10018;
+            this.btnDownloadFiles.Text = "Re - Download Files From Mixbook";
+            this.btnDownloadFiles.UseVisualStyleBackColor = true;
+            this.btnDownloadFiles.Click += new System.EventHandler(this.btnDownloadFiles_Click);
+            // 
+            // btnRemake
+            // 
+            this.btnRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemake.Location = new System.Drawing.Point(248, 244);
+            this.btnRemake.Name = "btnRemake";
+            this.btnRemake.Size = new System.Drawing.Size(153, 23);
+            this.btnRemake.TabIndex = 10019;
+            this.btnRemake.Text = "Print Remake Ticket";
+            this.btnRemake.UseVisualStyleBackColor = true;
+            this.btnRemake.Click += new System.EventHandler(this.btnRemake_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 35;
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(9, 313);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(52, 54);
+            this.reportViewer1.TabIndex = 10020;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
+            // MixbookRemakeBindingSource
+            // 
+            this.MixbookRemakeBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
+            // 
+            // coverStatusLabel1
+            // 
+            this.coverStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "CoverStatus", true));
+            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 505);
+            this.coverStatusLabel1.Name = "coverStatusLabel1";
+            this.coverStatusLabel1.Size = new System.Drawing.Size(100, 23);
+            this.coverStatusLabel1.TabIndex = 10021;
+            // 
+            // bookStatusLabel1
+            // 
+            this.bookStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "BookStatus", true));
+            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 505);
+            this.bookStatusLabel1.Name = "bookStatusLabel1";
+            this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
+            this.bookStatusLabel1.TabIndex = 10022;
+            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1153, 591);
+            this.Controls.Add(bookStatusLabel);
+            this.Controls.Add(this.bookStatusLabel1);
+            this.Controls.Add(coverStatusLabel);
+            this.Controls.Add(this.coverStatusLabel1);
+            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.btnRemake);
+            this.Controls.Add(this.btnDownloadFiles);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.pnlOrder);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.btnMixbookPkgList);
-            this.Controls.Add(notesLabel);
-            this.Controls.Add(this.notesTextBox);
-            this.Controls.Add(this.lblDateShipped);
-            this.Controls.Add(weightLabel);
-            this.Controls.Add(this.weightTextBox);
-            this.Controls.Add(trackingNumberLabel);
-            this.Controls.Add(this.trackingNumberTextBox);
-            this.Controls.Add(this.mixbookOrderStatusLabel2);
-            this.Controls.Add(mixbookOrderStatusLabel);
-            this.Controls.Add(invnoLabel);
-            this.Controls.Add(this.invnoLabel1);
-            this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.phoneNumberTextBox);
-            this.Controls.Add(this.shipZipTextBox);
-            this.Controls.Add(this.shipAddr2TextBox);
-            this.Controls.Add(this.shipCityTextBox);
-            this.Controls.Add(this.shipAddrTextBox);
-            this.Controls.Add(this.shipNameTextBox);
             this.Controls.Add(this.mixBookOrderDataGridView);
-            this.Controls.Add(shipMethodLabel);
-            this.Controls.Add(this.shipMethodComboBox);
-            this.Controls.Add(dateShippedLabel);
-            this.Controls.Add(shipDateLabel);
-            this.Controls.Add(this.schoutDateBox);
-            this.Controls.Add(receiveDateLabel);
-            this.Controls.Add(this.receiveDateLabel1);
-            this.Controls.Add(orderIdLabel);
-            this.Controls.Add(this.orderIdLabel1);
-            this.Controls.Add(phoneNumberLabel);
-            this.Controls.Add(shipZipLabel);
-            this.Controls.Add(shipStateLabel);
-            this.Controls.Add(this.shipStateComboBox);
-            this.Controls.Add(shipCityLabel);
-            this.Controls.Add(shipAddr2Label);
-            this.Controls.Add(shipAddrLabel);
-            this.Controls.Add(shipNameLabel);
             this.Controls.Add(this.mixBookOrderBindingNavigator);
-            this.MinimumSize = new System.Drawing.Size(1000, 630);
+            this.MinimumSize = new System.Drawing.Size(1159, 630);
             this.Name = "frmMBOrders";
             this.Text = "Mix Book Cust/Orders";
             this.Load += new System.EventHandler(this.MBOrders_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderBindingNavigator, 0);
-            this.Controls.SetChildIndex(shipNameLabel, 0);
-            this.Controls.SetChildIndex(shipAddrLabel, 0);
-            this.Controls.SetChildIndex(shipAddr2Label, 0);
-            this.Controls.SetChildIndex(shipCityLabel, 0);
-            this.Controls.SetChildIndex(this.shipStateComboBox, 0);
-            this.Controls.SetChildIndex(shipStateLabel, 0);
-            this.Controls.SetChildIndex(shipZipLabel, 0);
-            this.Controls.SetChildIndex(phoneNumberLabel, 0);
-            this.Controls.SetChildIndex(this.orderIdLabel1, 0);
-            this.Controls.SetChildIndex(orderIdLabel, 0);
-            this.Controls.SetChildIndex(this.receiveDateLabel1, 0);
-            this.Controls.SetChildIndex(receiveDateLabel, 0);
-            this.Controls.SetChildIndex(this.schoutDateBox, 0);
-            this.Controls.SetChildIndex(shipDateLabel, 0);
-            this.Controls.SetChildIndex(dateShippedLabel, 0);
-            this.Controls.SetChildIndex(this.shipMethodComboBox, 0);
-            this.Controls.SetChildIndex(shipMethodLabel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderDataGridView, 0);
-            this.Controls.SetChildIndex(this.shipNameTextBox, 0);
-            this.Controls.SetChildIndex(this.shipAddrTextBox, 0);
-            this.Controls.SetChildIndex(this.shipCityTextBox, 0);
-            this.Controls.SetChildIndex(this.shipAddr2TextBox, 0);
-            this.Controls.SetChildIndex(this.shipZipTextBox, 0);
-            this.Controls.SetChildIndex(this.phoneNumberTextBox, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
-            this.Controls.SetChildIndex(this.reportViewer1, 0);
-            this.Controls.SetChildIndex(this.invnoLabel1, 0);
-            this.Controls.SetChildIndex(invnoLabel, 0);
-            this.Controls.SetChildIndex(mixbookOrderStatusLabel, 0);
-            this.Controls.SetChildIndex(this.mixbookOrderStatusLabel2, 0);
-            this.Controls.SetChildIndex(this.trackingNumberTextBox, 0);
-            this.Controls.SetChildIndex(trackingNumberLabel, 0);
-            this.Controls.SetChildIndex(this.weightTextBox, 0);
-            this.Controls.SetChildIndex(weightLabel, 0);
-            this.Controls.SetChildIndex(this.lblDateShipped, 0);
-            this.Controls.SetChildIndex(this.notesTextBox, 0);
-            this.Controls.SetChildIndex(notesLabel, 0);
             this.Controls.SetChildIndex(this.btnMixbookPkgList, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
+            this.Controls.SetChildIndex(this.pnlOrder, 0);
+            this.Controls.SetChildIndex(this.btnEdit, 0);
+            this.Controls.SetChildIndex(this.btnDownloadFiles, 0);
+            this.Controls.SetChildIndex(this.btnRemake, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
+            this.Controls.SetChildIndex(this.coverStatusLabel1, 0);
+            this.Controls.SetChildIndex(coverStatusLabel, 0);
+            this.Controls.SetChildIndex(this.bookStatusLabel1, 0);
+            this.Controls.SetChildIndex(bookStatusLabel, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
@@ -941,6 +1050,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).EndInit();
+            this.pnlOrder.ResumeLayout(false);
+            this.pnlOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -965,11 +1077,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton mixBookOrderBindingNavigatorSaveItem;
         private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
-        private System.Windows.Forms.ComboBox shipStateComboBox;
-        private System.Windows.Forms.Label orderIdLabel1;
-        private System.Windows.Forms.Label receiveDateLabel1;
-        private CustomControls.DateBox schoutDateBox;
-        private System.Windows.Forms.ComboBox shipMethodComboBox;
         private System.Windows.Forms.DataGridView mixBookOrderDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataSets.LookUp lookUp;
@@ -978,21 +1085,8 @@
         private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.TextBox shipNameTextBox;
-        private System.Windows.Forms.TextBox shipAddrTextBox;
-        private System.Windows.Forms.TextBox shipCityTextBox;
-        private System.Windows.Forms.TextBox shipAddr2TextBox;
-        private System.Windows.Forms.TextBox shipZipTextBox;
-        private System.Windows.Forms.TextBox phoneNumberTextBox;
-        private System.Windows.Forms.Button button1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.Label invnoLabel1;
         private System.Windows.Forms.BindingSource shipCarriersBindingSource;
         private DataSets.MixBookOrdersTableAdapters.ShipCarriersTableAdapter shipCarriersTableAdapter;
-        private System.Windows.Forms.Label mixbookOrderStatusLabel2;
-        private System.Windows.Forms.TextBox trackingNumberTextBox;
-        private System.Windows.Forms.TextBox weightTextBox;
-        private System.Windows.Forms.Label lblDateShipped;
         private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
         private System.Windows.Forms.DataGridViewLinkColumn prodticket;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -1002,8 +1096,35 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewLinkColumn CoverUrl;
         private System.Windows.Forms.DataGridViewLinkColumn BookUrl;
-        private System.Windows.Forms.TextBox notesTextBox;
         private System.Windows.Forms.Button btnMixbookPkgList;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.Panel pnlOrder;
+        private System.Windows.Forms.TextBox notesTextBox;
+        private System.Windows.Forms.Label lblDateShipped;
+        private System.Windows.Forms.TextBox weightTextBox;
+        private System.Windows.Forms.TextBox trackingNumberTextBox;
+        private System.Windows.Forms.Label mixbookOrderStatusLabel2;
+        private System.Windows.Forms.Label invnoLabel1;
+        private System.Windows.Forms.TextBox phoneNumberTextBox;
+        private System.Windows.Forms.TextBox shipZipTextBox;
+        private System.Windows.Forms.TextBox shipAddr2TextBox;
+        private System.Windows.Forms.TextBox shipCityTextBox;
+        private System.Windows.Forms.TextBox shipAddrTextBox;
+        private System.Windows.Forms.TextBox shipNameTextBox;
+        private System.Windows.Forms.ComboBox shipMethodComboBox;
+        private CustomControls.DateBox schoutDateBox;
+        private System.Windows.Forms.Label receiveDateLabel1;
+        private System.Windows.Forms.Label orderIdLabel1;
+        private System.Windows.Forms.ComboBox shipStateComboBox;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDownloadFiles;
+        private System.Windows.Forms.Button btnRemake;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource MixbookPackingSlipBindingSource;
+        private System.Windows.Forms.BindingSource MixbookRemakeBindingSource;
+        private System.Windows.Forms.BindingSource MixbookRemakeTicketBindingSource;
+        private System.Windows.Forms.ToolStripButton purgeStripButton2;
+        private System.Windows.Forms.Label coverStatusLabel1;
+        private System.Windows.Forms.Label bookStatusLabel1;
     }
 }

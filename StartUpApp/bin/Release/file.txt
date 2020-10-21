@@ -1,3 +1,0 @@
-2019/01/25 13:58:03.645 Pricing was not found:Year-15 SEDSWBPSQL01  PELOCAL\randy    
-2019/01/25 13:58:16.914 Pricing was not found:Year-15 SEDSWBPSQL01  PELOCAL\randy    
-2019/01/25 13:58:23.294 Pricing was not found:Year-15 SEDSWBPSQL01  PELOCAL\randy    

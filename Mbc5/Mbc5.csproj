@@ -564,6 +564,18 @@
     <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmShippingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmShippingReport.Designer.cs">
+      <DependentUpon>frmShippingReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +657,7 @@
     <Content Include="NOTES TODO.txt" />
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -797,6 +810,12 @@
     <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
       <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
+      <DependentUpon>frmShippingReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -850,6 +869,7 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTkt.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />

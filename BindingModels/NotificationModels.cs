@@ -33,6 +33,7 @@ namespace BindingModels
                 {
                     From = new MixbookNotificationHeaderFrom()
                 };
+                this.timeStamp = DateTime.Now;
                 this.Header.From.Credential = new MixbookNotificationHeaderFromCredential();
                 this.Header.From.Credential.domain = "jostens.com";
                 this.Header.From.Credential.Identity = System.Configuration.ConfigurationManager.AppSettings["Printer"].ToString();

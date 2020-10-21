@@ -62,7 +62,7 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;Trusted_Connection=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Sedswbpsql01;Initial Catalog=Mbc5_demo;Trusted_Connection=True")]
         public string Mbc5_demoConnectionString {
             get {
                 return ((string)(this["Mbc5_demoConnectionString"]));

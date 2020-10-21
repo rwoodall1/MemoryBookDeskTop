@@ -35,6 +35,7 @@
             this.Button4 = new System.Windows.Forms.Button();
             this.Button3 = new System.Windows.Forms.Button();
             this.TextBox1 = new System.Windows.Forms.TextBox();
+            this.chkRemoveScan = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // basePanel
@@ -122,10 +123,22 @@
             this.TextBox1.TabIndex = 12;
             this.TextBox1.Leave += new System.EventHandler(this.TextBox1_Leave);
             // 
+            // chkRemoveScan
+            // 
+            this.chkRemoveScan.AutoSize = true;
+            this.chkRemoveScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRemoveScan.Location = new System.Drawing.Point(317, 511);
+            this.chkRemoveScan.Name = "chkRemoveScan";
+            this.chkRemoveScan.Size = new System.Drawing.Size(105, 17);
+            this.chkRemoveScan.TabIndex = 13;
+            this.chkRemoveScan.Text = "Remove Scan";
+            this.chkRemoveScan.UseVisualStyleBackColor = true;
+            // 
             // frmCaseMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(764, 614);
+            this.Controls.Add(this.chkRemoveScan);
             this.Controls.Add(this.TextBox1);
             this.Controls.Add(this.Button3);
             this.Controls.Add(this.Button5);
@@ -145,6 +158,7 @@
             this.Controls.SetChildIndex(this.Button5, 0);
             this.Controls.SetChildIndex(this.Button3, 0);
             this.Controls.SetChildIndex(this.TextBox1, 0);
+            this.Controls.SetChildIndex(this.chkRemoveScan, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +173,6 @@
         internal System.Windows.Forms.Button Button4;
         internal System.Windows.Forms.Button Button3;
         internal System.Windows.Forms.TextBox TextBox1;
+        private System.Windows.Forms.CheckBox chkRemoveScan;
     }
 }

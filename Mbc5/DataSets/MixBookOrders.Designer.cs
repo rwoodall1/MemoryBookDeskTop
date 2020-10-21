@@ -380,6 +380,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnNotes;
             
+            private global::System.Data.DataColumn columnCoverStatus;
+            
+            private global::System.Data.DataColumn columnBookStatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MixBookOrderDataTable() {
@@ -679,6 +683,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CoverStatusColumn {
+                get {
+                    return this.columnCoverStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BookStatusColumn {
+                get {
+                    return this.columnBookStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -743,11 +763,13 @@ namespace Mbc5.DataSets {
                         string ShipAddr2, 
                         string TrackingNumber, 
                         string MixbookOrderStatus, 
-                        int Weight, 
+                        decimal Weight, 
                         string Country, 
                         string CoverPreviewUrl, 
                         string BookPreviewUrl, 
-                        string Notes) {
+                        string Notes, 
+                        string CoverStatus, 
+                        string BookStatus) {
                 MixBookOrderRow rowMixBookOrderRow = ((MixBookOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Invno,
@@ -782,7 +804,9 @@ namespace Mbc5.DataSets {
                         Country,
                         CoverPreviewUrl,
                         BookPreviewUrl,
-                        Notes};
+                        Notes,
+                        CoverStatus,
+                        BookStatus};
                 rowMixBookOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMixBookOrderRow);
                 return rowMixBookOrderRow;
@@ -845,6 +869,8 @@ namespace Mbc5.DataSets {
                 this.columnCoverPreviewUrl = base.Columns["CoverPreviewUrl"];
                 this.columnBookPreviewUrl = base.Columns["BookPreviewUrl"];
                 this.columnNotes = base.Columns["Notes"];
+                this.columnCoverStatus = base.Columns["CoverStatus"];
+                this.columnBookStatus = base.Columns["BookStatus"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -906,7 +932,7 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnTrackingNumber);
                 this.columnMixbookOrderStatus = new global::System.Data.DataColumn("MixbookOrderStatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMixbookOrderStatus);
-                this.columnWeight = new global::System.Data.DataColumn("Weight", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnWeight = new global::System.Data.DataColumn("Weight", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWeight);
                 this.columnCountry = new global::System.Data.DataColumn("Country", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCountry);
@@ -916,6 +942,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnBookPreviewUrl);
                 this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
+                this.columnCoverStatus = new global::System.Data.DataColumn("CoverStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCoverStatus);
+                this.columnBookStatus = new global::System.Data.DataColumn("BookStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBookStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnInvno.AllowDBNull = false;
@@ -946,6 +976,8 @@ namespace Mbc5.DataSets {
                 this.columnCoverPreviewUrl.MaxLength = 2147483647;
                 this.columnBookPreviewUrl.MaxLength = 2147483647;
                 this.columnNotes.MaxLength = 2147483647;
+                this.columnCoverStatus.MaxLength = 50;
+                this.columnBookStatus.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1838,10 +1870,10 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Weight {
+            public decimal Weight {
                 get {
                     try {
-                        return ((int)(this[this.tableMixBookOrder.WeightColumn]));
+                        return ((decimal)(this[this.tableMixBookOrder.WeightColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Weight\' in table \'MixBookOrder\' is DBNull.", e);
@@ -1913,6 +1945,38 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tableMixBookOrder.NotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CoverStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.CoverStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CoverStatus\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.CoverStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string BookStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.BookStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BookStatus\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.BookStatusColumn] = value;
                 }
             }
             
@@ -2299,6 +2363,30 @@ namespace Mbc5.DataSets {
             public void SetNotesNull() {
                 this[this.tableMixBookOrder.NotesColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCoverStatusNull() {
+                return this.IsNull(this.tableMixBookOrder.CoverStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCoverStatusNull() {
+                this[this.tableMixBookOrder.CoverStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsBookStatusNull() {
+                return this.IsNull(this.tableMixBookOrder.BookStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetBookStatusNull() {
+                this[this.tableMixBookOrder.BookStatusColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -2638,6 +2726,8 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("CoverPreviewUrl", "CoverPreviewUrl");
             tableMapping.ColumnMappings.Add("BookPreviewUrl", "BookPreviewUrl");
             tableMapping.ColumnMappings.Add("Notes", "Notes");
+            tableMapping.ColumnMappings.Add("CoverStatus", "CoverStatus");
+            tableMapping.ColumnMappings.Add("BookStatus", "BookStatus");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2916,7 +3006,7 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
-                         OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes
+                         OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC";

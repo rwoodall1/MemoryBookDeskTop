@@ -12,6 +12,7 @@ using System.Security.Principal;
 using BaseClass.Classes;
 using BaseClass.Core;
 using NLog;
+using System.Configuration;
 namespace BaseClass
 {
     public partial class frmBase : Form
@@ -167,6 +168,7 @@ namespace BaseClass
         }
         private void Base_Load(object sender, EventArgs e)
         {
+           
             if (!this.DesignMode)
             {
                 FormAllowed allowedResult= ((ParentForm)this.MdiParent).AllowedInstance(this.Name,this.MaxNumForms);
