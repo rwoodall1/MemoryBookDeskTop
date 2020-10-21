@@ -49,4 +49,3 @@ D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.csproj.CoreCompile
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.csproj.CopyComplete
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.exe
 D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.pdb
-D:\Projects\MemoryBookDeskTop\StartUpApp\obj\Debug\StartUpApp.csprojAssemblyReference.cache
