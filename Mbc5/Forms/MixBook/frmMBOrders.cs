@@ -325,7 +325,7 @@ namespace Mbc5.Forms.MixBook
             FROM MixbookOrder MO
                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno AND DescripId=39) 
                 Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
             var result = sqlClient.SelectMany<MixbookPackingSlip>();

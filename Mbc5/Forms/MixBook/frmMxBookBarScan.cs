@@ -280,9 +280,10 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Location", txtLocation.Text);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=@WAR,WIR = @WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                 WAR=@WAR,WIR = @WIR,MxbLocation=@Location WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult1 = sqlClient.Update();
                         if (mxResult1.IsError) {
@@ -296,9 +297,10 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                        sqlClient.AddParameter("@Location", txtLocation.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,MxbLocation) VALUES(@DescripID,@WAR,@WIR,@Invno,@Location);
                                                     END
                                                     ");
 
@@ -310,46 +312,41 @@ namespace Mbc5.Forms.MixBook
                         }
                         if (!chkPrToLabeler.Checked)
                         {
-                            PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                            if (MbxModel.Backing == "HC")
+                            {
+                                PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                            }
+                            else { 
+                                //don't print if soft cover per TLF
+                            }
                         }
                         else
                         {
-                            //Print to labeler
-                            List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                            var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
-                            listData.Add(vData);
-
-                            reportViewer2.LocalReport.DataSources.Clear();
-                            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                            dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
-                        }
-
-
-                        if (MbxModel.Backing == "HC") {
-                            //Mark says orders will not be split on location so insert into one location
-                            sqlClient.ClearParameters();
-                            sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
-                            sqlClient.AddParameter("@Invno", this.Invno);
-                            sqlClient.AddParameter("@DescripID", vDeptCode);
-                            sqlClient.AddParameter("@Location", txtLocation.Text);
-                            var locationresult = sqlClient.Update();
-                            if (locationresult.IsError)
+                            try
                             {
-                                MbcMessageBox.Error("Failed to update location of order.");
-                                ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                                //Print to labeler
+                                List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
+                                listData.Add(vData);
+
+                                reportViewer2.LocalReport.DataSources.Clear();
+                                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
                             }
-                            QuantityScanned += 1;
+                            catch { }
+                        }
+                        QuantityScanned += 1;
+                        lblScanQty.Text = QuantityScanned.ToString();
+
+                        if (QuantityScanned >= QtyToScan)
+                        {
+                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                            QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
-                           
-                            if (QuantityScanned >= QtyToScan)
-                            {
-                                MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                                QuantityScanned = 0;
-                                lblScanQty.Text = QuantityScanned.ToString();
-                            }
                         }
+
                        
                             //if (MbxModel.Quantity == 1)//not using right now
                             //{
@@ -1187,7 +1184,7 @@ namespace Mbc5.Forms.MixBook
             FROM MixbookOrder MO
                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND DescripId=39 AND Invno=MO.Invno ) 
 Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
             var result=sqlClient.SelectMany<MixbookPackingSlip>();
