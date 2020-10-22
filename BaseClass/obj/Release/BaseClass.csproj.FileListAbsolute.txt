@@ -219,3 +219,6 @@ D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\vbc.rsp
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\VBCSCompiler.exe
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\roslyn\VBCSCompiler.exe.config
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\BaseClass.dll.config
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\NLog.Extended.dll
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\System.IO.Compression.dll
+D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\NLog.Extended.xml
