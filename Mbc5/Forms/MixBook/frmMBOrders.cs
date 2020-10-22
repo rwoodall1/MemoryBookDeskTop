@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Microsoft.Reporting.WinForms;
 using BindingModels;
 using System.Drawing.Printing;
+using NLog;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
@@ -34,6 +35,7 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+           Log.Error("logtest1");
             // TODO: This line of code loads data into the 'dsmixBookOrders.ShipCarriers' table. You can move, or remove it, as needed.
             this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook")?false:true;
             btnDownloadFiles.Enabled= ApplicationUser.IsInRole("MixBook") ? false : true;

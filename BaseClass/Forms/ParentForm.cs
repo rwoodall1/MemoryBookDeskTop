@@ -27,8 +27,8 @@ namespace BaseClass
             {
             this.OpenForms = new List<FormInstance>();
             }
-        
-           public List<FormInstance> OpenForms { get; set; }
+
+        public List<FormInstance> OpenForms { get; set; }
             public string CurUser { get; set; }
             public string CurServer { get; set; }
         public UserPrincipal ApplicationUser { get; set; }

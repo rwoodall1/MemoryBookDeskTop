@@ -14,9 +14,10 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmCaseMatch : BaseClass.frmBase
     {
-        public frmCaseMatch(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
+        public frmCaseMatch(UserPrincipal userPrincipal,frmMain frmMain) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
+           this.Log= frmMain.Log;
         }
         public int CoverCount{get;set;}
         private void Button2_Click(object sender, EventArgs e)

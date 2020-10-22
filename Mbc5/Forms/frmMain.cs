@@ -36,6 +36,7 @@ namespace Mbc5.Forms
         }
 
         #region "Properties"
+        public Logger Log { get; private set; }
         public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
         public string AppConnectionString { get; set; }
@@ -342,6 +343,7 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
+            
             //connection
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
@@ -1695,7 +1697,7 @@ namespace Mbc5.Forms
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser);
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser,this);
 
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();

@@ -771,7 +771,7 @@ namespace Mbc5.Forms.MemoryBook {
                     {
                         retval = false;
                         MessageBox.Show("Sales record failed to update:" + ex.Message);
-                        this.Log.Error(ex, "Record sales record failed to update:" + ex.Message);
+                        Log.Error(ex, "Record sales record failed to update:" + ex.Message);
                     }
                 }
                 else { retval = false; }

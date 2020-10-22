@@ -159,7 +159,7 @@ namespace Mbc5.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show("Failed to send password email:" + ex.Message);
-                        this.Log.Error(ex, "Failed to send password email:" + ex.Message);
+                        Log.Error(ex, "Failed to send password email:" + ex.Message);
                         return;
                     }
                     
@@ -182,13 +182,13 @@ namespace Mbc5.Forms
             catch (DBConcurrencyException ex1)
             {
                 string errmsg = "Concurrency violation" + Environment.NewLine + (string)ex1.Row.ItemArray[0];
-                this.Log.Error(ex1, ex1.Message);
+                Log.Error(ex1, ex1.Message);
                 MessageBox.Show(errmsg);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Record faild to update:" + ex.Message);
-                this.Log.Error(ex, "Record faild to update:" + ex.Message);
+               Log.Error(ex, "Record faild to update:" + ex.Message);
             }
           
         }
