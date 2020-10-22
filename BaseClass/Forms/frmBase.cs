@@ -55,7 +55,7 @@ namespace BaseClass
         #endregion
         protected frmBase(string[] roles, UserPrincipal userPrincipal)
         {
-            //Log = LogManager.GetLogger(GetType().FullName);
+            Log = LogManager.GetLogger(GetType().FullName);
             if (!DesignMode)
             {
                 this.IsMainWindow = false;

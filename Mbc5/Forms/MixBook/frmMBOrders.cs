@@ -18,7 +18,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
     {
-        public new frmMain frmMain { get; set; }
+        public frmMain frmMain { get; set; }
         public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MixBook" }, userPrincipal)
         {
             InitializeComponent();
@@ -35,12 +35,14 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
-           Log.Error("logtest1");
+            this.frmMain = (frmMain)this.MdiParent;
+     
+    
             // TODO: This line of code loads data into the 'dsmixBookOrders.ShipCarriers' table. You can move, or remove it, as needed.
             this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook")?false:true;
             btnDownloadFiles.Enabled= ApplicationUser.IsInRole("MixBook") ? false : true;
 
-            this.frmMain = (frmMain)this.MdiParent;
+            
             SetConnectionString();
             this.Invno = 0;
            
@@ -60,10 +62,14 @@ namespace Mbc5.Forms.MixBook
             {
                 this.Validate();
                 this.mixBookOrderBindingSource.EndEdit();
-                this.tableAdapterManager.UpdateAll(this.dsmixBookOrders);
+               
+                this.mixBookOrderTableAdapter.Update(dsmixBookOrders.MixBookOrder);
                 this.pnlOrder.Enabled = false;
             }
-            catch(Exception ex) { }
+            catch(Exception ex) {
+               // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
+                Log.Error(ex, "Failed to update order");
+            }
             this.Fill();
             
         }
@@ -89,6 +95,7 @@ namespace Mbc5.Forms.MixBook
             }catch(Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
+                Log.Error(ex, "Failed to fill mixbook orders data adapters");
             }
         }
         private void SetConnectionString()
@@ -100,7 +107,7 @@ namespace Mbc5.Forms.MixBook
                 this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             }catch(Exception ex) {
-
+                Log.Error(ex, "Failed to set Mixbook orders connection strings");
                
             }
 
@@ -114,7 +121,7 @@ namespace Mbc5.Forms.MixBook
             {
                 vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["OrdereId"].ToString();
             }
-            catch { }
+            catch(Exception ex) { Log.Error(ex,"OrderId not found. Mixbook OrderId Search"); }
             
             frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
@@ -135,12 +142,17 @@ namespace Mbc5.Forms.MixBook
                             this.OrderId = iOrderId;
                             Fill();
                         }
-                        else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+                        else {
+                            MbcMessageBox.Hand("A valid search value was not returned", "");
+                            
+                        }
 
 
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) {
+                    Log.Error(ex, "Failed to search Order Id");
+                }
             }
 
         }
@@ -151,7 +163,7 @@ namespace Mbc5.Forms.MixBook
             {
                 vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
             }
-            catch { }
+            catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
 
             frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
             var result = frmSearch.ShowDialog();
@@ -183,7 +195,7 @@ namespace Mbc5.Forms.MixBook
             {
                 vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString();
             }
-            catch { }
+            catch(Exception ex){ Log.Error(ex, "Failed to search Order Name"); }
 
             frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
             var result = frmSearch.ShowDialog();
@@ -241,12 +253,13 @@ namespace Mbc5.Forms.MixBook
                     catch (Exception ex)
                     {
                         MessageBox.Show("Url is invalid.");
+                        Log.Error(ex, "Url is invalid.");
                     }
                     ;
                 }
             if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
             {
-                MessageBox.Show("test");
+               
             }
                     
         }
@@ -274,7 +287,7 @@ namespace Mbc5.Forms.MixBook
             {
                 var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[0].Value;
                 this.Invno = value;
-            }catch(Exception ex) { }
+            }catch(Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error"); }
         
 
         }
@@ -334,6 +347,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError || result.Data == null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+                Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
                 return;
             }
           
@@ -368,6 +382,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError || result.Data == null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
+                Log.Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
                 return;
             }
 
@@ -392,7 +407,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
             }
 
             Cursor.Current = Cursors.Default;
@@ -418,6 +433,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MbcMessageBox.Error("Failed to iniated download of files, try again or contact developer.");
+                    Log.Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
             }
@@ -448,7 +464,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
             }
 
             Cursor.Current = Cursors.Default;
@@ -468,6 +484,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to purge order");
+                    Log.Error("Failed to purge order"+deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();

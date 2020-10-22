@@ -104,6 +104,7 @@ namespace Mbc5.Forms.MixBook
                             if (result.IsError)
                             {
                                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Log.Error("Failed to retieve order for scan:"+ result.Errors[0].DeveloperMessage);
                                 return;
                             }
                             if (result.Data == null)
@@ -165,6 +166,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
+                Log.Error("An error has occured:" + ex.Message);
             }
         }
         private void ClearScan()
@@ -234,6 +236,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan.",mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
 
@@ -254,6 +257,7 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan.", result1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -287,6 +291,7 @@ namespace Mbc5.Forms.MixBook
                         var mxResult1 = sqlClient.Update();
                         if (mxResult1.IsError) {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to upate scan.", mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -306,6 +311,7 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
                         if (!chkPrToLabeler.Checked)
@@ -339,6 +345,7 @@ namespace Mbc5.Forms.MixBook
                             {
                                 MbcMessageBox.Error("Failed to update location of order.");
                                 ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                                Log.Error("Failed to update location of order invno:" + Invno.ToString());
                             }
                             QuantityScanned += 1;
                             lblScanQty.Text = QuantityScanned.ToString();
@@ -397,6 +404,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -416,6 +424,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                             return;
                         }
                     
@@ -494,6 +503,7 @@ namespace Mbc5.Forms.MixBook
                         }catch(Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
+                            Log.Error("An error has occurred:" + ex.Message);
                             return;
                         }
 
@@ -520,7 +530,8 @@ namespace Mbc5.Forms.MixBook
                             if (mxResult3.IsError)
                             {
                                 MessageBox.Show("Failed to update scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            Log.Error("Failed to update scan." + mxResult3.Errors[0].DeveloperMessage);
+                            return;
                             }
                             sqlClient.ClearParameters();
                             sqlClient.ReturnSqlIdentityId(true);
@@ -539,7 +550,8 @@ namespace Mbc5.Forms.MixBook
                             if (result3.IsError)
                             {
                                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            Log.Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
+                            return;
                             }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select MO.Invno,WD.MxbLocation From MixbookOrder MO
@@ -550,6 +562,7 @@ namespace Mbc5.Forms.MixBook
                         if (orderCheck.IsError)
                         {
                             MbcMessageBox.Error("Failed to check if order complete,please check manually.");
+                            Log.Error("Failed to check if order complete:"+orderCheck.Errors[0].DeveloperMessage);
                             return;
                         }
                         var data =(List<OrderChk>) orderCheck.Data;
@@ -604,6 +617,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan." + mxResult11.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -623,6 +637,7 @@ namespace Mbc5.Forms.MixBook
                         if (result11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan." + result11.Errors[0].DeveloperMessage);
                             return;
                         }
                         //Mark says orders will not be split on location so insert into one location
@@ -636,6 +651,7 @@ namespace Mbc5.Forms.MixBook
                         {
                             MbcMessageBox.Error("Failed to update location of order.");
                             ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
+                            Log.Error("Failed to update location of book invno:" + Invno.ToString());
                         }
                         QuantityScanned += 1;
                         lblScanQty.Text = QuantityScanned.ToString();
@@ -677,8 +693,9 @@ namespace Mbc5.Forms.MixBook
                         string bookBlockLocation = "";
                         if (booklocationresult.IsError)
                         {
+                            Log.Error("Failed to retrieve book block location " + Invno.ToString()+":"+booklocationresult.Errors[0].DeveloperMessage);
 
-                            ExceptionlessClient.Default.CreateLog("Failed to retrieve book block location" + Invno.ToString());
+                            
                             bookBlockLocation = "N/A";
                         }
 
@@ -710,6 +727,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -730,6 +748,7 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
                             return;
                         }
 
@@ -769,6 +788,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -788,6 +808,7 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
                             return;
                         }
                         //Mark says orders will not be split on location so insert into one location
@@ -801,6 +822,7 @@ namespace Mbc5.Forms.MixBook
                         {
                             MbcMessageBox.Error("Failed to update location of order.");
                             ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                            Log.Error("Failed to update location of order invno:" + Invno.ToString()+":"+ locationresult1.Errors[0].DeveloperMessage);
                         }
                         QuantityScanned += 1;
                         lblScanQty.Text = QuantityScanned.ToString();
@@ -833,6 +855,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -851,6 +874,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
@@ -884,6 +908,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult4.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult4.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -902,6 +927,7 @@ namespace Mbc5.Forms.MixBook
                         if (result4.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result4.Errors[0].DeveloperMessage);
                         }
                         //Mark says orders will not be split on location so insert into one location
                         sqlClient.ClearParameters();
@@ -913,6 +939,7 @@ namespace Mbc5.Forms.MixBook
                         {
                             MbcMessageBox.Error("Failed to update location of order.");
                             ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                            Log.Error("Failed to update location of order invno:" + Invno.ToString()+":" + result4.Errors[0].DeveloperMessage);
                         }
                         QuantityScanned += 1;
                         lblScanQty.Text = QuantityScanned.ToString();
@@ -955,6 +982,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -968,6 +996,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.Error("Failed to update cover reprint date:"+ updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 if (ApplicationUser.UserName.ToUpper() == "QUALITY")
@@ -992,6 +1021,7 @@ namespace Mbc5.Forms.MixBook
                     if (updateResult.IsError)
                     {
                         MbcMessageBox.Error("Failed to update wip remake date.");
+                        Log.Error("Failed to update wip remake date." + updateResult1.Errors[0].DeveloperMessage);
                         return;
                     }
                 }
@@ -1009,6 +1039,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove wip scans for this order:"+deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -1021,6 +1052,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -1166,11 +1198,8 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-               
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+
+                Log.Error(sqlResult.Errors[0].DeveloperMessage);
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("Failed to notify item shipped","randy.woodall@jostens.com", null, vBody,EmailType.System);
@@ -1194,6 +1223,7 @@ Where ClientOrderId=@ClientOrderId");
             if (result.IsError|| result.Data==null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+                Log.Error("Failed to retrieve order, packing slip could not be printed:"+result.Errors[0].DeveloperMessage);
                 return;
             }
          var packingSlipData=(List<MixbookPackingSlip>)result.Data;
@@ -1241,7 +1271,7 @@ Where ClientOrderId=@ClientOrderId");
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, "Failed to print DataMatrix Label");
             }
         }
 
@@ -1325,7 +1355,7 @@ Where ClientOrderId=@ClientOrderId");
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, "Failed to print DataMatrix code");
             }
         }
 

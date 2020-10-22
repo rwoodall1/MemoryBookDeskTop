@@ -33,6 +33,7 @@ namespace Mbc5.Forms
         {
 
             InitializeComponent();
+          
         }
 
         #region "Properties"

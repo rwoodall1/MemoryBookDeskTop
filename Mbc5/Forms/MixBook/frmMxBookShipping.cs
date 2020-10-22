@@ -58,7 +58,8 @@ namespace Mbc5.Forms.MixBook
             var result = sqlQuery.Select<MixBookBarScanModel>();
             if (result.IsError)
             {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Error retrieving order for shipment:"+result.Errors[0].DeveloperMessage);
                 return;
             }
             if (result.Data == null)
@@ -102,7 +103,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
-
+                    Log.Error(ex, "Error trimming Mail Innovations tracking number.");
                 }
                
 
@@ -204,6 +205,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error(result.Errors[0].DeveloperMessage);
                     return;
                 }
                 if (result.Data == null)
@@ -236,6 +238,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
+                Log.Error("An error has occured:" + ex.Message);
             }
 
          }
@@ -283,10 +286,8 @@ namespace Mbc5.Forms.MixBook
                 var mxResult4 = sqlClient.Update();
                 if (mxResult4.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Failed to update shipping WIP")
-                        .AddObject(mxResult4)
-                        .MarkAsCritical()
-                        .Submit();
+                   
+                    Log.Error("Failed to update shipping WIP:"+mxResult4.Errors[0].DeveloperMessage);
                 MessageBox.Show("Failed to update shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 }
@@ -306,6 +307,7 @@ namespace Mbc5.Forms.MixBook
                 var result4 = sqlClient.Insert();
                 if (result4.IsError)
                 {
+                    Log.Error("Failed to insert shipping WIP:"+result4.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to insert shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -316,6 +318,7 @@ namespace Mbc5.Forms.MixBook
                 var produtnResult = sqlClient.Update();
                 if (produtnResult.IsError)
                 {
+                    Log.Error("Failed to update production ship date:" + produtnResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to update shipdate on production screen.");
 
                 }
@@ -330,7 +333,7 @@ namespace Mbc5.Forms.MixBook
                 if (trackingResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update tracking number in order screen.");
-
+                    Log.Error("Failed to update tracking number in order screen:"+trackingResult.Errors[0].DeveloperMessage);
                 }
             }
         }
@@ -350,10 +353,8 @@ namespace Mbc5.Forms.MixBook
             }
             catch(Exception ex) 
             {
-                ex.ToExceptionless()
-                    .SetMessage("Error clearing shipment items")
-                    .MarkAsCritical()
-                    .Submit();
+                Log.Error(ex,"Error clearing shipment items");
+                
 
             }
 
@@ -486,7 +487,7 @@ namespace Mbc5.Forms.MixBook
             {
                 Shipment.Package.Add(pkg);
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Log.Error(ex); }
           
 
         }

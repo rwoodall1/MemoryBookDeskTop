@@ -17,7 +17,7 @@ namespace Mbc5.Forms.MixBook
         public frmCaseMatch(UserPrincipal userPrincipal,frmMain frmMain) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
-           this.Log= frmMain.Log;
+          
         }
         public int CoverCount{get;set;}
         private void Button2_Click(object sender, EventArgs e)
@@ -136,6 +136,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MessageBox.Show("Failed to remove scan:"+result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
                 return ;
             }
             chkRemoveScan.Checked = false;
@@ -186,6 +187,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Failed to insert wip (casein)" + result.Errors[0].ErrorMessage);
                 return false;
             }
             MixBookBarScanModel MbxModel = (MixBookBarScanModel)result.Data;
@@ -213,6 +215,7 @@ namespace Mbc5.Forms.MixBook
             if (mxResult2.IsError)
             {
                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Failed to update scan."+mxResult2.Errors[0].DeveloperMessage);
                 return false;
             }
             sqlClient.ClearParameters();
@@ -231,6 +234,7 @@ namespace Mbc5.Forms.MixBook
             if (result2.IsError)
             {
                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Failed to insert scan." + result2.Errors[0].DeveloperMessage);
                 return false;
             }
             sqlClient.ClearParameters();
