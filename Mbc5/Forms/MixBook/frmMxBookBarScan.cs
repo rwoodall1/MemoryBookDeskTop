@@ -40,6 +40,39 @@ namespace Mbc5.Forms.MixBook
         public int QuantityScanned { get; set; } = 0;
         public int PkgQuantity{get;set;}=0;
         public List<PackageData> PrintedPackageList { get; set; } = new List<PackageData>();
+        private void frmMxBookBarScan_Load(object sender, EventArgs e)
+        {
+            txtQtyToScan.Text = "40"; //default
+            if (ApplicationUser.UserName == "onboard" || ApplicationUser.UserName == "onboard2" || ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+            {
+
+
+
+                if (ApplicationUser.UserName == "binding")
+                {
+                    chkPrToLabeler.Visible = true;
+                    btnClearPrinter.Visible = true;
+                    pnlQty.Visible = true;
+                    pnlBookLocation.Visible = true;
+                }
+                if (ApplicationUser.UserName == "onboard")
+                {
+                    pnlQty.Visible = false;
+                    pnlBookLocation.Visible = true;
+                }
+            }         
+            else if (ApplicationUser.UserName == "quality")
+            {
+                pnlHoldLocation.Visible = true;
+            }
+            else if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
+            {
+                pnlQty.Visible = true;
+                pnlImpersonate.Visible = true;
+            };
+
+
+        }
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
             lblLastScan.Text = txtBarCode.Text;
@@ -142,20 +175,10 @@ namespace Mbc5.Forms.MixBook
                             //txtColorPageNumber.Text = "";
                             //txtProdNumber.Text = MbxModel.ProdNo;
                             txtDateTime.Text = DateTime.Now.ToString();
-                            if (this.ApplicationUser.UserName.ToUpper() == "SHIPPING")
-                            {
-                                if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text))
-                                {
-                                    MXBScan();
-                                    ClearScan();
-                                }
-                                txtTrackingNo.Focus();
-                            }
-                            else
-                            {
+                            
                                 MXBScan();
                                  ClearScan();
-                            }
+                      
 
                             break;
 
@@ -171,8 +194,7 @@ namespace Mbc5.Forms.MixBook
         {
                 txtBarCode.Text = "";
                 txtDateTime.Text = "";
-                txtTrackingNo.Text = "";
-                txtWeight.Text = "";
+               
             chkRemake.Checked = false;
 
                 MbxModel = null;
@@ -183,15 +205,15 @@ namespace Mbc5.Forms.MixBook
         private void MXBScan()
         {
             //to impersonate finish later
-            //string currentUser = "";
-            //if (!string.IsNullOrEmpty(txtImpersonate.Text))
-            //{
-            //    currentUser = txtImpersonate.Text.ToUpper() ;
-            //}
-            //else
-            //{
-            //    currentUser = ApplicationUser.UserName.ToUpper();
-            //}
+            string currentUser = "";
+            if (!string.IsNullOrEmpty(cmbLogin.Text))
+            {
+                currentUser = cmbLogin.Text;
+            }
+            else
+            {
+                currentUser = ApplicationUser.UserName.ToUpper();
+            }
             if (chkRemake.Checked)
             {
                 ScanRamake();
@@ -214,8 +236,8 @@ namespace Mbc5.Forms.MixBook
             if (trkType == "YB")
             {
                 string vDeptCode = "";
-                //switch (this.ApplicationUser.UserName.ToUpper())
-                switch (this.ApplicationUser.UserName.ToUpper())
+               
+                switch (currentUser)
                 {
 
                     case "PRESS":
@@ -662,7 +684,7 @@ namespace Mbc5.Forms.MixBook
             else if (trkType == "SC")
             {
                 string vDeptCode = "";
-                switch (this.ApplicationUser.UserName.ToUpper())
+                switch (currentUser)
                 {
                     case "ONBOARD":
                         
@@ -859,71 +881,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.Update();
                         ClearScan();
                         break;
-                    case "ONBOARD2":
-                        vDeptCode = "";
-                        vWIR = "OB2";
-                        //war is datetime
-                        //wir is initials
-                        if (string.IsNullOrEmpty(txtLocation.Text))
-                        {
-                            MbcMessageBox.Hand("Please enter a location.", "Enter Location");
-                            return;
-                        }
-                        vDeptCode = "38";
-                        //war is datetime
-                        //wir is initials
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-              
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
-
-                        var mxResult4 = sqlClient.Update();
-                        if (mxResult4.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        sqlClient.ClearParameters();
-                        sqlClient.ReturnSqlIdentityId(true);
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                    Begin
-                                                    INSERT INTO CoverDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
-                                                    END
-                                                    ");
-
-                        var result4 = sqlClient.Insert();
-                        if (result4.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixBookOrder Set MxbLocation=@Location Where Invno=@Invno");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult2 = sqlClient.Update();
-                        if (locationresult2.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
-                        }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
-                            lblScanQty.Text = QuantityScanned.ToString();
-                        }
-                        ClearScan();
-                        break;
+                    
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
                         break;
@@ -1037,79 +995,7 @@ namespace Mbc5.Forms.MixBook
                 }
         }
 
-        private void frmMxBookBarScan_Load(object sender, EventArgs e)
-        {
-            txtQtyToScan.Text = "40"; //default
-            if (ApplicationUser.UserName == "onboard"|| ApplicationUser.UserName == "onboard2"|| ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
-            {
-           
-           
-          
-                if (ApplicationUser.UserName == "binding") {
-                    chkPrToLabeler.Visible = true;
-                    btnClearPrinter.Visible = true;
-                    pnlQty.Visible = true;
-                    pnlBookLocation.Visible = true;
-                }
-                if (ApplicationUser.UserName == "onboard")
-                {
-                    pnlQty.Visible = false;
-                    pnlBookLocation.Visible = true;
-                }
-            }else if (ApplicationUser.UserName == "shipping")
-            {
-                plnTracking.Visible = true;
-            }else if (ApplicationUser.UserName == "quality")
-            {
-                pnlHoldLocation.Visible = true;
-            }
-             else if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
-            {
-                pnlQty.Visible = true;
-            };
-               
-            
-        }
-
-        private void plnTracking_Leave(object sender, EventArgs e)
-        {
-            if (this.ApplicationUser.UserName.ToUpper() != "shipping")
-            {
-                if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text)&& !string.IsNullOrEmpty(txtBarCode.Text)) {
-                    MXBScan();
-                    ClearScan();
-                }
-            }
-        }
-
-        private void txtTrackingNo_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtWeight_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(txtWeight, "");
-            int vWeight=0;
-            if (!int.TryParse(txtWeight.Text, out vWeight)||vWeight==0) {
-                
-
-                errorProvider1.SetError(txtWeight, "Please enter a  valid weight.");
-                e.Cancel = true;
-            }
-        }
-
-        private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(txtTrackingNo, "");
-            if(string.IsNullOrEmpty(txtTrackingNo.Text)){
-             
-
-                errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
-                e.Cancel = true;
-            }
-           
-        }
+      
 
         public async Task<ApiProcessingResult> NotifyMixbookOfShipment(ShippingNotificationInfo model)
         {
@@ -1352,7 +1238,7 @@ Where ClientOrderId=@ClientOrderId");
             {
                 
                 pnlQty.Visible = false;
-                plnTracking.Visible = false;
+               
                 pnlRemake.Visible = true;
                 txtReasonCode.Focus();
             }
@@ -1360,11 +1246,8 @@ Where ClientOrderId=@ClientOrderId");
             {
                 
                 pnlRemake.Visible = false;
-                if (ApplicationUser.UserName == "shipping")
-                {
-                    plnTracking.Visible = true;
-                }
-                else if ( ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+               
+               if ( ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
                 {
 
                     pnlQty.Visible = true;
