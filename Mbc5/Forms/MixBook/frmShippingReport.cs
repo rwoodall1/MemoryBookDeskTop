@@ -35,7 +35,7 @@ namespace Mbc5.Forms.MixBook
                 left Join (Select Distinct  Invno,MxbLocation From CoverDetail Where  MxbLocation IS NOT NULL and MXbLocation !='' )CD ON Covers.Invno=CD.Invno
                 left join wip on MixBookOrder.Invno= wip.invno
                 left join  (Select  Distinct Invno,MxbLocation From WipDetail Where MxbLocation IS NOT NULL and MxbLocation !='' ) WD ON wip.invno= WD.Invno";
-       string _where = " Where MixbookOrderStatus !='Shipped' AND RequestedShipDate<=@RequestedShipDate ";
+       string _where = " Where (MixbookOrderStatus !='Shipped' AND MixbookOrderStatus !='Cancelled' ) AND RequestedShipDate<=@RequestedShipDate ";
         string _order="Order By 2, 7";
             cmd += _where + _order;
             sqlClient.CommandText(cmd);
