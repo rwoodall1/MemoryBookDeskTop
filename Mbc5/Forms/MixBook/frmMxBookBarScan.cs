@@ -366,7 +366,7 @@ namespace Mbc5.Forms.MixBook
                             if (locationresult.IsError)
                             {
                                 MbcMessageBox.Error("Failed to update location of order.");
-                                ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                               
                                 Log.Error("Failed to update location of order invno:" + Invno.ToString());
                             }
                             QuantityScanned += 1;
@@ -377,6 +377,17 @@ namespace Mbc5.Forms.MixBook
                                 MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
                                 QuantityScanned = 0;
                                 lblScanQty.Text = QuantityScanned.ToString();
+                            }
+                            sqlClient.ClearParameters();
+                            sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                            var orderLocResult1= sqlClient.Update();
+                            if (orderLocResult1.IsError)
+                            {
+                                
+                             
+                                Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                             }
                         }
                        
@@ -562,9 +573,10 @@ namespace Mbc5.Forms.MixBook
                             sqlClient.AddParameter("@WAR", vDateTime);
                             sqlClient.AddParameter("@WIR", vWIR);
                             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                        sqlClient.AddParameter("@MxbLocation", location);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,MxbLocation,Invno) VALUES(@DescripID,@WAR,@WIR,@MxbLocation,@Invno);
                                                     END
                                                     ");
 
@@ -575,6 +587,16 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
                             return;
                             }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select MO.Invno,WD.MxbLocation From MixbookOrder MO
                                                  Left Join WipDetail WD ON MO.Invno=WD.Invno AND WD.DescripId=50
@@ -683,6 +705,19 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult2 = sqlClient.Update();
+                        if (orderLocResult2.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
+
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -773,7 +808,15 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
                             return;
                         }
-
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                        }
 
                         //
 
@@ -862,6 +905,16 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult11 = sqlClient.Update();
+                        if (orderLocResult11.IsError)
+                        {
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                        }
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
