@@ -990,8 +990,65 @@ namespace Mbc5.Forms.MixBook
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
-            if (trkType == "SC"|| ApplicationUser.UserName.ToUpper()=="QUALITY")
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY") {
+                sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RemakeReason", vReason);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                //Wip
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult1 = sqlClient.Delete();
+                if (deleteResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Memo", vmemo);
+                var updateResult1 = sqlClient.Update();
+                if (updateResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='' where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.Update();
+
+
+            }
+            else if (trkType == "SC")
             {
+                sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 var deleteResult = sqlClient.Delete();
@@ -1015,32 +1072,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to update cover reprint date:"+ updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                if (ApplicationUser.UserName.ToUpper() == "QUALITY")
-                {
-                    sqlClient.ClearParameters();
-                    sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
-                    sqlClient.AddParameter("@Invno", this.Invno);
-                    var deleteResult1 = sqlClient.Delete();
-                    if (deleteResult1.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                        return;
-                    }
-                    sqlClient.ClearParameters();
-                    string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                    sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
-                    sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
-                    sqlClient.AddParameter("@Invno", this.Invno);
-                    sqlClient.AddParameter("@Memo", vmemo1);
-                    sqlClient.AddParameter("@RemakeReason", vReason);
-                    var updateResult1 = sqlClient.Update();
-                    if (updateResult.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to update wip remake date.");
-                        Log.Error("Failed to update wip remake date." + updateResult1.Errors[0].DeveloperMessage);
-                        return;
-                    }
-                }
+              
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno",Invno);
@@ -1049,6 +1081,7 @@ namespace Mbc5.Forms.MixBook
             }
             else if(trkType == "YB" )
             {
+                sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 var deleteResult = sqlClient.Delete();

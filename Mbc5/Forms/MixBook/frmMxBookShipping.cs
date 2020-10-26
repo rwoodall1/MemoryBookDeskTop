@@ -428,7 +428,7 @@ namespace Mbc5.Forms.MixBook
                 {
                     AddMbEventLog(MbxModel.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
                     var emailHelper = new EmailHelper();
-                    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
+                    emailHelper.SendEmail("Failed to notify mixbook of shipped order:"+ MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
                 }
 
 
@@ -437,7 +437,7 @@ namespace Mbc5.Forms.MixBook
             {
                 AddMbEventLog(MbxModel.JobId, "Error", "", vReturnNotification, false);
                 var emailHelper = new EmailHelper();
-                emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+                emailHelper.SendEmail("Failed to notify mixbook of shipped order:"+MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
 
             }
             return processingResult;
