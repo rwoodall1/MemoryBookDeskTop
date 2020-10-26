@@ -791,7 +791,15 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@BookStatus", "OnBoard");
                         sqlClient.Update();
-                        ClearScan();
+                      
+
+                        if (MbxModel.Quantity>1)
+                        {
+                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                        }
+                     ClearScan();
+
+
                         break;
                     case "TRIMMING":
                         

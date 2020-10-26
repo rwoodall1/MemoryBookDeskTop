@@ -106,47 +106,10 @@ namespace Mbc5.Forms
 
             if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
             {
-                //copy server to local then run
-                try
-                {
-                    //File.Copy(serverfilePath + "Mbc5.exe", localfilePath + "\\Mbc5.exe", true);
-                    //File.Copy(serverfilePath + "BindingModels.dll", localfilePath + "\\BindingModels.dll", true);
-                    //File.Copy(serverfilePath + "BaseClass.dll", localfilePath + "\\BaseClass.dll", true);
-                    //-----------------------------------------
-                    string localfilePathDir = localfilePath.Substring(0, localfilePath.IndexOf("bin") + 3);
-
-                    DirectoryCopy(serverfilePathDir, localfilePathDir, true);
-                    StartPath = localfilePath + "\\Mbc5.exe";
-
-                }
-                catch (Exception ex)
-                {
-                    //Console.WriteLine(Dns.GetHostName());
-                    //IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
-                    //foreach (IPAddress addr in localIPs)
-                    //{
-                    //    if (addr.AddressFamily == AddressFamily.InterNetwork)
-                    //    {
-                    //        Console.WriteLine(addr);
-                    //    }
-                    //}
-                    ex.ToExceptionless()
-                         .SetMessage("Failed to copy server exe to local directory.")
-                         .AddObject("Computer:" + System.Environment.MachineName)
-                         .AddObject("ServerPath:" + serverfilePath)
-                         .AddObject("LocalPath:" + localfilePath)
-                         .Submit();
-
-                    return;
-                }
+                pnlNotice.Visible = true;
 
             }
-            if (serverVersion == localVersion || (String.IsNullOrEmpty(serverVersion) && !String.IsNullOrEmpty(localVersion)))
-            {
-                //run local
-
-                //StartPath = localfilePath + "\\Mbc5.exe";
-            }
+           
 
         }
         public void ShowSearchButtons(string formName)
@@ -1916,6 +1879,11 @@ namespace Mbc5.Forms
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage,EmailType.System);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            VersionCheck();
         }
         //nothing below here
     }
