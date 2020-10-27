@@ -148,6 +148,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(64, 20);
             this.txtLocation.TabIndex = 3;
+            this.txtLocation.Validating += new System.ComponentModel.CancelEventHandler(this.txtLocation_Validating);
             // 
             // label4
             // 

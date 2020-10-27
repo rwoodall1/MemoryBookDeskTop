@@ -336,22 +336,26 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
-                        if (!chkPrToLabeler.Checked)
+                        if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                         {
-                            PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
-                        }
-                        else
-                        {
-                            //Print to labeler
-                            List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                            var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
-                            listData.Add(vData);
+                            if (!chkPrToLabeler.Checked)
+                            {
+                                PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                            }
+                            else
+                            {
 
-                            reportViewer2.LocalReport.DataSources.Clear();
-                            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                            dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                //Print to labeler
+                                List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
+                                listData.Add(vData);
+
+                                reportViewer2.LocalReport.DataSources.Clear();
+                                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                            }
                         }
 
 
@@ -366,7 +370,7 @@ namespace Mbc5.Forms.MixBook
                             if (locationresult.IsError)
                             {
                                 MbcMessageBox.Error("Failed to update location of order.");
-                                ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                               
                                 Log.Error("Failed to update location of order invno:" + Invno.ToString());
                             }
                             QuantityScanned += 1;
@@ -377,6 +381,17 @@ namespace Mbc5.Forms.MixBook
                                 MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
                                 QuantityScanned = 0;
                                 lblScanQty.Text = QuantityScanned.ToString();
+                            }
+                            sqlClient.ClearParameters();
+                            sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                            var orderLocResult1= sqlClient.Update();
+                            if (orderLocResult1.IsError)
+                            {
+                                
+                             
+                                Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                             }
                         }
                        
@@ -562,9 +577,10 @@ namespace Mbc5.Forms.MixBook
                             sqlClient.AddParameter("@WAR", vDateTime);
                             sqlClient.AddParameter("@WIR", vWIR);
                             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                        sqlClient.AddParameter("@MxbLocation", location);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,MxbLocation,Invno) VALUES(@DescripID,@WAR,@WIR,@MxbLocation,@Invno);
                                                     END
                                                     ");
 
@@ -575,6 +591,16 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
                             return;
                             }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select MO.Invno,WD.MxbLocation From MixbookOrder MO
                                                  Left Join WipDetail WD ON MO.Invno=WD.Invno AND WD.DescripId=50
@@ -683,6 +709,19 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult2 = sqlClient.Update();
+                        if (orderLocResult2.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
+
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -773,7 +812,15 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
                             return;
                         }
-
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                        }
 
                         //
 
@@ -791,7 +838,15 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@BookStatus", "OnBoard");
                         sqlClient.Update();
-                        ClearScan();
+                      
+
+                        if (MbxModel.Quantity>1)
+                        {
+                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                        }
+                     ClearScan();
+
+
                         break;
                     case "TRIMMING":
                         
@@ -854,6 +909,16 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult11 = sqlClient.Update();
+                        if (orderLocResult11.IsError)
+                        {
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                        }
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -1319,6 +1384,15 @@ Where ClientOrderId=@ClientOrderId");
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtLocation_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtLocation.Text.Length>3)
+            {
+                MbcMessageBox.Error("Invalid Location,Please re-enter Location");
+                e.Cancel = true;
+            }
         }
     }
     public class PackageData

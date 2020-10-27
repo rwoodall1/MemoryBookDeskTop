@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.formsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,9 +118,13 @@
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.pnlNotice = new System.Windows.Forms.Panel();
+            this.lblUpdate = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dailyInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
+            this.pnlNotice.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -136,7 +141,7 @@
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.MdiWindowListItem = this.windowToolStripMenuItem;
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1181, 24);
+            this.mnuMain.Size = new System.Drawing.Size(1343, 24);
             this.mnuMain.TabIndex = 1;
             this.mnuMain.Text = "mnuMain";
             // 
@@ -411,7 +416,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -425,7 +430,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -483,7 +488,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -516,7 +521,7 @@
             this.wipReportToolStripMenuItem,
             this.dailyInfoToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             // 
             // invoiceReportToolStripMenuItem
@@ -525,11 +530,15 @@
             this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
             this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
+            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
+            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
             // 
             // shippingReportToolStripMenuItem
             // 
             this.shippingReportToolStripMenuItem.Name = "shippingReportToolStripMenuItem";
-            this.shippingReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shippingReportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.shippingReportToolStripMenuItem.Text = "Shipping Report";
             this.shippingReportToolStripMenuItem.Click += new System.EventHandler(this.shippingReportToolStripMenuItem_Click);
             // 
@@ -537,6 +546,13 @@
             // 
             this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
             this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipReportToolStripMenuItem.Text = "Wip Report";
+            this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
+            // 
+            // wipReportToolStripMenuItem
+            // 
+            this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.wipReportToolStripMenuItem.Text = "Wip Report";
             this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
@@ -690,7 +706,7 @@
             this.tsMxbClientOrderId});
             this.tsMain.Location = new System.Drawing.Point(0, 24);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(1181, 25);
+            this.tsMain.Size = new System.Drawing.Size(1343, 25);
             this.tsMain.TabIndex = 2;
             this.tsMain.Text = "toolStrip1";
             // 
@@ -898,7 +914,7 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 65;
-            this.reportViewer1.Location = new System.Drawing.Point(1102, 589);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 585);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(67, 64);
@@ -907,7 +923,36 @@
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // dailyInfoToolStripMenuItem
+            // pnlNotice
             // 
+            this.pnlNotice.BackColor = System.Drawing.Color.Red;
+            this.pnlNotice.Controls.Add(this.lblUpdate);
+            this.pnlNotice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlNotice.Location = new System.Drawing.Point(0, 49);
+            this.pnlNotice.Name = "pnlNotice";
+            this.pnlNotice.Size = new System.Drawing.Size(1343, 29);
+            this.pnlNotice.TabIndex = 4;
+            this.pnlNotice.Visible = false;
+            // 
+            // lblUpdate
+            // 
+            this.lblUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUpdate.AutoSize = true;
+            this.lblUpdate.BackColor = System.Drawing.Color.Red;
+            this.lblUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdate.ForeColor = System.Drawing.Color.White;
+            this.lblUpdate.Location = new System.Drawing.Point(308, 5);
+            this.lblUpdate.Name = "lblUpdate";
+            this.lblUpdate.Size = new System.Drawing.Size(562, 17);
+            this.lblUpdate.TabIndex = 0;
+            this.lblUpdate.Text = "There is an update available. Please close out the application and restart it.";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 600000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             this.dailyInfoToolStripMenuItem.Name = "dailyInfoToolStripMenuItem";
             this.dailyInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dailyInfoToolStripMenuItem.Text = "Daily Info";
@@ -916,10 +961,12 @@
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1181, 674);
+            this.ClientSize = new System.Drawing.Size(1343, 656);
+            this.Controls.Add(this.pnlNotice);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.mnuMain);
+            this.Location = new System.Drawing.Point(0, 25);
             this.Name = "frmMain";
             this.OpenForms = ((System.Collections.Generic.List<BaseClass.FormHandler.FormInstance>)(resources.GetObject("$this.OpenForms")));
             this.Text = "MBC";
@@ -927,10 +974,13 @@
             this.Controls.SetChildIndex(this.mnuMain, 0);
             this.Controls.SetChildIndex(this.tsMain, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
+            this.Controls.SetChildIndex(this.pnlNotice, 0);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
+            this.pnlNotice.ResumeLayout(false);
+            this.pnlNotice.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1027,5 +1077,8 @@
         private System.Windows.Forms.ToolStripMenuItem shippingReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dailyInfoToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlNotice;
+        private System.Windows.Forms.Label lblUpdate;
+        private System.Windows.Forms.Timer timer1;
     }
 }
