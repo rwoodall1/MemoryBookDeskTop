@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.chkRemake = new System.Windows.Forms.CheckBox();
@@ -74,6 +74,7 @@
             // basePanel
             // 
             this.basePanel.Size = new System.Drawing.Size(20, 22);
+            this.basePanel.TabIndex = 5;
             // 
             // lblBkLoc
             // 
@@ -114,7 +115,7 @@
             this.lbllastscanlbl.Location = new System.Drawing.Point(38, 18);
             this.lbllastscanlbl.Name = "lbllastscanlbl";
             this.lbllastscanlbl.Size = new System.Drawing.Size(71, 17);
-            this.lbllastscanlbl.TabIndex = 1;
+            this.lbllastscanlbl.TabIndex = 10023;
             this.lbllastscanlbl.Text = "Last Scan";
             // 
             // lblLastScan
@@ -125,7 +126,7 @@
             this.lblLastScan.Location = new System.Drawing.Point(111, 18);
             this.lblLastScan.Name = "lblLastScan";
             this.lblLastScan.Size = new System.Drawing.Size(0, 17);
-            this.lblLastScan.TabIndex = 2;
+            this.lblLastScan.TabIndex = 10022;
             // 
             // txtDateTime
             // 
@@ -168,8 +169,7 @@
             this.plnTracking.Location = new System.Drawing.Point(38, 51);
             this.plnTracking.Name = "plnTracking";
             this.plnTracking.Size = new System.Drawing.Size(298, 82);
-            this.plnTracking.TabIndex = 1;
-            this.plnTracking.TabStop = true;
+            this.plnTracking.TabIndex = 0;
             this.plnTracking.EnabledChanged += new System.EventHandler(this.plnTracking_EnabledChanged);
             this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
             // 
@@ -178,7 +178,7 @@
             this.txtWeight.Location = new System.Drawing.Point(76, 59);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(54, 20);
-            this.txtWeight.TabIndex = 4;
+            this.txtWeight.TabIndex = 3;
             this.txtWeight.DoubleClick += new System.EventHandler(this.txtWeight_DoubleClick);
             this.txtWeight.Leave += new System.EventHandler(this.txtWeight_Leave);
             this.txtWeight.Validating += new System.ComponentModel.CancelEventHandler(this.txtWeight_Validating);
@@ -197,7 +197,7 @@
             // 
             this.txtTrackingNo.Location = new System.Drawing.Point(75, 36);
             this.txtTrackingNo.Name = "txtTrackingNo";
-            this.txtTrackingNo.Size = new System.Drawing.Size(201, 20);
+            this.txtTrackingNo.Size = new System.Drawing.Size(220, 20);
             this.txtTrackingNo.TabIndex = 2;
             this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
             // 
@@ -216,7 +216,7 @@
             this.txtClientIdLookup.Location = new System.Drawing.Point(160, 4);
             this.txtClientIdLookup.Name = "txtClientIdLookup";
             this.txtClientIdLookup.Size = new System.Drawing.Size(135, 20);
-            this.txtClientIdLookup.TabIndex = 2;
+            this.txtClientIdLookup.TabIndex = 1;
             this.txtClientIdLookup.Leave += new System.EventHandler(this.txtClientIdLookup_Leave);
             // 
             // errorProvider1
@@ -316,11 +316,11 @@
             this.pnlGrid.Controls.Add(this.custDataGridView);
             this.pnlGrid.Controls.Add(this.label1);
             this.pnlGrid.Controls.Add(this.txtItemBarcode);
+            this.pnlGrid.Enabled = false;
             this.pnlGrid.Location = new System.Drawing.Point(37, 136);
             this.pnlGrid.Name = "pnlGrid";
             this.pnlGrid.Size = new System.Drawing.Size(709, 179);
-            this.pnlGrid.TabIndex = 5;
-            this.pnlGrid.TabStop = true;
+            this.pnlGrid.TabIndex = 10037;
             // 
             // txt1
             // 
@@ -339,14 +339,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
@@ -358,7 +358,7 @@
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
             this.custDataGridView.Size = new System.Drawing.Size(689, 139);
-            this.custDataGridView.TabIndex = 0;
+            this.custDataGridView.TabIndex = 6;
             this.custDataGridView.TabStop = false;
             // 
             // Invno
@@ -405,17 +405,24 @@
             // 
             // txtItemBarcode
             // 
-            this.txtItemBarcode.Location = new System.Drawing.Point(152, 9);
+            this.txtItemBarcode.Location = new System.Drawing.Point(152, 11);
             this.txtItemBarcode.Name = "txtItemBarcode";
-            this.txtItemBarcode.Size = new System.Drawing.Size(100, 20);
-            this.txtItemBarcode.TabIndex = 10031;
+            this.txtItemBarcode.Size = new System.Drawing.Size(124, 20);
+            this.txtItemBarcode.TabIndex = 4;
+            this.txtItemBarcode.Leave += new System.EventHandler(this.txtItemBarcode_Leave);
+            this.txtItemBarcode.Validating += new System.ComponentModel.CancelEventHandler(this.txtItemBarcode_Validating);
             // 
             // btnAddPkg
             // 
-            this.btnAddPkg.Location = new System.Drawing.Point(0, 0);
+            this.btnAddPkg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPkg.Location = new System.Drawing.Point(174, 339);
             this.btnAddPkg.Name = "btnAddPkg";
-            this.btnAddPkg.Size = new System.Drawing.Size(75, 23);
-            this.btnAddPkg.TabIndex = 1;
+            this.btnAddPkg.Size = new System.Drawing.Size(121, 34);
+            this.btnAddPkg.TabIndex = 10038;
+            this.btnAddPkg.Text = "Add Package To Shipment";
+            this.btnAddPkg.UseVisualStyleBackColor = true;
+            this.btnAddPkg.Click += new System.EventHandler(this.btnAddPkg_Click);
             // 
             // frmMxBookShipping
             // 
