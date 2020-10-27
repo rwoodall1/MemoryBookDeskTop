@@ -336,22 +336,26 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
-                        if (!chkPrToLabeler.Checked)
+                        if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                         {
-                            PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
-                        }
-                        else
-                        {
-                            //Print to labeler
-                            List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                            var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
-                            listData.Add(vData);
+                            if (!chkPrToLabeler.Checked)
+                            {
+                                PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                            }
+                            else
+                            {
 
-                            reportViewer2.LocalReport.DataSources.Clear();
-                            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                            dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                //Print to labeler
+                                List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
+                                listData.Add(vData);
+
+                                reportViewer2.LocalReport.DataSources.Clear();
+                                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                            }
                         }
 
 
@@ -1380,6 +1384,15 @@ Where ClientOrderId=@ClientOrderId");
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtLocation_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtLocation.Text.Length>3)
+            {
+                MbcMessageBox.Error("Invalid Location,Please re-enter Location");
+                e.Cancel = true;
+            }
         }
     }
     public class PackageData
