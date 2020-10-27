@@ -50,12 +50,12 @@ namespace Mbc5.Forms.MixBook
                 ,MS.Cost As Freight
                 ,MP.SellPrice As UnitPrice 
                 ,MP.SellPrice * M.Copies AS UnitTotal
-                ,MP.PerPage * M.Pages AS PageFee
+                ,MP.PerPage * (M.Pages * M.Copies )AS PageFee
                 ,MP.HandlingPerBox AS Fulfillment
-                ,(MP.SellPrice * M.Copies)+(MP.PerPage * M.Pages)+(MP.HandlingPerBox) AS Total
+                ,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
                 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
                 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-                Where M.MixbookOrderStatus='Shipped' And M.DateShipped>=@DateFrom And M.DateShipped<=@DateTo Order By Invno,DateShipped";
+                Where M.MixbookOrderStatus='Shipped'  And M.DateShipped>=@DateFrom And M.DateShipped<=@DateTo Order By Invno,DateShipped";
             sqlClient.CommandText(cmd);
             sqlClient.AddParameter("@DateFrom", dtFrom.Value);
             sqlClient.AddParameter("@DateTo", dtTo.Value);
@@ -64,6 +64,11 @@ namespace Mbc5.Forms.MixBook
             if (reportResult.IsError)
             {
                 MbcMessageBox.Error(reportResult.Errors[0].DeveloperMessage);
+                return;
+            }
+            if (reportResult.Data==null)
+            {
+                MbcMessageBox.Information("No records were returned.");
                 return;
             }
             var data =(List< MixbookInvoiceReport>) reportResult.Data;
