@@ -44,6 +44,33 @@ namespace Mbc5.Forms
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        private void DailyInfo()
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"SELECT
+                                    Count(ClientOrderId) As TOShip FROM[Mbc5].[dbo].[MixBookOrder] 
+                                    where MixBookOrderStatus != 'Shipped' 
+                                    and Mixbookorderstatus != 'Cancelled' 
+                                    and RequestedShipDate <=@RequestedShipDate");
+
+            sqlClient.AddParameter("@RequestedShipDate", DateTime.Now);
+            var toShipResult = sqlClient.SelectSingleColumn();
+            string vShipResult = toShipResult.Data;
+            sqlClient.ClearParameters();
+            var a = DateTime.Now.ToString();
+             var b = DateTime.Now.AddDays(-1).ToShortDateString() + " 16:00";
+              sqlClient.CommandText(@" SELECT 
+                                    Count([ClientOrderId])AS OrdersIN
+                                    FROM [Mbc5].[dbo].[MixBookOrder] 
+                                    Where OrderReceivedDate <=@From 
+                                    And  OrderReceivedDate >=@To");
+            sqlClient.AddParameter("@From",DateTime.Now);
+            sqlClient.AddParameter("@To",DateTime.Now.AddDays(-1).ToShortDateString()+" 16:00");
+            var ordersinResult = sqlClient.SelectSingleColumn();
+            string vOrdersIn = ordersinResult.Data;
+            MbcMessageBox.Information(vShipResult + " Orders to ship today. " + vOrdersIn + " Orders came in since 4 pm yesterday.");
+
+        }
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -1811,6 +1838,11 @@ namespace Mbc5.Forms
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage,EmailType.System);
             }
+        }
+
+        private void dailyInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DailyInfo();
         }
         //nothing below here
     }

@@ -7,6 +7,7 @@ namespace BindingModels
 {
     public class MixbookInvoiceReport
     {
+        public int Invno { get; set; }
         public int ClientOrderId { get; set; }
         public DateTime OrderReceivedDate { get; set; }
         public DateTime DateShipped { get; set; }

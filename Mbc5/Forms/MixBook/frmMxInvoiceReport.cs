@@ -33,6 +33,7 @@ namespace Mbc5.Forms.MixBook
             frmMain.CleanShipping(); //takes out shipping value that are not for mixbook. Need to remove this if we go to memorybook.
             var sqlClient = new SQLCustomClient();
                 string cmd = @"Select M.ClientOrderId
+                ,M.Invno
                 ,M.OrderReceivedDate
                 ,M.DateShipped
                 ,M.ItemCode
@@ -54,7 +55,7 @@ namespace Mbc5.Forms.MixBook
                 ,(MP.SellPrice * M.Copies)+(MP.PerPage * M.Pages)+(MP.HandlingPerBox) AS Total
                 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
                 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-                Where M.MixbookOrderStatus='Shipped' And M.DateShipped>=@DateFrom And M.DateShipped<=@DateTo Order By DateShipped";
+                Where M.MixbookOrderStatus='Shipped' And M.DateShipped>=@DateFrom And M.DateShipped<=@DateTo Order By Invno,DateShipped";
             sqlClient.CommandText(cmd);
             sqlClient.AddParameter("@DateFrom", dtFrom.Value);
             sqlClient.AddParameter("@DateTo", dtTo.Value);

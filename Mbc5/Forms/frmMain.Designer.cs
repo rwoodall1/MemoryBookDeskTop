@@ -75,8 +75,9 @@
             this.memeroyBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixbookReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +117,7 @@
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailyInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -512,17 +513,18 @@
             this.mixbookReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.invoiceReportToolStripMenuItem,
             this.shippingReportToolStripMenuItem,
-            this.wipReportToolStripMenuItem});
+            this.wipReportToolStripMenuItem,
+            this.dailyInfoToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
             this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             // 
-            // wipReportToolStripMenuItem
+            // invoiceReportToolStripMenuItem
             // 
-            this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
-            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.wipReportToolStripMenuItem.Text = "Wip Report";
-            this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
+            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
+            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
             // 
             // shippingReportToolStripMenuItem
             // 
@@ -530,6 +532,13 @@
             this.shippingReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shippingReportToolStripMenuItem.Text = "Shipping Report";
             this.shippingReportToolStripMenuItem.Click += new System.EventHandler(this.shippingReportToolStripMenuItem_Click);
+            // 
+            // wipReportToolStripMenuItem
+            // 
+            this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipReportToolStripMenuItem.Text = "Wip Report";
+            this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -897,12 +906,12 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
-            // invoiceReportToolStripMenuItem
+            // dailyInfoToolStripMenuItem
             // 
-            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
-            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
-            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
+            this.dailyInfoToolStripMenuItem.Name = "dailyInfoToolStripMenuItem";
+            this.dailyInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dailyInfoToolStripMenuItem.Text = "Daily Info";
+            this.dailyInfoToolStripMenuItem.Click += new System.EventHandler(this.dailyInfoToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1017,5 +1026,6 @@
         private System.Windows.Forms.ToolStripMenuItem shippingScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shippingReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dailyInfoToolStripMenuItem;
     }
 }
