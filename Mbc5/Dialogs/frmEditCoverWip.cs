@@ -33,11 +33,13 @@ namespace Mbc5.Dialogs
         {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             string AppConnectionString = "";
+          
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
+                AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
+                this.Text = "Environment:" + Environment + "    Mbc5";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             try
             {
                 this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
