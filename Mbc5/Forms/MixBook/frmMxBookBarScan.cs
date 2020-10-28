@@ -888,19 +888,7 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
                             return;
                         }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update Coverdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult1 = sqlClient.Update();
-                        if (locationresult1.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
-                            Log.Error("Failed to update location of order invno:" + Invno.ToString()+":"+ locationresult1.Errors[0].DeveloperMessage);
-                        }
+                        
                         QuantityScanned += 1;
                         lblScanQty.Text = QuantityScanned.ToString();
                         if (QuantityScanned >= QtyToScan)
@@ -909,15 +897,7 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
-                        var orderLocResult11 = sqlClient.Update();
-                        if (orderLocResult11.IsError)
-                        {
-                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
-                        }
+                        
 
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");

@@ -10,6 +10,7 @@ namespace BindingModels
         public int Invno { get; set; }
         public int ClientOrderId { get; set; }
         public DateTime OrderReceivedDate { get; set; }
+        public DateTime RequestedShipDate{get;set;}
         public DateTime DateShipped { get; set; }
         public string ItemCode { get; set; }
         public string ItemId { get; set; }
@@ -27,6 +28,7 @@ namespace BindingModels
         public decimal PageFee { get; set; }
         public decimal Fulfillment{get;set;}
         public decimal Total { get; set; }
+        public string MixbookOrderStatus { get; set; }
     }
     public class BookBlockLabel
     {
