@@ -19,7 +19,7 @@ using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
 using Equin.ApplicationFramework;
-using BaseClass.Classes;
+
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxBookShipping : BaseClass.frmBase
@@ -35,6 +35,7 @@ namespace Mbc5.Forms.MixBook
         public MixbookNotification ShipNotification { get; set; } 
         public List<MixbookNotificationRequestShipment> Shipments { get; set; } = new List<MixbookNotificationRequestShipment>();
         public MixbookNotificationRequestShipment Shipment { get; set; }
+        public List<MixBookItemScanModel> NotificationItems { get; set; } = new List<MixBookItemScanModel>();
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
         public int Itemcount { get; set; } = 0;
@@ -227,9 +228,15 @@ namespace Mbc5.Forms.MixBook
                     vPkg.Item.quantity = vItem.Quantity;
                    Shipment.Package.Add(vPkg);
                 }
-
+           
+                var singleItem = NotificationItems.Exists(item => item.Invno == vItem.Invno);
                 Items.Add(vItem);
-                this.Itemcount += 1;
+                NotificationItems.Add(vItem);
+                if (!singleItem)
+                {
+                    this.Itemcount += 1;
+                }
+                
                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource=bsItems;
@@ -245,12 +252,13 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            
-            if (Itemcount!= MbxModel.ProdInOrder)
+
+            if (Itemcount != MbxModel.ProdInOrder)
             {
                 MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
                 return;
             }
+         
             Shipment.trackingNumber = txtTrackingNo.Text;
             decimal vWeight = 0;
             decimal.TryParse(txtWeight.Text, out vWeight);
@@ -342,6 +350,15 @@ namespace Mbc5.Forms.MixBook
         {
             try
             {
+              
+                int start = NotificationItems.Count - Items.Count;
+             if (NotificationItems.Count>0 && NotificationItems.Count>=Items.Count)
+                {
+                    NotificationItems.RemoveRange(start, Items.Count);
+                }
+              
+               
+                
                 Items.Clear();
                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
@@ -374,6 +391,7 @@ namespace Mbc5.Forms.MixBook
 
             txtClientIdLookup.Focus();
             Items.Clear();
+            NotificationItems.Clear();
             BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
             bsItems.DataSource = Items1;
             custDataGridView.DataSource = bsItems;
