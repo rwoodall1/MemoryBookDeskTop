@@ -13,6 +13,7 @@ using BaseClass.Classes;
 using BaseClass.Core;
 using NLog;
 using System.Configuration;
+
 namespace BaseClass
 {
     public partial class frmBase : Form
@@ -23,7 +24,8 @@ namespace BaseClass
            
             InitializeComponent();
         }
-        protected Logger Log { get; private set; } 
+       protected Logger Log { get;set; } 
+        
         #region "Properties" 
 
         [Browsable(true)]

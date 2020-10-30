@@ -19,7 +19,7 @@ using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
 using Equin.ApplicationFramework;
-using BaseClass.Classes;
+
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxBookShipping : BaseClass.frmBase
@@ -35,6 +35,7 @@ namespace Mbc5.Forms.MixBook
         public MixbookNotification ShipNotification { get; set; } 
         public List<MixbookNotificationRequestShipment> Shipments { get; set; } = new List<MixbookNotificationRequestShipment>();
         public MixbookNotificationRequestShipment Shipment { get; set; }
+        public List<MixBookItemScanModel> NotificationItems { get; set; } = new List<MixBookItemScanModel>();
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
         public int Itemcount { get; set; } = 0;
@@ -58,7 +59,8 @@ namespace Mbc5.Forms.MixBook
             var result = sqlQuery.Select<MixBookBarScanModel>();
             if (result.IsError)
             {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("Error retrieving order for shipment:"+result.Errors[0].DeveloperMessage);
                 return;
             }
             if (result.Data == null)
@@ -102,7 +104,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
-
+                    Log.Error(ex, "Error trimming Mail Innovations tracking number.");
                 }
                
 
@@ -204,6 +206,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error(result.Errors[0].DeveloperMessage);
                     return;
                 }
                 if (result.Data == null)
@@ -225,9 +228,15 @@ namespace Mbc5.Forms.MixBook
                     vPkg.Item.quantity = vItem.Quantity;
                    Shipment.Package.Add(vPkg);
                 }
-
+           
+                var singleItem = NotificationItems.Exists(item => item.Invno == vItem.Invno);
                 Items.Add(vItem);
-                this.Itemcount += 1;
+                NotificationItems.Add(vItem);
+                if (!singleItem)
+                {
+                    this.Itemcount += 1;
+                }
+                
                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource=bsItems;
@@ -236,18 +245,20 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
+                Log.Error("An error has occured:" + ex.Message);
             }
 
          }
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            
-            if (Itemcount!= MbxModel.ProdInOrder)
+
+            if (Itemcount != MbxModel.ProdInOrder)
             {
                 MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
                 return;
             }
+         
             Shipment.trackingNumber = txtTrackingNo.Text;
             decimal vWeight = 0;
             decimal.TryParse(txtWeight.Text, out vWeight);
@@ -283,10 +294,8 @@ namespace Mbc5.Forms.MixBook
                 var mxResult4 = sqlClient.Update();
                 if (mxResult4.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Failed to update shipping WIP")
-                        .AddObject(mxResult4)
-                        .MarkAsCritical()
-                        .Submit();
+                   
+                    Log.Error("Failed to update shipping WIP:"+mxResult4.Errors[0].DeveloperMessage);
                 MessageBox.Show("Failed to update shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 }
@@ -306,6 +315,7 @@ namespace Mbc5.Forms.MixBook
                 var result4 = sqlClient.Insert();
                 if (result4.IsError)
                 {
+                    Log.Error("Failed to insert shipping WIP:"+result4.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to insert shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -316,6 +326,7 @@ namespace Mbc5.Forms.MixBook
                 var produtnResult = sqlClient.Update();
                 if (produtnResult.IsError)
                 {
+                    Log.Error("Failed to update production ship date:" + produtnResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to update shipdate on production screen.");
 
                 }
@@ -330,7 +341,7 @@ namespace Mbc5.Forms.MixBook
                 if (trackingResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update tracking number in order screen.");
-
+                    Log.Error("Failed to update tracking number in order screen:"+trackingResult.Errors[0].DeveloperMessage);
                 }
             }
         }
@@ -339,6 +350,15 @@ namespace Mbc5.Forms.MixBook
         {
             try
             {
+              
+                int start = NotificationItems.Count - Items.Count;
+             if (NotificationItems.Count>0 && NotificationItems.Count>=Items.Count)
+                {
+                    NotificationItems.RemoveRange(start, Items.Count);
+                }
+              
+               
+                
                 Items.Clear();
                 BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
                 bsItems.DataSource = Items1;
@@ -350,10 +370,8 @@ namespace Mbc5.Forms.MixBook
             }
             catch(Exception ex) 
             {
-                ex.ToExceptionless()
-                    .SetMessage("Error clearing shipment items")
-                    .MarkAsCritical()
-                    .Submit();
+                Log.Error(ex,"Error clearing shipment items");
+                
 
             }
 
@@ -373,6 +391,7 @@ namespace Mbc5.Forms.MixBook
 
             txtClientIdLookup.Focus();
             Items.Clear();
+            NotificationItems.Clear();
             BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
             bsItems.DataSource = Items1;
             custDataGridView.DataSource = bsItems;
@@ -427,7 +446,7 @@ namespace Mbc5.Forms.MixBook
                 {
                     AddMbEventLog(MbxModel.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
                     var emailHelper = new EmailHelper();
-                    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
+                    emailHelper.SendEmail("Failed to notify mixbook of shipped order:"+ MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
                 }
 
 
@@ -436,7 +455,7 @@ namespace Mbc5.Forms.MixBook
             {
                 AddMbEventLog(MbxModel.JobId, "Error", "", vReturnNotification, false);
                 var emailHelper = new EmailHelper();
-                emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+                emailHelper.SendEmail("Failed to notify mixbook of shipped order:"+MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
 
             }
             return processingResult;
@@ -486,7 +505,7 @@ namespace Mbc5.Forms.MixBook
             {
                 Shipment.Package.Add(pkg);
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Log.Error(ex); }
           
 
         }

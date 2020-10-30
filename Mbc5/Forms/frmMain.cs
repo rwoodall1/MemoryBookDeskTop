@@ -33,15 +33,113 @@ namespace Mbc5.Forms
         {
 
             InitializeComponent();
+          
         }
 
         #region "Properties"
+        public Logger Log { get; private set; }
         public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
         public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        private void DailyInfo()
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"SELECT
+                                    Count(ClientOrderId) As TOShip FROM[Mbc5].[dbo].[MixBookOrder] 
+                                    where MixBookOrderStatus != 'Shipped' 
+                                    and Mixbookorderstatus != 'Cancelled' 
+                                    and RequestedShipDate <=@RequestedShipDate");
+
+            sqlClient.AddParameter("@RequestedShipDate", DateTime.Now);
+            var toShipResult = sqlClient.SelectSingleColumn();
+            string vShipResult = toShipResult.Data;
+            sqlClient.ClearParameters();
+            var a = DateTime.Now.ToString();
+            var b = DateTime.Now.AddDays(-1).ToShortDateString() + " 16:00";
+            sqlClient.CommandText(@" SELECT 
+                                    Count([ClientOrderId])AS OrdersIN
+                                    FROM [Mbc5].[dbo].[MixBookOrder] 
+                                    Where OrderReceivedDate <=@From 
+                                    And  OrderReceivedDate >=@To");
+            sqlClient.AddParameter("@From", DateTime.Now);
+            sqlClient.AddParameter("@To", DateTime.Now.AddDays(-1).ToShortDateString() + " 16:00");
+            var ordersinResult = sqlClient.SelectSingleColumn();
+            string vOrdersIn = ordersinResult.Data;
+            MbcMessageBox.Information(vShipResult + " Orders to ship today. " + vOrdersIn + " Orders came in since 4 pm yesterday.");
+
+        }
+        public void VersionCheck()
+        {
+            //https://stackoverflow.com/questions/1112981/how-do-i-launch-application-one-from-another-in-c
+
+            string localVersion = "";
+            string serverVersion = "";
+            string serverfilePath = @"M:\UpdateExe\bin\Release\";
+            string serverfilePathDir = @"M:\UpdateExe\bin";
+            string localfilePath = "";
+            string StartPath = "";
+            try
+            {
+                var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                localfilePath = root.Replace("StartUpApp", "Mbc5");
+                var localfile = localfilePath + "\\Mbc5.exe";
+                StartPath = localfilePath + "\\Mbc5.exe";
+                try
+                {
+                    var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+                    localVersion = localfileInfo.FileVersion;
+                    //in order of entry
+                    var lMajor = localfileInfo.FileMajorPart;
+                    var lMinor = localfileInfo.FileMinorPart;
+                    var lBuild = localfileInfo.FileBuildPart;
+                    var lPrivate = localfileInfo.FilePrivatePart;
+
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Error retrieving file path for update check.");
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                this.Close();
+                return;
+            }
+
+            try
+            {
+                var serverfileInfo = FileVersionInfo.GetVersionInfo(serverfilePath + "\\Mbc5.exe");
+                serverVersion = serverfileInfo.FileVersion;
+                //in order of entry
+                var sMajor = serverfileInfo.FileMajorPart;
+                var sMinor = serverfileInfo.FileMinorPart;
+                var sBuild = serverfileInfo.FileBuildPart;
+                var sPrivate = serverfileInfo.FilePrivatePart;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
+            {
+                pnlNotice.Visible = true;
+
+            }
+           
+
+        }
+   
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -342,6 +440,7 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
+            
             //connection
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
@@ -1695,7 +1794,7 @@ namespace Mbc5.Forms
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser);
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser,this);
 
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();
@@ -1808,6 +1907,16 @@ namespace Mbc5.Forms
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage,EmailType.System);
             }
+        }
+
+        private void dailyInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DailyInfo();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            VersionCheck();
         }
         //nothing below here
     }

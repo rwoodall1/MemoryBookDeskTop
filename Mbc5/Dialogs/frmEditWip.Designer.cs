@@ -327,6 +327,7 @@
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
+            this.tableAdapterManager.prtbkbdetailTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
             this.tableAdapterManager.ReorderDetailTableAdapter = null;
@@ -376,7 +377,7 @@
             this.descripIdComboBox.Name = "descripIdComboBox";
             this.descripIdComboBox.Size = new System.Drawing.Size(180, 21);
             this.descripIdComboBox.TabIndex = 17;
-            this.descripIdComboBox.ValueMember = "Id";
+            this.descripIdComboBox.ValueMember = "DescriptionId";
             // 
             // scanCopiesTextBox
             // 

@@ -44,11 +44,6 @@
             this.pnlRemake = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtReasonCode = new System.Windows.Forms.TextBox();
-            this.plnTracking = new System.Windows.Forms.Panel();
-            this.txtWeight = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTrackingNo = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblLastScan = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
@@ -65,12 +60,15 @@
             this.lblHoldLocation = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHoldLocation = new System.Windows.Forms.Panel();
+            this.cmbLogin = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pnlImpersonate = new System.Windows.Forms.Panel();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
-            this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlBookLocation.SuspendLayout();
             this.pnlHoldLocation.SuspendLayout();
+            this.pnlImpersonate.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -150,6 +148,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(64, 20);
             this.txtLocation.TabIndex = 3;
+            this.txtLocation.Validating += new System.ComponentModel.CancelEventHandler(this.txtLocation_Validating);
             // 
             // label4
             // 
@@ -224,56 +223,6 @@
             this.txtReasonCode.Name = "txtReasonCode";
             this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
             this.txtReasonCode.TabIndex = 10017;
-            // 
-            // plnTracking
-            // 
-            this.plnTracking.Controls.Add(this.txtWeight);
-            this.plnTracking.Controls.Add(this.label5);
-            this.plnTracking.Controls.Add(this.txtTrackingNo);
-            this.plnTracking.Controls.Add(this.label13);
-            this.plnTracking.Location = new System.Drawing.Point(160, 63);
-            this.plnTracking.Name = "plnTracking";
-            this.plnTracking.Size = new System.Drawing.Size(374, 57);
-            this.plnTracking.TabIndex = 3;
-            this.plnTracking.Visible = false;
-            this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
-            // 
-            // txtWeight
-            // 
-            this.txtWeight.Location = new System.Drawing.Point(76, 26);
-            this.txtWeight.Name = "txtWeight";
-            this.txtWeight.Size = new System.Drawing.Size(54, 20);
-            this.txtWeight.TabIndex = 5;
-            this.txtWeight.Validating += new System.ComponentModel.CancelEventHandler(this.txtWeight_Validating);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Weight";
-            // 
-            // txtTrackingNo
-            // 
-            this.txtTrackingNo.Location = new System.Drawing.Point(75, 3);
-            this.txtTrackingNo.Name = "txtTrackingNo";
-            this.txtTrackingNo.Size = new System.Drawing.Size(201, 20);
-            this.txtTrackingNo.TabIndex = 4;
-            this.txtTrackingNo.Leave += new System.EventHandler(this.txtTrackingNo_Leave);
-            this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1, 7);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Tracking #";
             // 
             // errorProvider1
             // 
@@ -369,7 +318,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(314, 218);
+            this.button1.Location = new System.Drawing.Point(25, 229);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 23);
             this.button1.TabIndex = 10022;
@@ -438,10 +387,46 @@
             this.pnlHoldLocation.TabIndex = 10026;
             this.pnlHoldLocation.Visible = false;
             // 
+            // cmbLogin
+            // 
+            this.cmbLogin.FormattingEnabled = true;
+            this.cmbLogin.Items.AddRange(new object[] {
+            " ",
+            "PRESS",
+            "BINDING",
+            "TRIMMING",
+            "ONBOARD",
+            "QUALITY"});
+            this.cmbLogin.Location = new System.Drawing.Point(82, 6);
+            this.cmbLogin.Name = "cmbLogin";
+            this.cmbLogin.Size = new System.Drawing.Size(169, 21);
+            this.cmbLogin.TabIndex = 10027;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(2, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 13);
+            this.label9.TabIndex = 10028;
+            this.label9.Text = "Impersonate";
+            // 
+            // pnlImpersonate
+            // 
+            this.pnlImpersonate.Controls.Add(this.cmbLogin);
+            this.pnlImpersonate.Controls.Add(this.label9);
+            this.pnlImpersonate.Location = new System.Drawing.Point(385, 192);
+            this.pnlImpersonate.Name = "pnlImpersonate";
+            this.pnlImpersonate.Size = new System.Drawing.Size(286, 31);
+            this.pnlImpersonate.TabIndex = 10029;
+            this.pnlImpersonate.Visible = false;
+            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(691, 253);
+            this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);
             this.Controls.Add(this.button1);
@@ -454,7 +439,6 @@
             this.Controls.Add(this.lbllastscanlbl);
             this.Controls.Add(this.pnlQty);
             this.Controls.Add(this.lblLastScan);
-            this.Controls.Add(this.plnTracking);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBarCode);
             this.Controls.Add(this.txtDateTime);
@@ -473,7 +457,6 @@
             this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.txtBarCode, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.plnTracking, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
             this.Controls.SetChildIndex(this.pnlQty, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
@@ -486,17 +469,18 @@
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.pnlBookLocation, 0);
             this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
+            this.Controls.SetChildIndex(this.pnlImpersonate, 0);
             this.pnlQty.ResumeLayout(false);
             this.pnlQty.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
             this.pnlRemake.PerformLayout();
-            this.plnTracking.ResumeLayout(false);
-            this.plnTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pnlBookLocation.ResumeLayout(false);
             this.pnlBookLocation.PerformLayout();
             this.pnlHoldLocation.ResumeLayout(false);
             this.pnlHoldLocation.PerformLayout();
+            this.pnlImpersonate.ResumeLayout(false);
+            this.pnlImpersonate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,11 +500,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblScanQty;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel plnTracking;
-        private System.Windows.Forms.TextBox txtWeight;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTrackingNo;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lbllastscanlbl;
         private System.Windows.Forms.Label lblLastScan;
@@ -540,5 +519,8 @@
         private System.Windows.Forms.Panel pnlHoldLocation;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblHoldLocation;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbLogin;
+        private System.Windows.Forms.Panel pnlImpersonate;
     }
 }

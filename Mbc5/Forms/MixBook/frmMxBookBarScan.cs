@@ -40,6 +40,39 @@ namespace Mbc5.Forms.MixBook
         public int QuantityScanned { get; set; } = 0;
         public int PkgQuantity{get;set;}=0;
         public List<PackageData> PrintedPackageList { get; set; } = new List<PackageData>();
+        private void frmMxBookBarScan_Load(object sender, EventArgs e)
+        {
+            txtQtyToScan.Text = "40"; //default
+            if (ApplicationUser.UserName == "onboard" || ApplicationUser.UserName == "onboard2" || ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+            {
+
+
+
+                if (ApplicationUser.UserName == "binding")
+                {
+                    chkPrToLabeler.Visible = true;
+                    btnClearPrinter.Visible = true;
+                    pnlQty.Visible = true;
+                    pnlBookLocation.Visible = true;
+                }
+                if (ApplicationUser.UserName == "onboard")
+                {
+                    pnlQty.Visible = false;
+                    pnlBookLocation.Visible = true;
+                }
+            }         
+            else if (ApplicationUser.UserName == "quality")
+            {
+                pnlHoldLocation.Visible = true;
+            }
+            else if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
+            {
+                pnlQty.Visible = true;
+                pnlImpersonate.Visible = true;
+            };
+
+
+        }
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
             lblLastScan.Text = txtBarCode.Text;
@@ -104,6 +137,7 @@ namespace Mbc5.Forms.MixBook
                             if (result.IsError)
                             {
                                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Log.Error("Failed to retieve order for scan:"+ result.Errors[0].DeveloperMessage);
                                 return;
                             }
                             if (result.Data == null)
@@ -142,20 +176,10 @@ namespace Mbc5.Forms.MixBook
                             //txtColorPageNumber.Text = "";
                             //txtProdNumber.Text = MbxModel.ProdNo;
                             txtDateTime.Text = DateTime.Now.ToString();
-                            if (this.ApplicationUser.UserName.ToUpper() == "SHIPPING")
-                            {
-                                if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text))
-                                {
-                                    MXBScan();
-                                    ClearScan();
-                                }
-                                txtTrackingNo.Focus();
-                            }
-                            else
-                            {
+                            
                                 MXBScan();
                                  ClearScan();
-                            }
+                      
 
                             break;
 
@@ -165,14 +189,14 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
+                Log.Error("An error has occured:" + ex.Message);
             }
         }
         private void ClearScan()
         {
                 txtBarCode.Text = "";
                 txtDateTime.Text = "";
-                txtTrackingNo.Text = "";
-                txtWeight.Text = "";
+               
             chkRemake.Checked = false;
 
                 MbxModel = null;
@@ -183,15 +207,15 @@ namespace Mbc5.Forms.MixBook
         private void MXBScan()
         {
             //to impersonate finish later
-            //string currentUser = "";
-            //if (!string.IsNullOrEmpty(txtImpersonate.Text))
-            //{
-            //    currentUser = txtImpersonate.Text.ToUpper() ;
-            //}
-            //else
-            //{
-            //    currentUser = ApplicationUser.UserName.ToUpper();
-            //}
+            string currentUser = "";
+            if (!string.IsNullOrEmpty(cmbLogin.Text))
+            {
+                currentUser = cmbLogin.Text;
+            }
+            else
+            {
+                currentUser = ApplicationUser.UserName.ToUpper();
+            }
             if (chkRemake.Checked)
             {
                 ScanRamake();
@@ -214,8 +238,8 @@ namespace Mbc5.Forms.MixBook
             if (trkType == "YB")
             {
                 string vDeptCode = "";
-                //switch (this.ApplicationUser.UserName.ToUpper())
-                switch (this.ApplicationUser.UserName.ToUpper())
+               
+                switch (currentUser)
                 {
 
                     case "PRESS":
@@ -223,6 +247,14 @@ namespace Mbc5.Forms.MixBook
                         vWIR = "PS";
                         //war is datetime
                         //wir is initials
+                        //check if scan exist stop if it does per tf
+                        if (!WipCheck(vDeptCode)){
+                            return;
+                        }
+
+                        
+
+                        sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -234,6 +266,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan.",mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
 
@@ -254,6 +287,7 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan.", result1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -263,10 +297,99 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.Update();
                         ClearScan();
                         break;
+                    case "TRIMMING":
+
+                        vDeptCode = "43";
+                        vWIR = "TR";
+                        if (!WipCheck(vDeptCode))
+                        {
+                            return;
+                        }
+                        //war is datetime
+                        //wir is initials
+                        //check if scan exist stop if it does per tf
+                        sqlClient.ClearParameters();
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                        sqlClient.CommandText(@"Update WipDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        var mxResult11 = sqlClient.Update();
+                        if (mxResult11.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan." + mxResult11.Errors[0].DeveloperMessage);
+                            return;
+                        }
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
+                                                    END
+                                                    ");
+
+                        var result11 = sqlClient.Insert();
+                        if (result11.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan." + result11.Errors[0].DeveloperMessage);
+                            return;
+                        }
+                        //Mark says orders will not be split on location so insert into one location
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@Location", txtLocation.Text);
+                        var locationresult1 = sqlClient.Update();
+                        if (locationresult1.IsError)
+                        {
+                            MbcMessageBox.Error("Failed to update location of order.");
+                            ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
+                            Log.Error("Failed to update location of book invno:" + Invno.ToString());
+                        }
+                        QuantityScanned += 1;
+                        lblScanQty.Text = QuantityScanned.ToString();
+                        if (QuantityScanned >= QtyToScan)
+                        {
+                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                            QuantityScanned = 0;
+                            lblScanQty.Text = QuantityScanned.ToString();
+                        }
+
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult2 = sqlClient.Update();
+                        if (orderLocResult2.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
+
+
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@BookStatus", "Trimming");
+                        sqlClient.Update();
+                        ClearScan();
+
+                        break;
                     case "BINDING":
                         //war is datetime
                         //wir is initials
-
+                       
+                       
 
                         if (string.IsNullOrEmpty(txtLocation.Text)&& MbxModel.Backing=="HC")
                         {
@@ -276,6 +399,7 @@ namespace Mbc5.Forms.MixBook
                        
                         vDeptCode = "39";
                         vWIR = "BIN";
+                        WipCheck(vDeptCode);
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -287,6 +411,7 @@ namespace Mbc5.Forms.MixBook
                         var mxResult1 = sqlClient.Update();
                         if (mxResult1.IsError) {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to upate scan.", mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -306,24 +431,29 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
-                        if (!chkPrToLabeler.Checked)
+                        if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                         {
-                            PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
-                        }
-                        else
-                        {
-                            //Print to labeler
-                            List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                            var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
-                            listData.Add(vData);
+                            if (!chkPrToLabeler.Checked)
+                            {
+                                PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                            }
+                            else
+                            {
 
-                            reportViewer2.LocalReport.DataSources.Clear();
-                            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                            dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                //Print to labeler
+                                List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
+                                listData.Add(vData);
+
+                                reportViewer2.LocalReport.DataSources.Clear();
+                                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                            }
                         }
 
 
@@ -338,7 +468,8 @@ namespace Mbc5.Forms.MixBook
                             if (locationresult.IsError)
                             {
                                 MbcMessageBox.Error("Failed to update location of order.");
-                                ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
+                               
+                                Log.Error("Failed to update location of order invno:" + Invno.ToString());
                             }
                             QuantityScanned += 1;
                             lblScanQty.Text = QuantityScanned.ToString();
@@ -348,6 +479,17 @@ namespace Mbc5.Forms.MixBook
                                 MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
                                 QuantityScanned = 0;
                                 lblScanQty.Text = QuantityScanned.ToString();
+                            }
+                            sqlClient.ClearParameters();
+                            sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                            var orderLocResult1= sqlClient.Update();
+                            if (orderLocResult1.IsError)
+                            {
+                                
+                             
+                                Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                             }
                         }
                        
@@ -384,6 +526,7 @@ namespace Mbc5.Forms.MixBook
                         //war is datetime
                         //wir is initials
                         vDeptCode = "49";
+                        WipCheck(vDeptCode);
                         vWIR = "CI";
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -397,6 +540,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -416,6 +560,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                             return;
                         }
                     
@@ -494,6 +639,7 @@ namespace Mbc5.Forms.MixBook
                         }catch(Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
+                            Log.Error("An error has occurred:" + ex.Message);
                             return;
                         }
 
@@ -520,7 +666,8 @@ namespace Mbc5.Forms.MixBook
                             if (mxResult3.IsError)
                             {
                                 MessageBox.Show("Failed to update scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            Log.Error("Failed to update scan." + mxResult3.Errors[0].DeveloperMessage);
+                            return;
                             }
                             sqlClient.ClearParameters();
                             sqlClient.ReturnSqlIdentityId(true);
@@ -529,9 +676,10 @@ namespace Mbc5.Forms.MixBook
                             sqlClient.AddParameter("@WAR", vDateTime);
                             sqlClient.AddParameter("@WIR", vWIR);
                             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                        sqlClient.AddParameter("@MxbLocation", location);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,MxbLocation,Invno) VALUES(@DescripID,@WAR,@WIR,@MxbLocation,@Invno);
                                                     END
                                                     ");
 
@@ -539,8 +687,19 @@ namespace Mbc5.Forms.MixBook
                             if (result3.IsError)
                             {
                                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                            Log.Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
+                            return;
                             }
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select MO.Invno,WD.MxbLocation From MixbookOrder MO
                                                  Left Join WipDetail WD ON MO.Invno=WD.Invno AND WD.DescripId=50
@@ -550,6 +709,7 @@ namespace Mbc5.Forms.MixBook
                         if (orderCheck.IsError)
                         {
                             MbcMessageBox.Error("Failed to check if order complete,please check manually.");
+                            Log.Error("Failed to check if order complete:"+orderCheck.Errors[0].DeveloperMessage);
                             return;
                         }
                         var data =(List<OrderChk>) orderCheck.Data;
@@ -587,72 +747,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.Update();
                         ClearScan();
                         break;
-                    case "TRIMMING":
-
-                        vDeptCode = "43";
-                        vWIR = "TR";
-                        //war is datetime
-                        //wir is initials
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update WipDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
-
-                        var mxResult11 = sqlClient.Update();
-                        if (mxResult11.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        sqlClient.ClearParameters();
-                        sqlClient.ReturnSqlIdentityId(true);
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                    Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
-                                                    END
-                                                    ");
-
-                        var result11 = sqlClient.Insert();
-                        if (result11.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult1 = sqlClient.Update();
-                        if (locationresult1.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
-                        }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
-                            lblScanQty.Text = QuantityScanned.ToString();
-                        }
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@BookStatus", "Trimming");
-                        sqlClient.Update();
-                        ClearScan();
                     
-                        break;
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
                             break;
@@ -662,13 +757,13 @@ namespace Mbc5.Forms.MixBook
             else if (trkType == "SC")
             {
                 string vDeptCode = "";
-                switch (this.ApplicationUser.UserName.ToUpper())
+                switch (currentUser)
                 {
                     case "ONBOARD":
                         
                          vDeptCode = "37";
                         vWIR = "OB";
-
+                        CoverWipCheck(vDeptCode);
                         //get book location
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"  Select top(1) MxbLocation From WipDetail Where Invno=@Invno and MxbLocation is NOT NULL  order by war desc");
@@ -677,8 +772,9 @@ namespace Mbc5.Forms.MixBook
                         string bookBlockLocation = "";
                         if (booklocationresult.IsError)
                         {
+                            Log.Error("Failed to retrieve book block location " + Invno.ToString()+":"+booklocationresult.Errors[0].DeveloperMessage);
 
-                            ExceptionlessClient.Default.CreateLog("Failed to retrieve book block location" + Invno.ToString());
+                            
                             bookBlockLocation = "N/A";
                         }
 
@@ -710,6 +806,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -730,9 +827,18 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
                             return;
                         }
-
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult = sqlClient.Update();
+                        if (orderLocResult.IsError)
+                        {
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                        }
 
                         //
 
@@ -750,7 +856,15 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@BookStatus", "OnBoard");
                         sqlClient.Update();
-                        ClearScan();
+                      
+
+                        if (MbxModel.Quantity>1)
+                        {
+                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                        }
+                     ClearScan();
+
+
                         break;
                     case "TRIMMING":
                         
@@ -769,6 +883,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -788,20 +903,10 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
                             return;
                         }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update Coverdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult1 = sqlClient.Update();
-                        if (locationresult1.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
-                        }
+                        
                         QuantityScanned += 1;
                         lblScanQty.Text = QuantityScanned.ToString();
                         if (QuantityScanned >= QtyToScan)
@@ -810,6 +915,8 @@ namespace Mbc5.Forms.MixBook
                             QuantityScanned = 0;
                             lblScanQty.Text = QuantityScanned.ToString();
                         }
+                        
+
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -833,6 +940,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -851,6 +959,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
@@ -859,71 +968,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.Update();
                         ClearScan();
                         break;
-                    case "ONBOARD2":
-                        vDeptCode = "";
-                        vWIR = "OB2";
-                        //war is datetime
-                        //wir is initials
-                        if (string.IsNullOrEmpty(txtLocation.Text))
-                        {
-                            MbcMessageBox.Hand("Please enter a location.", "Enter Location");
-                            return;
-                        }
-                        vDeptCode = "38";
-                        //war is datetime
-                        //wir is initials
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-              
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR   WHERE Invno=@Invno AND DescripID=@DescripID ");
-
-                        var mxResult4 = sqlClient.Update();
-                        if (mxResult4.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        sqlClient.ClearParameters();
-                        sqlClient.ReturnSqlIdentityId(true);
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                    Begin
-                                                    INSERT INTO CoverDetail (DescripID,War,Wir,Invno,Jobno) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno);
-                                                    END
-                                                    ");
-
-                        var result4 = sqlClient.Insert();
-                        if (result4.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        //Mark says orders will not be split on location so insert into one location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"Update MixBookOrder Set MxbLocation=@Location Where Invno=@Invno");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@Location", txtLocation.Text);
-                        var locationresult2 = sqlClient.Update();
-                        if (locationresult2.IsError)
-                        {
-                            MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of order invno:" + Invno.ToString());
-                        }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
-                            lblScanQty.Text = QuantityScanned.ToString();
-                        }
-                        ClearScan();
-                        break;
+                    
                     default:
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
                         break;
@@ -947,14 +992,14 @@ namespace Mbc5.Forms.MixBook
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
-            if (trkType == "SC"|| ApplicationUser.UserName.ToUpper()=="QUALITY")
-            {
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY") {
                 sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -968,33 +1013,68 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                if (ApplicationUser.UserName.ToUpper() == "QUALITY")
+
+                //Wip
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult1 = sqlClient.Delete();
+                if (deleteResult1.IsError)
                 {
-                    sqlClient.ClearParameters();
-                    sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
-                    sqlClient.AddParameter("@Invno", this.Invno);
-                    var deleteResult1 = sqlClient.Delete();
-                    if (deleteResult1.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                        return;
-                    }
-                    sqlClient.ClearParameters();
-                    string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                    sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
-                    sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
-                    sqlClient.AddParameter("@Invno", this.Invno);
-                    sqlClient.AddParameter("@Memo", vmemo1);
-                    sqlClient.AddParameter("@RemakeReason", vReason);
-                    var updateResult1 = sqlClient.Update();
-                    if (updateResult.IsError)
-                    {
-                        MbcMessageBox.Error("Failed to update wip remake date.");
-                        return;
-                    }
+                    MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    return;
                 }
+                sqlClient.ClearParameters();
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Memo", vmemo);
+                var updateResult1 = sqlClient.Update();
+                if (updateResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='' where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.Update();
+
+
+            }
+            else if (trkType == "SC")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RemakeReason", vReason);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.Error("Failed to update cover reprint date:"+ updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+              
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno",Invno);
@@ -1003,12 +1083,14 @@ namespace Mbc5.Forms.MixBook
             }
             else if(trkType == "YB" )
             {
+                sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove wip scans for this order:"+deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -1021,6 +1103,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -1037,79 +1120,7 @@ namespace Mbc5.Forms.MixBook
                 }
         }
 
-        private void frmMxBookBarScan_Load(object sender, EventArgs e)
-        {
-            txtQtyToScan.Text = "40"; //default
-            if (ApplicationUser.UserName == "onboard"|| ApplicationUser.UserName == "onboard2"|| ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
-            {
-           
-           
-          
-                if (ApplicationUser.UserName == "binding") {
-                    chkPrToLabeler.Visible = true;
-                    btnClearPrinter.Visible = true;
-                    pnlQty.Visible = true;
-                    pnlBookLocation.Visible = true;
-                }
-                if (ApplicationUser.UserName == "onboard")
-                {
-                    pnlQty.Visible = false;
-                    pnlBookLocation.Visible = true;
-                }
-            }else if (ApplicationUser.UserName == "shipping")
-            {
-                plnTracking.Visible = true;
-            }else if (ApplicationUser.UserName == "quality")
-            {
-                pnlHoldLocation.Visible = true;
-            }
-             else if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
-            {
-                pnlQty.Visible = true;
-            };
-               
-            
-        }
-
-        private void plnTracking_Leave(object sender, EventArgs e)
-        {
-            if (this.ApplicationUser.UserName.ToUpper() != "shipping")
-            {
-                if (!string.IsNullOrEmpty(txtTrackingNo.Text) && !string.IsNullOrEmpty(txtWeight.Text)&& !string.IsNullOrEmpty(txtBarCode.Text)) {
-                    MXBScan();
-                    ClearScan();
-                }
-            }
-        }
-
-        private void txtTrackingNo_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtWeight_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(txtWeight, "");
-            int vWeight=0;
-            if (!int.TryParse(txtWeight.Text, out vWeight)||vWeight==0) {
-                
-
-                errorProvider1.SetError(txtWeight, "Please enter a  valid weight.");
-                e.Cancel = true;
-            }
-        }
-
-        private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(txtTrackingNo, "");
-            if(string.IsNullOrEmpty(txtTrackingNo.Text)){
-             
-
-                errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
-                e.Cancel = true;
-            }
-           
-        }
+      
 
         public async Task<ApiProcessingResult> NotifyMixbookOfShipment(ShippingNotificationInfo model)
         {
@@ -1166,11 +1177,8 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-               
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+
+                Log.Error(sqlResult.Errors[0].DeveloperMessage);
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("Failed to notify item shipped","randy.woodall@jostens.com", null, vBody,EmailType.System);
@@ -1194,6 +1202,7 @@ Where ClientOrderId=@ClientOrderId");
             if (result.IsError|| result.Data==null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+                Log.Error("Failed to retrieve order, packing slip could not be printed:"+result.Errors[0].DeveloperMessage);
                 return;
             }
          var packingSlipData=(List<MixbookPackingSlip>)result.Data;
@@ -1241,9 +1250,296 @@ Where ClientOrderId=@ClientOrderId");
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, "Failed to print DataMatrix Label");
             }
         }
+        private bool CoverWipCheck(string vDeptCode)
+        {
+            var sqlClient = new SQLCustomClient();
+            bool retval = true;
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@DescripID", vDeptCode);
+            var countResult = sqlClient.SelectSingleColumn();
+            if (countResult.IsError)
+            {
+                Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to check for duplicate record");
+                return false;
+            }
+            switch (vDeptCode)
+            {
+                case "29":
+                    if (countResult.Data != "" && countResult.Data != "0")
+                    {
+                        MbcMessageBox.Hand("This record has already been scanned, check for duplicate. Record has not been entered", "Duplicate Scan");
+                        return false;
+                    }
+
+
+                    break;
+                case "43":
+                    if (countResult.Data != "" && countResult.Data != "0")
+                    {
+                        MbcMessageBox.Hand("This record has already been scanned check for duplicate. Record has not been entered", "Duplicate Scan");
+                        return false;
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");//press
+                    var count43Result = sqlClient.SelectSingleColumn();
+                    if (count43Result.IsError)
+                    {
+                        Log.Error("Failed to check for 29 scan:" + count43Result.Errors[0].DeveloperMessage);
+                        return false;
+                    }
+                    if (count43Result.Data == "" || count43Result.Data == "0")
+                    {
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", "29");
+                        sqlClient.AddParameter("@WAR", DateTime.Now);
+                        sqlClient.AddParameter("@WIR", "SYS");
+                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                        var result13 = sqlClient.Insert();
+                        if (result13.IsError)
+                        {
+
+                            Log.Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
+
+                        }
+
+                    }
+                    break;
+                case "37":
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result1 = sqlClient.Insert();
+                    if (result1.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result1.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "43");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result11 = sqlClient.Insert();
+                    if (result11.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result11.Errors[0].DeveloperMessage);
+
+                    }
+                    break;
+                    
+            }
+            return retval;
+
+            }
+        private bool WipCheck(string vDeptCode)
+        {
+            var sqlClient = new SQLCustomClient();
+            bool retval = true;
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@DescripID", vDeptCode);
+            var countResult = sqlClient.SelectSingleColumn();
+            if (countResult.IsError)
+            {
+                Log.Error("Failed to check for " + vDeptCode+ " scan:" + countResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to check for duplicate record");
+                return false;
+            }
+         
+            
+                
+            
+
+            switch (vDeptCode)
+            {
+                case "29":
+                    if (countResult.Data != "" && countResult.Data != "0")
+                    {
+                        MbcMessageBox.Hand("This record has already been scanned check for duplicate. Record has not been entered", "Duplicate Scan");
+                        return false;
+                    }
+
+
+                    break;
+                case "43":
+                    if (countResult.Data != "" && countResult.Data != "0")
+                    {
+                        MbcMessageBox.Hand("This record has already been scanned, check for duplicate. Record has not been entered", "Duplicate Scan");
+                        return false;
+                    }
+                    
+                    
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID","29");
+                        sqlClient.AddParameter("@WAR", DateTime.Now);
+                  
+                        sqlClient.AddParameter("@WIR", "SYS");
+                        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                        var result13 = sqlClient.Insert();
+                        if (result13.IsError)
+                        {
+                            
+                            Log.Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
+                          
+                        }
+                 
+                
+                    break;
+                case "39":
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result1 = sqlClient.Insert();
+                    if (result1.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result1.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "43");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result11 = sqlClient.Insert();
+                    if (result11.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result11.Errors[0].DeveloperMessage);
+
+                    }
+                    break;
+                case "49":
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result12 = sqlClient.Insert();
+                    if (result12.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result12.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "43");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result112 = sqlClient.Insert();
+                    if (result112.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result112.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "39");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    var result1123 = sqlClient.Insert();
+                    if (result1123.IsError)
+                    {
+
+                        Log.Error("Failed to insert corrective scan.", result1123.Errors[0].DeveloperMessage);
+
+                    }
+                    break;
+            }
+
+            return retval;
+
+        }
+
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
@@ -1325,7 +1621,7 @@ Where ClientOrderId=@ClientOrderId");
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, "Failed to print DataMatrix code");
             }
         }
 
@@ -1352,7 +1648,7 @@ Where ClientOrderId=@ClientOrderId");
             {
                 
                 pnlQty.Visible = false;
-                plnTracking.Visible = false;
+               
                 pnlRemake.Visible = true;
                 txtReasonCode.Focus();
             }
@@ -1360,11 +1656,8 @@ Where ClientOrderId=@ClientOrderId");
             {
                 
                 pnlRemake.Visible = false;
-                if (ApplicationUser.UserName == "shipping")
-                {
-                    plnTracking.Visible = true;
-                }
-                else if ( ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+               
+               if ( ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
                 {
 
                     pnlQty.Visible = true;
@@ -1376,6 +1669,15 @@ Where ClientOrderId=@ClientOrderId");
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtLocation_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtLocation.Text.Length>3)
+            {
+                MbcMessageBox.Error("Invalid Location,Please re-enter Location");
+                e.Cancel = true;
+            }
         }
     }
     public class PackageData
