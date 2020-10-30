@@ -37,18 +37,18 @@ namespace BindingModels
     }
     public class WipReportModel
     {
-        
         public int Invno { get; set; }  
         public string ShipName { get; set; }
         public string Backing { get; set; }
         public int Copies { get; set; }
         public int Pages { get; set; }
-  
+        public string IsBookRemake { get; set; }
+        public string IsCoverRemake { get; set; }
         public string CTrimming { get; set;}
         //public string CTrimLoc { get; set; }
         public string PTrimming { get; set; }
-       // public string PTrimLoc { get; set; }
-       // public string OrderReceivedDate { get; set; }
+        // public string PTrimLoc { get; set; }
+        // public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string Description { get; set; } 
         public string CPress { get; set; }
@@ -59,7 +59,7 @@ namespace BindingModels
         public string PCart { get; set; }     
         public string CaseIn { get; set; }      
         public string Quality { get; set; }
-       // public string Location { get; set; }
+        // public string Location { get; set; }
     }
 
     public class MixBookBarScanModel

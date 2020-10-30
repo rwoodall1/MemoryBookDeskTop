@@ -55,8 +55,12 @@ namespace Mbc5.Forms.MixBook
                                  ,WD49.War AS CaseIn
                                  ,WD50.War AS Quality
                                  ,WD50.MxbLocation AS Location
+                                 ,Case WHEN W.Rmbto IS NULL THEN 'Y'  ELSE  'N' END AS IsBookRemake
+                                 ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
+                                 Left Join Wip W ON MO.Invno=W.Invno
+                                 Left Join Covers C On MO.Invno=C.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno

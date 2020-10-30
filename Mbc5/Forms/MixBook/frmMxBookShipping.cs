@@ -332,7 +332,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 sqlClient.ClearParameters();
 
-                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
+                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber +TrackingNumber+' ' ,Weight=Weight+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
                 sqlClient.AddParameter("@Weight",Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
                 string vTracking = txtTrackingNo.Text.Trim();
