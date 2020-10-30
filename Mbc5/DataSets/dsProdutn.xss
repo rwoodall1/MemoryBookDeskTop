@@ -9,19 +9,19 @@
     <Shape ID="DesignTable:produtn" ZOrder="8" X="480" Y="-29" Height="113" Width="226" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="712" SplitterPosition="24" />
     <Shape ID="DesignTable:cust" ZOrder="13" X="-53" Y="-11" Height="75" Width="168" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:quotes" ZOrder="12" X="157" Y="-11" Height="132" Width="227" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="140" SplitterPosition="24" />
-    <Shape ID="DesignTable:partbk" ZOrder="4" X="983" Y="-2" Height="93" Width="183" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="216" SplitterPosition="24" />
+    <Shape ID="DesignTable:partbk" ZOrder="5" X="983" Y="-2" Height="93" Width="183" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="216" SplitterPosition="24" />
     <Shape ID="DesignTable:ptbkb" ZOrder="10" X="750" Y="194" Height="94" Width="179" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:wip" ZOrder="17" X="732" Y="524" Height="208" Width="165" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
-    <Shape ID="DesignTable:wipg" ZOrder="5" X="732" Y="444" Height="55" Width="173" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="44" OldDataTableHeight="121" SplitterPosition="25" />
-    <Shape ID="DesignTable:covers" ZOrder="2" X="723" Y="60" Height="151" Width="182" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="693" SplitterPosition="24" />
+    <Shape ID="DesignTable:wipg" ZOrder="6" X="732" Y="444" Height="55" Width="173" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="44" OldDataTableHeight="121" SplitterPosition="25" />
+    <Shape ID="DesignTable:covers" ZOrder="3" X="723" Y="60" Height="151" Width="182" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="693" SplitterPosition="24" />
     <Shape ID="DesignTable:WipDetail" ZOrder="18" X="1013" Y="473" Height="113" Width="218" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
-    <Shape ID="DesignTable:WipDescriptions" ZOrder="6" X="-81" Y="292" Height="54" Width="240" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="178" OldDataTableHeight="83" SplitterPosition="24" />
-    <Shape ID="DesignTable:coverdetail" ZOrder="11" X="1120" Y="135" Height="54" Width="209" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="82" OldDataTableHeight="227" SplitterPosition="24" />
+    <Shape ID="DesignTable:WipDescriptions" ZOrder="1" X="-81" Y="292" Height="54" Width="240" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="178" OldDataTableHeight="83" SplitterPosition="24" />
+    <Shape ID="DesignTable:coverdetail" ZOrder="11" X="1120" Y="135" Height="112" Width="209" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="227" SplitterPosition="24" />
     <Shape ID="DesignTable:PartBkDetail" ZOrder="14" X="1127" Y="238" Height="54" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="82" OldDataTableHeight="178" SplitterPosition="24" />
     <Shape ID="DesignTable:prtbkbdetail" ZOrder="16" X="1127" Y="324" Height="54" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="197" SplitterPosition="24" />
     <Shape ID="DesignTable:vendor" ZOrder="15" X="-51" Y="158" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
-    <Shape ID="DesignTable:ReOrder" ZOrder="1" X="9" Y="441" Height="94" Width="193" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
-    <Shape ID="DesignTable:ReorderDetail" ZOrder="3" X="339" Y="400" Height="55" Width="225" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="63" OldDataTableHeight="178" SplitterPosition="25" />
+    <Shape ID="DesignTable:ReOrder" ZOrder="2" X="9" Y="441" Height="94" Width="193" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:ReorderDetail" ZOrder="4" X="339" Y="400" Height="55" Width="225" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="63" OldDataTableHeight="178" SplitterPosition="25" />
     <Shape ID="DesignTable:mcust" ZOrder="7" X="199" Y="317" Height="54" Width="247" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="159" OldDataTableHeight="270" SplitterPosition="24" />
   </Shapes>
   <Connectors>

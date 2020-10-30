@@ -58,6 +58,9 @@
             this.warDateBox = new CustomControls.DateBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblSchcode = new System.Windows.Forms.Label();
+            this.wipDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wipDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDetailTableAdapter();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             descriptionLabel = new System.Windows.Forms.Label();
             warLabel = new System.Windows.Forms.Label();
             wdrLabel = new System.Windows.Forms.Label();
@@ -70,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // descriptionLabel
@@ -158,7 +162,7 @@
             this.coverDetailBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.coverDetailBindingNavigator.Name = "coverDetailBindingNavigator";
             this.coverDetailBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.coverDetailBindingNavigator.Size = new System.Drawing.Size(372, 25);
+            this.coverDetailBindingNavigator.Size = new System.Drawing.Size(385, 25);
             this.coverDetailBindingNavigator.TabIndex = 0;
             this.coverDetailBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -279,7 +283,7 @@
             this.cmbDescription.Name = "cmbDescription";
             this.cmbDescription.Size = new System.Drawing.Size(225, 21);
             this.cmbDescription.TabIndex = 0;
-            this.cmbDescription.ValueMember = "Id";
+            this.cmbDescription.ValueMember = "DescriptionId";
             // 
             // wipDescriptionsBindingSource
             // 
@@ -377,11 +381,33 @@
             this.lblSchcode.TabIndex = 16;
             this.lblSchcode.Text = "label1";
             // 
+            // wipDetailBindingSource
+            // 
+            this.wipDetailBindingSource.DataMember = "WipDetail";
+            this.wipDetailBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wipDetailTableAdapter
+            // 
+            this.wipDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.coverdetailBindingSource, "DescripId", true));
+            this.comboBox1.DataSource = this.wipDescriptionsBindingSource;
+            this.comboBox1.DisplayMember = "Description";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(105, 234);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(225, 21);
+            this.comboBox1.TabIndex = 19;
+            this.comboBox1.ValueMember = "DescriptionId";
+            // 
             // frmEditCoverWip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 277);
+            this.ClientSize = new System.Drawing.Size(385, 277);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lblSchcode);
             this.Controls.Add(this.warDateBox);
             this.Controls.Add(this.wdrDateBox);
@@ -410,6 +436,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,5 +471,8 @@
         private CustomControls.DateBox warDateBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblSchcode;
+        private System.Windows.Forms.BindingSource wipDetailBindingSource;
+        private DataSets.dsProdutnTableAdapters.WipDetailTableAdapter wipDetailTableAdapter;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
     }

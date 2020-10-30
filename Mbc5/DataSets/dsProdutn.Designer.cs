@@ -8735,6 +8735,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnDescriptionId;
             
+            private global::System.Data.DataColumn columnIsActive;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public WipDescriptionsDataTable() {
@@ -8802,6 +8804,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsActiveColumn {
+                get {
+                    return this.columnIsActive;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8837,13 +8847,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WipDescriptionsRow AddWipDescriptionsRow(string Description, string TableName, int DescriptionId) {
+            public WipDescriptionsRow AddWipDescriptionsRow(string Description, string TableName, int DescriptionId, bool IsActive) {
                 WipDescriptionsRow rowWipDescriptionsRow = ((WipDescriptionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
                         TableName,
                         null,
-                        DescriptionId};
+                        DescriptionId,
+                        IsActive};
                 rowWipDescriptionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowWipDescriptionsRow);
                 return rowWipDescriptionsRow;
@@ -8877,6 +8888,7 @@ namespace Mbc5.DataSets {
                 this.columnTableName = base.Columns["TableName"];
                 this.columnId = base.Columns["Id"];
                 this.columnDescriptionId = base.Columns["DescriptionId"];
+                this.columnIsActive = base.Columns["IsActive"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8890,6 +8902,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnId);
                 this.columnDescriptionId = new global::System.Data.DataColumn("DescriptionId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescriptionId);
+                this.columnIsActive = new global::System.Data.DataColumn("IsActive", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsActive);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnDescription.AllowDBNull = false;
@@ -21945,6 +21959,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsActive {
+                get {
+                    try {
+                        return ((bool)(this[this.tableWipDescriptions.IsActiveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsActive\' in table \'WipDescriptions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWipDescriptions.IsActiveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsDescriptionIdNull() {
                 return this.IsNull(this.tableWipDescriptions.DescriptionIdColumn);
             }
@@ -21953,6 +21983,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetDescriptionIdNull() {
                 this[this.tableWipDescriptions.DescriptionIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsActiveNull() {
+                return this.IsNull(this.tableWipDescriptions.IsActiveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsActiveNull() {
+                this[this.tableWipDescriptions.IsActiveColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -30017,6 +30059,7 @@ WHERE        (invno = @invno)";
             tableMapping.ColumnMappings.Add("TableName", "TableName");
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("DescriptionId", "DescriptionId");
+            tableMapping.ColumnMappings.Add("IsActive", "IsActive");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -30060,8 +30103,9 @@ SELECT Description, TableName, Id FROM WipDescriptions WHERE (Id = SCOPE_IDENTIT
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Description, TableName, Id, DescriptionId\r\nFROM            WipDescr" +
-                "iptions\r\nWHERE        (TableName = @TableName)\r\nORDER BY Description";
+            this._commandCollection[0].CommandText = "SELECT        Description, TableName, Id, DescriptionId, IsActive\r\nFROM          " +
+                "  WipDescriptions\r\nWHERE        (TableName = @TableName) AND (IsActive = 1)\r\nORD" +
+                "ER BY Description";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TableName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "TableName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
