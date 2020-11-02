@@ -1030,10 +1030,11 @@ namespace Mbc5.Forms.MixBook
                 }
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@RemakeReason", vReason);
                 var updateResult1 = sqlClient.Update();
                 if (updateResult1.IsError)
                 {
@@ -1095,10 +1096,11 @@ namespace Mbc5.Forms.MixBook
                 }
                 sqlClient.ClearParameters();
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@RemakeReason", vReason);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
