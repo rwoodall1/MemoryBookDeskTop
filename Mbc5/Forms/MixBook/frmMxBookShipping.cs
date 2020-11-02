@@ -41,6 +41,8 @@ namespace Mbc5.Forms.MixBook
         public int Itemcount { get; set; } = 0;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
+            txtTrackingNo.Text = "";
+            txtWeight.Text = "";
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) {return; }
             var sqlQuery = new SQLCustomClient();
           
