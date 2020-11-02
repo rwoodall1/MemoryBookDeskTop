@@ -248,7 +248,7 @@ namespace Mbc5.Forms.MixBook
                         //war is datetime
                         //wir is initials
                         //check if scan exist stop if it does per tf
-                        if (!WipCheck(vDeptCode)){
+                        if (!WipCheck(vDeptCode,"YB")){
                             return;
                         }
 
@@ -301,7 +301,7 @@ namespace Mbc5.Forms.MixBook
 
                         vDeptCode = "43";
                         vWIR = "TR";
-                        if (!WipCheck(vDeptCode))
+                        if (!WipCheck(vDeptCode,"YB"))
                         {
                             return;
                         }
@@ -872,6 +872,10 @@ namespace Mbc5.Forms.MixBook
                         vWIR = "TR";
                         //war is datetime
                         //wir is initials
+                        if (!WipCheck(vDeptCode, "SC"))
+                        {
+                            return;
+                        }
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -929,6 +933,10 @@ namespace Mbc5.Forms.MixBook
                         vWIR = "PS";
                         //war is datetime
                         //wir is initials
+                        if (!WipCheck(vDeptCode, "SC"))
+                        {
+                            return;
+                        }
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -1371,20 +1379,41 @@ Where ClientOrderId=@ClientOrderId");
             }
         private bool WipCheck(string vDeptCode)
         {
+            return WipCheck(vDeptCode, "");
+        }
+        private bool WipCheck(string vDeptCode,string type)
+        {
             var sqlClient = new SQLCustomClient();
             bool retval = true;
-            sqlClient.ClearParameters();
-            sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-            sqlClient.AddParameter("@Invno", this.Invno);
-            sqlClient.AddParameter("@DescripID", vDeptCode);
-            var countResult = sqlClient.SelectSingleColumn();
-            if (countResult.IsError)
+            ApiProcessingResult<string> countResult=new ApiProcessingResult<string>();
+            if (type == "YB")
             {
-                Log.Error("Failed to check for " + vDeptCode+ " scan:" + countResult.Errors[0].DeveloperMessage);
-                MbcMessageBox.Error("Failed to check for duplicate record");
-                return false;
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                 countResult = sqlClient.SelectSingleColumn();
+                if (countResult.IsError)
+                {
+                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to check for duplicate record");
+                    return false;
+                }
             }
-         
+            if (type =="SC")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                countResult = sqlClient.SelectSingleColumn();
+                if (countResult.IsError)
+                {
+                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to check for duplicate record");
+                    return false;
+                }
+            }
             
                 
             
