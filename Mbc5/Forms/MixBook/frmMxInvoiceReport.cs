@@ -49,7 +49,7 @@ namespace Mbc5.Forms.MixBook
                 ,M.ShipName
                 ,M.ShipState
                 ,M.ShipZip
-                ,''''+ M.TrackingNumber AS TrackingNumber
+                ,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
                 ,MS.Cost As Freight
                 ,MP.SellPrice As UnitPrice 
                 ,MP.SellPrice * M.Copies AS UnitTotal
@@ -94,7 +94,7 @@ namespace Mbc5.Forms.MixBook
                 ,M.ShipName
                 ,M.ShipState
                 ,M.ShipZip
-                ,''''+ M.TrackingNumber AS TrackingNumber
+                ,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
                 ,MS.Cost As Freight
                 ,MP.SellPrice As UnitPrice 
                 ,MP.SellPrice * M.Copies AS UnitTotal
