@@ -5,6 +5,12 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class SiblingCheck
+    {
+        public int ClientOrderId { get; set; }
+        public int Invno { get; set; }
+        public string MxbLocation { get; set; }
+    }
     public class MixbookInvoiceReport
     {
         public int Invno { get; set; }
