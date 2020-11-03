@@ -113,7 +113,7 @@
             this.lbl1.Location = new System.Drawing.Point(39, 40);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(132, 16);
-            this.lbl1.TabIndex = 11;
+            this.lbl1.TabIndex = 0;
             this.lbl1.Text = "Scan Book Bar code";
             // 
             // btnSave
@@ -220,9 +220,11 @@
             // txtReasonCode
             // 
             this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
+            this.txtReasonCode.MaxLength = 2;
             this.txtReasonCode.Name = "txtReasonCode";
             this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
-            this.txtReasonCode.TabIndex = 10017;
+            this.txtReasonCode.TabIndex = 3;
+            this.txtReasonCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReasonCode_KeyUp);
             // 
             // errorProvider1
             // 
@@ -269,7 +271,7 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(67, 46);
-            this.reportViewer1.TabIndex = 10014;
+            this.reportViewer1.TabIndex = 1;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
@@ -280,7 +282,7 @@
             this.chkPrToLabeler.Location = new System.Drawing.Point(552, 60);
             this.chkPrToLabeler.Name = "chkPrToLabeler";
             this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
-            this.chkPrToLabeler.TabIndex = 10019;
+            this.chkPrToLabeler.TabIndex = 2;
             this.chkPrToLabeler.Text = "Prnt To Labeler";
             this.chkPrToLabeler.UseVisualStyleBackColor = true;
             this.chkPrToLabeler.Visible = false;

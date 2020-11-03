@@ -126,7 +126,7 @@ namespace Mbc5.Forms.MixBook
                     case "MXB":
                         {
                             string cmdText = @"
-                            SELECT M.ShipName,M.ProdInOrder,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
+                            SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
                                     M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
                                 From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
                                 Left Join Covers C ON M.Invno=C.Invno
@@ -218,7 +218,7 @@ namespace Mbc5.Forms.MixBook
             }
             if (chkRemake.Checked)
             {
-                ScanRamake();
+                ScanRamake(currentUser);
                 return;
             }
             int QtyToScan = 0;
@@ -480,22 +480,23 @@ namespace Mbc5.Forms.MixBook
                                 QuantityScanned = 0;
                                 lblScanQty.Text = QuantityScanned.ToString();
                             }
-                            sqlClient.ClearParameters();
-                            sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
-                            sqlClient.AddParameter("@Invno", this.Invno);
-                            sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
-                            var orderLocResult1= sqlClient.Update();
-                            if (orderLocResult1.IsError)
-                            {
-                                
-                             
-                                Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
-                            }
+                           
                         }
-                       
-                            //if (MbxModel.Quantity == 1)//not using right now
-                            //{
-                            //PrintPackingList(MbxModel.ClientOrderId);
+
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        var orderLocResult1 = sqlClient.Update();
+                        if (orderLocResult1.IsError)
+                        {
+
+
+                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                        }
+                        //if (MbxModel.Quantity == 1)//not using right now
+                        //{
+                        //PrintPackingList(MbxModel.ClientOrderId);
                         //}else if (MbxModel.Quantity>1)
                         //{
                         //    PackageData record = this.PrintedPackageList.Find(x=>x.Barcode==txtBarCode.Text);
@@ -577,7 +578,7 @@ namespace Mbc5.Forms.MixBook
                         //PrintPackingList(MbxModel.ClientOrderId);
                         vDeptCode = "50";
                         vWIR = "QY";
-
+                        int ScannedProducts = 0;
                         string holdLocation = "";
                         sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", Invno);
@@ -604,6 +605,7 @@ namespace Mbc5.Forms.MixBook
                         {
 
                             var vData = (List<SiblingCheck>)holdCheckResult.Data;
+                            //ScannedProducts = vData.Count==null?0:vData.Count;
                             if (holdCheckResult.Data != null && vData.Count > 0)
                             {
                                 var recsWithLocations = vData.FindAll(a => a.MxbLocation != null && a.MxbLocation != "");
@@ -660,15 +662,15 @@ namespace Mbc5.Forms.MixBook
                         }
 
                         string location = "";
-                        if (MbxModel.ProdInOrder > 1)
+                        if (MbxModel.NumProducts > 1)
                         {
-                            var frmQH = new frmquailtyHold();
+                            var frmQH = new frmquailtyHold(MbxModel.NumProducts);
                             DialogResult holdresult = frmQH.ShowDialog();
                             if (holdresult == DialogResult.Yes)
                             {
                                 location = frmQH.Location;
                                 sqlClient.ClearParameters();
-                                sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc,CurrentCoveLoc=@CurrentCoverLoc Where Invno=@Invno");
+                                sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc,CurrentCoverLoc=@CurrentCoverLoc Where Invno=@Invno");
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@CurrentBookLoc", location);
                                 sqlClient.AddParameter("@CurrentCoverLoc", location);
@@ -1012,7 +1014,7 @@ namespace Mbc5.Forms.MixBook
             }
             ClearScan();
         }
-        private void ScanRamake()
+        private void ScanRamake(string currentUser)
         {
             if (string.IsNullOrEmpty(txtReasonCode.Text))
             {
@@ -1027,7 +1029,7 @@ namespace Mbc5.Forms.MixBook
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
-            if (ApplicationUser.UserName.ToUpper() == "QUALITY") {
+            if (currentUser == "QUALITY") {
                 sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 var deleteResult = sqlClient.Delete();
@@ -1078,7 +1080,7 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
 
@@ -1411,7 +1413,7 @@ Where ClientOrderId=@ClientOrderId");
         }
         private bool WipCheck(string vDeptCode,string type)
         {
-            return true;
+            
             var sqlClient = new SQLCustomClient();
             bool retval = true;
             ApiProcessingResult<string> countResult=new ApiProcessingResult<string>();
@@ -1474,11 +1476,23 @@ Where ClientOrderId=@ClientOrderId");
                   
                         sqlClient.AddParameter("@WIR", "SYS");
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    if (type == "YB")
+                    {
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
                                                     INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                     END
                                                     ");
+                    }
+                    else if (type == "SC")
+                    {
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                    END
+                                                    ");
+
+                    }
 
                         var result13 = sqlClient.Insert();
                         if (result13.IsError)
@@ -1737,6 +1751,16 @@ Where ClientOrderId=@ClientOrderId");
             {
                 MbcMessageBox.Error("Invalid Location,Please re-enter Location");
                 e.Cancel = true;
+            }
+        }
+
+      
+
+        private void txtReasonCode_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtReasonCode.TextLength >= 2)
+            {
+                txtBarCode.Focus();
             }
         }
     }

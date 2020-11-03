@@ -40,11 +40,12 @@
             // lblText
             // 
             this.lblText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblText.Location = new System.Drawing.Point(12, 18);
+            this.lblText.Location = new System.Drawing.Point(5, 18);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(414, 49);
+            this.lblText.Size = new System.Drawing.Size(414, 57);
             this.lblText.TabIndex = 0;
-            this.lblText.Text = "Do you wish to put this order on hold until any sibling orders are processed?";
+            this.lblText.Text = "Do you wish to put this order on hold until any sibling orders are processed? Num" +
+    "ber of products in order is ";
             this.lblText.Click += new System.EventHandler(this.lblText_Click);
             // 
             // button1
@@ -87,7 +88,7 @@
             // 
             this.pnlLocation.Controls.Add(this.txtLocation);
             this.pnlLocation.Controls.Add(this.label1);
-            this.pnlLocation.Location = new System.Drawing.Point(73, 61);
+            this.pnlLocation.Location = new System.Drawing.Point(73, 78);
             this.pnlLocation.Name = "pnlLocation";
             this.pnlLocation.Size = new System.Drawing.Size(170, 32);
             this.pnlLocation.TabIndex = 5;
