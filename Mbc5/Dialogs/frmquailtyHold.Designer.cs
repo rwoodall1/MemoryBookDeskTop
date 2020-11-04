@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.pnlLocation = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlLocation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.lblText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblText.Location = new System.Drawing.Point(5, 18);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(414, 57);
+            this.lblText.Size = new System.Drawing.Size(414, 44);
             this.lblText.TabIndex = 0;
             this.lblText.Text = "Do you wish to put this order on hold until any sibling orders are processed? Num" +
     "ber of products in order is ";
@@ -50,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(105, 118);
+            this.button1.Location = new System.Drawing.Point(105, 126);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -60,7 +61,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(186, 118);
+            this.button2.Location = new System.Drawing.Point(186, 126);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -88,18 +89,28 @@
             // 
             this.pnlLocation.Controls.Add(this.txtLocation);
             this.pnlLocation.Controls.Add(this.label1);
-            this.pnlLocation.Location = new System.Drawing.Point(73, 78);
+            this.pnlLocation.Location = new System.Drawing.Point(73, 86);
             this.pnlLocation.Name = "pnlLocation";
             this.pnlLocation.Size = new System.Drawing.Size(170, 32);
             this.pnlLocation.TabIndex = 5;
             this.pnlLocation.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(89, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "(Clicking \"No\" will print a packing list)";
+            // 
             // frmquailtyHold
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 180);
+            this.ClientSize = new System.Drawing.Size(414, 174);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlLocation);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -115,6 +126,7 @@
             this.pnlLocation.ResumeLayout(false);
             this.pnlLocation.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Panel pnlLocation;
+        private System.Windows.Forms.Label label2;
     }
 }
