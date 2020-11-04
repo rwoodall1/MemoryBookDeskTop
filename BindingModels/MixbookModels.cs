@@ -43,7 +43,7 @@ namespace BindingModels
     }
     public class WipReportModel
     {
-        public int Invno { get; set; }  
+        public string Invno { get; set; }  
         public string ShipName { get; set; }
         public string Backing { get; set; }
         public int Copies { get; set; }

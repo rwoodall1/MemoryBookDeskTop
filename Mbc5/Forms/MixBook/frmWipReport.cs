@@ -33,7 +33,7 @@ namespace Mbc5.Forms.MixBook
         private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
-      string cmd= @"Select TOP 1400 MO.Invno
+      string cmd= @"Select TOP 1400 (Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
                                   ,MO.ShipName
                                  ,MO.Copies,Mo.Pages
                                  ,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
@@ -55,7 +55,7 @@ namespace Mbc5.Forms.MixBook
                                  ,WD49.War AS CaseIn
                                  ,WD50.War AS Quality
                                  ,WD50.MxbLocation AS Location
-                                 ,Case WHEN W.Rmbto IS NULL THEN 'Y'  ELSE  'N' END AS IsBookRemake
+                                 ,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
                                  ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
