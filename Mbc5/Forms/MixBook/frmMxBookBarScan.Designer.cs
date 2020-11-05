@@ -53,7 +53,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnClearPrinter = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlBookLocation = new System.Windows.Forms.Panel();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -317,19 +316,6 @@
             this.btnClearPrinter.Visible = false;
             this.btnClearPrinter.Click += new System.EventHandler(this.btnClearPrinter_Click);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(25, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 10022;
-            this.button1.TabStop = false;
-            this.button1.Text = "PkgPrintTest";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // pnlBookLocation
             // 
             this.pnlBookLocation.Controls.Add(this.lblBkLocation);
@@ -431,7 +417,6 @@
             this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClearPrinter);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.chkPrToLabeler);
@@ -468,7 +453,6 @@
             this.Controls.SetChildIndex(this.chkPrToLabeler, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.btnClearPrinter, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.pnlBookLocation, 0);
             this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
             this.Controls.SetChildIndex(this.pnlImpersonate, 0);
@@ -514,7 +498,6 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Button btnClearPrinter;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlBookLocation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBkLocation;

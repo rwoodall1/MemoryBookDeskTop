@@ -475,11 +475,8 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+                Log.Error("AddMbEventLog failure:"+sqlResult.Errors[0].DeveloperMessage);
+                
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);

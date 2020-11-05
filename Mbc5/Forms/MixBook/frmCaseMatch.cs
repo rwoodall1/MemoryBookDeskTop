@@ -14,30 +14,28 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmCaseMatch : BaseClass.frmBase
     {
-        public frmCaseMatch(UserPrincipal userPrincipal,frmMain frmMain) : base(new string[] { }, userPrincipal)
+        public frmCaseMatch(UserPrincipal userPrincipal, frmMain frmMain) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
-          
+
         }
-        public int CoverCount{get;set;}
+        public int CoverCount { get; set; }
         private void Button2_Click(object sender, EventArgs e)
         {
             Button2.BackColor = Color.Green;
-            Button3.BackColor =Color.Transparent;
+            Button3.BackColor = Color.Transparent;
             this.BackColor = SystemColors.Control;
             TextBox1.Focus();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-           
             if (CoverCount == 0)
             {
                 MbcMessageBox.Information("You Must Scan a Cover first");
                 TextBox1.Focus();
-
             }
-            
+
             Button3.BackColor = Color.Green;
             Button2.BackColor = Color.Transparent;
             this.BackColor = SystemColors.Control;
@@ -59,16 +57,15 @@ namespace Mbc5.Forms.MixBook
             {
                 return;
             }
-
-            
-            if (Button2.BackColor==Color.Green && TextBox1.Text.Substring(TextBox1.Text.Length - 2, 2)=="SC")
+            if (Button2.BackColor == Color.Green && TextBox1.Text.Substring(TextBox1.Text.Length - 2, 2) == "SC")
             {
                 listBox1.Items.Add(TextBox1.Text);
                 CoverCount += 1;
                 TextBox1.Clear();
                 TextBox1.Focus();
                 listBox1.Refresh();
-            }else if (Button2.BackColor == Color.Green)
+            }
+            else if (Button2.BackColor == Color.Green)
             {
                 MbcMessageBox.Information("This is not a Cover barcode. Please scan another Cover.");
                 TextBox1.Clear();
@@ -76,11 +73,11 @@ namespace Mbc5.Forms.MixBook
                 listBox1.Refresh();
             }
 
-            if (Button3.BackColor==Color.Green && TextBox1.Text.Substring(TextBox1.Text.Length - 2, 2) == "YB")//Is book
+            if (Button3.BackColor == Color.Green && TextBox1.Text.Substring(TextBox1.Text.Length - 2, 2) == "YB")//Is book
             {
-                if (TextBox1.Text.Substring(0, TextBox1.Text.Length - 2) == listBox1.Items[0].ToString().Substring(0, listBox1.Items[0].ToString().Length-2))//matches first cover in list
+                if (TextBox1.Text.Substring(0, TextBox1.Text.Length - 2) == listBox1.Items[0].ToString().Substring(0, listBox1.Items[0].ToString().Length - 2))//matches first cover in list
                 {
-                    var result=InsertWip();
+                    var result = InsertWip();
                     if (result)
                     {
                         listBox1.Items.RemoveAt(0);
@@ -89,13 +86,11 @@ namespace Mbc5.Forms.MixBook
                         {
                             Button3.BackColor = Color.Transparent;
                         }
-
-
                         TextBox1.Clear();
                         TextBox1.Focus();
                         listBox1.Refresh();
                     }
-                    }
+                }
                 else
                 {
                     //does not match first cover in list
@@ -112,13 +107,13 @@ namespace Mbc5.Forms.MixBook
                 }
 
             }
-                else if(Button3.BackColor==Color.Green)
-                {
-                    MbcMessageBox.Information("This is not a Book barcode. Please scan another Book.");
-                    TextBox1.Clear();
-                    TextBox1.Focus();
-                    listBox1.Refresh();
-                }
+            else if (Button3.BackColor == Color.Green)
+            {
+                MbcMessageBox.Information("This is not a Book barcode. Please scan another Book.");
+                TextBox1.Clear();
+                TextBox1.Focus();
+                listBox1.Refresh();
+            }
         }
         private void RemoveScan()
         {
@@ -126,8 +121,8 @@ namespace Mbc5.Forms.MixBook
 
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
-                                Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
-                              ";
+                            Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
+                            ";
             sqlClient.CommandText(cmdText);
             string vDeptCode = "49";
             sqlClient.AddParameter("@Invno", vInvno);
@@ -135,9 +130,9 @@ namespace Mbc5.Forms.MixBook
             var result = sqlClient.Delete();
             if (result.IsError)
             {
-                MessageBox.Show("Failed to remove scan:"+result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to remove scan:" + result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
-                return ;
+                return;
             }
             chkRemoveScan.Checked = false;
             TextBox1.Clear();
@@ -145,7 +140,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void Button5_Click(object sender, EventArgs e)
         {
-            if (listBox1.Items.Count==0)
+            if (listBox1.Items.Count == 0)
             {
                 TextBox1.Focus();
             }
@@ -155,7 +150,7 @@ namespace Mbc5.Forms.MixBook
                 CoverCount -= 1;
                 TextBox1.Focus();
             }
-            
+
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -166,7 +161,7 @@ namespace Mbc5.Forms.MixBook
             }
             else
             {
-                listBox1.Items.RemoveAt(listBox1.Items.Count-1);
+                listBox1.Items.RemoveAt(listBox1.Items.Count - 1);
                 CoverCount -= 1;
                 TextBox1.Focus();
             }
@@ -174,13 +169,12 @@ namespace Mbc5.Forms.MixBook
         private bool InsertWip()
         {
             string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
-     
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
                             SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
-                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
-                                Where M.Invno=@Invno
-                              ";
+                            From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
+                            Where M.Invno=@Invno
+                            ";
             sqlClient.CommandText(cmdText);
             sqlClient.AddParameter("@Invno", vInvno);
             var result = sqlClient.Select<MixBookBarScanModel>();
@@ -198,37 +192,36 @@ namespace Mbc5.Forms.MixBook
                 return false;
             }
             sqlClient.ClearParameters();
-
             //war is datetime
             //wir is initials
             string vDeptCode = "49";
             string vWIR = "CI";
             sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
-       
+
             sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
             sqlClient.CommandText(@"Update WIPDetail SET
-                                 WAR=GetDate(),WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                WAR=GetDate(),WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
 
             var mxResult2 = sqlClient.Update();
             if (mxResult2.IsError)
             {
                 MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Failed to update scan."+mxResult2.Errors[0].DeveloperMessage);
+                Log.Error("Failed to update scan." + mxResult2.Errors[0].DeveloperMessage);
                 return false;
             }
             sqlClient.ClearParameters();
             sqlClient.ReturnSqlIdentityId(true);
             sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@DescripID", vDeptCode);
-             sqlClient.AddParameter("@WIR", vWIR);
+            sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
             sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                    Begin
-                                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,GETDATE(),@WIR,@Invno);
-                                                    END
-                                                    ");
+                                    Begin
+                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,GETDATE(),@WIR,@Invno);
+                                    END
+                                    ");
 
             var result2 = sqlClient.Insert();
             if (result2.IsError)
