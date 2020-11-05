@@ -5217,7 +5217,7 @@ namespace Mbc5.Forms
             // 
             this.remakeCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remakeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "remake", true));
-            this.remakeCheckBox.Location = new System.Drawing.Point(1040, 383);
+            this.remakeCheckBox.Location = new System.Drawing.Point(1056, 384);
             this.remakeCheckBox.Name = "remakeCheckBox";
             this.remakeCheckBox.Size = new System.Drawing.Size(72, 24);
             this.remakeCheckBox.TabIndex = 174;
@@ -5231,7 +5231,7 @@ namespace Mbc5.Forms
             this.persondestTextBox.Location = new System.Drawing.Point(973, 364);
             this.persondestTextBox.MaxLength = 37;
             this.persondestTextBox.Name = "persondestTextBox";
-            this.persondestTextBox.Size = new System.Drawing.Size(35, 20);
+            this.persondestTextBox.Size = new System.Drawing.Size(74, 20);
             this.persondestTextBox.TabIndex = 173;
             // 
             // spineTextBox

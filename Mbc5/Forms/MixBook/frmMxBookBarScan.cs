@@ -1171,121 +1171,7 @@ Where ClientOrderId=@ClientOrderId");
                 Log.Error(ex, "Failed to print DataMatrix Label");
             }
         }
-        private bool CoverWipCheck(string vDeptCode)
-        {
-            return true;
-            //var sqlClient = new SQLCustomClient();
-            //bool retval = true;
-            //sqlClient.ClearParameters();
-            //sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-            //sqlClient.AddParameter("@Invno", this.Invno);
-            //sqlClient.AddParameter("@DescripID", vDeptCode);
-            //var countResult = sqlClient.SelectSingleColumn();
-            //if (countResult.IsError)
-            //{
-            //    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
-            //    MbcMessageBox.Error("Failed to check for duplicate record");
-            //    return false;
-            //}
-            //switch (vDeptCode)
-            //{
-            //    case "29":
-            //        if (countResult.Data != "" && countResult.Data != "0")
-            //        {
-            //            MbcMessageBox.Hand("This record has already been scanned, check for duplicate. Record has not been entered", "Duplicate Scan");
-            //            return false;
-            //        }
-
-
-            //        break;
-            //    case "43":
-            //        if (countResult.Data != "" && countResult.Data != "0")
-            //        {
-            //            MbcMessageBox.Hand("This record has already been scanned check for duplicate. Record has not been entered", "Duplicate Scan");
-            //            return false;
-            //        }
-            //        sqlClient.ClearParameters();
-            //        sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-            //        sqlClient.AddParameter("@Invno", this.Invno);
-            //        sqlClient.AddParameter("@DescripID", "29");//press
-            //        var count43Result = sqlClient.SelectSingleColumn();
-            //        if (count43Result.IsError)
-            //        {
-            //            Log.Error("Failed to check for 29 scan:" + count43Result.Errors[0].DeveloperMessage);
-            //            return false;
-            //        }
-            //        if (count43Result.Data == "" || count43Result.Data == "0")
-            //        {
-            //            sqlClient.ClearParameters();
-            //            sqlClient.ReturnSqlIdentityId(true);
-            //            sqlClient.AddParameter("@Invno", this.Invno);
-            //            sqlClient.AddParameter("@DescripID", "29");
-            //            sqlClient.AddParameter("@WAR", DateTime.Now);
-            //            sqlClient.AddParameter("@WIR", "SYS");
-            //            sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-            //            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-            //                                        Begin
-            //                                        INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-            //                                        END
-            //                                        ");
-
-            //            var result13 = sqlClient.Insert();
-            //            if (result13.IsError)
-            //            {
-
-            //                Log.Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
-
-            //            }
-
-            //        }
-            //        break;
-            //    case "37":
-            //        sqlClient.ClearParameters();
-            //        sqlClient.ReturnSqlIdentityId(true);
-            //        sqlClient.AddParameter("@Invno", this.Invno);
-            //        sqlClient.AddParameter("@DescripID", "29");
-            //        sqlClient.AddParameter("@WAR", DateTime.Now);
-            //        sqlClient.AddParameter("@WIR", "SYS");
-            //        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-            //        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-            //                                        Begin
-            //                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-            //                                        END
-            //                                        ");
-
-            //        var result1 = sqlClient.Insert();
-            //        if (result1.IsError)
-            //        {
-
-            //            Log.Error("Failed to insert corrective scan.", result1.Errors[0].DeveloperMessage);
-
-            //        }
-            //        sqlClient.ClearParameters();
-            //        sqlClient.ReturnSqlIdentityId(true);
-            //        sqlClient.AddParameter("@Invno", this.Invno);
-            //        sqlClient.AddParameter("@DescripID", "43");
-            //        sqlClient.AddParameter("@WAR", DateTime.Now);
-            //        sqlClient.AddParameter("@WIR", "SYS");
-            //        sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-            //        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-            //                                        Begin
-            //                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-            //                                        END
-            //                                        ");
-
-            //        var result11 = sqlClient.Insert();
-            //        if (result11.IsError)
-            //        {
-
-            //            Log.Error("Failed to insert corrective scan.", result11.Errors[0].DeveloperMessage);
-
-            //        }
-            //        break;
-
-            //}
-            //return retval;
-
-        }
+   
         private bool WipCheck(string vDeptCode)
         {
             return WipCheck(vDeptCode, "");
@@ -1295,50 +1181,50 @@ Where ClientOrderId=@ClientOrderId");
 
             var sqlClient = new SQLCustomClient();
             bool retval = true;
-            ApiProcessingResult<string> countResult = new ApiProcessingResult<string>();
+            //ApiProcessingResult<string> countResult = new ApiProcessingResult<string>();
             if (type == "YB")
             {
-                sqlClient.ClearParameters();
-                sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-                sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.AddParameter("@DescripID", vDeptCode);
-                countResult = sqlClient.SelectSingleColumn();
-                if (countResult.IsError)
-                {
-                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
-                    MbcMessageBox.Error("Failed to check for duplicate record");
-                    return false;
-                }
+                //sqlClient.ClearParameters();
+                //sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                //sqlClient.AddParameter("@Invno", this.Invno);
+                //sqlClient.AddParameter("@DescripID", vDeptCode);
+                //countResult = sqlClient.SelectSingleColumn();
+                //if (countResult.IsError)
+                //{
+                //    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                //    MbcMessageBox.Error("Failed to check for duplicate record");
+                //    return false;
+                //}
             }
             if (type == "SC")
             {
-                sqlClient.ClearParameters();
-                sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-                sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.AddParameter("@DescripID", vDeptCode);
-                countResult = sqlClient.SelectSingleColumn();
-                if (countResult.IsError)
-                {
-                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
-                    MbcMessageBox.Error("Failed to check for duplicate record");
-                    return false;
-                }
+                //sqlClient.ClearParameters();
+                //sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                //sqlClient.AddParameter("@Invno", this.Invno);
+                //sqlClient.AddParameter("@DescripID", vDeptCode);
+                //countResult = sqlClient.SelectSingleColumn();
+                //if (countResult.IsError)
+                //{
+                //    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                //    MbcMessageBox.Error("Failed to check for duplicate record");
+                //    return false;
+                //}
             }
             switch (vDeptCode)
             {
                 case "29":
-                    if (countResult.Data != "" && countResult.Data != "0")
-                    {
-                        MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
-                        return false;
-                    }
+                    //if (countResult.Data != "" && countResult.Data != "0")
+                    //{
+                    //    MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
+                    //    return false;
+                    //}
                     break;
                 case "43":
-                    if (countResult.Data != "" && countResult.Data != "0")
-                    {
-                        MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
-                        return false;
-                    }
+                    //if (countResult.Data != "" && countResult.Data != "0")
+                    //{
+                    //    MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
+                    //    return false;
+                    //}
                     sqlClient.ClearParameters();
                     sqlClient.ReturnSqlIdentityId(true);
                     sqlClient.AddParameter("@Invno", this.Invno);
