@@ -107,7 +107,7 @@ namespace Mbc5.Forms.MixBook
             string vcurrentOrderId = "0";
             try
             {
-                vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["OrdereId"].ToString();
+                vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["OrderId"].ToString();
             }
             catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
 

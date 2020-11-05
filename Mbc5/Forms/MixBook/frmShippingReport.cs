@@ -27,14 +27,16 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void btnRun_Click(object sender, EventArgs e)
         {
+
+            //left join Covers on MixbookOrder.Invno = Covers.Invno
+            //    left Join(Select Distinct  Invno, MxbLocation From CoverDetail Where  MxbLocation IS NOT NULL and MXbLocation != '' )CD ON Covers.Invno = CD.Invno
+            //    left join wip on MixBookOrder.Invno = wip.invno
+            //    left join(Select Distinct Invno, MxbLocation From WipDetail Where MxbLocation IS NOT NULL and MxbLocation != '' ) WD ON wip.invno = WD.Invno"
             var sqlClient = new SQLCustomClient();
-            string cmd = @"select MixBookOrder.Invno,MixBookOrder.RequestedShipDate,MixBookOrder.Description,MixBookOrder.Copies
-                ,MixBookOrder.[Size],MixBookOrder.Pages,MixBookOrder.ShipName,WD.MxbLocation as BookLoc,CD.MxbLocation As CoverLoc
-                from MixBookOrder 
-                left  join Covers on MixbookOrder.Invno=Covers.Invno
-                left Join (Select Distinct  Invno,MxbLocation From CoverDetail Where  MxbLocation IS NOT NULL and MXbLocation !='' )CD ON Covers.Invno=CD.Invno
-                left join wip on MixBookOrder.Invno= wip.invno
-                left join  (Select  Distinct Invno,MxbLocation From WipDetail Where MxbLocation IS NOT NULL and MxbLocation !='' ) WD ON wip.invno= WD.Invno";
+            string cmd = @"Select MixBookOrder.Invno,MixBookOrder.RequestedShipDate,MixBookOrder.Description,MixBookOrder.Copies
+                ,MixBookOrder.[Size],MixBookOrder.Pages,MixBookOrder.ShipName,MixbookOrder.CurrentBookLoc as BookLoc,CurrentCoverLoc As CoverLoc
+                from MixBookOrder "
+                ;
        string _where = " Where (MixbookOrderStatus !='Shipped' AND MixbookOrderStatus !='Cancelled' ) AND RequestedShipDate<=@RequestedShipDate ";
         string _order="Order By 2, 7";
             cmd += _where + _order;

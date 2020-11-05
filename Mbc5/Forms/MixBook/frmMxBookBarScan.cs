@@ -694,7 +694,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     case "ONBOARD":
                         vDeptCode = "37";
                         vWIR = "OB";
-                        CoverWipCheck(vDeptCode);
+               
                         //get book location
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"  Select top(1) MxbLocation From WipDetail Where Invno=@Invno and MxbLocation is NOT NULL  order by war desc");
