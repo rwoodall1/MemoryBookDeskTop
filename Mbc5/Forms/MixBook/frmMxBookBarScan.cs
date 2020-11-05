@@ -210,7 +210,8 @@ Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 Des
                         //check if scan exist stop if it does per tf
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                            return;
+                            Log.Info("Press Scan is present. Invno:" + Invno.ToString());
+                            //return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -260,7 +261,8 @@ WAR=@WAR, WIR=@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
                         vWIR = "TR";
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                            return;
+                            Log.Info("Trimming Scan is present. Invno:" + Invno.ToString());
+                            //return;
                         }
                         //war is datetime
                         //wir is initials
@@ -782,7 +784,8 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                            return;
+                            Log.Info("Trimming Scan is present. Invno:" + Invno.ToString());
+                            //return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -839,7 +842,8 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                            return;
+                            Log.Info("Press Scan is present. Invno:" + Invno.ToString());
+                            //return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -888,6 +892,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
         }
         private void ScanRamake(string currentUser)
         {
+            Log.Info("Start Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
             if (string.IsNullOrEmpty(txtReasonCode.Text))
             {
                 MbcMessageBox.Stop("Scan a reason code", "Reason Code");
@@ -912,6 +917,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Delete CoverDetail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
@@ -926,7 +932,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-
+                Log.Info("UPdate Cover Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 //Wip
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
@@ -938,6 +944,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Delete all WipDetail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
@@ -952,10 +959,12 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Update Wip Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
+                Log.Info("UPDATE MixbookOrder cover and book status's and locations Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
             }
             else if (trkType == "SC")
             {
@@ -969,6 +978,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Delete Cover Detail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
@@ -983,11 +993,13 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Update Covers:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
                 txtReasonCode.Text = "";
+                Log.Info("Update mixbook order cover status and location USER:" + currentUser + "  INVNO:" + Invno.ToString());
             }
             else if (trkType == "YB")
             {
@@ -1001,6 +1013,7 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Delete all wipdetail USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
@@ -1015,10 +1028,12 @@ WAR=@WAR, WIR =@WIR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@D
                     Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
+                Log.Info("Update Wip USER:" + currentUser + "  INVNO:" + Invno.ToString());
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
+                Log.Info("Update mixbook order bookstatus and location USER:" + currentUser + "  INVNO:" + Invno.ToString());
             }
         }
 
@@ -1314,14 +1329,14 @@ Where ClientOrderId=@ClientOrderId");
                 case "29":
                     if (countResult.Data != "" && countResult.Data != "0")
                     {
-                        MbcMessageBox.Hand("This record has already been scanned check for duplicate. Record has not been entered", "Duplicate Scan");
+                        MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
                         return false;
                     }
                     break;
                 case "43":
                     if (countResult.Data != "" && countResult.Data != "0")
                     {
-                        MbcMessageBox.Hand("This record has already been scanned, check for duplicate. Record has not been entered", "Duplicate Scan");
+                        MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
                         return false;
                     }
                     sqlClient.ClearParameters();

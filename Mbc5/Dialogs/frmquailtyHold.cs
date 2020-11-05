@@ -31,6 +31,11 @@ namespace Mbc5.Dialogs
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (txtLocation.Text.Length>3)
+            {
+                MessageBox.Show("Invalid Location");
+                return;
+            }
             if (button1.Text == "Yes")
             {
                 button1.Text = "Save";

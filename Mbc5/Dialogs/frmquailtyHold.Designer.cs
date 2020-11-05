@@ -81,6 +81,7 @@
             // txtLocation
             // 
             this.txtLocation.Location = new System.Drawing.Point(50, 5);
+            this.txtLocation.MaxLength = 3;
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(113, 20);
             this.txtLocation.TabIndex = 4;
