@@ -91,7 +91,11 @@ namespace Mbc5.Forms.MixBook
             {
 
 
-                errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
+                errorProvider1.SetError(txtTrackingNo, "Please enter a valid  tracking number.");
+                e.Cancel = true;
+            }else if (txtTrackingNo.Text.Length<10)
+            {
+                errorProvider1.SetError(txtTrackingNo, "Please enter a valid tracking number.");
                 e.Cancel = true;
             }
             else
@@ -106,6 +110,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
+                    MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
                     Log.Error(ex, "Error trimming Mail Innovations tracking number.");
                 }
                

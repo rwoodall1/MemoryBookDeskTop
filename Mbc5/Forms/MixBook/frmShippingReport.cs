@@ -17,9 +17,7 @@ namespace Mbc5.Forms.MixBook
     public partial class frmShippingReport : BaseClass.frmBase
     {
         public new frmMain frmMain { get; set; }
-   
-       
-        public frmShippingReport(UserPrincipal userPrincipal): base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
+        public frmShippingReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -27,18 +25,17 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void btnRun_Click(object sender, EventArgs e)
         {
-
             //left join Covers on MixbookOrder.Invno = Covers.Invno
             //    left Join(Select Distinct  Invno, MxbLocation From CoverDetail Where  MxbLocation IS NOT NULL and MXbLocation != '' )CD ON Covers.Invno = CD.Invno
             //    left join wip on MixBookOrder.Invno = wip.invno
             //    left join(Select Distinct Invno, MxbLocation From WipDetail Where MxbLocation IS NOT NULL and MxbLocation != '' ) WD ON wip.invno = WD.Invno"
             var sqlClient = new SQLCustomClient();
             string cmd = @"Select MixBookOrder.Invno,MixBookOrder.RequestedShipDate,MixBookOrder.Description,MixBookOrder.Copies
-                ,MixBookOrder.[Size],MixBookOrder.Pages,MixBookOrder.ShipName,MixbookOrder.CurrentBookLoc as BookLoc,CurrentCoverLoc As CoverLoc
-                from MixBookOrder "
-                ;
-       string _where = " Where (MixbookOrderStatus !='Shipped' AND MixbookOrderStatus !='Cancelled' ) AND RequestedShipDate<=@RequestedShipDate ";
-        string _order="Order By 2, 7";
+                            ,MixBookOrder.[Size],MixBookOrder.Pages,MixBookOrder.ShipName,MixbookOrder.CurrentBookLoc as BookLoc,CurrentCoverLoc As CoverLoc
+                            from MixBookOrder "
+            ;
+            string _where = " Where (MixbookOrderStatus !='Shipped' AND MixbookOrderStatus !='Cancelled' ) AND RequestedShipDate<=@RequestedShipDate ";
+            string _order = "Order By 2, 7";
             cmd += _where + _order;
             sqlClient.CommandText(cmd);
             sqlClient.AddParameter("@RequestedShipDate", dateTimePicker1.Value);
@@ -48,14 +45,14 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Error running report:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-            var data =(List<ShipReport>) result.Data;
+            var data = (List<ShipReport>)result.Data;
             SaveToCsv<ShipReport>(data);
 
         }
 
         private void SaveToCsv<T>(List<T> reportData)
         {
-          saveFileDialog1.ShowDialog();
+            saveFileDialog1.ShowDialog();
             string path = saveFileDialog1.FileName;
             var lines = new List<string>();
             try
@@ -68,7 +65,7 @@ namespace Mbc5.Forms.MixBook
                 File.WriteAllLines(path, lines.ToArray());
                 Process.Start(saveFileDialog1.FileName);
             }
-            catch(Exception ex) { MbcMessageBox.Error("Error creating csv file:" + ex.Message); }
+            catch (Exception ex) { MbcMessageBox.Error("Error creating csv file:" + ex.Message); }
         }
     }
     public class ShipReport

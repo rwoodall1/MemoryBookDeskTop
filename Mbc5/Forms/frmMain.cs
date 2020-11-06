@@ -33,7 +33,7 @@ namespace Mbc5.Forms
         {
 
             InitializeComponent();
-          
+
         }
 
         #region "Properties"
@@ -60,10 +60,10 @@ namespace Mbc5.Forms
             var a = DateTime.Now.ToString();
             var b = DateTime.Now.AddDays(-1).ToShortDateString() + " 16:00";
             sqlClient.CommandText(@" SELECT 
-                                    Count([ClientOrderId])AS OrdersIN
-                                    FROM [Mbc5].[dbo].[MixBookOrder] 
-                                    Where OrderReceivedDate <=@From 
-                                    And  OrderReceivedDate >=@To");
+                                        Count([ClientOrderId])AS OrdersIN
+                                        FROM [Mbc5].[dbo].[MixBookOrder] 
+                                        Where OrderReceivedDate <=@From 
+                                        And  OrderReceivedDate >=@To");
             sqlClient.AddParameter("@From", DateTime.Now);
             sqlClient.AddParameter("@To", DateTime.Now.AddDays(-1).ToShortDateString() + " 16:00");
             var ordersinResult = sqlClient.SelectSingleColumn();
@@ -108,8 +108,8 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+                .AddObject(ex)
+                .Submit();
                 this.Close();
                 return;
             }
@@ -127,7 +127,7 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 ex.ToExceptionless()
-                    .Submit();
+                .Submit();
                 return;
             }
 
@@ -136,10 +136,10 @@ namespace Mbc5.Forms
                 pnlNotice.Visible = true;
 
             }
-           
+
 
         }
-   
+
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -440,19 +440,16 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+
             //connection
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
             {
                 AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
-                this.Text = "Environment:"+Environment+"    Mbc5" ;
+                this.Text = "Environment:" + Environment + "    Mbc5";
             }
             else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             //AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-           
-
-
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -497,14 +494,11 @@ namespace Mbc5.Forms
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
             }
-
-
-
             this.reportViewer1.RefreshReport();
         }
         private void SetMenu()
         {
-            
+
             if (ApplicationUser.UserName == "BARCODE")
             {
                 //Show barscan screen hid every thing else
@@ -516,12 +510,10 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 barScanToolStripMenuItem_Click(null, null);
-
-
-
-            }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
-                || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
-                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "trimming")
+            }
+            else if (ApplicationUser.UserName == "onboard" | ApplicationUser.UserName == "press"
+           || ApplicationUser.UserName == "press" || ApplicationUser.UserName == "binding"
+           || ApplicationUser.UserName == "quality" || ApplicationUser.UserName == "trimming")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -536,7 +528,8 @@ namespace Mbc5.Forms
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
-            }else if (ApplicationUser.UserName == "casein")
+            }
+            else if (ApplicationUser.UserName == "casein")
             {
                 mixbookBarscanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -553,7 +546,8 @@ namespace Mbc5.Forms
 
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
-            }else if (ApplicationUser.UserName == "shipping")
+            }
+            else if (ApplicationUser.UserName == "shipping")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;
@@ -571,17 +565,16 @@ namespace Mbc5.Forms
                 shippingScanToolStripMenuItem_Click(null, null);
 
             }
-            
             else
             {
                 tsMain.Visible = true;
-                mixbookReportsToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","Mixbook"});
-                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" }); 
-                this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
+                mixbookReportsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
+                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
+                this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
                 productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
-                productionWIPToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
-                systemToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "Mixbook" });
+                systemToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -592,9 +585,6 @@ namespace Mbc5.Forms
                 //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 CleanShipping();
             }
-
-
-
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -634,8 +624,6 @@ namespace Mbc5.Forms
                 frmCust.MdiParent = this;
                 frmCust.Show();
                 this.Cursor = Cursors.Default;
-
-
             }
             else
             {
@@ -659,12 +647,8 @@ namespace Mbc5.Forms
                     frmCust.MdiParent = this;
                     frmCust.Show();
                     this.Cursor = Cursors.Default;
-
                 }
-
             }
-
-
         }
 
         private void MerToolStrip_Click(object sender, EventArgs e)
@@ -677,7 +661,6 @@ namespace Mbc5.Forms
                 frmMer.MdiParent = this;
                 frmMer.Show();
                 this.Cursor = Cursors.Default;
-
             }
             else
             {
@@ -687,7 +670,6 @@ namespace Mbc5.Forms
                 if (String.IsNullOrEmpty(vSchcode))
                 {
                     this.Cursor = Cursors.AppStarting;
-
                     frmMerCust frmMer1 = new frmMerCust(this.ApplicationUser);
                     frmMer1.MdiParent = this;
                     frmMer1.Show();
@@ -696,14 +678,11 @@ namespace Mbc5.Forms
                 else
                 {
                     this.Cursor = Cursors.AppStarting;
-
                     frmMerCust frmCust = new frmMerCust(this.ApplicationUser, vSchcode);
                     frmCust.MdiParent = this;
                     frmCust.Show();
                     this.Cursor = Cursors.Default;
-
                 }
-
             }
         }
 
@@ -718,8 +697,6 @@ namespace Mbc5.Forms
                 frmSales.MdiParent = this;
                 frmSales.Show();
                 this.Cursor = Cursors.Default;
-
-
             }
             else
             {
@@ -760,15 +737,12 @@ namespace Mbc5.Forms
                 frmMSales.MdiParent = this;
                 frmMSales.Show();
                 this.Cursor = Cursors.Default;
-
-
             }
             else
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode("MER");
-
                 if (vInvno == 0)
                 {
                     MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -779,15 +753,12 @@ namespace Mbc5.Forms
                 }
                 else
                 {
-
                     frmMSales frmSales = new frmMSales(this.ApplicationUser, vInvno, vSchcode);
                     frmSales.MdiParent = this;
                     frmSales.Show();
                     this.Cursor = Cursors.Default;
                 }
-
             }
-
         }
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -799,15 +770,12 @@ namespace Mbc5.Forms
                 frmSales.MdiParent = this;
                 frmSales.Show();
                 this.Cursor = Cursors.Default;
-
-
             }
             else
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode("MBC");
-
                 if (vInvno == 0)
                 {
                     MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -818,17 +786,12 @@ namespace Mbc5.Forms
                 }
                 else
                 {
-
                     frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
                     frmSales.MdiParent = this;
                     frmSales.Show();
                     this.Cursor = Cursors.Default;
                 }
-
             }
-
-
-
         }
         private void productionWIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -838,13 +801,11 @@ namespace Mbc5.Forms
                 frmProdutn.MdiParent = this;
                 frmProdutn.Show();
                 this.Cursor = Cursors.Default;
-
-
-            }else if (ActiveMdiChild.Name == "frmMBOrders")
+            }
+            else if (ActiveMdiChild.Name == "frmMBOrders")
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
-               
                 if (vInvno == 0)
                 {
                     MessageBox.Show("This book does not have a production record to go to. Please search for record from Production Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -855,21 +816,17 @@ namespace Mbc5.Forms
                 }
                 else
                 {
-                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
-                frmProduction.MdiParent = this;
-                frmProduction.Show();
-                this.Cursor = Cursors.Default;
+                    frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
+                    frmProduction.MdiParent = this;
+                    frmProduction.Show();
+                    this.Cursor = Cursors.Default;
                 }
-
-                
-
             }
             else
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode("");
-
                 if (vInvno == 0)
                 {
                     MessageBox.Show("This school does not have a production record to go to. Please search for record from Production Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -878,12 +835,10 @@ namespace Mbc5.Forms
                     frmProdutn1.Show();
                     this.Cursor = Cursors.Default;
                 }
-
                 frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
                 frmProduction.MdiParent = this;
                 frmProduction.Show();
                 this.Cursor = Cursors.Default;
-
             }
         }
         #endregion
@@ -1167,7 +1122,7 @@ namespace Mbc5.Forms
 
             SqlParameter[] parameters = new SqlParameter[] {
 
-                    };
+};
             var strQuery = "SELECT Invno FROM Invcnum";
             try
             {
@@ -1177,8 +1132,8 @@ namespace Mbc5.Forms
                 int newInvno = Invno + 1;
                 strQuery = "Update Invcnum Set invno=@newInvno";
                 SqlParameter[] parameters1 = new SqlParameter[] {
-                      new SqlParameter("@newInvno",newInvno),
-                    };
+new SqlParameter("@newInvno",newInvno),
+};
                 sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
 
                 return Invno;
@@ -1187,7 +1142,7 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
+                .SetMessage("Failed to get invoice number for a new record");
 
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -1212,8 +1167,8 @@ namespace Mbc5.Forms
                 if (result1 != 1)
                 {
                     ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                    .AddTags("New prod number error.")
+                    .Submit();
 
                 }
 
@@ -1223,9 +1178,9 @@ namespace Mbc5.Forms
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+                .AddTags("MBCWindows")
+                .SetMessage("Error getting production number.")
+                .Submit();
 
             }
             string vprodNum = prodNum.ToString();
@@ -1250,8 +1205,8 @@ namespace Mbc5.Forms
                 if (result1 != 1)
                 {
                     ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
+                    .AddTags("New cover number error.")
+                    .Submit();
 
                 }
 
@@ -1260,9 +1215,9 @@ namespace Mbc5.Forms
             {
                 MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+                .AddTags("MBCWindows")
+                .SetMessage("Error getting cover number.")
+                .Submit();
 
             }
 
@@ -1722,23 +1677,23 @@ namespace Mbc5.Forms
             else
             {
                 this.Cursor = Cursors.AppStarting;
-                int vClientId =0;
+                int vClientId = 0;
                 if (this.ActiveMdiChild.Name == "frmProdutn")
                 {
                     var tmpForm = (frmProdutn)this.ActiveMdiChild;
-                    
-                    if (tmpForm.Company=="MXB")
+
+                    if (tmpForm.Company == "MXB")
                     {
-                         vClientId = tmpForm.ClientId;
+                        vClientId = tmpForm.ClientId;
                     }
-                 
+
                 }
 
-                if (vClientId>0)
+                if (vClientId > 0)
                 {
                     this.Cursor = Cursors.AppStarting;
 
-                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser,vClientId);
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, vClientId);
                     frmMBOrders.MdiParent = this;
                     frmMBOrders.Show();
                     this.Cursor = Cursors.Default;
@@ -1794,7 +1749,7 @@ namespace Mbc5.Forms
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser,this);
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser, this);
 
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();
@@ -1822,31 +1777,31 @@ namespace Mbc5.Forms
             frmWipReport.Show();
             //var sqlClient = new SQLCustomClient();
             //sqlClient.CommandText(@"Select TOP 1400 MO.Invno
-	           //                     ,MO.Copies,Mo.Pages,Mo.[Size]
-	           //                     ,Mo.OrderReceivedDate
-	           //                     ,MO.ClientOrderId
-	           //                     ,MO.RequestedShipDate
-	           //                     ,MO.Description
-	           //                     ,P.Kitrecvd
-	           //                      ,CD37.War AS OnBoards
-	           //                     ,CD37.MxbLocation AS Location37
-	           //                     ,CD43.War AS Trimming
-	           //                     ,CD43.MxbLocation AS Location43
-	           //                     ,WD29.War AS WipPress
-	           //                     ,WD39.War AS Binding
-	           //                     ,WD39.MxbLocation AS Location39
-	           //                     ,WD49.War AS CaseIn
-	           //                     ,WD50.War AS Quality
-	           //                     ,WD50.MxbLocation AS Location50
-	           //                     from MixBookOrder MO 
-	           //                     Left Join Produtn P On MO.Invno=P.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
+            //                     ,MO.Copies,Mo.Pages,Mo.[Size]
+            //                     ,Mo.OrderReceivedDate
+            //                     ,MO.ClientOrderId
+            //                     ,MO.RequestedShipDate
+            //                     ,MO.Description
+            //                     ,P.Kitrecvd
+            //                      ,CD37.War AS OnBoards
+            //                     ,CD37.MxbLocation AS Location37
+            //                     ,CD43.War AS Trimming
+            //                     ,CD43.MxbLocation AS Location43
+            //                     ,WD29.War AS WipPress
+            //                     ,WD39.War AS Binding
+            //                     ,WD39.MxbLocation AS Location39
+            //                     ,WD49.War AS CaseIn
+            //                     ,WD50.War AS Quality
+            //                     ,WD50.MxbLocation AS Location50
+            //                     from MixBookOrder MO 
+            //                     Left Join Produtn P On MO.Invno=P.Invno
+            //                     Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
             //                        Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=43  ) CD43 On MO.Invno=CD43.Invno
-	           //                     Left Join (Select Invno,DescripId,War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail  Where DescripId=39  ) WD39 On MO.Invno=WD39.Invno
-	           //                     Left Join (Select Invno,DescripId,War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
-	           //                     Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd");
+            //                     Left Join (Select Invno,DescripId,War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+            //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail  Where DescripId=39  ) WD39 On MO.Invno=WD39.Invno
+            //                     Left Join (Select Invno,DescripId,War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+            //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+            //                     Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd");
 
             //var orderResult = sqlClient.SelectMany<WipReportModel>();
             //if (orderResult.IsError)
@@ -1889,7 +1844,7 @@ namespace Mbc5.Forms
         private void invoiceReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.AppStarting;
-            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser,this);
+            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser, this);
             frmMxInvoiceReport.MdiParent = this;
             frmMxInvoiceReport.Show();
             this.Cursor = Cursors.Default;
@@ -1899,13 +1854,13 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
             string cmd = @"Delete From [MixbookShipping] Where ShipperNo NOT IN ('R5556X','R5646Y')";
             sqlClient.CommandText(cmd);
-          
+
 
             var reportResult = sqlClient.Delete();
             if (reportResult.IsError)
             {
                 var emailHelper = new EmailHelper();
-                emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage,EmailType.System);
+                emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage, EmailType.System);
             }
         }
 

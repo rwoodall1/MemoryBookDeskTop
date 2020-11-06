@@ -121,8 +121,8 @@ namespace Mbc5.Forms.MixBook
 
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
-                            Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
-                            ";
+                                Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
+                                ";
             sqlClient.CommandText(cmdText);
             string vDeptCode = "49";
             sqlClient.AddParameter("@Invno", vInvno);
@@ -171,10 +171,10 @@ namespace Mbc5.Forms.MixBook
             string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
-                            SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
-                            From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
-                            Where M.Invno=@Invno
-                            ";
+                                SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
+                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
+                                Where M.Invno=@Invno
+                                ";
             sqlClient.CommandText(cmdText);
             sqlClient.AddParameter("@Invno", vInvno);
             var result = sqlClient.Select<MixBookBarScanModel>();
@@ -202,7 +202,7 @@ namespace Mbc5.Forms.MixBook
             sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
             sqlClient.CommandText(@"Update WIPDetail SET
-                                WAR=GetDate(),WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                    WAR=GetDate(),WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
 
             var mxResult2 = sqlClient.Update();
             if (mxResult2.IsError)
@@ -218,10 +218,10 @@ namespace Mbc5.Forms.MixBook
             sqlClient.AddParameter("@WIR", vWIR);
             sqlClient.AddParameter("@Jobno", MbxModel.JobId);
             sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                    Begin
-                                    INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,GETDATE(),@WIR,@Invno);
-                                    END
-                                    ");
+                                Begin
+                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,GETDATE(),@WIR,@Invno);
+                                END
+                                ");
 
             var result2 = sqlClient.Insert();
             if (result2.IsError)
