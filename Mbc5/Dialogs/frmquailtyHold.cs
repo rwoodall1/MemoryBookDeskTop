@@ -12,14 +12,16 @@ namespace Mbc5.Dialogs
 {
     public partial class frmquailtyHold : Form
     {
-        public frmquailtyHold()
+        public frmquailtyHold(int numProducts)
         {
             InitializeComponent();
+            _qtyProducts = numProducts.ToString();
         }
         public string Location { get; set; }
+        public string _qtyProducts { get; set; }
         private void frmquailtyHold_Load(object sender, EventArgs e)
         {
-           
+            lblText.Text = lblText.Text +" "+ _qtyProducts;
         }
 
         private void lblText_Click(object sender, EventArgs e)
@@ -29,6 +31,11 @@ namespace Mbc5.Dialogs
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (txtLocation.Text.Length>3)
+            {
+                MessageBox.Show("Invalid Location");
+                return;
+            }
             if (button1.Text == "Yes")
             {
                 button1.Text = "Save";

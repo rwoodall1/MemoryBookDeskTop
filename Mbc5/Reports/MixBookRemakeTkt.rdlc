@@ -6,22 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.78353in</Width>
+              <Width>0.89015in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.73958in</Width>
+              <Width>0.8462in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.95087in</Width>
+              <Width>2.05749in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.58963in</Width>
+              <Width>0.57843in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.70098in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>3.10807in</Width>
+              <Width>3.44385in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -119,41 +116,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox8</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox27">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Location</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox27</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -341,38 +303,6 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Location">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Location.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Location</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <VerticalAlign>Top</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
                     <Textbox Name="Invno">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -417,8 +347,8 @@
                               <Value>=Fields!BarCode.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>3 of 9 Barcode</FontFamily>
-                                <FontSize>24pt</FontSize>
+                                <FontFamily>Z: 3of 9 BarCode</FontFamily>
+                                <FontSize>16pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -452,7 +382,6 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -469,7 +398,7 @@
         <Top>0.06944in</Top>
         <Left>0.13417in</Left>
         <Height>1.00125in</Height>
-        <Width>7.87266in</Width>
+        <Width>7.81612in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -597,8 +526,8 @@
                 <TextRun>
                   <Value>=First("*Mixbook*", "dsMixBookRemakeTkt")</Value>
                   <Style>
-                    <FontFamily>3 of 9 Barcode</FontFamily>
-                    <FontSize>20pt</FontSize>
+                    <FontFamily>Z: 3of 9 BarCode</FontFamily>
+                    <FontSize>18pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -858,8 +787,8 @@
                 <TextRun>
                   <Value>=First("*"+Fields!ClientOrderId.Value.ToString()+"*", "dsMixBookRemakeTkt")</Value>
                   <Style>
-                    <FontFamily>3 of 9 Barcode</FontFamily>
-                    <FontSize>20pt</FontSize>
+                    <FontFamily>Z: 3of 9 BarCode</FontFamily>
+                    <FontSize>14pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>

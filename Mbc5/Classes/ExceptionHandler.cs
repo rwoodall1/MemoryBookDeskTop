@@ -278,13 +278,16 @@ namespace Mbc5.Classes
             try {
 
                 vTableAdapter.FillByInvno(tempCoversDataTable,RowWithError.invno);
-                } catch (Exception ex) {
-
-                }
             DataSets.dsProdutn.coversRow currentRowInDb =
               (DataSets.dsProdutn.coversRow)tempQuotesDataTable.Rows[0];
 
             return currentRowInDb;
+
+
+                } catch (Exception ex) {
+                return null;
+                }
+           
             }
         private static string GetRowData(DataSets.dsProdutn.coversRow curData,DataSets.dsProdutn.coversRow vrow,DataRowVersion RowVersion) {
             //string rowData = "";

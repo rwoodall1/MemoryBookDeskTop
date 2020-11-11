@@ -6991,7 +6991,7 @@ namespace Mbc5.Forms
         private void ShippingEmail()
 		{
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+           
             var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
 			try
@@ -7171,7 +7171,7 @@ namespace Mbc5.Forms
         public void PrintYearBookLabel()
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+           
             //put in check for nulls
             var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
             var vRecvCardSent = ((DataRowView)this.produtnBindingSource.Current).Row["reccardsent"].ToString();
@@ -7209,7 +7209,7 @@ namespace Mbc5.Forms
 		public override void Fill()
 		{
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+            //Application.DoEvents(); breaks form handler when closing a unauthorize form
             
             if (Schcode != null)
 			{
@@ -7390,7 +7390,7 @@ namespace Mbc5.Forms
         public ApiProcessingResult<bool> Save()
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+          
             var processingResult = new ApiProcessingResult<bool>();
             switch (tbProdutn.SelectedIndex)
             {
@@ -7701,11 +7701,8 @@ namespace Mbc5.Forms
 					}
 					catch (Exception ex)
 					{
-						
-						
-						ex.ToExceptionless()
-					   .SetMessage("Production record failed to update:" + ex.Message)
-					   .Submit();
+
+                        Log.Error(ex, "Production record failed to update:" + ex.Message);
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
 					}
@@ -7734,14 +7731,13 @@ namespace Mbc5.Forms
 				}
 				catch (DBConcurrencyException ex1)
 				{
-					DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
-					if (result == DialogResult.Yes) { SaveWip(); };
+					//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
+					//if (result == DialogResult.Yes) { SaveWip(); };
+                    SaveWip();
 				}
 				catch (Exception ex)
 				{
-					ex.ToExceptionless()
-				   .SetMessage("WIP record failed to update:" + ex.Message)
-				   .Submit();
+					
 					processingResult.IsError = true;
 					processingResult.Errors.Add(new ApiProcessingError("Wip record failed to update:" + ex.Message, "Wip record failed to update:" + ex.Message, ""));
 					
@@ -7773,14 +7769,14 @@ namespace Mbc5.Forms
 					}
 					catch (DBConcurrencyException dbex)
 					{
-						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
-						if (result == DialogResult.Yes) { SaveCovers(); };
-					}
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
+                        //if (result == DialogResult.Yes) { SaveCovers(); };
+                        SaveCovers();
+
+                    }
 					catch (Exception ex)
 					{
-						ex.ToExceptionless()
-					   .SetMessage("Covers record failed to update:" + ex.Message)
-					   .Submit();
+					
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
 					}
@@ -9900,7 +9896,7 @@ namespace Mbc5.Forms
 		private void btnspCoverEmail_Click(object sender, EventArgs e)
 		{
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+          
             var emailList = new List<string>();
 			DataRowView row =(DataRowView) custBindingSource.Current;
 			string vState = row["schstate"].ToString().Trim();
@@ -9934,7 +9930,7 @@ namespace Mbc5.Forms
 		private void btnStandarCoverEmail_Click(object sender, EventArgs e)
 		{
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+          
             var emailList = new List<string>();
 			DataRowView custRow = (DataRowView)custBindingSource.Current;
 			DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
@@ -10429,7 +10425,7 @@ namespace Mbc5.Forms
         private void btnBkDue_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+           
             if (Company=="MBC") {
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
@@ -10527,7 +10523,7 @@ namespace Mbc5.Forms
         private void btnCoverTicket_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+           
             if (Company == "MBC") {
                var dResult= MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dResult ==DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
@@ -10543,7 +10539,7 @@ namespace Mbc5.Forms
         private void PrintCoverTicketDiminished()
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+            
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
@@ -10613,7 +10609,7 @@ namespace Mbc5.Forms
         private void PrintCoverTicket()
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+           
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
@@ -10731,7 +10727,7 @@ namespace Mbc5.Forms
         private void PrintMeridianCoverTicket()
         {
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+          
             var sqlQuery = new SQLCustomClient();
             string cmdText = @"
                             Select 
@@ -11540,7 +11536,7 @@ namespace Mbc5.Forms
             if (Company == "MBC")
             {
                 Cursor.Current = Cursors.WaitCursor;
-                Application.DoEvents();
+             
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
                 

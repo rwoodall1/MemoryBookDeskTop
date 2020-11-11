@@ -41,6 +41,7 @@ namespace Mbc5.Forms.MixBook
         public int Itemcount { get; set; } = 0;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
+          
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) {return; }
             var sqlQuery = new SQLCustomClient();
           
@@ -89,7 +90,11 @@ namespace Mbc5.Forms.MixBook
             {
 
 
-                errorProvider1.SetError(txtTrackingNo, "Please enter a  tracking number.");
+                errorProvider1.SetError(txtTrackingNo, "Please enter a valid  tracking number.");
+                e.Cancel = true;
+            }else if (txtTrackingNo.Text.Length<10)
+            {
+                errorProvider1.SetError(txtTrackingNo, "Please enter a valid tracking number.");
                 e.Cancel = true;
             }
             else
@@ -104,6 +109,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
+                    MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
                     Log.Error(ex, "Error trimming Mail Innovations tracking number.");
                 }
                
@@ -265,7 +271,9 @@ namespace Mbc5.Forms.MixBook
             Shipment.weight = vWeight;
             Shipment.shippedAt = DateTime.Now;
             Shipment.method = MbxModel.ShipMethod;
-            UpdateShippingWip();
+            
+
+          UpdateShippingWip();
             Items.Clear();
             
            
@@ -331,11 +339,16 @@ namespace Mbc5.Forms.MixBook
 
                 }
                 sqlClient.ClearParameters();
-
-                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber,Weight=@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
+               
+                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber + ISNULL(TrackingNumber,''),Weight=Weight+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
                 sqlClient.AddParameter("@Weight",Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
-                string vTracking = txtTrackingNo.Text.Trim();
+                string vTracking = txtTrackingNo.Text.Trim()+" | ";
+                if (string.IsNullOrEmpty(vTracking))
+                {
+                    MbcMessageBox.Error("Tracking Number is missing.");
+                    return;
+                }
                   sqlClient.AddParameter("@TrackingNumber", vTracking);
                 var trackingResult = sqlClient.Update();
                 if (trackingResult.IsError)
@@ -473,11 +486,8 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+                Log.Error("AddMbEventLog failure:"+sqlResult.Errors[0].DeveloperMessage);
+                
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);
@@ -549,6 +559,7 @@ namespace Mbc5.Forms.MixBook
                 UpdateShippingWip();
 
                 Shipment.trackingNumber = txtTrackingNo.Text;
+                
                 decimal vWeight = 0;
                 decimal.TryParse(txtWeight.Text, out vWeight);
                 Shipment.weight = vWeight;

@@ -269,7 +269,7 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
   <xs:element name="MixBookOrders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MixBookOrders" msprop:Generator_UserDSName="MixBookOrders">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MixBookOrder" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent" msprop:Generator_RowClassName="MixBookOrderRow">
+        <xs:element name="MixBookOrder" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_RowClassName="MixBookOrderRow" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_UserColumnName="Invno" type="xs:int" />
@@ -415,7 +415,7 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
               <xs:element name="TrackingNumber" msprop:Generator_ColumnVarNameInTable="columnTrackingNumber" msprop:Generator_ColumnPropNameInRow="TrackingNumber" msprop:Generator_ColumnPropNameInTable="TrackingNumberColumn" msprop:Generator_UserColumnName="TrackingNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="128" />
+                    <xs:maxLength value="50000" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -479,7 +479,7 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ShipCarriers" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent" msprop:Generator_RowClassName="ShipCarriersRow">
+        <xs:element name="ShipCarriers" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_RowClassName="ShipCarriersRow" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_UserColumnName="ShipName" minOccurs="0">

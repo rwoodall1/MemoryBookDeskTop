@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.chkRemake = new System.Windows.Forms.CheckBox();
@@ -101,7 +101,7 @@
             // 
             this.chkRemake.AutoSize = true;
             this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRemake.Location = new System.Drawing.Point(579, 50);
+            this.chkRemake.Location = new System.Drawing.Point(630, 50);
             this.chkRemake.Name = "chkRemake";
             this.chkRemake.Size = new System.Drawing.Size(79, 20);
             this.chkRemake.TabIndex = 11;
@@ -131,7 +131,7 @@
             // txtDateTime
             // 
             this.txtDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateTime.Location = new System.Drawing.Point(430, 51);
+            this.txtDateTime.Location = new System.Drawing.Point(481, 51);
             this.txtDateTime.Name = "txtDateTime";
             this.txtDateTime.ReadOnly = true;
             this.txtDateTime.Size = new System.Drawing.Size(143, 22);
@@ -142,7 +142,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(347, 51);
+            this.label6.Location = new System.Drawing.Point(398, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 16);
             this.label6.TabIndex = 10020;
@@ -168,7 +168,7 @@
             this.plnTracking.Controls.Add(this.lbl1);
             this.plnTracking.Location = new System.Drawing.Point(38, 51);
             this.plnTracking.Name = "plnTracking";
-            this.plnTracking.Size = new System.Drawing.Size(298, 82);
+            this.plnTracking.Size = new System.Drawing.Size(339, 82);
             this.plnTracking.TabIndex = 0;
             this.plnTracking.EnabledChanged += new System.EventHandler(this.plnTracking_EnabledChanged);
             this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
@@ -261,7 +261,7 @@
             // 
             // btnEnamble
             // 
-            this.btnEnamble.Location = new System.Drawing.Point(341, 84);
+            this.btnEnamble.Location = new System.Drawing.Point(16, 52);
             this.btnEnamble.Name = "btnEnamble";
             this.btnEnamble.Size = new System.Drawing.Size(17, 23);
             this.btnEnamble.TabIndex = 10;
@@ -273,7 +273,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(418, 94);
+            this.label2.Location = new System.Drawing.Point(469, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 10033;
@@ -283,7 +283,7 @@
             // 
             this.lblShpName.AutoSize = true;
             this.lblShpName.BackColor = System.Drawing.Color.LightYellow;
-            this.lblShpName.Location = new System.Drawing.Point(497, 94);
+            this.lblShpName.Location = new System.Drawing.Point(548, 94);
             this.lblShpName.Name = "lblShpName";
             this.lblShpName.Size = new System.Drawing.Size(0, 13);
             this.lblShpName.TabIndex = 10034;
@@ -292,7 +292,7 @@
             // 
             this.lblShpMethod.AutoSize = true;
             this.lblShpMethod.BackColor = System.Drawing.Color.LightYellow;
-            this.lblShpMethod.Location = new System.Drawing.Point(497, 111);
+            this.lblShpMethod.Location = new System.Drawing.Point(548, 111);
             this.lblShpMethod.Name = "lblShpMethod";
             this.lblShpMethod.Size = new System.Drawing.Size(0, 13);
             this.lblShpMethod.TabIndex = 10036;
@@ -301,7 +301,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(408, 111);
+            this.label4.Location = new System.Drawing.Point(459, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 10035;
@@ -339,14 +339,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,

@@ -985,7 +985,7 @@ namespace Mbc5.DataSets {
                 this.columnItemId.MaxLength = 50;
                 this.columnShipAddr2.ReadOnly = true;
                 this.columnShipAddr2.MaxLength = 50;
-                this.columnTrackingNumber.MaxLength = 128;
+                this.columnTrackingNumber.MaxLength = 50000;
                 this.columnMixbookOrderStatus.MaxLength = 20;
                 this.columnCountry.MaxLength = 25;
                 this.columnCoverPreviewUrl.MaxLength = 2147483647;

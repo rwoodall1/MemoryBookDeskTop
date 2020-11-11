@@ -53,7 +53,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnClearPrinter = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlBookLocation = new System.Windows.Forms.Panel();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -113,7 +112,7 @@
             this.lbl1.Location = new System.Drawing.Point(39, 40);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(132, 16);
-            this.lbl1.TabIndex = 11;
+            this.lbl1.TabIndex = 0;
             this.lbl1.Text = "Scan Book Bar code";
             // 
             // btnSave
@@ -220,9 +219,11 @@
             // txtReasonCode
             // 
             this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
+            this.txtReasonCode.MaxLength = 2;
             this.txtReasonCode.Name = "txtReasonCode";
             this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
-            this.txtReasonCode.TabIndex = 10017;
+            this.txtReasonCode.TabIndex = 3;
+            this.txtReasonCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReasonCode_KeyUp);
             // 
             // errorProvider1
             // 
@@ -269,7 +270,7 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(67, 46);
-            this.reportViewer1.TabIndex = 10014;
+            this.reportViewer1.TabIndex = 1;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
@@ -280,7 +281,7 @@
             this.chkPrToLabeler.Location = new System.Drawing.Point(552, 60);
             this.chkPrToLabeler.Name = "chkPrToLabeler";
             this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
-            this.chkPrToLabeler.TabIndex = 10019;
+            this.chkPrToLabeler.TabIndex = 2;
             this.chkPrToLabeler.Text = "Prnt To Labeler";
             this.chkPrToLabeler.UseVisualStyleBackColor = true;
             this.chkPrToLabeler.Visible = false;
@@ -314,19 +315,6 @@
             this.btnClearPrinter.UseVisualStyleBackColor = true;
             this.btnClearPrinter.Visible = false;
             this.btnClearPrinter.Click += new System.EventHandler(this.btnClearPrinter_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(25, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 10022;
-            this.button1.TabStop = false;
-            this.button1.Text = "PkgPrintTest";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pnlBookLocation
             // 
@@ -429,7 +417,6 @@
             this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClearPrinter);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.chkPrToLabeler);
@@ -466,7 +453,6 @@
             this.Controls.SetChildIndex(this.chkPrToLabeler, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.btnClearPrinter, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.pnlBookLocation, 0);
             this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
             this.Controls.SetChildIndex(this.pnlImpersonate, 0);
@@ -512,7 +498,6 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Button btnClearPrinter;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlBookLocation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBkLocation;

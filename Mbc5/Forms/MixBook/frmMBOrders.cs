@@ -19,12 +19,12 @@ namespace Mbc5.Forms.MixBook
     public partial class frmMBOrders : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmMBOrders(UserPrincipal userPrincipal,int clientId) : base(new string[] { "SA", "Administrator","MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -36,42 +36,32 @@ namespace Mbc5.Forms.MixBook
         private void MBOrders_Load(object sender, EventArgs e)
         {
             this.frmMain = (frmMain)this.MdiParent;
-     
-    
-            // TODO: This line of code loads data into the 'dsmixBookOrders.ShipCarriers' table. You can move, or remove it, as needed.
-            this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook")?false:true;
-            btnDownloadFiles.Enabled= ApplicationUser.IsInRole("MixBook") ? false : true;
-
-            
+            this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
+            btnDownloadFiles.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
             SetConnectionString();
             this.Invno = 0;
-           
-            // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-           
             if (OrderId > 0)
             {
                 Fill();
             }
-
-           
         }
-       
+
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             try
             {
                 this.Validate();
                 this.mixBookOrderBindingSource.EndEdit();
-               
+
                 this.mixBookOrderTableAdapter.Update(dsmixBookOrders.MixBookOrder);
                 this.pnlOrder.Enabled = false;
             }
-            catch(Exception ex) {
-               // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
-                Log.Error(ex, "Failed to update order");
+            catch (Exception ex)
+            {
+                // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
+                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
             this.Fill();
-            
         }
 
         public override void Fill()
@@ -79,8 +69,6 @@ namespace Mbc5.Forms.MixBook
             if (OrderId == 0)
             {
                 dsmixBookOrders.MixBookOrder.Clear();
-        
-                   
                 return;
             }
             try
@@ -92,37 +80,41 @@ namespace Mbc5.Forms.MixBook
                 string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                Log.Error(ex, "Failed to fill mixbook orders data adapters");
+                Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
         }
         private void SetConnectionString()
         {
             try
             {
-               
-                this.statesTableAdapter.Connection.ConnectionString =  frmMain.AppConnectionString;
+                this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            }catch(Exception ex) {
-                Log.Error(ex, "Failed to set Mixbook orders connection strings");
-               
             }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to set Mixbook orders connection strings");
 
-           
+            }
         }
         #region Search
         private void OrderIdSearch()
         {
             string vcurrentOrderId = "0";
-            try
+            if (mixBookOrderBindingSource.Current!=null)
             {
-                vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["OrdereId"].ToString();
+                try
+                {
+                    vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
+                }
+                catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             }
-            catch(Exception ex) { Log.Error(ex,"OrderId not found. Mixbook OrderId Search"); }
             
+
             frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
@@ -130,6 +122,7 @@ namespace Mbc5.Forms.MixBook
                 try
                 {
                     var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                    
                     if (string.IsNullOrEmpty(retOrderId))
                     {
                         BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
@@ -139,18 +132,20 @@ namespace Mbc5.Forms.MixBook
                         int iOrderId = 0;
                         if (int.TryParse(retOrderId, out iOrderId))
                         {
+                           
+                           
                             this.OrderId = iOrderId;
-                            Fill();
+                            Fill();   
                         }
-                        else {
+                        else
+                        {
                             MbcMessageBox.Hand("A valid search value was not returned", "");
-                            
+
                         }
-
-
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Log.Error(ex, "Failed to search Order Id");
                 }
             }
@@ -159,11 +154,13 @@ namespace Mbc5.Forms.MixBook
         private void ItemIdSearch()
         {
             string vcurrentItemId = "";
-            try
-            {
-                vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+            if (mixBookOrderBindingSource.Current!=null) {
+                try
+                {
+                    vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+                }
+                catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
             }
-            catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
 
             frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
             var result = frmSearch.ShowDialog();
@@ -183,8 +180,6 @@ namespace Mbc5.Forms.MixBook
                         Fill();
                     }
                     else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
-
-
                 }
             }
         }
@@ -195,7 +190,7 @@ namespace Mbc5.Forms.MixBook
             {
                 vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString();
             }
-            catch(Exception ex){ Log.Error(ex, "Failed to search Order Name"); }
+            catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
 
             frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
             var result = frmSearch.ShowDialog();
@@ -215,8 +210,6 @@ namespace Mbc5.Forms.MixBook
                         Fill();
                     }
                     else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
-
-
                 }
             }
         }
@@ -244,10 +237,9 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6)|| mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
+            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
                 if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
                 {
-                    
                     try
                     { Process.Start(mixBookOrderDataGridView.CurrentCell.Value.ToString()); }
                     catch (Exception ex)
@@ -255,45 +247,36 @@ namespace Mbc5.Forms.MixBook
                         MessageBox.Show("Url is invalid.");
                         Log.Error(ex, "Url is invalid.");
                     }
-                    ;
                 }
             if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
             {
-               
+
             }
-                    
+
         }
 
         private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-           
             this.Cursor = Cursors.AppStarting;
             int vInvno = this.Invno;
             string vSchcode = "01";
-
             frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
             frmProdutn.MdiParent = this.MdiParent;
             frmProdutn.Show();
             this.Cursor = Cursors.Default;
-
-
         }
-        
 
         private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
         {
-            try
-            {
-                var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[0].Value;
-                this.Invno = value;
-            }catch(Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error"); }
-        
-
+            if (mixBookOrderDataGridView.CurrentRow!=null) {
+                try
+                {
+                    var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
+                    this.Invno = value;
+                }
+                catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
+            }
         }
-
-        
-
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
         {
             ItemIdSearch();
@@ -301,7 +284,7 @@ namespace Mbc5.Forms.MixBook
 
         private void shipMethodComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void shipMethodComboBox_DropDown(object sender, EventArgs e)
@@ -311,7 +294,7 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 6 )
+            if (e.ColumnIndex == 6)
             {
                 e.Value = "Cover.pdf";
             }
@@ -323,6 +306,7 @@ namespace Mbc5.Forms.MixBook
 
         private void btnMixbookPkgList_Click(object sender, EventArgs e)
         {
+           
             int vClientOrderId = 0;
             int.TryParse(orderIdLabel1.Text, out vClientOrderId);
             if (vClientOrderId == 0)
@@ -336,12 +320,12 @@ namespace Mbc5.Forms.MixBook
         {
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
-            FROM MixbookOrder MO
-               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-               Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
-                Where ClientOrderId=@ClientOrderId");
+                                ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
+                                FROM MixbookOrder MO
+                                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
+                                Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+                                Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
             var result = sqlClient.SelectMany<MixbookPackingSlip>();
             if (result.IsError || result.Data == null)
@@ -350,33 +334,27 @@ namespace Mbc5.Forms.MixBook
                 Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-          
-
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
-
             reportViewer2.LocalReport.DataSources.Clear();
-            
             reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
-
             reportViewer2.RefreshReport();
         }
         private void PrintRemakeTicket(int vInvno)
         {
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,'Book'As Item
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location,MO.RequestedShipDate
-            FROM MixbookOrder MO
-               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-              
-               Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
-                Where MO.Invno=@Invno
-				UNION
-	Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'SC*' AS BarCode,'Cover'As Item
-            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location,MO.RequestedShipDate
-            FROM MixbookOrder MO
-               Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-               Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-                Where MO.Invno=@Invno");
+                                    ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location,MO.RequestedShipDate
+                                    FROM MixbookOrder MO
+                                    Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                                    Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+                                    Where MO.Invno=@Invno
+                                    UNION
+                                    Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'SC*' AS BarCode,'Cover'As Item
+                                    ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location,MO.RequestedShipDate
+                                    FROM MixbookOrder MO
+                                    Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                                    Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
+                                    Where MO.Invno=@Invno");
             sqlClient.AddParameter("@Invno", vInvno);
             var result = sqlClient.SelectMany<MixbookRemakeTicket>();
             if (result.IsError || result.Data == null)
@@ -389,9 +367,7 @@ namespace Mbc5.Forms.MixBook
             var packingSlipData = (List<MixbookRemakeTicket>)result.Data;
             MixbookRemakeBindingSource.DataSource = packingSlipData;
             reportViewer1.LocalReport.DataSources.Clear();
-        
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMixBookRemakeTkt", MixbookRemakeBindingSource));
-
             reportViewer1.RefreshReport();
         }
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
@@ -402,7 +378,7 @@ namespace Mbc5.Forms.MixBook
             string printer = printerName.PrinterName;
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewer2.LocalReport, printer,1,false);
+            var result = dp.Export(reportViewer2.LocalReport, printer, 1, false);
 
             if (result.IsError)
             {
@@ -419,13 +395,14 @@ namespace Mbc5.Forms.MixBook
             {
                 pnlOrder.Enabled = false;
             }
-            else { pnlOrder.Enabled = true;}
-            
+            else { pnlOrder.Enabled = true; }
+
         }
 
         private void btnDownloadFiles_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(orderIdLabel1.Text)) {
+            if (!string.IsNullOrEmpty(orderIdLabel1.Text))
+            {
                 var sqlClient = new SQLCustomClient();
                 sqlClient.CommandText(@"Update MixbookOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
@@ -466,25 +443,25 @@ namespace Mbc5.Forms.MixBook
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
             }
-
             Cursor.Current = Cursors.Default;
         }
 
         private void purgeStripButton2_Click(object sender, EventArgs e)
         {
-            if (orderIdLabel1.Text=="") { return; }
+            if (orderIdLabel1.Text == "") { return; }
 
             var dialogResult = MessageBox.Show("This will remove all traces of this record from the system, are you sure you want to do this?", "Purge", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-        if(dialogResult==DialogResult.Yes) {
+            if (dialogResult == DialogResult.Yes)
+            {
 
                 var sqlClient = new SQLCustomClient();
                 sqlClient.CommandText(@"Delete From MixbookOrder Where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
-                var deleteResult=sqlClient.Delete();
+                var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to purge order");
-                    Log.Error("Failed to purge order"+deleteResult.Errors[0].DeveloperMessage);
+                    Log.Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -498,7 +475,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 sqlClient.ClearParameters();
                 sqlClient.CommandText("Delete From WipDetail Where Invno=@Invno");
-                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0,7));
+                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
                 var deleteResult11 = sqlClient.Delete();
                 if (deleteResult11.IsError)
                 {
@@ -514,15 +491,10 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Failed to purge cover records.");
                     return;
                 }
-
-
-
                 MbcMessageBox.Information("Order has been purged");
                 this.OrderId = 0;
                 Fill();
             }
-
-
-       }
+        }
     }
 }

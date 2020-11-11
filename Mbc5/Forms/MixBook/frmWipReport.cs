@@ -33,7 +33,7 @@ namespace Mbc5.Forms.MixBook
         private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
-      string cmd= @"Select TOP 1400 MO.Invno
+      string cmd= @"Select TOP 1400 (Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
                                   ,MO.ShipName
                                  ,MO.Copies,Mo.Pages
                                  ,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
@@ -55,8 +55,12 @@ namespace Mbc5.Forms.MixBook
                                  ,WD49.War AS CaseIn
                                  ,WD50.War AS Quality
                                  ,WD50.MxbLocation AS Location
+                                 ,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                                 ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
+                                 Left Join Wip W ON MO.Invno=W.Invno
+                                 Left Join Covers C On MO.Invno=C.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno

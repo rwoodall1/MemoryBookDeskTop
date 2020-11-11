@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +88,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipName,
+            this.BookRemake,
             this.Column1,
             this.Column2,
             this.Column5,
@@ -109,7 +111,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 518);
+            this.dataGridView1.Size = new System.Drawing.Size(1172, 518);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
@@ -181,6 +183,13 @@
             this.ShipName.HeaderText = "Name";
             this.ShipName.Name = "ShipName";
             this.ShipName.ReadOnly = true;
+            // 
+            // BookRemake
+            // 
+            this.BookRemake.DataPropertyName = "IsBookRemake";
+            this.BookRemake.HeaderText = "IsBookRemake";
+            this.BookRemake.Name = "BookRemake";
+            this.BookRemake.ReadOnly = true;
             // 
             // Column1
             // 
@@ -297,7 +306,7 @@
             // frmWipReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1155, 626);
+            this.ClientSize = new System.Drawing.Size(1196, 626);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lblRecCount);
@@ -337,6 +346,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookRemake;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
