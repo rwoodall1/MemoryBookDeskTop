@@ -59,7 +59,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
-                Log.Error(ex, "Failed to update order");
+                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
             this.Fill();
         }
@@ -84,7 +84,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                Log.Error(ex, "Failed to fill mixbook orders data adapters");
+                Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
         }
         private void SetConnectionString()
@@ -105,11 +105,15 @@ namespace Mbc5.Forms.MixBook
         private void OrderIdSearch()
         {
             string vcurrentOrderId = "0";
-            try
+            if (mixBookOrderBindingSource.Current!=null)
             {
-                vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["OrderId"].ToString();
+                try
+                {
+                    vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
+                }
+                catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             }
-            catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
+            
 
             frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
@@ -118,6 +122,7 @@ namespace Mbc5.Forms.MixBook
                 try
                 {
                     var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                    
                     if (string.IsNullOrEmpty(retOrderId))
                     {
                         BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
@@ -127,8 +132,10 @@ namespace Mbc5.Forms.MixBook
                         int iOrderId = 0;
                         if (int.TryParse(retOrderId, out iOrderId))
                         {
+                           
+                           
                             this.OrderId = iOrderId;
-                            Fill();
+                            Fill();   
                         }
                         else
                         {
@@ -147,11 +154,13 @@ namespace Mbc5.Forms.MixBook
         private void ItemIdSearch()
         {
             string vcurrentItemId = "";
-            try
-            {
-                vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+            if (mixBookOrderBindingSource.Current!=null) {
+                try
+                {
+                    vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+                }
+                catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
             }
-            catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
 
             frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
             var result = frmSearch.ShowDialog();
@@ -259,12 +268,14 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
         {
-            try
-            {
-                var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[0].Value;
-                this.Invno = value;
+            if (mixBookOrderDataGridView.CurrentRow!=null) {
+                try
+                {
+                    var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
+                    this.Invno = value;
+                }
+                catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
             }
-            catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error"); }
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
         {
@@ -295,6 +306,7 @@ namespace Mbc5.Forms.MixBook
 
         private void btnMixbookPkgList_Click(object sender, EventArgs e)
         {
+           
             int vClientOrderId = 0;
             int.TryParse(orderIdLabel1.Text, out vClientOrderId);
             if (vClientOrderId == 0)

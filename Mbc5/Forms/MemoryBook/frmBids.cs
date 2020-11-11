@@ -757,15 +757,15 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                     catch (DBConcurrencyException ex1)
                     {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsBids.bidsRow)(ex1.Row), ref dsBids);
-                        if (result == DialogResult.Yes)
-                        {
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsBids.bidsRow)(ex1.Row), ref dsBids);
+                        //if (result == DialogResult.Yes)
+                        //{
                             Save();
-                        }
-                        else
-                        {
-                            retval = true;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    retval = true;
+                        //}
                     }
                     catch (Exception ex)
                     {

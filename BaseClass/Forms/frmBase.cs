@@ -13,6 +13,7 @@ using BaseClass.Classes;
 using BaseClass.Core;
 using NLog;
 using System.Configuration;
+using System.Threading;
 
 namespace BaseClass
 {
@@ -168,9 +169,44 @@ namespace BaseClass
             else
                 return ShowDialogForm(calledShowMethod, owner);
         }
+        private static DialogResult ShowThreadExceptionDialog(string title, Exception e)
+        {
+            string errorMsg = "An application error occurred. Please contact the adminstrator " +
+                "with the following information:\n\n";
+            errorMsg = errorMsg + e.Message + "\n\nStack Trace:\n" + e.StackTrace;
+            return MessageBox.Show(errorMsg, title, MessageBoxButtons.AbortRetryIgnore,
+                MessageBoxIcon.Stop);
+        }
+        private static void UIThreadException(object sender, ThreadExceptionEventArgs t)
+        {
+            var Log1 = LogManager.GetCurrentClassLogger();
+            
+            Log1.Error(t.Exception,"Unhandled Windows Forms Error:" + t.Exception.Message);
+            DialogResult result = DialogResult.Cancel;
+            try
+            {
+                result = ShowThreadExceptionDialog("Windows Forms Error", t.Exception);
+            }
+            catch
+            {
+                try
+                {
+                    MessageBox.Show("Fatal Windows Forms Error",
+                        "Fatal Windows Forms Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
+                }
+                finally
+                {
+                    Application.Exit();
+                }
+            }
+
+            // Exits the program when the user clicks Abort.
+            if (result == DialogResult.Abort)
+                Application.Exit();
+        }
         private void Base_Load(object sender, EventArgs e)
         {
-           
+            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
             if (!this.DesignMode)
             {
                 FormAllowed allowedResult= ((ParentForm)this.MdiParent).AllowedInstance(this.Name,this.MaxNumForms);

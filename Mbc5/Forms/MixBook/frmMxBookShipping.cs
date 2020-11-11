@@ -41,8 +41,7 @@ namespace Mbc5.Forms.MixBook
         public int Itemcount { get; set; } = 0;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
-            txtTrackingNo.Text = "";
-            txtWeight.Text = "";
+          
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) {return; }
             var sqlQuery = new SQLCustomClient();
           
@@ -272,7 +271,9 @@ namespace Mbc5.Forms.MixBook
             Shipment.weight = vWeight;
             Shipment.shippedAt = DateTime.Now;
             Shipment.method = MbxModel.ShipMethod;
-            UpdateShippingWip();
+            
+
+          UpdateShippingWip();
             Items.Clear();
             
            
@@ -338,11 +339,16 @@ namespace Mbc5.Forms.MixBook
 
                 }
                 sqlClient.ClearParameters();
-
-                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber +Convert(varchar,TrackingNumber) ,Weight=Weight+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
+               
+                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber + ISNULL(TrackingNumber,''),Weight=Weight+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
                 sqlClient.AddParameter("@Weight",Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
                 string vTracking = txtTrackingNo.Text.Trim()+" | ";
+                if (string.IsNullOrEmpty(vTracking))
+                {
+                    MbcMessageBox.Error("Tracking Number is missing.");
+                    return;
+                }
                   sqlClient.AddParameter("@TrackingNumber", vTracking);
                 var trackingResult = sqlClient.Update();
                 if (trackingResult.IsError)

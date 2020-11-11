@@ -19,10 +19,11 @@ namespace BaseClass
 
        
         public ParentForm() {
-           //Logger Log = LogManager.GetCurrentClassLogger();
+           
             InitializeComponent();
-            }
-       
+           
+        }
+     
         private void ParentForm_Load(object sender, EventArgs e)
             {
             this.OpenForms = new List<FormInstance>();

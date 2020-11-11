@@ -23,6 +23,7 @@ using Exceptionless.Models;
 using BaseClass;
 using BindingModels;
 using Microsoft.Reporting.WinForms;
+using System.Threading;
 
 namespace Mbc5.Forms
 {
@@ -33,7 +34,7 @@ namespace Mbc5.Forms
         {
 
             InitializeComponent();
-
+            Log=LogManager.GetCurrentClassLogger();
         }
 
         #region "Properties"
@@ -43,6 +44,7 @@ namespace Mbc5.Forms
         public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
+
         #region "Methods"
         private void DailyInfo()
         {
@@ -51,7 +53,7 @@ namespace Mbc5.Forms
                                     Count(ClientOrderId) As TOShip FROM[Mbc5].[dbo].[MixBookOrder] 
                                     where MixBookOrderStatus != 'Shipped' 
                                     and Mixbookorderstatus != 'Cancelled' 
-                                    and RequestedShipDate <=@RequestedShipDate");
+                                    and RequestedShipDate <=Convert(date,@RequestedShipDate)");
 
             sqlClient.AddParameter("@RequestedShipDate", DateTime.Now);
             var toShipResult = sqlClient.SelectSingleColumn();

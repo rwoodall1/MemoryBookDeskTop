@@ -210,8 +210,8 @@ namespace Mbc5.Forms.MixBook
                         //check if scan exist stop if it does per tf
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                            Log.Info("Press Scan is present. Invno:" + Invno.ToString());
-                            //return;
+                           
+                            return;
                         }
                         sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -261,7 +261,7 @@ namespace Mbc5.Forms.MixBook
                         vWIR = "TR";
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                            Log.Info("Trimming Scan is present. Invno:" + Invno.ToString());
+                            
                             //return;
                         }
                         //war is datetime
@@ -385,27 +385,28 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
-                        if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
-                        {
-                            if (!chkPrToLabeler.Checked)
-                            {
-                                PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
-                            }
-                            else
-                            {
-                                //Print to labeler
-                                List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                                var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
-                                listData.Add(vData);
-                                reportViewer2.LocalReport.DataSources.Clear();
-                                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                                DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                                dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
-                            }
-                        }
+                        
                         if (MbxModel.Backing == "HC")
                         {
+                            if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
+                            {
+                                if (!chkPrToLabeler.Checked)
+                                {
+                                    PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                                }
+                                else
+                                {
+                                    //Print to labeler
+                                    List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                    var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = txtLocation.Text };
+                                    listData.Add(vData);
+                                    reportViewer2.LocalReport.DataSources.Clear();
+                                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                    reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                    DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                    dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                }
+                            }
                             //Mark says orders will not be split on location so insert into one location
                             sqlClient.ClearParameters();
                             sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
@@ -784,7 +785,7 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                            Log.Info("Trimming Scan is present. Invno:" + Invno.ToString());
+                        
                             //return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -842,8 +843,8 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                            Log.Info("Press Scan is present. Invno:" + Invno.ToString());
-                            //return;
+                          
+                            return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
@@ -892,7 +893,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void ScanRamake(string currentUser)
         {
-            Log.Info("Start Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+           
             if (string.IsNullOrEmpty(txtReasonCode.Text))
             {
                 MbcMessageBox.Stop("Scan a reason code", "Reason Code");
@@ -917,7 +918,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Delete CoverDetail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+                
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
@@ -937,7 +938,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("UPdate Cover Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+               
                 //Wip
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
@@ -949,7 +950,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Delete all WipDetail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+               
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
@@ -969,12 +970,12 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Update Wip Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+                
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
-                Log.Info("UPDATE MixbookOrder cover and book status's and locations Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+               
             }
             else if (trkType == "SC")
             {
@@ -988,7 +989,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Delete Cover Detail Remake USER:" + currentUser + "  INVNO:" + Invno.ToString());
+               
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
@@ -1008,13 +1009,13 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Update Covers:" + currentUser + "  INVNO:" + Invno.ToString());
+               
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
                 txtReasonCode.Text = "";
-                Log.Info("Update mixbook order cover status and location USER:" + currentUser + "  INVNO:" + Invno.ToString());
+              
             }
             else if (trkType == "YB")
             {
@@ -1028,7 +1029,7 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Delete all wipdetail USER:" + currentUser + "  INVNO:" + Invno.ToString());
+                
                 sqlClient.ClearParameters();
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
@@ -1048,12 +1049,12 @@ namespace Mbc5.Forms.MixBook
                     Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
-                Log.Info("Update Wip USER:" + currentUser + "  INVNO:" + Invno.ToString());
+               
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
-                Log.Info("Update mixbook order bookstatus and location USER:" + currentUser + "  INVNO:" + Invno.ToString());
+              
             }
         }
 
@@ -1201,43 +1202,43 @@ namespace Mbc5.Forms.MixBook
 
             var sqlClient = new SQLCustomClient();
             bool retval = true;
-            //ApiProcessingResult<string> countResult = new ApiProcessingResult<string>();
+            ApiProcessingResult<string> countResult = new ApiProcessingResult<string>() { Data = "" };
             if (type == "YB")
             {
-                //sqlClient.ClearParameters();
-                //sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-                //sqlClient.AddParameter("@Invno", this.Invno);
-                //sqlClient.AddParameter("@DescripID", vDeptCode);
-                //countResult = sqlClient.SelectSingleColumn();
-                //if (countResult.IsError)
-                //{
-                //    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
-                //    MbcMessageBox.Error("Failed to check for duplicate record");
-                //    return false;
-                //}
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Select Count(Invno) FROM WipDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                countResult = sqlClient.SelectSingleColumn();
+                if (countResult.IsError)
+                {
+                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to check for duplicate record");
+                    return false;
+                }
             }
             if (type == "SC")
             {
-                //sqlClient.ClearParameters();
-                //sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
-                //sqlClient.AddParameter("@Invno", this.Invno);
-                //sqlClient.AddParameter("@DescripID", vDeptCode);
-                //countResult = sqlClient.SelectSingleColumn();
-                //if (countResult.IsError)
-                //{
-                //    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
-                //    MbcMessageBox.Error("Failed to check for duplicate record");
-                //    return false;
-                //}
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Select Count(Invno) FROM CoverDetail WHERE Invno=@Invno AND DescripID=@DescripID");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                countResult = sqlClient.SelectSingleColumn();
+                if (countResult.IsError)
+                {
+                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to check for duplicate record");
+                    return false;
+                }
             }
             switch (vDeptCode)
             {
                 case "29":
-                    //if (countResult.Data != "" && countResult.Data != "0")
-                    //{
-                    //    MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
-                    //    return false;
-                    //}
+                    if (countResult.Data != "" && countResult.Data != "0" )
+                    {
+                        MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
+                        return false;
+                    }
                     break;
                 case "43":
                     //if (countResult.Data != "" && countResult.Data != "0")
