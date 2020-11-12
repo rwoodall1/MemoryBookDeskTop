@@ -505,7 +505,7 @@ namespace Mbc5.Forms.MixBook
                         string holdLocation = "";
                         sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", Invno);
-                        sqlClient.CommandText(@"Select MixbookOrderStatus from MixbookOrder Where Invno=@Invno AND MixbookOrderStatus='Shipped'  ");
+                        sqlClient.CommandText(@"Select MixbookOrderStatus from MixbookOrder Where Invno=@Invno AND MixbookOrderStatus='Shipped' ");
                         var shipCheckResult = sqlClient.SelectSingleColumn();
                         if (!shipCheckResult.IsError)
                         {
@@ -577,7 +577,7 @@ namespace Mbc5.Forms.MixBook
                         string location = "";
                         if (MbxModel.NumProducts > 1)
                         {
-                            var frmQH = new frmquailtyHold(MbxModel.NumProducts);
+                            var frmQH = new frmquailtyHold(MbxModel.NumProducts,holdLocation);
                             DialogResult holdresult = frmQH.ShowDialog();
                             if (holdresult == DialogResult.Yes)
                             {
@@ -715,6 +715,12 @@ namespace Mbc5.Forms.MixBook
                         else { bookBlockLocation = "N/A"; }
                         lblBkLocation.Text = bookBlockLocation;
                         string input = Interaction.InputBox("Book Block Location:" + bookBlockLocation, "Assign Cover Location", bookBlockLocation);
+                        if (input.Length>4)
+                        {
+                            Log.Warn("Onboard scan Invalid Location:" + input + " Invno:" + Invno.ToString() );
+                            MbcMessageBox.Information("Invalid Location, Scan again.");
+                            return;
+                        }
                         if (string.IsNullOrEmpty(input))
                         {
                             MbcMessageBox.Information("Scan has been canceled.");

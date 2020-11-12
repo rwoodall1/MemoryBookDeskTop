@@ -12,16 +12,18 @@ namespace Mbc5.Dialogs
 {
     public partial class frmquailtyHold : Form
     {
-        public frmquailtyHold(int numProducts)
+        public frmquailtyHold(int numProducts,string location)
         {
             InitializeComponent();
             _qtyProducts = numProducts.ToString();
+            Location = location;
         }
         public string Location { get; set; }
         public string _qtyProducts { get; set; }
         private void frmquailtyHold_Load(object sender, EventArgs e)
         {
-            lblText.Text = lblText.Text +" "+ _qtyProducts;
+            var vLoc = string.IsNullOrEmpty(Location) ? "No location available" : "  Location:" + Location;
+            lblText.Text = "Do you wish to put this order on hold until any sibling orders are processed? Number of products in order is " + _qtyProducts +vLoc ;
         }
 
         private void lblText_Click(object sender, EventArgs e)

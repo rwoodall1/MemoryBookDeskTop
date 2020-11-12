@@ -43,7 +43,7 @@
             this.lblText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblText.Location = new System.Drawing.Point(5, 18);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(414, 44);
+            this.lblText.Size = new System.Drawing.Size(468, 88);
             this.lblText.TabIndex = 0;
             this.lblText.Text = "Do you wish to put this order on hold until any sibling orders are processed? Num" +
     "ber of products in order is ";
@@ -51,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(105, 126);
+            this.button1.Location = new System.Drawing.Point(171, 170);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(186, 126);
+            this.button2.Location = new System.Drawing.Point(252, 170);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             this.pnlLocation.Controls.Add(this.txtLocation);
             this.pnlLocation.Controls.Add(this.label1);
-            this.pnlLocation.Location = new System.Drawing.Point(73, 86);
+            this.pnlLocation.Location = new System.Drawing.Point(139, 130);
             this.pnlLocation.Name = "pnlLocation";
             this.pnlLocation.Size = new System.Drawing.Size(170, 32);
             this.pnlLocation.TabIndex = 5;
@@ -99,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 62);
+            this.label2.Location = new System.Drawing.Point(155, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(182, 13);
             this.label2.TabIndex = 6;
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 174);
+            this.ClientSize = new System.Drawing.Size(476, 223);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlLocation);
