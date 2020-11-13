@@ -231,10 +231,12 @@ namespace Mbc5.Forms.MixBook
                 return false;
             }
             sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+            sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
             sqlClient.AddParameter("@Invno", this.Invno);
             sqlClient.AddParameter("@BookStatus", "CaseMatch");
             sqlClient.Update();
+
+          
             return true;
         }
     }
