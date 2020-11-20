@@ -720,6 +720,11 @@ namespace Mbc5.Forms.MixBook
                             MbcMessageBox.Information("Scan has been canceled.");
                             return;
                         }
+                        if (input.Length > 3)
+                        {
+                            MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
+                            return;
+                        }
                         //war is datetime
                         //wir is initials
                         sqlClient.ClearParameters();
@@ -733,7 +738,7 @@ namespace Mbc5.Forms.MixBook
                         var mxResult = sqlClient.Update();
                         if (mxResult.IsError)
                         {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Failed to update scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Log.Error("Failed to update scan:" + mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
