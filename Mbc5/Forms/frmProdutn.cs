@@ -10841,7 +10841,8 @@ namespace Mbc5.Forms
 
         private void shpdateDateTimePicker_Leave_1(object sender, EventArgs e)
         {
-            ShippingEmail();
+            if (Company!="MXB") {ShippingEmail(); }
+            
         }
 
         private void cstsvcdteDateTimePicker_Leave_1(object sender, EventArgs e)

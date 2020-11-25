@@ -117,6 +117,10 @@ namespace Mbc5.Forms.MixBook
         }
         private void RemoveScan()
         {
+            if (TextBox1.Text.Length<3)
+            {
+                return;
+            }
             string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
 
             var sqlClient = new SQLCustomClient();

@@ -157,7 +157,9 @@ namespace Mbc5.Forms.MixBook
             if (mixBookOrderBindingSource.Current!=null) {
                 try
                 {
-                    vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+                    if (mixBookOrderBindingSource.Current!=null) {
+                        vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+                    }
                 }
                 catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
             }
@@ -188,7 +190,8 @@ namespace Mbc5.Forms.MixBook
             string vcurrentName = "";
             try
             {
-                vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString();
+                if (mixBookOrderBindingSource.Current!=null) {
+                    vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
             }
             catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
 

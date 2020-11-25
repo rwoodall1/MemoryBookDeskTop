@@ -575,14 +575,15 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
-                Log.Error(ex, "Error trimming Mail Innovations tracking number.");
+                Log.Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
+                return;
             }
             string vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
             var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
             var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL" };
 
-            {
-                if (vPartTrack == "1ZR")//usps
+            
+                if (vPartTrack == "1ZR")//ups
                 {
                     bool found = false;
                     foreach (var a in upsList)
@@ -599,20 +600,21 @@ namespace Mbc5.Forms.MixBook
                     {
 
                         MbcMessageBox.Hand("This tracking number is in the format of a UPS order but does not correspon with the shipping method. Check that shipping method is for UPS", "Tracking Number");
-
+                        Log.Error("Tracking Number format (UPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
                 }
-                else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" || vPartTrack == "940")//mail innovations
+                else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" )//mail innovations
                 {
                     if (MbxModel.ShipMethod.Trim() != "MX_MI")
                     {
                         MbcMessageBox.Hand("This tracking number is in the format of a Mail Innovations order but does not correspond with the shipping method. Check that shipping label is for Mail Innovations", "Tracking Number");
+                        Log.Error("Tracking Number format (Mail Innovations) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
 
                 }
-                else if (vPartTrack == "420")//usps
+                else if (vPartTrack == "420"|| vPartTrack == "940")//usps
                 {
                     bool found = false;
                     foreach (var a in uspsList)
@@ -629,11 +631,16 @@ namespace Mbc5.Forms.MixBook
                     {
 
                         MbcMessageBox.Hand("This tracking number is in the format of a USPS order but does not correspond with the shipping method. Check that shipping label is for USPS", "Tracking Number");
-
+                        Log.Error("Tracking Number format (USPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
                 }
-            }
+                else {
+                    MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again.");
+                    Log.Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                    return;
+                }
+            
         }
     }
 }

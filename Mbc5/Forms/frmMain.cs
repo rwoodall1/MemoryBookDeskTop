@@ -496,7 +496,7 @@ namespace Mbc5.Forms
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
             }
-            this.reportViewer1.RefreshReport();
+   
         }
         private void SetMenu()
         {

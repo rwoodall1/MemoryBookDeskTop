@@ -22,6 +22,7 @@ using System.Drawing.Printing;
 using Microsoft.ReportingServices.RdlObjectModel;
 using System.Net.Sockets;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 namespace Mbc5.Forms.MixBook
 {
 
@@ -544,9 +545,10 @@ namespace Mbc5.Forms.MixBook
                         {
                             if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
                             {
-                                var ac = printeryPath + "\\" + MbxModel.PrintergyFile;
-                                Process.Start(printeryPath + "\\" + MbxModel.PrintergyFile);
-                                //Process.Start(MbxModel.BookPreviewUrl);
+                                //var ac = printeryPath + "\\" + MbxModel.PrintergyFile;
+                                //Process.Start(printeryPath + "\\" + MbxModel.PrintergyFile);
+                                Process.Start(MbxModel.BookPreviewUrl);
+                                Process.Start(MbxModel.CoverPreviewUrl);
                                 var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                                 if (dialogResult != DialogResult.Yes)
                                 {
@@ -571,7 +573,7 @@ namespace Mbc5.Forms.MixBook
                         catch (Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Error("An error has occurred:" + ex.Message);
+                            Log.Error("An error has occurred:" + ex.Message+" | Model:"+ JsonConvert.SerializeObject(MbxModel));
                             return;
                         }
                         string location = "";
@@ -770,7 +772,7 @@ namespace Mbc5.Forms.MixBook
                         var orderLocResult = sqlClient.Update();
                         if (orderLocResult.IsError)
                         {
-                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString());
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+input+" | "+JsonConvert.SerializeObject(orderLocResult));
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");

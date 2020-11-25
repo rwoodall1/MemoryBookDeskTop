@@ -3244,7 +3244,7 @@ namespace Mbc5.Forms
             this.kitrecvdDateTimePicker.Location = new System.Drawing.Point(115, 10);
             this.kitrecvdDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.kitrecvdDateTimePicker.Name = "kitrecvdDateTimePicker";
-            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(114, 21);
+            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(143, 21);
             this.kitrecvdDateTimePicker.TabIndex = 166;
             // 
             // tovendDateBox
