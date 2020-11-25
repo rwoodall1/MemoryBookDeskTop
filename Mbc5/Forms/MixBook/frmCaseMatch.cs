@@ -121,26 +121,33 @@ namespace Mbc5.Forms.MixBook
             {
                 return;
             }
-            string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+            try
+            {
+                string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
 
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"
+                var sqlClient = new SQLCustomClient();
+                string cmdText = @"
                                 Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
                                 ";
-            sqlClient.CommandText(cmdText);
-            string vDeptCode = "49";
-            sqlClient.AddParameter("@Invno", vInvno);
-            sqlClient.AddParameter("@DescripID", vDeptCode);
-            var result = sqlClient.Delete();
-            if (result.IsError)
-            {
-                MessageBox.Show("Failed to remove scan:" + result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
-                return;
+                sqlClient.CommandText(cmdText);
+                string vDeptCode = "49";
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                var result = sqlClient.Delete();
+                if (result.IsError)
+                {
+                    MessageBox.Show("Failed to remove scan:" + result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
+                    return;
+                }
+                chkRemoveScan.Checked = false;
+                TextBox1.Clear();
+                TextBox1.Focus();
             }
-            chkRemoveScan.Checked = false;
-            TextBox1.Clear();
-            TextBox1.Focus();
+            catch (Exception ex)
+            {
+                Log.Error("Error removing scan (Invno:"+ TextBox1.Text + ") : " + ex.Message);
+            }
         }
         private void Button5_Click(object sender, EventArgs e)
         {

@@ -569,7 +569,7 @@ namespace Mbc5.Forms.MixBook
                 string vTracking = txtTrackingNo.Text.Trim();
                 if (MbxModel.ShipMethod.Trim() == "MX_MI" && (vTracking.Substring(0,3)!= "920"|| vTracking.Substring(0, 3) != "924"|| vTracking.Substring(0, 3) != "927"))
                 {
-                    txtTrackingNo.Text = vTracking.Substring(8, 26);
+                    txtTrackingNo.Text = vTracking.Substring(8);
                 }
             }
             catch (Exception ex)

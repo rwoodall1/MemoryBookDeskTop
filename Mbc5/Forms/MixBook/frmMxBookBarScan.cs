@@ -497,6 +497,7 @@ namespace Mbc5.Forms.MixBook
                         ClearScan();
                         break;
                     case "QUALITY":
+                        lblHoldLocation.Text = "";//clear last scan
                         //war is datetime
                         //wir is initials
                         //PrintPackingList(MbxModel.ClientOrderId);
@@ -538,6 +539,10 @@ namespace Mbc5.Forms.MixBook
 
                                     lblHoldLocation.Text = holdLocation;
                                 }
+                                else
+                                {
+                                    lblHoldLocation.Text = "";
+                                }
                             }
                         }
                         string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
@@ -573,7 +578,8 @@ namespace Mbc5.Forms.MixBook
                         catch (Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Error("An error has occurred:" + ex.Message+" | Model:"+ JsonConvert.SerializeObject(MbxModel));
+                            Log.Warn("An error has occurred:" + ex.Message+" | Model:"+ JsonConvert.SerializeObject(MbxModel));
+                            lblHoldLocation.Text = "";
                             return;
                         }
                         string location = "";
@@ -688,6 +694,7 @@ namespace Mbc5.Forms.MixBook
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
                         break;
                 }
+                
             }
             else if (trkType == "SC")
             {
