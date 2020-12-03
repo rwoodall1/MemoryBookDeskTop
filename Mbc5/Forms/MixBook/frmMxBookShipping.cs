@@ -76,6 +76,12 @@ namespace Mbc5.Forms.MixBook
 
                 return;
             }
+            if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Shipped")
+            {
+                MbcMessageBox.Hand("This order has been shipped, contact your supervisor", "Order Shipped");
+
+                return;
+            }
 
             this.CreateShipment();
             txtDateTime.Text = DateTime.Now.ToString();
@@ -441,7 +447,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 else
                 {
-                    AddMbEventLog(MbxModel.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
+                    AddMbEventLog(MbxModel.JobId, "ERROR", restServiceResult.Data.APIResult.ToString(), vReturnNotification, false);
                     var emailHelper = new EmailHelper();
                     emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
                 }

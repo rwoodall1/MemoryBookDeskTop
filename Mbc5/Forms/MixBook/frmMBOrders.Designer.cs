@@ -48,13 +48,13 @@
             System.Windows.Forms.Label shipNameLabel;
             System.Windows.Forms.Label coverStatusLabel;
             System.Windows.Forms.Label bookStatusLabel;
+            System.Windows.Forms.Label requestedShipMethodLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.Label requestedShipMethodLabel;
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -96,6 +96,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
             this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.lblDateShipped = new System.Windows.Forms.Label();
@@ -120,7 +121,7 @@
             this.MixbookRemakeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coverStatusLabel1 = new System.Windows.Forms.Label();
             this.bookStatusLabel1 = new System.Windows.Forms.Label();
-            this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
+            this.btnHold = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -352,6 +353,15 @@
             // MixbookRemakeTicketBindingSource
             // 
             this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
+            // 
+            // requestedShipMethodLabel
+            // 
+            requestedShipMethodLabel.AutoSize = true;
+            requestedShipMethodLabel.Location = new System.Drawing.Point(379, 86);
+            requestedShipMethodLabel.Name = "requestedShipMethodLabel";
+            requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
+            requestedShipMethodLabel.TabIndex = 334;
+            requestedShipMethodLabel.Text = "Requested Ship Method";
             // 
             // mixBookOrderBindingSource
             // 
@@ -739,6 +749,7 @@
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.btnHold);
             this.pnlOrder.Controls.Add(requestedShipMethodLabel);
             this.pnlOrder.Controls.Add(this.requestedShipMethodLabel1);
             this.pnlOrder.Controls.Add(this.shipAddr2TextBox);
@@ -780,6 +791,15 @@
             this.pnlOrder.Name = "pnlOrder";
             this.pnlOrder.Size = new System.Drawing.Size(1115, 267);
             this.pnlOrder.TabIndex = 10016;
+            // 
+            // requestedShipMethodLabel1
+            // 
+            this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(507, 86);
+            this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
+            this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
+            this.requestedShipMethodLabel1.TabIndex = 335;
+            this.requestedShipMethodLabel1.Text = "label1";
             // 
             // shipAddr2TextBox
             // 
@@ -1016,23 +1036,16 @@
             this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.bookStatusLabel1.TabIndex = 10022;
             // 
-            // requestedShipMethodLabel
+            // btnHold
             // 
-            requestedShipMethodLabel.AutoSize = true;
-            requestedShipMethodLabel.Location = new System.Drawing.Point(379, 86);
-            requestedShipMethodLabel.Name = "requestedShipMethodLabel";
-            requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
-            requestedShipMethodLabel.TabIndex = 334;
-            requestedShipMethodLabel.Text = "Requested Ship Method";
-            // 
-            // requestedShipMethodLabel1
-            // 
-            this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(507, 86);
-            this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
-            this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
-            this.requestedShipMethodLabel1.TabIndex = 335;
-            this.requestedShipMethodLabel1.Text = "label1";
+            this.btnHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHold.Location = new System.Drawing.Point(775, 116);
+            this.btnHold.Name = "btnHold";
+            this.btnHold.Size = new System.Drawing.Size(92, 23);
+            this.btnHold.TabIndex = 336;
+            this.btnHold.Text = "Toggle Hold";
+            this.btnHold.UseVisualStyleBackColor = true;
+            this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
             // 
             // frmMBOrders
             // 
@@ -1157,5 +1170,6 @@
         private System.Windows.Forms.Label bookStatusLabel1;
         private System.Windows.Forms.TextBox shipAddr2TextBox;
         private System.Windows.Forms.Label requestedShipMethodLabel1;
+        private System.Windows.Forms.Button btnHold;
     }
 }

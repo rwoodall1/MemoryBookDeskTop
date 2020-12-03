@@ -84,6 +84,7 @@
             this.txtBarCode.Size = new System.Drawing.Size(143, 22);
             this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
+            this.txtBarCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtBarCode_Validating);
             // 
             // txtDateTime
             // 
@@ -253,10 +254,10 @@
             // 
             this.chkRemake.AutoSize = true;
             this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRemake.Location = new System.Drawing.Point(550, 39);
+            this.chkRemake.Location = new System.Drawing.Point(559, 39);
             this.chkRemake.Name = "chkRemake";
             this.chkRemake.Size = new System.Drawing.Size(79, 20);
-            this.chkRemake.TabIndex = 1;
+            this.chkRemake.TabIndex = 0;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
             this.chkRemake.CheckedChanged += new System.EventHandler(this.chkRemake_CheckedChanged);
@@ -278,7 +279,7 @@
             // 
             this.chkPrToLabeler.AutoSize = true;
             this.chkPrToLabeler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPrToLabeler.Location = new System.Drawing.Point(552, 60);
+            this.chkPrToLabeler.Location = new System.Drawing.Point(559, 60);
             this.chkPrToLabeler.Name = "chkPrToLabeler";
             this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
             this.chkPrToLabeler.TabIndex = 2;

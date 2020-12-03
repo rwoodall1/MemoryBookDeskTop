@@ -66,6 +66,7 @@ namespace Mbc5.Forms.MixBook
 
         public override void Fill()
         {
+            pnlOrder.Enabled = false;
             if (OrderId == 0)
             {
                 dsmixBookOrders.MixBookOrder.Clear();
@@ -498,6 +499,44 @@ namespace Mbc5.Forms.MixBook
                 this.OrderId = 0;
                 Fill();
             }
+        }
+
+        private void btnHold_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(invnoLabel1.Text)|| string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
+            {
+                return;
+            }
+            var sqlClient = new SQLCustomClient();
+            string status = "";
+            if (mixbookOrderStatusLabel2.Text=="Hold")
+            {
+                sqlClient.AddParameter("@OrderStatus","In Process");
+                status = "In Process";
+            }
+            else if(mixbookOrderStatusLabel2.Text == "In Process")
+            {
+                sqlClient.AddParameter("@OrderStatus", "Hold");
+                status = "Hold";
+
+            }
+            else
+            {
+                MbcMessageBox.Information("Status can not be changed if Cancelled or Shipped.");
+                return;
+            }
+         
+            sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where Invno=@Invno");
+            sqlClient.AddParameter("@Invno", invnoLabel1.Text);
+                 var result = sqlClient.Update();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
+                Log.Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+            MbcMessageBox.Exclamation("Status has been changed to " +status);
+            Fill();
         }
     }
 }

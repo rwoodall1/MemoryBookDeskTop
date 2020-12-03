@@ -44,22 +44,28 @@ namespace Mbc5.Forms.MixBook
         private void frmMxBookBarScan_Load(object sender, EventArgs e)
         {
             txtQtyToScan.Text = "40"; //default
-            if (ApplicationUser.UserName == "onboard" || ApplicationUser.UserName == "onboard2" || ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+            if (ApplicationUser.UserName.ToUpper() == "ONBOARD" || ApplicationUser.UserName.ToUpper() == "TRIMMING" || ApplicationUser.UserName.ToUpper() == "BINDING")
             {
-                if (ApplicationUser.UserName == "binding")
+                if (ApplicationUser.UserName.ToUpper() == "BINDING")
                 {
                     chkPrToLabeler.Visible = true;
                     btnClearPrinter.Visible = true;
                     pnlQty.Visible = true;
                     pnlBookLocation.Visible = true;
                 }
-                if (ApplicationUser.UserName == "onboard")
+                if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
                 {
                     pnlQty.Visible = false;
                     pnlBookLocation.Visible = true;
                 }
+                if (ApplicationUser.UserName.ToUpper() == "TRIMMING")
+                {
+                    pnlQty.Visible = true;
+                    pnlBookLocation.Visible = true;
+                }
+
             }
-            else if (ApplicationUser.UserName == "quality")
+            else if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 pnlHoldLocation.Visible = true;
             }
@@ -71,91 +77,94 @@ namespace Mbc5.Forms.MixBook
         }
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
+           
             lblLastScan.Text = txtBarCode.Text;
             string vInvno = "";
-            try
-            {
+           
+                try
+                {
                 if (string.IsNullOrEmpty(txtBarCode.Text))
                 {
                     return;
                 }
                 this.Company = txtBarCode.Text.ToUpper().Substring(0, 3);
-                if (this.Company == "MXB")
-                {
-                    //expecting MXB1111111YB
-                    vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
-                }
-                else
-                {
-                    if (txtBarCode.Text.Length == 12)
+                    if (this.Company == "MXB")
                     {
-                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
-                    }
-                    else if (txtBarCode.Text.Length == 11)
-                    {
-                        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
+                        //expecting MXB1111111YB
+                        vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
                     }
                     else
                     {
-                        MbcMessageBox.Error("Scan code is not in correct format");
+                        if (txtBarCode.Text.Length == 12)
+                        {
+                            vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
+                        }
+                        else if (txtBarCode.Text.Length == 11)
+                        {
+                            vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
+                        }
+                        else
+                        {
+                            MbcMessageBox.Error("Scan code is not in correct format");
+                            return;
+                        }
+                    }
+
+                    int parsedInvno = 0;
+                    var parseResult = int.TryParse(vInvno, out parsedInvno);
+                    this.Invno = parsedInvno;
+                    if (!parseResult)
+                    {
+                        MessageBox.Show("Invalid scan code");
                         return;
                     }
-                }
+                    var sqlQuery = new SQLCustomClient();
 
-                int parsedInvno = 0;
-                var parseResult = int.TryParse(vInvno, out parsedInvno);
-                this.Invno = parsedInvno;
-                if (!parseResult)
-                {
-                    MessageBox.Show("Invalid scan code");
-                    return;
-                }
-                var sqlQuery = new SQLCustomClient();
-
-                switch (this.Company)
-                {
-                    case "MXB":
-                        {
-                            string cmdText = @"
+                    switch (this.Company)
+                    {
+                        case "MXB":
+                            {
+                                string cmdText = @"
                                             SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
                                             M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
                                             From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
                                             Left Join Covers C ON M.Invno=C.Invno
                                             Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
-                            sqlQuery.CommandText(cmdText);
-                            sqlQuery.AddParameter("@Invno", Invno);
-                            var result = sqlQuery.Select<MixBookBarScanModel>();
-                            if (result.IsError)
-                            {
-                                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Log.Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
-                                return;
-                            }
-                            if (result.Data == null)
-                            {
-                                MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                                return;
-                            }
-                            MbxModel = (MixBookBarScanModel)result.Data;
-                            if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
-                            {
-                                MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+                                sqlQuery.CommandText(cmdText);
+                                sqlQuery.AddParameter("@Invno", Invno);
+                                var result = sqlQuery.Select<MixBookBarScanModel>();
+                                if (result.IsError)
+                                {
+                                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Log.Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
+                                    return;
+                                }
+                                if (result.Data == null)
+                                {
+                                    MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                    return;
+                                }
+                                MbxModel = (MixBookBarScanModel)result.Data;
+                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
+                                {
+                                    MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+                                    ClearScan();
+                                    return;
+                                }
+                                lblBkLocation.Text = MbxModel.BookLocation;
+                                txtDateTime.Text = DateTime.Now.ToString();
+                                MXBScan();
                                 ClearScan();
-                                return;
+                                break;
                             }
-                            lblBkLocation.Text = MbxModel.BookLocation;
-                            txtDateTime.Text = DateTime.Now.ToString();
-                            MXBScan();
-                            ClearScan();
-                            break;
-                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error("An error has occured:" + ex.Message);
-                Log.Error("An error has occured:" + ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error("An error has occured:" + ex.Message);
+                    Log.Error("An error has occured:" + ex.Message);
+                }
+            
         }
         private void ClearScan()
         {
@@ -167,7 +176,6 @@ namespace Mbc5.Forms.MixBook
             MbxModel = null;
             txtBarCode.Focus();
         }
-
         private void MXBScan()
         {
             //to impersonate finish later
@@ -197,6 +205,10 @@ namespace Mbc5.Forms.MixBook
             string company = txtBarCode.Text.Substring(0, 3);
             DateTime vDateTime = DateTime.Now;
             string vWIR = "SYS";
+            if (!ScanCheck(this.Invno, currentUser, trkType))
+            {
+                return;
+            }
             if (trkType == "YB")
             {
                 string vDeptCode = "";
@@ -265,10 +277,35 @@ namespace Mbc5.Forms.MixBook
                             
                             //return;
                         }
-                        //war is datetime
-                        //wir is initials
                         //check if scan exist stop if it does per tf
-                        sqlClient.ClearParameters();
+                        string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
+
+
+                        sqlClient.CommandText(cmd);
+                        sqlClient.AddParameter("@Invno", Invno);
+                        sqlClient.AddParameter("@DescripId", "43");
+                        var sqlResult = sqlClient.SelectSingleColumn();
+                        if (sqlResult.IsError)
+                        {
+                            Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                            MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                            return;
+                        }
+                        if (sqlResult.Data != "0")
+                        {
+                            var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (dialogResult == DialogResult.No)
+                            {
+
+                                MbcMessageBox.Information("Scanned has been cancelled.");
+                                return;
+                            }
+                        }
+
+                            //war is datetime
+                            //wir is initials
+
+                            sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -340,6 +377,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.Update();
                         ClearScan();
                         break;
+
                     case "BINDING":
                         //war is datetime
                         //wir is initials
@@ -913,6 +951,11 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Stop("Scan a reason code", "Reason Code");
                 return;
             }
+            if (txtReasonCode.Text.Length>2)
+            {
+                MbcMessageBox.Stop("Invalid Reason Code", "Reason Code");
+                return;
+            }
             int vReason = 0;
             if (!int.TryParse(txtReasonCode.Text, out vReason))
             {
@@ -944,6 +987,7 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Invalid reason code.");
                     return;
                 }
+                
                 sqlClient.AddParameter("@RemakeReason", vReason);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
@@ -1071,7 +1115,6 @@ namespace Mbc5.Forms.MixBook
               
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtBarCode.Text))
@@ -1206,7 +1249,32 @@ namespace Mbc5.Forms.MixBook
                 Log.Error(ex, "Failed to print DataMatrix Label");
             }
         }
+        private bool ScanCheck(int invno, string login,string type)
+        {
+           
+            bool retval = true;
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select MixbookOrderStatus  FROM MixbookOrder Where Invno=@Invno ");
+            sqlClient.AddParameter("@Invno", invno);
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                Log.Error("Failed to retrieve order status for scan:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to retrieve order status for scan:" + result.Errors[0].DeveloperMessage);
+                retval = false;
+                return retval;
+            }
+            string vStatus = result.Data;
+            if (vStatus == "Cancelled" || vStatus == "Hold" || vStatus == "Shipped")
+            {
+                MbcMessageBox.Hand("Order status is " + vStatus + " Contact your supervisor. Scan is cancelled.","Order Status Error");
+                retval = false;
+                return retval;
+            }
 
+         
+            return retval;
+        }
         private bool WipCheck(string vDeptCode)
         {
             return WipCheck(vDeptCode, "");
@@ -1482,16 +1550,18 @@ namespace Mbc5.Forms.MixBook
 
             if (chkRemake.Checked)
             {
+               
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
                 txtReasonCode.Focus();
+            
             }
             else
             {
 
                 pnlRemake.Visible = false;
 
-                if (ApplicationUser.UserName == "trimming" || ApplicationUser.UserName == "binding")
+                if (ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "TRIMMING")
                 {
 
                     pnlQty.Visible = true;
@@ -1512,6 +1582,11 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Invalid Location,Please re-enter Location");
                 e.Cancel = true;
             }
+        }
+
+        private void txtBarCode_Validating(object sender, CancelEventArgs e)
+        {
+           
         }
 
         private void txtReasonCode_KeyUp(object sender, KeyEventArgs e)
