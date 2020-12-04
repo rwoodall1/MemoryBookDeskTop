@@ -57,31 +57,31 @@ namespace BaseClass
             public void Copy()
             {
                 string strName = null;
-
-                strName = this.ActiveMdiChild.ActiveControl.GetType().Name;
-                if (((ActiveForm != null)))
+            Form activeform = this.ActiveMdiChild;
+            strName = this.ActiveMdiChild.ActiveControl.GetType().Name;
+                if (((activeform != null)))
                 {
                     try
                     {
                         switch (strName)
                         {
                             case "TextBox":
-                                TextBox txtBox = (TextBox)this.ActiveControl;
-                                txtBox.Copy();
+                                TextBox txtBox = (TextBox)activeform.ActiveControl;
+                            txtBox.Copy();
                                 break;
                             case "RichTextBox":
-                                RichTextBox rtxtBox = (RichTextBox)this.ActiveControl;
-                                rtxtBox.Copy();
+                                RichTextBox rtxtBox = (RichTextBox)activeform.ActiveControl;
+                            rtxtBox.Copy();
                                 break;
                             case "MaskedTextBox":
-                                MaskedTextBox mskBox = (MaskedTextBox)this.ActiveControl;
-                                mskBox.Copy();
+                                MaskedTextBox mskBox = (MaskedTextBox)activeform.ActiveControl;
+                            mskBox.Copy();
                                 break;
                             case "ComboBox":
                                 //combo does not have a cut copy method
                                 //active form created in first of method
-                                ComboBox cmbBox = (ComboBox)ActiveForm.ActiveControl;
-                                if (((cmbBox != null)))
+                                ComboBox cmbBox = (ComboBox)activeform.ActiveControl;
+                            if (((cmbBox != null)))
                                 {
                                     // Put selected text on Clipboard.
                                     Clipboard.SetDataObject(cmbBox.SelectedText);
@@ -101,22 +101,22 @@ namespace BaseClass
                 string strName = null;
                 Form activeform = this.ActiveMdiChild;
                 strName = this.ActiveMdiChild.ActiveControl.GetType().Name;
-                if (((activeform != null)))
-                {
-                    try
+            if (((activeform != null)))
+            {
+                try
                     {
                         switch (strName)
                         {
                             case "TextBox":
-                                TextBox txtBox = (TextBox)this.ActiveControl;
+                            TextBox txtBox = (TextBox)activeform.ActiveControl;                         
                                 txtBox.Undo();
                                 break;
                             case "RichTextBox":
-                                RichTextBox rtxtBox = (RichTextBox)this.ActiveControl;
+                                RichTextBox rtxtBox = (RichTextBox)activeform.ActiveControl;
                                 rtxtBox.Undo();
                                 break;
                             case "MaskedTextBox":
-                                MaskedTextBox mskBox = (MaskedTextBox)this.ActiveControl;
+                                MaskedTextBox mskBox = (MaskedTextBox)activeform.ActiveControl;
                                 mskBox.Undo();
                                 break;
 
@@ -124,7 +124,7 @@ namespace BaseClass
                         }
 
                     }
-                    catch
+                    catch (Exception ex)
                     {
 
                     }
@@ -142,15 +142,15 @@ namespace BaseClass
                         switch (strName)
                         {
                             case "TextBox":
-                                TextBox txtBox = (TextBox)this.ActiveControl;
+                                TextBox txtBox = (TextBox)activeform.ActiveControl;
                                 txtBox.Cut();
                                 break;
                             case "RichTextBox":
-                                RichTextBox rtxtBox = (RichTextBox)this.ActiveControl;
+                                RichTextBox rtxtBox = (RichTextBox)activeform.ActiveControl;
                                 rtxtBox.Cut();
                                 break;
                             case "MaskedTextBox":
-                                MaskedTextBox mskBox = (MaskedTextBox)this.ActiveControl;
+                                MaskedTextBox mskBox = (MaskedTextBox)activeform.ActiveControl;
                                 mskBox.Cut();
                                 break;
                             case "ComboBox":
@@ -184,15 +184,15 @@ namespace BaseClass
                         switch (strName)
                         {
                             case "TextBox":
-                                TextBox txtBox = (TextBox)this.ActiveControl;
+                                TextBox txtBox = (TextBox)activeform.ActiveControl;
                                 txtBox.Paste();
                                 break;
                             case "RichTextBox":
-                                RichTextBox rtxtBox = (RichTextBox)this.ActiveControl;
+                                RichTextBox rtxtBox = (RichTextBox)activeform.ActiveControl;
                                 rtxtBox.Paste();
                                 break;
                             case "MaskedTextBox":
-                                MaskedTextBox mskBox = (MaskedTextBox)this.ActiveControl;
+                                MaskedTextBox mskBox = (MaskedTextBox)activeform.ActiveControl;
                                 mskBox.Paste();
                                 break;
                             case "ComboBox":

@@ -576,6 +576,12 @@ namespace Mbc5.Forms.MixBook
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
+            if (MbxModel==null)
+            {
+                MbcMessageBox.Hand("Rescan shipment barcode.","Barcode");
+                txtClientIdLookup.Focus();
+                return;
+            }
             try
             {
                 string vTracking = txtTrackingNo.Text.Trim();

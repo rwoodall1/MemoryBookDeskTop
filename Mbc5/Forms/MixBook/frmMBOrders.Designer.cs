@@ -96,6 +96,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnHold = new System.Windows.Forms.Button();
             this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
             this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
@@ -121,7 +122,6 @@
             this.MixbookRemakeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coverStatusLabel1 = new System.Windows.Forms.Label();
             this.bookStatusLabel1 = new System.Windows.Forms.Label();
-            this.btnHold = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -346,14 +346,6 @@
             bookStatusLabel.TabIndex = 10021;
             bookStatusLabel.Text = "Book Status:";
             // 
-            // MixbookPackingSlipBindingSource
-            // 
-            this.MixbookPackingSlipBindingSource.DataSource = typeof(BindingModels.MixbookPackingSlip);
-            // 
-            // MixbookRemakeTicketBindingSource
-            // 
-            this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
-            // 
             // requestedShipMethodLabel
             // 
             requestedShipMethodLabel.AutoSize = true;
@@ -362,6 +354,14 @@
             requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
             requestedShipMethodLabel.TabIndex = 334;
             requestedShipMethodLabel.Text = "Requested Ship Method";
+            // 
+            // MixbookPackingSlipBindingSource
+            // 
+            this.MixbookPackingSlipBindingSource.DataSource = typeof(BindingModels.MixbookPackingSlip);
+            // 
+            // MixbookRemakeTicketBindingSource
+            // 
+            this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
             // 
             // mixBookOrderBindingSource
             // 
@@ -792,6 +792,17 @@
             this.pnlOrder.Size = new System.Drawing.Size(1115, 267);
             this.pnlOrder.TabIndex = 10016;
             // 
+            // btnHold
+            // 
+            this.btnHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHold.Location = new System.Drawing.Point(775, 116);
+            this.btnHold.Name = "btnHold";
+            this.btnHold.Size = new System.Drawing.Size(92, 23);
+            this.btnHold.TabIndex = 336;
+            this.btnHold.Text = "Toggle Hold";
+            this.btnHold.UseVisualStyleBackColor = true;
+            this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
+            // 
             // requestedShipMethodLabel1
             // 
             this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
@@ -1036,17 +1047,6 @@
             this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.bookStatusLabel1.TabIndex = 10022;
             // 
-            // btnHold
-            // 
-            this.btnHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHold.Location = new System.Drawing.Point(775, 116);
-            this.btnHold.Name = "btnHold";
-            this.btnHold.Size = new System.Drawing.Size(92, 23);
-            this.btnHold.TabIndex = 336;
-            this.btnHold.Text = "Toggle Hold";
-            this.btnHold.UseVisualStyleBackColor = true;
-            this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
-            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1064,6 +1064,7 @@
             this.Controls.Add(this.btnMixbookPkgList);
             this.Controls.Add(this.mixBookOrderDataGridView);
             this.Controls.Add(this.mixBookOrderBindingNavigator);
+            this.MaxNumForms = 2;
             this.MinimumSize = new System.Drawing.Size(1159, 630);
             this.Name = "frmMBOrders";
             this.Text = "Mix Book Cust/Orders";
