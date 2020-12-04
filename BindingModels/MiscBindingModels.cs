@@ -5,7 +5,12 @@ using System.Web;
 
 namespace BindingModels
 {
-   
+    public class Exemption
+    {
+        public string SubmittedCity { get; set; }
+        public string UpsCity { get; set; }
+        public int Id { get; set; }
+    }
     public class LogMetadata
     {
         public string RequestContentType { get; set; }

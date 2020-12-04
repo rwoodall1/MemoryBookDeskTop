@@ -576,6 +576,12 @@
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmScrubExemptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmScrubExemptions.Designer.cs">
+      <DependentUpon>frmScrubExemptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmShippingReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -662,6 +668,7 @@
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="NOTES TODO.txt" />
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
@@ -818,6 +825,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmScrubExemptions.resx">
+      <DependentUpon>frmScrubExemptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>

@@ -1875,6 +1875,14 @@ new SqlParameter("@newInvno",newInvno),
         {
             VersionCheck();
         }
+
+        private void scrubExemptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmScrubExemptions frmScrubExemptions = new frmScrubExemptions(this.ApplicationUser);
+            frmScrubExemptions.MdiParent = this;
+            frmScrubExemptions.Show();
+          
+        }
         //nothing below here
     }
 }
