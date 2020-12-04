@@ -82,6 +82,12 @@ namespace Mbc5.Forms.MixBook
 
                 return;
             }
+            if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Hold")
+            {
+                MbcMessageBox.Hand("This order is on Hold, contact your supervisor", "Order On Hold");
+
+                return;
+            }
 
             this.CreateShipment();
             txtDateTime.Text = DateTime.Now.ToString();
