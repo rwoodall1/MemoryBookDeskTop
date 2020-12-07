@@ -102,9 +102,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label workingLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         protected Classes.TransparentPanel basePanel;
         private System.Windows.Forms.Panel innerPanel;
+        public System.Windows.Forms.Label workingLabel;
     }
 }

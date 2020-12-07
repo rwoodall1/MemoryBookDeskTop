@@ -19,6 +19,7 @@ using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
 using Equin.ApplicationFramework;
+using System.Threading;
 
 namespace Mbc5.Forms.MixBook
 {
@@ -275,8 +276,11 @@ namespace Mbc5.Forms.MixBook
 
 
             this.ShipNotification.Request.Shipment.Add(this.Shipment);
-            var result = NotifyMixbookOfShipment();
-            btnShipmentReset_Click(null, null);
+            this.Enabled = false;
+            timer1.Enabled = true;
+            bgWorker.RunWorkerAsync();
+            
+           
 
         }
         private void UpdateShippingWip()
@@ -396,7 +400,7 @@ namespace Mbc5.Forms.MixBook
             txtWeight.Text = "";
             txtDateTime.Text = "";
             Itemcount = 0;
-            CreateShipNotification();
+          
 
             txtClientIdLookup.Focus();
             Items.Clear();
@@ -659,6 +663,38 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
             
+        }
+
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+             
+            var result = NotifyMixbookOfShipment();
+            while (!bgWorker.CancellationPending && result.Result==null)
+            {
+               
+            }
+            if (bgWorker.CancellationPending) e.Cancel = true;
+         
+            
+           
+        }
+
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Enabled = true;
+            plnTracking.Enabled = false;//get in sync so it is true
+            timer1.Enabled = false;
+            btnShipmentReset_Click(null, null);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MbcMessageBox.Stop("Shipping Notification Failed,rescan package. If this continues notify supervisor.", "Nofification Error");
+            btnShipmentReset_Click(null, null);
+            bgWorker.CancelAsync();
+           
+
         }
     }
 }
