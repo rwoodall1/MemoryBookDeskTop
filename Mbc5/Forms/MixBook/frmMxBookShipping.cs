@@ -620,7 +620,7 @@ namespace Mbc5.Forms.MixBook
             var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL" };
 
             
-                if (vPartTrack == "1ZR")//ups
+                if (vPartTrack.ToUpper() == "1ZR")//ups
                 {
                     bool found = false;
                     foreach (var a in upsList)

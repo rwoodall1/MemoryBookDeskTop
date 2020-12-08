@@ -123,6 +123,7 @@ namespace BindingModels
         public string JobId { get; set; }
         public string ItemId { get; set; }
         public string ShipMethod { get; set; }
+        public string Carrier { get; set; }
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
         public string BookLocation { get; set; }
