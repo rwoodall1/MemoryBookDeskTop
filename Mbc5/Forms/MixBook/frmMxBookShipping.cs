@@ -255,7 +255,14 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-
+            foreach(var shipment in ShipNotification.Request.Shipment)
+            {
+                if (shipment.Package[0].Item.quantity<1)
+                {
+                    MbcMessageBox.Error("You have an invalid quantity in one of the shipments. Please Clear all shipments and rescan the order.");
+                    return;
+                }
+            }
             if (Itemcount != MbxModel.ProdInOrder)
             {
                 MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
@@ -457,7 +464,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 else
                 {
-                    AddMbEventLog(MbxModel.JobId, "ERROR", restServiceResult.Data.APIResult.ToString(), vReturnNotification, false);
+                    AddMbEventLog(MbxModel.JobId, "ERROR 2", restServiceResult.Data.APIResult.ToString(), vReturnNotification, false);
                     var emailHelper = new EmailHelper();
                     emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
                 }
@@ -466,7 +473,7 @@ namespace Mbc5.Forms.MixBook
             }
             else
             {
-                AddMbEventLog(MbxModel.JobId, "Error", "", vReturnNotification, false);
+                AddMbEventLog(MbxModel.JobId, "Error 1", "", vReturnNotification, false);
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
 
@@ -600,7 +607,15 @@ namespace Mbc5.Forms.MixBook
                 Log.Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
                 return;
             }
-            string vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+            string vPartTrack = "";
+            try
+            {
+                 vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+            }catch(Exception ex)
+            {
+                Log.Error("Value is not valid for subst:" + txtTrackingNo.Text);
+                return;
+            }
             var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
             var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL" };
 
