@@ -415,6 +415,7 @@ namespace Mbc5.Forms.MixBook
             BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
             bsItems.DataSource = Items1;
             custDataGridView.DataSource = bsItems;
+            this.ShipNotification = null;//clear out existing
             CreateShipNotification();
             SetPanels();
         }
@@ -440,6 +441,7 @@ namespace Mbc5.Forms.MixBook
             if (Loading)
             {
                 Loading = false;
+                 
                 this.CreateShipNotification();
 
             }
@@ -464,9 +466,11 @@ namespace Mbc5.Forms.MixBook
                 }
                 else
                 {
-                    AddMbEventLog(MbxModel.JobId, "ERROR 2", restServiceResult.Data.APIResult.ToString(), vReturnNotification, false);
+                    string msg = restServiceResult.Data.APIResult.ToString();
+                    AddMbEventLog(MbxModel.JobId, "ERROR 2",msg, vReturnNotification, false);
                     var emailHelper = new EmailHelper();
-                    emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
+                    emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, msg, EmailType.System);
+                    MbcMessageBox.Hand("Failed to notify Mixbook of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
                 }
 
 
@@ -476,7 +480,7 @@ namespace Mbc5.Forms.MixBook
                 AddMbEventLog(MbxModel.JobId, "Error 1", "", vReturnNotification, false);
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
-
+                MbcMessageBox.Hand("Failed to notify Mixbook of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
             }
             return processingResult;
         }
@@ -689,7 +693,12 @@ namespace Mbc5.Forms.MixBook
             {
                
             }
-            if (bgWorker.CancellationPending) e.Cancel = true;
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                btnShipmentReset_Click(null, null);
+            }
+                   
          
             
            
