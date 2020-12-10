@@ -202,61 +202,58 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label descriptionLabel;
             System.Windows.Forms.Label remakeReasonLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource16 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource17 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource18 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource19 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource20 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource21 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource22 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource23 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource24 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource25 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource26 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource27 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource28 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource29 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource30 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource31 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource32 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource33 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource34 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource35 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource36 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource37 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource38 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource39 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource40 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource41 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource42 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource43 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource44 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource45 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource46 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource47 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource48 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource49 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource50 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource51 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource52 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource53 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource54 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource55 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource56 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource57 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource58 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource59 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource60 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCust = new Mbc5.DataSets.dsCust();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
-            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.lblClientOrderId = new System.Windows.Forms.Label();
+            this.mixBookOrderBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lblShipname = new System.Windows.Forms.Label();
             this.btnEmailProdForm = new System.Windows.Forms.Button();
             this.label56 = new System.Windows.Forms.Label();
             this.btnStandarCoverEmail = new System.Windows.Forms.Button();
@@ -605,10 +602,13 @@ namespace Mbc5.Forms
             this.prodNoPagesLabel2 = new System.Windows.Forms.Label();
             this.refdateDateBox = new CustomControls.DateBox();
             this.typestyleLabel5 = new System.Windows.Forms.Label();
-            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
-            this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mcoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productionTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.quotesTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.quotesTableAdapter();
@@ -620,24 +620,28 @@ namespace Mbc5.Forms
             this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
             this.wipDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDetailTableAdapter();
             this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
+            this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
+            this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+            this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
+            this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
+            this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
+            this.mixBookOrderTableAdapter1 = new Mbc5.DataSets.dsProdutnTableAdapters.MixBookOrderTableAdapter();
+            this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.lkTypeDataTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkTypeDataTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
-            this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
-            this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
             this.invoiceCustTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
             this.tableAdapterManager2 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-            this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
-            this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
-            this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
-            this.mcoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productionTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager3 = new Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager();
             this.dsMcust = new Mbc5.DataSets.dsMcust();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -825,14 +829,9 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -867,14 +866,20 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcoverTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productionTicketBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
@@ -2580,37 +2585,6 @@ namespace Mbc5.Forms
             this.wipBindingSource.DataMember = "wip";
             this.wipBindingSource.DataSource = this.dsProdutn;
             // 
-            // invoiceCustBindingSource
-            // 
-            this.invoiceCustBindingSource.DataMember = "cust";
-            this.invoiceCustBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.dsInvoice;
-            // 
-            // dsInvoice
-            // 
-            this.dsInvoice.DataSetName = "dsInvoice";
-            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invdetailBindingSource
-            // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.dsInvoice;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
-            // 
             // tbProdutn
             // 
             this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2636,6 +2610,8 @@ namespace Mbc5.Forms
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.lblClientOrderId);
+            this.pg1.Controls.Add(this.lblShipname);
             this.pg1.Controls.Add(this.btnEmailProdForm);
             this.pg1.Controls.Add(this.label56);
             this.pg1.Controls.Add(this.btnStandarCoverEmail);
@@ -2669,6 +2645,29 @@ namespace Mbc5.Forms
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
+            // 
+            // lblClientOrderId
+            // 
+            this.lblClientOrderId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource1, "ClientOrderId", true));
+            this.lblClientOrderId.Location = new System.Drawing.Point(1163, 24);
+            this.lblClientOrderId.Name = "lblClientOrderId";
+            this.lblClientOrderId.Size = new System.Drawing.Size(1, 1);
+            this.lblClientOrderId.TabIndex = 163;
+            this.lblClientOrderId.Text = "S";
+            // 
+            // mixBookOrderBindingSource1
+            // 
+            this.mixBookOrderBindingSource1.DataMember = "MixBookOrder";
+            this.mixBookOrderBindingSource1.DataSource = this.dsProdutn;
+            // 
+            // lblShipname
+            // 
+            this.lblShipname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource1, "ShipName", true));
+            this.lblShipname.Location = new System.Drawing.Point(1163, 2);
+            this.lblShipname.Name = "lblShipname";
+            this.lblShipname.Size = new System.Drawing.Size(1, 1);
+            this.lblShipname.TabIndex = 162;
+            this.lblShipname.Text = "A";
             // 
             // btnEmailProdForm
             // 
@@ -2766,7 +2765,7 @@ namespace Mbc5.Forms
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(566, 399);
+            this.panel4.Location = new System.Drawing.Point(548, 399);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
@@ -2785,12 +2784,12 @@ namespace Mbc5.Forms
             // reportViewerMboOnline
             // 
             this.reportViewerMboOnline.DocumentMapWidth = 71;
-            reportDataSource1.Name = "dsCust";
-            reportDataSource1.Value = this.custBindingSource;
-            reportDataSource2.Name = "dsProdutn";
-            reportDataSource2.Value = this.produtnBindingSource;
-            this.reportViewerMboOnline.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewerMboOnline.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource31.Name = "dsCust";
+            reportDataSource31.Value = this.custBindingSource;
+            reportDataSource32.Name = "dsProdutn";
+            reportDataSource32.Value = this.produtnBindingSource;
+            this.reportViewerMboOnline.LocalReport.DataSources.Add(reportDataSource31);
+            this.reportViewerMboOnline.LocalReport.DataSources.Add(reportDataSource32);
             this.reportViewerMboOnline.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MboOnlineReport.rdlc";
             this.reportViewerMboOnline.Location = new System.Drawing.Point(439, 158);
             this.reportViewerMboOnline.Name = "reportViewerMboOnline";
@@ -2803,18 +2802,18 @@ namespace Mbc5.Forms
             // reportViewerCover
             // 
             this.reportViewerCover.DocumentMapWidth = 71;
-            reportDataSource3.Name = "dsRCust";
-            reportDataSource3.Value = this.custBindingSource;
-            reportDataSource4.Name = "dsRQuotes";
-            reportDataSource4.Value = this.quotesBindingSource;
-            reportDataSource5.Name = "dsRProdutn";
-            reportDataSource5.Value = this.produtnBindingSource;
-            reportDataSource6.Name = "dsRWip";
-            reportDataSource6.Value = this.wipBindingSource;
-            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource33.Name = "dsRCust";
+            reportDataSource33.Value = this.custBindingSource;
+            reportDataSource34.Name = "dsRQuotes";
+            reportDataSource34.Value = this.quotesBindingSource;
+            reportDataSource35.Name = "dsRProdutn";
+            reportDataSource35.Value = this.produtnBindingSource;
+            reportDataSource36.Name = "dsRWip";
+            reportDataSource36.Value = this.wipBindingSource;
+            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource33);
+            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource34);
+            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource35);
+            this.reportViewerCover.LocalReport.DataSources.Add(reportDataSource36);
             this.reportViewerCover.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewerCover.Location = new System.Drawing.Point(348, 223);
             this.reportViewerCover.Name = "reportViewerCover";
@@ -2827,18 +2826,18 @@ namespace Mbc5.Forms
             // reportViewerAddress
             // 
             this.reportViewerAddress.DocumentMapWidth = 71;
-            reportDataSource7.Name = "dsRCust";
-            reportDataSource7.Value = this.custBindingSource;
-            reportDataSource8.Name = "dsRQuotes";
-            reportDataSource8.Value = this.quotesBindingSource;
-            reportDataSource9.Name = "dsRProdutn";
-            reportDataSource9.Value = this.produtnBindingSource;
-            reportDataSource10.Name = "dsRWip";
-            reportDataSource10.Value = this.wipBindingSource;
-            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource7);
-            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource10);
+            reportDataSource37.Name = "dsRCust";
+            reportDataSource37.Value = this.custBindingSource;
+            reportDataSource38.Name = "dsRQuotes";
+            reportDataSource38.Value = this.quotesBindingSource;
+            reportDataSource39.Name = "dsRProdutn";
+            reportDataSource39.Value = this.produtnBindingSource;
+            reportDataSource40.Name = "dsRWip";
+            reportDataSource40.Value = this.wipBindingSource;
+            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource37);
+            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource38);
+            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource39);
+            this.reportViewerAddress.LocalReport.DataSources.Add(reportDataSource40);
             this.reportViewerAddress.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewerAddress.Location = new System.Drawing.Point(256, 244);
             this.reportViewerAddress.Name = "reportViewerAddress";
@@ -2851,18 +2850,18 @@ namespace Mbc5.Forms
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 71;
-            reportDataSource11.Name = "dsRCust";
-            reportDataSource11.Value = this.custBindingSource;
-            reportDataSource12.Name = "dsRQuotes";
-            reportDataSource12.Value = this.quotesBindingSource;
-            reportDataSource13.Name = "dsRProdutn";
-            reportDataSource13.Value = this.produtnBindingSource;
-            reportDataSource14.Name = "dsRWip";
-            reportDataSource14.Value = this.wipBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource11);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource12);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource13);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource14);
+            reportDataSource41.Name = "dsRCust";
+            reportDataSource41.Value = this.custBindingSource;
+            reportDataSource42.Name = "dsRQuotes";
+            reportDataSource42.Value = this.quotesBindingSource;
+            reportDataSource43.Name = "dsRProdutn";
+            reportDataSource43.Value = this.produtnBindingSource;
+            reportDataSource44.Name = "dsRWip";
+            reportDataSource44.Value = this.wipBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource41);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource42);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource43);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource44);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(177, 244);
             this.reportViewer3.Name = "reportViewer3";
@@ -2875,18 +2874,18 @@ namespace Mbc5.Forms
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 71;
-            reportDataSource15.Name = "dsRCust";
-            reportDataSource15.Value = this.custBindingSource;
-            reportDataSource16.Name = "dsRQuotes";
-            reportDataSource16.Value = this.quotesBindingSource;
-            reportDataSource17.Name = "dsRProdutn";
-            reportDataSource17.Value = this.produtnBindingSource;
-            reportDataSource18.Name = "dsRWip";
-            reportDataSource18.Value = this.wipBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource15);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource16);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource17);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource18);
+            reportDataSource45.Name = "dsRCust";
+            reportDataSource45.Value = this.custBindingSource;
+            reportDataSource46.Name = "dsRQuotes";
+            reportDataSource46.Value = this.quotesBindingSource;
+            reportDataSource47.Name = "dsRProdutn";
+            reportDataSource47.Value = this.produtnBindingSource;
+            reportDataSource48.Name = "dsRWip";
+            reportDataSource48.Value = this.wipBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource45);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource46);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource47);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource48);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(98, 244);
             this.reportViewer2.Name = "reportViewer2";
@@ -2922,18 +2921,18 @@ namespace Mbc5.Forms
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 71;
-            reportDataSource19.Name = "dsRCust";
-            reportDataSource19.Value = this.custBindingSource;
-            reportDataSource20.Name = "dsRQuotes";
-            reportDataSource20.Value = this.quotesBindingSource;
-            reportDataSource21.Name = "dsRProdutn";
-            reportDataSource21.Value = this.produtnBindingSource;
-            reportDataSource22.Name = "dsRWip";
-            reportDataSource22.Value = this.wipBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource19);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource20);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource21);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource22);
+            reportDataSource49.Name = "dsRCust";
+            reportDataSource49.Value = this.custBindingSource;
+            reportDataSource50.Name = "dsRQuotes";
+            reportDataSource50.Value = this.quotesBindingSource;
+            reportDataSource51.Name = "dsRProdutn";
+            reportDataSource51.Value = this.produtnBindingSource;
+            reportDataSource52.Name = "dsRWip";
+            reportDataSource52.Value = this.wipBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource49);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource50);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource51);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource52);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(19, 244);
             this.reportViewer1.Name = "reportViewer1";
@@ -3061,7 +3060,7 @@ namespace Mbc5.Forms
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(915, 80);
+            this.panel3.Location = new System.Drawing.Point(897, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(184, 316);
             this.panel3.TabIndex = 130;
@@ -3164,7 +3163,7 @@ namespace Mbc5.Forms
             this.panel2.Controls.Add(warndateLabel);
             this.panel2.Controls.Add(prshpdteLabel);
             this.panel2.Controls.Add(shpdateLabel);
-            this.panel2.Location = new System.Drawing.Point(648, 82);
+            this.panel2.Location = new System.Drawing.Point(630, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 316);
             this.panel2.TabIndex = 129;
@@ -3359,7 +3358,7 @@ namespace Mbc5.Forms
             this.panel1.Controls.Add(this.txtCoverType);
             this.panel1.Location = new System.Drawing.Point(265, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 400);
+            this.panel1.Size = new System.Drawing.Size(279, 400);
             this.panel1.TabIndex = 128;
             // 
             // endstrecvDateBox
@@ -3466,7 +3465,7 @@ namespace Mbc5.Forms
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
             this.ptnopgsTextBox.Location = new System.Drawing.Point(173, 277);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(66, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(40, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // colorpgsCheckBox
@@ -3489,7 +3488,7 @@ namespace Mbc5.Forms
             this.txtPerfbind.Location = new System.Drawing.Point(173, 136);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
-            this.txtPerfbind.Size = new System.Drawing.Size(29, 20);
+            this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
             // 
@@ -3500,7 +3499,7 @@ namespace Mbc5.Forms
             this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
             this.txtCoverDescription.Location = new System.Drawing.Point(173, 34);
             this.txtCoverDescription.Name = "txtCoverDescription";
-            this.txtCoverDescription.Size = new System.Drawing.Size(103, 20);
+            this.txtCoverDescription.Size = new System.Drawing.Size(77, 20);
             this.txtCoverDescription.TabIndex = 102;
             // 
             // txtCoverType
@@ -3512,7 +3511,7 @@ namespace Mbc5.Forms
             this.txtCoverType.Location = new System.Drawing.Point(173, 12);
             this.txtCoverType.MaxLength = 4;
             this.txtCoverType.Name = "txtCoverType";
-            this.txtCoverType.Size = new System.Drawing.Size(103, 20);
+            this.txtCoverType.Size = new System.Drawing.Size(77, 20);
             this.txtCoverType.TabIndex = 100;
             this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
@@ -3919,7 +3918,7 @@ namespace Mbc5.Forms
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(951, 53);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(933, 53);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
@@ -3942,7 +3941,7 @@ namespace Mbc5.Forms
             this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
             this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
-            this.allclrckCheckBox.Location = new System.Drawing.Point(950, 33);
+            this.allclrckCheckBox.Location = new System.Drawing.Point(932, 33);
             this.allclrckCheckBox.Name = "allclrckCheckBox";
             this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
             this.allclrckCheckBox.TabIndex = 13;
@@ -4225,14 +4224,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -4255,8 +4254,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn1.FillWeight = 161.9298F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -4265,8 +4264,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn2.FillWeight = 65.751F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -4275,8 +4274,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn3.FillWeight = 70.919F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Due";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -4286,8 +4285,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "MxbLocation";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn4.FillWeight = 76.14214F;
             this.dataGridViewTextBoxColumn4.HeaderText = "Location";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -4296,8 +4295,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn5.FillWeight = 125.258F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -4707,18 +4706,18 @@ namespace Mbc5.Forms
             // reportViewerBinderyLabel
             // 
             this.reportViewerBinderyLabel.DocumentMapWidth = 71;
-            reportDataSource23.Name = "dsRCust";
-            reportDataSource23.Value = this.custBindingSource;
-            reportDataSource24.Name = "dsRQuotes";
-            reportDataSource24.Value = this.quotesBindingSource;
-            reportDataSource25.Name = "dsRProdutn";
-            reportDataSource25.Value = this.produtnBindingSource;
-            reportDataSource26.Name = "dsRWip";
-            reportDataSource26.Value = this.wipBindingSource;
-            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource23);
-            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource24);
-            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource25);
-            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource26);
+            reportDataSource53.Name = "dsRCust";
+            reportDataSource53.Value = this.custBindingSource;
+            reportDataSource54.Name = "dsRQuotes";
+            reportDataSource54.Value = this.quotesBindingSource;
+            reportDataSource55.Name = "dsRProdutn";
+            reportDataSource55.Value = this.produtnBindingSource;
+            reportDataSource56.Name = "dsRWip";
+            reportDataSource56.Value = this.wipBindingSource;
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource53);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource54);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource55);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource56);
             this.reportViewerBinderyLabel.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewerBinderyLabel.Location = new System.Drawing.Point(798, 184);
             this.reportViewerBinderyLabel.Name = "reportViewerBinderyLabel";
@@ -4731,18 +4730,18 @@ namespace Mbc5.Forms
             // reportViewerBinderyTicket
             // 
             this.reportViewerBinderyTicket.DocumentMapWidth = 71;
-            reportDataSource27.Name = "dsRCust";
-            reportDataSource27.Value = this.custBindingSource;
-            reportDataSource28.Name = "dsRQuotes";
-            reportDataSource28.Value = this.quotesBindingSource;
-            reportDataSource29.Name = "dsRProdutn";
-            reportDataSource29.Value = this.produtnBindingSource;
-            reportDataSource30.Name = "dsRWip";
-            reportDataSource30.Value = this.wipBindingSource;
-            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource27);
-            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource28);
-            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource29);
-            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource30);
+            reportDataSource57.Name = "dsRCust";
+            reportDataSource57.Value = this.custBindingSource;
+            reportDataSource58.Name = "dsRQuotes";
+            reportDataSource58.Value = this.quotesBindingSource;
+            reportDataSource59.Name = "dsRProdutn";
+            reportDataSource59.Value = this.produtnBindingSource;
+            reportDataSource60.Name = "dsRWip";
+            reportDataSource60.Value = this.wipBindingSource;
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource57);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource58);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource59);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource60);
             this.reportViewerBinderyTicket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewerBinderyTicket.Location = new System.Drawing.Point(798, 112);
             this.reportViewerBinderyTicket.Name = "reportViewerBinderyTicket";
@@ -4891,14 +4890,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -5801,14 +5800,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.partBkDetailDataGridView.AutoGenerateColumns = false;
             this.partBkDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.partBkDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partBkDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
@@ -6334,14 +6333,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prtbkbdetailDataGridView.AutoGenerateColumns = false;
             this.prtbkbdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.prtbkbdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prtbkbdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -6357,8 +6356,8 @@ namespace Mbc5.Forms
             this.prtbkbdetailDataGridView.Location = new System.Drawing.Point(118, 94);
             this.prtbkbdetailDataGridView.Name = "prtbkbdetailDataGridView";
             this.prtbkbdetailDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle22;
             this.prtbkbdetailDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prtbkbdetailDataGridView.Size = new System.Drawing.Size(924, 242);
             this.prtbkbdetailDataGridView.TabIndex = 134;
@@ -6564,14 +6563,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -6586,8 +6585,8 @@ namespace Mbc5.Forms
             this.dataGridView1.Location = new System.Drawing.Point(84, 138);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.Size = new System.Drawing.Size(924, 242);
             this.dataGridView1.TabIndex = 177;
@@ -6779,24 +6778,18 @@ namespace Mbc5.Forms
             this.typestyleLabel5.TabIndex = 1;
             this.typestyleLabel5.Text = "label61";
             // 
-            // mixBookOrderBindingSource
+            // errorProvider1
             // 
-            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
-            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
+            this.errorProvider1.ContainerControl = this;
             // 
-            // mixBookOrders
+            // printDialog1
             // 
-            this.mixBookOrders.DataSetName = "MixBookOrders";
-            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.printDialog1.UseEXDialog = true;
             // 
             // vendorBindingSource
             // 
             this.vendorBindingSource.DataMember = "vendor";
             this.vendorBindingSource.DataSource = this.dsProdutn;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // custTableAdapter
             // 
@@ -6809,6 +6802,7 @@ namespace Mbc5.Forms
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
             this.tableAdapterManager.mcustTableAdapter = null;
+            this.tableAdapterManager.MixBookOrderTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
@@ -6858,6 +6852,71 @@ namespace Mbc5.Forms
             // 
             this.coverdetailTableAdapter.ClearBeforeFill = true;
             // 
+            // partBkDetailTableAdapter
+            // 
+            this.partBkDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // prtbkbdetailTableAdapter
+            // 
+            this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // vendorTableAdapter
+            // 
+            this.vendorTableAdapter.ClearBeforeFill = true;
+            // 
+            // reOrderTableAdapter
+            // 
+            this.reOrderTableAdapter.ClearBeforeFill = true;
+            // 
+            // reorderDetailTableAdapter
+            // 
+            this.reorderDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // mixBookOrderTableAdapter1
+            // 
+            this.mixBookOrderTableAdapter1.ClearBeforeFill = true;
+            // 
+            // invoiceCustBindingSource
+            // 
+            this.invoiceCustBindingSource.DataMember = "cust";
+            this.invoiceCustBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
+            // 
+            // mixBookOrderBindingSource
+            // 
+            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
+            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
+            // 
+            // mixBookOrders
+            // 
+            this.mixBookOrders.DataSetName = "MixBookOrders";
+            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lkTypeDataTableAdapter
             // 
             this.lkTypeDataTableAdapter.ClearBeforeFill = true;
@@ -6892,14 +6951,6 @@ namespace Mbc5.Forms
             // 
             this.lkpBackGroundTableAdapter.ClearBeforeFill = true;
             // 
-            // partBkDetailTableAdapter
-            // 
-            this.partBkDetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // prtbkbdetailTableAdapter
-            // 
-            this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
-            // 
             // invoiceCustTableAdapter
             // 
             this.invoiceCustTableAdapter.ClearBeforeFill = true;
@@ -6925,22 +6976,6 @@ namespace Mbc5.Forms
             // paymntTableAdapter
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
-            // 
-            // vendorTableAdapter
-            // 
-            this.vendorTableAdapter.ClearBeforeFill = true;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // reOrderTableAdapter
-            // 
-            this.reOrderTableAdapter.ClearBeforeFill = true;
-            // 
-            // reorderDetailTableAdapter
-            // 
-            this.reorderDetailTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager3
             // 
@@ -7039,15 +7074,10 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.tbProdutn.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -7092,14 +7122,20 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcoverTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productionTicketBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
@@ -7523,5 +7559,9 @@ namespace Mbc5.Forms
         private System.Windows.Forms.ComboBox descriptionComboBox;
         private System.Windows.Forms.ComboBox remakeReasonComboBox;
         private System.Windows.Forms.BindingSource remakeReasonsBindingSource1;
+        private System.Windows.Forms.BindingSource mixBookOrderBindingSource1;
+        private DataSets.dsProdutnTableAdapters.MixBookOrderTableAdapter mixBookOrderTableAdapter1;
+        private System.Windows.Forms.Label lblShipname;
+        private System.Windows.Forms.Label lblClientOrderId;
     }
 }

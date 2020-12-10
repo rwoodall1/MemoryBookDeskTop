@@ -418,6 +418,7 @@ namespace Mbc5.Forms.MixBook
             this.ShipNotification = null;//clear out existing
             CreateShipNotification();
             SetPanels();
+            txtClientIdLookup.Focus();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
         {
