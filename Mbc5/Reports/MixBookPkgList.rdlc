@@ -759,7 +759,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!Carrier.Value, "dsMxPackingSlip")</Value>
+                  <Value>=First(IIf(Fields!Carrier.Value="UPS","UPS","US Postal Service"), "dsMxPackingSlip")</Value>
                   <Style>
                     <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -767,14 +767,16 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Carrier</rd:DefaultName>
           <Top>0.655in</Top>
-          <Left>6.89458in</Left>
+          <Left>5.95153in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>1.94305in</Width>
           <ZIndex>13</ZIndex>
           <Style>
             <Border>

@@ -33,7 +33,7 @@ namespace Mbc5.Forms.MixBook
         private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
-      string cmd= @"Select TOP 1400 (Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+      string cmd= @"Select  (Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
                                   ,MO.ShipName
                                  ,MO.Copies,Mo.Pages
                                  ,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate

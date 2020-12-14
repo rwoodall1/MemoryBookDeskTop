@@ -93,6 +93,7 @@
             this.leadNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leadSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scanDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scrubExemptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.typeStylesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wIPDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +123,7 @@
             this.pnlNotice = new System.Windows.Forms.Panel();
             this.lblUpdate = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.scrubExemptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coverSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -268,6 +269,7 @@
             // mixBookToolStripMenuItem
             // 
             this.mixBookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.coverSearchToolStripMenuItem,
             this.mixBookOrdersToolStripMenuItem,
             this.mixBookLoadTestToolStripMenuItem,
             this.mixbookBarscanToolStripMenuItem,
@@ -281,35 +283,35 @@
             // mixBookOrdersToolStripMenuItem
             // 
             this.mixBookOrdersToolStripMenuItem.Name = "mixBookOrdersToolStripMenuItem";
-            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookOrdersToolStripMenuItem.Text = "MixBook Orders";
             this.mixBookOrdersToolStripMenuItem.Click += new System.EventHandler(this.mixBookOrdersToolStripMenuItem_Click);
             // 
             // mixBookLoadTestToolStripMenuItem
             // 
             this.mixBookLoadTestToolStripMenuItem.Name = "mixBookLoadTestToolStripMenuItem";
-            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
             // 
             // mixbookBarscanToolStripMenuItem
             // 
             this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
             this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
             // 
             // caseMatchScanToolStripMenuItem
             // 
             this.caseMatchScanToolStripMenuItem.Name = "caseMatchScanToolStripMenuItem";
-            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.caseMatchScanToolStripMenuItem.Text = "Case Match Scan";
             this.caseMatchScanToolStripMenuItem.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem_Click);
             // 
             // shippingScanToolStripMenuItem
             // 
             this.shippingScanToolStripMenuItem.Name = "shippingScanToolStripMenuItem";
-            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shippingScanToolStripMenuItem.Text = "Shipping Scan";
             this.shippingScanToolStripMenuItem.Click += new System.EventHandler(this.shippingScanToolStripMenuItem_Click);
             // 
@@ -417,7 +419,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -431,7 +433,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -489,7 +491,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -522,7 +524,7 @@
             this.wipReportToolStripMenuItem,
             this.dailyInfoToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             // 
             // invoiceReportToolStripMenuItem
@@ -628,7 +630,7 @@
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Visible = false;
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
@@ -636,7 +638,7 @@
             // leadNamesToolStripMenuItem
             // 
             this.leadNamesToolStripMenuItem.Name = "leadNamesToolStripMenuItem";
-            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.leadNamesToolStripMenuItem.Text = "Lead Names";
             this.leadNamesToolStripMenuItem.Visible = false;
             this.leadNamesToolStripMenuItem.Click += new System.EventHandler(this.leadNamesToolStripMenuItem_Click);
@@ -644,7 +646,7 @@
             // leadSourceToolStripMenuItem
             // 
             this.leadSourceToolStripMenuItem.Name = "leadSourceToolStripMenuItem";
-            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.leadSourceToolStripMenuItem.Text = "Lead Source";
             this.leadSourceToolStripMenuItem.Visible = false;
             this.leadSourceToolStripMenuItem.Click += new System.EventHandler(this.leadSourceToolStripMenuItem_Click);
@@ -652,14 +654,21 @@
             // scanDescriptionsToolStripMenuItem
             // 
             this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
-            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
             this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
+            // 
+            // scrubExemptionsToolStripMenuItem
+            // 
+            this.scrubExemptionsToolStripMenuItem.Name = "scrubExemptionsToolStripMenuItem";
+            this.scrubExemptionsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.scrubExemptionsToolStripMenuItem.Text = "Scrub Exemptions";
+            this.scrubExemptionsToolStripMenuItem.Click += new System.EventHandler(this.scrubExemptionsToolStripMenuItem_Click);
             // 
             // typeStylesToolStripMenuItem
             // 
             this.typeStylesToolStripMenuItem.Name = "typeStylesToolStripMenuItem";
-            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.typeStylesToolStripMenuItem.Text = "Type Styles";
             this.typeStylesToolStripMenuItem.Visible = false;
             this.typeStylesToolStripMenuItem.Click += new System.EventHandler(this.typeStylesToolStripMenuItem_Click);
@@ -667,7 +676,7 @@
             // wIPDescriptionsToolStripMenuItem
             // 
             this.wIPDescriptionsToolStripMenuItem.Name = "wIPDescriptionsToolStripMenuItem";
-            this.wIPDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wIPDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.wIPDescriptionsToolStripMenuItem.Text = "WIPDescriptions";
             this.wIPDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.wIPDescriptionsToolStripMenuItem_Click);
             // 
@@ -951,12 +960,12 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // scrubExemptionsToolStripMenuItem
+            // coverSearchToolStripMenuItem
             // 
-            this.scrubExemptionsToolStripMenuItem.Name = "scrubExemptionsToolStripMenuItem";
-            this.scrubExemptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.scrubExemptionsToolStripMenuItem.Text = "Scrub Exemptions";
-            this.scrubExemptionsToolStripMenuItem.Click += new System.EventHandler(this.scrubExemptionsToolStripMenuItem_Click);
+            this.coverSearchToolStripMenuItem.Name = "coverSearchToolStripMenuItem";
+            this.coverSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.coverSearchToolStripMenuItem.Text = "Cover Search";
+            this.coverSearchToolStripMenuItem.Click += new System.EventHandler(this.coverSearchToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1081,5 +1090,6 @@
         private System.Windows.Forms.Label lblUpdate;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem scrubExemptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem coverSearchToolStripMenuItem;
     }
 }

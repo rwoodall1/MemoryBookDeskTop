@@ -761,17 +761,26 @@ namespace Mbc5.Forms.MixBook
                         }
                         else { bookBlockLocation = "N/A"; }
                         lblBkLocation.Text = bookBlockLocation;
-                        string input = Interaction.InputBox("Book Block Location:" + bookBlockLocation, "Assign Cover Location", bookBlockLocation);
-                        if (string.IsNullOrEmpty(input))
+                        string updateLocation = bookBlockLocation;
+                        if (MbxModel.Quantity > 1)
                         {
-                            MbcMessageBox.Information("Scan has been canceled.");
-                            return;
+                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
                         }
-                        if (input.Length > 3)
-                        {
-                            MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
-                            return;
-                        }
+                        //if (MbxModel.Quantity > 1 || updateLocation=="N/A")
+                        //{
+                        string input = Interaction.InputBox("Book Block Location:" + bookBlockLocation +" Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", bookBlockLocation);
+                            updateLocation = input;
+                            if (string.IsNullOrEmpty(input))
+                            {
+                                MbcMessageBox.Information("Scan has been canceled.");
+                                return;
+                            }
+                            if (input.Length > 3)
+                            {
+                                MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
+                                return;
+                            }
+                        //}
                         //war is datetime
                         //wir is initials
                         sqlClient.ClearParameters();
@@ -780,7 +789,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.AddParameter("@Location", input);
+                        sqlClient.AddParameter("@Location", updateLocation);
                         sqlClient.CommandText(@"Update CoverDetail SET WAR= @WAR , WIR =@WIR,MxbLocation=@Location  WHERE Invno=@Invno AND DescripID=@DescripID ");
                         var mxResult = sqlClient.Update();
                         if (mxResult.IsError)
@@ -796,7 +805,7 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                        sqlClient.AddParameter("@Location", input);
+                        sqlClient.AddParameter("@Location", updateLocation);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                     Begin
                                                     INSERT INTO CoverDetail (DescripID,War,Wir,Invno,Jobno,MxbLocation) VALUES(@DescripID,@WAR,@WIR,@Invno,@Jobno,@Location);
@@ -813,21 +822,18 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentCoverLoc=@CurrentCoverLoc Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentCoverLoc", input);
+                        sqlClient.AddParameter("@CurrentCoverLoc", updateLocation);
                         var orderLocResult = sqlClient.Update();
                         if (orderLocResult.IsError)
                         {
-                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+input+" | "+JsonConvert.SerializeObject(orderLocResult));
+                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+ updateLocation + " | "+JsonConvert.SerializeObject(orderLocResult));
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@BookStatus", "OnBoard");
                         sqlClient.Update();
-                        if (MbxModel.Quantity > 1)
-                        {
-                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
-                        }
+                       
                         ClearScan();
                         break;
                     case "TRIMMING":

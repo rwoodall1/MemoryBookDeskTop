@@ -57,8 +57,7 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
@@ -460,6 +459,12 @@
     <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmLoadTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -666,6 +671,7 @@
     <Content Include="Content\SystemIcons\tsPrint.Image.png" />
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
+    <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="NOTES TODO.txt" />
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
@@ -770,6 +776,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
       <DependentUpon>frmLoadTest.cs</DependentUpon>

@@ -1883,6 +1883,13 @@ new SqlParameter("@newInvno",newInvno),
             frmScrubExemptions.Show();
           
         }
+
+        private void coverSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCoverSearch frmScrubExemptions = new frmCoverSearch(this.ApplicationUser);
+            frmScrubExemptions.MdiParent = this;
+            frmScrubExemptions.Show();
+        }
         //nothing below here
     }
 }
