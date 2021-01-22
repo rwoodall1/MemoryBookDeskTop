@@ -768,7 +768,7 @@ namespace Mbc5.Forms.MixBook
                         }
                         //if (MbxModel.Quantity > 1 || updateLocation=="N/A")
                         //{
-                        string input = Interaction.InputBox("Book Block Location:" + bookBlockLocation +" Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", bookBlockLocation);
+                        string input = Interaction.InputBox("Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", bookBlockLocation);
                             updateLocation = input;
                             if (string.IsNullOrEmpty(input))
                             {
