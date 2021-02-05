@@ -34,7 +34,64 @@ namespace Mbc5.Forms
 
             InitializeComponent();
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            //if (Environment == "DEV")
+            //{
+            //    AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            //}
+            //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            List<string> roles = new List<string>();
+            this.ValidatedUserRoles = roles;
+            this.WindowState = FormWindowState.Maximized;
+            this.Hide();
 
+            for (int i = 0; i < 3; i++)
+            {
+                if (this.Login())
+                {
+                    break;
+                };
+                if (i == 2)
+                {
+                    //if 2 tries close 
+                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    keepLoading = false;
+                    Application.Exit();
+                }
+            }
+
+            if (keepLoading)
+            {
+                this.WindowState = FormWindowState.Maximized;
+
+
+                if (this.ForcePasswordChange)
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
+
+                    frmPassword.ShowDialog();
+                    this.Cursor = Cursors.Default;
+                    if (ForcePasswordChange)
+                    {
+                        MessageBox.Show("Password was not changed.");
+                        Application.Exit();
+                    }
+                }
+                ValidateUserRoles();
+                SetMenu();
+                mnuMain.Enabled = true;
+                this.WindowState = FormWindowState.Maximized;
+            }
+
+
+
+            this.reportViewer1.RefreshReport();
+        }
         #region "Properties"
         public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
@@ -42,6 +99,121 @@ namespace Mbc5.Forms
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        public bool Login()
+        {
+            frmLogin Login = new frmLogin(this);
+            var _result = Login.ShowDialog();
+            if (_result == DialogResult.Cancel || _result == DialogResult.Abort)
+            {
+                keepLoading = false;
+                Application.Exit();
+            }
+            else if (_result == DialogResult.No)
+            {
+                MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return false;
+            }
+
+            SetMenu();
+
+            return true;
+        }
+        private void SetMenu()
+        {
+
+            if (ApplicationUser.UserName == "BARCODE")
+            {
+                //Show barscan screen hid every thing else
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                barScanToolStripMenuItem_Click(null, null);
+
+
+
+            }
+            else if (ApplicationUser.UserName == "onboard" | ApplicationUser.UserName == "press"
+               || ApplicationUser.UserName == "press" || ApplicationUser.UserName == "binding"
+               || ApplicationUser.UserName == "quality" || ApplicationUser.UserName == "trimming")
+            {
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = false;
+            }
+            else if (ApplicationUser.UserName == "casein")
+            {
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+
+                caseMatchScanToolStripMenuItem_Click(null, null);
+
+            }
+            else if (ApplicationUser.UserName == "shipping")
+            {
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem_Click(null, null);
+
+            }
+
+            else
+            {
+                tsMain.Visible = true;
+                mixbookReportsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
+                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                systemToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
+                // invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
+                // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+                //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            }
+
+
+
+        }
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -143,7 +315,6 @@ namespace Mbc5.Forms
 
 
         }
-
         private int GetInvno()
         {
 
@@ -339,162 +510,127 @@ namespace Mbc5.Forms
             return vSchcode;
 
         }
+        public int GetNewInvno()
+        {
+
+            var sqlQuery = new BaseClass.Classes.SQLQuery();
+
+            SqlParameter[] parameters = new SqlParameter[] {
+
+                    };
+            var strQuery = "SELECT Invno FROM Invcnum";
+            try
+            {
+                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+                DataRow dr = userResult.Rows[0];
+                int Invno = (int)dr["Invno"];
+                int newInvno = Invno + 1;
+                strQuery = "Update Invcnum Set invno=@newInvno";
+                SqlParameter[] parameters1 = new SqlParameter[] {
+                      new SqlParameter("@newInvno",newInvno),
+                    };
+                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+
+                return Invno;
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                       .SetMessage("Failed to get invoice number for a new record");
+
+                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+
+            }
+
+        }
+        public string GetProdNo()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from prodnum";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int? prodNum = null;
+            try
+            {
+                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                         .AddTags("New prod number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting production number.")
+                  .Submit();
+
+            }
+            string vprodNum = prodNum.ToString();
+            vprodNum = " " + vprodNum;
+            return prodNum.ToString();
+
+        }
+        public string GetCoverNumber()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from Spcover";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int coverNum = 0;
+            try
+            {
+                coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                strQuery = "Update Spcover set speccvno=@speccvno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno", (coverNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                         .AddTags("New cover number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting cover number.")
+                  .Submit();
+
+            }
+
+            return coverNum.ToString();
+        }
+        public void PrintJobTicket()
+        {
+            //var sqlClient = new SQLCustomClient().CommandText(@"
+            //    Select ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+            //     '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where JobTicketPrinted=@JobTicketPrinted AND
+            //        MixBookOrder.RequestedShipDate <=@MixBookOrder.RequestedShipDate AND MixBookOrder.MixbookOrderStatus=@MixbookOrderStatus 
+            //"); ;
+            //sqlClient.AddParameter("@MixbookOrderStatus","In Process");
+            //sqlClient.AddParameter("@@MixBookOrder.RequestedShipDate ", );
+            //sqlClient.AddParameter("@JobTicketPrinted", 0);
+        }
         #endregion
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            //if (Environment == "DEV")
-            //{
-            //    AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
-            //}
-            //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
-            AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-            List<string> roles = new List<string>();
-            this.ValidatedUserRoles = roles;
-            this.WindowState = FormWindowState.Maximized;
-            this.Hide();
-
-            for (int i = 0; i < 3; i++)
-            {
-                if (this.Login())
-                {
-                    break;
-                };
-                if (i == 2)
-                {
-                    //if 2 tries close 
-                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                    keepLoading = false;
-                    Application.Exit();
-                }
-            }
-
-            if (keepLoading)
-            {
-                this.WindowState = FormWindowState.Maximized;
-
-
-                if (this.ForcePasswordChange)
-                {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
-
-                    frmPassword.ShowDialog();
-                    this.Cursor = Cursors.Default;
-                    if (ForcePasswordChange)
-                    {
-                        MessageBox.Show("Password was not changed.");
-                        Application.Exit();
-                    }
-                }
-                ValidateUserRoles();
-                SetMenu();
-                mnuMain.Enabled = true;
-                this.WindowState = FormWindowState.Maximized;
-            }
-
-
-
-            this.reportViewer1.RefreshReport();
-        }
-        private void SetMenu()
-        {
-            
-            if (ApplicationUser.UserName == "BARCODE")
-            {
-                //Show barscan screen hid every thing else
-                tsMain.Visible = false;
-                toolStripMenuItem2.Visible = false;
-                systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
-                productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                barScanToolStripMenuItem_Click(null, null);
-
-
-
-            }else if (ApplicationUser.UserName == "onboard"| ApplicationUser.UserName == "press"
-                || ApplicationUser.UserName == "press"|| ApplicationUser.UserName == "binding"
-                || ApplicationUser.UserName == "quality"|| ApplicationUser.UserName == "trimming")
-            {
-                caseMatchScanToolStripMenuItem.Visible = false;
-                mixBookOrdersToolStripMenuItem.Visible = false;
-                mixBookLoadTestToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
-                tsMain.Visible = false;
-                toolStripMenuItem2.Visible = false;
-                systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
-                productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem_Click(null, null);
-                productionToolStripMenuItem.Visible = false;
-            }else if (ApplicationUser.UserName == "casein")
-            {
-                mixbookBarscanToolStripMenuItem.Visible = false;
-                mixBookOrdersToolStripMenuItem.Visible = false;
-                mixBookLoadTestToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
-                tsMain.Visible = false;
-                toolStripMenuItem2.Visible = false;
-                systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
-                productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
-
-                caseMatchScanToolStripMenuItem_Click(null, null);
-
-            }else if (ApplicationUser.UserName == "shipping")
-            {
-                caseMatchScanToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem.Visible = false;
-                mixBookOrdersToolStripMenuItem.Visible = false;
-                mixBookLoadTestToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
-                tsMain.Visible = false;
-                toolStripMenuItem2.Visible = false;
-                systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
-                productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
-                shippingScanToolStripMenuItem_Click(null, null);
-
-            }
-            
-            else
-            {
-                tsMain.Visible = true;
-                mixbookReportsToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.mixBookToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MB"});
-                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" }); 
-                this.mixBookLoadTestToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA"});
-                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-                productionWIPToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-                systemToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
-                // invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
-                // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
-                //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-            }
-
-
-
-        }
-        public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        
         #region MenuActions
         private void userMaintinanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -781,6 +917,10 @@ namespace Mbc5.Forms
 
             }
         }
+        public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         #endregion
         #region DataMaint
         private void discountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -968,26 +1108,8 @@ namespace Mbc5.Forms
 
 
         #endregion
-        public bool Login()
-        {
-            frmLogin Login = new frmLogin(this);
-            var _result = Login.ShowDialog();
-            if (_result == DialogResult.Cancel || _result == DialogResult.Abort)
-            {
-                keepLoading = false;
-                Application.Exit();
-            }
-            else if (_result == DialogResult.No)
-            {
-                MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                return false;
-            }
 
-            SetMenu();
-
-            return true;
-        }
-
+        #region "Events"
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -1004,8 +1126,6 @@ namespace Mbc5.Forms
             AboutBox frmAbout = new AboutBox();
             frmAbout.ShowDialog();
         }
-
-
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -1053,115 +1173,6 @@ namespace Mbc5.Forms
             frmInvoice.MdiParent = this;
             frmInvoice.Show();
             this.Cursor = Cursors.Default;
-        }
-
-        public int GetNewInvno()
-        {
-
-            var sqlQuery = new BaseClass.Classes.SQLQuery();
-
-            SqlParameter[] parameters = new SqlParameter[] {
-
-                    };
-            var strQuery = "SELECT Invno FROM Invcnum";
-            try
-            {
-                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-                DataRow dr = userResult.Rows[0];
-                int Invno = (int)dr["Invno"];
-                int newInvno = Invno + 1;
-                strQuery = "Update Invcnum Set invno=@newInvno";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                      new SqlParameter("@newInvno",newInvno),
-                    };
-                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-
-                return Invno;
-
-            }
-            catch (Exception ex)
-            {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
-
-                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-
-            }
-
-        }
-        public string GetProdNo()
-        {
-            var sqlQuery = new SQLQuery();
-            //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from prodnum";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int? prodNum = null;
-            try
-            {
-                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
-                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-                if (result1 != 1)
-                {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
-
-            }
-            string vprodNum = prodNum.ToString();
-            vprodNum = " " + vprodNum;
-            return prodNum.ToString();
-
-        }
-        public string GetCoverNumber()
-        {
-            var sqlQuery = new SQLQuery();
-            //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from Spcover";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int coverNum = 0;
-            try
-            {
-                coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
-                strQuery = "Update Spcover set speccvno=@speccvno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno", (coverNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-                if (result1 != 1)
-                {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
-
-            }
-
-            return coverNum.ToString();
         }
 
         private void tsSchcodeSearch_Click(object sender, EventArgs e)
@@ -1771,6 +1782,12 @@ namespace Mbc5.Forms
             frmMxBookShipping.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void printJobTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintJobTicket();
+        }
+        #endregion
         //nothing below here
     }
 }
