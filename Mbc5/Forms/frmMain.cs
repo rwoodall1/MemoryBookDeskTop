@@ -23,7 +23,9 @@ using Exceptionless.Models;
 using BaseClass;
 using BindingModels;
 using Microsoft.Reporting.WinForms;
-
+using Microsoft.VisualBasic;
+using CustomControls;
+using NLog;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -34,15 +36,16 @@ namespace Mbc5.Forms
 
             InitializeComponent();
         }
+        protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            //if (Environment == "DEV")
-            //{
-            //    AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
-            //}
-            //else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
-            AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -90,7 +93,7 @@ namespace Mbc5.Forms
 
 
 
-            this.reportViewer1.RefreshReport();
+            
         }
         #region "Properties"
         public bool keepLoading { get; set; } = true;
@@ -620,17 +623,56 @@ namespace Mbc5.Forms
         }
         public void PrintJobTicket()
         {
-            //var sqlClient = new SQLCustomClient().CommandText(@"
-            //    Select ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-            //     '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where JobTicketPrinted=@JobTicketPrinted AND
-            //        MixBookOrder.RequestedShipDate <=@MixBookOrder.RequestedShipDate AND MixBookOrder.MixbookOrderStatus=@MixbookOrderStatus 
-            //"); ;
-            //sqlClient.AddParameter("@MixbookOrderStatus","In Process");
-            //sqlClient.AddParameter("@@MixBookOrder.RequestedShipDate ", );
-            //sqlClient.AddParameter("@JobTicketPrinted", 0);
+            string value = "";
+            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
+
+                var sqlClient = new SQLCustomClient().CommandText(@"
+                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
+                    MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
+            "); ;
+             
+                sqlClient.AddParameter("@RequestedShipDate",value );
+          
+                var result = sqlClient.SelectMany<JobTicketQuery>();
+                if (result.IsError)
+                {
+                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    return;
+                }
+          
+                var jobData = (List<JobTicketQuery>)result.Data;
+                if (jobData!=null) {
+                    reportViewer1.LocalReport.DataSources.Clear();
+                    JobTicketQueryBindingSource.DataSource = jobData;
+                    reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbokJobTicketQuery.rdlc";
+                    this.reportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
+                }
+
+
+            }
+        }
+        private void SetJobTicketsPrinted()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTickePrinted Where Invno=@Invno");
+            foreach(JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+                
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@SetJobTickePrinted",1);
+                var updateResult=sqlClient.Update();
+            }
         }
         #endregion
-        
+
         #region MenuActions
         private void userMaintinanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1700,7 +1742,7 @@ namespace Mbc5.Forms
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser);
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser,this);
 
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();
@@ -1726,54 +1768,13 @@ namespace Mbc5.Forms
             frmWipReport frmWipReport = new frmWipReport(this.ApplicationUser);
             frmWipReport.MdiParent = this;
             frmWipReport.Show();
-            //var sqlClient = new SQLCustomClient();
-            //sqlClient.CommandText(@"Select TOP 1400 MO.Invno
-	           //                     ,MO.Copies,Mo.Pages,Mo.[Size]
-	           //                     ,Mo.OrderReceivedDate
-	           //                     ,MO.ClientOrderId
-	           //                     ,MO.RequestedShipDate
-	           //                     ,MO.Description
-	           //                     ,P.Kitrecvd
-	           //                      ,CD37.War AS OnBoards
-	           //                     ,CD37.MxbLocation AS Location37
-	           //                     ,CD43.War AS Trimming
-	           //                     ,CD43.MxbLocation AS Location43
-	           //                     ,WD29.War AS WipPress
-	           //                     ,WD39.War AS Binding
-	           //                     ,WD39.MxbLocation AS Location39
-	           //                     ,WD49.War AS CaseIn
-	           //                     ,WD50.War AS Quality
-	           //                     ,WD50.MxbLocation AS Location50
-	           //                     from MixBookOrder MO 
-	           //                     Left Join Produtn P On MO.Invno=P.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
-            //                        Left Join (Select Invno,DescripId,War,MxbLocation From CoverDetail  Where DescripId=43  ) CD43 On MO.Invno=CD43.Invno
-	           //                     Left Join (Select Invno,DescripId,War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail  Where DescripId=39  ) WD39 On MO.Invno=WD39.Invno
-	           //                     Left Join (Select Invno,DescripId,War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
-	           //                     Left Join (Select Invno,DescripId,War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
-	           //                     Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd");
 
-            //var orderResult = sqlClient.SelectMany<WipReportModel>();
-            //if (orderResult.IsError)
-            //{
-            //    MbcMessageBox.Error("Failed to retrieve records:" + orderResult.Errors[0].DeveloperMessage);
-            //    return;
-            //}
-            //var vOrders = (List<WipReportModel>)orderResult.Data;
-            //reportViewer1.LocalReport.DataSources.Clear();
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", vOrders));
-
-            //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookWipReport.rdlc";
-            //this.reportViewer1.RefreshReport();
+           
+          
 
         }
 
-        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            try { reportViewer1.PrintDialog(); } catch (Exception ex) { }
-        }
-
+     
         private void shippingScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMxBookShipping frmMxBookShipping = new frmMxBookShipping(this.ApplicationUser);
@@ -1786,6 +1787,21 @@ namespace Mbc5.Forms
         private void printJobTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrintJobTicket();
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            if (reportViewer1.LocalReport.ReportEmbeddedResource== "Mbc5.Reports.MixbookJobTicketQuery.rdlc")
+            {
+                try {
+                   
+                    if (reportViewer1.PrintDialog()!=DialogResult.Cancel)
+                    {
+                        SetJobTicketsPrinted();
+                    }
+                } catch (Exception ex) { }
+            }
+            
         }
         #endregion
         //nothing below here

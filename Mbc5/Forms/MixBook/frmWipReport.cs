@@ -102,6 +102,12 @@ namespace Mbc5.Forms.MixBook
 
             //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookWipReport.rdlc";
             //this.reportViewer1.RefreshReport();
+
+            if (bsWip.Count<1)
+            {
+                MbcMessageBox.Hand("There are no records to print.","No Records");
+                return;
+            }
             try
             {
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";

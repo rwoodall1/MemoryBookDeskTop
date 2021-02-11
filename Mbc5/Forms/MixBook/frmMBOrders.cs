@@ -219,7 +219,38 @@ namespace Mbc5.Forms.MixBook
         }
 
         #endregion
+        private void PrintJobTicket()
+        {
+            
+            var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                var sqlClient = new SQLCustomClient().CommandText(@"
+                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,JobTicketPrinted,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where Invno=@Invno
+            "); 
 
+                sqlClient.AddParameter("@Invno", value);
+
+                var result = sqlClient.Select<JobTicketQuery>();
+                if (result.IsError)
+                {
+                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    return;
+                }
+                var jobData = (JobTicketQuery)result.Data;
+                if (jobData!=null)
+                {
+                    reportViewer3.LocalReport.DataSources.Clear();
+                    JobTicketQueryBindingSource.DataSource = jobData;
+                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+                    this.reportViewer3.RefreshReport();
+                }
+                else
+                {
+                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
+                }
+            }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -537,6 +568,16 @@ namespace Mbc5.Forms.MixBook
             }
             MbcMessageBox.Exclamation("Status has been changed to " +status);
             Fill();
+        }
+
+        private void cmdJobTicket_Click(object sender, EventArgs e)
+        {
+            PrintJobTicket();
+        }
+
+        private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer3.PrintDialog();
         }
     }
 }
