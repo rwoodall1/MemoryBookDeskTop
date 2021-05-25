@@ -6,12 +6,12 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>7.76041in</Width>
+              <Width>7.97571in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>6.0625in</Height>
+              <Height>6.73959in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -36,8 +36,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>1.42708in</Top>
-                          <Left>5.47223in</Left>
+                          <Top>2.05208in</Top>
+                          <Left>5.68753in</Left>
                           <Height>0.25in</Height>
                           <Width>1.125in</Width>
                           <Style>
@@ -69,8 +69,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>2.09722in</Top>
-                          <Left>0.43055in</Left>
+                          <Top>2.70833in</Top>
+                          <Left>1.11459in</Left>
                           <Height>0.25in</Height>
                           <Width>0.47917in</Width>
                           <ZIndex>1</ZIndex>
@@ -103,8 +103,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>4.91667in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>5.53125in</Top>
+                          <Left>0.4514in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>2</ZIndex>
@@ -137,7 +137,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Left>5.40972in</Left>
+                          <Top>0.625in</Top>
+                          <Left>5.62502in</Left>
                           <Height>0.25in</Height>
                           <Width>0.95834in</Width>
                           <ZIndex>3</ZIndex>
@@ -158,7 +159,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Copies</Value>
+                                  <Value>Total Copies</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -170,10 +171,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>1.77778in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>2.38889in</Top>
+                          <Left>0.67016in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.79167in</Width>
+                          <Width>0.9236in</Width>
                           <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
@@ -204,8 +205,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>0.63889in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>1.26389in</Top>
+                          <Left>0.46528in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>5</ZIndex>
@@ -234,7 +235,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ShipName</rd:DefaultName>
-                          <Left>0.10417in</Left>
+                          <Top>0.625in</Top>
+                          <Left>0.46528in</Left>
                           <Height>0.25in</Height>
                           <Width>2.46875in</Width>
                           <ZIndex>6</ZIndex>
@@ -263,7 +265,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>RequestedShipDate</rd:DefaultName>
-                          <Left>6.39584in</Left>
+                          <Top>0.625in</Top>
+                          <Left>6.61114in</Left>
                           <Height>0.25in</Height>
                           <Width>1.27083in</Width>
                           <ZIndex>7</ZIndex>
@@ -292,8 +295,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Invno</rd:DefaultName>
-                          <Top>0.31944in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>0.94444in</Top>
+                          <Left>0.46528in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>8</ZIndex>
@@ -325,8 +328,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>YBBarcode</rd:DefaultName>
-                          <Top>0.94445in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>1.56945in</Top>
+                          <Left>0.46528in</Left>
                           <Height>0.25in</Height>
                           <Width>3.71875in</Width>
                           <ZIndex>9</ZIndex>
@@ -355,8 +358,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Description</rd:DefaultName>
-                          <Top>1.47222in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>2.09722in</Top>
+                          <Left>0.46528in</Left>
                           <Height>0.25in</Height>
                           <Width>3.25in</Width>
                           <ZIndex>10</ZIndex>
@@ -387,8 +390,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Copies</rd:DefaultName>
-                          <Top>1.77778in</Top>
-                          <Left>0.93749in</Left>
+                          <Top>2.38889in</Top>
+                          <Left>1.6632in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>11</ZIndex>
@@ -419,8 +422,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Pages</rd:DefaultName>
-                          <Top>2.09722in</Top>
-                          <Left>0.9375in</Left>
+                          <Top>2.70833in</Top>
+                          <Left>1.6632in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>12</ZIndex>
@@ -449,8 +452,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Backing</rd:DefaultName>
-                          <Top>1.42708in</Top>
-                          <Left>6.625in</Left>
+                          <Top>2.05208in</Top>
+                          <Left>6.8403in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>13</ZIndex>
@@ -482,8 +485,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SCBarcode</rd:DefaultName>
-                          <Top>5.22222in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>5.8368in</Top>
+                          <Left>0.4514in</Left>
                           <Height>0.25in</Height>
                           <Width>3.96875in</Width>
                           <ZIndex>14</ZIndex>
@@ -514,8 +517,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ProdInOrder</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>6.76041in</Left>
+                          <Top>6.26042in</Top>
+                          <Left>6.97571in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>15</ZIndex>
@@ -544,8 +547,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>1.32985in</Left>
+                          <Top>6.26042in</Top>
+                          <Left>1.6632in</Left>
                           <Height>0.25in</Height>
                           <Width>1.375in</Width>
                           <ZIndex>16</ZIndex>
@@ -578,8 +581,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>6.26042in</Top>
+                          <Left>0.4514in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>17</ZIndex>
@@ -612,8 +615,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>5.30903in</Left>
+                          <Top>6.26042in</Top>
+                          <Left>5.52433in</Left>
                           <Height>0.25in</Height>
                           <Width>1.42361in</Width>
                           <ZIndex>18</ZIndex>
@@ -627,6 +630,185 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <Textbox Name="Textbox58">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>REMAKE TICKET</Value>
+                                  <Style>
+                                    <FontSize>22pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox43</rd:DefaultName>
+                          <Left>2.37154in</Left>
+                          <Height>0.36458in</Height>
+                          <Width>2.75694in</Width>
+                          <ZIndex>19</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Rectangle Name="Rectangle2">
+                          <ReportItems>
+                            <Textbox Name="RemakeDate">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=FormatDateTime(Fields!RemakeDate.Value,DateFormat.ShortDate)</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RemakeDate</rd:DefaultName>
+                              <Top>0.16319in</Top>
+                              <Left>1.65623in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1.82292in</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="RemakeTotal">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RemakeTotal.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RemakeTotal</rd:DefaultName>
+                              <Top>0.46875in</Top>
+                              <Left>1.65623in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox59">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Remake Date</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>0.16319in</Top>
+                              <Left>0.44443in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1.14236in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox60">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Remake Quantity</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>0.46875in</Top>
+                              <Left>0.21179in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1.375in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Top>3.34027in</Top>
+                          <Left>0.02085in</Left>
+                          <Height>0.92708in</Height>
+                          <Width>3.74999in</Width>
+                          <ZIndex>20</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Rectangle>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -635,6 +817,7 @@
                         </Border>
                       </Style>
                     </Rectangle>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -650,6 +833,9 @@
           <TablixMembers>
             <TablixMember>
               <Group Name="Details">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Invno.Value</GroupExpression>
+                </GroupExpressions>
                 <PageBreak>
                   <BreakLocation>Between</BreakLocation>
                 </PageBreak>
@@ -660,8 +846,8 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.12375in</Top>
         <Left>0.11333in</Left>
-        <Height>6.0625in</Height>
-        <Width>7.76041in</Width>
+        <Height>6.73959in</Height>
+        <Width>7.97571in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -669,17 +855,17 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.33208in</Height>
+    <Height>6.9675in</Height>
     <Style />
   </Body>
-  <Width>7.99875in</Width>
+  <Width>8.08904in</Width>
   <Page>
     <PageFooter>
-      <Height>0.53in</Height>
+      <Height>0.35291in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox73">
+        <Textbox Name="Textbox72">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -696,8 +882,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>0.125in</Top>
-          <Left>5.04625in</Left>
+          <Left>5.07166in</Left>
           <Height>0.17708in</Height>
           <Width>2.26042in</Width>
           <Style>
@@ -753,6 +938,10 @@
           <DataField>Invno</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="JobTicketPrinted">
+          <DataField>JobTicketPrinted</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
         <Field Name="OrderReceivedDate">
           <DataField>OrderReceivedDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -763,6 +952,14 @@
         </Field>
         <Field Name="ProdInOrder">
           <DataField>ProdInOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RemakeDate">
+          <DataField>RemakeDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RemakeTotal">
+          <DataField>RemakeTotal</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="RequestedShipDate">
@@ -784,8 +981,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BindingModels</rd:DataSetName>
-        <rd:TableName>JobTicketQuery</rd:TableName>
-        <rd:ObjectDataSourceType>BindingModels.JobTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>RemakeTicketQuery</rd:TableName>
+        <rd:ObjectDataSourceType>BindingModels.RemakeTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

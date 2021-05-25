@@ -161,6 +161,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReceiving.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsZazzle.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -605,6 +610,12 @@
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Zazzle\frmZaOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zazzle\frmZaOrders.Designer.cs">
+      <DependentUpon>frmZaOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -673,11 +684,23 @@
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="DataSets\dsZazzle.xsc">
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsZazzle.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZazzle.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsZazzle.xss">
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
     <None Include="Properties\DataSources\BindingModels.JobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -848,6 +871,9 @@
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Zazzle\frmZaOrders.resx">
+      <DependentUpon>frmZaOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
     </EmbeddedResource>
@@ -888,6 +914,7 @@
     <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
@@ -897,7 +924,7 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTkt.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />

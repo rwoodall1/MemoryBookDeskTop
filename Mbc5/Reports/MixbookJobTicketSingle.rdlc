@@ -671,7 +671,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="Print Date "+FormatDateTime(Now(),DateFormat.ShortDate)</Value>
+                  <Value>="Print Date "+Now()</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -681,9 +681,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Left>6.33208in</Left>
+          <Top>0.07812in</Top>
+          <Left>5.15042in</Left>
           <Height>0.17708in</Height>
-          <Width>1in</Width>
+          <Width>2.26042in</Width>
           <Style>
             <Border>
               <Style>None</Style>

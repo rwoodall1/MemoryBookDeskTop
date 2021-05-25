@@ -64,30 +64,7 @@ namespace Mbc5.Forms.MixBook
             this.Fill();
         }
 
-        public override void Fill()
-        {
-            pnlOrder.Enabled = false;
-            if (OrderId == 0)
-            {
-                dsmixBookOrders.MixBookOrder.Clear();
-                return;
-            }
-            try
-            {
-                this.statesTableAdapter.Fill(this.lookUp.states);
-                this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
-                int vIInvno = 0;
-                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
-                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
-                int.TryParse(vSInvno, out vIInvno);
-                this.Invno = vIInvno;
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error(ex.Message);
-                Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
-            }
-        }
+        
         private void SetConnectionString()
         {
             try
@@ -219,6 +196,32 @@ namespace Mbc5.Forms.MixBook
         }
 
         #endregion
+        #region "Methods"
+        public override void Fill()
+        {
+            pnlOrder.Enabled = false;
+            if (OrderId == 0)
+            {
+                dsmixBookOrders.MixBookOrder.Clear();
+                return;
+            }
+            try
+            {
+                this.statesTableAdapter.Fill(this.lookUp.states);
+                this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
+                int vIInvno = 0;
+                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
+                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                int.TryParse(vSInvno, out vIInvno);
+                this.Invno = vIInvno;
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message);
+                Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
+            }
+        }
+
         private void PrintJobTicket()
         {
             
@@ -243,7 +246,7 @@ namespace Mbc5.Forms.MixBook
                     reportViewer3.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
                 }
                 else
@@ -251,6 +254,86 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Hand("There were no records found to print.", "No Records");
                 }
             }
+        private void PrintPackingList(int vClientOrderId)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+                                ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
+                                FROM MixbookOrder MO
+                                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+                                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
+                                Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+                                Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
+            var result = sqlClient.SelectMany<MixbookPackingSlip>();
+            if (result.IsError || result.Data == null)
+            {
+                MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+                Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+            var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            reportViewer2.LocalReport.DataSources.Clear();
+            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            reportViewer2.RefreshReport();
+        }
+        private void PrintRemakeTicket(int vInvno)
+        {
+
+            var sqlClient = new SQLCustomClient().CommandText(@"
+                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
+                    From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
+                Where MO.Invno=@Invno
+            ");
+            sqlClient.AddParameter("@Invno", vInvno);
+            var result = sqlClient.Select<RemakeTicketQuery>();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
+                Log.Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+            if (result.Data == null)
+            {
+                MbcMessageBox.Error("There are no records availble to print.");
+                return;
+            }
+
+            var remakeData = (RemakeTicketQuery)result.Data;
+            reportViewer3.LocalReport.DataSources.Clear();
+            MixbookRemakeBindingSource.DataSource = remakeData;
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
+            reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
+            this.reportViewer3.RefreshReport();
+        }
+        private void SetJobTicketPrinted()
+        {
+
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
+           
+
+                var vInvno = this.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
+            
+        }
+        private void SetRemakeTicketPrinted()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
+           
+
+                var vInvno = this.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
+        
+        }
+        #endregion
+
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -351,60 +434,7 @@ namespace Mbc5.Forms.MixBook
             }
             PrintPackingList(vClientOrderId);
         }
-        private void PrintPackingList(int vClientOrderId)
-        {
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
-                                ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
-                                FROM MixbookOrder MO
-                                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-                                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-                                Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
-                                Where ClientOrderId=@ClientOrderId");
-            sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
-            var result = sqlClient.SelectMany<MixbookPackingSlip>();
-            if (result.IsError || result.Data == null)
-            {
-                MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-                Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-            var packingSlipData = (List<MixbookPackingSlip>)result.Data;
-            reportViewer2.LocalReport.DataSources.Clear();
-            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
-            reportViewer2.RefreshReport();
-        }
-        private void PrintRemakeTicket(int vInvno)
-        {
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,'Book'As Item
-                                    ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,WD.MxbLocation As Location,MO.RequestedShipDate
-                                    FROM MixbookOrder MO
-                                    Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-                                    Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
-                                    Where MO.Invno=@Invno
-                                    UNION
-                                    Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'SC*' AS BarCode,'Cover'As Item
-                                    ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,CD.MxbLocation AS Location,MO.RequestedShipDate
-                                    FROM MixbookOrder MO
-                                    Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-                                    Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-                                    Where MO.Invno=@Invno");
-            sqlClient.AddParameter("@Invno", vInvno);
-            var result = sqlClient.SelectMany<MixbookRemakeTicket>();
-            if (result.IsError || result.Data == null)
-            {
-                MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
-                Log.Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-
-            var packingSlipData = (List<MixbookRemakeTicket>)result.Data;
-            MixbookRemakeBindingSource.DataSource = packingSlipData;
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMixBookRemakeTkt", MixbookRemakeBindingSource));
-            reportViewer1.RefreshReport();
-        }
+       
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -577,7 +607,26 @@ namespace Mbc5.Forms.MixBook
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            reportViewer3.PrintDialog();
+            if (reportViewer3.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.MixbookJobTicketSingle.rdlc")
+            {
+                try
+                {
+
+                    if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                    {
+                        SetJobTicketPrinted();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+            else
+            {
+                //Remake Ticket
+                if (reportViewer3.PrintDialog() != DialogResult.Cancel)
+                {
+                    SetRemakeTicketPrinted();
+                }
+            }
         }
     }
 }

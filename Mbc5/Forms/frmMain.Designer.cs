@@ -118,6 +118,7 @@
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.printRemakeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
@@ -412,7 +413,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -426,7 +427,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -484,7 +485,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -513,23 +514,24 @@
             // 
             this.mixbookReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wipReportToolStripMenuItem,
-            this.printJobTicketToolStripMenuItem});
+            this.printJobTicketToolStripMenuItem,
+            this.printRemakeTicketsToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             // 
             // wipReportToolStripMenuItem
             // 
             this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
-            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wipReportToolStripMenuItem.Text = "Wip Report";
             this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
             // printJobTicketToolStripMenuItem
             // 
             this.printJobTicketToolStripMenuItem.Name = "printJobTicketToolStripMenuItem";
-            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.printJobTicketToolStripMenuItem.Text = "Print Job Ticket";
+            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printJobTicketToolStripMenuItem.Text = "Print Job Tickets";
             this.printJobTicketToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
@@ -899,6 +901,13 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
+            // printRemakeTicketsToolStripMenuItem
+            // 
+            this.printRemakeTicketsToolStripMenuItem.Name = "printRemakeTicketsToolStripMenuItem";
+            this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printRemakeTicketsToolStripMenuItem.Text = "Print Remake Tickets";
+            this.printRemakeTicketsToolStripMenuItem.Click += new System.EventHandler(this.printRemakeTicketsToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1013,5 +1022,6 @@
         private System.Windows.Forms.ToolStripMenuItem printJobTicketToolStripMenuItem;
         private System.Windows.Forms.BindingSource JobTicketQueryBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.ToolStripMenuItem printRemakeTicketsToolStripMenuItem;
     }
 }

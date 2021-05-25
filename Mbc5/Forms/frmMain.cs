@@ -621,7 +621,7 @@ namespace Mbc5.Forms
 
             return coverNum.ToString();
         }
-        public void PrintJobTicket()
+        public void PrintJobTickets()
         {
             string value = "";
             if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
@@ -638,7 +638,7 @@ namespace Mbc5.Forms
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
           
@@ -647,7 +647,7 @@ namespace Mbc5.Forms
                     reportViewer1.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbokJobTicketQuery.rdlc";
+                    reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
                     this.reportViewer1.RefreshReport();
                 }
                 else
@@ -660,15 +660,66 @@ namespace Mbc5.Forms
         }
         private void SetJobTicketsPrinted()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTickePrinted Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
             foreach(JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
                 
                 var vInvno = rec.Invno.ToString();
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
-                sqlClient.AddParameter("@SetJobTickePrinted",1);
+                sqlClient.AddParameter("@SetJobTicketPrinted",1);
                 var updateResult=sqlClient.Update();
+            }
+        }
+        
+        private void PrintRemakeTickets()
+        {
+         
+              var sqlClient = new SQLCustomClient().CommandText(@"
+                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
+                    From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
+                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
+            "); 
+
+           
+
+                var result = sqlClient.SelectMany<RemakeTicketQuery>();
+                if (result.IsError)
+                {
+                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                var jobData = (List<RemakeTicketQuery>)result.Data;
+                if (jobData != null)
+                {
+                    reportViewer1.LocalReport.DataSources.Clear();
+                    JobTicketQueryBindingSource.DataSource = jobData;
+                    reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketQuery.rdlc";
+                    this.reportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
+                }
+
+
+          
+        }
+        private void SetRemakeTicketsPrinted()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
+            foreach (RemakeTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
             }
         }
         #endregion
@@ -1786,7 +1837,7 @@ namespace Mbc5.Forms
 
         private void printJobTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintJobTicket();
+            PrintJobTickets();
         }
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
@@ -1801,7 +1852,20 @@ namespace Mbc5.Forms
                     }
                 } catch (Exception ex) { }
             }
+            else
+            {
+                //Remake Ticket
+                if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                {
+                    SetRemakeTicketsPrinted();
+                }
+            }
             
+        }
+
+        private void printRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintRemakeTickets();
         }
         #endregion
         //nothing below here
