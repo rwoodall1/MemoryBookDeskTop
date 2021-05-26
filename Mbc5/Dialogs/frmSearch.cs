@@ -32,14 +32,15 @@ namespace Mbc5.Dialogs {
         private int CurrentIndex { get; set; }
         private string SearchType { get; set; }
         private string ReturnForm { get; set; }
+        private List<ZazzleOrderIdSearch> ZazzleOrderIdList { get; set; }
         private List<MixBookOrderIdSearch> OrderIdList { get; set; }
-       private List<MixBookProdOrderIdSearch> ProdOrderIdList { get; set; }
+        private List<MixBookProdOrderIdSearch> ProdOrderIdList { get; set; }
         private List<MixBookOrderShipNameSearch> ShipNameList { get; set; }
         private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
-       private List<ProdutnSchnameSearch> ProdutnSchnameList { get; set; }
+        private List<ProdutnSchnameSearch> ProdutnSchnameList { get; set; }
         private List<OracleCodeSearch> OracleCodeList { get; set; }
         private List<ProdutnOracleCodeSearch> ProdutnOracleCodeList { get; set; }
         private List<ProdNoSearch> ProdutnNoList { get; set; }
@@ -1100,7 +1101,7 @@ namespace Mbc5.Dialogs {
                             cmdtext = @"SELECT 
                                               ClientOrderId
                                               ,ShipName 
-                                                                                                                               
+                                                                                                                              
                                           FROM MixBookOrder Group By ClientOrderId,ShipName Order By ClientOrderId";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderIdSearch>();
@@ -1117,6 +1118,27 @@ namespace Mbc5.Dialogs {
                             
                             txtSearch.Select();
                             break;
+                        case "ZAZZLE":
+                            cmdtext = @"SELECT 
+                                              OrderId,Name,Invno
+                                         FROM ZazzleOrder Order By OrderId";
+                            sqlclient.CommandText(cmdtext);
+                            var resultZazzle = sqlclient.SelectMany<ZazzleOrderIdSearch>();
+                            if (resultZazzle.IsError)
+                            {
+                                MbcMessageBox.Error(resultZazzle.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecsZaZ = (List<ZazzleOrderIdSearch>)resultZazzle.Data;
+                            this.ZazzleOrderIdList = lRetRecsZaZ;
+                            bsData.DataSource = this.ZazzleOrderIdList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
+
+
                         case "PRODUCTION":
                             cmdtext = @"SELECT 
                                               ClientOrderId
@@ -1610,7 +1632,29 @@ namespace Mbc5.Dialogs {
 
                         }
                     }
-                    
+                    else if (ReturnForm == "ZAZZLE")
+                    {
+                        try
+                        {
+
+                            vIndex = this.ZazzleOrderIdList.FindIndex(vcust => vcust.OrderId.ToString() != "0" && vcust.OrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+
                     break;
                 case "ITEMID":
                     try
@@ -1792,6 +1836,11 @@ namespace Mbc5.Dialogs {
                     {
                        
                       this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    }
+                    else if (SearchType == "ORDERID" && (ReturnForm == "ZAZZLE"))
+                    {
+
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     }
                     else if (SearchType == "ORDERID" && (ReturnForm == "PRODUCTION"))
                     {

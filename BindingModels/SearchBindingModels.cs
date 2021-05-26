@@ -274,6 +274,12 @@ namespace BindingModels
         public int Invno { get; set; }
 
     }
+    public class ZazzleOrderIdSearch
+    {
+        public int OrderId { get; set; }
+        public string Name { get; set; }
+        public int Invno { get; set; }
+    }
     public class MixBookProdOrderIdSearch
     {
         public int ClientOrderId { get; set; }

@@ -49,12 +49,13 @@
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label emailLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZaOrders));
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.mixBookOrderDataGridView = new System.Windows.Forms.DataGridView();
@@ -97,6 +98,23 @@
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.zazzleOrderTableAdapter = new Mbc5.DataSets.dsZazzleTableAdapters.ZazzleOrderTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsZazzleTableAdapters.TableAdapterManager();
+            this.zazzleOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mixBookOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -123,6 +141,8 @@
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingNavigator)).BeginInit();
+            this.zazzleOrderBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -341,14 +361,14 @@
             this.mixBookOrderDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -388,9 +408,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle2.Format = "Cover";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "Cover";
+            dataGridViewCellStyle4.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle4;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -426,9 +446,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = null;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource5.Name = "DataSet1";
+            reportDataSource5.Value = null;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -710,12 +730,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource2.Name = "dsMxPackingSlip";
-            reportDataSource2.Value = null;
-            reportDataSource3.Name = "dsMixBookRemakeTkt";
-            reportDataSource3.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource6.Name = "dsMxPackingSlip";
+            reportDataSource6.Value = null;
+            reportDataSource7.Name = "dsMixBookRemakeTkt";
+            reportDataSource7.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -755,9 +775,9 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 35;
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = null;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource8.Name = "DataSet1";
+            reportDataSource8.Value = null;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource8);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(9, 425);
             this.reportViewer3.Name = "reportViewer3";
@@ -777,10 +797,173 @@
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsZazzleTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.ZazzleOrderTableAdapter = this.zazzleOrderTableAdapter;
             // 
+            // zazzleOrderBindingNavigator
+            // 
+            this.zazzleOrderBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.zazzleOrderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.zazzleOrderBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.zazzleOrderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.mixBookOrderBindingNavigatorSaveItem,
+            this.toolStripButton3,
+            this.toolStripButton1,
+            this.itemIdToolStripBtn,
+            this.purgeStripButton2});
+            this.zazzleOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.zazzleOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.zazzleOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.zazzleOrderBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.zazzleOrderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.zazzleOrderBindingNavigator.Name = "zazzleOrderBindingNavigator";
+            this.zazzleOrderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.zazzleOrderBindingNavigator.Size = new System.Drawing.Size(1213, 25);
+            this.zazzleOrderBindingNavigator.TabIndex = 10025;
+            this.zazzleOrderBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Enabled = false;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Enabled = false;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mixBookOrderBindingNavigatorSaveItem
+            // 
+            this.mixBookOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("mixBookOrderBindingNavigatorSaveItem.Image")));
+            this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
+            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
+            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::Mbc5.Properties.Resources.iconfinder_order_59488;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(70, 22);
+            this.toolStripButton3.Text = "Order Id";
+            this.toolStripButton3.ToolTipText = "Order Id";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click_1);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 22);
+            this.toolStripButton1.Text = "Ship Name";
+            this.toolStripButton1.ToolTipText = "Name";
+            // 
+            // itemIdToolStripBtn
+            // 
+            this.itemIdToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("itemIdToolStripBtn.Image")));
+            this.itemIdToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.itemIdToolStripBtn.Name = "itemIdToolStripBtn";
+            this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
+            this.itemIdToolStripBtn.Text = "Item Id";
+            // 
+            // purgeStripButton2
+            // 
+            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
+            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.purgeStripButton2.Name = "purgeStripButton2";
+            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
+            this.purgeStripButton2.Text = "Purge";
+            // 
             // frmZaOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1213, 646);
+            this.Controls.Add(this.zazzleOrderBindingNavigator);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(this.cmdJobTicket);
             this.Controls.Add(bookStatusLabel);
@@ -798,7 +981,7 @@
             this.MaxNumForms = 2;
             this.MinimumSize = new System.Drawing.Size(1159, 630);
             this.Name = "frmZaOrders";
-            this.Text = "Mix Book Cust/Orders";
+            this.Text = "Zazzle Cust/Orders";
             this.Load += new System.EventHandler(this.MBOrders_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderDataGridView, 0);
@@ -815,6 +998,7 @@
             this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.cmdJobTicket, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
+            this.Controls.SetChildIndex(this.zazzleOrderBindingNavigator, 0);
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).EndInit();
@@ -822,6 +1006,9 @@
             this.pnlOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingNavigator)).EndInit();
+            this.zazzleOrderBindingNavigator.ResumeLayout(false);
+            this.zazzleOrderBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -871,5 +1058,22 @@
         private DataSets.dsZazzleTableAdapters.ZazzleOrderTableAdapter zazzleOrderTableAdapter;
         private DataSets.dsZazzleTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.BindingNavigator zazzleOrderBindingNavigator;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton mixBookOrderBindingNavigatorSaveItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
+        private System.Windows.Forms.ToolStripButton purgeStripButton2;
     }
 }

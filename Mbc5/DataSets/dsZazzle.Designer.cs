@@ -2283,16 +2283,24 @@ SELECT Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, 
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, 
                          PkType, PkDescription, PkUrl, TrackingNumber, Weight, Notes, OrderReceiveDate
-FROM            ZazzleOrder";
+FROM            ZazzleOrder
+WHERE        (OrderId = @OrderId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsZazzle.ZazzleOrderDataTable dataTable) {
+        public virtual int Fill(dsZazzle.ZazzleOrderDataTable dataTable, global::System.Nullable<int> OrderId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((OrderId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OrderId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2304,8 +2312,14 @@ FROM            ZazzleOrder";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsZazzle.ZazzleOrderDataTable GetData() {
+        public virtual dsZazzle.ZazzleOrderDataTable GetData(global::System.Nullable<int> OrderId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((OrderId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OrderId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             dsZazzle.ZazzleOrderDataTable dataTable = new dsZazzle.ZazzleOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

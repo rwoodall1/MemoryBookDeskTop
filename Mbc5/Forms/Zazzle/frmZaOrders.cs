@@ -49,23 +49,10 @@ namespace Mbc5.Forms.Zazzle
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Validate();
-                //this.mixBookOrderBindingSource.EndEdit();
 
-                //this.mixBookOrderTableAdapter.Update(dsmixBookOrders.MixBookOrder);
-                this.pnlOrder.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
-                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
-            }
-            this.Fill();
         }
 
-        
+
         private void SetConnectionString()
         {
             try
@@ -84,24 +71,24 @@ namespace Mbc5.Forms.Zazzle
         private void OrderIdSearch()
         {
             string vcurrentOrderId = "0";
-            if (mixBookOrderBindingSource.Current!=null)
+            if (zazzleOrderBindingSource.Current != null)
             {
                 try
                 {
-                    vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
+                    vcurrentOrderId = ((DataRowView)zazzleOrderBindingSource.Current).Row["OrderId"].ToString();
                 }
-                catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
+                catch (Exception ex) { Log.Error(ex, "OrderId not found. Zazzle OrderId Search"); }
             }
-            
 
-            frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
+
+            frmSearch frmSearch = new frmSearch("OrderId", "Zazzle", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
                 try
                 {
                     var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
-                    
+
                     if (string.IsNullOrEmpty(retOrderId))
                     {
                         BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
@@ -111,10 +98,10 @@ namespace Mbc5.Forms.Zazzle
                         int iOrderId = 0;
                         if (int.TryParse(retOrderId, out iOrderId))
                         {
-                           
-                           
+
+
                             this.OrderId = iOrderId;
-                            Fill();   
+                            Fill();
                         }
                         else
                         {
@@ -132,68 +119,68 @@ namespace Mbc5.Forms.Zazzle
         }
         private void ItemIdSearch()
         {
-            string vcurrentItemId = "";
-            if (mixBookOrderBindingSource.Current!=null) {
-                try
-                {
-                    if (mixBookOrderBindingSource.Current!=null) {
-                        vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
-                    }
-                }
-                catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
-            }
+        //    string vcurrentItemId = "";
+        //    if (mixBookOrderBindingSource.Current!=null) {
+        //        try
+        //        {
+        //            if (mixBookOrderBindingSource.Current!=null) {
+        //                vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+        //            }
+        //        }
+        //        catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
+        //    }
 
-            frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
-                if (string.IsNullOrEmpty(retOrderId))
-                {
-                    BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                else
-                {
-                    int iOrderId = 0;
-                    if (int.TryParse(retOrderId, out iOrderId))
-                    {
-                        this.OrderId = iOrderId;
-                        Fill();
-                    }
-                    else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
-                }
-            }
-        }
-        private void OrderNameSearch()
-        {
-            string vcurrentName = "";
-            try
-            {
-                if (mixBookOrderBindingSource.Current!=null) {
-                    vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
-            }
-            catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
+        //    frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+        //        if (string.IsNullOrEmpty(retOrderId))
+        //        {
+        //            BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
+        //        }
+        //        else
+        //        {
+        //            int iOrderId = 0;
+        //            if (int.TryParse(retOrderId, out iOrderId))
+        //            {
+        //                this.OrderId = iOrderId;
+        //                Fill();
+        //            }
+        //            else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+        //        }
+        //    }
+        //}
+        //private void OrderNameSearch()
+        //{
+        //    string vcurrentName = "";
+        //    try
+        //    {
+        //        if (mixBookOrderBindingSource.Current!=null) {
+        //            vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
+        //    }
+        //    catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
 
-            frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
-                if (string.IsNullOrEmpty(retOrderId))
-                {
-                    BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                else
-                {
-                    int iOrderId = 0;
-                    if (int.TryParse(retOrderId, out iOrderId))
-                    {
-                        this.OrderId = iOrderId;
-                        Fill();
-                    }
-                    else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
-                }
-            }
+        //    frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+        //        if (string.IsNullOrEmpty(retOrderId))
+        //        {
+        //            BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
+        //        }
+        //        else
+        //        {
+        //            int iOrderId = 0;
+        //            if (int.TryParse(retOrderId, out iOrderId))
+        //            {
+        //                this.OrderId = iOrderId;
+        //                Fill();
+        //            }
+        //            else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+        //        }
+        //    }
         }
 
         #endregion
@@ -203,16 +190,16 @@ namespace Mbc5.Forms.Zazzle
             pnlOrder.Enabled = false;
             if (OrderId == 0)
             {
-               // dsmixBookOrders.MixBookOrder.Clear();
+               dsZazzle.ZazzleOrder.Clear();
                 return;
             }
             try
             {
                 this.statesTableAdapter.Fill(this.lookUp.states);
-               // this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
+                // this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
                 int vIInvno = 0;
-              //  mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
-                //string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                zazzleOrderTableAdapter.Fill(dsZazzle.ZazzleOrder, OrderId);
+                string vSInvno = ((DataRowView)zazzleOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
             }
@@ -343,7 +330,7 @@ namespace Mbc5.Forms.Zazzle
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            OrderNameSearch();
+            //OrderNameSearch();
         }
 
         private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
@@ -628,6 +615,11 @@ namespace Mbc5.Forms.Zazzle
             //        SetRemakeTicketPrinted();
             //    }
             //}
+        }
+
+        private void toolStripButton3_Click_1(object sender, EventArgs e)
+        {
+            OrderIdSearch();
         }
     }
 }
