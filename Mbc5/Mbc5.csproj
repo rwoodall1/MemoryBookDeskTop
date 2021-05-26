@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mbc5</RootNamespace>
     <AssemblyName>Mbc5</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -695,12 +695,33 @@
     <None Include="DataSets\dsZazzle.xss">
       <DependentUpon>dsZazzle.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.BinderyLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
+    <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.FullMerInvoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InqCountModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InvoiceDetailBindingModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.JobTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianCoverTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MerInvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MerMultiInvoiceModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MInqCountModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
+    <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.SpecialCoverTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -1187,27 +1208,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
-    <None Include="Properties\DataSources\BindingModels.BinderyLabel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
-    <None Include="Properties\DataSources\BindingModels.FullMerInvoice.datasource" />
-    <None Include="Properties\DataSources\BindingModels.InqCountModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
-    <None Include="Properties\DataSources\BindingModels.InvoiceDetailBindingModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MeridianCoverTicket.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MeridianProdutnTicketModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MerInvoiceDetails.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MerMultiInvoiceModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.MInqCountModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
-    <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
-    <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
-    <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
-    <None Include="Properties\DataSources\BindingModels.SpecialCoverTicket.datasource" />
-    <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1245,7 +1245,7 @@
       <Name>BaseClass</Name>
     </ProjectReference>
     <ProjectReference Include="..\BindingModels\BindingModels.csproj">
-      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
+      <Project>{82386b52-2f69-40a0-93c8-02d9556291c4}</Project>
       <Name>BindingModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">

@@ -2,7 +2,6 @@
 // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 namespace BindingModels
 {
     /// <remarks/>
