@@ -347,6 +347,10 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
         {
+            if (mixBookOrderBindingSource.Count==0)
+            {
+                return;
+            }
             int vIInvno = 0;
             string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
             int.TryParse(vSInvno, out vIInvno);

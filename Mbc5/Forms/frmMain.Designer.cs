@@ -51,6 +51,8 @@
             this.mixbookBarscanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caseMatchScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zazzleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zazzleOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,8 +121,6 @@
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.zazzleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zazzleOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
@@ -168,7 +168,7 @@
             this.receivingSurveyCompensationToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             this.mBCToolStripMenuItem.Visible = false;
             // 
@@ -224,7 +224,7 @@
             this.receivingSurveyCompensationToolStripMenuItem1,
             this.msalesToolStripMenuItem});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             this.meridianToolStripMenuItem.Visible = false;
             // 
@@ -273,44 +273,59 @@
             this.caseMatchScanToolStripMenuItem,
             this.shippingScanToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
             this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
             // 
             // mixBookOrdersToolStripMenuItem
             // 
             this.mixBookOrdersToolStripMenuItem.Name = "mixBookOrdersToolStripMenuItem";
-            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.mixBookOrdersToolStripMenuItem.Text = "MixBook Orders";
             this.mixBookOrdersToolStripMenuItem.Click += new System.EventHandler(this.mixBookOrdersToolStripMenuItem_Click);
             // 
             // mixBookLoadTestToolStripMenuItem
             // 
             this.mixBookLoadTestToolStripMenuItem.Name = "mixBookLoadTestToolStripMenuItem";
-            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
             // 
             // mixbookBarscanToolStripMenuItem
             // 
             this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
             this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
             // 
             // caseMatchScanToolStripMenuItem
             // 
             this.caseMatchScanToolStripMenuItem.Name = "caseMatchScanToolStripMenuItem";
-            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.caseMatchScanToolStripMenuItem.Text = "Case Match Scan";
             this.caseMatchScanToolStripMenuItem.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem_Click);
             // 
             // shippingScanToolStripMenuItem
             // 
             this.shippingScanToolStripMenuItem.Name = "shippingScanToolStripMenuItem";
-            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.shippingScanToolStripMenuItem.Text = "Shipping Scan";
             this.shippingScanToolStripMenuItem.Click += new System.EventHandler(this.shippingScanToolStripMenuItem_Click);
+            // 
+            // zazzleToolStripMenuItem
+            // 
+            this.zazzleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zazzleOrdersToolStripMenuItem});
+            this.zazzleToolStripMenuItem.Name = "zazzleToolStripMenuItem";
+            this.zazzleToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.zazzleToolStripMenuItem.Text = "Zazzle";
+            // 
+            // zazzleOrdersToolStripMenuItem
+            // 
+            this.zazzleOrdersToolStripMenuItem.Name = "zazzleOrdersToolStripMenuItem";
+            this.zazzleOrdersToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.zazzleOrdersToolStripMenuItem.Text = "Zazzle Orders";
+            this.zazzleOrdersToolStripMenuItem.Click += new System.EventHandler(this.zazzleOrdersToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -319,7 +334,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -347,14 +362,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
@@ -894,8 +909,8 @@
             this.tsMxbClientOrderId.Image = global::Mbc5.Properties.Resources.iconfinder_order_59488;
             this.tsMxbClientOrderId.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsMxbClientOrderId.Name = "tsMxbClientOrderId";
-            this.tsMxbClientOrderId.Size = new System.Drawing.Size(126, 22);
-            this.tsMxbClientOrderId.Text = " MXBClientOrderId";
+            this.tsMxbClientOrderId.Size = new System.Drawing.Size(101, 22);
+            this.tsMxbClientOrderId.Text = " ClientOrderId";
             this.tsMxbClientOrderId.Visible = false;
             this.tsMxbClientOrderId.Click += new System.EventHandler(this.tsMxbClientOrderId_Click);
             // 
@@ -910,21 +925,6 @@
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
-            // zazzleToolStripMenuItem
-            // 
-            this.zazzleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zazzleOrdersToolStripMenuItem});
-            this.zazzleToolStripMenuItem.Name = "zazzleToolStripMenuItem";
-            this.zazzleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zazzleToolStripMenuItem.Text = "Zazzle";
-            // 
-            // zazzleOrdersToolStripMenuItem
-            // 
-            this.zazzleOrdersToolStripMenuItem.Name = "zazzleOrdersToolStripMenuItem";
-            this.zazzleOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zazzleOrdersToolStripMenuItem.Text = "Zazzle Orders";
-            this.zazzleOrdersToolStripMenuItem.Click += new System.EventHandler(this.zazzleOrdersToolStripMenuItem_Click);
             // 
             // frmMain
             // 

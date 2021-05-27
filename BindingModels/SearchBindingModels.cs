@@ -276,10 +276,11 @@ namespace BindingModels
     }
     public class ZazzleOrderIdSearch
     {
-        public int OrderId { get; set; }
+        public Int64 OrderId { get; set; }
         public string Name { get; set; }
         public int Invno { get; set; }
     }
+    
     public class MixBookProdOrderIdSearch
     {
         public int ClientOrderId { get; set; }
@@ -293,6 +294,11 @@ namespace BindingModels
         public int ClientOrderId { get; set; }
       
 
+    }
+    public class ZazzleOrderShipNameSearch
+    {
+        public string Name { get; set; }
+        public int OrderId { get; set; }
     }
     public class MixBookOrderItemIdSearch
     {

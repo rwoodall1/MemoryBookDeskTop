@@ -32,6 +32,7 @@ namespace Mbc5.Forms.Zazzle
         }
 
         public int OrderId { get; set; } = 0;
+        public Int64 OrderId64 { get; set; } = 0;
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
@@ -47,10 +48,7 @@ namespace Mbc5.Forms.Zazzle
             }
         }
 
-        private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
 
         private void SetConnectionString()
@@ -95,12 +93,12 @@ namespace Mbc5.Forms.Zazzle
                     }
                     else
                     {
-                        int iOrderId = 0;
-                        if (int.TryParse(retOrderId, out iOrderId))
+                        Int64 iOrderId = 0;
+                        if (Int64.TryParse(retOrderId, out iOrderId))
                         {
 
 
-                            this.OrderId = iOrderId;
+                            this.OrderId64 = iOrderId;
                             Fill();
                         }
                         else
@@ -150,7 +148,7 @@ namespace Mbc5.Forms.Zazzle
             //        }
             //    }
             }
-            private void OrderNameSearch() {
+         private void OrderNameSearch() {
 
             string vcurrentName = "";
             try
@@ -166,7 +164,7 @@ namespace Mbc5.Forms.Zazzle
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                var retOrderId = frmSearch.ReturnValue.OrderId; //values preserved after close
                 if (string.IsNullOrEmpty(retOrderId))
                 {
                     BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
@@ -189,7 +187,7 @@ namespace Mbc5.Forms.Zazzle
         public override void Fill()
         {
             pnlOrder.Enabled = false;
-            if (OrderId == 0)
+            if (OrderId64 == 0)
             {
                dsZazzle.ZazzleOrder.Clear();
                 return;
@@ -199,15 +197,16 @@ namespace Mbc5.Forms.Zazzle
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 // this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
                 int vIInvno = 0;
-                zazzleOrderTableAdapter.Fill(dsZazzle.ZazzleOrder, OrderId);
-                string vSInvno = ((DataRowView)zazzleOrderBindingSource.Current).Row["Invno"].ToString();
+                zazzleOrderTableAdapter.Fill(dsZazzle.ZazzleOrder, OrderId64);
+                zazzleOrderDetailTableAdapter.Fill(dsZazzle.ZazzleOrderDetail, OrderId64);
+                string vSInvno = ((DataRowView)zazzleOrderDetailBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
             }
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                Log.Error(ex, "Failed to fill zazzle orders data adapters,INVNO:" + Invno.ToString());
+                Log.Error(ex, "Failed to fill zazzle orders data adapters,Order Id:" + OrderId.ToString());
             }
         }
 
@@ -334,55 +333,57 @@ namespace Mbc5.Forms.Zazzle
            OrderNameSearch();
         }
 
-        private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
+        private void zazzleOrderBindingSource_PositionChanged(object sender, EventArgs e)
         {
-            //int vIInvno = 0;
-            //string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
-            //int.TryParse(vSInvno, out vIInvno);
-            //this.Invno = vIInvno;
+            if (zazzleOrderBindingSource.Count==0) { return; }
+            int vIInvno = 0;
+            string vSInvno = ((DataRowView)zazzleOrderBindingSource.Current).Row["Invno"].ToString();
+            int.TryParse(vSInvno, out vIInvno);
+            this.Invno = vIInvno;
         }
 
-        private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void zazzleOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
-            //    if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
-            //    {
-            //        try
-            //        { Process.Start(mixBookOrderDataGridView.CurrentCell.Value.ToString()); }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show("Url is invalid.");
-            //            Log.Error(ex, "Url is invalid.");
-            //        }
-            //    }
-            //if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
-            //{
+            if (zazzleOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || zazzleOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
+                if (zazzleOrderDataGridView.CurrentCell != null && zazzleOrderDataGridView.CurrentCell.Value != null)
+                {
+                    try
+                    { Process.Start(zazzleOrderDataGridView.CurrentCell.Value.ToString()); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Url is invalid.");
+                        Log.Error(ex, "Url is invalid.");
+                    }
+                }
+            if (zazzleOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
+            {
 
-            //}
+            }
 
         }
 
-        private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void zazzleOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //this.Cursor = Cursors.AppStarting;
-            //int vInvno = this.Invno;
-            //string vSchcode = "01";
-            //frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
-            //frmProdutn.MdiParent = this.MdiParent;
-            //frmProdutn.Show();
-            //this.Cursor = Cursors.Default;
+            this.Cursor = Cursors.AppStarting;
+            int vInvno = this.Invno;
+            string vSchcode = "02";
+            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
+            frmProdutn.MdiParent = this.MdiParent;
+            frmProdutn.Show();
+            this.Cursor = Cursors.Default;
         }
 
-        private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
+        private void zazzleOrderDataGridView_Enter(object sender, EventArgs e)
         {
-            //if (mixBookOrderDataGridView.CurrentRow!=null) {
-            //    try
-            //    {
-            //        var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
-            //        this.Invno = value;
-            //    }
-            //    catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
-            //}
+            if (zazzleOrderDataGridView.CurrentRow != null)
+            {
+                try
+                {
+                    var value = (int)zazzleOrderDataGridView.CurrentRow.Cells[1].Value;
+                    this.Invno = value;
+                }
+                catch (Exception ex) { Log.Error(ex, "ZazzleOrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
+            }
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
         {
@@ -394,55 +395,6 @@ namespace Mbc5.Forms.Zazzle
 
         }
 
-        private void shipMethodComboBox_DropDown(object sender, EventArgs e)
-        {
-            MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
-        }
-
-        private void mixBookOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 6)
-            {
-                e.Value = "Cover.pdf";
-            }
-            if (e.ColumnIndex == 7)
-            {
-                e.Value = "Book.pdf";
-            }
-        }
-
-        private void btnMixbookPkgList_Click(object sender, EventArgs e)
-        {
-           
-            //int vClientOrderId = 0;
-            //int.TryParse(orderIdLabel1.Text, out vClientOrderId);
-            //if (vClientOrderId == 0)
-            //{
-            //    MbcMessageBox.Error("Client Id is not in proper format");
-            //    return;
-            //}
-            //PrintPackingList(vClientOrderId);
-        }
-       
-        private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
-        {
-            //Cursor.Current = Cursors.WaitCursor;
-            //Application.DoEvents();
-            //PrinterSettings printerName = new PrinterSettings();
-            //string printer = printerName.PrinterName;
-            //DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-
-            //var result = dp.Export(reportViewer2.LocalReport, printer, 1, false);
-
-            //if (result.IsError)
-            //{
-            //    var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
-            //}
-
-            //Cursor.Current = Cursors.Default;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (pnlOrder.Enabled == true)
@@ -452,7 +404,43 @@ namespace Mbc5.Forms.Zazzle
             else { pnlOrder.Enabled = true; }
 
         }
+        private void btnHold_Click(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrEmpty(invnoLabel1.Text)|| string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
+            //{
+            //    return;
+            //}
+            //var sqlClient = new SQLCustomClient();
+            //string status = "";
+            //if (mixbookOrderStatusLabel2.Text=="Hold")
+            //{
+            //    sqlClient.AddParameter("@OrderStatus","In Process");
+            //    status = "In Process";
+            //}
+            //else if(mixbookOrderStatusLabel2.Text == "In Process")
+            //{
+            //    sqlClient.AddParameter("@OrderStatus", "Hold");
+            //    status = "Hold";
 
+            //}
+            //else
+            //{
+            //    MbcMessageBox.Information("Status can not be changed if Cancelled or Shipped.");
+            //    return;
+            //}
+
+            //sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where Invno=@Invno");
+            //sqlClient.AddParameter("@Invno", invnoLabel1.Text);
+            //     var result = sqlClient.Update();
+            //if (result.IsError)
+            //{
+            //    MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
+            //    Log.Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
+            //    return;
+            //}
+            //MbcMessageBox.Exclamation("Status has been changed to " +status);
+            //Fill();
+        }
         private void btnDownloadFiles_Click(object sender, EventArgs e)
         {
             //if (!string.IsNullOrEmpty(orderIdLabel1.Text))
@@ -502,96 +490,60 @@ namespace Mbc5.Forms.Zazzle
 
         private void purgeStripButton2_Click(object sender, EventArgs e)
         {
-            //if (orderIdLabel1.Text == "") { return; }
+            if (orderIdLabel1.Text == "") { return; }
 
-            //var dialogResult = MessageBox.Show("This will remove all traces of this record from the system, are you sure you want to do this?", "Purge", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-            //if (dialogResult == DialogResult.Yes)
-            //{
+            var dialogResult = MessageBox.Show("This will remove all traces of this record from the system, are you sure you want to do this?", "Purge", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            if (dialogResult == DialogResult.Yes)
+            {
 
-            //    var sqlClient = new SQLCustomClient();
-            //    sqlClient.CommandText(@"Delete From MixbookOrder Where ClientOrderId=@ClientOrderId");
-            //    sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
-            //    var deleteResult = sqlClient.Delete();
-            //    if (deleteResult.IsError)
-            //    {
-            //        MbcMessageBox.Error("Failed to purge order");
-            //        Log.Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
-            //        return;
-            //    }
-            //    sqlClient.ClearParameters();
-            //    sqlClient.CommandText("Delete From Produtn Where MxbClientOrderId=@ClientOrderId");
-            //    sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
-            //    var deleteResult1 = sqlClient.Delete();
-            //    if (deleteResult1.IsError)
-            //    {
-            //        MbcMessageBox.Error("Failed to purge Production record.");
-            //        return;
-            //    }
-            //    sqlClient.ClearParameters();
-            //    sqlClient.CommandText("Delete From WipDetail Where Invno=@Invno");
-            //    sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
-            //    var deleteResult11 = sqlClient.Delete();
-            //    if (deleteResult11.IsError)
-            //    {
-            //        MbcMessageBox.Error("Failed to purge Wip records.");
-            //        return;
-            //    }
-            //    sqlClient.ClearParameters();
-            //    sqlClient.CommandText("Delete From CoverDetail Where Invno=@Invno");
-            //    sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
-            //    var deleteResult111 = sqlClient.Delete();
-            //    if (deleteResult111.IsError)
-            //    {
-            //        MbcMessageBox.Error("Failed to purge cover records.");
-            //        return;
-            //    }
-            //    MbcMessageBox.Information("Order has been purged");
-            //    this.OrderId = 0;
-            //    Fill();
-            //}
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"Delete From ZazzleOrder Where OrderId=@OrderId");
+                sqlClient.AddParameter("@OrderId", orderIdLabel1.Text);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge order");
+                    Log.Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                //sqlClient.ClearParameters();
+                //sqlClient.CommandText("Delete From Produtn Where MxbClientOrderId=@ClientOrderId");
+                //sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+                //var deleteResult1 = sqlClient.Delete();
+                //if (deleteResult1.IsError)
+                //{
+                //    MbcMessageBox.Error("Failed to purge Production record.");
+                //    return;
+                //}
+                //sqlClient.ClearParameters();
+                //sqlClient.CommandText("Delete From WipDetail Where Invno=@Invno");
+                //sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
+                //var deleteResult11 = sqlClient.Delete();
+                //if (deleteResult11.IsError)
+                //{
+                //    MbcMessageBox.Error("Failed to purge Wip records.");
+                //    return;
+                //}
+                //sqlClient.ClearParameters();
+                //sqlClient.CommandText("Delete From CoverDetail Where Invno=@Invno");
+                //sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
+                //var deleteResult111 = sqlClient.Delete();
+                //if (deleteResult111.IsError)
+                //{
+                //    MbcMessageBox.Error("Failed to purge cover records.");
+                //    return;
+                //}
+                MbcMessageBox.Information("Order has been purged");
+                this.OrderId = 0;
+                Fill();
+            }
         }
 
-        private void btnHold_Click(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrEmpty(invnoLabel1.Text)|| string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
-            //{
-            //    return;
-            //}
-            //var sqlClient = new SQLCustomClient();
-            //string status = "";
-            //if (mixbookOrderStatusLabel2.Text=="Hold")
-            //{
-            //    sqlClient.AddParameter("@OrderStatus","In Process");
-            //    status = "In Process";
-            //}
-            //else if(mixbookOrderStatusLabel2.Text == "In Process")
-            //{
-            //    sqlClient.AddParameter("@OrderStatus", "Hold");
-            //    status = "Hold";
-
-            //}
-            //else
-            //{
-            //    MbcMessageBox.Information("Status can not be changed if Cancelled or Shipped.");
-            //    return;
-            //}
-         
-            //sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where Invno=@Invno");
-            //sqlClient.AddParameter("@Invno", invnoLabel1.Text);
-            //     var result = sqlClient.Update();
-            //if (result.IsError)
-            //{
-            //    MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
-            //    Log.Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
-            //    return;
-            //}
-            //MbcMessageBox.Exclamation("Status has been changed to " +status);
-            //Fill();
-        }
+        
 
         private void cmdJobTicket_Click(object sender, EventArgs e)
         {
-            PrintJobTicket();
+            //PrintJobTicket();
         }
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
@@ -617,8 +569,68 @@ namespace Mbc5.Forms.Zazzle
             //    }
             //}
         }
+        private void mixBookOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //    if (e.ColumnIndex == 6)
+            //    {
+            //        e.Value = "Cover.pdf";
+            //    }
+            //    if (e.ColumnIndex == 7)
+            //    {
+            //        e.Value = "Book.pdf";
+            //    }
+        }
 
-       
-       
+        private void btnMixbookPkgList_Click(object sender, EventArgs e)
+        {
+
+            //int vClientOrderId = 0;
+            //int.TryParse(orderIdLabel1.Text, out vClientOrderId);
+            //if (vClientOrderId == 0)
+            //{
+            //    MbcMessageBox.Error("Client Id is not in proper format");
+            //    return;
+            //}
+            //PrintPackingList(vClientOrderId);
+        }
+
+        private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            //Cursor.Current = Cursors.WaitCursor;
+            //Application.DoEvents();
+            //PrinterSettings printerName = new PrinterSettings();
+            //string printer = printerName.PrinterName;
+            //DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            //var result = dp.Export(reportViewer2.LocalReport, printer, 1, false);
+
+            //if (result.IsError)
+            //{
+            //    var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
+            //}
+
+            //Cursor.Current = Cursors.Default;
+        }
+
+        private void zazzleOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.zazzleOrderBindingSource.EndEdit();
+
+                this.zazzleOrderTableAdapter.Update(dsZazzle.ZazzleOrder);
+                this.pnlOrder.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
+                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
+            }
+            this.Fill();
+        }
+
+      
     }
 }

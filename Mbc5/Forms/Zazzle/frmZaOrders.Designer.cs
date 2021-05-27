@@ -45,12 +45,9 @@
             System.Windows.Forms.Label shipAddr2Label;
             System.Windows.Forms.Label shipAddrLabel;
             System.Windows.Forms.Label shipNameLabel;
-            System.Windows.Forms.Label coverStatusLabel;
-            System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -58,18 +55,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZaOrders));
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
-            this.mixBookOrderDataGridView = new System.Windows.Forms.DataGridView();
+            this.zazzleOrderDataGridView = new System.Windows.Forms.DataGridView();
             this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.invnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attributesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numPerPackDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reprintInstructionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zazzleOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsZazzle = new Mbc5.DataSets.dsZazzle();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.invnoLabel3 = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.zazzleOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsZazzle = new Mbc5.DataSets.dsZazzle();
             this.btnHold = new System.Windows.Forms.Button();
             this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
             this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
@@ -77,7 +85,6 @@
             this.lblDateShipped = new System.Windows.Forms.Label();
             this.weightTextBox = new System.Windows.Forms.TextBox();
             this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
-            this.invnoLabel1 = new System.Windows.Forms.Label();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.shipZipTextBox = new System.Windows.Forms.TextBox();
             this.shipCityTextBox = new System.Windows.Forms.TextBox();
@@ -92,8 +99,6 @@
             this.btnDownloadFiles = new System.Windows.Forms.Button();
             this.btnRemake = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.coverStatusLabel1 = new System.Windows.Forms.Label();
-            this.bookStatusLabel1 = new System.Windows.Forms.Label();
             this.cmdJobTicket = new System.Windows.Forms.Button();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.zazzleOrderTableAdapter = new Mbc5.DataSets.dsZazzleTableAdapters.ZazzleOrderTableAdapter();
@@ -115,6 +120,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.zazzleOrderDetailTableAdapter = new Mbc5.DataSets.dsZazzleTableAdapters.ZazzleOrderDetailTableAdapter();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -131,16 +137,15 @@
             shipAddr2Label = new System.Windows.Forms.Label();
             shipAddrLabel = new System.Windows.Forms.Label();
             shipNameLabel = new System.Windows.Forms.Label();
-            coverStatusLabel = new System.Windows.Forms.Label();
-            bookStatusLabel = new System.Windows.Forms.Label();
             requestedShipMethodLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).BeginInit();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingNavigator)).BeginInit();
             this.zazzleOrderBindingNavigator.SuspendLayout();
             this.SuspendLayout();
@@ -154,7 +159,7 @@
             // 
             notesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             notesLabel.AutoSize = true;
-            notesLabel.Location = new System.Drawing.Point(487, 192);
+            notesLabel.Location = new System.Drawing.Point(525, 192);
             notesLabel.Name = "notesLabel";
             notesLabel.Size = new System.Drawing.Size(38, 13);
             notesLabel.TabIndex = 332;
@@ -164,7 +169,7 @@
             // 
             weightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             weightLabel.AutoSize = true;
-            weightLabel.Location = new System.Drawing.Point(484, 165);
+            weightLabel.Location = new System.Drawing.Point(522, 165);
             weightLabel.Name = "weightLabel";
             weightLabel.Size = new System.Drawing.Size(41, 13);
             weightLabel.TabIndex = 329;
@@ -174,7 +179,7 @@
             // 
             trackingNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             trackingNumberLabel.AutoSize = true;
-            trackingNumberLabel.Location = new System.Drawing.Point(436, 115);
+            trackingNumberLabel.Location = new System.Drawing.Point(474, 115);
             trackingNumberLabel.Name = "trackingNumberLabel";
             trackingNumberLabel.Size = new System.Drawing.Size(89, 13);
             trackingNumberLabel.TabIndex = 327;
@@ -184,7 +189,7 @@
             // 
             invnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             invnoLabel.AutoSize = true;
-            invnoLabel.Location = new System.Drawing.Point(843, 70);
+            invnoLabel.Location = new System.Drawing.Point(881, 70);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(62, 13);
             invnoLabel.TabIndex = 323;
@@ -194,7 +199,7 @@
             // 
             shipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shipMethodLabel.AutoSize = true;
-            shipMethodLabel.Location = new System.Drawing.Point(458, 62);
+            shipMethodLabel.Location = new System.Drawing.Point(496, 62);
             shipMethodLabel.Name = "shipMethodLabel";
             shipMethodLabel.Size = new System.Drawing.Size(67, 13);
             shipMethodLabel.TabIndex = 315;
@@ -204,7 +209,7 @@
             // 
             dateShippedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             dateShippedLabel.AutoSize = true;
-            dateShippedLabel.Location = new System.Drawing.Point(453, 44);
+            dateShippedLabel.Location = new System.Drawing.Point(491, 44);
             dateShippedLabel.Name = "dateShippedLabel";
             dateShippedLabel.Size = new System.Drawing.Size(72, 13);
             dateShippedLabel.TabIndex = 314;
@@ -214,7 +219,7 @@
             // 
             shipDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shipDateLabel.AutoSize = true;
-            shipDateLabel.Location = new System.Drawing.Point(416, 18);
+            shipDateLabel.Location = new System.Drawing.Point(454, 18);
             shipDateLabel.Name = "shipDateLabel";
             shipDateLabel.Size = new System.Drawing.Size(109, 13);
             shipDateLabel.TabIndex = 313;
@@ -224,7 +229,7 @@
             // 
             receiveDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             receiveDateLabel.AutoSize = true;
-            receiveDateLabel.Location = new System.Drawing.Point(832, 44);
+            receiveDateLabel.Location = new System.Drawing.Point(870, 44);
             receiveDateLabel.Name = "receiveDateLabel";
             receiveDateLabel.Size = new System.Drawing.Size(73, 13);
             receiveDateLabel.TabIndex = 310;
@@ -234,7 +239,7 @@
             // 
             orderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             orderIdLabel.AutoSize = true;
-            orderIdLabel.Location = new System.Drawing.Point(813, 18);
+            orderIdLabel.Location = new System.Drawing.Point(851, 18);
             orderIdLabel.Name = "orderIdLabel";
             orderIdLabel.Size = new System.Drawing.Size(92, 13);
             orderIdLabel.TabIndex = 308;
@@ -303,32 +308,11 @@
             shipNameLabel.TabIndex = 300;
             shipNameLabel.Text = "Shipping Name";
             // 
-            // coverStatusLabel
-            // 
-            coverStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            coverStatusLabel.AutoSize = true;
-            coverStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverStatusLabel.Location = new System.Drawing.Point(95, 617);
-            coverStatusLabel.Name = "coverStatusLabel";
-            coverStatusLabel.Size = new System.Drawing.Size(84, 13);
-            coverStatusLabel.TabIndex = 10020;
-            coverStatusLabel.Text = "Cover Status:";
-            // 
-            // bookStatusLabel
-            // 
-            bookStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            bookStatusLabel.AutoSize = true;
-            bookStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bookStatusLabel.Location = new System.Drawing.Point(709, 617);
-            bookStatusLabel.Name = "bookStatusLabel";
-            bookStatusLabel.Size = new System.Drawing.Size(80, 13);
-            bookStatusLabel.TabIndex = 10021;
-            bookStatusLabel.Text = "Book Status:";
-            // 
             // requestedShipMethodLabel
             // 
+            requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             requestedShipMethodLabel.AutoSize = true;
-            requestedShipMethodLabel.Location = new System.Drawing.Point(398, 86);
+            requestedShipMethodLabel.Location = new System.Drawing.Point(436, 86);
             requestedShipMethodLabel.Name = "requestedShipMethodLabel";
             requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
             requestedShipMethodLabel.TabIndex = 334;
@@ -353,14 +337,15 @@
             this.lookUp.DataSetName = "LookUp";
             this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // mixBookOrderDataGridView
+            // zazzleOrderDataGridView
             // 
-            this.mixBookOrderDataGridView.AllowUserToAddRows = false;
-            this.mixBookOrderDataGridView.AllowUserToDeleteRows = false;
-            this.mixBookOrderDataGridView.AllowUserToOrderColumns = true;
-            this.mixBookOrderDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zazzleOrderDataGridView.AllowUserToAddRows = false;
+            this.zazzleOrderDataGridView.AllowUserToDeleteRows = false;
+            this.zazzleOrderDataGridView.AllowUserToOrderColumns = true;
+            this.zazzleOrderDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.zazzleOrderDataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,24 +353,34 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.zazzleOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.zazzleOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.zazzleOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
-            this.ItemId,
-            this.CoverUrl,
-            this.BookUrl});
-            this.mixBookOrderDataGridView.EnableHeadersVisualStyles = false;
-            this.mixBookOrderDataGridView.Location = new System.Drawing.Point(85, 337);
-            this.mixBookOrderDataGridView.Name = "mixBookOrderDataGridView";
-            this.mixBookOrderDataGridView.ReadOnly = true;
-            this.mixBookOrderDataGridView.RowHeadersWidth = 20;
-            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1074, 275);
-            this.mixBookOrderDataGridView.TabIndex = 131;
-            this.mixBookOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentClick);
-            this.mixBookOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentDoubleClick);
-            this.mixBookOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.mixBookOrderDataGridView_CellFormatting);
-            this.mixBookOrderDataGridView.Enter += new System.EventHandler(this.mixBookOrderDataGridView_Enter);
+            this.invnoDataGridViewTextBoxColumn,
+            this.orderIdDataGridViewTextBoxColumn,
+            this.itemIdDataGridViewTextBoxColumn,
+            this.itemTypeDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.attributesDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.numPerPackDataGridViewTextBoxColumn,
+            this.reprintInstructionsDataGridViewTextBoxColumn,
+            this.productsDataGridViewTextBoxColumn,
+            this.productIdDataGridViewTextBoxColumn});
+            this.zazzleOrderDataGridView.DataSource = this.zazzleOrderDetailBindingSource;
+            this.zazzleOrderDataGridView.EnableHeadersVisualStyles = false;
+            this.zazzleOrderDataGridView.Location = new System.Drawing.Point(85, 337);
+            this.zazzleOrderDataGridView.Name = "zazzleOrderDataGridView";
+            this.zazzleOrderDataGridView.ReadOnly = true;
+            this.zazzleOrderDataGridView.RowHeadersWidth = 20;
+            this.zazzleOrderDataGridView.Size = new System.Drawing.Size(1112, 275);
+            this.zazzleOrderDataGridView.TabIndex = 131;
+            this.zazzleOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zazzleOrderDataGridView_CellContentClick);
+            this.zazzleOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zazzleOrderDataGridView_CellContentDoubleClick);
+            this.zazzleOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.mixBookOrderDataGridView_CellFormatting);
+            this.zazzleOrderDataGridView.Enter += new System.EventHandler(this.zazzleOrderDataGridView_Enter);
             // 
             // prodticket
             // 
@@ -398,35 +393,109 @@
             this.prodticket.Visible = false;
             this.prodticket.Width = 75;
             // 
-            // ItemId
+            // invnoDataGridViewTextBoxColumn
             // 
-            this.ItemId.DataPropertyName = "ItemId";
-            this.ItemId.HeaderText = "Item Id";
-            this.ItemId.Name = "ItemId";
-            this.ItemId.ReadOnly = true;
+            this.invnoDataGridViewTextBoxColumn.DataPropertyName = "Invno";
+            this.invnoDataGridViewTextBoxColumn.HeaderText = "Invno";
+            this.invnoDataGridViewTextBoxColumn.Name = "invnoDataGridViewTextBoxColumn";
+            this.invnoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.invnoDataGridViewTextBoxColumn.Width = 75;
             // 
-            // CoverUrl
+            // orderIdDataGridViewTextBoxColumn
             // 
-            this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle2.Format = "Cover";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CoverUrl.HeaderText = "Cover Url";
-            this.CoverUrl.Name = "CoverUrl";
-            this.CoverUrl.ReadOnly = true;
-            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CoverUrl.Text = "";
+            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+            this.orderIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.orderIdDataGridViewTextBoxColumn.Width = 80;
             // 
-            // BookUrl
+            // itemIdDataGridViewTextBoxColumn
             // 
-            this.BookUrl.DataPropertyName = "BookPreviewUrl";
-            this.BookUrl.HeaderText = "Book Url";
-            this.BookUrl.Name = "BookUrl";
-            this.BookUrl.ReadOnly = true;
-            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BookUrl.Text = "";
+            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
+            this.itemIdDataGridViewTextBoxColumn.HeaderText = "ItemId";
+            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
+            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemIdDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // itemTypeDataGridViewTextBoxColumn
+            // 
+            this.itemTypeDataGridViewTextBoxColumn.DataPropertyName = "ItemType";
+            this.itemTypeDataGridViewTextBoxColumn.HeaderText = "ItemType";
+            this.itemTypeDataGridViewTextBoxColumn.Name = "itemTypeDataGridViewTextBoxColumn";
+            this.itemTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // attributesDataGridViewTextBoxColumn
+            // 
+            this.attributesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.attributesDataGridViewTextBoxColumn.DataPropertyName = "Attributes";
+            this.attributesDataGridViewTextBoxColumn.HeaderText = "Attributes";
+            this.attributesDataGridViewTextBoxColumn.Name = "attributesDataGridViewTextBoxColumn";
+            this.attributesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numPerPackDataGridViewTextBoxColumn
+            // 
+            this.numPerPackDataGridViewTextBoxColumn.DataPropertyName = "NumPerPack";
+            this.numPerPackDataGridViewTextBoxColumn.HeaderText = "NumPerPack";
+            this.numPerPackDataGridViewTextBoxColumn.Name = "numPerPackDataGridViewTextBoxColumn";
+            this.numPerPackDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numPerPackDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // reprintInstructionsDataGridViewTextBoxColumn
+            // 
+            this.reprintInstructionsDataGridViewTextBoxColumn.DataPropertyName = "ReprintInstructions";
+            this.reprintInstructionsDataGridViewTextBoxColumn.HeaderText = "ReprintInstructions";
+            this.reprintInstructionsDataGridViewTextBoxColumn.Name = "reprintInstructionsDataGridViewTextBoxColumn";
+            this.reprintInstructionsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.reprintInstructionsDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // productsDataGridViewTextBoxColumn
+            // 
+            this.productsDataGridViewTextBoxColumn.DataPropertyName = "Products";
+            this.productsDataGridViewTextBoxColumn.HeaderText = "Products";
+            this.productsDataGridViewTextBoxColumn.Name = "productsDataGridViewTextBoxColumn";
+            this.productsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productsDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // productIdDataGridViewTextBoxColumn
+            // 
+            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
+            this.productIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // zazzleOrderDetailBindingSource
+            // 
+            this.zazzleOrderDetailBindingSource.DataMember = "ZazzleOrderDetail";
+            this.zazzleOrderDetailBindingSource.DataSource = this.dsZazzle;
+            // 
+            // dsZazzle
+            // 
+            this.dsZazzle.DataSetName = "dsZazzle";
+            this.dsZazzle.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // statesTableAdapter
             // 
@@ -463,6 +532,7 @@
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.invnoLabel3);
             this.pnlOrder.Controls.Add(emailLabel);
             this.pnlOrder.Controls.Add(this.emailTextBox);
             this.pnlOrder.Controls.Add(this.btnHold);
@@ -477,7 +547,6 @@
             this.pnlOrder.Controls.Add(trackingNumberLabel);
             this.pnlOrder.Controls.Add(this.trackingNumberTextBox);
             this.pnlOrder.Controls.Add(invnoLabel);
-            this.pnlOrder.Controls.Add(this.invnoLabel1);
             this.pnlOrder.Controls.Add(this.phoneNumberTextBox);
             this.pnlOrder.Controls.Add(this.shipZipTextBox);
             this.pnlOrder.Controls.Add(this.shipCityTextBox);
@@ -503,8 +572,16 @@
             this.pnlOrder.Enabled = false;
             this.pnlOrder.Location = new System.Drawing.Point(52, 28);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(1139, 267);
+            this.pnlOrder.Size = new System.Drawing.Size(1177, 267);
             this.pnlOrder.TabIndex = 10016;
+            // 
+            // invnoLabel3
+            // 
+            this.invnoLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderDetailBindingSource, "Invno", true));
+            this.invnoLabel3.Location = new System.Drawing.Point(953, 70);
+            this.invnoLabel3.Name = "invnoLabel3";
+            this.invnoLabel3.Size = new System.Drawing.Size(100, 18);
+            this.invnoLabel3.TabIndex = 338;
             // 
             // emailTextBox
             // 
@@ -518,16 +595,13 @@
             // 
             this.zazzleOrderBindingSource.DataMember = "ZazzleOrder";
             this.zazzleOrderBindingSource.DataSource = this.dsZazzle;
-            // 
-            // dsZazzle
-            // 
-            this.dsZazzle.DataSetName = "dsZazzle";
-            this.dsZazzle.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.zazzleOrderBindingSource.PositionChanged += new System.EventHandler(this.zazzleOrderBindingSource_PositionChanged);
             // 
             // btnHold
             // 
+            this.btnHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHold.Location = new System.Drawing.Point(813, 117);
+            this.btnHold.Location = new System.Drawing.Point(851, 117);
             this.btnHold.Name = "btnHold";
             this.btnHold.Size = new System.Drawing.Size(92, 23);
             this.btnHold.TabIndex = 336;
@@ -537,8 +611,9 @@
             // 
             // requestedShipMethodLabel1
             // 
+            this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "DeliveryMethod", true));
-            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(533, 86);
+            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(569, 86);
             this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
             this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
             this.requestedShipMethodLabel1.TabIndex = 335;
@@ -556,7 +631,7 @@
             // 
             this.notesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "Notes", true));
-            this.notesTextBox.Location = new System.Drawing.Point(531, 189);
+            this.notesTextBox.Location = new System.Drawing.Point(569, 189);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
             this.notesTextBox.Size = new System.Drawing.Size(334, 49);
@@ -565,7 +640,7 @@
             // lblDateShipped
             // 
             this.lblDateShipped.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDateShipped.Location = new System.Drawing.Point(531, 45);
+            this.lblDateShipped.Location = new System.Drawing.Point(569, 45);
             this.lblDateShipped.Name = "lblDateShipped";
             this.lblDateShipped.Size = new System.Drawing.Size(192, 15);
             this.lblDateShipped.TabIndex = 331;
@@ -574,7 +649,7 @@
             // 
             this.weightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "Notes", true));
-            this.weightTextBox.Location = new System.Drawing.Point(531, 165);
+            this.weightTextBox.Location = new System.Drawing.Point(569, 165);
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(100, 20);
             this.weightTextBox.TabIndex = 330;
@@ -583,22 +658,13 @@
             // 
             this.trackingNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "TrackingNumber", true));
-            this.trackingNumberTextBox.Location = new System.Drawing.Point(531, 115);
+            this.trackingNumberTextBox.Location = new System.Drawing.Point(569, 115);
             this.trackingNumberTextBox.MaxLength = 500000;
             this.trackingNumberTextBox.Multiline = true;
             this.trackingNumberTextBox.Name = "trackingNumberTextBox";
             this.trackingNumberTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.trackingNumberTextBox.Size = new System.Drawing.Size(247, 44);
             this.trackingNumberTextBox.TabIndex = 328;
-            // 
-            // invnoLabel1
-            // 
-            this.invnoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "Invno", true));
-            this.invnoLabel1.Location = new System.Drawing.Point(915, 70);
-            this.invnoLabel1.Name = "invnoLabel1";
-            this.invnoLabel1.Size = new System.Drawing.Size(100, 18);
-            this.invnoLabel1.TabIndex = 324;
             // 
             // phoneNumberTextBox
             // 
@@ -645,7 +711,7 @@
             this.shipMethodComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.shipMethodComboBox.DisplayMember = "ShipAlias";
             this.shipMethodComboBox.FormattingEnabled = true;
-            this.shipMethodComboBox.Location = new System.Drawing.Point(531, 62);
+            this.shipMethodComboBox.Location = new System.Drawing.Point(569, 62);
             this.shipMethodComboBox.Name = "shipMethodComboBox";
             this.shipMethodComboBox.Size = new System.Drawing.Size(227, 21);
             this.shipMethodComboBox.TabIndex = 316;
@@ -657,7 +723,7 @@
             this.schoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.zazzleOrderBindingSource, "ShipDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.schoutDateBox.Date = null;
             this.schoutDateBox.DateValue = null;
-            this.schoutDateBox.Location = new System.Drawing.Point(531, 18);
+            this.schoutDateBox.Location = new System.Drawing.Point(569, 18);
             this.schoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.schoutDateBox.Name = "schoutDateBox";
             this.schoutDateBox.Size = new System.Drawing.Size(192, 20);
@@ -667,7 +733,7 @@
             // 
             this.receiveDateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.receiveDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "OrderReceiveDate", true));
-            this.receiveDateLabel1.Location = new System.Drawing.Point(915, 44);
+            this.receiveDateLabel1.Location = new System.Drawing.Point(953, 44);
             this.receiveDateLabel1.Name = "receiveDateLabel1";
             this.receiveDateLabel1.Size = new System.Drawing.Size(139, 23);
             this.receiveDateLabel1.TabIndex = 311;
@@ -676,7 +742,7 @@
             // 
             this.orderIdLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.orderIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zazzleOrderBindingSource, "OrderId", true));
-            this.orderIdLabel1.Location = new System.Drawing.Point(915, 18);
+            this.orderIdLabel1.Location = new System.Drawing.Point(953, 18);
             this.orderIdLabel1.Name = "orderIdLabel1";
             this.orderIdLabel1.Size = new System.Drawing.Size(100, 23);
             this.orderIdLabel1.TabIndex = 309;
@@ -708,7 +774,7 @@
             // 
             this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDownloadFiles.Location = new System.Drawing.Point(923, 308);
+            this.btnDownloadFiles.Location = new System.Drawing.Point(961, 308);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
             this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
             this.btnDownloadFiles.TabIndex = 10018;
@@ -745,22 +811,6 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
-            // coverStatusLabel1
-            // 
-            this.coverStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 617);
-            this.coverStatusLabel1.Name = "coverStatusLabel1";
-            this.coverStatusLabel1.Size = new System.Drawing.Size(100, 23);
-            this.coverStatusLabel1.TabIndex = 10021;
-            // 
-            // bookStatusLabel1
-            // 
-            this.bookStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 617);
-            this.bookStatusLabel1.Name = "bookStatusLabel1";
-            this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
-            this.bookStatusLabel1.TabIndex = 10022;
-            // 
             // cmdJobTicket
             // 
             this.cmdJobTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -795,6 +845,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsZazzleTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.ZazzleOrderDetailTableAdapter = null;
             this.tableAdapterManager.ZazzleOrderTableAdapter = this.zazzleOrderTableAdapter;
             // 
             // zazzleOrderBindingNavigator
@@ -826,7 +877,7 @@
             this.zazzleOrderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.zazzleOrderBindingNavigator.Name = "zazzleOrderBindingNavigator";
             this.zazzleOrderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.zazzleOrderBindingNavigator.Size = new System.Drawing.Size(1213, 25);
+            this.zazzleOrderBindingNavigator.Size = new System.Drawing.Size(1251, 25);
             this.zazzleOrderBindingNavigator.TabIndex = 10025;
             this.zazzleOrderBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -924,6 +975,7 @@
             this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
             this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
             this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
+            this.mixBookOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.zazzleOrderBindingNavigatorSaveItem_Click);
             // 
             // toolStripButton3
             // 
@@ -961,17 +1013,17 @@
             this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
             this.purgeStripButton2.Text = "Purge";
             // 
+            // zazzleOrderDetailTableAdapter
+            // 
+            this.zazzleOrderDetailTableAdapter.ClearBeforeFill = true;
+            // 
             // frmZaOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1213, 646);
+            this.ClientSize = new System.Drawing.Size(1251, 646);
             this.Controls.Add(this.zazzleOrderBindingNavigator);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(this.cmdJobTicket);
-            this.Controls.Add(bookStatusLabel);
-            this.Controls.Add(this.bookStatusLabel1);
-            this.Controls.Add(coverStatusLabel);
-            this.Controls.Add(this.coverStatusLabel1);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btnRemake);
             this.Controls.Add(this.btnDownloadFiles);
@@ -979,14 +1031,14 @@
             this.Controls.Add(this.pnlOrder);
             this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.btnMixbookPkgList);
-            this.Controls.Add(this.mixBookOrderDataGridView);
+            this.Controls.Add(this.zazzleOrderDataGridView);
             this.MaxNumForms = 2;
-            this.MinimumSize = new System.Drawing.Size(1159, 630);
+            this.MinimumSize = new System.Drawing.Size(1191, 630);
             this.Name = "frmZaOrders";
             this.Text = "Zazzle Cust/Orders";
             this.Load += new System.EventHandler(this.MBOrders_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
-            this.Controls.SetChildIndex(this.mixBookOrderDataGridView, 0);
+            this.Controls.SetChildIndex(this.zazzleOrderDataGridView, 0);
             this.Controls.SetChildIndex(this.btnMixbookPkgList, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.pnlOrder, 0);
@@ -994,20 +1046,17 @@
             this.Controls.SetChildIndex(this.btnDownloadFiles, 0);
             this.Controls.SetChildIndex(this.btnRemake, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            this.Controls.SetChildIndex(this.coverStatusLabel1, 0);
-            this.Controls.SetChildIndex(coverStatusLabel, 0);
-            this.Controls.SetChildIndex(this.bookStatusLabel1, 0);
-            this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.cmdJobTicket, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.zazzleOrderBindingNavigator, 0);
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).EndInit();
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsZazzle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zazzleOrderBindingNavigator)).EndInit();
             this.zazzleOrderBindingNavigator.ResumeLayout(false);
             this.zazzleOrderBindingNavigator.PerformLayout();
@@ -1017,15 +1066,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView mixBookOrderDataGridView;
+        private System.Windows.Forms.DataGridView zazzleOrderDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataSets.LookUp lookUp;
         private System.Windows.Forms.BindingSource statesBindingSource;
         private DataSets.LookUpTableAdapters.statesTableAdapter statesTableAdapter;
-        private System.Windows.Forms.DataGridViewLinkColumn prodticket;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
-        private System.Windows.Forms.DataGridViewLinkColumn CoverUrl;
-        private System.Windows.Forms.DataGridViewLinkColumn BookUrl;
         private System.Windows.Forms.Button btnMixbookPkgList;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Panel pnlOrder;
@@ -1033,7 +1078,6 @@
         private System.Windows.Forms.Label lblDateShipped;
         private System.Windows.Forms.TextBox weightTextBox;
         private System.Windows.Forms.TextBox trackingNumberTextBox;
-        private System.Windows.Forms.Label invnoLabel1;
         private System.Windows.Forms.TextBox phoneNumberTextBox;
         private System.Windows.Forms.TextBox shipZipTextBox;
         private System.Windows.Forms.TextBox shipCityTextBox;
@@ -1048,8 +1092,6 @@
         private System.Windows.Forms.Button btnDownloadFiles;
         private System.Windows.Forms.Button btnRemake;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.Label coverStatusLabel1;
-        private System.Windows.Forms.Label bookStatusLabel1;
         private System.Windows.Forms.TextBox shipAddr2TextBox;
         private System.Windows.Forms.Label requestedShipMethodLabel1;
         private System.Windows.Forms.Button btnHold;
@@ -1077,5 +1119,22 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
         private System.Windows.Forms.ToolStripButton purgeStripButton2;
+        private System.Windows.Forms.BindingSource zazzleOrderDetailBindingSource;
+        private DataSets.dsZazzleTableAdapters.ZazzleOrderDetailTableAdapter zazzleOrderDetailTableAdapter;
+        private System.Windows.Forms.Label invnoLabel3;
+        private System.Windows.Forms.DataGridViewLinkColumn prodticket;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invnoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attributesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numPerPackDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reprintInstructionsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
     }
 }

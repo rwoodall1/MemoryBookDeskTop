@@ -44,7 +44,8 @@ namespace Mbc5.Forms
 			this.Schcode = schcode;
 
 		}
-		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+  
+        public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
 			InitializeComponent();
 
@@ -10373,40 +10374,65 @@ namespace Mbc5.Forms
                     return;
                 }
             }
-
-            //DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
-            //string jobno = "";
-            //try
-            //{
-            //    jobno = currentrow["jobno"].ToString();
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION","");
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
+            if (string.IsNullOrEmpty(this.Company))
             {
-                //values preserved after close
+                string value = "";
+               InputBox.Show("Company", "What Company do you want to search in?(MXB,ZAZ)",ref value);
+                this.Company = value.ToUpper();
+            }
+          
+            if (this.Company == "MXB")
+            {
+                frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION", "");
 
-                try
+                var result = frmSearch.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = "01";//mixbook default
- 
-                    Fill();
-                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+                    //values preserved after close
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-              
+                    try
+                    {
+                        this.Invno = frmSearch.ReturnValue.Invno;
+                        this.Schcode = "01";//mixbook default
+
+                        Fill();
+                        DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MbcMessageBox.Error(ex.Message, "Error");
+                        return;
+
+                    }
                 }
-                catch (Exception ex)
+            }else if (this.Company == "ZAZ")
+            {
+                frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION", "", "ZAZ");
+                var result1 = frmSearch.ShowDialog();
+                if (result1 == DialogResult.OK)
                 {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
+                    //values preserved after close
 
+                    try
+                    {
+                        this.Invno = frmSearch.ReturnValue.Invno;
+                        this.Schcode = "02";//mixbook default
+
+                        Fill();
+                        DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                        this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MbcMessageBox.Error(ex.Message, "Error");
+                        return;
+
+                    }
                 }
                 this.Cursor = Cursors.Default;
                 frmProdutn_Paint(this, null);

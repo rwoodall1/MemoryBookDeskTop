@@ -26,6 +26,8 @@ namespace Mbc5.DataSets {
         
         private ZazzleOrderDataTable tableZazzleOrder;
         
+        private ZazzleOrderDetailDataTable tableZazzleOrderDetail;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace Mbc5.DataSets {
                 if ((ds.Tables["ZazzleOrder"] != null)) {
                     base.Tables.Add(new ZazzleOrderDataTable(ds.Tables["ZazzleOrder"]));
                 }
+                if ((ds.Tables["ZazzleOrderDetail"] != null)) {
+                    base.Tables.Add(new ZazzleOrderDetailDataTable(ds.Tables["ZazzleOrderDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace Mbc5.DataSets {
         public ZazzleOrderDataTable ZazzleOrder {
             get {
                 return this.tableZazzleOrder;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ZazzleOrderDetailDataTable ZazzleOrderDetail {
+            get {
+                return this.tableZazzleOrderDetail;
             }
         }
         
@@ -155,6 +170,9 @@ namespace Mbc5.DataSets {
                 if ((ds.Tables["ZazzleOrder"] != null)) {
                     base.Tables.Add(new ZazzleOrderDataTable(ds.Tables["ZazzleOrder"]));
                 }
+                if ((ds.Tables["ZazzleOrderDetail"] != null)) {
+                    base.Tables.Add(new ZazzleOrderDetailDataTable(ds.Tables["ZazzleOrderDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace Mbc5.DataSets {
                     this.tableZazzleOrder.InitVars();
                 }
             }
+            this.tableZazzleOrderDetail = ((ZazzleOrderDetailDataTable)(base.Tables["ZazzleOrderDetail"]));
+            if ((initTable == true)) {
+                if ((this.tableZazzleOrderDetail != null)) {
+                    this.tableZazzleOrderDetail.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace Mbc5.DataSets {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableZazzleOrder = new ZazzleOrderDataTable();
             base.Tables.Add(this.tableZazzleOrder);
+            this.tableZazzleOrderDetail = new ZazzleOrderDetailDataTable();
+            base.Tables.Add(this.tableZazzleOrderDetail);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeZazzleOrder() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeZazzleOrderDetail() {
             return false;
         }
         
@@ -272,14 +304,15 @@ namespace Mbc5.DataSets {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ZazzleOrderRowChangeEventHandler(object sender, ZazzleOrderRowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void ZazzleOrderDetailRowChangeEventHandler(object sender, ZazzleOrderDetailRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ZazzleOrderDataTable : global::System.Data.TypedTableBase<ZazzleOrderRow> {
-            
-            private global::System.Data.DataColumn columnInvno;
             
             private global::System.Data.DataColumn columnOrderId;
             
@@ -370,14 +403,6 @@ namespace Mbc5.DataSets {
             protected ZazzleOrderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn InvnoColumn {
-                get {
-                    return this.columnInvno;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -650,8 +675,7 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ZazzleOrderRow AddZazzleOrderRow(
-                        int Invno, 
-                        int OrderId, 
+                        long OrderId, 
                         System.DateTime OrderDate, 
                         System.DateTime ShipDate, 
                         string DeliveryMethod, 
@@ -682,7 +706,6 @@ namespace Mbc5.DataSets {
                         System.DateTime OrderReceiveDate) {
                 ZazzleOrderRow rowZazzleOrderRow = ((ZazzleOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Invno,
                         OrderId,
                         OrderDate,
                         ShipDate,
@@ -719,9 +742,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ZazzleOrderRow FindByInvno(int Invno) {
+            public ZazzleOrderRow FindByOrderId(long OrderId) {
                 return ((ZazzleOrderRow)(this.Rows.Find(new object[] {
-                            Invno})));
+                            OrderId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -741,7 +764,6 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnInvno = base.Columns["Invno"];
                 this.columnOrderId = base.Columns["OrderId"];
                 this.columnOrderDate = base.Columns["OrderDate"];
                 this.columnShipDate = base.Columns["ShipDate"];
@@ -776,9 +798,7 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnInvno = new global::System.Data.DataColumn("Invno", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInvno);
-                this.columnOrderId = new global::System.Data.DataColumn("OrderId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnOrderId = new global::System.Data.DataColumn("OrderId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderId);
                 this.columnOrderDate = new global::System.Data.DataColumn("OrderDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderDate);
@@ -837,9 +857,9 @@ namespace Mbc5.DataSets {
                 this.columnOrderReceiveDate = new global::System.Data.DataColumn("OrderReceiveDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderReceiveDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnInvno}, true));
-                this.columnInvno.AllowDBNull = false;
-                this.columnInvno.Unique = true;
+                                this.columnOrderId}, true));
+                this.columnOrderId.AllowDBNull = false;
+                this.columnOrderId.Unique = true;
                 this.columnDeliveryMethod.MaxLength = 50;
                 this.columnPriority.MaxLength = 10;
                 this.columnCurrency.MaxLength = 20;
@@ -988,6 +1008,425 @@ namespace Mbc5.DataSets {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ZazzleOrderDetailDataTable : global::System.Data.TypedTableBase<ZazzleOrderDetailRow> {
+            
+            private global::System.Data.DataColumn columnInvno;
+            
+            private global::System.Data.DataColumn columnItemId;
+            
+            private global::System.Data.DataColumn columnOrderId;
+            
+            private global::System.Data.DataColumn columnItemType;
+            
+            private global::System.Data.DataColumn columnQuantity;
+            
+            private global::System.Data.DataColumn columnNumPerPack;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnAttributes;
+            
+            private global::System.Data.DataColumn columnReprintInstructions;
+            
+            private global::System.Data.DataColumn columnProducts;
+            
+            private global::System.Data.DataColumn columnProductId;
+            
+            private global::System.Data.DataColumn columnPrice;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailDataTable() {
+                this.TableName = "ZazzleOrderDetail";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal ZazzleOrderDetailDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected ZazzleOrderDetailDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn InvnoColumn {
+                get {
+                    return this.columnInvno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ItemIdColumn {
+                get {
+                    return this.columnItemId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn OrderIdColumn {
+                get {
+                    return this.columnOrderId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ItemTypeColumn {
+                get {
+                    return this.columnItemType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NumPerPackColumn {
+                get {
+                    return this.columnNumPerPack;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AttributesColumn {
+                get {
+                    return this.columnAttributes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ReprintInstructionsColumn {
+                get {
+                    return this.columnReprintInstructions;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProductsColumn {
+                get {
+                    return this.columnProducts;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProductIdColumn {
+                get {
+                    return this.columnProductId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PriceColumn {
+                get {
+                    return this.columnPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRow this[int index] {
+                get {
+                    return ((ZazzleOrderDetailRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ZazzleOrderDetailRowChangeEventHandler ZazzleOrderDetailRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ZazzleOrderDetailRowChangeEventHandler ZazzleOrderDetailRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ZazzleOrderDetailRowChangeEventHandler ZazzleOrderDetailRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ZazzleOrderDetailRowChangeEventHandler ZazzleOrderDetailRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddZazzleOrderDetailRow(ZazzleOrderDetailRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRow AddZazzleOrderDetailRow(int Invno, string ItemId, long OrderId, string ItemType, int Quantity, int NumPerPack, string Description, string Attributes, string ReprintInstructions, string Products, int ProductId, decimal Price) {
+                ZazzleOrderDetailRow rowZazzleOrderDetailRow = ((ZazzleOrderDetailRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Invno,
+                        ItemId,
+                        OrderId,
+                        ItemType,
+                        Quantity,
+                        NumPerPack,
+                        Description,
+                        Attributes,
+                        ReprintInstructions,
+                        Products,
+                        ProductId,
+                        Price};
+                rowZazzleOrderDetailRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowZazzleOrderDetailRow);
+                return rowZazzleOrderDetailRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRow FindByInvno(int Invno) {
+                return ((ZazzleOrderDetailRow)(this.Rows.Find(new object[] {
+                            Invno})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ZazzleOrderDetailDataTable cln = ((ZazzleOrderDetailDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ZazzleOrderDetailDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnInvno = base.Columns["Invno"];
+                this.columnItemId = base.Columns["ItemId"];
+                this.columnOrderId = base.Columns["OrderId"];
+                this.columnItemType = base.Columns["ItemType"];
+                this.columnQuantity = base.Columns["Quantity"];
+                this.columnNumPerPack = base.Columns["NumPerPack"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnAttributes = base.Columns["Attributes"];
+                this.columnReprintInstructions = base.Columns["ReprintInstructions"];
+                this.columnProducts = base.Columns["Products"];
+                this.columnProductId = base.Columns["ProductId"];
+                this.columnPrice = base.Columns["Price"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnInvno = new global::System.Data.DataColumn("Invno", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvno);
+                this.columnItemId = new global::System.Data.DataColumn("ItemId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemId);
+                this.columnOrderId = new global::System.Data.DataColumn("OrderId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderId);
+                this.columnItemType = new global::System.Data.DataColumn("ItemType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemType);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
+                this.columnNumPerPack = new global::System.Data.DataColumn("NumPerPack", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumPerPack);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnAttributes = new global::System.Data.DataColumn("Attributes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAttributes);
+                this.columnReprintInstructions = new global::System.Data.DataColumn("ReprintInstructions", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReprintInstructions);
+                this.columnProducts = new global::System.Data.DataColumn("Products", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProducts);
+                this.columnProductId = new global::System.Data.DataColumn("ProductId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductId);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrice);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnInvno}, true));
+                this.columnInvno.AllowDBNull = false;
+                this.columnInvno.Unique = true;
+                this.columnItemId.MaxLength = 50;
+                this.columnOrderId.AllowDBNull = false;
+                this.columnItemType.MaxLength = 50;
+                this.columnDescription.MaxLength = 200;
+                this.columnAttributes.MaxLength = 100;
+                this.columnReprintInstructions.MaxLength = 2147483647;
+                this.columnProducts.MaxLength = 200;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRow NewZazzleOrderDetailRow() {
+                return ((ZazzleOrderDetailRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ZazzleOrderDetailRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ZazzleOrderDetailRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ZazzleOrderDetailRowChanged != null)) {
+                    this.ZazzleOrderDetailRowChanged(this, new ZazzleOrderDetailRowChangeEvent(((ZazzleOrderDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ZazzleOrderDetailRowChanging != null)) {
+                    this.ZazzleOrderDetailRowChanging(this, new ZazzleOrderDetailRowChangeEvent(((ZazzleOrderDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ZazzleOrderDetailRowDeleted != null)) {
+                    this.ZazzleOrderDetailRowDeleted(this, new ZazzleOrderDetailRowChangeEvent(((ZazzleOrderDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ZazzleOrderDetailRowDeleting != null)) {
+                    this.ZazzleOrderDetailRowDeleting(this, new ZazzleOrderDetailRowChangeEvent(((ZazzleOrderDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveZazzleOrderDetailRow(ZazzleOrderDetailRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsZazzle ds = new dsZazzle();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ZazzleOrderDetailDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ZazzleOrderRow : global::System.Data.DataRow {
@@ -1003,25 +1442,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Invno {
+            public long OrderId {
                 get {
-                    return ((int)(this[this.tableZazzleOrder.InvnoColumn]));
-                }
-                set {
-                    this[this.tableZazzleOrder.InvnoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int OrderId {
-                get {
-                    try {
-                        return ((int)(this[this.tableZazzleOrder.OrderIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OrderId\' in table \'ZazzleOrder\' is DBNull.", e);
-                    }
+                    return ((long)(this[this.tableZazzleOrder.OrderIdColumn]));
                 }
                 set {
                     this[this.tableZazzleOrder.OrderIdColumn] = value;
@@ -1478,18 +1901,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsOrderIdNull() {
-                return this.IsNull(this.tableZazzleOrder.OrderIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetOrderIdNull() {
-                this[this.tableZazzleOrder.OrderIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsOrderDateNull() {
                 return this.IsNull(this.tableZazzleOrder.OrderDateColumn);
             }
@@ -1826,6 +2237,324 @@ namespace Mbc5.DataSets {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ZazzleOrderDetailRow : global::System.Data.DataRow {
+            
+            private ZazzleOrderDetailDataTable tableZazzleOrderDetail;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal ZazzleOrderDetailRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableZazzleOrderDetail = ((ZazzleOrderDetailDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Invno {
+                get {
+                    return ((int)(this[this.tableZazzleOrderDetail.InvnoColumn]));
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.InvnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ItemId {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.ItemIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemId\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.ItemIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long OrderId {
+                get {
+                    return ((long)(this[this.tableZazzleOrderDetail.OrderIdColumn]));
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.OrderIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ItemType {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.ItemTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemType\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.ItemTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Quantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableZazzleOrderDetail.QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int NumPerPack {
+                get {
+                    try {
+                        return ((int)(this[this.tableZazzleOrderDetail.NumPerPackColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NumPerPack\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.NumPerPackColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Attributes {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.AttributesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Attributes\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.AttributesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ReprintInstructions {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.ReprintInstructionsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReprintInstructions\' in table \'ZazzleOrderDetail\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.ReprintInstructionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Products {
+                get {
+                    try {
+                        return ((string)(this[this.tableZazzleOrderDetail.ProductsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Products\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.ProductsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int ProductId {
+                get {
+                    try {
+                        return ((int)(this[this.tableZazzleOrderDetail.ProductIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductId\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.ProductIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Price {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableZazzleOrderDetail.PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'ZazzleOrderDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZazzleOrderDetail.PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsItemIdNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.ItemIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetItemIdNull() {
+                this[this.tableZazzleOrderDetail.ItemIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsItemTypeNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.ItemTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetItemTypeNull() {
+                this[this.tableZazzleOrderDetail.ItemTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsQuantityNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetQuantityNull() {
+                this[this.tableZazzleOrderDetail.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNumPerPackNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.NumPerPackColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNumPerPackNull() {
+                this[this.tableZazzleOrderDetail.NumPerPackColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableZazzleOrderDetail.DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAttributesNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.AttributesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAttributesNull() {
+                this[this.tableZazzleOrderDetail.AttributesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsReprintInstructionsNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.ReprintInstructionsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetReprintInstructionsNull() {
+                this[this.tableZazzleOrderDetail.ReprintInstructionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProductsNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.ProductsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProductsNull() {
+                this[this.tableZazzleOrderDetail.ProductsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProductIdNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.ProductIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProductIdNull() {
+                this[this.tableZazzleOrderDetail.ProductIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPriceNull() {
+                return this.IsNull(this.tableZazzleOrderDetail.PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPriceNull() {
+                this[this.tableZazzleOrderDetail.PriceColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1845,6 +2574,40 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ZazzleOrderRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class ZazzleOrderDetailRowChangeEvent : global::System.EventArgs {
+            
+            private ZazzleOrderDetailRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRowChangeEvent(ZazzleOrderDetailRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ZazzleOrderDetailRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1984,7 +2747,6 @@ namespace Mbc5.DataSets.dsZazzleTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ZazzleOrder";
-            tableMapping.ColumnMappings.Add("Invno", "Invno");
             tableMapping.ColumnMappings.Add("OrderId", "OrderId");
             tableMapping.ColumnMappings.Add("OrderDate", "OrderDate");
             tableMapping.ColumnMappings.Add("ShipDate", "ShipDate");
@@ -2017,40 +2779,37 @@ namespace Mbc5.DataSets.dsZazzleTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [ZazzleOrder] WHERE (([Invno] = @Original_Invno) AND ((@IsNull_OrderI" +
-                "d = 1 AND [OrderId] IS NULL) OR ([OrderId] = @Original_OrderId)) AND ((@IsNull_O" +
-                "rderDate = 1 AND [OrderDate] IS NULL) OR ([OrderDate] = @Original_OrderDate)) AN" +
-                "D ((@IsNull_ShipDate = 1 AND [ShipDate] IS NULL) OR ([ShipDate] = @Original_Ship" +
-                "Date)) AND ((@IsNull_DeliveryMethod = 1 AND [DeliveryMethod] IS NULL) OR ([Deliv" +
-                "eryMethod] = @Original_DeliveryMethod)) AND ((@IsNull_Priority = 1 AND [Priority" +
-                "] IS NULL) OR ([Priority] = @Original_Priority)) AND ((@IsNull_Currency = 1 AND " +
-                "[Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_ReprintR" +
-                "eason = 1 AND [ReprintReason] IS NULL) OR ([ReprintReason] = @Original_ReprintRe" +
-                "ason)) AND ((@IsNull_IsReprint = 1 AND [IsReprint] IS NULL) OR ([IsReprint] = @O" +
-                "riginal_IsReprint)) AND ((@IsNull_OriginalId = 1 AND [OriginalId] IS NULL) OR ([" +
-                "OriginalId] = @Original_OriginalId)) AND ((@IsNull_ShipAddr1 = 1 AND [ShipAddr1]" +
-                " IS NULL) OR ([ShipAddr1] = @Original_ShipAddr1)) AND ((@IsNull_ShipAddr2 = 1 AN" +
-                "D [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_Shi" +
-                "pAddr3 = 1 AND [ShipAddr3] IS NULL) OR ([ShipAddr3] = @Original_ShipAddr3)) AND " +
-                "((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNu" +
-                "ll_Name2 = 1 AND [Name2] IS NULL) OR ([Name2] = @Original_Name2)) AND ((@IsNull_" +
-                "City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State =" +
-                " 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_Country = " +
-                "1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Zip =" +
-                " 1 AND [Zip] IS NULL) OR ([Zip] = @Original_Zip)) AND ((@IsNull_Phone = 1 AND [P" +
-                "hone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Email = 1 AND [Emai" +
-                "l] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_ShipType = 1 AND [Ship" +
-                "Type] IS NULL) OR ([ShipType] = @Original_ShipType)) AND ((@IsNull_PkPageNumber " +
-                "= 1 AND [PkPageNumber] IS NULL) OR ([PkPageNumber] = @Original_PkPageNumber)) AN" +
-                "D ((@IsNull_PkType = 1 AND [PkType] IS NULL) OR ([PkType] = @Original_PkType)) A" +
-                "ND ((@IsNull_PkDescription = 1 AND [PkDescription] IS NULL) OR ([PkDescription] " +
-                "= @Original_PkDescription)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([" +
-                "Weight] = @Original_Weight)) AND ((@IsNull_OrderReceiveDate = 1 AND [OrderReceiv" +
-                "eDate] IS NULL) OR ([OrderReceiveDate] = @Original_OrderReceiveDate)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [ZazzleOrder] WHERE (([OrderId] = @Original_OrderId) AND ((@IsNull_Or" +
+                "derDate = 1 AND [OrderDate] IS NULL) OR ([OrderDate] = @Original_OrderDate)) AND" +
+                " ((@IsNull_ShipDate = 1 AND [ShipDate] IS NULL) OR ([ShipDate] = @Original_ShipD" +
+                "ate)) AND ((@IsNull_DeliveryMethod = 1 AND [DeliveryMethod] IS NULL) OR ([Delive" +
+                "ryMethod] = @Original_DeliveryMethod)) AND ((@IsNull_Priority = 1 AND [Priority]" +
+                " IS NULL) OR ([Priority] = @Original_Priority)) AND ((@IsNull_Currency = 1 AND [" +
+                "Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_ReprintRe" +
+                "ason = 1 AND [ReprintReason] IS NULL) OR ([ReprintReason] = @Original_ReprintRea" +
+                "son)) AND ((@IsNull_IsReprint = 1 AND [IsReprint] IS NULL) OR ([IsReprint] = @Or" +
+                "iginal_IsReprint)) AND ((@IsNull_OriginalId = 1 AND [OriginalId] IS NULL) OR ([O" +
+                "riginalId] = @Original_OriginalId)) AND ((@IsNull_ShipAddr1 = 1 AND [ShipAddr1] " +
+                "IS NULL) OR ([ShipAddr1] = @Original_ShipAddr1)) AND ((@IsNull_ShipAddr2 = 1 AND" +
+                " [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_Ship" +
+                "Addr3 = 1 AND [ShipAddr3] IS NULL) OR ([ShipAddr3] = @Original_ShipAddr3)) AND (" +
+                "(@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNul" +
+                "l_Name2 = 1 AND [Name2] IS NULL) OR ([Name2] = @Original_Name2)) AND ((@IsNull_C" +
+                "ity = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = " +
+                "1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_Country = 1" +
+                " AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Zip = " +
+                "1 AND [Zip] IS NULL) OR ([Zip] = @Original_Zip)) AND ((@IsNull_Phone = 1 AND [Ph" +
+                "one] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Email = 1 AND [Email" +
+                "] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_ShipType = 1 AND [ShipT" +
+                "ype] IS NULL) OR ([ShipType] = @Original_ShipType)) AND ((@IsNull_PkPageNumber =" +
+                " 1 AND [PkPageNumber] IS NULL) OR ([PkPageNumber] = @Original_PkPageNumber)) AND" +
+                " ((@IsNull_PkType = 1 AND [PkType] IS NULL) OR ([PkType] = @Original_PkType)) AN" +
+                "D ((@IsNull_PkDescription = 1 AND [PkDescription] IS NULL) OR ([PkDescription] =" +
+                " @Original_PkDescription)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([W" +
+                "eight] = @Original_Weight)) AND ((@IsNull_OrderReceiveDate = 1 AND [OrderReceive" +
+                "Date] IS NULL) OR ([OrderReceiveDate] = @Original_OrderReceiveDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2103,11 +2862,10 @@ namespace Mbc5.DataSets.dsZazzleTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderReceiveDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceiveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ZazzleOrder] ([Invno], [OrderId], [OrderDate], [ShipDate], [DeliveryMethod], [Priority], [Currency], [ReprintReason], [IsReprint], [OriginalId], [ShipAddr1], [ShipAddr2], [ShipAddr3], [Name], [Name2], [City], [State], [Country], [Zip], [Phone], [Email], [ShipType], [PkPageNumber], [PkType], [PkDescription], [PkUrl], [TrackingNumber], [Weight], [Notes], [OrderReceiveDate]) VALUES (@Invno, @OrderId, @OrderDate, @ShipDate, @DeliveryMethod, @Priority, @Currency, @ReprintReason, @IsReprint, @OriginalId, @ShipAddr1, @ShipAddr2, @ShipAddr3, @Name, @Name2, @City, @State, @Country, @Zip, @Phone, @Email, @ShipType, @PkPageNumber, @PkType, @PkDescription, @PkUrl, @TrackingNumber, @Weight, @Notes, @OrderReceiveDate);
-SELECT Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, PkType, PkDescription, PkUrl, TrackingNumber, Weight, Notes, OrderReceiveDate FROM ZazzleOrder WHERE (Invno = @Invno)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ZazzleOrder] ([OrderId], [OrderDate], [ShipDate], [DeliveryMethod], [Priority], [Currency], [ReprintReason], [IsReprint], [OriginalId], [ShipAddr1], [ShipAddr2], [ShipAddr3], [Name], [Name2], [City], [State], [Country], [Zip], [Phone], [Email], [ShipType], [PkPageNumber], [PkType], [PkDescription], [PkUrl], [TrackingNumber], [Weight], [Notes], [OrderReceiveDate]) VALUES (@OrderId, @OrderDate, @ShipDate, @DeliveryMethod, @Priority, @Currency, @ReprintReason, @IsReprint, @OriginalId, @ShipAddr1, @ShipAddr2, @ShipAddr3, @Name, @Name2, @City, @State, @Country, @Zip, @Phone, @Email, @ShipType, @PkPageNumber, @PkType, @PkDescription, @PkUrl, @TrackingNumber, @Weight, @Notes, @OrderReceiveDate);
+SELECT OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, PkType, PkDescription, PkUrl, TrackingNumber, Weight, Notes, OrderReceiveDate FROM ZazzleOrder WHERE (OrderId = @OrderId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryMethod", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryMethod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2138,53 +2896,50 @@ SELECT Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderReceiveDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceiveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [ZazzleOrder] SET [Invno] = @Invno, [OrderId] = @OrderId, [OrderDate] = @O" +
-                "rderDate, [ShipDate] = @ShipDate, [DeliveryMethod] = @DeliveryMethod, [Priority]" +
-                " = @Priority, [Currency] = @Currency, [ReprintReason] = @ReprintReason, [IsRepri" +
-                "nt] = @IsReprint, [OriginalId] = @OriginalId, [ShipAddr1] = @ShipAddr1, [ShipAdd" +
-                "r2] = @ShipAddr2, [ShipAddr3] = @ShipAddr3, [Name] = @Name, [Name2] = @Name2, [C" +
-                "ity] = @City, [State] = @State, [Country] = @Country, [Zip] = @Zip, [Phone] = @P" +
-                "hone, [Email] = @Email, [ShipType] = @ShipType, [PkPageNumber] = @PkPageNumber, " +
-                "[PkType] = @PkType, [PkDescription] = @PkDescription, [PkUrl] = @PkUrl, [Trackin" +
-                "gNumber] = @TrackingNumber, [Weight] = @Weight, [Notes] = @Notes, [OrderReceiveD" +
-                "ate] = @OrderReceiveDate WHERE (([Invno] = @Original_Invno) AND ((@IsNull_OrderI" +
-                "d = 1 AND [OrderId] IS NULL) OR ([OrderId] = @Original_OrderId)) AND ((@IsNull_O" +
-                "rderDate = 1 AND [OrderDate] IS NULL) OR ([OrderDate] = @Original_OrderDate)) AN" +
-                "D ((@IsNull_ShipDate = 1 AND [ShipDate] IS NULL) OR ([ShipDate] = @Original_Ship" +
-                "Date)) AND ((@IsNull_DeliveryMethod = 1 AND [DeliveryMethod] IS NULL) OR ([Deliv" +
-                "eryMethod] = @Original_DeliveryMethod)) AND ((@IsNull_Priority = 1 AND [Priority" +
-                "] IS NULL) OR ([Priority] = @Original_Priority)) AND ((@IsNull_Currency = 1 AND " +
-                "[Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_ReprintR" +
-                "eason = 1 AND [ReprintReason] IS NULL) OR ([ReprintReason] = @Original_ReprintRe" +
-                "ason)) AND ((@IsNull_IsReprint = 1 AND [IsReprint] IS NULL) OR ([IsReprint] = @O" +
-                "riginal_IsReprint)) AND ((@IsNull_OriginalId = 1 AND [OriginalId] IS NULL) OR ([" +
-                "OriginalId] = @Original_OriginalId)) AND ((@IsNull_ShipAddr1 = 1 AND [ShipAddr1]" +
-                " IS NULL) OR ([ShipAddr1] = @Original_ShipAddr1)) AND ((@IsNull_ShipAddr2 = 1 AN" +
-                "D [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_Shi" +
-                "pAddr3 = 1 AND [ShipAddr3] IS NULL) OR ([ShipAddr3] = @Original_ShipAddr3)) AND " +
-                "((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNu" +
-                "ll_Name2 = 1 AND [Name2] IS NULL) OR ([Name2] = @Original_Name2)) AND ((@IsNull_" +
-                "City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State =" +
-                " 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_Country = " +
-                "1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Zip =" +
-                " 1 AND [Zip] IS NULL) OR ([Zip] = @Original_Zip)) AND ((@IsNull_Phone = 1 AND [P" +
-                "hone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Email = 1 AND [Emai" +
-                "l] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_ShipType = 1 AND [Ship" +
-                "Type] IS NULL) OR ([ShipType] = @Original_ShipType)) AND ((@IsNull_PkPageNumber " +
-                "= 1 AND [PkPageNumber] IS NULL) OR ([PkPageNumber] = @Original_PkPageNumber)) AN" +
-                "D ((@IsNull_PkType = 1 AND [PkType] IS NULL) OR ([PkType] = @Original_PkType)) A" +
-                "ND ((@IsNull_PkDescription = 1 AND [PkDescription] IS NULL) OR ([PkDescription] " +
-                "= @Original_PkDescription)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([" +
-                "Weight] = @Original_Weight)) AND ((@IsNull_OrderReceiveDate = 1 AND [OrderReceiv" +
-                "eDate] IS NULL) OR ([OrderReceiveDate] = @Original_OrderReceiveDate)));\r\nSELECT " +
-                "Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, Reprint" +
-                "Reason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, Cit" +
-                "y, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, PkType, PkDescript" +
-                "ion, PkUrl, TrackingNumber, Weight, Notes, OrderReceiveDate FROM ZazzleOrder WHE" +
-                "RE (Invno = @Invno)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [ZazzleOrder] SET [OrderId] = @OrderId, [OrderDate] = @OrderDate, [ShipDat" +
+                "e] = @ShipDate, [DeliveryMethod] = @DeliveryMethod, [Priority] = @Priority, [Cur" +
+                "rency] = @Currency, [ReprintReason] = @ReprintReason, [IsReprint] = @IsReprint, " +
+                "[OriginalId] = @OriginalId, [ShipAddr1] = @ShipAddr1, [ShipAddr2] = @ShipAddr2, " +
+                "[ShipAddr3] = @ShipAddr3, [Name] = @Name, [Name2] = @Name2, [City] = @City, [Sta" +
+                "te] = @State, [Country] = @Country, [Zip] = @Zip, [Phone] = @Phone, [Email] = @E" +
+                "mail, [ShipType] = @ShipType, [PkPageNumber] = @PkPageNumber, [PkType] = @PkType" +
+                ", [PkDescription] = @PkDescription, [PkUrl] = @PkUrl, [TrackingNumber] = @Tracki" +
+                "ngNumber, [Weight] = @Weight, [Notes] = @Notes, [OrderReceiveDate] = @OrderRecei" +
+                "veDate WHERE (([OrderId] = @Original_OrderId) AND ((@IsNull_OrderDate = 1 AND [O" +
+                "rderDate] IS NULL) OR ([OrderDate] = @Original_OrderDate)) AND ((@IsNull_ShipDat" +
+                "e = 1 AND [ShipDate] IS NULL) OR ([ShipDate] = @Original_ShipDate)) AND ((@IsNul" +
+                "l_DeliveryMethod = 1 AND [DeliveryMethod] IS NULL) OR ([DeliveryMethod] = @Origi" +
+                "nal_DeliveryMethod)) AND ((@IsNull_Priority = 1 AND [Priority] IS NULL) OR ([Pri" +
+                "ority] = @Original_Priority)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL)" +
+                " OR ([Currency] = @Original_Currency)) AND ((@IsNull_ReprintReason = 1 AND [Repr" +
+                "intReason] IS NULL) OR ([ReprintReason] = @Original_ReprintReason)) AND ((@IsNul" +
+                "l_IsReprint = 1 AND [IsReprint] IS NULL) OR ([IsReprint] = @Original_IsReprint))" +
+                " AND ((@IsNull_OriginalId = 1 AND [OriginalId] IS NULL) OR ([OriginalId] = @Orig" +
+                "inal_OriginalId)) AND ((@IsNull_ShipAddr1 = 1 AND [ShipAddr1] IS NULL) OR ([Ship" +
+                "Addr1] = @Original_ShipAddr1)) AND ((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NU" +
+                "LL) OR ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_ShipAddr3 = 1 AND [Shi" +
+                "pAddr3] IS NULL) OR ([ShipAddr3] = @Original_ShipAddr3)) AND ((@IsNull_Name = 1 " +
+                "AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Name2 = 1 AND [N" +
+                "ame2] IS NULL) OR ([Name2] = @Original_Name2)) AND ((@IsNull_City = 1 AND [City]" +
+                " IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = 1 AND [State] IS N" +
+                "ULL) OR ([State] = @Original_State)) AND ((@IsNull_Country = 1 AND [Country] IS " +
+                "NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Zip = 1 AND [Zip] IS NUL" +
+                "L) OR ([Zip] = @Original_Zip)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR (" +
+                "[Phone] = @Original_Phone)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Em" +
+                "ail] = @Original_Email)) AND ((@IsNull_ShipType = 1 AND [ShipType] IS NULL) OR (" +
+                "[ShipType] = @Original_ShipType)) AND ((@IsNull_PkPageNumber = 1 AND [PkPageNumb" +
+                "er] IS NULL) OR ([PkPageNumber] = @Original_PkPageNumber)) AND ((@IsNull_PkType " +
+                "= 1 AND [PkType] IS NULL) OR ([PkType] = @Original_PkType)) AND ((@IsNull_PkDesc" +
+                "ription = 1 AND [PkDescription] IS NULL) OR ([PkDescription] = @Original_PkDescr" +
+                "iption)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original" +
+                "_Weight)) AND ((@IsNull_OrderReceiveDate = 1 AND [OrderReceiveDate] IS NULL) OR " +
+                "([OrderReceiveDate] = @Original_OrderReceiveDate)));\r\nSELECT OrderId, OrderDate," +
+                " ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, Origina" +
+                "lId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Ph" +
+                "one, Email, ShipType, PkPageNumber, PkType, PkDescription, PkUrl, TrackingNumber" +
+                ", Weight, Notes, OrderReceiveDate FROM ZazzleOrder WHERE (OrderId = @OrderId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryMethod", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryMethod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2213,9 +2968,7 @@ SELECT Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weight", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderReceiveDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceiveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2281,26 +3034,21 @@ SELECT Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Invno, OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, 
+            this._commandCollection[0].CommandText = @"SELECT        OrderId, OrderDate, ShipDate, DeliveryMethod, Priority, Currency, ReprintReason, IsReprint, OriginalId, ShipAddr1, ShipAddr2, ShipAddr3, Name, Name2, City, State, Country, Zip, Phone, Email, ShipType, PkPageNumber, 
                          PkType, PkDescription, PkUrl, TrackingNumber, Weight, Notes, OrderReceiveDate
 FROM            ZazzleOrder
-WHERE        (OrderId = @OrderId)";
+WHERE        (OrderId = @OrderId64)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId64", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsZazzle.ZazzleOrderDataTable dataTable, global::System.Nullable<int> OrderId) {
+        public virtual int Fill(dsZazzle.ZazzleOrderDataTable dataTable, long OrderId64) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((OrderId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OrderId.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(OrderId64));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2312,14 +3060,9 @@ WHERE        (OrderId = @OrderId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsZazzle.ZazzleOrderDataTable GetData(global::System.Nullable<int> OrderId) {
+        public virtual dsZazzle.ZazzleOrderDataTable GetData(long OrderId64) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((OrderId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OrderId.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(OrderId64));
             dsZazzle.ZazzleOrderDataTable dataTable = new dsZazzle.ZazzleOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2356,6 +3099,693 @@ WHERE        (OrderId = @OrderId)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ZazzleOrderDetailTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public ZazzleOrderDetailTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ZazzleOrderDetail";
+            tableMapping.ColumnMappings.Add("Invno", "Invno");
+            tableMapping.ColumnMappings.Add("ItemId", "ItemId");
+            tableMapping.ColumnMappings.Add("OrderId", "OrderId");
+            tableMapping.ColumnMappings.Add("ItemType", "ItemType");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("NumPerPack", "NumPerPack");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Attributes", "Attributes");
+            tableMapping.ColumnMappings.Add("ReprintInstructions", "ReprintInstructions");
+            tableMapping.ColumnMappings.Add("Products", "Products");
+            tableMapping.ColumnMappings.Add("ProductId", "ProductId");
+            tableMapping.ColumnMappings.Add("Price", "Price");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ZazzleOrderDetail] WHERE (([Id] = @Original_Id) AND ([Invno] = @Original_Invno) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_ItemId)) AND ([OrderId] = @Original_OrderId) AND ((@IsNull_ItemType = 1 AND [ItemType] IS NULL) OR ([ItemType] = @Original_ItemType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_NumPerPack = 1 AND [NumPerPack] IS NULL) OR ([NumPerPack] = @Original_NumPerPack)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_Attributes = 1 AND [Attributes] IS NULL) OR ([Attributes] = @Original_Attributes)) AND ((@IsNull_Products = 1 AND [Products] IS NULL) OR ([Products] = @Original_Products)) AND ((@IsNull_ProductId = 1 AND [ProductId] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Attributes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Attributes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Products", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Products", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ZazzleOrderDetail] ([Invno], [ItemId], [OrderId], [ItemType], [Quantity], [NumPerPack], [Description], [Attributes], [ReprintInstructions], [Products], [ProductId], [Price]) VALUES (@Invno, @ItemId, @OrderId, @ItemType, @Quantity, @NumPerPack, @Description, @Attributes, @ReprintInstructions, @Products, @ProductId, @Price)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Attributes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReprintInstructions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReprintInstructions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Products", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [ZazzleOrderDetail] SET [Invno] = @Invno, [ItemId] = @ItemId, [OrderId] = @OrderId, [ItemType] = @ItemType, [Quantity] = @Quantity, [NumPerPack] = @NumPerPack, [Description] = @Description, [Attributes] = @Attributes, [ReprintInstructions] = @ReprintInstructions, [Products] = @Products, [ProductId] = @ProductId, [Price] = @Price WHERE (([Id] = @Original_Id) AND ([Invno] = @Original_Invno) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_ItemId)) AND ([OrderId] = @Original_OrderId) AND ((@IsNull_ItemType = 1 AND [ItemType] IS NULL) OR ([ItemType] = @Original_ItemType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_NumPerPack = 1 AND [NumPerPack] IS NULL) OR ([NumPerPack] = @Original_NumPerPack)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_Attributes = 1 AND [Attributes] IS NULL) OR ([Attributes] = @Original_Attributes)) AND ((@IsNull_Products = 1 AND [Products] IS NULL) OR ([Products] = @Original_Products)) AND ((@IsNull_ProductId = 1 AND [ProductId] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)));
+SELECT Id, Invno, ItemId, OrderId, ItemType, Quantity, NumPerPack, Description, Attributes, ReprintInstructions, Products, ProductId, Price FROM ZazzleOrderDetail WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Attributes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReprintInstructions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReprintInstructions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Products", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumPerPack", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumPerPack", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Attributes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Attributes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Attributes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Products", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Products", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Products", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        Invno, ItemId, OrderId, ItemType, Quantity, NumPerPack, Description" +
+                ", Attributes, ReprintInstructions, Products, ProductId, Price\r\nFROM            Z" +
+                "azzleOrderDetail\r\nWHERE        (OrderId = @OrderId64)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderId64", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "OrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(dsZazzle.ZazzleOrderDetailDataTable dataTable, long OrderId64) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(OrderId64));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual dsZazzle.ZazzleOrderDetailDataTable GetData(long OrderId64) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(OrderId64));
+            dsZazzle.ZazzleOrderDetailDataTable dataTable = new dsZazzle.ZazzleOrderDetailDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsZazzle.ZazzleOrderDetailDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsZazzle dataSet) {
+            return this.Adapter.Update(dataSet, "ZazzleOrderDetail");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, int Original_Invno, string Original_ItemId, int Original_OrderId, string Original_ItemType, global::System.Nullable<int> Original_Quantity, global::System.Nullable<int> Original_NumPerPack, string Original_Description, string Original_Attributes, string Original_Products, global::System.Nullable<int> Original_ProductId, global::System.Nullable<decimal> Original_Price) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Invno));
+            if ((Original_ItemId == null)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_ItemId));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_OrderId));
+            if ((Original_ItemType == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_ItemType));
+            }
+            if ((Original_Quantity.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Quantity.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NumPerPack.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_NumPerPack.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Description == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Description));
+            }
+            if ((Original_Attributes == null)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Attributes));
+            }
+            if ((Original_Products == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_Products));
+            }
+            if ((Original_ProductId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_ProductId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Price.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_Price.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Invno, string ItemId, long OrderId, string ItemType, global::System.Nullable<int> Quantity, global::System.Nullable<int> NumPerPack, string Description, string Attributes, string ReprintInstructions, string Products, global::System.Nullable<int> ProductId, global::System.Nullable<decimal> Price) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Invno));
+            if ((ItemId == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ItemId));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(OrderId));
+            if ((ItemType == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ItemType));
+            }
+            if ((Quantity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Quantity.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((NumPerPack.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(NumPerPack.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Description == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Description));
+            }
+            if ((Attributes == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Attributes));
+            }
+            if ((ReprintInstructions == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ReprintInstructions));
+            }
+            if ((Products == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Products));
+            }
+            if ((ProductId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(ProductId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(Price.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int Invno, 
+                    string ItemId, 
+                    int OrderId, 
+                    string ItemType, 
+                    global::System.Nullable<int> Quantity, 
+                    global::System.Nullable<int> NumPerPack, 
+                    string Description, 
+                    string Attributes, 
+                    string ReprintInstructions, 
+                    string Products, 
+                    global::System.Nullable<int> ProductId, 
+                    global::System.Nullable<decimal> Price, 
+                    int Original_Id, 
+                    int Original_Invno, 
+                    string Original_ItemId, 
+                    int Original_OrderId, 
+                    string Original_ItemType, 
+                    global::System.Nullable<int> Original_Quantity, 
+                    global::System.Nullable<int> Original_NumPerPack, 
+                    string Original_Description, 
+                    string Original_Attributes, 
+                    string Original_Products, 
+                    global::System.Nullable<int> Original_ProductId, 
+                    global::System.Nullable<decimal> Original_Price, 
+                    int Id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Invno));
+            if ((ItemId == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ItemId));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(OrderId));
+            if ((ItemType == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ItemType));
+            }
+            if ((Quantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Quantity.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((NumPerPack.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(NumPerPack.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Description == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Description));
+            }
+            if ((Attributes == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Attributes));
+            }
+            if ((ReprintInstructions == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ReprintInstructions));
+            }
+            if ((Products == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Products));
+            }
+            if ((ProductId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(ProductId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Invno));
+            if ((Original_ItemId == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_ItemId));
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_OrderId));
+            if ((Original_ItemType == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_ItemType));
+            }
+            if ((Original_Quantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_Quantity.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NumPerPack.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_NumPerPack.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Description == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Description));
+            }
+            if ((Original_Attributes == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Attributes));
+            }
+            if ((Original_Products == null)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_Products));
+            }
+            if ((Original_ProductId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_ProductId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(Original_Price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[33].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string ItemId, 
+                    int OrderId, 
+                    string ItemType, 
+                    global::System.Nullable<int> Quantity, 
+                    global::System.Nullable<int> NumPerPack, 
+                    string Description, 
+                    string Attributes, 
+                    string ReprintInstructions, 
+                    string Products, 
+                    global::System.Nullable<int> ProductId, 
+                    global::System.Nullable<decimal> Price, 
+                    int Original_Id, 
+                    int Original_Invno, 
+                    string Original_ItemId, 
+                    int Original_OrderId, 
+                    string Original_ItemType, 
+                    global::System.Nullable<int> Original_Quantity, 
+                    global::System.Nullable<int> Original_NumPerPack, 
+                    string Original_Description, 
+                    string Original_Attributes, 
+                    string Original_Products, 
+                    global::System.Nullable<int> Original_ProductId, 
+                    global::System.Nullable<decimal> Original_Price, 
+                    int Id) {
+            return this.Update(Original_Invno, ItemId, OrderId, ItemType, Quantity, NumPerPack, Description, Attributes, ReprintInstructions, Products, ProductId, Price, Original_Id, Original_Invno, Original_ItemId, Original_OrderId, Original_ItemType, Original_Quantity, Original_NumPerPack, Original_Description, Original_Attributes, Original_Products, Original_ProductId, Original_Price, Id);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2368,6 +3798,8 @@ WHERE        (OrderId = @OrderId)";
         private UpdateOrderOption _updateOrder;
         
         private ZazzleOrderTableAdapter _zazzleOrderTableAdapter;
+        
+        private ZazzleOrderDetailTableAdapter _zazzleOrderDetailTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2400,6 +3832,20 @@ WHERE        (OrderId = @OrderId)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ZazzleOrderDetailTableAdapter ZazzleOrderDetailTableAdapter {
+            get {
+                return this._zazzleOrderDetailTableAdapter;
+            }
+            set {
+                this._zazzleOrderDetailTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -2421,6 +3867,10 @@ WHERE        (OrderId = @OrderId)";
                             && (this._zazzleOrderTableAdapter.Connection != null))) {
                     return this._zazzleOrderTableAdapter.Connection;
                 }
+                if (((this._zazzleOrderDetailTableAdapter != null) 
+                            && (this._zazzleOrderDetailTableAdapter.Connection != null))) {
+                    return this._zazzleOrderDetailTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -2435,6 +3885,9 @@ WHERE        (OrderId = @OrderId)";
             get {
                 int count = 0;
                 if ((this._zazzleOrderTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._zazzleOrderDetailTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2457,6 +3910,15 @@ WHERE        (OrderId = @OrderId)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._zazzleOrderDetailTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ZazzleOrderDetail.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._zazzleOrderDetailTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -2475,6 +3937,14 @@ WHERE        (OrderId = @OrderId)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._zazzleOrderDetailTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ZazzleOrderDetail.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._zazzleOrderDetailTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -2485,6 +3955,14 @@ WHERE        (OrderId = @OrderId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(dsZazzle dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._zazzleOrderDetailTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ZazzleOrderDetail.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._zazzleOrderDetailTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._zazzleOrderTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ZazzleOrder.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -2537,6 +4015,11 @@ WHERE        (OrderId = @OrderId)";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._zazzleOrderDetailTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._zazzleOrderDetailTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -2576,6 +4059,15 @@ WHERE        (OrderId = @OrderId)";
                     if (this._zazzleOrderTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._zazzleOrderTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._zazzleOrderTableAdapter.Adapter);
+                    }
+                }
+                if ((this._zazzleOrderDetailTableAdapter != null)) {
+                    revertConnections.Add(this._zazzleOrderDetailTableAdapter, this._zazzleOrderDetailTableAdapter.Connection);
+                    this._zazzleOrderDetailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._zazzleOrderDetailTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._zazzleOrderDetailTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._zazzleOrderDetailTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._zazzleOrderDetailTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2639,6 +4131,10 @@ WHERE        (OrderId = @OrderId)";
                 if ((this._zazzleOrderTableAdapter != null)) {
                     this._zazzleOrderTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zazzleOrderTableAdapter]));
                     this._zazzleOrderTableAdapter.Transaction = null;
+                }
+                if ((this._zazzleOrderDetailTableAdapter != null)) {
+                    this._zazzleOrderDetailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zazzleOrderDetailTableAdapter]));
+                    this._zazzleOrderDetailTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

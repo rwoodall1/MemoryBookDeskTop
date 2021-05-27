@@ -165,12 +165,6 @@
   <metadata name="shipNameLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="coverStatusLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="bookStatusLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
   <metadata name="requestedShipMethodLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -186,23 +180,17 @@
   <metadata name="prodticket.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ItemId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="zazzleOrderDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>783, 56</value>
   </metadata>
-  <metadata name="CoverUrl.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="BookUrl.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="dsZazzle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1370, 17</value>
   </metadata>
   <metadata name="statesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1214, 17</value>
   </metadata>
   <metadata name="zazzleOrderBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
-  </metadata>
-  <metadata name="dsZazzle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1370, 17</value>
   </metadata>
   <metadata name="zazzleOrderTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>212, 56</value>
@@ -372,46 +360,46 @@
   <data name="itemIdToolStripBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="purgeStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -1158,6 +1146,9 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="zazzleOrderDetailTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1009, 56</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>124</value>
   </metadata>
