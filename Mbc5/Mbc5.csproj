@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mbc5</RootNamespace>
     <AssemblyName>Mbc5</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -598,6 +598,12 @@
     <Compile Include="Forms\MixBook\frmShippingReport.Designer.cs">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmUsPsLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmUsPsLabel.Designer.cs">
+      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -864,6 +870,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmUsPsLabel.resx">
+      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>

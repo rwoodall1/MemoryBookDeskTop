@@ -1867,6 +1867,15 @@ namespace Mbc5.Forms
         {
             PrintRemakeTickets();
         }
+
+        private void mixBookUSPSLabelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsPsLabel frmUsPsLabel = new frmUsPsLabel(this.ApplicationUser);
+
+            frmUsPsLabel.MdiParent = this;
+            frmUsPsLabel.Show();
+            this.Cursor = Cursors.Default;
+        }
         #endregion
         //nothing below here
     }

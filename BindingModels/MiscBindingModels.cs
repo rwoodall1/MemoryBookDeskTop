@@ -5,6 +5,7 @@ using System.Web;
 
 namespace BindingModels
 {
+  
     public class Exemption
     {
         public string SubmittedCity { get; set; }
