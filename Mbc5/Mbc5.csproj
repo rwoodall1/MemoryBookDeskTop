@@ -1261,6 +1261,10 @@
       <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PitneyBowerApi\PitneyBowerApi.csproj">
+      <Project>{637662b8-46c8-41ca-bf2d-3bfff3006152}</Project>
+      <Name>PitneyBowerApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RESTModule\RESTModule.csproj">
       <Project>{5f71fea4-8be9-4248-b6a4-d950fdeecc6e}</Project>
       <Name>RESTModule</Name>

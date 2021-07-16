@@ -65,6 +65,7 @@ namespace RESTModule {
 
         public async Task<ApiProcessingResult<RESTAPIResult>> MakeRESTCall(string actionType=default(string), string sentRequestData=default(string), List<Header> headers =default(List<Header>),string vEndPoint="",string vContentType= "application/xml") {
             var result = new ApiProcessingResult<RESTAPIResult> { IsError = false, Data = new RESTAPIResult() };
+            this.AdditionalHeaders = headers;
             this.ContentType = vContentType;
             if (!string.IsNullOrEmpty(vEndPoint))
             {
