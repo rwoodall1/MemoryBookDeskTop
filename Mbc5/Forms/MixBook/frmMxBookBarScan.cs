@@ -34,6 +34,8 @@ namespace Mbc5.Forms.MixBook
             this.ApplicationUser = userPrincipal;
             lblScanQty.Text = "0";
         }
+        private static readonly string _matrixPrinterA=ConfigurationManager.AppSettings["MatrixPrinterA"].ToString();
+        private static readonly string _matrixPrinterB = ConfigurationManager.AppSettings["MatrixPrinterB"].ToString();
         public string LabelPrinter { get; set; }
         public string Company { get; set; }
         public UserPrincipal ApplicationUser { get; set; }
@@ -1215,9 +1217,19 @@ namespace Mbc5.Forms.MixBook
         }
         private void PrintDataMatrix(string vbarcode, string vlocation)
         {
+            string ip="";
+            if (this.ApplicationUser.UserName == "binding")
+            {
+                 ip = _matrixPrinterA;
+
+            }
+            else if(this.ApplicationUser.UserName == "binding2")
+            {
+                ip = _matrixPrinterB;
+            }
             try
             {
-                TcpClient client = new TcpClient("10.37.16.168", 10200);
+                TcpClient client = new TcpClient(ip, 10200);//"10.37.16.168"
 
                 //byte[] escapeb = new byte[] { 0x1B, 0x43, 0x0D };
                 //string escape = System.Text.Encoding.ASCII.GetString(escapeb);
