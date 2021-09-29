@@ -20,12 +20,8 @@ public SQLQuery() {
       private string SetConnectionString()
 {
             string vConnectionString = "";
-            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            if (Environment == "DEV")
-            {
-                vConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
-            }
-            else if (Environment == "PROD") { vConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+
+            vConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             return vConnectionString;
         }
         public int ExecuteNonQueryAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {

@@ -24,7 +24,9 @@ namespace BindingModels
     }
     public class JobTicketQuery
     {
+
         public int Invno { get; set; }
+        public string DSInvno { get; set; }
         public string ShipName { get; set; }
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }

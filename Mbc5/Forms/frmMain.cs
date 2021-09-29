@@ -39,13 +39,14 @@ namespace Mbc5.Forms
         protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            if (Environment == "DEV")
-            {
-                AppConnectionString = "Data Source=10.37.32.49; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
-            }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
-            // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+           
+            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            //if (Environment == "DEV")
+            //{
+            //    AppConnectionString = "Data Source=SedswjpSql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            //}
+            //else if (Environment == "PROD") { AppConnectionString = "Data Source=SedswjpSql01;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -623,16 +624,47 @@ namespace Mbc5.Forms
         }
         public void PrintJobTickets()
         {
+            var sqlClient = new SQLCustomClient();
             string value = "";
-            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
+            if (DateInputBox.Show("Ship Request Date", "Enter Ship Request Date:", ref value) == DialogResult.OK)
+            {
+                if (!string.IsNullOrEmpty(value)) {
 
-                var sqlClient = new SQLCustomClient().CommandText(@"
-                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
-                    MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
-            "); ;
+                    sqlClient.CommandText(@"
+                                            Select Invno,
+                                             ShipName,RequestedShipDate,
+                                             SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                                             Description,
+                                             Copies,Pages,
+                                             Backing,OrderReceivedDate,
+                                             ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                                             '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
+                                             From MixBookOrder 
+                                             Where (JobTicketPrinted Is Null OR JobTicketPrinted=0)
+                                             AND
+                                              (MixBookOrder.BookStatus IS Null OR MixBookOrder.BookStatus='')AND MixBookOrder.RequestedShipDate <=@RequestedShipDate");
+
+                    sqlClient.AddParameter("@RequestedShipDate", value);
+                }
+                else
+                {
+                    sqlClient.CommandText(@"Select Invno,
+                                             ShipName,RequestedShipDate,
+                                             SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                                             Description,
+                                             Copies,Pages,
+                                             Backing,OrderReceivedDate,
+                                             ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                                             '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
+                                             From MixBookOrder 
+                                             Where (JobTicketPrinted Is Null OR JobTicketPrinted=0)
+                                             AND
+                                              (MixBookOrder.BookStatus IS Null OR MixBookOrder.BookStatus='')");
+
+                }
+            }; 
              
-                sqlClient.AddParameter("@RequestedShipDate",value );
+               
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
@@ -657,7 +689,7 @@ namespace Mbc5.Forms
 
 
             }
-        }
+        
         private void SetJobTicketsPrinted()
         {
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");

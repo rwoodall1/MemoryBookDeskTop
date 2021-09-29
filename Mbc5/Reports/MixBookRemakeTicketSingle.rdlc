@@ -2,39 +2,6 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Textbox58">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>REMAKE TICKET</Value>
-                <Style>
-                  <FontSize>22pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Left>2.37792in</Left>
-        <Height>0.36458in</Height>
-        <Width>2.75694in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="ShipName">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -50,11 +17,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ShipName</rd:DefaultName>
-        <Top>0.625in</Top>
+        <Top>0.375in</Top>
         <Left>0.47166in</Left>
         <Height>0.25in</Height>
         <Width>2.46875in</Width>
-        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -80,11 +46,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Invno</rd:DefaultName>
-        <Top>0.94444in</Top>
+        <Top>0.69444in</Top>
         <Left>0.47166in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -114,11 +80,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>1.26389in</Top>
+        <Top>1.01389in</Top>
         <Left>0.47166in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
-        <ZIndex>3</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -147,11 +113,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>YBBarcode</rd:DefaultName>
-        <Top>1.56945in</Top>
+        <Top>1.31945in</Top>
         <Left>0.47166in</Left>
         <Height>0.25in</Height>
         <Width>3.71875in</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -181,11 +147,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>0.625in</Top>
+        <Top>0.375in</Top>
         <Left>5.6314in</Left>
         <Height>0.25in</Height>
         <Width>0.95834in</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -211,45 +177,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>RequestedShipDate</rd:DefaultName>
-        <Top>0.625in</Top>
+        <Top>0.375in</Top>
         <Left>6.61752in</Left>
         <Height>0.25in</Height>
         <Width>1.27083in</Width>
-        <ZIndex>6</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox48">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Cover Type</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>2.05208in</Top>
-        <Left>5.69391in</Left>
-        <Height>0.25in</Height>
-        <Width>1.125in</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -275,11 +207,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Description</rd:DefaultName>
-        <Top>2.09722in</Top>
+        <Top>1.84722in</Top>
         <Left>0.47166in</Left>
         <Height>0.25in</Height>
         <Width>3.25in</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -309,11 +241,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>2.38889in</Top>
+        <Top>2.13889in</Top>
         <Left>0.67654in</Left>
         <Height>0.25in</Height>
         <Width>0.9236in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -341,11 +273,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Copies</rd:DefaultName>
-        <Top>2.38889in</Top>
+        <Top>2.13889in</Top>
         <Left>1.66958in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -373,11 +305,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Pages</rd:DefaultName>
-        <Top>2.70833in</Top>
+        <Top>2.45833in</Top>
         <Left>1.66958in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -407,11 +339,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>2.70833in</Top>
+        <Top>2.45833in</Top>
         <Left>1.12097in</Left>
         <Height>0.25in</Height>
         <Width>0.47917in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -441,11 +373,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>5.79167in</Top>
+        <Top>5.54167in</Top>
         <Left>0.45778in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -474,11 +406,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>SCBarcode</rd:DefaultName>
-        <Top>6.09722in</Top>
+        <Top>5.84722in</Top>
         <Left>0.45778in</Left>
         <Height>0.25in</Height>
         <Width>3.96875in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -508,11 +440,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>6.52084in</Top>
+        <Top>6.27084in</Top>
         <Left>0.45778in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -538,11 +470,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-        <Top>6.52084in</Top>
+        <Top>6.27084in</Top>
         <Left>1.66958in</Left>
         <Height>0.25in</Height>
         <Width>1.375in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -572,11 +504,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>6.52084in</Top>
+        <Top>6.27084in</Top>
         <Left>5.53071in</Left>
         <Height>0.25in</Height>
         <Width>1.42361in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -604,11 +536,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ProdInOrder</rd:DefaultName>
-        <Top>6.52084in</Top>
+        <Top>6.27084in</Top>
         <Left>6.98209in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -627,18 +559,20 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!Backing.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>20pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Backing</rd:DefaultName>
-        <Top>2.05208in</Top>
-        <Left>6.84668in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>19</ZIndex>
+        <Top>0.92708in</Top>
+        <Left>6.06543in</Left>
+        <Height>0.45833in</Height>
+        <Width>1.78125in</Width>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -782,11 +716,11 @@
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>3.35292in</Top>
+        <Top>2.97792in</Top>
         <Left>0.22514in</Left>
         <Height>1in</Height>
         <Width>3.49652in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -795,7 +729,7 @@
         </Style>
       </Rectangle>
     </ReportItems>
-    <Height>7.03126in</Height>
+    <Height>6.56251in</Height>
     <Style />
   </Body>
   <Width>8.20723in</Width>

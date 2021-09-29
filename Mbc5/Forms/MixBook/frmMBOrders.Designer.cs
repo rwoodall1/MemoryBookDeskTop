@@ -56,6 +56,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -126,7 +127,6 @@
             this.bookStatusLabel1 = new System.Windows.Forms.Label();
             this.cmdJobTicket = new System.Windows.Forms.Button();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -147,6 +147,7 @@
             coverStatusLabel = new System.Windows.Forms.Label();
             bookStatusLabel = new System.Windows.Forms.Label();
             requestedShipMethodLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
@@ -160,7 +161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderDataGridView)).BeginInit();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -361,6 +361,10 @@
             requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
             requestedShipMethodLabel.TabIndex = 334;
             requestedShipMethodLabel.Text = "Requested Ship Method";
+            // 
+            // RemakeTicketQueryBindingSource
+            // 
+            this.RemakeTicketQueryBindingSource.DataSource = typeof(BindingModels.RemakeTicketQuery);
             // 
             // MixbookPackingSlipBindingSource
             // 
@@ -1075,14 +1079,10 @@
             this.reportViewer3.Location = new System.Drawing.Point(9, 425);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(63, 64);
+            this.reportViewer3.Size = new System.Drawing.Size(76, 64);
             this.reportViewer3.TabIndex = 10024;
             this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
-            // 
-            // RemakeTicketQueryBindingSource
-            // 
-            this.RemakeTicketQueryBindingSource.DataSource = typeof(BindingModels.RemakeTicketQuery);
             // 
             // frmMBOrders
             // 
@@ -1124,6 +1124,7 @@
             this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.cmdJobTicket, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
@@ -1139,7 +1140,6 @@
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
