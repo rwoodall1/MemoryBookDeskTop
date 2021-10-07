@@ -227,7 +227,7 @@ namespace Mbc5.Forms.MixBook
             
             var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 var sqlClient = new SQLCustomClient().CommandText(@"
-                Select Invno,
+                Select Invno,ClientOrderId,
                 ShipName,RequestedShipDate,
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 Description,
@@ -289,7 +289,9 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                Select MO.Invno,ClientOrderId,
+                SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
+                 MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                  '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno

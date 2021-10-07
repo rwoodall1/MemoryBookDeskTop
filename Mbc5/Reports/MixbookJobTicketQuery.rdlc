@@ -11,7 +11,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>6.0625in</Height>
+              <Height>9.43749in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -69,8 +69,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>4.91667in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>8.04167in</Top>
+                          <Left>0.10417in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>1</ZIndex>
@@ -250,7 +250,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="*"+RTrim(LTrim(Str(Fields!Invno.Value)))+"*"</Value>
+                                  <Value>="*"+RTrim(LTrim(Str(Fields!ClientOrderId.Value)))+"*"</Value>
                                   <Style>
                                     <FontFamily>3 of 9 Barcode</FontFamily>
                                     <FontSize>22pt</FontSize>
@@ -261,10 +261,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Invno</rd:DefaultName>
-                          <Top>3.27778in</Top>
-                          <Left>1.32985in</Left>
+                          <Top>3.11111in</Top>
+                          <Left>4.02777in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.24307in</Width>
+                          <Width>3.38891in</Width>
                           <ZIndex>7</ZIndex>
                           <Style>
                             <Border>
@@ -453,8 +453,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SCBarcode</rd:DefaultName>
-                          <Top>5.22222in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>8.34722in</Top>
+                          <Left>0.10417in</Left>
                           <Height>0.25in</Height>
                           <Width>3.96875in</Width>
                           <ZIndex>13</ZIndex>
@@ -480,13 +480,13 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ProdInOrder</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>6.76041in</Left>
+                          <Top>8.9375in</Top>
+                          <Left>5.32986in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>14</ZIndex>
@@ -515,8 +515,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>1.32985in</Left>
+                          <Top>8.9375in</Top>
+                          <Left>1.31597in</Left>
                           <Height>0.25in</Height>
                           <Width>1.375in</Width>
                           <ZIndex>15</ZIndex>
@@ -549,8 +549,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>8.9375in</Top>
+                          <Left>0.10417in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>16</ZIndex>
@@ -571,7 +571,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Products in Order</Value>
+                                  <Value>OF</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -583,10 +583,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>5.64584in</Top>
-                          <Left>5.30903in</Left>
+                          <Top>8.9375in</Top>
+                          <Left>6.34375in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.42361in</Width>
+                          <Width>0.29515in</Width>
                           <ZIndex>17</ZIndex>
                           <Style>
                             <Border>
@@ -660,11 +660,43 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>3.27778in</Top>
-                          <Left>0.11805in</Left>
+                          <Top>3.11111in</Top>
+                          <Left>2.81597in</Left>
                           <Height>0.41667in</Height>
                           <Width>1.02083in</Width>
                           <ZIndex>19</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="NumbInOrder">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!NumInOrder.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>NumbInOrder</rd:DefaultName>
+                          <Top>8.9375in</Top>
+                          <Left>6.65279in</Left>
+                          <Height>0.25in</Height>
+                          <Width>1in</Width>
+                          <ZIndex>20</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -683,7 +715,6 @@
                         </Border>
                       </Style>
                     </Rectangle>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -709,7 +740,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.12375in</Top>
         <Left>0.11333in</Left>
-        <Height>6.0625in</Height>
+        <Height>9.43749in</Height>
         <Width>7.76041in</Width>
         <Style>
           <Border>
@@ -718,13 +749,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.33208in</Height>
+    <Height>9.67583in</Height>
     <Style />
   </Body>
   <Width>7.99875in</Width>
   <Page>
     <PageFooter>
-      <Height>0.53in</Height>
+      <Height>0.22792in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -745,8 +776,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>0.125in</Top>
-          <Left>5.04625in</Left>
+          <Left>5.67125in</Left>
           <Height>0.17708in</Height>
           <Width>2.26042in</Width>
           <Style>
@@ -790,6 +820,10 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ClientOrderId">
+          <DataField>ClientOrderId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Copies">
           <DataField>Copies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -809,6 +843,10 @@
         <Field Name="JobTicketPrinted">
           <DataField>JobTicketPrinted</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="NumInOrder">
+          <DataField>NumInOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="OrderReceivedDate">
           <DataField>OrderReceivedDate</DataField>

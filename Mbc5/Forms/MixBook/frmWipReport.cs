@@ -33,30 +33,32 @@ namespace Mbc5.Forms.MixBook
         private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
-      string cmd= @"Select  (Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
-                                  ,MO.ShipName
-                                 ,MO.Copies,Mo.Pages
-                                 ,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
-                                 ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
-                                 ,MO.Description
-                                  ,MO.Backing
-                                 ,P.Kitrecvd
-                                 ,CD37.War AS OnBoards
-                                 ,CD37.MxbLocation AS CCart
-                                 ,CD43.War As CTrimming
-                                 ,CD43.MxbLocation AS CTrimLoc
-                                 ,CD29.War AS CPress
-                                 ,CD29.MxbLocation AS Location29
-                                 ,WD29.War AS WipPress
-                                 ,WD39.War AS Binding
-                                 ,WD39.MxbLocation AS PCart
-                                 ,WD43.War As PTrimming
-                                ,WD43.Mxblocation As PTrimLoc
-                                 ,WD49.War AS CaseIn
-                                 ,WD50.War AS Quality
-                                 ,WD50.MxbLocation AS Location
-                                 ,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
-                                 ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+      string cmd= @"Select 
+                                    MO.ShipName
+									,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+									,MO.Copies
+									,Mo.Pages
+									,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
+									,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
+									,MO.Description
+									,MO.Backing
+									,P.Kitrecvd
+									,CD29.War AS CPress
+									,CD29.MxbLocation AS Location29
+									,CD43.War As CTrimming
+									,CD43.MxbLocation AS CTrimLoc
+									,CD37.War AS OnBoards
+									,CD37.MxbLocation AS CCart
+									,WD29.War AS WipPress
+									,WD43.War As PTrimming
+									,WD43.Mxblocation As PTrimLoc 
+									,WD39.War AS Binding
+									,WD39.MxbLocation AS PCart
+									,WD49.War AS CaseIn
+									,WD50.War AS Quality				                          
+									,WD50.MxbLocation AS Location
+									,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join Wip W ON MO.Invno=W.Invno

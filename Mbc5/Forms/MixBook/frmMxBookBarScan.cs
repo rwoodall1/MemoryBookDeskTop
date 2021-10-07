@@ -1218,6 +1218,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintDataMatrix(string vbarcode, string vlocation)
         {
             string ip="";
+            
             if (this.ApplicationUser.UserName == "binding")
             {
                  ip = _matrixPrinterA;
@@ -1227,6 +1228,7 @@ namespace Mbc5.Forms.MixBook
             {
                 ip = _matrixPrinterB;
             }
+      
             try
             {
                 TcpClient client = new TcpClient(ip, 10200);//"10.37.16.168"
@@ -1264,6 +1266,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
+                
                 Log.Error(ex, "Failed to print DataMatrix Label");
             }
         }
