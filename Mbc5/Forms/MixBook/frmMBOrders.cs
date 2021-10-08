@@ -72,6 +72,7 @@ namespace Mbc5.Forms.MixBook
                 this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                
             }
             catch (Exception ex)
             {

@@ -44,7 +44,7 @@ namespace Mbc5.Forms
             {
                 AppConnectionString = "Data Source=sedswjpsql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
@@ -1866,6 +1866,11 @@ namespace Mbc5.Forms
         private void printRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrintRemakeTickets();
+        }
+
+        private void mixBookUSPSLabelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
         //nothing below here

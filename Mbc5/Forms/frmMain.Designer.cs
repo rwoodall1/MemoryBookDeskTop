@@ -51,6 +51,7 @@
             this.mixbookBarscanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caseMatchScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mixBookUSPSLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +120,6 @@
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.mixBookUSPSLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
@@ -310,6 +310,13 @@
             this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.shippingScanToolStripMenuItem.Text = "Shipping Scan";
             this.shippingScanToolStripMenuItem.Click += new System.EventHandler(this.shippingScanToolStripMenuItem_Click);
+            // 
+            // mixBookUSPSLabelToolStripMenuItem
+            // 
+            this.mixBookUSPSLabelToolStripMenuItem.Name = "mixBookUSPSLabelToolStripMenuItem";
+            this.mixBookUSPSLabelToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.mixBookUSPSLabelToolStripMenuItem.Text = "MixBook USPS Label";
+            this.mixBookUSPSLabelToolStripMenuItem.Click += new System.EventHandler(this.mixBookUSPSLabelToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -909,13 +916,6 @@
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
-            // mixBookUSPSLabelToolStripMenuItem
-            // 
-            this.mixBookUSPSLabelToolStripMenuItem.Name = "mixBookUSPSLabelToolStripMenuItem";
-            this.mixBookUSPSLabelToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.mixBookUSPSLabelToolStripMenuItem.Text = "MixBook USPS Label";
-            this.mixBookUSPSLabelToolStripMenuItem.Click += new System.EventHandler(this.mixBookUSPSLabelToolStripMenuItem_Click);
             // 
             // frmMain
             // 
