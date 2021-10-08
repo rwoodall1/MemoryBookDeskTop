@@ -970,6 +970,17 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Invalid reason code.");
                 return;
             }
+            if (string.IsNullOrEmpty(txtRemakeQty.Text))
+            {
+                MbcMessageBox.Stop("Enter a quantity", "Quantity");
+                return;
+            }
+            int vRemakeQuantity = 1;
+            if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
+            {
+                MbcMessageBox.Error("Invalid Quantity");
+                return;
+            }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
             if (currentUser == "QUALITY")
@@ -985,9 +996,10 @@ namespace Mbc5.Forms.MixBook
                 }
                 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 if (vReason==0 )
@@ -1019,8 +1031,9 @@ namespace Mbc5.Forms.MixBook
                
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@Memo", vmemo);
                 if (vReason == 0)
@@ -1048,6 +1061,7 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
+               
                 var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
                 {
@@ -1057,9 +1071,10 @@ namespace Mbc5.Forms.MixBook
                 }
                
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
                 sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 if (vReason == 0)
@@ -1098,9 +1113,10 @@ namespace Mbc5.Forms.MixBook
                 
                 sqlClient.ClearParameters();
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Memo", vmemo);
                 if (vReason == 0)
                 {
