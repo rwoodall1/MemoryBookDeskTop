@@ -58,3 +58,4 @@ D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csproj.Cop
 D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.dll
 D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.pdb
 D:\Projects\MemoryBookDeskTop\BindingModels\obj\Release\BindingModels.csprojAssemblyReference.cache
+D:\Projects\MemoryBookDeskTop\BindingModels\bin\BindingModels.dll

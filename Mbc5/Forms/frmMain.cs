@@ -39,14 +39,13 @@ namespace Mbc5.Forms
         protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
-           
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-            //if (Environment == "DEV")
-            //{
-            //    AppConnectionString = "Data Source=SedswjpSql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
-            //}
-            //else if (Environment == "PROD") { AppConnectionString = "Data Source=SedswjpSql01;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
-            
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=sedswjpsql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -624,57 +623,16 @@ namespace Mbc5.Forms
         }
         public void PrintJobTickets()
         {
-            var sqlClient = new SQLCustomClient();
             string value = "";
-            if (DateInputBox.Show("Ship Request Date", "Enter Ship Request Date:", ref value) == DialogResult.OK)
-            {
-                if (!string.IsNullOrEmpty(value)) {
+            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
 
-                    sqlClient.CommandText(@"
-                                            Select Invno,tmpTable.NumInOrder,tmpTable.ClientOrderId,
-                                                ShipName,RequestedShipDate,
-                                                SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                                                Description,
-                                                Copies,Pages,
-                                                Backing,OrderReceivedDate,
-                                                ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                                                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
-                                                From MixBookOrder 
-                                                Inner Join ( Select ClientOrderId
-                                                ,Count(ClientOrderId) as NumInOrder
-                                                From MixBookOrder
-                                             Where (JobTicketPrinted Is Null OR JobTicketPrinted=0)
-                                             AND
-                                              (MixBookOrder.BookStatus IS Null OR MixBookOrder.BookStatus='')AND MixBookOrder.RequestedShipDate <=@RequestedShipDate  Order By RequestedShipDate,Description ");
-
-                    sqlClient.AddParameter("@RequestedShipDate", value);
-                }
-                else
-                {
-                        sqlClient.CommandText(@"Select Invno,tmpTable.NumInOrder,tmpTable.ClientOrderId,
-                                                ShipName,RequestedShipDate,
-                                                SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                                                Description,
-                                                Copies,Pages,
-                                                Backing,OrderReceivedDate,
-                                                ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                                                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
-                                                From MixBookOrder 
-                                                Inner Join ( Select ClientOrderId
-                                                ,Count(ClientOrderId) as NumInOrder
-                                                From MixBookOrder
-                                                Where (JobTicketPrinted Is Null OR JobTicketPrinted=0)
-                                                AND  (MixBookOrder.BookStatus IS Null OR MixBookOrder.BookStatus='')
-                                                Group By ClientOrderId) AS tmpTable On Mixbookorder.ClientOrderId=tmpTable.ClientOrderId
-                                                Where (JobTicketPrinted Is Null OR JobTicketPrinted=0)
-                                                AND
-                                                (MixBookOrder.BookStatus IS Null OR MixBookOrder.BookStatus='')
-                                                Order By RequestedShipDate,Description ");
-
-                }
-            }; 
+                var sqlClient = new SQLCustomClient().CommandText(@"
+                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
+                    MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
+            "); ;
              
-               
+                sqlClient.AddParameter("@RequestedShipDate",value );
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
@@ -699,7 +657,7 @@ namespace Mbc5.Forms
 
 
             }
-        
+        }
         private void SetJobTicketsPrinted()
         {
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
@@ -718,9 +676,7 @@ namespace Mbc5.Forms
         {
          
               var sqlClient = new SQLCustomClient().CommandText(@"
-               Select MO.Invno,ClientOrderId,
-                SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno,
-               MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                  '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
@@ -1910,15 +1866,6 @@ namespace Mbc5.Forms
         private void printRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrintRemakeTickets();
-        }
-
-        private void mixBookUSPSLabelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmUsPsLabel frmUsPsLabel = new frmUsPsLabel(this.ApplicationUser);
-
-            frmUsPsLabel.MdiParent = this;
-            frmUsPsLabel.Show();
-            this.Cursor = Cursors.Default;
         }
         #endregion
         //nothing below here
