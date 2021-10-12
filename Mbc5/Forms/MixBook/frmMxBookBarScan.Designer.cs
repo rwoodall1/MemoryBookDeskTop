@@ -42,6 +42,8 @@
             this.lblScanQty = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRemake = new System.Windows.Forms.Panel();
+            this.txtRemakeQty = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -62,8 +64,6 @@
             this.cmbLogin = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlImpersonate = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRemakeQty = new System.Windows.Forms.TextBox();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -211,6 +211,25 @@
             this.pnlRemake.TabIndex = 10018;
             this.pnlRemake.Visible = false;
             // 
+            // txtRemakeQty
+            // 
+            this.txtRemakeQty.Location = new System.Drawing.Point(113, 30);
+            this.txtRemakeQty.MaxLength = 3;
+            this.txtRemakeQty.Name = "txtRemakeQty";
+            this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
+            this.txtRemakeQty.TabIndex = 10020;
+            this.txtRemakeQty.Text = "1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 10019;
+            this.label5.Text = "QTY To Remake";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -311,7 +330,7 @@
             // btnClearPrinter
             // 
             this.btnClearPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearPrinter.Location = new System.Drawing.Point(186, 200);
+            this.btnClearPrinter.Location = new System.Drawing.Point(187, 200);
             this.btnClearPrinter.Name = "btnClearPrinter";
             this.btnClearPrinter.Size = new System.Drawing.Size(87, 23);
             this.btnClearPrinter.TabIndex = 10021;
@@ -414,25 +433,6 @@
             this.pnlImpersonate.Size = new System.Drawing.Size(286, 31);
             this.pnlImpersonate.TabIndex = 10029;
             this.pnlImpersonate.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
-            this.label5.TabIndex = 10019;
-            this.label5.Text = "QTY To Remake";
-            // 
-            // txtRemakeQty
-            // 
-            this.txtRemakeQty.Location = new System.Drawing.Point(113, 30);
-            this.txtRemakeQty.MaxLength = 3;
-            this.txtRemakeQty.Name = "txtRemakeQty";
-            this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
-            this.txtRemakeQty.TabIndex = 10020;
-            this.txtRemakeQty.Text = "1";
             // 
             // frmMxBookBarScan
             // 
