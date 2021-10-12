@@ -193,7 +193,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!ShipName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />

@@ -624,15 +624,27 @@ namespace Mbc5.Forms
         public void PrintJobTickets()
         {
             string value = "";
-            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
+            var sqlClient = new SQLCustomClient();
+            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK)
+            {
 
-                var sqlClient = new SQLCustomClient().CommandText(@"
+                sqlClient.CommandText(@"
                 Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
                  '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
                     MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
-            "); ;
-             
-                sqlClient.AddParameter("@RequestedShipDate",value );
+            ");
+
+
+                sqlClient.AddParameter("@RequestedShipDate", value);
+            }
+            else
+            {
+                sqlClient.CommandText(@"
+                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                  AND  MixBookOrder.BookStatus IS Null");
+
+            }
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
@@ -656,7 +668,7 @@ namespace Mbc5.Forms
                 }
 
 
-            }
+            
         }
         private void SetJobTicketsPrinted()
         {
