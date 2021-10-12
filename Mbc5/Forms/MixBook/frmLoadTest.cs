@@ -212,7 +212,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            var a = e.KeyCode;
+            var a =e.KeyCode;
             KeysConverter kc = new KeysConverter();
             string keyChar = kc.ConvertToString(e.KeyData);
         }
