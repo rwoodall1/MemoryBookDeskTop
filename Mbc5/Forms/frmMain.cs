@@ -629,9 +629,11 @@ namespace Mbc5.Forms
             {
 
                 sqlClient.CommandText(@"
-                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
-                    MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
+                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                  (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
+                    RequestedShipDate <=@RequestedShipDate AND BookStatus IS Null
             ");
 
 
@@ -640,9 +642,12 @@ namespace Mbc5.Forms
             else
             {
                 sqlClient.CommandText(@"
-                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                  AND  MixBookOrder.BookStatus IS Null");
+                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,    
+(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
+'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                  AND  BookStatus IS Null
+");
 
             }
           
@@ -673,14 +678,14 @@ namespace Mbc5.Forms
         private void SetJobTicketsPrinted()
         {
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
-            foreach(JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
-                
+
                 var vInvno = rec.Invno.ToString();
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
-                sqlClient.AddParameter("@SetJobTicketPrinted",1);
-                var updateResult=sqlClient.Update();
+                sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
             }
         }
         
@@ -688,8 +693,9 @@ namespace Mbc5.Forms
         {
          
               var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
+                Select MO.Invno,MO.ShipName,MO.ClientOrderId,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,                 
+'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
             "); 

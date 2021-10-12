@@ -654,7 +654,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
         <Top>3.15562in</Top>
-        <Left>0.21289in</Left>
+        <Left>3.83789in</Left>
         <Height>0.41667in</Height>
         <Width>1.02083in</Width>
         <ZIndex>19</ZIndex>
@@ -687,7 +687,7 @@
         </Paragraphs>
         <rd:DefaultName>Invno</rd:DefaultName>
         <Top>3.15562in</Top>
-        <Left>1.39693in</Left>
+        <Left>5.02193in</Left>
         <Height>0.25in</Height>
         <Width>2.54859in</Width>
         <ZIndex>20</ZIndex>
