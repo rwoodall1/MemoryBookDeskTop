@@ -119,7 +119,7 @@ namespace Mbc5.Forms
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            SendEmail();
+             SendEmail();
         }
 
         private void txtAttachment_MouseClick(object sender, MouseEventArgs e)
