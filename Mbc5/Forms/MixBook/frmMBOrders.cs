@@ -72,6 +72,7 @@ namespace Mbc5.Forms.MixBook
                 this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                
             }
             catch (Exception ex)
             {
@@ -227,8 +228,15 @@ namespace Mbc5.Forms.MixBook
             
             var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 var sqlClient = new SQLCustomClient().CommandText(@"
-                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,JobTicketPrinted,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where Invno=@Invno
+                Select Invno,ClientOrderId,
+                ShipName,RequestedShipDate,
+                SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                Description,
+                Copies,Pages,
+                Backing,OrderReceivedDate,
+                ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
+                From MixBookOrder  Where Invno=@Invno
             "); 
 
                 sqlClient.AddParameter("@Invno", value);
@@ -245,7 +253,8 @@ namespace Mbc5.Forms.MixBook
                 {
                     reportViewer3.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+
+                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
                 }
@@ -281,7 +290,9 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                Select MO.Invno,ClientOrderId,
+                SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
+                 MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                  '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno
@@ -612,12 +623,14 @@ namespace Mbc5.Forms.MixBook
                 try
                 {
 
-                    if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                    if (reportViewer3.PrintDialog() != DialogResult.Cancel)
                     {
                         SetJobTicketPrinted();
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) {
+                    Log.Error("PrintJobTicketSingle" + ex.Message);
+                }
             }
             else
             {

@@ -8,6 +8,8 @@ namespace BindingModels
     public class RemakeTicketQuery
     {
         public int Invno { get; set; }
+        public int ClientOrderId { get; set; }
+        public string DSInvno { get; set; }
         public string ShipName { get; set; }
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
@@ -24,7 +26,10 @@ namespace BindingModels
     }
     public class JobTicketQuery
     {
-        public int Invno { get; set; }
+
+        public int Invno { get; set; }  
+        public int ClientOrderId { get; set; }
+        public string DSInvno { get; set; }
         public string ShipName { get; set; }
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
@@ -33,6 +38,7 @@ namespace BindingModels
         public string Backing { get; set; }
         public DateTime OrderReceivedDate { get; set; }
         public int ProdInOrder { get; set; }
+        public int NumInOrder { get; set; }
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
         public bool JobTicketPrinted { get; set; }

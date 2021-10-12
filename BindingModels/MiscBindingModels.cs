@@ -5,6 +5,26 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class UsPsBarScanReturn
+    {
+
+        public string ShipName { get; set; }
+        public string ShipAddr { get; set; }
+        public string ShipAddr2 { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
+        public string MixbookOrderStatus { get; set; }
+        public string JobId { get; set; }
+        public int ClientOrderId { get; set; }
+        public string ShipMethod { get; set; }
+        public string ShippingMethodName { get; set; }
+        public int ProdInOrder { get; set; }
+        public string Carrier { get; set; }
+        public string ServiceId { get; set; }
+        public string PkgType { get; set; }
+    }
+
     public class Exemption
     {
         public string SubmittedCity { get; set; }

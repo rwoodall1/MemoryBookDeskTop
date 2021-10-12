@@ -100,15 +100,10 @@ namespace Mbc5.Forms
             lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mixBookOrderTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
-            
-            
-            // TODO: This line of code loads data into the 'lookUp.RemakeReasons' table. You can move, or remove it, as needed.
-            this.remakeReasonsTableAdapter.Fill(this.lookUp.RemakeReasons);
-            // TODO: This line of code loads data into the 'lookUp.lkpMascot' table. You can move, or remove it, as needed.
-
 
             if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
             {

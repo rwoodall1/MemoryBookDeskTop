@@ -44,7 +44,7 @@ namespace Mbc5.Forms
             {
                 AppConnectionString = "Data Source=sedswjpsql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
@@ -624,15 +624,32 @@ namespace Mbc5.Forms
         public void PrintJobTickets()
         {
             string value = "";
-            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK) {
+            var sqlClient = new SQLCustomClient();
+            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK)
+            {
 
-                var sqlClient = new SQLCustomClient().CommandText(@"
-                Select Invno,ShipName,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
-                    MixBookOrder.RequestedShipDate <=@RequestedShipDate AND  MixBookOrder.BookStatus IS Null
-            "); ;
-             
-                sqlClient.AddParameter("@RequestedShipDate",value );
+                sqlClient.CommandText(@"
+                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                  (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
+                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
+                    RequestedShipDate <=@RequestedShipDate AND BookStatus IS Null
+            ");
+
+
+                sqlClient.AddParameter("@RequestedShipDate", value);
+            }
+            else
+            {
+                sqlClient.CommandText(@"
+                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,    
+(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
+'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                  AND  BookStatus IS Null
+");
+
+            }
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
@@ -656,19 +673,19 @@ namespace Mbc5.Forms
                 }
 
 
-            }
+            
         }
         private void SetJobTicketsPrinted()
         {
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
-            foreach(JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
-                
+
                 var vInvno = rec.Invno.ToString();
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
-                sqlClient.AddParameter("@SetJobTicketPrinted",1);
-                var updateResult=sqlClient.Update();
+                sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
             }
         }
         
@@ -676,8 +693,9 @@ namespace Mbc5.Forms
         {
          
               var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
-                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
+                Select MO.Invno,MO.ShipName,MO.ClientOrderId,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,                 
+'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
             "); 
@@ -1866,6 +1884,24 @@ namespace Mbc5.Forms
         private void printRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrintRemakeTickets();
+        }
+
+        private void mixBookUSPSLabelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsPsLabel frmUsPsLabel = new frmUsPsLabel(this.ApplicationUser);
+
+            frmUsPsLabel.MdiParent = this;
+            frmUsPsLabel.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void coverSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCoverSearch frmCoverSearch = new frmCoverSearch(this.ApplicationUser);
+
+            frmCoverSearch.MdiParent = this;
+            frmCoverSearch.Show();
+            this.Cursor = Cursors.Default;
         }
         #endregion
         //nothing below here

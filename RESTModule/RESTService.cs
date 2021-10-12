@@ -29,7 +29,7 @@ namespace RESTModule {
         public Cookie CookieValue { get; set; }
         public AuthenticationHeaderValue AuthHeaderValue { get; set; }
         public string AuthHeaderString { get; set; }
-        public IDictionary<string, string> AdditionalHeaders { get; set; }
+        public List<Header> AdditionalHeaders { get; set; }
     }
     public class RESTAPIResult {
         public bool IsError { get; set; }
@@ -44,22 +44,36 @@ namespace RESTModule {
         private string AuthHeaderName { get; set; }
         private AuthenticationHeaderValue AuthHeaderValue { get; set; }
         private string AuthHeaderString { get; set; }
-        private IDictionary<string, string> AdditionalHeaders { get; set; }
+        private List<Header> AdditionalHeaders { get; set; }
         public Uri CookieURI { get; set; }
         private Cookie CookieValue { get; set; }
+        private string ContentType { get; set; }
         private string EndPoint { get; set; } =ConfigurationManager.AppSettings["MixBookEndPoint"].ToString();
-      
-        public RESTService() {
-            
+
+        public RESTService(bool isPitney = false,string token="") {
+            if (isPitney)
+            {
+                if (!string.IsNullOrEmpty(token)) {
+                    AuthHeaderName = "Authorization";
+                    AuthHeaderString = "Basic " + token;
+                }
+               
+            }
         }
 
       
 
-        public async Task<ApiProcessingResult<RESTAPIResult>> MakeRESTCall(string actionType, string xmlRequestData) {
+        public async Task<ApiProcessingResult<RESTAPIResult>> MakeRESTCall(string actionType=default(string), string sentRequestData=default(string), List<Header> headers =default(List<Header>),string vEndPoint="",string vContentType= "application/xml") {
             var result = new ApiProcessingResult<RESTAPIResult> { IsError = false, Data = new RESTAPIResult() };
+            this.AdditionalHeaders = headers;
+            this.ContentType = vContentType;
+            if (!string.IsNullOrEmpty(vEndPoint))
+            {
+                this.EndPoint = vEndPoint;
+            }
             var logData = new LogMetadata()
             {
-                RequestContent = xmlRequestData,
+                RequestContent = sentRequestData,
                 RequestMethod = actionType,
                 RequestTimestamp = DateTime.Now,
                 RequestUri = EndPoint,
@@ -75,7 +89,7 @@ namespace RESTModule {
                     if (!string.IsNullOrEmpty(AuthHeaderName) && AuthHeaderString != null) { httpClient.DefaultRequestHeaders.Add(AuthHeaderName, AuthHeaderString); }
 
                     if (AdditionalHeaders != null) {
-                        foreach (KeyValuePair<string, string> header in AdditionalHeaders) {
+                        foreach (Header header in AdditionalHeaders) {
                             httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
                         }
                     }
@@ -86,7 +100,7 @@ namespace RESTModule {
                     
                 
 
-                    var requestData = new StringContent(xmlRequestData,Encoding.UTF8, "application/xml");
+                    var requestData = new StringContent(sentRequestData,Encoding.UTF8, this.ContentType);
                     var apiResponse = new HttpResponseMessage();
                     if (actionType.ToUpper() == "POST") {
                         
@@ -226,4 +240,9 @@ namespace RESTModule {
             return true;
         }
     }
+public class Header
+{
+    public string Key { get; set; }
+    public string Value { get; set; }
+}
 }
