@@ -5,6 +5,44 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class RemakeTicketQuery
+    {
+        public int Invno { get; set; }
+        public int ClientOrderId { get; set; }
+        public string DSInvno { get; set; }
+        public string ShipName { get; set; }
+        public DateTime RequestedShipDate { get; set; }
+        public string Description { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string Backing { get; set; }
+        public DateTime OrderReceivedDate { get; set; }
+        public int ProdInOrder { get; set; }
+        public string SCBarcode { get; set; }
+        public string YBBarcode { get; set; }
+        public bool JobTicketPrinted { get; set; }
+        public DateTime RemakeDate { get; set; }
+        public int RemakeTotal { get; set; }
+    }
+    public class JobTicketQuery
+    {
+
+        public int Invno { get; set; }  
+        public int ClientOrderId { get; set; }
+        public string DSInvno { get; set; }
+        public string ShipName { get; set; }
+        public DateTime RequestedShipDate { get; set; }
+        public string Description { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string Backing { get; set; }
+        public DateTime OrderReceivedDate { get; set; }
+        public int ProdInOrder { get; set; }
+        public int NumInOrder { get; set; }
+        public string SCBarcode { get; set; }
+        public string YBBarcode { get; set; }
+        public bool JobTicketPrinted { get; set; }
+    }
     public class SiblingCheck
     {
         public int ClientOrderId { get; set; }
@@ -123,6 +161,7 @@ namespace BindingModels
         public string JobId { get; set; }
         public string ItemId { get; set; }
         public string ShipMethod { get; set; }
+        public string Carrier { get; set; }
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
         public string BookLocation { get; set; }

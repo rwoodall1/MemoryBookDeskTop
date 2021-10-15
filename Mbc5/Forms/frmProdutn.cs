@@ -100,13 +100,10 @@ namespace Mbc5.Forms
             lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mixBookOrderTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
-            // TODO: This line of code loads data into the 'lookUp.RemakeReasons' table. You can move, or remove it, as needed.
-            this.remakeReasonsTableAdapter.Fill(this.lookUp.RemakeReasons);
-            // TODO: This line of code loads data into the 'lookUp.lkpMascot' table. You can move, or remove it, as needed.
-
 
             if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
             {
@@ -7231,6 +7228,7 @@ namespace Mbc5.Forms
                         if (Company=="MXB")
                         {
                             ClientId=(int)((DataRowView)produtnBindingSource.Current).Row["MxbClientOrderId"];
+                            this.mixBookOrderTableAdapter1.Fill(this.dsProdutn.MixBookOrder,Invno);
                         }
                     }
                 
@@ -7871,7 +7869,17 @@ namespace Mbc5.Forms
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)
 		{
 
-			try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")"; }
+			try {
+                if (txtCompany.Text=="MXB")
+                {
+                    this.Text = "Production-Mixbook Ship Name:" + lblShipname.Text + " (Client OrderId:" + lblClientOrderId.Text + ")(Invoice# " + Invno.ToString() + ")";
+                }
+                else
+                {
+                    this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")";
+                }
+               
+            }
 			catch
 			{
 
@@ -10841,7 +10849,8 @@ namespace Mbc5.Forms
 
         private void shpdateDateTimePicker_Leave_1(object sender, EventArgs e)
         {
-            ShippingEmail();
+            if (Company!="MXB") {ShippingEmail(); }
+            
         }
 
         private void cstsvcdteDateTimePicker_Leave_1(object sender, EventArgs e)

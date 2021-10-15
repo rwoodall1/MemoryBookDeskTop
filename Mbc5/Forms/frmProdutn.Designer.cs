@@ -249,14 +249,11 @@ namespace Mbc5.Forms
             this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCust = new Mbc5.DataSets.dsCust();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
-            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.lblClientOrderId = new System.Windows.Forms.Label();
+            this.mixBookOrderBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lblShipname = new System.Windows.Forms.Label();
             this.btnEmailProdForm = new System.Windows.Forms.Button();
             this.label56 = new System.Windows.Forms.Label();
             this.btnStandarCoverEmail = new System.Windows.Forms.Button();
@@ -605,10 +602,13 @@ namespace Mbc5.Forms
             this.prodNoPagesLabel2 = new System.Windows.Forms.Label();
             this.refdateDateBox = new CustomControls.DateBox();
             this.typestyleLabel5 = new System.Windows.Forms.Label();
-            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
-            this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mcoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productionTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.quotesTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.quotesTableAdapter();
@@ -620,24 +620,28 @@ namespace Mbc5.Forms
             this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
             this.wipDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDetailTableAdapter();
             this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
+            this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
+            this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+            this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
+            this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
+            this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
+            this.mixBookOrderTableAdapter1 = new Mbc5.DataSets.dsProdutnTableAdapters.MixBookOrderTableAdapter();
+            this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.lkTypeDataTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkTypeDataTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
-            this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
-            this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
             this.invoiceCustTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
             this.tableAdapterManager2 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-            this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
-            this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
-            this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
-            this.mcoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productionTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager3 = new Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager();
             this.dsMcust = new Mbc5.DataSets.dsMcust();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -825,14 +829,9 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -867,14 +866,20 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcoverTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productionTicketBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
@@ -2580,37 +2585,6 @@ namespace Mbc5.Forms
             this.wipBindingSource.DataMember = "wip";
             this.wipBindingSource.DataSource = this.dsProdutn;
             // 
-            // invoiceCustBindingSource
-            // 
-            this.invoiceCustBindingSource.DataMember = "cust";
-            this.invoiceCustBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.dsInvoice;
-            // 
-            // dsInvoice
-            // 
-            this.dsInvoice.DataSetName = "dsInvoice";
-            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invdetailBindingSource
-            // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.dsInvoice;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
-            // 
             // tbProdutn
             // 
             this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2636,6 +2610,8 @@ namespace Mbc5.Forms
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.lblClientOrderId);
+            this.pg1.Controls.Add(this.lblShipname);
             this.pg1.Controls.Add(this.btnEmailProdForm);
             this.pg1.Controls.Add(this.label56);
             this.pg1.Controls.Add(this.btnStandarCoverEmail);
@@ -2669,6 +2645,29 @@ namespace Mbc5.Forms
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
+            // 
+            // lblClientOrderId
+            // 
+            this.lblClientOrderId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource1, "ClientOrderId", true));
+            this.lblClientOrderId.Location = new System.Drawing.Point(1163, 24);
+            this.lblClientOrderId.Name = "lblClientOrderId";
+            this.lblClientOrderId.Size = new System.Drawing.Size(1, 1);
+            this.lblClientOrderId.TabIndex = 163;
+            this.lblClientOrderId.Text = "S";
+            // 
+            // mixBookOrderBindingSource1
+            // 
+            this.mixBookOrderBindingSource1.DataMember = "MixBookOrder";
+            this.mixBookOrderBindingSource1.DataSource = this.dsProdutn;
+            // 
+            // lblShipname
+            // 
+            this.lblShipname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource1, "ShipName", true));
+            this.lblShipname.Location = new System.Drawing.Point(1163, 2);
+            this.lblShipname.Name = "lblShipname";
+            this.lblShipname.Size = new System.Drawing.Size(1, 1);
+            this.lblShipname.TabIndex = 162;
+            this.lblShipname.Text = "A";
             // 
             // btnEmailProdForm
             // 
@@ -2766,7 +2765,7 @@ namespace Mbc5.Forms
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(566, 399);
+            this.panel4.Location = new System.Drawing.Point(548, 399);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
@@ -3061,7 +3060,7 @@ namespace Mbc5.Forms
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(915, 80);
+            this.panel3.Location = new System.Drawing.Point(897, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(184, 316);
             this.panel3.TabIndex = 130;
@@ -3164,7 +3163,7 @@ namespace Mbc5.Forms
             this.panel2.Controls.Add(warndateLabel);
             this.panel2.Controls.Add(prshpdteLabel);
             this.panel2.Controls.Add(shpdateLabel);
-            this.panel2.Location = new System.Drawing.Point(648, 82);
+            this.panel2.Location = new System.Drawing.Point(630, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 316);
             this.panel2.TabIndex = 129;
@@ -3244,7 +3243,7 @@ namespace Mbc5.Forms
             this.kitrecvdDateTimePicker.Location = new System.Drawing.Point(115, 10);
             this.kitrecvdDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.kitrecvdDateTimePicker.Name = "kitrecvdDateTimePicker";
-            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(114, 21);
+            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(143, 21);
             this.kitrecvdDateTimePicker.TabIndex = 166;
             // 
             // tovendDateBox
@@ -3359,7 +3358,7 @@ namespace Mbc5.Forms
             this.panel1.Controls.Add(this.txtCoverType);
             this.panel1.Location = new System.Drawing.Point(265, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 400);
+            this.panel1.Size = new System.Drawing.Size(279, 400);
             this.panel1.TabIndex = 128;
             // 
             // endstrecvDateBox
@@ -3466,7 +3465,7 @@ namespace Mbc5.Forms
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
             this.ptnopgsTextBox.Location = new System.Drawing.Point(173, 277);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(66, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(40, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // colorpgsCheckBox
@@ -3489,7 +3488,7 @@ namespace Mbc5.Forms
             this.txtPerfbind.Location = new System.Drawing.Point(173, 136);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
-            this.txtPerfbind.Size = new System.Drawing.Size(29, 20);
+            this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
             // 
@@ -3500,7 +3499,7 @@ namespace Mbc5.Forms
             this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
             this.txtCoverDescription.Location = new System.Drawing.Point(173, 34);
             this.txtCoverDescription.Name = "txtCoverDescription";
-            this.txtCoverDescription.Size = new System.Drawing.Size(103, 20);
+            this.txtCoverDescription.Size = new System.Drawing.Size(77, 20);
             this.txtCoverDescription.TabIndex = 102;
             // 
             // txtCoverType
@@ -3512,7 +3511,7 @@ namespace Mbc5.Forms
             this.txtCoverType.Location = new System.Drawing.Point(173, 12);
             this.txtCoverType.MaxLength = 4;
             this.txtCoverType.Name = "txtCoverType";
-            this.txtCoverType.Size = new System.Drawing.Size(103, 20);
+            this.txtCoverType.Size = new System.Drawing.Size(77, 20);
             this.txtCoverType.TabIndex = 100;
             this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
@@ -3919,7 +3918,7 @@ namespace Mbc5.Forms
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(951, 53);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(933, 53);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
@@ -3942,7 +3941,7 @@ namespace Mbc5.Forms
             this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
             this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
-            this.allclrckCheckBox.Location = new System.Drawing.Point(950, 33);
+            this.allclrckCheckBox.Location = new System.Drawing.Point(932, 33);
             this.allclrckCheckBox.Name = "allclrckCheckBox";
             this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
             this.allclrckCheckBox.TabIndex = 13;
@@ -6779,24 +6778,18 @@ namespace Mbc5.Forms
             this.typestyleLabel5.TabIndex = 1;
             this.typestyleLabel5.Text = "label61";
             // 
-            // mixBookOrderBindingSource
+            // errorProvider1
             // 
-            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
-            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
+            this.errorProvider1.ContainerControl = this;
             // 
-            // mixBookOrders
+            // printDialog1
             // 
-            this.mixBookOrders.DataSetName = "MixBookOrders";
-            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.printDialog1.UseEXDialog = true;
             // 
             // vendorBindingSource
             // 
             this.vendorBindingSource.DataMember = "vendor";
             this.vendorBindingSource.DataSource = this.dsProdutn;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // custTableAdapter
             // 
@@ -6809,6 +6802,7 @@ namespace Mbc5.Forms
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
             this.tableAdapterManager.mcustTableAdapter = null;
+            this.tableAdapterManager.MixBookOrderTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
@@ -6858,6 +6852,71 @@ namespace Mbc5.Forms
             // 
             this.coverdetailTableAdapter.ClearBeforeFill = true;
             // 
+            // partBkDetailTableAdapter
+            // 
+            this.partBkDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // prtbkbdetailTableAdapter
+            // 
+            this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // vendorTableAdapter
+            // 
+            this.vendorTableAdapter.ClearBeforeFill = true;
+            // 
+            // reOrderTableAdapter
+            // 
+            this.reOrderTableAdapter.ClearBeforeFill = true;
+            // 
+            // reorderDetailTableAdapter
+            // 
+            this.reorderDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // mixBookOrderTableAdapter1
+            // 
+            this.mixBookOrderTableAdapter1.ClearBeforeFill = true;
+            // 
+            // invoiceCustBindingSource
+            // 
+            this.invoiceCustBindingSource.DataMember = "cust";
+            this.invoiceCustBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
+            // 
+            // mixBookOrderBindingSource
+            // 
+            this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
+            this.mixBookOrderBindingSource.DataSource = this.mixBookOrders;
+            // 
+            // mixBookOrders
+            // 
+            this.mixBookOrders.DataSetName = "MixBookOrders";
+            this.mixBookOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lkTypeDataTableAdapter
             // 
             this.lkTypeDataTableAdapter.ClearBeforeFill = true;
@@ -6892,14 +6951,6 @@ namespace Mbc5.Forms
             // 
             this.lkpBackGroundTableAdapter.ClearBeforeFill = true;
             // 
-            // partBkDetailTableAdapter
-            // 
-            this.partBkDetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // prtbkbdetailTableAdapter
-            // 
-            this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
-            // 
             // invoiceCustTableAdapter
             // 
             this.invoiceCustTableAdapter.ClearBeforeFill = true;
@@ -6925,22 +6976,6 @@ namespace Mbc5.Forms
             // paymntTableAdapter
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
-            // 
-            // vendorTableAdapter
-            // 
-            this.vendorTableAdapter.ClearBeforeFill = true;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // reOrderTableAdapter
-            // 
-            this.reOrderTableAdapter.ClearBeforeFill = true;
-            // 
-            // reorderDetailTableAdapter
-            // 
-            this.reorderDetailTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager3
             // 
@@ -7039,15 +7074,10 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.tbProdutn.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -7092,14 +7122,20 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcoverTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productionTicketBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
@@ -7523,5 +7559,9 @@ namespace Mbc5.Forms
         private System.Windows.Forms.ComboBox descriptionComboBox;
         private System.Windows.Forms.ComboBox remakeReasonComboBox;
         private System.Windows.Forms.BindingSource remakeReasonsBindingSource1;
+        private System.Windows.Forms.BindingSource mixBookOrderBindingSource1;
+        private DataSets.dsProdutnTableAdapters.MixBookOrderTableAdapter mixBookOrderTableAdapter1;
+        private System.Windows.Forms.Label lblShipname;
+        private System.Windows.Forms.Label lblClientOrderId;
     }
 }

@@ -386,6 +386,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnExpr1;
             
+            private global::System.Data.DataColumn columnRequestedShipMethod;
+            
+            private global::System.Data.DataColumn columnCurrentCoverLoc;
+            
+            private global::System.Data.DataColumn columnCurrentBookLoc;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MixBookOrderDataTable() {
@@ -709,6 +715,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RequestedShipMethodColumn {
+                get {
+                    return this.columnRequestedShipMethod;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CurrentCoverLocColumn {
+                get {
+                    return this.columnCurrentCoverLoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CurrentBookLocColumn {
+                get {
+                    return this.columnCurrentBookLoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -780,7 +810,10 @@ namespace Mbc5.DataSets {
                         string Notes, 
                         string CoverStatus, 
                         string BookStatus, 
-                        string Expr1) {
+                        string Expr1, 
+                        string RequestedShipMethod, 
+                        string CurrentCoverLoc, 
+                        string CurrentBookLoc) {
                 MixBookOrderRow rowMixBookOrderRow = ((MixBookOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Invno,
@@ -818,7 +851,10 @@ namespace Mbc5.DataSets {
                         Notes,
                         CoverStatus,
                         BookStatus,
-                        Expr1};
+                        Expr1,
+                        RequestedShipMethod,
+                        CurrentCoverLoc,
+                        CurrentBookLoc};
                 rowMixBookOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMixBookOrderRow);
                 return rowMixBookOrderRow;
@@ -884,6 +920,9 @@ namespace Mbc5.DataSets {
                 this.columnCoverStatus = base.Columns["CoverStatus"];
                 this.columnBookStatus = base.Columns["BookStatus"];
                 this.columnExpr1 = base.Columns["Expr1"];
+                this.columnRequestedShipMethod = base.Columns["RequestedShipMethod"];
+                this.columnCurrentCoverLoc = base.Columns["CurrentCoverLoc"];
+                this.columnCurrentBookLoc = base.Columns["CurrentBookLoc"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -961,6 +1000,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnBookStatus);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr1);
+                this.columnRequestedShipMethod = new global::System.Data.DataColumn("RequestedShipMethod", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestedShipMethod);
+                this.columnCurrentCoverLoc = new global::System.Data.DataColumn("CurrentCoverLoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurrentCoverLoc);
+                this.columnCurrentBookLoc = new global::System.Data.DataColumn("CurrentBookLoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurrentBookLoc);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnInvno.AllowDBNull = false;
@@ -994,6 +1039,9 @@ namespace Mbc5.DataSets {
                 this.columnCoverStatus.MaxLength = 50;
                 this.columnBookStatus.MaxLength = 50;
                 this.columnExpr1.MaxLength = 50;
+                this.columnRequestedShipMethod.MaxLength = 50;
+                this.columnCurrentCoverLoc.MaxLength = 10;
+                this.columnCurrentBookLoc.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2014,6 +2062,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RequestedShipMethod {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.RequestedShipMethodColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestedShipMethod\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.RequestedShipMethodColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CurrentCoverLoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.CurrentCoverLocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurrentCoverLoc\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.CurrentCoverLocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CurrentBookLoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableMixBookOrder.CurrentBookLocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurrentBookLoc\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.CurrentBookLocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsClientOrderIdNull() {
                 return this.IsNull(this.tableMixBookOrder.ClientOrderIdColumn);
             }
@@ -2431,6 +2527,42 @@ namespace Mbc5.DataSets {
             public void SetExpr1Null() {
                 this[this.tableMixBookOrder.Expr1Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRequestedShipMethodNull() {
+                return this.IsNull(this.tableMixBookOrder.RequestedShipMethodColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRequestedShipMethodNull() {
+                this[this.tableMixBookOrder.RequestedShipMethodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCurrentCoverLocNull() {
+                return this.IsNull(this.tableMixBookOrder.CurrentCoverLocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCurrentCoverLocNull() {
+                this[this.tableMixBookOrder.CurrentCoverLocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCurrentBookLocNull() {
+                return this.IsNull(this.tableMixBookOrder.CurrentBookLocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCurrentBookLocNull() {
+                this[this.tableMixBookOrder.CurrentBookLocColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -2773,6 +2905,9 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("CoverStatus", "CoverStatus");
             tableMapping.ColumnMappings.Add("BookStatus", "BookStatus");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("RequestedShipMethod", "RequestedShipMethod");
+            tableMapping.ColumnMappings.Add("CurrentCoverLoc", "CurrentCoverLoc");
+            tableMapping.ColumnMappings.Add("CurrentBookLoc", "CurrentBookLoc");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2947,7 +3082,7 @@ WHERE        (Invno = @Invno)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
                          OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, 
-                         ShipAddr2 AS Expr1
+                         ShipAddr2 AS Expr1, RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC";

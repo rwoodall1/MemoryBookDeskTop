@@ -235,7 +235,7 @@
             // 
             // CoverPress
             // 
-            this.CoverPress.DataPropertyName = "CoverPress";
+            this.CoverPress.DataPropertyName = "CPress";
             this.CoverPress.HeaderText = "CoverPress";
             this.CoverPress.Name = "CoverPress";
             this.CoverPress.ReadOnly = true;
@@ -256,7 +256,7 @@
             // 
             // Column11
             // 
-            this.Column11.DataPropertyName = "Location37";
+            this.Column11.DataPropertyName = "CCart";
             this.Column11.HeaderText = "CoverCart";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;

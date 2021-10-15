@@ -42,6 +42,8 @@
             this.lblScanQty = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRemake = new System.Windows.Forms.Panel();
+            this.txtRemakeQty = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -84,6 +86,7 @@
             this.txtBarCode.Size = new System.Drawing.Size(143, 22);
             this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
+            this.txtBarCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtBarCode_Validating);
             // 
             // txtDateTime
             // 
@@ -198,19 +201,42 @@
             // 
             // pnlRemake
             // 
+            this.pnlRemake.Controls.Add(this.txtRemakeQty);
+            this.pnlRemake.Controls.Add(this.label5);
             this.pnlRemake.Controls.Add(this.label7);
             this.pnlRemake.Controls.Add(this.txtReasonCode);
-            this.pnlRemake.Location = new System.Drawing.Point(355, 65);
+            this.pnlRemake.Location = new System.Drawing.Point(100, 80);
             this.pnlRemake.Name = "pnlRemake";
-            this.pnlRemake.Size = new System.Drawing.Size(200, 29);
+            this.pnlRemake.Size = new System.Drawing.Size(235, 66);
             this.pnlRemake.TabIndex = 10018;
             this.pnlRemake.Visible = false;
+            // 
+            // txtRemakeQty
+            // 
+            this.txtRemakeQty.Location = new System.Drawing.Point(113, 30);
+            this.txtRemakeQty.MaxLength = 3;
+            this.txtRemakeQty.Name = "txtRemakeQty";
+            this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
+            this.txtRemakeQty.TabIndex = 3;
+            this.txtRemakeQty.Text = "0";
+            this.txtRemakeQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRemakeQty_KeyPress);
+            this.txtRemakeQty.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtRemakeQty_PreviewKeyDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 10019;
+            this.label5.Text = "QTY To Remake";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 5);
+            this.label7.Location = new System.Drawing.Point(24, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 10018;
@@ -218,11 +244,11 @@
             // 
             // txtReasonCode
             // 
-            this.txtReasonCode.Location = new System.Drawing.Point(91, 5);
+            this.txtReasonCode.Location = new System.Drawing.Point(114, 1);
             this.txtReasonCode.MaxLength = 2;
             this.txtReasonCode.Name = "txtReasonCode";
             this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
-            this.txtReasonCode.TabIndex = 3;
+            this.txtReasonCode.TabIndex = 2;
             this.txtReasonCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReasonCode_KeyUp);
             // 
             // errorProvider1
@@ -253,10 +279,10 @@
             // 
             this.chkRemake.AutoSize = true;
             this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRemake.Location = new System.Drawing.Point(550, 39);
+            this.chkRemake.Location = new System.Drawing.Point(559, 39);
             this.chkRemake.Name = "chkRemake";
             this.chkRemake.Size = new System.Drawing.Size(79, 20);
-            this.chkRemake.TabIndex = 1;
+            this.chkRemake.TabIndex = 0;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
             this.chkRemake.CheckedChanged += new System.EventHandler(this.chkRemake_CheckedChanged);
@@ -278,7 +304,7 @@
             // 
             this.chkPrToLabeler.AutoSize = true;
             this.chkPrToLabeler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPrToLabeler.Location = new System.Drawing.Point(552, 60);
+            this.chkPrToLabeler.Location = new System.Drawing.Point(559, 60);
             this.chkPrToLabeler.Name = "chkPrToLabeler";
             this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
             this.chkPrToLabeler.TabIndex = 2;
@@ -306,7 +332,7 @@
             // btnClearPrinter
             // 
             this.btnClearPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearPrinter.Location = new System.Drawing.Point(186, 200);
+            this.btnClearPrinter.Location = new System.Drawing.Point(187, 200);
             this.btnClearPrinter.Name = "btnClearPrinter";
             this.btnClearPrinter.Size = new System.Drawing.Size(87, 23);
             this.btnClearPrinter.TabIndex = 10021;
@@ -507,5 +533,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbLogin;
         private System.Windows.Forms.Panel pnlImpersonate;
+        private System.Windows.Forms.TextBox txtRemakeQty;
+        private System.Windows.Forms.Label label5;
     }
 }

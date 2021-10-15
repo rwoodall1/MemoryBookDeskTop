@@ -26,7 +26,7 @@ namespace BaseClass.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SEDSWJPSQL01;Initial Catalog=Mbc5;Integrated Security=True")]
         public string MBCConnection {
             get {
                 return ((string)(this["MBCConnection"]));

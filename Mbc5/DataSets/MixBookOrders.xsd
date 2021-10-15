@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MixBookOrderTableAdapter" GeneratorDataComponentClassName="MixBookOrderTableAdapter" Name="MixBookOrder" UserDataComponentName="MixBookOrderTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.MixBookOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5.dbo.MixBookOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [MixBookOrder] WHERE (([Invno] = @Original_Invno) AND ((@IsNull_ClientOrderId = 1 AND [ClientOrderId] IS NULL) OR ([ClientOrderId] = @Original_ClientOrderId)) AND ((@IsNull_JobId = 1 AND [JobId] IS NULL) OR ([JobId] = @Original_JobId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_OrderNumber = 1 AND [OrderNumber] IS NULL) OR ([OrderNumber] = @Original_OrderNumber)) AND ((@IsNull_Size = 1 AND [Size] IS NULL) OR ([Size] = @Original_Size)) AND ((@IsNull_Backing = 1 AND [Backing] IS NULL) OR ([Backing] = @Original_Backing)) AND ((@IsNull_Finish = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)) AND ((@IsNull_Paper = 1 AND [Paper] IS NULL) OR ([Paper] = @Original_Paper)) AND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_RequestedShipDate)) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_ItemId)) AND ((@IsNull_TrackingNumber = 1 AND [TrackingNumber] IS NULL) OR ([TrackingNumber] = @Original_TrackingNumber)) AND ((@IsNull_MixbookOrderStatus = 1 AND [MixbookOrderStatus] IS NULL) OR ([MixbookOrderStatus] = @Original_MixbookOrderStatus)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus)) AND ((@IsNull_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_Expr1 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_Expr1)))</CommandText>
@@ -123,35 +123,35 @@
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
                          OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, 
-                         ShipAddr2 AS Expr1
+                         ShipAddr2 AS Expr1, RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="ClientOrderId" ColumnName="ClientOrderId" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ClientOrderId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ClientOrderId" ColumnName="ClientOrderId" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ClientOrderId" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>UPDATE       MixBookOrder
 SET                ShipName = @ShipName, ShipAddr = @ShipAddr, ShipAddr2 = @ShipAddr2, ShipCity = @ShipCity, ShipState = @ShipState, ShipZip = @ShipZip, PhoneNumber = @PhoneNumber, ShipMethod = @ShipMethod, 
                          RequestedShipDate = @RequestedShipDate, TrackingNumber = @TrackingNumber, Weight = @Weight, Notes = @Notes
 WHERE        (Invno = @Invno)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipName" ColumnName="ShipName" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShipName" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShipName" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr" ColumnName="ShipAddr" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr2" ColumnName="ShipAddr2" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipCity" ColumnName="ShipCity" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipCity" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipState" ColumnName="ShipState" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipState" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipState" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipZip" ColumnName="ShipZip" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipZip" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipZip" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="PhoneNumber" ColumnName="PhoneNumber" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@PhoneNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="PhoneNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipMethod" ColumnName="ShipMethod" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipMethod" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipMethod" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="RequestedShipDate" ColumnName="RequestedShipDate" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@RequestedShipDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="RequestedShipDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="TrackingNumber" ColumnName="TrackingNumber" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(128)" DbType="AnsiString" Direction="Input" ParameterName="@TrackingNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumn="TrackingNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Weight" ColumnName="Weight" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@Weight" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Weight" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Invno" ColumnName="Invno" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipName" ColumnName="ShipName" DataSourceName="" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShipName" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShipName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr" ColumnName="ShipAddr" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr2" ColumnName="ShipAddr2" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipCity" ColumnName="ShipCity" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipState" ColumnName="ShipState" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipState" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipZip" ColumnName="ShipZip" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipZip" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipZip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="PhoneNumber" ColumnName="PhoneNumber" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@PhoneNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="PhoneNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipMethod" ColumnName="ShipMethod" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipMethod" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipMethod" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RequestedShipDate" ColumnName="RequestedShipDate" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@RequestedShipDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="RequestedShipDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TrackingNumber" ColumnName="TrackingNumber" DataSourceName="" DataTypeServer="varchar(128)" DbType="AnsiString" Direction="Input" ParameterName="@TrackingNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="128" SourceColumn="TrackingNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Weight" ColumnName="Weight" DataSourceName="" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@Weight" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Weight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Invno" ColumnName="Invno" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -195,6 +195,9 @@ WHERE        (Invno = @Invno)</CommandText>
               <Mapping SourceColumn="CoverStatus" DataSetColumn="CoverStatus" />
               <Mapping SourceColumn="BookStatus" DataSetColumn="BookStatus" />
               <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="RequestedShipMethod" DataSetColumn="RequestedShipMethod" />
+              <Mapping SourceColumn="CurrentCoverLoc" DataSetColumn="CurrentCoverLoc" />
+              <Mapping SourceColumn="CurrentBookLoc" DataSetColumn="CurrentBookLoc" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -269,7 +272,7 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
   <xs:element name="MixBookOrders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MixBookOrders" msprop:Generator_UserDSName="MixBookOrders">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MixBookOrder" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_RowClassName="MixBookOrderRow" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent">
+        <xs:element name="MixBookOrder" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent" msprop:Generator_RowClassName="MixBookOrderRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_UserColumnName="Invno" type="xs:int" />
@@ -476,10 +479,31 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="RequestedShipMethod" msprop:Generator_ColumnVarNameInTable="columnRequestedShipMethod" msprop:Generator_ColumnPropNameInRow="RequestedShipMethod" msprop:Generator_ColumnPropNameInTable="RequestedShipMethodColumn" msprop:Generator_UserColumnName="RequestedShipMethod" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CurrentCoverLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentCoverLoc" msprop:Generator_ColumnPropNameInRow="CurrentCoverLoc" msprop:Generator_ColumnPropNameInTable="CurrentCoverLocColumn" msprop:Generator_UserColumnName="CurrentCoverLoc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CurrentBookLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentBookLoc" msprop:Generator_ColumnPropNameInRow="CurrentBookLoc" msprop:Generator_ColumnPropNameInTable="CurrentBookLocColumn" msprop:Generator_UserColumnName="CurrentBookLoc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ShipCarriers" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_RowClassName="ShipCarriersRow" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent">
+        <xs:element name="ShipCarriers" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent" msprop:Generator_RowClassName="ShipCarriersRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_UserColumnName="ShipName" minOccurs="0">

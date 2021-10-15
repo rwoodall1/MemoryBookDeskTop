@@ -77,7 +77,21 @@ namespace Mbc5.Forms.MixBook
             {
                 if (TextBox1.Text.Substring(0, TextBox1.Text.Length - 2) == listBox1.Items[0].ToString().Substring(0, listBox1.Items[0].ToString().Length - 2))//matches first cover in list
                 {
-                    var result = InsertWip();
+                    string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+                    var chkResult = CheckStatus(vInvno);
+                    if (!chkResult)
+                    {
+                        listBox1.Items.RemoveAt(0);
+                        CoverCount -= 1;
+                        if (CoverCount == 0)
+                        {
+                            Button3.BackColor = Color.Transparent;
+                        }
+                        TextBox1.Clear();
+                        TextBox1.Focus();
+                        listBox1.Refresh();
+                    }
+                    var result = InsertWip(vInvno);
                     if (result)
                     {
                         listBox1.Items.RemoveAt(0);
@@ -117,26 +131,37 @@ namespace Mbc5.Forms.MixBook
         }
         private void RemoveScan()
         {
-            string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
-
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"
-                                Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
-                                ";
-            sqlClient.CommandText(cmdText);
-            string vDeptCode = "49";
-            sqlClient.AddParameter("@Invno", vInvno);
-            sqlClient.AddParameter("@DescripID", vDeptCode);
-            var result = sqlClient.Delete();
-            if (result.IsError)
+            if (TextBox1.Text.Length<3)
             {
-                MessageBox.Show("Failed to remove scan:" + result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-            chkRemoveScan.Checked = false;
-            TextBox1.Clear();
-            TextBox1.Focus();
+            try
+            {
+                string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+
+                var sqlClient = new SQLCustomClient();
+                string cmdText = @"
+                                Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
+                                ";
+                sqlClient.CommandText(cmdText);
+                string vDeptCode = "49";
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                var result = sqlClient.Delete();
+                if (result.IsError)
+                {
+                    MessageBox.Show("Failed to remove scan:" + result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error("Failed to remove scan:" + result.Errors[0].DeveloperMessage);
+                    return;
+                }
+                chkRemoveScan.Checked = false;
+                TextBox1.Clear();
+                TextBox1.Focus();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error removing scan (Invno:"+ TextBox1.Text + ") : " + ex.Message);
+            }
         }
         private void Button5_Click(object sender, EventArgs e)
         {
@@ -166,9 +191,9 @@ namespace Mbc5.Forms.MixBook
                 TextBox1.Focus();
             }
         }
-        private bool InsertWip()
+        private bool InsertWip(string vInvno)
         {
-            string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
+          
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
                                 SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
@@ -231,11 +256,40 @@ namespace Mbc5.Forms.MixBook
                 return false;
             }
             sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
+            sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
             sqlClient.AddParameter("@Invno", this.Invno);
             sqlClient.AddParameter("@BookStatus", "CaseMatch");
             sqlClient.Update();
+
+          
             return true;
+        }
+        private bool CheckStatus(string vInvno)
+        {
+            var sqlClient = new SQLCustomClient().CommandText("Select MixbookOrderStatus From MixbookOrder Where Invno=@Invno").AddParameter("@Invno", vInvno);
+            var sqlResult = sqlClient.SelectSingleColumn();
+            if (sqlResult.IsError)
+            {
+                Log.Error("Error retrieving Order Status for casein:" + sqlResult.Errors[0].DeveloperMessage);
+                return false;
+
+            }
+            string vStatus=sqlResult.Data;
+            if (vStatus == "Cancelled"|| vStatus == "Hold"|| vStatus == "Shipped")
+            {
+                System.IO.Stream str = Properties.Resources.Whistling;
+                System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
+
+                for (var i = 0; i < 3; i++)
+                {
+                    snd.Play();
+                }
+                MbcMessageBox.Hand("This order status is " + vStatus + " Notify supervisor","Status");
+                return false;
+            }
+            return true;
+
+
         }
     }
 }

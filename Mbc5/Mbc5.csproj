@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mbc5</RootNamespace>
     <AssemblyName>Mbc5</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>M:\UpdateExe\bin\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -57,8 +57,7 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
@@ -161,6 +160,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReceiving.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsZazzle.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -460,6 +464,12 @@
     <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmLoadTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -576,11 +586,23 @@
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmScrubExemptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmScrubExemptions.Designer.cs">
+      <DependentUpon>frmScrubExemptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmShippingReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MixBook\frmShippingReport.Designer.cs">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmUsPsLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmUsPsLabel.Designer.cs">
+      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
@@ -593,6 +615,12 @@
     </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Zazzle\frmZaOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zazzle\frmZaOrders.Designer.cs">
+      <DependentUpon>frmZaOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
@@ -660,10 +688,25 @@
     <Content Include="Content\SystemIcons\tsPrint.Image.png" />
     <Content Include="Content\SystemIcons\tsSave.Image.png" />
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
+    <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="DataSets\dsZazzle.xsc">
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsZazzle.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZazzle.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsZazzle.xss">
+      <DependentUpon>dsZazzle.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
+    <None Include="Properties\DataSources\BindingModels.JobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -764,6 +807,9 @@
     <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
       <DependentUpon>frmLoadTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -819,14 +865,23 @@
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmScrubExemptions.resx">
+      <DependentUpon>frmScrubExemptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmUsPsLabel.resx">
+      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Zazzle\frmZaOrders.resx">
+      <DependentUpon>frmZaOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
@@ -868,6 +923,9 @@
     <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
+    <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
@@ -875,7 +933,7 @@
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTkt.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
@@ -1202,6 +1260,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PitneyBowerApi\PitneyBowerApi.csproj">
+      <Project>{637662b8-46c8-41ca-bf2d-3bfff3006152}</Project>
+      <Name>PitneyBowerApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\RESTModule\RESTModule.csproj">
       <Project>{5f71fea4-8be9-4248-b6a4-d950fdeecc6e}</Project>

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingModels", "BindingMod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUpApp", "StartUpApp\StartUpApp.csproj", "{8D4B8F3D-EA61-4461-B54B-4397714FC613}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitneyBowerApi", "PitneyBowerApi\PitneyBowerApi.csproj", "{637662B8-46C8-41CA-BF2D-3BFFF3006152}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Staging|Any CPU.ActiveCfg = Release|Any CPU
 		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Staging|Any CPU.Build.0 = Release|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Staging|Any CPU.ActiveCfg = Release|Any CPU
+		{637662B8-46C8-41CA-BF2D-3BFFF3006152}.Staging|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
