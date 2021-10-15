@@ -693,10 +693,20 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
         {
          
               var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,MO.ShipName,MO.ClientOrderId,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
- SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,                 
-'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
-                    From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
+                Select MO.Invno
+                ,MO.ShipName
+                ,MO.ClientOrderId
+                ,MO.RequestedShipDate
+                ,MO.Description
+                ,MO.Copies,MO.Pages
+                ,MO.Backing,MO.OrderReceivedDate
+                ,MO.ProdInOrder
+                ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
+                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno,                 
+                '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
+                ,W.Rmbto AS RemakeDate
+                ,W.Rmbtot As RemakeTotal
+                From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
             "); 
 

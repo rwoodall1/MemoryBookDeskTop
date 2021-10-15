@@ -52,8 +52,8 @@ namespace Mbc5.Forms.MixBook
                 {
                     chkPrToLabeler.Visible = true;
                     btnClearPrinter.Visible = true;
-                    pnlQty.Visible = true;
-                    pnlBookLocation.Visible = true;
+                    //pnlQty.Visible = true;
+                    //pnlBookLocation.Visible = true;
                 }
                 if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
                 {
@@ -62,8 +62,8 @@ namespace Mbc5.Forms.MixBook
                 }
                 if (ApplicationUser.UserName.ToUpper() == "TRIMMING")
                 {
-                    pnlQty.Visible = true;
-                    pnlBookLocation.Visible = true;
+                    //pnlQty.Visible = true;
+                    //pnlBookLocation.Visible = true;
                 }
 
             }
@@ -277,7 +277,7 @@ namespace Mbc5.Forms.MixBook
                         if (!WipCheck(vDeptCode, "YB"))
                         {
                             
-                            //return;
+                            //return; do not check for duplicate
                         }
                         //check if scan exist stop if it does per tf
                         string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
@@ -354,14 +354,14 @@ namespace Mbc5.Forms.MixBook
                             ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
                             Log.Error("Failed to update location of book invno:" + Invno.ToString());
                         }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
-                            lblScanQty.Text = QuantityScanned.ToString();
-                        }
+                        //QuantityScanned += 1; took out per tf
+                        //lblScanQty.Text = QuantityScanned.ToString();
+                        //if (QuantityScanned >= QtyToScan)
+                        //{
+                        //    MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                        //    QuantityScanned = 0;
+                        //    lblScanQty.Text = QuantityScanned.ToString();
+                        //}
 
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
@@ -461,15 +461,15 @@ namespace Mbc5.Forms.MixBook
 
                                 Log.Error("Failed to update location of order invno:" + Invno.ToString());
                             }
-                            QuantityScanned += 1;
-                            lblScanQty.Text = QuantityScanned.ToString();
+                            //QuantityScanned += 1; took out per tf
+                            //lblScanQty.Text = QuantityScanned.ToString();
 
-                            if (QuantityScanned >= QtyToScan)
-                            {
-                                MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                                QuantityScanned = 0;
-                                lblScanQty.Text = QuantityScanned.ToString();
-                            }
+                            //if (QuantityScanned >= QtyToScan)
+                            //{
+                            //    MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                            //    QuantityScanned = 0;
+                            //    lblScanQty.Text = QuantityScanned.ToString();
+                            //}
                         }
 
                         sqlClient.ClearParameters();
@@ -881,14 +881,15 @@ namespace Mbc5.Forms.MixBook
                             Log.Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
                             return;
                         }
-                        QuantityScanned += 1;
-                        lblScanQty.Text = QuantityScanned.ToString();
-                        if (QuantityScanned >= QtyToScan)
-                        {
-                            MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
-                            QuantityScanned = 0;
-                            lblScanQty.Text = QuantityScanned.ToString();
-                        }
+                        //took out per tf
+                        //QuantityScanned += 1;
+                        //lblScanQty.Text = QuantityScanned.ToString();
+                        //if (QuantityScanned >= QtyToScan)
+                        //{
+                        //    MbcMessageBox.Hand("Quantity scanned is " + QtyToScan + ". Click OK then enter new location to start over.", "Quantity");
+                        //    QuantityScanned = 0;
+                        //    lblScanQty.Text = QuantityScanned.ToString();
+                        //}
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -975,10 +976,15 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Stop("Enter a quantity", "Quantity");
                 return;
             }
-            int vRemakeQuantity = 1;
+            int vRemakeQuantity = 0;
             if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
             {
                 MbcMessageBox.Error("Invalid Quantity");
+                return;
+            }
+            if (vRemakeQuantity==0)
+            {
+                MbcMessageBox.Error("Quantity can not be zero");
                 return;
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
@@ -1138,6 +1144,8 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.Update();
 
             }
+            txtRemakeQty.Text = "0";
+            txtReasonCode.Text = "";
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -1595,7 +1603,7 @@ namespace Mbc5.Forms.MixBook
             }
             else
             {
-
+                
                 pnlRemake.Visible = false;
 
                 if (ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "TRIMMING")
@@ -1630,7 +1638,24 @@ namespace Mbc5.Forms.MixBook
         {
             if (txtReasonCode.TextLength >= 2)
             {
+                txtRemakeQty.Focus();
+              
+            }
+        }
+
+        private void txtRemakeQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar ==13 ||e.KeyChar==9) {
                 txtBarCode.Focus();
+            }
+        }
+
+        private void txtRemakeQty_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Tab) 
+            {
+               
+                e.IsInputKey = true;
             }
         }
     }

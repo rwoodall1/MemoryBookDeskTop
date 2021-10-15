@@ -217,8 +217,10 @@
             this.txtRemakeQty.MaxLength = 3;
             this.txtRemakeQty.Name = "txtRemakeQty";
             this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
-            this.txtRemakeQty.TabIndex = 10020;
-            this.txtRemakeQty.Text = "1";
+            this.txtRemakeQty.TabIndex = 3;
+            this.txtRemakeQty.Text = "0";
+            this.txtRemakeQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRemakeQty_KeyPress);
+            this.txtRemakeQty.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtRemakeQty_PreviewKeyDown);
             // 
             // label5
             // 
@@ -246,7 +248,7 @@
             this.txtReasonCode.MaxLength = 2;
             this.txtReasonCode.Name = "txtReasonCode";
             this.txtReasonCode.Size = new System.Drawing.Size(100, 20);
-            this.txtReasonCode.TabIndex = 3;
+            this.txtReasonCode.TabIndex = 2;
             this.txtReasonCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReasonCode_KeyUp);
             // 
             // errorProvider1

@@ -26,7 +26,7 @@ namespace Mbc5.Forms.MixBook
 
         private void frmWipReport_Load(object sender, EventArgs e)
         {
-           
+            LoadData();
         }
 
       private List<WipReportModel> DataResult { get; set; }
@@ -48,10 +48,10 @@ namespace Mbc5.Forms.MixBook
 									,CD29.MxbLocation AS Location29
 									,CD43.War As CTrimming
 									,CD43.MxbLocation AS CTrimLoc
-									,CD37.War AS OnBoards
+									,COALESCE(CD37.War,'') AS OnBoards
 									,CD37.MxbLocation AS CCart
 									,WD29.War AS WipPress
-									,WD43.War As PTrimming
+									,COALESCE(WD43.War,'') As PTrimming
 									,WD43.Mxblocation As PTrimLoc 
 									,WD39.War AS Binding
 									,WD39.MxbLocation AS PCart
@@ -113,6 +113,7 @@ namespace Mbc5.Forms.MixBook
             try
             {
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
+                saveFileDialog1.FileName = "WipReport.csv";
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))

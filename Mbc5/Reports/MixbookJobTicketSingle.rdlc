@@ -279,8 +279,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>4.70771in</Top>
-        <Left>0.18513in</Left>
+        <Top>7.00979in</Top>
+        <Left>0.08098in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
         <ZIndex>8</ZIndex>
@@ -312,8 +312,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>SCBarcode</rd:DefaultName>
-        <Top>5.01326in</Top>
-        <Left>0.18513in</Left>
+        <Top>7.31534in</Top>
+        <Left>0.08098in</Left>
         <Height>0.25in</Height>
         <Width>3.96875in</Width>
         <ZIndex>9</ZIndex>
@@ -346,8 +346,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>5.43688in</Top>
-        <Left>0.18513in</Left>
+        <Top>7.73896in</Top>
+        <Left>0.08098in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
         <ZIndex>10</ZIndex>
@@ -376,8 +376,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-        <Top>5.43688in</Top>
-        <Left>1.39693in</Left>
+        <Top>7.73896in</Top>
+        <Left>1.29278in</Left>
         <Height>0.25in</Height>
         <Width>1.375in</Width>
         <ZIndex>11</ZIndex>
@@ -410,8 +410,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>5.43688in</Top>
-        <Left>5.36223in</Left>
+        <Top>7.73896in</Top>
+        <Left>5.25808in</Left>
         <Height>0.25in</Height>
         <Width>1.42361in</Width>
         <ZIndex>12</ZIndex>
@@ -442,8 +442,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ProdInOrder</rd:DefaultName>
-        <Top>5.43688in</Top>
-        <Left>6.81362in</Left>
+        <Top>7.73896in</Top>
+        <Left>6.70947in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>13</ZIndex>
@@ -573,8 +573,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>6.16604in</Top>
-        <Left>1.29278in</Left>
+        <Top>8.46812in</Top>
+        <Left>1.18863in</Left>
         <Height>0.49243in</Height>
         <Width>5.77778in</Width>
         <ZIndex>17</ZIndex>
@@ -702,13 +702,13 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>6.72791in</Height>
+    <Height>9.17583in</Height>
     <Style />
   </Body>
   <Width>7.99875in</Width>
   <Page>
     <PageFooter>
-      <Height>0.33333in</Height>
+      <Height>0.51041in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -729,7 +729,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>0.07812in</Top>
           <Left>5.15042in</Left>
           <Height>0.17708in</Height>
           <Width>2.26042in</Width>
