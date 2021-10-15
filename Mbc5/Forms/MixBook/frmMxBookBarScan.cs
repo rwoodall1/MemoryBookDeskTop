@@ -1636,11 +1636,11 @@ namespace Mbc5.Forms.MixBook
 
         private void txtReasonCode_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtReasonCode.TextLength >= 2)
-            {
-                txtRemakeQty.Focus();
+            //if (txtReasonCode.TextLength >= 2)
+            //{
+            //    txtRemakeQty.Focus();
               
-            }
+            //}
         }
 
         private void txtRemakeQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -1658,6 +1658,8 @@ namespace Mbc5.Forms.MixBook
                 e.IsInputKey = true;
             }
         }
+
+        
     }
     public class PackageData
     {
