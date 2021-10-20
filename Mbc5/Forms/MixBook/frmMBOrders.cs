@@ -283,6 +283,7 @@ namespace Mbc5.Forms.MixBook
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
             reportViewer2.LocalReport.DataSources.Clear();
+            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
             reportViewer2.RefreshReport();
         }
