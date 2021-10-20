@@ -39,7 +39,6 @@ namespace Mbc5.Forms.MixBook
 									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
 									,MO.Copies
 									,Mo.Pages
-									,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
 									,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
 									,MO.Description
 									,MO.Backing
@@ -59,6 +58,10 @@ namespace Mbc5.Forms.MixBook
 									,WD50.War AS Quality				                          
 									,WD50.MxbLocation AS Location
 									,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+                                    ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+                                    ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
+                                    ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
+                                    
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join Wip W ON MO.Invno=W.Invno

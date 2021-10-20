@@ -279,8 +279,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox43</rd:DefaultName>
-        <Top>7.00979in</Top>
-        <Left>0.08098in</Left>
+        <Top>6.40562in</Top>
+        <Left>0.55316in</Left>
         <Height>0.25in</Height>
         <Width>1.14236in</Width>
         <ZIndex>8</ZIndex>
@@ -304,16 +304,18 @@
                 <Value>=Fields!SCBarcode.Value</Value>
                 <Style>
                   <FontFamily>3 of 9 Barcode</FontFamily>
-                  <FontSize>22pt</FontSize>
+                  <FontSize>26pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>SCBarcode</rd:DefaultName>
-        <Top>7.31534in</Top>
-        <Left>0.08098in</Left>
+        <Top>6.71117in</Top>
+        <Left>0.55316in</Left>
         <Height>0.25in</Height>
         <Width>3.96875in</Width>
         <ZIndex>9</ZIndex>
@@ -361,36 +363,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="OrderReceivedDate">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatDateTime(Fields!OrderReceivedDate.Value,Dateformat.ShortDate)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-        <Top>7.73896in</Top>
-        <Left>1.29278in</Left>
-        <Height>0.25in</Height>
-        <Width>1.375in</Width>
-        <ZIndex>11</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox57">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -414,7 +386,7 @@
         <Left>5.25808in</Left>
         <Height>0.25in</Height>
         <Width>1.42361in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -446,7 +418,7 @@
         <Left>6.70947in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -478,7 +450,7 @@
         <Left>5.5428in</Left>
         <Height>0.40625in</Height>
         <Width>1.24304in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -512,7 +484,7 @@
         <Left>5.4768in</Left>
         <Height>0.25in</Height>
         <Width>0.95834in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -542,7 +514,7 @@
         <Left>6.44904in</Left>
         <Height>0.25in</Height>
         <Width>1.27083in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -577,7 +549,7 @@
         <Left>1.18863in</Left>
         <Height>0.49243in</Height>
         <Width>5.77778in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>16</ZIndex>
         <Visibility>
           <Hidden>=First(NOT Fields!JobTicketPrinted.Value, "DataSet1")</Hidden>
         </Visibility>
@@ -610,7 +582,7 @@
         <Left>0.22677in</Left>
         <Height>0.25in</Height>
         <Width>1.46875in</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -657,7 +629,7 @@
         <Left>3.83789in</Left>
         <Height>0.41667in</Height>
         <Width>1.02083in</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -690,6 +662,36 @@
         <Left>5.02193in</Left>
         <Height>0.25in</Height>
         <Width>2.54859in</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="OrderReceivedDate1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!OrderReceivedDate.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>OrderReceivedDate1</rd:DefaultName>
+        <Top>7.73896in</Top>
+        <Left>1.29278in</Left>
+        <Height>0.25in</Height>
+        <Width>1.79167in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>

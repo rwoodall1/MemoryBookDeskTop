@@ -625,31 +625,31 @@ namespace Mbc5.Forms
         {
             string value = "";
             var sqlClient = new SQLCustomClient();
-            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK)
-            {
+            //if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK)
+            //{
 
-                sqlClient.CommandText(@"
-                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                  (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
-                    RequestedShipDate <=@RequestedShipDate AND BookStatus IS Null
-            ");
+            //    sqlClient.CommandText(@"
+            //    Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+            //     SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+            //      (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
+            //     '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
+            //        RequestedShipDate <=@RequestedShipDate AND BookStatus IS Null ORDER BY Description
+            //");
 
 
-                sqlClient.AddParameter("@RequestedShipDate", value);
-            }
-            else
-            {
+            //    sqlClient.AddParameter("@RequestedShipDate", value);
+            //}
+            //else
+            //{
                 sqlClient.CommandText(@"
                 Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,    
 (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                  AND  BookStatus IS Null
+                  AND  BookStatus IS Null ORDER BY Description
 ");
 
-            }
+            //}
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)

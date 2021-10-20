@@ -1057,7 +1057,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',PrintRemakeTicket=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
 
@@ -1139,7 +1139,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.Update();
 

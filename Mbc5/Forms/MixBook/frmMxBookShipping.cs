@@ -185,9 +185,20 @@ namespace Mbc5.Forms.MixBook
                 {
                     MessageBox.Show("Invalid scan code");
                     txtItemBarcode.Tag = "Cancel";
-
+                
                     return;
                 }
+                //check that item scan matches clientidscan
+                if (vInvno.ToString().Substring(0,7)!= txtClientIdLookup.Text)
+                {
+                    MessageBox.Show("The scanned item was not found in the order. Check that you have scanned the correct packing list.");
+                    txtItemBarcode.Tag = "Cancel";
+                   
+                    return;
+                }
+
+
+
                 var checkscanResult = Items.Find(x => x.Invno == parsedInvno);
                 if (checkscanResult != null)
                 {
@@ -219,6 +230,7 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 var vItem = (MixBookItemScanModel)result.Data;
+                //check that 
                 if (string.IsNullOrEmpty(Shipment.Package[0].Item.identifier))
                 {
                     Shipment.Package[0].Item.identifier = vItem.ItemId;
@@ -347,7 +359,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 sqlClient.ClearParameters();
 
-                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber + ISNULL(TrackingNumber,''),Weight=Weight+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
+                sqlClient.CommandText(@"UPDATE Mixbookorder Set TrackingNumber=@TrackingNumber + ISNULL(TrackingNumber,''),Weight=Coalesce(Weight,0)+@Weight,MixbookOrderStatus='Shipped',DateShipped=GETDATE(),DateModified=GETDATE(),ModifiedBy='SYS' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", item.Invno);
                 sqlClient.AddParameter("@Weight", Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
                 string vTracking = txtTrackingNo.Text.Trim() + " | ";
@@ -470,6 +482,7 @@ namespace Mbc5.Forms.MixBook
                     string msg = restServiceResult.Data.APIResult.ToString();
                     AddMbEventLog(MbxModel.JobId, "ERROR 2",msg, vReturnNotification, false);
                     var emailHelper = new EmailHelper();
+                    string emailmsg = msg.Replace("<?xml version=1.0 encoding=UTF - 8?>", "").Replace("<", " | ").Replace(">", " | ");
                     emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, msg, EmailType.System);
                     MbcMessageBox.Hand("Failed to notify Mixbook of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
                 }
@@ -610,6 +623,7 @@ namespace Mbc5.Forms.MixBook
             {
                 MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
                 Log.Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
+                txtClientIdLookup.Focus();
                 return;
             }
             string vPartTrack = "";
@@ -619,6 +633,7 @@ namespace Mbc5.Forms.MixBook
             }catch(Exception ex)
             {
                 Log.Error("Value is not valid for subst:" + txtTrackingNo.Text);
+                txtClientIdLookup.Focus();
                 return;
             }
             var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
@@ -719,6 +734,11 @@ namespace Mbc5.Forms.MixBook
             btnShipmentReset_Click(null, null);
             bgWorker.CancelAsync();
            
+
+        }
+
+        private void txtItemBarcode_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

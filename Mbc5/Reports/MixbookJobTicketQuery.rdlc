@@ -69,8 +69,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>8.04167in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>7.59375in</Top>
+                          <Left>0.30555in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>1</ZIndex>
@@ -445,16 +445,18 @@
                                   <Value>=Fields!SCBarcode.Value</Value>
                                   <Style>
                                     <FontFamily>3 of 9 Barcode</FontFamily>
-                                    <FontSize>22pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SCBarcode</rd:DefaultName>
-                          <Top>8.34722in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>7.8993in</Top>
+                          <Left>0.30555in</Left>
                           <Height>0.25in</Height>
                           <Width>3.96875in</Width>
                           <ZIndex>13</ZIndex>
@@ -507,7 +509,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=FormatDateTime(Fields!OrderReceivedDate.Value,Dateformat.ShortDate)</Value>
+                                  <Value>=Fields!OrderReceivedDate.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

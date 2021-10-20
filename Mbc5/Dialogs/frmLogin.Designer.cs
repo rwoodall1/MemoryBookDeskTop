@@ -161,6 +161,7 @@
             this.pbLoading.TabIndex = 3;
             this.pbLoading.TabStop = false;
             this.pbLoading.Visible = false;
+            this.pbLoading.VisibleChanged += new System.EventHandler(this.pbLoading_VisibleChanged);
             // 
             // button1
             // 

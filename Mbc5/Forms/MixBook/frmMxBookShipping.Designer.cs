@@ -412,6 +412,7 @@
             this.txtItemBarcode.Name = "txtItemBarcode";
             this.txtItemBarcode.Size = new System.Drawing.Size(124, 20);
             this.txtItemBarcode.TabIndex = 4;
+            this.txtItemBarcode.TextChanged += new System.EventHandler(this.txtItemBarcode_TextChanged);
             this.txtItemBarcode.Leave += new System.EventHandler(this.txtItemBarcode_Leave);
             this.txtItemBarcode.Validating += new System.ComponentModel.CancelEventHandler(this.txtItemBarcode_Validating);
             // 
