@@ -35,6 +35,7 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+            this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
             this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
             btnDownloadFiles.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
@@ -641,6 +642,18 @@ namespace Mbc5.Forms.MixBook
                     SetRemakeTicketPrinted();
                 }
             }
+        }
+
+        private void pnlOrder_EnabledChanged(object sender, EventArgs e)
+        {
+            foreach (Control c in   this.pnlOrder.Controls)
+            {
+               if(c is TextBox||c is ComboBox||c is CustomControls.DateBox)
+                {
+                    c.BackColor = Color.White;
+                }
+            }
+
         }
     }
 }

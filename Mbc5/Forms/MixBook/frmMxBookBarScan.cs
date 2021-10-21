@@ -1057,10 +1057,15 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',PrintRemakeTicket=0 where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
-
+                var result22=sqlClient.Update();
+                if(result22.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.Error("Failed to update Mixbook Order Remake Data Q:" + result22.Errors[0].DeveloperMessage);
+                    return;
+                }
             }
             else if (trkType == "SC")
             {
@@ -1098,9 +1103,15 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='',RemakeTicketPrinted=0  where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
+                var updateResult11=sqlClient.Update();
+                if (updateResult11.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    return;
+                }
                 txtReasonCode.Text = "";
 
             }
@@ -1141,7 +1152,13 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
+                var updateResul1t=sqlClient.Update();
+                if (updateResul1t.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    return;
+                }
 
             }
             txtRemakeQty.Text = "0";
