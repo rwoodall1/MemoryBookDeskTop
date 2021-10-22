@@ -1912,6 +1912,85 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
             frmCoverSearch.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            VersionCheck();
+        }
+        public void VersionCheck()
+        {
+            TimeSpan start = new TimeSpan(2, 0, 0); //2am o'clock
+            TimeSpan end = new TimeSpan(3, 0, 0); //3am o'clock
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if ((now > start) && (now < end))
+            {
+                Application.Exit();
+            }
+
+            string localVersion = "";
+            string serverVersion = "";
+            string serverfilePath = @"M:\UpdateExe\bin\Release\";
+            string serverfilePathDir = @"M:\UpdateExe\bin";
+            string localfilePath = "";
+            string StartPath = "";
+            try
+            {
+                var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                localfilePath = root.Replace("StartUpApp", "Mbc5");
+                var localfile = localfilePath + "\\Mbc5.exe";
+                StartPath = localfilePath + "\\Mbc5.exe";
+                try
+                {
+                    var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+                    localVersion = localfileInfo.FileVersion;
+                    //in order of entry
+                    var lMajor = localfileInfo.FileMajorPart;
+                    var lMinor = localfileInfo.FileMinorPart;
+                    var lBuild = localfileInfo.FileBuildPart;
+                    var lPrivate = localfileInfo.FilePrivatePart;
+
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Error retrieving file path for update check.");
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                this.Close();
+                return;
+            }
+
+            try
+            {
+                var serverfileInfo = FileVersionInfo.GetVersionInfo(serverfilePath + "\\Mbc5.exe");
+                serverVersion = serverfileInfo.FileVersion;
+                //in order of entry
+                var sMajor = serverfileInfo.FileMajorPart;
+                var sMinor = serverfileInfo.FileMinorPart;
+                var sBuild = serverfileInfo.FileBuildPart;
+                var sPrivate = serverfileInfo.FilePrivatePart;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
+            {
+                pnlNotice.Visible = true;
+
+            }
+
+
+        }
         #endregion
         //nothing below here
     }

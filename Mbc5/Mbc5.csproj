@@ -13,7 +13,7 @@
     <AssemblyName>Mbc5</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
@@ -57,7 +57,8 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>mbc5_logo_282_cZq_2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
