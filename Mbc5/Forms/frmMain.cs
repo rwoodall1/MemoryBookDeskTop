@@ -33,7 +33,6 @@ namespace Mbc5.Forms
 
         public frmMain()
         {
-
             InitializeComponent();
         }
         protected Logger Log { get; set; }
