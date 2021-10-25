@@ -35,6 +35,10 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY")
+            {
+                this.pnlRemake.Visible = true;
+            }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
             this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
@@ -199,6 +203,153 @@ namespace Mbc5.Forms.MixBook
 
         #endregion
         #region "Methods"
+        private void Remake(string remakeType)
+        {
+            string vreasonCode = "";
+            InputBox.Show("Reason Code", "Enter a reason code",ref vreasonCode);
+
+            if (string.IsNullOrEmpty(vreasonCode))
+            {
+                MbcMessageBox.Stop("Invalid reason code","Reason Code");
+                return;
+            }
+            if (vreasonCode.Length > 2)
+            {
+                MbcMessageBox.Stop("Invalid Reason Code", "Reason Code");
+                return;
+            }
+            int vReason = 0;
+            if (!int.TryParse(vreasonCode, out vReason))
+            {
+                MbcMessageBox.Error("Invalid reason code.");
+                return;
+            }
+            string vQuantity = "";
+            InputBox.Show("Quantity", "Number of remakes", ref vQuantity);
+
+            if (string.IsNullOrEmpty(vQuantity))
+            {
+                MbcMessageBox.Stop("Enter a quantity", "Quantity");
+                return;
+            }
+            int vRemakeQuantity = 0;
+            if (!int.TryParse(vQuantity, out vRemakeQuantity))
+            {
+                MbcMessageBox.Error("Invalid Quantity");
+                return;
+            }
+            if (vRemakeQuantity == 0)
+            {
+                MbcMessageBox.Error("Quantity can not be zero");
+                return;
+            }
+            
+            var sqlClient = new SQLCustomClient();
+           
+            //insure we have correct invno, should already be set
+            if (this.Invno.ToString() != invnoLabel1.Text.Trim())
+            {
+                MbcMessageBox.Stop("The invoice number does not match the system invoice number. Re-search the record and try again.", "Invoice# Error");
+                return;
+            }
+             
+            if (remakeType == "CVR")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("FullRemake", vRemakeQuantity);
+                sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                if (vReason == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return;
+                }
+                sqlClient.AddParameter("@RemakeReason", vReason);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='',RemakeTicketPrinted=0  where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                var updateResult11 = sqlClient.Update();
+                if (updateResult11.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    return;
+                }
+                vreasonCode=null;
+                vQuantity = null;
+            }
+            else if (remakeType == "BK")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                sqlClient.ClearParameters();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
+                sqlClient.AddParameter("@Memo", vmemo);
+                if (vReason == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return;
+                }
+                sqlClient.AddParameter("@RemakeReason", vReason);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                var updateResul1t = sqlClient.Update();
+                if (updateResul1t.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    return;
+                }
+
+            }
+            vreasonCode = null;
+            vQuantity = null;
+        }
         public override void Fill()
         {
             pnlOrder.Enabled = false;
@@ -223,7 +374,6 @@ namespace Mbc5.Forms.MixBook
                 Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
         }
-
         private void PrintJobTicket()
         {
             
@@ -654,6 +804,16 @@ namespace Mbc5.Forms.MixBook
                 }
             }
 
+        }
+
+        private void btnCvrRemake_Click(object sender, EventArgs e)
+        {
+            Remake("CVR");
+        }
+
+        private void btnBkRemake_Click(object sender, EventArgs e)
+        {
+            Remake("BK");
         }
     }
 }

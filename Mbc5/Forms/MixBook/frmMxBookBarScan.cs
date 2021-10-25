@@ -192,7 +192,7 @@ namespace Mbc5.Forms.MixBook
             }
             if (chkRemake.Checked)
             {
-                ScanRamake(currentUser);
+                ScanRemake(currentUser);
                 return;
             }
             int QtyToScan = 0;
@@ -952,7 +952,7 @@ namespace Mbc5.Forms.MixBook
             }
             ClearScan();
         }
-        private void ScanRamake(string currentUser)
+        private void ScanRemake(string currentUser)
         {
 
             if (string.IsNullOrEmpty(txtReasonCode.Text))

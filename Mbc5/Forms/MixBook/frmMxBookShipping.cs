@@ -627,8 +627,14 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             string vPartTrack = "";
+            
             try
             {
+                if (txtTrackingNo.Text.Trim().Length<3)
+                {
+                    return;
+
+                }
                  vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
             }catch(Exception ex)
             {
