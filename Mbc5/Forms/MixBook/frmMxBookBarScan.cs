@@ -149,7 +149,7 @@ namespace Mbc5.Forms.MixBook
                                 MbxModel = (MixBookBarScanModel)result.Data;
                                 if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
                                 {
-                                if (this.ApplicationUser.UserName !="TRIMMING") {
+                                if (this.ApplicationUser.UserName.ToUpper() !="TRIMMING") {
                                     MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
                                     ClearScan();
                                     return;
@@ -281,37 +281,38 @@ namespace Mbc5.Forms.MixBook
                             
                             //return; do not check for duplicate
                         }
+                        //Took out per TF 10-26-21
                         //check if scan exist stop if it does per tf
-                        string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
+                        //string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
 
 
-                        sqlClient.CommandText(cmd);
-                        sqlClient.AddParameter("@Invno", Invno);
-                        sqlClient.AddParameter("@DescripId", "43");
-                        var sqlResult = sqlClient.SelectSingleColumn();
-                        if (sqlResult.IsError)
-                        {
-                            Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
-                            MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
-                            return;
-                        }
-                        if (sqlResult.Data != "0")
-                        {
-                           
-                            //Took out per TF 10-26-21
-                            //var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            //if (dialogResult == DialogResult.No)
-                            //{
+                        //sqlClient.CommandText(cmd);
+                        //sqlClient.AddParameter("@Invno", Invno);
+                        //sqlClient.AddParameter("@DescripId", "43");
+                        //var sqlResult = sqlClient.SelectSingleColumn();
+                        //if (sqlResult.IsError)
+                        //{
+                        //    Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                        //    MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                        //    return;
+                        //}
+                        //if (sqlResult.Data != "0")
+                        //{
 
-                            //    MbcMessageBox.Information("Scanned has been cancelled.");
-                            //    return;
-                            //}
-                        }
 
-                            //war is datetime
-                            //wir is initials
+                        //var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        //if (dialogResult == DialogResult.No)
+                        //{
 
-                            sqlClient.ClearParameters();
+                        //    MbcMessageBox.Information("Scanned has been cancelled.");
+                        //    return;
+                        //}
+                        // }
+
+                        //war is datetime
+                        //wir is initials
+
+                        sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -1338,9 +1339,12 @@ namespace Mbc5.Forms.MixBook
             string vStatus = result.Data;
             if (vStatus == "Cancelled" || vStatus == "Hold" || vStatus == "Shipped")
             {
-                MbcMessageBox.Hand("Order status is " + vStatus + " Contact your supervisor. Scan is cancelled.","Order Status Error");
-                retval = false;
-                return retval;
+                if (ApplicationUser.UserName.ToUpper() != "TRIMMING")
+                {
+                    MbcMessageBox.Hand("Order status is " + vStatus + " Contact your supervisor. Scan is cancelled.", "Order Status Error");
+                    retval = false;
+                    return retval;
+                }
             }
 
          

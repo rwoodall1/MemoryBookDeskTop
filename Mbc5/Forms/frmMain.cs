@@ -123,7 +123,7 @@ namespace Mbc5.Forms
         private void SetMenu()
         {
 
-            if (ApplicationUser.UserName == "BARCODE")
+            if (ApplicationUser.UserName.ToUpper() == "BARCODE")
             {
                 //Show barscan screen hid every thing else
                 tsMain.Visible = false;
@@ -138,9 +138,9 @@ namespace Mbc5.Forms
 
 
             }
-            else if (ApplicationUser.UserName == "onboard" | ApplicationUser.UserName == "press"
-               || ApplicationUser.UserName == "press" || ApplicationUser.UserName == "binding"
-               || ApplicationUser.UserName == "quality" || ApplicationUser.UserName == "trimming")
+            else if (ApplicationUser.UserName.ToUpper() == "ONBOARD" | ApplicationUser.UserName.ToUpper() == "PRESS"
+               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"
+               || ApplicationUser.UserName.ToUpper() == "QUALITY" || ApplicationUser.UserName.ToUpper() == "TRIMMING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -156,7 +156,7 @@ namespace Mbc5.Forms
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
             }
-            else if (ApplicationUser.UserName == "casein")
+            else if (ApplicationUser.UserName == "CASEIN")
             {
                 mixbookBarscanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -174,7 +174,7 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
             }
-            else if (ApplicationUser.UserName == "shipping")
+            else if (ApplicationUser.UserName == "SHIPPING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;
