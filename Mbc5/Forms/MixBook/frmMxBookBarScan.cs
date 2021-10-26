@@ -971,21 +971,26 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Invalid reason code.");
                 return;
             }
-            if (string.IsNullOrEmpty(txtRemakeQty.Text))
+
+            int vRemakeQuantity =this.MbxModel.Quantity ;
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
-                MbcMessageBox.Stop("Enter a quantity", "Quantity");
-                return;
-            }
-            int vRemakeQuantity = 0;
-            if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
-            {
-                MbcMessageBox.Error("Invalid Quantity");
-                return;
-            }
-            if (vRemakeQuantity==0)
-            {
-                MbcMessageBox.Error("Quantity can not be zero");
-                return;
+                if (string.IsNullOrEmpty(txtRemakeQty.Text))
+                {
+                    MbcMessageBox.Stop("Enter a quantity", "Quantity");
+                    return;
+                }
+              
+                if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
+                {
+                    MbcMessageBox.Error("Invalid Quantity");
+                    return;
+                }
+                if (vRemakeQuantity == 0)
+                {
+                    MbcMessageBox.Error("Quantity can not be zero");
+                    return;
+                }
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
@@ -1003,7 +1008,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1036,7 +1041,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
@@ -1083,7 +1088,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1103,7 +1108,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='',RemakeTicketPrinted=0  where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 var updateResult11=sqlClient.Update();
                 if (updateResult11.IsError)
@@ -1609,12 +1614,25 @@ namespace Mbc5.Forms.MixBook
 
         private void chkRemake_CheckedChanged(object sender, EventArgs e)
         {
-
+            string currentUser = "";
+            if (!string.IsNullOrEmpty(cmbLogin.Text))
+            {
+                currentUser = cmbLogin.Text;
+            }
+            else
+            {
+                currentUser = ApplicationUser.UserName.ToUpper();
+            }
             if (chkRemake.Checked)
             {
                
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
+                if (currentUser == "QUALITY")
+                {
+                    pnlQtyInner.Visible = true;
+                }
+                else { pnlQtyInner.Visible = false; }
                 txtReasonCode.Focus();
             
             }
@@ -1623,7 +1641,7 @@ namespace Mbc5.Forms.MixBook
                 
                 pnlRemake.Visible = false;
 
-                if (ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "TRIMMING")
+                if (currentUser == "BINDING"|| currentUser == "TRIMMING")
                 {
 
                     pnlQty.Visible = true;

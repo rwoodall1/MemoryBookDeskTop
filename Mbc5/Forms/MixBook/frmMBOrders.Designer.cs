@@ -50,12 +50,12 @@
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -591,14 +591,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -678,9 +678,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle6.Format = "Cover";
-            dataGridViewCellStyle6.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -747,9 +747,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource9.Name = "DataSet1";
-            reportDataSource9.Value = this.RemakeTicketQueryBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource9);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.RemakeTicketQueryBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -1025,12 +1025,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource10.Name = "dsMxPackingSlip";
-            reportDataSource10.Value = this.MixbookPackingSlipBindingSource;
-            reportDataSource11.Name = "dsMixBookRemakeTkt";
-            reportDataSource11.Value = this.MixbookRemakeTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource11);
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -1076,9 +1076,9 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 35;
-            reportDataSource12.Name = "DataSet1";
-            reportDataSource12.Value = this.JobTicketQueryBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource12);
+            reportDataSource4.Name = "DataSet1";
+            reportDataSource4.Value = this.JobTicketQueryBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(9, 425);
             this.reportViewer3.Name = "reportViewer3";
@@ -1143,7 +1143,7 @@
             this.MaxNumForms = 2;
             this.MinimumSize = new System.Drawing.Size(1159, 630);
             this.Name = "frmMBOrders";
-            this.Text = "Mix Book Cust/Orders";
+            this.Text = "amm";
             this.Load += new System.EventHandler(this.MBOrders_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderBindingNavigator, 0);

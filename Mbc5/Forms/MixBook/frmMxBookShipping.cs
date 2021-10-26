@@ -605,6 +605,10 @@ namespace Mbc5.Forms.MixBook
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTrackingNo.Text))
+            {
+                return;
+            }
             if (MbxModel==null)
             {
                 MbcMessageBox.Hand("Rescan shipment barcode.","Barcode");
@@ -746,6 +750,15 @@ namespace Mbc5.Forms.MixBook
         private void txtItemBarcode_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtItemBarcode_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrackingNo.Text))
+            {
+                MbcMessageBox.Hand("Tracking number is required", "Tracking Number");
+                txtTrackingNo.Focus();
+            }
         }
     }
 }

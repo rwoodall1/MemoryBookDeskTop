@@ -269,7 +269,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -289,7 +289,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='',RemakeTicketPrinted=0  where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 var updateResult11 = sqlClient.Update();
                 if (updateResult11.IsError)
@@ -315,7 +315,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() +"at "+DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
