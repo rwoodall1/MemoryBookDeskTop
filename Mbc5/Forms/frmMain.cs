@@ -627,11 +627,20 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
             
                 sqlClient.CommandText(@"
-                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,    
-                (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
-                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                  AND  BookStatus IS Null ORDER BY Description
+                    Select Invno,ShipName
+                    ,ClientOrderId
+                    ,RequestedShipDate
+                    ,Description
+                    ,Copies
+                    ,Pages
+                    ,Backing
+                    ,OrderReceivedDate,ProdInOrder
+                    ,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode
+                    , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
+                    ,(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder
+                    ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
+                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                        AND  BookStatus IS Null ORDER BY Description
                 ");
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
