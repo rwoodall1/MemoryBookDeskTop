@@ -149,9 +149,11 @@ namespace Mbc5.Forms.MixBook
                                 MbxModel = (MixBookBarScanModel)result.Data;
                                 if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
                                 {
+                                if (this.ApplicationUser.UserName !="TRIMMING") {
                                     MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
                                     ClearScan();
                                     return;
+                                }
                                 }
                                 lblBkLocation.Text = MbxModel.BookLocation;
                                 txtDateTime.Text = DateTime.Now.ToString();
@@ -295,8 +297,8 @@ namespace Mbc5.Forms.MixBook
                         }
                         if (sqlResult.Data != "0")
                         {
-                            //Took out per TF because this is automatic now
-
+                           
+                            //Took out per TF 10-26-21
                             //var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             //if (dialogResult == DialogResult.No)
                             //{
