@@ -269,7 +269,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -315,7 +315,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() +"at "+DateTime.Now.ToString();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() +" on "+DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -382,12 +382,13 @@ namespace Mbc5.Forms.MixBook
                 Select Invno,ClientOrderId,
                 ShipName,RequestedShipDate,
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
                 Copies,Pages,
                 Backing,OrderReceivedDate,
                 ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
-                From MixBookOrder  Where Invno=@Invno
+                From MixBookOrder MO  Where Invno=@Invno
             "); 
 
                 sqlClient.AddParameter("@Invno", value);
@@ -445,6 +446,7 @@ namespace Mbc5.Forms.MixBook
                 Select MO.Invno,ClientOrderId,
                 SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+                    (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                  '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno

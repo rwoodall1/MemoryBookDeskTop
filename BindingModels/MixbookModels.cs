@@ -23,6 +23,7 @@ namespace BindingModels
         public bool JobTicketPrinted { get; set; }
         public DateTime RemakeDate { get; set; }
         public int RemakeTotal { get; set; }
+        public int NumToShip { get; set; }
     }
     public class JobTicketQuery
     {
@@ -42,6 +43,7 @@ namespace BindingModels
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
         public bool JobTicketPrinted { get; set; }
+        public int NumToShip { get; set; }
     }
     public class SiblingCheck
     {

@@ -295,13 +295,15 @@ namespace Mbc5.Forms.MixBook
                         }
                         if (sqlResult.Data != "0")
                         {
-                            var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.No)
-                            {
+                            //Took out per TF because this is automatic now
 
-                                MbcMessageBox.Information("Scanned has been cancelled.");
-                                return;
-                            }
+                            //var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            //if (dialogResult == DialogResult.No)
+                            //{
+
+                            //    MbcMessageBox.Information("Scanned has been cancelled.");
+                            //    return;
+                            //}
                         }
 
                             //war is datetime
@@ -1008,7 +1010,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1041,12 +1043,12 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@Memo", vmemo1);
                 if (vReason == 0)
                 {
                     MbcMessageBox.Error("Invalid reason code.");
@@ -1088,7 +1090,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + "at " + DateTime.Now.ToString();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1134,7 +1136,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString(); 
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
