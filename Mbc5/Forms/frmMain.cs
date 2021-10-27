@@ -156,7 +156,7 @@ namespace Mbc5.Forms
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
             }
-            else if (ApplicationUser.UserName == "CASEIN")
+            else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
                 mixbookBarscanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -174,7 +174,7 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
             }
-            else if (ApplicationUser.UserName == "SHIPPING")
+            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;

@@ -66,13 +66,13 @@ namespace Mbc5.Forms.MixBook
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join Wip W ON MO.Invno=W.Invno
                                  Left Join Covers C On MO.Invno=C.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(40),War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
                                  Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd";
             sqlClient.CommandText(cmd);

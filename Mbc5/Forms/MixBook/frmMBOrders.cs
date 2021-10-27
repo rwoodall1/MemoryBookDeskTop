@@ -35,7 +35,7 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
-            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY")
+            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY") 
             {
                 this.pnlRemake.Visible = true;
             }
