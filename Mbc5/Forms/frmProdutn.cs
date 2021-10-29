@@ -7729,8 +7729,8 @@ namespace Mbc5.Forms
 				}
 				catch (DBConcurrencyException ex1)
 				{
-					//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
-					//if (result == DialogResult.Yes) { SaveWip(); };
+                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
+                    if (result == DialogResult.Yes) { SaveWip(); };
                     SaveWip();
 				}
 				catch (Exception ex)

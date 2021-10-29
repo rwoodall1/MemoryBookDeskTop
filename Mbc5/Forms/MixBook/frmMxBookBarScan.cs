@@ -281,33 +281,32 @@ namespace Mbc5.Forms.MixBook
                             
                             //return; do not check for duplicate
                         }
-                        //Took out per TF 10-26-21
-                        //check if scan exist stop if it does per tf
-                        //string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
+                      
+                        string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
 
 
-                        //sqlClient.CommandText(cmd);
-                        //sqlClient.AddParameter("@Invno", Invno);
-                        //sqlClient.AddParameter("@DescripId", "43");
-                        //var sqlResult = sqlClient.SelectSingleColumn();
-                        //if (sqlResult.IsError)
-                        //{
-                        //    Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
-                        //    MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
-                        //    return;
-                        //}
-                        //if (sqlResult.Data != "0")
-                        //{
+                        sqlClient.CommandText(cmd);
+                        sqlClient.AddParameter("@Invno", Invno);
+                        sqlClient.AddParameter("@DescripId", "43");
+                        var sqlResult = sqlClient.SelectSingleColumn();
+                        if (sqlResult.IsError)
+                        {
+                            Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                            MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                            return;
+                        }
+                        if (sqlResult.Data != "0")
+                        {
 
 
-                        //var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        //if (dialogResult == DialogResult.No)
-                        //{
+                            var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (dialogResult == DialogResult.No)
+                            {
 
-                        //    MbcMessageBox.Information("Scanned has been cancelled.");
-                        //    return;
-                        //}
-                        // }
+                                MbcMessageBox.Information("Scanned has been cancelled.");
+                                return;
+                            }
+                        }
 
                         //war is datetime
                         //wir is initials
@@ -1012,7 +1011,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + CAST(COALESCE(specinst,'') as varchar) Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
@@ -1047,7 +1046,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo= @Memo +' | ' + CAST(COALESCE(WipMemo,'')as varchar),RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -1092,7 +1091,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + CAST(COALESCE(specinst,'') as varchar) Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
@@ -1140,7 +1139,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString(); 
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo + ' | ' + CAST(COALESCE(WipMemo,' ') as varchar)   Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
