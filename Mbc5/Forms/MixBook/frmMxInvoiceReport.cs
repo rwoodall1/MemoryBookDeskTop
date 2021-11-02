@@ -58,7 +58,7 @@ namespace Mbc5.Forms.MixBook
 ,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-Where M.MixbookOrderStatus='Shipped' and OrderReprint=0 and (Invoiced IS NULL OR Invoiced =0)And M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo  Order By Invno,DateShipped";
+Where M.MixbookOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)And M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo  Order By Invno,DateShipped";
 
             sqlClient.CommandText(cmd);
             sqlClient.AddParameter("@DateFrom", dtFrom.Value);
@@ -101,7 +101,7 @@ Where M.MixbookOrderStatus='Shipped' and OrderReprint=0 and (Invoiced IS NULL OR
 ,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from WipDetail where Invno=M.invno) AND M.MixbookOrderStatus='Cancelled' ";
+Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from WipDetail where Invno=M.invno) AND M.MixbookOrderStatus ='Cancelled' ";
             sqlClient.CommandText(cmd);
             var cancelledDataResult = sqlClient.SelectMany<MixbookInvoiceReport>();
             if (cancelledDataResult.IsError)

@@ -1011,7 +1011,12 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + CONVERT(nvarchar(max),COALESCE(specinst,'')  Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE()
+                                    ,remake=1
+                                    ,FullRemake=@FullRemake
+                                    ,RemakeReason=@RemakeReason
+                                    ,persondest=@persondest
+                                    ,specinst=@Memo +' | ' + CONVERT(nvarchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
@@ -1046,7 +1051,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.ClearParameters();
                 string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo= @Memo +' | ' + Convert(nvarchar(max),COALESCE(WipMemo,''),RemakeReason=@RemakeReason Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo= @Memo +' | ' + Convert(nvarchar(max),COALESCE(WipMemo,'')),RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -1091,7 +1096,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + Convert(nvarchar(max),COALESCE(specinst,'')  Where INVNO=@Invno");
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + Convert(nvarchar(max),COALESCE(specinst,''))  Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
