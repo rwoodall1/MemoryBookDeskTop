@@ -42,6 +42,8 @@ namespace Mbc5.Forms
             if (Environment == "DEV")
             {
                 AppConnectionString = "Data Source=sedswjpsql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+                this.label1.Text = "Using Test Environment Notify Supervisor Immediatly";
+                this.pnlNotice.Visible = true;
             }
             else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
