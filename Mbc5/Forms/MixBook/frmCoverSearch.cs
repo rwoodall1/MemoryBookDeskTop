@@ -54,6 +54,10 @@ namespace Mbc5.Forms.MixBook
             var vData = (CoverSearch)sqlResult.Data;
             lblCoverLocationResult.Text = string.IsNullOrEmpty(vData.CurrentCoverLoc) ? "Not Found" : vData.CurrentCoverLoc;
             lblStatusData.Text = vData.MixbookOrderStatus;
+            if (vData.MixbookOrderStatus.ToUpper()=="SHIPPED"|| vData.MixbookOrderStatus.ToUpper() == "CANCELLED")
+            {
+                MbcMessageBox.Information("This order has been " + vData.MixbookOrderStatus.ToUpper());
+            }
             if (!string.IsNullOrEmpty(vData.CoverPreviewUrl))
             {
                 Process.Start(vData.CoverPreviewUrl);

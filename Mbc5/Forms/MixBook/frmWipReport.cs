@@ -30,12 +30,13 @@ namespace Mbc5.Forms.MixBook
         }
 
       private List<WipReportModel> DataResult { get; set; }
-        private void LoadData()
+
+
+   private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
       string cmd= @"Select 
-                                    MO.ShipName
-									,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                                    MO.ShipName									
 									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
 									,MO.Copies
 									,Mo.Pages
@@ -43,12 +44,14 @@ namespace Mbc5.Forms.MixBook
 									,MO.Description
 									,MO.Backing
 									,P.Kitrecvd
+                                    ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
 									,CD29.War AS CPress
 									,CD29.MxbLocation AS Location29
 									,CD43.War As CTrimming
 									,CD43.MxbLocation AS CTrimLoc
 									,COALESCE(CD37.War,'') AS OnBoards
 									,CD37.MxbLocation AS CCart
+                                    ,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
 									,WD29.War AS WipPress
 									,COALESCE(WD43.War,'') As PTrimming
 									,WD43.Mxblocation As PTrimLoc 
@@ -57,7 +60,7 @@ namespace Mbc5.Forms.MixBook
 									,WD49.War AS CaseIn
 									,WD50.War AS Quality				                          
 									,WD50.MxbLocation AS Location
-									,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+									
                                     ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode

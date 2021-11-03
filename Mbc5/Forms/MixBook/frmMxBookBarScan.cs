@@ -147,10 +147,10 @@ namespace Mbc5.Forms.MixBook
                                     return;
                                 }
                                 MbxModel = (MixBookBarScanModel)result.Data;
-                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
+                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
                                 {
                                 if (this.ApplicationUser.UserName.ToUpper() !="TRIMMING") {
-                                    MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+                                    MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
                                     ClearScan();
                                     return;
                                 }
