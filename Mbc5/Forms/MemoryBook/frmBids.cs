@@ -771,7 +771,7 @@ namespace Mbc5.Forms.MemoryBook {
                     {
                         retval = false;
                         MessageBox.Show("Sales record failed to update:" + ex.Message);
-                        Log.Error(ex, "Record sales record failed to update:" + ex.Message);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Record sales record failed to update:" + ex.Message);
                     }
                 }
                 else { retval = false; }
@@ -872,7 +872,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (this.Pricing == null)
                         {
                             MessageBox.Show("Pricing was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Pricing was not found:Year-" + txtBYear.Text);
                             return;
                         }
                     }

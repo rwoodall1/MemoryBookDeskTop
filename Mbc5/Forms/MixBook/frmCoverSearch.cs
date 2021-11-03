@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Select<CoverSearch>();
             if (sqlResult.IsError)
             {
-                Log.Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
                 return;
             }

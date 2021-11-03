@@ -7700,7 +7700,7 @@ namespace Mbc5.Forms
 					catch (Exception ex)
 					{
 
-                        Log.Error(ex, "Production record failed to update:" + ex.Message);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Production record failed to update:" + ex.Message);
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
 					}

@@ -62,7 +62,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MessageBox.Show(result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Error retrieving order for shipment:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error retrieving order for shipment:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             if (result.Data == null)
@@ -220,7 +220,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error(result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(result.Errors[0].DeveloperMessage);
                     return;
                 }
                 if (result.Data == null)
@@ -260,7 +260,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("An error has occured:" + ex.Message);
-                Log.Error("An error has occured:" + ex.Message);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("An error has occured:" + ex.Message);
             }
 
         }
@@ -322,7 +322,7 @@ namespace Mbc5.Forms.MixBook
                 if (mxResult4.IsError)
                 {
 
-                    Log.Error("Failed to update shipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update shipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to update shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -342,7 +342,7 @@ namespace Mbc5.Forms.MixBook
                 var result4 = sqlClient.Insert();
                 if (result4.IsError)
                 {
-                    Log.Error("Failed to insert shipping WIP:" + result4.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert shipping WIP:" + result4.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to insert shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -353,7 +353,7 @@ namespace Mbc5.Forms.MixBook
                 var produtnResult = sqlClient.Update();
                 if (produtnResult.IsError)
                 {
-                    Log.Error("Failed to update production ship date:" + produtnResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update production ship date:" + produtnResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to update shipdate on production screen.");
 
                 }
@@ -377,7 +377,7 @@ namespace Mbc5.Forms.MixBook
                 if (trackingResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update tracking number in order screen.");
-                    Log.Error("Failed to update tracking number in order screen:" + trackingResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update tracking number in order screen:" + trackingResult.Errors[0].DeveloperMessage);
                 }
             }
         }
@@ -406,7 +406,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error clearing shipment items");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Error clearing shipment items");
 
 
             }
@@ -515,7 +515,7 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-                Log.Error("AddMbEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("AddMbEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
 
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
@@ -544,7 +544,7 @@ namespace Mbc5.Forms.MixBook
             {
                 Shipment.Package.Add(pkg);
             }
-            catch (Exception ex) { Log.Error(ex); }
+            catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex); }
 
 
         }
@@ -630,7 +630,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
-                Log.Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
                 txtClientIdLookup.Focus();
                 return;
             }
@@ -646,7 +646,7 @@ namespace Mbc5.Forms.MixBook
                  vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
             }catch(Exception ex)
             {
-                Log.Error("Value is not valid for subst:" + txtTrackingNo.Text);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Value is not valid for subst:" + txtTrackingNo.Text);
                 txtClientIdLookup.Focus();
                 return;
             }
@@ -671,7 +671,7 @@ namespace Mbc5.Forms.MixBook
                     {
 
                         MbcMessageBox.Hand("This tracking number is in the format of a UPS order but does not correspon with the shipping method. Check that shipping method is for UPS", "Tracking Number");
-                        Log.Error("Tracking Number format (UPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (UPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
                 }
@@ -680,7 +680,7 @@ namespace Mbc5.Forms.MixBook
                     if (MbxModel.ShipMethod.Trim() != "MX_MI")
                     {
                         MbcMessageBox.Hand("This tracking number is in the format of a Mail Innovations order but does not correspond with the shipping method. Check that shipping label is for Mail Innovations", "Tracking Number");
-                        Log.Error("Tracking Number format (Mail Innovations) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (Mail Innovations) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
 
@@ -702,13 +702,13 @@ namespace Mbc5.Forms.MixBook
                     {
 
                         MbcMessageBox.Hand("This tracking number is in the format of a USPS order but does not correspond with the shipping method. Check that shipping label is for USPS", "Tracking Number");
-                        Log.Error("Tracking Number format (USPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (USPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     }
 
                 }
                 else {
                     MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again.");
-                    Log.Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     return;
                 }
             

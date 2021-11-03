@@ -64,7 +64,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
-                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
             this.Fill();
         }
@@ -81,7 +81,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Failed to set Mixbook orders connection strings");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set Mixbook orders connection strings");
 
             }
         }
@@ -95,7 +95,7 @@ namespace Mbc5.Forms.MixBook
                 {
                     vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
                 }
-                catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             }
             
 
@@ -130,7 +130,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, "Failed to search Order Id");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Id");
                 }
             }
 
@@ -145,7 +145,7 @@ namespace Mbc5.Forms.MixBook
                         vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
                     }
                 }
-                catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Item Id"); }
             }
 
             frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
@@ -177,7 +177,7 @@ namespace Mbc5.Forms.MixBook
                 if (mixBookOrderBindingSource.Current!=null) {
                     vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
             }
-            catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
+            catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Name"); }
 
             frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
             var result = frmSearch.ShowDialog();
@@ -263,7 +263,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -284,7 +284,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update cover reprint date.");
-                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -295,7 +295,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult11.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
-                    Log.Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
                     return;
                 }
                 vreasonCode=null;
@@ -310,7 +310,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -331,7 +331,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
-                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -342,7 +342,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResul1t.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
-                    Log.Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -371,7 +371,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                Log.Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
         }
         private void PrintJobTicket()
@@ -397,7 +397,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
                 var jobData = (JobTicketQuery)result.Data;
@@ -430,7 +430,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError || result.Data == null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-                Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
@@ -456,7 +456,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
-                Log.Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             if (result.Data == null)
@@ -528,7 +528,7 @@ namespace Mbc5.Forms.MixBook
                     catch (Exception ex)
                     {
                         MessageBox.Show("Url is invalid.");
-                        Log.Error(ex, "Url is invalid.");
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
                     }
                 }
             if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
@@ -557,7 +557,7 @@ namespace Mbc5.Forms.MixBook
                     var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
                     this.Invno = value;
                 }
-                catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
             }
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
@@ -613,7 +613,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
             }
 
             Cursor.Current = Cursors.Default;
@@ -640,7 +640,7 @@ namespace Mbc5.Forms.MixBook
                 if (result.IsError)
                 {
                     MbcMessageBox.Error("Failed to iniated download of files, try again or contact developer.");
-                    Log.Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
             }
@@ -671,7 +671,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
             }
             Cursor.Current = Cursors.Default;
         }
@@ -691,7 +691,7 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to purge order");
-                    Log.Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
                 sqlClient.ClearParameters();
@@ -758,7 +758,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
-                Log.Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             MbcMessageBox.Exclamation("Status has been changed to " +status);
@@ -783,7 +783,7 @@ namespace Mbc5.Forms.MixBook
                     }
                 }
                 catch (Exception ex) {
-                    Log.Error("PrintJobTicketSingle" + ex.Message);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
                 }
             }
             else
@@ -816,6 +816,17 @@ namespace Mbc5.Forms.MixBook
         private void btnBkRemake_Click(object sender, EventArgs e)
         {
             Remake("BK");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
+            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test2");
+            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
+            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
+            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
+
+
         }
     }
 }

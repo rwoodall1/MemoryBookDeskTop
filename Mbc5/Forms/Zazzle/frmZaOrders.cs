@@ -60,7 +60,7 @@ namespace Mbc5.Forms.Zazzle
             catch (Exception ex)
             {
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
-                Log.Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
             this.Fill();
         }
@@ -76,7 +76,7 @@ namespace Mbc5.Forms.Zazzle
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Failed to set Zazzle orders connection strings");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set Zazzle orders connection strings");
 
             }
         }
@@ -90,7 +90,7 @@ namespace Mbc5.Forms.Zazzle
             //    {
             //        vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
             //    }
-            //    catch (Exception ex) { Log.Error(ex, "OrderId not found. Mixbook OrderId Search"); }
+            //    catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             //}
             
 
@@ -125,7 +125,7 @@ namespace Mbc5.Forms.Zazzle
             //    }
             //    catch (Exception ex)
             //    {
-            //        Log.Error(ex, "Failed to search Order Id");
+            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Id");
             //    }
             //}
 
@@ -140,7 +140,7 @@ namespace Mbc5.Forms.Zazzle
             //            vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
             //        }
             //    }
-            //    catch (Exception ex) { Log.Error(ex, "Failed to search Item Id"); }
+            //    catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Item Id"); }
             //}
 
             //frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
@@ -172,7 +172,7 @@ namespace Mbc5.Forms.Zazzle
             //    if (mixBookOrderBindingSource.Current!=null) {
             //        vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
             //}
-            //catch (Exception ex) { Log.Error(ex, "Failed to search Order Name"); }
+            //catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Name"); }
 
             //frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
             //var result = frmSearch.ShowDialog();
@@ -219,7 +219,7 @@ namespace Mbc5.Forms.Zazzle
             //catch (Exception ex)
             //{
             //    MbcMessageBox.Error(ex.Message);
-            //    Log.Error(ex, "Failed to fill zazzle orders data adapters,INVNO:" + Invno.ToString());
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill zazzle orders data adapters,INVNO:" + Invno.ToString());
             //}
         }
 
@@ -238,7 +238,7 @@ namespace Mbc5.Forms.Zazzle
             //    if (result.IsError)
             //    {
             //        MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        //Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+            //        //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
             //        return;
             //    }
             //    var jobData = (JobTicketQuery)result.Data;
@@ -270,7 +270,7 @@ namespace Mbc5.Forms.Zazzle
             //if (result.IsError || result.Data == null)
             //{
             //    MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-            //    Log.Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
             //    return;
             //}
             //var packingSlipData = (List<MixbookPackingSlip>)result.Data;
@@ -292,7 +292,7 @@ namespace Mbc5.Forms.Zazzle
             //if (result.IsError)
             //{
             //    MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
-            //    Log.Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
             //    return;
             //}
             //if (result.Data == null)
@@ -364,7 +364,7 @@ namespace Mbc5.Forms.Zazzle
             //        catch (Exception ex)
             //        {
             //            MessageBox.Show("Url is invalid.");
-            //            Log.Error(ex, "Url is invalid.");
+            //            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
             //        }
             //    }
             //if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
@@ -393,7 +393,7 @@ namespace Mbc5.Forms.Zazzle
             //        var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
             //        this.Invno = value;
             //    }
-            //    catch (Exception ex) { Log.Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
+            //    catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
             //}
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
@@ -449,7 +449,7 @@ namespace Mbc5.Forms.Zazzle
             //if (result.IsError)
             //{
             //    var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
             //}
 
             //Cursor.Current = Cursors.Default;
@@ -476,7 +476,7 @@ namespace Mbc5.Forms.Zazzle
             //    if (result.IsError)
             //    {
             //        MbcMessageBox.Error("Failed to iniated download of files, try again or contact developer.");
-            //        Log.Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
+            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
             //        return;
             //    }
             //}
@@ -507,7 +507,7 @@ namespace Mbc5.Forms.Zazzle
             //if (result.IsError)
             //{
             //    var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Log.Error("Printing Error:" + result.Errors[0].ErrorMessage);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
             //}
             //Cursor.Current = Cursors.Default;
         }
@@ -527,7 +527,7 @@ namespace Mbc5.Forms.Zazzle
             //    if (deleteResult.IsError)
             //    {
             //        MbcMessageBox.Error("Failed to purge order");
-            //        Log.Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
+            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to purge order" + deleteResult.Errors[0].DeveloperMessage);
             //        return;
             //    }
             //    sqlClient.ClearParameters();
@@ -594,7 +594,7 @@ namespace Mbc5.Forms.Zazzle
             //if (result.IsError)
             //{
             //    MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
-            //    Log.Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
             //    return;
             //}
             //MbcMessageBox.Exclamation("Status has been changed to " +status);

@@ -65,7 +65,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("Failed to attach file to email:" + ex.Message);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to attach file to email:" + ex.Message);
                     MessageBox.Show("Failed to attach file to email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -82,7 +82,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                Log.Error("Failed to send email:" + ex.Message);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to send email:" + ex.Message);
                 MessageBox.Show("Failed to send email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -110,7 +110,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                Log.Error("Failed to log email:" + ex.Message);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to log email:" + ex.Message);
                 //go on we are not stopping the program for this
             }
             finally { cmd.Connection.Close(); }

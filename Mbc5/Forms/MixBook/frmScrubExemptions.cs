@@ -30,7 +30,7 @@ namespace Mbc5.Forms.MixBook
             var sqlResult=sqlClient.SelectMany<Exemption>();
             if (sqlResult.IsError)
             {
-                Log.Error("Failed to get exemptions:" + sqlResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to get exemptions:" + sqlResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to get exemptions:" + sqlResult.Errors[0].DeveloperMessage);
                 return;
             }
@@ -49,7 +49,7 @@ namespace Mbc5.Forms.MixBook
             var updateResult = sqlClient.Update();
             if (updateResult.IsError)
             {
-                Log.Error("Failed to update ScrubExemption:" + updateResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update ScrubExemption:" + updateResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to update ScrubExemption:" + updateResult.Errors[0].DeveloperMessage);
                 return;
             }
@@ -65,7 +65,7 @@ namespace Mbc5.Forms.MixBook
             var updateResult = sqlClient.Delete();
             if (updateResult.IsError)
             {
-                Log.Error("Failed to delete record from ScrubExemption:" + updateResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to delete record from ScrubExemption:" + updateResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to delete record from ScrubExemptions:" + updateResult.Errors[0].DeveloperMessage);
                 return;
             }
@@ -80,7 +80,7 @@ namespace Mbc5.Forms.MixBook
             var insertResult = sqlClient.Insert();
             if (insertResult.IsError)
             {
-                Log.Error("Failed to insert record for ScrubExemption:" + insertResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert record for ScrubExemption:" + insertResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to insert record for ScrubExemption:" + insertResult.Errors[0].DeveloperMessage);
                 return;
             }

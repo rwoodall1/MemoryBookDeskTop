@@ -173,7 +173,7 @@ Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from Wip
                 if (updateResult.IsError)
                 {
                     updateErrors = true;
-                    Log.Error("Failed to mark records as invoiced invno(" + rec.Invno.ToString() + "):" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to mark records as invoiced invno(" + rec.Invno.ToString() + "):" + updateResult.Errors[0].DeveloperMessage);
                 }
             }
             if (updateErrors)

@@ -649,7 +649,7 @@ namespace Mbc5.Forms
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
           
@@ -726,7 +726,7 @@ namespace Mbc5.Forms
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -1976,7 +1976,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("Error retrieving file path for update check.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error retrieving file path for update check.");
                     return;
                 }
 
