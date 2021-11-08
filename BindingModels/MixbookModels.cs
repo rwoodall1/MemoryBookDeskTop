@@ -5,6 +5,11 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class RemakeChk
+    {
+        public bool Remake { get; set; }
+        public int FullRemake { get; set; }
+    }
     public class RemakeTicketQuery
     {
         public int Invno { get; set; }

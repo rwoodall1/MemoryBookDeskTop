@@ -768,9 +768,34 @@ namespace Mbc5.Forms.MixBook
                         else { bookBlockLocation = "N/A"; }
                         lblBkLocation.Text = bookBlockLocation;
                         string updateLocation = bookBlockLocation;
-                        if (MbxModel.Quantity > 1)
+                        //msg if quality remake
+                     
+                            sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Select FullRemake,Remake
+                                                from Covers C Inner Join WipDetail WD On C.Invno = WD.Invno
+                                                Where Invno=@Invno AND WD.DescripId = 50 And Remake = 1 ");
+                                                  
+                        sqlClient.AddParameter("@Invno", MbxModel.Invno);
+                        var remakeResult = sqlClient.Select<RemakeChk>();
+                        if (remakeResult.IsError)
                         {
-                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(remakeResult.Errors[0].DeveloperMessage);
+                           //go on we are not stopping the process
+                        }
+                        var remakeData =(RemakeChk) remakeResult.Data;
+                        //msg num of remakes
+                        if (remakeData.Remake && remakeData.FullRemake>1)
+                        {
+                            if (MbxModel.Quantity > 1)
+                            {
+                                MbcMessageBox.Information("You should have " + remakeData.FullRemake.ToString() + " copies in this order");
+                            }
+                        }
+                        else {
+                            if (MbxModel.Quantity > 1)
+                            {
+                                MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                            }
                         }
                         //if (MbxModel.Quantity > 1 || updateLocation=="N/A")
                         //{

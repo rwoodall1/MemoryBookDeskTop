@@ -818,15 +818,6 @@ namespace Mbc5.Forms.MixBook
             Remake("BK");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
-            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test2");
-            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
-            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
-            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("test");
-
-
-        }
+       
     }
 }

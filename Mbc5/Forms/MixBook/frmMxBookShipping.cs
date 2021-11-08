@@ -361,6 +361,7 @@ namespace Mbc5.Forms.MixBook
 
                 sqlClient.CommandText(@"UPDATE Mixbookorder  Set Weight = Coalesce(Weight,0)+@Weight
                                         ,TrackingNumber=@TrackingNumber + COALESCE(CONVERT(nvarchar(max),TrackingNumber),CONVERT(nvarchar(max),''))
+                                        ,MixbookOrderStatus='Shipped'
                                         ,DateShipped=GETDATE()
                                         ,DateModified=GETDATE()
                                         ,ModifiedBy='SYS' where Invno=@Invno");
@@ -675,7 +676,7 @@ namespace Mbc5.Forms.MixBook
                     }
 
                 }
-                else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" )//mail innovations
+                else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" || vPartTrack == "926")//mail innovations
                 {
                     if (MbxModel.ShipMethod.Trim() != "MX_MI")
                     {
@@ -707,7 +708,7 @@ namespace Mbc5.Forms.MixBook
 
                 }
                 else {
-                    MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again.");
+                    MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again or contact your superviser.");
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                     return;
                 }
