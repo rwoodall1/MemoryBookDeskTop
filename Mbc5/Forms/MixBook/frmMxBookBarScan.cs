@@ -138,7 +138,7 @@ namespace Mbc5.Forms.MixBook
                                 if (result.IsError)
                                 {
                                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    Log.Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
+                                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
                                     return;
                                 }
                                 if (result.Data == null)
@@ -147,11 +147,13 @@ namespace Mbc5.Forms.MixBook
                                     return;
                                 }
                                 MbxModel = (MixBookBarScanModel)result.Data;
-                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim() == "Cancelled")
+                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
                                 {
-                                    MbcMessageBox.Hand("This order has been cancelled, contact your supervisor", "Order Cancelled");
+                                if (this.ApplicationUser.UserName.ToUpper() !="TRIMMING") {
+                                    MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
                                     ClearScan();
                                     return;
+                                }
                                 }
                                 lblBkLocation.Text = MbxModel.BookLocation;
                                 txtDateTime.Text = DateTime.Now.ToString();
@@ -164,7 +166,7 @@ namespace Mbc5.Forms.MixBook
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error("An error has occured:" + ex.Message);
-                    Log.Error("An error has occured:" + ex.Message);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("An error has occured:" + ex.Message);
                 }
             
         }
@@ -192,7 +194,7 @@ namespace Mbc5.Forms.MixBook
             }
             if (chkRemake.Checked)
             {
-                ScanRamake(currentUser);
+                ScanRemake(currentUser);
                 return;
             }
             int QtyToScan = 0;
@@ -240,7 +242,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan.", mxResult.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan.", mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -260,7 +262,7 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan.", result1.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan.", result1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -279,7 +281,7 @@ namespace Mbc5.Forms.MixBook
                             
                             //return; do not check for duplicate
                         }
-                        //check if scan exist stop if it does per tf
+                      
                         string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
 
 
@@ -289,12 +291,14 @@ namespace Mbc5.Forms.MixBook
                         var sqlResult = sqlClient.SelectSingleColumn();
                         if (sqlResult.IsError)
                         {
-                            Log.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
                             MbcMessageBox.Error("Failed to retrieve scan for trim scan check:" + sqlResult.Errors[0].DeveloperMessage);
                             return;
                         }
                         if (sqlResult.Data != "0")
                         {
+
+
                             var dialogResult = MessageBox.Show("There is already a scan for this login, do you want to overwrite the scan with this one?", "Duplicate Scan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (dialogResult == DialogResult.No)
                             {
@@ -304,10 +308,10 @@ namespace Mbc5.Forms.MixBook
                             }
                         }
 
-                            //war is datetime
-                            //wir is initials
+                        //war is datetime
+                        //wir is initials
 
-                            sqlClient.ClearParameters();
+                        sqlClient.ClearParameters();
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
@@ -318,7 +322,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan." + mxResult11.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan." + mxResult11.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -338,7 +342,7 @@ namespace Mbc5.Forms.MixBook
                         if (result11.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan." + result11.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan." + result11.Errors[0].DeveloperMessage);
                             return;
                         }
                         //Mark says orders will not be split on location so insert into one location
@@ -352,7 +356,7 @@ namespace Mbc5.Forms.MixBook
                         {
                             MbcMessageBox.Error("Failed to update location of order.");
                             ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
-                            Log.Error("Failed to update location of book invno:" + Invno.ToString());
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location of book invno:" + Invno.ToString());
                         }
                         //QuantityScanned += 1; took out per tf
                         //lblScanQty.Text = QuantityScanned.ToString();
@@ -370,7 +374,7 @@ namespace Mbc5.Forms.MixBook
                         var orderLocResult2 = sqlClient.Update();
                         if (orderLocResult2.IsError)
                         {
-                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
@@ -403,7 +407,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to upate scan.", mxResult1.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to upate scan.", mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -423,7 +427,7 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan.", result.Errors[0].DeveloperMessage);
                             return;
                         }
                         
@@ -459,7 +463,7 @@ namespace Mbc5.Forms.MixBook
                             {
                                 MbcMessageBox.Error("Failed to update location of order.");
 
-                                Log.Error("Failed to update location of order invno:" + Invno.ToString());
+                                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location of order invno:" + Invno.ToString());
                             }
                             //QuantityScanned += 1; took out per tf
                             //lblScanQty.Text = QuantityScanned.ToString();
@@ -479,7 +483,7 @@ namespace Mbc5.Forms.MixBook
                         var orderLocResult1 = sqlClient.Update();
                         if (orderLocResult1.IsError)
                         {
-                            Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
@@ -506,7 +510,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -526,7 +530,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -638,7 +642,7 @@ namespace Mbc5.Forms.MixBook
                                 var orderLocResult = sqlClient.Update();
                                 if (orderLocResult.IsError)
                                 {
-                                    Log.Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
+                                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                                 }
                             }
                             else
@@ -660,7 +664,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult3.IsError)
                         {
                             MessageBox.Show("Failed to update scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan." + mxResult3.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan." + mxResult3.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -681,7 +685,7 @@ namespace Mbc5.Forms.MixBook
                         if (result3.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan." + result3.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -693,7 +697,7 @@ namespace Mbc5.Forms.MixBook
                         if (orderCheck.IsError)
                         {
                             MbcMessageBox.Error("Failed to check if order complete,please check manually.");
-                            Log.Error("Failed to check if order complete:" + orderCheck.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to check if order complete:" + orderCheck.Errors[0].DeveloperMessage);
                             return;
                         }
                         var data = (List<OrderChk>)orderCheck.Data;
@@ -753,7 +757,7 @@ namespace Mbc5.Forms.MixBook
                         string bookBlockLocation = "";
                         if (booklocationresult.IsError)
                         {
-                            Log.Error("Failed to retrieve book block location " + Invno.ToString() + ":" + booklocationresult.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve book block location " + Invno.ToString() + ":" + booklocationresult.Errors[0].DeveloperMessage);
                             bookBlockLocation = "N/A";
                         }
 
@@ -764,9 +768,34 @@ namespace Mbc5.Forms.MixBook
                         else { bookBlockLocation = "N/A"; }
                         lblBkLocation.Text = bookBlockLocation;
                         string updateLocation = bookBlockLocation;
-                        if (MbxModel.Quantity > 1)
+                        //msg if quality remake
+                     
+                            sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Select FullRemake,Remake
+                                                from Covers C Inner Join WipDetail WD On C.Invno = WD.Invno
+                                                Where Invno=@Invno AND WD.DescripId = 50 And Remake = 1 ");
+                                                  
+                        sqlClient.AddParameter("@Invno", MbxModel.Invno);
+                        var remakeResult = sqlClient.Select<RemakeChk>();
+                        if (remakeResult.IsError)
                         {
-                            MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(remakeResult.Errors[0].DeveloperMessage);
+                           //go on we are not stopping the process
+                        }
+                        var remakeData =(RemakeChk) remakeResult.Data;
+                        //msg num of remakes
+                        if (remakeData.Remake && remakeData.FullRemake>1)
+                        {
+                            if (MbxModel.Quantity > 1)
+                            {
+                                MbcMessageBox.Information("You should have " + remakeData.FullRemake.ToString() + " copies in this order");
+                            }
+                        }
+                        else {
+                            if (MbxModel.Quantity > 1)
+                            {
+                                MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
+                            }
                         }
                         //if (MbxModel.Quantity > 1 || updateLocation=="N/A")
                         //{
@@ -797,7 +826,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult.IsError)
                         {
                             MessageBox.Show("Failed to update scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan:" + mxResult.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan:" + mxResult.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -818,7 +847,7 @@ namespace Mbc5.Forms.MixBook
                         if (result.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan:" + result.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -828,7 +857,7 @@ namespace Mbc5.Forms.MixBook
                         var orderLocResult = sqlClient.Update();
                         if (orderLocResult.IsError)
                         {
-                            Log.Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+ updateLocation + " | "+JsonConvert.SerializeObject(orderLocResult));
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+ updateLocation + " | "+JsonConvert.SerializeObject(orderLocResult));
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
@@ -858,7 +887,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan:" + mxResult1.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan:" + mxResult1.Errors[0].DeveloperMessage);
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -878,7 +907,7 @@ namespace Mbc5.Forms.MixBook
                         if (result1.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan:" + result1.Errors[0].DeveloperMessage);
                             return;
                         }
                         //took out per tf
@@ -917,7 +946,7 @@ namespace Mbc5.Forms.MixBook
                         if (mxResult2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update scan:" + mxResult2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.ReturnSqlIdentityId(true);
@@ -936,7 +965,7 @@ namespace Mbc5.Forms.MixBook
                         if (result2.IsError)
                         {
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan:" + result2.Errors[0].DeveloperMessage);
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
@@ -952,7 +981,7 @@ namespace Mbc5.Forms.MixBook
             }
             ClearScan();
         }
-        private void ScanRamake(string currentUser)
+        private void ScanRemake(string currentUser)
         {
 
             if (string.IsNullOrEmpty(txtReasonCode.Text))
@@ -971,21 +1000,26 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Invalid reason code.");
                 return;
             }
-            if (string.IsNullOrEmpty(txtRemakeQty.Text))
+
+            int vRemakeQuantity =this.MbxModel.Quantity ;
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
-                MbcMessageBox.Stop("Enter a quantity", "Quantity");
-                return;
-            }
-            int vRemakeQuantity = 0;
-            if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
-            {
-                MbcMessageBox.Error("Invalid Quantity");
-                return;
-            }
-            if (vRemakeQuantity==0)
-            {
-                MbcMessageBox.Error("Quantity can not be zero");
-                return;
+                if (string.IsNullOrEmpty(txtRemakeQty.Text))
+                {
+                    MbcMessageBox.Stop("Enter a quantity", "Quantity");
+                    return;
+                }
+              
+                if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
+                {
+                    MbcMessageBox.Error("Invalid Quantity");
+                    return;
+                }
+                if (vRemakeQuantity == 0)
+                {
+                    MbcMessageBox.Error("Quantity can not be zero");
+                    return;
+                }
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
@@ -997,13 +1031,18 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),remake=1,FullRemake=@FullRemake,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE()
+                                    ,remake=1
+                                    ,FullRemake=@FullRemake
+                                    ,RemakeReason=@RemakeReason
+                                    ,persondest=@persondest
+                                    ,specinst=@Memo +' | ' + CONVERT(nvarchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1019,7 +1058,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update cover reprint date.");
-                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -1031,17 +1070,17 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo=@Memo,RemakeReason=@RemakeReason Where INVNO=@Invno");
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo= @Memo +' | ' + Convert(nvarchar(max),COALESCE(WipMemo,'')),RemakeReason=@RemakeReason Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("@Memo", vmemo1);
                 if (vReason == 0)
                 {
                     MbcMessageBox.Error("Invalid reason code.");
@@ -1052,15 +1091,20 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
-                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
-
+                var result22=sqlClient.Update();
+                if(result22.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data Q:" + result22.Errors[0].DeveloperMessage);
+                    return;
+                }
             }
             else if (trkType == "SC")
             {
@@ -1072,13 +1116,13 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo Where INVNO=@Invno");
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + Convert(nvarchar(max),COALESCE(specinst,''))  Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
@@ -1093,14 +1137,20 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update cover reprint date.");
-                    Log.Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
+                var updateResult11=sqlClient.Update();
+                if (updateResult11.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    return;
+                }
                 txtReasonCode.Text = "";
 
             }
@@ -1113,13 +1163,13 @@ namespace Mbc5.Forms.MixBook
                 if (deleteResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                    Log.Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper();
-                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString(); 
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo + ' | ' + Convert(nvarchar(max),COALESCE(WipMemo,' '))   Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
@@ -1134,14 +1184,20 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
-                    Log.Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
                     return;
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                sqlClient.Update();
+                var updateResul1t=sqlClient.Update();
+                if (updateResul1t.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    return;
+                }
 
             }
             txtRemakeQty.Text = "0";
@@ -1206,7 +1262,7 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
-                Log.Error(sqlResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(sqlResult.Errors[0].DeveloperMessage);
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);
@@ -1230,7 +1286,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError || result.Data == null)
             {
                 MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-                Log.Error("Failed to retrieve order, packing slip could not be printed:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order, packing slip could not be printed:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
@@ -1291,7 +1347,7 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 
-                Log.Error(ex, "Failed to print DataMatrix Label");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to print DataMatrix Label");
             }
         }
         private bool ScanCheck(int invno, string login,string type)
@@ -1304,7 +1360,7 @@ namespace Mbc5.Forms.MixBook
             var result = sqlClient.SelectSingleColumn();
             if (result.IsError)
             {
-                Log.Error("Failed to retrieve order status for scan:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order status for scan:" + result.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to retrieve order status for scan:" + result.Errors[0].DeveloperMessage);
                 retval = false;
                 return retval;
@@ -1312,9 +1368,12 @@ namespace Mbc5.Forms.MixBook
             string vStatus = result.Data;
             if (vStatus == "Cancelled" || vStatus == "Hold" || vStatus == "Shipped")
             {
-                MbcMessageBox.Hand("Order status is " + vStatus + " Contact your supervisor. Scan is cancelled.","Order Status Error");
-                retval = false;
-                return retval;
+                if (ApplicationUser.UserName.ToUpper() != "TRIMMING")
+                {
+                    MbcMessageBox.Hand("Order status is " + vStatus + " Contact your supervisor. Scan is cancelled.", "Order Status Error");
+                    retval = false;
+                    return retval;
+                }
             }
 
          
@@ -1339,7 +1398,7 @@ namespace Mbc5.Forms.MixBook
                 countResult = sqlClient.SelectSingleColumn();
                 if (countResult.IsError)
                 {
-                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to check for duplicate record");
                     return false;
                 }
@@ -1353,7 +1412,7 @@ namespace Mbc5.Forms.MixBook
                 countResult = sqlClient.SelectSingleColumn();
                 if (countResult.IsError)
                 {
-                    Log.Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to check for " + vDeptCode + " scan:" + countResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to check for duplicate record");
                     return false;
                 }
@@ -1402,7 +1461,7 @@ namespace Mbc5.Forms.MixBook
                     if (result13.IsError)
                     {
 
-                        Log.Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
 
                     }
                     break;
@@ -1424,7 +1483,7 @@ namespace Mbc5.Forms.MixBook
                     if (result1.IsError)
                     {
 
-                        Log.Error("Failed to insert corrective scan.", result1.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result1.Errors[0].DeveloperMessage);
 
                     }
                     sqlClient.ClearParameters();
@@ -1443,7 +1502,7 @@ namespace Mbc5.Forms.MixBook
                     var result11 = sqlClient.Insert();
                     if (result11.IsError)
                     {
-                        Log.Error("Failed to insert corrective scan.", result11.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result11.Errors[0].DeveloperMessage);
                     }
                     break;
                 case "49":
@@ -1463,7 +1522,7 @@ namespace Mbc5.Forms.MixBook
                     if (result12.IsError)
                     {
 
-                        Log.Error("Failed to insert corrective scan.", result12.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result12.Errors[0].DeveloperMessage);
 
                     }
                     sqlClient.ClearParameters();
@@ -1483,7 +1542,7 @@ namespace Mbc5.Forms.MixBook
                     if (result112.IsError)
                     {
 
-                        Log.Error("Failed to insert corrective scan.", result112.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result112.Errors[0].DeveloperMessage);
 
                     }
                     sqlClient.ClearParameters();
@@ -1503,7 +1562,7 @@ namespace Mbc5.Forms.MixBook
                     if (result1123.IsError)
                     {
 
-                        Log.Error("Failed to insert corrective scan.", result1123.Errors[0].DeveloperMessage);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result1123.Errors[0].DeveloperMessage);
 
                     }
                     break;
@@ -1586,18 +1645,31 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Failed to print DataMatrix code");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to print DataMatrix code");
             }
         }
 
         private void chkRemake_CheckedChanged(object sender, EventArgs e)
         {
-
+            string currentUser = "";
+            if (!string.IsNullOrEmpty(cmbLogin.Text))
+            {
+                currentUser = cmbLogin.Text;
+            }
+            else
+            {
+                currentUser = ApplicationUser.UserName.ToUpper();
+            }
             if (chkRemake.Checked)
             {
                
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
+                if (currentUser == "QUALITY")
+                {
+                    pnlQtyInner.Visible = true;
+                }
+                else { pnlQtyInner.Visible = false; }
                 txtReasonCode.Focus();
             
             }
@@ -1606,7 +1678,7 @@ namespace Mbc5.Forms.MixBook
                 
                 pnlRemake.Visible = false;
 
-                if (ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "TRIMMING")
+                if (currentUser == "BINDING"|| currentUser == "TRIMMING")
                 {
 
                     pnlQty.Visible = true;
@@ -1636,11 +1708,11 @@ namespace Mbc5.Forms.MixBook
 
         private void txtReasonCode_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtReasonCode.TextLength >= 2)
-            {
-                txtRemakeQty.Focus();
+            //if (txtReasonCode.TextLength >= 2)
+            //{
+            //    txtRemakeQty.Focus();
               
-            }
+            //}
         }
 
         private void txtRemakeQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -1658,6 +1730,8 @@ namespace Mbc5.Forms.MixBook
                 e.IsInputKey = true;
             }
         }
+
+        
     }
     public class PackageData
     {

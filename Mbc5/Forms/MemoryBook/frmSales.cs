@@ -1630,7 +1630,7 @@ namespace Mbc5.Forms.MemoryBook
                         if (this.Pricing == null)
                         {
                             MessageBox.Show("Pricing was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Pricing was not found:Year-" + txtBYear.Text);
                             return;
                         }
                     }

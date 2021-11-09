@@ -57,7 +57,7 @@ namespace Mbc5.Forms.MixBook
             if (result.IsError)
             {
                 MessageBox.Show(result.Errors[0].DeveloperMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error("Error retrieving order for shipment:" + result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error retrieving order for shipment:" + result.Errors[0].DeveloperMessage);
                 return;
             }
             if (result.Data == null)
@@ -187,7 +187,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (ApiException e)
             {
-                Log.Error("Failed to Retrieve Label from Pitney:" +e.Message);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to Retrieve Label from Pitney:" +e.Message);
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve label from Pitney", "Failed to retrieve label from Pitney",""));
                 MbcMessageBox.Error("Failed to retrieve label:" + e.Message);
@@ -271,7 +271,7 @@ namespace Mbc5.Forms.MixBook
             var tokenResult = new SQLCustomClient().CommandText("Select Token,Issued From PitneyBowesToken").Select<SecurityToken>();
             if (tokenResult.IsError)
             {
-                Log.Error(tokenResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(tokenResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to retrieve Security Token. Shipment can not be made. Contact your superviser.");
                 processResult.IsError = true;
                 
@@ -285,7 +285,7 @@ namespace Mbc5.Forms.MixBook
                 var getTokenResult =await new RESTService(isPitney: true, token: dataString).MakeRESTCall(actionType: "POST", sentRequestData: "grant_type=client_credentials", headers:new List<Header>() {} ,vContentType: "application/x-www-form-urlencoded", vEndPoint: "https://shipping-api-sandbox.pitneybowes.com/oauth/token");
                 if (getTokenResult.IsError || getTokenResult.Data == null || getTokenResult.Data.APIResult == null) { 
                 
-                    Log.Error(getTokenResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(getTokenResult.Errors[0].DeveloperMessage);
                     MbcMessageBox.Error("Failed to retrieve Security Token. Shipment can not be made. Contact your superviser.");
                     processResult.IsError = true;
                     return processResult;
@@ -297,7 +297,7 @@ namespace Mbc5.Forms.MixBook
                 var updateResult = new SQLCustomClient().AddParameter("@Token",this.SecurityToken.access_token).CommandText("Update PitneyBowesToken Set Token=@Token,Issued=GetDate()").Update();
                 if (updateResult.IsError)
                 {
-                    Log.Error("Failed to update Token in Database:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Token in Database:" + updateResult.Errors[0].DeveloperMessage);
                     //User will be able to use token  until form is closed. Do not stop
                 }
                 return processResult;

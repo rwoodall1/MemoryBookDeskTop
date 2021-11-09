@@ -30,95 +30,93 @@ namespace Mbc5.Forms.MixBook
         }
         private void RunReport()
         {
-//            bsData.Clear();
-//            frmMain.CleanShipping(); //takes out shipping value that are not for mixbook. Need to remove this if we go to memorybook.
-//            var sqlClient = new SQLCustomClient();
-//            string cmd = @"Select M.ClientOrderId
-//,M.Invno
-//,MixbookOrderStatus   
-//,M.OrderReceivedDate
-//,M.RequestedShipDate
-//,M.DateShipped
-//,M.ItemCode
-//,M.ItemId
-//,M.Description
-//,M.Pages
-//,M.Copies
-//,M.Weight
-//,M.ShipMethod
-//,M.ShipName
-//,M.ShipState
-//,M.ShipZip
-//,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
-//,MS.Cost As Freight
-//,MP.SellPrice As UnitPrice 
-//,MP.SellPrice * M.Copies AS UnitTotal
-//,MP.PerPage * (M.Pages * M.Copies )AS PageFee
-//,MP.HandlingPerBox AS Fulfillment
-//,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
-//FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
-//Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-//Where M.MixbookOrderStatus='Shipped' and (Invoiced IS NULL OR Invoiced =0)And M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo  Order By Invno,DateShipped";
+            bsData.Clear();
+            frmMain.CleanShipping(); //takes out shipping value that are not for mixbook. Need to remove this if we go to memorybook.
+            var sqlClient = new SQLCustomClient();
+            string cmd = @"Select M.ClientOrderId
+,M.Invno
+,MixbookOrderStatus   
+,M.OrderReceivedDate
+,M.RequestedShipDate
+,M.DateShipped
+,M.ItemCode
+,M.ItemId
+,M.Description
+,M.Pages
+,M.Copies
+,M.Weight
+,M.ShipMethod
+,M.ShipName
+,M.ShipState
+,M.ShipZip
+,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
+,MS.Cost As Freight
+,MP.SellPrice As UnitPrice 
+,MP.SellPrice * M.Copies AS UnitTotal
+,MP.PerPage * (M.Pages * M.Copies )AS PageFee
+,MP.HandlingPerBox AS Fulfillment
+,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
+FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
+Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
+Where M.MixbookOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)And M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo  Order By Invno,DateShipped";
 
-//            //
-//            //and Invoiced !=1
-//            sqlClient.CommandText(cmd);
-//            sqlClient.AddParameter("@DateFrom", dtFrom.Value);
-//            sqlClient.AddParameter("@DateTo", dtTo.Value);
+            sqlClient.CommandText(cmd);
+            sqlClient.AddParameter("@DateFrom", dtFrom.Value);
+            sqlClient.AddParameter("@DateTo", dtTo.Value);
 
-//            var reportResult = sqlClient.SelectMany<MixbookInvoiceReport>();
-//            if (reportResult.IsError)
-//            {
-//                MbcMessageBox.Error(reportResult.Errors[0].DeveloperMessage);
-//                return;
-//            }
-//            if (reportResult.Data == null)
-//            {
-//                MbcMessageBox.Information("No records were returned.");
-//                return;
-//            }
-//            var data = (List<MixbookInvoiceReport>)reportResult.Data;
-//            sqlClient.ClearParameters();
-//            cmd = @"Select M.ClientOrderId
-//,M.Invno
-//,MixbookOrderStatus   
-//,M.OrderReceivedDate
-//,M.DateShipped
-//,M.ItemCode
-//,M.ItemId
-//,M.Description
-//,M.Pages
-//,M.Copies
-//,M.Weight
-//,M.ShipMethod
-//,M.ShipName
-//,M.ShipState
-//,M.ShipZip
-//,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
-//,MS.Cost As Freight
-//,MP.SellPrice As UnitPrice 
-//,MP.SellPrice * M.Copies AS UnitTotal
-//,MP.PerPage * (M.Pages * M.Copies )AS PageFee
-//,MP.HandlingPerBox AS Fulfillment
-//,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
-//FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
-//Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
-//Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from WipDetail where Invno=M.invno) AND M.MixbookOrderStatus='Cancelled' ";
-//            sqlClient.CommandText(cmd);
-//            var cancelledDataResult = sqlClient.SelectMany<MixbookInvoiceReport>();
-//            if (cancelledDataResult.IsError)
-//            {
-//                MbcMessageBox.Error(cancelledDataResult.Errors[0].DeveloperMessage);
-//                return;
-//            }
-//            if (cancelledDataResult.Data != null)
-//            {
+            var reportResult = sqlClient.SelectMany<MixbookInvoiceReport>();
+            if (reportResult.IsError)
+            {
+                MbcMessageBox.Error(reportResult.Errors[0].DeveloperMessage);
+                return;
+            }
+            if (reportResult.Data == null)
+            {
+                MbcMessageBox.Information("No records were returned.");
+                return;
+            }
+            var data = (List<MixbookInvoiceReport>)reportResult.Data;
+            sqlClient.ClearParameters();
+            cmd = @"Select M.ClientOrderId
+,M.Invno
+,MixbookOrderStatus   
+,M.OrderReceivedDate
+,M.DateShipped
+,M.ItemCode
+,M.ItemId
+,M.Description
+,M.Pages
+,M.Copies
+,M.Weight
+,M.ShipMethod
+,M.ShipName
+,M.ShipState
+,M.ShipZip
+,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
+,MS.Cost As Freight
+,MP.SellPrice As UnitPrice 
+,MP.SellPrice * M.Copies AS UnitTotal
+,MP.PerPage * (M.Pages * M.Copies )AS PageFee
+,MP.HandlingPerBox AS Fulfillment
+,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
+FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
+Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
+Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from WipDetail where Invno=M.invno) AND M.MixbookOrderStatus ='Cancelled' ";
+            sqlClient.CommandText(cmd);
+            var cancelledDataResult = sqlClient.SelectMany<MixbookInvoiceReport>();
+            if (cancelledDataResult.IsError)
+            {
+                MbcMessageBox.Error(cancelledDataResult.Errors[0].DeveloperMessage);
+                return;
+            }
+            if (cancelledDataResult.Data != null)
+            {
 
-//                var cancelledData = (List<MixbookInvoiceReport>)cancelledDataResult.Data;
-//                data.AddRange(cancelledData);
-//            }
-//            bsData.DataSource = data;
-//            lblRecords.Text = data.Count.ToString();
+                var cancelledData = (List<MixbookInvoiceReport>)cancelledDataResult.Data;
+                data.AddRange(cancelledData);
+            }
+            bsData.DataSource = data;
+            lblRecords.Text = data.Count.ToString();
         }
 
         private void btnPrintReport_Click(object sender, EventArgs e)
@@ -175,7 +173,7 @@ namespace Mbc5.Forms.MixBook
                 if (updateResult.IsError)
                 {
                     updateErrors = true;
-                    Log.Error("Failed to mark records as invoiced invno(" + rec.Invno.ToString() + "):" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to mark records as invoiced invno(" + rec.Invno.ToString() + "):" + updateResult.Errors[0].DeveloperMessage);
                 }
             }
             if (updateErrors)

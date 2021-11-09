@@ -335,7 +335,7 @@ namespace Mbc5.Classes
 
                 }
             DataSets.dsProdutn.wipRow currentRowInDb =
-              (DataSets.dsProdutn.wipRow)tempQuotesDataTable.Rows[0];
+              (DataSets.dsProdutn.wipRow)tempWipDataTable.Rows[0];
 
             return currentRowInDb;
             }

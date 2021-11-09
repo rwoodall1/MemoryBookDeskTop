@@ -47,13 +47,17 @@ namespace Mbc5.Forms.MixBook
             var sqlResult = sqlClient.Select<CoverSearch>();
             if (sqlResult.IsError)
             {
-                Log.Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to retrieve cover informaiton for Casein Search:" + sqlResult.Errors[0].DeveloperMessage);
                 return;
             }
             var vData = (CoverSearch)sqlResult.Data;
             lblCoverLocationResult.Text = string.IsNullOrEmpty(vData.CurrentCoverLoc) ? "Not Found" : vData.CurrentCoverLoc;
             lblStatusData.Text = vData.MixbookOrderStatus;
+            if (vData.MixbookOrderStatus.ToUpper()=="SHIPPED"|| vData.MixbookOrderStatus.ToUpper() == "CANCELLED")
+            {
+                MbcMessageBox.Information("This order has been " + vData.MixbookOrderStatus.ToUpper());
+            }
             if (!string.IsNullOrEmpty(vData.CoverPreviewUrl))
             {
                 Process.Start(vData.CoverPreviewUrl);

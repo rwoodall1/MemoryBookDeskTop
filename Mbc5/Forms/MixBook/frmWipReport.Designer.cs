@@ -41,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             this.Trimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PTrimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,7 +88,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipName,
-            this.BookRemake,
             this.Column1,
             this.Column2,
             this.Column5,
@@ -99,6 +98,7 @@
             this.Trimming,
             this.Column10,
             this.Column11,
+            this.BookRemake,
             this.Column14,
             this.PTrimming,
             this.Column15,
@@ -184,13 +184,6 @@
             this.ShipName.Name = "ShipName";
             this.ShipName.ReadOnly = true;
             // 
-            // BookRemake
-            // 
-            this.BookRemake.DataPropertyName = "IsBookRemake";
-            this.BookRemake.HeaderText = "IsBookRemake";
-            this.BookRemake.Name = "BookRemake";
-            this.BookRemake.ReadOnly = true;
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "Invno";
@@ -260,6 +253,13 @@
             this.Column11.HeaderText = "CoverCart";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
+            // 
+            // BookRemake
+            // 
+            this.BookRemake.DataPropertyName = "IsBookRemake";
+            this.BookRemake.HeaderText = "IsBookRemake";
+            this.BookRemake.Name = "BookRemake";
+            this.BookRemake.ReadOnly = true;
             // 
             // Column14
             // 
@@ -346,7 +346,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookRemake;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -357,6 +356,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Trimming;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookRemake;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn PTrimming;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;

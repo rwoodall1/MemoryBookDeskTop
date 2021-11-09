@@ -5,6 +5,11 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class RemakeChk
+    {
+        public bool Remake { get; set; }
+        public int FullRemake { get; set; }
+    }
     public class RemakeTicketQuery
     {
         public int Invno { get; set; }
@@ -23,6 +28,7 @@ namespace BindingModels
         public bool JobTicketPrinted { get; set; }
         public DateTime RemakeDate { get; set; }
         public int RemakeTotal { get; set; }
+        public int NumToShip { get; set; }
     }
     public class JobTicketQuery
     {
@@ -42,6 +48,7 @@ namespace BindingModels
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
         public bool JobTicketPrinted { get; set; }
+        public int NumToShip { get; set; }
     }
     public class SiblingCheck
     {
@@ -92,7 +99,7 @@ namespace BindingModels
         //public string CTrimLoc { get; set; }
         public string PTrimming { get; set; }
         // public string PTrimLoc { get; set; }
-        // public string OrderReceivedDate { get; set; }
+        public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string Description { get; set; } 
         public string CPress { get; set; }
@@ -103,7 +110,8 @@ namespace BindingModels
         public string PCart { get; set; }     
         public string CaseIn { get; set; }      
         public string Quality { get; set; }
-        // public string Location { get; set; }
+        public string SCBarcode { get; set; }
+        public string YBBarcode { get; set; }
     }
 
     public class MixBookBarScanModel

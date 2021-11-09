@@ -33,7 +33,6 @@ namespace Mbc5.Forms
 
         public frmMain()
         {
-
             InitializeComponent();
         }
         protected Logger Log { get; set; }
@@ -43,6 +42,8 @@ namespace Mbc5.Forms
             if (Environment == "DEV")
             {
                 AppConnectionString = "Data Source=sedswjpsql01; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+                this.label1.Text = "Using Test Environment Notify Supervisor Immediatly";
+                this.pnlNotice.Visible = true;
             }
             else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
@@ -124,7 +125,7 @@ namespace Mbc5.Forms
         private void SetMenu()
         {
 
-            if (ApplicationUser.UserName == "BARCODE")
+            if (ApplicationUser.UserName.ToUpper() == "BARCODE")
             {
                 //Show barscan screen hid every thing else
                 tsMain.Visible = false;
@@ -139,9 +140,9 @@ namespace Mbc5.Forms
 
 
             }
-            else if (ApplicationUser.UserName == "onboard" | ApplicationUser.UserName == "press"
-               || ApplicationUser.UserName == "press" || ApplicationUser.UserName == "binding"
-               || ApplicationUser.UserName == "quality" || ApplicationUser.UserName == "trimming")
+            else if (ApplicationUser.UserName.ToUpper() == "ONBOARD" | ApplicationUser.UserName.ToUpper() == "PRESS"
+               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"
+               || ApplicationUser.UserName.ToUpper() == "QUALITY" || ApplicationUser.UserName.ToUpper() == "TRIMMING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -157,7 +158,7 @@ namespace Mbc5.Forms
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
             }
-            else if (ApplicationUser.UserName == "casein")
+            else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
                 mixbookBarscanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
@@ -175,7 +176,7 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
             }
-            else if (ApplicationUser.UserName == "shipping")
+            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;
@@ -212,6 +213,7 @@ namespace Mbc5.Forms
                 // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
                 // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
                 //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                CleanShipping();
             }
 
 
@@ -625,41 +627,48 @@ namespace Mbc5.Forms
         {
             string value = "";
             var sqlClient = new SQLCustomClient();
-            if (DateInputBox.Show("Request Date", "Enter Request Date:", ref value) == DialogResult.OK)
-            {
-
+            
                 sqlClient.CommandText(@"
-                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                  (Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
-                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) AND
-                    RequestedShipDate <=@RequestedShipDate AND BookStatus IS Null
-            ");
-
-
-                sqlClient.AddParameter("@RequestedShipDate", value);
-            }
-            else
-            {
-                sqlClient.CommandText(@"
-                Select Invno,ShipName,ClientOrderId,RequestedShipDate,Description,Copies,Pages,Backing,OrderReceivedDate,ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,    
-(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder,
-'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                  AND  BookStatus IS Null
-");
-
-            }
+                    Select Invno,ShipName
+                    ,ClientOrderId
+                    ,RequestedShipDate
+                    ,Description
+                    ,Copies
+                    ,Pages
+                    ,Backing
+                    ,OrderReceivedDate,ProdInOrder
+                    ,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode
+                    , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
+                    ,(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder
+                    ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
+                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                        AND  BookStatus IS Null ORDER BY Description,Copies
+                ");
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
           
                 var jobData = (List<JobTicketQuery>)result.Data;
+            //tmp rule 10/29/2022
+            if (jobData != null)
+            {
+                try {
+                    var badRecs = jobData.FindAll(a => a.Pages > 350);
+                    if (badRecs.Count > 0)
+                    {
+                        foreach (var rec in badRecs) {
+                            new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
+                                }
+                    }
+                }
+                catch (Exception ex) { }
+            }
+
                 if (jobData!=null) {
                     reportViewer1.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
@@ -702,8 +711,9 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
                 ,MO.Backing,MO.OrderReceivedDate
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
-                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno,                 
-                '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
+                ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno                
+                ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip                
+                ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
                 ,W.Rmbto AS RemakeDate
                 ,W.Rmbtot As RemakeTotal
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
@@ -716,7 +726,7 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -1841,7 +1851,20 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
 
             }
         }
+        public void CleanShipping()
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmd = @"Delete From [MixbookShipping] Where ShipperNo NOT IN ('R5556X','R5646Y')";
+            sqlClient.CommandText(cmd);
 
+
+            var reportResult = sqlClient.Delete();
+            if (reportResult.IsError)
+            {
+                var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("Failed to Clean Shipping Table", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, reportResult.Errors[0].DeveloperMessage, EmailType.System);
+            }
+        }
         private void wipReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmWipReport frmWipReport = new frmWipReport(this.ApplicationUser);
@@ -1911,6 +1934,95 @@ SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,
 
             frmCoverSearch.MdiParent = this;
             frmCoverSearch.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            VersionCheck();
+        }
+        public void VersionCheck()
+        {
+            TimeSpan start = new TimeSpan(2, 0, 0); //2am o'clock
+            TimeSpan end = new TimeSpan(3, 0, 0); //3am o'clock
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if ((now > start) && (now < end))
+            {
+                Application.Exit();
+            }
+
+            string localVersion = "";
+            string serverVersion = "";
+            string serverfilePath = @"M:\UpdateExe\bin\Release\";
+            string serverfilePathDir = @"M:\UpdateExe\bin";
+            string localfilePath = "";
+            string StartPath = "";
+            try
+            {
+                var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                localfilePath = root.Replace("StartUpApp", "Mbc5");
+                var localfile = localfilePath + "\\Mbc5.exe";
+                StartPath = localfilePath + "\\Mbc5.exe";
+                try
+                {
+                    var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+                    localVersion = localfileInfo.FileVersion;
+                    //in order of entry
+                    var lMajor = localfileInfo.FileMajorPart;
+                    var lMinor = localfileInfo.FileMinorPart;
+                    var lBuild = localfileInfo.FileBuildPart;
+                    var lPrivate = localfileInfo.FilePrivatePart;
+
+                }
+                catch (Exception ex)
+                {
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error retrieving file path for update check.");
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                this.Close();
+                return;
+            }
+
+            try
+            {
+                var serverfileInfo = FileVersionInfo.GetVersionInfo(serverfilePath + "\\Mbc5.exe");
+                serverVersion = serverfileInfo.FileVersion;
+                //in order of entry
+                var sMajor = serverfileInfo.FileMajorPart;
+                var sMinor = serverfileInfo.FileMinorPart;
+                var sBuild = serverfileInfo.FileBuildPart;
+                var sPrivate = serverfileInfo.FilePrivatePart;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
+            {
+                pnlNotice.Visible = true;
+
+            }
+
+
+        }
+
+        private void invoiceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser,this);
+            frmMxInvoiceReport.MdiParent = this;
+            frmMxInvoiceReport.Show();
             this.Cursor = Cursors.Default;
         }
         #endregion

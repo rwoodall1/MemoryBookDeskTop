@@ -7700,7 +7700,7 @@ namespace Mbc5.Forms
 					catch (Exception ex)
 					{
 
-                        Log.Error(ex, "Production record failed to update:" + ex.Message);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Production record failed to update:" + ex.Message);
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
 					}
@@ -7729,8 +7729,8 @@ namespace Mbc5.Forms
 				}
 				catch (DBConcurrencyException ex1)
 				{
-					//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
-					//if (result == DialogResult.Yes) { SaveWip(); };
+                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
+                    if (result == DialogResult.Yes) { SaveWip(); };
                     SaveWip();
 				}
 				catch (Exception ex)

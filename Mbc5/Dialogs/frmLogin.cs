@@ -31,7 +31,7 @@ namespace Mbc5.Dialogs {
 
             private void frmLogin_Load(object sender, EventArgs e)
             {
-
+            txtusername.Focus();
             }
 
             private void btnLogin_Click(object sender, EventArgs e)      
@@ -151,7 +151,8 @@ private void timer1_Tick(object sender, EventArgs e)
     this.Close();
             frmMain.WindowState = FormWindowState.Maximized;
     frmMain.Show();
-}
+            txtusername.Focus();
+        }
 
 private void txtpassword_KeyPress(object sender, KeyPressEventArgs e)
 {
@@ -182,6 +183,11 @@ private void btnForgotPassword_Click(object sender, EventArgs e)
             var a = ConfigurationManager.AppSettings["Environment"].ToString();
             MbcMessageBox.Error(a);
             MbcMessageBox.Error(frmMain.AppConnectionString);
+        }
+
+        private void pbLoading_VisibleChanged(object sender, EventArgs e)
+        {
+            txtusername.Focus();
         }
     }
 }

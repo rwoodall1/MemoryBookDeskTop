@@ -30,26 +30,28 @@ namespace Mbc5.Forms.MixBook
         }
 
       private List<WipReportModel> DataResult { get; set; }
-        private void LoadData()
+
+
+   private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
       string cmd= @"Select 
-                                    MO.ShipName
-									,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                                    MO.ShipName									
 									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
 									,MO.Copies
 									,Mo.Pages
-									,Convert(VARCHAR(10),Mo.OrderReceivedDate,101)AS OrderReceivedDate
 									,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
 									,MO.Description
 									,MO.Backing
 									,P.Kitrecvd
+                                    ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
 									,CD29.War AS CPress
 									,CD29.MxbLocation AS Location29
 									,CD43.War As CTrimming
 									,CD43.MxbLocation AS CTrimLoc
 									,COALESCE(CD37.War,'') AS OnBoards
 									,CD37.MxbLocation AS CCart
+                                    ,Case WHEN W.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
 									,WD29.War AS WipPress
 									,COALESCE(WD43.War,'') As PTrimming
 									,WD43.Mxblocation As PTrimLoc 
@@ -58,19 +60,23 @@ namespace Mbc5.Forms.MixBook
 									,WD49.War AS CaseIn
 									,WD50.War AS Quality				                          
 									,WD50.MxbLocation AS Location
-									,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+									
+                                    ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+                                    ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
+                                    ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
+                                    
                                  from MixBookOrder MO 
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join Wip W ON MO.Invno=W.Invno
                                  Left Join Covers C On MO.Invno=C.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(40),War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
-                                 Left Join (Select Invno,DescripId,Convert(VARCHAR(10),War,101)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+                                 Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
                                  Where  P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd";
             sqlClient.CommandText(cmd);
        var orderResult = sqlClient.SelectMany<WipReportModel>();

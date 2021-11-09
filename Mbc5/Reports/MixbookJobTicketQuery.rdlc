@@ -69,8 +69,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
-                          <Top>8.04167in</Top>
-                          <Left>0.10417in</Left>
+                          <Top>7.59375in</Top>
+                          <Left>0.30555in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
                           <ZIndex>1</ZIndex>
@@ -445,51 +445,21 @@
                                   <Value>=Fields!SCBarcode.Value</Value>
                                   <Style>
                                     <FontFamily>3 of 9 Barcode</FontFamily>
-                                    <FontSize>22pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SCBarcode</rd:DefaultName>
-                          <Top>8.34722in</Top>
-                          <Left>0.10417in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.96875in</Width>
-                          <ZIndex>13</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="ProdInOrder">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!ProdInOrder.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ProdInOrder</rd:DefaultName>
-                          <Top>8.9375in</Top>
-                          <Left>5.32986in</Left>
+                          <rd:DefaultName>SCBarcode</rd:DefaultName>
+                          <Top>7.8993in</Top>
+                          <Left>0.30555in</Left>
                           <Height>0.25in</Height>
-                          <Width>1in</Width>
-                          <ZIndex>14</ZIndex>
+                          <Width>3.96875in</Width>
+                          <ZIndex>13</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -507,7 +477,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=FormatDateTime(Fields!OrderReceivedDate.Value,Dateformat.ShortDate)</Value>
+                                  <Value>=Fields!OrderReceivedDate.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -519,7 +489,7 @@
                           <Left>1.31597in</Left>
                           <Height>0.25in</Height>
                           <Width>1.375in</Width>
-                          <ZIndex>15</ZIndex>
+                          <ZIndex>14</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -553,7 +523,7 @@
                           <Left>0.10417in</Left>
                           <Height>0.25in</Height>
                           <Width>1.14236in</Width>
-                          <ZIndex>16</ZIndex>
+                          <ZIndex>15</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -571,7 +541,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>OF</Value>
+                                  <Value>Quantity In Order To Ship</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -584,10 +554,10 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
                           <Top>8.9375in</Top>
-                          <Left>6.34375in</Left>
+                          <Left>4.44792in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.29515in</Width>
-                          <ZIndex>17</ZIndex>
+                          <Width>2.19098in</Width>
+                          <ZIndex>16</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -617,7 +587,7 @@
                           <Left>0.11805in</Left>
                           <Height>0.25in</Height>
                           <Width>1.65625in</Width>
-                          <ZIndex>18</ZIndex>
+                          <ZIndex>17</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -664,7 +634,7 @@
                           <Left>2.81597in</Left>
                           <Height>0.41667in</Height>
                           <Width>1.02083in</Width>
-                          <ZIndex>19</ZIndex>
+                          <ZIndex>18</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -675,14 +645,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="NumbInOrder">
+                        <Textbox Name="NumToShip">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!NumInOrder.Value</Value>
+                                  <Value>=Fields!NumToShip.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -691,12 +661,12 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>NumbInOrder</rd:DefaultName>
+                          <rd:DefaultName>NumToShip</rd:DefaultName>
                           <Top>8.9375in</Top>
-                          <Left>6.65279in</Left>
+                          <Left>6.6389in</Left>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
-                          <ZIndex>20</ZIndex>
+                          <ZIndex>19</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -846,6 +816,10 @@
         </Field>
         <Field Name="NumInOrder">
           <DataField>NumInOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NumToShip">
+          <DataField>NumToShip</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="OrderReceivedDate">

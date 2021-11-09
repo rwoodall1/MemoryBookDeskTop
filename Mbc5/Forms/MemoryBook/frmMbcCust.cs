@@ -1694,7 +1694,7 @@ public override void Cancel() {
 
         //    }catch(Exception ex)
         //    {
-        //        Log.Error("Failed to get invoice number for a new record:" + ex.Message);
+        //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to get invoice number for a new record:" + ex.Message);
         //        MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //        return 0;
 
@@ -1856,7 +1856,7 @@ public override void Cancel() {
                     catch (Exception ex)
                         {
                         MessageBox.Show("Failed to update marketing log record.");
-                        Log.Error("Failed to update marketing log:" + ex.Message);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update marketing log:" + ex.Message);
                         }
                     finally { cmd.Connection.Close(); }
 
