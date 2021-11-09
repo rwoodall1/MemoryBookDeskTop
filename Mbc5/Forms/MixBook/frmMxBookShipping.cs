@@ -111,7 +111,7 @@ namespace Mbc5.Forms.MixBook
                 errorProvider1.SetError(txtTrackingNo, "Please enter a valid tracking number.");
                 e.Cancel = true;
             }
-            
+
         }
 
         private void txtWeight_Validating(object sender, CancelEventArgs e)
@@ -185,15 +185,15 @@ namespace Mbc5.Forms.MixBook
                 {
                     MessageBox.Show("Invalid scan code");
                     txtItemBarcode.Tag = "Cancel";
-                
+
                     return;
                 }
                 //check that item scan matches clientidscan
-                if (vInvno.ToString().Substring(0,7)!= txtClientIdLookup.Text)
+                if (vInvno.ToString().Substring(0, 7) != txtClientIdLookup.Text)
                 {
                     MessageBox.Show("The scanned item was not found in the order. Check that you have scanned the correct packing list.");
                     txtItemBarcode.Tag = "Cancel";
-                   
+
                     return;
                 }
 
@@ -267,9 +267,9 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            foreach(var shipment in ShipNotification.Request.Shipment)
+            foreach (var shipment in ShipNotification.Request.Shipment)
             {
-                if (shipment.Package[0].Item.quantity<1)
+                if (shipment.Package[0].Item.quantity < 1)
                 {
                     MbcMessageBox.Error("You have an invalid quantity in one of the shipments. Please Clear all shipments and rescan the order.");
                     return;
@@ -298,8 +298,8 @@ namespace Mbc5.Forms.MixBook
             this.Enabled = false;
             timer1.Enabled = true;
             bgWorker.RunWorkerAsync();
-            
-           
+
+
 
         }
         private void UpdateShippingWip()
@@ -424,7 +424,7 @@ namespace Mbc5.Forms.MixBook
             txtWeight.Text = "";
             txtDateTime.Text = "";
             Itemcount = 0;
-          
+
 
             txtClientIdLookup.Focus();
             Items.Clear();
@@ -459,7 +459,7 @@ namespace Mbc5.Forms.MixBook
             if (Loading)
             {
                 Loading = false;
-                 
+
                 this.CreateShipNotification();
 
             }
@@ -485,7 +485,7 @@ namespace Mbc5.Forms.MixBook
                 else
                 {
                     string msg = restServiceResult.Data.APIResult.ToString();
-                    AddMbEventLog(MbxModel.JobId, "ERROR 2",msg, vReturnNotification, false);
+                    AddMbEventLog(MbxModel.JobId, "ERROR 2", msg, vReturnNotification, false);
                     var emailHelper = new EmailHelper();
                     string emailmsg = msg.Replace("<?xml version=1.0 encoding=UTF - 8?>", "").Replace("<", " | ").Replace(">", " | ");
                     emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, msg, EmailType.System);
@@ -614,16 +614,16 @@ namespace Mbc5.Forms.MixBook
             {
                 return;
             }
-            if (MbxModel==null)
+            if (MbxModel == null)
             {
-                MbcMessageBox.Hand("Rescan shipment barcode.","Barcode");
+                MbcMessageBox.Hand("Rescan shipment barcode.", "Barcode");
                 txtClientIdLookup.Focus();
                 return;
             }
             try
             {
                 string vTracking = txtTrackingNo.Text.Trim();
-                if (MbxModel.ShipMethod.Trim() == "MX_MI" && (vTracking.Substring(0,3)!= "920"|| vTracking.Substring(0, 3) != "924"|| vTracking.Substring(0, 3) != "927"))
+                if (MbxModel.ShipMethod.Trim() == "MX_MI" && (vTracking.Substring(0, 3) != "920" || vTracking.Substring(0, 3) != "924" || vTracking.Substring(0, 3) != "927"))
                 {
                     txtTrackingNo.Text = vTracking.Substring(8);
                 }
@@ -631,21 +631,22 @@ namespace Mbc5.Forms.MixBook
             catch (Exception ex)
             {
                 MbcMessageBox.Error("Error trimming Mail Innovations tracking number. Please rescan or contact your supervisor.");
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:"+ txtTrackingNo.Text+" | clientid:"+this.MbxModel.ClientOrderId.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Error trimming Mail Innovations tracking number.(Tracking:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                 txtClientIdLookup.Focus();
                 return;
             }
             string vPartTrack = "";
-            
+
             try
             {
-                if (txtTrackingNo.Text.Trim().Length<3)
+                if (txtTrackingNo.Text.Trim().Length < 3)
                 {
                     return;
 
                 }
-                 vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
-            }catch(Exception ex)
+                vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+            }
+            catch (Exception ex)
             {
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Value is not valid for subst:" + txtTrackingNo.Text);
                 txtClientIdLookup.Focus();
@@ -654,85 +655,86 @@ namespace Mbc5.Forms.MixBook
             var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
             var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL" };
 
-            
-                if (vPartTrack.ToUpper() == "1ZR")//ups
+
+            if (vPartTrack.ToUpper() == "1ZR")//ups
+            {
+                bool found = false;
+                foreach (var a in upsList)
                 {
-                    bool found = false;
-                    foreach (var a in upsList)
+                    if (a == MbxModel.ShipMethod.Trim())
                     {
-                        if (a == MbxModel.ShipMethod.Trim())
-                        {
-                            found = true;
-                            break;
-                        }
-
-                    }
-
-                    if (!found)
-                    {
-
-                        MbcMessageBox.Hand("This tracking number is in the format of a UPS order but does not correspon with the shipping method. Check that shipping method is for UPS", "Tracking Number");
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (UPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                        found = true;
+                        break;
                     }
 
                 }
-                else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" || vPartTrack == "926")//mail innovations
+
+                if (!found)
                 {
-                    if (MbxModel.ShipMethod.Trim() != "MX_MI")
-                    {
-                        MbcMessageBox.Hand("This tracking number is in the format of a Mail Innovations order but does not correspond with the shipping method. Check that shipping label is for Mail Innovations", "Tracking Number");
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (Mail Innovations) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
-                    }
 
-
+                    MbcMessageBox.Hand("This tracking number is in the format of a UPS order but does not correspon with the shipping method. Check that shipping method is for UPS", "Tracking Number");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (UPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                 }
-                else if (vPartTrack == "420"|| vPartTrack == "940")//usps
+
+            }
+            else if (vPartTrack == "924" || vPartTrack == "920" || vPartTrack == "927" || vPartTrack == "926")//mail innovations
+            {
+                if (MbxModel.ShipMethod.Trim() != "MX_MI")
                 {
-                    bool found = false;
-                    foreach (var a in uspsList)
+                    MbcMessageBox.Hand("This tracking number is in the format of a Mail Innovations order but does not correspond with the shipping method. Check that shipping label is for Mail Innovations", "Tracking Number");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (Mail Innovations) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                }
+
+
+            }
+            else if (vPartTrack == "420" || vPartTrack == "940")//usps
+            {
+                bool found = false;
+                foreach (var a in uspsList)
+                {
+                    if (a == MbxModel.ShipMethod.Trim())
                     {
-                        if (a == MbxModel.ShipMethod.Trim())
-                        {
-                            found = true;
-                            break;
-                        }
-
-                    }
-
-                    if (!found)
-                    {
-
-                        MbcMessageBox.Hand("This tracking number is in the format of a USPS order but does not correspond with the shipping method. Check that shipping label is for USPS", "Tracking Number");
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (USPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                        found = true;
+                        break;
                     }
 
                 }
-                else {
-                    MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again or contact your superviser.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
-                    return;
+
+                if (!found)
+                {
+
+                    MbcMessageBox.Hand("This tracking number is in the format of a USPS order but does not correspond with the shipping method. Check that shipping label is for USPS", "Tracking Number");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format (USPS) incorrect:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
                 }
-            
+
+            }
+            else
+            {
+                MbcMessageBox.Error("Tracking Number format was not recognized, please scan tracking number again or contact your superviser. THIS MUST BE RESOLVED DO NOT IGNORE, YOU SHOULD NOT SEE THIS MESSAGE");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Tracking Number format not reconized:" + txtTrackingNo.Text + " | clientid:" + this.MbxModel.ClientOrderId.ToString());
+                return;
+            }
+
         }
 
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-             
+
+
             var result = NotifyMixbookOfShipment();
-            while (!bgWorker.CancellationPending && result.Result==null)
+            while (!bgWorker.CancellationPending && result.Result == null)
             {
-               
+
             }
             if (bgWorker.CancellationPending)
             {
                 e.Cancel = true;
                 btnShipmentReset_Click(null, null);
             }
-                   
-         
-            
-           
+
+
+
+
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -748,7 +750,7 @@ namespace Mbc5.Forms.MixBook
             MbcMessageBox.Stop("Shipping Notification Failed,rescan package. If this continues notify supervisor.", "Nofification Error");
             btnShipmentReset_Click(null, null);
             bgWorker.CancelAsync();
-           
+
 
         }
 
@@ -765,5 +767,7 @@ namespace Mbc5.Forms.MixBook
                 txtTrackingNo.Focus();
             }
         }
+
+
     }
 }
