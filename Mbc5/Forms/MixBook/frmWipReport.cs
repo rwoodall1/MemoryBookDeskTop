@@ -43,8 +43,7 @@ namespace Mbc5.Forms.MixBook
 									,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
 									,MO.Description
 									,MO.Backing
-                                    ,MO.ShipMethod
-									,P.Kitrecvd
+                                 	,P.Kitrecvd
                                     ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
 									,CD29.War AS CPress
 									,CD29.MxbLocation AS Location29
@@ -65,8 +64,9 @@ namespace Mbc5.Forms.MixBook
                                     ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
-                                    
+                                    ,SH.Carrier As ShipCarrier
                                  from MixBookOrder MO 
+                                 Left Join ShipCarriers SH On MO.ShipMethod=SH.ShipAlias
                                  Left Join Produtn P On MO.Invno=P.Invno
                                  Left Join Wip W ON MO.Invno=W.Invno
                                  Left Join Covers C On MO.Invno=C.Invno

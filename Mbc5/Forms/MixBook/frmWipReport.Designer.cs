@@ -42,7 +42,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shpMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shpCarrier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsWip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -90,7 +90,6 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipName,
             this.Column1,
-            this.shpMethod,
             this.Column2,
             this.Column5,
             this.Column7,
@@ -106,7 +105,8 @@
             this.Column15,
             this.Column16,
             this.Column17,
-            this.Column18});
+            this.Column18,
+            this.shpCarrier});
             this.dataGridView1.DataSource = this.bsWip;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(12, 76);
@@ -192,13 +192,6 @@
             this.Column1.HeaderText = "Invno";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // shpMethod
-            // 
-            this.shpMethod.DataPropertyName = "ShipMethod";
-            this.shpMethod.HeaderText = "ShipMethod";
-            this.shpMethod.Name = "shpMethod";
-            this.shpMethod.ReadOnly = true;
             // 
             // Column2
             // 
@@ -312,6 +305,13 @@
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             // 
+            // shpCarrier
+            // 
+            this.shpCarrier.DataPropertyName = "ShipCarrier";
+            this.shpCarrier.HeaderText = "Ship Carrier";
+            this.shpCarrier.Name = "shpCarrier";
+            this.shpCarrier.ReadOnly = true;
+            // 
             // frmWipReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,7 +356,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shpMethod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
@@ -373,5 +372,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shpCarrier;
     }
 }
