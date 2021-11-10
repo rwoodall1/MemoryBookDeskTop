@@ -99,7 +99,7 @@ namespace Mbc5.Forms.MixBook
                     {
                         if (txtBarCode.Text.Length == 12)
                         {
-                            vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 6);
+                            vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
                         }
                         else if (txtBarCode.Text.Length == 11)
                         {
@@ -165,9 +165,10 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex)
                 {
-                    MbcMessageBox.Error("An error has occured:" + ex.Message);
+                    MbcMessageBox.Error("An error has occured:" + ex.Message + " Stack: "+ ex.StackTrace);
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("An error has occured:" + ex.Message);
-                }
+                    ClearScan();
+            }
             
         }
         private void ClearScan()
@@ -772,8 +773,8 @@ namespace Mbc5.Forms.MixBook
                      
                             sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select FullRemake,Remake
-                                                from Covers C Inner Join WipDetail WD On C.Invno = WD.Invno
-                                                Where Invno=@Invno AND WD.DescripId = 50 And Remake = 1 ");
+                                                from Covers C 
+                                                Where C.Invno=@Invno And Remake = 1 ");
                                                   
                         sqlClient.AddParameter("@Invno", MbxModel.Invno);
                         var remakeResult = sqlClient.Select<RemakeChk>();
@@ -784,11 +785,11 @@ namespace Mbc5.Forms.MixBook
                         }
                         var remakeData =(RemakeChk) remakeResult.Data;
                         //msg num of remakes
-                        if (remakeData.Remake && remakeData.FullRemake>1)
+                        if ( remakeData!=null && remakeData.Remake && remakeData.FullRemake>1)
                         {
                             if (MbxModel.Quantity > 1)
                             {
-                                MbcMessageBox.Information("You should have " + remakeData.FullRemake.ToString() + " copies in this order");
+                                MbcMessageBox.Information("THIS IS A REMAKE: You should have " + remakeData.FullRemake.ToString() + "remake copies in this order");
                             }
                         }
                         else {
