@@ -112,6 +112,7 @@ namespace BindingModels
         public string Quality { get; set; }
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
+        public string ShipMethod { get; set; }
     }
 
     public class MixBookBarScanModel

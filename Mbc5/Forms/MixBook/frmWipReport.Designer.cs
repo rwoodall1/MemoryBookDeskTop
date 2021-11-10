@@ -42,6 +42,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shpMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +90,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipName,
             this.Column1,
+            this.shpMethod,
             this.Column2,
             this.Column5,
             this.Column7,
@@ -190,6 +192,13 @@
             this.Column1.HeaderText = "Invno";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // shpMethod
+            // 
+            this.shpMethod.DataPropertyName = "ShipMethod";
+            this.shpMethod.HeaderText = "ShipMethod";
+            this.shpMethod.Name = "shpMethod";
+            this.shpMethod.ReadOnly = true;
             // 
             // Column2
             // 
@@ -347,6 +356,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shpMethod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;

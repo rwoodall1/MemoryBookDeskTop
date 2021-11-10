@@ -43,6 +43,7 @@ namespace Mbc5.Forms.MixBook
 									,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
 									,MO.Description
 									,MO.Backing
+                                    ,MO.ShipMethod
 									,P.Kitrecvd
                                     ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
 									,CD29.War AS CPress
