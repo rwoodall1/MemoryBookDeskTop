@@ -38,6 +38,7 @@ namespace Mbc5.Forms
         protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
             {

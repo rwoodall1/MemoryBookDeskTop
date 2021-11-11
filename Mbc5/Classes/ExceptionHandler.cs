@@ -11,6 +11,11 @@ namespace Mbc5.Classes
 {
    public static class ExceptionHandler
     {
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+        static ExceptionHandler()
+        {
+            var Log = NLog.LogManager.GetCurrentClassLogger();
+        }
         #region Cust
         //Cust
         public static DialogResult CreateMessage(DataSets.dsCust.custRow CurrentFormRow, ref DataSets.dsCust dataset)
@@ -195,7 +200,8 @@ namespace Mbc5.Classes
         #region Produtn
         //produtn
         public static DialogResult CreateMessage(DataSets.dsProdutn.produtnRow cr2,ref DataSets.dsProdutn dataset)
-        {          
+        {
+           
            string msg= GetRowData(GetCurrentRowInDB(cr2), cr2, DataRowVersion.Default) + "\n \n" +
              "Do you still want to update the database with the proposed value?";
             DialogResult response=MessageBox.Show(msg,"Concurrency Exception",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Hand);
@@ -332,7 +338,7 @@ namespace Mbc5.Classes
 
                 vTableAdapter.FillByInvno(tempWipDataTable,RowWithError.invno);
                 } catch (Exception ex) {
-
+               
                 }
             DataSets.dsProdutn.wipRow currentRowInDb =
               (DataSets.dsProdutn.wipRow)tempWipDataTable.Rows[0];

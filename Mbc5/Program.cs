@@ -21,6 +21,7 @@ namespace Mbc5
         [STAThread]
         static void Main()
         {
+            
             var Log = LogManager.GetCurrentClassLogger();
             //ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();

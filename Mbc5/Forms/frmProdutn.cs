@@ -7694,9 +7694,9 @@ namespace Mbc5.Forms
 					{
                         MbcMessageBox.Warning("Another user has changed data. Please review and re-enter your data.","");
                         Fill();
-						//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
-						//if (result == DialogResult.Yes) { SaveProdutn(); }
-					}
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
+                        //if (result == DialogResult.Yes) { SaveProdutn(); }
+                    }
 					catch (Exception ex)
 					{
 
