@@ -59,6 +59,7 @@ namespace Mbc5.Classes
         public static DialogResult Show(string title, string promptText, ref string value)
         {
             Form form = new Form();
+
             Label label = new Label();
             DateBox dateBox = new DateBox();
             Button buttonOk = new Button();
