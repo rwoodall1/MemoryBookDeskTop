@@ -655,19 +655,19 @@ namespace Mbc5.Forms
           
                 var jobData = (List<JobTicketQuery>)result.Data;
             //tmp rule 10/29/2022
-            if (jobData != null)
-            {
-                try {
-                    var badRecs = jobData.FindAll(a => a.Pages > 350);
-                    if (badRecs.Count > 0)
-                    {
-                        foreach (var rec in badRecs) {
-                            new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-                                }
-                    }
-                }
-                catch (Exception ex) { }
-            }
+            //if (jobData != null)
+            //{
+            //    try {
+            //        var badRecs = jobData.FindAll(a => a.Pages > 350);
+            //        if (badRecs.Count > 0)
+            //        {
+            //            foreach (var rec in badRecs) {
+            //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
+            //                    }
+            //        }
+            //    }
+            //    catch (Exception ex) { }
+            //}
 
                 if (jobData!=null) {
                     reportViewer1.LocalReport.DataSources.Clear();
