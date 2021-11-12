@@ -40,6 +40,7 @@ namespace Mbc5.Forms.MixBook
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
         public int Itemcount { get; set; } = 0;
+        public bool ByPassTrkValidation { get; set; } = false;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
 
@@ -99,6 +100,12 @@ namespace Mbc5.Forms.MixBook
         private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
         {
             errorProvider1.SetError(txtTrackingNo, "");
+            if (ByPassTrkValidation) {
+                ByPassTrkValidation = false;
+                txtTrackingNo.Text = "";
+                txtClientIdLookup.Text = "";
+                txtWeight.Text = "";
+                return; }
             if (string.IsNullOrEmpty(txtTrackingNo.Text))
             {
 
@@ -267,11 +274,18 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
+            Shipment.trackingNumber = txtTrackingNo.Text;
+            decimal vWeight = 0;
+            decimal.TryParse(txtWeight.Text, out vWeight);
+            Shipment.weight = vWeight;
+            Shipment.shippedAt = DateTime.Now;
+            Shipment.method = MbxModel.ShipMethod;
+            this.ShipNotification.Request.Shipment.Add(this.Shipment);
             foreach (var shipment in ShipNotification.Request.Shipment)
             {
                 if (shipment.Package[0].Item.quantity < 1)
                 {
-                    MbcMessageBox.Error("You have an invalid quantity in one of the shipments. Please Clear all shipments and rescan the order.");
+                    MbcMessageBox.Error("You have an invalid quantity (0) in a packages. Please Clear all shipments and rescan the order.");
                     return;
                 }
             }
@@ -280,21 +294,9 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
                 return;
             }
-
-            Shipment.trackingNumber = txtTrackingNo.Text;
-            decimal vWeight = 0;
-            decimal.TryParse(txtWeight.Text, out vWeight);
-            Shipment.weight = vWeight;
-            Shipment.shippedAt = DateTime.Now;
-            Shipment.method = MbxModel.ShipMethod;
-
-
             UpdateShippingWip();
             Items.Clear();
 
-
-
-            this.ShipNotification.Request.Shipment.Add(this.Shipment);
             this.Enabled = false;
             timer1.Enabled = true;
             bgWorker.RunWorkerAsync();
@@ -402,7 +404,8 @@ namespace Mbc5.Forms.MixBook
                 custDataGridView.DataSource = bsItems;
                 txtItemBarcode.Focus();
                 Itemcount = 0;
-
+                txtClientIdLookup.ReadOnly = false;
+                txtClientIdLookup.ReadOnly = false;
 
             }
             catch (Exception ex)
@@ -435,6 +438,7 @@ namespace Mbc5.Forms.MixBook
             this.ShipNotification = null;//clear out existing
             CreateShipNotification();
             SetPanels();
+            txtClientIdLookup.ReadOnly = false;
             txtClientIdLookup.Focus();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
@@ -603,6 +607,9 @@ namespace Mbc5.Forms.MixBook
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource = bsItems;
                 CreateShipment();
+                txtTrackingNo.Text = "";
+                txtClientIdLookup.ReadOnly = true;
+                txtWeight.Text = "";
                 txtTrackingNo.Focus();
             }
             else { MbcMessageBox.Error("Please scan items into the shipment."); }
@@ -610,6 +617,10 @@ namespace Mbc5.Forms.MixBook
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
+            if (ByPassTrkValidation)
+            {
+                return;
+            }
             if (string.IsNullOrEmpty(txtTrackingNo.Text))
             {
                 return;
@@ -768,6 +779,12 @@ namespace Mbc5.Forms.MixBook
             }
         }
 
-
+        private void txtTrackingNo_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ByPassTrkValidation = true;
+            
+            txtClientIdLookup.Focus();
+        }
+       
     }
 }

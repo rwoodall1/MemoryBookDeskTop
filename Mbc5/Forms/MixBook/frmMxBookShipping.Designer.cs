@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
-            this.chkRemake = new System.Windows.Forms.CheckBox();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
             this.lblLastScan = new System.Windows.Forms.Label();
             this.txtDateTime = new System.Windows.Forms.TextBox();
@@ -98,17 +97,6 @@
             this.lblBkLocation.Name = "lblBkLocation";
             this.lblBkLocation.Size = new System.Drawing.Size(0, 17);
             this.lblBkLocation.TabIndex = 10024;
-            // 
-            // chkRemake
-            // 
-            this.chkRemake.AutoSize = true;
-            this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRemake.Location = new System.Drawing.Point(630, 50);
-            this.chkRemake.Name = "chkRemake";
-            this.chkRemake.Size = new System.Drawing.Size(79, 20);
-            this.chkRemake.TabIndex = 11;
-            this.chkRemake.Text = "Remake";
-            this.chkRemake.UseVisualStyleBackColor = true;
             // 
             // lbllastscanlbl
             // 
@@ -202,6 +190,7 @@
             this.txtTrackingNo.Size = new System.Drawing.Size(220, 20);
             this.txtTrackingNo.TabIndex = 2;
             this.txtTrackingNo.Leave += new System.EventHandler(this.txtTrackingNo_Leave);
+            this.txtTrackingNo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtTrackingNo_MouseDoubleClick);
             this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
             // 
             // label13
@@ -457,7 +446,6 @@
             this.Controls.Add(this.plnTracking);
             this.Controls.Add(this.lblBkLoc);
             this.Controls.Add(this.lblBkLocation);
-            this.Controls.Add(this.chkRemake);
             this.Controls.Add(this.lbllastscanlbl);
             this.Controls.Add(this.lblLastScan);
             this.Controls.Add(this.txtDateTime);
@@ -471,7 +459,6 @@
             this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
-            this.Controls.SetChildIndex(this.chkRemake, 0);
             this.Controls.SetChildIndex(this.lblBkLocation, 0);
             this.Controls.SetChildIndex(this.lblBkLoc, 0);
             this.Controls.SetChildIndex(this.plnTracking, 0);
@@ -501,7 +488,6 @@
 
         private System.Windows.Forms.Label lblBkLoc;
         private System.Windows.Forms.Label lblBkLocation;
-        private System.Windows.Forms.CheckBox chkRemake;
         private System.Windows.Forms.Label lbllastscanlbl;
         private System.Windows.Forms.Label lblLastScan;
         private System.Windows.Forms.TextBox txtDateTime;
