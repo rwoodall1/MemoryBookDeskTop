@@ -141,7 +141,7 @@ namespace Mbc5.Forms
 
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD" | ApplicationUser.UserName.ToUpper() == "PRESS"
-               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"
+               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "BINDING2"
                || ApplicationUser.UserName.ToUpper() == "QUALITY" || ApplicationUser.UserName.ToUpper() == "TRIMMING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
