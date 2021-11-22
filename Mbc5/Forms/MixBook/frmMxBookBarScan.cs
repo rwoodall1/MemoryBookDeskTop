@@ -858,25 +858,7 @@ namespace Mbc5.Forms.MixBook
                         vDeptCode = "37";
                         vWIR = "OB";
 
-                        //get book location
-                        sqlClient.ClearParameters();
-                        sqlClient.CommandText(@"  Select top(1) MxbLocation From WipDetail Where Invno=@Invno and MxbLocation is NOT NULL  order by war desc");
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        var booklocationresult = sqlClient.SelectSingleColumn();
-                        string bookBlockLocation = "";
-                        if (booklocationresult.IsError)
-                        {
-                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve book block location " + Invno.ToString() + ":" + booklocationresult.Errors[0].DeveloperMessage);
-                            bookBlockLocation = "N/A";
-                        }
-
-                        if (!string.IsNullOrEmpty(booklocationresult.Data))
-                        {
-                            bookBlockLocation = booklocationresult.Data;
-                        }
-                        else { bookBlockLocation = "N/A"; }
-                        lblBkLocation.Text = bookBlockLocation;
-                        string updateLocation = bookBlockLocation;
+                      
                         //msg if quality remake
                      
                             sqlClient.ClearParameters();
@@ -906,21 +888,20 @@ namespace Mbc5.Forms.MixBook
                                 MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
                             }
                         }
-                        //if (MbxModel.Quantity > 1 || updateLocation=="N/A")
-                        //{
-                        string input = Interaction.InputBox("Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", bookBlockLocation);
-                            updateLocation = input;
+                       
+                        string input = Interaction.InputBox("Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", "Enter A Location");
+                           string updateLocation = input;
                             if (string.IsNullOrEmpty(input))
                             {
                                 MbcMessageBox.Information("Scan has been canceled.");
                                 return;
                             }
-                            if (input.Length > 3)
+                            if (input.Length > 2)
                             {
                                 MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
                                 return;
                             }
-                        //}
+                       
                         //war is datetime
                         //wir is initials
                         sqlClient.ClearParameters();
