@@ -172,6 +172,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MixBookOrders.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmPrintBatches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmPrintBatches.Designer.cs">
+      <DependentUpon>frmPrintBatches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmquailtyHold.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -723,6 +729,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Dialogs\frmPrintBatches.resx">
+      <DependentUpon>frmPrintBatches.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </EmbeddedResource>

@@ -394,6 +394,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnOrderRePrint;
             
+            private global::System.Data.DataColumn columnJobPrintBatch;
+            
+            private global::System.Data.DataColumn columnJobPrintDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MixBookOrderDataTable() {
@@ -749,6 +753,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn JobPrintBatchColumn {
+                get {
+                    return this.columnJobPrintBatch;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn JobPrintDateColumn {
+                get {
+                    return this.columnJobPrintDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -824,7 +844,9 @@ namespace Mbc5.DataSets {
                         string RequestedShipMethod, 
                         string CurrentCoverLoc, 
                         string CurrentBookLoc, 
-                        bool OrderRePrint) {
+                        bool OrderRePrint, 
+                        byte JobPrintBatch, 
+                        System.DateTime JobPrintDate) {
                 MixBookOrderRow rowMixBookOrderRow = ((MixBookOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Invno,
@@ -866,7 +888,9 @@ namespace Mbc5.DataSets {
                         RequestedShipMethod,
                         CurrentCoverLoc,
                         CurrentBookLoc,
-                        OrderRePrint};
+                        OrderRePrint,
+                        JobPrintBatch,
+                        JobPrintDate};
                 rowMixBookOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMixBookOrderRow);
                 return rowMixBookOrderRow;
@@ -936,6 +960,8 @@ namespace Mbc5.DataSets {
                 this.columnCurrentCoverLoc = base.Columns["CurrentCoverLoc"];
                 this.columnCurrentBookLoc = base.Columns["CurrentBookLoc"];
                 this.columnOrderRePrint = base.Columns["OrderRePrint"];
+                this.columnJobPrintBatch = base.Columns["JobPrintBatch"];
+                this.columnJobPrintDate = base.Columns["JobPrintDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1021,6 +1047,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnCurrentBookLoc);
                 this.columnOrderRePrint = new global::System.Data.DataColumn("OrderRePrint", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderRePrint);
+                this.columnJobPrintBatch = new global::System.Data.DataColumn("JobPrintBatch", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJobPrintBatch);
+                this.columnJobPrintDate = new global::System.Data.DataColumn("JobPrintDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJobPrintDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnInvno.AllowDBNull = false;
@@ -2141,6 +2171,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public byte JobPrintBatch {
+                get {
+                    try {
+                        return ((byte)(this[this.tableMixBookOrder.JobPrintBatchColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JobPrintBatch\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.JobPrintBatchColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime JobPrintDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMixBookOrder.JobPrintDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JobPrintDate\' in table \'MixBookOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMixBookOrder.JobPrintDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsClientOrderIdNull() {
                 return this.IsNull(this.tableMixBookOrder.ClientOrderIdColumn);
             }
@@ -2606,6 +2668,30 @@ namespace Mbc5.DataSets {
             public void SetOrderRePrintNull() {
                 this[this.tableMixBookOrder.OrderRePrintColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsJobPrintBatchNull() {
+                return this.IsNull(this.tableMixBookOrder.JobPrintBatchColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetJobPrintBatchNull() {
+                this[this.tableMixBookOrder.JobPrintBatchColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsJobPrintDateNull() {
+                return this.IsNull(this.tableMixBookOrder.JobPrintDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetJobPrintDateNull() {
+                this[this.tableMixBookOrder.JobPrintDateColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -2952,6 +3038,8 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("CurrentCoverLoc", "CurrentCoverLoc");
             tableMapping.ColumnMappings.Add("CurrentBookLoc", "CurrentBookLoc");
             tableMapping.ColumnMappings.Add("OrderRePrint", "OrderRePrint");
+            tableMapping.ColumnMappings.Add("JobPrintBatch", "JobPrintBatch");
+            tableMapping.ColumnMappings.Add("JobPrintDate", "JobPrintDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3127,7 +3215,7 @@ WHERE        (Invno = @Invno)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
                          OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, 
-                         ShipAddr2 AS Expr1, RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc, OrderRePrint
+                         ShipAddr2 AS Expr1, RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc, OrderRePrint, JobPrintBatch, JobPrintDate
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC";

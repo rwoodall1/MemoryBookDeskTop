@@ -34,7 +34,7 @@ namespace Mbc5.Forms
 
 		
 	private bool startup = true;
-		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
 		{
 			InitializeComponent();
 			//this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -44,7 +44,7 @@ namespace Mbc5.Forms
 			this.Schcode = schcode;
 
 		}
-		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
 		{
 			InitializeComponent();
 

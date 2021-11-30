@@ -49,6 +49,7 @@ namespace BindingModels
         public string YBBarcode { get; set; }
         public bool JobTicketPrinted { get; set; }
         public int NumToShip { get; set; }
+        public int JobPrintBatch { get; set; }
     }
     public class SiblingCheck
     {

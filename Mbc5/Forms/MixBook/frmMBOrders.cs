@@ -818,6 +818,9 @@ namespace Mbc5.Forms.MixBook
             Remake("BK");
         }
 
-       
+        private void pnlOrder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

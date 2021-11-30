@@ -20,7 +20,8 @@ using System.Diagnostics;
 using Mbc5.Dialogs;
 using Equin.ApplicationFramework;
 using System.Threading;
-
+using Newtonsoft.Json;
+using System.Linq;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxBookShipping : BaseClass.frmBase
@@ -45,6 +46,7 @@ namespace Mbc5.Forms.MixBook
         {
 
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) { return; }
+            this.btnShip.Enabled = true;
             var sqlQuery = new SQLCustomClient();
 
             string cmdText = @"
@@ -90,7 +92,7 @@ namespace Mbc5.Forms.MixBook
 
                 return;
             }
-
+         
             this.CreateShipment();
             txtDateTime.Text = DateTime.Now.ToString();
             lblShpName.Text = MbxModel.ShipName;
@@ -274,6 +276,7 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
+            this.btnShip.Enabled = false;
             Shipment.trackingNumber = txtTrackingNo.Text;
             decimal vWeight = 0;
             decimal.TryParse(txtWeight.Text, out vWeight);
@@ -291,12 +294,60 @@ namespace Mbc5.Forms.MixBook
             }
             if (Itemcount != MbxModel.ProdInOrder)
             {
-                MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
+                MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. Please Clear all shipments and rescan the order.");
                 return;
             }
+            //new
+            // Get items in order and check
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select ItemId From MixbookOrder Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId",MbxModel.JobId.Substring(8,7));
+            var vItems = new List<Item>();
+            var itemResult=sqlClient.SelectMany<Item>();
+            if (itemResult.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve items for item check:" + itemResult.Errors[0].DeveloperMessage);
+            }
+            else
+            {
+                vItems=(List<Item>)itemResult.Data;
+                
+             
+            }
+            bool vBreak = false;
+            if (vItems.Count > 0)
+            {
+                
+                foreach (var vshipment in ShipNotification.Request.Shipment)
+                  {
+
+                      foreach(var pkg in vshipment.Package)
+                        {
+                         bool itemExist=vItems.Exists(x => x.ItemId == pkg.Item.identifier);
+                            if (!itemExist)
+                                {
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("item exist that does not belong to this order Job:"+ MbxModel.JobId+" ItemId:"+ pkg.Item.identifier);
+                                    MbcMessageBox.Hand(@"An item exist that does not belong to this order. Click the Clear All Shipments and rescan order.", "Invalid Item");
+                                    vBreak = true;
+                                    break;
+                                }
+                        }
+                    if (vBreak)
+                    {
+                        break;
+                     
+                    }
+                        
+                  }
+            }
+            if (vBreak)
+            {
+                return;
+            }
+            //end new
             UpdateShippingWip();
             Items.Clear();
-
+            this.btnShip.Enabled = true;
             this.Enabled = false;
             timer1.Enabled = true;
             bgWorker.RunWorkerAsync();

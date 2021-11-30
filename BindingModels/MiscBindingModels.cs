@@ -5,6 +5,10 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class Item
+    {
+        public string ItemId { get; set; }
+    }
     public class UsPsBarScanReturn
     {
 
