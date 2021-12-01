@@ -643,6 +643,7 @@ namespace Mbc5.Forms.MixBook
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
+                MbcMessageBox.Information("Files are marked to be downloaded. Check for them in 15 minutes.");
             }
         }
 
