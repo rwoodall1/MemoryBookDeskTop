@@ -250,6 +250,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmChangePassword";

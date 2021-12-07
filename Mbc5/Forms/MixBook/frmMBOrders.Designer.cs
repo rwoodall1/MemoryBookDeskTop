@@ -51,12 +51,12 @@
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label jobPrintBatchLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -100,6 +100,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnEmailTrk = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
             this.btnHold = new System.Windows.Forms.Button();
@@ -133,6 +134,7 @@
             this.btnCvrRemake = new System.Windows.Forms.Button();
             this.btnBkRemake = new System.Windows.Forms.Button();
             this.pnlRemake = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -215,6 +217,8 @@
             mixbookOrderStatusLabel.Size = new System.Drawing.Size(109, 13);
             mixbookOrderStatusLabel.TabIndex = 325;
             mixbookOrderStatusLabel.Text = "Mixbook Order Status";
+            mixbookOrderStatusLabel.Click += new System.EventHandler(this.cmdJobTicket_Click);
+            mixbookOrderStatusLabel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mixbookOrderStatusLabel_MouseDoubleClick);
             // 
             // invnoLabel
             // 
@@ -349,6 +353,7 @@
             coverStatusLabel.Size = new System.Drawing.Size(84, 13);
             coverStatusLabel.TabIndex = 10020;
             coverStatusLabel.Text = "Cover Status:";
+            coverStatusLabel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.coverStatusLabel_MouseDoubleClick);
             // 
             // bookStatusLabel
             // 
@@ -360,6 +365,7 @@
             bookStatusLabel.Size = new System.Drawing.Size(80, 13);
             bookStatusLabel.TabIndex = 10021;
             bookStatusLabel.Text = "Book Status:";
+            bookStatusLabel.Click += new System.EventHandler(this.bookStatusLabel_Click);
             // 
             // requestedShipMethodLabel
             // 
@@ -369,6 +375,15 @@
             requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
             requestedShipMethodLabel.TabIndex = 334;
             requestedShipMethodLabel.Text = "Requested Ship Method";
+            // 
+            // jobPrintBatchLabel
+            // 
+            jobPrintBatchLabel.AutoSize = true;
+            jobPrintBatchLabel.Location = new System.Drawing.Point(839, 123);
+            jobPrintBatchLabel.Name = "jobPrintBatchLabel";
+            jobPrintBatchLabel.Size = new System.Drawing.Size(79, 13);
+            jobPrintBatchLabel.TabIndex = 337;
+            jobPrintBatchLabel.Text = "Job Print Batch";
             // 
             // RemakeTicketQueryBindingSource
             // 
@@ -381,15 +396,6 @@
             // MixbookRemakeTicketBindingSource
             // 
             this.MixbookRemakeTicketBindingSource.DataSource = typeof(BindingModels.MixbookRemakeTicket);
-            // 
-            // jobPrintBatchLabel
-            // 
-            jobPrintBatchLabel.AutoSize = true;
-            jobPrintBatchLabel.Location = new System.Drawing.Point(839, 123);
-            jobPrintBatchLabel.Name = "jobPrintBatchLabel";
-            jobPrintBatchLabel.Size = new System.Drawing.Size(79, 13);
-            jobPrintBatchLabel.TabIndex = 337;
-            jobPrintBatchLabel.Text = "Job Print Batch";
             // 
             // mixBookOrderBindingSource
             // 
@@ -604,14 +610,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -691,9 +697,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle2.Format = "Cover";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "Cover";
+            dataGridViewCellStyle4.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle4;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -760,9 +766,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.RemakeTicketQueryBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource5.Name = "DataSet1";
+            reportDataSource5.Value = this.RemakeTicketQueryBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -777,6 +783,7 @@
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
             this.pnlOrder.Controls.Add(this.jobPrintBatchLabel1);
             this.pnlOrder.Controls.Add(this.orderRePrintCheckBox);
@@ -824,6 +831,21 @@
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
             // 
+            // btnEmailTrk
+            // 
+            this.btnEmailTrk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmailTrk.BackgroundImage")));
+            this.btnEmailTrk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEmailTrk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmailTrk.Location = new System.Drawing.Point(795, 114);
+            this.btnEmailTrk.Name = "btnEmailTrk";
+            this.btnEmailTrk.Size = new System.Drawing.Size(20, 21);
+            this.btnEmailTrk.TabIndex = 339;
+            this.btnEmailTrk.Text = "::";
+            this.toolTip1.SetToolTip(this.btnEmailTrk, "Email Tracking Numbers");
+            this.btnEmailTrk.UseVisualStyleBackColor = true;
+            this.btnEmailTrk.Visible = false;
+            this.btnEmailTrk.Click += new System.EventHandler(this.btnEmailTrk_Click);
+            // 
             // jobPrintBatchLabel1
             // 
             this.jobPrintBatchLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "JobPrintBatch", true));
@@ -851,6 +873,7 @@
             this.btnHold.Size = new System.Drawing.Size(92, 23);
             this.btnHold.TabIndex = 336;
             this.btnHold.Text = "Toggle Hold";
+            this.toolTip1.SetToolTip(this.btnHold, "Place order on hold. Plant only.");
             this.btnHold.UseVisualStyleBackColor = true;
             this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
             // 
@@ -1044,6 +1067,7 @@
             this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
             this.btnDownloadFiles.TabIndex = 10018;
             this.btnDownloadFiles.Text = "Re - Download Files From Mixbook";
+            this.toolTip1.SetToolTip(this.btnDownloadFiles, "Re download files, wait 15 minutes for results.");
             this.btnDownloadFiles.UseVisualStyleBackColor = true;
             this.btnDownloadFiles.Click += new System.EventHandler(this.btnDownloadFiles_Click);
             // 
@@ -1061,12 +1085,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource2.Name = "dsMxPackingSlip";
-            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
-            reportDataSource3.Name = "dsMixBookRemakeTkt";
-            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource6.Name = "dsMxPackingSlip";
+            reportDataSource6.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource7.Name = "dsMixBookRemakeTkt";
+            reportDataSource7.Value = this.MixbookRemakeTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -1112,9 +1136,9 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 35;
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = this.JobTicketQueryBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource8.Name = "DataSet1";
+            reportDataSource8.Value = this.JobTicketQueryBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource8);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(9, 425);
             this.reportViewer3.Name = "reportViewer3";
@@ -1299,5 +1323,7 @@
         private System.Windows.Forms.Panel pnlRemake;
         private System.Windows.Forms.CheckBox orderRePrintCheckBox;
         private System.Windows.Forms.Label jobPrintBatchLabel1;
+        private System.Windows.Forms.Button btnEmailTrk;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -754,10 +754,7 @@ namespace Mbc5.Forms.MixBook
                                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                                 }
                             }
-                            else
-                            {
-                                PrintPackingList(MbxModel.ClientOrderId);
-                            }
+                            
                         }
                         else { PrintPackingList(MbxModel.ClientOrderId); }
                         sqlClient.ClearParameters();
@@ -832,7 +829,11 @@ namespace Mbc5.Forms.MixBook
                             if (orderDone)
                             {
                                 lblBkLocation.Text = strLoc;
-                                MbcMessageBox.Information("Order is complete, all items have been scanned. " + strLoc);
+                                var printResult=MessageBox.Show("Order is complete, all items have been scanned. Would you like to print a packing slip? " + strLoc,"Order Complete",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                                if (printResult == DialogResult.Yes)
+                                {
+                                    PrintPackingList(MbxModel.ClientOrderId);
+                                }
                             }
                         }
                         sqlClient.ClearParameters();

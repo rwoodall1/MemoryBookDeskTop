@@ -360,6 +360,7 @@
             this.pnlBookLocation.Size = new System.Drawing.Size(265, 29);
             this.pnlBookLocation.TabIndex = 10023;
             this.pnlBookLocation.Visible = false;
+            //this.pnlBookLocation.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBookLocation_Paint);
             // 
             // lblBkLocation
             // 

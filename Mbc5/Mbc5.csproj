@@ -1237,7 +1237,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Outlook">
       <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>

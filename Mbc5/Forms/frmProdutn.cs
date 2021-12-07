@@ -8075,7 +8075,7 @@ namespace Mbc5.Forms
 			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
 			int id = (int)row["id"];
 			int invno = (int)row["invno"];
-			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode);
+			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode,frmMain);
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
@@ -11429,7 +11429,7 @@ namespace Mbc5.Forms
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;
             int id = (int)row["id"];
             int invno = (int)row["invno"];
-            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode);
+            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode,frmMain);
             var result = frmeditWip.ShowDialog();
             if (result == DialogResult.OK)
             {

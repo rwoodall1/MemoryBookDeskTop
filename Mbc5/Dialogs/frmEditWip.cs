@@ -13,44 +13,36 @@ using System.Data.Sql;
 using System.Configuration;
 using System.Data.SqlClient;
 using Exceptionless;
-
+using Mbc5.Forms;
+using NLog;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditWip : Form
     {
-        public frmEditWip(int id, int invno,string schcode)
+        public frmEditWip(int id, int invno,string schcode, frmMain mainfrm)
         {
             InitializeComponent();
             ID = id;
             Invno = invno;
             Schcode = schcode;
+            frmMain =mainfrm;
+            Log = LogManager.GetLogger(GetType().FullName);
         }
         public int ID { get; set; }
         public int Invno { get; set; }
         public string Schcode { get; set; }
         public bool Refill { get; set; }
+        public frmMain frmMain { get; set; }
+        protected Logger Log { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
-            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            string AppConnectionString = "";
-
-            if (Environment == "DEV")
-            {
-                AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
-                this.Text = "Environment:" + Environment + "    Mbc5";
-            }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
-
-            this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-            this.wipDetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+            SetConnectionString();
             try
             {
                 wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "WIP");
                 wipDetailTableAdapter.EditFillBy(dsProdutn.WipDetail,Invno);
             }catch(Exception ex) {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+                Log.Error("Error retrieving information EditWipDetail:" + ex.Message);
                 MbcMessageBox.Error("Error retrieving information:" + ex.Message);
                 this.Close();
 
@@ -85,7 +77,10 @@ namespace Mbc5.Dialogs
                 try
                 {
                     wipDetailTableAdapter.Update(dsProdutn.WipDetail);
-                }catch(Exception ex) { };
+                }catch(Exception ex) {
+                    Log.Error("Error retrieving information Saving EditWipDetail:" + ex.Message);
+                    MbcMessageBox.Error("Failed to save record");
+                };
                 Refill = true;
             }
         }
@@ -139,6 +134,20 @@ namespace Mbc5.Dialogs
             {
                 this.errorProvider1.SetError(wirTextBox, "Enter your initials");
                 e.Cancel = true;
+            }
+        }
+        private void SetConnectionString()
+        {
+            try
+            {
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+          
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", frmMain.ApplicationUser.UserName).Error(ex, "Failed to set Edit WipDetail connection strings");
+
             }
         }
     }

@@ -328,5 +328,10 @@ namespace BaseClass
                 basePanel.SendToBack();
             }
         }
+
+        private void basePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
