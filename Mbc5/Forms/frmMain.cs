@@ -221,6 +221,7 @@ namespace Mbc5.Forms
                 this.mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
                 this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
+                this.eventLogToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA","Administrator" });
                 productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
                 productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
                 systemToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
@@ -2069,6 +2070,15 @@ namespace Mbc5.Forms
         private void resetJobTicketsByBatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetJobTickets();
+        }
+
+        private void eventLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmEventLog frmEventLog = new frmEventLog(this.ApplicationUser);
+            frmEventLog.MdiParent = this;
+            frmEventLog.Show();
+            this.Cursor = Cursors.Default;
         }
         #endregion
         //nothing below here

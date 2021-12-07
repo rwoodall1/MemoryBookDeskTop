@@ -18,7 +18,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
     {
-        public frmMain frmMain { get; set; }
+       
         public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace Mbc5.Forms.MixBook
         }
 
         public int OrderId { get; set; } = 0;
+        public frmMain frmMain { get; set; }
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {

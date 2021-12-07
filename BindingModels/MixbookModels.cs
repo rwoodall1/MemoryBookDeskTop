@@ -5,6 +5,14 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class MixbookEventLogModel
+    {
+        public string JobId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string StatusChangedTo { get; set; }
+        public bool Notified { get; set; }
+        public string NotificationXML { get; set; }
+    }
     public class RemakeChk
     {
         public bool Remake { get; set; }
