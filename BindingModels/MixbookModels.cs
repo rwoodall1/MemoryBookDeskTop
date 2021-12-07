@@ -49,6 +49,7 @@ namespace BindingModels
         public string YBBarcode { get; set; }
         public bool JobTicketPrinted { get; set; }
         public int NumToShip { get; set; }
+        public int JobPrintBatch { get; set; }
     }
     public class SiblingCheck
     {
@@ -112,6 +113,7 @@ namespace BindingModels
         public string Quality { get; set; }
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
+        public string ShipCarrier { get; set; }
     }
 
     public class MixBookBarScanModel

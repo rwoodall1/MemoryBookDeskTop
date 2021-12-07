@@ -11,6 +11,11 @@ namespace Mbc5.Classes
 {
    public static class ExceptionHandler
     {
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+        static ExceptionHandler()
+        {
+            var Log = NLog.LogManager.GetCurrentClassLogger();
+        }
         #region Cust
         //Cust
         public static DialogResult CreateMessage(DataSets.dsCust.custRow CurrentFormRow, ref DataSets.dsCust dataset)
@@ -42,21 +47,21 @@ namespace Mbc5.Classes
                 
                 vTableAdapter.ConcurrencyFill(tempCustDataTable, CurrentFormRowWithError.schcode);
                 currentRowInDb =(DataSets.dsCust.custRow)tempCustDataTable.Rows[0];
+                return currentRowInDb;
 
-               
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .SetMessage("Concurrency Error")
-                    .Submit();
+                Log.Error(CurrentFormRowWithError.schcode + " | " + ex.Message);
+                return null;
             }
-            return currentRowInDb;
+            
         }
         private static string GetRowData(DataSets.dsCust.custRow rowInDB, DataSets.dsCust.custRow vrow, DataRowVersion RowVersion)
         {
+           
             //string rowData = "";
-                string columnDataDefault = "";
+            string columnDataDefault = "";
                 string columnDataOriginal = "";
                 string columnDataCurrent = "";
                 string badColumns = "There was a concurrency violation.";
@@ -108,18 +113,24 @@ namespace Mbc5.Classes
             {
 
                 vTableAdapter.FillById(tempBidsDataTable, RowWithError.Id);
+                DataSets.dsBids.bidsRow currentRowInDb =
+             (DataSets.dsBids.bidsRow)tempBidsDataTable.Rows[0];
+
+                return currentRowInDb;
             }
             catch (Exception ex)
             {
-
+                Log.Error(RowWithError.Id.ToString()+" | "+ex.Message);
+                return null;
             }
-            DataSets.dsBids.bidsRow currentRowInDb =
-              (DataSets.dsBids.bidsRow)tempBidsDataTable.Rows[0];
-
-            return currentRowInDb;
+           
         }
         private static string GetRowData(DataSets.dsBids.bidsRow curData, DataSets.dsBids.bidsRow vrow, DataRowVersion RowVersion)
         {
+            if (curData == null || vrow == null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -164,15 +175,21 @@ namespace Mbc5.Classes
             try {
 
                 vTableAdapter.FillByInvno(tempQuotesDataTable,RowWithError.invno);
+                DataSets.dsSales.quotesRow currentRowInDb =
+                (DataSets.dsSales.quotesRow)tempQuotesDataTable.Rows[0];
+                return currentRowInDb;
+
                 } catch (Exception ex) {
-
+                Log.Error(RowWithError.invno.ToString() + " | " + ex.Message);
+                return null;
                 }
-            DataSets.dsSales.quotesRow currentRowInDb =
-              (DataSets.dsSales.quotesRow)tempQuotesDataTable.Rows[0];
-
-            return currentRowInDb;
+           
             }
         private static string GetRowData(DataSets.dsSales.quotesRow curData,DataSets.dsSales.quotesRow vrow,DataRowVersion RowVersion) {
+            if (curData == null || vrow == null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -221,18 +238,23 @@ namespace Mbc5.Classes
             try
             {
                 vTableAdapter.FillByInvno(tempProdutnDataTable, RowWithError.invno);
+                DataSets.dsProdutn.produtnRow currentRowInDb =
+                (DataSets.dsProdutn.produtnRow)tempProdutnDataTable.Rows[0];
+              return currentRowInDb;
             }
             catch (Exception ex)
             {
-
+                Log.Error(RowWithError.invno.ToString()+" | "+ ex.Message);
+                return null;
             }
-            DataSets.dsProdutn.produtnRow currentRowInDb =
-              (DataSets.dsProdutn.produtnRow)tempProdutnDataTable.Rows[0];
-
-            return currentRowInDb;
+            
         }
         private static string GetRowData(DataSets.dsProdutn.produtnRow curData, DataSets.dsProdutn.produtnRow vrow, DataRowVersion RowVersion)
         {
+            if (curData == null || vrow == null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -285,11 +307,16 @@ namespace Mbc5.Classes
 
 
                 } catch (Exception ex) {
+                Log.Error(RowWithError.invno.ToString()+" | "+ ex.Message);
                 return null;
                 }
            
             }
         private static string GetRowData(DataSets.dsProdutn.coversRow curData,DataSets.dsProdutn.coversRow vrow,DataRowVersion RowVersion) {
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -331,15 +358,21 @@ namespace Mbc5.Classes
             try {
 
                 vTableAdapter.FillByInvno(tempWipDataTable,RowWithError.invno);
-                } catch (Exception ex) {
+                DataSets.dsProdutn.wipRow currentRowInDb =
+             (DataSets.dsProdutn.wipRow)tempWipDataTable.Rows[0];
 
+                return currentRowInDb;
+            } catch (Exception ex) {
+                Log.Error(RowWithError.invno.ToString() + ":" + ex.Message);
+                return null;
                 }
-            DataSets.dsProdutn.wipRow currentRowInDb =
-              (DataSets.dsProdutn.wipRow)tempWipDataTable.Rows[0];
-
-            return currentRowInDb;
+           
             }
         private static string GetRowData(DataSets.dsProdutn.wipRow curData,DataSets.dsProdutn.wipRow vrow,DataRowVersion RowVersion) {
+            if (curData == null || vrow==null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -380,15 +413,21 @@ namespace Mbc5.Classes
             try {
 
                 vTableAdapter.Fill(tempPartBKDataTable,RowWithError.schcode);
+                DataSets.dsProdutn.partbkRow currentRowInDb =
+                (DataSets.dsProdutn.partbkRow)tempCustDataTable.Rows[0];
+
+                return currentRowInDb;
                 } catch (Exception ex) {
-
+                Log.Error(RowWithError.schcode +" | "+ex.Message);
+                return null;
                 }
-            DataSets.dsProdutn.partbkRow currentRowInDb =
-              (DataSets.dsProdutn.partbkRow)tempCustDataTable.Rows[0];
-
-            return currentRowInDb;
+           
             }
         private static string GetRowData(DataSets.dsProdutn.partbkRow curData,DataSets.dsProdutn.partbkRow vrow,DataRowVersion RowVersion) {
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+            }
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
@@ -438,18 +477,25 @@ namespace Mbc5.Classes
 			{
 
 				vTableAdapter.Fill(tempPtBKBDataTable, RowWithError.schcode);
+                DataSets.dsProdutn.ptbkbRow currentRowInDb =
+			    (DataSets.dsProdutn.ptbkbRow)tempCustDataTable.Rows[0];
+
+			    return currentRowInDb;
 			}
 			catch (Exception ex)
 			{
-
+                Log.Error(RowWithError.schcode+ " | "+ ex.Message);
+                return null;
 			}
-			DataSets.dsProdutn.ptbkbRow currentRowInDb =
-			  (DataSets.dsProdutn.ptbkbRow)tempCustDataTable.Rows[0];
-
-			return currentRowInDb;
+			
 		}
 		private static string GetRowData(DataSets.dsProdutn.ptbkbRow curData, DataSets.dsProdutn.ptbkbRow vrow, DataRowVersion RowVersion)
 		{
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+            }
+
 			//string rowData = "";
 			string columnDataDefault = "";
 			string columnDataOriginal = "";
@@ -501,18 +547,27 @@ namespace Mbc5.Classes
 			{
 
 				vTableAdapter.FillByInvno(tempEndSheetDataTable, RowWithError.invno);
+                DataSets.dsEndSheet.endsheetRow currentRowInDb =
+			    (DataSets.dsEndSheet.endsheetRow)tempEndSheetDataTable.Rows[0];
+
+			    return currentRowInDb;
+
 			}
 			catch (Exception ex)
 			{
-
+                Log.Error(RowWithError.invno.ToString()+ "| "+ex.Message);
+                return null;
 			}
-			DataSets.dsEndSheet.endsheetRow currentRowInDb =
-			  (DataSets.dsEndSheet.endsheetRow)tempEndSheetDataTable.Rows[0];
-
-			return currentRowInDb;
+			
 		}
 		private static string GetRowData(DataSets.dsEndSheet.endsheetRow curData, DataSets.dsEndSheet.endsheetRow vrow, DataRowVersion RowVersion)
 		{
+
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+
+            }
 			//string rowData = "";
 			string columnDataDefault = "";
 			string columnDataOriginal = "";
@@ -559,22 +614,29 @@ namespace Mbc5.Classes
 		{
 			DataSets.dsEndSheetTableAdapters.supplTableAdapter vTableAdapter = new DataSets.dsEndSheetTableAdapters.supplTableAdapter();
 
+
 			try
 			{
 
 				vTableAdapter.FillByInvno(tempsupplDataTable, RowWithError.invno);
+                DataSets.dsEndSheet.supplRow currentRowInDb =
+			  (DataSets.dsEndSheet.supplRow)tempQuotesDataTable.Rows[0];
+			  return currentRowInDb;
 			}
 			catch (Exception ex)
 			{
-
+                Log.Error(RowWithError.invno.ToString()+" | "+ ex.Message);
+                return null; 
 			}
-			DataSets.dsEndSheet.supplRow currentRowInDb =
-			  (DataSets.dsEndSheet.supplRow)tempQuotesDataTable.Rows[0];
-
-			return currentRowInDb;
+			
 		}
 		private static string GetRowData(DataSets.dsEndSheet.supplRow curData, DataSets.dsEndSheet.supplRow vrow, DataRowVersion RowVersion)
 		{
+
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+            }
 			//string rowData = "";
 			string columnDataDefault = "";
 			string columnDataOriginal = "";
@@ -624,19 +686,24 @@ namespace Mbc5.Classes
 			try
 			{
 
-				vTableAdapter.FillByInvno(temppreflitlDataTable, RowWithError.invno);
-			}
+                vTableAdapter.FillByInvno(temppreflitlDataTable, RowWithError.invno);
+                DataSets.dsEndSheet.preflitRow currentRowInDb =
+                (DataSets.dsEndSheet.preflitRow)temppreflitlDataTable.Rows[0];
+                return currentRowInDb;
+            }
 			catch (Exception ex)
 			{
-
+                Log.Error(RowWithError.invno.ToString() + " | " + ex.Message);
+                return null;
 			}
-			DataSets.dsEndSheet.preflitRow currentRowInDb =
-			  (DataSets.dsEndSheet.preflitRow)temppreflitlDataTable.Rows[0];
-
-			return currentRowInDb;
+			
 		}
 		private static string GetRowData(DataSets.dsEndSheet.preflitRow curData, DataSets.dsEndSheet.preflitRow vrow, DataRowVersion RowVersion)
 		{
+            if (curData==null || vrow==null)
+            {
+                return "Data Not Available";
+            }
 			//string rowData = "";
 			string columnDataDefault = "";
 			string columnDataOriginal = "";

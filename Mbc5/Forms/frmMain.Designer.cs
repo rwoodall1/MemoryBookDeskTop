@@ -81,6 +81,8 @@
             this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printJobTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printRemakeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetJobTicketsByBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,16 +121,15 @@
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.tsMxbClientOrderId = new System.Windows.Forms.ToolStripButton();
-            this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlNotice = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
             this.pnlNotice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -395,7 +396,7 @@
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem.Text = "&Undo ";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -403,7 +404,7 @@
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem.Text = "Cu&t";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -411,7 +412,7 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem.Text = "&Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -419,7 +420,7 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteToolStripMenuItem.Text = "&Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -540,7 +541,8 @@
             this.wipReportToolStripMenuItem,
             this.printJobTicketToolStripMenuItem,
             this.printRemakeTicketsToolStripMenuItem,
-            this.invoiceReportToolStripMenuItem});
+            this.invoiceReportToolStripMenuItem,
+            this.resetJobTicketsByBatchToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
             this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
@@ -548,23 +550,37 @@
             // wipReportToolStripMenuItem
             // 
             this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
-            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.wipReportToolStripMenuItem.Text = "Wip Report";
             this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
             // printJobTicketToolStripMenuItem
             // 
             this.printJobTicketToolStripMenuItem.Name = "printJobTicketToolStripMenuItem";
-            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.printJobTicketToolStripMenuItem.Text = "Print Job Tickets";
             this.printJobTicketToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketToolStripMenuItem_Click);
             // 
             // printRemakeTicketsToolStripMenuItem
             // 
             this.printRemakeTicketsToolStripMenuItem.Name = "printRemakeTicketsToolStripMenuItem";
-            this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.printRemakeTicketsToolStripMenuItem.Text = "Print Remake Tickets";
             this.printRemakeTicketsToolStripMenuItem.Click += new System.EventHandler(this.printRemakeTicketsToolStripMenuItem_Click);
+            // 
+            // invoiceReportToolStripMenuItem
+            // 
+            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
+            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
+            // 
+            // resetJobTicketsByBatchToolStripMenuItem
+            // 
+            this.resetJobTicketsByBatchToolStripMenuItem.Name = "resetJobTicketsByBatchToolStripMenuItem";
+            this.resetJobTicketsByBatchToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.resetJobTicketsByBatchToolStripMenuItem.Text = "Reset Job Tickets By Batch";
+            this.resetJobTicketsByBatchToolStripMenuItem.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -587,25 +603,25 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.horizontalToolStripMenuItem.Text = "&Horizontal";
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verticalToolStripMenuItem.Text = "&Vertical";
             // 
             // arrangeToolStripMenuItem
             // 
             this.arrangeToolStripMenuItem.Name = "arrangeToolStripMenuItem";
-            this.arrangeToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.arrangeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.arrangeToolStripMenuItem.Text = "&Arrange";
             // 
             // systemToolStripMenuItem
@@ -640,7 +656,7 @@
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Visible = false;
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
@@ -648,7 +664,7 @@
             // leadNamesToolStripMenuItem
             // 
             this.leadNamesToolStripMenuItem.Name = "leadNamesToolStripMenuItem";
-            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.leadNamesToolStripMenuItem.Text = "Lead Names";
             this.leadNamesToolStripMenuItem.Visible = false;
             this.leadNamesToolStripMenuItem.Click += new System.EventHandler(this.leadNamesToolStripMenuItem_Click);
@@ -656,7 +672,7 @@
             // leadSourceToolStripMenuItem
             // 
             this.leadSourceToolStripMenuItem.Name = "leadSourceToolStripMenuItem";
-            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.leadSourceToolStripMenuItem.Text = "Lead Source";
             this.leadSourceToolStripMenuItem.Visible = false;
             this.leadSourceToolStripMenuItem.Click += new System.EventHandler(this.leadSourceToolStripMenuItem_Click);
@@ -664,14 +680,14 @@
             // scanDescriptionsToolStripMenuItem
             // 
             this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
-            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
             this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
             // 
             // typeStylesToolStripMenuItem
             // 
             this.typeStylesToolStripMenuItem.Name = "typeStylesToolStripMenuItem";
-            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.typeStylesToolStripMenuItem.Text = "Type Styles";
             this.typeStylesToolStripMenuItem.Visible = false;
             this.typeStylesToolStripMenuItem.Click += new System.EventHandler(this.typeStylesToolStripMenuItem_Click);
@@ -679,7 +695,7 @@
             // wIPDescriptionsToolStripMenuItem
             // 
             this.wIPDescriptionsToolStripMenuItem.Name = "wIPDescriptionsToolStripMenuItem";
-            this.wIPDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.wIPDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wIPDescriptionsToolStripMenuItem.Text = "WIPDescriptions";
             this.wIPDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.wIPDescriptionsToolStripMenuItem_Click);
             // 
@@ -961,13 +977,6 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // invoiceReportToolStripMenuItem
-            // 
-            this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
-            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
-            this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -988,9 +997,9 @@
             this.mnuMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
             this.pnlNotice.ResumeLayout(false);
             this.pnlNotice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1093,5 +1102,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetJobTicketsByBatchToolStripMenuItem;
     }
 }

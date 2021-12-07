@@ -212,7 +212,7 @@ namespace BaseClass.Classes
             
         }
 
-        public bool SendEmail(string Subject, List<string> ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, List<string >ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);

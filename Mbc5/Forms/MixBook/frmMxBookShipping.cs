@@ -20,7 +20,8 @@ using System.Diagnostics;
 using Mbc5.Dialogs;
 using Equin.ApplicationFramework;
 using System.Threading;
-
+using Newtonsoft.Json;
+using System.Linq;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxBookShipping : BaseClass.frmBase
@@ -40,10 +41,12 @@ namespace Mbc5.Forms.MixBook
         public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
         public int Itemcount { get; set; } = 0;
+        public bool ByPassTrkValidation { get; set; } = false;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
 
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) { return; }
+            this.btnShip.Enabled = true;
             var sqlQuery = new SQLCustomClient();
 
             string cmdText = @"
@@ -89,7 +92,7 @@ namespace Mbc5.Forms.MixBook
 
                 return;
             }
-
+         
             this.CreateShipment();
             txtDateTime.Text = DateTime.Now.ToString();
             lblShpName.Text = MbxModel.ShipName;
@@ -99,6 +102,12 @@ namespace Mbc5.Forms.MixBook
         private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
         {
             errorProvider1.SetError(txtTrackingNo, "");
+            if (ByPassTrkValidation) {
+                ByPassTrkValidation = false;
+                txtTrackingNo.Text = "";
+                txtClientIdLookup.Text = "";
+                txtWeight.Text = "";
+                return; }
             if (string.IsNullOrEmpty(txtTrackingNo.Text))
             {
 
@@ -267,34 +276,78 @@ namespace Mbc5.Forms.MixBook
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            foreach (var shipment in ShipNotification.Request.Shipment)
-            {
-                if (shipment.Package[0].Item.quantity < 1)
-                {
-                    MbcMessageBox.Error("You have an invalid quantity in one of the shipments. Please Clear all shipments and rescan the order.");
-                    return;
-                }
-            }
-            if (Itemcount != MbxModel.ProdInOrder)
-            {
-                MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. ");
-                return;
-            }
-
+            this.btnShip.Enabled = false;
             Shipment.trackingNumber = txtTrackingNo.Text;
             decimal vWeight = 0;
             decimal.TryParse(txtWeight.Text, out vWeight);
             Shipment.weight = vWeight;
             Shipment.shippedAt = DateTime.Now;
             Shipment.method = MbxModel.ShipMethod;
+            this.ShipNotification.Request.Shipment.Add(this.Shipment);
+            foreach (var shipment in ShipNotification.Request.Shipment)
+            {
+                if (shipment.Package[0].Item.quantity < 1)
+                {
+                    MbcMessageBox.Error("You have an invalid quantity (0) in a packages. Please Clear all shipments and rescan the order.");
+                    return;
+                }
+            }
+            if (Itemcount != MbxModel.ProdInOrder)
+            {
+                MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + MbxModel.ProdInOrder.ToString() + " items. Please Clear all shipments and rescan the order.");
+                return;
+            }
+            //new
+            // Get items in order and check
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select ItemId From MixbookOrder Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId",MbxModel.JobId.Substring(8,7));
+            var vItems = new List<Item>();
+            var itemResult=sqlClient.SelectMany<Item>();
+            if (itemResult.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve items for item check:" + itemResult.Errors[0].DeveloperMessage);
+            }
+            else
+            {
+                vItems=(List<Item>)itemResult.Data;
+                
+             
+            }
+            bool vBreak = false;
+            if (vItems.Count > 0)
+            {
+                
+                foreach (var vshipment in ShipNotification.Request.Shipment)
+                  {
 
-
+                      foreach(var pkg in vshipment.Package)
+                        {
+                         bool itemExist=vItems.Exists(x => x.ItemId == pkg.Item.identifier);
+                            if (!itemExist)
+                                {
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("item exist that does not belong to this order Job:"+ MbxModel.JobId+" ItemId:"+ pkg.Item.identifier);
+                                    MbcMessageBox.Hand(@"An item exist that does not belong to this order. Click the Clear All Shipments and rescan order.", "Invalid Item");
+                                    vBreak = true;
+                                    break;
+                                }
+                        }
+                    if (vBreak)
+                    {
+                        break;
+                     
+                    }
+                        
+                  }
+            }
+            if (vBreak)
+            {
+                return;
+            }
+            //end new
             UpdateShippingWip();
             Items.Clear();
-
-
-
-            this.ShipNotification.Request.Shipment.Add(this.Shipment);
+            this.btnShip.Enabled = true;
             this.Enabled = false;
             timer1.Enabled = true;
             bgWorker.RunWorkerAsync();
@@ -402,7 +455,8 @@ namespace Mbc5.Forms.MixBook
                 custDataGridView.DataSource = bsItems;
                 txtItemBarcode.Focus();
                 Itemcount = 0;
-
+                txtClientIdLookup.ReadOnly = false;
+                txtClientIdLookup.ReadOnly = false;
 
             }
             catch (Exception ex)
@@ -435,6 +489,7 @@ namespace Mbc5.Forms.MixBook
             this.ShipNotification = null;//clear out existing
             CreateShipNotification();
             SetPanels();
+            txtClientIdLookup.ReadOnly = false;
             txtClientIdLookup.Focus();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
@@ -603,6 +658,9 @@ namespace Mbc5.Forms.MixBook
                 bsItems.DataSource = Items1;
                 custDataGridView.DataSource = bsItems;
                 CreateShipment();
+                txtTrackingNo.Text = "";
+                txtClientIdLookup.ReadOnly = true;
+                txtWeight.Text = "";
                 txtTrackingNo.Focus();
             }
             else { MbcMessageBox.Error("Please scan items into the shipment."); }
@@ -610,6 +668,10 @@ namespace Mbc5.Forms.MixBook
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
+            if (ByPassTrkValidation)
+            {
+                return;
+            }
             if (string.IsNullOrEmpty(txtTrackingNo.Text))
             {
                 return;
@@ -623,7 +685,7 @@ namespace Mbc5.Forms.MixBook
             try
             {
                 string vTracking = txtTrackingNo.Text.Trim();
-                if (MbxModel.ShipMethod.Trim() == "MX_MI" && (vTracking.Substring(0, 3) != "920" || vTracking.Substring(0, 3) != "924" || vTracking.Substring(0, 3) != "927"))
+                if (MbxModel.ShipMethod.Trim() == "MX_MI" && vTracking.Substring(0, 3) != "920" && vTracking.Substring(0, 3) != "924" && vTracking.Substring(0, 3) != "927")
                 {
                     txtTrackingNo.Text = vTracking.Substring(8);
                 }
@@ -768,6 +830,12 @@ namespace Mbc5.Forms.MixBook
             }
         }
 
-
+        private void txtTrackingNo_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ByPassTrkValidation = true;
+            
+            txtClientIdLookup.Focus();
+        }
+       
     }
 }

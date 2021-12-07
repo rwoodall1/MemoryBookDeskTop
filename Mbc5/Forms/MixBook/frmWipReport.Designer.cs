@@ -58,6 +58,7 @@
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shpCarrier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsWip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -104,7 +105,8 @@
             this.Column15,
             this.Column16,
             this.Column17,
-            this.Column18});
+            this.Column18,
+            this.shpCarrier});
             this.dataGridView1.DataSource = this.bsWip;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(12, 76);
@@ -303,6 +305,13 @@
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             // 
+            // shpCarrier
+            // 
+            this.shpCarrier.DataPropertyName = "ShipCarrier";
+            this.shpCarrier.HeaderText = "Ship Carrier";
+            this.shpCarrier.Name = "shpCarrier";
+            this.shpCarrier.ReadOnly = true;
+            // 
             // frmWipReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,5 +372,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shpCarrier;
     }
 }

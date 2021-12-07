@@ -38,6 +38,7 @@ namespace Mbc5.Forms.MixBook
             if (this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY") 
             {
                 this.pnlRemake.Visible = true;
+                this.btnEmailTrk.Visible = true;
             }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
@@ -565,11 +566,6 @@ namespace Mbc5.Forms.MixBook
             ItemIdSearch();
         }
 
-        private void shipMethodComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void shipMethodComboBox_DropDown(object sender, EventArgs e)
         {
             MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
@@ -643,6 +639,7 @@ namespace Mbc5.Forms.MixBook
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
+                MbcMessageBox.Information("Files are marked to be downloaded. Check for them in 15 minutes.");
             }
         }
 
@@ -818,6 +815,71 @@ namespace Mbc5.Forms.MixBook
             Remake("BK");
         }
 
-       
+        private void pnlOrder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void coverStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.UserName.ToUpper()=="TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY") {
+                var result = MessageBox.Show("Do you want to clear the cover status of this cover?", "Clear Cover Status", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+
+                if (result == DialogResult.Yes)
+                {
+                    int vInvno = 0;
+                    if (int.TryParse(invnoLabel1.Text, out vInvno))
+                    {
+                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set CoverStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        Fill();
+                    }
+                    else { MbcMessageBox.Error("Failed to parse Invoice number"); }
+
+                }
+            }
+        }
+
+        private void bookStatusLabel_Click(object sender, EventArgs e)
+        {
+            if(ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY"){ 
+                var result = MessageBox.Show("Do you want to clear the book status of this book?", "Clear book Status", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (result == DialogResult.Yes)
+                {
+                    int vInvno = 0;
+                    if (int.TryParse(invnoLabel1.Text, out vInvno))
+                    {
+                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set BookStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        Fill();
+                    }
+                    else { MbcMessageBox.Error("Failed to parse Invoice number"); }
+                }
+            }
+        }
+
+        private void mixbookOrderStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "SA" || ApplicationUser.UserName.ToUpper() == "HILARY")
+            {
+                var result = MessageBox.Show("Do you want to reset to 'In Process'?", "Reset Status", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+
+                if (result == DialogResult.Yes)
+                {
+                    int vInvno = 0;
+                    if (int.TryParse(invnoLabel1.Text, out vInvno))
+                    {
+                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set MixbookOrderStatus='In Process' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        Fill();
+                    }
+                    else { MbcMessageBox.Error("Failed to parse Invoice number"); }
+
+                }
+            }
+        }
+
+        private void btnEmailTrk_Click(object sender, EventArgs e)
+        {
+            string vBody = @"The tracking numbers for order <b>#" + orderIdLabel1.Text+ @"</b> have been updated. You may not have all the tracking numbers. <br/><br/><b>" + trackingNumberTextBox.Text.Replace("|",",")+"</b>";
+            new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
+        }
     }
 }

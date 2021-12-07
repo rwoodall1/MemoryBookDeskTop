@@ -44,17 +44,18 @@
             this.basePanel.Controls.Add(this.innerPanel);
             this.basePanel.Location = new System.Drawing.Point(3, 1);
             this.basePanel.Name = "basePanel";
-            this.basePanel.Size = new System.Drawing.Size(15, 18);
+            this.basePanel.Size = new System.Drawing.Size(509, 362);
             this.basePanel.TabIndex = 0;
             this.basePanel.Visible = false;
             this.basePanel.VisibleChanged += new System.EventHandler(this.basePanel_VisibleChanged);
+            this.basePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.basePanel_Paint);
             // 
             // innerPanel
             // 
             this.innerPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.innerPanel.Controls.Add(this.workingLabel);
             this.innerPanel.Controls.Add(this.pictureBox1);
-            this.innerPanel.Location = new System.Drawing.Point(-197, -139);
+            this.innerPanel.Location = new System.Drawing.Point(50, 33);
             this.innerPanel.Name = "innerPanel";
             this.innerPanel.Size = new System.Drawing.Size(185, 37);
             this.innerPanel.TabIndex = 2;

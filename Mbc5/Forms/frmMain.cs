@@ -140,8 +140,26 @@ namespace Mbc5.Forms
 
 
             }
-            else if (ApplicationUser.UserName.ToUpper() == "ONBOARD" | ApplicationUser.UserName.ToUpper() == "PRESS"
-               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"
+            else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
+            {
+                productionToolStripMenuItem.Visible = true;
+                mixBookOrdersToolStripMenuItem.Visible = true;
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+                shippingScanToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem.Visible = false;
+            }
+            else if ( ApplicationUser.UserName.ToUpper() == "PRESS"
+               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "BINDING2"
                || ApplicationUser.UserName.ToUpper() == "QUALITY" || ApplicationUser.UserName.ToUpper() == "TRIMMING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
@@ -157,6 +175,7 @@ namespace Mbc5.Forms
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem_Click(null, null);
                 productionToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem.Visible = false;
             }
             else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
@@ -636,6 +655,7 @@ namespace Mbc5.Forms
                     ,Copies
                     ,Pages
                     ,Backing
+                    ,JobPrintBatch
                     ,OrderReceivedDate,ProdInOrder
                     ,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode
                     , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
@@ -655,19 +675,19 @@ namespace Mbc5.Forms
           
                 var jobData = (List<JobTicketQuery>)result.Data;
             //tmp rule 10/29/2022
-            if (jobData != null)
-            {
-                try {
-                    var badRecs = jobData.FindAll(a => a.Pages > 350);
-                    if (badRecs.Count > 0)
-                    {
-                        foreach (var rec in badRecs) {
-                            new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-                                }
-                    }
-                }
-                catch (Exception ex) { }
-            }
+            //if (jobData != null)
+            //{
+            //    try {
+            //        var badRecs = jobData.FindAll(a => a.Pages > 350);
+            //        if (badRecs.Count > 0)
+            //        {
+            //            foreach (var rec in badRecs) {
+            //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
+            //                    }
+            //        }
+            //    }
+            //    catch (Exception ex) { }
+            //}
 
                 if (jobData!=null) {
                     reportViewer1.LocalReport.DataSources.Clear();
@@ -686,7 +706,22 @@ namespace Mbc5.Forms
         }
         private void SetJobTicketsPrinted()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
+           int batchNumber = 0;
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Max(JobPrintBatch)From Mixbookorder");
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting batch number:"+result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting batch number, print cancelled.");
+                return;
+            }
+
+            string tmpbatchNumber = result.Data;
+            int.TryParse(tmpbatchNumber, out batchNumber);
+            batchNumber += 1;
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintBatch=@PrintBatch,JobPrintDate=GETDATE() Where Invno=@Invno");
             foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
@@ -694,10 +729,15 @@ namespace Mbc5.Forms
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
                 sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+                sqlClient.AddParameter("@PrintBatch",batchNumber);
                 var updateResult = sqlClient.Update();
             }
         }
-        
+        private void ResetJobTickets()
+        {
+            frmPrintBatches frmPrintBatches = new frmPrintBatches();
+            frmPrintBatches.Show();
+        }
         private void PrintRemakeTickets()
         {
          
@@ -2024,6 +2064,11 @@ namespace Mbc5.Forms
             frmMxInvoiceReport.MdiParent = this;
             frmMxInvoiceReport.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void resetJobTicketsByBatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetJobTickets();
         }
         #endregion
         //nothing below here

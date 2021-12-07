@@ -42,6 +42,9 @@
             this.lblScanQty = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRemake = new System.Windows.Forms.Panel();
+            this.pnlQtyInner = new System.Windows.Forms.Panel();
+            this.txtRemakeQty = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtReasonCode = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -62,16 +65,13 @@
             this.cmbLogin = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlImpersonate = new System.Windows.Forms.Panel();
-            this.pnlQtyInner = new System.Windows.Forms.Panel();
-            this.txtRemakeQty = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.pnlQty.SuspendLayout();
             this.pnlRemake.SuspendLayout();
+            this.pnlQtyInner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlBookLocation.SuspendLayout();
             this.pnlHoldLocation.SuspendLayout();
             this.pnlImpersonate.SuspendLayout();
-            this.pnlQtyInner.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -212,6 +212,35 @@
             this.pnlRemake.TabIndex = 10018;
             this.pnlRemake.Visible = false;
             // 
+            // pnlQtyInner
+            // 
+            this.pnlQtyInner.Controls.Add(this.txtRemakeQty);
+            this.pnlQtyInner.Controls.Add(this.label10);
+            this.pnlQtyInner.Location = new System.Drawing.Point(3, 27);
+            this.pnlQtyInner.Name = "pnlQtyInner";
+            this.pnlQtyInner.Size = new System.Drawing.Size(217, 29);
+            this.pnlQtyInner.TabIndex = 10020;
+            this.pnlQtyInner.Visible = false;
+            // 
+            // txtRemakeQty
+            // 
+            this.txtRemakeQty.Location = new System.Drawing.Point(112, 4);
+            this.txtRemakeQty.MaxLength = 3;
+            this.txtRemakeQty.Name = "txtRemakeQty";
+            this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
+            this.txtRemakeQty.TabIndex = 10020;
+            this.txtRemakeQty.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(5, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 13);
+            this.label10.TabIndex = 10021;
+            this.label10.Text = "QTY To Remake";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -331,6 +360,7 @@
             this.pnlBookLocation.Size = new System.Drawing.Size(265, 29);
             this.pnlBookLocation.TabIndex = 10023;
             this.pnlBookLocation.Visible = false;
+            //this.pnlBookLocation.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBookLocation_Paint);
             // 
             // lblBkLocation
             // 
@@ -416,35 +446,6 @@
             this.pnlImpersonate.TabIndex = 10029;
             this.pnlImpersonate.Visible = false;
             // 
-            // pnlQtyInner
-            // 
-            this.pnlQtyInner.Controls.Add(this.txtRemakeQty);
-            this.pnlQtyInner.Controls.Add(this.label10);
-            this.pnlQtyInner.Location = new System.Drawing.Point(3, 27);
-            this.pnlQtyInner.Name = "pnlQtyInner";
-            this.pnlQtyInner.Size = new System.Drawing.Size(217, 29);
-            this.pnlQtyInner.TabIndex = 10020;
-            this.pnlQtyInner.Visible = false;
-            // 
-            // txtRemakeQty
-            // 
-            this.txtRemakeQty.Location = new System.Drawing.Point(112, 4);
-            this.txtRemakeQty.MaxLength = 3;
-            this.txtRemakeQty.Name = "txtRemakeQty";
-            this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
-            this.txtRemakeQty.TabIndex = 10020;
-            this.txtRemakeQty.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(5, 8);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 13);
-            this.label10.TabIndex = 10021;
-            this.label10.Text = "QTY To Remake";
-            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +496,8 @@
             this.pnlQty.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
             this.pnlRemake.PerformLayout();
+            this.pnlQtyInner.ResumeLayout(false);
+            this.pnlQtyInner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pnlBookLocation.ResumeLayout(false);
             this.pnlBookLocation.PerformLayout();
@@ -502,8 +505,6 @@
             this.pnlHoldLocation.PerformLayout();
             this.pnlImpersonate.ResumeLayout(false);
             this.pnlImpersonate.PerformLayout();
-            this.pnlQtyInner.ResumeLayout(false);
-            this.pnlQtyInner.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

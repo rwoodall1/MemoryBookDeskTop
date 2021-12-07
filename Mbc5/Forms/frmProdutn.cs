@@ -34,7 +34,7 @@ namespace Mbc5.Forms
 
 		
 	private bool startup = true;
-		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
 		{
 			InitializeComponent();
 			//this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -44,7 +44,7 @@ namespace Mbc5.Forms
 			this.Schcode = schcode;
 
 		}
-		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
 		{
 			InitializeComponent();
 
@@ -8075,7 +8075,7 @@ namespace Mbc5.Forms
 			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
 			int id = (int)row["id"];
 			int invno = (int)row["invno"];
-			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode);
+			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode,frmMain);
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
@@ -11429,7 +11429,7 @@ namespace Mbc5.Forms
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;
             int id = (int)row["id"];
             int invno = (int)row["invno"];
-            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode);
+            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode,frmMain);
             var result = frmeditWip.ShowDialog();
             if (result == DialogResult.OK)
             {
