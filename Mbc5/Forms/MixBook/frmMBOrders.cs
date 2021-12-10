@@ -353,6 +353,7 @@ namespace Mbc5.Forms.MixBook
         }
         public override void Fill()
         {
+            
             pnlOrder.Enabled = false;
             if (OrderId == 0)
             {
@@ -374,6 +375,11 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
+            if (mixbookOrderStatusLabel2.Text == "Cancelled" || mixbookOrderStatusLabel2.Text == "On Hold")
+            {
+                lblHold.Visible = true;
+            }
+            else { lblHold.Visible = false; }
         }
         private void PrintJobTicket()
         {
@@ -881,5 +887,7 @@ namespace Mbc5.Forms.MixBook
             string vBody = @"The tracking numbers for order <b>#" + orderIdLabel1.Text+ @"</b> have been updated. You may not have all the tracking numbers. <br/><br/><b>" + trackingNumberTextBox.Text.Replace("|",",")+"</b>";
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
+
+        
     }
 }

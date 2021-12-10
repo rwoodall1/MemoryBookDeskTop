@@ -6,18 +6,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Data.SqlClient;
+
 using Mbc5.Dialogs;
 using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using Mbc5.Forms.MixBook;
 using BaseClass.Classes;
 using BaseClass.Forms;
-using System.Diagnostics;
+
 using Mbc5.LookUpForms;
 using NLog;
 //using Mbc5.Reports;
 using Mbc5.Classes;
-using System.Data.SqlClient;
+
 using Exceptionless;
 using Exceptionless.Models;
 using BaseClass;
@@ -661,7 +664,7 @@ namespace Mbc5.Forms
                     , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
                     ,(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder
                     ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
-                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
                         AND  BookStatus IS Null ORDER BY Description,Copies
                 ");
           
@@ -756,8 +759,10 @@ namespace Mbc5.Forms
                 ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
                 ,W.Rmbto AS RemakeDate
                 ,W.Rmbtot As RemakeTotal
+                ,wd.invno
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
-                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
+                Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
+                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
             "); 
 
            

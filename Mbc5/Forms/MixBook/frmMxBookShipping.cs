@@ -540,7 +540,7 @@ namespace Mbc5.Forms.MixBook
                 else
                 {
                     string msg = restServiceResult.Data.APIResult.ToString();
-                    AddMbEventLog(MbxModel.JobId, "ERROR 2", msg, vReturnNotification, false);
+                    AddMbEventLog(MbxModel.JobId, "Shippped ERROR 2", msg, vReturnNotification, false);
                     var emailHelper = new EmailHelper();
                     string emailmsg = msg.Replace("<?xml version=1.0 encoding=UTF - 8?>", "").Replace("<", " | ").Replace(">", " | ");
                     emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, msg, EmailType.System);
@@ -551,7 +551,7 @@ namespace Mbc5.Forms.MixBook
             }
             else
             {
-                AddMbEventLog(MbxModel.JobId, "Error 1", "", vReturnNotification, false);
+                AddMbEventLog(MbxModel.JobId, "Shipped Error", "", vReturnNotification, false);
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Failed to notify mixbook of shipped order:" + MbxModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
                 MbcMessageBox.Hand("Failed to notify Mixbook of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
