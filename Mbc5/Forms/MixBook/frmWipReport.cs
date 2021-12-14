@@ -60,11 +60,11 @@ namespace Mbc5.Forms.MixBook
 									,WD49.War AS CaseIn
 									,WD50.War AS Quality				                          
 									,WD50.MxbLocation AS Location
-									
                                     ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
                                     ,SH.Carrier As ShipCarrier
+                                    ,'*'+CAST(MO.ClientOrderId AS varchar)+'*' AS ClientOrderId
                                  from MixBookOrder MO 
                                  Left Join ShipCarriers SH On MO.ShipMethod=SH.ShipAlias
                                  Left Join Produtn P On MO.Invno=P.Invno

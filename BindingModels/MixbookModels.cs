@@ -114,6 +114,7 @@ namespace BindingModels
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
         public string ShipCarrier { get; set; }
+        public string ClientOrderId { get; set; }
     }
 
     public class MixBookBarScanModel
