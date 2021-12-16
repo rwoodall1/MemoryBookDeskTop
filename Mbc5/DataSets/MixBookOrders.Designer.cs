@@ -384,8 +384,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnBookStatus;
             
-            private global::System.Data.DataColumn columnExpr1;
-            
             private global::System.Data.DataColumn columnRequestedShipMethod;
             
             private global::System.Data.DataColumn columnCurrentCoverLoc;
@@ -713,14 +711,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
-                get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn RequestedShipMethodColumn {
                 get {
                     return this.columnRequestedShipMethod;
@@ -840,7 +830,6 @@ namespace Mbc5.DataSets {
                         string Notes, 
                         string CoverStatus, 
                         string BookStatus, 
-                        string Expr1, 
                         string RequestedShipMethod, 
                         string CurrentCoverLoc, 
                         string CurrentBookLoc, 
@@ -884,7 +873,6 @@ namespace Mbc5.DataSets {
                         Notes,
                         CoverStatus,
                         BookStatus,
-                        Expr1,
                         RequestedShipMethod,
                         CurrentCoverLoc,
                         CurrentBookLoc,
@@ -955,7 +943,6 @@ namespace Mbc5.DataSets {
                 this.columnNotes = base.Columns["Notes"];
                 this.columnCoverStatus = base.Columns["CoverStatus"];
                 this.columnBookStatus = base.Columns["BookStatus"];
-                this.columnExpr1 = base.Columns["Expr1"];
                 this.columnRequestedShipMethod = base.Columns["RequestedShipMethod"];
                 this.columnCurrentCoverLoc = base.Columns["CurrentCoverLoc"];
                 this.columnCurrentBookLoc = base.Columns["CurrentBookLoc"];
@@ -1037,8 +1024,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnCoverStatus);
                 this.columnBookStatus = new global::System.Data.DataColumn("BookStatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBookStatus);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
                 this.columnRequestedShipMethod = new global::System.Data.DataColumn("RequestedShipMethod", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequestedShipMethod);
                 this.columnCurrentCoverLoc = new global::System.Data.DataColumn("CurrentCoverLoc", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1083,7 +1068,6 @@ namespace Mbc5.DataSets {
                 this.columnNotes.MaxLength = 2147483647;
                 this.columnCoverStatus.MaxLength = 50;
                 this.columnBookStatus.MaxLength = 50;
-                this.columnExpr1.MaxLength = 50;
                 this.columnRequestedShipMethod.MaxLength = 50;
                 this.columnCurrentCoverLoc.MaxLength = 10;
                 this.columnCurrentBookLoc.MaxLength = 10;
@@ -2091,22 +2075,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Expr1 {
-                get {
-                    try {
-                        return ((string)(this[this.tableMixBookOrder.Expr1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Expr1\' in table \'MixBookOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMixBookOrder.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string RequestedShipMethod {
                 get {
                     try {
@@ -2611,18 +2579,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsExpr1Null() {
-                return this.IsNull(this.tableMixBookOrder.Expr1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetExpr1Null() {
-                this[this.tableMixBookOrder.Expr1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRequestedShipMethodNull() {
                 return this.IsNull(this.tableMixBookOrder.RequestedShipMethodColumn);
             }
@@ -3033,7 +2989,6 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("Notes", "Notes");
             tableMapping.ColumnMappings.Add("CoverStatus", "CoverStatus");
             tableMapping.ColumnMappings.Add("BookStatus", "BookStatus");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             tableMapping.ColumnMappings.Add("RequestedShipMethod", "RequestedShipMethod");
             tableMapping.ColumnMappings.Add("CurrentCoverLoc", "CurrentCoverLoc");
             tableMapping.ColumnMappings.Add("CurrentBookLoc", "CurrentBookLoc");
@@ -3069,15 +3024,21 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
                 "IS NULL) OR ([Paper] = @Original_Paper)) AND ((@IsNull_RequestedShipDate = 1 AND" +
                 " [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_RequestedShipD" +
                 "ate)) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_It" +
-                "emId)) AND ((@IsNull_TrackingNumber = 1 AND [TrackingNumber] IS NULL) OR ([Track" +
-                "ingNumber] = @Original_TrackingNumber)) AND ((@IsNull_MixbookOrderStatus = 1 AND" +
-                " [MixbookOrderStatus] IS NULL) OR ([MixbookOrderStatus] = @Original_MixbookOrder" +
-                "Status)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original" +
-                "_Weight)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Orig" +
-                "inal_Country)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([Cov" +
-                "erStatus] = @Original_CoverStatus)) AND ((@IsNull_BookStatus = 1 AND [BookStatus" +
-                "] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_Expr1 = 1 AND" +
-                " [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_Expr1)))";
+                "emId)) AND ((@IsNull_MixbookOrderStatus = 1 AND [MixbookOrderStatus] IS NULL) OR" +
+                " ([MixbookOrderStatus] = @Original_MixbookOrderStatus)) AND ((@IsNull_Weight = 1" +
+                " AND [Weight] IS NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_Country =" +
+                " 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Cove" +
+                "rStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus" +
+                ")) AND ((@IsNull_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Or" +
+                "iginal_BookStatus)) AND ((@IsNull_RequestedShipMethod = 1 AND [RequestedShipMeth" +
+                "od] IS NULL) OR ([RequestedShipMethod] = @Original_RequestedShipMethod)) AND ((@" +
+                "IsNull_CurrentCoverLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] " +
+                "= @Original_CurrentCoverLoc)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookL" +
+                "oc] IS NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_Ord" +
+                "erRePrint = 1 AND [OrderRePrint] IS NULL) OR ([OrderRePrint] = @Original_OrderRe" +
+                "Print)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPri" +
+                "ntBatch] = @Original_JobPrintBatch)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrin" +
+                "tDate] IS NULL) OR ([JobPrintDate] = @Original_JobPrintDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ClientOrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3124,8 +3085,6 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RequestedShipDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TrackingNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrackingNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TrackingNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrackingNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MixbookOrderStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MixbookOrderStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MixbookOrderStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MixbookOrderStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Weight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Weight", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3136,11 +3095,21 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CoverStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BookStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Expr1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Expr1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RequestedShipMethod", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipMethod", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RequestedShipMethod", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipMethod", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CurrentCoverLoc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentCoverLoc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CurrentCoverLoc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentCoverLoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CurrentBookLoc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentBookLoc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CurrentBookLoc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentBookLoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderRePrint", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderRePrint", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderRePrint", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderRePrint", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JobPrintBatch", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintBatch", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JobPrintDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [MixBookOrder] ([Invno], [ClientOrderId], [JobId], [Description], [ItemCode], [Copies], [Pages], [DateShipped], [ShipName], [ShipAddr], [ShipCity], [ShipState], [ShipZip], [PhoneNumber], [ShipMethod], [OrderReceivedDate], [OrderNumber], [Size], [Backing], [Finish], [Paper], [RequestedShipDate], [CoverUrl], [BookUrl], [ItemId], [TrackingNumber], [MixbookOrderStatus], [Weight], [Country], [CoverPreviewUrl], [BookPreviewUrl], [Notes], [CoverStatus], [BookStatus], [ShipAddr2]) VALUES (@Invno, @ClientOrderId, @JobId, @Description, @ItemCode, @Copies, @Pages, @DateShipped, @ShipName, @ShipAddr, @ShipCity, @ShipState, @ShipZip, @PhoneNumber, @ShipMethod, @OrderReceivedDate, @OrderNumber, @Size, @Backing, @Finish, @Paper, @RequestedShipDate, @CoverUrl, @BookUrl, @ItemId, @TrackingNumber, @MixbookOrderStatus, @Weight, @Country, @CoverPreviewUrl, @BookPreviewUrl, @Notes, @CoverStatus, @BookStatus, @Expr1)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [MixBookOrder] ([Invno], [ClientOrderId], [JobId], [Description], [ItemCode], [Copies], [Pages], [DateShipped], [ShipName], [ShipAddr], [ShipCity], [ShipState], [ShipZip], [PhoneNumber], [ShipMethod], [OrderReceivedDate], [OrderNumber], [Size], [Backing], [Finish], [Paper], [RequestedShipDate], [CoverUrl], [BookUrl], [ItemId], [TrackingNumber], [MixbookOrderStatus], [Weight], [Country], [CoverPreviewUrl], [BookPreviewUrl], [Notes], [CoverStatus], [BookStatus], [RequestedShipMethod], [CurrentCoverLoc], [CurrentBookLoc], [OrderRePrint], [JobPrintBatch], [JobPrintDate]) VALUES (@Invno, @ClientOrderId, @JobId, @Description, @ItemCode, @Copies, @Pages, @DateShipped, @ShipName, @ShipAddr, @ShipCity, @ShipState, @ShipZip, @PhoneNumber, @ShipMethod, @OrderReceivedDate, @OrderNumber, @Size, @Backing, @Finish, @Paper, @RequestedShipDate, @CoverUrl, @BookUrl, @ItemId, @TrackingNumber, @MixbookOrderStatus, @Weight, @Country, @CoverPreviewUrl, @BookPreviewUrl, @Notes, @CoverStatus, @BookStatus, @RequestedShipMethod, @CurrentCoverLoc, @CurrentBookLoc, @OrderRePrint, @JobPrintBatch, @JobPrintDate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3176,7 +3145,12 @@ namespace Mbc5.DataSets.MixBookOrdersTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Notes", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CoverStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Expr1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestedShipMethod", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipMethod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentCoverLoc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentCoverLoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentBookLoc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentBookLoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderRePrint", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderRePrint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintBatch", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE       MixBookOrder
@@ -3193,7 +3167,7 @@ WHERE        (Invno = @Invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipMethod", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShipMethod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestedShipDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TrackingNumber", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TrackingNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TrackingNumber", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TrackingNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weight", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "Weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Notes", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderRePrint", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "OrderRePrint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3215,7 +3189,7 @@ WHERE        (Invno = @Invno)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
                          OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, 
-                         ShipAddr2 AS Expr1, RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc, OrderRePrint, JobPrintBatch, JobPrintDate
+                         RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc, OrderRePrint, JobPrintBatch, JobPrintDate
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC";
@@ -3299,13 +3273,17 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     string Original_Paper, 
                     global::System.Nullable<global::System.DateTime> Original_RequestedShipDate, 
                     string Original_ItemId, 
-                    string Original_TrackingNumber, 
                     string Original_MixbookOrderStatus, 
                     global::System.Nullable<decimal> Original_Weight, 
                     string Original_Country, 
                     string Original_CoverStatus, 
                     string Original_BookStatus, 
-                    string Original_Expr1) {
+                    string Original_RequestedShipMethod, 
+                    string Original_CurrentCoverLoc, 
+                    string Original_CurrentBookLoc, 
+                    global::System.Nullable<bool> Original_OrderRePrint, 
+                    global::System.Nullable<byte> Original_JobPrintBatch, 
+                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Invno));
             if ((Original_ClientOrderId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -3483,60 +3461,93 @@ ORDER BY Invno, OrderReceivedDate DESC";
                 this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[44].Value = ((string)(Original_ItemId));
             }
-            if ((Original_TrackingNumber == null)) {
+            if ((Original_MixbookOrderStatus == null)) {
                 this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((string)(Original_TrackingNumber));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((string)(Original_MixbookOrderStatus));
             }
-            if ((Original_MixbookOrderStatus == null)) {
+            if ((Original_Weight.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((decimal)(Original_Weight.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[48].Value = ((string)(Original_MixbookOrderStatus));
-            }
-            if ((Original_Weight.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((decimal)(Original_Weight.Value));
-            }
-            else {
+            if ((Original_Country == null)) {
                 this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
-            if ((Original_Country == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((string)(Original_Country));
+            }
+            if ((Original_CoverStatus == null)) {
                 this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[52].Value = ((string)(Original_Country));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((string)(Original_CoverStatus));
             }
-            if ((Original_CoverStatus == null)) {
+            if ((Original_BookStatus == null)) {
                 this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[54].Value = ((string)(Original_CoverStatus));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((string)(Original_BookStatus));
             }
-            if ((Original_BookStatus == null)) {
+            if ((Original_RequestedShipMethod == null)) {
                 this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[56].Value = ((string)(Original_BookStatus));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((string)(Original_RequestedShipMethod));
             }
-            if ((Original_Expr1 == null)) {
-                throw new global::System.ArgumentNullException("Original_Expr1");
+            if ((Original_CurrentCoverLoc == null)) {
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[58].Value = ((string)(Original_Expr1));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((string)(Original_CurrentCoverLoc));
+            }
+            if ((Original_CurrentBookLoc == null)) {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((string)(Original_CurrentBookLoc));
+            }
+            if ((Original_OrderRePrint.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((bool)(Original_OrderRePrint.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            if ((Original_JobPrintBatch.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((byte)(Original_JobPrintBatch.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            if ((Original_JobPrintDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((System.DateTime)(Original_JobPrintDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3593,7 +3604,12 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     string Notes, 
                     string CoverStatus, 
                     string BookStatus, 
-                    string Expr1) {
+                    string RequestedShipMethod, 
+                    string CurrentCoverLoc, 
+                    string CurrentBookLoc, 
+                    global::System.Nullable<bool> OrderRePrint, 
+                    global::System.Nullable<byte> JobPrintBatch, 
+                    global::System.Nullable<global::System.DateTime> JobPrintDate) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Invno));
             if ((ClientOrderId.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ClientOrderId.Value));
@@ -3793,11 +3809,41 @@ ORDER BY Invno, OrderReceivedDate DESC";
             else {
                 this.Adapter.InsertCommand.Parameters[33].Value = ((string)(BookStatus));
             }
-            if ((Expr1 == null)) {
-                throw new global::System.ArgumentNullException("Expr1");
+            if ((RequestedShipMethod == null)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(Expr1));
+                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(RequestedShipMethod));
+            }
+            if ((CurrentCoverLoc == null)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((string)(CurrentCoverLoc));
+            }
+            if ((CurrentBookLoc == null)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((string)(CurrentBookLoc));
+            }
+            if ((OrderRePrint.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[37].Value = ((bool)(OrderRePrint.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((JobPrintBatch.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[38].Value = ((byte)(JobPrintBatch.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((JobPrintDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[39].Value = ((System.DateTime)(JobPrintDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

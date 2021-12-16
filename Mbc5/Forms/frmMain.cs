@@ -1838,20 +1838,6 @@ namespace Mbc5.Forms
 
             }
 
-
-
-
-
-
-
-
-
-            //this.Cursor = Cursors.AppStarting;
-
-            //frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
-            //frmMBOrders.MdiParent = this;
-            //frmMBOrders.Show();
-            //this.Cursor = Cursors.Default;
         }
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
