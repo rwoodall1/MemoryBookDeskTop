@@ -707,7 +707,7 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 sqlClient.ClearParameters();
-                sqlClient.CommandText("Delete From WipDetail Where Invno=@Invno");
+                sqlClient.CommandText("Delete From Wip Substring(CONVERT(varchar,Invno),1,7)=@Invno");
                 sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
                 var deleteResult11 = sqlClient.Delete();
                 if (deleteResult11.IsError)
@@ -716,10 +716,28 @@ namespace Mbc5.Forms.MixBook
                     return;
                 }
                 sqlClient.ClearParameters();
-                sqlClient.CommandText("Delete From CoverDetail Where Invno=@Invno");
+                sqlClient.CommandText("Delete From WipDetail Substring(CONVERT(varchar,Invno),1,7)=@Invno");
                 sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
                 var deleteResult111 = sqlClient.Delete();
                 if (deleteResult111.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge Wip records.");
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Delete From Cover Substring(CONVERT(varchar,Invno),1,7)==@Invno");
+                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
+                var deleteResult11111 = sqlClient.Delete();
+                if (deleteResult11111.IsError)
+                {
+                    MbcMessageBox.Error("Failed to purge cover records.");
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Delete From CoverDetail Substring(CONVERT(varchar,Invno),1,7)==@Invno");
+                sqlClient.AddParameter("@Invno", orderIdLabel1.Text.Substring(0, 7));
+                var deleteResult1111 = sqlClient.Delete();
+                if (deleteResult1111.IsError)
                 {
                     MbcMessageBox.Error("Failed to purge cover records.");
                     return;
