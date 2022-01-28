@@ -279,7 +279,13 @@ namespace Mbc5.Forms.Meridian
 
         private void btnReport_Click(object sender, EventArgs e)
         {
+            if (bsWipData.Count == 0)
+            {
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
+                return;
+            }
             var vData = (List<MerBindingWip>)bsWipData.DataSource;
+            
             vData = vData.FindAll(x => x.DateCreated >= dtFrom.Value && x.DateCreated <= dtTo.Value);
             if (vData.Count < 1)
             {

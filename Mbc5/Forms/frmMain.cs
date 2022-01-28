@@ -94,10 +94,7 @@ namespace Mbc5.Forms
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
             }
-
-
-
-            
+ 
         }
         #region "Properties"
         public bool keepLoading { get; set; } = true;
