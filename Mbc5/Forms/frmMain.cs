@@ -142,6 +142,17 @@ namespace Mbc5.Forms
 
 
 
+            }else if (ApplicationUser.UserName.ToUpper() == "CALENDARS")
+            {
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixBookToolStripMenuItem.Visible = false;
+                meridianBindingWIPToolStripMenuItem_Click(null, null);
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
             {
@@ -2060,6 +2071,13 @@ namespace Mbc5.Forms
         private void resetJobTicketsByBatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetJobTickets();
+        }
+
+        private void meridianBindingWIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMerBindingTime frmMerBinding = new frmMerBindingTime(this.ApplicationUser);
+            frmMerBinding.MdiParent = this;
+            frmMerBinding.Show();
         }
         #endregion
         //nothing below here
