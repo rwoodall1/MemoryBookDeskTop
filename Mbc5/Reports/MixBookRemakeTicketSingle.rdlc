@@ -629,7 +629,6 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundColor>WhiteSmoke</BackgroundColor>
         </Style>
       </Rectangle>
       <Textbox Name="DSInvno">
