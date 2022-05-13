@@ -3,3 +3,24 @@
 ################################################################################
 
 /.vs/MemoryBook/v15/Server/sqlite3
+/BaseClass/bin
+/BaseClass/obj
+/Core/bin
+/Core/obj
+/CustomControls/bin
+/Mbc5/bin
+/CustomControls/obj
+/Mbc5/Debug
+/Mbc5/obj
+/Mbc5/Release
+/PitneyBowerApi/bin
+/PitneyBowerApi/obj/Debug
+/RESTModule/bin
+/RESTModule/obj/Debug
+/RESTModule/obj/Dev
+/RESTModule/obj/Release
+/StartUpApp/bin/Debug
+/StartUpApp/obj
+/BindingModels/bin
+/RESTModule/obj/Staging
+/BindingModels/obj/Debug
