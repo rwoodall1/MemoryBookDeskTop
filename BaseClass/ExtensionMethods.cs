@@ -87,6 +87,13 @@ namespace BaseClass
             int vnumber = 0;
            return int.TryParse(ctrl.Text, out vnumber);
         }
+       
+        public static bool IsBetween<T>(this T item, T start, T end)
+        {
+            return Comparer<T>.Default.Compare(item, start) >= 0
+                && Comparer<T>.Default.Compare(item, end) <= 0;
+        }
         
+
     }
 }

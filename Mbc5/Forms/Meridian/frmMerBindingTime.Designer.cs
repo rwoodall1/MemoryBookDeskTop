@@ -116,6 +116,7 @@
             // txtInitials
             // 
             this.txtInitials.Location = new System.Drawing.Point(390, 114);
+            this.txtInitials.MaxLength = 2;
             this.txtInitials.Name = "txtInitials";
             this.txtInitials.Size = new System.Drawing.Size(64, 20);
             this.txtInitials.TabIndex = 3;
@@ -124,6 +125,7 @@
             // txtQty
             // 
             this.txtQty.Location = new System.Drawing.Point(460, 115);
+            this.txtQty.MaxLength = 4;
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(58, 20);
             this.txtQty.TabIndex = 4;

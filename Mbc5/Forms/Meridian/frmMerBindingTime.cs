@@ -114,17 +114,17 @@ namespace Mbc5.Forms.Meridian
 
         private void txtQty_Validating(object sender, CancelEventArgs e)
         {
-            int vQty;
-            if (ValidateForm)
-            {
-                errorProvider1.SetError(txtTime, "");
-                if (!int.TryParse(txtQty.Text, out vQty))
-                {
-                    errorProvider1.SetError(txtTime, "Enter a valid numeric quantity.");
-                    e.Cancel = true;
-                    return;
-                }
-            }
+            //int vQty;
+            //if (ValidateForm)
+            //{
+            //    errorProvider1.SetError(txtTime, "");
+            //    if (!int.TryParse(txtQty.Text, out vQty))
+            //    {
+            //        errorProvider1.SetError(txtTime, "Enter a valid numeric quantity.");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //}
         }
 
         private void txtInitials_Validating(object sender, CancelEventArgs e)
@@ -285,7 +285,6 @@ namespace Mbc5.Forms.Meridian
                 return;
             }
             var vData = (List<MerBindingWip>)bsWipData.DataSource;
-            
             vData = vData.FindAll(x => x.DateCreated >= dtFrom.Value && x.DateCreated <= dtTo.Value);
             if (vData.Count < 1)
             {

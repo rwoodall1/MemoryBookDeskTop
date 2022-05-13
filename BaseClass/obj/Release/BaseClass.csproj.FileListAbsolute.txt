@@ -208,7 +208,6 @@ D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\Exceptionless.Windows.xml
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\Newtonsoft.Json.xml
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\NLog.xml
 D:\Projects\MemoryBookDeskTop\BaseClass\bin\Release\NLog.Extended.xml
-D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csprojAssemblyReference.cache
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csproj.ResolveComReference.cache
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.frmBase.resources
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.Forms.bTopBottom.resources
@@ -221,3 +220,4 @@ D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csproj.CoreCompile
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csproj.CopyComplete
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.dll
 D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.pdb
+D:\Projects\MemoryBookDeskTop\BaseClass\obj\Release\BaseClass.csproj.AssemblyReference.cache
