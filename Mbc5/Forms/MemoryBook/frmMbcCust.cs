@@ -832,19 +832,19 @@ public override void Cancel() {
                 sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
                 sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
                 sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
-                sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString());
+                sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString() == null ? "" : cmbInvStateComboBox.SelectedValue.ToString());
                 sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
                 sqlClient.AddParameter("@ShippingName", shippingNameTextBox.Text);
                 sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
                 sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
                 sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
-                sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString());
+                sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString()==null?"": cmbshippingState.SelectedValue.ToString());
                 sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
                 sqlClient.AddParameter("@OtherName", txtOtherName.Text);
                 sqlClient.AddParameter("@OtherAddr", txtOtherAddr.Text);
                 sqlClient.AddParameter("@OtherAddr2", txtOtherAddr2.Text);
                 sqlClient.AddParameter("@OtherCity", txtOtherCity.Text);
-                sqlClient.AddParameter("@OtherState", cmbOtherState.SelectedValue.ToString());
+                sqlClient.AddParameter("@OtherState",cmbOtherState.SelectedValue.ToString() == null ? "" : cmbOtherState.SelectedValue.ToString());
                 sqlClient.AddParameter("@OtherZipCode", txtOtherZipCode.Text);
                 sqlClient.AddParameter("@SchCode", Schcode);
                 sqlClient.AddParameter("@InvoiceEmail1", invoiceEmail1TextBox.Text);
@@ -881,7 +881,7 @@ public override void Cancel() {
 
                 // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
                 this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
-
+                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
 
                 // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
                 this.custSearchTableAdapter.Fill(this.dsCust.custSearch);

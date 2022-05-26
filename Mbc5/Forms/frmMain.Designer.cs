@@ -746,11 +746,10 @@
             // 
             // tsSave
             // 
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsSave.Image = ((System.Drawing.Image)(resources.GetObject("tsSave.Image")));
             this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(35, 22);
+            this.tsSave.Size = new System.Drawing.Size(51, 22);
             this.tsSave.Text = "Save";
             this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
             // 

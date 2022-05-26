@@ -2573,6 +2573,7 @@ namespace Mbc5.Forms.MemoryBook
                     this.lkpDiscountTableAdapter.Fill(this.lookUp.lkpDiscount);
                     custTableAdapter.Fill(dsSales.cust, Schcode);
                     var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
+                    var vzipCode11111 = ((DataRowView)custBindingSource.Current).Row["spcinst"].ToString().Trim();
 
                     this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
                     if (this.SchoolZipCode.Length > 5)
