@@ -45,12 +45,13 @@ namespace Mbc5.Forms.MemoryBook {
             if (handler != null)
                 handler(this,e);
             }
+
+        #region "Properties"
         private UserPrincipal ApplicationUser { get; set; }
         public new frmMain frmMain { get; set; }
         private bool CustAddressHasChanged { get; set; }
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
-   #region "Properties"
         private bool MktGo {
             get { return vMktGo; }
             set {                
@@ -877,8 +878,11 @@ public override void Cancel() {
 
                 // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
                 this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+
                 // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
                 this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
+
+
                 // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
                 this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
                 // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
@@ -1115,7 +1119,7 @@ public override void Cancel() {
 			SetInvnoSchCode();
 			frmMbcCust_Paint(this, null);
 		}
-		public  void SchCodeSearch() {
+		public override void SchCodeSearch() {
 			var currentSchool = this.Schcode;
 			if (DoPhoneLog()) {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -2858,7 +2862,12 @@ public override void Cancel() {
             //event must be here to bypass data errors due to background worker issue.
         }
 
-       
+        private void reportViewer3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 

@@ -53,6 +53,7 @@
             this.coverSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookUSPSLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.meridianBindingWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +127,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.meridianBindingWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -177,7 +177,6 @@
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
             this.mBCToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
-            this.mBCToolStripMenuItem.Visible = false;
             // 
             // bidsToolStripMenuItem
             // 
@@ -289,52 +288,59 @@
             // mixBookOrdersToolStripMenuItem
             // 
             this.mixBookOrdersToolStripMenuItem.Name = "mixBookOrdersToolStripMenuItem";
-            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.mixBookOrdersToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.mixBookOrdersToolStripMenuItem.Text = "MixBook Orders";
             this.mixBookOrdersToolStripMenuItem.Click += new System.EventHandler(this.mixBookOrdersToolStripMenuItem_Click);
             // 
             // mixBookLoadTestToolStripMenuItem
             // 
             this.mixBookLoadTestToolStripMenuItem.Name = "mixBookLoadTestToolStripMenuItem";
-            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
             // 
             // mixbookBarscanToolStripMenuItem
             // 
             this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
             this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
             // 
             // caseMatchScanToolStripMenuItem
             // 
             this.caseMatchScanToolStripMenuItem.Name = "caseMatchScanToolStripMenuItem";
-            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.caseMatchScanToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.caseMatchScanToolStripMenuItem.Text = "Case Match Scan";
             this.caseMatchScanToolStripMenuItem.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem_Click);
             // 
             // coverSearchToolStripMenuItem
             // 
             this.coverSearchToolStripMenuItem.Name = "coverSearchToolStripMenuItem";
-            this.coverSearchToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.coverSearchToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.coverSearchToolStripMenuItem.Text = "Cover Search";
             this.coverSearchToolStripMenuItem.Click += new System.EventHandler(this.coverSearchToolStripMenuItem_Click);
             // 
             // shippingScanToolStripMenuItem
             // 
             this.shippingScanToolStripMenuItem.Name = "shippingScanToolStripMenuItem";
-            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.shippingScanToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.shippingScanToolStripMenuItem.Text = "Shipping Scan";
             this.shippingScanToolStripMenuItem.Click += new System.EventHandler(this.shippingScanToolStripMenuItem_Click);
             // 
             // mixBookUSPSLabelToolStripMenuItem
             // 
             this.mixBookUSPSLabelToolStripMenuItem.Name = "mixBookUSPSLabelToolStripMenuItem";
-            this.mixBookUSPSLabelToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.mixBookUSPSLabelToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.mixBookUSPSLabelToolStripMenuItem.Text = "MixBook USPS Label";
             this.mixBookUSPSLabelToolStripMenuItem.Visible = false;
             this.mixBookUSPSLabelToolStripMenuItem.Click += new System.EventHandler(this.mixBookUSPSLabelToolStripMenuItem_Click);
+            // 
+            // meridianBindingWIPToolStripMenuItem
+            // 
+            this.meridianBindingWIPToolStripMenuItem.Name = "meridianBindingWIPToolStripMenuItem";
+            this.meridianBindingWIPToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.meridianBindingWIPToolStripMenuItem.Text = "Meridian Binding WIP";
+            this.meridianBindingWIPToolStripMenuItem.Click += new System.EventHandler(this.meridianBindingWIPToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -440,7 +446,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -454,7 +460,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -512,7 +518,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -546,41 +552,41 @@
             this.invoiceReportToolStripMenuItem,
             this.resetJobTicketsByBatchToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             // 
             // wipReportToolStripMenuItem
             // 
             this.wipReportToolStripMenuItem.Name = "wipReportToolStripMenuItem";
-            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.wipReportToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.wipReportToolStripMenuItem.Text = "Wip Report";
             this.wipReportToolStripMenuItem.Click += new System.EventHandler(this.wipReportToolStripMenuItem_Click);
             // 
             // printJobTicketToolStripMenuItem
             // 
             this.printJobTicketToolStripMenuItem.Name = "printJobTicketToolStripMenuItem";
-            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.printJobTicketToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.printJobTicketToolStripMenuItem.Text = "Print Job Tickets";
             this.printJobTicketToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketToolStripMenuItem_Click);
             // 
             // printRemakeTicketsToolStripMenuItem
             // 
             this.printRemakeTicketsToolStripMenuItem.Name = "printRemakeTicketsToolStripMenuItem";
-            this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.printRemakeTicketsToolStripMenuItem.Text = "Print Remake Tickets";
             this.printRemakeTicketsToolStripMenuItem.Click += new System.EventHandler(this.printRemakeTicketsToolStripMenuItem_Click);
             // 
             // invoiceReportToolStripMenuItem
             // 
             this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
-            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
             this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
             // 
             // resetJobTicketsByBatchToolStripMenuItem
             // 
             this.resetJobTicketsByBatchToolStripMenuItem.Name = "resetJobTicketsByBatchToolStripMenuItem";
-            this.resetJobTicketsByBatchToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.resetJobTicketsByBatchToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.resetJobTicketsByBatchToolStripMenuItem.Text = "Reset Job Tickets By Batch";
             this.resetJobTicketsByBatchToolStripMenuItem.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem_Click);
             // 
@@ -740,10 +746,11 @@
             // 
             // tsSave
             // 
+            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsSave.Image = ((System.Drawing.Image)(resources.GetObject("tsSave.Image")));
             this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(51, 22);
+            this.tsSave.Size = new System.Drawing.Size(35, 22);
             this.tsSave.Text = "Save";
             this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
             // 
@@ -978,13 +985,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // meridianBindingWIPToolStripMenuItem
-            // 
-            this.meridianBindingWIPToolStripMenuItem.Name = "meridianBindingWIPToolStripMenuItem";
-            this.meridianBindingWIPToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.meridianBindingWIPToolStripMenuItem.Text = "Meridian Binding WIP";
-            this.meridianBindingWIPToolStripMenuItem.Click += new System.EventHandler(this.meridianBindingWIPToolStripMenuItem_Click);
             // 
             // frmMain
             // 
