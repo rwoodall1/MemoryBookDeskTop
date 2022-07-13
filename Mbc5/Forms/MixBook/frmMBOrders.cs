@@ -432,7 +432,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
                                 ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                 FROM MixbookOrder MO
                                 Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias

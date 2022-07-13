@@ -177,6 +177,7 @@ namespace BindingModels
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
         public string BookLocation { get; set; }
+        public string CoverPreviewUrl { get; set; }
     }
     public class MixbookRemakeTicket
     {
