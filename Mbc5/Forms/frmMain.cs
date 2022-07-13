@@ -664,6 +664,7 @@ namespace Mbc5.Forms
                 sqlClient.CommandText(@"
                     Select Invno,ShipName
                     ,ClientOrderId
+                    ,CoverPreviewUrl
                     ,RequestedShipDate
                     ,Description
                     ,Copies
@@ -708,7 +709,8 @@ namespace Mbc5.Forms
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-                    this.reportViewer1.RefreshReport();
+                   
+                this.reportViewer1.RefreshReport();
                 }
                 else
                 {

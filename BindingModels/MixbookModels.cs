@@ -50,6 +50,7 @@ namespace BindingModels
         public bool JobTicketPrinted { get; set; }
         public int NumToShip { get; set; }
         public int JobPrintBatch { get; set; }
+        public string CoverPreviewUrl { get; set; }
     }
     public class SiblingCheck
     {

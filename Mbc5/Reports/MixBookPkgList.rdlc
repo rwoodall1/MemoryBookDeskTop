@@ -165,7 +165,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.59896in</Height>
+              <Height>0.92188in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -326,7 +326,7 @@
         <DataSetName>dsMxPackingSlip</DataSetName>
         <Top>0.12375in</Top>
         <Left>0.13417in</Left>
-        <Height>1.00125in</Height>
+        <Height>1.32417in</Height>
         <Width>7.76401in</Width>
         <Style>
           <Border>
@@ -335,7 +335,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.125in</Height>
+    <Height>1.44792in</Height>
     <Style />
   </Body>
   <Width>8.35381in</Width>
@@ -796,7 +796,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.77083in</Height>
+      <Height>2.80208in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

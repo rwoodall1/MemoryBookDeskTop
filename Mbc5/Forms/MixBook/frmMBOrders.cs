@@ -387,7 +387,7 @@ namespace Mbc5.Forms.MixBook
             var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 var sqlClient = new SQLCustomClient().CommandText(@"
                 Select Invno,ClientOrderId,
-                ShipName,RequestedShipDate,
+                ShipName,RequestedShipDate,CoverPreviewUrl,
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
@@ -410,12 +410,19 @@ namespace Mbc5.Forms.MixBook
                 var jobData = (JobTicketQuery)result.Data;
                 if (jobData!=null)
                 {
+                
                     reportViewer3.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
-
-                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                try
+                {
+                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl)) {
+                        ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
+                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter }); 
+                    }
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
+                }catch(Exception ex) { }
                 }
                 else
                 {
