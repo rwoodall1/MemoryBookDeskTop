@@ -67,7 +67,7 @@ namespace Mbc5.Forms.MemoryBook
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.xtraTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpDiscountTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+            this.opyProductsTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
@@ -2424,57 +2424,57 @@ namespace Mbc5.Forms.MemoryBook
         //OnlinePay
         private void SetOnlinePayOptions(string textboxname, string checkboxname, bool vcheck)
         {
-            List<TextBox> vControls = new List<TextBox>();
-            List<CheckBox> vControls1 = new List<CheckBox>();
-            vControls.Add(this.txtInkPersAmt);
-            vControls.Add(this.txtInkTxtOnly);
-            vControls.Add(this.txtFoilIcons);
-            vControls.Add(this.txtFoilTxt);
-            vControls.Add(this.txtPicPers);
-            vControls1.Add(this.chkInkPers);
-            vControls1.Add(this.chkInkTxt);
-            vControls1.Add(this.chkFoilIcons);
-            vControls1.Add(this.chkFoiltxt);
-            vControls1.Add(this.chkPicPers);
+            //List<TextBox> vControls = new List<TextBox>();
+            //List<CheckBox> vControls1 = new List<CheckBox>();
+            //vControls.Add(this.txtInkPersAmt);
+            //vControls.Add(this.txtInkTxtOnly);
+            //vControls.Add(this.txtFoilIcons);
+            //vControls.Add(this.txtFoilTxt);
+            //vControls.Add(this.txtPicPers);
+            //vControls1.Add(this.chkInkPers);
+            //vControls1.Add(this.chkInkTxt);
+            //vControls1.Add(this.chkFoilIcons);
+            //vControls1.Add(this.chkFoiltxt);
+            //vControls1.Add(this.chkPicPers);
 
-            foreach (TextBox ctr in vControls)
-            {
-                if (vcheck == true)
-                {
-                    if (ctr.Name != textboxname)
-                    {
-                        ctr.Enabled = false;
-                        ctr.Text = "0.00";
-                    }
-                    else { ctr.Enabled = true; }
-                }
-                else
-                {
-                    ctr.Text = "0.00";
-                    ctr.Enabled = false;
-                }
-            }
-            foreach (CheckBox ctr1 in vControls1)
-            {
-                if (vcheck == true)
-                {
-                    if (ctr1.Name != checkboxname)
-                    {
-                        ctr1.Enabled = false;
+            //foreach (TextBox ctr in vControls)
+            //{
+            //    if (vcheck == true)
+            //    {
+            //        if (ctr.Name != textboxname)
+            //        {
+            //            ctr.Enabled = false;
+            //            ctr.Text = "0.00";
+            //        }
+            //        else { ctr.Enabled = true; }
+            //    }
+            //    else
+            //    {
+            //        ctr.Text = "0.00";
+            //        ctr.Enabled = false;
+            //    }
+            //}
+            //foreach (CheckBox ctr1 in vControls1)
+            //{
+            //    if (vcheck == true)
+            //    {
+            //        if (ctr1.Name != checkboxname)
+            //        {
+            //            ctr1.Enabled = false;
 
-                    }
-                    else { ctr1.Enabled = true; }
+            //        }
+            //        else { ctr1.Enabled = true; }
 
-                }
-                else
-                {
+            //    }
+            //    else
+            //    {
 
-                    ctr1.Enabled = true;
+            //        ctr1.Enabled = true;
 
-                }
+            //    }
 
 
-            }
+            //}
 
         }
         private void CalcOnlineTotals()
@@ -2573,7 +2573,7 @@ namespace Mbc5.Forms.MemoryBook
                     this.lkpDiscountTableAdapter.Fill(this.lookUp.lkpDiscount);
                     custTableAdapter.Fill(dsSales.cust, Schcode);
                     var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
-                    var vzipCode11111 = ((DataRowView)custBindingSource.Current).Row["spcinst"].ToString().Trim();
+                    var vspcinst= ((DataRowView)custBindingSource.Current).Row["spcinst"].ToString().Trim();
 
                     this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
                     if (this.SchoolZipCode.Length > 5)
@@ -2592,6 +2592,7 @@ namespace Mbc5.Forms.MemoryBook
                 try
                 {
                     quotesTableAdapter.FillByInvno(dsSales.quotes, Invno);
+                    opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts,Invno);
                     if (quotesBindingSource.Count == 0)
                     {
                         DisableControls(this.tabSales);
@@ -4312,7 +4313,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void chkInkPers_CheckedChanged(object sender, EventArgs e)
         {
-            SetOnlinePayOptions(this.txtInkPersAmt.Name, chkInkPers.Name, chkInkPers.Checked);
+            SetOnlinePayOptions(this.txtInkPersAmt.Name, chkInkPersonal.Name, chkInkPersonal.Checked);
         }
 
         private void chkInkTxt_CheckedChanged(object sender, EventArgs e)
@@ -4357,62 +4358,62 @@ namespace Mbc5.Forms.MemoryBook
 
         private void bascippCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            var vcheck = bascippCheckBox.Checked;
-            List<TextBox> vControls = new List<TextBox>();
-            List<CheckBox> vControls1 = new List<CheckBox>();
-            vControls.Add(this.txtInkPersAmt);
-            vControls.Add(this.txtInkTxtOnly);
-            vControls.Add(this.txtFoilIcons);
-            vControls.Add(this.txtFoilTxt);
-            vControls.Add(this.txtPicPers);
-            vControls1.Add(this.chkInkPers);
-            vControls1.Add(this.chkInkTxt);
-            vControls1.Add(this.chkFoilIcons);
-            vControls1.Add(this.chkFoiltxt);
-            vControls1.Add(this.chkPicPers);
+            //var vcheck = bascippCheckBox.Checked;
+            //List<TextBox> vControls = new List<TextBox>();
+            //List<CheckBox> vControls1 = new List<CheckBox>();
+            //vControls.Add(this.txtInkPersAmt);
+            //vControls.Add(this.txtInkTxtOnly);
+            //vControls.Add(this.txtFoilIcons);
+            //vControls.Add(this.txtFoilTxt);
+            //vControls.Add(this.txtPicPers);
+            //vControls1.Add(this.chkInkPers);
+            //vControls1.Add(this.chkInkTxt);
+            //vControls1.Add(this.chkFoilIcons);
+            //vControls1.Add(this.chkFoiltxt);
+            //vControls1.Add(this.chkPicPers);
 
-            foreach (TextBox ctr in vControls)
-            {
+            //foreach (TextBox ctr in vControls)
+            //{
 
-                if (vcheck == true)
-                {
-                    if (ctr.Name != bascippCheckBox.Name)
-                    {
-                        ctr.Enabled = false;
-                        ctr.Text = "0.00";
-                    }
-                    else { ctr.Enabled = true; }
-                }
-                else
-                {
-                    ctr.Text = "0.00";
-                    ctr.Enabled = false;
-                }
-            }
-            foreach (CheckBox ctr1 in vControls1)
-            {
-                if (vcheck == true)
-                {
-                    if (ctr1.Name != bascippCheckBox.Name)
-                    {
-                        ctr1.Checked = false;
-                        ctr1.Enabled = false;
+            //    if (vcheck == true)
+            //    {
+            //        if (ctr.Name != bascippCheckBox.Name)
+            //        {
+            //            ctr.Enabled = false;
+            //            ctr.Text = "0.00";
+            //        }
+            //        else { ctr.Enabled = true; }
+            //    }
+            //    else
+            //    {
+            //        ctr.Text = "0.00";
+            //        ctr.Enabled = false;
+            //    }
+            //}
+            //foreach (CheckBox ctr1 in vControls1)
+            //{
+            //    if (vcheck == true)
+            //    {
+            //        if (ctr1.Name != bascippCheckBox.Name)
+            //        {
+            //            ctr1.Checked = false;
+            //            ctr1.Enabled = false;
 
 
-                    }
-                    else
-                    {
-                        ctr1.Enabled = true;
-                    }
+            //        }
+            //        else
+            //        {
+            //            ctr1.Enabled = true;
+            //        }
 
-                }
-                else
-                {
+            //    }
+            //    else
+            //    {
 
-                    ctr1.Enabled = true;
+            //        ctr1.Enabled = true;
 
-                }
-            }
+            //    }
+            //}
         }
 
         private void basicamounTextBox1_Leave(object sender, EventArgs e)
@@ -5146,6 +5147,13 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     GetXtraInvoices();
                 }
+            }else if (this.tabSales.SelectedIndex == 1)
+            {
+                if (opyProductsBindingSource.Count == 0)
+                {
+                    this.DisableControls(tabSales.SelectedTab);
+                    this.EnableControls(bindingNavigator1);
+                }
             }
         }
 
@@ -5618,7 +5626,7 @@ namespace Mbc5.Forms.MemoryBook
                     SchCode = Schcode,
                     BasicPrice = lblOprcperbk.Text,
                     PersonalizedPrice = txtOprcperbk2.Text,
-                    HasPersonalized =(chkInkPers.Checked||chkInkTxt.Checked||chkFoiltxt.Checked||chkFoilIcons.Checked||chkPicPers.Checked),
+                    HasPersonalized =(chkInkPersonal.Checked||chkInkTxt.Checked||chkFoiltxt.Checked||chkFoilIcons.Checked||chkPicPers.Checked),
                     HasLoveLine =luvlinesCheckBox.Checked,
                     LoveLineAmt=txtLuvLineAmt.Text ,
                     HasAds=chkAllowAds.Checked ,
@@ -5893,6 +5901,64 @@ namespace Mbc5.Forms.MemoryBook
                 btnOnlineAgreement_Click(agreerecCheckBox1, null);
             }
         }
+
+ 
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            opyProductsBindingSource.EndEdit();
+            this.ValidateChildren();
+            opyProductsTableAdapter.Update(dsSales.OpyProducts);
+          
+        }
+
+        private void bindingNavigatorDeleteItem1_Click(object sender, EventArgs e)
+        {
+            opyProductsBindingSource.EndEdit();
+            this.ValidateChildren();
+            opyProductsTableAdapter.Update(dsSales.OpyProducts);
+     
+        }
+
+        private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
+        {
+            string schcode = "";
+            var rowCount = opyProductsBindingSource.Count;
+            if (rowCount == 0)
+            {
+                schcode = lblSchcode.Text + "M";
+            }
+            else if (rowCount == 1)
+            {
+                schcode = lblSchcode.Text + "S";
+            }
+            else if (rowCount > 1)
+            {
+                schcode = lblSchcode.Text + "S" + (rowCount - 1).ToString();
+            }
+            var sqlClient = new SQLCustomClient().CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear) Values(@Schcode,@Invno,@Contryear)");
+            sqlClient.AddParameter("@Schcode",schcode);
+            sqlClient.AddParameter("@Invno",this.Invno);
+            sqlClient.AddParameter("@Contryear",lblContryear.Text);
+            var result=sqlClient.Insert();
+            if (result.IsError)
+            {
+                Log.Error("Failed to insert Opy Record:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to insert Opy Record:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+           var id= result.Data;
+            opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts, Invno);
+            opyProductsBindingSource.ResetBindings(false);
+            opyProductsBindingSource.MoveLast();
+
+            this.EnableAllControls(tabSales.SelectedTab);
+          
+           
+        }
+
+
+
 
         //Nothing below here
     }
