@@ -127,6 +127,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.booksNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagesNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -177,6 +179,7 @@
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
             this.mBCToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
+            this.mBCToolStripMenuItem.Visible = false;
             // 
             // bidsToolStripMenuItem
             // 
@@ -340,6 +343,7 @@
             this.meridianBindingWIPToolStripMenuItem.Name = "meridianBindingWIPToolStripMenuItem";
             this.meridianBindingWIPToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.meridianBindingWIPToolStripMenuItem.Text = "Meridian Binding WIP";
+            this.meridianBindingWIPToolStripMenuItem.Visible = false;
             this.meridianBindingWIPToolStripMenuItem.Click += new System.EventHandler(this.meridianBindingWIPToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
@@ -372,6 +376,7 @@
             this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
             this.barScanToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.barScanToolStripMenuItem.Text = "Bar Scan";
+            this.barScanToolStripMenuItem.Visible = false;
             this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
@@ -462,6 +467,7 @@
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
             this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
+            this.labelsToolStripMenuItem.Visible = false;
             // 
             // tsAddress
             // 
@@ -550,7 +556,9 @@
             this.printJobTicketToolStripMenuItem,
             this.printRemakeTicketsToolStripMenuItem,
             this.invoiceReportToolStripMenuItem,
-            this.resetJobTicketsByBatchToolStripMenuItem});
+            this.resetJobTicketsByBatchToolStripMenuItem,
+            this.booksNotScannedToolStripMenuItem,
+            this.pagesNotScannedToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
             this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
@@ -986,6 +994,20 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // booksNotScannedToolStripMenuItem
+            // 
+            this.booksNotScannedToolStripMenuItem.Name = "booksNotScannedToolStripMenuItem";
+            this.booksNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.booksNotScannedToolStripMenuItem.Text = "Books Not Scanned";
+            this.booksNotScannedToolStripMenuItem.Click += new System.EventHandler(this.booksNotScannedToolStripMenuItem_Click);
+            // 
+            // pagesNotScannedToolStripMenuItem
+            // 
+            this.pagesNotScannedToolStripMenuItem.Name = "pagesNotScannedToolStripMenuItem";
+            this.pagesNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.pagesNotScannedToolStripMenuItem.Text = "Pages Not Scanned";
+            this.pagesNotScannedToolStripMenuItem.Click += new System.EventHandler(this.pagesNotScannedToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1113,5 +1135,7 @@
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetJobTicketsByBatchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meridianBindingWIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem booksNotScannedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagesNotScannedToolStripMenuItem;
     }
 }

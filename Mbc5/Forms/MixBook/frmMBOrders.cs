@@ -89,6 +89,7 @@ namespace Mbc5.Forms.MixBook
         #region Search
         private void OrderIdSearch()
         {
+          
             string vcurrentOrderId = "0";
             if (mixBookOrderBindingSource.Current!=null)
             {

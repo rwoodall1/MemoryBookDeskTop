@@ -37,6 +37,7 @@ namespace Mbc5.Forms
         public frmMain()
         {
             InitializeComponent();
+            Log = LogManager.GetLogger(GetType().FullName);
         }
         protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
@@ -818,6 +819,77 @@ namespace Mbc5.Forms
                 var updateResult = sqlClient.Update();
             }
         }
+        private void BooksNotScanned()
+        {
+            var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"Select 
+             
+                 MO.ShipName
+                ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+                ,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+                ,MO.Copies
+                ,Mo.Pages
+                ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
+                ,MO.Description
+                ,MO.Backing
+                ,P.Kitrecvd
+                ,Case When C.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+                ,CD29.War AS CPress
+                ,CD29.MxbLocation AS Location29
+                ,CD43.War As CTrimming
+                ,CD43.MxbLocation AS CTrimLoc
+                ,COALESCE(CD37.War,'') AS OnBoards
+                ,CD37.MxbLocation AS CCart
+                ,Case WHEN WI.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                ,W.War
+                ,CASE W.DescripId
+                When 39 Then 'Binding'
+                When 29 then 'WipPress'
+                When 43 then 'PTrimming'
+                When 50 then 'Quaity'
+                else ''
+                End Scan
+                from MixBookOrder MO 
+                Left Join Produtn P On MO.Invno=P.Invno
+                Left Join Wip WI ON MO.Invno=WI.Invno
+                Left Join Covers C On MO.Invno=C.Invno
+                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=37 ) CD37 On MO.Invno=CD37.Invno
+                                        Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=29 ) CD29 On MO.Invno=CD29.Invno
+                                        Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From CoverDetail  Where DescripId=43 ) CD43 On MO.Invno=CD43.Invno
+                Left Join (Select WD.Invno,WD.DescripId,  Convert(VARCHAR,tmpWD.War,22)As War From
+                (Select Invno, Max(war)As War From WipDetail Where DescripId=29 Or DescripId=39 Or DescripId=43 or DescripId=49 or DescripId=50 Group By Invno)tmpWD
+                Inner Join WipDetail WD On WD.Invno=tmpWD.Invno and WD.War=tmpWD.War) W On Mo.Invno=W.invno
+                Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND (DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND W.War IS NULL ) OR DATEDIFF(hour,W.War,GETDate())>23
+                Order by W.War");
+            var result = sqlClient.SelectMany<NoBookScannedReportModel>();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting books not scanned data:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting books not scanned data, print cancelled.");
+                return;
+            }
+
+            var data =(List<NoBookScannedReportModel>) result.Data;
+
+
+
+        }
+        private void PagesNotScanned()
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Max(JobPrintBatch)From Mixbookorder");
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting pages not scanned data:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting pages not scanned data, print cancelled.");
+                return;
+            }
+
+            string data = result.Data;
+
+        }
+    
         #endregion
 
         #region MenuActions
@@ -2080,6 +2152,16 @@ namespace Mbc5.Forms
             frmMerBindingTime frmMerBinding = new frmMerBindingTime(this.ApplicationUser);
             frmMerBinding.MdiParent = this;
             frmMerBinding.Show();
+        }
+
+        private void booksNotScannedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BooksNotScanned();
+        }
+
+        private void pagesNotScannedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.PagesNotScanned();
         }
         #endregion
         //nothing below here

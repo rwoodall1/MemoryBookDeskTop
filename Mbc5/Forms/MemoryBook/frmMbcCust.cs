@@ -2223,6 +2223,7 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContactEmail, string.Empty);
                 var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("test", "randy.woodall@jostens.com", null,"test", EmailType.Mbc);
                 emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
             }
             else

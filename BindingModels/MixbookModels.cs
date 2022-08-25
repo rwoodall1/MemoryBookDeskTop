@@ -117,6 +117,31 @@ namespace BindingModels
         public string ShipCarrier { get; set; }
         public string ClientOrderId { get; set; }
     }
+    public class NoBookScannedReportModel
+    {
+        public string Invno { get; set; }
+        public string OrderReceivedDate { get; set; }
+        public string RequestedShipDate { get; set; }
+        public string ShipName { get; set; }
+        public string Backing { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string IsBookRemake { get; set; }
+        public string IsCoverRemake { get; set; }
+        public string CTrimming { get; set; }
+        public string PTrimming { get; set; }
+       
+        public string Description { get; set; }
+        public string CPress { get; set; }
+        public string OnBoards { get; set; }
+        public string CCart { get; set; }
+        public string WarDate { get; set; }
+        public string Scan { get; set; }
+     
+        public string ClientOrderId { get; set; }
+
+
+    }
 
     public class MixBookBarScanModel
     {
