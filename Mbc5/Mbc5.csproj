@@ -614,6 +614,12 @@
     <Compile Include="Forms\MixBook\frmUsPsLabel.Designer.cs">
       <DependentUpon>frmUsPsLabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmNoScanReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
+      <DependentUpon>frmNoScanReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -890,6 +896,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmUsPsLabel.resx">
       <DependentUpon>frmUsPsLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
+      <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>

@@ -84,8 +84,7 @@
             this.printRemakeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetJobTicketsByBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.booksNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pagesNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scnCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -558,8 +557,7 @@
             this.printRemakeTicketsToolStripMenuItem,
             this.invoiceReportToolStripMenuItem,
             this.resetJobTicketsByBatchToolStripMenuItem,
-            this.booksNotScannedToolStripMenuItem,
-            this.pagesNotScannedToolStripMenuItem});
+            this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
             this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
@@ -599,19 +597,12 @@
             this.resetJobTicketsByBatchToolStripMenuItem.Text = "Reset Job Tickets By Batch";
             this.resetJobTicketsByBatchToolStripMenuItem.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem_Click);
             // 
-            // booksNotScannedToolStripMenuItem
+            // scnCheckToolStripMenuItem
             // 
-            this.booksNotScannedToolStripMenuItem.Name = "booksNotScannedToolStripMenuItem";
-            this.booksNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.booksNotScannedToolStripMenuItem.Text = "Books Not Scanned";
-            this.booksNotScannedToolStripMenuItem.Click += new System.EventHandler(this.booksNotScannedToolStripMenuItem_Click);
-            // 
-            // pagesNotScannedToolStripMenuItem
-            // 
-            this.pagesNotScannedToolStripMenuItem.Name = "pagesNotScannedToolStripMenuItem";
-            this.pagesNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.pagesNotScannedToolStripMenuItem.Text = "Covers Not Scanned";
-            this.pagesNotScannedToolStripMenuItem.Click += new System.EventHandler(this.coversNotScannedToolStripMenuItem_Click);
+            this.scnCheckToolStripMenuItem.Name = "scnCheckToolStripMenuItem";
+            this.scnCheckToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.scnCheckToolStripMenuItem.Text = "Scan Check";
+            this.scnCheckToolStripMenuItem.Click += new System.EventHandler(this.scanCheckToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -1136,8 +1127,7 @@
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetJobTicketsByBatchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meridianBindingWIPToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem booksNotScannedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pagesNotScannedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scnCheckToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

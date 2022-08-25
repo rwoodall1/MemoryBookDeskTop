@@ -135,7 +135,7 @@ namespace BindingModels
         public string CPress { get; set; }
         public string OnBoards { get; set; }
       
-        public string WarDate { get; set; }
+        public string War { get; set; }
         public string Scan { get; set; }
      
         
