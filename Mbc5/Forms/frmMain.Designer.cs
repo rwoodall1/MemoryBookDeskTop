@@ -84,6 +84,8 @@
             this.printRemakeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetJobTicketsByBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.booksNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagesNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,8 +129,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pagesNotScannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -598,6 +599,20 @@
             this.resetJobTicketsByBatchToolStripMenuItem.Text = "Reset Job Tickets By Batch";
             this.resetJobTicketsByBatchToolStripMenuItem.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem_Click);
             // 
+            // booksNotScannedToolStripMenuItem
+            // 
+            this.booksNotScannedToolStripMenuItem.Name = "booksNotScannedToolStripMenuItem";
+            this.booksNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.booksNotScannedToolStripMenuItem.Text = "Books Not Scanned";
+            this.booksNotScannedToolStripMenuItem.Click += new System.EventHandler(this.booksNotScannedToolStripMenuItem_Click);
+            // 
+            // pagesNotScannedToolStripMenuItem
+            // 
+            this.pagesNotScannedToolStripMenuItem.Name = "pagesNotScannedToolStripMenuItem";
+            this.pagesNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.pagesNotScannedToolStripMenuItem.Text = "Covers Not Scanned";
+            this.pagesNotScannedToolStripMenuItem.Click += new System.EventHandler(this.coversNotScannedToolStripMenuItem_Click);
+            // 
             // windowToolStripMenuItem
             // 
             this.windowToolStripMenuItem.AccessibleName = "m";
@@ -994,20 +1009,6 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // booksNotScannedToolStripMenuItem
-            // 
-            this.booksNotScannedToolStripMenuItem.Name = "booksNotScannedToolStripMenuItem";
-            this.booksNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.booksNotScannedToolStripMenuItem.Text = "Books Not Scanned";
-            this.booksNotScannedToolStripMenuItem.Click += new System.EventHandler(this.booksNotScannedToolStripMenuItem_Click);
-            // 
-            // pagesNotScannedToolStripMenuItem
-            // 
-            this.pagesNotScannedToolStripMenuItem.Name = "pagesNotScannedToolStripMenuItem";
-            this.pagesNotScannedToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.pagesNotScannedToolStripMenuItem.Text = "Pages Not Scanned";
-            this.pagesNotScannedToolStripMenuItem.Click += new System.EventHandler(this.pagesNotScannedToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1137,5 +1138,6 @@
         private System.Windows.Forms.ToolStripMenuItem meridianBindingWIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem booksNotScannedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pagesNotScannedToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

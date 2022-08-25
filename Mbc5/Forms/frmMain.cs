@@ -28,7 +28,9 @@ using BindingModels;
 using Microsoft.Reporting.WinForms;
 using Microsoft.VisualBasic;
 using CustomControls;
-using NLog;
+using CsvHelper;
+using System.IO;
+
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -859,7 +861,7 @@ namespace Mbc5.Forms
                 Left Join (Select WD.Invno,WD.DescripId,  Convert(VARCHAR,tmpWD.War,22)As War From
                 (Select Invno, Max(war)As War From WipDetail Where DescripId=29 Or DescripId=39 Or DescripId=43 or DescripId=49 or DescripId=50 Group By Invno)tmpWD
                 Inner Join WipDetail WD On WD.Invno=tmpWD.Invno and WD.War=tmpWD.War) W On Mo.Invno=W.invno
-                Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND (DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND W.War IS NULL ) OR DATEDIFF(hour,W.War,GETDate())>23
+                Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND W.War IS NULL ) OR DATEDIFF(hour,W.War,GETDate())>23)
                 Order by W.War");
             var result = sqlClient.SelectMany<NoBookScannedReportModel>();
             if (result.IsError)
@@ -869,27 +871,125 @@ namespace Mbc5.Forms
                 return;
             }
 
-            var data =(List<NoBookScannedReportModel>) result.Data;
+            List<NoBookScannedReportModel> data =(List<NoBookScannedReportModel>) result.Data;
+            if (data==null)
+            {
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
+                return;
+            }
+            try
+            {
+                saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
+                saveFileDialog1.FileName = "BooksNotScannedReport.csv";
+                saveFileDialog1.ShowDialog();
+                //using (var mem = new MemoryStream())
+                using (var writer = new StreamWriter(saveFileDialog1.FileName))
+                using (var csvWriter = new CsvWriter(writer))
+                {
+                    csvWriter.Configuration.Delimiter = ",";
+                    //csvWriter.Configuration.HasHeaderRecord = true;
+                    // csvWriter.Configuration.AutoMap<InqCountModel>();
+
+                    //csvWriter.WriteHeader<InqCountModel>();
+                    csvWriter.WriteRecords(data);
+
+                    writer.Flush();
+
+                    Process.Start(saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error("Error creating file:" + ex.Message);
+            }
 
 
 
         }
-        private void PagesNotScanned()
+        private void CoversNotScanned()
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select Max(JobPrintBatch)From Mixbookorder");
-            var result = sqlClient.SelectSingleColumn();
+            sqlClient.CommandText(@"Select 
+                                             MO.ShipName
+                                            ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+                                            ,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+                                            ,MO.Copies
+                                            ,Mo.Pages
+                                            ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
+                                            ,MO.Description
+                                            ,MO.Backing
+                                            ,P.Kitrecvd
+                                            ,Case When C1.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+              
+                                            ,Case WHEN WI.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                                            ,C.War
+                                            ,CASE C.DescripId
+                                            When 29 Then 'CPress'
+                                            When 43 then 'CTrimming'
+                                            When 37 then 'OnBoards'
+               
+                                            else ''
+                                            End Scan
+                                        from MixBookOrder MO 
+                                            Left Join Produtn P On MO.Invno=P.Invno
+                                            Left Join Wip WI ON MO.Invno=WI.Invno
+                                            Left Join Covers C1 On MO.Invno=C1.Invno
+
+                                            Left Join (Select CD.Invno,CD.DescripId,  Convert(VARCHAR,tmpCD.War,22)As War From
+                                            (Select Invno, Max(war)As War From CoverDetail Where DescripId=29 Or DescripId=37 Or DescripId=43  Group By Invno)tmpCD
+                                            Inner Join CoverDetail CD On CD.Invno=tmpCD.Invno and CD.War=tmpCD.War) C On Mo.Invno=C.invno
+
+
+                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
+                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
+                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+                                        Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND C.War IS NULL ) OR DATEDIFF(hour,C.War,GETDate())>23)
+                                        Order by C.War");
+            var result = sqlClient.SelectMany<NoBookScannedReportModel>();
             if (result.IsError)
             {
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting pages not scanned data:" + result.Errors[0].DeveloperMessage);
-                MbcMessageBox.Error("Error getting pages not scanned data, print cancelled.");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting covers not scanned data:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting covers not scanned data, print cancelled.");
                 return;
             }
 
-            string data = result.Data;
+            List<NoBookScannedReportModel> data = (List<NoBookScannedReportModel>)result.Data;
+            if (data==null)
+            {
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
+                return;
+            }
+            try
+            {
+                saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
+                saveFileDialog1.FileName = "CoversNotScannedReport.csv";
+                saveFileDialog1.ShowDialog();
+                //using (var mem = new MemoryStream())
+                using (var writer = new StreamWriter(saveFileDialog1.FileName))
+                using (var csvWriter = new CsvWriter(writer))
+                {
+                    csvWriter.Configuration.Delimiter = ",";
+                    //csvWriter.Configuration.HasHeaderRecord = true;
+                    // csvWriter.Configuration.AutoMap<InqCountModel>();
+
+                    //csvWriter.WriteHeader<InqCountModel>();
+                    csvWriter.WriteRecords(data);
+
+                    writer.Flush();
+
+                    Process.Start(saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error("Error creating file:" + ex.Message);
+            }
+
 
         }
-    
+
         #endregion
 
         #region MenuActions
@@ -2159,9 +2259,9 @@ namespace Mbc5.Forms
             this.BooksNotScanned();
         }
 
-        private void pagesNotScannedToolStripMenuItem_Click(object sender, EventArgs e)
+        private void coversNotScannedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.PagesNotScanned();
+            this.CoversNotScanned();
         }
         #endregion
         //nothing below here
