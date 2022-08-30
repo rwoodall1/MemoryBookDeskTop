@@ -69,6 +69,10 @@
           <DataField>Pages</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="ProdCopies">
+          <DataField>ProdCopies</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="ProdInOrder">
           <DataField>ProdInOrder</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -877,6 +881,73 @@
                                 </Border>
                               </Style>
                             </Image>
+                            <Textbox Name="Textbox59">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Press Quantity</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>3.59722in</Top>
+                              <Left>2.81597in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1.02083in</Width>
+                              <ZIndex>25</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="ProdCopies">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>="*"+RTrim(LTrim(Str(Fields!ProdCopies.Value)))+"*"</Value>
+                                      <Style>
+                                        <FontFamily>3 of 9 Barcode</FontFamily>
+                                        <FontSize>22pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>ProdCopies</rd:DefaultName>
+                              <Top>3.59722in</Top>
+                              <Left>4.02777in</Left>
+                              <Height>0.25in</Height>
+                              <Width>2.89237in</Width>
+                              <ZIndex>26</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -885,6 +956,7 @@
                             </Border>
                           </Style>
                         </Rectangle>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

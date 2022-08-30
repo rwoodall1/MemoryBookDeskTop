@@ -40,6 +40,7 @@ namespace BindingModels
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
         public int Copies { get; set; }
+        public int ProdCopies { get; set; }
         public int Pages { get; set; }
         public string Backing { get; set; }
         public DateTime OrderReceivedDate { get; set; }

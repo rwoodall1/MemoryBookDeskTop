@@ -392,7 +392,7 @@ namespace Mbc5.Forms.MixBook
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
-                Copies,Pages,
+                Copies,ProdCopies,Pages,
                 Backing,OrderReceivedDate,
                 ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
                 '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
