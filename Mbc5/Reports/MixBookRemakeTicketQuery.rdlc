@@ -633,11 +633,43 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <Textbox Name="RemakeTotal2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>="*"+RTrim(LTrim(Str(Fields!RemakeTotal.Value)))+"*"</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RemakeTotal</rd:DefaultName>
+                              <Top>0.78819in</Top>
+                              <Left>1.65623in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Top>2.87152in</Top>
                           <Left>0.03473in</Left>
-                          <Height>0.92708in</Height>
+                          <Height>1.26041in</Height>
                           <Width>3.74999in</Width>
                           <ZIndex>15</ZIndex>
                           <Style>
@@ -828,7 +860,6 @@
                         </Border>
                       </Style>
                     </Rectangle>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -971,6 +1002,10 @@
         </Field>
         <Field Name="Pages">
           <DataField>Pages</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProdCopies">
+          <DataField>ProdCopies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ProdInOrder">

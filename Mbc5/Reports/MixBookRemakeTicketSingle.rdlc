@@ -552,38 +552,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="RemakeTotal">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RemakeTotal.Value</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>RemakeTotal</rd:DefaultName>
-            <Top>0.49083in</Top>
-            <Left>1.47568in</Left>
-            <Height>0.25in</Height>
-            <Width>1in</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox60">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -607,6 +575,38 @@
             <Left>0.03124in</Left>
             <Height>0.25in</Height>
             <Width>1.375in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="RemakeTotal">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="*"+RTrim(LTrim(Str(Fields!ProdCopies.Value)))+"*"</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>RemakeTotal</rd:DefaultName>
+            <Top>0.50471in</Top>
+            <Left>1.47568in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -622,7 +622,7 @@
         <KeepTogether>true</KeepTogether>
         <Top>3.16319in</Top>
         <Left>4.48557in</Left>
-        <Height>1in</Height>
+        <Height>1.21875in</Height>
         <Width>3.49652in</Width>
         <ZIndex>15</ZIndex>
         <Style>
@@ -914,6 +914,10 @@
         </Field>
         <Field Name="Pages">
           <DataField>Pages</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProdCopies">
+          <DataField>ProdCopies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ProdInOrder">
