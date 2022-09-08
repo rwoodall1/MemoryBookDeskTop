@@ -387,15 +387,59 @@ namespace Mbc5.Forms.MixBook
             
             var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 var sqlClient = new SQLCustomClient().CommandText(@"
-                Select Invno,ClientOrderId,
-                ShipName,RequestedShipDate,CoverPreviewUrl,
+               Select Invno,ClientOrderId,
+                ShipName,RequestedShipDate,CoverPreviewUrl,Substring(ItemCode,4,4 ),
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
                 Copies,ProdCopies,Pages,
                 Backing,OrderReceivedDate,
                 ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
+                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+				Case
+				  when ProdCopies>4 Then
+				  
+				    CASE
+					  When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/4
+						When Substring(ItemCode,4,4 )IN('1175','1010','1212') Then
+						ProdCopies/1
+						else
+						0
+					  End 
+				 ELSE
+				  Case
+				     When ItemCode IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/1
+						else
+						0
+				  End
+
+				End AS LargePressQty,
+
+
+				Case
+				  when ProdCopies>4 Then
+				  
+				    CASE
+					  When Substring(ItemCode,4,4 )IN('7755') Then
+						ProdCopies/4
+					When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+					  ProdCopies/1
+					  else
+					  0
+					  End 
+									  
+				 ELSE
+				  Case
+				     When ItemCode IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/1
+						else
+						0
+				     End
+
+				End AS SmallPressQty 
+
                 From MixBookOrder MO  Where Invno=@Invno
             "); 
 

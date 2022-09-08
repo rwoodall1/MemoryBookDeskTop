@@ -53,6 +53,10 @@
           <DataField>JobTicketPrinted</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="LargePressQty">
+          <DataField>LargePressQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="NumInOrder">
           <DataField>NumInOrder</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -88,6 +92,10 @@
         <Field Name="ShipName">
           <DataField>ShipName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SmallPressQty">
+          <DataField>SmallPressQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="YBBarcode">
           <DataField>YBBarcode</DataField>
@@ -914,7 +922,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Press Quantity</Value>
+                    <Value EvaluationMode="Constant">Large Press Quantity</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -926,10 +934,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>3.71291in</Top>
-            <Left>3.83789in</Left>
+            <Top>3.64173in</Top>
+            <Left>3.29622in</Left>
             <Height>0.25in</Height>
-            <Width>1.02083in</Width>
+            <Width>1.5625in</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -948,7 +956,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="*"+Str(First(Fields!ProdCopies.Value, "DataSet1"))+"*"</Value>
+                    <Value>="*" + RTrim(LTrim(Str(Fields!LargePressQty.Value))) + "*"</Value>
                     <Style>
                       <FontFamily>3 of 9 Barcode</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -959,11 +967,78 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
-            <Top>3.71292in</Top>
+            <Top>3.64173in</Top>
             <Left>5.04969in</Left>
             <Height>0.25in</Height>
-            <Width>2.34029in</Width>
+            <Width>2.89237in</Width>
             <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ProdCopies2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="*" + RTrim(LTrim(Str(Fields!SmallPressQty.Value))) + "*"</Value>
+                    <Style>
+                      <FontFamily>3 of 9 Barcode</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ProdCopies</rd:DefaultName>
+            <Top>3.96117in</Top>
+            <Left>5.04969in</Left>
+            <Height>0.25in</Height>
+            <Width>2.89237in</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox61">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Constant">Small Press Quantity</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>3.96117in</Top>
+            <Left>3.29622in</Left>
+            <Height>0.25in</Height>
+            <Width>1.5625in</Width>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>

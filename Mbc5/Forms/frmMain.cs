@@ -679,7 +679,51 @@ namespace Mbc5.Forms
                     , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
                     ,(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder
                     ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
-                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode, 
+                    Case
+				  when ProdCopies>4 Then
+				  
+				    CASE
+					  When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/4
+						When Substring(ItemCode,4,4 )IN('1175','1010','1212') Then
+						ProdCopies/1
+						else
+						0
+					  End 
+				 ELSE
+				  Case
+				     When ItemCode IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/1
+						else
+						0
+				  End
+
+				End AS LargePressQty,
+
+
+				Case
+				  when ProdCopies>4 Then
+				  
+				    CASE
+					  When Substring(ItemCode,4,4 )IN('7755') Then
+						ProdCopies/4
+					When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+					  ProdCopies/1
+					  else
+					  0
+					  End 
+									  
+				 ELSE
+				  Case
+				     When ItemCode IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/1
+						else
+						0
+				     End
+
+				End AS SmallPressQty 
+                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
                         AND  BookStatus IS Null ORDER BY Description,Copies
                 ");
           

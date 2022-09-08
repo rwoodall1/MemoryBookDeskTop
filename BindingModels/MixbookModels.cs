@@ -42,6 +42,8 @@ namespace BindingModels
         public string Description { get; set; }
         public int Copies { get; set; }
         public int ProdCopies { get; set; }
+        public int LargePressQty { get; set; }
+        public int SmallPressQty { get; set; }
         public int Pages { get; set; }
         public string Backing { get; set; }
         public DateTime OrderReceivedDate { get; set; }
@@ -53,6 +55,7 @@ namespace BindingModels
         public int NumToShip { get; set; }
         public int JobPrintBatch { get; set; }
         public string CoverPreviewUrl { get; set; }
+
     }
     public class SiblingCheck
     {
