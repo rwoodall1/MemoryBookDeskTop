@@ -26,3 +26,5 @@ D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\obj\Release\PitneyBowerApi.csproj
 D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\obj\Release\PitneyBowerApi.csproj.CopyComplete
 D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\obj\Release\shippingapiv2.dll
 D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\obj\Release\shippingapiv2.pdb
+D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\bin\Release\NLog.dll
+D:\Projects\MemoryBookDeskTop22\PitneyBowerApi\bin\Release\NLog.xml

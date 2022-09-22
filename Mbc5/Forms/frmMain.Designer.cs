@@ -588,6 +588,7 @@
             this.invoiceReportToolStripMenuItem.Name = "invoiceReportToolStripMenuItem";
             this.invoiceReportToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.invoiceReportToolStripMenuItem.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem.Visible = false;
             this.invoiceReportToolStripMenuItem.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem_Click);
             // 
             // resetJobTicketsByBatchToolStripMenuItem
@@ -595,6 +596,7 @@
             this.resetJobTicketsByBatchToolStripMenuItem.Name = "resetJobTicketsByBatchToolStripMenuItem";
             this.resetJobTicketsByBatchToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.resetJobTicketsByBatchToolStripMenuItem.Text = "Reset Job Tickets By Batch";
+            this.resetJobTicketsByBatchToolStripMenuItem.Visible = false;
             this.resetJobTicketsByBatchToolStripMenuItem.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem_Click);
             // 
             // scnCheckToolStripMenuItem

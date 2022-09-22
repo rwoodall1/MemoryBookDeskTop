@@ -19,12 +19,12 @@ namespace Mbc5.Forms.MixBook
     public partial class frmMBOrders : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook","MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook","MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -39,6 +39,11 @@ namespace Mbc5.Forms.MixBook
             {
                 this.pnlRemake.Visible = true;
                 this.btnEmailTrk.Visible = true;
+            }
+            if (this.ApplicationUser.IsInRole("MBLead"))            
+            {
+                mixBookOrderBindingNavigator.Items.Remove(purgeStripButton2);
+                btnEdit.Enabled = false;
             }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
@@ -958,6 +963,6 @@ namespace Mbc5.Forms.MixBook
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
 
-        
+       
     }
 }

@@ -67,3 +67,5 @@ D:\Projects\MemoryBookDeskTop22\BindingModels\obj\Release\BindingModels.csproj.C
 D:\Projects\MemoryBookDeskTop22\BindingModels\obj\Release\BindingModels.csproj.CopyComplete
 D:\Projects\MemoryBookDeskTop22\BindingModels\obj\Release\BindingModels.dll
 D:\Projects\MemoryBookDeskTop22\BindingModels\obj\Release\BindingModels.pdb
+D:\Projects\MemoryBookDeskTop22\BindingModels\bin\NLog.dll
+D:\Projects\MemoryBookDeskTop22\BindingModels\bin\NLog.xml
