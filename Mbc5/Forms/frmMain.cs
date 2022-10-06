@@ -699,7 +699,7 @@ namespace Mbc5.Forms
 					  End 
 				 ELSE
 				  Case
-				     When ItemCode IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+				     When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
 						ProdCopies/1
 						else
 						0
@@ -722,7 +722,7 @@ namespace Mbc5.Forms
 									  
 				 ELSE
 				  Case
-				     When ItemCode IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
 						ProdCopies/1
 						else
 						0
@@ -730,7 +730,7 @@ namespace Mbc5.Forms
 
 				End AS SmallPressQty 
                         From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                        AND  BookStatus IS Null ORDER BY Description,Copies
+                        AND  BookStatus IS Null OR BookStatus='' ORDER BY Description,Copies
                 ");
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();

@@ -410,11 +410,11 @@ namespace Mbc5.Forms.MixBook
 						When Substring(ItemCode,4,4 )IN('1175','1010','1212') Then
 						ProdCopies/1
 						else
-						0
+						00
 					  End 
 				 ELSE
 				  Case
-				     When ItemCode IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+				     When Substring(ItemCode,4,4 )IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
 						ProdCopies/1
 						else
 						0
@@ -427,9 +427,9 @@ namespace Mbc5.Forms.MixBook
 				  when ProdCopies>4 Then
 				  
 				    CASE
-					  When Substring(ItemCode,4,4 )IN('7755') Then
+					  When Substring(ItemCode,4,4)IN('7755') Then
 						ProdCopies/4
-					When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
 					  ProdCopies/1
 					  else
 					  0
@@ -437,7 +437,7 @@ namespace Mbc5.Forms.MixBook
 									  
 				 ELSE
 				  Case
-				     When ItemCode IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
 						ProdCopies/1
 						else
 						0

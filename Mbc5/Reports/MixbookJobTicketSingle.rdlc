@@ -670,7 +670,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>3.15562in</Top>
+            <Top>2.65562in</Top>
             <Left>3.83789in</Left>
             <Height>0.41667in</Height>
             <Width>1.02083in</Width>
@@ -695,7 +695,7 @@
                     <Value>="*"+Str(First(Fields!ClientOrderId.Value, "DataSet1"))+"*"</Value>
                     <Style>
                       <FontFamily>3 of 9 Barcode</FontFamily>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>26pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -703,9 +703,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Invno</rd:DefaultName>
-            <Top>3.15562in</Top>
+            <Top>2.65562in</Top>
             <Left>5.02193in</Left>
-            <Height>0.25in</Height>
+            <Height>0.41667in</Height>
             <Width>2.54859in</Width>
             <ZIndex>17</ZIndex>
             <Style>
@@ -934,7 +934,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>3.64173in</Top>
+            <Top>3.39173in</Top>
             <Left>3.29622in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>
@@ -959,7 +959,7 @@
                     <Value>="*" + RTrim(LTrim(Str(Fields!LargePressQty.Value))) + "*"</Value>
                     <Style>
                       <FontFamily>3 of 9 Barcode</FontFamily>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>26pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -967,9 +967,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
-            <Top>3.64173in</Top>
+            <Top>3.39173in</Top>
             <Left>5.04969in</Left>
-            <Height>0.25in</Height>
+            <Height>0.35417in</Height>
             <Width>2.89237in</Width>
             <ZIndex>27</ZIndex>
             <Style>
@@ -992,7 +992,7 @@
                     <Value>="*" + RTrim(LTrim(Str(Fields!SmallPressQty.Value))) + "*"</Value>
                     <Style>
                       <FontFamily>3 of 9 Barcode</FontFamily>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>26pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1000,9 +1000,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
-            <Top>3.96117in</Top>
+            <Top>4.21117in</Top>
             <Left>5.04969in</Left>
-            <Height>0.25in</Height>
+            <Height>0.35417in</Height>
             <Width>2.89237in</Width>
             <ZIndex>28</ZIndex>
             <Style>
@@ -1034,7 +1034,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>3.96117in</Top>
+            <Top>4.21117in</Top>
             <Left>3.29622in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>

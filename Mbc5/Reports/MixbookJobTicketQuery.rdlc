@@ -364,7 +364,7 @@
                                       <Value>="*"+RTrim(LTrim(Str(Fields!ClientOrderId.Value)))+"*"</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>26pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -372,9 +372,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Invno</rd:DefaultName>
-                              <Top>3.11111in</Top>
+                              <Top>2.35069in</Top>
                               <Left>4.02777in</Left>
-                              <Height>0.25in</Height>
+                              <Height>0.41667in</Height>
                               <Width>3.38891in</Width>
                               <ZIndex>7</ZIndex>
                               <Style>
@@ -741,7 +741,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>3.11111in</Top>
+                              <Top>2.35069in</Top>
                               <Left>2.81597in</Left>
                               <Height>0.41667in</Height>
                               <Width>1.02083in</Width>
@@ -908,7 +908,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>3.59722in</Top>
+                              <Top>3.17014in</Top>
                               <Left>2.2743in</Left>
                               <Height>0.25in</Height>
                               <Width>1.5625in</Width>
@@ -933,7 +933,7 @@
                                       <Value>="*"+RTrim(LTrim(Str(Fields!LargePressQty.Value)))+"*"</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>26pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -941,9 +941,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>ProdCopies</rd:DefaultName>
-                              <Top>3.59722in</Top>
+                              <Top>3.17014in</Top>
                               <Left>4.02777in</Left>
-                              <Height>0.25in</Height>
+                              <Height>0.36458in</Height>
                               <Width>2.89237in</Width>
                               <ZIndex>26</ZIndex>
                               <Style>
@@ -966,7 +966,7 @@
                                       <Value>="*" + RTrim(LTrim(Str(Fields!SmallPressQty.Value))) + "*"</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>26pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -976,7 +976,7 @@
                               <rd:DefaultName>ProdCopies</rd:DefaultName>
                               <Top>3.91666in</Top>
                               <Left>4.02777in</Left>
-                              <Height>0.25in</Height>
+                              <Height>0.42708in</Height>
                               <Width>2.89237in</Width>
                               <ZIndex>27</ZIndex>
                               <Style>
