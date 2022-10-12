@@ -149,5 +149,24 @@ namespace Mbc5.Forms.MixBook
             
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex.Equals(2))
+                if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.Value != null)
+                {
+                    int theClinetOrderId;
+                  string _clientOrderId= dataGridView1.CurrentRow.Cells[0].Value.ToString().Replace("*","");
+                    if (int.TryParse(_clientOrderId, out theClinetOrderId)) { 
+                    
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, theClinetOrderId);
+                    frmMBOrders.MdiParent = this.MdiParent;
+                    frmMBOrders.Show();
+                    this.Cursor = Cursors.Default;}
+                }
+           
+         
+            
+        }
     }
 }

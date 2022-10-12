@@ -126,7 +126,16 @@ namespace Mbc5.Forms
 				SetShipLabel();
 				SetEmail();
 				CurrentProdNo = lblProdNo.Text;
-
+                try
+                {
+                    DataRowView row = (DataRowView)produtnBindingSource.Current;
+                    string company = row["Company"].ToString();
+                    if (company == "MXB")
+                    {
+                        tbProdutn.SelectTab(1);
+                    }
+                }
+                catch { };
 			}
 			catch (Exception ex)
 			{

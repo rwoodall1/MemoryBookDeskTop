@@ -371,10 +371,15 @@ namespace Mbc5.Forms.MixBook
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
                 int vIInvno = 0;
-                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
+                if (mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId)>0)
+                {
                 string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
+
+                }
+              
+                
             }
             catch (Exception ex)
             {

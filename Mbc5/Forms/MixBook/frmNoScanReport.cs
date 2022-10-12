@@ -34,7 +34,7 @@ namespace Mbc5.Forms.MixBook
 
         private void SetColumns()
         {
-            if (rbBooks.Checked)
+            if (rbCovers.Checked)
             {
                  dgScans.Columns["CoverPress"].Visible = true;//cd29        
                 dgScans.Columns["CTrimming"].Visible = true;//43
@@ -49,7 +49,7 @@ namespace Mbc5.Forms.MixBook
                 dgScans.Columns["CaseIn"].Visible = false;//49
                 dgScans.Columns["Quality"].Visible = false;//50
             }
-            else if (rbCovers.Checked)
+            else if (rbBooks.Checked)
             {
                
 
