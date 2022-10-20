@@ -347,7 +347,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>image</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -416,7 +416,6 @@
                         </Border>
                       </Style>
                     </Image>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -448,7 +447,7 @@
         <DataSetName>dsMxPackingSlip</DataSetName>
         <Top>0.12375in</Top>
         <Left>0.13417in</Left>
-        <Height>1.57417in</Height>
+        <Height>1.57416in</Height>
         <Width>7.76401in</Width>
         <Style>
           <Border>

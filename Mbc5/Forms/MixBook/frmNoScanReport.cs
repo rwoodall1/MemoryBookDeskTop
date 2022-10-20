@@ -17,7 +17,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmNoScanReport : BaseClass.frmBase
     {
-        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator" }, userPrincipal)
+        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -125,7 +125,7 @@ namespace Mbc5.Forms.MixBook
                 Left Join (Select WD.Invno,WD.DescripId,  Convert(VARCHAR,tmpWD.War,22)As War From
                 (Select Invno, Max(war)As War From WipDetail Where DescripId=29 Or DescripId=39 Or DescripId=43 or DescripId=49 or DescripId=50 Group By Invno)tmpWD
                 Inner Join WipDetail WD On WD.Invno=tmpWD.Invno and WD.War=tmpWD.War) W On Mo.Invno=W.invno
-                Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND W.War IS NULL ) OR DATEDIFF(hour,W.War,GETDate())>23)
+                Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL  AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND W.War IS NULL ) OR DATEDIFF(hour,W.War,GETDate())>23)
                 Order by W.War";
             sqlClient1.CommandText(cmdBook);
             var result = sqlClient1.SelectMany<NoBookScannedReportModel>();
@@ -138,57 +138,135 @@ namespace Mbc5.Forms.MixBook
 
             List<NoBookScannedReportModel> data = (List<NoBookScannedReportModel>)result.Data;
             bsData.DataSource = data;
+            if (data == null)
+            {
+                lblRecCount.Text="0 Records";
+            }
+            else
+            {
+                lblRecCount.Text = data.Count.ToString() + " Records";
+            }
+           
 
         }
         private void LoadCovers()
         {
+            
             var sqlClient1 = new SQLCustomClient();
+            //OLD Do Not remove
+            //string cmdBook = @"Select 
+            //                                 MO.ShipName
+            //                                ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+            //                                ,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+            //                                ,MO.Copies
+            //                                ,Mo.Pages
+            //                                ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
+            //                                ,MO.Description
+            //                                ,MO.Backing
+            //                                ,P.Kitrecvd
+            //                                ,WD29.War AS WipPress
+            //                                ,COALESCE(WD43.War,'') As PTrimming
+            //                                ,WD43.Mxblocation As PTrimLoc 
+            //                                ,WD39.War AS Binding
+            //                                ,WD39.MxbLocation AS PCart
+            //                                ,WD49.War AS CaseIn
+            //                                ,WD50.War AS Quality				                          
+            //                                ,WD50.MxbLocation AS Location
+            //                                ,Case When C1.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+
+            //                                ,Case WHEN WI.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+            //                                ,C.War
+            //                                ,CASE C.DescripId
+            //                                When 29 Then 'CPress'
+            //                                When 43 then 'CTrimming'
+            //                                When 37 then 'OnBoards'
+
+            //                                else ''
+            //                                End Scan
+            //                            from MixBookOrder MO 
+            //                                Left Join Produtn P On MO.Invno=P.Invno
+            //                                Left Join Wip WI ON MO.Invno=WI.Invno
+            //                                Left Join Covers C1 On MO.Invno=C1.Invno
+
+            //                                Left Join (Select CD.Invno,CD.DescripId,  Convert(VARCHAR,tmpCD.War,22)As War From
+            //                                (Select Invno, Max(war)As War From CoverDetail Where DescripId=29 Or DescripId=37 Or DescripId=43  Group By Invno)tmpCD
+            //                                Inner Join CoverDetail CD On CD.Invno=tmpCD.Invno and CD.War=tmpCD.War) C On Mo.Invno=C.invno
+
+
+            //                                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+            //                                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
+            //                                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
+            //                                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+            //                                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+            //                            Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND C.War IS NULL ) OR DATEDIFF(hour,C.War,GETDate())>23)
+            //                            Order by C.War";
+
+
             string cmdBook = @"Select 
-                                             MO.ShipName
-                                            ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
-                                            ,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
-                                            ,MO.Copies
-                                            ,Mo.Pages
-                                            ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
-                                            ,MO.Description
-                                            ,MO.Backing
-                                            ,P.Kitrecvd
-                                            ,WD29.War AS WipPress
-                                            ,COALESCE(WD43.War,'') As PTrimming
-                                            ,WD43.Mxblocation As PTrimLoc 
-                                            ,WD39.War AS Binding
-                                            ,WD39.MxbLocation AS PCart
-                                            ,WD49.War AS CaseIn
-                                            ,WD50.War AS Quality				                          
-                                            ,WD50.MxbLocation AS Location
-                                            ,Case When C1.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
+                    MO.ShipName
+                ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
+                ,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
+                ,MO.Copies
+                ,Mo.Pages
+                ,Convert(VARCHAR(10),MO.RequestedShipDate,101)AS RequestedShipDate
+                ,MO.Description
+                ,MO.Backing
+                ,P.Kitrecvd
+                ,WD29.War AS WipPress
+                ,COALESCE(WD43.War,'') As PTrimming
+                ,WD43.Mxblocation As PTrimLoc 
+                ,WD39.War AS Binding
+                ,WD39.MxbLocation AS PCart
+                ,WD49.War AS CaseIn
+                ,WD50.War AS Quality				                          
+                ,WD50.MxbLocation AS Location
+                ,Case When C1.Remake=1 Then 'Y' Else 'N' End IsCoverRemake
               
-                                            ,Case WHEN WI.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
-                                            ,C.War
-                                            ,CASE C.DescripId
-                                            When 29 Then 'CPress'
-                                            When 43 then 'CTrimming'
-                                            When 37 then 'OnBoards'
+                ,Case WHEN WI.Rmbto IS NULL THEN 'N'  ELSE  'Y' END AS IsBookRemake
+                ,Case When C.War IS NOT NULL then C.war When C2.War Is Not Null then C2.War END As War
+				,C.War AS CWAR
+				,C2.War AS CWAR2
+                ,CASE C.DescripId
+                When 29 Then 'CPress'
+                When 43 then 'CTrimming'
+                When 37 then 'OnBoards'
                
-                                            else ''
-                                            End Scan
-                                        from MixBookOrder MO 
-                                            Left Join Produtn P On MO.Invno=P.Invno
-                                            Left Join Wip WI ON MO.Invno=WI.Invno
-                                            Left Join Covers C1 On MO.Invno=C1.Invno
+                else ''
+                End Scan
+            from MixBookOrder MO 
+                Left Join Produtn P On MO.Invno=P.Invno
+                Left Join Wip WI ON MO.Invno=WI.Invno
+                Left Join Covers C1 On MO.Invno=C1.Invno
+			
+                Left Join (Select CD.Invno,CD.DescripId,  Convert(VARCHAR,tmpCD.War,22)As War From
+											
+                (Select Invno, Max(war)As War From CoverDetail Where DescripId=29 Or DescripId=43    Group By Invno)tmpCD
+										
+                Inner Join CoverDetail CD On CD.Invno=tmpCD.Invno and CD.War=tmpCD.War) C On Mo.Invno=C.invno AND MO.Backing='HC'
 
-                                            Left Join (Select CD.Invno,CD.DescripId,  Convert(VARCHAR,tmpCD.War,22)As War From
-                                            (Select Invno, Max(war)As War From CoverDetail Where DescripId=29 Or DescripId=37 Or DescripId=43  Group By Invno)tmpCD
-                                            Inner Join CoverDetail CD On CD.Invno=tmpCD.Invno and CD.War=tmpCD.War) C On Mo.Invno=C.invno
+				
+				Left Join (Select CD.Invno,CD.DescripId,  Convert(VARCHAR,tmpCD.War,22)As War From
+											
+                (Select Invno, Max(war)As War From CoverDetail Where DescripId=29 Or DescripId=37    Group By Invno)tmpCD
+										
+                Inner Join CoverDetail CD On CD.Invno=tmpCD.Invno and CD.War=tmpCD.War) C2 On Mo.Invno=C2.invno AND MO.Backing='SC'
 
 
-                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
-                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
-                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
-                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
-                                            Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
-                                        Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND ((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND C.War IS NULL ) OR DATEDIFF(hour,C.War,GETDate())>23)
-                                        Order by C.War";
+               
+			   
+			   Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On MO.Invno=WD29.Invno
+
+                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=39) WD39 On MO.Invno=WD39.Invno
+
+                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail  Where DescripId=43 ) WD43 On MO.Invno=WD43.Invno
+
+                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=49  ) WD49 On MO.Invno=WD49.Invno
+
+                Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
+			
+            Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL AND 
+			((MO.Backing='HC' And C.War IS NULL)OR(MO.Backing='SC' And C2.War IS NULL)) AND((DateDiff(hour,MO.OrderReceivedDate,GETDATE())>23 AND C.War IS NULL ) OR DATEDIFF(hour,C.War,GETDate())>23)
+            Order by C.War";
             sqlClient1.CommandText(cmdBook);
             var result = sqlClient1.SelectMany<NoBookScannedReportModel>();
             if (result.IsError)
@@ -198,8 +276,17 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
 
-            //List<NoBookScannedReportModel> data = (List<NoBookScannedReportModel>)result.Data;
-            //bsData.DataSource = data;
+            List<NoBookScannedReportModel> data = (List<NoBookScannedReportModel>)result.Data;
+            bsData.DataSource = data;
+            if (data == null)
+            {
+                lblRecCount.Text = "0 Records";
+            }
+            else
+            {
+                lblRecCount.Text = data.Count.ToString() + " Records";
+            }
+            
 
 
         }
@@ -272,5 +359,27 @@ namespace Mbc5.Forms.MixBook
         {
         
         }
+
+        private void dgScans_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgScans.CurrentCell.ColumnIndex.Equals(1))
+                if (dgScans.CurrentCell != null && dgScans.CurrentCell.Value != null)
+                {
+                    int theClinetOrderId;
+                    string _clientOrderId = dgScans.CurrentRow.Cells[1].Value.ToString().Substring(0,7);
+                    if (int.TryParse(_clientOrderId, out theClinetOrderId))
+                    {
+
+                        frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, theClinetOrderId);
+                        frmMBOrders.MdiParent = this.MdiParent;
+                        frmMBOrders.Show();
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+
+
+
+        }
     }
+    
 }

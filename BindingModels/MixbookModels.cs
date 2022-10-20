@@ -30,6 +30,9 @@ namespace BindingModels
         public DateTime RemakeDate { get; set; }
         public int RemakeTotal { get; set; }
         public int NumToShip { get; set; }
+        public string CoverPreviewUrl { get; set; }
+        public int LargePressQty { get; set; }
+        public int SmallPressQty { get; set; }
     }
     public class JobTicketQuery
     {

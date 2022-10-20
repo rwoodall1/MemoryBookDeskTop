@@ -336,7 +336,6 @@
             this.mixBookUSPSLabelToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.mixBookUSPSLabelToolStripMenuItem.Text = "MixBook USPS Label";
             this.mixBookUSPSLabelToolStripMenuItem.Visible = false;
-            this.mixBookUSPSLabelToolStripMenuItem.Click += new System.EventHandler(this.mixBookUSPSLabelToolStripMenuItem_Click);
             // 
             // meridianBindingWIPToolStripMenuItem
             // 
@@ -451,7 +450,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -465,7 +464,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             this.labelsToolStripMenuItem.Visible = false;
             // 
@@ -524,7 +523,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -559,8 +558,9 @@
             this.resetJobTicketsByBatchToolStripMenuItem,
             this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
+            this.mixbookReportsToolStripMenuItem.Click += new System.EventHandler(this.mixbookReportsToolStripMenuItem_Click);
             // 
             // wipReportToolStripMenuItem
             // 
@@ -963,13 +963,13 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.DocumentMapWidth = 47;
+            this.reportViewer1.DocumentMapWidth = 38;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1118, 620);
+            this.reportViewer1.Location = new System.Drawing.Point(1106, 596);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(51, 54);
+            this.reportViewer1.Size = new System.Drawing.Size(63, 66);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);

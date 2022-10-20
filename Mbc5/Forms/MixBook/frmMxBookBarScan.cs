@@ -1132,7 +1132,7 @@ namespace Mbc5.Forms.MixBook
                                     ,FullRemake=@FullRemake
                                     ,RemakeReason=@RemakeReason
                                     ,persondest=@persondest
-                                    ,specinst=@Memo +' | ' + CONVERT(nvarchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
+                                    ,specinst=@Memo +' | ' + CONVERT(varchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
@@ -1365,7 +1365,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,MO.CoverPreviewUrl
                                     ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                     FROM MixbookOrder MO
                                     Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
@@ -1381,9 +1381,11 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            reportViewer1.LocalReport.EnableExternalImages = true;
             reportViewer1.RefreshReport();
         }
         private void PrintDataMatrix(string vbarcode, string vlocation)

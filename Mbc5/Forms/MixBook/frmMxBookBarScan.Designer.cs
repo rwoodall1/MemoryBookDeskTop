@@ -106,7 +106,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(318, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 16);
+            this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Date && Time";
             // 
@@ -116,7 +116,7 @@
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.Location = new System.Drawing.Point(39, 40);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(132, 16);
+            this.lbl1.Size = new System.Drawing.Size(131, 16);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "Scan Book Bar code";
             // 
@@ -290,7 +290,7 @@
             this.chkRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRemake.Location = new System.Drawing.Point(559, 39);
             this.chkRemake.Name = "chkRemake";
-            this.chkRemake.Size = new System.Drawing.Size(79, 20);
+            this.chkRemake.Size = new System.Drawing.Size(78, 20);
             this.chkRemake.TabIndex = 0;
             this.chkRemake.Text = "Remake";
             this.chkRemake.UseVisualStyleBackColor = true;
@@ -301,10 +301,10 @@
             // 
             this.reportViewer1.DocumentMapWidth = 35;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(27, 73);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 178);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(67, 46);
+            this.reportViewer1.Size = new System.Drawing.Size(70, 41);
             this.reportViewer1.TabIndex = 1;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
@@ -315,7 +315,7 @@
             this.chkPrToLabeler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPrToLabeler.Location = new System.Drawing.Point(559, 60);
             this.chkPrToLabeler.Name = "chkPrToLabeler";
-            this.chkPrToLabeler.Size = new System.Drawing.Size(119, 20);
+            this.chkPrToLabeler.Size = new System.Drawing.Size(118, 20);
             this.chkPrToLabeler.TabIndex = 2;
             this.chkPrToLabeler.Text = "Prnt To Labeler";
             this.chkPrToLabeler.UseVisualStyleBackColor = true;
@@ -360,7 +360,6 @@
             this.pnlBookLocation.Size = new System.Drawing.Size(265, 29);
             this.pnlBookLocation.TabIndex = 10023;
             this.pnlBookLocation.Visible = false;
-            //this.pnlBookLocation.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBookLocation_Paint);
             // 
             // lblBkLocation
             // 
@@ -449,7 +448,7 @@
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(691, 253);
+            this.ClientSize = new System.Drawing.Size(691, 242);
             this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);

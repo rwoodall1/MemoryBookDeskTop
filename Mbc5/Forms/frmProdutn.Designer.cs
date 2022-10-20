@@ -3747,26 +3747,26 @@ namespace Mbc5.Forms
             this.mnCust,
             this.mnBackGround});
             this.addItemMenu.Name = "addItemMenu";
-            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
+            this.addItemMenu.Size = new System.Drawing.Size(179, 70);
             // 
             // mnType
             // 
             this.mnType.Name = "mnType";
-            this.mnType.Size = new System.Drawing.Size(179, 22);
+            this.mnType.Size = new System.Drawing.Size(178, 22);
             this.mnType.Text = "Add Type Style";
             this.mnType.Click += new System.EventHandler(this.mnType_Click);
             // 
             // mnCust
             // 
             this.mnCust.Name = "mnCust";
-            this.mnCust.Size = new System.Drawing.Size(179, 22);
+            this.mnCust.Size = new System.Drawing.Size(178, 22);
             this.mnCust.Text = "Add Customer Type";
             this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
             // 
             // mnBackGround
             // 
             this.mnBackGround.Name = "mnBackGround";
-            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
+            this.mnBackGround.Size = new System.Drawing.Size(178, 22);
             this.mnBackGround.Text = "Add Back Ground";
             this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
@@ -5431,7 +5431,7 @@ namespace Mbc5.Forms
             this.specinstTextBox.Location = new System.Drawing.Point(889, 49);
             this.specinstTextBox.Multiline = true;
             this.specinstTextBox.Name = "specinstTextBox";
-            this.specinstTextBox.Size = new System.Drawing.Size(247, 164);
+            this.specinstTextBox.Size = new System.Drawing.Size(316, 164);
             this.specinstTextBox.TabIndex = 138;
             // 
             // desc4TextBox

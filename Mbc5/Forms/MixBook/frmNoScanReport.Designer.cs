@@ -117,6 +117,7 @@
             this.dgScans.RowHeadersVisible = false;
             this.dgScans.Size = new System.Drawing.Size(1172, 518);
             this.dgScans.TabIndex = 1;
+            this.dgScans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgScans_CellContentClick);
             // 
             // ShipName
             // 
@@ -298,7 +299,7 @@
             // lblRecCount
             // 
             this.lblRecCount.AutoSize = true;
-            this.lblRecCount.Location = new System.Drawing.Point(95, 28);
+            this.lblRecCount.Location = new System.Drawing.Point(605, 52);
             this.lblRecCount.Name = "lblRecCount";
             this.lblRecCount.Size = new System.Drawing.Size(34, 13);
             this.lblRecCount.TabIndex = 5;

@@ -608,12 +608,6 @@
     <Compile Include="Forms\MixBook\frmShippingReport.Designer.cs">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmUsPsLabel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmUsPsLabel.Designer.cs">
-      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MixBook\frmNoScanReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -631,12 +625,6 @@
     </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Zazzle\frmZaOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Zazzle\frmZaOrders.Designer.cs">
-      <DependentUpon>frmZaOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="LookUpForms\LkpLeadName.cs">
       <SubType>Form</SubType>
@@ -894,9 +882,6 @@
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmUsPsLabel.resx">
-      <DependentUpon>frmUsPsLabel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -905,9 +890,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Zazzle\frmZaOrders.resx">
-      <DependentUpon>frmZaOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
@@ -1288,10 +1270,6 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PitneyBowerApi\PitneyBowerApi.csproj">
-      <Project>{637662b8-46c8-41ca-bf2d-3bfff3006152}</Project>
-      <Name>PitneyBowerApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\RESTModule\RESTModule.csproj">
       <Project>{5f71fea4-8be9-4248-b6a4-d950fdeecc6e}</Project>
