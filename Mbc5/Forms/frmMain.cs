@@ -866,21 +866,21 @@ namespace Mbc5.Forms
 
                 ,Case
 
-                when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
+                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
                 Case
-                When  ProdCopies % 8=0 Then
-                (ProdCopies/8)
-                When ProdCopies % 8>0 Then
-                (ProdCopies/8)+1
+                When  W.Rmbtot % 8=0 Then
+                (W.Rmbtot/8)
+                When W.Rmbtot % 8>0 Then
+                (W.Rmbtot/8)+1
                 END
-                when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
 		  
                 CASE
-                When  ProdCopies % 4=0 Then
-                ProdCopies/4
+                When  W.Rmbtot % 4=0 Then
+                W.Rmbtot/4
 
-                When ProdCopies % 4>0 Then
-                (ProdCopies/4)+1
+                When W.Rmbtot % 4>0 Then
+                (W.Rmbtot/4)+1
 
                 else
                 0
@@ -890,20 +890,20 @@ namespace Mbc5.Forms
 
                 Case
                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
-                ProdCopies/1
+                W.Rmbtot/1
                 else
                 0
                 End
                 End AS LargePressQty
 
 				,Case
-				  when ProdCopies>4 Then
+				  when W.Rmbtot>4 Then
 				  
 				    CASE
 					  When Substring(ItemCode,4,4)IN('7755') Then
-						ProdCopies/4
+						W.Rmbtot/4
 					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-					  ProdCopies/1
+					  W.Rmbtot/1
 					  else
 					  0
 					  End 
@@ -911,7 +911,7 @@ namespace Mbc5.Forms
 				 ELSE
 				  Case
 				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-						ProdCopies/1
+						W.Rmbtot/1
 						else
 						0
 				     End

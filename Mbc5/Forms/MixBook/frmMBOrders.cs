@@ -40,7 +40,7 @@ namespace Mbc5.Forms.MixBook
             btnEdit.Visible= !ApplicationUser.IsInRole("BARCODE");
             pnlOrder.Enabled= !ApplicationUser.IsInRole("BARCODE");
 
-            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY") 
+            if (this.ApplicationUser.UserName.ToUpper() == "SA" || this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY"|| this.ApplicationUser.UserName.ToUpper()=="CINDY") 
             {
                 this.pnlRemake.Visible = true;
                 this.btnEmailTrk.Visible = true;
@@ -534,21 +534,21 @@ namespace Mbc5.Forms.MixBook
 
                 Case
 
-                when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
+                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
                 Case
-                When  ProdCopies % 8=0 Then
-                (ProdCopies/8)
-                When ProdCopies % 8>0 Then
-                (ProdCopies/8)+1
+                When  W.Rmbtot % 8=0 Then
+                (W.Rmbtot/8)
+                When W.Rmbtot % 8>0 Then
+                (W.Rmbtot/8)+1
                 END
-                when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
 		  
                 CASE
-                When  ProdCopies % 4=0 Then
-                ProdCopies/4
+                When  W.Rmbtot % 4=0 Then
+                W.Rmbtot/4
 
-                When ProdCopies % 4>0 Then
-                (ProdCopies/4)+1
+                When W.Rmbtot % 4>0 Then
+                (W.Rmbtot/4)+1
 
                 else
                 0
@@ -558,19 +558,19 @@ namespace Mbc5.Forms.MixBook
 
                 Case
                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
-                ProdCopies/1
+                W.Rmbtot/1
                 else
                 0
                 End
                 End AS LargePressQty,
 				Case
-				  when ProdCopies>4 Then
+				  when W.Rmbtot>4 Then
 				  
 				    CASE
 					  When Substring(ItemCode,4,4)IN('7755') Then
-						ProdCopies/4
+						W.Rmbtot/4
 					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-					  ProdCopies/1
+					  W.Rmbtot/1
 					  else
 					  0
 					  End 
@@ -578,7 +578,7 @@ namespace Mbc5.Forms.MixBook
 				 ELSE
 				  Case
 				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-						ProdCopies/1
+						W.Rmbtot/1
 						else
 						0
 				     End
@@ -1059,6 +1059,15 @@ namespace Mbc5.Forms.MixBook
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
 
-       
+        private void pnlButtons_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            Log.Error("test");
+        }
     }
 }

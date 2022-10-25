@@ -704,7 +704,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>="*"+RTrim(LTrim(Str(Fields!ProdCopies.Value)))+"*"</Value>
+                        <Value>="*"+RTrim(LTrim(Str(Fields!RemakeTotal.Value)))+"*"</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1153,36 +1153,6 @@
               </Border>
             </Style>
           </Image>
-          <Textbox Name="Textbox1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!CoverPreviewUrl.Value, "DataSet1")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>6.32167in</Top>
-            <Left>0.67654in</Left>
-            <Height>0.25in</Height>
-            <Width>3.04512in</Width>
-            <ZIndex>30</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
         <Height>9.48959in</Height>
         <Style />

@@ -50,12 +50,12 @@
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label jobPrintBatchLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -83,7 +83,6 @@
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.lblHold = new System.Windows.Forms.Label();
-            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEmailTrk = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
@@ -106,6 +105,7 @@
             this.receiveDateLabel1 = new System.Windows.Forms.Label();
             this.orderIdLabel1 = new System.Windows.Forms.Label();
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDownloadFiles = new System.Windows.Forms.Button();
             this.btnRemake = new System.Windows.Forms.Button();
@@ -349,7 +349,7 @@
             coverStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             coverStatusLabel.AutoSize = true;
             coverStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverStatusLabel.Location = new System.Drawing.Point(95, 617);
+            coverStatusLabel.Location = new System.Drawing.Point(95, 629);
             coverStatusLabel.Name = "coverStatusLabel";
             coverStatusLabel.Size = new System.Drawing.Size(84, 13);
             coverStatusLabel.TabIndex = 10020;
@@ -361,7 +361,7 @@
             bookStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             bookStatusLabel.AutoSize = true;
             bookStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bookStatusLabel.Location = new System.Drawing.Point(709, 617);
+            bookStatusLabel.Location = new System.Drawing.Point(709, 629);
             bookStatusLabel.Name = "bookStatusLabel";
             bookStatusLabel.Size = new System.Drawing.Size(80, 13);
             bookStatusLabel.TabIndex = 10021;
@@ -370,6 +370,7 @@
             // 
             // requestedShipMethodLabel
             // 
+            requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             requestedShipMethodLabel.AutoSize = true;
             requestedShipMethodLabel.Location = new System.Drawing.Point(379, 86);
             requestedShipMethodLabel.Name = "requestedShipMethodLabel";
@@ -379,6 +380,7 @@
             // 
             // jobPrintBatchLabel
             // 
+            jobPrintBatchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             jobPrintBatchLabel.AutoSize = true;
             jobPrintBatchLabel.Location = new System.Drawing.Point(839, 123);
             jobPrintBatchLabel.Name = "jobPrintBatchLabel";
@@ -444,14 +446,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mixBookOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mixBookOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.mixBookOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mixBookOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -468,7 +470,7 @@
             this.mixBookOrderDataGridView.Name = "mixBookOrderDataGridView";
             this.mixBookOrderDataGridView.ReadOnly = true;
             this.mixBookOrderDataGridView.RowHeadersWidth = 20;
-            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1086, 275);
+            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1086, 287);
             this.mixBookOrderDataGridView.TabIndex = 131;
             this.mixBookOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentClick);
             this.mixBookOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentDoubleClick);
@@ -531,9 +533,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle4.Format = "Cover";
-            dataGridViewCellStyle4.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -600,9 +602,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = this.RemakeTicketQueryBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.RemakeTicketQueryBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.EnableExternalImages = true;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
@@ -615,8 +617,7 @@
             // 
             // pnlOrder
             // 
-            this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlOrder.Controls.Add(this.lblHold);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
@@ -662,7 +663,7 @@
             this.pnlOrder.Controls.Add(shipNameLabel);
             this.pnlOrder.Location = new System.Drawing.Point(52, 28);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(1151, 267);
+            this.pnlOrder.Size = new System.Drawing.Size(1151, 253);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
@@ -679,21 +680,9 @@
             this.lblHold.Text = "On Hold";
             this.lblHold.Visible = false;
             // 
-            // reportViewer3
-            // 
-            this.reportViewer3.DocumentMapWidth = 35;
-            this.reportViewer3.LocalReport.EnableExternalImages = true;
-            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
-            this.reportViewer3.Name = "reportViewer3";
-            this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(79, 55);
-            this.reportViewer3.TabIndex = 10024;
-            this.reportViewer3.Visible = false;
-            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
-            // 
             // btnEmailTrk
             // 
+            this.btnEmailTrk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEmailTrk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmailTrk.BackgroundImage")));
             this.btnEmailTrk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmailTrk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -709,6 +698,7 @@
             // 
             // jobPrintBatchLabel1
             // 
+            this.jobPrintBatchLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.jobPrintBatchLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "JobPrintBatch", true));
             this.jobPrintBatchLabel1.Location = new System.Drawing.Point(927, 123);
             this.jobPrintBatchLabel1.Name = "jobPrintBatchLabel1";
@@ -740,6 +730,7 @@
             // 
             // requestedShipMethodLabel1
             // 
+            this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.requestedShipMethodLabel1.Location = new System.Drawing.Point(539, 86);
             this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
@@ -909,6 +900,19 @@
             this.shipStateComboBox.TabIndex = 305;
             this.shipStateComboBox.ValueMember = "Abrev";
             // 
+            // reportViewer3
+            // 
+            this.reportViewer3.DocumentMapWidth = 35;
+            this.reportViewer3.LocalReport.EnableExternalImages = true;
+            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.Size = new System.Drawing.Size(79, 55);
+            this.reportViewer3.TabIndex = 10024;
+            this.reportViewer3.Visible = false;
+            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
+            // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(9, 31);
@@ -923,7 +927,7 @@
             // 
             this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDownloadFiles.Location = new System.Drawing.Point(846, 3);
+            this.btnDownloadFiles.Location = new System.Drawing.Point(834, 3);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
             this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
             this.btnDownloadFiles.TabIndex = 10018;
@@ -946,12 +950,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource5.Name = "dsMxPackingSlip";
-            reportDataSource5.Value = this.MixbookPackingSlipBindingSource;
-            reportDataSource6.Name = "dsMixBookRemakeTkt";
-            reportDataSource6.Value = this.MixbookRemakeTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -969,7 +973,7 @@
             // 
             this.coverStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.coverStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "CoverStatus", true));
-            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 617);
+            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 629);
             this.coverStatusLabel1.Name = "coverStatusLabel1";
             this.coverStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.coverStatusLabel1.TabIndex = 10021;
@@ -978,7 +982,7 @@
             // 
             this.bookStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bookStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "BookStatus", true));
-            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 617);
+            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 629);
             this.bookStatusLabel1.Name = "bookStatusLabel1";
             this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.bookStatusLabel1.TabIndex = 10022;
@@ -1053,6 +1057,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -1195,6 +1200,8 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlButtons.Controls.Add(this.pnlRemake);
             this.pnlButtons.Controls.Add(this.btnMixbookPkgList);
             this.pnlButtons.Controls.Add(this.btnDownloadFiles);
@@ -1202,13 +1209,14 @@
             this.pnlButtons.Controls.Add(this.cmdJobTicket);
             this.pnlButtons.Location = new System.Drawing.Point(101, 300);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1082, 32);
+            this.pnlButtons.Size = new System.Drawing.Size(1070, 32);
             this.pnlButtons.TabIndex = 10025;
+            this.pnlButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlButtons_Paint);
             // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1225, 646);
+            this.ClientSize = new System.Drawing.Size(1225, 658);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(bookStatusLabel);

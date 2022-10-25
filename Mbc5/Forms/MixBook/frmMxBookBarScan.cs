@@ -858,11 +858,15 @@ namespace Mbc5.Forms.MixBook
                     case "ONBOARD":
                         vDeptCode = "37";
                         vWIR = "OB";
+                        if (!WipCheck(vDeptCode, "SC"))
+                        {
 
-                      
+                            //return;
+                        }
+
                         //msg if quality remake
-                     
-                            sqlClient.ClearParameters();
+
+                        sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select FullRemake,Remake
                                                 from Covers C 
                                                 Where C.Invno=@Invno And Remake = 1 ");
@@ -1558,6 +1562,52 @@ namespace Mbc5.Forms.MixBook
                         Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
 
                     }
+                    break;
+                case "37":
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                Begin
+                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                END
+                                                ");
+
+                    var result1111 = sqlClient.Insert();
+                    if (result1111.IsError)
+                    {
+
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result1111.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "43");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                Begin
+                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                END
+                                                ");
+
+                    var result111 = sqlClient.Insert();
+                    if (result111.IsError)
+                    {
+
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result111.Errors[0].DeveloperMessage);
+
+                    }
+
+
+
+
                     break;
                 case "39":
                     sqlClient.ClearParameters();
