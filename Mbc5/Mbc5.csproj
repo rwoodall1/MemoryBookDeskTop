@@ -70,9 +70,8 @@
     <Reference Include="CustomControls">
       <HintPath>.\CustomControls.dll</HintPath>
     </Reference>
-    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.2.2446.31718, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
@@ -144,6 +143,9 @@
     <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.5.0.4\lib\net46\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="NLog.Database, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Database.5.0.0-preview.3\lib\net46\NLog.Database.dll</HintPath>
+    </Reference>
     <Reference Include="NLog.Extended, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.Extended.4.7.5\lib\net45\NLog.Extended.dll</HintPath>
     </Reference>
@@ -160,6 +162,9 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.4\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
     </Reference>
@@ -718,6 +723,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <None Include="App.config" />
     <None Include="Content\jobnoSearch.jpg" />
     <None Include="Content\iconfinder_order_59488.png" />
     <Content Include="Content\MAIL.png" />
@@ -1107,7 +1113,7 @@
     <None Include="DataSets\dsXSupplies.xss">
       <DependentUpon>dsXSupplies.xsd</DependentUpon>
     </None>
-    <None Include="app.config">
+    <None Include="apporig.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="DataSets\dsBids.xsc">
@@ -1210,7 +1216,7 @@
       <DependentUpon>dsUser.xsd</DependentUpon>
     </None>
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="DataSets\dsInvoice.xsc">
       <DependentUpon>dsInvoice.xsd</DependentUpon>
