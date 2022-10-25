@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>M:\UpdateExe\bin\Release\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -70,9 +70,8 @@
     <Reference Include="CustomControls">
       <HintPath>.\CustomControls.dll</HintPath>
     </Reference>
-    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.2.2446.31718, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
@@ -483,12 +482,6 @@
     <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.Designer.cs">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -829,9 +822,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
       <DependentUpon>frmMInvoicInq.cs</DependentUpon>

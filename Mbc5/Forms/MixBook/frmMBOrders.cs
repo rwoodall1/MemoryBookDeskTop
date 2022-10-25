@@ -906,6 +906,9 @@ namespace Mbc5.Forms.MixBook
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Log.Error("testerrorlog");
+        }
     }
 }
