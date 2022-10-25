@@ -1853,12 +1853,7 @@ namespace Mbc5.Forms
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
-
-            frmLoadTest frmLoadTest = new frmLoadTest(this.ApplicationUser);
-            frmLoadTest.MdiParent = this;
-            frmLoadTest.Show();
-            this.Cursor = Cursors.Default;
+            
         }
 
         private void mixbookBarscanToolStripMenuItem_Click(object sender, EventArgs e)
