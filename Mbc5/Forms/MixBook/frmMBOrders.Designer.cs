@@ -136,6 +136,7 @@
             this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -619,6 +620,7 @@
             // 
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.button1);
             this.pnlOrder.Controls.Add(this.lblHold);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
@@ -1213,6 +1215,19 @@
             this.pnlButtons.TabIndex = 10025;
             this.pnlButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlButtons_Paint);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(974, 100);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.TabIndex = 341;
+            this.button1.Text = "Toggle Hold";
+            this.toolTip1.SetToolTip(this.button1, "Place order on hold. Plant only.");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1353,5 +1368,6 @@
         private System.Windows.Forms.ToolStripButton purgeStripButton2;
         private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
         private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.Button button1;
     }
 }

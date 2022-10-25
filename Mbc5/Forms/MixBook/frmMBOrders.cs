@@ -532,58 +532,46 @@ namespace Mbc5.Forms.MixBook
                     (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                  '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal,
 
-                Case
-
+               Case
                 when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
-                Case
-                When  W.Rmbtot % 8=0 Then
-                (W.Rmbtot/8)
-                When W.Rmbtot % 8>0 Then
-                (W.Rmbtot/8)+1
-                END
-                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
-		  
-                CASE
-                When  W.Rmbtot % 4=0 Then
-                W.Rmbtot/4
+						Case
+						When  W.Rmbtot % 8=0 Then
+						(W.Rmbtot/8)
+						When W.Rmbtot % 8>0 Then
+						(W.Rmbtot/8)+1
+						END
 
-                When W.Rmbtot % 4>0 Then
-                (W.Rmbtot/4)+1
-
-                else
-                0
-                End 
-
-                ELSE
-
-                Case
-                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
-                W.Rmbtot/1
-                else
-                0
-                End
-                End AS LargePressQty,
-				Case
-				  when W.Rmbtot>4 Then
-				  
-				    CASE
-					  When Substring(ItemCode,4,4)IN('7755') Then
+                when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
+                 1          
+                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
+					CASE
+						When  W.Rmbtot % 4=0 Then
 						W.Rmbtot/4
-					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-					  W.Rmbtot/1
-					  else
-					  0
-					  End 
-									  
-				 ELSE
-				  Case
-				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-						W.Rmbtot/1
-						else
-						0
-				     End
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					End
+				when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+		            1
+                ELSE
+                  W.Rmbtot/1                        
+                End AS LargePressQty
+				,
+				Case
+				  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
+					Case
+						When  W.Rmbtot % 4=0 Then
+						(W.Rmbtot/4)
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					END
 
-				End AS SmallPressQty 
+                  when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
+                    1
+                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
+                    0
+				When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
+					  W.Rmbtot/1					
+				End AS SmallPressQty
 
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno
@@ -1068,6 +1056,11 @@ namespace Mbc5.Forms.MixBook
         {
             
             Log.Error("test");
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Log.Error("livetest11");
         }
     }
 }
