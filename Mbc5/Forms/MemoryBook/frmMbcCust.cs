@@ -45,12 +45,13 @@ namespace Mbc5.Forms.MemoryBook {
             if (handler != null)
                 handler(this,e);
             }
+
+        #region "Properties"
         private UserPrincipal ApplicationUser { get; set; }
         public new frmMain frmMain { get; set; }
         private bool CustAddressHasChanged { get; set; }
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
-   #region "Properties"
         private bool MktGo {
             get { return vMktGo; }
             set {                
@@ -831,19 +832,19 @@ public override void Cancel() {
                 sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
                 sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
                 sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
-                sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString());
+                sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString() == null ? "" : cmbInvStateComboBox.SelectedValue.ToString());
                 sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
                 sqlClient.AddParameter("@ShippingName", shippingNameTextBox.Text);
                 sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
                 sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
                 sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
-                sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString());
+                sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString()==null?"": cmbshippingState.SelectedValue.ToString());
                 sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
                 sqlClient.AddParameter("@OtherName", txtOtherName.Text);
                 sqlClient.AddParameter("@OtherAddr", txtOtherAddr.Text);
                 sqlClient.AddParameter("@OtherAddr2", txtOtherAddr2.Text);
                 sqlClient.AddParameter("@OtherCity", txtOtherCity.Text);
-                sqlClient.AddParameter("@OtherState", cmbOtherState.SelectedValue.ToString());
+                sqlClient.AddParameter("@OtherState",cmbOtherState.SelectedValue.ToString() == null ? "" : cmbOtherState.SelectedValue.ToString());
                 sqlClient.AddParameter("@OtherZipCode", txtOtherZipCode.Text);
                 sqlClient.AddParameter("@SchCode", Schcode);
                 sqlClient.AddParameter("@InvoiceEmail1", invoiceEmail1TextBox.Text);
@@ -877,8 +878,11 @@ public override void Cancel() {
 
                 // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
                 this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+
                 // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
                 this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
+                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
+
                 // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
                 this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
                 // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
@@ -1115,7 +1119,7 @@ public override void Cancel() {
 			SetInvnoSchCode();
 			frmMbcCust_Paint(this, null);
 		}
-		public  void SchCodeSearch() {
+		public override void SchCodeSearch() {
 			var currentSchool = this.Schcode;
 			if (DoPhoneLog()) {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -2219,6 +2223,7 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContactEmail, string.Empty);
                 var emailHelper = new EmailHelper();
+                emailHelper.SendEmail("test", "randy.woodall@jostens.com", null,"test", EmailType.Mbc);
                 emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
             }
             else
@@ -2858,7 +2863,12 @@ public override void Cancel() {
             //event must be here to bypass data errors due to background worker issue.
         }
 
-       
+        private void reportViewer3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 

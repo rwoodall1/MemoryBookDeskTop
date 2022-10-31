@@ -34,7 +34,7 @@ namespace Mbc5.Forms
 
 		
 	private bool startup = true;
-		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook","MBLead","BARCODE" }, userPrincipal)
 		{
 			InitializeComponent();
 			//this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -44,7 +44,7 @@ namespace Mbc5.Forms
 			this.Schcode = schcode;
 
 		}
-		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook" }, userPrincipal)
+		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook", "MBLead","BARCODE"}, userPrincipal)
 		{
 			InitializeComponent();
 
@@ -126,7 +126,16 @@ namespace Mbc5.Forms
 				SetShipLabel();
 				SetEmail();
 				CurrentProdNo = lblProdNo.Text;
-
+                try
+                {
+                    DataRowView row = (DataRowView)produtnBindingSource.Current;
+                    string company = row["Company"].ToString();
+                    if (company == "MXB")
+                    {
+                        tbProdutn.SelectTab(1);
+                    }
+                }
+                catch { };
 			}
 			catch (Exception ex)
 			{
@@ -7692,8 +7701,9 @@ namespace Mbc5.Forms
 					}
 					catch (DBConcurrencyException dbex)
 					{
-                        MbcMessageBox.Warning("Another user has changed data. Please review and re-enter your data.","");
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.","");
                         Fill();
+                        SaveProdutn();
 						//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
 						//if (result == DialogResult.Yes) { SaveProdutn(); }
 					}
@@ -7769,6 +7779,8 @@ namespace Mbc5.Forms
 					{
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
                         //if (result == DialogResult.Yes) { SaveCovers(); };
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "");
+                        Fill();
                         SaveCovers();
 
                     }

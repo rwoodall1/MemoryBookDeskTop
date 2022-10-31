@@ -858,11 +858,15 @@ namespace Mbc5.Forms.MixBook
                     case "ONBOARD":
                         vDeptCode = "37";
                         vWIR = "OB";
+                        if (!WipCheck(vDeptCode, "SC"))
+                        {
 
-                      
+                            //return;
+                        }
+
                         //msg if quality remake
-                     
-                            sqlClient.ClearParameters();
+
+                        sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Select FullRemake,Remake
                                                 from Covers C 
                                                 Where C.Invno=@Invno And Remake = 1 ");
@@ -1132,7 +1136,7 @@ namespace Mbc5.Forms.MixBook
                                     ,FullRemake=@FullRemake
                                     ,RemakeReason=@RemakeReason
                                     ,persondest=@persondest
-                                    ,specinst=@Memo +' | ' + CONVERT(nvarchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
+                                    ,specinst=@Memo +' | ' + CONVERT(varchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
                 string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.AddParameter("@Memo", vmemo);
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
@@ -1365,7 +1369,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,MO.CoverPreviewUrl
                                     ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                     FROM MixbookOrder MO
                                     Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
@@ -1381,9 +1385,11 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            reportViewer1.LocalReport.EnableExternalImages = true;
             reportViewer1.RefreshReport();
         }
         private void PrintDataMatrix(string vbarcode, string vlocation)
@@ -1556,6 +1562,52 @@ namespace Mbc5.Forms.MixBook
                         Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result13.Errors[0].DeveloperMessage);
 
                     }
+                    break;
+                case "37":
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "29");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                Begin
+                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                END
+                                                ");
+
+                    var result1111 = sqlClient.Insert();
+                    if (result1111.IsError)
+                    {
+
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result1111.Errors[0].DeveloperMessage);
+
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", this.Invno);
+                    sqlClient.AddParameter("@DescripID", "43");
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", "SYS");
+                    sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                Begin
+                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                END
+                                                ");
+
+                    var result111 = sqlClient.Insert();
+                    if (result111.IsError)
+                    {
+
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result111.Errors[0].DeveloperMessage);
+
+                    }
+
+
+
+
                     break;
                 case "39":
                     sqlClient.ClearParameters();

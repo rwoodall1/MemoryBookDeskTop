@@ -61,8 +61,8 @@ Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
 Where M.MixbookOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)And M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo  Order By Invno,DateShipped";
 
             sqlClient.CommandText(cmd);
-            sqlClient.AddParameter("@DateFrom", dtFrom.Value);
-            sqlClient.AddParameter("@DateTo", dtTo.Value);
+            sqlClient.AddParameter("@DateFrom", dtFrom.Value.Date);
+            sqlClient.AddParameter("@DateTo", dtTo.Value.Date);
 
             var reportResult = sqlClient.SelectMany<MixbookInvoiceReport>();
             if (reportResult.IsError)

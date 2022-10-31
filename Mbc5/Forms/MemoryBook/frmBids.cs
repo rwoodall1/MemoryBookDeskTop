@@ -20,6 +20,7 @@ using Exceptionless;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
+    
         private bool startup = true;
         public frmBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
         {

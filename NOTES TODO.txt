@@ -1,0 +1,16 @@
+﻿1. Sales form update is slow when in debug. When not debugging runs fine. https://social.msdn.microsoft.com/Forums/en-US/f763319b-4e5c-45a0-aaaa-34cd198e3a3a/sqlclientsqldataadapterupdate-performs-very-slowly?forum=adodotnetdataproviders
+2.Get row error (constraint errors)https://stackoverflow.com/questions/7026566/failed-to-enable-constraints-one-or-more-rows-contain-values-violating-non-null
+var a=dsMcust.Tables["mcust"].GetErrors();
+3. Excptionless login. randy.woodall@jostens.com/Briggitte1
+
+4. Moved produtn remake columns to covers table 08/08/2019
+
+5. export formats:https://stackoverflow.com/questions/3494009/creating-a-custom-export-to-excel-for-reportviewer-rdlcJust a heads up... the accepted answer will render as an XLS file, which was requested by the original poster.
+
+However, you can now export to XLSX as well. You have to change the format parameter of the Render() method from "Excel" to "EXCELOPENXML".
+
+To get a full list of possible values you can call ReportViewer1.LocalReport.ListRenderingExtensions(). When I ran it on my report viewer instance I got these possible options:
+
+"Excel" "EXCELOPENXML" "IMAGE" "PDF" "WORD" "WORDOPENXML"
+
+I found it very hard to determine what you needed to pass in for the formats. MSDN documents this very poorly if you ask me.

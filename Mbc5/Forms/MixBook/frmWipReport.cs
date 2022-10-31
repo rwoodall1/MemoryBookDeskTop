@@ -17,7 +17,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmWipReport : BaseClass.frmBase
     {
-        public frmWipReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator" }, userPrincipal)
+        public frmWipReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -60,11 +60,11 @@ namespace Mbc5.Forms.MixBook
 									,WD49.War AS CaseIn
 									,WD50.War AS Quality				                          
 									,WD50.MxbLocation AS Location
-									
                                     ,Convert(VARCHAR,Mo.OrderReceivedDate,22)AS OrderReceivedDate
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                                     ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
                                     ,SH.Carrier As ShipCarrier
+                                    ,'*'+CAST(MO.ClientOrderId AS varchar)+'*' AS ClientOrderId
                                  from MixBookOrder MO 
                                  Left Join ShipCarriers SH On MO.ShipMethod=SH.ShipAlias
                                  Left Join Produtn P On MO.Invno=P.Invno
@@ -148,6 +148,25 @@ namespace Mbc5.Forms.MixBook
         {
             
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex.Equals(2))
+                if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.Value != null)
+                {
+                    int theClinetOrderId;
+                  string _clientOrderId= dataGridView1.CurrentRow.Cells[0].Value.ToString().Replace("*","");
+                    if (int.TryParse(_clientOrderId, out theClinetOrderId)) { 
+                    
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, theClinetOrderId);
+                    frmMBOrders.MdiParent = this.MdiParent;
+                    frmMBOrders.Show();
+                    this.Cursor = Cursors.Default;}
+                }
+           
+         
+            
         }
     }
 }

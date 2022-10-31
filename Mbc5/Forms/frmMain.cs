@@ -6,18 +6,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Data.SqlClient;
+
 using Mbc5.Dialogs;
 using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using Mbc5.Forms.MixBook;
 using BaseClass.Classes;
 using BaseClass.Forms;
-using System.Diagnostics;
+
 using Mbc5.LookUpForms;
 using NLog;
 //using Mbc5.Reports;
 using Mbc5.Classes;
-using System.Data.SqlClient;
+
 using Exceptionless;
 using Exceptionless.Models;
 using BaseClass;
@@ -25,7 +28,9 @@ using BindingModels;
 using Microsoft.Reporting.WinForms;
 using Microsoft.VisualBasic;
 using CustomControls;
-using NLog;
+using CsvHelper;
+using System.IO;
+
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -34,6 +39,8 @@ namespace Mbc5.Forms
         public frmMain()
         {
             InitializeComponent();
+            Log = LogManager.GetLogger(GetType().FullName);
+           
         }
         protected Logger Log { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
@@ -50,6 +57,7 @@ namespace Mbc5.Forms
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
+            
             this.Hide();
 
             for (int i = 0; i < 3; i++)
@@ -70,7 +78,7 @@ namespace Mbc5.Forms
             if (keepLoading)
             {
                 this.WindowState = FormWindowState.Maximized;
-
+          
 
                 if (this.ForcePasswordChange)
                 {
@@ -86,9 +94,11 @@ namespace Mbc5.Forms
                         Application.Exit();
                     }
                 }
+           
                 ValidateUserRoles();
-                SetMenu();
+               SetMenu();
                 mnuMain.Enabled = true;
+                 
                 this.WindowState = FormWindowState.Maximized;
             }
 
@@ -118,12 +128,15 @@ namespace Mbc5.Forms
                 return false;
             }
 
-            SetMenu();
+           // SetMenu();
 
             return true;
         }
         private void SetMenu()
+        
         {
+
+
 
             if (ApplicationUser.UserName.ToUpper() == "BARCODE")
             {
@@ -139,6 +152,18 @@ namespace Mbc5.Forms
 
 
 
+            }
+            else if (ApplicationUser.UserName.ToUpper() == "CALENDARS")
+            {
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixBookToolStripMenuItem.Visible = false;
+                meridianBindingWIPToolStripMenuItem_Click(null, null);
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
             {
@@ -158,12 +183,10 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = true;
                 barScanToolStripMenuItem.Visible = false;
             }
-            else if ( ApplicationUser.UserName.ToUpper() == "PRESS"
-               || ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "BINDING2"
-               || ApplicationUser.UserName.ToUpper() == "QUALITY" || ApplicationUser.UserName.ToUpper() == "TRIMMING")
+            else if (ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
-                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = true;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
                 tsMain.Visible = false;
@@ -174,8 +197,30 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem_Click(null, null);
-                productionToolStripMenuItem.Visible = false;
+
                 shippingScanToolStripMenuItem.Visible = false;
+            }
+            else if (ApplicationUser.UserName.ToUpper() == "TRIMMING"|| ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
+            {
+
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = true;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+
+                productionToolStripMenuItem.Visible = true;
+
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = true;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+
+                shippingScanToolStripMenuItem.Visible = false;
+
+
             }
             else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
@@ -217,27 +262,33 @@ namespace Mbc5.Forms
             else
             {
                 tsMain.Visible = true;
-                mixbookReportsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                this.mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+                //Mixbook
+                mixbookReportsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MBLead" });
+                invoiceReportToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", });//MBLead does not see this
+                resetJobTicketsByBatchToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", });//MBLead does not see this
+                mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
+                mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
-                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
-                productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB" });
+
+
+                productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
+                productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 systemToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
-                // invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                // meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
-                // mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+
+
+                //invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+                //meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
+                //mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
                 //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 CleanShipping();
             }
 
 
 
-        }
+            }
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -325,7 +376,7 @@ namespace Mbc5.Forms
         }
         public void ValidateUserRoles()
         {
-            string[] AvailableRoles = new string[] { "SA", "Administrator" };//list all roles when completed
+            string[] AvailableRoles = new string[] { "SA", "Administrator","MixBook","MBLead" };//list all roles when completed
             foreach (string role in AvailableRoles)
                 try
                 {
@@ -650,6 +701,7 @@ namespace Mbc5.Forms
                 sqlClient.CommandText(@"
                     Select Invno,ShipName
                     ,ClientOrderId
+                    ,CoverPreviewUrl
                     ,RequestedShipDate
                     ,Description
                     ,Copies
@@ -661,8 +713,60 @@ namespace Mbc5.Forms
                     , SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno
                     ,(Select count(ClientOrderId) from mixbookorder where Clientorderid=MO.clientOrderid) as NumInOrder
                     ,(Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip
-                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode From MixBookOrder MO Where (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                        AND  BookStatus IS Null ORDER BY Description,Copies
+                    ,'*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode, 
+                    Case
+
+                    when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
+                    Case
+                    When  ProdCopies % 8=0 Then
+                    (ProdCopies/8)
+                    When ProdCopies % 8>0 Then
+                    (ProdCopies/8)+1
+                    END
+                    when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+
+                    CASE
+                    When  ProdCopies % 4=0 Then
+                    ProdCopies/4
+
+                    When ProdCopies % 4>0 Then
+                    (ProdCopies/4)+1
+                    else
+                    0
+                    End 
+
+                    ELSE
+
+                    Case
+                    When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+                    ProdCopies/1
+                    else
+                    0
+                    End
+                    End AS LargePressQty,
+				Case
+				  when ProdCopies>4 Then
+				  
+				    CASE
+					  When Substring(ItemCode,4,4 )IN('7755') Then
+						ProdCopies/4
+					When Substring(ItemCode,4,4 )IN('8511','8585','1185','7755','1212','8060','8050') Then
+					  ProdCopies/1
+					  else
+					  0
+					  End 
+									  
+				 ELSE
+				  Case
+				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+						ProdCopies/1
+						else
+						0
+				     End
+
+				End AS SmallPressQty 
+                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
+                        AND  (BookStatus IS Null OR BookStatus='') ORDER BY Description,Copies
                 ");
           
                 var result = sqlClient.SelectMany<JobTicketQuery>();
@@ -694,7 +798,8 @@ namespace Mbc5.Forms
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-                    this.reportViewer1.RefreshReport();
+                   
+                this.reportViewer1.RefreshReport();
                 }
                 else
                 {
@@ -748,6 +853,7 @@ namespace Mbc5.Forms
                 ,MO.RequestedShipDate
                 ,MO.Description
                 ,MO.Copies,MO.Pages
+               ,MO.CoverPreviewUrl
                 ,MO.Backing,MO.OrderReceivedDate
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
@@ -756,8 +862,52 @@ namespace Mbc5.Forms
                 ,'*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode
                 ,W.Rmbto AS RemakeDate
                 ,W.Rmbtot As RemakeTotal
+                ,wd.invno
+
+                 ,Case
+                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
+						Case
+						When  W.Rmbtot % 8=0 Then
+						(W.Rmbtot/8)
+						When W.Rmbtot % 8>0 Then
+						(W.Rmbtot/8)+1
+						END
+
+                when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
+                 1          
+                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
+					CASE
+						When  W.Rmbtot % 4=0 Then
+						W.Rmbtot/4
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					End
+				when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+		            1
+                ELSE
+                  W.Rmbtot/1                        
+                End AS LargePressQty
+				,
+				Case
+				  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
+					Case
+						When  W.Rmbtot % 4=0 Then
+						(W.Rmbtot/4)
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					END
+
+                  when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
+                    1
+                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
+                    0
+				When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
+					  W.Rmbtot/1					
+				End AS SmallPressQty  
+
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
-                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0
+                Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
+                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
             "); 
 
            
@@ -777,6 +927,7 @@ namespace Mbc5.Forms
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketQuery.rdlc";
+                
                     this.reportViewer1.RefreshReport();
                 }
                 else
@@ -800,6 +951,9 @@ namespace Mbc5.Forms
                 var updateResult = sqlClient.Update();
             }
         }
+    
+      
+
         #endregion
 
         #region MenuActions
@@ -1114,10 +1268,20 @@ namespace Mbc5.Forms
         }
         private void tsSave_Click(object sender, EventArgs e)
         {
+            var curFrm = this.ActiveMdiChild;
+            string frmName = curFrm.Name;
             try
             {
-                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                activeform.Save(true);
+                if (frmName == "frmMBOrders")
+                {
+                    var activeform = this.ActiveMdiChild as frmMBOrders;
+                    activeform.SaveOrder();
+                }
+                else
+                {
+                    var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                    activeform.Save(true);
+                }
 
             }
             catch (Exception ex)
@@ -1833,20 +1997,6 @@ namespace Mbc5.Forms
 
             }
 
-
-
-
-
-
-
-
-
-            //this.Cursor = Cursors.AppStarting;
-
-            //frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser);
-            //frmMBOrders.MdiParent = this;
-            //frmMBOrders.Show();
-            //this.Cursor = Cursors.Default;
         }
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1959,14 +2109,7 @@ namespace Mbc5.Forms
             PrintRemakeTickets();
         }
 
-        private void mixBookUSPSLabelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmUsPsLabel frmUsPsLabel = new frmUsPsLabel(this.ApplicationUser);
-
-            frmUsPsLabel.MdiParent = this;
-            frmUsPsLabel.Show();
-            this.Cursor = Cursors.Default;
-        }
+       
 
         private void coverSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2070,6 +2213,27 @@ namespace Mbc5.Forms
         {
             ResetJobTickets();
         }
+
+        private void meridianBindingWIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMerBindingTime frmMerBinding = new frmMerBindingTime(this.ApplicationUser);
+            frmMerBinding.MdiParent = this;
+            frmMerBinding.Show();
+        }
+
+        private void scanCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          frmNoScanReport frmNoScanReport=new frmNoScanReport(this.ApplicationUser);
+            frmNoScanReport.MdiParent = this;
+            frmNoScanReport.Show();
+        }
+
+        private void mixbookReportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         #endregion
         //nothing below here
     }

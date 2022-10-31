@@ -19,6 +19,7 @@ namespace BindingModels
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
         public int Copies { get; set; }
+        public int ProdCopies { get; set; }
         public int Pages { get; set; }
         public string Backing { get; set; }
         public DateTime OrderReceivedDate { get; set; }
@@ -29,6 +30,9 @@ namespace BindingModels
         public DateTime RemakeDate { get; set; }
         public int RemakeTotal { get; set; }
         public int NumToShip { get; set; }
+        public string CoverPreviewUrl { get; set; }
+        public int LargePressQty { get; set; }
+        public int SmallPressQty { get; set; }
     }
     public class JobTicketQuery
     {
@@ -40,6 +44,9 @@ namespace BindingModels
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
         public int Copies { get; set; }
+        public int ProdCopies { get; set; }
+        public int LargePressQty { get; set; }
+        public int SmallPressQty { get; set; }
         public int Pages { get; set; }
         public string Backing { get; set; }
         public DateTime OrderReceivedDate { get; set; }
@@ -50,6 +57,8 @@ namespace BindingModels
         public bool JobTicketPrinted { get; set; }
         public int NumToShip { get; set; }
         public int JobPrintBatch { get; set; }
+        public string CoverPreviewUrl { get; set; }
+
     }
     public class SiblingCheck
     {
@@ -114,6 +123,32 @@ namespace BindingModels
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
         public string ShipCarrier { get; set; }
+        public string ClientOrderId { get; set; }
+    }
+    public class NoBookScannedReportModel
+    {
+        public string Invno { get; set; }
+        public string OrderReceivedDate { get; set; }
+        public string RequestedShipDate { get; set; }
+        public string ShipName { get; set; }
+        public string Backing { get; set; }
+        public int Copies { get; set; }
+        public int Pages { get; set; }
+        public string IsBookRemake { get; set; }
+        public string IsCoverRemake { get; set; }
+        public string CTrimming { get; set; }
+       
+       
+        public string Description { get; set; }
+        public string CPress { get; set; }
+        public string OnBoards { get; set; }
+      
+        public string War { get; set; }
+        public string Scan { get; set; }
+     
+        
+
+
     }
 
     public class MixBookBarScanModel
@@ -175,6 +210,7 @@ namespace BindingModels
         public string BarCode { get; set; }
         public string CoverLocation { get; set; }
         public string BookLocation { get; set; }
+        public string CoverPreviewUrl { get; set; }
     }
     public class MixbookRemakeTicket
     {

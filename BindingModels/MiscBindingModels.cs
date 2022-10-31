@@ -5,6 +5,18 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class MerBindingWip
+    {
+       public int Id { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string ProductType { get; set; }
+        public string Task{ get; set; }
+        public string Initials{ get; set; }
+        public decimal  Time{ get; set; }
+        public string Description{ get; set; }
+        public int Quantity{ get; set; }
+
+    }
     public class Item
     {
         public string ItemId { get; set; }
