@@ -1268,10 +1268,20 @@ namespace Mbc5.Forms
         }
         private void tsSave_Click(object sender, EventArgs e)
         {
+            var curFrm = this.ActiveMdiChild;
+            string frmName = curFrm.Name;
             try
             {
-                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                activeform.Save(true);
+                if (frmName == "frmMBOrders")
+                {
+                    var activeform = this.ActiveMdiChild as frmMBOrders;
+                    activeform.SaveOrder();
+                }
+                else
+                {
+                    var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                    activeform.Save(true);
+                }
 
             }
             catch (Exception ex)

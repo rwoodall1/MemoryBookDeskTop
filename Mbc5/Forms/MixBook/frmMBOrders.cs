@@ -35,6 +35,7 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+         
             pnlButtons.Visible = !ApplicationUser.IsInRole("BARCODE");
             btnHold.Visible = !ApplicationUser.IsInRole("BARCODE");
             btnEdit.Visible= !ApplicationUser.IsInRole("BARCODE");
@@ -64,6 +65,11 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            this.SaveOrder();
+           
+        }
+        public  void SaveOrder()
+        {
             try
             {
                 this.Validate();
@@ -77,9 +83,8 @@ namespace Mbc5.Forms.MixBook
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
-            this.Fill();
-        }
 
+        }
         
         private void SetConnectionString()
         {
@@ -766,6 +771,7 @@ namespace Mbc5.Forms.MixBook
         {
             if (pnlOrder.Enabled == true)
             {
+                this.Save();
                 pnlOrder.Enabled = false;
             }
             else { pnlOrder.Enabled = true; }

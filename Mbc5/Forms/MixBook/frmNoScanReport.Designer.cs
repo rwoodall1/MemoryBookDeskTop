@@ -31,6 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgScans = new System.Windows.Forms.DataGridView();
+            this.bsData = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.dataSet1 = new System.Data.DataSet();
+            this.lblRecCount = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.rbBooks = new System.Windows.Forms.RadioButton();
+            this.rbCovers = new System.Windows.Forms.RadioButton();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +48,7 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Backing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coverRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Scan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CoverPress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,15 +61,6 @@
             this.PressCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CaseIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsData = new System.Windows.Forms.BindingSource(this.components);
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dataSet1 = new System.Data.DataSet();
-            this.lblRecCount = new System.Windows.Forms.Label();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.rbBooks = new System.Windows.Forms.RadioButton();
-            this.rbCovers = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgScans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -97,6 +98,7 @@
             this.Column8,
             this.Backing,
             this.BookRemake,
+            this.coverRemake,
             this.WarDate,
             this.Scan,
             this.CoverPress,
@@ -118,6 +120,78 @@
             this.dgScans.Size = new System.Drawing.Size(1172, 518);
             this.dgScans.TabIndex = 1;
             this.dgScans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgScans_CellContentClick);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(15, 51);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 23);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Refresh Data";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(117, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Print Report";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 65;
+            this.reportViewer1.Location = new System.Drawing.Point(1058, 1);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(67, 64);
+            this.reportViewer1.TabIndex = 4;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
+            // lblRecCount
+            // 
+            this.lblRecCount.AutoSize = true;
+            this.lblRecCount.Location = new System.Drawing.Point(605, 52);
+            this.lblRecCount.Name = "lblRecCount";
+            this.lblRecCount.Size = new System.Drawing.Size(34, 13);
+            this.lblRecCount.TabIndex = 5;
+            this.lblRecCount.Text = "count";
+            // 
+            // rbBooks
+            // 
+            this.rbBooks.AutoSize = true;
+            this.rbBooks.Checked = true;
+            this.rbBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbBooks.Location = new System.Drawing.Point(248, 50);
+            this.rbBooks.Name = "rbBooks";
+            this.rbBooks.Size = new System.Drawing.Size(133, 17);
+            this.rbBooks.TabIndex = 6;
+            this.rbBooks.TabStop = true;
+            this.rbBooks.Text = "Check Book Scans";
+            this.rbBooks.UseVisualStyleBackColor = true;
+            this.rbBooks.CheckedChanged += new System.EventHandler(this.rbBooks_CheckedChanged);
+            // 
+            // rbCovers
+            // 
+            this.rbCovers.AutoSize = true;
+            this.rbCovers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCovers.Location = new System.Drawing.Point(387, 50);
+            this.rbCovers.Name = "rbCovers";
+            this.rbCovers.Size = new System.Drawing.Size(137, 17);
+            this.rbCovers.TabIndex = 7;
+            this.rbCovers.Text = "Check Cover Scans";
+            this.rbCovers.UseVisualStyleBackColor = true;
+            this.rbCovers.CheckedChanged += new System.EventHandler(this.rbCovers_CheckedChanged);
             // 
             // ShipName
             // 
@@ -174,6 +248,13 @@
             this.BookRemake.HeaderText = "IsBookRemake";
             this.BookRemake.Name = "BookRemake";
             this.BookRemake.ReadOnly = true;
+            // 
+            // coverRemake
+            // 
+            this.coverRemake.DataPropertyName = "IsCoverRemake";
+            this.coverRemake.HeaderText = "IsCoverRemake";
+            this.coverRemake.Name = "coverRemake";
+            this.coverRemake.ReadOnly = true;
             // 
             // WarDate
             // 
@@ -259,78 +340,6 @@
             this.Quality.Name = "Quality";
             this.Quality.ReadOnly = true;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(15, 51);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 23);
-            this.btnRefresh.TabIndex = 2;
-            this.btnRefresh.Text = "Refresh Data";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(117, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Print Report";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 65;
-            this.reportViewer1.Location = new System.Drawing.Point(1058, 1);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(67, 64);
-            this.reportViewer1.TabIndex = 4;
-            this.reportViewer1.Visible = false;
-            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            // 
-            // lblRecCount
-            // 
-            this.lblRecCount.AutoSize = true;
-            this.lblRecCount.Location = new System.Drawing.Point(605, 52);
-            this.lblRecCount.Name = "lblRecCount";
-            this.lblRecCount.Size = new System.Drawing.Size(34, 13);
-            this.lblRecCount.TabIndex = 5;
-            this.lblRecCount.Text = "count";
-            // 
-            // rbBooks
-            // 
-            this.rbBooks.AutoSize = true;
-            this.rbBooks.Checked = true;
-            this.rbBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbBooks.Location = new System.Drawing.Point(248, 50);
-            this.rbBooks.Name = "rbBooks";
-            this.rbBooks.Size = new System.Drawing.Size(133, 17);
-            this.rbBooks.TabIndex = 6;
-            this.rbBooks.TabStop = true;
-            this.rbBooks.Text = "Check Book Scans";
-            this.rbBooks.UseVisualStyleBackColor = true;
-            this.rbBooks.CheckedChanged += new System.EventHandler(this.rbBooks_CheckedChanged);
-            // 
-            // rbCovers
-            // 
-            this.rbCovers.AutoSize = true;
-            this.rbCovers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbCovers.Location = new System.Drawing.Point(387, 50);
-            this.rbCovers.Name = "rbCovers";
-            this.rbCovers.Size = new System.Drawing.Size(137, 17);
-            this.rbCovers.TabIndex = 7;
-            this.rbCovers.Text = "Check Cover Scans";
-            this.rbCovers.UseVisualStyleBackColor = true;
-            this.rbCovers.CheckedChanged += new System.EventHandler(this.rbCovers_CheckedChanged);
-            // 
             // frmNoScanReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +390,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Backing;
         private System.Windows.Forms.DataGridViewTextBoxColumn BookRemake;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coverRemake;
         private System.Windows.Forms.DataGridViewTextBoxColumn WarDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Scan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CoverPress;

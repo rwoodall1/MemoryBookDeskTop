@@ -7701,8 +7701,9 @@ namespace Mbc5.Forms
 					}
 					catch (DBConcurrencyException dbex)
 					{
-                        MbcMessageBox.Warning("Another user has changed data. Please review and re-enter your data.","");
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.","");
                         Fill();
+                        SaveProdutn();
 						//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
 						//if (result == DialogResult.Yes) { SaveProdutn(); }
 					}
@@ -7778,6 +7779,8 @@ namespace Mbc5.Forms
 					{
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
                         //if (result == DialogResult.Yes) { SaveCovers(); };
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "");
+                        Fill();
                         SaveCovers();
 
                     }

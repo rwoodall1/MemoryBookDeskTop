@@ -247,7 +247,6 @@ D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\roslyn\vbc.exe.config
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\roslyn\vbc.rsp
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\roslyn\VBCSCompiler.exe
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\roslyn\VBCSCompiler.exe.config
-D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\BaseClass.dll.config
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\BaseClass.dll
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\BaseClass.pdb
 D:\Projects\MemoryBookDeskTop22\BaseClass\bin\Release\BindingModels.dll
