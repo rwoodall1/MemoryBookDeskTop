@@ -19,12 +19,12 @@ namespace Mbc5.Forms.MixBook
     public partial class frmMBOrders : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook","MBLead", "BARCODE" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook","MBLead","BARCODE" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -35,21 +35,10 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
-         
-            pnlButtons.Visible = !ApplicationUser.IsInRole("BARCODE");
-            btnHold.Visible = !ApplicationUser.IsInRole("BARCODE");
-            btnEdit.Visible= !ApplicationUser.IsInRole("BARCODE");
-            pnlOrder.Enabled= !ApplicationUser.IsInRole("BARCODE");
-
-            if (this.ApplicationUser.UserName.ToUpper() == "SA" || this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY"|| this.ApplicationUser.UserName.ToUpper()=="CINDY") 
+            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY") 
             {
                 this.pnlRemake.Visible = true;
                 this.btnEmailTrk.Visible = true;
-            }
-            if (this.ApplicationUser.IsInRole("MBLead"))            
-            {
-                mixBookOrderBindingNavigator.Items.Remove(purgeStripButton2);
-                btnEdit.Enabled = false;
             }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
@@ -65,11 +54,6 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.SaveOrder();
-           
-        }
-        public  void SaveOrder()
-        {
             try
             {
                 this.Validate();
@@ -83,8 +67,9 @@ namespace Mbc5.Forms.MixBook
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
-
+            this.Fill();
         }
+
         
         private void SetConnectionString()
         {
@@ -104,7 +89,6 @@ namespace Mbc5.Forms.MixBook
         #region Search
         private void OrderIdSearch()
         {
-          
             string vcurrentOrderId = "0";
             if (mixBookOrderBindingSource.Current!=null)
             {
@@ -381,15 +365,10 @@ namespace Mbc5.Forms.MixBook
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
                 int vIInvno = 0;
-                if (mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId)>0)
-                {
+                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
                 string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
-
-                }
-              
-                
             }
             catch (Exception ex)
             {
@@ -407,68 +386,15 @@ namespace Mbc5.Forms.MixBook
             
             var value =((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 var sqlClient = new SQLCustomClient().CommandText(@"
-               Select Invno,ClientOrderId,
-                ShipName,RequestedShipDate,CoverPreviewUrl,Substring(ItemCode,4,4 ),
+                Select Invno,ClientOrderId,
+                ShipName,RequestedShipDate,
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
-                Copies,ProdCopies,Pages,
+                Copies,Pages,
                 Backing,OrderReceivedDate,
                 ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
-		        Case
-
-                when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
-                Case
-                When  ProdCopies % 8=0 Then
-                (ProdCopies/8)
-                When ProdCopies % 8>0 Then
-                (ProdCopies/8)+1
-                END
-                when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
-		  
-                CASE
-                When  ProdCopies % 4=0 Then
-                ProdCopies/4
-
-                When ProdCopies % 4>0 Then
-                (ProdCopies/4)+1
-
-                else
-                0
-                End 
-
-                ELSE
-
-                Case
-                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
-                ProdCopies/1
-                else
-                0
-                End
-                End AS LargePressQty,
-				Case
-				  when ProdCopies>4 Then
-				  
-				    CASE
-					  When Substring(ItemCode,4,4)IN('7755') Then
-						ProdCopies/4
-					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-					  ProdCopies/1
-					  else
-					  0
-					  End 
-									  
-				 ELSE
-				  Case
-				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-						ProdCopies/1
-						else
-						0
-				     End
-
-				End AS SmallPressQty 
-
+                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode
                 From MixBookOrder MO  Where Invno=@Invno
             "); 
 
@@ -484,19 +410,12 @@ namespace Mbc5.Forms.MixBook
                 var jobData = (JobTicketQuery)result.Data;
                 if (jobData!=null)
                 {
-                
                     reportViewer3.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
-                try
-                {
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl)) {
-                        ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter }); 
-                    }
+
+                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
-                }catch(Exception ex) { }
                 }
                 else
                 {
@@ -506,7 +425,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
                                 ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                 FROM MixbookOrder MO
                                 Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
@@ -531,53 +450,11 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,
+                Select MO.Invno,ClientOrderId,
                 SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                     (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
-                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal,
-
-               Case
-                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
-						Case
-						When  W.Rmbtot % 8=0 Then
-						(W.Rmbtot/8)
-						When W.Rmbtot % 8>0 Then
-						(W.Rmbtot/8)+1
-						END
-
-                when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
-                 1          
-                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
-					CASE
-						When  W.Rmbtot % 4=0 Then
-						W.Rmbtot/4
-						When W.Rmbtot % 4>0 Then
-						(W.Rmbtot/4)+1
-					End
-				when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
-		            1
-                ELSE
-                  W.Rmbtot/1                        
-                End AS LargePressQty
-				,
-				Case
-				  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
-					Case
-						When  W.Rmbtot % 4=0 Then
-						(W.Rmbtot/4)
-						When W.Rmbtot % 4>0 Then
-						(W.Rmbtot/4)+1
-					END
-
-                  when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
-                    1
-                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
-                    0
-				When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
-					  W.Rmbtot/1					
-				End AS SmallPressQty
-
+                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno
             ");
@@ -596,34 +473,11 @@ namespace Mbc5.Forms.MixBook
             }
 
             var remakeData = (RemakeTicketQuery)result.Data;
-
             reportViewer3.LocalReport.DataSources.Clear();
             MixbookRemakeBindingSource.DataSource = remakeData;
-            if (remakeData!=null) {
-                try
-                {
-                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
-                    if (!string.IsNullOrEmpty(remakeData.CoverPreviewUrl))
-                    {
-                        ReportParameter parameter = new ReportParameter("ImagePath1", "https://media.mixbook.com/print_generation_jobs/6600495_TZ3smz/cover.pdf");
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] {parameter});
-                    }
-                  
-                    reportViewer2.LocalReport.EnableExternalImages = true;
-                  
-
-                    this.reportViewer3.RefreshReport();
-                } catch (Exception ex)
-                {
-                    Log.Error(ex.Message);
-                    ;
-                }
-            }
-            else
-            {
-                MbcMessageBox.Hand("There were no records found to print.", "No Records");
-            }
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
+            reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
+            this.reportViewer3.RefreshReport();
         }
         private void SetJobTicketPrinted()
         {
@@ -771,7 +625,6 @@ namespace Mbc5.Forms.MixBook
         {
             if (pnlOrder.Enabled == true)
             {
-                this.Save();
                 pnlOrder.Enabled = false;
             }
             else { pnlOrder.Enabled = true; }
@@ -1053,11 +906,9 @@ namespace Mbc5.Forms.MixBook
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
 
-        private void pnlButtons_Paint(object sender, PaintEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            Log.Error("testerrorlog");
         }
-
-       
     }
 }

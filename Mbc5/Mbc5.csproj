@@ -527,12 +527,6 @@
     <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.Designer.cs">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -871,9 +865,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
       <DependentUpon>frmMInvoicInq.cs</DependentUpon>

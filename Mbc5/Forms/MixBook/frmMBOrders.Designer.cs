@@ -50,12 +50,13 @@
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label jobPrintBatchLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBOrders));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -64,6 +65,23 @@
             this.dsmixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.mixBookOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -105,7 +123,6 @@
             this.receiveDateLabel1 = new System.Windows.Forms.Label();
             this.orderIdLabel1 = new System.Windows.Forms.Label();
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
-            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDownloadFiles = new System.Windows.Forms.Button();
             this.btnRemake = new System.Windows.Forms.Button();
@@ -114,28 +131,12 @@
             this.coverStatusLabel1 = new System.Windows.Forms.Label();
             this.bookStatusLabel1 = new System.Windows.Forms.Label();
             this.cmdJobTicket = new System.Windows.Forms.Button();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnCvrRemake = new System.Windows.Forms.Button();
             this.btnBkRemake = new System.Windows.Forms.Button();
             this.pnlRemake = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.mixBookOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.pnlButtons = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -163,6 +164,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).BeginInit();
+            this.mixBookOrderBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).BeginInit();
@@ -170,9 +173,6 @@
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).BeginInit();
             this.pnlRemake.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).BeginInit();
-            this.mixBookOrderBindingNavigator.SuspendLayout();
-            this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -349,7 +349,7 @@
             coverStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             coverStatusLabel.AutoSize = true;
             coverStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverStatusLabel.Location = new System.Drawing.Point(95, 629);
+            coverStatusLabel.Location = new System.Drawing.Point(95, 617);
             coverStatusLabel.Name = "coverStatusLabel";
             coverStatusLabel.Size = new System.Drawing.Size(84, 13);
             coverStatusLabel.TabIndex = 10020;
@@ -361,7 +361,7 @@
             bookStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             bookStatusLabel.AutoSize = true;
             bookStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bookStatusLabel.Location = new System.Drawing.Point(709, 629);
+            bookStatusLabel.Location = new System.Drawing.Point(709, 617);
             bookStatusLabel.Name = "bookStatusLabel";
             bookStatusLabel.Size = new System.Drawing.Size(80, 13);
             bookStatusLabel.TabIndex = 10021;
@@ -370,7 +370,6 @@
             // 
             // requestedShipMethodLabel
             // 
-            requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             requestedShipMethodLabel.AutoSize = true;
             requestedShipMethodLabel.Location = new System.Drawing.Point(379, 86);
             requestedShipMethodLabel.Name = "requestedShipMethodLabel";
@@ -380,7 +379,6 @@
             // 
             // jobPrintBatchLabel
             // 
-            jobPrintBatchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             jobPrintBatchLabel.AutoSize = true;
             jobPrintBatchLabel.Location = new System.Drawing.Point(839, 123);
             jobPrintBatchLabel.Name = "jobPrintBatchLabel";
@@ -421,6 +419,174 @@
             this.tableAdapterManager.MixBookOrderTableAdapter = this.mixBookOrderTableAdapter;
             this.tableAdapterManager.ShipCarriersTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Enabled = false;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Enabled = false;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // mixBookOrderBindingNavigatorSaveItem
+            // 
+            this.mixBookOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("mixBookOrderBindingNavigatorSaveItem.Image")));
+            this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
+            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
+            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
+            this.mixBookOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.mixBookOrderBindingNavigatorSaveItem_Click);
+            // 
+            // mixBookOrderBindingNavigator
+            // 
+            this.mixBookOrderBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.mixBookOrderBindingNavigator.BindingSource = this.mixBookOrderBindingSource;
+            this.mixBookOrderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.mixBookOrderBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.mixBookOrderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.mixBookOrderBindingNavigatorSaveItem,
+            this.toolStripButton3,
+            this.toolStripButton1,
+            this.itemIdToolStripBtn,
+            this.purgeStripButton2});
+            this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.mixBookOrderBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.mixBookOrderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.mixBookOrderBindingNavigator.Name = "mixBookOrderBindingNavigator";
+            this.mixBookOrderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.mixBookOrderBindingNavigator.Size = new System.Drawing.Size(1225, 25);
+            this.mixBookOrderBindingNavigator.TabIndex = 1;
+            this.mixBookOrderBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::Mbc5.Properties.Resources.iconfinder_order_59488;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(70, 22);
+            this.toolStripButton3.Text = "Order Id";
+            this.toolStripButton3.ToolTipText = "Order Id";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 22);
+            this.toolStripButton1.Text = "Ship Name";
+            this.toolStripButton1.ToolTipText = "Name";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // itemIdToolStripBtn
+            // 
+            this.itemIdToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("itemIdToolStripBtn.Image")));
+            this.itemIdToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.itemIdToolStripBtn.Name = "itemIdToolStripBtn";
+            this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
+            this.itemIdToolStripBtn.Text = "Item Id";
+            this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
+            // 
+            // purgeStripButton2
+            // 
+            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
+            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.purgeStripButton2.Name = "purgeStripButton2";
+            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
+            this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // statesBindingSource
             // 
@@ -470,7 +636,7 @@
             this.mixBookOrderDataGridView.Name = "mixBookOrderDataGridView";
             this.mixBookOrderDataGridView.ReadOnly = true;
             this.mixBookOrderDataGridView.RowHeadersWidth = 20;
-            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1086, 287);
+            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1086, 275);
             this.mixBookOrderDataGridView.TabIndex = 131;
             this.mixBookOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentClick);
             this.mixBookOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentDoubleClick);
@@ -591,7 +757,7 @@
             // btnMixbookPkgList
             // 
             this.btnMixbookPkgList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMixbookPkgList.Location = new System.Drawing.Point(9, 3);
+            this.btnMixbookPkgList.Location = new System.Drawing.Point(98, 308);
             this.btnMixbookPkgList.Name = "btnMixbookPkgList";
             this.btnMixbookPkgList.Size = new System.Drawing.Size(153, 23);
             this.btnMixbookPkgList.TabIndex = 300;
@@ -605,7 +771,6 @@
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.RemakeTicketQueryBindingSource;
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer2.LocalReport.EnableExternalImages = true;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
             this.reportViewer2.Name = "reportViewer2";
@@ -617,8 +782,10 @@
             // 
             // pnlOrder
             // 
-            this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.button1);
             this.pnlOrder.Controls.Add(this.lblHold);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
@@ -663,7 +830,7 @@
             this.pnlOrder.Controls.Add(shipNameLabel);
             this.pnlOrder.Location = new System.Drawing.Point(52, 28);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(1151, 253);
+            this.pnlOrder.Size = new System.Drawing.Size(1151, 267);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
@@ -682,7 +849,6 @@
             // 
             // btnEmailTrk
             // 
-            this.btnEmailTrk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEmailTrk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmailTrk.BackgroundImage")));
             this.btnEmailTrk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmailTrk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -698,7 +864,6 @@
             // 
             // jobPrintBatchLabel1
             // 
-            this.jobPrintBatchLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.jobPrintBatchLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "JobPrintBatch", true));
             this.jobPrintBatchLabel1.Location = new System.Drawing.Point(927, 123);
             this.jobPrintBatchLabel1.Name = "jobPrintBatchLabel1";
@@ -730,7 +895,6 @@
             // 
             // requestedShipMethodLabel1
             // 
-            this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.requestedShipMethodLabel1.Location = new System.Drawing.Point(539, 86);
             this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
@@ -900,19 +1064,6 @@
             this.shipStateComboBox.TabIndex = 305;
             this.shipStateComboBox.ValueMember = "Abrev";
             // 
-            // reportViewer3
-            // 
-            this.reportViewer3.DocumentMapWidth = 35;
-            this.reportViewer3.LocalReport.EnableExternalImages = true;
-            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
-            this.reportViewer3.Name = "reportViewer3";
-            this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(79, 55);
-            this.reportViewer3.TabIndex = 10024;
-            this.reportViewer3.Visible = false;
-            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
-            // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(9, 31);
@@ -927,7 +1078,7 @@
             // 
             this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDownloadFiles.Location = new System.Drawing.Point(834, 3);
+            this.btnDownloadFiles.Location = new System.Drawing.Point(935, 308);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
             this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
             this.btnDownloadFiles.TabIndex = 10018;
@@ -939,7 +1090,7 @@
             // btnRemake
             // 
             this.btnRemake.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemake.Location = new System.Drawing.Point(187, 3);
+            this.btnRemake.Location = new System.Drawing.Point(276, 308);
             this.btnRemake.Name = "btnRemake";
             this.btnRemake.Size = new System.Drawing.Size(153, 23);
             this.btnRemake.TabIndex = 10019;
@@ -973,7 +1124,7 @@
             // 
             this.coverStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.coverStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "CoverStatus", true));
-            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 629);
+            this.coverStatusLabel1.Location = new System.Drawing.Point(180, 617);
             this.coverStatusLabel1.Name = "coverStatusLabel1";
             this.coverStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.coverStatusLabel1.TabIndex = 10021;
@@ -982,7 +1133,7 @@
             // 
             this.bookStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bookStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "BookStatus", true));
-            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 629);
+            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 617);
             this.bookStatusLabel1.Name = "bookStatusLabel1";
             this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.bookStatusLabel1.TabIndex = 10022;
@@ -990,13 +1141,28 @@
             // cmdJobTicket
             // 
             this.cmdJobTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdJobTicket.Location = new System.Drawing.Point(358, 3);
+            this.cmdJobTicket.Location = new System.Drawing.Point(447, 308);
             this.cmdJobTicket.Name = "cmdJobTicket";
             this.cmdJobTicket.Size = new System.Drawing.Size(153, 23);
             this.cmdJobTicket.TabIndex = 10023;
             this.cmdJobTicket.Text = "Print Job Ticket";
             this.cmdJobTicket.UseVisualStyleBackColor = true;
             this.cmdJobTicket.Click += new System.EventHandler(this.cmdJobTicket_Click);
+            // 
+            // reportViewer3
+            // 
+            this.reportViewer3.DocumentMapWidth = 35;
+            reportDataSource4.Name = "DataSet1";
+            reportDataSource4.Value = this.JobTicketQueryBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+            this.reportViewer3.Location = new System.Drawing.Point(9, 425);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.Size = new System.Drawing.Size(76, 64);
+            this.reportViewer3.TabIndex = 10024;
+            this.reportViewer3.Visible = false;
+            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
             // 
             // btnCvrRemake
             // 
@@ -1024,209 +1190,43 @@
             // 
             this.pnlRemake.Controls.Add(this.btnBkRemake);
             this.pnlRemake.Controls.Add(this.btnCvrRemake);
-            this.pnlRemake.Location = new System.Drawing.Point(517, 2);
+            this.pnlRemake.Location = new System.Drawing.Point(606, 307);
             this.pnlRemake.Name = "pnlRemake";
             this.pnlRemake.Size = new System.Drawing.Size(183, 24);
             this.pnlRemake.TabIndex = 10025;
             this.pnlRemake.Visible = false;
             // 
-            // bindingNavigatorMoveFirstItem
+            // button1
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Enabled = false;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Enabled = false;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // mixBookOrderBindingNavigatorSaveItem
-            // 
-            this.mixBookOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("mixBookOrderBindingNavigatorSaveItem.Image")));
-            this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
-            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
-            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
-            this.mixBookOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.mixBookOrderBindingNavigatorSaveItem_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = global::Mbc5.Properties.Resources.iconfinder_order_59488;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(70, 22);
-            this.toolStripButton3.Text = "Order Id";
-            this.toolStripButton3.ToolTipText = "Order Id";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(85, 22);
-            this.toolStripButton1.Text = "Ship Name";
-            this.toolStripButton1.ToolTipText = "Name";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // itemIdToolStripBtn
-            // 
-            this.itemIdToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("itemIdToolStripBtn.Image")));
-            this.itemIdToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.itemIdToolStripBtn.Name = "itemIdToolStripBtn";
-            this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
-            this.itemIdToolStripBtn.Text = "Item Id";
-            this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
-            // 
-            // purgeStripButton2
-            // 
-            this.purgeStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("purgeStripButton2.Image")));
-            this.purgeStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.purgeStripButton2.Name = "purgeStripButton2";
-            this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
-            this.purgeStripButton2.Text = "Purge";
-            this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
-            // 
-            // mixBookOrderBindingNavigator
-            // 
-            this.mixBookOrderBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.mixBookOrderBindingNavigator.BindingSource = this.mixBookOrderBindingSource;
-            this.mixBookOrderBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.mixBookOrderBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.mixBookOrderBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.mixBookOrderBindingNavigatorSaveItem,
-            this.toolStripButton3,
-            this.toolStripButton1,
-            this.itemIdToolStripBtn,
-            this.purgeStripButton2});
-            this.mixBookOrderBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.mixBookOrderBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.mixBookOrderBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.mixBookOrderBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.mixBookOrderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.mixBookOrderBindingNavigator.Name = "mixBookOrderBindingNavigator";
-            this.mixBookOrderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.mixBookOrderBindingNavigator.Size = new System.Drawing.Size(1225, 25);
-            this.mixBookOrderBindingNavigator.TabIndex = 1;
-            this.mixBookOrderBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // pnlButtons
-            // 
-            this.pnlButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlButtons.Controls.Add(this.pnlRemake);
-            this.pnlButtons.Controls.Add(this.btnMixbookPkgList);
-            this.pnlButtons.Controls.Add(this.btnDownloadFiles);
-            this.pnlButtons.Controls.Add(this.btnRemake);
-            this.pnlButtons.Controls.Add(this.cmdJobTicket);
-            this.pnlButtons.Location = new System.Drawing.Point(101, 300);
-            this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1070, 32);
-            this.pnlButtons.TabIndex = 10025;
-            this.pnlButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlButtons_Paint);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(974, 118);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.TabIndex = 341;
+            this.button1.Text = "Toggle Hold";
+            this.toolTip1.SetToolTip(this.button1, "Place order on hold. Plant only.");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1225, 658);
-            this.Controls.Add(this.pnlButtons);
+            this.ClientSize = new System.Drawing.Size(1225, 646);
+            this.Controls.Add(this.pnlRemake);
             this.Controls.Add(this.reportViewer3);
+            this.Controls.Add(this.cmdJobTicket);
             this.Controls.Add(bookStatusLabel);
             this.Controls.Add(this.bookStatusLabel1);
             this.Controls.Add(coverStatusLabel);
             this.Controls.Add(this.coverStatusLabel1);
             this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.btnRemake);
+            this.Controls.Add(this.btnDownloadFiles);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pnlOrder);
             this.Controls.Add(this.reportViewer2);
+            this.Controls.Add(this.btnMixbookPkgList);
             this.Controls.Add(this.mixBookOrderDataGridView);
             this.Controls.Add(this.mixBookOrderBindingNavigator);
             this.MaxNumForms = 2;
@@ -1237,22 +1237,29 @@
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.mixBookOrderBindingNavigator, 0);
             this.Controls.SetChildIndex(this.mixBookOrderDataGridView, 0);
+            this.Controls.SetChildIndex(this.btnMixbookPkgList, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
             this.Controls.SetChildIndex(this.pnlOrder, 0);
             this.Controls.SetChildIndex(this.btnEdit, 0);
+            this.Controls.SetChildIndex(this.btnDownloadFiles, 0);
+            this.Controls.SetChildIndex(this.btnRemake, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.Controls.SetChildIndex(this.coverStatusLabel1, 0);
             this.Controls.SetChildIndex(coverStatusLabel, 0);
             this.Controls.SetChildIndex(this.bookStatusLabel1, 0);
             this.Controls.SetChildIndex(bookStatusLabel, 0);
+            this.Controls.SetChildIndex(this.cmdJobTicket, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
-            this.Controls.SetChildIndex(this.pnlButtons, 0);
+            this.Controls.SetChildIndex(this.pnlRemake, 0);
             ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsmixBookOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
+            this.mixBookOrderBindingNavigator.ResumeLayout(false);
+            this.mixBookOrderBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).EndInit();
@@ -1261,10 +1268,6 @@
             this.pnlOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeBindingSource)).EndInit();
             this.pnlRemake.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingNavigator)).EndInit();
-            this.mixBookOrderBindingNavigator.ResumeLayout(false);
-            this.mixBookOrderBindingNavigator.PerformLayout();
-            this.pnlButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1276,14 +1279,30 @@
         private System.Windows.Forms.BindingSource mixBookOrderBindingSource;
         private DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter mixBookOrderTableAdapter;
         private DataSets.MixBookOrdersTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton mixBookOrderBindingNavigatorSaveItem;
+        private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
         private System.Windows.Forms.DataGridView mixBookOrderDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataSets.LookUp lookUp;
         private System.Windows.Forms.BindingSource statesBindingSource;
         private DataSets.LookUpTableAdapters.statesTableAdapter statesTableAdapter;
         private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.BindingSource shipCarriersBindingSource;
         private DataSets.MixBookOrdersTableAdapters.ShipCarriersTableAdapter shipCarriersTableAdapter;
+        private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
         private System.Windows.Forms.DataGridViewLinkColumn prodticket;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
@@ -1318,6 +1337,7 @@
         private System.Windows.Forms.BindingSource MixbookPackingSlipBindingSource;
         private System.Windows.Forms.BindingSource MixbookRemakeBindingSource;
         private System.Windows.Forms.BindingSource MixbookRemakeTicketBindingSource;
+        private System.Windows.Forms.ToolStripButton purgeStripButton2;
         private System.Windows.Forms.Label coverStatusLabel1;
         private System.Windows.Forms.Label bookStatusLabel1;
         private System.Windows.Forms.TextBox shipAddr2TextBox;
@@ -1335,23 +1355,6 @@
         private System.Windows.Forms.Button btnEmailTrk;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblHold;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton mixBookOrderBindingNavigatorSaveItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
-        private System.Windows.Forms.ToolStripButton purgeStripButton2;
-        private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
-        private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.Button button1;
     }
 }
