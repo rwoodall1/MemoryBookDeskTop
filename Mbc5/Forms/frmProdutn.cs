@@ -7739,8 +7739,10 @@ namespace Mbc5.Forms
 				}
 				catch (DBConcurrencyException ex1)
 				{
-                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
-                    if (result == DialogResult.Yes) { SaveWip(); };
+                    //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
+                    //if (result == DialogResult.Yes) { SaveWip(); };
+                    MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "WIP");
+                    this.Fill();
                     SaveWip();
 				}
 				catch (Exception ex)
@@ -7779,7 +7781,7 @@ namespace Mbc5.Forms
 					{
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
                         //if (result == DialogResult.Yes) { SaveCovers(); };
-                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "");
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "Covers");
                         Fill();
                         SaveCovers();
 
@@ -7818,9 +7820,11 @@ namespace Mbc5.Forms
                     }
                     catch (DBConcurrencyException dbex)
                     {
-                        MbcMessageBox.Information("Another user has edited the reorder data since you have opened the record. Refresh your data and then apply your edits.");
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
-                        if (result == DialogResult.Yes) { SaveCovers(); };
+                       // MbcMessageBox.Information("Another user has edited the reorder data since you have opened the record. Refresh your data and then apply your edits.");
+                        Fill();
+                        SaveReOrder()
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
+                        //if (result == DialogResult.Yes) { SaveCovers(); };
                     }
                     catch (Exception ex)
                     {
