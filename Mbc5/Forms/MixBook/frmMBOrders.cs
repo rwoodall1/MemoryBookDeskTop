@@ -54,6 +54,11 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            this.SaveOrder();
+           
+        }
+        public  void SaveOrder()
+        {
             try
             {
                 this.Validate();
