@@ -7822,7 +7822,7 @@ namespace Mbc5.Forms
                     {
                        // MbcMessageBox.Information("Another user has edited the reorder data since you have opened the record. Refresh your data and then apply your edits.");
                         Fill();
-                        SaveReOrder()
+                        SaveReOrder();
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
                         //if (result == DialogResult.Yes) { SaveCovers(); };
                     }
