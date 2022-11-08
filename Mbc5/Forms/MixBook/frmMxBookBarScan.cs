@@ -1571,9 +1571,9 @@ namespace Mbc5.Forms.MixBook
                     sqlClient.AddParameter("@WAR", DateTime.Now);
                     sqlClient.AddParameter("@WIR", "SYS");
                     sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                 Begin
-                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                 END
                                                 ");
 
@@ -1591,9 +1591,9 @@ namespace Mbc5.Forms.MixBook
                     sqlClient.AddParameter("@WAR", DateTime.Now);
                     sqlClient.AddParameter("@WIR", "SYS");
                     sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                 Begin
-                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                 END
                                                 ");
 
