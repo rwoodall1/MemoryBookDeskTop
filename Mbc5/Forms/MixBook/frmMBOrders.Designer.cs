@@ -136,6 +136,7 @@
             this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.mixBookOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -1213,10 +1214,20 @@
             this.pnlButtons.TabIndex = 10025;
             this.pnlButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlButtons_Paint);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(835, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10026;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1225, 658);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(bookStatusLabel);
@@ -1247,6 +1258,7 @@
             this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.pnlButtons, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
@@ -1353,5 +1365,6 @@
         private System.Windows.Forms.ToolStripButton purgeStripButton2;
         private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
         private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.Button button1;
     }
 }
