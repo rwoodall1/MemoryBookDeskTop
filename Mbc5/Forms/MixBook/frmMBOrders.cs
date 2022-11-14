@@ -18,6 +18,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
     {
+        //
         public frmMain frmMain { get; set; }
         public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook","BARCODE"}, userPrincipal)
         {
