@@ -36,7 +36,8 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
-            if (this.ApplicationUser.UserName.ToUpper() == "TAMMY" || this.ApplicationUser.UserName.ToUpper() == "HILARY") 
+            List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook","MBLead" });
+            if (this.ApplicationUser.IsInOneOfRoles(mylist1))            
             {
                 this.pnlRemake.Visible = true;
                 this.btnEmailTrk.Visible = true;

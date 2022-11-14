@@ -83,7 +83,6 @@
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.lblHold = new System.Windows.Forms.Label();
-            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEmailTrk = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
@@ -106,6 +105,7 @@
             this.receiveDateLabel1 = new System.Windows.Forms.Label();
             this.orderIdLabel1 = new System.Windows.Forms.Label();
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDownloadFiles = new System.Windows.Forms.Button();
             this.btnRemake = new System.Windows.Forms.Button();
@@ -680,19 +680,6 @@
             this.lblHold.Text = "On Hold";
             this.lblHold.Visible = false;
             // 
-            // reportViewer3
-            // 
-            this.reportViewer3.DocumentMapWidth = 35;
-            this.reportViewer3.LocalReport.EnableExternalImages = true;
-            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
-            this.reportViewer3.Name = "reportViewer3";
-            this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(61, 71);
-            this.reportViewer3.TabIndex = 10024;
-            this.reportViewer3.Visible = false;
-            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
-            // 
             // btnEmailTrk
             // 
             this.btnEmailTrk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -913,6 +900,19 @@
             this.shipStateComboBox.TabIndex = 305;
             this.shipStateComboBox.ValueMember = "Abrev";
             // 
+            // reportViewer3
+            // 
+            this.reportViewer3.DocumentMapWidth = 35;
+            this.reportViewer3.LocalReport.EnableExternalImages = true;
+            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.Size = new System.Drawing.Size(61, 71);
+            this.reportViewer3.TabIndex = 10024;
+            this.reportViewer3.Visible = false;
+            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
+            // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(9, 31);
@@ -1028,7 +1028,6 @@
             this.pnlRemake.Name = "pnlRemake";
             this.pnlRemake.Size = new System.Drawing.Size(183, 24);
             this.pnlRemake.TabIndex = 10025;
-            this.pnlRemake.Visible = false;
             // 
             // bindingNavigatorMoveFirstItem
             // 
