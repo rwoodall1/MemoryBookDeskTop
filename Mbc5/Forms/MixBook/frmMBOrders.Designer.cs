@@ -54,9 +54,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookPackingSlipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MixbookRemakeTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -786,6 +786,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlOrder.Controls.Add(this.button1);
+            this.pnlOrder.Controls.Add(this.reportViewer3);
             this.pnlOrder.Controls.Add(this.lblHold);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
@@ -1116,12 +1117,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource2.Name = "dsMxPackingSlip";
-            reportDataSource2.Value = this.MixbookPackingSlipBindingSource;
-            reportDataSource3.Name = "dsMixBookRemakeTkt";
-            reportDataSource3.Value = this.MixbookRemakeTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource3.Name = "dsMxPackingSlip";
+            reportDataSource3.Value = this.MixbookPackingSlipBindingSource;
+            reportDataSource4.Name = "dsMixBookRemakeTkt";
+            reportDataSource4.Value = this.MixbookRemakeTicketBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -1167,16 +1168,15 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 35;
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = this.JobTicketQueryBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.JobTicketQueryBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(1, 439);
+            this.reportViewer3.Location = new System.Drawing.Point(173, 11);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(75, 79);
+            this.reportViewer3.Size = new System.Drawing.Size(539, 253);
             this.reportViewer3.TabIndex = 10024;
-            this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
             // 
             // btnCvrRemake
@@ -1216,7 +1216,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1225, 646);
             this.Controls.Add(this.pnlRemake);
-            this.Controls.Add(this.reportViewer3);
             this.Controls.Add(this.cmdJobTicket);
             this.Controls.Add(bookStatusLabel);
             this.Controls.Add(this.bookStatusLabel1);
@@ -1251,7 +1250,6 @@
             this.Controls.SetChildIndex(this.bookStatusLabel1, 0);
             this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.cmdJobTicket, 0);
-            this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.pnlRemake, 0);
             ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
