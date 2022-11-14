@@ -521,11 +521,53 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,ClientOrderId,
+                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,
                 SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                     (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
-                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal
+                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal,
+
+               Case
+                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
+						Case
+						When  W.Rmbtot % 8=0 Then
+						(W.Rmbtot/8)
+						When W.Rmbtot % 8>0 Then
+						(W.Rmbtot/8)+1
+						END
+
+                when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
+                 1          
+                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
+					CASE
+						When  W.Rmbtot % 4=0 Then
+						W.Rmbtot/4
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					End
+				when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+		            1
+                ELSE
+                  W.Rmbtot/1                        
+                End AS LargePressQty
+				,
+				Case
+				  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
+					Case
+						When  W.Rmbtot % 4=0 Then
+						(W.Rmbtot/4)
+						When W.Rmbtot % 4>0 Then
+						(W.Rmbtot/4)+1
+					END
+
+                  when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
+                    1
+                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
+                    0
+				When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
+					  W.Rmbtot/1					
+				End AS SmallPressQty
+
                     From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Where MO.Invno=@Invno
             ");
@@ -544,12 +586,37 @@ namespace Mbc5.Forms.MixBook
             }
 
             var remakeData = (RemakeTicketQuery)result.Data;
+
             reportViewer3.LocalReport.DataSources.Clear();
             MixbookRemakeBindingSource.DataSource = remakeData;
-            reportViewer3.LocalReport.EnableExternalImages = true;
-            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
-            reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
-            this.reportViewer3.RefreshReport();
+            if (remakeData != null)
+            {
+                try
+                {
+                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
+                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
+                    if (!string.IsNullOrEmpty(remakeData.CoverPreviewUrl))
+                    {
+                        reportViewer3.LocalReport.EnableExternalImages = true;
+                        ReportParameter parameter = new ReportParameter("ImagePath1", "https://media.mixbook.com/print_generation_jobs/6600495_TZ3smz/cover.pdf");
+                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter });
+                    }
+
+                    reportViewer2.LocalReport.EnableExternalImages = true;
+
+
+                    this.reportViewer3.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex.Message);
+                    ;
+                }
+            }
+            else
+            {
+                MbcMessageBox.Hand("There were no records found to print.", "No Records");
+            }
         }
         private void SetJobTicketPrinted()
         {
