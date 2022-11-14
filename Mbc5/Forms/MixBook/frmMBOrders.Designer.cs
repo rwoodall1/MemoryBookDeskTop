@@ -100,6 +100,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblHold = new System.Windows.Forms.Label();
             this.btnEmailTrk = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
@@ -136,7 +137,6 @@
             this.btnBkRemake = new System.Windows.Forms.Button();
             this.pnlRemake = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -835,6 +835,19 @@
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(974, 118);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.TabIndex = 341;
+            this.button1.Text = "Toggle Hold";
+            this.toolTip1.SetToolTip(this.button1, "Place order on hold. Plant only.");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lblHold
             // 
             this.lblHold.AutoSize = true;
@@ -1066,6 +1079,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Enabled = false;
             this.btnEdit.Location = new System.Drawing.Point(9, 31);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(37, 23);
@@ -1077,6 +1091,7 @@
             // btnDownloadFiles
             // 
             this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownloadFiles.Enabled = false;
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDownloadFiles.Location = new System.Drawing.Point(935, 308);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
@@ -1156,10 +1171,10 @@
             reportDataSource4.Value = this.JobTicketQueryBindingSource;
             this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(9, 425);
+            this.reportViewer3.Location = new System.Drawing.Point(1, 439);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(76, 64);
+            this.reportViewer3.Size = new System.Drawing.Size(75, 79);
             this.reportViewer3.TabIndex = 10024;
             this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
@@ -1195,19 +1210,6 @@
             this.pnlRemake.Size = new System.Drawing.Size(183, 24);
             this.pnlRemake.TabIndex = 10025;
             this.pnlRemake.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(974, 118);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 341;
-            this.button1.Text = "Toggle Hold";
-            this.toolTip1.SetToolTip(this.button1, "Place order on hold. Plant only.");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmMBOrders
             // 

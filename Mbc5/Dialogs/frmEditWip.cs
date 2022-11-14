@@ -77,11 +77,14 @@ namespace Mbc5.Dialogs
                 try
                 {
                     wipDetailTableAdapter.Update(dsProdutn.WipDetail);
-                }catch(Exception ex) {
+                    Refill = true;
+                    this.Close();
+                }
+                catch(Exception ex) {
                     Log.Error("Error retrieving information Saving EditWipDetail:" + ex.Message);
                     MbcMessageBox.Error("Failed to save record");
                 };
-                Refill = true;
+                
             }
         }
 

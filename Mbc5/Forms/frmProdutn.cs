@@ -11449,7 +11449,7 @@ namespace Mbc5.Forms
             var result = frmeditWip.ShowDialog();
             if (result == DialogResult.OK)
             {
-                //wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,"", Invno);
             }
         }
 

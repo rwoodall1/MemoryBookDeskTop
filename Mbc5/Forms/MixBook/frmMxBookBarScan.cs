@@ -738,7 +738,7 @@ namespace Mbc5.Forms.MixBook
                         string location = "";
                         if (MbxModel.NumProducts > 1)
                         {
-                            var frmQH = new frmquailtyHold(MbxModel.NumProducts);
+                            var frmQH = new frmquailtyHold(MbxModel.NumProducts, lblHoldLocation.Text);
                             DialogResult holdresult = frmQH.ShowDialog();
                             if (holdresult == DialogResult.Yes)
                             {

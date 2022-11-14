@@ -12,16 +12,24 @@ namespace Mbc5.Dialogs
 {
     public partial class frmquailtyHold : Form
     {
-        public frmquailtyHold(int numProducts)
+        public frmquailtyHold(int numProducts,string location)
         {
             InitializeComponent();
             _qtyProducts = numProducts.ToString();
+            _currrentlocation = location;
         }
         public string Location { get; set; }
+        public string _currrentlocation { get; set; }
         public string _qtyProducts { get; set; }
         private void frmquailtyHold_Load(object sender, EventArgs e)
         {
             lblText.Text = lblText.Text +" "+ _qtyProducts;
+            if (!string.IsNullOrEmpty(_currrentlocation))
+            {
+                lblCurLocation.Text = "Current Location:" + _currrentlocation;
+            }
+            else { lblCurLocation.Text = ""; }
+         
         }
 
         private void lblText_Click(object sender, EventArgs e)

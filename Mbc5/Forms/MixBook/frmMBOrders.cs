@@ -19,12 +19,12 @@ namespace Mbc5.Forms.MixBook
     public partial class frmMBOrders : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook","BARCODE"}, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook" }, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook","BARCODE" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -42,8 +42,10 @@ namespace Mbc5.Forms.MixBook
             }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
-            this.btnEdit.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
-            btnDownloadFiles.Enabled = ApplicationUser.IsInRole("MixBook") ? false : true;
+          
+            List<string> mylist = new List<string>(new string[] { "SA", "Administrator", "MixBook" });
+            this.btnEdit.Enabled = ApplicationUser.IsInOneOfRoles(mylist) ;
+            btnDownloadFiles.Enabled = ApplicationUser.IsInOneOfRoles(mylist) ;
             SetConnectionString();
             this.Invno = 0;
             if (OrderId > 0)

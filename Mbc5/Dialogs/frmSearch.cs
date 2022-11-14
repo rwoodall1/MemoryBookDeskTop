@@ -1101,7 +1101,7 @@ namespace Mbc5.Dialogs {
                                               ClientOrderId
                                               ,ShipName 
                                                                                                                                
-                                          FROM MixBookOrder Group By ClientOrderId,ShipName Order By ClientOrderId";
+                                          FROM MixBookOrder Group By ClientOrderId,ShipName Order By ClientOrderId desc";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderIdSearch>();
                             if (resultZC.IsError)
@@ -1147,7 +1147,7 @@ namespace Mbc5.Dialogs {
                             cmdtext = @"SELECT 
                                             ShipName
                                             ,ClientOrderId                                                                                                                                
-                                        FROM MixBookOrder Group By ShipName,ClientOrderId Order By ShipName";
+                                        FROM MixBookOrder Where ShipName !='' Group By ShipName,ClientOrderId Order By ShipName";
                             sqlclient.CommandText(cmdtext);
                             var resultZC = sqlclient.SelectMany<MixBookOrderShipNameSearch>();
                             if (resultZC.IsError)
