@@ -347,7 +347,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>image</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
