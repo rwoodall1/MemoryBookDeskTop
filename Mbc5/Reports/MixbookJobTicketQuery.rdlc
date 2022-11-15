@@ -21,6 +21,10 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookPreviewUrl">
+          <DataField>BookPreviewUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -1045,7 +1049,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Cover Barcode</Value>
+                                      <Value>Page1 Image</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
@@ -1061,7 +1065,7 @@
                               <Top>5.69445in</Top>
                               <Left>0.06595in</Left>
                               <Height>0.25in</Height>
-                              <Width>0.9514in</Width>
+                              <Width>0.84377in</Width>
                               <ZIndex>30</ZIndex>
                               <Style>
                                 <Border>
@@ -1080,7 +1084,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Image Barcode</Value>
+                                      <Value>Cover Image</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
@@ -1096,7 +1100,7 @@
                               <Top>5.69445in</Top>
                               <Left>4.02777in</Left>
                               <Height>0.25in</Height>
-                              <Width>0.9514in</Width>
+                              <Width>0.83682in</Width>
                               <ZIndex>31</ZIndex>
                               <Style>
                                 <Border>
