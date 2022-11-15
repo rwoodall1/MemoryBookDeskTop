@@ -390,7 +390,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>6.40562in</Top>
+            <Top>7.28062in</Top>
             <Left>0.55316in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
@@ -425,7 +425,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SCBarcode</rd:DefaultName>
-            <Top>6.71117in</Top>
+            <Top>7.58617in</Top>
             <Left>0.55316in</Left>
             <Height>0.25in</Height>
             <Width>3.96875in</Width>
@@ -459,7 +459,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>7.73896in</Top>
+            <Top>8.11396in</Top>
             <Left>0.08098in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
@@ -733,7 +733,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>OrderReceivedDate1</rd:DefaultName>
-            <Top>7.73896in</Top>
+            <Top>8.11396in</Top>
             <Left>1.29278in</Left>
             <Height>0.25in</Height>
             <Width>1.79167in</Width>
@@ -767,7 +767,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>7.73896in</Top>
+            <Top>8.11396in</Top>
             <Left>4.49071in</Left>
             <Height>0.25in</Height>
             <Width>2.19098in</Width>
@@ -799,7 +799,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NumToShip</rd:DefaultName>
-            <Top>7.73896in</Top>
+            <Top>8.11396in</Top>
             <Left>6.71364in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
@@ -904,8 +904,8 @@
             <Source>External</Source>
             <Value>=Parameters!ImagePath.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>4.97333in</Top>
-            <Left>4.00456in</Left>
+            <Top>5.52889in</Top>
+            <Left>4.58512in</Left>
             <Height>1.5625in</Height>
             <Width>3.12852in</Width>
             <ZIndex>25</ZIndex>
@@ -1049,6 +1049,91 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox62">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Cover Image</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>5.21777in</Top>
+            <Left>4.58512in</Left>
+            <Height>0.25in</Height>
+            <Width>0.81944in</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image11">
+            <Source>External</Source>
+            <Value>=Parameters!ImagePath1.Value</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>5.52889in</Top>
+            <Left>0.39692in</Left>
+            <Height>1.5625in</Height>
+            <Width>3.12852in</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox63">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Book Image</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>5.21777in</Top>
+            <Left>0.40039in</Left>
+            <Height>0.25in</Height>
+            <Width>0.82986in</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>9.17583in</Height>
         <Style />
@@ -1107,6 +1192,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="ImagePath1">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1117,6 +1206,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>ImagePath</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ImagePath1</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

@@ -180,7 +180,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>7.59375in</Top>
+                              <Top>8.14583in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
@@ -566,7 +566,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>SCBarcode</rd:DefaultName>
-                              <Top>7.8993in</Top>
+                              <Top>8.45138in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>3.96875in</Width>
@@ -878,8 +878,8 @@
                               <Source>External</Source>
                               <Value>=Fields!CoverPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>5.72917in</Top>
-                              <Left>3.7743in</Left>
+                              <Top>6in</Top>
+                              <Left>4.02777in</Left>
                               <Height>1.84375in</Height>
                               <Width>3.64238in</Width>
                               <ZIndex>24</ZIndex>
@@ -1013,6 +1013,91 @@
                               <Height>0.25in</Height>
                               <Width>1.5625in</Width>
                               <ZIndex>28</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Image Name="Image2">
+                              <Source>External</Source>
+                              <Value>=Fields!BookPreviewUrl.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>6in</Top>
+                              <Left>0.06595in</Left>
+                              <Height>1.84375in</Height>
+                              <Width>3.64238in</Width>
+                              <ZIndex>29</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Textbox Name="Textbox61">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Cover Barcode</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>5.69445in</Top>
+                              <Left>0.06595in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.9514in</Width>
+                              <ZIndex>30</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox62">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Image Barcode</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>5.69445in</Top>
+                              <Left>4.02777in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.9514in</Width>
+                              <ZIndex>31</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>

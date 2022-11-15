@@ -1142,9 +1142,9 @@
             <Source>External</Source>
             <Value>=First(Fields!CoverPreviewUrl.Value, "DataSet1")</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>4.51042in</Top>
+            <Top>5.64584in</Top>
             <Left>4.48902in</Left>
-            <Height>3.38542in</Height>
+            <Height>2.25in</Height>
             <Width>3.30556in</Width>
             <ZIndex>29</ZIndex>
             <Style>
@@ -1153,6 +1153,91 @@
               </Border>
             </Style>
           </Image>
+          <Image Name="Image2">
+            <Source>External</Source>
+            <Value>=First(Fields!BookPreviewUrl.Value, "DataSet1")</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>5.64584in</Top>
+            <Left>0.67654in</Left>
+            <Height>2.25in</Height>
+            <Width>3.30556in</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox58">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Book Image</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>5.3264in</Top>
+            <Left>0.67654in</Left>
+            <Height>0.25in</Height>
+            <Width>0.7986in</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox64">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Cover Image</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>5.3264in</Top>
+            <Left>4.48902in</Left>
+            <Height>0.25in</Height>
+            <Width>0.83331in</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>9.48959in</Height>
         <Style />

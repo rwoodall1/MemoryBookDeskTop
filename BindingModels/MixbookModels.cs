@@ -31,6 +31,7 @@ namespace BindingModels
         public int RemakeTotal { get; set; }
         public int NumToShip { get; set; }
         public string CoverPreviewUrl { get; set; }
+        public string BookPreviewUrl { get; set; }
         public int LargePressQty { get; set; }
         public int SmallPressQty { get; set; }
     }
@@ -58,7 +59,7 @@ namespace BindingModels
         public int NumToShip { get; set; }
         public int JobPrintBatch { get; set; }
         public string CoverPreviewUrl { get; set; }
-
+        public string BookPreviewUrl { get; set; }
     }
     public class SiblingCheck
     {

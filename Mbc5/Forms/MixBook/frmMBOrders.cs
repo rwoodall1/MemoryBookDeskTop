@@ -396,7 +396,7 @@ namespace Mbc5.Forms.MixBook
             var value = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
             var sqlClient = new SQLCustomClient().CommandText(@"
                Select Invno,ClientOrderId,
-                ShipName,RequestedShipDate,CoverPreviewUrl,Substring(ItemCode,4,4 ),
+                ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
                 Description,
@@ -482,7 +482,8 @@ namespace Mbc5.Forms.MixBook
                     {
                         reportViewer3.LocalReport.EnableExternalImages = true;
                         ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter });
+                        ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
+                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter,parameter1 });
                     }
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
@@ -522,7 +523,7 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,
+                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl
                 SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                     (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,

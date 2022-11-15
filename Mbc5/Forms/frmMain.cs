@@ -702,6 +702,7 @@ namespace Mbc5.Forms
                     Select Invno,ShipName
                     ,ClientOrderId
                     ,CoverPreviewUrl
+                    ,BookPreviewUrl
                     ,RequestedShipDate
                     ,Description
                     ,Copies
@@ -854,6 +855,7 @@ namespace Mbc5.Forms
                 ,MO.Description
                 ,MO.Copies,MO.Pages
                ,MO.CoverPreviewUrl
+                ,MO.BookPreviewUrl
                 ,MO.Backing,MO.OrderReceivedDate
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
