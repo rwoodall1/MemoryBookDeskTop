@@ -1097,8 +1097,8 @@ namespace Mbc5.Forms.MixBook
             }
 
             int vRemakeQuantity =this.MbxModel.Quantity ;
-            //if (ApplicationUser.UserName.ToUpper() == "QUALITY")
-            //{
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY")
+            {
                 if (string.IsNullOrEmpty(txtRemakeQty.Text))
                 {
                     MbcMessageBox.Stop("Enter a quantity", "Quantity");
@@ -1115,7 +1115,7 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Error("Quantity can not be zero");
                     return;
                 }
-           // }
+            }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             var sqlClient = new SQLCustomClient();
             if (currentUser == "QUALITY")
@@ -1809,11 +1809,12 @@ namespace Mbc5.Forms.MixBook
                
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
-                //if (currentUser == "QUALITY")
-                //{
+                if (currentUser == "QUALITY")
+                {
                     pnlQtyInner.Visible = true;
-                //}
-                //else { pnlQtyInner.Visible = false; } per tf 11-17-22
+                }
+                else { pnlQtyInner.Visible = false; }
+               
                 txtReasonCode.Focus();
             
             }
