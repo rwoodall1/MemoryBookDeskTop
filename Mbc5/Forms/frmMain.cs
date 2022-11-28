@@ -30,6 +30,7 @@ using Microsoft.VisualBasic;
 using CustomControls;
 using CsvHelper;
 using System.IO;
+using System.Linq;
 
 namespace Mbc5.Forms
 {
@@ -693,7 +694,7 @@ namespace Mbc5.Forms
 
             return coverNum.ToString();
         }
-        public void PrintJobTickets()
+        public async void PrintJobTickets()
         {
             string value = "";
             var sqlClient = new SQLCustomClient();
@@ -766,10 +767,10 @@ namespace Mbc5.Forms
 				     End
 
 				End AS SmallPressQty 
-                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                        AND  (BookStatus IS Null OR BookStatus='') ORDER BY Description,Copies
+                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND(JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                       AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
                 ");
-          
+            
                 var result = sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
                 {
@@ -779,34 +780,57 @@ namespace Mbc5.Forms
                 }
           
                 var jobData = (List<JobTicketQuery>)result.Data;
-            //tmp rule 10/29/2022
-            //if (jobData != null)
-            //{
-            //    try {
-            //        var badRecs = jobData.FindAll(a => a.Pages > 350);
-            //        if (badRecs.Count > 0)
-            //        {
-            //            foreach (var rec in badRecs) {
-            //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-            //                    }
-            //        }
-            //    }
-            //    catch (Exception ex) { }
-            //}
+            if (jobData == null)
+            {
+                MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                return;
+            }
 
-                if (jobData!=null) {
+                //tmp rule 10/29/2022
+                //if (jobData != null)
+                //{
+                //    try {
+                //        var badRecs = jobData.FindAll(a => a.Pages > 350);
+                //        if (badRecs.Count > 0)
+                //        {
+                //            foreach (var rec in badRecs) {
+                //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
+                //                    }
+                //        }
+                //    }
+                //    catch (Exception ex) { }
+                //}
+                List<JobTicketQuery> printData = new List<JobTicketQuery>();
+            int numJobs=0;
+            int totalJobs =0;
+             foreach(var job in jobData)
+            {
+                printData.Add(job);
+                
+                numJobs += 1;
+                totalJobs += 1;
+                if (numJobs==200 || totalJobs== jobData.Count)
+                {
                     reportViewer1.LocalReport.DataSources.Clear();
-                    JobTicketQueryBindingSource.DataSource = jobData;
+                    JobTicketQueryBindingSource.DataSource = printData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
+                    this.reportViewer1.RefreshReport();
+                    break;
+                    //JobTicketQueryBindingSource.Clear();
+                    //printData.Clear();
+                    //numJobs = 0;
+                   // continue;
+                }
+            }
+              
+                    
                    
-                this.reportViewer1.RefreshReport();
-                }
-                else
-                {
-                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
-                }
-
+                    
+                   
+                   
+                
+               
 
             
         }
@@ -2087,6 +2111,10 @@ namespace Mbc5.Forms
                     if (reportViewer1.PrintDialog()!=DialogResult.Cancel)
                     {
                         SetJobTicketsPrinted();
+                        PrintJobTickets();
+                        var holdtime=DateTime.Now.AddSeconds(4);
+                        do { }while (DateTime.Now< holdtime);
+
                     }
                 } catch (Exception ex) { }
             }
