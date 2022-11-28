@@ -40,6 +40,7 @@ namespace Mbc5
             {
 
                 Application.Run(new frmMain());
+                //Application.Run(new frmTest());
 
             }
             catch (Exception ex)

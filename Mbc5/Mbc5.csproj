@@ -655,6 +655,12 @@
     <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -926,6 +932,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>

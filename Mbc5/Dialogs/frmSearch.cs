@@ -29,6 +29,7 @@ namespace Mbc5.Dialogs {
             //Production
 
         }
+    
         private int CurrentIndex { get; set; }
         private string SearchType { get; set; }
         private string ReturnForm { get; set; }
@@ -1216,9 +1217,9 @@ namespace Mbc5.Dialogs {
 
         private void Search(string value)
      {
-
             int vIndex;
-
+  
+         
             switch (SearchType)
             {
                   
@@ -1444,6 +1445,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
                     }
                     catch (Exception ex)
                     {
@@ -1467,6 +1469,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                      
                     }
                     catch (Exception ex)
                     {
@@ -1490,6 +1493,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                      
                     }
                     catch (Exception ex)
                     {
@@ -1513,6 +1517,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -1536,6 +1541,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                       
                     }
                     catch (Exception ex)
                     {
@@ -1544,6 +1550,8 @@ namespace Mbc5.Dialogs {
 
                     break;
                 case "SHIPNAME":
+                    
+                    if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString() ==txtSearch.Text) { return; }
                     try
                     {
 
@@ -1559,6 +1567,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
                     }
                     catch (Exception ex)
                     {
@@ -1571,9 +1580,9 @@ namespace Mbc5.Dialogs {
                     {
                         try
                         {
-
+                            if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString() == txtSearch.Text|| txtSearch.Text=="0") { return; }
                             vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
-                            if (vIndex != -1)
+                           if (vIndex != -1)
                             {
                                 dgSearch.ClearSelection();
                                 bsData.Position = vIndex;
@@ -1583,6 +1592,7 @@ namespace Mbc5.Dialogs {
                                 CurrentIndex = vIndex;
 
                             }
+                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
                         }
                         catch (Exception ex)
                         {
@@ -1604,6 +1614,7 @@ namespace Mbc5.Dialogs {
                                 CurrentIndex = vIndex;
 
                             }
+                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
                         }
                         catch (Exception ex)
                         {
@@ -1627,6 +1638,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
+                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
                     }
                     catch (Exception ex)
                     {
@@ -1863,6 +1875,7 @@ namespace Mbc5.Dialogs {
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+           
             Search(txtSearch.Text);
         }
 

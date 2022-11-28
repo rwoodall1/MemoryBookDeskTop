@@ -661,9 +661,14 @@ namespace Mbc5.Forms.MixBook
         private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
         {
             int vIInvno = 0;
-            string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
-            int.TryParse(vSInvno, out vIInvno);
-            this.Invno = vIInvno;
+            try
+            {
+                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                int.TryParse(vSInvno, out vIInvno);
+                this.Invno = vIInvno;
+            }
+            catch { }
+            
         }
 
         private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

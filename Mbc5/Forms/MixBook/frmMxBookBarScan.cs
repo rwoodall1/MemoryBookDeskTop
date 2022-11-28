@@ -1809,7 +1809,7 @@ namespace Mbc5.Forms.MixBook
                
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
-                if (currentUser == "QUALITY")
+                if (currentUser == "QUALITY" || currentUser== "ONBOARD")
                 {
                     pnlQtyInner.Visible = true;
                 }
