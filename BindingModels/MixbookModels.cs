@@ -5,11 +5,17 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class OrdecheckRule1
+    {
+        public int ClientOrderId { get; set; }
+       public string ShipName { get; set; }
+    }
     public class RemakeChk
     {
         public bool Remake { get; set; }
         public int FullRemake { get; set; }
     }
+
     public class RemakeTicketQuery
     {
         public int Invno { get; set; }

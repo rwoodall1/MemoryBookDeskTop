@@ -696,6 +696,7 @@ namespace Mbc5.Forms
         }
         public async void PrintJobTickets()
         {
+            MixbookOrderRuleCheck();
             string value = "";
             var sqlClient = new SQLCustomClient();
             
@@ -767,11 +768,11 @@ namespace Mbc5.Forms
 				     End
 
 				End AS SmallPressQty 
-                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND(JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                        From MixBookOrder MO Where (MixbookOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
                        AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
                 ");
             
-                var result = sqlClient.SelectMany<JobTicketQuery>();
+                var result =sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -833,6 +834,41 @@ namespace Mbc5.Forms
                
 
             
+        }
+        private void MixbookOrderRuleCheck()
+        {
+            //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
+            //When order is rerouted TF Will cancle in our system
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Distinct ClientOrderId,ShipName From MixbookOrder Where Pages>199 AND ShipName !='' AND MixbookOrderStatus ='In Process'");
+            var result = sqlClient.SelectMany<OrdecheckRule1>();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting data for rule check:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting data for rule check:\" + result.Errors[0].DeveloperMessage");
+                return;
+            }
+            var emailData = (List<OrdecheckRule1>)result.Data;
+            if(emailData == null)
+            {
+                return;
+            }
+            foreach(var order in emailData) {
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Hold' Where ClientOrderId=@ClientOrderId");//all invo on hold for order
+            sqlClient.AddParameter("@ClientOrderId",order.ClientOrderId);
+            var result1=sqlClient.Update();
+            if (result1.IsError)
+            {
+                Log.Error("Failed to update Order Status:" + result1.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to update order status to hold for order "+order.ClientOrderId.ToString()+ " having pages over 200.");
+              continue;
+            }
+               string body =@"Please re-route order #"+order.ClientOrderId+" ("+order.ShipName+"). An item has a page count of 200 or more. Please reply to Tammy Fowler when done.";
+               new EmailHelper().SendOutLookEmail("Re-Route request for Client Order #" + order.ClientOrderId.ToString(), "Brian Nelson<brian@mixbook.com>", new List<string> { "spasamante@mixbook.com", "Tammy.Fowler@jostens.com","randy.woodall@jostens.com" },body,EmailType.System);
+            } 
+            
+
         }
         private void SetJobTicketsPrinted()
         {
@@ -933,7 +969,7 @@ namespace Mbc5.Forms
 
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
-                Where  (MO.MixbookOrderStatus!='Cancelled' OR MO.MixbookOrderStatus!='On Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
+                Where  (MO.MixbookOrderStatus!='Cancelled' OR MO.MixbookOrderStatus!='Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
             "); 
 
            

@@ -924,8 +924,8 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
          
-            sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where Invno=@Invno");
-            sqlClient.AddParameter("@Invno", invnoLabel1.Text);
+            sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                  var result = sqlClient.Update();
             if (result.IsError)
             {
