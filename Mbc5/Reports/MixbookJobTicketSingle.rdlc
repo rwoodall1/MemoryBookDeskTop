@@ -485,7 +485,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!Backing.Value</Value>
+                    <Value>=IIf(Fields!Backing.Value="SC","Soft Cover",Fields!Backing.Value)</Value>
                     <Style>
                       <FontSize>20pt</FontSize>
                     </Style>
@@ -496,9 +496,9 @@
             </Paragraphs>
             <rd:DefaultName>Backing</rd:DefaultName>
             <Top>0.93341in</Top>
-            <Left>5.5428in</Left>
+            <Left>5.02193in</Left>
             <Height>0.40625in</Height>
-            <Width>1.24304in</Width>
+            <Width>2.69171in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>

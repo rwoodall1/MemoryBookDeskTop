@@ -701,7 +701,7 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
             
                 sqlClient.CommandText(@"
-                    Select Invno,ShipName
+                    Select Top(200) Invno,ShipName
                     ,ClientOrderId
                     ,CoverPreviewUrl
                     ,BookPreviewUrl
@@ -802,38 +802,15 @@ namespace Mbc5.Forms
                 //    catch (Exception ex) { }
                 //}
                 List<JobTicketQuery> printData = new List<JobTicketQuery>();
-            int numJobs=0;
-            int totalJobs =0;
-             foreach(var job in jobData)
-            {
-                printData.Add(job);
-                
-                numJobs += 1;
-                totalJobs += 1;
-                if (numJobs==200 || totalJobs== jobData.Count)
-                {
+            
+                //Only 200 in query will repeat until all records printed.
                     reportViewer1.LocalReport.DataSources.Clear();
-                    JobTicketQueryBindingSource.DataSource = printData;
+                    JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
                     this.reportViewer1.RefreshReport();
-                    break;
-                    //JobTicketQueryBindingSource.Clear();
-                    //printData.Clear();
-                    //numJobs = 0;
-                   // continue;
-                }
-            }
-              
                     
-                   
-                    
-                   
-                   
-                
-               
-
-            
+         
         }
         private void MixbookOrderRuleCheck()
         {
@@ -2147,7 +2124,7 @@ namespace Mbc5.Forms
                     if (reportViewer1.PrintDialog()!=DialogResult.Cancel)
                     {
                         SetJobTicketsPrinted();
-                        PrintJobTickets();
+                        PrintJobTickets();//do this until they are all printed.
                         var holdtime=DateTime.Now.AddSeconds(4);
                         do { }while (DateTime.Now< holdtime);
 
