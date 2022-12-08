@@ -14,6 +14,13 @@ using Microsoft.Reporting.WinForms;
 using BindingModels;
 using System.Drawing.Printing;
 using NLog;
+
+using Newtonsoft.Json;
+using RESTModule;
+
+using BaseClass.Core;
+
+
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMBOrders : BaseClass.frmBase
@@ -36,6 +43,13 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
+
+            List<string> mylist2 = new List<string>(new string[] { "SA", "Administrator", });
+            if (this.ApplicationUser.IsInOneOfRoles(mylist2))
+            {
+                btnCancelOrder.Visible = true;
+                btnRemoveOrder.Visible = true;
+            }
             List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook","MBLead" });
             if (this.ApplicationUser.IsInOneOfRoles(mylist1))            
             {
@@ -1079,6 +1093,117 @@ namespace Mbc5.Forms.MixBook
         private void lblHold_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var result=MessageBox.Show("This will totally remove the order from the system. Mixbook is not notified. Do you still want to remove this order?","Remove Order",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+            if (result==DialogResult.Yes)
+            {
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText("Delete from MixbookOrders where ClientOrderId=@ClientOrderId");
+                sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    Log.Error("Failed to remove order " + orderIdLabel1.Text + " reason:" + deleteResult.Errors[0].DeveloperMessage);
+                    return;
+                }
+                MbcMessageBox.Information("Order has been removed.");
+                mixBookOrderBindingSource.Clear();
+            }
+        }
+
+        private void btnCancelOrder_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(orderIdLabel1.Text))
+            {
+                CancelOrder();
+            }
+        }
+
+        private void CancelOrder()
+        {
+          
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+            sqlClient.AddParameter("@ModifiedBy", ApplicationUser.Initials);
+            var result = sqlClient.Update();
+            if (result.IsError)
+            {
+                Log.Error("Failed to update mixbook order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
+                MbcMessageBox.Error("Failed to update mixbook order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
+
+                return;
+            }
+            sqlClient.ClearParameters();
+            //going with clientid are 7 digits long
+            sqlClient.CommandText(@"Update produtn Set KitRecvd=null, prshpdte=null,DateModified=GETDATE(),ModifiedBy='APICANCEL' Where MxbClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
+            var prodResult = sqlClient.Update();
+            if (prodResult.IsError)
+            {
+                Log.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+             
+               MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+                
+            }
+            //var processingResult = new ApiProcessingResult();
+            //var returnNotification = new MixbookNotification();
+            //var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
+            //string reason = "";
+            //InputBox.Show("Reason", "Enter a reason", ref reason);
+            //returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
+            //returnNotification.Request.Status.occurredAt = DateTime.Now;
+            //returnNotification.Request.Status.Value = "Cancelled";
+            //returnNotification.Request.Status.message = reason;
+            //var vReturnNotification = Serialize.ToXml(returnNotification);
+            //var restServiceResult = new RESTService().MakeRESTCall("POST", vReturnNotification);
+            //if (!restServiceResult.Result.IsError)
+            //{
+            //    if (restServiceResult.Result.Data.APIResult.ToString().Contains("Success"))
+            //    {
+            //        //if not set to notified scheduled task will try again
+            //        AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, true);
+            //    }
+            //    else
+            //    {
+            //        AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, false);
+            //    }
+            //    MbcMessageBox.Exclamation("Order has been cancelled and Mixbook Nofified.");
+            //}
+            //else
+            //{
+            //    AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, false);
+            //    MbcMessageBox.Exclamation("Order has been cancelled and but Mixbook notification failed.");
+            //}
+
+          
+
+
+        }
+
+        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
+        {
+            var retval = "0";
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
+            sqlClient.AddParameter("@Jobid", jobId);
+            sqlClient.AddParameter("@StatusChangedTo", status);
+            sqlClient.AddParameter("@Notified", notified);
+            sqlClient.AddParameter("@Note", note);
+            sqlClient.AddParameter("@NotificationXML", notificationXML);
+            var sqlResult = sqlClient.Insert();
+            if (sqlResult.IsError)
+            {
+                Log.Error(sqlResult.Errors[0].ErrorMessage);
+
+               
+                return retval;
+            }
+            retval = sqlResult.Data;
+            return retval;
         }
     }
 }

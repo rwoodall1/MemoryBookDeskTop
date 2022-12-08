@@ -82,6 +82,8 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
+            this.btnRemoveOrder = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
             this.btnEmailTrk = new System.Windows.Forms.Button();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
@@ -619,6 +621,8 @@
             // 
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.btnCancelOrder);
+            this.pnlOrder.Controls.Add(this.btnRemoveOrder);
             this.pnlOrder.Controls.Add(this.jobPrintBatchLabel1);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
@@ -666,6 +670,32 @@
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
+            // 
+            // btnCancelOrder
+            // 
+            this.btnCancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelOrder.ForeColor = System.Drawing.Color.Red;
+            this.btnCancelOrder.Location = new System.Drawing.Point(161, 226);
+            this.btnCancelOrder.Name = "btnCancelOrder";
+            this.btnCancelOrder.Size = new System.Drawing.Size(122, 27);
+            this.btnCancelOrder.TabIndex = 342;
+            this.btnCancelOrder.Text = "Cancel Order";
+            this.btnCancelOrder.UseVisualStyleBackColor = true;
+            this.btnCancelOrder.Visible = false;
+            this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
+            // 
+            // btnRemoveOrder
+            // 
+            this.btnRemoveOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveOrder.ForeColor = System.Drawing.Color.Red;
+            this.btnRemoveOrder.Location = new System.Drawing.Point(10, 226);
+            this.btnRemoveOrder.Name = "btnRemoveOrder";
+            this.btnRemoveOrder.Size = new System.Drawing.Size(133, 27);
+            this.btnRemoveOrder.TabIndex = 341;
+            this.btnRemoveOrder.Text = "Remove Order";
+            this.btnRemoveOrder.UseVisualStyleBackColor = false;
+            this.btnRemoveOrder.Visible = false;
+            this.btnRemoveOrder.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // jobPrintBatchLabel1
             // 
@@ -1355,5 +1385,7 @@
         private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Label jobPrintBatchLabel1;
+        private System.Windows.Forms.Button btnCancelOrder;
+        private System.Windows.Forms.Button btnRemoveOrder;
     }
 }
