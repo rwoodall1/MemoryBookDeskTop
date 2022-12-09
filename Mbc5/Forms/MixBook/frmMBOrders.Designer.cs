@@ -675,7 +675,7 @@
             // 
             this.btnCancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelOrder.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelOrder.Location = new System.Drawing.Point(161, 226);
+            this.btnCancelOrder.Location = new System.Drawing.Point(15, 226);
             this.btnCancelOrder.Name = "btnCancelOrder";
             this.btnCancelOrder.Size = new System.Drawing.Size(122, 27);
             this.btnCancelOrder.TabIndex = 342;

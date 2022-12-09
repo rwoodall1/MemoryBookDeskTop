@@ -48,7 +48,7 @@ namespace Mbc5.Forms.MixBook
             if (this.ApplicationUser.IsInOneOfRoles(mylist2))
             {
                 btnCancelOrder.Visible = true;
-                btnRemoveOrder.Visible = true;
+               // btnRemoveOrder.Visible = true;
             }
             List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook","MBLead" });
             if (this.ApplicationUser.IsInOneOfRoles(mylist1))            
@@ -1126,7 +1126,7 @@ namespace Mbc5.Forms.MixBook
         {
           
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
+            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',BookPreviewUrl='',BookUrl='',CoverPreviewUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
             sqlClient.AddParameter("@ModifiedBy", ApplicationUser.Initials);
             var result = sqlClient.Update();
@@ -1147,8 +1147,10 @@ namespace Mbc5.Forms.MixBook
                 Log.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
              
                MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+                return;
                 
             }
+            this.Fill();
             //var processingResult = new ApiProcessingResult();
             //var returnNotification = new MixbookNotification();
             //var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
