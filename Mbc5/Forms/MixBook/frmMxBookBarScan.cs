@@ -698,13 +698,14 @@ namespace Mbc5.Forms.MixBook
                                 }
                             }
                         }
+
+                        
                         string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
                         try
                         {
                             if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
                             {
-                                //var ac = printeryPath + "\\" + MbxModel.PrintergyFile;
-                                //Process.Start(printeryPath + "\\" + MbxModel.PrintergyFile);
+
                                 Process.Start(MbxModel.BookPreviewUrl);
                                 Process.Start(MbxModel.CoverPreviewUrl);
                                 var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
@@ -731,7 +732,7 @@ namespace Mbc5.Forms.MixBook
                         catch (Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Warn("An error has occurred:" + ex.Message+" | Model:"+ JsonConvert.SerializeObject(MbxModel));
+                            Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(MbxModel));
                             lblHoldLocation.Text = "";
                             return;
                         }

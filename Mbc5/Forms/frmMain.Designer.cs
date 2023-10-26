@@ -129,6 +129,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.bindingTimesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -228,6 +229,7 @@
             // 
             this.meridianToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mbidsToolStripMenuItem,
+            this.bindingTimesToolStripMenuItem,
             this.MerToolStrip,
             this.invoicesToolStripMenuItem1,
             this.receivingSurveyCompensationToolStripMenuItem1,
@@ -1002,6 +1004,13 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // bindingTimesToolStripMenuItem
+            // 
+            this.bindingTimesToolStripMenuItem.Name = "bindingTimesToolStripMenuItem";
+            this.bindingTimesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.bindingTimesToolStripMenuItem.Text = "Binding Times";
+         
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1131,5 +1140,6 @@
         private System.Windows.Forms.ToolStripMenuItem meridianBindingWIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scnCheckToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem bindingTimesToolStripMenuItem;
     }
 }

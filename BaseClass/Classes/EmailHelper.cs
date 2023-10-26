@@ -146,7 +146,7 @@ namespace BaseClass.Classes
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
 						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://meridianplanners.com
-' alt='Lifeline Services' title='Lifeline Services'><img src='https://www.memorybook.com/images/logos/JostensLogo.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+' alt='Lifeline Services' title='Lifeline Services'><img src='https://www.memorybook.com/images/logos/JostensLogo.jpg' alt='Memorybook title='Memorybook' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>

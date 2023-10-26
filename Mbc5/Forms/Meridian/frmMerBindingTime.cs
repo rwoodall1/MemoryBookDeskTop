@@ -19,7 +19,7 @@ namespace Mbc5.Forms.Meridian
         public frmMerBindingTime(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
-            if (userPrincipal.UserName.ToUpper() == "SA" || userPrincipal.UserName.ToUpper() == "MARK")
+            if (userPrincipal.UserName.ToUpper() == "SA" || userPrincipal.UserName.ToUpper() == "MARK" || userPrincipal.UserName.ToUpper() =="CHRIS")
             {
                 btnDelete.Visible = true;
             }
@@ -70,7 +70,7 @@ namespace Mbc5.Forms.Meridian
         }
         private void LoadData()
         {
-            var sqlQuery = new SQLCustomClient().CommandText("SELECT Top(200) Id,DateCreated,ProductType,Task,Initials,Time,Description,Quantity FROM MerBindingWip Order By DateCreated Desc");
+            var sqlQuery = new SQLCustomClient().CommandText("SELECT Top(200) Id,DateCreated,ProductType,Task,Initials,Time,Description,Quantity FROM MerBindingWip   Where Year(GETDate())=Year(DateCreated) Order By DateCreated Desc");
             var selectResult=sqlQuery.SelectMany<MerBindingWip>();
             if (selectResult.IsError)
             {

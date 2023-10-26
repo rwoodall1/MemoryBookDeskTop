@@ -125,7 +125,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!ShipName.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>22pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -134,8 +136,8 @@
             <rd:DefaultName>ShipName</rd:DefaultName>
             <Top>0.14521in</Top>
             <Left>0.21289in</Left>
-            <Height>0.25in</Height>
-            <Width>2.46875in</Width>
+            <Height>0.46875in</Height>
+            <Width>3.06944in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -620,17 +622,19 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=First(Fields!DSInvno.Value, "DataSet1")</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>22pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DSInvno</rd:DefaultName>
-            <Top>0.46466in</Top>
-            <Left>0.22677in</Left>
-            <Height>0.25in</Height>
-            <Width>1.46875in</Width>
+            <Top>0.14521in</Top>
+            <Left>3.35177in</Left>
+            <Height>0.36458in</Height>
+            <Width>1.97917in</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>

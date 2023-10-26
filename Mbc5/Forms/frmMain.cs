@@ -31,6 +31,7 @@ using CustomControls;
 using CsvHelper;
 using System.IO;
 using System.Linq;
+using System.Drawing.Drawing2D;
 
 namespace Mbc5.Forms
 {
@@ -164,6 +165,7 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixBookToolStripMenuItem.Visible = false;
+                meridianBindingWIPToolStripMenuItem.Visible = true;
                 meridianBindingWIPToolStripMenuItem_Click(null, null);
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
@@ -278,7 +280,7 @@ namespace Mbc5.Forms
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-
+                meridianBindingWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MBLead" });
 
                 //invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 //meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
@@ -2270,6 +2272,8 @@ namespace Mbc5.Forms
         {
 
         }
+
+     
 
 
         #endregion
