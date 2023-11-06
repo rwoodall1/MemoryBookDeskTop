@@ -308,16 +308,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!ShipName.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>22pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>ShipName</rd:DefaultName>
-                              <Left>0.10417in</Left>
-                              <Height>0.25in</Height>
-                              <Width>2.46875in</Width>
+                              <Left>0.11805in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>3.14583in</Width>
                               <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
@@ -691,17 +693,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!DSInvno.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>22pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>DSInvno</rd:DefaultName>
-                              <Top>0.31944in</Top>
-                              <Left>0.11805in</Left>
-                              <Height>0.25in</Height>
-                              <Width>1.65625in</Width>
+                              <Left>3.37848in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.64582in</Width>
                               <ZIndex>17</ZIndex>
                               <Style>
                                 <Border>
@@ -808,8 +811,8 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <Top>4.45833in</Top>
-                              <Left>0.64514in</Left>
+                              <Top>4.1875in</Top>
+                              <Left>0.24653in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
                               <ZIndex>20</ZIndex>
@@ -839,8 +842,8 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <Top>4.97916in</Top>
-                              <Left>0.64514in</Left>
+                              <Top>4.70833in</Top>
+                              <Left>0.24653in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
                               <ZIndex>21</ZIndex>
@@ -855,8 +858,8 @@
                               </Style>
                             </Textbox>
                             <Line Name="Line1">
-                              <Top>4.70833in</Top>
-                              <Left>1.67292in</Left>
+                              <Top>4.4375in</Top>
+                              <Left>1.27431in</Left>
                               <Height>0in</Height>
                               <Width>1.04167in</Width>
                               <ZIndex>22</ZIndex>
@@ -867,8 +870,8 @@
                               </Style>
                             </Line>
                             <Line Name="Line2">
-                              <Top>5.22916in</Top>
-                              <Left>1.67292in</Left>
+                              <Top>4.95833in</Top>
+                              <Left>1.27431in</Left>
                               <Height>0in</Height>
                               <Width>1.04167in</Width>
                               <ZIndex>23</ZIndex>
@@ -882,9 +885,9 @@
                               <Source>External</Source>
                               <Value>=Fields!CoverPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>6in</Top>
-                              <Left>4.02777in</Left>
-                              <Height>1.84375in</Height>
+                              <Top>5.39583in</Top>
+                              <Left>4.07987in</Left>
+                              <Height>2.53125in</Height>
                               <Width>3.64238in</Width>
                               <ZIndex>24</ZIndex>
                               <Style>
@@ -1031,9 +1034,9 @@
                               <Source>External</Source>
                               <Value>=Fields!BookPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>6in</Top>
-                              <Left>0.06595in</Left>
-                              <Height>1.84375in</Height>
+                              <Top>5.40973in</Top>
+                              <Left>0.11805in</Left>
+                              <Height>2.53125in</Height>
                               <Width>3.64238in</Width>
                               <ZIndex>29</ZIndex>
                               <Style>
@@ -1062,8 +1065,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>5.69445in</Top>
-                              <Left>0.06595in</Left>
+                              <Top>5.09028in</Top>
+                              <Left>0.11805in</Left>
                               <Height>0.25in</Height>
                               <Width>0.84377in</Width>
                               <ZIndex>30</ZIndex>
@@ -1097,8 +1100,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>5.69445in</Top>
-                              <Left>4.02777in</Left>
+                              <Top>5.09028in</Top>
+                              <Left>4.07987in</Left>
                               <Height>0.25in</Height>
                               <Width>0.83682in</Width>
                               <ZIndex>31</ZIndex>
