@@ -698,7 +698,7 @@ namespace Mbc5.Forms
         }
         public async void PrintJobTickets()
         {
-            MixbookOrderRuleCheck();
+            //MixbookOrderRuleCheck();
             string value = "";
             var sqlClient = new SQLCustomClient();
             

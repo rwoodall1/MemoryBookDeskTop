@@ -126,7 +126,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>9.43749in</Height>
+                  <Height>8.98957in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -184,7 +184,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.14583in</Top>
+                              <Top>8.01042in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
@@ -208,6 +208,7 @@
                                     <TextRun>
                                       <Value>Ship Date </Value>
                                       <Style>
+                                        <FontSize>18pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -218,9 +219,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Left>5.40972in</Left>
-                              <Height>0.25in</Height>
-                              <Width>0.95834in</Width>
+                              <Left>5.03472in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.23959in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
@@ -309,7 +310,7 @@
                                     <TextRun>
                                       <Value>=Fields!ShipName.Value</Value>
                                       <Style>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>18pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -339,16 +340,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=FormatDateTime(Fields!RequestedShipDate.Value,DateFormat.ShortDate)</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>18pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>RequestedShipDate</rd:DefaultName>
-                              <Left>6.39584in</Left>
-                              <Height>0.25in</Height>
-                              <Width>1.27083in</Width>
+                              <Left>6.27084in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.36806in</Width>
                               <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
@@ -572,7 +575,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>SCBarcode</rd:DefaultName>
-                              <Top>8.45138in</Top>
+                              <Top>8.31597in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>3.96875in</Width>
@@ -602,8 +605,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-                              <Top>8.9375in</Top>
-                              <Left>1.31597in</Left>
+                              <Top>8.63542in</Top>
+                              <Left>1.32985in</Left>
                               <Height>0.25in</Height>
                               <Width>1.375in</Width>
                               <ZIndex>14</ZIndex>
@@ -636,8 +639,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.9375in</Top>
-                              <Left>0.10417in</Left>
+                              <Top>8.63542in</Top>
+                              <Left>0.11805in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
                               <ZIndex>15</ZIndex>
@@ -670,7 +673,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.9375in</Top>
+                              <Top>8.63542in</Top>
                               <Left>4.44792in</Left>
                               <Height>0.25in</Height>
                               <Width>2.19098in</Width>
@@ -694,7 +697,7 @@
                                     <TextRun>
                                       <Value>=Fields!DSInvno.Value</Value>
                                       <Style>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>18pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -780,7 +783,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>NumToShip</rd:DefaultName>
-                              <Top>8.9375in</Top>
+                              <Top>8.63542in</Top>
                               <Left>6.6389in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
@@ -1148,7 +1151,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.12375in</Top>
             <Left>0.11333in</Left>
-            <Height>9.43749in</Height>
+            <Height>8.98957in</Height>
             <Width>7.76041in</Width>
             <Style>
               <Border>
@@ -1157,13 +1160,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.57166in</Height>
+        <Height>9.21749in</Height>
         <Style />
       </Body>
       <Width>7.99875in</Width>
       <Page>
         <PageFooter>
-          <Height>0.45834in</Height>
+          <Height>0.25001in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>

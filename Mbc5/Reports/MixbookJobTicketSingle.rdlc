@@ -126,7 +126,7 @@
                   <TextRun>
                     <Value>=Fields!ShipName.Value</Value>
                     <Style>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>18pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -135,9 +135,9 @@
             </Paragraphs>
             <rd:DefaultName>ShipName</rd:DefaultName>
             <Top>0.14521in</Top>
-            <Left>0.21289in</Left>
+            <Left>0.24066in</Left>
             <Height>0.46875in</Height>
-            <Width>3.06944in</Width>
+            <Width>2.95486in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -521,6 +521,7 @@
                   <TextRun>
                     <Value>Ship Date </Value>
                     <Style>
+                      <FontSize>18pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -532,9 +533,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
             <Top>0.14521in</Top>
-            <Left>5.4768in</Left>
-            <Height>0.25in</Height>
-            <Width>0.95834in</Width>
+            <Left>4.77193in</Left>
+            <Height>0.46875in</Height>
+            <Width>1.41321in</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -554,7 +555,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=FormatDateTime(Fields!RequestedShipDate.Value,DateFormat.ShortDate)</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>18pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -562,9 +565,9 @@
             </Paragraphs>
             <rd:DefaultName>RequestedShipDate</rd:DefaultName>
             <Top>0.14521in</Top>
-            <Left>6.44904in</Left>
-            <Height>0.25in</Height>
-            <Width>1.27083in</Width>
+            <Left>6.19904in</Left>
+            <Height>0.46875in</Height>
+            <Width>1.6396in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -602,7 +605,7 @@
             <Width>5.77778in</Width>
             <ZIndex>14</ZIndex>
             <Visibility>
-              <Hidden>=First(NOT Fields!JobTicketPrinted.Value, "DataSet1")</Hidden>
+              <Hidden>=First(Fields!JobTicketPrinted.Value, "DataSet1")</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -623,7 +626,7 @@
                   <TextRun>
                     <Value>=First(Fields!DSInvno.Value, "DataSet1")</Value>
                     <Style>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>18pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -632,9 +635,9 @@
             </Paragraphs>
             <rd:DefaultName>DSInvno</rd:DefaultName>
             <Top>0.14521in</Top>
-            <Left>3.35177in</Left>
-            <Height>0.36458in</Height>
-            <Width>1.97917in</Width>
+            <Left>3.13996in</Left>
+            <Height>0.46875in</Height>
+            <Width>1.81252in</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
