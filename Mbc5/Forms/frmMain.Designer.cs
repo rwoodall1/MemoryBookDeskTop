@@ -129,6 +129,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.bindingTimesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -228,6 +229,7 @@
             // 
             this.meridianToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mbidsToolStripMenuItem,
+            this.bindingTimesToolStripMenuItem,
             this.MerToolStrip,
             this.invoicesToolStripMenuItem1,
             this.receivingSurveyCompensationToolStripMenuItem1,
@@ -966,10 +968,10 @@
             this.reportViewer1.DocumentMapWidth = 38;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1106, 596);
+            this.reportViewer1.Location = new System.Drawing.Point(1106, 566);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(63, 66);
+            this.reportViewer1.Size = new System.Drawing.Size(75, 108);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
@@ -1001,6 +1003,13 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // bindingTimesToolStripMenuItem
+            // 
+            this.bindingTimesToolStripMenuItem.Name = "bindingTimesToolStripMenuItem";
+            this.bindingTimesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.bindingTimesToolStripMenuItem.Text = "Binding Times";
+         
             // 
             // frmMain
             // 
@@ -1131,5 +1140,6 @@
         private System.Windows.Forms.ToolStripMenuItem meridianBindingWIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scnCheckToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem bindingTimesToolStripMenuItem;
     }
 }

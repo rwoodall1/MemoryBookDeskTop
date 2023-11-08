@@ -21,6 +21,10 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookPreviewUrl">
+          <DataField>BookPreviewUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -122,7 +126,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>9.43749in</Height>
+                  <Height>8.98957in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -180,7 +184,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>7.59375in</Top>
+                              <Top>8.01042in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
@@ -204,6 +208,7 @@
                                     <TextRun>
                                       <Value>Ship Date </Value>
                                       <Style>
+                                        <FontSize>18pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -214,9 +219,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Left>5.40972in</Left>
-                              <Height>0.25in</Height>
-                              <Width>0.95834in</Width>
+                              <Left>5.03472in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.23959in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
@@ -304,16 +309,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!ShipName.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>18pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>ShipName</rd:DefaultName>
-                              <Left>0.10417in</Left>
-                              <Height>0.25in</Height>
-                              <Width>2.46875in</Width>
+                              <Left>0.11805in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>3.14583in</Width>
                               <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
@@ -333,16 +340,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=FormatDateTime(Fields!RequestedShipDate.Value,DateFormat.ShortDate)</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>18pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>RequestedShipDate</rd:DefaultName>
-                              <Left>6.39584in</Left>
-                              <Height>0.25in</Height>
-                              <Width>1.27083in</Width>
+                              <Left>6.27084in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.36806in</Width>
                               <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
@@ -521,7 +530,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Backing.Value</Value>
+                                      <Value>=IIf(Fields!Backing.Value="SC","Soft Cover",Fields!Backing.Value)</Value>
                                       <Style>
                                         <FontSize>20pt</FontSize>
                                       </Style>
@@ -532,9 +541,9 @@
                               </Paragraphs>
                               <rd:DefaultName>Backing</rd:DefaultName>
                               <Top>0.83333in</Top>
-                              <Left>5.40972in</Left>
+                              <Left>4.44792in</Left>
                               <Height>0.47917in</Height>
-                              <Width>1.51042in</Width>
+                              <Width>3.19098in</Width>
                               <ZIndex>12</ZIndex>
                               <Style>
                                 <Border>
@@ -566,7 +575,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>SCBarcode</rd:DefaultName>
-                              <Top>7.8993in</Top>
+                              <Top>8.31597in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
                               <Width>3.96875in</Width>
@@ -596,8 +605,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-                              <Top>8.9375in</Top>
-                              <Left>1.31597in</Left>
+                              <Top>8.63542in</Top>
+                              <Left>1.32985in</Left>
                               <Height>0.25in</Height>
                               <Width>1.375in</Width>
                               <ZIndex>14</ZIndex>
@@ -630,8 +639,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.9375in</Top>
-                              <Left>0.10417in</Left>
+                              <Top>8.63542in</Top>
+                              <Left>0.11805in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
                               <ZIndex>15</ZIndex>
@@ -664,7 +673,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.9375in</Top>
+                              <Top>8.63542in</Top>
                               <Left>4.44792in</Left>
                               <Height>0.25in</Height>
                               <Width>2.19098in</Width>
@@ -687,17 +696,18 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!DSInvno.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>18pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>DSInvno</rd:DefaultName>
-                              <Top>0.31944in</Top>
-                              <Left>0.11805in</Left>
-                              <Height>0.25in</Height>
-                              <Width>1.65625in</Width>
+                              <Left>3.37848in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.64582in</Width>
                               <ZIndex>17</ZIndex>
                               <Style>
                                 <Border>
@@ -773,7 +783,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>NumToShip</rd:DefaultName>
-                              <Top>8.9375in</Top>
+                              <Top>8.63542in</Top>
                               <Left>6.6389in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
@@ -804,8 +814,8 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <Top>4.45833in</Top>
-                              <Left>0.64514in</Left>
+                              <Top>4.1875in</Top>
+                              <Left>0.24653in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
                               <ZIndex>20</ZIndex>
@@ -835,8 +845,8 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <Top>4.97916in</Top>
-                              <Left>0.64514in</Left>
+                              <Top>4.70833in</Top>
+                              <Left>0.24653in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
                               <ZIndex>21</ZIndex>
@@ -851,8 +861,8 @@
                               </Style>
                             </Textbox>
                             <Line Name="Line1">
-                              <Top>4.70833in</Top>
-                              <Left>1.67292in</Left>
+                              <Top>4.4375in</Top>
+                              <Left>1.27431in</Left>
                               <Height>0in</Height>
                               <Width>1.04167in</Width>
                               <ZIndex>22</ZIndex>
@@ -863,8 +873,8 @@
                               </Style>
                             </Line>
                             <Line Name="Line2">
-                              <Top>5.22916in</Top>
-                              <Left>1.67292in</Left>
+                              <Top>4.95833in</Top>
+                              <Left>1.27431in</Left>
                               <Height>0in</Height>
                               <Width>1.04167in</Width>
                               <ZIndex>23</ZIndex>
@@ -878,9 +888,9 @@
                               <Source>External</Source>
                               <Value>=Fields!CoverPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>5.72917in</Top>
-                              <Left>3.7743in</Left>
-                              <Height>1.84375in</Height>
+                              <Top>5.39583in</Top>
+                              <Left>4.07987in</Left>
+                              <Height>2.53125in</Height>
                               <Width>3.64238in</Width>
                               <ZIndex>24</ZIndex>
                               <Style>
@@ -1023,6 +1033,91 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <Image Name="Image2">
+                              <Source>External</Source>
+                              <Value>=Fields!BookPreviewUrl.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>5.40973in</Top>
+                              <Left>0.11805in</Left>
+                              <Height>2.53125in</Height>
+                              <Width>3.64238in</Width>
+                              <ZIndex>29</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Textbox Name="Textbox61">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Page1 Image</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>5.09028in</Top>
+                              <Left>0.11805in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.84377in</Width>
+                              <ZIndex>30</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox62">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Cover Image</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>5.09028in</Top>
+                              <Left>4.07987in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.83682in</Width>
+                              <ZIndex>31</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -1056,7 +1151,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.12375in</Top>
             <Left>0.11333in</Left>
-            <Height>9.43749in</Height>
+            <Height>8.98957in</Height>
             <Width>7.76041in</Width>
             <Style>
               <Border>
@@ -1065,13 +1160,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.57166in</Height>
+        <Height>9.21749in</Height>
         <Style />
       </Body>
       <Width>7.99875in</Width>
       <Page>
         <PageFooter>
-          <Height>0.45834in</Height>
+          <Height>0.25001in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>

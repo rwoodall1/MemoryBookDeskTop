@@ -71,6 +71,7 @@ namespace Mbc5.DataSets {
                 if ((ds.Tables["InvHst"] != null)) {
                     base.Tables.Add(new InvHstDataTable(ds.Tables["InvHst"]));
                 }
+                //Opy
                 if ((ds.Tables["OpyProducts"] != null)) {
                     base.Tables.Add(new OpyProductsDataTable(ds.Tables["OpyProducts"]));
                 }

@@ -30,6 +30,8 @@ using Microsoft.VisualBasic;
 using CustomControls;
 using CsvHelper;
 using System.IO;
+using System.Linq;
+using System.Drawing.Drawing2D;
 
 namespace Mbc5.Forms
 {
@@ -163,6 +165,7 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
                 endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
                 mixBookToolStripMenuItem.Visible = false;
+                meridianBindingWIPToolStripMenuItem.Visible = true;
                 meridianBindingWIPToolStripMenuItem_Click(null, null);
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
@@ -277,7 +280,7 @@ namespace Mbc5.Forms
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-
+                meridianBindingWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MBLead" });
 
                 //invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 //meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
@@ -693,15 +696,17 @@ namespace Mbc5.Forms
 
             return coverNum.ToString();
         }
-        public void PrintJobTickets()
+        public async void PrintJobTickets()
         {
+            //MixbookOrderRuleCheck();
             string value = "";
             var sqlClient = new SQLCustomClient();
             
                 sqlClient.CommandText(@"
-                    Select Invno,ShipName
+                    Select Top(200) Invno,ShipName
                     ,ClientOrderId
                     ,CoverPreviewUrl
+                    ,BookPreviewUrl
                     ,RequestedShipDate
                     ,Description
                     ,Copies
@@ -765,11 +770,11 @@ namespace Mbc5.Forms
 				     End
 
 				End AS SmallPressQty 
-                        From MixBookOrder MO Where (MixbookOrderStatus!='Cancelled' OR MixbookOrderStatus!='On Hold') AND (JobTicketPrinted Is Null OR JobTicketPrinted=0) 
-                        AND  (BookStatus IS Null OR BookStatus='') ORDER BY Description,Copies
+                        From MixBookOrder MO Where (MixbookOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                       AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
                 ");
-          
-                var result = sqlClient.SelectMany<JobTicketQuery>();
+            
+                var result =sqlClient.SelectMany<JobTicketQuery>();
                 if (result.IsError)
                 {
                     MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -778,36 +783,71 @@ namespace Mbc5.Forms
                 }
           
                 var jobData = (List<JobTicketQuery>)result.Data;
-            //tmp rule 10/29/2022
-            //if (jobData != null)
-            //{
-            //    try {
-            //        var badRecs = jobData.FindAll(a => a.Pages > 350);
-            //        if (badRecs.Count > 0)
-            //        {
-            //            foreach (var rec in badRecs) {
-            //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-            //                    }
-            //        }
-            //    }
-            //    catch (Exception ex) { }
-            //}
+            if (jobData == null)
+            {
+                MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                return;
+            }
 
-                if (jobData!=null) {
+                //tmp rule 10/29/2022
+                //if (jobData != null)
+                //{
+                //    try {
+                //        var badRecs = jobData.FindAll(a => a.Pages > 350);
+                //        if (badRecs.Count > 0)
+                //        {
+                //            foreach (var rec in badRecs) {
+                //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
+                //                    }
+                //        }
+                //    }
+                //    catch (Exception ex) { }
+                //}
+                List<JobTicketQuery> printData = new List<JobTicketQuery>();
+            
+                //Only 200 in query will repeat until all records printed.
                     reportViewer1.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-                   
-                this.reportViewer1.RefreshReport();
-                }
-                else
-                {
-                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
-                }
-
-
+                    this.reportViewer1.RefreshReport();
+                    
+         
+        }
+        private void MixbookOrderRuleCheck()
+        {
+            //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
+            //When order is rerouted TF Will cancle in our system
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Distinct ClientOrderId,ShipName From MixbookOrder Where Pages>199 AND ShipName !='' AND MixbookOrderStatus ='In Process'");
+            var result = sqlClient.SelectMany<OrdecheckRule1>();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting data for rule check:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting data for rule check:\" + result.Errors[0].DeveloperMessage");
+                return;
+            }
+            var emailData = (List<OrdecheckRule1>)result.Data;
+            if(emailData == null)
+            {
+                return;
+            }
+            foreach(var order in emailData) {
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Hold' Where ClientOrderId=@ClientOrderId");//all invo on hold for order
+            sqlClient.AddParameter("@ClientOrderId",order.ClientOrderId);
+            var result1=sqlClient.Update();
+            if (result1.IsError)
+            {
+                Log.Error("Failed to update Order Status:" + result1.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to update order status to hold for order "+order.ClientOrderId.ToString()+ " having pages over 200.");
+              continue;
+            }
+               string body =@"Please re-route order #"+order.ClientOrderId+" ("+order.ShipName+"). An item has a page count of 200 or more. Please reply to Tammy Fowler when done.";
+               new EmailHelper().SendOutLookEmail("Re-Route request for Client Order #" + order.ClientOrderId.ToString(), "Brian Nelson<brian@mixbook.com>", new List<string> { "spasamante@mixbook.com", "Tammy.Fowler@jostens.com","randy.woodall@jostens.com" },body,EmailType.System);
+            } 
             
+
         }
         private void SetJobTicketsPrinted()
         {
@@ -854,6 +894,7 @@ namespace Mbc5.Forms
                 ,MO.Description
                 ,MO.Copies,MO.Pages
                ,MO.CoverPreviewUrl
+                ,MO.BookPreviewUrl
                 ,MO.Backing,MO.OrderReceivedDate
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
@@ -907,7 +948,7 @@ namespace Mbc5.Forms
 
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
-                Where W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
+                Where  (MO.MixbookOrderStatus!='Cancelled' OR MO.MixbookOrderStatus!='Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
             "); 
 
            
@@ -2001,12 +2042,7 @@ namespace Mbc5.Forms
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
-
-            frmLoadTest frmLoadTest = new frmLoadTest(this.ApplicationUser);
-            frmLoadTest.MdiParent = this;
-            frmLoadTest.Show();
-            this.Cursor = Cursors.Default;
+            
         }
 
         private void mixbookBarscanToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2090,6 +2126,10 @@ namespace Mbc5.Forms
                     if (reportViewer1.PrintDialog()!=DialogResult.Cancel)
                     {
                         SetJobTicketsPrinted();
+                        PrintJobTickets();//do this until they are all printed.
+                        var holdtime=DateTime.Now.AddSeconds(4);
+                        do { }while (DateTime.Now< holdtime);
+
                     }
                 } catch (Exception ex) { }
             }
@@ -2232,6 +2272,8 @@ namespace Mbc5.Forms
         {
 
         }
+
+     
 
 
         #endregion

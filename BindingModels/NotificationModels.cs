@@ -253,7 +253,7 @@ namespace BindingModels
     {
 
         private System.DateTime occurredAtField;
-
+        private string messageField;
         private string valueField;
 
         /// <remarks/>
@@ -267,6 +267,18 @@ namespace BindingModels
             set
             {
                 this.occurredAtField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string message
+        {
+            get
+            {
+                return this.messageField;
+            }
+            set
+            {
+                this.messageField = value;
             }
         }
 

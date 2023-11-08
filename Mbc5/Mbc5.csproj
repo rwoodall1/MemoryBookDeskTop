@@ -527,12 +527,6 @@
     <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmLoadTest.Designer.cs">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Meridian\frmMInvoicInq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -661,6 +655,12 @@
     <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -679,9 +679,7 @@
     <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
     </Compile>
-    <Compile Include="LookUpForms\LkpCustType.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.cs" />
     <Compile Include="LookUpForms\LkpCustType.Designer.cs">
       <DependentUpon>LkpCustType.cs</DependentUpon>
     </Compile>
@@ -872,9 +870,6 @@
     <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
       <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmLoadTest.resx">
-      <DependentUpon>frmLoadTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMInvoicInq.resx">
       <DependentUpon>frmMInvoicInq.cs</DependentUpon>
     </EmbeddedResource>
@@ -935,6 +930,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>

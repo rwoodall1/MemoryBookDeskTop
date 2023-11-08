@@ -257,10 +257,13 @@ namespace Mbc5.Forms.MixBook
             }
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
-            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@BookStatus", "CaseMatch");
-            sqlClient.Update();
-
+            var updateresult=sqlClient.Update();
+            if (updateresult.IsError)
+            {
+                Log.Error("Failed to update book status:("+this.Invno.ToString()+")"+updateresult.Errors[0].DeveloperMessage);
+            }
           
             return true;
         }

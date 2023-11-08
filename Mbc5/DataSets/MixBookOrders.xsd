@@ -10,10 +10,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MixBookOrderTableAdapter" GeneratorDataComponentClassName="MixBookOrderTableAdapter" Name="MixBookOrder" UserDataComponentName="MixBookOrderTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.MixBookOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5.dbo.MixBookOrder" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [MixBookOrder] WHERE (([Invno] = @Original_Invno) AND ((@IsNull_ClientOrderId = 1 AND [ClientOrderId] IS NULL) OR ([ClientOrderId] = @Original_ClientOrderId)) AND ((@IsNull_JobId = 1 AND [JobId] IS NULL) OR ([JobId] = @Original_JobId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_OrderNumber = 1 AND [OrderNumber] IS NULL) OR ([OrderNumber] = @Original_OrderNumber)) AND ((@IsNull_Size = 1 AND [Size] IS NULL) OR ([Size] = @Original_Size)) AND ((@IsNull_Backing = 1 AND [Backing] IS NULL) OR ([Backing] = @Original_Backing)) AND ((@IsNull_Finish = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)) AND ((@IsNull_Paper = 1 AND [Paper] IS NULL) OR ([Paper] = @Original_Paper)) AND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_RequestedShipDate)) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_ItemId)) AND ((@IsNull_MixbookOrderStatus = 1 AND [MixbookOrderStatus] IS NULL) OR ([MixbookOrderStatus] = @Original_MixbookOrderStatus)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus)) AND ((@IsNull_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_RequestedShipMethod = 1 AND [RequestedShipMethod] IS NULL) OR ([RequestedShipMethod] = @Original_RequestedShipMethod)) AND ((@IsNull_CurrentCoverLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatch)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_JobPrintDate)))</CommandText>
+                    <CommandText>DELETE FROM [MixBookOrder] WHERE (([Invno] = @Original_Invno) AND ((@IsNull_ClientOrderId = 1 AND [ClientOrderId] IS NULL) OR ([ClientOrderId] = @Original_ClientOrderId)) AND ((@IsNull_JobId = 1 AND [JobId] IS NULL) OR ([JobId] = @Original_JobId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_OrderNumber = 1 AND [OrderNumber] IS NULL) OR ([OrderNumber] = @Original_OrderNumber)) AND ((@IsNull_Size = 1 AND [Size] IS NULL) OR ([Size] = @Original_Size)) AND ((@IsNull_Backing = 1 AND [Backing] IS NULL) OR ([Backing] = @Original_Backing)) AND ((@IsNull_Finish = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)) AND ((@IsNull_Paper = 1 AND [Paper] IS NULL) OR ([Paper] = @Original_Paper)) AND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_RequestedShipDate)) AND ((@IsNull_ItemId = 1 AND [ItemId] IS NULL) OR ([ItemId] = @Original_ItemId)) AND ((@IsNull_MixbookOrderStatus = 1 AND [MixbookOrderStatus] IS NULL) OR ([MixbookOrderStatus] = @Original_MixbookOrderStatus)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus)) AND ((@IsNull_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_RequestedShipMethod = 1 AND [RequestedShipMethod] IS NULL) OR ([RequestedShipMethod] = @Original_RequestedShipMethod)) AND ((@IsNull_CurrentCoverLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_JobPrintDate)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Invno" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ClientOrderId" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -78,8 +78,6 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CurrentBookLoc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CurrentBookLoc" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_OrderRePrint" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OrderRePrint" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_OrderRePrint" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="OrderRePrint" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JobPrintBatch" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JobPrintBatch" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@Original_JobPrintBatch" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="JobPrintBatch" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JobPrintDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JobPrintDate" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_JobPrintDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JobPrintDate" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
@@ -87,7 +85,7 @@
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [MixBookOrder] ([Invno], [ClientOrderId], [JobId], [Description], [ItemCode], [Copies], [Pages], [DateShipped], [ShipName], [ShipAddr], [ShipCity], [ShipState], [ShipZip], [PhoneNumber], [ShipMethod], [OrderReceivedDate], [OrderNumber], [Size], [Backing], [Finish], [Paper], [RequestedShipDate], [CoverUrl], [BookUrl], [ItemId], [TrackingNumber], [MixbookOrderStatus], [Weight], [Country], [CoverPreviewUrl], [BookPreviewUrl], [Notes], [CoverStatus], [BookStatus], [RequestedShipMethod], [CurrentCoverLoc], [CurrentBookLoc], [OrderRePrint], [JobPrintBatch], [JobPrintDate]) VALUES (@Invno, @ClientOrderId, @JobId, @Description, @ItemCode, @Copies, @Pages, @DateShipped, @ShipName, @ShipAddr, @ShipCity, @ShipState, @ShipZip, @PhoneNumber, @ShipMethod, @OrderReceivedDate, @OrderNumber, @Size, @Backing, @Finish, @Paper, @RequestedShipDate, @CoverUrl, @BookUrl, @ItemId, @TrackingNumber, @MixbookOrderStatus, @Weight, @Country, @CoverPreviewUrl, @BookPreviewUrl, @Notes, @CoverStatus, @BookStatus, @RequestedShipMethod, @CurrentCoverLoc, @CurrentBookLoc, @OrderRePrint, @JobPrintBatch, @JobPrintDate)</CommandText>
+                    <CommandText>INSERT INTO [MixBookOrder] ([Invno], [ClientOrderId], [JobId], [Description], [ItemCode], [Copies], [Pages], [DateShipped], [ShipName], [ShipAddr], [ShipCity], [ShipState], [ShipZip], [PhoneNumber], [ShipMethod], [OrderReceivedDate], [OrderNumber], [Size], [Backing], [Finish], [Paper], [RequestedShipDate], [CoverUrl], [BookUrl], [ItemId], [TrackingNumber], [MixbookOrderStatus], [Weight], [Country], [CoverPreviewUrl], [BookPreviewUrl], [Notes], [CoverStatus], [BookStatus], [RequestedShipMethod], [CurrentCoverLoc], [CurrentBookLoc], [OrderRePrint], [JobPrintDate]) VALUES (@Invno, @ClientOrderId, @JobId, @Description, @ItemCode, @Copies, @Pages, @DateShipped, @ShipName, @ShipAddr, @ShipCity, @ShipState, @ShipZip, @PhoneNumber, @ShipMethod, @OrderReceivedDate, @OrderNumber, @Size, @Backing, @Finish, @Paper, @RequestedShipDate, @CoverUrl, @BookUrl, @ItemId, @TrackingNumber, @MixbookOrderStatus, @Weight, @Country, @CoverPreviewUrl, @BookPreviewUrl, @Notes, @CoverStatus, @BookStatus, @RequestedShipMethod, @CurrentCoverLoc, @CurrentBookLoc, @OrderRePrint, @JobPrintDate)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ClientOrderId" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -127,45 +125,44 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CurrentCoverLoc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CurrentCoverLoc" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CurrentBookLoc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CurrentBookLoc" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@OrderRePrint" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="OrderRePrint" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@JobPrintBatch" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="JobPrintBatch" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@JobPrintDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JobPrintDate" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, COALESCE (ShipAddr2, '') AS ShipAddr2, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, 
-                         OrderNumber, Size, Backing, Finish, Paper, RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, 
-                         RequestedShipMethod, CurrentCoverLoc, CurrentBookLoc, OrderRePrint, JobPrintBatch, JobPrintDate
+                    <CommandText>SELECT        Invno, ClientOrderId, JobId, Description, ItemCode, Copies, Pages, DateShipped, ShipName, ShipAddr, ShipCity, ShipState, ShipZip, PhoneNumber, ShipMethod, OrderReceivedDate, OrderNumber, Size, Backing, Finish, Paper, 
+                         RequestedShipDate, CoverUrl, BookUrl, ItemId, TrackingNumber, MixbookOrderStatus, Weight, Country, CoverPreviewUrl, BookPreviewUrl, Notes, CoverStatus, BookStatus, RequestedShipMethod, CurrentCoverLoc, 
+                         CurrentBookLoc, OrderRePrint, JobPrintDate, ShipAddr2
 FROM            MixBookOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="ClientOrderId" ColumnName="ClientOrderId" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ClientOrderId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ClientOrderId" ColumnName="ClientOrderId" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ClientOrderId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ClientOrderId" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       MixBookOrder
-SET                ShipName = @ShipName, ShipAddr = @ShipAddr, ShipAddr2 = @ShipAddr2, ShipCity = @ShipCity, ShipState = @ShipState, ShipZip = @ShipZip, PhoneNumber = @PhoneNumber, ShipMethod = @ShipMethod, 
-                         RequestedShipDate = @RequestedShipDate, TrackingNumber = @TrackingNumber, Weight = @Weight, Notes = @Notes, OrderRePrint = @OrderRePrint
+SET                ShipName = @ShipName, ShipAddr = @ShipAddr, ShipCity = @ShipCity, ShipState = @ShipState, ShipZip = @ShipZip, PhoneNumber = @PhoneNumber, ShipMethod = @ShipMethod, 
+                         RequestedShipDate = @RequestedShipDate, TrackingNumber = @TrackingNumber, Weight = @Weight, Notes = @Notes, OrderRePrint = @OrderRePrint, ShipAddr2 = @ShipAddr2
 WHERE        (Invno = @Invno)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipName" ColumnName="ShipName" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShipName" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShipName" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr" ColumnName="ShipAddr" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr2" ColumnName="ShipAddr2" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipCity" ColumnName="ShipCity" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipCity" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipState" ColumnName="ShipState" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipState" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipState" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipZip" ColumnName="ShipZip" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipZip" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipZip" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="PhoneNumber" ColumnName="PhoneNumber" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@PhoneNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="PhoneNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ShipMethod" ColumnName="ShipMethod" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipMethod" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipMethod" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="RequestedShipDate" ColumnName="RequestedShipDate" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@RequestedShipDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="RequestedShipDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="TrackingNumber" ColumnName="TrackingNumber" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@TrackingNumber" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="TrackingNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Weight" ColumnName="Weight" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@Weight" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Weight" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="OrderRePrint" ColumnName="OrderRePrint" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@OrderRePrint" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="OrderRePrint" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Invno" ColumnName="Invno" DataSourceName="Mbc5_demo.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipName" ColumnName="ShipName" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShipName" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShipName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr" ColumnName="ShipAddr" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipCity" ColumnName="ShipCity" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipState" ColumnName="ShipState" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipState" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipZip" ColumnName="ShipZip" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipZip" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipZip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="PhoneNumber" ColumnName="PhoneNumber" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@PhoneNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="PhoneNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipMethod" ColumnName="ShipMethod" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipMethod" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipMethod" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RequestedShipDate" ColumnName="RequestedShipDate" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@RequestedShipDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="RequestedShipDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TrackingNumber" ColumnName="TrackingNumber" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@TrackingNumber" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="TrackingNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Weight" ColumnName="Weight" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@Weight" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Weight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="OrderRePrint" ColumnName="OrderRePrint" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@OrderRePrint" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="OrderRePrint" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShipAddr2" ColumnName="ShipAddr2" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShipAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShipAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Invno" ColumnName="Invno" DataSourceName="Mbc5.dbo.MixBookOrder" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -198,7 +195,6 @@ WHERE        (Invno = @Invno)</CommandText>
               <Mapping SourceColumn="CoverUrl" DataSetColumn="CoverUrl" />
               <Mapping SourceColumn="BookUrl" DataSetColumn="BookUrl" />
               <Mapping SourceColumn="ItemId" DataSetColumn="ItemId" />
-              <Mapping SourceColumn="ShipAddr2" DataSetColumn="ShipAddr2" />
               <Mapping SourceColumn="TrackingNumber" DataSetColumn="TrackingNumber" />
               <Mapping SourceColumn="MixbookOrderStatus" DataSetColumn="MixbookOrderStatus" />
               <Mapping SourceColumn="Weight" DataSetColumn="Weight" />
@@ -212,8 +208,8 @@ WHERE        (Invno = @Invno)</CommandText>
               <Mapping SourceColumn="CurrentCoverLoc" DataSetColumn="CurrentCoverLoc" />
               <Mapping SourceColumn="CurrentBookLoc" DataSetColumn="CurrentBookLoc" />
               <Mapping SourceColumn="OrderRePrint" DataSetColumn="OrderRePrint" />
-              <Mapping SourceColumn="JobPrintBatch" DataSetColumn="JobPrintBatch" />
               <Mapping SourceColumn="JobPrintDate" DataSetColumn="JobPrintDate" />
+              <Mapping SourceColumn="ShipAddr2" DataSetColumn="ShipAddr2" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -285,261 +281,261 @@ SELECT ShipName, ShipAlias, Carrier, Id FROM ShipCarriers WHERE (Id = @Id)</Comm
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="MixBookOrders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MixBookOrders" msprop:Generator_UserDSName="MixBookOrders">
+  <xs:element name="MixBookOrders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MixBookOrders" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MixBookOrders">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MixBookOrder" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_RowClassName="MixBookOrderRow" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent">
+        <xs:element name="MixBookOrder" msprop:Generator_RowEvHandlerName="MixBookOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="MixBookOrderRowDeleted" msprop:Generator_RowDeletingName="MixBookOrderRowDeleting" msprop:Generator_RowEvArgName="MixBookOrderRowChangeEvent" msprop:Generator_TablePropName="MixBookOrder" msprop:Generator_RowChangedName="MixBookOrderRowChanged" msprop:Generator_UserTableName="MixBookOrder" msprop:Generator_RowChangingName="MixBookOrderRowChanging" msprop:Generator_RowClassName="MixBookOrderRow" msprop:Generator_TableClassName="MixBookOrderDataTable" msprop:Generator_TableVarName="tableMixBookOrder">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_UserColumnName="Invno" type="xs:int" />
-              <xs:element name="ClientOrderId" msprop:Generator_ColumnVarNameInTable="columnClientOrderId" msprop:Generator_ColumnPropNameInRow="ClientOrderId" msprop:Generator_ColumnPropNameInTable="ClientOrderIdColumn" msprop:Generator_UserColumnName="ClientOrderId" type="xs:int" minOccurs="0" />
-              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+              <xs:element name="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_UserColumnName="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" type="xs:int" />
+              <xs:element name="ClientOrderId" msprop:Generator_ColumnPropNameInTable="ClientOrderIdColumn" msprop:Generator_ColumnPropNameInRow="ClientOrderId" msprop:Generator_UserColumnName="ClientOrderId" msprop:Generator_ColumnVarNameInTable="columnClientOrderId" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ItemCode" msprop:Generator_ColumnVarNameInTable="columnItemCode" msprop:Generator_ColumnPropNameInRow="ItemCode" msprop:Generator_ColumnPropNameInTable="ItemCodeColumn" msprop:Generator_UserColumnName="ItemCode" minOccurs="0">
+              <xs:element name="ItemCode" msprop:Generator_ColumnPropNameInTable="ItemCodeColumn" msprop:Generator_ColumnPropNameInRow="ItemCode" msprop:Generator_UserColumnName="ItemCode" msprop:Generator_ColumnVarNameInTable="columnItemCode" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Copies" msprop:Generator_ColumnVarNameInTable="columnCopies" msprop:Generator_ColumnPropNameInRow="Copies" msprop:Generator_ColumnPropNameInTable="CopiesColumn" msprop:Generator_UserColumnName="Copies" type="xs:int" minOccurs="0" />
-              <xs:element name="Pages" msprop:Generator_ColumnVarNameInTable="columnPages" msprop:Generator_ColumnPropNameInRow="Pages" msprop:Generator_ColumnPropNameInTable="PagesColumn" msprop:Generator_UserColumnName="Pages" type="xs:int" minOccurs="0" />
-              <xs:element name="DateShipped" msprop:Generator_ColumnVarNameInTable="columnDateShipped" msprop:Generator_ColumnPropNameInRow="DateShipped" msprop:Generator_ColumnPropNameInTable="DateShippedColumn" msprop:Generator_UserColumnName="DateShipped" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_UserColumnName="ShipName" minOccurs="0">
+              <xs:element name="Copies" msprop:Generator_ColumnPropNameInTable="CopiesColumn" msprop:Generator_ColumnPropNameInRow="Copies" msprop:Generator_UserColumnName="Copies" msprop:Generator_ColumnVarNameInTable="columnCopies" type="xs:int" minOccurs="0" />
+              <xs:element name="Pages" msprop:Generator_ColumnPropNameInTable="PagesColumn" msprop:Generator_ColumnPropNameInRow="Pages" msprop:Generator_UserColumnName="Pages" msprop:Generator_ColumnVarNameInTable="columnPages" type="xs:int" minOccurs="0" />
+              <xs:element name="DateShipped" msprop:Generator_ColumnPropNameInTable="DateShippedColumn" msprop:Generator_ColumnPropNameInRow="DateShipped" msprop:Generator_UserColumnName="DateShipped" msprop:Generator_ColumnVarNameInTable="columnDateShipped" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_UserColumnName="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipAddr" msprop:Generator_ColumnVarNameInTable="columnShipAddr" msprop:Generator_ColumnPropNameInRow="ShipAddr" msprop:Generator_ColumnPropNameInTable="ShipAddrColumn" msprop:Generator_UserColumnName="ShipAddr" minOccurs="0">
+              <xs:element name="ShipAddr" msprop:Generator_ColumnPropNameInTable="ShipAddrColumn" msprop:Generator_ColumnPropNameInRow="ShipAddr" msprop:Generator_UserColumnName="ShipAddr" msprop:Generator_ColumnVarNameInTable="columnShipAddr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipCity" msprop:Generator_ColumnVarNameInTable="columnShipCity" msprop:Generator_ColumnPropNameInRow="ShipCity" msprop:Generator_ColumnPropNameInTable="ShipCityColumn" msprop:Generator_UserColumnName="ShipCity" minOccurs="0">
+              <xs:element name="ShipCity" msprop:Generator_ColumnPropNameInTable="ShipCityColumn" msprop:Generator_ColumnPropNameInRow="ShipCity" msprop:Generator_UserColumnName="ShipCity" msprop:Generator_ColumnVarNameInTable="columnShipCity" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipState" msprop:Generator_ColumnVarNameInTable="columnShipState" msprop:Generator_ColumnPropNameInRow="ShipState" msprop:Generator_ColumnPropNameInTable="ShipStateColumn" msprop:Generator_UserColumnName="ShipState" minOccurs="0">
+              <xs:element name="ShipState" msprop:Generator_ColumnPropNameInTable="ShipStateColumn" msprop:Generator_ColumnPropNameInRow="ShipState" msprop:Generator_UserColumnName="ShipState" msprop:Generator_ColumnVarNameInTable="columnShipState" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipZip" msprop:Generator_ColumnVarNameInTable="columnShipZip" msprop:Generator_ColumnPropNameInRow="ShipZip" msprop:Generator_ColumnPropNameInTable="ShipZipColumn" msprop:Generator_UserColumnName="ShipZip" minOccurs="0">
+              <xs:element name="ShipZip" msprop:Generator_ColumnPropNameInTable="ShipZipColumn" msprop:Generator_ColumnPropNameInRow="ShipZip" msprop:Generator_UserColumnName="ShipZip" msprop:Generator_ColumnVarNameInTable="columnShipZip" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PhoneNumber" msprop:Generator_ColumnVarNameInTable="columnPhoneNumber" msprop:Generator_ColumnPropNameInRow="PhoneNumber" msprop:Generator_ColumnPropNameInTable="PhoneNumberColumn" msprop:Generator_UserColumnName="PhoneNumber" minOccurs="0">
+              <xs:element name="PhoneNumber" msprop:Generator_ColumnPropNameInTable="PhoneNumberColumn" msprop:Generator_ColumnPropNameInRow="PhoneNumber" msprop:Generator_UserColumnName="PhoneNumber" msprop:Generator_ColumnVarNameInTable="columnPhoneNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipMethod" msprop:Generator_ColumnVarNameInTable="columnShipMethod" msprop:Generator_ColumnPropNameInRow="ShipMethod" msprop:Generator_ColumnPropNameInTable="ShipMethodColumn" msprop:Generator_UserColumnName="ShipMethod" minOccurs="0">
+              <xs:element name="ShipMethod" msprop:Generator_ColumnPropNameInTable="ShipMethodColumn" msprop:Generator_ColumnPropNameInRow="ShipMethod" msprop:Generator_UserColumnName="ShipMethod" msprop:Generator_ColumnVarNameInTable="columnShipMethod" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="JobId" msprop:Generator_ColumnVarNameInTable="columnJobId" msprop:Generator_ColumnPropNameInRow="JobId" msprop:Generator_ColumnPropNameInTable="JobIdColumn" msprop:Generator_UserColumnName="JobId" minOccurs="0">
+              <xs:element name="JobId" msprop:Generator_ColumnPropNameInTable="JobIdColumn" msprop:Generator_ColumnPropNameInRow="JobId" msprop:Generator_UserColumnName="JobId" msprop:Generator_ColumnVarNameInTable="columnJobId" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="OrderReceivedDate" msprop:Generator_ColumnVarNameInTable="columnOrderReceivedDate" msprop:Generator_ColumnPropNameInRow="OrderReceivedDate" msprop:Generator_ColumnPropNameInTable="OrderReceivedDateColumn" msprop:Generator_UserColumnName="OrderReceivedDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="OrderNumber" msprop:Generator_ColumnVarNameInTable="columnOrderNumber" msprop:Generator_ColumnPropNameInRow="OrderNumber" msprop:Generator_ColumnPropNameInTable="OrderNumberColumn" msprop:Generator_UserColumnName="OrderNumber" minOccurs="0">
+              <xs:element name="OrderReceivedDate" msprop:Generator_ColumnPropNameInTable="OrderReceivedDateColumn" msprop:Generator_ColumnPropNameInRow="OrderReceivedDate" msprop:Generator_UserColumnName="OrderReceivedDate" msprop:Generator_ColumnVarNameInTable="columnOrderReceivedDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OrderNumber" msprop:Generator_ColumnPropNameInTable="OrderNumberColumn" msprop:Generator_ColumnPropNameInRow="OrderNumber" msprop:Generator_UserColumnName="OrderNumber" msprop:Generator_ColumnVarNameInTable="columnOrderNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" minOccurs="0">
+              <xs:element name="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_UserColumnName="Size" msprop:Generator_ColumnVarNameInTable="columnSize" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Backing" msprop:Generator_ColumnVarNameInTable="columnBacking" msprop:Generator_ColumnPropNameInRow="Backing" msprop:Generator_ColumnPropNameInTable="BackingColumn" msprop:Generator_UserColumnName="Backing" minOccurs="0">
+              <xs:element name="Backing" msprop:Generator_ColumnPropNameInTable="BackingColumn" msprop:Generator_ColumnPropNameInRow="Backing" msprop:Generator_UserColumnName="Backing" msprop:Generator_ColumnVarNameInTable="columnBacking" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Finish" msprop:Generator_ColumnVarNameInTable="columnFinish" msprop:Generator_ColumnPropNameInRow="Finish" msprop:Generator_ColumnPropNameInTable="FinishColumn" msprop:Generator_UserColumnName="Finish" minOccurs="0">
+              <xs:element name="Finish" msprop:Generator_ColumnPropNameInTable="FinishColumn" msprop:Generator_ColumnPropNameInRow="Finish" msprop:Generator_UserColumnName="Finish" msprop:Generator_ColumnVarNameInTable="columnFinish" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Paper" msprop:Generator_ColumnVarNameInTable="columnPaper" msprop:Generator_ColumnPropNameInRow="Paper" msprop:Generator_ColumnPropNameInTable="PaperColumn" msprop:Generator_UserColumnName="Paper" minOccurs="0">
+              <xs:element name="Paper" msprop:Generator_ColumnPropNameInTable="PaperColumn" msprop:Generator_ColumnPropNameInRow="Paper" msprop:Generator_UserColumnName="Paper" msprop:Generator_ColumnVarNameInTable="columnPaper" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RequestedShipDate" msprop:Generator_ColumnVarNameInTable="columnRequestedShipDate" msprop:Generator_ColumnPropNameInRow="RequestedShipDate" msprop:Generator_ColumnPropNameInTable="RequestedShipDateColumn" msprop:Generator_UserColumnName="RequestedShipDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="CoverUrl" msprop:Generator_ColumnVarNameInTable="columnCoverUrl" msprop:Generator_ColumnPropNameInRow="CoverUrl" msprop:Generator_ColumnPropNameInTable="CoverUrlColumn" msprop:Generator_UserColumnName="CoverUrl" minOccurs="0">
+              <xs:element name="RequestedShipDate" msprop:Generator_ColumnPropNameInTable="RequestedShipDateColumn" msprop:Generator_ColumnPropNameInRow="RequestedShipDate" msprop:Generator_UserColumnName="RequestedShipDate" msprop:Generator_ColumnVarNameInTable="columnRequestedShipDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CoverUrl" msprop:Generator_ColumnPropNameInTable="CoverUrlColumn" msprop:Generator_ColumnPropNameInRow="CoverUrl" msprop:Generator_UserColumnName="CoverUrl" msprop:Generator_ColumnVarNameInTable="columnCoverUrl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BookUrl" msprop:Generator_ColumnVarNameInTable="columnBookUrl" msprop:Generator_ColumnPropNameInRow="BookUrl" msprop:Generator_ColumnPropNameInTable="BookUrlColumn" msprop:Generator_UserColumnName="BookUrl" minOccurs="0">
+              <xs:element name="BookUrl" msprop:Generator_ColumnPropNameInTable="BookUrlColumn" msprop:Generator_ColumnPropNameInRow="BookUrl" msprop:Generator_UserColumnName="BookUrl" msprop:Generator_ColumnVarNameInTable="columnBookUrl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ItemId" msprop:Generator_ColumnVarNameInTable="columnItemId" msprop:Generator_ColumnPropNameInRow="ItemId" msprop:Generator_ColumnPropNameInTable="ItemIdColumn" msprop:Generator_UserColumnName="ItemId" minOccurs="0">
+              <xs:element name="ItemId" msprop:Generator_ColumnPropNameInTable="ItemIdColumn" msprop:Generator_ColumnPropNameInRow="ItemId" msprop:Generator_UserColumnName="ItemId" msprop:Generator_ColumnVarNameInTable="columnItemId" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipAddr2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnShipAddr2" msprop:Generator_ColumnPropNameInRow="ShipAddr2" msprop:Generator_ColumnPropNameInTable="ShipAddr2Column" msprop:Generator_UserColumnName="ShipAddr2" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TrackingNumber" msprop:Generator_ColumnVarNameInTable="columnTrackingNumber" msprop:Generator_ColumnPropNameInRow="TrackingNumber" msprop:Generator_ColumnPropNameInTable="TrackingNumberColumn" msprop:Generator_UserColumnName="TrackingNumber" minOccurs="0">
+              <xs:element name="TrackingNumber" msprop:Generator_ColumnPropNameInTable="TrackingNumberColumn" msprop:Generator_ColumnPropNameInRow="TrackingNumber" msprop:Generator_UserColumnName="TrackingNumber" msprop:Generator_ColumnVarNameInTable="columnTrackingNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6000000" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MixbookOrderStatus" msprop:Generator_ColumnVarNameInTable="columnMixbookOrderStatus" msprop:Generator_ColumnPropNameInRow="MixbookOrderStatus" msprop:Generator_ColumnPropNameInTable="MixbookOrderStatusColumn" msprop:Generator_UserColumnName="MixbookOrderStatus" minOccurs="0">
+              <xs:element name="MixbookOrderStatus" msprop:Generator_ColumnPropNameInTable="MixbookOrderStatusColumn" msprop:Generator_ColumnPropNameInRow="MixbookOrderStatus" msprop:Generator_UserColumnName="MixbookOrderStatus" msprop:Generator_ColumnVarNameInTable="columnMixbookOrderStatus" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_UserColumnName="Country" minOccurs="0">
+              <xs:element name="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_UserColumnName="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_UserColumnName="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CoverPreviewUrl" msprop:Generator_ColumnVarNameInTable="columnCoverPreviewUrl" msprop:Generator_ColumnPropNameInRow="CoverPreviewUrl" msprop:Generator_ColumnPropNameInTable="CoverPreviewUrlColumn" msprop:Generator_UserColumnName="CoverPreviewUrl" minOccurs="0">
+              <xs:element name="CoverPreviewUrl" msprop:Generator_ColumnPropNameInTable="CoverPreviewUrlColumn" msprop:Generator_ColumnPropNameInRow="CoverPreviewUrl" msprop:Generator_UserColumnName="CoverPreviewUrl" msprop:Generator_ColumnVarNameInTable="columnCoverPreviewUrl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BookPreviewUrl" msprop:Generator_ColumnVarNameInTable="columnBookPreviewUrl" msprop:Generator_ColumnPropNameInRow="BookPreviewUrl" msprop:Generator_ColumnPropNameInTable="BookPreviewUrlColumn" msprop:Generator_UserColumnName="BookPreviewUrl" minOccurs="0">
+              <xs:element name="BookPreviewUrl" msprop:Generator_ColumnPropNameInTable="BookPreviewUrlColumn" msprop:Generator_ColumnPropNameInRow="BookPreviewUrl" msprop:Generator_UserColumnName="BookPreviewUrl" msprop:Generator_ColumnVarNameInTable="columnBookPreviewUrl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" minOccurs="0">
+              <xs:element name="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_UserColumnName="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CoverStatus" msprop:Generator_ColumnVarNameInTable="columnCoverStatus" msprop:Generator_ColumnPropNameInRow="CoverStatus" msprop:Generator_ColumnPropNameInTable="CoverStatusColumn" msprop:Generator_UserColumnName="CoverStatus" minOccurs="0">
+              <xs:element name="CoverStatus" msprop:Generator_ColumnPropNameInTable="CoverStatusColumn" msprop:Generator_ColumnPropNameInRow="CoverStatus" msprop:Generator_UserColumnName="CoverStatus" msprop:Generator_ColumnVarNameInTable="columnCoverStatus" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BookStatus" msprop:Generator_ColumnVarNameInTable="columnBookStatus" msprop:Generator_ColumnPropNameInRow="BookStatus" msprop:Generator_ColumnPropNameInTable="BookStatusColumn" msprop:Generator_UserColumnName="BookStatus" minOccurs="0">
+              <xs:element name="BookStatus" msprop:Generator_ColumnPropNameInTable="BookStatusColumn" msprop:Generator_ColumnPropNameInRow="BookStatus" msprop:Generator_UserColumnName="BookStatus" msprop:Generator_ColumnVarNameInTable="columnBookStatus" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RequestedShipMethod" msprop:Generator_ColumnVarNameInTable="columnRequestedShipMethod" msprop:Generator_ColumnPropNameInRow="RequestedShipMethod" msprop:Generator_ColumnPropNameInTable="RequestedShipMethodColumn" msprop:Generator_UserColumnName="RequestedShipMethod" minOccurs="0">
+              <xs:element name="RequestedShipMethod" msprop:Generator_ColumnPropNameInTable="RequestedShipMethodColumn" msprop:Generator_ColumnPropNameInRow="RequestedShipMethod" msprop:Generator_UserColumnName="RequestedShipMethod" msprop:Generator_ColumnVarNameInTable="columnRequestedShipMethod" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CurrentCoverLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentCoverLoc" msprop:Generator_ColumnPropNameInRow="CurrentCoverLoc" msprop:Generator_ColumnPropNameInTable="CurrentCoverLocColumn" msprop:Generator_UserColumnName="CurrentCoverLoc" minOccurs="0">
+              <xs:element name="CurrentCoverLoc" msprop:Generator_ColumnPropNameInTable="CurrentCoverLocColumn" msprop:Generator_ColumnPropNameInRow="CurrentCoverLoc" msprop:Generator_UserColumnName="CurrentCoverLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentCoverLoc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CurrentBookLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentBookLoc" msprop:Generator_ColumnPropNameInRow="CurrentBookLoc" msprop:Generator_ColumnPropNameInTable="CurrentBookLocColumn" msprop:Generator_UserColumnName="CurrentBookLoc" minOccurs="0">
+              <xs:element name="CurrentBookLoc" msprop:Generator_ColumnPropNameInTable="CurrentBookLocColumn" msprop:Generator_ColumnPropNameInRow="CurrentBookLoc" msprop:Generator_UserColumnName="CurrentBookLoc" msprop:Generator_ColumnVarNameInTable="columnCurrentBookLoc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="OrderRePrint" msprop:Generator_ColumnVarNameInTable="columnOrderRePrint" msprop:Generator_ColumnPropNameInRow="OrderRePrint" msprop:Generator_ColumnPropNameInTable="OrderRePrintColumn" msprop:Generator_UserColumnName="OrderRePrint" type="xs:boolean" minOccurs="0" />
-              <xs:element name="JobPrintBatch" msprop:Generator_ColumnVarNameInTable="columnJobPrintBatch" msprop:Generator_ColumnPropNameInRow="JobPrintBatch" msprop:Generator_ColumnPropNameInTable="JobPrintBatchColumn" msprop:Generator_UserColumnName="JobPrintBatch" type="xs:unsignedByte" minOccurs="0" />
-              <xs:element name="JobPrintDate" msprop:Generator_ColumnVarNameInTable="columnJobPrintDate" msprop:Generator_ColumnPropNameInRow="JobPrintDate" msprop:Generator_ColumnPropNameInTable="JobPrintDateColumn" msprop:Generator_UserColumnName="JobPrintDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OrderRePrint" msprop:Generator_ColumnPropNameInTable="OrderRePrintColumn" msprop:Generator_ColumnPropNameInRow="OrderRePrint" msprop:Generator_UserColumnName="OrderRePrint" msprop:Generator_ColumnVarNameInTable="columnOrderRePrint" type="xs:boolean" minOccurs="0" />
+              <xs:element name="JobPrintBatch" msprop:Generator_ColumnPropNameInTable="JobPrintBatchColumn" msprop:Generator_ColumnPropNameInRow="JobPrintBatch" msprop:Generator_UserColumnName="JobPrintBatch" msprop:Generator_ColumnVarNameInTable="columnJobPrintBatch" type="xs:int" minOccurs="0" />
+              <xs:element name="JobPrintDate" msprop:Generator_ColumnPropNameInTable="JobPrintDateColumn" msprop:Generator_ColumnPropNameInRow="JobPrintDate" msprop:Generator_UserColumnName="JobPrintDate" msprop:Generator_ColumnVarNameInTable="columnJobPrintDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ShipAddr2" msprop:Generator_ColumnPropNameInRow="ShipAddr2" msprop:Generator_ColumnPropNameInTable="ShipAddr2Column" msprop:Generator_ColumnVarNameInTable="columnShipAddr2" msprop:Generator_UserColumnName="ShipAddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ShipCarriers" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_RowClassName="ShipCarriersRow" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent">
+        <xs:element name="ShipCarriers" msprop:Generator_RowEvHandlerName="ShipCarriersRowChangeEventHandler" msprop:Generator_RowDeletedName="ShipCarriersRowDeleted" msprop:Generator_RowDeletingName="ShipCarriersRowDeleting" msprop:Generator_RowEvArgName="ShipCarriersRowChangeEvent" msprop:Generator_TablePropName="ShipCarriers" msprop:Generator_RowChangedName="ShipCarriersRowChanged" msprop:Generator_UserTableName="ShipCarriers" msprop:Generator_RowChangingName="ShipCarriersRowChanging" msprop:Generator_RowClassName="ShipCarriersRow" msprop:Generator_TableClassName="ShipCarriersDataTable" msprop:Generator_TableVarName="tableShipCarriers">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_UserColumnName="ShipName" minOccurs="0">
+              <xs:element name="ShipName" msprop:Generator_ColumnPropNameInTable="ShipNameColumn" msprop:Generator_ColumnPropNameInRow="ShipName" msprop:Generator_UserColumnName="ShipName" msprop:Generator_ColumnVarNameInTable="columnShipName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipAlias" msprop:Generator_ColumnVarNameInTable="columnShipAlias" msprop:Generator_ColumnPropNameInRow="ShipAlias" msprop:Generator_ColumnPropNameInTable="ShipAliasColumn" msprop:Generator_UserColumnName="ShipAlias" minOccurs="0">
+              <xs:element name="ShipAlias" msprop:Generator_ColumnPropNameInTable="ShipAliasColumn" msprop:Generator_ColumnPropNameInRow="ShipAlias" msprop:Generator_UserColumnName="ShipAlias" msprop:Generator_ColumnVarNameInTable="columnShipAlias" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Carrier" msprop:Generator_ColumnVarNameInTable="columnCarrier" msprop:Generator_ColumnPropNameInRow="Carrier" msprop:Generator_ColumnPropNameInTable="CarrierColumn" msprop:Generator_UserColumnName="Carrier" minOccurs="0">
+              <xs:element name="Carrier" msprop:Generator_ColumnPropNameInTable="CarrierColumn" msprop:Generator_ColumnPropNameInRow="Carrier" msprop:Generator_UserColumnName="Carrier" msprop:Generator_ColumnVarNameInTable="columnCarrier" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

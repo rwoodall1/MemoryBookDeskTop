@@ -154,9 +154,7 @@
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
     <Compile Include="FormHandler\FormInstance.cs" />
-    <Compile Include="Forms\bTopBottom.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\bTopBottom.cs" />
     <Compile Include="Forms\bTopBottom.Designer.cs">
       <DependentUpon>bTopBottom.cs</DependentUpon>
     </Compile>

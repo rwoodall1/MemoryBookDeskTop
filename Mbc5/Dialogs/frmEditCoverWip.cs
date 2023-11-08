@@ -14,6 +14,9 @@ using System.Configuration;
 using BindingModels;
 using BaseClass;
 using Exceptionless;
+using Exceptionless.Models;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
+
 namespace Mbc5.Dialogs
 {
     public partial class frmEditCoverWip : Form
@@ -36,10 +39,10 @@ namespace Mbc5.Dialogs
           
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
+                AppConnectionString = "Data Source = SEDSWJPSQL01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
                 this.Text = "Environment:" + Environment + "    Mbc5";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=SEDSWJPSQL01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
             try
             {
                 this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;

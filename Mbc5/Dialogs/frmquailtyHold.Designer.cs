@@ -35,6 +35,7 @@
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.pnlLocation = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblCurLocation = new System.Windows.Forms.Label();
             this.pnlLocation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(105, 126);
+            this.button1.Location = new System.Drawing.Point(105, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(186, 126);
+            this.button2.Location = new System.Drawing.Point(186, 148);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -90,7 +91,7 @@
             // 
             this.pnlLocation.Controls.Add(this.txtLocation);
             this.pnlLocation.Controls.Add(this.label1);
-            this.pnlLocation.Location = new System.Drawing.Point(73, 86);
+            this.pnlLocation.Location = new System.Drawing.Point(73, 108);
             this.pnlLocation.Name = "pnlLocation";
             this.pnlLocation.Size = new System.Drawing.Size(170, 32);
             this.pnlLocation.TabIndex = 5;
@@ -99,18 +100,27 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 62);
+            this.label2.Location = new System.Drawing.Point(89, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(182, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "(Clicking \"No\" will print a packing list)";
             // 
+            // lblCurLocation
+            // 
+            this.lblCurLocation.AutoSize = true;
+            this.lblCurLocation.Location = new System.Drawing.Point(70, 62);
+            this.lblCurLocation.Name = "lblCurLocation";
+            this.lblCurLocation.Size = new System.Drawing.Size(0, 13);
+            this.lblCurLocation.TabIndex = 7;
+            // 
             // frmquailtyHold
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 174);
+            this.ClientSize = new System.Drawing.Size(414, 187);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCurLocation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlLocation);
             this.Controls.Add(this.button2);
@@ -140,5 +150,6 @@
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Panel pnlLocation;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCurLocation;
     }
 }

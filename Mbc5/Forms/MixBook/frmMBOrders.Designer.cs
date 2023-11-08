@@ -82,9 +82,10 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
-            this.lblHold = new System.Windows.Forms.Label();
-            this.btnEmailTrk = new System.Windows.Forms.Button();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
+            this.btnRemoveOrder = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
+            this.btnEmailTrk = new System.Windows.Forms.Button();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
             this.btnHold = new System.Windows.Forms.Button();
             this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.receiveDateLabel1 = new System.Windows.Forms.Label();
             this.orderIdLabel1 = new System.Windows.Forms.Label();
             this.shipStateComboBox = new System.Windows.Forms.ComboBox();
+            this.lblHold = new System.Windows.Forms.Label();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDownloadFiles = new System.Windows.Forms.Button();
@@ -184,7 +186,7 @@
             // 
             notesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             notesLabel.AutoSize = true;
-            notesLabel.Location = new System.Drawing.Point(499, 192);
+            notesLabel.Location = new System.Drawing.Point(517, 192);
             notesLabel.Name = "notesLabel";
             notesLabel.Size = new System.Drawing.Size(38, 13);
             notesLabel.TabIndex = 332;
@@ -194,7 +196,7 @@
             // 
             weightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             weightLabel.AutoSize = true;
-            weightLabel.Location = new System.Drawing.Point(496, 165);
+            weightLabel.Location = new System.Drawing.Point(514, 165);
             weightLabel.Name = "weightLabel";
             weightLabel.Size = new System.Drawing.Size(41, 13);
             weightLabel.TabIndex = 329;
@@ -204,7 +206,7 @@
             // 
             trackingNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             trackingNumberLabel.AutoSize = true;
-            trackingNumberLabel.Location = new System.Drawing.Point(448, 115);
+            trackingNumberLabel.Location = new System.Drawing.Point(466, 115);
             trackingNumberLabel.Name = "trackingNumberLabel";
             trackingNumberLabel.Size = new System.Drawing.Size(89, 13);
             trackingNumberLabel.TabIndex = 327;
@@ -214,7 +216,7 @@
             // 
             mixbookOrderStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             mixbookOrderStatusLabel.AutoSize = true;
-            mixbookOrderStatusLabel.Location = new System.Drawing.Point(808, 100);
+            mixbookOrderStatusLabel.Location = new System.Drawing.Point(826, 100);
             mixbookOrderStatusLabel.Name = "mixbookOrderStatusLabel";
             mixbookOrderStatusLabel.Size = new System.Drawing.Size(109, 13);
             mixbookOrderStatusLabel.TabIndex = 325;
@@ -225,7 +227,7 @@
             // 
             invnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             invnoLabel.AutoSize = true;
-            invnoLabel.Location = new System.Drawing.Point(855, 70);
+            invnoLabel.Location = new System.Drawing.Point(873, 70);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(62, 13);
             invnoLabel.TabIndex = 323;
@@ -235,7 +237,7 @@
             // 
             shipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shipMethodLabel.AutoSize = true;
-            shipMethodLabel.Location = new System.Drawing.Point(470, 62);
+            shipMethodLabel.Location = new System.Drawing.Point(488, 62);
             shipMethodLabel.Name = "shipMethodLabel";
             shipMethodLabel.Size = new System.Drawing.Size(67, 13);
             shipMethodLabel.TabIndex = 315;
@@ -245,7 +247,7 @@
             // 
             dateShippedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             dateShippedLabel.AutoSize = true;
-            dateShippedLabel.Location = new System.Drawing.Point(465, 44);
+            dateShippedLabel.Location = new System.Drawing.Point(483, 44);
             dateShippedLabel.Name = "dateShippedLabel";
             dateShippedLabel.Size = new System.Drawing.Size(72, 13);
             dateShippedLabel.TabIndex = 314;
@@ -255,7 +257,7 @@
             // 
             shipDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shipDateLabel.AutoSize = true;
-            shipDateLabel.Location = new System.Drawing.Point(428, 18);
+            shipDateLabel.Location = new System.Drawing.Point(446, 18);
             shipDateLabel.Name = "shipDateLabel";
             shipDateLabel.Size = new System.Drawing.Size(109, 13);
             shipDateLabel.TabIndex = 313;
@@ -265,7 +267,7 @@
             // 
             receiveDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             receiveDateLabel.AutoSize = true;
-            receiveDateLabel.Location = new System.Drawing.Point(844, 44);
+            receiveDateLabel.Location = new System.Drawing.Point(862, 44);
             receiveDateLabel.Name = "receiveDateLabel";
             receiveDateLabel.Size = new System.Drawing.Size(73, 13);
             receiveDateLabel.TabIndex = 310;
@@ -275,7 +277,7 @@
             // 
             orderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             orderIdLabel.AutoSize = true;
-            orderIdLabel.Location = new System.Drawing.Point(872, 18);
+            orderIdLabel.Location = new System.Drawing.Point(890, 18);
             orderIdLabel.Name = "orderIdLabel";
             orderIdLabel.Size = new System.Drawing.Size(45, 13);
             orderIdLabel.TabIndex = 308;
@@ -372,7 +374,7 @@
             // 
             requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             requestedShipMethodLabel.AutoSize = true;
-            requestedShipMethodLabel.Location = new System.Drawing.Point(379, 86);
+            requestedShipMethodLabel.Location = new System.Drawing.Point(397, 86);
             requestedShipMethodLabel.Name = "requestedShipMethodLabel";
             requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
             requestedShipMethodLabel.TabIndex = 334;
@@ -382,7 +384,7 @@
             // 
             jobPrintBatchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             jobPrintBatchLabel.AutoSize = true;
-            jobPrintBatchLabel.Location = new System.Drawing.Point(839, 123);
+            jobPrintBatchLabel.Location = new System.Drawing.Point(857, 134);
             jobPrintBatchLabel.Name = "jobPrintBatchLabel";
             jobPrintBatchLabel.Size = new System.Drawing.Size(79, 13);
             jobPrintBatchLabel.TabIndex = 337;
@@ -470,7 +472,7 @@
             this.mixBookOrderDataGridView.Name = "mixBookOrderDataGridView";
             this.mixBookOrderDataGridView.ReadOnly = true;
             this.mixBookOrderDataGridView.RowHeadersWidth = 20;
-            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1086, 287);
+            this.mixBookOrderDataGridView.Size = new System.Drawing.Size(1104, 287);
             this.mixBookOrderDataGridView.TabIndex = 131;
             this.mixBookOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentClick);
             this.mixBookOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mixBookOrderDataGridView_CellContentDoubleClick);
@@ -619,10 +621,11 @@
             // 
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlOrder.Controls.Add(this.lblHold);
+            this.pnlOrder.Controls.Add(this.btnCancelOrder);
+            this.pnlOrder.Controls.Add(this.btnRemoveOrder);
+            this.pnlOrder.Controls.Add(this.jobPrintBatchLabel1);
             this.pnlOrder.Controls.Add(this.btnEmailTrk);
             this.pnlOrder.Controls.Add(jobPrintBatchLabel);
-            this.pnlOrder.Controls.Add(this.jobPrintBatchLabel1);
             this.pnlOrder.Controls.Add(this.orderRePrintCheckBox);
             this.pnlOrder.Controls.Add(this.btnHold);
             this.pnlOrder.Controls.Add(requestedShipMethodLabel);
@@ -663,22 +666,45 @@
             this.pnlOrder.Controls.Add(shipNameLabel);
             this.pnlOrder.Location = new System.Drawing.Point(52, 28);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(1151, 253);
+            this.pnlOrder.Size = new System.Drawing.Size(1169, 258);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
             this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
             // 
-            // lblHold
+            // btnCancelOrder
             // 
-            this.lblHold.AutoSize = true;
-            this.lblHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHold.ForeColor = System.Drawing.Color.Red;
-            this.lblHold.Location = new System.Drawing.Point(309, 147);
-            this.lblHold.Name = "lblHold";
-            this.lblHold.Size = new System.Drawing.Size(150, 39);
-            this.lblHold.TabIndex = 340;
-            this.lblHold.Text = "On Hold";
-            this.lblHold.Visible = false;
+            this.btnCancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelOrder.ForeColor = System.Drawing.Color.Red;
+            this.btnCancelOrder.Location = new System.Drawing.Point(15, 226);
+            this.btnCancelOrder.Name = "btnCancelOrder";
+            this.btnCancelOrder.Size = new System.Drawing.Size(122, 27);
+            this.btnCancelOrder.TabIndex = 342;
+            this.btnCancelOrder.Text = "Cancel Order";
+            this.btnCancelOrder.UseVisualStyleBackColor = true;
+            this.btnCancelOrder.Visible = false;
+            this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
+            // 
+            // btnRemoveOrder
+            // 
+            this.btnRemoveOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveOrder.ForeColor = System.Drawing.Color.Red;
+            this.btnRemoveOrder.Location = new System.Drawing.Point(10, 226);
+            this.btnRemoveOrder.Name = "btnRemoveOrder";
+            this.btnRemoveOrder.Size = new System.Drawing.Size(133, 27);
+            this.btnRemoveOrder.TabIndex = 341;
+            this.btnRemoveOrder.Text = "Remove Order";
+            this.btnRemoveOrder.UseVisualStyleBackColor = false;
+            this.btnRemoveOrder.Visible = false;
+            this.btnRemoveOrder.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // jobPrintBatchLabel1
+            // 
+            this.jobPrintBatchLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobPrintBatchLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "JobPrintBatch", true));
+            this.jobPrintBatchLabel1.Location = new System.Drawing.Point(942, 134);
+            this.jobPrintBatchLabel1.Name = "jobPrintBatchLabel1";
+            this.jobPrintBatchLabel1.Size = new System.Drawing.Size(100, 23);
+            this.jobPrintBatchLabel1.TabIndex = 340;
             // 
             // btnEmailTrk
             // 
@@ -686,7 +712,7 @@
             this.btnEmailTrk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmailTrk.BackgroundImage")));
             this.btnEmailTrk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmailTrk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmailTrk.Location = new System.Drawing.Point(795, 114);
+            this.btnEmailTrk.Location = new System.Drawing.Point(813, 114);
             this.btnEmailTrk.Name = "btnEmailTrk";
             this.btnEmailTrk.Size = new System.Drawing.Size(20, 21);
             this.btnEmailTrk.TabIndex = 339;
@@ -695,15 +721,6 @@
             this.btnEmailTrk.UseVisualStyleBackColor = true;
             this.btnEmailTrk.Visible = false;
             this.btnEmailTrk.Click += new System.EventHandler(this.btnEmailTrk_Click);
-            // 
-            // jobPrintBatchLabel1
-            // 
-            this.jobPrintBatchLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.jobPrintBatchLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "JobPrintBatch", true));
-            this.jobPrintBatchLabel1.Location = new System.Drawing.Point(927, 123);
-            this.jobPrintBatchLabel1.Name = "jobPrintBatchLabel1";
-            this.jobPrintBatchLabel1.Size = new System.Drawing.Size(100, 23);
-            this.jobPrintBatchLabel1.TabIndex = 338;
             // 
             // orderRePrintCheckBox
             // 
@@ -719,7 +736,7 @@
             // 
             this.btnHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHold.Location = new System.Drawing.Point(892, 187);
+            this.btnHold.Location = new System.Drawing.Point(910, 187);
             this.btnHold.Name = "btnHold";
             this.btnHold.Size = new System.Drawing.Size(92, 23);
             this.btnHold.TabIndex = 336;
@@ -732,7 +749,7 @@
             // 
             this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "RequestedShipMethod", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(539, 86);
+            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(557, 86);
             this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
             this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
             this.requestedShipMethodLabel1.TabIndex = 335;
@@ -750,7 +767,7 @@
             // 
             this.notesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Notes", true));
-            this.notesTextBox.Location = new System.Drawing.Point(539, 189);
+            this.notesTextBox.Location = new System.Drawing.Point(557, 189);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
             this.notesTextBox.Size = new System.Drawing.Size(334, 49);
@@ -760,7 +777,7 @@
             // 
             this.lblDateShipped.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateShipped.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "DateShipped", true));
-            this.lblDateShipped.Location = new System.Drawing.Point(539, 45);
+            this.lblDateShipped.Location = new System.Drawing.Point(557, 45);
             this.lblDateShipped.Name = "lblDateShipped";
             this.lblDateShipped.Size = new System.Drawing.Size(192, 15);
             this.lblDateShipped.TabIndex = 331;
@@ -769,7 +786,7 @@
             // 
             this.weightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Weight", true));
-            this.weightTextBox.Location = new System.Drawing.Point(539, 165);
+            this.weightTextBox.Location = new System.Drawing.Point(557, 165);
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(100, 20);
             this.weightTextBox.TabIndex = 330;
@@ -778,7 +795,7 @@
             // 
             this.trackingNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "TrackingNumber", true));
-            this.trackingNumberTextBox.Location = new System.Drawing.Point(539, 115);
+            this.trackingNumberTextBox.Location = new System.Drawing.Point(557, 115);
             this.trackingNumberTextBox.MaxLength = 80000000;
             this.trackingNumberTextBox.Multiline = true;
             this.trackingNumberTextBox.Name = "trackingNumberTextBox";
@@ -790,7 +807,7 @@
             // 
             this.mixbookOrderStatusLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mixbookOrderStatusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "MixbookOrderStatus", true));
-            this.mixbookOrderStatusLabel2.Location = new System.Drawing.Point(927, 100);
+            this.mixbookOrderStatusLabel2.Location = new System.Drawing.Point(942, 100);
             this.mixbookOrderStatusLabel2.Name = "mixbookOrderStatusLabel2";
             this.mixbookOrderStatusLabel2.Size = new System.Drawing.Size(216, 29);
             this.mixbookOrderStatusLabel2.TabIndex = 326;
@@ -799,7 +816,7 @@
             // 
             this.invnoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "Invno", true));
-            this.invnoLabel1.Location = new System.Drawing.Point(927, 70);
+            this.invnoLabel1.Location = new System.Drawing.Point(942, 70);
             this.invnoLabel1.Name = "invnoLabel1";
             this.invnoLabel1.Size = new System.Drawing.Size(100, 18);
             this.invnoLabel1.TabIndex = 324;
@@ -851,7 +868,7 @@
             this.shipMethodComboBox.DataSource = this.shipCarriersBindingSource;
             this.shipMethodComboBox.DisplayMember = "ShipName";
             this.shipMethodComboBox.FormattingEnabled = true;
-            this.shipMethodComboBox.Location = new System.Drawing.Point(539, 62);
+            this.shipMethodComboBox.Location = new System.Drawing.Point(557, 62);
             this.shipMethodComboBox.Name = "shipMethodComboBox";
             this.shipMethodComboBox.Size = new System.Drawing.Size(227, 21);
             this.shipMethodComboBox.TabIndex = 316;
@@ -863,7 +880,7 @@
             this.schoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mixBookOrderBindingSource, "RequestedShipDate", true));
             this.schoutDateBox.Date = null;
             this.schoutDateBox.DateValue = null;
-            this.schoutDateBox.Location = new System.Drawing.Point(539, 18);
+            this.schoutDateBox.Location = new System.Drawing.Point(557, 18);
             this.schoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.schoutDateBox.Name = "schoutDateBox";
             this.schoutDateBox.Size = new System.Drawing.Size(192, 20);
@@ -873,7 +890,7 @@
             // 
             this.receiveDateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.receiveDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "OrderReceivedDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.receiveDateLabel1.Location = new System.Drawing.Point(927, 44);
+            this.receiveDateLabel1.Location = new System.Drawing.Point(942, 44);
             this.receiveDateLabel1.Name = "receiveDateLabel1";
             this.receiveDateLabel1.Size = new System.Drawing.Size(139, 23);
             this.receiveDateLabel1.TabIndex = 311;
@@ -882,7 +899,7 @@
             // 
             this.orderIdLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.orderIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mixBookOrderBindingSource, "ClientOrderId", true));
-            this.orderIdLabel1.Location = new System.Drawing.Point(927, 18);
+            this.orderIdLabel1.Location = new System.Drawing.Point(942, 18);
             this.orderIdLabel1.Name = "orderIdLabel1";
             this.orderIdLabel1.Size = new System.Drawing.Size(100, 23);
             this.orderIdLabel1.TabIndex = 309;
@@ -900,6 +917,21 @@
             this.shipStateComboBox.TabIndex = 305;
             this.shipStateComboBox.ValueMember = "Abrev";
             // 
+            // lblHold
+            // 
+            this.lblHold.AutoSize = true;
+            this.lblHold.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblHold.Font = new System.Drawing.Font("Lucida Sans Unicode", 32F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHold.ForeColor = System.Drawing.Color.Red;
+            this.lblHold.Location = new System.Drawing.Point(441, 443);
+            this.lblHold.Name = "lblHold";
+            this.lblHold.Size = new System.Drawing.Size(201, 53);
+            this.lblHold.TabIndex = 340;
+            this.lblHold.Text = "On Hold";
+            this.lblHold.Visible = false;
+            this.lblHold.Click += new System.EventHandler(this.lblHold_Click);
+            this.lblHold.Paint += new System.Windows.Forms.PaintEventHandler(this.lblHold_Paint);
+            // 
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 35;
@@ -908,7 +940,7 @@
             this.reportViewer3.Location = new System.Drawing.Point(0, 425);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(79, 55);
+            this.reportViewer3.Size = new System.Drawing.Size(61, 71);
             this.reportViewer3.TabIndex = 10024;
             this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
@@ -927,7 +959,7 @@
             // 
             this.btnDownloadFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownloadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDownloadFiles.Location = new System.Drawing.Point(834, 3);
+            this.btnDownloadFiles.Location = new System.Drawing.Point(852, 3);
             this.btnDownloadFiles.Name = "btnDownloadFiles";
             this.btnDownloadFiles.Size = new System.Drawing.Size(203, 23);
             this.btnDownloadFiles.TabIndex = 10018;
@@ -1028,7 +1060,6 @@
             this.pnlRemake.Name = "pnlRemake";
             this.pnlRemake.Size = new System.Drawing.Size(183, 24);
             this.pnlRemake.TabIndex = 10025;
-            this.pnlRemake.Visible = false;
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -1194,7 +1225,7 @@
             this.mixBookOrderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.mixBookOrderBindingNavigator.Name = "mixBookOrderBindingNavigator";
             this.mixBookOrderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.mixBookOrderBindingNavigator.Size = new System.Drawing.Size(1225, 25);
+            this.mixBookOrderBindingNavigator.Size = new System.Drawing.Size(1243, 25);
             this.mixBookOrderBindingNavigator.TabIndex = 1;
             this.mixBookOrderBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -1209,14 +1240,14 @@
             this.pnlButtons.Controls.Add(this.cmdJobTicket);
             this.pnlButtons.Location = new System.Drawing.Point(101, 300);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1070, 32);
+            this.pnlButtons.Size = new System.Drawing.Size(1088, 32);
             this.pnlButtons.TabIndex = 10025;
-            this.pnlButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlButtons_Paint);
             // 
             // frmMBOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1225, 658);
+            this.ClientSize = new System.Drawing.Size(1243, 658);
+            this.Controls.Add(this.lblHold);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(bookStatusLabel);
@@ -1247,6 +1278,7 @@
             this.Controls.SetChildIndex(bookStatusLabel, 0);
             this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.pnlButtons, 0);
+            this.Controls.SetChildIndex(this.lblHold, 0);
             ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookPackingSlipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixbookRemakeTicketBindingSource)).EndInit();
@@ -1331,7 +1363,6 @@
         private System.Windows.Forms.Button btnBkRemake;
         private System.Windows.Forms.Panel pnlRemake;
         private System.Windows.Forms.CheckBox orderRePrintCheckBox;
-        private System.Windows.Forms.Label jobPrintBatchLabel1;
         private System.Windows.Forms.Button btnEmailTrk;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblHold;
@@ -1353,5 +1384,8 @@
         private System.Windows.Forms.ToolStripButton purgeStripButton2;
         private System.Windows.Forms.BindingNavigator mixBookOrderBindingNavigator;
         private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.Label jobPrintBatchLabel1;
+        private System.Windows.Forms.Button btnCancelOrder;
+        private System.Windows.Forms.Button btnRemoveOrder;
     }
 }

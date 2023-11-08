@@ -698,13 +698,14 @@ namespace Mbc5.Forms.MixBook
                                 }
                             }
                         }
+
+                        
                         string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
                         try
                         {
                             if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
                             {
-                                //var ac = printeryPath + "\\" + MbxModel.PrintergyFile;
-                                //Process.Start(printeryPath + "\\" + MbxModel.PrintergyFile);
+
                                 Process.Start(MbxModel.BookPreviewUrl);
                                 Process.Start(MbxModel.CoverPreviewUrl);
                                 var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
@@ -731,14 +732,14 @@ namespace Mbc5.Forms.MixBook
                         catch (Exception ex)
                         {
                             MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Warn("An error has occurred:" + ex.Message+" | Model:"+ JsonConvert.SerializeObject(MbxModel));
+                            Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(MbxModel));
                             lblHoldLocation.Text = "";
                             return;
                         }
                         string location = "";
                         if (MbxModel.NumProducts > 1)
                         {
-                            var frmQH = new frmquailtyHold(MbxModel.NumProducts);
+                            var frmQH = new frmquailtyHold(MbxModel.NumProducts, lblHoldLocation.Text);
                             DialogResult holdresult = frmQH.ShowDialog();
                             if (holdresult == DialogResult.Yes)
                             {
@@ -1571,9 +1572,9 @@ namespace Mbc5.Forms.MixBook
                     sqlClient.AddParameter("@WAR", DateTime.Now);
                     sqlClient.AddParameter("@WIR", "SYS");
                     sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                 Begin
-                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                 END
                                                 ");
 
@@ -1591,9 +1592,9 @@ namespace Mbc5.Forms.MixBook
                     sqlClient.AddParameter("@WAR", DateTime.Now);
                     sqlClient.AddParameter("@WIR", "SYS");
                     sqlClient.AddParameter("@Jobno", MbxModel.JobId);
-                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                 Begin
-                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                INSERT INTO CoverDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                 END
                                                 ");
 
@@ -1809,11 +1810,12 @@ namespace Mbc5.Forms.MixBook
                
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
-                if (currentUser == "QUALITY")
+                if (currentUser == "QUALITY" || currentUser== "ONBOARD")
                 {
                     pnlQtyInner.Visible = true;
                 }
                 else { pnlQtyInner.Visible = false; }
+               
                 txtReasonCode.Focus();
             
             }
