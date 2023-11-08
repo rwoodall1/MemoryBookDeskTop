@@ -1,0 +1,10 @@
+2019/10/10 14:02:54.938 Record sales record failed to update:The parameterized query '(@schcode char(6),@booktype char(4),@qtedate datetime,@contryear' expects the parameter '@acovrde', which was not supplied. SEDWWD20CPFX2  JOSRES1\WO86445   System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@schcode char(6),@booktype char(4),@qtedate datetime,@contryear' expects the parameter '@acovrde', which was not supplied.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter.Update(bidsDataTable dataTable) in D:\Projects\MemoryBookDeskTop\Mbc5\DataSets\dsBids.Designer.cs:line 9696
+   at Mbc5.Forms.MemoryBook.frmBids.SaveBid() in D:\Projects\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmBids.cs:line 752
+ClientConnectionId:58e11411-ff54-4f22-9ba5-c04542c256c7
+Error Number:8178,State:1,Class:16 
