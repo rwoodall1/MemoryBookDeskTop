@@ -1303,10 +1303,7 @@ namespace Mbc5.Forms
             this.Cut();
         }
 
-        private void tsPrintScreen_Click(object sender, EventArgs e)
-        {
-            this.PrintScreen();
-        }
+       
         private void tsSave_Click(object sender, EventArgs e)
         {
             var curFrm = this.ActiveMdiChild;
@@ -1396,7 +1393,7 @@ namespace Mbc5.Forms
 
         private void tsPrint_Click(object sender, EventArgs e)
         {
-            //this.PrintScreen();
+        
             try
             {
                 Process snippingToolProcess = new Process();
