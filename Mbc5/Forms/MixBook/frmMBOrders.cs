@@ -398,11 +398,17 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" || mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            {
+                lblCanceled.Visible = true;
+            }
+            else { lblCanceled.Visible = false; }
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
             else { lblHold.Visible = false; }
+
         }
         private void PrintJobTicket()
         {
@@ -1083,7 +1089,12 @@ namespace Mbc5.Forms.MixBook
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" || mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+           if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            {
+                lblCanceled.Visible = true;
+            }
+            else { lblCanceled.Visible = false; }
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
