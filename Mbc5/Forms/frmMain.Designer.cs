@@ -180,7 +180,6 @@
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
             this.mBCToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
-            this.mBCToolStripMenuItem.Visible = false;
             // 
             // bidsToolStripMenuItem
             // 
@@ -375,7 +374,6 @@
             this.endSheetSupplementPreFlightToolStripMenuItem.Name = "endSheetSupplementPreFlightToolStripMenuItem";
             this.endSheetSupplementPreFlightToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.endSheetSupplementPreFlightToolStripMenuItem.Text = "End Sheet/Supplement/PreFlight";
-            this.endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
             this.endSheetSupplementPreFlightToolStripMenuItem.Click += new System.EventHandler(this.endSheetSupplementPreFlightToolStripMenuItem_Click);
             // 
             // barScanToolStripMenuItem
@@ -383,7 +381,6 @@
             this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
             this.barScanToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.barScanToolStripMenuItem.Text = "Bar Scan";
-            this.barScanToolStripMenuItem.Visible = false;
             this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
