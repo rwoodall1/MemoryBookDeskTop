@@ -12,7 +12,7 @@ namespace Mbc5.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -62,10 +62,22 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SEDSWJPSQL01;Initial Catalog=Mbc5;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password" +
+            "=F8GFxAtT9Hpzbnck; Connect Timeout=5")]
         public string Mbc5_demoConnectionString {
             get {
                 return ((string)(this["Mbc5_demoConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SEDSWJPSQL02;Initial Catalog=Mbc5_demo;Persist Security Info=True;Use" +
+            "r ID=svc_Mbc5_demo;Password=S3dAug302017Mbc5;TrustServerCertificate=True")]
+        public string Mbc5_demoConnectionString1 {
+            get {
+                return ((string)(this["Mbc5_demoConnectionString1"]));
             }
         }
     }

@@ -18,8 +18,14 @@ using Exceptionless.Models;
 using Mbc5.Classes;
 using BindingModels;
 using BaseClass.Core;
+
 using Microsoft.Reporting.WinForms;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+
+using System.Reflection;
+
+using System.Web.UI;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -31,7 +37,7 @@ namespace Mbc5.Forms.MemoryBook {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
-
+      
             }
         public frmMbcCust(UserPrincipal userPrincipal,string vschcode) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
@@ -89,8 +95,9 @@ namespace Mbc5.Forms.MemoryBook {
             Fill();
             this.txtModifiedBy.Text = this.ApplicationUser.id;
             custBindingSource.ResetBindings(true);
-
+          
             
+
         }
 
 
@@ -126,8 +133,9 @@ namespace Mbc5.Forms.MemoryBook {
 private  ApiProcessingResult<bool> Save()
 {
 
-           
+          
             var processingResult = new ApiProcessingResult<bool>();
+           
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
     bool retval = false;
            
@@ -160,9 +168,7 @@ private  ApiProcessingResult<bool> Save()
                 }
                 catch(Exception ex) {
             MessageBox.Show("School record failed to update:" + ex.Message);
-            ex.ToExceptionless()
-            .SetMessage("School record failed to update:" + ex.Message)
-            .Submit();
+            
 			processingResult.IsError = true;
 			processingResult.Errors.Add(new ApiProcessingError("Record not save:"+ex.Message, "Record not save:" + ex.Message,""));
                     return processingResult;
@@ -908,6 +914,7 @@ public override void Cancel() {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
                 this.xsuppliesTableAdapter.Fill(this.dsXSupplies.xsupplies, Schcode);
                 this.xSuppliesDetailTableAdapter.Fill(dsXSupplies.XSuppliesDetail, Schcode);
+                
             }
             catch (Exception ex)
             {
@@ -1959,11 +1966,7 @@ public override void Cancel() {
         }
         private void frmMbcCust_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "MBC Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
-            catch
-            {
-
-            }
+            setTitle();
         }
        
         private void btnNewCustomer_Click(object sender, EventArgs e)
@@ -2223,7 +2226,7 @@ public override void Cancel() {
             {
                 this.errorProvider1.SetError(txtContactEmail, string.Empty);
                 var emailHelper = new EmailHelper();
-                emailHelper.SendEmail("test", "randy.woodall@jostens.com", null,"test", EmailType.Mbc);
+                
                 emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
             }
             else
@@ -2868,12 +2871,145 @@ public override void Cancel() {
 
         }
 
+        private void btnAddressSave_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Update Cust Set Schaddr=@Schaddr,SchAddr2=@SchAddr2,SchCity=@SchCity,SchState=@SchState,SchZip=@SchZip Where Schcode=@Schcode");
+            sqlClient.AddParameter("@Schaddr", txtaddress.Text);
+            sqlClient.AddParameter("@SchAddr2", txtAddress2.Text);
+            sqlClient.AddParameter("@SchCity", txtCity.Text);
+            sqlClient.AddParameter("@SchState", cmbState.SelectedValue);
+            sqlClient.AddParameter("@SchZip", txtZip.Text);
+            sqlClient.AddParameter("@Schcode", Schcode);
+           var updateResult = sqlClient.Update();
+            if(updateResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to update address:" + updateResult.Errors[0].ErrorMessage, "");
+                
+                return;
+            } 
+            MbcMessageBox.Information("Address updated successfully.");
 
+        }
 
+       
 
+        private void txtSchname_Leave(object sender, EventArgs e)
+        {
+            txtSchname.ReadOnly = true;
+        }
 
+       private void setTitle()
+        {
+            var rec=this.custBindingSource.Current as DataRowView;
+          if (rec != null)
+            {
+                try { this.Text = "MBC Customer-" + rec["Schname"].ToString().Trim() + " (" + this.Schcode.Trim() + ") " + rec["Schcity"].ToString().Trim() + "," + rec["Schstate"].ToString().Trim() + " " + rec["SchZip"].ToString().Trim(); }
+                catch
+                {
 
+                }
+            }
+            
+        }
 
+        private void txtSchname_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                txtSchname.ReadOnly = false;
+            }
+        }
+
+        private void txtCity_Layout(object sender, LayoutEventArgs e)
+        {
+            var a = txtCity.Text;
+        }
+
+        private void pg2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            new EmailHelper().SendOutLookEmail("", pEmailTextBox.Text, "", "", EmailType.Mbc);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            new EmailHelper().SendOutLookEmail("Memorybook Character Builder Setup", "memorybookparentpay.jostens.com", "", "Character Builder is ready to be added to the website for School: " + this.Schcode, EmailType.Mbc);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string toaddress = cbEmailTextBox.Text;
+                string subject = "Student Character Builder Program Log-in Information";
+                var rec = custBindingSource.Current as DataRowView;
+                string csemail = rec["csemail"].ToString().Trim();
+
+                string body = @"<div style='text-align:center'><h1>STUDENT CHARACTER BUILDER PROGRAM INFORMATION</h1></div><br/><br/>
+Welcome to our STUDENT CHARACTER BUILDER PROGRAM. We are excited to have you participate in this valuable program and I am sure you and your staff are anxious to get started. Here are a few important details:<br/>
+<b>You will access the program at:</b> https://studentcharacterbuilder.memorybook.com</br><br/>
+<b>Your UserName/Email Address :</b> characterbuilder </br><br/>
+<b>Your Password : </b>" + jobnoLabel1.Text + @"<br/></br>
+<b>Your School Code : </b>" + this.Schcode + @"<br/></br><br/>
+And remember, we are going to make it easy for your school to highlight how your students are exhibiting these characteristics around campus! 
+We will be setting up <b>Student Character Builder</b> 
+Program templates on your yearbook site. The templates included in the online yearbook program will be made available in the 
+'My Templates' folder. They should be available in 1-2 weeks. 
+ Please contact your dedicated yearbook rep if you need more information.<br/><br/><br/> 
+Feel free to share this information with your school staff. Your teachers can start utilizing the resources right away. 
+As a reminder, please do not to share the resources on this site outside of the qualifying school's administration, faculty, 
+and students. If you know someone on another campus that is interested in building character in their school, please let us know and we would be happy to reach out and share the program details with them.
+<br/><br/><br/>Thank you for your partnership and for making such a great difference in the lives of your students.<br/></br><br/> Sincerely,<br/><br/> 
+<b><span style='font-size:x-large' >Responsibility Rhino</span></b><br/> and the entire Jostens team</br><br/>
+<i>Please do not reply to this email as the address is not monitored. If you need assistance, please contact " + csemail + "</i>";
+
+                new EmailHelper().SendOutLookEmail(subject, toaddress, "", body, EmailType.Mbc);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "Error");
+            }
+        }
+
+        private void custjobnoTextBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+               txtCustJobno.ReadOnly = false;
+            }
+        }
+
+        private void txtCustJobno_Leave(object sender, EventArgs e)
+        {
+            txtCustJobno.ReadOnly = true;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rec = custBindingSource.Current as DataRowView;
+                string schname = rec["Schname"].ToString().Trim();
+                string jobno = rec["custjobno"].ToString().Trim();
+                string body = @"Account is ready for Character Builder Templates. <br/><br/>
+                               UserName:characterbuilder<br/>
+                               Password:" + jobno + @"<br/>
+                                Schcode:" + this.Schcode + @"<br/><br/>Pasword is the Job Number"; 
+                   
+    ;
+                string subject = "Character Builder Setup " + schname + " (" + this.Schcode + ")";
+                new EmailHelper().SendOutLookEmail(subject, "Easyworkcreator@jostens.com", "", body, EmailType.Mbc);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "Error");
+            }
+        }
         #endregion
 
         //Nothing below here
