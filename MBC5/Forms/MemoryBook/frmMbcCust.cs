@@ -781,13 +781,21 @@ public override void Cancel() {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
             string body = "";
-            string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
+           
             var dr = (DataRowView)custBindingSource.Current;
+            var schname= dr["schname"].ToString().Trim();
+            var schstate= dr["schstate"].ToString().Trim();
+            var schemail= dr["schemail"].ToString().Trim();
             var vCont1 = dr["contemail"].ToString().Trim();
             var vCont2 = dr["bcontemail"].ToString().Trim();
             var vCont3 = dr["ccontemail"].ToString().Trim();
+            string subj = schname + " " + Schcode + " " + schstate;
             List<string> emailList = new List<string>();
             var emailHelper = new EmailHelper();
+            if (!string.IsNullOrEmpty(schemail))
+            {
+                emailList.Add(schemail);
+            }
             if (!string.IsNullOrEmpty(vCont1))
             {
                 emailList.Add(vCont1);
@@ -1035,6 +1043,7 @@ public override void Cancel() {
             this.xSuppliesDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
         }
+    
         public override void OracleCodeSearch() {
 			var currentOracleCode = oraclecodeTextBox.Text;
 			if (DoPhoneLog()) {
@@ -1510,7 +1519,7 @@ public override void Cancel() {
         public override void JobNoSearch()
         {
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var jobno = currentrow["jobno"].ToString();
+            var jobno = txtCustJobno.Text;
             if (DoPhoneLog())
             {
                 MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1573,6 +1582,7 @@ public override void Cancel() {
                 int InvNum = this.frmMain.GetNewInvno();
                     //old function GetInvno();
                   
+
 				if (InvNum != 0)
 				{
 					var sqlQuery = new SQLQuery();
@@ -3009,6 +3019,11 @@ and students. If you know someone on another campus that is interested in buildi
             {
                 MbcMessageBox.Error(ex.Message, "Error");
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            JobNoSearch();
         }
         #endregion
 

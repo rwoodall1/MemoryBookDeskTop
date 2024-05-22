@@ -591,26 +591,33 @@ namespace Mbc5.Forms
         public int GetNewInvno()
         {
 
-            var sqlQuery = new BaseClass.Classes.SQLQuery();
+            var sqlClient = new SQLCustomClient();
 
-            SqlParameter[] parameters = new SqlParameter[] {
-
-                    };
-            var strQuery = "SELECT Invno FROM Invcnum";
+            sqlClient.CommandText("SELECT Invno FROM Invcnum");
+          
             try
             {
-                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-                DataRow dr = userResult.Rows[0];
-                int Invno = (int)dr["Invno"];
-                int newInvno = Invno + 1;
-                strQuery = "Update Invcnum Set invno=@newInvno";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                      new SqlParameter("@newInvno",newInvno),
-                    };
-                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-
-                return Invno;
-
+                var result = sqlClient.SelectSingleColumn();
+                if (result.IsError)
+                {
+                    Log.Error("Failed to get invoice number for a new record:" + result.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
+                }
+                var curInvno= int.Parse(result.Data);
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Update Invcnum Set invno=@newInvno");
+                sqlClient.AddParameter("@newInvno", curInvno + 1);
+                var updateResult=sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    Log.Error("Failed to update invoice number for a new record:" + updateResult.Errors[0].DeveloperMessage);
+                    var emailHelper = new EmailHelper();
+                    emailHelper.SendEmail("Error updating invoice number", "randy.woodall@jostens.com", null, "Failed to update invoice number for a new record:" + updateResult.Errors[0].DeveloperMessage, EmailType.Mbc);
+                   
+                }
+                return curInvno;
+          
             }
             catch (Exception ex)
             {

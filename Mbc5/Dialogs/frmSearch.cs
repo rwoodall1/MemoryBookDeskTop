@@ -453,7 +453,7 @@ namespace Mbc5.Dialogs {
                     switch (ReturnForm)
                     {
                         case "CUST":
-                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Cust C Left JOIN Produtn P on C.schcode=P.schcode Where P.JobNo !='' Order By Schcode";
+                            cmdtext = @"Select COALESCE(C.JobNo,'')AS JobNo,C.Schcode,C.Schname,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Cust C Where C.JobNo !='' Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var custresult = sqlclient.SelectMany<JobNoSearch>();
                             if (custresult.IsError)
@@ -1655,6 +1655,7 @@ namespace Mbc5.Dialogs {
             try
 
             {
+                
                 if (e.KeyChar == 13)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -1713,10 +1714,10 @@ namespace Mbc5.Dialogs {
                         this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                         this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
                     }
-                    else if (SearchType == "JobNo" && ReturnForm == "CUST")
+                    else if (SearchType == "JOBNO" && ReturnForm == "CUST")
                     {
                         this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
-                        this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                        //this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
                     }
                     else if (SearchType == "JOBNO" && (ReturnForm == "SALES" || ReturnForm == "MSALES" || ReturnForm == "PRODUCTION"))
