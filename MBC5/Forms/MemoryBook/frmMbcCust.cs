@@ -1580,70 +1580,66 @@ public override void Cancel() {
 			if (result == DialogResult.Yes)
 			{
                 int InvNum = this.frmMain.GetNewInvno();
-                    //old function GetInvno();
-                  
-
 				if (InvNum != 0)
 				{
-					var sqlQuery = new SQLQuery();
+					var sqlClient = new SQLCustomClient();
 					try {
-						SqlParameter[] parameters = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",this.Schcode),
-					  new SqlParameter("@Contryear", contryearTextBox.Text)
-					};
-						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
-
-						var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-						if (userResult != 1) {
+                        sqlClient.AddParameter("@Invno", InvNum);
+                        sqlClient.AddParameter("@Schcode", this.Schcode);
+                        sqlClient.AddParameter("@Contryear", contryearTextBox.Text);	
+                        sqlClient.AddParameter("@BookType", lblBookTypeVal.Text);
+						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear,Booktype)  VALUES (@Invno,@Schcode,@Contryear,@BookType)";
+                        sqlClient.CommandText(strQuery);
+                        var insertResult = sqlClient.Insert();
+						if (insertResult.IsError) {
+                            Log.Error("Failed to insert sales record." + insertResult.Errors[0].DeveloperMessage);
 							MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 							return;
 						}
-                        var vCoverNumber = frmMain.GetCoverNumber();
-                        SqlParameter[] parameters2 = new SqlParameter[] {
-                    new SqlParameter("@Invno",InvNum),
-                     new SqlParameter("@Schcode",this.Schcode),
-                     new SqlParameter("@Specovr",vCoverNumber),
-                         new SqlParameter("@Specinst",GetInstructions() ),
-                       new SqlParameter("@Company","MBC"),
-
-                    };
-                        strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-                        var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
-                        if (userResult2 != 1)
+                        var vProdNo = this.frmMain.GetProdNo();
+                        sqlClient.ClearParameters();
+                        sqlClient.AddParameter("@Invno", InvNum);
+                        sqlClient.AddParameter("@Schcode", this.Schcode);
+                        sqlClient.AddParameter("@ProdNo", vProdNo);
+                        sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+                        sqlClient.AddParameter("@Company", "MBC");
+                        sqlClient.AddParameter("@ProdCustDate", contdateDateBox.Date);
+                        strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company,ProdCustDate)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company,@ProdCustDate)";
+                        sqlClient.CommandText(strQuery);
+                        var updateResult1 = sqlClient.Update();
+                        if (updateResult1.IsError)
                         {
-                            MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            Log.Error("Failed to insert production record." + updateResult1.Errors[0].DeveloperMessage);
+                            MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        var vProdNo = this.frmMain.GetProdNo();
-                        SqlParameter[] parameters1 = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",this.Schcode),
-					 new SqlParameter("@ProdNo",vProdNo+" "+vCoverNumber),
-					  new SqlParameter("@Contryear", contryearTextBox.Text),
-					   new SqlParameter("@Company","MBC"),
-                      new SqlParameter("@ProdCustDate",contdateDateBox.Date)
-                    };
-						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company,ProdCustDate)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company,@ProdCustDate)";
-						var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-						if (userResult1 != 1) {
-							MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
-                        
-						
+                        var vCoverNumber = vProdNo;
+                        sqlClient.ClearParameters();
+                        sqlClient.AddParameter("@Invno", InvNum);
+                        sqlClient.AddParameter("@Schcode", this.Schcode);
+                        sqlClient.AddParameter("@Specovr", vCoverNumber);
+                         sqlClient.AddParameter("@Specinst", GetInstructions());
+                        sqlClient.AddParameter("@Company", "MBC");  
+                        strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+                        sqlClient.CommandText(strQuery);
+                        var coverInsert = sqlClient.Insert();
+                        if (coverInsert.IsError)
+                        {
+                            MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     
+                        }
 
-						SqlParameter[] parameters3 = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",this.Schcode),
-
-					   new SqlParameter("@Company","MBC")
-					};
+                        sqlClient.ClearParameters();
+                        sqlClient.AddParameter("@Invno", InvNum);
+                        sqlClient.AddParameter("@Schcode", this.Schcode);
+                 
 						strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
-						var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
-						if (Result3 != 1) {
+                        sqlClient.CommandText(strQuery);
+                        var wipInsertResult = sqlClient.Insert();
+						if (wipInsertResult.IsError) {
 							MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
+                            Log.Error("Failed to insert wip record." + wipInsertResult.Errors[0].DeveloperMessage);
+						
 						}
 					}catch(Exception ex) {
 						MbcMessageBox.Error(ex.Message, "");

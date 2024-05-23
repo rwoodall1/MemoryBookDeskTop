@@ -632,23 +632,24 @@ namespace Mbc5.Forms
         }
         public string GetProdNo()
         {
-            var sqlQuery = new SQLQuery();
-            //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from prodnum";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int? prodNum = null;
+            var sqlClient = new SQLCustomClient() ;
+            var strQuery = "Select lstprodno from prodnum";
+            sqlClient.CommandText(strQuery);
+            var prodResult =sqlClient.SelectSingleColumn();
+            int prodNum =0;
             try
             {
-                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+              int.TryParse(prodResult.Data,out prodNum);
+                sqlClient.ClearParameters();
                 strQuery = "Update Prodnum Set lstprodno=@lstprodno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-                if (result1 != 1)
+                sqlClient.CommandText(strQuery);
+                sqlClient.AddParameter("@lstprodno", prodNum + 1);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                    Log.Error("Error updating Prodnum table with new value." + updateResult.Errors[0].DeveloperMessage);
+                   new EmailHelper().SendEmail("Error updating Prodnum table with new value", "randy.woodall@jostens.com",null, "Error updating Prodnum table with new value." + updateResult.Errors[0].DeveloperMessage, EmailType.Mbc);
+                    MessageBox.Show("Error updating Prodnum table with new value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
 
@@ -657,10 +658,8 @@ namespace Mbc5.Forms
             {
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+               Log.Error("Error getting production number:" + ex.Message);
+               
 
             }
             string vprodNum = prodNum.ToString();
@@ -670,26 +669,33 @@ namespace Mbc5.Forms
         }
         public string GetCoverNumber()
         {
-            var sqlQuery = new SQLQuery();
+            var sqlClient = new SQLCustomClient();
             //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from Spcover";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            var strQuery = "Select spcover from Spcover";
+            sqlClient.CommandText(strQuery);
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                Log.Error("Failed to get cover number for a new record:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Hand("Failed to get cover number for a new record.", "Error");
+                return "" ;
+            }
             int coverNum = 0;
             try
             {
-                coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                coverNum = Convert.ToInt32(result.Data);
+                sqlClient.ClearParameters();
                 strQuery = "Update Spcover set speccvno=@speccvno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno", (coverNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-                if (result1 != 1)
+                sqlClient.CommandText(strQuery);
+                sqlClient.AddParameter("@speccvno",coverNum+1);
+               var updateResult= sqlClient.Update();
+                if(updateResult.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
-
+                    Log.Error("Failed to update cover number for a new record:" + updateResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Hand("Failed to update cover number for a new record.", "Error");
+                    var result1 = new EmailHelper().SendEmail("Error updating cover number", "randy.woodall@jostens.com",null, "Failed to update cover number for a new record:" + updateResult.Errors[0].DeveloperMessage, EmailType.Mbc);
                 }
-
+                return coverNum.ToString();
             }
             catch (Exception ex)
             {
