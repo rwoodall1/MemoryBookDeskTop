@@ -71,7 +71,6 @@ namespace Mbc5.DataSets {
                 if ((ds.Tables["InvHst"] != null)) {
                     base.Tables.Add(new InvHstDataTable(ds.Tables["InvHst"]));
                 }
-                //Opy
                 if ((ds.Tables["OpyProducts"] != null)) {
                     base.Tables.Add(new OpyProductsDataTable(ds.Tables["OpyProducts"]));
                 }
@@ -789,6 +788,16 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnOnlinePayHasBeenIncreased;
             
             private global::System.Data.DataColumn columnAdTurnedOff;
+            
+            private global::System.Data.DataColumn columnEasywork;
+            
+            private global::System.Data.DataColumn columnEastworkTotal;
+            
+            private global::System.Data.DataColumn columnOverRunQty;
+            
+            private global::System.Data.DataColumn columnOverRunAmt;
+            
+            private global::System.Data.DataColumn columnSubTotal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2417,6 +2426,46 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EasyworkColumn {
+                get {
+                    return this.columnEasywork;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EastworkTotalColumn {
+                get {
+                    return this.columnEastworkTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverRunQtyColumn {
+                get {
+                    return this.columnOverRunQty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OverRunAmtColumn {
+                get {
+                    return this.columnOverRunAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SubTotalColumn {
+                get {
+                    return this.columnSubTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2651,7 +2700,12 @@ namespace Mbc5.DataSets {
                         System.DateTime DateToIncrease, 
                         decimal PriceIncrease, 
                         bool OnlinePayHasBeenIncreased, 
-                        bool AdTurnedOff) {
+                        bool AdTurnedOff, 
+                        bool Easywork, 
+                        decimal EastworkTotal, 
+                        int OverRunQty, 
+                        decimal OverRunAmt, 
+                        decimal SubTotal) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
@@ -2852,7 +2906,12 @@ namespace Mbc5.DataSets {
                         DateToIncrease,
                         PriceIncrease,
                         OnlinePayHasBeenIncreased,
-                        AdTurnedOff};
+                        AdTurnedOff,
+                        Easywork,
+                        EastworkTotal,
+                        OverRunQty,
+                        OverRunAmt,
+                        SubTotal};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -3081,6 +3140,11 @@ namespace Mbc5.DataSets {
                 this.columnPriceIncrease = base.Columns["PriceIncrease"];
                 this.columnOnlinePayHasBeenIncreased = base.Columns["OnlinePayHasBeenIncreased"];
                 this.columnAdTurnedOff = base.Columns["AdTurnedOff"];
+                this.columnEasywork = base.Columns["Easywork"];
+                this.columnEastworkTotal = base.Columns["EastworkTotal"];
+                this.columnOverRunQty = base.Columns["OverRunQty"];
+                this.columnOverRunAmt = base.Columns["OverRunAmt"];
+                this.columnSubTotal = base.Columns["SubTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3484,6 +3548,16 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnOnlinePayHasBeenIncreased);
                 this.columnAdTurnedOff = new global::System.Data.DataColumn("AdTurnedOff", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdTurnedOff);
+                this.columnEasywork = new global::System.Data.DataColumn("Easywork", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEasywork);
+                this.columnEastworkTotal = new global::System.Data.DataColumn("EastworkTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEastworkTotal);
+                this.columnOverRunQty = new global::System.Data.DataColumn("OverRunQty", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverRunQty);
+                this.columnOverRunAmt = new global::System.Data.DataColumn("OverRunAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOverRunAmt);
+                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubTotal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -3515,6 +3589,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columnjobno.MaxLength = 7;
                 this.columnmsstanqty1.Caption = "msstanqty";
+                this.columnOnlinePayTaxRate.AllowDBNull = false;
                 this.columnOnlinePayHasBeenIncreased.AllowDBNull = false;
             }
             
@@ -4655,8 +4730,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnLoveLineAmt;
             
-            private global::System.Data.DataColumn columnAds;
-            
             private global::System.Data.DataColumn columnAdFullAmt;
             
             private global::System.Data.DataColumn columnAdHalfAmt;
@@ -4694,6 +4767,54 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnTaxCollected;
             
             private global::System.Data.DataColumn columnTotalAds;
+            
+            private global::System.Data.DataColumn columnOracleCode;
+            
+            private global::System.Data.DataColumn columnNameTitle;
+            
+            private global::System.Data.DataColumn columnPersonalizedDateCutOff;
+            
+            private global::System.Data.DataColumn columnAd;
+            
+            private global::System.Data.DataColumn columnAdType;
+            
+            private global::System.Data.DataColumn columnDonateBook;
+            
+            private global::System.Data.DataColumn columnDonateBookAmt;
+            
+            private global::System.Data.DataColumn columnLoveLineType;
+            
+            private global::System.Data.DataColumn columnShipToHome;
+            
+            private global::System.Data.DataColumn columnShipToHomeAmt;
+            
+            private global::System.Data.DataColumn columnSponsorPage;
+            
+            private global::System.Data.DataColumn columnSponsorPageAmt;
+            
+            private global::System.Data.DataColumn columnDateToIncrease1;
+            
+            private global::System.Data.DataColumn columnDateToIncrease2;
+            
+            private global::System.Data.DataColumn columnIncreaseAmt2;
+            
+            private global::System.Data.DataColumn columnOnlinePayIncreased;
+            
+            private global::System.Data.DataColumn columnOnlinePayIncreased1;
+            
+            private global::System.Data.DataColumn columnOnlinePayIncreased2;
+            
+            private global::System.Data.DataColumn columnMainSchcode;
+            
+            private global::System.Data.DataColumn columnSchName;
+            
+            private global::System.Data.DataColumn columnPIN;
+            
+            private global::System.Data.DataColumn columnValidateOrderTotal;
+            
+            private global::System.Data.DataColumn columnClosed;
+            
+            private global::System.Data.DataColumn columnNoOnlinepay;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -4938,14 +5059,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AdsColumn {
-                get {
-                    return this.columnAds;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn AdFullAmtColumn {
                 get {
                     return this.columnAdFullAmt;
@@ -5098,6 +5211,198 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OracleCodeColumn {
+                get {
+                    return this.columnOracleCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NameTitleColumn {
+                get {
+                    return this.columnNameTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PersonalizedDateCutOffColumn {
+                get {
+                    return this.columnPersonalizedDateCutOff;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AdColumn {
+                get {
+                    return this.columnAd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AdTypeColumn {
+                get {
+                    return this.columnAdType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DonateBookColumn {
+                get {
+                    return this.columnDonateBook;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DonateBookAmtColumn {
+                get {
+                    return this.columnDonateBookAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LoveLineTypeColumn {
+                get {
+                    return this.columnLoveLineType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ShipToHomeColumn {
+                get {
+                    return this.columnShipToHome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ShipToHomeAmtColumn {
+                get {
+                    return this.columnShipToHomeAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SponsorPageColumn {
+                get {
+                    return this.columnSponsorPage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SponsorPageAmtColumn {
+                get {
+                    return this.columnSponsorPageAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DateToIncrease1Column {
+                get {
+                    return this.columnDateToIncrease1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DateToIncrease2Column {
+                get {
+                    return this.columnDateToIncrease2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IncreaseAmt2Column {
+                get {
+                    return this.columnIncreaseAmt2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OnlinePayIncreasedColumn {
+                get {
+                    return this.columnOnlinePayIncreased;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OnlinePayIncreased1Column {
+                get {
+                    return this.columnOnlinePayIncreased1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OnlinePayIncreased2Column {
+                get {
+                    return this.columnOnlinePayIncreased2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MainSchcodeColumn {
+                get {
+                    return this.columnMainSchcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SchNameColumn {
+                get {
+                    return this.columnSchName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PINColumn {
+                get {
+                    return this.columnPIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ValidateOrderTotalColumn {
+                get {
+                    return this.columnValidateOrderTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ClosedColumn {
+                get {
+                    return this.columnClosed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NoOnlinepayColumn {
+                get {
+                    return this.columnNoOnlinepay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5159,7 +5464,6 @@ namespace Mbc5.DataSets {
                         decimal PicturePersHardBkAmt, 
                         bool LoveLine, 
                         decimal LoveLineAmt, 
-                        bool Ads, 
                         decimal AdFullAmt, 
                         decimal AdHalfAmt, 
                         decimal AdQuarterAmt, 
@@ -5178,7 +5482,31 @@ namespace Mbc5.DataSets {
                         decimal DollarsCollected, 
                         int TotalLoveLines, 
                         decimal TaxCollected, 
-                        int TotalAds) {
+                        int TotalAds, 
+                        string OracleCode, 
+                        string NameTitle, 
+                        System.DateTime PersonalizedDateCutOff, 
+                        bool Ad, 
+                        string AdType, 
+                        bool DonateBook, 
+                        decimal DonateBookAmt, 
+                        string LoveLineType, 
+                        bool ShipToHome, 
+                        decimal ShipToHomeAmt, 
+                        bool SponsorPage, 
+                        decimal SponsorPageAmt, 
+                        System.DateTime DateToIncrease1, 
+                        System.DateTime DateToIncrease2, 
+                        decimal IncreaseAmt2, 
+                        bool OnlinePayIncreased, 
+                        bool OnlinePayIncreased1, 
+                        bool OnlinePayIncreased2, 
+                        string MainSchcode, 
+                        string SchName, 
+                        string PIN, 
+                        bool ValidateOrderTotal, 
+                        bool Closed, 
+                        bool NoOnlinepay) {
                 OpyProductsRow rowOpyProductsRow = ((OpyProductsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -5207,7 +5535,6 @@ namespace Mbc5.DataSets {
                         PicturePersHardBkAmt,
                         LoveLine,
                         LoveLineAmt,
-                        Ads,
                         AdFullAmt,
                         AdHalfAmt,
                         AdQuarterAmt,
@@ -5226,7 +5553,31 @@ namespace Mbc5.DataSets {
                         DollarsCollected,
                         TotalLoveLines,
                         TaxCollected,
-                        TotalAds};
+                        TotalAds,
+                        OracleCode,
+                        NameTitle,
+                        PersonalizedDateCutOff,
+                        Ad,
+                        AdType,
+                        DonateBook,
+                        DonateBookAmt,
+                        LoveLineType,
+                        ShipToHome,
+                        ShipToHomeAmt,
+                        SponsorPage,
+                        SponsorPageAmt,
+                        DateToIncrease1,
+                        DateToIncrease2,
+                        IncreaseAmt2,
+                        OnlinePayIncreased,
+                        OnlinePayIncreased1,
+                        OnlinePayIncreased2,
+                        MainSchcode,
+                        SchName,
+                        PIN,
+                        ValidateOrderTotal,
+                        Closed,
+                        NoOnlinepay};
                 if ((parentquotesRowByquotes_OpyProducts != null)) {
                     columnValuesArray[2] = parentquotesRowByquotes_OpyProducts[0];
                 }
@@ -5285,7 +5636,6 @@ namespace Mbc5.DataSets {
                 this.columnPicturePersHardBkAmt = base.Columns["PicturePersHardBkAmt"];
                 this.columnLoveLine = base.Columns["LoveLine"];
                 this.columnLoveLineAmt = base.Columns["LoveLineAmt"];
-                this.columnAds = base.Columns["Ads"];
                 this.columnAdFullAmt = base.Columns["AdFullAmt"];
                 this.columnAdHalfAmt = base.Columns["AdHalfAmt"];
                 this.columnAdQuarterAmt = base.Columns["AdQuarterAmt"];
@@ -5305,6 +5655,30 @@ namespace Mbc5.DataSets {
                 this.columnTotalLoveLines = base.Columns["TotalLoveLines"];
                 this.columnTaxCollected = base.Columns["TaxCollected"];
                 this.columnTotalAds = base.Columns["TotalAds"];
+                this.columnOracleCode = base.Columns["OracleCode"];
+                this.columnNameTitle = base.Columns["NameTitle"];
+                this.columnPersonalizedDateCutOff = base.Columns["PersonalizedDateCutOff"];
+                this.columnAd = base.Columns["Ad"];
+                this.columnAdType = base.Columns["AdType"];
+                this.columnDonateBook = base.Columns["DonateBook"];
+                this.columnDonateBookAmt = base.Columns["DonateBookAmt"];
+                this.columnLoveLineType = base.Columns["LoveLineType"];
+                this.columnShipToHome = base.Columns["ShipToHome"];
+                this.columnShipToHomeAmt = base.Columns["ShipToHomeAmt"];
+                this.columnSponsorPage = base.Columns["SponsorPage"];
+                this.columnSponsorPageAmt = base.Columns["SponsorPageAmt"];
+                this.columnDateToIncrease1 = base.Columns["DateToIncrease1"];
+                this.columnDateToIncrease2 = base.Columns["DateToIncrease2"];
+                this.columnIncreaseAmt2 = base.Columns["IncreaseAmt2"];
+                this.columnOnlinePayIncreased = base.Columns["OnlinePayIncreased"];
+                this.columnOnlinePayIncreased1 = base.Columns["OnlinePayIncreased1"];
+                this.columnOnlinePayIncreased2 = base.Columns["OnlinePayIncreased2"];
+                this.columnMainSchcode = base.Columns["MainSchcode"];
+                this.columnSchName = base.Columns["SchName"];
+                this.columnPIN = base.Columns["PIN"];
+                this.columnValidateOrderTotal = base.Columns["ValidateOrderTotal"];
+                this.columnClosed = base.Columns["Closed"];
+                this.columnNoOnlinepay = base.Columns["NoOnlinepay"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5362,8 +5736,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnLoveLine);
                 this.columnLoveLineAmt = new global::System.Data.DataColumn("LoveLineAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLoveLineAmt);
-                this.columnAds = new global::System.Data.DataColumn("Ads", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAds);
                 this.columnAdFullAmt = new global::System.Data.DataColumn("AdFullAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdFullAmt);
                 this.columnAdHalfAmt = new global::System.Data.DataColumn("AdHalfAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -5402,6 +5774,54 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnTaxCollected);
                 this.columnTotalAds = new global::System.Data.DataColumn("TotalAds", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalAds);
+                this.columnOracleCode = new global::System.Data.DataColumn("OracleCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOracleCode);
+                this.columnNameTitle = new global::System.Data.DataColumn("NameTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameTitle);
+                this.columnPersonalizedDateCutOff = new global::System.Data.DataColumn("PersonalizedDateCutOff", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonalizedDateCutOff);
+                this.columnAd = new global::System.Data.DataColumn("Ad", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAd);
+                this.columnAdType = new global::System.Data.DataColumn("AdType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAdType);
+                this.columnDonateBook = new global::System.Data.DataColumn("DonateBook", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonateBook);
+                this.columnDonateBookAmt = new global::System.Data.DataColumn("DonateBookAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonateBookAmt);
+                this.columnLoveLineType = new global::System.Data.DataColumn("LoveLineType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLoveLineType);
+                this.columnShipToHome = new global::System.Data.DataColumn("ShipToHome", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipToHome);
+                this.columnShipToHomeAmt = new global::System.Data.DataColumn("ShipToHomeAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipToHomeAmt);
+                this.columnSponsorPage = new global::System.Data.DataColumn("SponsorPage", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSponsorPage);
+                this.columnSponsorPageAmt = new global::System.Data.DataColumn("SponsorPageAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSponsorPageAmt);
+                this.columnDateToIncrease1 = new global::System.Data.DataColumn("DateToIncrease1", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateToIncrease1);
+                this.columnDateToIncrease2 = new global::System.Data.DataColumn("DateToIncrease2", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateToIncrease2);
+                this.columnIncreaseAmt2 = new global::System.Data.DataColumn("IncreaseAmt2", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIncreaseAmt2);
+                this.columnOnlinePayIncreased = new global::System.Data.DataColumn("OnlinePayIncreased", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlinePayIncreased);
+                this.columnOnlinePayIncreased1 = new global::System.Data.DataColumn("OnlinePayIncreased1", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlinePayIncreased1);
+                this.columnOnlinePayIncreased2 = new global::System.Data.DataColumn("OnlinePayIncreased2", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlinePayIncreased2);
+                this.columnMainSchcode = new global::System.Data.DataColumn("MainSchcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMainSchcode);
+                this.columnSchName = new global::System.Data.DataColumn("SchName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSchName);
+                this.columnPIN = new global::System.Data.DataColumn("PIN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPIN);
+                this.columnValidateOrderTotal = new global::System.Data.DataColumn("ValidateOrderTotal", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValidateOrderTotal);
+                this.columnClosed = new global::System.Data.DataColumn("Closed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClosed);
+                this.columnNoOnlinepay = new global::System.Data.DataColumn("NoOnlinepay", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoOnlinepay);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -5410,10 +5830,37 @@ namespace Mbc5.DataSets {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnSchcode.AllowDBNull = false;
                 this.columnSchcode.MaxLength = 8;
+                this.columnInvno.AllowDBNull = false;
                 this.columnContryear.MaxLength = 2;
+                this.columnHardBkBasic.AllowDBNull = false;
+                this.columnInk.AllowDBNull = false;
                 this.columnInk.DefaultValue = ((bool)(false));
+                this.columnInkHardBk.AllowDBNull = false;
+                this.columnInkText.AllowDBNull = false;
+                this.columnFoil.AllowDBNull = false;
+                this.columnFoilText.AllowDBNull = false;
+                this.columnFoilHardBk.AllowDBNull = false;
+                this.columnPicturePers.AllowDBNull = false;
+                this.columnPicturePersHardBk.AllowDBNull = false;
+                this.columnLoveLine.AllowDBNull = false;
+                this.columnTaxOnlinePay.AllowDBNull = false;
                 this.columnOpyNotes.MaxLength = 2147483647;
+                this.columnOracleCode.MaxLength = 50;
+                this.columnNameTitle.MaxLength = 200;
+                this.columnAd.AllowDBNull = false;
+                this.columnAdType.AllowDBNull = false;
+                this.columnAdType.MaxLength = 50;
+                this.columnLoveLineType.MaxLength = 50;
+                this.columnOnlinePayIncreased.AllowDBNull = false;
+                this.columnOnlinePayIncreased1.AllowDBNull = false;
+                this.columnOnlinePayIncreased2.AllowDBNull = false;
+                this.columnMainSchcode.MaxLength = 6;
+                this.columnSchName.MaxLength = 150;
+                this.columnPIN.MaxLength = 6;
+                this.columnValidateOrderTotal.AllowDBNull = false;
+                this.columnNoOnlinepay.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8604,12 +9051,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal OnlinePayTaxRate {
                 get {
-                    try {
-                        return ((decimal)(this[this.tablequotes.OnlinePayTaxRateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OnlinePayTaxRate\' in table \'quotes\' is DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tablequotes.OnlinePayTaxRateColumn]));
                 }
                 set {
                     this[this.tablequotes.OnlinePayTaxRateColumn] = value;
@@ -8720,6 +9162,86 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablequotes.AdTurnedOffColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Easywork {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.EasyworkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Easywork\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.EasyworkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal EastworkTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.EastworkTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EastworkTotal\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.EastworkTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int OverRunQty {
+                get {
+                    try {
+                        return ((int)(this[this.tablequotes.OverRunQtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OverRunQty\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.OverRunQtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal OverRunAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.OverRunAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OverRunAmt\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.OverRunAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SubTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.SubTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SubTotal\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.SubTotalColumn] = value;
                 }
             }
             
@@ -10993,18 +11515,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsOnlinePayTaxRateNull() {
-                return this.IsNull(this.tablequotes.OnlinePayTaxRateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetOnlinePayTaxRateNull() {
-                this[this.tablequotes.OnlinePayTaxRateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNoOnlinePayNull() {
                 return this.IsNull(this.tablequotes.NoOnlinePayColumn);
             }
@@ -11073,6 +11583,66 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetAdTurnedOffNull() {
                 this[this.tablequotes.AdTurnedOffColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEasyworkNull() {
+                return this.IsNull(this.tablequotes.EasyworkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEasyworkNull() {
+                this[this.tablequotes.EasyworkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEastworkTotalNull() {
+                return this.IsNull(this.tablequotes.EastworkTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEastworkTotalNull() {
+                this[this.tablequotes.EastworkTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverRunQtyNull() {
+                return this.IsNull(this.tablequotes.OverRunQtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverRunQtyNull() {
+                this[this.tablequotes.OverRunQtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOverRunAmtNull() {
+                return this.IsNull(this.tablequotes.OverRunAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOverRunAmtNull() {
+                this[this.tablequotes.OverRunAmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSubTotalNull() {
+                return this.IsNull(this.tablequotes.SubTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSubTotalNull() {
+                this[this.tablequotes.SubTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11884,12 +12454,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Schcode {
                 get {
-                    try {
-                        return ((string)(this[this.tableOpyProducts.SchcodeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Schcode\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableOpyProducts.SchcodeColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.SchcodeColumn] = value;
@@ -11900,12 +12465,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int Invno {
                 get {
-                    try {
-                        return ((int)(this[this.tableOpyProducts.InvnoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Invno\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableOpyProducts.InvnoColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.InvnoColumn] = value;
@@ -11964,12 +12524,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool HardBkBasic {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.HardBkBasicColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HardBkBasic\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.HardBkBasicColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.HardBkBasicColumn] = value;
@@ -11996,12 +12551,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Ink {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.InkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Ink\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.InkColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.InkColumn] = value;
@@ -12028,12 +12578,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool InkHardBk {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.InkHardBkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'InkHardBk\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.InkHardBkColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.InkHardBkColumn] = value;
@@ -12060,12 +12605,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool InkText {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.InkTextColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'InkText\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.InkTextColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.InkTextColumn] = value;
@@ -12076,12 +12616,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Foil {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.FoilColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Foil\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.FoilColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.FoilColumn] = value;
@@ -12124,12 +12659,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool FoilText {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.FoilTextColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FoilText\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.FoilTextColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.FoilTextColumn] = value;
@@ -12140,12 +12670,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool FoilHardBk {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.FoilHardBkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FoilHardBk\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.FoilHardBkColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.FoilHardBkColumn] = value;
@@ -12188,12 +12713,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool PicturePers {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.PicturePersColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PicturePers\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.PicturePersColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.PicturePersColumn] = value;
@@ -12220,12 +12740,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool PicturePersHardBk {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.PicturePersHardBkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PicturePersHardBk\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.PicturePersHardBkColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.PicturePersHardBkColumn] = value;
@@ -12252,12 +12767,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool LoveLine {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.LoveLineColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LoveLine\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.LoveLineColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.LoveLineColumn] = value;
@@ -12277,22 +12787,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tableOpyProducts.LoveLineAmtColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Ads {
-                get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.AdsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Ads\' in table \'OpyProducts\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOpyProducts.AdsColumn] = value;
                 }
             }
             
@@ -12444,12 +12938,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool TaxOnlinePay {
                 get {
-                    try {
-                        return ((bool)(this[this.tableOpyProducts.TaxOnlinePayColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxOnlinePay\' in table \'OpyProducts\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableOpyProducts.TaxOnlinePayColumn]));
                 }
                 set {
                     this[this.tableOpyProducts.TaxOnlinePayColumn] = value;
@@ -12602,6 +13091,355 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OracleCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.OracleCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OracleCode\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.OracleCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NameTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.NameTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NameTitle\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.NameTitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime PersonalizedDateCutOff {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableOpyProducts.PersonalizedDateCutOffColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PersonalizedDateCutOff\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.PersonalizedDateCutOffColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Ad {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.AdColumn]));
+                }
+                set {
+                    this[this.tableOpyProducts.AdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AdType {
+                get {
+                    return ((string)(this[this.tableOpyProducts.AdTypeColumn]));
+                }
+                set {
+                    this[this.tableOpyProducts.AdTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool DonateBook {
+                get {
+                    try {
+                        return ((bool)(this[this.tableOpyProducts.DonateBookColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonateBook\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.DonateBookColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal DonateBookAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableOpyProducts.DonateBookAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonateBookAmt\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.DonateBookAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string LoveLineType {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.LoveLineTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LoveLineType\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.LoveLineTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool ShipToHome {
+                get {
+                    try {
+                        return ((bool)(this[this.tableOpyProducts.ShipToHomeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipToHome\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.ShipToHomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ShipToHomeAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableOpyProducts.ShipToHomeAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipToHomeAmt\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.ShipToHomeAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool SponsorPage {
+                get {
+                    try {
+                        return ((bool)(this[this.tableOpyProducts.SponsorPageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SponsorPage\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.SponsorPageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SponsorPageAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableOpyProducts.SponsorPageAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SponsorPageAmt\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.SponsorPageAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime DateToIncrease1 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableOpyProducts.DateToIncrease1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateToIncrease1\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.DateToIncrease1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime DateToIncrease2 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableOpyProducts.DateToIncrease2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateToIncrease2\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.DateToIncrease2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal IncreaseAmt2 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableOpyProducts.IncreaseAmt2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IncreaseAmt2\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.IncreaseAmt2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool OnlinePayIncreased {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.OnlinePayIncreasedColumn]));
+                }
+                set {
+                    this[this.tableOpyProducts.OnlinePayIncreasedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool OnlinePayIncreased1 {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.OnlinePayIncreased1Column]));
+                }
+                set {
+                    this[this.tableOpyProducts.OnlinePayIncreased1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool OnlinePayIncreased2 {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.OnlinePayIncreased2Column]));
+                }
+                set {
+                    this[this.tableOpyProducts.OnlinePayIncreased2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MainSchcode {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.MainSchcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MainSchcode\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.MainSchcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string SchName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.SchNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SchName\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.SchNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string PIN {
+                get {
+                    try {
+                        return ((string)(this[this.tableOpyProducts.PINColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PIN\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.PINColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool ValidateOrderTotal {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.ValidateOrderTotalColumn]));
+                }
+                set {
+                    this[this.tableOpyProducts.ValidateOrderTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Closed {
+                get {
+                    try {
+                        return ((bool)(this[this.tableOpyProducts.ClosedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Closed\' in table \'OpyProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOpyProducts.ClosedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool NoOnlinepay {
+                get {
+                    return ((bool)(this[this.tableOpyProducts.NoOnlinepayColumn]));
+                }
+                set {
+                    this[this.tableOpyProducts.NoOnlinepayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_OpyProducts"])));
@@ -12609,30 +13447,6 @@ namespace Mbc5.DataSets {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["quotes_OpyProducts"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSchcodeNull() {
-                return this.IsNull(this.tableOpyProducts.SchcodeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSchcodeNull() {
-                this[this.tableOpyProducts.SchcodeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInvnoNull() {
-                return this.IsNull(this.tableOpyProducts.InvnoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInvnoNull() {
-                this[this.tableOpyProducts.InvnoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12673,18 +13487,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsHardBkBasicNull() {
-                return this.IsNull(this.tableOpyProducts.HardBkBasicColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetHardBkBasicNull() {
-                this[this.tableOpyProducts.HardBkBasicColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsHardBkBasicAmtNull() {
                 return this.IsNull(this.tableOpyProducts.HardBkBasicAmtColumn);
             }
@@ -12693,18 +13495,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetHardBkBasicAmtNull() {
                 this[this.tableOpyProducts.HardBkBasicAmtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInkNull() {
-                return this.IsNull(this.tableOpyProducts.InkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInkNull() {
-                this[this.tableOpyProducts.InkColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12721,18 +13511,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInkHardBkNull() {
-                return this.IsNull(this.tableOpyProducts.InkHardBkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInkHardBkNull() {
-                this[this.tableOpyProducts.InkHardBkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsInkHardBkAmtNull() {
                 return this.IsNull(this.tableOpyProducts.InkHardBkAmtColumn);
             }
@@ -12741,30 +13519,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetInkHardBkAmtNull() {
                 this[this.tableOpyProducts.InkHardBkAmtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInkTextNull() {
-                return this.IsNull(this.tableOpyProducts.InkTextColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInkTextNull() {
-                this[this.tableOpyProducts.InkTextColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFoilNull() {
-                return this.IsNull(this.tableOpyProducts.FoilColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFoilNull() {
-                this[this.tableOpyProducts.FoilColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12793,30 +13547,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFoilTextNull() {
-                return this.IsNull(this.tableOpyProducts.FoilTextColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFoilTextNull() {
-                this[this.tableOpyProducts.FoilTextColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFoilHardBkNull() {
-                return this.IsNull(this.tableOpyProducts.FoilHardBkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFoilHardBkNull() {
-                this[this.tableOpyProducts.FoilHardBkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFoilTextAmtNull() {
                 return this.IsNull(this.tableOpyProducts.FoilTextAmtColumn);
             }
@@ -12841,18 +13571,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPicturePersNull() {
-                return this.IsNull(this.tableOpyProducts.PicturePersColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPicturePersNull() {
-                this[this.tableOpyProducts.PicturePersColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPicturePersAmtNull() {
                 return this.IsNull(this.tableOpyProducts.PicturePersAmtColumn);
             }
@@ -12861,18 +13579,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPicturePersAmtNull() {
                 this[this.tableOpyProducts.PicturePersAmtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPicturePersHardBkNull() {
-                return this.IsNull(this.tableOpyProducts.PicturePersHardBkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPicturePersHardBkNull() {
-                this[this.tableOpyProducts.PicturePersHardBkColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12889,18 +13595,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsLoveLineNull() {
-                return this.IsNull(this.tableOpyProducts.LoveLineColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetLoveLineNull() {
-                this[this.tableOpyProducts.LoveLineColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsLoveLineAmtNull() {
                 return this.IsNull(this.tableOpyProducts.LoveLineAmtColumn);
             }
@@ -12909,18 +13603,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetLoveLineAmtNull() {
                 this[this.tableOpyProducts.LoveLineAmtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAdsNull() {
-                return this.IsNull(this.tableOpyProducts.AdsColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAdsNull() {
-                this[this.tableOpyProducts.AdsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13033,18 +13715,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTaxOnlinePayNull() {
-                return this.IsNull(this.tableOpyProducts.TaxOnlinePayColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTaxOnlinePayNull() {
-                this[this.tableOpyProducts.TaxOnlinePayColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDateToIncreaseNull() {
                 return this.IsNull(this.tableOpyProducts.DateToIncreaseColumn);
             }
@@ -13149,6 +13819,210 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTotalAdsNull() {
                 this[this.tableOpyProducts.TotalAdsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOracleCodeNull() {
+                return this.IsNull(this.tableOpyProducts.OracleCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOracleCodeNull() {
+                this[this.tableOpyProducts.OracleCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNameTitleNull() {
+                return this.IsNull(this.tableOpyProducts.NameTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNameTitleNull() {
+                this[this.tableOpyProducts.NameTitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPersonalizedDateCutOffNull() {
+                return this.IsNull(this.tableOpyProducts.PersonalizedDateCutOffColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPersonalizedDateCutOffNull() {
+                this[this.tableOpyProducts.PersonalizedDateCutOffColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDonateBookNull() {
+                return this.IsNull(this.tableOpyProducts.DonateBookColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDonateBookNull() {
+                this[this.tableOpyProducts.DonateBookColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDonateBookAmtNull() {
+                return this.IsNull(this.tableOpyProducts.DonateBookAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDonateBookAmtNull() {
+                this[this.tableOpyProducts.DonateBookAmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLoveLineTypeNull() {
+                return this.IsNull(this.tableOpyProducts.LoveLineTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLoveLineTypeNull() {
+                this[this.tableOpyProducts.LoveLineTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsShipToHomeNull() {
+                return this.IsNull(this.tableOpyProducts.ShipToHomeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetShipToHomeNull() {
+                this[this.tableOpyProducts.ShipToHomeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsShipToHomeAmtNull() {
+                return this.IsNull(this.tableOpyProducts.ShipToHomeAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetShipToHomeAmtNull() {
+                this[this.tableOpyProducts.ShipToHomeAmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSponsorPageNull() {
+                return this.IsNull(this.tableOpyProducts.SponsorPageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSponsorPageNull() {
+                this[this.tableOpyProducts.SponsorPageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSponsorPageAmtNull() {
+                return this.IsNull(this.tableOpyProducts.SponsorPageAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSponsorPageAmtNull() {
+                this[this.tableOpyProducts.SponsorPageAmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDateToIncrease1Null() {
+                return this.IsNull(this.tableOpyProducts.DateToIncrease1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDateToIncrease1Null() {
+                this[this.tableOpyProducts.DateToIncrease1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDateToIncrease2Null() {
+                return this.IsNull(this.tableOpyProducts.DateToIncrease2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDateToIncrease2Null() {
+                this[this.tableOpyProducts.DateToIncrease2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIncreaseAmt2Null() {
+                return this.IsNull(this.tableOpyProducts.IncreaseAmt2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIncreaseAmt2Null() {
+                this[this.tableOpyProducts.IncreaseAmt2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMainSchcodeNull() {
+                return this.IsNull(this.tableOpyProducts.MainSchcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMainSchcodeNull() {
+                this[this.tableOpyProducts.MainSchcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSchNameNull() {
+                return this.IsNull(this.tableOpyProducts.SchNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSchNameNull() {
+                this[this.tableOpyProducts.SchNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPINNull() {
+                return this.IsNull(this.tableOpyProducts.PINColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPINNull() {
+                this[this.tableOpyProducts.PINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsClosedNull() {
+                return this.IsNull(this.tableOpyProducts.ClosedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetClosedNull() {
+                this[this.tableOpyProducts.ClosedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13611,6 +14485,11 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("PriceIncrease", "PriceIncrease");
             tableMapping.ColumnMappings.Add("OnlinePayHasBeenIncreased", "OnlinePayHasBeenIncreased");
             tableMapping.ColumnMappings.Add("AdTurnedOff", "AdTurnedOff");
+            tableMapping.ColumnMappings.Add("Easywork", "Easywork");
+            tableMapping.ColumnMappings.Add("EastworkTotal", "EastworkTotal");
+            tableMapping.ColumnMappings.Add("OverRunQty", "OverRunQty");
+            tableMapping.ColumnMappings.Add("OverRunAmt", "OverRunAmt");
+            tableMapping.ColumnMappings.Add("SubTotal", "SubTotal");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -13955,14 +14834,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "      OnlinePayTaxRate = @OnlinePayTaxRate, NoOnlinePay = @NoOnlinePay, TaxOnlin" +
                 "ePay = @TaxOnlinePay, DateToIncrease = @DateToIncrease, PriceIncrease = @PriceIn" +
                 "crease, \r\n                         OnlinePayHasBeenIncreased = @OnlinePayHasBeen" +
-                "Increased, AdTurnedOff = @AdTurnedOff\r\nWHERE        (invno = @Original_invno) AN" +
-                "D (TimeStamp = @Original_TimeStamp)";
+                "Increased, AdTurnedOff = @AdTurnedOff, Easywork = @Easywork, OverRunQty = @OVERR" +
+                "UNQTY, OverRunAmt = @OverRunAmt, EastworkTotal = @EasyworkTotal, \r\n             " +
+                "            SubTotal = @SubTotal\r\nWHERE        (invno = @Original_invno) AND (Ti" +
+                "meStamp = @Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 4, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.VarChar, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtedate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "qtedate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_ea", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "book_ea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_price", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "book_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pryn", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "pryn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13989,7 +14870,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customy_n", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "customy_n", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customized", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "customized", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@misc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "misc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mdesc", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "mdesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mdesc", global::System.Data.SqlDbType.VarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "mdesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sbtot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "sbtot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dc1", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "dc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp1", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 2, 2, "dp1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13997,43 +14878,43 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dc2", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "dc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp2", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 2, 2, "dp2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@disc2", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "disc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp3desc", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "dp3desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp3desc", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "dp3desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp3", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 4, 4, "dp3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@disc3", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "disc3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp4", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 2, 2, "dp4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@disc4", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "disc4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cred_etc", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "cred_etc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cred_etc", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cred_etc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjbef", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "adjbef", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjaftr", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "adjaftr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fbkprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "fbkprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ftotprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "ftotprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xtrabkno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "xtrabkno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xtrabkprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "xtrabkprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc1", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "desc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc1", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc1tot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "desc1tot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc2", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "desc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc2tot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "desc2tot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ponum", global::System.Data.SqlDbType.Char, 25, global::System.Data.ParameterDirection.Input, 0, 0, "ponum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ponum", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "ponum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiced", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "invoiced", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newprice", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "newprice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schout", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "schout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saletax", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "saletax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@allclrck", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "allclrck", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@allclramt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "allclramt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inkclr", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "inkclr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inkclr", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "inkclr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@foiladamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "foiladamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc3", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "desc3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc3", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc3tot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "desc3tot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc4", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "desc4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc4", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc4tot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "desc4tot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clrpgdesc", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "clrpgdesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clrpgdesc", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "clrpgdesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clrpgtot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "clrpgtot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@glspaper", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "glspaper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@glsamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 7, 2, "glsamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bpovrde", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "bpovrde", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@holdpmt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "holdpmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bpyear", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "bpyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bpyear", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.Input, 0, 0, "bpyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@themck", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "themck", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@themamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 2, "themamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yirschool", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "yirschool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14048,7 +14929,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oursupp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "oursupp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oursuppamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 3, 2, "oursuppamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ourovrride", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ourovrride", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp1desc", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "dp1desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dp1desc", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "dp1desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookinvremv", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "rebookinvremv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookinvremv1", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "rebookinvremv1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookinvremv2", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "rebookinvremv2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14075,7 +14956,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bascicpp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "bascicpp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@perpp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "perpp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@agreerec", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "agreerec", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@basicamoun", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "basicamoun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@basicamoun", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "basicamoun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@peramount", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "peramount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oprcperbk", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "oprcperbk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oprcperbk2", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "oprcperbk2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14084,7 +14965,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@basicpp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "basicpp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@msstanqty", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "msstanqty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@msstandtot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "msstandtot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fldtype", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "fldtype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fldtype", global::System.Data.SqlDbType.VarChar, 12, global::System.Data.ParameterDirection.Input, 0, 0, "fldtype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isfolder", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "isfolder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priceovrd", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "priceovrd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mlamsoft", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "mlamsoft", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14116,8 +14997,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eighthad", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "eighthad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eighthadamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "eighthadamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adline", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "adline", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cred_etc2", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "cred_etc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc22", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "desc22", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cred_etc2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cred_etc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc22", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc22", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adjaftr2", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "adjaftr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc22tot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "desc22tot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prcor", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "prcor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14136,7 +15017,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14150,6 +15031,11 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PriceIncrease", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "PriceIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayHasBeenIncreased", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayHasBeenIncreased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdTurnedOff", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "AdTurnedOff", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Easywork", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Easywork", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OVERRUNQTY", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OverRunQty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OverRunAmt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "OverRunAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EasyworkTotal", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "EastworkTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SubTotal", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "SubTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -14158,7 +15044,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14216,11 +15102,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "cvd, produtn.jobno, produtn.shpdate, produtn.dedayin, quotes.OnlineTaxCollected," +
                 " quotes.OnlinePayTaxRate, quotes.NoOnlinePay, quotes.TaxOnlinePay, \r\n           " +
                 "              quotes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBe" +
-                "enIncreased, quotes.AdTurnedOff\r\nFROM            quotes INNER JOIN\r\n            " +
-                "             produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.schco" +
-                "de = @schcode)\r\nORDER BY quotes.qtedate DESC";
+                "enIncreased, quotes.AdTurnedOff, quotes.Easywork, quotes.EastworkTotal, quotes.O" +
+                "verRunQty, quotes.OverRunAmt, quotes.SubTotal\r\nFROM            quotes INNER JOIN" +
+                "\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE       " +
+                " (quotes.schcode = @schcode)\r\nORDER BY quotes.qtedate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        quotes.DateCreated, quotes.ColorPriceOverRide, quotes.DateModified," +
@@ -15900,13 +16787,18 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<bool> ColorPriceOverRide, 
                     global::System.Nullable<decimal> OnlineTaxCollected, 
-                    global::System.Nullable<decimal> OnlinePayTaxRate, 
+                    decimal OnlinePayTaxRate, 
                     global::System.Nullable<bool> NoOnlinePay, 
                     global::System.Nullable<bool> TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> PriceIncrease, 
                     bool OnlinePayHasBeenIncreased, 
                     global::System.Nullable<bool> AdTurnedOff, 
+                    global::System.Nullable<bool> Easywork, 
+                    global::System.Nullable<int> OVERRUNQTY, 
+                    global::System.Nullable<decimal> OverRunAmt, 
+                    global::System.Nullable<decimal> EasyworkTotal, 
+                    global::System.Nullable<decimal> SubTotal, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(invno));
@@ -17014,12 +17906,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[184].Value = global::System.DBNull.Value;
             }
-            if ((OnlinePayTaxRate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[185].Value = ((decimal)(OnlinePayTaxRate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[185].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[185].Value = ((decimal)(OnlinePayTaxRate));
             if ((NoOnlinePay.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[186].Value = ((bool)(NoOnlinePay.Value));
             }
@@ -17051,12 +17938,42 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[191].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[192].Value = ((int)(Original_invno));
-            if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[193].Value = global::System.DBNull.Value;
+            if ((Easywork.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[192].Value = ((bool)(Easywork.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[193].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[192].Value = global::System.DBNull.Value;
+            }
+            if ((OVERRUNQTY.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[193].Value = ((int)(OVERRUNQTY.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[193].Value = global::System.DBNull.Value;
+            }
+            if ((OverRunAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[194].Value = ((decimal)(OverRunAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[194].Value = global::System.DBNull.Value;
+            }
+            if ((EasyworkTotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[195].Value = ((decimal)(EasyworkTotal.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[195].Value = global::System.DBNull.Value;
+            }
+            if ((SubTotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[196].Value = ((decimal)(SubTotal.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[196].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[197].Value = ((int)(Original_invno));
+            if ((Original_TimeStamp == null)) {
+                this.Adapter.UpdateCommand.Parameters[198].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[198].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -17263,16 +18180,21 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<bool> ColorPriceOverRide, 
                     global::System.Nullable<decimal> OnlineTaxCollected, 
-                    global::System.Nullable<decimal> OnlinePayTaxRate, 
+                    decimal OnlinePayTaxRate, 
                     global::System.Nullable<bool> NoOnlinePay, 
                     global::System.Nullable<bool> TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> PriceIncrease, 
                     bool OnlinePayHasBeenIncreased, 
                     global::System.Nullable<bool> AdTurnedOff, 
+                    global::System.Nullable<bool> Easywork, 
+                    global::System.Nullable<int> OVERRUNQTY, 
+                    global::System.Nullable<decimal> OverRunAmt, 
+                    global::System.Nullable<decimal> EasyworkTotal, 
+                    global::System.Nullable<decimal> SubTotal, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, OnlineTaxCollected, OnlinePayTaxRate, NoOnlinePay, TaxOnlinePay, DateToIncrease, PriceIncrease, OnlinePayHasBeenIncreased, AdTurnedOff, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, OnlineTaxCollected, OnlinePayTaxRate, NoOnlinePay, TaxOnlinePay, DateToIncrease, PriceIncrease, OnlinePayHasBeenIncreased, AdTurnedOff, Easywork, OVERRUNQTY, OverRunAmt, EasyworkTotal, SubTotal, Original_invno, Original_TimeStamp);
         }
     }
     
@@ -17834,7 +18756,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20142,7 +21064,7 @@ WHERE        (schcode = @schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20498,7 +21420,6 @@ WHERE        (schcode = @schcode)";
             tableMapping.ColumnMappings.Add("PicturePersHardBkAmt", "PicturePersHardBkAmt");
             tableMapping.ColumnMappings.Add("LoveLine", "LoveLine");
             tableMapping.ColumnMappings.Add("LoveLineAmt", "LoveLineAmt");
-            tableMapping.ColumnMappings.Add("Ads", "Ads");
             tableMapping.ColumnMappings.Add("AdFullAmt", "AdFullAmt");
             tableMapping.ColumnMappings.Add("AdHalfAmt", "AdHalfAmt");
             tableMapping.ColumnMappings.Add("AdQuarterAmt", "AdQuarterAmt");
@@ -20518,38 +21439,261 @@ WHERE        (schcode = @schcode)";
             tableMapping.ColumnMappings.Add("TotalLoveLines", "TotalLoveLines");
             tableMapping.ColumnMappings.Add("TaxCollected", "TaxCollected");
             tableMapping.ColumnMappings.Add("TotalAds", "TotalAds");
+            tableMapping.ColumnMappings.Add("OracleCode", "OracleCode");
+            tableMapping.ColumnMappings.Add("NameTitle", "NameTitle");
+            tableMapping.ColumnMappings.Add("PersonalizedDateCutOff", "PersonalizedDateCutOff");
+            tableMapping.ColumnMappings.Add("Ad", "Ad");
+            tableMapping.ColumnMappings.Add("AdType", "AdType");
+            tableMapping.ColumnMappings.Add("DonateBook", "DonateBook");
+            tableMapping.ColumnMappings.Add("DonateBookAmt", "DonateBookAmt");
+            tableMapping.ColumnMappings.Add("LoveLineType", "LoveLineType");
+            tableMapping.ColumnMappings.Add("ShipToHome", "ShipToHome");
+            tableMapping.ColumnMappings.Add("ShipToHomeAmt", "ShipToHomeAmt");
+            tableMapping.ColumnMappings.Add("SponsorPage", "SponsorPage");
+            tableMapping.ColumnMappings.Add("SponsorPageAmt", "SponsorPageAmt");
+            tableMapping.ColumnMappings.Add("DateToIncrease1", "DateToIncrease1");
+            tableMapping.ColumnMappings.Add("DateToIncrease2", "DateToIncrease2");
+            tableMapping.ColumnMappings.Add("IncreaseAmt2", "IncreaseAmt2");
+            tableMapping.ColumnMappings.Add("OnlinePayIncreased", "OnlinePayIncreased");
+            tableMapping.ColumnMappings.Add("OnlinePayIncreased1", "OnlinePayIncreased1");
+            tableMapping.ColumnMappings.Add("OnlinePayIncreased2", "OnlinePayIncreased2");
+            tableMapping.ColumnMappings.Add("MainSchcode", "MainSchcode");
+            tableMapping.ColumnMappings.Add("SchName", "SchName");
+            tableMapping.ColumnMappings.Add("PIN", "PIN");
+            tableMapping.ColumnMappings.Add("ValidateOrderTotal", "ValidateOrderTotal");
+            tableMapping.ColumnMappings.Add("Closed", "Closed");
+            tableMapping.ColumnMappings.Add("NoOnlinepay", "NoOnlinepay");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM OpyProducts\r\nWHERE        (Id = @Original_Id)";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OpyProducts] WHERE (([Id] = @Original_Id) AND ([Schcode] = @Original" +
+                "_Schcode) AND ([Invno] = @Original_Invno) AND ((@IsNull_Contryear = 1 AND [Contr" +
+                "year] IS NULL) OR ([Contryear] = @Original_Contryear)) AND ((@IsNull_Basic = 1 A" +
+                "ND [Basic] IS NULL) OR ([Basic] = @Original_Basic)) AND ((@IsNull_BasicAmt = 1 A" +
+                "ND [BasicAmt] IS NULL) OR ([BasicAmt] = @Original_BasicAmt)) AND ([HardBkBasic] " +
+                "= @Original_HardBkBasic) AND ((@IsNull_HardBkBasicAmt = 1 AND [HardBkBasicAmt] I" +
+                "S NULL) OR ([HardBkBasicAmt] = @Original_HardBkBasicAmt)) AND ([Ink] = @Original" +
+                "_Ink) AND ((@IsNull_InkAmt = 1 AND [InkAmt] IS NULL) OR ([InkAmt] = @Original_In" +
+                "kAmt)) AND ([InkHardBk] = @Original_InkHardBk) AND ((@IsNull_InkHardBkAmt = 1 AN" +
+                "D [InkHardBkAmt] IS NULL) OR ([InkHardBkAmt] = @Original_InkHardBkAmt)) AND ([In" +
+                "kText] = @Original_InkText) AND ([Foil] = @Original_Foil) AND ((@IsNull_FoilAmt " +
+                "= 1 AND [FoilAmt] IS NULL) OR ([FoilAmt] = @Original_FoilAmt)) AND ((@IsNull_Ink" +
+                "TextAmt = 1 AND [InkTextAmt] IS NULL) OR ([InkTextAmt] = @Original_InkTextAmt)) " +
+                "AND ([FoilText] = @Original_FoilText) AND ([FoilHardBk] = @Original_FoilHardBk) " +
+                "AND ((@IsNull_FoilTextAmt = 1 AND [FoilTextAmt] IS NULL) OR ([FoilTextAmt] = @Or" +
+                "iginal_FoilTextAmt)) AND ((@IsNull_FoilHardBkAmt = 1 AND [FoilHardBkAmt] IS NULL" +
+                ") OR ([FoilHardBkAmt] = @Original_FoilHardBkAmt)) AND ([PicturePers] = @Original" +
+                "_PicturePers) AND ((@IsNull_PicturePersAmt = 1 AND [PicturePersAmt] IS NULL) OR " +
+                "([PicturePersAmt] = @Original_PicturePersAmt)) AND ([PicturePersHardBk] = @Origi" +
+                "nal_PicturePersHardBk) AND ((@IsNull_PicturePersHardBkAmt = 1 AND [PicturePersHa" +
+                "rdBkAmt] IS NULL) OR ([PicturePersHardBkAmt] = @Original_PicturePersHardBkAmt)) " +
+                "AND ([LoveLine] = @Original_LoveLine) AND ((@IsNull_LoveLineAmt = 1 AND [LoveLin" +
+                "eAmt] IS NULL) OR ([LoveLineAmt] = @Original_LoveLineAmt)) AND ((@IsNull_AdFullA" +
+                "mt = 1 AND [AdFullAmt] IS NULL) OR ([AdFullAmt] = @Original_AdFullAmt)) AND ((@I" +
+                "sNull_AdHalfAmt = 1 AND [AdHalfAmt] IS NULL) OR ([AdHalfAmt] = @Original_AdHalfA" +
+                "mt)) AND ((@IsNull_AdQuarterAmt = 1 AND [AdQuarterAmt] IS NULL) OR ([AdQuarterAm" +
+                "t] = @Original_AdQuarterAmt)) AND ((@IsNull_AdEigthAmt = 1 AND [AdEigthAmt] IS N" +
+                "ULL) OR ([AdEigthAmt] = @Original_AdEigthAmt)) AND ((@IsNull_AgreementDate = 1 A" +
+                "ND [AgreementDate] IS NULL) OR ([AgreementDate] = @Original_AgreementDate)) AND " +
+                "((@IsNull_AgreementReceived = 1 AND [AgreementReceived] IS NULL) OR ([AgreementR" +
+                "eceived] = @Original_AgreementReceived)) AND ((@IsNull_OnlineCutOffDate = 1 AND " +
+                "[OnlineCutOffDate] IS NULL) OR ([OnlineCutOffDate] = @Original_OnlineCutOffDate)" +
+                ") AND ((@IsNull_AdCutOffDate = 1 AND [AdCutOffDate] IS NULL) OR ([AdCutOffDate] " +
+                "= @Original_AdCutOffDate)) AND ((@IsNull_TaxRate = 1 AND [TaxRate] IS NULL) OR (" +
+                "[TaxRate] = @Original_TaxRate)) AND ([TaxOnlinePay] = @Original_TaxOnlinePay) AN" +
+                "D ((@IsNull_DateToIncrease = 1 AND [DateToIncrease] IS NULL) OR ([DateToIncrease" +
+                "] = @Original_DateToIncrease)) AND ((@IsNull_IncreaseAmt = 1 AND [IncreaseAmt] I" +
+                "S NULL) OR ([IncreaseAmt] = @Original_IncreaseAmt)) AND ((@IsNull_TotalBookSold " +
+                "= 1 AND [TotalBookSold] IS NULL) OR ([TotalBookSold] = @Original_TotalBookSold))" +
+                " AND ((@IsNull_TotalPersSold = 1 AND [TotalPersSold] IS NULL) OR ([TotalPersSold" +
+                "] = @Original_TotalPersSold)) AND ((@IsNull_DollarsCollected = 1 AND [DollarsCol" +
+                "lected] IS NULL) OR ([DollarsCollected] = @Original_DollarsCollected)) AND ((@Is" +
+                "Null_TotalLoveLines = 1 AND [TotalLoveLines] IS NULL) OR ([TotalLoveLines] = @Or" +
+                "iginal_TotalLoveLines)) AND ((@IsNull_TaxCollected = 1 AND [TaxCollected] IS NUL" +
+                "L) OR ([TaxCollected] = @Original_TaxCollected)) AND ((@IsNull_TotalAds = 1 AND " +
+                "[TotalAds] IS NULL) OR ([TotalAds] = @Original_TotalAds)) AND ((@IsNull_OracleCo" +
+                "de = 1 AND [OracleCode] IS NULL) OR ([OracleCode] = @Original_OracleCode)) AND (" +
+                "(@IsNull_NameTitle = 1 AND [NameTitle] IS NULL) OR ([NameTitle] = @Original_Name" +
+                "Title)) AND ((@IsNull_PersonalizedDateCutOff = 1 AND [PersonalizedDateCutOff] IS" +
+                " NULL) OR ([PersonalizedDateCutOff] = @Original_PersonalizedDateCutOff)) AND ([A" +
+                "d] = @Original_Ad) AND ([AdType] = @Original_AdType) AND ((@IsNull_DonateBook = " +
+                "1 AND [DonateBook] IS NULL) OR ([DonateBook] = @Original_DonateBook)) AND ((@IsN" +
+                "ull_DonateBookAmt = 1 AND [DonateBookAmt] IS NULL) OR ([DonateBookAmt] = @Origin" +
+                "al_DonateBookAmt)) AND ((@IsNull_LoveLineType = 1 AND [LoveLineType] IS NULL) OR" +
+                " ([LoveLineType] = @Original_LoveLineType)) AND ((@IsNull_ShipToHome = 1 AND [Sh" +
+                "ipToHome] IS NULL) OR ([ShipToHome] = @Original_ShipToHome)) AND ((@IsNull_ShipT" +
+                "oHomeAmt = 1 AND [ShipToHomeAmt] IS NULL) OR ([ShipToHomeAmt] = @Original_ShipTo" +
+                "HomeAmt)) AND ((@IsNull_SponsorPage = 1 AND [SponsorPage] IS NULL) OR ([SponsorP" +
+                "age] = @Original_SponsorPage)) AND ((@IsNull_SponsorPageAmt = 1 AND [SponsorPage" +
+                "Amt] IS NULL) OR ([SponsorPageAmt] = @Original_SponsorPageAmt)) AND ((@IsNull_Da" +
+                "teToIncrease1 = 1 AND [DateToIncrease1] IS NULL) OR ([DateToIncrease1] = @Origin" +
+                "al_DateToIncrease1)) AND ((@IsNull_DateToIncrease2 = 1 AND [DateToIncrease2] IS " +
+                "NULL) OR ([DateToIncrease2] = @Original_DateToIncrease2)) AND ((@IsNull_Increase" +
+                "Amt2 = 1 AND [IncreaseAmt2] IS NULL) OR ([IncreaseAmt2] = @Original_IncreaseAmt2" +
+                ")) AND ([OnlinePayIncreased] = @Original_OnlinePayIncreased) AND ([OnlinePayIncr" +
+                "eased1] = @Original_OnlinePayIncreased1) AND ([OnlinePayIncreased2] = @Original_" +
+                "OnlinePayIncreased2) AND ((@IsNull_MainSchcode = 1 AND [MainSchcode] IS NULL) OR" +
+                " ([MainSchcode] = @Original_MainSchcode)) AND ((@IsNull_SchName = 1 AND [SchName" +
+                "] IS NULL) OR ([SchName] = @Original_SchName)) AND ((@IsNull_PIN = 1 AND [PIN] I" +
+                "S NULL) OR ([PIN] = @Original_PIN)) AND ([ValidateOrderTotal] = @Original_Valida" +
+                "teOrderTotal) AND ((@IsNull_Closed = 1 AND [Closed] IS NULL) OR ([Closed] = @Ori" +
+                "ginal_Closed)) AND ([NoOnlinepay] = @Original_NoOnlinepay))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Contryear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Contryear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Basic", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Basic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BasicAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BasicAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HardBkBasic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HardBkBasicAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasicAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HardBkBasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "HardBkBasicAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ink", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ink", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Foil", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Foil", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkTextAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkTextAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkTextAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilTextAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilTextAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilTextAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePers", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePers", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturePersAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturePersHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLine", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoveLineAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLineAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LoveLineAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdFullAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdFullAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdFullAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdFullAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdHalfAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdHalfAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdHalfAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdHalfAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdQuarterAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdQuarterAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdQuarterAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdQuarterAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdEigthAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdEigthAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdEigthAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdEigthAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AgreementDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgreementDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AgreementReceived", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgreementReceived", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OnlineCutOffDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlineCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdCutOffDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TaxRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 6, "TaxRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxOnlinePay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxOnlinePay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IncreaseAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IncreaseAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IncreaseAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalBookSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalBookSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalPersSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalPersSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DollarsCollected", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DollarsCollected", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DollarsCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DollarsCollected", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TaxCollected", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxCollected", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TaxCollected", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OracleCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OracleCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NameTitle", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PersonalizedDateCutOff", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonalizedDateCutOff", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ad", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DonateBook", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonateBook", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DonateBookAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBookAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonateBookAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DonateBookAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoveLineType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLineType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipToHome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipToHome", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipToHomeAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHomeAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipToHomeAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ShipToHomeAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SponsorPage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SponsorPage", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SponsorPageAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPageAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SponsorPageAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SponsorPageAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease1", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease2", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IncreaseAmt2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IncreaseAmt2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IncreaseAmt2", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased1", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MainSchcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MainSchcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SchName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SchName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PIN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PIN", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValidateOrderTotal", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidateOrderTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Closed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Closed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoOnlinepay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOnlinepay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [OpyProducts] ([Schcode], [Invno], [Contryear], [Basic], [BasicAmt], " +
                 "[HardBkBasic], [HardBkBasicAmt], [Ink], [InkAmt], [InkHardBk], [InkHardBkAmt], [" +
                 "InkText], [Foil], [FoilAmt], [InkTextAmt], [FoilText], [FoilHardBk], [FoilTextAm" +
                 "t], [FoilHardBkAmt], [PicturePers], [PicturePersAmt], [PicturePersHardBk], [Pict" +
-                "urePersHardBkAmt], [LoveLine], [LoveLineAmt], [Ads], [AdFullAmt], [AdHalfAmt], [" +
-                "AdQuarterAmt], [AdEigthAmt], [AgreementDate], [AgreementReceived], [OnlineCutOff" +
-                "Date], [AdCutOffDate], [TaxRate], [TaxOnlinePay], [DateToIncrease], [IncreaseAmt" +
-                "], [OpyNotes], [TotalBookSold], [TotalPersSold], [DollarsCollected], [TotalLoveL" +
-                "ines], [TaxCollected], [TotalAds]) VALUES (@Schcode, @Invno, @Contryear, @Basic," +
-                " @BasicAmt, @HardBkBasic, @HardBkBasicAmt, @Ink, @InkAmt, @InkHardBk, @InkHardBk" +
-                "Amt, @InkText, @Foil, @FoilAmt, @InkTextAmt, @FoilText, @FoilHardBk, @FoilTextAm" +
-                "t, @FoilHardBkAmt, @PicturePers, @PicturePersAmt, @PicturePersHardBk, @PicturePe" +
-                "rsHardBkAmt, @LoveLine, @LoveLineAmt, @Ads, @AdFullAmt, @AdHalfAmt, @AdQuarterAm" +
-                "t, @AdEigthAmt, @AgreementDate, @AgreementReceived, @OnlineCutOffDate, @AdCutOff" +
-                "Date, @TaxRate, @TaxOnlinePay, @DateToIncrease, @IncreaseAmt, @OpyNotes, @TotalB" +
-                "ookSold, @TotalPersSold, @DollarsCollected, @TotalLoveLines, @TaxCollected, @Tot" +
-                "alAds);\r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, Har" +
-                "dBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, InkTe" +
-                "xtAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, PicturePer" +
-                "sAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, Ads, AdFul" +
-                "lAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, Onl" +
-                "ineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAmt," +
-                " OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxCo" +
-                "llected, TotalAds FROM OpyProducts WHERE (Id = SCOPE_IDENTITY())";
+                "urePersHardBkAmt], [LoveLine], [LoveLineAmt], [AdFullAmt], [AdHalfAmt], [AdQuart" +
+                "erAmt], [AdEigthAmt], [AgreementDate], [AgreementReceived], [OnlineCutOffDate], " +
+                "[AdCutOffDate], [TaxRate], [TaxOnlinePay], [DateToIncrease], [IncreaseAmt], [Opy" +
+                "Notes], [TotalBookSold], [TotalPersSold], [DollarsCollected], [TotalLoveLines], " +
+                "[TaxCollected], [TotalAds], [OracleCode], [NameTitle], [PersonalizedDateCutOff]," +
+                " [Ad], [AdType], [DonateBook], [DonateBookAmt], [LoveLineType], [ShipToHome], [S" +
+                "hipToHomeAmt], [SponsorPage], [SponsorPageAmt], [DateToIncrease1], [DateToIncrea" +
+                "se2], [IncreaseAmt2], [OnlinePayIncreased], [OnlinePayIncreased1], [OnlinePayInc" +
+                "reased2], [MainSchcode], [SchName], [PIN], [ValidateOrderTotal], [Closed], [NoOn" +
+                "linepay]) VALUES (@Schcode, @Invno, @Contryear, @Basic, @BasicAmt, @HardBkBasic," +
+                " @HardBkBasicAmt, @Ink, @InkAmt, @InkHardBk, @InkHardBkAmt, @InkText, @Foil, @Fo" +
+                "ilAmt, @InkTextAmt, @FoilText, @FoilHardBk, @FoilTextAmt, @FoilHardBkAmt, @Pictu" +
+                "rePers, @PicturePersAmt, @PicturePersHardBk, @PicturePersHardBkAmt, @LoveLine, @" +
+                "LoveLineAmt, @AdFullAmt, @AdHalfAmt, @AdQuarterAmt, @AdEigthAmt, @AgreementDate," +
+                " @AgreementReceived, @OnlineCutOffDate, @AdCutOffDate, @TaxRate, @TaxOnlinePay, " +
+                "@DateToIncrease, @IncreaseAmt, @OpyNotes, @TotalBookSold, @TotalPersSold, @Dolla" +
+                "rsCollected, @TotalLoveLines, @TaxCollected, @TotalAds, @OracleCode, @NameTitle," +
+                " @PersonalizedDateCutOff, @Ad, @AdType, @DonateBook, @DonateBookAmt, @LoveLineTy" +
+                "pe, @ShipToHome, @ShipToHomeAmt, @SponsorPage, @SponsorPageAmt, @DateToIncrease1" +
+                ", @DateToIncrease2, @IncreaseAmt2, @OnlinePayIncreased, @OnlinePayIncreased1, @O" +
+                "nlinePayIncreased2, @MainSchcode, @SchName, @PIN, @ValidateOrderTotal, @Closed, " +
+                "@NoOnlinepay);\r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBas" +
+                "ic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt" +
+                ", InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, Pic" +
+                "turePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, AdF" +
+                "ullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, O" +
+                "nlineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAm" +
+                "t, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, Tax" +
+                "Collected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, Ad, AdType, " +
+                "DonateBook, DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, SponsorPage," +
+                " SponsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, OnlinePayIncrea" +
+                "sed, OnlinePayIncreased1, OnlinePayIncreased2, MainSchcode, SchName, PIN, Valida" +
+                "teOrderTotal, Closed, NoOnlinepay FROM OpyProducts WHERE (Id = SCOPE_IDENTITY())" +
+                "";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20576,7 +21720,6 @@ WHERE        (schcode = @schcode)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLine", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLineAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LoveLineAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ads", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ads", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdFullAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdFullAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdHalfAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdHalfAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdQuarterAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdQuarterAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20596,89 +21739,333 @@ WHERE        (schcode = @schcode)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TaxCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OracleCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonalizedDateCutOff", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ad", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonateBook", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonateBookAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DonateBookAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLineType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipToHome", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipToHomeAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ShipToHomeAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SponsorPage", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SponsorPageAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SponsorPageAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease1", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease2", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IncreaseAmt2", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased1", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MainSchcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SchName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PIN", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValidateOrderTotal", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidateOrderTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Closed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoOnlinepay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOnlinepay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE       OpyProducts\r\nSET                Schcode = @Schcode, Invno = @Invno, " +
-                "Contryear = @Contryear, Basic = @Basic, BasicAmt = @BasicAmt, HardBkBasic = @Har" +
-                "dBkBasic, HardBkBasicAmt = @HardBkBasicAmt, Ink = @Ink, InkAmt = @InkAmt, \r\n    " +
-                "                     InkHardBk = @InkHardBk, InkHardBkAmt = @InkHardBkAmt, InkTe" +
-                "xt = @InkText, Foil = @Foil, FoilAmt = @FoilAmt, InkTextAmt = @InkTextAmt, FoilT" +
-                "ext = @FoilText, FoilHardBk = @FoilHardBk, FoilTextAmt = @FoilTextAmt, \r\n       " +
-                "                  FoilHardBkAmt = @FoilHardBkAmt, PicturePers = @PicturePers, Pi" +
-                "cturePersAmt = @PicturePersAmt, PicturePersHardBk = @PicturePersHardBk, PictureP" +
-                "ersHardBkAmt = @PicturePersHardBkAmt, LoveLine = @LoveLine, \r\n                  " +
-                "       LoveLineAmt = @LoveLineAmt, Ads = @Ads, AdFullAmt = @AdFullAmt, AdHalfAmt" +
-                " = @AdHalfAmt, AdQuarterAmt = @AdQuarterAmt, AdEigthAmt = @AdEigthAmt, Agreement" +
-                "Date = @AgreementDate, \r\n                         AgreementReceived = @Agreement" +
-                "Received, OnlineCutOffDate = @OnlineCutOffDate, AdCutOffDate = @AdCutOffDate, Ta" +
-                "xRate = @TaxRate, TaxOnlinePay = @TaxOnlinePay, DateToIncrease = @DateToIncrease" +
-                ", \r\n                         IncreaseAmt = @IncreaseAmt, OpyNotes = @OpyNotes, T" +
-                "otalBookSold = @TotalBookSold, TotalPersSold = @TotalPersSold, DollarsCollected " +
-                "= @DollarsCollected, TotalLoveLines = @TotalLoveLines, \r\n                       " +
-                "  TaxCollected = @TaxCollected, TotalAds = @TotalAds\r\nWHERE        (Id = @Origin" +
-                "al_Id); \r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, Ha" +
-                "rdBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, InkT" +
-                "extAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, PicturePe" +
-                "rsAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, Ads, AdFu" +
-                "llAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, On" +
-                "lineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAmt" +
-                ", OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxC" +
-                "ollected, TotalAds FROM OpyProducts WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [OpyProducts] SET [Schcode] = @Schcode, [Invno] = @Invno, [Contryear] = @C" +
+                "ontryear, [Basic] = @Basic, [BasicAmt] = @BasicAmt, [HardBkBasic] = @HardBkBasic" +
+                ", [HardBkBasicAmt] = @HardBkBasicAmt, [Ink] = @Ink, [InkAmt] = @InkAmt, [InkHard" +
+                "Bk] = @InkHardBk, [InkHardBkAmt] = @InkHardBkAmt, [InkText] = @InkText, [Foil] =" +
+                " @Foil, [FoilAmt] = @FoilAmt, [InkTextAmt] = @InkTextAmt, [FoilText] = @FoilText" +
+                ", [FoilHardBk] = @FoilHardBk, [FoilTextAmt] = @FoilTextAmt, [FoilHardBkAmt] = @F" +
+                "oilHardBkAmt, [PicturePers] = @PicturePers, [PicturePersAmt] = @PicturePersAmt, " +
+                "[PicturePersHardBk] = @PicturePersHardBk, [PicturePersHardBkAmt] = @PicturePersH" +
+                "ardBkAmt, [LoveLine] = @LoveLine, [LoveLineAmt] = @LoveLineAmt, [AdFullAmt] = @A" +
+                "dFullAmt, [AdHalfAmt] = @AdHalfAmt, [AdQuarterAmt] = @AdQuarterAmt, [AdEigthAmt]" +
+                " = @AdEigthAmt, [AgreementDate] = @AgreementDate, [AgreementReceived] = @Agreeme" +
+                "ntReceived, [OnlineCutOffDate] = @OnlineCutOffDate, [AdCutOffDate] = @AdCutOffDa" +
+                "te, [TaxRate] = @TaxRate, [TaxOnlinePay] = @TaxOnlinePay, [DateToIncrease] = @Da" +
+                "teToIncrease, [IncreaseAmt] = @IncreaseAmt, [OpyNotes] = @OpyNotes, [TotalBookSo" +
+                "ld] = @TotalBookSold, [TotalPersSold] = @TotalPersSold, [DollarsCollected] = @Do" +
+                "llarsCollected, [TotalLoveLines] = @TotalLoveLines, [TaxCollected] = @TaxCollect" +
+                "ed, [TotalAds] = @TotalAds, [OracleCode] = @OracleCode, [NameTitle] = @NameTitle" +
+                ", [PersonalizedDateCutOff] = @PersonalizedDateCutOff, [Ad] = @Ad, [AdType] = @Ad" +
+                "Type, [DonateBook] = @DonateBook, [DonateBookAmt] = @DonateBookAmt, [LoveLineTyp" +
+                "e] = @LoveLineType, [ShipToHome] = @ShipToHome, [ShipToHomeAmt] = @ShipToHomeAmt" +
+                ", [SponsorPage] = @SponsorPage, [SponsorPageAmt] = @SponsorPageAmt, [DateToIncre" +
+                "ase1] = @DateToIncrease1, [DateToIncrease2] = @DateToIncrease2, [IncreaseAmt2] =" +
+                " @IncreaseAmt2, [OnlinePayIncreased] = @OnlinePayIncreased, [OnlinePayIncreased1" +
+                "] = @OnlinePayIncreased1, [OnlinePayIncreased2] = @OnlinePayIncreased2, [MainSch" +
+                "code] = @MainSchcode, [SchName] = @SchName, [PIN] = @PIN, [ValidateOrderTotal] =" +
+                " @ValidateOrderTotal, [Closed] = @Closed, [NoOnlinepay] = @NoOnlinepay WHERE (([" +
+                "Id] = @Original_Id) AND ([Schcode] = @Original_Schcode) AND ([Invno] = @Original" +
+                "_Invno) AND ((@IsNull_Contryear = 1 AND [Contryear] IS NULL) OR ([Contryear] = @" +
+                "Original_Contryear)) AND ((@IsNull_Basic = 1 AND [Basic] IS NULL) OR ([Basic] = " +
+                "@Original_Basic)) AND ((@IsNull_BasicAmt = 1 AND [BasicAmt] IS NULL) OR ([BasicA" +
+                "mt] = @Original_BasicAmt)) AND ([HardBkBasic] = @Original_HardBkBasic) AND ((@Is" +
+                "Null_HardBkBasicAmt = 1 AND [HardBkBasicAmt] IS NULL) OR ([HardBkBasicAmt] = @Or" +
+                "iginal_HardBkBasicAmt)) AND ([Ink] = @Original_Ink) AND ((@IsNull_InkAmt = 1 AND" +
+                " [InkAmt] IS NULL) OR ([InkAmt] = @Original_InkAmt)) AND ([InkHardBk] = @Origina" +
+                "l_InkHardBk) AND ((@IsNull_InkHardBkAmt = 1 AND [InkHardBkAmt] IS NULL) OR ([Ink" +
+                "HardBkAmt] = @Original_InkHardBkAmt)) AND ([InkText] = @Original_InkText) AND ([" +
+                "Foil] = @Original_Foil) AND ((@IsNull_FoilAmt = 1 AND [FoilAmt] IS NULL) OR ([Fo" +
+                "ilAmt] = @Original_FoilAmt)) AND ((@IsNull_InkTextAmt = 1 AND [InkTextAmt] IS NU" +
+                "LL) OR ([InkTextAmt] = @Original_InkTextAmt)) AND ([FoilText] = @Original_FoilTe" +
+                "xt) AND ([FoilHardBk] = @Original_FoilHardBk) AND ((@IsNull_FoilTextAmt = 1 AND " +
+                "[FoilTextAmt] IS NULL) OR ([FoilTextAmt] = @Original_FoilTextAmt)) AND ((@IsNull" +
+                "_FoilHardBkAmt = 1 AND [FoilHardBkAmt] IS NULL) OR ([FoilHardBkAmt] = @Original_" +
+                "FoilHardBkAmt)) AND ([PicturePers] = @Original_PicturePers) AND ((@IsNull_Pictur" +
+                "ePersAmt = 1 AND [PicturePersAmt] IS NULL) OR ([PicturePersAmt] = @Original_Pict" +
+                "urePersAmt)) AND ([PicturePersHardBk] = @Original_PicturePersHardBk) AND ((@IsNu" +
+                "ll_PicturePersHardBkAmt = 1 AND [PicturePersHardBkAmt] IS NULL) OR ([PicturePers" +
+                "HardBkAmt] = @Original_PicturePersHardBkAmt)) AND ([LoveLine] = @Original_LoveLi" +
+                "ne) AND ((@IsNull_LoveLineAmt = 1 AND [LoveLineAmt] IS NULL) OR ([LoveLineAmt] =" +
+                " @Original_LoveLineAmt)) AND ((@IsNull_AdFullAmt = 1 AND [AdFullAmt] IS NULL) OR" +
+                " ([AdFullAmt] = @Original_AdFullAmt)) AND ((@IsNull_AdHalfAmt = 1 AND [AdHalfAmt" +
+                "] IS NULL) OR ([AdHalfAmt] = @Original_AdHalfAmt)) AND ((@IsNull_AdQuarterAmt = " +
+                "1 AND [AdQuarterAmt] IS NULL) OR ([AdQuarterAmt] = @Original_AdQuarterAmt)) AND " +
+                "((@IsNull_AdEigthAmt = 1 AND [AdEigthAmt] IS NULL) OR ([AdEigthAmt] = @Original_" +
+                "AdEigthAmt)) AND ((@IsNull_AgreementDate = 1 AND [AgreementDate] IS NULL) OR ([A" +
+                "greementDate] = @Original_AgreementDate)) AND ((@IsNull_AgreementReceived = 1 AN" +
+                "D [AgreementReceived] IS NULL) OR ([AgreementReceived] = @Original_AgreementRece" +
+                "ived)) AND ((@IsNull_OnlineCutOffDate = 1 AND [OnlineCutOffDate] IS NULL) OR ([O" +
+                "nlineCutOffDate] = @Original_OnlineCutOffDate)) AND ((@IsNull_AdCutOffDate = 1 A" +
+                "ND [AdCutOffDate] IS NULL) OR ([AdCutOffDate] = @Original_AdCutOffDate)) AND ((@" +
+                "IsNull_TaxRate = 1 AND [TaxRate] IS NULL) OR ([TaxRate] = @Original_TaxRate)) AN" +
+                "D ([TaxOnlinePay] = @Original_TaxOnlinePay) AND ((@IsNull_DateToIncrease = 1 AND" +
+                " [DateToIncrease] IS NULL) OR ([DateToIncrease] = @Original_DateToIncrease)) AND" +
+                " ((@IsNull_IncreaseAmt = 1 AND [IncreaseAmt] IS NULL) OR ([IncreaseAmt] = @Origi" +
+                "nal_IncreaseAmt)) AND ((@IsNull_TotalBookSold = 1 AND [TotalBookSold] IS NULL) O" +
+                "R ([TotalBookSold] = @Original_TotalBookSold)) AND ((@IsNull_TotalPersSold = 1 A" +
+                "ND [TotalPersSold] IS NULL) OR ([TotalPersSold] = @Original_TotalPersSold)) AND " +
+                "((@IsNull_DollarsCollected = 1 AND [DollarsCollected] IS NULL) OR ([DollarsColle" +
+                "cted] = @Original_DollarsCollected)) AND ((@IsNull_TotalLoveLines = 1 AND [Total" +
+                "LoveLines] IS NULL) OR ([TotalLoveLines] = @Original_TotalLoveLines)) AND ((@IsN" +
+                "ull_TaxCollected = 1 AND [TaxCollected] IS NULL) OR ([TaxCollected] = @Original_" +
+                "TaxCollected)) AND ((@IsNull_TotalAds = 1 AND [TotalAds] IS NULL) OR ([TotalAds]" +
+                " = @Original_TotalAds)) AND ((@IsNull_OracleCode = 1 AND [OracleCode] IS NULL) O" +
+                "R ([OracleCode] = @Original_OracleCode)) AND ((@IsNull_NameTitle = 1 AND [NameTi" +
+                "tle] IS NULL) OR ([NameTitle] = @Original_NameTitle)) AND ((@IsNull_Personalized" +
+                "DateCutOff = 1 AND [PersonalizedDateCutOff] IS NULL) OR ([PersonalizedDateCutOff" +
+                "] = @Original_PersonalizedDateCutOff)) AND ([Ad] = @Original_Ad) AND ([AdType] =" +
+                " @Original_AdType) AND ((@IsNull_DonateBook = 1 AND [DonateBook] IS NULL) OR ([D" +
+                "onateBook] = @Original_DonateBook)) AND ((@IsNull_DonateBookAmt = 1 AND [DonateB" +
+                "ookAmt] IS NULL) OR ([DonateBookAmt] = @Original_DonateBookAmt)) AND ((@IsNull_L" +
+                "oveLineType = 1 AND [LoveLineType] IS NULL) OR ([LoveLineType] = @Original_LoveL" +
+                "ineType)) AND ((@IsNull_ShipToHome = 1 AND [ShipToHome] IS NULL) OR ([ShipToHome" +
+                "] = @Original_ShipToHome)) AND ((@IsNull_ShipToHomeAmt = 1 AND [ShipToHomeAmt] I" +
+                "S NULL) OR ([ShipToHomeAmt] = @Original_ShipToHomeAmt)) AND ((@IsNull_SponsorPag" +
+                "e = 1 AND [SponsorPage] IS NULL) OR ([SponsorPage] = @Original_SponsorPage)) AND" +
+                " ((@IsNull_SponsorPageAmt = 1 AND [SponsorPageAmt] IS NULL) OR ([SponsorPageAmt]" +
+                " = @Original_SponsorPageAmt)) AND ((@IsNull_DateToIncrease1 = 1 AND [DateToIncre" +
+                "ase1] IS NULL) OR ([DateToIncrease1] = @Original_DateToIncrease1)) AND ((@IsNull" +
+                "_DateToIncrease2 = 1 AND [DateToIncrease2] IS NULL) OR ([DateToIncrease2] = @Ori" +
+                "ginal_DateToIncrease2)) AND ((@IsNull_IncreaseAmt2 = 1 AND [IncreaseAmt2] IS NUL" +
+                "L) OR ([IncreaseAmt2] = @Original_IncreaseAmt2)) AND ([OnlinePayIncreased] = @Or" +
+                "iginal_OnlinePayIncreased) AND ([OnlinePayIncreased1] = @Original_OnlinePayIncre" +
+                "ased1) AND ([OnlinePayIncreased2] = @Original_OnlinePayIncreased2) AND ((@IsNull" +
+                "_MainSchcode = 1 AND [MainSchcode] IS NULL) OR ([MainSchcode] = @Original_MainSc" +
+                "hcode)) AND ((@IsNull_SchName = 1 AND [SchName] IS NULL) OR ([SchName] = @Origin" +
+                "al_SchName)) AND ((@IsNull_PIN = 1 AND [PIN] IS NULL) OR ([PIN] = @Original_PIN)" +
+                ") AND ([ValidateOrderTotal] = @Original_ValidateOrderTotal) AND ((@IsNull_Closed" +
+                " = 1 AND [Closed] IS NULL) OR ([Closed] = @Original_Closed)) AND ([NoOnlinepay] " +
+                "= @Original_NoOnlinepay));\r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAm" +
+                "t, HardBkBasic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, F" +
+                "oil, FoilAmt, InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, Pict" +
+                "urePers, PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, Love" +
+                "LineAmt, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, Agreemen" +
+                "tReceived, OnlineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease" +
+                ", IncreaseAmt, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLo" +
+                "veLines, TaxCollected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, " +
+                "Ad, AdType, DonateBook, DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, " +
+                "SponsorPage, SponsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, Onl" +
+                "inePayIncreased, OnlinePayIncreased1, OnlinePayIncreased2, MainSchcode, SchName," +
+                " PIN, ValidateOrderTotal, Closed, NoOnlinepay FROM OpyProducts WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Contryear", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Basic", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BasicAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "BasicAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HardBkBasic", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HardBkBasicAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "HardBkBasicAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ink", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Ink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "InkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkHardBk", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkHardBkAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "InkHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkText", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "InkText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Foil", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Foil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "FoilAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkTextAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "InkTextAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilText", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "FoilText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilHardBk", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilTextAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "FoilTextAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilHardBkAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "FoilHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePers", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePers", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersHardBk", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersHardBkAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLine", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLine", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLineAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "LoveLineAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ads", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Ads", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdFullAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "AdFullAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdHalfAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "AdHalfAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdQuarterAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "AdQuarterAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdEigthAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "AdEigthAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgreementDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgreementReceived", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlineCutOffDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdCutOffDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxRate", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 6, "TaxRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxOnlinePay", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "TaxOnlinePay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IncreaseAmt", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OpyNotes", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "OpyNotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalBookSold", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPersSold", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DollarsCollected", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "DollarsCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalLoveLines", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxCollected", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "TaxCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalAds", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Contryear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Basic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HardBkBasic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HardBkBasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "HardBkBasicAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ink", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Foil", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Foil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InkTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkTextAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilTextAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoilHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePers", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePers", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturePersHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLine", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLineAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LoveLineAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdFullAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdFullAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdHalfAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdHalfAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdQuarterAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdQuarterAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdEigthAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdEigthAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgreementDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgreementReceived", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlineCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 6, "TaxRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxOnlinePay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxOnlinePay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IncreaseAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OpyNotes", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OpyNotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalBookSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPersSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DollarsCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DollarsCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TaxCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OracleCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonalizedDateCutOff", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ad", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonateBook", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DonateBookAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DonateBookAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoveLineType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipToHome", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipToHomeAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ShipToHomeAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SponsorPage", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SponsorPageAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SponsorPageAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease1", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease2", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IncreaseAmt2", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased1", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayIncreased2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MainSchcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SchName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PIN", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValidateOrderTotal", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidateOrderTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Closed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoOnlinepay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOnlinepay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Contryear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Contryear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Contryear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Basic", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Basic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Basic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BasicAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BasicAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HardBkBasic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HardBkBasicAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HardBkBasicAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HardBkBasicAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "HardBkBasicAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ink", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ink", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Foil", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Foil", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InkTextAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InkTextAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InkTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "InkTextAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilText", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilTextAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilTextAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilTextAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilTextAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FoilHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoilHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoilHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "FoilHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePers", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePers", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturePersAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "PicturePersAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersHardBk", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturePersHardBkAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturePersHardBkAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PicturePersHardBkAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLine", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoveLineAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLineAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LoveLineAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdFullAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdFullAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdFullAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdFullAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdHalfAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdHalfAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdHalfAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdHalfAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdQuarterAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdQuarterAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdQuarterAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdQuarterAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdEigthAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdEigthAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdEigthAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AdEigthAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AgreementDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgreementDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AgreementReceived", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgreementReceived", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgreementReceived", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OnlineCutOffDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlineCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlineCutOffDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdCutOffDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdCutOffDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdCutOffDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TaxRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 6, "TaxRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxOnlinePay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxOnlinePay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IncreaseAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IncreaseAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IncreaseAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalBookSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalBookSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalBookSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalPersSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalPersSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPersSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DollarsCollected", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DollarsCollected", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DollarsCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DollarsCollected", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalLoveLines", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalLoveLines", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TaxCollected", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxCollected", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TaxCollected", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TaxCollected", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalAds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalAds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OracleCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OracleCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OracleCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NameTitle", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTitle", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PersonalizedDateCutOff", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonalizedDateCutOff", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonalizedDateCutOff", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ad", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DonateBook", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonateBook", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBook", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DonateBookAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DonateBookAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DonateBookAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DonateBookAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoveLineType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoveLineType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoveLineType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipToHome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipToHome", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipToHomeAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipToHomeAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipToHomeAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ShipToHomeAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SponsorPage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SponsorPage", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SponsorPageAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SponsorPageAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SponsorPageAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SponsorPageAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease1", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateToIncrease2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateToIncrease2", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IncreaseAmt2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IncreaseAmt2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IncreaseAmt2", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "IncreaseAmt2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased1", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OnlinePayIncreased2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayIncreased2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MainSchcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MainSchcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SchName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SchName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SchName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PIN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PIN", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValidateOrderTotal", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidateOrderTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Closed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Closed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Closed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoOnlinepay", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOnlinepay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY_DemoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20688,19 +22075,17 @@ WHERE        (schcode = @schcode)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, 
-                         PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, Ads, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, OnlineCutOffDate, AdCutOffDate, TaxRate, 
-                         TaxOnlinePay, DateToIncrease, IncreaseAmt, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxCollected, TotalAds
+                         PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, OnlineCutOffDate, AdCutOffDate, TaxRate, 
+                         TaxOnlinePay, DateToIncrease, IncreaseAmt, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxCollected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, Ad, AdType, DonateBook, 
+                         DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, SponsorPage, SponsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, OnlinePayIncreased, OnlinePayIncreased1, OnlinePayIncreased2, 
+                         MainSchcode, SchName, PIN, ValidateOrderTotal, Closed, NoOnlinepay
 FROM            OpyProducts
-WHERE        (Schcode = @Schcode)";
+WHERE        (MainSchcode = @MainSchcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MainSchcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "MainSchcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, 
-                         PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, Ads, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, OnlineCutOffDate, AdCutOffDate, TaxRate, 
-                         TaxOnlinePay, DateToIncrease, IncreaseAmt, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxCollected, TotalAds
-FROM            OpyProducts
-WHERE        (Invno = @Invno)";
+            this._commandCollection[1].CommandText = @"SELECT Ad, AdCutOffDate, AdEigthAmt, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdType, AgreementDate, AgreementReceived, Basic, BasicAmt, Closed, Contryear, DateToIncrease, DateToIncrease1, DateToIncrease2, DollarsCollected, DonateBook, DonateBookAmt, Foil, FoilAmt, FoilHardBk, FoilHardBkAmt, FoilText, FoilTextAmt, HardBkBasic, HardBkBasicAmt, Id, IncreaseAmt, IncreaseAmt2, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, InkTextAmt, Invno, LoveLine, LoveLineAmt, LoveLineType, MainSchcode, NameTitle, NoOnlinepay, OnlineCutOffDate, OnlinePayIncreased, OnlinePayIncreased1, OnlinePayIncreased2, OpyNotes, OracleCode, PIN, PersonalizedDateCutOff, PicturePers, PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, SchName, Schcode, ShipToHome, ShipToHomeAmt, SponsorPage, SponsorPageAmt, TaxCollected, TaxOnlinePay, TaxRate, TotalAds, TotalBookSold, TotalLoveLines, TotalPersSold, ValidateOrderTotal FROM OpyProducts WHERE (Invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -20709,13 +22094,13 @@ WHERE        (Invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsSales.OpyProductsDataTable dataTable, string Schcode) {
+        public virtual int Fill(dsSales.OpyProductsDataTable dataTable, string MainSchcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
+            if ((MainSchcode == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MainSchcode));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -20728,13 +22113,13 @@ WHERE        (Invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsSales.OpyProductsDataTable GetData(string Schcode) {
+        public virtual dsSales.OpyProductsDataTable GetData(string MainSchcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
+            if ((MainSchcode == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MainSchcode));
             }
             dsSales.OpyProductsDataTable dataTable = new dsSales.OpyProductsDataTable();
             this.Adapter.Fill(dataTable);
@@ -20745,14 +22130,9 @@ WHERE        (Invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByInvno(dsSales.OpyProductsDataTable dataTable, global::System.Nullable<int> Invno) {
+        public virtual int FillByInvno(dsSales.OpyProductsDataTable dataTable, int Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((Invno.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -20764,14 +22144,9 @@ WHERE        (Invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsSales.OpyProductsDataTable GetDataByInvno(global::System.Nullable<int> Invno) {
+        public virtual dsSales.OpyProductsDataTable GetDataByInvno(int Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((Invno.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             dsSales.OpyProductsDataTable dataTable = new dsSales.OpyProductsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -20810,8 +22185,482 @@ WHERE        (Invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id) {
+        public virtual int Delete(
+                    int Original_Id, 
+                    string Original_Schcode, 
+                    int Original_Invno, 
+                    string Original_Contryear, 
+                    global::System.Nullable<bool> Original_Basic, 
+                    global::System.Nullable<decimal> Original_BasicAmt, 
+                    bool Original_HardBkBasic, 
+                    global::System.Nullable<decimal> Original_HardBkBasicAmt, 
+                    bool Original_Ink, 
+                    global::System.Nullable<decimal> Original_InkAmt, 
+                    bool Original_InkHardBk, 
+                    global::System.Nullable<decimal> Original_InkHardBkAmt, 
+                    bool Original_InkText, 
+                    bool Original_Foil, 
+                    global::System.Nullable<decimal> Original_FoilAmt, 
+                    global::System.Nullable<decimal> Original_InkTextAmt, 
+                    bool Original_FoilText, 
+                    bool Original_FoilHardBk, 
+                    global::System.Nullable<decimal> Original_FoilTextAmt, 
+                    global::System.Nullable<decimal> Original_FoilHardBkAmt, 
+                    bool Original_PicturePers, 
+                    global::System.Nullable<decimal> Original_PicturePersAmt, 
+                    bool Original_PicturePersHardBk, 
+                    global::System.Nullable<decimal> Original_PicturePersHardBkAmt, 
+                    bool Original_LoveLine, 
+                    global::System.Nullable<decimal> Original_LoveLineAmt, 
+                    global::System.Nullable<decimal> Original_AdFullAmt, 
+                    global::System.Nullable<decimal> Original_AdHalfAmt, 
+                    global::System.Nullable<decimal> Original_AdQuarterAmt, 
+                    global::System.Nullable<decimal> Original_AdEigthAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_AgreementDate, 
+                    global::System.Nullable<bool> Original_AgreementReceived, 
+                    global::System.Nullable<global::System.DateTime> Original_OnlineCutOffDate, 
+                    global::System.Nullable<global::System.DateTime> Original_AdCutOffDate, 
+                    global::System.Nullable<decimal> Original_TaxRate, 
+                    bool Original_TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt, 
+                    global::System.Nullable<int> Original_TotalBookSold, 
+                    global::System.Nullable<int> Original_TotalPersSold, 
+                    global::System.Nullable<decimal> Original_DollarsCollected, 
+                    global::System.Nullable<int> Original_TotalLoveLines, 
+                    global::System.Nullable<decimal> Original_TaxCollected, 
+                    global::System.Nullable<int> Original_TotalAds, 
+                    string Original_OracleCode, 
+                    string Original_NameTitle, 
+                    global::System.Nullable<global::System.DateTime> Original_PersonalizedDateCutOff, 
+                    bool Original_Ad, 
+                    string Original_AdType, 
+                    global::System.Nullable<bool> Original_DonateBook, 
+                    global::System.Nullable<decimal> Original_DonateBookAmt, 
+                    string Original_LoveLineType, 
+                    global::System.Nullable<bool> Original_ShipToHome, 
+                    global::System.Nullable<decimal> Original_ShipToHomeAmt, 
+                    global::System.Nullable<bool> Original_SponsorPage, 
+                    global::System.Nullable<decimal> Original_SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease2, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt2, 
+                    bool Original_OnlinePayIncreased, 
+                    bool Original_OnlinePayIncreased1, 
+                    bool Original_OnlinePayIncreased2, 
+                    string Original_MainSchcode, 
+                    string Original_SchName, 
+                    string Original_PIN, 
+                    bool Original_ValidateOrderTotal, 
+                    global::System.Nullable<bool> Original_Closed, 
+                    bool Original_NoOnlinepay) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_Schcode == null)) {
+                throw new global::System.ArgumentNullException("Original_Schcode");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Schcode));
+            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Invno));
+            if ((Original_Contryear == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Contryear));
+            }
+            if ((Original_Basic.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_Basic.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_BasicAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_BasicAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((bool)(Original_HardBkBasic));
+            if ((Original_HardBkBasicAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((decimal)(Original_HardBkBasicAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_Ink));
+            if ((Original_InkAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_InkAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[15].Value = ((bool)(Original_InkHardBk));
+            if ((Original_InkHardBkAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((decimal)(Original_InkHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_InkText));
+            this.Adapter.DeleteCommand.Parameters[19].Value = ((bool)(Original_Foil));
+            if ((Original_FoilAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_FoilAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((Original_InkTextAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((decimal)(Original_InkTextAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[24].Value = ((bool)(Original_FoilText));
+            this.Adapter.DeleteCommand.Parameters[25].Value = ((bool)(Original_FoilHardBk));
+            if ((Original_FoilTextAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((decimal)(Original_FoilTextAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((Original_FoilHardBkAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((decimal)(Original_FoilHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[30].Value = ((bool)(Original_PicturePers));
+            if ((Original_PicturePersAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((decimal)(Original_PicturePersAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[33].Value = ((bool)(Original_PicturePersHardBk));
+            if ((Original_PicturePersHardBkAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((decimal)(Original_PicturePersHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[36].Value = ((bool)(Original_LoveLine));
+            if ((Original_LoveLineAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((decimal)(Original_LoveLineAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdFullAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((decimal)(Original_AdFullAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdHalfAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((decimal)(Original_AdHalfAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdQuarterAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_AdQuarterAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdEigthAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((decimal)(Original_AdEigthAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AgreementDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((System.DateTime)(Original_AgreementDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AgreementReceived.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((bool)(Original_AgreementReceived.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OnlineCutOffDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((System.DateTime)(Original_OnlineCutOffDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdCutOffDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((System.DateTime)(Original_AdCutOffDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TaxRate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((decimal)(Original_TaxRate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[57].Value = ((bool)(Original_TaxOnlinePay));
+            if ((Original_DateToIncrease.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((System.DateTime)(Original_DateToIncrease.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[59].Value = global::System.DBNull.Value;
+            }
+            if ((Original_IncreaseAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((decimal)(Original_IncreaseAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalBookSold.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((int)(Original_TotalBookSold.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalPersSold.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((int)(Original_TotalPersSold.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[65].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DollarsCollected.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[67].Value = ((decimal)(Original_DollarsCollected.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[67].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalLoveLines.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[68].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[69].Value = ((int)(Original_TotalLoveLines.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[68].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[69].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TaxCollected.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[71].Value = ((decimal)(Original_TaxCollected.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[71].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalAds.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[73].Value = ((int)(Original_TotalAds.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[73].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OracleCode == null)) {
+                this.Adapter.DeleteCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[75].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[75].Value = ((string)(Original_OracleCode));
+            }
+            if ((Original_NameTitle == null)) {
+                this.Adapter.DeleteCommand.Parameters[76].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[77].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[76].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[77].Value = ((string)(Original_NameTitle));
+            }
+            if ((Original_PersonalizedDateCutOff.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[79].Value = ((System.DateTime)(Original_PersonalizedDateCutOff.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[79].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[80].Value = ((bool)(Original_Ad));
+            if ((Original_AdType == null)) {
+                throw new global::System.ArgumentNullException("Original_AdType");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[81].Value = ((string)(Original_AdType));
+            }
+            if ((Original_DonateBook.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[82].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[83].Value = ((bool)(Original_DonateBook.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[82].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[83].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DonateBookAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[84].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[85].Value = ((decimal)(Original_DonateBookAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[84].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[85].Value = global::System.DBNull.Value;
+            }
+            if ((Original_LoveLineType == null)) {
+                this.Adapter.DeleteCommand.Parameters[86].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[87].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[86].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[87].Value = ((string)(Original_LoveLineType));
+            }
+            if ((Original_ShipToHome.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[88].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[89].Value = ((bool)(Original_ShipToHome.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[88].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[89].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ShipToHomeAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[90].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[91].Value = ((decimal)(Original_ShipToHomeAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[90].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[91].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SponsorPage.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[92].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[93].Value = ((bool)(Original_SponsorPage.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[92].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[93].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SponsorPageAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[94].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[95].Value = ((decimal)(Original_SponsorPageAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[94].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[95].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DateToIncrease1.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[96].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[97].Value = ((System.DateTime)(Original_DateToIncrease1.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[96].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[97].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DateToIncrease2.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[98].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[99].Value = ((System.DateTime)(Original_DateToIncrease2.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[98].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[99].Value = global::System.DBNull.Value;
+            }
+            if ((Original_IncreaseAmt2.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[100].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[101].Value = ((decimal)(Original_IncreaseAmt2.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[100].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[101].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[102].Value = ((bool)(Original_OnlinePayIncreased));
+            this.Adapter.DeleteCommand.Parameters[103].Value = ((bool)(Original_OnlinePayIncreased1));
+            this.Adapter.DeleteCommand.Parameters[104].Value = ((bool)(Original_OnlinePayIncreased2));
+            if ((Original_MainSchcode == null)) {
+                this.Adapter.DeleteCommand.Parameters[105].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[106].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[105].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[106].Value = ((string)(Original_MainSchcode));
+            }
+            if ((Original_SchName == null)) {
+                this.Adapter.DeleteCommand.Parameters[107].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[108].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[107].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[108].Value = ((string)(Original_SchName));
+            }
+            if ((Original_PIN == null)) {
+                this.Adapter.DeleteCommand.Parameters[109].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[110].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[109].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[110].Value = ((string)(Original_PIN));
+            }
+            this.Adapter.DeleteCommand.Parameters[111].Value = ((bool)(Original_ValidateOrderTotal));
+            if ((Original_Closed.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[112].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[113].Value = ((bool)(Original_Closed.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[112].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[113].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[114].Value = ((bool)(Original_NoOnlinepay));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -20834,31 +22683,30 @@ WHERE        (Invno = @Invno)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string Schcode, 
-                    global::System.Nullable<int> Invno, 
+                    int Invno, 
                     string Contryear, 
                     global::System.Nullable<bool> Basic, 
                     global::System.Nullable<decimal> BasicAmt, 
-                    global::System.Nullable<bool> HardBkBasic, 
+                    bool HardBkBasic, 
                     global::System.Nullable<decimal> HardBkBasicAmt, 
-                    global::System.Nullable<bool> Ink, 
+                    bool Ink, 
                     global::System.Nullable<decimal> InkAmt, 
-                    global::System.Nullable<bool> InkHardBk, 
+                    bool InkHardBk, 
                     global::System.Nullable<decimal> InkHardBkAmt, 
-                    global::System.Nullable<bool> InkText, 
-                    global::System.Nullable<bool> Foil, 
+                    bool InkText, 
+                    bool Foil, 
                     global::System.Nullable<decimal> FoilAmt, 
                     global::System.Nullable<decimal> InkTextAmt, 
-                    global::System.Nullable<bool> FoilText, 
-                    global::System.Nullable<bool> FoilHardBk, 
+                    bool FoilText, 
+                    bool FoilHardBk, 
                     global::System.Nullable<decimal> FoilTextAmt, 
                     global::System.Nullable<decimal> FoilHardBkAmt, 
-                    global::System.Nullable<bool> PicturePers, 
+                    bool PicturePers, 
                     global::System.Nullable<decimal> PicturePersAmt, 
-                    global::System.Nullable<bool> PicturePersHardBk, 
+                    bool PicturePersHardBk, 
                     global::System.Nullable<decimal> PicturePersHardBkAmt, 
-                    global::System.Nullable<bool> LoveLine, 
+                    bool LoveLine, 
                     global::System.Nullable<decimal> LoveLineAmt, 
-                    global::System.Nullable<bool> Ads, 
                     global::System.Nullable<decimal> AdFullAmt, 
                     global::System.Nullable<decimal> AdHalfAmt, 
                     global::System.Nullable<decimal> AdQuarterAmt, 
@@ -20868,7 +22716,7 @@ WHERE        (Invno = @Invno)";
                     global::System.Nullable<global::System.DateTime> OnlineCutOffDate, 
                     global::System.Nullable<global::System.DateTime> AdCutOffDate, 
                     global::System.Nullable<decimal> TaxRate, 
-                    global::System.Nullable<bool> TaxOnlinePay, 
+                    bool TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> IncreaseAmt, 
                     string OpyNotes, 
@@ -20877,19 +22725,38 @@ WHERE        (Invno = @Invno)";
                     global::System.Nullable<decimal> DollarsCollected, 
                     global::System.Nullable<int> TotalLoveLines, 
                     global::System.Nullable<decimal> TaxCollected, 
-                    global::System.Nullable<int> TotalAds) {
+                    global::System.Nullable<int> TotalAds, 
+                    string OracleCode, 
+                    string NameTitle, 
+                    global::System.Nullable<global::System.DateTime> PersonalizedDateCutOff, 
+                    bool Ad, 
+                    string AdType, 
+                    global::System.Nullable<bool> DonateBook, 
+                    global::System.Nullable<decimal> DonateBookAmt, 
+                    string LoveLineType, 
+                    global::System.Nullable<bool> ShipToHome, 
+                    global::System.Nullable<decimal> ShipToHomeAmt, 
+                    global::System.Nullable<bool> SponsorPage, 
+                    global::System.Nullable<decimal> SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease2, 
+                    global::System.Nullable<decimal> IncreaseAmt2, 
+                    bool OnlinePayIncreased, 
+                    bool OnlinePayIncreased1, 
+                    bool OnlinePayIncreased2, 
+                    string MainSchcode, 
+                    string SchName, 
+                    string PIN, 
+                    bool ValidateOrderTotal, 
+                    global::System.Nullable<bool> Closed, 
+                    bool NoOnlinepay) {
             if ((Schcode == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Schcode");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Schcode));
             }
-            if ((Invno.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Invno.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Invno));
             if ((Contryear == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
@@ -20908,54 +22775,29 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HardBkBasic.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(HardBkBasic.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(HardBkBasic));
             if ((HardBkBasicAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(HardBkBasicAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Ink.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(Ink.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(Ink));
             if ((InkAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(InkAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((InkHardBk.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(InkHardBk.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(InkHardBk));
             if ((InkHardBkAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(InkHardBkAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((InkText.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(InkText.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Foil.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(Foil.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(InkText));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(Foil));
             if ((FoilAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(FoilAmt.Value));
             }
@@ -20968,18 +22810,8 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((FoilText.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((bool)(FoilText.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((FoilHardBk.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(FoilHardBk.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[15].Value = ((bool)(FoilText));
+            this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(FoilHardBk));
             if ((FoilTextAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(FoilTextAmt.Value));
             }
@@ -20992,162 +22824,250 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((PicturePers.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((bool)(PicturePers.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[19].Value = ((bool)(PicturePers));
             if ((PicturePersAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = ((decimal)(PicturePersAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((PicturePersHardBk.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[21].Value = ((bool)(PicturePersHardBk.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[21].Value = ((bool)(PicturePersHardBk));
             if ((PicturePersHardBkAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(PicturePersHardBkAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((LoveLine.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[23].Value = ((bool)(LoveLine.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[23].Value = ((bool)(LoveLine));
             if ((LoveLineAmt.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(LoveLineAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Ads.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(Ads.Value));
+            if ((AdFullAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(AdFullAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((AdFullAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(AdFullAmt.Value));
+            if ((AdHalfAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(AdHalfAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((AdHalfAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((decimal)(AdHalfAmt.Value));
+            if ((AdQuarterAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((decimal)(AdQuarterAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((AdQuarterAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(AdQuarterAmt.Value));
+            if ((AdEigthAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(AdEigthAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((AdEigthAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((decimal)(AdEigthAmt.Value));
+            if ((AgreementDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((System.DateTime)(AgreementDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((AgreementDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[30].Value = ((System.DateTime)(AgreementDate.Value));
+            if ((AgreementReceived.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((bool)(AgreementReceived.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
-            if ((AgreementReceived.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[31].Value = ((bool)(AgreementReceived.Value));
+            if ((OnlineCutOffDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((System.DateTime)(OnlineCutOffDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((OnlineCutOffDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[32].Value = ((System.DateTime)(OnlineCutOffDate.Value));
+            if ((AdCutOffDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((System.DateTime)(AdCutOffDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((AdCutOffDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[33].Value = ((System.DateTime)(AdCutOffDate.Value));
+            if ((TaxRate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((decimal)(TaxRate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            if ((TaxRate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[34].Value = ((decimal)(TaxRate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            if ((TaxOnlinePay.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[35].Value = ((bool)(TaxOnlinePay.Value));
+            this.Adapter.InsertCommand.Parameters[34].Value = ((bool)(TaxOnlinePay));
+            if ((DateToIncrease.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((System.DateTime)(DateToIncrease.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
-            if ((DateToIncrease.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[36].Value = ((System.DateTime)(DateToIncrease.Value));
+            if ((IncreaseAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((decimal)(IncreaseAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            if ((IncreaseAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[37].Value = ((decimal)(IncreaseAmt.Value));
-            }
-            else {
+            if ((OpyNotes == null)) {
                 this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            if ((OpyNotes == null)) {
-                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[38].Value = ((string)(OpyNotes));
+                this.Adapter.InsertCommand.Parameters[37].Value = ((string)(OpyNotes));
             }
             if ((TotalBookSold.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[39].Value = ((int)(TotalBookSold.Value));
+                this.Adapter.InsertCommand.Parameters[38].Value = ((int)(TotalBookSold.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((TotalPersSold.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[39].Value = ((int)(TotalPersSold.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((TotalPersSold.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[40].Value = ((int)(TotalPersSold.Value));
+            if ((DollarsCollected.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[40].Value = ((decimal)(DollarsCollected.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            if ((DollarsCollected.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[41].Value = ((decimal)(DollarsCollected.Value));
+            if ((TotalLoveLines.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[41].Value = ((int)(TotalLoveLines.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((TotalLoveLines.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[42].Value = ((int)(TotalLoveLines.Value));
+            if ((TaxCollected.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[42].Value = ((decimal)(TaxCollected.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
-            if ((TaxCollected.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[43].Value = ((decimal)(TaxCollected.Value));
+            if ((TotalAds.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[43].Value = ((int)(TotalAds.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((TotalAds.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[44].Value = ((int)(TotalAds.Value));
-            }
-            else {
+            if ((OracleCode == null)) {
                 this.Adapter.InsertCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
+            else {
+                this.Adapter.InsertCommand.Parameters[44].Value = ((string)(OracleCode));
+            }
+            if ((NameTitle == null)) {
+                this.Adapter.InsertCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[45].Value = ((string)(NameTitle));
+            }
+            if ((PersonalizedDateCutOff.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[46].Value = ((System.DateTime)(PersonalizedDateCutOff.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[47].Value = ((bool)(Ad));
+            if ((AdType == null)) {
+                throw new global::System.ArgumentNullException("AdType");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[48].Value = ((string)(AdType));
+            }
+            if ((DonateBook.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[49].Value = ((bool)(DonateBook.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            if ((DonateBookAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[50].Value = ((decimal)(DonateBookAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((LoveLineType == null)) {
+                this.Adapter.InsertCommand.Parameters[51].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[51].Value = ((string)(LoveLineType));
+            }
+            if ((ShipToHome.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[52].Value = ((bool)(ShipToHome.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            if ((ShipToHomeAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[53].Value = ((decimal)(ShipToHomeAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            if ((SponsorPage.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[54].Value = ((bool)(SponsorPage.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[54].Value = global::System.DBNull.Value;
+            }
+            if ((SponsorPageAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[55].Value = ((decimal)(SponsorPageAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            if ((DateToIncrease1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[56].Value = ((System.DateTime)(DateToIncrease1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            if ((DateToIncrease2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[57].Value = ((System.DateTime)(DateToIncrease2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            if ((IncreaseAmt2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[58].Value = ((decimal)(IncreaseAmt2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[59].Value = ((bool)(OnlinePayIncreased));
+            this.Adapter.InsertCommand.Parameters[60].Value = ((bool)(OnlinePayIncreased1));
+            this.Adapter.InsertCommand.Parameters[61].Value = ((bool)(OnlinePayIncreased2));
+            if ((MainSchcode == null)) {
+                this.Adapter.InsertCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[62].Value = ((string)(MainSchcode));
+            }
+            if ((SchName == null)) {
+                this.Adapter.InsertCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[63].Value = ((string)(SchName));
+            }
+            if ((PIN == null)) {
+                this.Adapter.InsertCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[64].Value = ((string)(PIN));
+            }
+            this.Adapter.InsertCommand.Parameters[65].Value = ((bool)(ValidateOrderTotal));
+            if ((Closed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[66].Value = ((bool)(Closed.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[66].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[67].Value = ((bool)(NoOnlinepay));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21170,31 +23090,30 @@ WHERE        (Invno = @Invno)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string Schcode, 
-                    global::System.Nullable<int> Invno, 
+                    int Invno, 
                     string Contryear, 
                     global::System.Nullable<bool> Basic, 
                     global::System.Nullable<decimal> BasicAmt, 
-                    global::System.Nullable<bool> HardBkBasic, 
+                    bool HardBkBasic, 
                     global::System.Nullable<decimal> HardBkBasicAmt, 
-                    global::System.Nullable<bool> Ink, 
+                    bool Ink, 
                     global::System.Nullable<decimal> InkAmt, 
-                    global::System.Nullable<bool> InkHardBk, 
+                    bool InkHardBk, 
                     global::System.Nullable<decimal> InkHardBkAmt, 
-                    global::System.Nullable<bool> InkText, 
-                    global::System.Nullable<bool> Foil, 
+                    bool InkText, 
+                    bool Foil, 
                     global::System.Nullable<decimal> FoilAmt, 
                     global::System.Nullable<decimal> InkTextAmt, 
-                    global::System.Nullable<bool> FoilText, 
-                    global::System.Nullable<bool> FoilHardBk, 
+                    bool FoilText, 
+                    bool FoilHardBk, 
                     global::System.Nullable<decimal> FoilTextAmt, 
                     global::System.Nullable<decimal> FoilHardBkAmt, 
-                    global::System.Nullable<bool> PicturePers, 
+                    bool PicturePers, 
                     global::System.Nullable<decimal> PicturePersAmt, 
-                    global::System.Nullable<bool> PicturePersHardBk, 
+                    bool PicturePersHardBk, 
                     global::System.Nullable<decimal> PicturePersHardBkAmt, 
-                    global::System.Nullable<bool> LoveLine, 
+                    bool LoveLine, 
                     global::System.Nullable<decimal> LoveLineAmt, 
-                    global::System.Nullable<bool> Ads, 
                     global::System.Nullable<decimal> AdFullAmt, 
                     global::System.Nullable<decimal> AdHalfAmt, 
                     global::System.Nullable<decimal> AdQuarterAmt, 
@@ -21204,7 +23123,7 @@ WHERE        (Invno = @Invno)";
                     global::System.Nullable<global::System.DateTime> OnlineCutOffDate, 
                     global::System.Nullable<global::System.DateTime> AdCutOffDate, 
                     global::System.Nullable<decimal> TaxRate, 
-                    global::System.Nullable<bool> TaxOnlinePay, 
+                    bool TaxOnlinePay, 
                     global::System.Nullable<global::System.DateTime> DateToIncrease, 
                     global::System.Nullable<decimal> IncreaseAmt, 
                     string OpyNotes, 
@@ -21214,20 +23133,106 @@ WHERE        (Invno = @Invno)";
                     global::System.Nullable<int> TotalLoveLines, 
                     global::System.Nullable<decimal> TaxCollected, 
                     global::System.Nullable<int> TotalAds, 
+                    string OracleCode, 
+                    string NameTitle, 
+                    global::System.Nullable<global::System.DateTime> PersonalizedDateCutOff, 
+                    bool Ad, 
+                    string AdType, 
+                    global::System.Nullable<bool> DonateBook, 
+                    global::System.Nullable<decimal> DonateBookAmt, 
+                    string LoveLineType, 
+                    global::System.Nullable<bool> ShipToHome, 
+                    global::System.Nullable<decimal> ShipToHomeAmt, 
+                    global::System.Nullable<bool> SponsorPage, 
+                    global::System.Nullable<decimal> SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease2, 
+                    global::System.Nullable<decimal> IncreaseAmt2, 
+                    bool OnlinePayIncreased, 
+                    bool OnlinePayIncreased1, 
+                    bool OnlinePayIncreased2, 
+                    string MainSchcode, 
+                    string SchName, 
+                    string PIN, 
+                    bool ValidateOrderTotal, 
+                    global::System.Nullable<bool> Closed, 
+                    bool NoOnlinepay, 
                     int Original_Id, 
+                    string Original_Schcode, 
+                    int Original_Invno, 
+                    string Original_Contryear, 
+                    global::System.Nullable<bool> Original_Basic, 
+                    global::System.Nullable<decimal> Original_BasicAmt, 
+                    bool Original_HardBkBasic, 
+                    global::System.Nullable<decimal> Original_HardBkBasicAmt, 
+                    bool Original_Ink, 
+                    global::System.Nullable<decimal> Original_InkAmt, 
+                    bool Original_InkHardBk, 
+                    global::System.Nullable<decimal> Original_InkHardBkAmt, 
+                    bool Original_InkText, 
+                    bool Original_Foil, 
+                    global::System.Nullable<decimal> Original_FoilAmt, 
+                    global::System.Nullable<decimal> Original_InkTextAmt, 
+                    bool Original_FoilText, 
+                    bool Original_FoilHardBk, 
+                    global::System.Nullable<decimal> Original_FoilTextAmt, 
+                    global::System.Nullable<decimal> Original_FoilHardBkAmt, 
+                    bool Original_PicturePers, 
+                    global::System.Nullable<decimal> Original_PicturePersAmt, 
+                    bool Original_PicturePersHardBk, 
+                    global::System.Nullable<decimal> Original_PicturePersHardBkAmt, 
+                    bool Original_LoveLine, 
+                    global::System.Nullable<decimal> Original_LoveLineAmt, 
+                    global::System.Nullable<decimal> Original_AdFullAmt, 
+                    global::System.Nullable<decimal> Original_AdHalfAmt, 
+                    global::System.Nullable<decimal> Original_AdQuarterAmt, 
+                    global::System.Nullable<decimal> Original_AdEigthAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_AgreementDate, 
+                    global::System.Nullable<bool> Original_AgreementReceived, 
+                    global::System.Nullable<global::System.DateTime> Original_OnlineCutOffDate, 
+                    global::System.Nullable<global::System.DateTime> Original_AdCutOffDate, 
+                    global::System.Nullable<decimal> Original_TaxRate, 
+                    bool Original_TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt, 
+                    global::System.Nullable<int> Original_TotalBookSold, 
+                    global::System.Nullable<int> Original_TotalPersSold, 
+                    global::System.Nullable<decimal> Original_DollarsCollected, 
+                    global::System.Nullable<int> Original_TotalLoveLines, 
+                    global::System.Nullable<decimal> Original_TaxCollected, 
+                    global::System.Nullable<int> Original_TotalAds, 
+                    string Original_OracleCode, 
+                    string Original_NameTitle, 
+                    global::System.Nullable<global::System.DateTime> Original_PersonalizedDateCutOff, 
+                    bool Original_Ad, 
+                    string Original_AdType, 
+                    global::System.Nullable<bool> Original_DonateBook, 
+                    global::System.Nullable<decimal> Original_DonateBookAmt, 
+                    string Original_LoveLineType, 
+                    global::System.Nullable<bool> Original_ShipToHome, 
+                    global::System.Nullable<decimal> Original_ShipToHomeAmt, 
+                    global::System.Nullable<bool> Original_SponsorPage, 
+                    global::System.Nullable<decimal> Original_SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease2, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt2, 
+                    bool Original_OnlinePayIncreased, 
+                    bool Original_OnlinePayIncreased1, 
+                    bool Original_OnlinePayIncreased2, 
+                    string Original_MainSchcode, 
+                    string Original_SchName, 
+                    string Original_PIN, 
+                    bool Original_ValidateOrderTotal, 
+                    global::System.Nullable<bool> Original_Closed, 
+                    bool Original_NoOnlinepay, 
                     int Id) {
             if ((Schcode == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Schcode");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Schcode));
             }
-            if ((Invno.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Invno.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Invno));
             if ((Contryear == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
@@ -21246,54 +23251,29 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HardBkBasic.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(HardBkBasic.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(HardBkBasic));
             if ((HardBkBasicAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(HardBkBasicAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Ink.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Ink.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Ink));
             if ((InkAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(InkAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((InkHardBk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(InkHardBk.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(InkHardBk));
             if ((InkHardBkAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(InkHardBkAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((InkText.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(InkText.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Foil.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Foil.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(InkText));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Foil));
             if ((FoilAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(FoilAmt.Value));
             }
@@ -21306,18 +23286,8 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((FoilText.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(FoilText.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((FoilHardBk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(FoilHardBk.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(FoilText));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(FoilHardBk));
             if ((FoilTextAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(FoilTextAmt.Value));
             }
@@ -21330,164 +23300,658 @@ WHERE        (Invno = @Invno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((PicturePers.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(PicturePers.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(PicturePers));
             if ((PicturePersAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(PicturePersAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((PicturePersHardBk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(PicturePersHardBk.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(PicturePersHardBk));
             if ((PicturePersHardBkAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(PicturePersHardBkAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((LoveLine.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(LoveLine.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(LoveLine));
             if ((LoveLineAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(LoveLineAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Ads.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(Ads.Value));
+            if ((AdFullAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(AdFullAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((AdFullAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(AdFullAmt.Value));
+            if ((AdHalfAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(AdHalfAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((AdHalfAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(AdHalfAmt.Value));
+            if ((AdQuarterAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(AdQuarterAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((AdQuarterAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(AdQuarterAmt.Value));
+            if ((AdEigthAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(AdEigthAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((AdEigthAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(AdEigthAmt.Value));
+            if ((AgreementDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((System.DateTime)(AgreementDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((AgreementDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((System.DateTime)(AgreementDate.Value));
+            if ((AgreementReceived.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(AgreementReceived.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
-            if ((AgreementReceived.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(AgreementReceived.Value));
+            if ((OnlineCutOffDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((System.DateTime)(OnlineCutOffDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((OnlineCutOffDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((System.DateTime)(OnlineCutOffDate.Value));
+            if ((AdCutOffDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((System.DateTime)(AdCutOffDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((AdCutOffDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((System.DateTime)(AdCutOffDate.Value));
+            if ((TaxRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(TaxRate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            if ((TaxRate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(TaxRate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            if ((TaxOnlinePay.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((bool)(TaxOnlinePay.Value));
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((bool)(TaxOnlinePay));
+            if ((DateToIncrease.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((System.DateTime)(DateToIncrease.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
-            if ((DateToIncrease.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((System.DateTime)(DateToIncrease.Value));
+            if ((IncreaseAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(IncreaseAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            if ((IncreaseAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(IncreaseAmt.Value));
-            }
-            else {
+            if ((OpyNotes == null)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            if ((OpyNotes == null)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(OpyNotes));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(OpyNotes));
             }
             if ((TotalBookSold.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((int)(TotalBookSold.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(TotalBookSold.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((TotalPersSold.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((int)(TotalPersSold.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((TotalPersSold.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(TotalPersSold.Value));
+            if ((DollarsCollected.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((decimal)(DollarsCollected.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            if ((DollarsCollected.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((decimal)(DollarsCollected.Value));
+            if ((TotalLoveLines.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(TotalLoveLines.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((TotalLoveLines.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(TotalLoveLines.Value));
+            if ((TaxCollected.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((decimal)(TaxCollected.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
-            if ((TaxCollected.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(TaxCollected.Value));
+            if ((TotalAds.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(TotalAds.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((TotalAds.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((int)(TotalAds.Value));
-            }
-            else {
+            if ((OracleCode == null)) {
                 this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[45].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(Id));
+            else {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(OracleCode));
+            }
+            if ((NameTitle == null)) {
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(NameTitle));
+            }
+            if ((PersonalizedDateCutOff.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((System.DateTime)(PersonalizedDateCutOff.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[47].Value = ((bool)(Ad));
+            if ((AdType == null)) {
+                throw new global::System.ArgumentNullException("AdType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(AdType));
+            }
+            if ((DonateBook.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((bool)(DonateBook.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            if ((DonateBookAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(DonateBookAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((LoveLineType == null)) {
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(LoveLineType));
+            }
+            if ((ShipToHome.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((bool)(ShipToHome.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            if ((ShipToHomeAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((decimal)(ShipToHomeAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            if ((SponsorPage.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((bool)(SponsorPage.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
+            }
+            if ((SponsorPageAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((decimal)(SponsorPageAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            if ((DateToIncrease1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((System.DateTime)(DateToIncrease1.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            if ((DateToIncrease2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((System.DateTime)(DateToIncrease2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            if ((IncreaseAmt2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((decimal)(IncreaseAmt2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[59].Value = ((bool)(OnlinePayIncreased));
+            this.Adapter.UpdateCommand.Parameters[60].Value = ((bool)(OnlinePayIncreased1));
+            this.Adapter.UpdateCommand.Parameters[61].Value = ((bool)(OnlinePayIncreased2));
+            if ((MainSchcode == null)) {
+                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(MainSchcode));
+            }
+            if ((SchName == null)) {
+                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(SchName));
+            }
+            if ((PIN == null)) {
+                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(PIN));
+            }
+            this.Adapter.UpdateCommand.Parameters[65].Value = ((bool)(ValidateOrderTotal));
+            if ((Closed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((bool)(Closed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[67].Value = ((bool)(NoOnlinepay));
+            this.Adapter.UpdateCommand.Parameters[68].Value = ((int)(Original_Id));
+            if ((Original_Schcode == null)) {
+                throw new global::System.ArgumentNullException("Original_Schcode");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((string)(Original_Schcode));
+            }
+            this.Adapter.UpdateCommand.Parameters[70].Value = ((int)(Original_Invno));
+            if ((Original_Contryear == null)) {
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((string)(Original_Contryear));
+            }
+            if ((Original_Basic.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((bool)(Original_Basic.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
+            }
+            if ((Original_BasicAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((decimal)(Original_BasicAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[77].Value = ((bool)(Original_HardBkBasic));
+            if ((Original_HardBkBasicAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((decimal)(Original_HardBkBasicAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[80].Value = ((bool)(Original_Ink));
+            if ((Original_InkAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(Original_InkAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[83].Value = ((bool)(Original_InkHardBk));
+            if ((Original_InkHardBkAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(Original_InkHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[86].Value = ((bool)(Original_InkText));
+            this.Adapter.UpdateCommand.Parameters[87].Value = ((bool)(Original_Foil));
+            if ((Original_FoilAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(Original_FoilAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+            }
+            if ((Original_InkTextAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((decimal)(Original_InkTextAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[92].Value = ((bool)(Original_FoilText));
+            this.Adapter.UpdateCommand.Parameters[93].Value = ((bool)(Original_FoilHardBk));
+            if ((Original_FoilTextAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((decimal)(Original_FoilTextAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
+            }
+            if ((Original_FoilHardBkAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((decimal)(Original_FoilHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[98].Value = ((bool)(Original_PicturePers));
+            if ((Original_PicturePersAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((decimal)(Original_PicturePersAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[101].Value = ((bool)(Original_PicturePersHardBk));
+            if ((Original_PicturePersHardBkAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((decimal)(Original_PicturePersHardBkAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[104].Value = ((bool)(Original_LoveLine));
+            if ((Original_LoveLineAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((decimal)(Original_LoveLineAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[106].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdFullAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((decimal)(Original_AdFullAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[108].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdHalfAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[110].Value = ((decimal)(Original_AdHalfAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[110].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdQuarterAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[111].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((decimal)(Original_AdQuarterAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[111].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[112].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdEigthAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((decimal)(Original_AdEigthAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[114].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AgreementDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((System.DateTime)(Original_AgreementDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[116].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AgreementReceived.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((bool)(Original_AgreementReceived.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OnlineCutOffDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((System.DateTime)(Original_OnlineCutOffDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AdCutOffDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[121].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[122].Value = ((System.DateTime)(Original_AdCutOffDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[121].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TaxRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[124].Value = ((decimal)(Original_TaxRate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[124].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[125].Value = ((bool)(Original_TaxOnlinePay));
+            if ((Original_DateToIncrease.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[126].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[127].Value = ((System.DateTime)(Original_DateToIncrease.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[126].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[127].Value = global::System.DBNull.Value;
+            }
+            if ((Original_IncreaseAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[128].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[129].Value = ((decimal)(Original_IncreaseAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[128].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[129].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalBookSold.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[130].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[131].Value = ((int)(Original_TotalBookSold.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[130].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[131].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalPersSold.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[132].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[133].Value = ((int)(Original_TotalPersSold.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[132].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[133].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DollarsCollected.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[134].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[135].Value = ((decimal)(Original_DollarsCollected.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[134].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[135].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalLoveLines.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[136].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[137].Value = ((int)(Original_TotalLoveLines.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[136].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[137].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TaxCollected.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[138].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[139].Value = ((decimal)(Original_TaxCollected.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[138].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[139].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TotalAds.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[140].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[141].Value = ((int)(Original_TotalAds.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[140].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[141].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OracleCode == null)) {
+                this.Adapter.UpdateCommand.Parameters[142].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[143].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[142].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[143].Value = ((string)(Original_OracleCode));
+            }
+            if ((Original_NameTitle == null)) {
+                this.Adapter.UpdateCommand.Parameters[144].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[145].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[144].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[145].Value = ((string)(Original_NameTitle));
+            }
+            if ((Original_PersonalizedDateCutOff.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[146].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[147].Value = ((System.DateTime)(Original_PersonalizedDateCutOff.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[146].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[147].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[148].Value = ((bool)(Original_Ad));
+            if ((Original_AdType == null)) {
+                throw new global::System.ArgumentNullException("Original_AdType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[149].Value = ((string)(Original_AdType));
+            }
+            if ((Original_DonateBook.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[150].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[151].Value = ((bool)(Original_DonateBook.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[150].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[151].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DonateBookAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[152].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[153].Value = ((decimal)(Original_DonateBookAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[152].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[153].Value = global::System.DBNull.Value;
+            }
+            if ((Original_LoveLineType == null)) {
+                this.Adapter.UpdateCommand.Parameters[154].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[155].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[154].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[155].Value = ((string)(Original_LoveLineType));
+            }
+            if ((Original_ShipToHome.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[156].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[157].Value = ((bool)(Original_ShipToHome.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[156].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[157].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ShipToHomeAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[158].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[159].Value = ((decimal)(Original_ShipToHomeAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[158].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[159].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SponsorPage.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[160].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[161].Value = ((bool)(Original_SponsorPage.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[160].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[161].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SponsorPageAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[162].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[163].Value = ((decimal)(Original_SponsorPageAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[162].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[163].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DateToIncrease1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[164].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[165].Value = ((System.DateTime)(Original_DateToIncrease1.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[164].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[165].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DateToIncrease2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[166].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[167].Value = ((System.DateTime)(Original_DateToIncrease2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[166].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[167].Value = global::System.DBNull.Value;
+            }
+            if ((Original_IncreaseAmt2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[168].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[169].Value = ((decimal)(Original_IncreaseAmt2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[168].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[169].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[170].Value = ((bool)(Original_OnlinePayIncreased));
+            this.Adapter.UpdateCommand.Parameters[171].Value = ((bool)(Original_OnlinePayIncreased1));
+            this.Adapter.UpdateCommand.Parameters[172].Value = ((bool)(Original_OnlinePayIncreased2));
+            if ((Original_MainSchcode == null)) {
+                this.Adapter.UpdateCommand.Parameters[173].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[174].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[173].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[174].Value = ((string)(Original_MainSchcode));
+            }
+            if ((Original_SchName == null)) {
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[176].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[176].Value = ((string)(Original_SchName));
+            }
+            if ((Original_PIN == null)) {
+                this.Adapter.UpdateCommand.Parameters[177].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[178].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[177].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[178].Value = ((string)(Original_PIN));
+            }
+            this.Adapter.UpdateCommand.Parameters[179].Value = ((bool)(Original_ValidateOrderTotal));
+            if ((Original_Closed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[180].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[181].Value = ((bool)(Original_Closed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[180].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[181].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[182].Value = ((bool)(Original_NoOnlinepay));
+            this.Adapter.UpdateCommand.Parameters[183].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21502,6 +23966,150 @@ WHERE        (Invno = @Invno)";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string Schcode, 
+                    int Invno, 
+                    string Contryear, 
+                    global::System.Nullable<bool> Basic, 
+                    global::System.Nullable<decimal> BasicAmt, 
+                    bool HardBkBasic, 
+                    global::System.Nullable<decimal> HardBkBasicAmt, 
+                    bool Ink, 
+                    global::System.Nullable<decimal> InkAmt, 
+                    bool InkHardBk, 
+                    global::System.Nullable<decimal> InkHardBkAmt, 
+                    bool InkText, 
+                    bool Foil, 
+                    global::System.Nullable<decimal> FoilAmt, 
+                    global::System.Nullable<decimal> InkTextAmt, 
+                    bool FoilText, 
+                    bool FoilHardBk, 
+                    global::System.Nullable<decimal> FoilTextAmt, 
+                    global::System.Nullable<decimal> FoilHardBkAmt, 
+                    bool PicturePers, 
+                    global::System.Nullable<decimal> PicturePersAmt, 
+                    bool PicturePersHardBk, 
+                    global::System.Nullable<decimal> PicturePersHardBkAmt, 
+                    bool LoveLine, 
+                    global::System.Nullable<decimal> LoveLineAmt, 
+                    global::System.Nullable<decimal> AdFullAmt, 
+                    global::System.Nullable<decimal> AdHalfAmt, 
+                    global::System.Nullable<decimal> AdQuarterAmt, 
+                    global::System.Nullable<decimal> AdEigthAmt, 
+                    global::System.Nullable<global::System.DateTime> AgreementDate, 
+                    global::System.Nullable<bool> AgreementReceived, 
+                    global::System.Nullable<global::System.DateTime> OnlineCutOffDate, 
+                    global::System.Nullable<global::System.DateTime> AdCutOffDate, 
+                    global::System.Nullable<decimal> TaxRate, 
+                    bool TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease, 
+                    global::System.Nullable<decimal> IncreaseAmt, 
+                    string OpyNotes, 
+                    global::System.Nullable<int> TotalBookSold, 
+                    global::System.Nullable<int> TotalPersSold, 
+                    global::System.Nullable<decimal> DollarsCollected, 
+                    global::System.Nullable<int> TotalLoveLines, 
+                    global::System.Nullable<decimal> TaxCollected, 
+                    global::System.Nullable<int> TotalAds, 
+                    string OracleCode, 
+                    string NameTitle, 
+                    global::System.Nullable<global::System.DateTime> PersonalizedDateCutOff, 
+                    bool Ad, 
+                    string AdType, 
+                    global::System.Nullable<bool> DonateBook, 
+                    global::System.Nullable<decimal> DonateBookAmt, 
+                    string LoveLineType, 
+                    global::System.Nullable<bool> ShipToHome, 
+                    global::System.Nullable<decimal> ShipToHomeAmt, 
+                    global::System.Nullable<bool> SponsorPage, 
+                    global::System.Nullable<decimal> SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease2, 
+                    global::System.Nullable<decimal> IncreaseAmt2, 
+                    bool OnlinePayIncreased, 
+                    bool OnlinePayIncreased1, 
+                    bool OnlinePayIncreased2, 
+                    string MainSchcode, 
+                    string SchName, 
+                    string PIN, 
+                    bool ValidateOrderTotal, 
+                    global::System.Nullable<bool> Closed, 
+                    bool NoOnlinepay, 
+                    int Original_Id, 
+                    string Original_Schcode, 
+                    int Original_Invno, 
+                    string Original_Contryear, 
+                    global::System.Nullable<bool> Original_Basic, 
+                    global::System.Nullable<decimal> Original_BasicAmt, 
+                    bool Original_HardBkBasic, 
+                    global::System.Nullable<decimal> Original_HardBkBasicAmt, 
+                    bool Original_Ink, 
+                    global::System.Nullable<decimal> Original_InkAmt, 
+                    bool Original_InkHardBk, 
+                    global::System.Nullable<decimal> Original_InkHardBkAmt, 
+                    bool Original_InkText, 
+                    bool Original_Foil, 
+                    global::System.Nullable<decimal> Original_FoilAmt, 
+                    global::System.Nullable<decimal> Original_InkTextAmt, 
+                    bool Original_FoilText, 
+                    bool Original_FoilHardBk, 
+                    global::System.Nullable<decimal> Original_FoilTextAmt, 
+                    global::System.Nullable<decimal> Original_FoilHardBkAmt, 
+                    bool Original_PicturePers, 
+                    global::System.Nullable<decimal> Original_PicturePersAmt, 
+                    bool Original_PicturePersHardBk, 
+                    global::System.Nullable<decimal> Original_PicturePersHardBkAmt, 
+                    bool Original_LoveLine, 
+                    global::System.Nullable<decimal> Original_LoveLineAmt, 
+                    global::System.Nullable<decimal> Original_AdFullAmt, 
+                    global::System.Nullable<decimal> Original_AdHalfAmt, 
+                    global::System.Nullable<decimal> Original_AdQuarterAmt, 
+                    global::System.Nullable<decimal> Original_AdEigthAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_AgreementDate, 
+                    global::System.Nullable<bool> Original_AgreementReceived, 
+                    global::System.Nullable<global::System.DateTime> Original_OnlineCutOffDate, 
+                    global::System.Nullable<global::System.DateTime> Original_AdCutOffDate, 
+                    global::System.Nullable<decimal> Original_TaxRate, 
+                    bool Original_TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt, 
+                    global::System.Nullable<int> Original_TotalBookSold, 
+                    global::System.Nullable<int> Original_TotalPersSold, 
+                    global::System.Nullable<decimal> Original_DollarsCollected, 
+                    global::System.Nullable<int> Original_TotalLoveLines, 
+                    global::System.Nullable<decimal> Original_TaxCollected, 
+                    global::System.Nullable<int> Original_TotalAds, 
+                    string Original_OracleCode, 
+                    string Original_NameTitle, 
+                    global::System.Nullable<global::System.DateTime> Original_PersonalizedDateCutOff, 
+                    bool Original_Ad, 
+                    string Original_AdType, 
+                    global::System.Nullable<bool> Original_DonateBook, 
+                    global::System.Nullable<decimal> Original_DonateBookAmt, 
+                    string Original_LoveLineType, 
+                    global::System.Nullable<bool> Original_ShipToHome, 
+                    global::System.Nullable<decimal> Original_ShipToHomeAmt, 
+                    global::System.Nullable<bool> Original_SponsorPage, 
+                    global::System.Nullable<decimal> Original_SponsorPageAmt, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease1, 
+                    global::System.Nullable<global::System.DateTime> Original_DateToIncrease2, 
+                    global::System.Nullable<decimal> Original_IncreaseAmt2, 
+                    bool Original_OnlinePayIncreased, 
+                    bool Original_OnlinePayIncreased1, 
+                    bool Original_OnlinePayIncreased2, 
+                    string Original_MainSchcode, 
+                    string Original_SchName, 
+                    string Original_PIN, 
+                    bool Original_ValidateOrderTotal, 
+                    global::System.Nullable<bool> Original_Closed, 
+                    bool Original_NoOnlinepay) {
+            return this.Update(Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, PicturePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, AdFullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, OnlineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAmt, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxCollected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, Ad, AdType, DonateBook, DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, SponsorPage, SponsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, OnlinePayIncreased, OnlinePayIncreased1, OnlinePayIncreased2, MainSchcode, SchName, PIN, ValidateOrderTotal, Closed, NoOnlinepay, Original_Id, Original_Schcode, Original_Invno, Original_Contryear, Original_Basic, Original_BasicAmt, Original_HardBkBasic, Original_HardBkBasicAmt, Original_Ink, Original_InkAmt, Original_InkHardBk, Original_InkHardBkAmt, Original_InkText, Original_Foil, Original_FoilAmt, Original_InkTextAmt, Original_FoilText, Original_FoilHardBk, Original_FoilTextAmt, Original_FoilHardBkAmt, Original_PicturePers, Original_PicturePersAmt, Original_PicturePersHardBk, Original_PicturePersHardBkAmt, Original_LoveLine, Original_LoveLineAmt, Original_AdFullAmt, Original_AdHalfAmt, Original_AdQuarterAmt, Original_AdEigthAmt, Original_AgreementDate, Original_AgreementReceived, Original_OnlineCutOffDate, Original_AdCutOffDate, Original_TaxRate, Original_TaxOnlinePay, Original_DateToIncrease, Original_IncreaseAmt, Original_TotalBookSold, Original_TotalPersSold, Original_DollarsCollected, Original_TotalLoveLines, Original_TaxCollected, Original_TotalAds, Original_OracleCode, Original_NameTitle, Original_PersonalizedDateCutOff, Original_Ad, Original_AdType, Original_DonateBook, Original_DonateBookAmt, Original_LoveLineType, Original_ShipToHome, Original_ShipToHomeAmt, Original_SponsorPage, Original_SponsorPageAmt, Original_DateToIncrease1, Original_DateToIncrease2, Original_IncreaseAmt2, Original_OnlinePayIncreased, Original_OnlinePayIncreased1, Original_OnlinePayIncreased2, Original_MainSchcode, Original_SchName, Original_PIN, Original_ValidateOrderTotal, Original_Closed, Original_NoOnlinepay, Original_Id);
         }
     }
     

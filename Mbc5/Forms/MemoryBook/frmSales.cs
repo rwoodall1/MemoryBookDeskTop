@@ -22,6 +22,10 @@ using System.Reflection;
 using BaseClass;
 using BaseClass.Core;
 using Mbc5.Dialogs;
+using Mbc5.DataSets;
+
+using System.Security.Policy;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 
 namespace Mbc5.Forms.MemoryBook
@@ -67,7 +71,7 @@ namespace Mbc5.Forms.MemoryBook
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.xtraTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpDiscountTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.opyProductsTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            this.opyProductsTableAdapter.Connection.ConnectionString = "Server=Owbswjtsql06.jostens.com,56609;Database=OPY_Demo;User ID=MbcUser_demo;Password='S3dALMbcOct2122';Encrypt=True;TrustServerCertificate=True;Connection Timeout=5";
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
@@ -1503,12 +1507,12 @@ namespace Mbc5.Forms.MemoryBook
                     {
                         CalculatePressCopies();//save press copies into produtn, assumed success if not exceptionless will catch.
                         this.quotesBindingSource.EndEdit();
-                        var aa = quotesTableAdapter.Adapter.UpdateCommand.CommandText;
+                    
                         var a = quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                   
                         UpdateProductionCopyPages();//updates production with number of copies and pages
-
+                    
                     }
                     catch (DBConcurrencyException ex1)
                     {
@@ -2700,16 +2704,19 @@ namespace Mbc5.Forms.MemoryBook
                     numBooks += 2;
                 }
 
-
-                var sqlQuery = new SQLQuery();
-                SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@Invno",this.Invno),
-                     new SqlParameter("@NoCopies",numBooks),
-                     new SqlParameter("@NoPages",this.txtNoPages.Text),
-                    };
-                var strQuery = "Update produtn set NoCopies=@NoCopies, NoPages=@NoPages where Invno=@Invno";
-                try { var updateResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters); } catch (Exception ex) { MbcMessageBox.Error("Failed to update production copies:" + ex.Message, ""); }
-
+                var sqlClient = new SQLCustomClient();
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Update produtn set NoCopies=@NoCopies, NoPages=@NoPages where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@NoCopies", numBooks);
+                sqlClient.AddParameter("@NoPages", this.txtNoPages.Text);
+               var updateResult= sqlClient.Update();
+                if(updateResult.IsError)
+                {
+                    Log.Error("Failed to update production copies:" + updateResult.Errors[0].ErrorMessage);
+                    MbcMessageBox.Error("Failed to update production copies:" + updateResult.Errors[0].ErrorMessage, "");
+                }
+   
             }
             Cursor.Current = Cursors.Default;
         }
@@ -5834,6 +5841,23 @@ namespace Mbc5.Forms.MemoryBook
         private void pnlTot_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnBalanceOwed_Click(object sender, EventArgs e)
+        {
+           
+           var vKitRecvdate=((DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"]).ToString("d");
+   
+            string vSchcode = ((DataRowView)quotesBindingSource.Current).Row["schcode"].ToString().Trim();
+            string vPIn = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
+            string toAddress = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+            var emailHelper = new EmailHelper();
+            string sub = "Balance Owed";
+            string body = @"Your book was submitted on " + vKitRecvdate + @" and a payment has been received, however there is still a balance owed on your account.<br/> A current invoice is attached. <br/><br/>
+            You may pay by credit card via https://pay.memorybook.com <br/>Account Code: "+ vSchcode + @"<br/>   School PIN#: " + vPIn + @"<br/>Or you may submit a check to 304 Curry Drive Sedalia Mo 65301,
+            be sure to include your invoice number on the check.<br/><br/> Thank You!";
+         
+            emailHelper.SendOutLookEmail(sub, toAddress, null, body, EmailType.Mbc);
         }
 
 

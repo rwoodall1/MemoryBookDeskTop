@@ -5,12 +5,12 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="OPY" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="OPY (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.OPY" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mktinfoTableAdapter" GeneratorDataComponentClassName="mktinfoTableAdapter" Name="mktinfo" UserDataComponentName="mktinfoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.mktinfo" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="OPY (Settings)" DbObjectName="Mbc5_demo.dbo.mktinfo" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO [mktinfo] ([ddate], [initial], [note], [promo], [refered], [schcode], [company], [prospectid], [Id]) VALUES (@ddate, @initial, @note, @promo, @refered, @schcode, @company, @prospectid, @Id)</CommandText>
@@ -59,58 +59,58 @@ ORDER BY ddate DESC</CommandText>
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsMktInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMktInfo" msprop:Generator_UserDSName="dsMktInfo">
+  <xs:element name="dsMktInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsMktInfo" msprop:Generator_DataSetName="dsMktInfo">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mktinfo" msprop:Generator_TableClassName="mktinfoDataTable" msprop:Generator_TableVarName="tablemktinfo" msprop:Generator_RowChangedName="mktinfoRowChanged" msprop:Generator_TablePropName="mktinfo" msprop:Generator_RowDeletingName="mktinfoRowDeleting" msprop:Generator_RowChangingName="mktinfoRowChanging" msprop:Generator_RowEvHandlerName="mktinfoRowChangeEventHandler" msprop:Generator_RowDeletedName="mktinfoRowDeleted" msprop:Generator_RowClassName="mktinfoRow" msprop:Generator_UserTableName="mktinfo" msprop:Generator_RowEvArgName="mktinfoRowChangeEvent">
+        <xs:element name="mktinfo" msprop:Generator_RowEvHandlerName="mktinfoRowChangeEventHandler" msprop:Generator_RowDeletedName="mktinfoRowDeleted" msprop:Generator_RowDeletingName="mktinfoRowDeleting" msprop:Generator_RowEvArgName="mktinfoRowChangeEvent" msprop:Generator_TablePropName="mktinfo" msprop:Generator_RowChangedName="mktinfoRowChanged" msprop:Generator_RowChangingName="mktinfoRowChanging" msprop:Generator_TableClassName="mktinfoDataTable" msprop:Generator_RowClassName="mktinfoRow" msprop:Generator_TableVarName="tablemktinfo" msprop:Generator_UserTableName="mktinfo">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ddate" msprop:Generator_ColumnVarNameInTable="columnddate" msprop:Generator_ColumnPropNameInRow="ddate" msprop:Generator_ColumnPropNameInTable="ddateColumn" msprop:Generator_UserColumnName="ddate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="initial" msprop:Generator_ColumnVarNameInTable="columninitial" msprop:Generator_ColumnPropNameInRow="initial" msprop:Generator_ColumnPropNameInTable="initialColumn" msprop:Generator_UserColumnName="initial" minOccurs="0">
+              <xs:element name="ddate" msprop:Generator_ColumnPropNameInRow="ddate" msprop:Generator_ColumnPropNameInTable="ddateColumn" msprop:Generator_ColumnVarNameInTable="columnddate" msprop:Generator_UserColumnName="ddate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="initial" msprop:Generator_ColumnPropNameInRow="initial" msprop:Generator_ColumnPropNameInTable="initialColumn" msprop:Generator_ColumnVarNameInTable="columninitial" msprop:Generator_UserColumnName="initial" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="3" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="note" msprop:Generator_ColumnVarNameInTable="columnnote" msprop:Generator_ColumnPropNameInRow="note" msprop:Generator_ColumnPropNameInTable="noteColumn" msprop:Generator_UserColumnName="note" minOccurs="0">
+              <xs:element name="note" msprop:Generator_ColumnPropNameInRow="note" msprop:Generator_ColumnPropNameInTable="noteColumn" msprop:Generator_ColumnVarNameInTable="columnnote" msprop:Generator_UserColumnName="note" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="promo" msprop:Generator_ColumnVarNameInTable="columnpromo" msprop:Generator_ColumnPropNameInRow="promo" msprop:Generator_ColumnPropNameInTable="promoColumn" msprop:Generator_UserColumnName="promo" minOccurs="0">
+              <xs:element name="promo" msprop:Generator_ColumnPropNameInRow="promo" msprop:Generator_ColumnPropNameInTable="promoColumn" msprop:Generator_ColumnVarNameInTable="columnpromo" msprop:Generator_UserColumnName="promo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="refered" msprop:Generator_ColumnVarNameInTable="columnrefered" msprop:Generator_ColumnPropNameInRow="refered" msprop:Generator_ColumnPropNameInTable="referedColumn" msprop:Generator_UserColumnName="refered" minOccurs="0">
+              <xs:element name="refered" msprop:Generator_ColumnPropNameInRow="refered" msprop:Generator_ColumnPropNameInTable="referedColumn" msprop:Generator_ColumnVarNameInTable="columnrefered" msprop:Generator_UserColumnName="refered" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode" minOccurs="0">
+              <xs:element name="schcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_UserColumnName="schcode" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="company" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_UserColumnName="company" minOccurs="0">
+              <xs:element name="company" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_UserColumnName="company" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="3" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="prospectid" msprop:Generator_ColumnVarNameInTable="columnprospectid" msprop:Generator_ColumnPropNameInRow="prospectid" msprop:Generator_ColumnPropNameInTable="prospectidColumn" msprop:Generator_UserColumnName="prospectid" type="xs:int" minOccurs="0" />
-              <xs:element name="timestamp_column" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntimestamp_column" msprop:Generator_ColumnPropNameInRow="timestamp_column" msprop:Generator_ColumnPropNameInTable="timestamp_columnColumn" msprop:Generator_UserColumnName="timestamp_column" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" />
+              <xs:element name="prospectid" msprop:Generator_ColumnPropNameInRow="prospectid" msprop:Generator_ColumnPropNameInTable="prospectidColumn" msprop:Generator_ColumnVarNameInTable="columnprospectid" msprop:Generator_UserColumnName="prospectid" type="xs:int" minOccurs="0" />
+              <xs:element name="timestamp_column" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="timestamp_column" msprop:Generator_ColumnPropNameInTable="timestamp_columnColumn" msprop:Generator_ColumnVarNameInTable="columntimestamp_column" msprop:Generator_UserColumnName="timestamp_column" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -5,12 +5,12 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="OPY" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="OPY (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.OPY" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="xtraTableAdapter" GeneratorDataComponentClassName="xtraTableAdapter" Name="xtra" UserDataComponentName="xtraTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.xtra" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="OPY (Settings)" DbObjectName="Mbc5_demo.dbo.xtra" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [xtra] WHERE (([XtraInvno] = @Original_XtraInvno) AND ([timestamp_column] = @Original_timestamp_column) AND ([XtraInvno] = @Original_Expr1))</CommandText>
@@ -147,81 +147,81 @@ SELECT schcode, XtraInvno, year, prodno, extrabooks, exunfinish, extrbkshpd, exr
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsExtra" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsExtra" msprop:Generator_UserDSName="dsExtra">
+  <xs:element name="dsExtra" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsExtra" msprop:Generator_DataSetName="dsExtra">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="xtra" msprop:Generator_TableClassName="xtraDataTable" msprop:Generator_TableVarName="tablextra" msprop:Generator_RowChangedName="xtraRowChanged" msprop:Generator_TablePropName="xtra" msprop:Generator_RowDeletingName="xtraRowDeleting" msprop:Generator_RowChangingName="xtraRowChanging" msprop:Generator_RowEvHandlerName="xtraRowChangeEventHandler" msprop:Generator_RowDeletedName="xtraRowDeleted" msprop:Generator_RowClassName="xtraRow" msprop:Generator_UserTableName="xtra" msprop:Generator_RowEvArgName="xtraRowChangeEvent">
+        <xs:element name="xtra" msprop:Generator_RowEvHandlerName="xtraRowChangeEventHandler" msprop:Generator_RowDeletedName="xtraRowDeleted" msprop:Generator_RowDeletingName="xtraRowDeleting" msprop:Generator_RowEvArgName="xtraRowChangeEvent" msprop:Generator_TablePropName="xtra" msprop:Generator_RowChangedName="xtraRowChanged" msprop:Generator_RowChangingName="xtraRowChanging" msprop:Generator_TableClassName="xtraDataTable" msprop:Generator_RowClassName="xtraRow" msprop:Generator_TableVarName="tablextra" msprop:Generator_UserTableName="xtra">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
+              <xs:element name="schcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_UserColumnName="schcode">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" minOccurs="0">
+              <xs:element name="year" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_UserColumnName="year" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="prodno" msprop:Generator_ColumnVarNameInTable="columnprodno" msprop:Generator_ColumnPropNameInRow="prodno" msprop:Generator_ColumnPropNameInTable="prodnoColumn" msprop:Generator_UserColumnName="prodno" minOccurs="0">
+              <xs:element name="prodno" msprop:Generator_ColumnPropNameInRow="prodno" msprop:Generator_ColumnPropNameInTable="prodnoColumn" msprop:Generator_ColumnVarNameInTable="columnprodno" msprop:Generator_UserColumnName="prodno" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="11" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="extrabooks" msprop:Generator_ColumnVarNameInTable="columnextrabooks" msprop:Generator_ColumnPropNameInRow="extrabooks" msprop:Generator_ColumnPropNameInTable="extrabooksColumn" msprop:Generator_UserColumnName="extrabooks" type="xs:decimal" />
-              <xs:element name="exunfinish" msprop:Generator_ColumnVarNameInTable="columnexunfinish" msprop:Generator_ColumnPropNameInRow="exunfinish" msprop:Generator_ColumnPropNameInTable="exunfinishColumn" msprop:Generator_UserColumnName="exunfinish" type="xs:decimal" />
-              <xs:element name="extrbkshpd" msprop:Generator_ColumnVarNameInTable="columnextrbkshpd" msprop:Generator_ColumnPropNameInRow="extrbkshpd" msprop:Generator_ColumnPropNameInTable="extrbkshpdColumn" msprop:Generator_UserColumnName="extrbkshpd" type="xs:decimal" />
-              <xs:element name="exreplshpd" msprop:Generator_ColumnVarNameInTable="columnexreplshpd" msprop:Generator_ColumnPropNameInRow="exreplshpd" msprop:Generator_ColumnPropNameInTable="exreplshpdColumn" msprop:Generator_UserColumnName="exreplshpd" type="xs:decimal" />
-              <xs:element name="extrbkshdt" msprop:Generator_ColumnVarNameInTable="columnextrbkshdt" msprop:Generator_ColumnPropNameInRow="extrbkshdt" msprop:Generator_ColumnPropNameInTable="extrbkshdtColumn" msprop:Generator_UserColumnName="extrbkshdt" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="extrbktot" msprop:Generator_ColumnVarNameInTable="columnextrbktot" msprop:Generator_ColumnPropNameInRow="extrbktot" msprop:Generator_ColumnPropNameInTable="extrbktotColumn" msprop:Generator_UserColumnName="extrbktot" type="xs:decimal" />
-              <xs:element name="extrbkprc" msprop:Generator_ColumnVarNameInTable="columnextrbkprc" msprop:Generator_ColumnPropNameInRow="extrbkprc" msprop:Generator_ColumnPropNameInTable="extrbkprcColumn" msprop:Generator_UserColumnName="extrbkprc" type="xs:decimal" />
-              <xs:element name="baldue" msprop:Generator_ColumnVarNameInTable="columnbaldue" msprop:Generator_ColumnPropNameInRow="baldue" msprop:Generator_ColumnPropNameInTable="baldueColumn" msprop:Generator_UserColumnName="baldue" type="xs:decimal" />
-              <xs:element name="prev_bal" msprop:Generator_ColumnVarNameInTable="columnprev_bal" msprop:Generator_ColumnPropNameInRow="prev_bal" msprop:Generator_ColumnPropNameInTable="prev_balColumn" msprop:Generator_UserColumnName="prev_bal" type="xs:decimal" />
-              <xs:element name="prev_pmts" msprop:Generator_ColumnVarNameInTable="columnprev_pmts" msprop:Generator_ColumnPropNameInRow="prev_pmts" msprop:Generator_ColumnPropNameInTable="prev_pmtsColumn" msprop:Generator_UserColumnName="prev_pmts" type="xs:decimal" />
-              <xs:element name="prev_chgs" msprop:Generator_ColumnVarNameInTable="columnprev_chgs" msprop:Generator_ColumnPropNameInRow="prev_chgs" msprop:Generator_ColumnPropNameInTable="prev_chgsColumn" msprop:Generator_UserColumnName="prev_chgs" type="xs:decimal" />
-              <xs:element name="prev_othr" msprop:Generator_ColumnVarNameInTable="columnprev_othr" msprop:Generator_ColumnPropNameInRow="prev_othr" msprop:Generator_ColumnPropNameInTable="prev_othrColumn" msprop:Generator_UserColumnName="prev_othr" type="xs:decimal" />
-              <xs:element name="prev_cred" msprop:Generator_ColumnVarNameInTable="columnprev_cred" msprop:Generator_ColumnPropNameInRow="prev_cred" msprop:Generator_ColumnPropNameInTable="prev_credColumn" msprop:Generator_UserColumnName="prev_cred" type="xs:decimal" />
-              <xs:element name="xnotes" msprop:Generator_ColumnVarNameInTable="columnxnotes" msprop:Generator_ColumnPropNameInRow="xnotes" msprop:Generator_ColumnPropNameInTable="xnotesColumn" msprop:Generator_UserColumnName="xnotes" minOccurs="0">
+              <xs:element name="extrabooks" msprop:Generator_ColumnPropNameInRow="extrabooks" msprop:Generator_ColumnPropNameInTable="extrabooksColumn" msprop:Generator_ColumnVarNameInTable="columnextrabooks" msprop:Generator_UserColumnName="extrabooks" type="xs:decimal" />
+              <xs:element name="exunfinish" msprop:Generator_ColumnPropNameInRow="exunfinish" msprop:Generator_ColumnPropNameInTable="exunfinishColumn" msprop:Generator_ColumnVarNameInTable="columnexunfinish" msprop:Generator_UserColumnName="exunfinish" type="xs:decimal" />
+              <xs:element name="extrbkshpd" msprop:Generator_ColumnPropNameInRow="extrbkshpd" msprop:Generator_ColumnPropNameInTable="extrbkshpdColumn" msprop:Generator_ColumnVarNameInTable="columnextrbkshpd" msprop:Generator_UserColumnName="extrbkshpd" type="xs:decimal" />
+              <xs:element name="exreplshpd" msprop:Generator_ColumnPropNameInRow="exreplshpd" msprop:Generator_ColumnPropNameInTable="exreplshpdColumn" msprop:Generator_ColumnVarNameInTable="columnexreplshpd" msprop:Generator_UserColumnName="exreplshpd" type="xs:decimal" />
+              <xs:element name="extrbkshdt" msprop:Generator_ColumnPropNameInRow="extrbkshdt" msprop:Generator_ColumnPropNameInTable="extrbkshdtColumn" msprop:Generator_ColumnVarNameInTable="columnextrbkshdt" msprop:Generator_UserColumnName="extrbkshdt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="extrbktot" msprop:Generator_ColumnPropNameInRow="extrbktot" msprop:Generator_ColumnPropNameInTable="extrbktotColumn" msprop:Generator_ColumnVarNameInTable="columnextrbktot" msprop:Generator_UserColumnName="extrbktot" type="xs:decimal" />
+              <xs:element name="extrbkprc" msprop:Generator_ColumnPropNameInRow="extrbkprc" msprop:Generator_ColumnPropNameInTable="extrbkprcColumn" msprop:Generator_ColumnVarNameInTable="columnextrbkprc" msprop:Generator_UserColumnName="extrbkprc" type="xs:decimal" />
+              <xs:element name="baldue" msprop:Generator_ColumnPropNameInRow="baldue" msprop:Generator_ColumnPropNameInTable="baldueColumn" msprop:Generator_ColumnVarNameInTable="columnbaldue" msprop:Generator_UserColumnName="baldue" type="xs:decimal" />
+              <xs:element name="prev_bal" msprop:Generator_ColumnPropNameInRow="prev_bal" msprop:Generator_ColumnPropNameInTable="prev_balColumn" msprop:Generator_ColumnVarNameInTable="columnprev_bal" msprop:Generator_UserColumnName="prev_bal" type="xs:decimal" />
+              <xs:element name="prev_pmts" msprop:Generator_ColumnPropNameInRow="prev_pmts" msprop:Generator_ColumnPropNameInTable="prev_pmtsColumn" msprop:Generator_ColumnVarNameInTable="columnprev_pmts" msprop:Generator_UserColumnName="prev_pmts" type="xs:decimal" />
+              <xs:element name="prev_chgs" msprop:Generator_ColumnPropNameInRow="prev_chgs" msprop:Generator_ColumnPropNameInTable="prev_chgsColumn" msprop:Generator_ColumnVarNameInTable="columnprev_chgs" msprop:Generator_UserColumnName="prev_chgs" type="xs:decimal" />
+              <xs:element name="prev_othr" msprop:Generator_ColumnPropNameInRow="prev_othr" msprop:Generator_ColumnPropNameInTable="prev_othrColumn" msprop:Generator_ColumnVarNameInTable="columnprev_othr" msprop:Generator_UserColumnName="prev_othr" type="xs:decimal" />
+              <xs:element name="prev_cred" msprop:Generator_ColumnPropNameInRow="prev_cred" msprop:Generator_ColumnPropNameInTable="prev_credColumn" msprop:Generator_ColumnVarNameInTable="columnprev_cred" msprop:Generator_UserColumnName="prev_cred" type="xs:decimal" />
+              <xs:element name="xnotes" msprop:Generator_ColumnPropNameInRow="xnotes" msprop:Generator_ColumnPropNameInTable="xnotesColumn" msprop:Generator_ColumnVarNameInTable="columnxnotes" msprop:Generator_UserColumnName="xnotes" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="room" msprop:Generator_ColumnVarNameInTable="columnroom" msprop:Generator_ColumnPropNameInRow="room" msprop:Generator_ColumnPropNameInTable="roomColumn" msprop:Generator_UserColumnName="room" minOccurs="0">
+              <xs:element name="room" msprop:Generator_ColumnPropNameInRow="room" msprop:Generator_ColumnPropNameInTable="roomColumn" msprop:Generator_ColumnVarNameInTable="columnroom" msprop:Generator_UserColumnName="room" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="5" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="shelf" msprop:Generator_ColumnVarNameInTable="columnshelf" msprop:Generator_ColumnPropNameInRow="shelf" msprop:Generator_ColumnPropNameInTable="shelfColumn" msprop:Generator_UserColumnName="shelf" minOccurs="0">
+              <xs:element name="shelf" msprop:Generator_ColumnPropNameInRow="shelf" msprop:Generator_ColumnPropNameInTable="shelfColumn" msprop:Generator_ColumnVarNameInTable="columnshelf" msprop:Generator_UserColumnName="shelf" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="5" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="rack" msprop:Generator_ColumnVarNameInTable="columnrack" msprop:Generator_ColumnPropNameInRow="rack" msprop:Generator_ColumnPropNameInTable="rackColumn" msprop:Generator_UserColumnName="rack" minOccurs="0">
+              <xs:element name="rack" msprop:Generator_ColumnPropNameInRow="rack" msprop:Generator_ColumnPropNameInTable="rackColumn" msprop:Generator_ColumnVarNameInTable="columnrack" msprop:Generator_UserColumnName="rack" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="5" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="timestamp_column" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntimestamp_column" msprop:Generator_ColumnPropNameInRow="timestamp_column" msprop:Generator_ColumnPropNameInTable="timestamp_columnColumn" msprop:Generator_UserColumnName="timestamp_column" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="exonhand" msprop:Generator_ColumnVarNameInTable="columnexonhand" msprop:Generator_ColumnPropNameInRow="exonhand" msprop:Generator_ColumnPropNameInTable="exonhandColumn" msprop:Generator_UserColumnName="exonhand" type="xs:int" />
-              <xs:element name="nofrontcv" msprop:Generator_ColumnVarNameInTable="columnnofrontcv" msprop:Generator_ColumnPropNameInRow="nofrontcv" msprop:Generator_ColumnPropNameInTable="nofrontcvColumn" msprop:Generator_UserColumnName="nofrontcv" type="xs:int" />
-              <xs:element name="nobanckcv" msprop:Generator_ColumnVarNameInTable="columnnobanckcv" msprop:Generator_ColumnPropNameInRow="nobanckcv" msprop:Generator_ColumnPropNameInTable="nobanckcvColumn" msprop:Generator_UserColumnName="nobanckcv" type="xs:int" />
-              <xs:element name="nohandbkpgs" msprop:Generator_ColumnVarNameInTable="columnnohandbkpgs" msprop:Generator_ColumnPropNameInRow="nohandbkpgs" msprop:Generator_ColumnPropNameInTable="nohandbkpgsColumn" msprop:Generator_UserColumnName="nohandbkpgs" type="xs:int" />
-              <xs:element name="nobackcv" msprop:Generator_ColumnVarNameInTable="columnnobackcv" msprop:Generator_ColumnPropNameInRow="nobackcv" msprop:Generator_ColumnPropNameInTable="nobackcvColumn" msprop:Generator_UserColumnName="nobackcv" type="xs:int" />
-              <xs:element name="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_UserColumnName="Invno" type="xs:int" />
+              <xs:element name="timestamp_column" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="timestamp_column" msprop:Generator_ColumnPropNameInTable="timestamp_columnColumn" msprop:Generator_ColumnVarNameInTable="columntimestamp_column" msprop:Generator_UserColumnName="timestamp_column" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="exonhand" msprop:Generator_ColumnPropNameInRow="exonhand" msprop:Generator_ColumnPropNameInTable="exonhandColumn" msprop:Generator_ColumnVarNameInTable="columnexonhand" msprop:Generator_UserColumnName="exonhand" type="xs:int" />
+              <xs:element name="nofrontcv" msprop:Generator_ColumnPropNameInRow="nofrontcv" msprop:Generator_ColumnPropNameInTable="nofrontcvColumn" msprop:Generator_ColumnVarNameInTable="columnnofrontcv" msprop:Generator_UserColumnName="nofrontcv" type="xs:int" />
+              <xs:element name="nobanckcv" msprop:Generator_ColumnPropNameInRow="nobanckcv" msprop:Generator_ColumnPropNameInTable="nobanckcvColumn" msprop:Generator_ColumnVarNameInTable="columnnobanckcv" msprop:Generator_UserColumnName="nobanckcv" type="xs:int" />
+              <xs:element name="nohandbkpgs" msprop:Generator_ColumnPropNameInRow="nohandbkpgs" msprop:Generator_ColumnPropNameInTable="nohandbkpgsColumn" msprop:Generator_ColumnVarNameInTable="columnnohandbkpgs" msprop:Generator_UserColumnName="nohandbkpgs" type="xs:int" />
+              <xs:element name="nobackcv" msprop:Generator_ColumnPropNameInRow="nobackcv" msprop:Generator_ColumnPropNameInTable="nobackcvColumn" msprop:Generator_ColumnVarNameInTable="columnnobackcv" msprop:Generator_UserColumnName="nobackcv" type="xs:int" />
+              <xs:element name="Invno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_UserColumnName="Invno" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

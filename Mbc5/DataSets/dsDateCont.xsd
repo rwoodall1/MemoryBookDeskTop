@@ -5,12 +5,12 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5_demoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5_demoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5_demoConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="OPY" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="OPY (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.OPY" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="datecontTableAdapter" GeneratorDataComponentClassName="datecontTableAdapter" Name="datecont" UserDataComponentName="datecontTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5_demoConnectionString (Settings)" DbObjectName="Mbc5_demo.dbo.datecont" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="OPY (Settings)" DbObjectName="Mbc5_demo.dbo.datecont" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[datecont] WHERE (([schcode] = @Original_schcode) AND ((@IsNull_datecont = 1 AND [datecont] IS NULL) OR ([datecont] = @Original_datecont)) AND ([initial] = @Original_initial) AND ([contact] = @Original_contact) AND ((@IsNull_typecont = 1 AND [typecont] IS NULL) OR ([typecont] = @Original_typecont)) AND ((@IsNull_nxtdays = 1 AND [nxtdays] IS NULL) OR ([nxtdays] = @Original_nxtdays)) AND ((@IsNull_nxtdate = 1 AND [nxtdate] IS NULL) OR ([nxtdate] = @Original_nxtdate)) AND ([callcont] = @Original_callcont) AND ([calltime] = @Original_calltime) AND ([priority] = @Original_priority) AND ([company] = @Original_company) AND ([highliterow] = @Original_highliterow) AND ([techcall] = @Original_techcall) AND ([prospectid] = @Original_prospectid) AND ([id] = @Original_id))</CommandText>
@@ -142,66 +142,66 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsDateCont" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDateCont" msprop:Generator_UserDSName="dsDateCont">
+  <xs:element name="dsDateCont" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsDateCont" msprop:Generator_DataSetName="dsDateCont">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_UserTableName="datecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_RowEvArgName="datecontRowChangeEvent" msprop:Generator_RowClassName="datecontRow">
+        <xs:element name="datecont" msprop:Generator_RowClassName="datecontRow" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowEvArgName="datecontRowChangeEvent" msprop:Generator_TablePropName="datecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_UserTableName="datecont" msprop:Generator_TableVarName="tabledatecont">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
+              <xs:element name="schcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_UserColumnName="schcode">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="datecont" msprop:Generator_ColumnVarNameInTable="columndatecont" msprop:Generator_ColumnPropNameInRow="datecont" msprop:Generator_ColumnPropNameInTable="datecontColumn" msprop:Generator_UserColumnName="datecont" type="xs:dateTime" />
-              <xs:element name="reason" msprop:Generator_ColumnVarNameInTable="columnreason" msprop:Generator_ColumnPropNameInRow="reason" msprop:Generator_ColumnPropNameInTable="reasonColumn" msprop:Generator_UserColumnName="reason" minOccurs="0">
+              <xs:element name="datecont" msprop:Generator_ColumnPropNameInRow="datecont" msprop:Generator_ColumnPropNameInTable="datecontColumn" msprop:Generator_ColumnVarNameInTable="columndatecont" msprop:Generator_UserColumnName="datecont" type="xs:dateTime" />
+              <xs:element name="reason" msprop:Generator_ColumnPropNameInRow="reason" msprop:Generator_ColumnPropNameInTable="reasonColumn" msprop:Generator_ColumnVarNameInTable="columnreason" msprop:Generator_UserColumnName="reason" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="initial" msprop:Generator_ColumnVarNameInTable="columninitial" msprop:Generator_ColumnPropNameInRow="initial" msprop:Generator_ColumnPropNameInTable="initialColumn" msprop:Generator_UserColumnName="initial">
+              <xs:element name="initial" msprop:Generator_ColumnPropNameInRow="initial" msprop:Generator_ColumnPropNameInTable="initialColumn" msprop:Generator_ColumnVarNameInTable="columninitial" msprop:Generator_UserColumnName="initial">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="contact" msprop:Generator_ColumnVarNameInTable="columncontact" msprop:Generator_ColumnPropNameInRow="contact" msprop:Generator_ColumnPropNameInTable="contactColumn" msprop:Generator_UserColumnName="contact" minOccurs="0">
+              <xs:element name="contact" msprop:Generator_ColumnPropNameInRow="contact" msprop:Generator_ColumnPropNameInTable="contactColumn" msprop:Generator_ColumnVarNameInTable="columncontact" msprop:Generator_UserColumnName="contact" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="typecont" msprop:Generator_ColumnVarNameInTable="columntypecont" msprop:Generator_ColumnPropNameInRow="typecont" msprop:Generator_ColumnPropNameInTable="typecontColumn" msprop:Generator_UserColumnName="typecont">
+              <xs:element name="typecont" msprop:Generator_ColumnPropNameInRow="typecont" msprop:Generator_ColumnPropNameInTable="typecontColumn" msprop:Generator_ColumnVarNameInTable="columntypecont" msprop:Generator_UserColumnName="typecont">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="nxtdays" msprop:Generator_ColumnVarNameInTable="columnnxtdays" msprop:Generator_ColumnPropNameInRow="nxtdays" msprop:Generator_ColumnPropNameInTable="nxtdaysColumn" msprop:Generator_UserColumnName="nxtdays" type="xs:decimal" minOccurs="0" />
-              <xs:element name="nxtdate" msprop:Generator_ColumnVarNameInTable="columnnxtdate" msprop:Generator_ColumnPropNameInRow="nxtdate" msprop:Generator_ColumnPropNameInTable="nxtdateColumn" msprop:Generator_UserColumnName="nxtdate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="callcont" msprop:Generator_ColumnVarNameInTable="columncallcont" msprop:Generator_ColumnPropNameInRow="callcont" msprop:Generator_ColumnPropNameInTable="callcontColumn" msprop:Generator_UserColumnName="callcont" type="xs:boolean" minOccurs="0" />
-              <xs:element name="calltime" msprop:Generator_ColumnVarNameInTable="columncalltime" msprop:Generator_ColumnPropNameInRow="calltime" msprop:Generator_ColumnPropNameInTable="calltimeColumn" msprop:Generator_UserColumnName="calltime" type="xs:decimal" minOccurs="0" />
-              <xs:element name="priority" msprop:Generator_ColumnVarNameInTable="columnpriority" msprop:Generator_ColumnPropNameInRow="priority" msprop:Generator_ColumnPropNameInTable="priorityColumn" msprop:Generator_UserColumnName="priority" type="xs:decimal" />
-              <xs:element name="company" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_UserColumnName="company" minOccurs="0">
+              <xs:element name="nxtdays" msprop:Generator_ColumnPropNameInRow="nxtdays" msprop:Generator_ColumnPropNameInTable="nxtdaysColumn" msprop:Generator_ColumnVarNameInTable="columnnxtdays" msprop:Generator_UserColumnName="nxtdays" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nxtdate" msprop:Generator_ColumnPropNameInRow="nxtdate" msprop:Generator_ColumnPropNameInTable="nxtdateColumn" msprop:Generator_ColumnVarNameInTable="columnnxtdate" msprop:Generator_UserColumnName="nxtdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="callcont" msprop:Generator_ColumnPropNameInRow="callcont" msprop:Generator_ColumnPropNameInTable="callcontColumn" msprop:Generator_ColumnVarNameInTable="columncallcont" msprop:Generator_UserColumnName="callcont" type="xs:boolean" minOccurs="0" />
+              <xs:element name="calltime" msprop:Generator_ColumnPropNameInRow="calltime" msprop:Generator_ColumnPropNameInTable="calltimeColumn" msprop:Generator_ColumnVarNameInTable="columncalltime" msprop:Generator_UserColumnName="calltime" type="xs:decimal" minOccurs="0" />
+              <xs:element name="priority" msprop:Generator_ColumnPropNameInRow="priority" msprop:Generator_ColumnPropNameInTable="priorityColumn" msprop:Generator_ColumnVarNameInTable="columnpriority" msprop:Generator_UserColumnName="priority" type="xs:decimal" />
+              <xs:element name="company" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_UserColumnName="company" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="3" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="highliterow" msprop:Generator_ColumnVarNameInTable="columnhighliterow" msprop:Generator_ColumnPropNameInRow="highliterow" msprop:Generator_ColumnPropNameInTable="highliterowColumn" msprop:Generator_UserColumnName="highliterow" type="xs:boolean" minOccurs="0" />
-              <xs:element name="techcall" msprop:Generator_ColumnVarNameInTable="columntechcall" msprop:Generator_ColumnPropNameInRow="techcall" msprop:Generator_ColumnPropNameInTable="techcallColumn" msprop:Generator_UserColumnName="techcall" type="xs:boolean" minOccurs="0" />
-              <xs:element name="prospectid" msprop:Generator_ColumnVarNameInTable="columnprospectid" msprop:Generator_ColumnPropNameInRow="prospectid" msprop:Generator_ColumnPropNameInTable="prospectidColumn" msprop:Generator_UserColumnName="prospectid" type="xs:int" minOccurs="0" />
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="priority1" msdata:Caption="priority" msprop:Generator_ColumnVarNameInTable="columnpriority1" msprop:Generator_ColumnPropNameInRow="priority1" msprop:Generator_ColumnPropNameInTable="priority1Column" msprop:Generator_UserColumnName="priority1" type="xs:int" minOccurs="0" />
-              <xs:element name="nxtdays1" msdata:Caption="nxtdays" msprop:Generator_ColumnVarNameInTable="columnnxtdays1" msprop:Generator_ColumnPropNameInRow="nxtdays1" msprop:Generator_ColumnPropNameInTable="nxtdays1Column" msprop:Generator_UserColumnName="nxtdays1" type="xs:int" minOccurs="0" />
+              <xs:element name="highliterow" msprop:Generator_ColumnPropNameInRow="highliterow" msprop:Generator_ColumnPropNameInTable="highliterowColumn" msprop:Generator_ColumnVarNameInTable="columnhighliterow" msprop:Generator_UserColumnName="highliterow" type="xs:boolean" minOccurs="0" />
+              <xs:element name="techcall" msprop:Generator_ColumnPropNameInRow="techcall" msprop:Generator_ColumnPropNameInTable="techcallColumn" msprop:Generator_ColumnVarNameInTable="columntechcall" msprop:Generator_UserColumnName="techcall" type="xs:boolean" minOccurs="0" />
+              <xs:element name="prospectid" msprop:Generator_ColumnPropNameInRow="prospectid" msprop:Generator_ColumnPropNameInTable="prospectidColumn" msprop:Generator_ColumnVarNameInTable="columnprospectid" msprop:Generator_UserColumnName="prospectid" type="xs:int" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="priority1" msdata:Caption="priority" msprop:Generator_ColumnPropNameInRow="priority1" msprop:Generator_ColumnPropNameInTable="priority1Column" msprop:Generator_ColumnVarNameInTable="columnpriority1" msprop:Generator_UserColumnName="priority1" type="xs:int" minOccurs="0" />
+              <xs:element name="nxtdays1" msdata:Caption="nxtdays" msprop:Generator_ColumnPropNameInRow="nxtdays1" msprop:Generator_ColumnPropNameInTable="nxtdays1Column" msprop:Generator_ColumnVarNameInTable="columnnxtdays1" msprop:Generator_UserColumnName="nxtdays1" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -14,13 +14,13 @@
     <Setting Name="mailUserName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">authnet@memorybook.com</Value>
     </Setting>
-    <Setting Name="Mbc5_demoConnectionString" Type="(Connection string)" Scope="Application">
+    <Setting Name="OPY" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=owbswjtsql06:56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=svc_mbc5_demo;Password:S3dALMbcOct2122;Connect Timeout=5&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5</Value>
+      <Value Profile="(Default)">Data Source=owbswjtsql06:56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=svc_mbc5_demo;Password:S3dALMbcOct2122;Connect Timeout=5</Value>
     </Setting>
     <Setting Name="Mbc5_demoConnectionString1" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -29,6 +29,14 @@
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=SEDSWJPSQL02;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=svc_Mbc5_demo;Password=S3dAug302017Mbc5;TrustServerCertificate=True</Value>
+    </Setting>
+    <Setting Name="OPY_DemoConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=Owbswjtsql06.jostens.com,56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=MbcUser_demo;Password=S3dALMbcOct2122;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=Owbswjtsql06.jostens.com,56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=MbcUser_demo;Password=S3dALMbcOct2122;TrustServerCertificate=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
