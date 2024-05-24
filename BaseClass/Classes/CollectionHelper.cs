@@ -78,6 +78,10 @@ namespace BaseClass.Classes {
                     PropertyInfo prop = obj.GetType().GetProperty(column.ColumnName);
                     try
                         {
+                        if (row[column.ColumnName] == "Pg344")
+                        {
+                            var a = "stop here";
+                        }
                         object value = (row[column.ColumnName]==DBNull.Value ? null : row[column.ColumnName]);
                         if (prop != null)
                             {

@@ -2238,185 +2238,59 @@ namespace Mbc5.Forms.MemoryBook
             }
             this.CurPriceYr = txtBYear.Text;
 
-
-            SqlConnection conn = new SqlConnection(this.FormConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies", conn);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies");
+            sqlClient.AddParameter("@Yr", txtBYear.Text);          
             if (chkAllClr.Checked)
             {
-                cmd.Parameters.AddWithValue("@Type", "Color");
+                sqlClient.AddParameter("@Type", "Color");
+               
             }
             else
             {
-                cmd.Parameters.AddWithValue("@Type", "Base");
+                sqlClient.AddParameter("@Type", "Base");
+              
             }
-
-
-            List<Price> PriceList = new List<Price>();
-
-            try
+            var selectResult = sqlClient.SelectMany<Price>();
+            if (selectResult.IsError)
             {
+                Log.Error("Failed to retrieve pricing:" + selectResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to retrieve pricing:" + selectResult.Errors[0].ErrorMessage);
+                return;
 
-                cmd.Connection.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    Price vprice = new Price()
-                    {
-                        Copies = rdr.GetInt32(rdr.GetOrdinal("Copies")),
-
-                        Pg12 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
-                        Pg16 = rdr["Pg16"] == DBNull.Value ? 0 : (decimal)rdr["Pg16"],
-                        Pg20 = rdr["Pg20"] == DBNull.Value ? 0 : (decimal)rdr["Pg20"],
-                        Pg24 = rdr["Pg24"] == DBNull.Value ? 0 : (decimal)rdr["Pg24"],
-                        Pg28 = rdr["Pg28"] == DBNull.Value ? 0 : (decimal)rdr["Pg28"],
-                        Pg32 = rdr["Pg32"] == DBNull.Value ? 0 : (decimal)rdr["Pg32"],
-                        Pg36 = rdr["Pg36"] == DBNull.Value ? 0 : (decimal)rdr["Pg36"],
-                        Pg40 = rdr["Pg40"] == DBNull.Value ? 0 : (decimal)rdr["Pg40"],
-                        Pg44 = rdr["Pg44"] == DBNull.Value ? 0 : (decimal)rdr["Pg44"],
-                        Pg48 = rdr["Pg48"] == DBNull.Value ? 0 : (decimal)rdr["Pg48"],
-                        Pg52 = rdr["Pg52"] == DBNull.Value ? 0 : (decimal)rdr["Pg52"],
-                        Pg56 = rdr["Pg56"] == DBNull.Value ? 0 : (decimal)rdr["Pg56"],
-                        Pg60 = rdr["Pg60"] == DBNull.Value ? 0 : (decimal)rdr["Pg60"],
-                        Pg64 = rdr["Pg64"] == DBNull.Value ? 0 : (decimal)rdr["Pg64"],
-                        Pg68 = rdr["Pg68"] == DBNull.Value ? 0 : (decimal)rdr["Pg68"],
-                        Pg72 = rdr["Pg72"] == DBNull.Value ? 0 : (decimal)rdr["Pg72"],
-                        Pg76 = rdr["Pg76"] == DBNull.Value ? 0 : (decimal)rdr["Pg76"],
-                        Pg80 = rdr["Pg80"] == DBNull.Value ? 0 : (decimal)rdr["Pg80"],
-                        Pg84 = rdr["Pg84"] == DBNull.Value ? 0 : (decimal)rdr["Pg84"],
-                        Pg88 = rdr["Pg88"] == DBNull.Value ? 0 : (decimal)rdr["Pg88"],
-                        Pg92 = rdr["Pg92"] == DBNull.Value ? 0 : (decimal)rdr["Pg92"],
-                        Pg96 = rdr["Pg96"] == DBNull.Value ? 0 : (decimal)rdr["Pg96"],
-                        Pg100 = rdr["Pg100"] == DBNull.Value ? 0 : (decimal)rdr["Pg100"],
-                        Pg104 = rdr["Pg104"] == DBNull.Value ? 0 : (decimal)rdr["Pg104"],
-                        Pg108 = rdr["Pg108"] == DBNull.Value ? 0 : (decimal)rdr["Pg108"],
-                        Pg112 = rdr["Pg112"] == DBNull.Value ? 0 : (decimal)rdr["Pg112"],
-                        Pg116 = rdr["Pg116"] == DBNull.Value ? 0 : (decimal)rdr["Pg116"],
-                        Pg120 = rdr["Pg120"] == DBNull.Value ? 0 : (decimal)rdr["Pg120"],
-                        Pg124 = rdr["Pg124"] == DBNull.Value ? 0 : (decimal)rdr["Pg124"],
-                        Pg128 = rdr["Pg128"] == DBNull.Value ? 0 : (decimal)rdr["Pg128"],
-                        Pg132 = rdr["Pg132"] == DBNull.Value ? 0 : (decimal)rdr["Pg132"],
-                        Pg136 = rdr["Pg136"] == DBNull.Value ? 0 : (decimal)rdr["Pg136"],
-                        Pg140 = rdr["Pg140"] == DBNull.Value ? 0 : (decimal)rdr["Pg140"],
-                        Pg144 = rdr["Pg144"] == DBNull.Value ? 0 : (decimal)rdr["Pg144"],
-                        Pg148 = rdr["Pg148"] == DBNull.Value ? 0 : (decimal)rdr["Pg148"],
-                        Pg152 = rdr["Pg152"] == DBNull.Value ? 0 : (decimal)rdr["Pg152"],
-                        Pg156 = rdr["Pg156"] == DBNull.Value ? 0 : (decimal)rdr["Pg156"],
-                        Pg160 = rdr["Pg160"] == DBNull.Value ? 0 : (decimal)rdr["Pg160"],
-                        Pg164 = rdr["Pg164"] == DBNull.Value ? 0 : (decimal)rdr["Pg164"],
-                        Pg168 = rdr["Pg168"] == DBNull.Value ? 0 : (decimal)rdr["Pg168"],
-                        Pg172 = rdr["Pg172"] == DBNull.Value ? 0 : (decimal)rdr["Pg172"],
-                        Pg176 = rdr["Pg176"] == DBNull.Value ? 0 : (decimal)rdr["Pg176"],
-                        Pg180 = rdr["Pg180"] == DBNull.Value ? 0 : (decimal)rdr["Pg180"],
-                        Pg184 = rdr["Pg184"] == DBNull.Value ? 0 : (decimal)rdr["Pg184"],
-                        Pg188 = rdr["Pg188"] == DBNull.Value ? 0 : (decimal)rdr["Pg188"],
-                        Pg192 = rdr["Pg192"] == DBNull.Value ? 0 : (decimal)rdr["Pg192"],
-                        Pg196 = rdr["Pg196"] == DBNull.Value ? 0 : (decimal)rdr["Pg196"],
-                        Pg200 = rdr["Pg200"] == DBNull.Value ? 0 : (decimal)rdr["Pg200"],
-                        Pg204 = rdr["Pg204"] == DBNull.Value ? 0 : (decimal)rdr["Pg204"],
-                        Pg208 = rdr["Pg208"] == DBNull.Value ? 0 : (decimal)rdr["Pg208"],
-                        Pg212 = rdr["Pg212"] == DBNull.Value ? 0 : (decimal)rdr["Pg212"],
-                        Pg216 = rdr["Pg216"] == DBNull.Value ? 0 : (decimal)rdr["Pg216"],
-                        Pg220 = rdr["Pg220"] == DBNull.Value ? 0 : (decimal)rdr["Pg220"],
-                        Pg224 = rdr["Pg224"] == DBNull.Value ? 0 : (decimal)rdr["Pg224"],
-                        Pg228 = rdr["Pg228"] == DBNull.Value ? 0 : (decimal)rdr["Pg228"],
-                        Pg232 = rdr["Pg232"] == DBNull.Value ? 0 : (decimal)rdr["Pg232"],
-                        Pg236 = rdr["Pg236"] == DBNull.Value ? 0 : (decimal)rdr["Pg236"],
-                        Pg240 = rdr["Pg240"] == DBNull.Value ? 0 : (decimal)rdr["Pg240"],
-                        Pg244 = rdr["Pg244"] == DBNull.Value ? 0 : (decimal)rdr["Pg244"],
-                        Pg248 = rdr["Pg248"] == DBNull.Value ? 0 : (decimal)rdr["Pg248"],
-                        Pg252 = rdr["Pg252"] == DBNull.Value ? 0 : (decimal)rdr["Pg252"],
-                        Pg256 = rdr["Pg256"] == DBNull.Value ? 0 : (decimal)rdr["Pg256"],
-                        Pg260 = rdr["Pg260"] == DBNull.Value ? 0 : (decimal)rdr["Pg260"],
-                        Pg264 = rdr["Pg264"] == DBNull.Value ? 0 : (decimal)rdr["Pg264"],
-                        Pg268 = rdr["Pg268"] == DBNull.Value ? 0 : (decimal)rdr["Pg268"],
-                        Pg272 = rdr["Pg272"] == DBNull.Value ? 0 : (decimal)rdr["Pg272"],
-                        Pg276 = rdr["Pg276"] == DBNull.Value ? 0 : (decimal)rdr["Pg276"],
-                        Pg280 = rdr["Pg280"] == DBNull.Value ? 0 : (decimal)rdr["Pg280"],
-                        Pg284 = rdr["Pg284"] == DBNull.Value ? 0 : (decimal)rdr["Pg284"],
-                        Pg288 = rdr["Pg288"] == DBNull.Value ? 0 : (decimal)rdr["Pg288"],
-                        Pg292 = rdr["Pg292"] == DBNull.Value ? 0 : (decimal)rdr["Pg292"],
-                        Pg296 = rdr["Pg296"] == DBNull.Value ? 0 : (decimal)rdr["Pg296"],
-                        Pg300 = rdr["Pg300"] == DBNull.Value ? 0 : (decimal)rdr["Pg300"],
-                        Pg304 = rdr["Pg304"] == DBNull.Value ? 0 : (decimal)rdr["Pg304"],
-                        Pg308 = rdr["Pg308"] == DBNull.Value ? 0 : (decimal)rdr["Pg308"],
-                        Pg312 = rdr["Pg312"] == DBNull.Value ? 0 : (decimal)rdr["Pg312"],
-                        Pg316 = rdr["Pg316"] == DBNull.Value ? 0 : (decimal)rdr["Pg316"],
-                        Pg320 = rdr["Pg320"] == DBNull.Value ? 0 : (decimal)rdr["Pg320"],
-                        Pg324 = rdr["Pg324"] == DBNull.Value ? 0 : (decimal)rdr["Pg324"],
-                        Pg328 = rdr["Pg328"] == DBNull.Value ? 0 : (decimal)rdr["Pg328"],
-                        Pg332 = rdr["Pg332"] == DBNull.Value ? 0 : (decimal)rdr["Pg332"]
-                        //Pg336 = rdr.GetDecimal(rdr.GetOrdinal("Pg336")),
-                        //Pg340 = rdr.GetDecimal(rdr.GetOrdinal("Pg340")),
-                        //Pg344 = rdr.GetDecimal(rdr.GetOrdinal("Pg344")),
-                        //Pg348 = rdr.GetDecimal(rdr.GetOrdinal("Pg348")),
-                        //Pg352 = rdr.GetDecimal(rdr.GetOrdinal("Pg352")),
-                        //Pg356 = rdr.GetDecimal(rdr.GetOrdinal("Pg356")),
-                        //Pg360 = rdr.GetDecimal(rdr.GetOrdinal("Pg360"))
-
-                    };
-                    PriceList.Add(vprice);
-
-                    this.Pricing = PriceList;
-                }
             }
-            catch (Exception ex)
+            this.Pricing =(List<Price>) selectResult.Data;
+            if (this.Pricing==null || this.Pricing.Count==0)
             {
-                Log.Fatal("Failed to retrieve pricing:" + ex.Message);
-                MessageBox.Show("There was an error retrieving pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MbcMessageBox.Error("Pricing was not found for this contract year");
             }
         }
         private void GetBookOptionPricing()
         {
             this.CurPriceYr = txtBYear.Text;
-            SqlConnection conn = new SqlConnection(FormConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
-
-            try
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText("Select * From BookOptionPricing where yr=@Yr");
+            sqlClient.ClearParameters();
+            if (string.IsNullOrEmpty(txtBYear.Text))
             {
-
-                cmd.Connection.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    BookOptionPrice vOptionPrice = new BookOptionPrice()
-                    {
-                        Yr = rdr.GetOrdinal("Yr").ToString(),
-                        Case = rdr.GetDecimal(rdr.GetOrdinal("Case")),
-                        Professional = rdr.GetDecimal(rdr.GetOrdinal("Professional")),
-                        Convenient = rdr.GetDecimal(rdr.GetOrdinal("Convenient")),
-                        Specialcvr = rdr.GetDecimal(rdr.GetOrdinal("Specialcvr")),
-                        Lamination = rdr.GetDecimal(rdr.GetOrdinal("Lamination")),
-                        Perfectbind = rdr.GetDecimal(rdr.GetOrdinal("Perfectbind")),
-                        Customized = rdr.GetDecimal(rdr.GetOrdinal("Customized")),
-                        Hardbk = rdr.GetDecimal(rdr.GetOrdinal("Hardbk")),
-                        Foil = rdr.GetDecimal(rdr.GetOrdinal("Foil")),
-                        Ink = rdr.GetDecimal(rdr.GetOrdinal("Ink")),
-                        Spiral = rdr.GetDecimal(rdr.GetOrdinal("Spiral")),
-                        Theme = rdr.GetDecimal(rdr.GetOrdinal("Theme")),
-                        Story = rdr.GetDecimal(rdr.GetOrdinal("Story")),
-                        Yir = rdr.GetDecimal(rdr.GetOrdinal("Yir")),
-                        Supplement = rdr.GetDecimal(rdr.GetOrdinal("Supplement")),
-                        Laminationsft = rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
-
-                    };
-                    this.BookOptionPricing = vOptionPrice;
-
-                }
+                MessageBox.Show("Base Price Contract year is missing.");
+                return;
             }
-            catch (Exception ex)
+            sqlClient.AddParameter("@Yr", txtBYear.Text);
+           var selectResult=sqlClient.Select<BookOptionPrice>();
+            if (selectResult.IsError)
             {
-                Log.Fatal("Error retrieving Book Option Pricing" + ex.Message);
+                Log.Fatal("Error retrieving Book Option Pricing" + selectResult.Errors[0].DeveloperMessage);
                 MessageBox.Show("There was an error retrieving Book Option Pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            this.BookOptionPricing = (BookOptionPrice)selectResult.Data;
+
+            
             if (this.BookOptionPricing == null)
             {
                 MessageBox.Show("Book Option pricing for this contract year was not found. Contact your supervisor.");
+                return;
             }
 
         }
@@ -5955,6 +5829,11 @@ namespace Mbc5.Forms.MemoryBook
             this.EnableAllControls(tabSales.SelectedTab);
           
            
+        }
+
+        private void pnlTot_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 
