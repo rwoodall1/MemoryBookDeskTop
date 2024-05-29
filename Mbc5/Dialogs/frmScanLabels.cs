@@ -9,6 +9,7 @@ using BindingModels;
 using BaseClass.Classes;
 using BaseClass;
 using Microsoft.Reporting.WinForms;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmScanLabels :Form
@@ -26,7 +27,7 @@ namespace Mbc5.Dialogs
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select Description,Id FROM WipDescriptions Where TableName=@TableName Order By Description");
 
             switch (comboBox1.Text)

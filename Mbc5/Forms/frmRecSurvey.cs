@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
 using Exceptionless;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmRecSurvey : BaseClass.frmBase
@@ -68,7 +69,7 @@ namespace Mbc5.Forms
             }
             if (recv2BindingSource.Count == 0)
             {
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText("INSERT INTO RECV2 (Invno,Company,Schcode) Values(@Invno,@Company,@Schcode)");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.AddParameter("@Company", Company);
@@ -114,7 +115,7 @@ namespace Mbc5.Forms
             }
             if (surv2BindingSource.Count == 0)
             {
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText("INSERT INTO Surv2 (Invno,Company,Schcode) Values(@Invno,@Company,@Schcode)");
                 sqlClient.AddParameter("@Invno", Invno);
                 sqlClient.AddParameter("@Company", Company);

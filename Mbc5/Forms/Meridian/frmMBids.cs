@@ -658,8 +658,8 @@ namespace Mbc5.Forms.Meridian {
         }
         private void SetConnectionString()
         {
-            meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mbidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            meridianProductsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            mbidsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
         }
         private void DisableControls(Control con)
         {
@@ -688,7 +688,7 @@ namespace Mbc5.Forms.Meridian {
         private decimal GetJostensPricing(string vYear, string vType, int pageQty)
         {
             string fieldName = vType + pageQty.ToString();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From JostensPricing where Yr=@Yr");
             sqlQuery.AddParameter("@Yr", vYear);
             var result = sqlQuery.Select<JostenPricing>();
@@ -783,7 +783,7 @@ namespace Mbc5.Forms.Meridian {
                 lblTotalBasePrice.Text = "0.00";
                 return false;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.ClearParameters();
             if (String.IsNullOrEmpty(txtBYear.Text))
             {
@@ -909,7 +909,7 @@ namespace Mbc5.Forms.Meridian {
             {
                 return false;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
             sqlQuery.AddParameter("@Yr", contryearTextBox.Text);
             var result = sqlQuery.Select<MeridianOptionPricing>();

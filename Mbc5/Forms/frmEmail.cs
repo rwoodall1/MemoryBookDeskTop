@@ -12,6 +12,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
 using Mbc5.Dialogs;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmEmail : BaseClass.Forms.bTopBottom
@@ -92,7 +93,7 @@ namespace Mbc5.Forms
         private void LogEmail()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
-            this.FormConnectionString = frmMain.AppConnectionString;
+            this.FormConnectionString = ApplicationConfig.DefaultConnectionString;
             SqlConnection conn = new SqlConnection(FormConnectionString);
             string sql = "INSERT INTO EmailLogs (Id,ToEmail,FromId,FromEmail,Subject,Msg) VALUES(@Id,@ToEmail,@FromId,@FromEmail,@Subject,@Msg);";
             SqlCommand cmd = new SqlCommand(sql, conn);

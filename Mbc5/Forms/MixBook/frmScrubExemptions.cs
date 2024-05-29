@@ -9,6 +9,7 @@ using BaseClass.Classes;
 using BaseClass;
 using BindingModels;
 using Equin.ApplicationFramework;
+using Mbc5.Classes;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmScrubExemptions : BaseClass.frmBase
@@ -25,7 +26,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void Fill()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText("Select Id,SubmittedCity,UpsCity From ScrubExemptions order by SubmittedCity ");
             var sqlResult=sqlClient.SelectMany<Exemption>();
             if (sqlResult.IsError)
@@ -42,7 +43,7 @@ namespace Mbc5.Forms.MixBook
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //save
-            var sqlClient = new SQLCustomClient().CommandText("Update ScrubExemptions Set SubmittedCity=@SubmittedCity,UpsCity=@UpsCity Where Id=@Id");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Update ScrubExemptions Set SubmittedCity=@SubmittedCity,UpsCity=@UpsCity Where Id=@Id");
             sqlClient.AddParameter("@SubmittedCity",txtSubmittedCity.Text);
             sqlClient.AddParameter("@UpsCity",txtUpsCity.Text);
             sqlClient.AddParameter("@Id",lblId.Text);
@@ -59,7 +60,7 @@ namespace Mbc5.Forms.MixBook
 
         private  void  bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient().CommandText("Delete From ScrubExemptions  Where Id=@Id");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Delete From ScrubExemptions  Where Id=@Id");
            
             sqlClient.AddParameter("@Id", lblId.Text);
             var updateResult = sqlClient.Delete();
@@ -75,7 +76,7 @@ namespace Mbc5.Forms.MixBook
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient().CommandText("Insert INTO ScrubExemptions (SubmittedCity,Upscity) VALUES('','') ");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert INTO ScrubExemptions (SubmittedCity,Upscity) VALUES('','') ");
 
             var insertResult = sqlClient.Insert();
             if (insertResult.IsError)

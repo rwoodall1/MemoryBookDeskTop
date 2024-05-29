@@ -98,9 +98,9 @@ namespace Mbc5.Forms.MixBook
         {
             try
             {
-                this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.statesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.mixBookOrderTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.shipCarriersTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
                 
             }
             catch (Exception ex)
@@ -268,7 +268,7 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
            
             //insure we have correct invno, should already be set
             if (this.Invno.ToString() != invnoLabel1.Text.Trim())
@@ -414,7 +414,7 @@ namespace Mbc5.Forms.MixBook
         {
 
             var value = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
-            var sqlClient = new SQLCustomClient().CommandText(@"
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"
                Select Invno,ClientOrderId,
                 ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
@@ -519,7 +519,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void PrintPackingList(int vClientOrderId)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
                                 ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                 FROM MixbookOrder MO
@@ -544,7 +544,7 @@ namespace Mbc5.Forms.MixBook
         private void PrintRemakeTicket(int vInvno)
         {
 
-            var sqlClient = new SQLCustomClient().CommandText(@"
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"
                 Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl
                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
@@ -645,7 +645,7 @@ namespace Mbc5.Forms.MixBook
         private void SetJobTicketPrinted()
         {
 
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
            
 
                 var vInvno = this.Invno.ToString();
@@ -657,7 +657,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void SetRemakeTicketPrinted()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
            
 
                 var vInvno = this.Invno.ToString();
@@ -803,7 +803,7 @@ namespace Mbc5.Forms.MixBook
         {
             if (!string.IsNullOrEmpty(orderIdLabel1.Text))
             {
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText(@"Update MixbookOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var result = sqlClient.Update();
@@ -860,7 +860,7 @@ namespace Mbc5.Forms.MixBook
             if (dialogResult == DialogResult.Yes)
             {
 
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText(@"Delete From MixbookOrder Where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var deleteResult = sqlClient.Delete();
@@ -927,7 +927,7 @@ namespace Mbc5.Forms.MixBook
             {
                 return;
             }
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string status = "";
             if (mixbookOrderStatusLabel2.Text=="Hold")
             {
@@ -1032,7 +1032,7 @@ namespace Mbc5.Forms.MixBook
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set CoverStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Update MixbookOrder Set CoverStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1050,7 +1050,7 @@ namespace Mbc5.Forms.MixBook
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set BookStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Update MixbookOrder Set BookStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1069,7 +1069,7 @@ namespace Mbc5.Forms.MixBook
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set MixbookOrderStatus='In Process' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Update MixbookOrder Set MixbookOrderStatus='In Process' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1113,7 +1113,7 @@ namespace Mbc5.Forms.MixBook
             var result=MessageBox.Show("This will totally remove the order from the system. Mixbook is not notified. Do you still want to remove this order?","Remove Order",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
             if (result==DialogResult.Yes)
             {
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText("Delete from MixbookOrders where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var deleteResult = sqlClient.Delete();
@@ -1139,7 +1139,7 @@ namespace Mbc5.Forms.MixBook
         {
             MbcMessageBox.Information("This procedure cancels the order in DB only. It does not send a notification to Mixbook. Use websit if Mixbook needs notification.");
           
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',BookPreviewUrl='',BookUrl='',CoverPreviewUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
             sqlClient.AddParameter("@ModifiedBy", ApplicationUser.Initials);
@@ -1206,7 +1206,7 @@ namespace Mbc5.Forms.MixBook
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
             sqlClient.AddParameter("@Jobid", jobId);
             sqlClient.AddParameter("@StatusChangedTo", status);

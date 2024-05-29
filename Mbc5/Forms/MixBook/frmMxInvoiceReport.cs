@@ -12,6 +12,7 @@ using BindingModels;
 using CsvHelper;
 using System.IO;
 using System.Diagnostics;
+using Mbc5.Classes;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxInvoiceReport : BaseClass.frmBase
@@ -32,7 +33,7 @@ namespace Mbc5.Forms.MixBook
         {
             bsData.Clear();
             frmMain.CleanShipping(); //takes out shipping value that are not for mixbook. Need to remove this if we go to memorybook.
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmd = @"Select M.ClientOrderId
 ,M.Invno
 ,MixbookOrderStatus   
@@ -164,7 +165,7 @@ Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from Wip
                 return;
             }
             bool updateErrors = false;
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmd = @"Update MixbookOrder Set Invoiced=1,InvoiceDate=GETDATE() Where Invno =@Invno";
             sqlClient.CommandText(cmd);
             foreach (MixbookInvoiceReport rec in data)

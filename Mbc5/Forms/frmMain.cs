@@ -45,69 +45,74 @@ namespace Mbc5.Forms
            
         }
         protected Logger Log { get; set; }
+        public string Environment { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            
+            this.Environment = ApplicationConfig.Environment; 
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+                // AppConnectionString = "Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+                AppConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.Mbc5_demoConnectionString1"].ToString();
+
                 this.label1.Text = "Using Test Environment Notify Supervisor Immediatly";
                 this.pnlNotice.Visible = true;
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql02;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
-            // AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-            List<string> roles = new List<string>();
-            this.ValidatedUserRoles = roles;
-            this.WindowState = FormWindowState.Maximized;
-            
-            this.Hide();
-
-            for (int i = 0; i < 3; i++)
+            else if (Environment == "PROD")
             {
-                if (this.Login())
-                {
-                    break;
-                };
-                if (i == 2)
-                {
-                    //if 2 tries close 
-                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                    keepLoading = false;
-                    Application.Exit();
-                }
+                //AppConnectionString = "Data Source=sedswjpsql02;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
+                AppConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.MBC5ConnectionString"].ConnectionString;
             }
-
-            if (keepLoading)
-            {
+                List<string> roles = new List<string>();
+                this.ValidatedUserRoles = roles;
                 this.WindowState = FormWindowState.Maximized;
-          
 
-                if (this.ForcePasswordChange)
+                this.Hide();
+
+                for (int i = 0; i < 3; i++)
                 {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
-
-                    frmPassword.ShowDialog();
-                    this.Cursor = Cursors.Default;
-                    if (ForcePasswordChange)
+                    if (this.Login())
                     {
-                        MessageBox.Show("Password was not changed.");
+                        break;
+                    };
+                    if (i == 2)
+                    {
+                        //if 2 tries close 
+                        MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        keepLoading = false;
                         Application.Exit();
                     }
                 }
-           
-                ValidateUserRoles();
-               SetMenu();
-                mnuMain.Enabled = true;
-                 
-                this.WindowState = FormWindowState.Maximized;
+
+                if (keepLoading)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+
+
+                    if (this.ForcePasswordChange)
+                    {
+                        this.Cursor = Cursors.AppStarting;
+
+                        frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
+
+                        frmPassword.ShowDialog();
+                        this.Cursor = Cursors.Default;
+                        if (ForcePasswordChange)
+                        {
+                            MessageBox.Show("Password was not changed.");
+                            Application.Exit();
+                        }
+                    }
+
+                    ValidateUserRoles();
+                    SetMenu();
+                    mnuMain.Enabled = true;
+
+                    this.WindowState = FormWindowState.Maximized;
+                }
+
             }
-
-
-
-            
-        }
+        
         #region "Properties"
         public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
@@ -591,7 +596,7 @@ namespace Mbc5.Forms
         public int GetNewInvno()
         {
 
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             sqlClient.CommandText("SELECT Invno FROM Invcnum");
           
@@ -632,7 +637,7 @@ namespace Mbc5.Forms
         }
         public string GetProdNo()
         {
-            var sqlClient = new SQLCustomClient() ;
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString) ;
             var strQuery = "Select lstprodno from prodnum";
             sqlClient.CommandText(strQuery);
             var prodResult =sqlClient.SelectSingleColumn();
@@ -669,7 +674,7 @@ namespace Mbc5.Forms
         }
         public string GetCoverNumber()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             //useing hard code until function to generate invno is done
             var strQuery = "Select spcover from Spcover";
             sqlClient.CommandText(strQuery);
@@ -713,7 +718,7 @@ namespace Mbc5.Forms
         {
             //MixbookOrderRuleCheck();
             string value = "";
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             
                 sqlClient.CommandText(@"
                     Select Top(200) Invno,ShipName
@@ -831,7 +836,7 @@ namespace Mbc5.Forms
         {
             //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
             //When order is rerouted TF Will cancle in our system
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select Distinct ClientOrderId,ShipName From MixbookOrder Where Pages>199 AND ShipName !='' AND MixbookOrderStatus ='In Process'");
             var result = sqlClient.SelectMany<OrdecheckRule1>();
             if (result.IsError)
@@ -865,7 +870,7 @@ namespace Mbc5.Forms
         private void SetJobTicketsPrinted()
         {
            int batchNumber = 0;
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select Max(JobPrintBatch)From Mixbookorder");
             var result = sqlClient.SelectSingleColumn();
             if (result.IsError)
@@ -899,7 +904,7 @@ namespace Mbc5.Forms
         private void PrintRemakeTickets()
         {
          
-              var sqlClient = new SQLCustomClient().CommandText(@"
+              var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"
                 Select MO.Invno
                 ,MO.ShipName
                 ,MO.ClientOrderId
@@ -994,7 +999,7 @@ namespace Mbc5.Forms
         }
         private void SetRemakeTicketsPrinted()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
             foreach (RemakeTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
@@ -1411,7 +1416,7 @@ namespace Mbc5.Forms
             {
                 Process snippingToolProcess = new Process();
                 snippingToolProcess.EnableRaisingEvents = true;
-                if (!Environment.Is64BitProcess)
+                if (!System.Environment.Is64BitProcess)
                 {
                     snippingToolProcess.StartInfo.FileName = "C:\\Windows\\sysnative\\SnippingTool.exe";
                     snippingToolProcess.Start();
@@ -2089,7 +2094,7 @@ namespace Mbc5.Forms
         }
         public void CleanShipping()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmd = @"Delete From [MixbookShipping] Where ShipperNo NOT IN ('R5556X','R5646Y')";
             sqlClient.CommandText(cmd);
 

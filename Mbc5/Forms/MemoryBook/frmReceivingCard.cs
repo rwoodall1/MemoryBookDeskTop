@@ -61,7 +61,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 		private void toolStripButton4_Click(object sender, EventArgs e) {
 			//new
-			var sqlClient = new SQLCustomClient();
+			var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 			sqlClient.AddParameter("@Invno", Invno);
 			sqlClient.CommandText(@"
 					INSERT INTO RCard (Schcode,Schname,Schemail,Contemail,ContFname,ContLname,Bcontemail,BContFname,BContLname,CContemail,

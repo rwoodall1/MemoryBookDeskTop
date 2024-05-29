@@ -154,7 +154,7 @@ namespace Mbc5.Forms.Meridian {
                 MbcMessageBox.Information("New order record was not created.");
                     return;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Insert into MQuotes (Schcode,Bpyear,Invno,Contryear,Schtype,Booktype,Sf,Lf) Values(@Schcode,@Bpyear,@Invno,@Contryear,@Schtype,@Booktype,@Sf,@Lf)");
             sqlQuery.AddParameter("@Schcode",this.Schcode);
             sqlQuery.AddParameter("@Contryear",vYear);
@@ -849,14 +849,14 @@ namespace Mbc5.Forms.Meridian {
    
         private void SetConnectionString()
         {
-            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            lkpJosNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mcustTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
-            datecontTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
-            statesTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
-            contpstnTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
-            meridianCategoryTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
-            lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            lkpJosNameTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            mcustTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            datecontTableAdapter.Connection.ConnectionString= ApplicationConfig.DefaultConnectionString;
+            statesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            contpstnTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            meridianCategoryTableAdapter.Connection.ConnectionString= ApplicationConfig.DefaultConnectionString;
+            lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
 
         }
        public override void Fill()
@@ -1005,7 +1005,7 @@ namespace Mbc5.Forms.Meridian {
         private void Test()
         {
            
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlQuery.ClearParameters();
                 
                
@@ -1051,7 +1051,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void btnEmailProdTkt_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
                                     Case
                                       When Q.prodcode='MAG' THEN 'MAGNET'
@@ -1132,7 +1132,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void btnProdTkt_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
                                     Case
                                       When Q.prodcode='MAG' THEN 'MAGNET'

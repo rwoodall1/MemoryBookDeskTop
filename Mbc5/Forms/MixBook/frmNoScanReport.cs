@@ -13,6 +13,7 @@ using Equin.ApplicationFramework;
 using CsvHelper;
 using System.IO;
 using System.Diagnostics;
+using Mbc5.Classes;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmNoScanReport : BaseClass.frmBase
@@ -87,7 +88,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void LoadBooks()
         {
-            var sqlClient1 = new SQLCustomClient();
+            var sqlClient1 = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdBook = @"Select 
              
                  MO.ShipName
@@ -152,7 +153,7 @@ namespace Mbc5.Forms.MixBook
         private void LoadCovers()
         {
             
-            var sqlClient1 = new SQLCustomClient();
+            var sqlClient1 = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             //OLD Do Not remove
             //string cmdBook = @"Select 
             //                                 MO.ShipName

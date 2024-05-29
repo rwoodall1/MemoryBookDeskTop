@@ -49,8 +49,8 @@ namespace Mbc5.Forms.MemoryBook
         {
             InitializeComponent();
             this.DisableControls(this.tabSales);
-           
-            
+
+
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             this.Invno = 0;
@@ -61,22 +61,22 @@ namespace Mbc5.Forms.MemoryBook
         private void SetConnectionString()
         {
             this.frmMain = (frmMain)this.MdiParent;
-            this.FormConnectionString = frmMain.AppConnectionString;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.xtraTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpDiscountTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.FormConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.paymntTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invCustTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invHstTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invoiceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.xtraTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpDiscountTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             this.opyProductsTableAdapter.Connection.ConnectionString = "Server=Owbswjtsql06.jostens.com,56609;Database=OPY_Demo;User ID=MbcUser_demo;Password='S3dALMbcOct2122';Encrypt=True;TrustServerCertificate=True;Connection Timeout=5";
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
-            
-         
+
+
 
             txtModifiedByPay.Text = this.ApplicationUser.id;
             pg1.AutoScroll = false;
@@ -101,7 +101,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnPoSrch_Click(object sender, EventArgs e)
         {
-            if (txtPoSrch.Text.Length<1)
+            if (txtPoSrch.Text.Length < 1)
             {
                 MbcMessageBox.Information("Enter data to search on.", "");
                 return;
@@ -178,15 +178,15 @@ namespace Mbc5.Forms.MemoryBook
             int vNoPages = 0;
             int vNoCopies = 0;
             int.TryParse(txtNoPages.Text, out vNoPages);
-             int.TryParse(txtNocopies.Text, out vNoCopies);
-            int vFbValue = chkFlashbax.Checked?8:0;
+            int.TryParse(txtNocopies.Text, out vNoCopies);
+            int vFbValue = chkFlashbax.Checked ? 8 : 0;
             int vPressCopies = (vNoPages + (vFbValue / 4)) * vNoCopies;
-           
-            var sqlquery = new SQLCustomClient();
+
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.CommandText("Update Produtn Set PressCopies=@PressCopies Where Invno=@Invno");
             sqlquery.AddParameter("@PressCopies", vPressCopies);
-            sqlquery.AddParameter("@Invno",Invno);
-           var result= sqlquery.Insert();
+            sqlquery.AddParameter("@Invno", Invno);
+            var result = sqlquery.Insert();
             if (result.IsError)
             {
                 ExceptionlessClient.Default.CreateLog("Error PressCopies")
@@ -201,14 +201,14 @@ namespace Mbc5.Forms.MemoryBook
         #region "Search"
         public override void SchCodeSearch()
         {
-            if (quotesBindingSource.Count > 0) { 
+            if (quotesBindingSource.Count > 0) {
                 var saveResult = this.Save(tabSales.SelectedIndex);
-            if (saveResult.IsError)
-            {
+                if (saveResult.IsError)
+                {
 
-                return;
+                    return;
+                }
             }
-        }
 
 
             var currentSchool = this.Schcode;
@@ -268,11 +268,11 @@ namespace Mbc5.Forms.MemoryBook
             }
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
             string schname = "";
-            if (currentrow!=null)
+            if (currentrow != null)
             {
                 schname = currentrow["schname"].ToString();
             }
-            
+
 
             frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
 
@@ -334,13 +334,13 @@ namespace Mbc5.Forms.MemoryBook
 
             var oraclecode = "";
             try {
-                 DataRowView currentrow = (DataRowView)custBindingSource.Current;
-                oraclecode = currentrow.Row.IsNull("oraclecode") ?"":currentrow["oraclecode"].ToString();
+                DataRowView currentrow = (DataRowView)custBindingSource.Current;
+                oraclecode = currentrow.Row.IsNull("oraclecode") ? "" : currentrow["oraclecode"].ToString();
 
-            } catch(Exception ex) { }
-           
+            } catch (Exception ex) { }
 
-                
+
+
 
             frmSearch frmSearch = new frmSearch("OracleCode", "SALES", oraclecode);
 
@@ -461,7 +461,7 @@ namespace Mbc5.Forms.MemoryBook
             var invno = "0";
             if (currentrow != null)
             {
-                 invno = currentrow["invno"].ToString();
+                invno = currentrow["invno"].ToString();
             }
 
             frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
@@ -590,9 +590,9 @@ namespace Mbc5.Forms.MemoryBook
                 lblIncollections.Visible = vHoldPayment;
                 bool vshpdate = dr.Row.IsNull("shpdate");
                 lblShipped.Visible = !vshpdate;
-               
 
-            }catch(Exception ex)
+
+            } catch (Exception ex)
             {
 
             }
@@ -604,29 +604,29 @@ namespace Mbc5.Forms.MemoryBook
             Application.DoEvents();
             if (type == "Half")
             {
-                    var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
-                    var vKitRecvDate1 = (DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"];
-                    var vKitRecvDate = vKitRecvDate1.ToString("d");
-                    string vPin = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
-                    var vPdfGenerator = new PdfAttachementGenerator();
-                    var result = vPdfGenerator.GenerateAttachement(this.reportViewer1, schname + " INVOICE.pdf");
-                    if (result.IsError)
-                    {
-                        MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
-                        return;
-                    }
-                    var newPath = result.Data;
-                    var emailHelper = new EmailHelper();
-                    string sub = "Memory Book Payment Reminder";
-                    string body = @"Your book was submitted on " + vKitRecvDate + @". Just a reminder a payment for your order is due within 10 business days of your book submission date.
+                var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
+                var vKitRecvDate1 = (DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"];
+                var vKitRecvDate = vKitRecvDate1.ToString("d");
+                string vPin = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var result = vPdfGenerator.GenerateAttachement(this.reportViewer1, schname + " INVOICE.pdf");
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+                var newPath = result.Data;
+                var emailHelper = new EmailHelper();
+                string sub = "Memory Book Payment Reminder";
+                string body = @"Your book was submitted on " + vKitRecvDate + @". Just a reminder a payment for your order is due within 10 business days of your book submission date.
                     If you are not paying in full a half payment or a Purchase Order for the entire amount will need to be submitted. I have attached an invoice.<br/><br/>
                     You may pay by credit card  <a href=https://pay.memorybook.com>Memorybook</a> or submit a check. If you are paying online you need:</br> 
                     Account Code:<b>" + Schcode + "</b> School PIN:<b>" + vPin + "</b><br/><br/><br/>Please contact your representative if you have any questions. Thank you!";
-                    List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
-                    OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
-                    Attachements.Add(Attachement);
-                    string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
-                    emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
+                List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+                Attachements.Add(Attachement);
+                string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
             }
             else if (type == "NoPaymentRec5")
             {
@@ -840,7 +840,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void EditPayment()
         {
-            
+
             txtPayoamt.Enabled = true;
             txtInitials.Enabled = true;
             pmtdateDateBox.Enabled = true;
@@ -855,9 +855,9 @@ namespace Mbc5.Forms.MemoryBook
         }
         private bool CalculatePayments()
         {
-           return CalculatePayments(lblInvoice.Text);
+            return CalculatePayments(lblInvoice.Text);
         }
-       private bool CalculatePayments(string invoiceNumber)
+        private bool CalculatePayments(string invoiceNumber)
         {
             bool retval = false;
             decimal? paymentTotals = 0;
@@ -949,7 +949,7 @@ namespace Mbc5.Forms.MemoryBook
                             ,schcity,schstate,schzip,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages
                             ,@nocopies,@book_each,@source,@contfname,@contlname,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks
                             ,@SalesTax,@BeforeTaxTotal,@Schname,@InvoiceAddr,@InvoiceAddr2,@InvoiceCity,@InvoiceState,@InvoiceZipCode,GETDATE(),GETDATE(),@ModifiedBy)";
-                
+
 
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
@@ -1501,39 +1501,39 @@ namespace Mbc5.Forms.MemoryBook
 
             if (quotesBindingSource.Count > 0)
             {
-                
-
-                    try
-                    {
-                        CalculatePressCopies();//save press copies into produtn, assumed success if not exceptionless will catch.
-                        this.quotesBindingSource.EndEdit();
-                    
-                        var a = quotesTableAdapter.Update(dsSales.quotes);
-                        //must refill so we get updated time stamp so concurrency is not thrown
-                  
-                        UpdateProductionCopyPages();//updates production with number of copies and pages
-                    
-                    }
-                    catch (DBConcurrencyException ex1)
-                    {
-                       // MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
-                        //this.Fill();
-                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
-                        //if (result == DialogResult.Yes)
-                        //{
-                        //    Save(false);
-                        //}
-                        processingResult.IsError = true;
-                        processingResult.Errors.Add(new ApiProcessingError("Another user has updated this record, your copy is not current. Your data is being reverted, Please re - enter your data.", "Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", ""));
-                    }
-                    catch (Exception ex)
-                    {
 
 
-                        processingResult.IsError = true;
-                        processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
-                    }
-               
+                try
+                {
+                    CalculatePressCopies();//save press copies into produtn, assumed success if not exceptionless will catch.
+                    this.quotesBindingSource.EndEdit();
+
+                    var a = quotesTableAdapter.Update(dsSales.quotes);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+
+                    UpdateProductionCopyPages();//updates production with number of copies and pages
+
+                }
+                catch (DBConcurrencyException ex1)
+                {
+                    // MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                    //this.Fill();
+                    //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
+                    //if (result == DialogResult.Yes)
+                    //{
+                    //    Save(false);
+                    //}
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("Another user has updated this record, your copy is not current. Your data is being reverted, Please re - enter your data.", "Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", ""));
+                }
+                catch (Exception ex)
+                {
+
+
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+                }
+
             }
             return processingResult;
         }
@@ -1559,7 +1559,7 @@ namespace Mbc5.Forms.MemoryBook
             if (String.IsNullOrEmpty(lblInvoice.Text) || lblInvoice.Text == "0")
             {
                 this.DisableControls(this);
-               
+
                 EnableControls(btnPoSrch);
                 EnableControls(txtPoSrch);
             }
@@ -1571,9 +1571,9 @@ namespace Mbc5.Forms.MemoryBook
             {
                 //this.TaxRate = this.GetTaxRate();
             } else {
-               // this.TaxRate = 0;
+                // this.TaxRate = 0;
             }
-           
+
 
 
             this.lblTaxRateValue.Text = this.TaxRate.ToString();
@@ -1699,7 +1699,7 @@ namespace Mbc5.Forms.MemoryBook
                     lblprofprice.Text = vprofprce.ToString("c");
 
                     lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
-                     BookCalc();
+                    BookCalc();
                 }
             }
 
@@ -1841,7 +1841,7 @@ namespace Mbc5.Forms.MemoryBook
             }
 
             string cmd = "";
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.AddParameter("@Copies", vCopies);
             var result = new ApiProcessingResult<string>();
             switch (vInkNum)
@@ -1909,7 +1909,7 @@ namespace Mbc5.Forms.MemoryBook
             // removes old tax calc
             this.TaxRate = 0;
             //
-            decimal vbookTotal=0;
+            decimal vbookTotal = 0;
             decimal vBookCalcTax = 0;
             try
             {
@@ -2163,7 +2163,7 @@ namespace Mbc5.Forms.MemoryBook
                         vParseResult = decimal.TryParse(txtDesc4tot.Text, out Desc4Tot);
                         vBookCalcTax += (this.TaxRate * (SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot));
                         //old way of sales tax
-                       // this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);                    
+                        // this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);                    
                         //this.lblSalesTax.Text = this.SalesTax.ToString("c");
 
                         decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
@@ -2192,8 +2192,8 @@ namespace Mbc5.Forms.MemoryBook
                         //vBookCalcTax += (persTot * this.TaxRate);
                         //vBookCalcTax += (iconTot * this.TaxRate);
                         //this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
-                       // this.lblSalesTax.Text = this.SalesTax.ToString("c");
-                       //new tax cal
+                        // this.lblSalesTax.Text = this.SalesTax.ToString("c");
+                        //new tax cal
                         vParseResult = decimal.TryParse(lblSalesTax.Text.Replace("$", ""), out vTax);
                         SubTotal += (disc1 + disc2 + disc3 + msTot + persTot + iconTot);
                         if (!donotchargeschoolsalestaxCheckBox.Checked)
@@ -2207,7 +2207,7 @@ namespace Mbc5.Forms.MemoryBook
                             this.lblSalesTax.Text = vTax.ToString("$0.00");
                             lblTaxRateValue.Text = "$.00";
                         }
-                      
+
 
 
                         //----------------------------------------------------------
@@ -2242,18 +2242,18 @@ namespace Mbc5.Forms.MemoryBook
             }
             this.CurPriceYr = txtBYear.Text;
 
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies");
-            sqlClient.AddParameter("@Yr", txtBYear.Text);          
+            sqlClient.AddParameter("@Yr", txtBYear.Text);
             if (chkAllClr.Checked)
             {
                 sqlClient.AddParameter("@Type", "Color");
-               
+
             }
             else
             {
                 sqlClient.AddParameter("@Type", "Base");
-              
+
             }
             var selectResult = sqlClient.SelectMany<Price>();
             if (selectResult.IsError)
@@ -2263,8 +2263,8 @@ namespace Mbc5.Forms.MemoryBook
                 return;
 
             }
-            this.Pricing =(List<Price>) selectResult.Data;
-            if (this.Pricing==null || this.Pricing.Count==0)
+            this.Pricing = (List<Price>)selectResult.Data;
+            if (this.Pricing == null || this.Pricing.Count == 0)
             {
                 MbcMessageBox.Error("Pricing was not found for this contract year");
             }
@@ -2272,7 +2272,7 @@ namespace Mbc5.Forms.MemoryBook
         private void GetBookOptionPricing()
         {
             this.CurPriceYr = txtBYear.Text;
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText("Select * From BookOptionPricing where yr=@Yr");
             sqlClient.ClearParameters();
             if (string.IsNullOrEmpty(txtBYear.Text))
@@ -2281,7 +2281,7 @@ namespace Mbc5.Forms.MemoryBook
                 return;
             }
             sqlClient.AddParameter("@Yr", txtBYear.Text);
-           var selectResult=sqlClient.Select<BookOptionPrice>();
+            var selectResult = sqlClient.Select<BookOptionPrice>();
             if (selectResult.IsError)
             {
                 Log.Fatal("Error retrieving Book Option Pricing" + selectResult.Errors[0].DeveloperMessage);
@@ -2290,7 +2290,7 @@ namespace Mbc5.Forms.MemoryBook
             }
             this.BookOptionPricing = (BookOptionPrice)selectResult.Data;
 
-            
+
             if (this.BookOptionPricing == null)
             {
                 MessageBox.Show("Book Option pricing for this contract year was not found. Contact your supervisor.");
@@ -2451,7 +2451,7 @@ namespace Mbc5.Forms.MemoryBook
                     this.lkpDiscountTableAdapter.Fill(this.lookUp.lkpDiscount);
                     custTableAdapter.Fill(dsSales.cust, Schcode);
                     var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
-                    var vspcinst= ((DataRowView)custBindingSource.Current).Row["spcinst"].ToString().Trim();
+                    var vspcinst = ((DataRowView)custBindingSource.Current).Row["spcinst"].ToString().Trim();
 
                     this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
                     if (this.SchoolZipCode.Length > 5)
@@ -2470,7 +2470,7 @@ namespace Mbc5.Forms.MemoryBook
                 try
                 {
                     quotesTableAdapter.FillByInvno(dsSales.quotes, Invno);
-                    opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts,Invno);
+                    opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts, Invno);
                     if (quotesBindingSource.Count == 0)
                     {
                         DisableControls(this.tabSales);
@@ -2478,19 +2478,19 @@ namespace Mbc5.Forms.MemoryBook
                     xtraTableAdapter.Fill(dsExtra.xtra, Invno);
                     CalculateEach();
                     BookCalc();
-                    
+
                     SetCodeInvno();
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "");
                 }
 
             }
             else { EnableControls(this); }
-          
-               
+
+
             txtModifiedBy.Text = this.ApplicationUser.id;
             txtModifiedByInv.Text = this.ApplicationUser.id;
             txtModifiedByInvdetail.Text = this.ApplicationUser.id;
@@ -2517,13 +2517,13 @@ namespace Mbc5.Forms.MemoryBook
                         {
                             MbcMessageBox.Error("Sales record failed to validate.");
                             return;
-                        }else if (!this.Validate())
+                        } else if (!this.Validate())
                         {
                             MbcMessageBox.Error("Sales record failed to validate.");
                             return;
                         }
-                            
-                            break;
+
+                        break;
                     }
 
 
@@ -2532,7 +2532,7 @@ namespace Mbc5.Forms.MemoryBook
                     SaveSucceded = true;
                     return;
                     break;
-                    
+
                 case 3:
                     if (!this.ValidatePayment())
                     {
@@ -2544,7 +2544,7 @@ namespace Mbc5.Forms.MemoryBook
                     SaveSucceded = true;
                     return;
                     break;
-                   
+
 
             }
 
@@ -2555,9 +2555,9 @@ namespace Mbc5.Forms.MemoryBook
                 this.quotesBindingSource.EndEdit();
                 this.paymntBindingSource.EndEdit();
                 this.custBindingSource.EndEdit();
-               
-                backgroundWorker1.RunWorkerAsync("Save"+ tabSales.SelectedIndex.ToString());
-               
+
+                backgroundWorker1.RunWorkerAsync("Save" + tabSales.SelectedIndex.ToString());
+
             }
             else
             {
@@ -2572,16 +2572,16 @@ namespace Mbc5.Forms.MemoryBook
 
             }
 
-            Cursor.Current= Cursors.Default;
+            Cursor.Current = Cursors.Default;
         }
-       
+
         public ApiProcessingResult<bool> Save(int vIndex)
         {
             var processingResult = new ApiProcessingResult<bool>();
-            
-            
 
-                switch (vIndex)
+
+
+            switch (vIndex)
             {
                 case 0:
                 case 1:
@@ -2590,17 +2590,17 @@ namespace Mbc5.Forms.MemoryBook
                         if (salesResult.IsError)
                         {
                             processingResult.IsError = true;
-                            processingResult.Errors.Add(new ApiProcessingError("Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, "Sales record failed to save:" + salesResult.Errors[0].ErrorMessage,""));
+                            processingResult.Errors.Add(new ApiProcessingError("Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, "Sales record failed to save:" + salesResult.Errors[0].ErrorMessage, ""));
                             processingResult.IsError = true;
                         }
-                       
+
 
                         break;
                     }
 
 
                 case 2:
-               
+
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError("This function is not available in the invoice tab.", "This function is not available in the invoice tab.", ""));
                     processingResult.IsError = true;
@@ -2609,12 +2609,12 @@ namespace Mbc5.Forms.MemoryBook
                     var result = SavePayment();
                     if (result.IsError)
                     {
-                     
+
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Payment record failed to save:" + result.Errors[0].ErrorMessage, "Payment record failed to save:" + result.Errors[0].ErrorMessage, ""));
                         processingResult.IsError = true;
                     }
-                    
+
 
                     break;
                 case 4:
@@ -2622,10 +2622,10 @@ namespace Mbc5.Forms.MemoryBook
                     processingResult.Errors.Add(new ApiProcessingError("This function is not available in the extra tab,use update button on form.", "This function is not available in the extra tab,use update button on form.", ""));
                     processingResult.IsError = true;
                     break;
-                   
+
 
             }
-      
+
 
             return processingResult;
         }
@@ -2704,19 +2704,19 @@ namespace Mbc5.Forms.MemoryBook
                     numBooks += 2;
                 }
 
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.ClearParameters();
                 sqlClient.CommandText("Update produtn set NoCopies=@NoCopies, NoPages=@NoPages where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@NoCopies", numBooks);
                 sqlClient.AddParameter("@NoPages", this.txtNoPages.Text);
-               var updateResult= sqlClient.Update();
-                if(updateResult.IsError)
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
                 {
                     Log.Error("Failed to update production copies:" + updateResult.Errors[0].ErrorMessage);
                     MbcMessageBox.Error("Failed to update production copies:" + updateResult.Errors[0].ErrorMessage, "");
                 }
-   
+
             }
             Cursor.Current = Cursors.Default;
         }
@@ -4352,9 +4352,9 @@ namespace Mbc5.Forms.MemoryBook
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
-            
+
             List<string> address = new List<string>();
-            string contact1email = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "": ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+            string contact1email = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
             string contact2email = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
             string contact3email = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
             string vJobNo = ((DataRowView)quotesBindingSource.Current).Row.IsNull("jobno") ? "" : ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
@@ -4372,25 +4372,25 @@ namespace Mbc5.Forms.MemoryBook
                 address.Add(contact3email);
             }
 
-            string vBody= @"Thank you for signing up for Memory Book Online Parent Pay.<br/>
+            string vBody = @"Thank you for signing up for Memory Book Online Parent Pay.<br/>
             Please go to <a href=https://coverorders.memorybook.com/login> <font color=blue> Cover Orders Center </font> </a> to customize your online pay fliers to send home with students or post to your schools website.<br/>
             User Name:" + vJobNo + @" <br/>
             Password:Adviser<br/>
-            PLEASE NOTE YOUR SCHOOLS CODE IS:<strong> "+ Schcode + @"</strong> This is the number you will put on the flier.<br/><br/>
+            PLEASE NOTE YOUR SCHOOLS CODE IS:<strong> " + Schcode + @"</strong> This is the number you will put on the flier.<br/><br/>
             Below please find your Online Pay Advisor access information.You can copy and paste this link <a href=http://www.shop.memorybook.com/admin/><font color=blue> http://www.shop.memorybook.com/admin/ </font> </a>  into a browser to take you to the advisor log in page. 
             <br/><br/>
-            School Code: "+Schcode+@"<br/>
-            Password: "+vPassword + @"<br/> <br/>
+            School Code: " + Schcode + @"<br/>
+            Password: " + vPassword + @"<br/> <br/>
 
             * View Orders Submitted<br/>
             * Generate a report of all orders and order information";
             var vattachementList = new List<OutlookAttachemt>();
             var vAttachement = new OutlookAttachemt() {
                 Name = "2019 Online Pay Adviser",
-                Path =ConfigurationManager.AppSettings["AdviserFile"].ToString()  };
+                Path = ConfigurationManager.AppSettings["AdviserFile"].ToString() };
             vattachementList.Add(vAttachement);
-             EmailHelper emailHelper = new EmailHelper();
-            emailHelper.SendOutLookEmail("Memory Book Online Pay", address, null, vBody, EmailType.Mbc,vattachementList);
+            EmailHelper emailHelper = new EmailHelper();
+            emailHelper.SendOutLookEmail("Memory Book Online Pay", address, null, vBody, EmailType.Mbc, vattachementList);
             Cursor.Current = Cursors.Default;
 
         }
@@ -4412,7 +4412,7 @@ namespace Mbc5.Forms.MemoryBook
                     e.Cancel = true;
                 }
             }
-            if (this.tabSales.SelectedIndex == 0 || this.tabSales.SelectedIndex == 1)
+            if (this.tabSales.SelectedIndex == 0)
             {
                 var salesResult = SaveSales();
                 Fill();
@@ -4421,7 +4421,16 @@ namespace Mbc5.Forms.MemoryBook
                     e.Cancel = true;
                 }
             }
-            
+            if (this.tabSales.SelectedIndex == 1)
+            {
+               var result= this.SaveOPYRecord();
+                if (result.IsError)
+                {
+                    e.Cancel = true;
+                }
+
+            }
+
 
         }
 
@@ -4458,7 +4467,7 @@ namespace Mbc5.Forms.MemoryBook
             {
                 this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
                 SetCrudButtons();
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
                 ex.ToExceptionless()
@@ -4482,7 +4491,7 @@ namespace Mbc5.Forms.MemoryBook
                 MbcMessageBox.Error("Failed to retrieve invoice information.", "");
                 return;
             }
-            
+
 
 
         }
@@ -4533,22 +4542,22 @@ namespace Mbc5.Forms.MemoryBook
 
         private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
-                  Save(false);
-                    if (!SaveSucceded)
-                    {
-                        var result = MessageBox.Show("Record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (result == DialogResult.No)
-                        {
-                            e.Cancel = true;
-                            return;
-                        }
-                    }
+
+            Save(false);
+            if (!SaveSucceded)
+            {
+                var result = MessageBox.Show("Record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
         }
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")"; }
+            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# " + Invno.ToString() + ")"; }
             catch
             {
 
@@ -4692,7 +4701,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnCreateWIP_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"
 			Select Q.Invno AS QuoteInvno,Q.Schcode,P.Invno AS ProdutnInvno,C.Invno AS CoversInvno,W.Invno AS WipInvno 
 			From Quotes Q
@@ -4838,7 +4847,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             try { frmMain.HideSearchButtons(); } catch { }
         }
-       
+
 
 
         private void btnCreateInvoice_Click(object sender, EventArgs e)
@@ -4914,14 +4923,14 @@ namespace Mbc5.Forms.MemoryBook
             {
                 vTaxTotal = 0;
             }
-            
-            
+
+
             try
             {
-             
-                lblInvoiceTaxRate.Text = Math.Round((vTaxTotal / vBookSubtotal),3).ToString();
-                
-            } catch{ };
+
+                lblInvoiceTaxRate.Text = Math.Round((vTaxTotal / vBookSubtotal), 3).ToString();
+
+            } catch { };
             lblTaxTotal.Text = vTaxTotal.ToString("0.00");
             lblInvoiceTotal.Text = ((quantity * vBookPrice) + vTaxTotal + vShipping).ToString("0.00");
         }
@@ -4949,7 +4958,7 @@ namespace Mbc5.Forms.MemoryBook
         private void btnAddExtra_Click(object sender, EventArgs e)
         {
 
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             if (xtraBindingSource.Count == 0)
             {
 
@@ -4968,7 +4977,7 @@ namespace Mbc5.Forms.MemoryBook
                     MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
                     return;
                 }
-                try {xtraTableAdapter.Fill(dsExtra.xtra, Invno); } catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+                try { xtraTableAdapter.Fill(dsExtra.xtra, Invno); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
                 this.EnableAllControls(tabSales.SelectedTab);
             }
             else
@@ -4992,14 +5001,14 @@ namespace Mbc5.Forms.MemoryBook
                                 Where Invno=@Invno";
 
                 sqlquery.AddParameter("@Invno", Invno);
-                sqlquery.AddParameter("@extrabooks", extrabooksTextBox.Text==""?"0": extrabooksTextBox.Text);
+                sqlquery.AddParameter("@extrabooks", extrabooksTextBox.Text == "" ? "0" : extrabooksTextBox.Text);
                 sqlquery.AddParameter("@exunfinish", exunfinishTextBox.Text == "" ? "0" : exunfinishTextBox.Text);
                 sqlquery.AddParameter("@extrbkshpd", extrbkshpdTextBox.Text == "" ? "0" : extrbkshpdTextBox.Text);
                 sqlquery.AddParameter("@exreplshpd", exreplshpdTextBox.Text == "" ? "0" : exreplshpdTextBox.Text);
-                
+
                 sqlquery.AddParameter("@extrbktot", this.Schcode);
                 sqlquery.AddParameter("@exonhand", lblOnHand.Text == "" ? "0" : lblOnHand.Text);
-                sqlquery.AddParameter("@extrbkprc", extrbkprcTextBox1.Text== "" ? "0" : extrbkprcTextBox1.Text);
+                sqlquery.AddParameter("@extrbkprc", extrbkprcTextBox1.Text == "" ? "0" : extrbkprcTextBox1.Text);
                 sqlquery.AddParameter("@xnotes", xnotesTextBox.Text);
                 sqlquery.AddParameter("@room", roomTextBox.Text);
                 sqlquery.AddParameter("@shelf", shelfTextBox.Text);
@@ -5028,7 +5037,7 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     GetXtraInvoices();
                 }
-            }else if (this.tabSales.SelectedIndex == 1)
+            } else if (this.tabSales.SelectedIndex == 1)
             {
                 if (opyProductsBindingSource.Count == 0)
                 {
@@ -5070,19 +5079,19 @@ namespace Mbc5.Forms.MemoryBook
             CalculateXtra();
         }
 
-        
+
 
         private void txtShippingCharges_Leave(object sender, EventArgs e)
         {
             CalculateXtraInvoice();
         }
 
-        
+
 
         private void btnApplyInvoice_Click(object sender, EventArgs e)
         {
 
-            if (txtQuantity.Text==""||txtQuantity.Text=="0")
+            if (txtQuantity.Text == "" || txtQuantity.Text == "0")
             {
                 errorProvider1.SetError(txtQuantity, "Quantity required");
                 return;
@@ -5101,43 +5110,43 @@ namespace Mbc5.Forms.MemoryBook
             if (vInvoiceQty > vInventoryQty)
             {
                 errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
-               
+
                 return;
 
             }
 
 
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             try
             {
                 string cmdText = @"Insert into Invoice (Schname,Contryear,QteDate,Schcode,NoCopies,book_ea,BeforeTaxTotal,invtot,Schaddr,Schaddr2,schcity,Schstate,Schzip,contfname,contlname,baldue,SalesTax,Invno,DateCreated,DateModified,ModifiedBy,IsExtra) 
                     VALUES(@Schname,@contryear,@qtedate,@Schcode,@NoCopies,@book_each,@BeforeTaxTotal,@invtot,@Schaddr,@Schaddr2,@Schcity,@Schstate,@Schzip,@contfname,@contlname,@baldue,@SalesTax,@invno,GETDATE(),GETDATE(),@ModifiedBy,1)";
-                            sqlquery.CommandText(cmdText);
-                            sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["InvoiceName"].ToString().Trim());
-                            sqlquery.AddParameter("@contryear", lblinvoiceYear.Text);
-                            sqlquery.AddParameter("@qtedate", DateTime.Now);
-                            sqlquery.AddParameter("@schcode", this.Schcode);
-                            sqlquery.AddParameter("@nocopies", txtQuantity.Text.Trim());
-                            sqlquery.AddParameter("@book_each", lblBookPrice.Text.Replace("$", "").Replace(",", ""));
-                            var vBookTotal = lblBookTotalValue.ConvertToDecimal();
-                            var vShipping = txtShippingCharges.ConvertToDecimal();
-                            
-                            sqlquery.AddParameter("@BeforeTaxTotal", vBookTotal+vShipping);
-                            sqlquery.AddParameter("@invtot", lblInvoiceTotal.Text.Replace("$", "").Replace(",", ""));   
-                                  
-                            sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim());
-                            sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim());
-                            sqlquery.AddParameter("@Schcity", ((DataRowView)this.custBindingSource.Current).Row["InvoiceCity"].ToString().Trim());
-                            sqlquery.AddParameter("@Schstate", ((DataRowView)this.custBindingSource.Current).Row["InvoiceState"].ToString().Trim());
-                            sqlquery.AddParameter("@Schzip", ((DataRowView)this.custBindingSource.Current).Row["InvoicezipCode"].ToString().Trim());
-                            sqlquery.AddParameter("@contfname", ((DataRowView)this.custBindingSource.Current).Row["contfname"].ToString().Trim());
-                            sqlquery.AddParameter("@contlname", ((DataRowView)this.custBindingSource.Current).Row["contlname"].ToString().Trim());
-                            sqlquery.AddParameter("@baldue", lblInvoiceTotal.Text.Replace("$", "").Replace(",", ""));             
-                            sqlquery.AddParameter("@SalesTax", lblTaxTotal.Text.Replace("$", "").Replace(",", ""));
-                            sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
-                            sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);                                      
-              
+                sqlquery.CommandText(cmdText);
+                sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["InvoiceName"].ToString().Trim());
+                sqlquery.AddParameter("@contryear", lblinvoiceYear.Text);
+                sqlquery.AddParameter("@qtedate", DateTime.Now);
+                sqlquery.AddParameter("@schcode", this.Schcode);
+                sqlquery.AddParameter("@nocopies", txtQuantity.Text.Trim());
+                sqlquery.AddParameter("@book_each", lblBookPrice.Text.Replace("$", "").Replace(",", ""));
+                var vBookTotal = lblBookTotalValue.ConvertToDecimal();
+                var vShipping = txtShippingCharges.ConvertToDecimal();
+
+                sqlquery.AddParameter("@BeforeTaxTotal", vBookTotal + vShipping);
+                sqlquery.AddParameter("@invtot", lblInvoiceTotal.Text.Replace("$", "").Replace(",", ""));
+
+                sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim());
+                sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim());
+                sqlquery.AddParameter("@Schcity", ((DataRowView)this.custBindingSource.Current).Row["InvoiceCity"].ToString().Trim());
+                sqlquery.AddParameter("@Schstate", ((DataRowView)this.custBindingSource.Current).Row["InvoiceState"].ToString().Trim());
+                sqlquery.AddParameter("@Schzip", ((DataRowView)this.custBindingSource.Current).Row["InvoicezipCode"].ToString().Trim());
+                sqlquery.AddParameter("@contfname", ((DataRowView)this.custBindingSource.Current).Row["contfname"].ToString().Trim());
+                sqlquery.AddParameter("@contlname", ((DataRowView)this.custBindingSource.Current).Row["contlname"].ToString().Trim());
+                sqlquery.AddParameter("@baldue", lblInvoiceTotal.Text.Replace("$", "").Replace(",", ""));
+                sqlquery.AddParameter("@SalesTax", lblTaxTotal.Text.Replace("$", "").Replace(",", ""));
+                sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
+                sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);
+
                 var result = sqlquery.Insert();
                 if (result.IsError)
                 {
@@ -5169,7 +5178,7 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     baseDescrip = "(Extra Book Sale) Black and White book with " + txtNoPages.Text + " Pages and " + txtNocopies.Text + " Copies";
                 }
-               
+
                 sqlquery.ClearParameters();
                 sqlquery.CommandText(@"INSERT INTO InvDetail (schcode,invno,descr,price,DateCreated,DateModified, ModifiedBy) 
                                        Values(@schcode,@invno,@descr,@price,GetDate(),GetDate(),@ModifiedBy)");
@@ -5184,14 +5193,14 @@ namespace Mbc5.Forms.MemoryBook
 
 
                 if (!string.IsNullOrEmpty(txtShippingCharges.Text)) {
-                    
+
                     decimal price = 0;
                     if (decimal.TryParse(txtShippingCharges.Text.Replace("$", ""), out price))
                     {
 
 
                         sqlquery.ClearParameters();
-                      
+
                         sqlquery.AddParameter("@schcode", this.Schcode);
                         sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
                         sqlquery.AddParameter("@descr", "Shipping");
@@ -5227,26 +5236,26 @@ namespace Mbc5.Forms.MemoryBook
             tabSales_Selecting(sender, null);
         }
 
-           private void CleanUpExtraInvoiceScreen()
+        private void CleanUpExtraInvoiceScreen()
         {
             //adjust inventory
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"Update Xtra Set exonhand=exonhand-@extrbkshpd,extrbkshpd=extrbkshpd+@extrbkshpd where Invno=@Invno";
             sqlquery.CommandText(cmdText);
             sqlquery.AddParameter("@Invno", Invno);
-           
-            sqlquery.AddParameter("@extrbkshpd",txtQuantity.Text);
-            var result=sqlquery.Update();
+
+            sqlquery.AddParameter("@extrbkshpd", txtQuantity.Text);
+            var result = sqlquery.Update();
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to update inventory.", "");
             }
 
             lblBookPrice.Text = "0.00";
-            lblInvoiceTaxRate.Text ="0.00";
+            lblInvoiceTaxRate.Text = "0.00";
             txtQuantity.Text = "0";
-            lblBookTotalValue.Text ="0.00";
-            
+            lblBookTotalValue.Text = "0.00";
+
             lblTaxTotal.Text = "0.00";
             lblInvoiceTotal.Text = "0.00";
             pnlInvoice.Visible = false;
@@ -5268,17 +5277,17 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnPrintXInvoice_Click(object sender, EventArgs e)
         {
-            var vInvno ="0";
+            var vInvno = "0";
             try {
-                    var vIndex = grdXtraInvoice.CurrentCell.RowIndex;
-                    vInvno = grdXtraInvoice.Rows[vIndex].Cells[0].Value.ToString(); }
+                var vIndex = grdXtraInvoice.CurrentCell.RowIndex;
+                vInvno = grdXtraInvoice.Rows[vIndex].Cells[0].Value.ToString(); }
             catch (Exception ex)
             {
                 MbcMessageBox.Information("Please select a invoice to be printed.", "");
                 return;
             }
             //vInvno = "101832";
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdInvoice = @"Select schcode,invno,CAST(qtedate as date)AS qtedate,nopages,nocopies,book_ea,source,ponum,invtot,payments,baldue,contfname,contlname,schname,schaddr,schaddr2,schcity,schstate,schzip,contryear,poamt,SalesTax,BeforeTaxTotal From Invoice where Invno=@Invno";
             string cmdInvoiceDetail = @"Select schcode,invno,descr,price,discpercent from invdetail where Invno=@Invno ";
             sqlquery.CommandText(cmdInvoice);
@@ -5289,28 +5298,28 @@ namespace Mbc5.Forms.MemoryBook
                 MbcMessageBox.Error("Could not retrieve invoice information.", "");
                 return;
             }
-            this.XrtaInvoicePrint =(XtraInvoicePrint)invoiceResult.Data;
+            this.XrtaInvoicePrint = (XtraInvoicePrint)invoiceResult.Data;
             bsxtraPrintInvoice.DataSource = this.XrtaInvoicePrint;
-          
+
             sqlquery.ClearParameters();
             sqlquery.CommandText(cmdInvoiceDetail);
             sqlquery.AddParameter("@Invno", vInvno);
-    
+
             var invoiceDetailResult = sqlquery.SelectMany<XtraInvoiceDetailPrint>();
             if (invoiceDetailResult.IsError)
             {
                 MbcMessageBox.Error("Could not retrieve invoice detail information.", "");
                 return;
             }
-            this.XrtaInvoiceDetailsPrint=(List<XtraInvoiceDetailPrint>)invoiceDetailResult.Data;
+            this.XrtaInvoiceDetailsPrint = (List<XtraInvoiceDetailPrint>)invoiceDetailResult.Data;
             if (this.XrtaInvoiceDetailsPrint == null)
             {
                 var vList = new List<XtraInvoiceDetailPrint>();
             }
 
             bsxtraPrintDetailInvoice.DataSource = this.XrtaInvoiceDetailsPrint;
-         
-           this.reportViewer2.RefreshReport();
+
+            this.reportViewer2.RefreshReport();
 
 
         }
@@ -5324,14 +5333,14 @@ namespace Mbc5.Forms.MemoryBook
             if (vInventoryQty == 0)
             {
                 errorProvider1.SetError(txtQuantity, "There is no inventory to invoice.");
-           
+
             }
 
             if (vInvoiceQty > vInventoryQty)
             {
                 errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
 
-          
+
 
             }
 
@@ -5346,7 +5355,7 @@ namespace Mbc5.Forms.MemoryBook
             Cursor.Current = Cursors.Default;
         }
 
-        
+
 
         private void pg2_Click(object sender, EventArgs e)
         {
@@ -5379,7 +5388,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             if (e.Button == MouseButtons.Right)
             {
-                List<string> roles =new List<string>() {"SA","Adminstratro"};
+                List<string> roles = new List<string>() { "SA", "Adminstratro" };
                 if (ApplicationUser.IsInOneOfRoles(roles))
                 {
                     booktypeTextBox.ReadOnly = false;
@@ -5387,12 +5396,12 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
-      
 
-     
-       
 
-      
+
+
+
+
 
         private void btnPassword_Click(object sender, EventArgs e)
         {
@@ -5403,8 +5412,8 @@ namespace Mbc5.Forms.MemoryBook
             string vSchcode = ((DataRowView)quotesBindingSource.Current).Row["schcode"].ToString().Trim();
             string vInvno = ((DataRowView)quotesBindingSource.Current).Row["invno"].ToString().Trim();
             string vJobNo = ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
-            string vContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ?"":((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim(); 
-            string vBContemail = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim(); 
+            string vContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+            string vBContemail = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
             string vCContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
             List<string> vEmailList = new List<string>();
             if (!string.IsNullOrEmpty(vContEmail))
@@ -5420,24 +5429,24 @@ namespace Mbc5.Forms.MemoryBook
                 vEmailList.Add(vCContEmail);
             }
 
-                string vBody = @"Below please find your Online Pay Advisor access information. You can copy and paste the link below into a browser to take you to the advisor log in page. http://www.shop.memorybook.com/admin/ <br/>
-                <br/>&nbsp&nbsp School Code:<b>" + vSchcode+ @"</b><br/>
+            string vBody = @"Below please find your Online Pay Advisor access information. You can copy and paste the link below into a browser to take you to the advisor log in page. http://www.shop.memorybook.com/admin/ <br/>
+                <br/>&nbsp&nbsp School Code:<b>" + vSchcode + @"</b><br/>
                 &nbsp&nbsp Password:<b>" + vInvno + @"</b><br/> <br/>
                   &nbsp&nbsp*Create the drop down list of teachers - when individuals go to order they can select their grade and teacher <br/> 
                   &nbsp&nbsp*Search for orders by order ID or Student name<br/>
                   &nbsp&nbsp*Generate a report of all orders and order information <br/><br/>
                 You can order your online pay flyers and customize them by pasting the following link; https://coverorders.memorybook.com/login <br/><br/>
-                User Name:<b>" + vJobNo+ @"</b><br/>
+                User Name:<b>" + vJobNo + @"</b><br/>
                 Password:<b>Adviser</b> </br><br/> <br/>
                 Once you are logged into the order center then click on yearbook promotional materials and then online pay fliers. Here you will be able to customize your flier, proof and approve it.<br/> 
                  <br/> &nbsp&nbsp*Enter school name<br/>
-                 &nbsp&nbsp *Enter your Pay Code " + vSchcode+ @"<br/>
+                 &nbsp&nbsp *Enter your Pay Code " + vSchcode + @"<br/>
                  &nbsp&nbsp *Enter the amount you would like to charge per book<br/>
                   &nbsp&nbsp *Enter online order cutoff date<br/>
                   &nbsp&nbsp *You can also customize the text at the bottom of the flyer to include your contact information.<br/>
                 You may also order additional promotional materials at this time through the order center.<br/><br/>Thank you.";
 
-                emailHelper.SendOutLookEmail(vsub,vEmailList,null, vBody,EmailType.Mbc);
+            emailHelper.SendOutLookEmail(vsub, vEmailList, null, vBody, EmailType.Mbc);
             Cursor.Current = Cursors.Default;
 
         }
@@ -5456,12 +5465,12 @@ namespace Mbc5.Forms.MemoryBook
             {
                 Invno = Invno,
                 PoNumber = txtPoNum.Text,
-                SchCode=Schcode,
-                NoCopies=txtNocopies.Text==""?"0": txtNocopies.Text,
+                SchCode = Schcode,
+                NoCopies = txtNocopies.Text == "" ? "0" : txtNocopies.Text,
                 BeforeTaxTotal = vtotal,
                 SalesTax = vtax,
                 Invtot = vtotal,
-                QuoteDate =qtedateDateBox.DateValue,
+                QuoteDate = qtedateDateBox.DateValue,
                 SchName = vSchname,
                 ContactFirstName = ((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim(),
                 ContactLastName = ((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim(),
@@ -5471,12 +5480,12 @@ namespace Mbc5.Forms.MemoryBook
                 SchState = ((DataRowView)custBindingSource.Current).Row["InvoiceState"].ToString().Trim(),
                 SchZipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim()
             };
-                bsAgreementHeader.DataSource = AgreementHeader;
-                var AgreementDetails= GetDetailRecords(Invno.ToString());
-                bsAgreementDetails.DataSource = AgreementDetails;
+            bsAgreementHeader.DataSource = AgreementHeader;
+            var AgreementDetails = GetDetailRecords(Invno.ToString());
+            bsAgreementDetails.DataSource = AgreementDetails;
             reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineAgreement.rdlc";
             reportViewer3.LocalReport.DataSources.Clear();
-            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsItemDetails",bsAgreementDetails));
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsItemDetails", bsAgreementDetails));
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsHeader", bsAgreementHeader));
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlinePay", quotesBindingSource));
             reportViewer3.RefreshReport();
@@ -5488,9 +5497,9 @@ namespace Mbc5.Forms.MemoryBook
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
-            try { reportViewer3.PrintDialog(); } catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            try { reportViewer3.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             Cursor.Current = Cursors.Default;
-           
+
         }
 
         private void btnPrntFlyer_Click(object sender, EventArgs e)
@@ -5501,41 +5510,41 @@ namespace Mbc5.Forms.MemoryBook
             reportViewer3.LocalReport.DataSources.Clear();
             reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlineFlyer", bsOnlineFlyer));
             //set data
-                var vFlyerData = new OnlineFlyer()
-                {
-                    SchName = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim(),
-                    SchCode = Schcode,
-                    BasicPrice = lblOprcperbk.Text,
-                    PersonalizedPrice = txtOprcperbk2.Text,
-                    HasPersonalized =(chkInkPersonal.Checked||chkInkTxt.Checked||chkFoiltxt.Checked||chkFoilIcons.Checked||chkPicPers.Checked),
-                    HasLoveLine =luvlinesCheckBox.Checked,
-                    LoveLineAmt=txtLuvLineAmt.Text ,
-                    HasAds=chkAllowAds.Checked ,
-                    EighthAdAmt=txtEighthAd.Text ,
-                    QuarterAdAmt=txtQuarterAd.Text ,
-                    HalfAdAmt=txtHaldfAd.Text ,
-                    FullAdAmt=txtFullAd.Text ,
-                    OnlineCutoff=onlinecutoDateBox.DateValue,   
-                    AdCutoff=adcutoDateBox.DateValue
-                };
-                bsOnlineFlyer.DataSource = vFlyerData;
+            var vFlyerData = new OnlineFlyer()
+            {
+                SchName = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim(),
+                SchCode = Schcode,
+                BasicPrice = lblOprcperbk.Text,
+                PersonalizedPrice = txtOprcperbk2.Text,
+                HasPersonalized = (chkInkPersonal.Checked || chkInkTxt.Checked || chkFoiltxt.Checked || chkFoilIcons.Checked || chkPicPers.Checked),
+                HasLoveLine = luvlinesCheckBox.Checked,
+                LoveLineAmt = txtLuvLineAmt.Text,
+                HasAds = chkAllowAds.Checked,
+                EighthAdAmt = txtEighthAd.Text,
+                QuarterAdAmt = txtQuarterAd.Text,
+                HalfAdAmt = txtHaldfAd.Text,
+                FullAdAmt = txtFullAd.Text,
+                OnlineCutoff = onlinecutoDateBox.DateValue,
+                AdCutoff = adcutoDateBox.DateValue
+            };
+            bsOnlineFlyer.DataSource = vFlyerData;
 
-                var vPdfGenerator = new PdfAttachementGenerator();
-                var result=vPdfGenerator.GenerateAttachement(reportViewer3, Schcode + "Flyer.pdf");
+            var vPdfGenerator = new PdfAttachementGenerator();
+            var result = vPdfGenerator.GenerateAttachement(reportViewer3, Schcode + "Flyer.pdf");
             if (result.IsError)
             {
                 MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
                 return;
             }
-           var newPath = result.Data;
-              var emailHelper = new EmailHelper();
-                    string sub = "Online Pay Flyers";
-                    string body = "Attached are Online Pay Flyers that you can copy and send out to parents.";
-                    List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
-                    OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
-                    Attachements.Add(Attachement);
-                    string Address=((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
-                    emailHelper.SendOutLookEmail(sub,Address, null, body, EmailType.Mbc,Attachements);
+            var newPath = result.Data;
+            var emailHelper = new EmailHelper();
+            string sub = "Online Pay Flyers";
+            string body = "Attached are Online Pay Flyers that you can copy and send out to parents.";
+            List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+            OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+            Attachements.Add(Attachement);
+            string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+            emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
             Cursor.Current = Cursors.Default;
 
         }
@@ -5548,7 +5557,7 @@ namespace Mbc5.Forms.MemoryBook
         private void btnPaymentNotRec_Click(object sender, EventArgs e)
         {
             ReminderEmails("NoPaymentRec5");
-           
+
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -5599,31 +5608,13 @@ namespace Mbc5.Forms.MemoryBook
 
         }
 
-        private void taxOnlinePayCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (taxOnlinePayCheckBox.Checked)
-            {
-               var vTax = GetTax(100);//even amount to get rate
 
-                var vRate = (vTax / 100);
-                if (vRate != 0)
-                {
-                    txtOnlineTaxRate.Text = vRate.ToString();
-
-                }
-               
-            }
-            else
-            {
-
-            }
-        }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             string Arg = e.Argument.ToString();
 
-           
+
             var result = new ApiProcessingResult();
             switch (Arg)
             {
@@ -5631,18 +5622,18 @@ namespace Mbc5.Forms.MemoryBook
                 case "Save0":
                 case "Save1":
                 case "Save2":
-                case "Save3" :
+                case "Save3":
                     string num = "0";
-                    if (Arg.Length>4)
+                    if (Arg.Length > 4)
                     {
                         num = Arg.Substring(4, 1);
                     }
-                    int vIndex=int.Parse(num);
+                    int vIndex = int.Parse(num);
 
                     result = Save(vIndex);
                     result.Tag = "Fill";
                     break;
-               
+
 
             }
             System.Threading.Thread.Sleep(2000);
@@ -5661,7 +5652,7 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     //currency error
                     Fill();
-                  
+
                 }
                 return;
             }
@@ -5671,7 +5662,7 @@ namespace Mbc5.Forms.MemoryBook
                 Fill();
                 return;
             }
-           
+
 
             //Checked for fill so this should work.
             if (result.Tag.Length > 0)
@@ -5683,7 +5674,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void txtClrTot_Leave_1(object sender, EventArgs e)
         {
-          
+
             BookCalc();
         }
 
@@ -5710,17 +5701,17 @@ namespace Mbc5.Forms.MemoryBook
         private void button2_Click(object sender, EventArgs e)
         {
             var eh = new EmailHelper();
-            eh.SendEmail("test", "randy.woodall@jostens.com", null, "Test Email", EmailType.System);        }
+            eh.SendEmail("test", "randy.woodall@jostens.com", null, "Test Email", EmailType.System); }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-          
+
         }
 
         private void grdXtraInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var dresult = MessageBox.Show("Are you sure you want to delete this invoice?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-            if (dresult==DialogResult.No)
+            if (dresult == DialogResult.No)
             {
                 return;
             }
@@ -5729,14 +5720,14 @@ namespace Mbc5.Forms.MemoryBook
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                var vInvoice= grdXtraInvoice.Rows[e.RowIndex].Cells[1].Value.ToString();
+                var vInvoice = grdXtraInvoice.Rows[e.RowIndex].Cells[1].Value.ToString();
                 DeleteXtraInvoice(vInvoice);
             }
         }
 
         private void DeleteXtraInvoice(string vInvoice)
         {
-            var sqlclient = new SQLCustomClient();
+            var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlclient.CommandText("Delete from Invoice where Invno=@Invno ");
             sqlclient.AddParameter("@Invno", vInvoice);
             sqlclient.ExecuteScalar();
@@ -5755,7 +5746,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
                                     Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
                                      Left Join Invoice I ON SX.XtraInvoice=I.Invno 
@@ -5783,59 +5774,89 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
- 
+
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
+            this.SaveOPYRecord();
+
+        }
+        protected ApiProcessingResult SaveOPYRecord()
+        {
+            var processingResult = new ApiProcessingResult();
+            try { 
             opyProductsBindingSource.EndEdit();
             this.ValidateChildren();
-            opyProductsTableAdapter.Update(dsSales.OpyProducts);
-          
+            var result = opyProductsTableAdapter.Update(dsSales.o); }
+        catch(Exception ex){
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message,""));
+                MbcMessageBox.Error(ex.Message, "");
+
+            }
+            return processingResult;
+
         }
 
         private void bindingNavigatorDeleteItem1_Click(object sender, EventArgs e)
         {
+          this.DeleteOpyRecord();
+     
+        }
+        protected void DeleteOpyRecord()
+        {
             opyProductsBindingSource.EndEdit();
             this.ValidateChildren();
             opyProductsTableAdapter.Update(dsSales.OpyProducts);
-     
         }
 
         private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
+        {
+            this.AddOPYRecord();
+           
+
+
+        }
+        protected void AddOPYRecord()
         {
             string schcode = "";
             var rowCount = opyProductsBindingSource.Count;
             if (rowCount == 0)
             {
-                schcode = lblSchcode.Text + "M";
+                schcode = lblOpySchcodeDisplay.Text + "M";
             }
             else if (rowCount == 1)
             {
-                schcode = lblSchcode.Text + "S";
+                schcode = lblOpySchcodeDisplay.Text + "S";
             }
             else if (rowCount > 1)
             {
-                schcode = lblSchcode.Text + "S" + (rowCount - 1).ToString();
+                schcode = lblOpySchcodeDisplay.Text + "S" + (rowCount - 1).ToString();
             }
-            var sqlClient = new SQLCustomClient().CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear) Values(@Schcode,@Invno,@Contryear)");
-            sqlClient.AddParameter("@Schcode",schcode);
-            sqlClient.AddParameter("@Invno",this.Invno);
-            sqlClient.AddParameter("@Contryear",lblContryear.Text);
-            var result=sqlClient.Insert();
+            //ConfigurationManager.ConnectionStrings["MBC5ConnectionString"].ConnectionString;
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear) Values(@Schcode,@Invno,@Contryear)");
+            ;
+            // var a=ApplicationConfiguration.GetConfigurationValue("ConnectionString");
+
+            sqlClient.Target.ConnectionString = "Data Source=Owbswjtsql06.jostens.com,56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=MbcUser_demo;Password=S3dALMbcOct2122;TrustServerCertificate=True";
+            sqlClient.AddParameter("@Schcode", schcode);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+            var result = sqlClient.Insert();
             if (result.IsError)
             {
                 Log.Error("Failed to insert Opy Record:" + result.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to insert Opy Record:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-           var id= result.Data;
+            var id = result.Data;
             opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts, Invno);
             opyProductsBindingSource.ResetBindings(false);
             opyProductsBindingSource.MoveLast();
 
             this.EnableAllControls(tabSales.SelectedTab);
-          
-           
+
+
         }
 
         private void pnlTot_Paint(object sender, PaintEventArgs e)
@@ -5860,10 +5881,22 @@ namespace Mbc5.Forms.MemoryBook
             emailHelper.SendOutLookEmail(sub, toAddress, null, body, EmailType.Mbc);
         }
 
+        private void panel8_Leave(object sender, EventArgs e)
+        {
+      
 
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
+            sqlClient.CommandText("Update Produtn Set Persnlz=@Persnlz,Foilclr=@Foilclr Where Invno=@Invno");
+            sqlClient.AddParameter("@Persnlz", persnlzCheckBox.Checked);
+            sqlClient.AddParameter("@Foilclr", foilclrComboBox.Text);
+            sqlClient.AddParameter("@Invno", Invno);
+            var result = sqlClient.Update();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error("Failed to update Foil Color in production record.", "Error");
+            }
+        }
 
-
-        //Nothing below here
     }
 
     public class XtraInvoicePrint

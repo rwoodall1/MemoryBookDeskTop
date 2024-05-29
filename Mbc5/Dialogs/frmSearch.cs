@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
 using BindingModels;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs {
     public partial class frmSearch : Form
     {
@@ -72,7 +73,7 @@ namespace Mbc5.Dialogs {
         {
             this.Cursor = Cursors.AppStarting;
 
-            var sqlclient = new SQLCustomClient();
+            var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdtext = "";
             switch (SearchType)
             {

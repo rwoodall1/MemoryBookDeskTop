@@ -13,6 +13,7 @@ using BaseClass.Classes;
 using NLog;
 using Exceptionless;
 using System.Data.SqlClient;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmUser : BaseClass.Forms.bTopSide
@@ -100,8 +101,8 @@ namespace Mbc5.Forms
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
-            this.rolesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.mbcUsersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.rolesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.mbcUsersTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
          
             
         }

@@ -13,6 +13,7 @@ using BindingModels;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using CsvHelper;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmInqCount : BaseClass.frmBase
@@ -84,7 +85,7 @@ namespace Mbc5.Forms
         private ApiProcessingResult GenerateMBCReport()
         {
             var processingResult = new ApiProcessingResult();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.AddParameter("@InqBegin", inqStartDate.Value);
             sqlQuery.AddParameter("@InqEnd", inqEndDate.Value);
             sqlQuery.AddParameter("@ContBegin", contStartDate.Value);
@@ -196,7 +197,7 @@ namespace Mbc5.Forms
         private ApiProcessingResult GenerateMeridianReport()
         {
             var processingResult = new ApiProcessingResult();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.AddParameter("@InqBegin", inqStartDate.Value);
             sqlQuery.AddParameter("@InqEnd", inqEndDate.Value);
             sqlQuery.AddParameter("@ContBegin", contStartDate.Value);

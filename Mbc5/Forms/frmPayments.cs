@@ -9,6 +9,7 @@ using BaseClass;
 using BaseClass.Classes;
 using BaseClass.Core;
 using BindingModels;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmPayments : BaseClass.Forms.bTopBottom
@@ -28,7 +29,7 @@ namespace Mbc5.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             paymentBindingSource.Clear();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.ClearParameters();
         string cmdMBCText = @"SELECT P.Invno,P.PmtDate,P.Payment,C.SchName,C.SchEmail,C.ContEmail,C.Schcode 
                                 From Cust C

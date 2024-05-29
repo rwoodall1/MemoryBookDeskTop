@@ -11,6 +11,7 @@ using BaseClass.Forms;
 using Exceptionless;
 using Mbc5.Forms;
 using BindingModels;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmTeleLogModify : Form
@@ -61,10 +62,10 @@ namespace Mbc5.Dialogs
             mktinfoBindingSource.DataSource = tmpMktRec;
             try
             {
-                datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                datecontTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                lkpMktReferenceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                lkpTypeContTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                lkpPromotionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
                 this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
                 this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
                 this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
@@ -75,7 +76,7 @@ namespace Mbc5.Dialogs
                     .Submit();
                 MbcMessageBox.Error(ex.Message, "");
             }
-          var sqlquery = new SQLCustomClient();
+          var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             if (LogId > 0 && EditType == "T") {
                 //edit
 
@@ -185,7 +186,7 @@ namespace Mbc5.Dialogs
 
        private void AddMktRecord()
         {
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.CommandText(@"INSERT INTO [dbo].[mktinfo]
                                     (
                                          ddate
@@ -262,7 +263,7 @@ namespace Mbc5.Dialogs
                 return;
             }
 
-             var sqlquery = new SQLCustomClient();
+             var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.CommandText(@"UPDATE DateCont Set Reason=@Reason,Contact=@Contact,TypeCont=@TypeContact,
                                     NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
                                     Priority=@Priority,Company=@Company,TechCall=@TechCall   

@@ -29,7 +29,7 @@ namespace Mbc5.Forms.MixBook
             //    left Join(Select Distinct  Invno, MxbLocation From CoverDetail Where  MxbLocation IS NOT NULL and MXbLocation != '' )CD ON Covers.Invno = CD.Invno
             //    left join wip on MixBookOrder.Invno = wip.invno
             //    left join(Select Distinct Invno, MxbLocation From WipDetail Where MxbLocation IS NOT NULL and MxbLocation != '' ) WD ON wip.invno = WD.Invno"
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmd = @"Select MixBookOrder.Invno,MixBookOrder.RequestedShipDate,MixBookOrder.Description,MixBookOrder.Copies
                             ,MixBookOrder.[Size],MixBookOrder.Pages,MixBookOrder.ShipName,MixbookOrder.CurrentBookLoc as BookLoc,CurrentCoverLoc As CoverLoc
                             from MixBookOrder "

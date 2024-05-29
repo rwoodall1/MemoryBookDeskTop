@@ -387,7 +387,7 @@ private void UpdateProdutnCopies()
             {
                 vCopies += 2;
             }
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.CommandText("Update Produtn Set NoCopies=@NoCopies Where Invno=@Invno");
             sqlquery.AddParameter("@NoCopies",vCopies);
             sqlquery.AddParameter("@Invno", Invno);
@@ -427,7 +427,7 @@ private void UpdateProdutnCopies()
           
              
 
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.CommandText("Update Produtn Set PressCopies=@PressCopies Where Invno=@Invno");
             sqlquery.AddParameter("@PressCopies", vPressCopies);
             sqlquery.AddParameter("@Invno", Invno);
@@ -1240,7 +1240,7 @@ private void UpdateProdutnCopies()
             //txtModifiedByInv.Text = this.ApplicationUser.id;
             //txtModifiedByInvdetail.Text = this.ApplicationUser.id;
             //txtModifiedByPay.Text = this.ApplicationUser.id;
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             var cmd = @"
                         Insert INTO MerInvoice (Schcode,Invno,QteDate,NoPages,QtyTotal,FplnPrc,Source,PoNum,fplntot,BalDue,ContFname,ContLname
                         ,SchName,InvName,InvAddr,InvAddr2,InvCity,InvState,InvZip,ShpName,ShpAddr,ShpAddr2,ShpCity,ShpState,ShpZip,ContrYear,BasePrc,BaseTot,FormatType,SchType
@@ -1662,7 +1662,7 @@ private void UpdateProdutnCopies()
         }
  private bool DeleteInvoice()
         {
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText("Delete From MerInvoice Where Invno=@Invno");
             sqlQuery.AddParameter("@Invno", this.Invno);
             var result = sqlQuery.Delete();
@@ -1832,17 +1832,17 @@ con.Enabled = true;
 private void SetConnectionString()
 {
         this.frmMain = (frmMain)this.MdiParent;
-        this.FormConnectionString = frmMain.AppConnectionString;
-        this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        merinvoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        merinvdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+        this.FormConnectionString = ApplicationConfig.DefaultConnectionString;
+        this.meridianProductsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+        this.mquotesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+        coversTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+        merinvoiceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+        merinvdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
 }
 private decimal GetJostensPricing(string vYear,string vType,int pageQty)
 {
 string fieldName = vType + pageQty.ToString();
-var sqlQuery = new SQLCustomClient();
+var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 sqlQuery.CommandText(@"Select * From JostensPricing where Yr=@Yr");
 sqlQuery.AddParameter("@Yr",vYear);
 var result=sqlQuery.Select<JostenPricing>();
@@ -1934,7 +1934,7 @@ private bool GetBookPricing()
         lblTotalBasePrice.Text = "0.00";
         return false;
     }
-    var sqlQuery = new SQLCustomClient();
+    var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
     sqlQuery.ClearParameters();
     if (String.IsNullOrEmpty(txtBYear.Text))
     {
@@ -2036,7 +2036,7 @@ private bool GetOptionPricing()
             {
                 return false;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
             sqlQuery.AddParameter("@Yr", contryearTextBox.Text);
             var result = sqlQuery.Select<MeridianOptionPricing>();
@@ -2840,7 +2840,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
         private void CleanUpExtraInvoiceScreen()
         {
             //adjust inventory
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"Update Xtra Set exonhand=exonhand-@extrbkshpd,extrbkshpd=extrbkshpd+@extrbkshpd where Invno=@Invno";
             sqlquery.CommandText(cmdText);
             sqlquery.AddParameter("@Invno", Invno);
@@ -2927,7 +2927,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             }
 
 
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             try
             {
@@ -3094,7 +3094,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
         private void btnAddExtra_Click(object sender, EventArgs e)
         {
             decimal price = 0;
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             if (xtraBindingSource.Count == 0)
             {
 
@@ -3163,7 +3163,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
         }
         private void GetXtraInvoices()
         {
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
                                     Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
                                      Left Join Invoice I ON SX.XtraInvoice=I.Invno 

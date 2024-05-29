@@ -14,6 +14,12 @@ namespace BaseClass.Classes
     public class SQLCustomClient
     {
 
+        public SQLCustomClient(string connectionString)
+        {
+            Target = new SQLQueryProperties(connectionString);
+            IDBConnectionInternal = new SqlConnection(Target.ConnectionString);
+        }
+
         public SQLCustomClient()
         {
             Target = new SQLQueryProperties();

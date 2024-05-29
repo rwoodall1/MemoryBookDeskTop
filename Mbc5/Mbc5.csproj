@@ -201,6 +201,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ApplicationConfig.cs" />
     <Compile Include="DataSets\dsReceiving.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

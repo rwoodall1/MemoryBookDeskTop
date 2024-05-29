@@ -139,7 +139,7 @@ namespace Mbc5.Forms.MixBook
             {
                 string vInvno = TextBox1.Text.Substring(3, TextBox1.Text.Length - 5);
 
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 string cmdText = @"
                                 Delete from WipDetail Where Invno=@Invno and DescripId=@DescripId
                                 ";
@@ -194,7 +194,7 @@ namespace Mbc5.Forms.MixBook
         private bool InsertWip(string vInvno)
         {
           
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"
                                 SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
                                 From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno Left Join Covers C ON M.Invno=C.Invno
@@ -269,7 +269,7 @@ namespace Mbc5.Forms.MixBook
         }
         private bool CheckStatus(string vInvno)
         {
-            var sqlClient = new SQLCustomClient().CommandText("Select MixbookOrderStatus From MixbookOrder Where Invno=@Invno").AddParameter("@Invno", vInvno);
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Select MixbookOrderStatus From MixbookOrder Where Invno=@Invno").AddParameter("@Invno", vInvno);
             var sqlResult = sqlClient.SelectSingleColumn();
             if (sqlResult.IsError)
             {

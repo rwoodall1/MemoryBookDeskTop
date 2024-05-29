@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MixBook
 
             if (string.IsNullOrEmpty(txtClientIdLookup.Text)) { return; }
             this.btnShip.Enabled = true;
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             string cmdText = @"
                             SELECT M.ShipName,M.MixbookOrderStatus,M.JobId,M.ClientOrderId,M.ShipMethod,SC.ShipName as ShippingMethodName,M.ProdInOrder
@@ -217,7 +217,7 @@ namespace Mbc5.Forms.MixBook
 
 
 
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 string cmdText = @"
                             SELECT M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Copies As Quantity,M.Description
                                 From MixBookOrder M 
@@ -299,7 +299,7 @@ namespace Mbc5.Forms.MixBook
             }
             //new
             // Get items in order and check
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select ItemId From MixbookOrder Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId",MbxModel.JobId.Substring(8,7));
             var vItems = new List<Item>();
@@ -357,7 +357,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void UpdateShippingWip()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string vDeptCode = "40";
             string vWIR = "SH";
 
@@ -561,7 +561,7 @@ namespace Mbc5.Forms.MixBook
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
             sqlClient.AddParameter("@Jobid", jobId);
             sqlClient.AddParameter("@StatusChangedTo", status);

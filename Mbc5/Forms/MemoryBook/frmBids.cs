@@ -38,8 +38,8 @@ namespace Mbc5.Forms.MemoryBook {
         private void SetConnectionString()
         {
             
-            this.FormConnectionString = frmMain.AppConnectionString;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.FormConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
            
 
         }
@@ -57,8 +57,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
            this.frmMain =(frmMain) this.MdiParent;
             this.SetConnectionString();
-            //this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            //this.bidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            //this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            //this.bidsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -183,7 +183,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 DataRowView drview = (DataRowView)this.bidsBindingSource.Current;
                 int vId = (int)drview["id"];
-                var sqlclient = new SQLCustomClient();
+                var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlclient.AddParameter("@id", vId);
                 sqlclient.AddParameter("@Invno", InvNum);
 
@@ -1079,7 +1079,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
           
             string cmd = "";
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.AddParameter("@Copies",vCopies);
             var result = new ApiProcessingResult<string>();
             switch (vInkNum)
@@ -2939,7 +2939,7 @@ namespace Mbc5.Forms.MemoryBook {
             string curBidId = lblId.Text.Trim();
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
-            var sqlquery = new SQLCustomClient();
+            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.AddParameter("@schcode", Schcode);
             sqlquery.AddParameter("@Contryear", txtYear.Text);
             sqlquery.CommandText(@"Update Bids Set oa=0 Where schcode=@schcode and contryear=@Contryear");

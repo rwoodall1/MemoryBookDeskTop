@@ -140,19 +140,19 @@ namespace Mbc5.Classes
 
 
     }
-    public class ApplicationConfig
-    {
-        private static readonly object LockObject = new object();
+    //public class ApplicationConfig
+    //{
+    //    private static readonly object LockObject = new object();
 
-        private static volatile string _SQLPassphrase;
-        private static volatile string _mbcConnectionString;
-
-
+    //    private static volatile string _SQLPassphrase;
+    //    private static volatile string _mbcConnectionString;
 
 
 
 
-    }
+
+
+    //}
   
 }
 

@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MemoryBook
             pnlError.Visible = false;
 
             bsInvoices.Clear();
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                  sqlClient.ClearParameters();
                 sqlClient.CommandText(@"
                    
@@ -105,7 +105,7 @@ namespace Mbc5.Forms.MemoryBook
 				return processingResult;
 			}
 
-			var sqlClient = new SQLCustomClient();
+			var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 			sqlClient.CommandText(@"
 				SELECT I.InvName,I.SchCode,I.InvAddr,I.InvAddr2,I.InvCity,I.InvZip,I.InvState,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
                 I.QteDate,I.Invno,I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.FplnPrc,I.SubTotal,I.SchType,
@@ -233,7 +233,7 @@ namespace Mbc5.Forms.MemoryBook
 					return;
 				}
 			}
-			var sqlClient = new SQLCustomClient();
+			var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 			sqlClient.CommandText(@"
 				SELECT I.InvName,I.SchCode,I.InvAddr,I.InvAddr2,I.InvCity,I.InvZip,I.InvState,I.ShpName,I.ShpAddr,I.ShpAddr2,I.ShpCity,I.ShpState,I.ShpZip,
                 I.QteDate,I.Invno,I.InvNotes,I.ShpDate,I.PoNum,I.Contryear,I.FplnPrc,I.SubTotal,I.SchType,

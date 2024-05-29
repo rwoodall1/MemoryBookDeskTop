@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using Exceptionless;
 using Mbc5.Forms;
 using NLog;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditWip : Form
@@ -143,8 +144,8 @@ namespace Mbc5.Dialogs
         {
             try
             {
-                this.wipDescriptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.wipDetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
           
             }
             catch (Exception ex)

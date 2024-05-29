@@ -50,7 +50,7 @@ namespace Mbc5.Forms.Meridian
         }
        new private bool Save()
         {
-            var sqlQuery = new SQLCustomClient().CommandText("Insert INTO MerBindingWip (ProductType,Task,Initials,Time,Description,Quantity) Values(@ProductType,@Task,@Initials,@Time,@Description,@Quantity)");
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert INTO MerBindingWip (ProductType,Task,Initials,Time,Description,Quantity) Values(@ProductType,@Task,@Initials,@Time,@Description,@Quantity)");
             sqlQuery.AddParameter("@ProductType",cmbProduct.Text);
             sqlQuery.AddParameter("@Task",cmbTask.Text);
             sqlQuery.AddParameter("@Initials",txtInitials.Text);
@@ -70,7 +70,7 @@ namespace Mbc5.Forms.Meridian
         }
         private void LoadData()
         {
-            var sqlQuery = new SQLCustomClient().CommandText("SELECT Top(200) Id,DateCreated,ProductType,Task,Initials,Time,Description,Quantity FROM MerBindingWip   Where Year(GETDate())=Year(DateCreated) Order By DateCreated Desc");
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("SELECT Top(200) Id,DateCreated,ProductType,Task,Initials,Time,Description,Quantity FROM MerBindingWip   Where Year(GETDate())=Year(DateCreated) Order By DateCreated Desc");
             var selectResult=sqlQuery.SelectMany<MerBindingWip>();
             if (selectResult.IsError)
             {
@@ -83,7 +83,7 @@ namespace Mbc5.Forms.Meridian
         }
         private void DeleteRow()
         {
-            var sqlQuery = new SQLCustomClient().CommandText("Delete FROM Where Id=@Id");
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Delete FROM Where Id=@Id");
             sqlQuery.AddParameter("@Id",0);
            var result= sqlQuery.Delete();
             if (result.IsError)
@@ -323,7 +323,7 @@ namespace Mbc5.Forms.Meridian
         {
             var curRow =(MerBindingWip)bsWipData.Current;
             var vId = curRow.Id;
-            var sqlQuery = new SQLCustomClient().CommandText("Delete from MerBindingWip Where Id=@Id");
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Delete from MerBindingWip Where Id=@Id");
             sqlQuery.AddParameter("@Id", vId);
             var result = sqlQuery.Delete();
             if (result.IsError)

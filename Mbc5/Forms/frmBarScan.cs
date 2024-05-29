@@ -220,7 +220,7 @@ namespace Mbc5.Forms
                     MessageBox.Show("Invalid scan code");
                     return;
                 }
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 switch (this.Company)
                 {
                     case "MBC":
@@ -353,7 +353,7 @@ namespace Mbc5.Forms
             var vWIR = txtIntitials.Text;
             try { vWtr = decimal.Parse(txtTime.Text); } catch { };
             try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { };
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
 
             if (trkType == "YB")
@@ -1471,7 +1471,7 @@ namespace Mbc5.Forms
                 var vWIR = txtIntitials.Text;
                 try { vWtr = decimal.Parse(txtTime.Text); } catch { };
                 try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { };
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
 
     if (trkType == "YB")
@@ -2427,7 +2427,7 @@ if (trkType == "GS")
         private void MXBScan()
         {
             //update record by login
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             string company = txtBarCode.Text.Substring(0, 3);
                 DateTime vDateTime = DateTime.Now;
@@ -2649,7 +2649,7 @@ if (trkType == "GS")
             List<string> vAddresses = new List<string>();
             var vAttachment = new OutlookAttachemt();
             var vAttachmentList = new List<OutlookAttachemt>();
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             var emailHelper = new EmailHelper();
             string vSubject ="";
             string vBody = "";
@@ -2742,7 +2742,7 @@ if (trkType == "GS")
             
             var processingResult = new ApiProcessingResult<string>();
            
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             if (Company == "MBC")
             {
                 var invoiceCmd = @"SELECT I.SchName,I.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,I.SchState,I.ContFName AS ContactFirstName,
@@ -2938,7 +2938,7 @@ if (trkType == "GS")
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
             sqlClient.AddParameter("@Jobid", jobId);
             sqlClient.AddParameter("@StatusChangedTo", status);

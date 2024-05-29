@@ -73,34 +73,34 @@ namespace Mbc5.Forms
         private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
-            this.remakeReasonsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            reorderDetailTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
-            reOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.mixBookOrderTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.remakeReasonsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invoiceCustTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invoiceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.invdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.quotesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.produtnTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.ptbkbTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.partbkTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.wipgTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.wipTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.wipDetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.coverdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.coversTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.lkTypeDataTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.lkpBackGroundTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.partbkTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			this.prtbkbdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			partBkDetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+			vendorTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            reorderDetailTableAdapter.Connection.ConnectionString= ApplicationConfig.DefaultConnectionString;
+            reOrderTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            mcustTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            mquotesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            lkpCustTypeTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            lkpCoverStockTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            lkpMascotTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.mixBookOrderTableAdapter1.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
         }
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
@@ -221,7 +221,7 @@ namespace Mbc5.Forms
                 return processingResult;
                 }
 
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlQuery.CommandText(@"Select * From PartialBkData Where BookType=@BookType");
                 sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
                 var result = sqlQuery.Select<PartialbDat>();
@@ -1864,7 +1864,7 @@ namespace Mbc5.Forms
                 return processingResult;
                 }
 
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlQuery.CommandText(@"Select * From PtbDat Where BookType=@BookType");
                 sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
                 var result = sqlQuery.Select<PtbDat>();
@@ -3508,7 +3508,7 @@ namespace Mbc5.Forms
                 return processingResult;
             }
 
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlQuery.CommandText(@"Select * From ReOrderDat Where BookType=@BookType");
                 sqlQuery.AddParameter("@BookType", booktypeTextBox.Text.ToString().ToUpper().Trim());
                 var result = sqlQuery.Select<ReorderDat>();
@@ -5124,7 +5124,7 @@ namespace Mbc5.Forms
             {
                 isUpdate = false;
             }
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.ClearParameters();
             sqlClient.AddParameter("@DescripID", vDescripId);
             sqlClient.AddParameter("@wdr", vWdr);
@@ -5175,7 +5175,7 @@ namespace Mbc5.Forms
                 {
                 isUpdate = false;
                 }
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@DescripID", vDescripId);
                 sqlClient.AddParameter("@wdr", vWdr);
@@ -5226,7 +5226,7 @@ namespace Mbc5.Forms
         {
         isUpdate = false;
         }
-        var sqlClient = new SQLCustomClient();
+        var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
         sqlClient.ClearParameters();
         sqlClient.AddParameter("@DescripID", vDescripId);
         sqlClient.AddParameter("@wdr", vWdr);
@@ -5276,7 +5276,7 @@ namespace Mbc5.Forms
         {
         isUpdate = false;
         }
-        var sqlClient = new SQLCustomClient();
+        var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
         sqlClient.ClearParameters();
         sqlClient.AddParameter("@DescripID", vDescripId);
         sqlClient.AddParameter("@wdr", vWdr);
@@ -5327,7 +5327,7 @@ namespace Mbc5.Forms
         {
         isUpdate = false;
         }
-        var sqlClient = new SQLCustomClient();
+        var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
         sqlClient.ClearParameters();
         sqlClient.AddParameter("@DescripID", vDescripId);
         sqlClient.AddParameter("@wdr", vWdr);
@@ -5388,7 +5388,7 @@ namespace Mbc5.Forms
                 processingResult.Errors.Add(new ApiProcessingError("Recieved date is empty.", "Recieved date is empty.", ""));
                 return processingResult;
                 }
-                var sqlQuery = new SQLCustomClient();
+                var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlQuery.CommandText(@"Select * From ScWip");//only 1 record
                 var result = sqlQuery.Select<SpecialCoverDats>();
                 if (result.IsError)
@@ -8353,7 +8353,7 @@ namespace Mbc5.Forms
 
             }
            
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"SELECT ProdType,bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
                                                   ,l_dtoprod,l_dwdr1,l_wdr2,l_wdr3,l_wdr4,l_wdr5,l_wdr6,l_wdr7,l_wdr8,l_wdr9,l_wdr10,l_wdr11,l_wdr12,l_wdr13
@@ -9901,7 +9901,7 @@ namespace Mbc5.Forms
 		}
 		private bool GetCoverDescriptions()
 		{
-			var sqlClient = new SQLCustomClient();
+			var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 			sqlClient.CommandText(@"Select CoverType,CoverDescription FROM CoverDescriptions Order By CoverType ");
 			var result = sqlClient.SelectMany<CoverDescriptions>();
 			if (result.IsError)
@@ -10752,7 +10752,7 @@ namespace Mbc5.Forms
         {
             Cursor.Current = Cursors.WaitCursor;
           
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"
                             Select 
 							C.Schcode,
@@ -10820,7 +10820,7 @@ namespace Mbc5.Forms
         }
         private void btnAddPhotoCd_Click(object sender, EventArgs e)
         {
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             
             sqlQuery.AddParameter("@Invno",Invno);
             sqlQuery.ClearParameters();
@@ -11209,7 +11209,7 @@ namespace Mbc5.Forms
         private void btnAddPartial_Click(object sender, EventArgs e)
         {
            var vBooktype= ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
            
            
             sqlQuery.ClearParameters();
@@ -11261,7 +11261,7 @@ namespace Mbc5.Forms
 
         private void btnAddReorder_Click(object sender, EventArgs e)
         {
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.ClearParameters();
@@ -11396,7 +11396,7 @@ namespace Mbc5.Forms
                         return;
                     }
           
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             
             sqlQuery.ClearParameters();
@@ -11528,7 +11528,7 @@ namespace Mbc5.Forms
         private void btnAddWipRec_Click(object sender, EventArgs e)
         {
             
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
             sqlQuery.ClearParameters();
             sqlQuery.CommandText(@"INSERT INTO WIP (Invno,Schcode) Values(@Invno,@Schcode)");
@@ -11576,7 +11576,7 @@ namespace Mbc5.Forms
                 string subject = vSchname+ " Production Ticket";
                 string body = @"See Attachement";
                 // var printResult = PrintMbcProductionTicket();
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
              Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
              ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
@@ -11625,7 +11625,7 @@ namespace Mbc5.Forms
             }
             else {
                
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
                                     Case
                                       When Q.prodcode='MAG' THEN 'MAGNET'

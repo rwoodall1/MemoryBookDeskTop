@@ -62,8 +62,8 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=owbswjtsql06:56609;Initial Catalog=OPY_Demo;Persist Security Info=Tru" +
-            "e;User ID=svc_mbc5_demo;Password:S3dALMbcOct2122;Connect Timeout=5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Owbswjpsql06:58331;Initial Catalog=OPY_Prod;Persist Security Info=Tru" +
+            "e;User ID=svc_mbc5;Password:OPayMBkNov032022;Connect Timeout=5")]
         public string OPY {
             get {
                 return ((string)(this["OPY"]));
@@ -90,6 +90,17 @@ namespace Mbc5.Properties {
         public string OPY_DemoConnectionString {
             get {
                 return ((string)(this["OPY_DemoConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sedswjpsql02;Initial Catalog=Mbc5; Persist Security Info =True;Truste" +
+            "d_Connection=True;")]
+        public string MBC5ConnectionString {
+            get {
+                return ((string)(this["MBC5ConnectionString"]));
             }
         }
     }

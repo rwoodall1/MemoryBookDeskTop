@@ -15,6 +15,7 @@ using BindingModels;
 using BaseClass;
 using Exceptionless;
 using Mbc5.Forms;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmEditBannerWip : Form
@@ -39,8 +40,8 @@ namespace Mbc5.Dialogs
             AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
             try
             {
-                this.wipDescriptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                    this.bannerdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                    this.bannerdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
                 wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Banners");
                 bannerdetailTableAdapter.Fill(dsEndSheet.bannerdetail,Invno);
             }

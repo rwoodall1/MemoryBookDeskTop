@@ -14,6 +14,7 @@ using System.Security.Principal;
 using BaseClass.Classes;
 using Mbc5.Forms;
 using BaseClass;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs {
     public partial class frmLogin : Form
     {
@@ -47,7 +48,7 @@ namespace Mbc5.Dialogs {
     //}
     //else if (Environment == "PROD") { AppConnectionString = "Data Source=SEDSWJPSQL01;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
 
-    SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
+    SqlConnection conn = new SqlConnection(ApplicationConfig.DefaultConnectionString);
        
 
     string cPassword = this.txtpassword.Text;
@@ -182,7 +183,7 @@ private void button1_Click(object sender, EventArgs e)
 {
     var a = ConfigurationManager.AppSettings["Environment"].ToString();
     MbcMessageBox.Error(a);
-    MbcMessageBox.Error(frmMain.AppConnectionString);
+    MbcMessageBox.Error(ApplicationConfig.DefaultConnectionString);
 }
 
 private void pbLoading_VisibleChanged(object sender, EventArgs e)

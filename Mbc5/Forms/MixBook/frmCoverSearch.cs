@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
 using System.Diagnostics;
-
+using Mbc5.Classes;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmCoverSearch : BaseClass.frmBase
@@ -43,7 +43,7 @@ namespace Mbc5.Forms.MixBook
             //    return;
             //}
 
-            var sqlClient = new SQLCustomClient().CommandText("Select CurrentCoverLoc,CoverPreviewUrl,MixbookOrderStatus From MixbookOrder Where Invno=@Invno ").AddParameter("@Invno", vInvno);
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Select CurrentCoverLoc,CoverPreviewUrl,MixbookOrderStatus From MixbookOrder Where Invno=@Invno ").AddParameter("@Invno", vInvno);
             var sqlResult = sqlClient.Select<CoverSearch>();
             if (sqlResult.IsError)
             {

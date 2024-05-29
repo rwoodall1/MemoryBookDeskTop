@@ -67,15 +67,15 @@ namespace Mbc5.Forms {
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.bannerTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            bannerdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.endsheetdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.endsheetTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.suppdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.preflitTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.bannerTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            bannerdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.produtnTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.endsheetdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.endsheetTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.suppdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.preflitTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
         }
         private void frmEndSheet_Load(object sender, EventArgs e)
 		{
@@ -872,7 +872,7 @@ namespace Mbc5.Forms {
             }
 
 
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From BannerDat");
 
             var result = sqlQuery.Select<BannerDat>();
@@ -2495,7 +2495,7 @@ namespace Mbc5.Forms {
             {
                 isUpdate = false;
             }
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.ClearParameters();
             sqlClient.AddParameter("@DescripID", vDescripId);
             sqlClient.AddParameter("@wdr", vWdr);
@@ -2561,7 +2561,7 @@ namespace Mbc5.Forms {
             }
 
 
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From SupplementDat");
 
             var result = sqlQuery.Select<SupplementDat>();
@@ -4184,7 +4184,7 @@ namespace Mbc5.Forms {
             {
                 isUpdate = false;
             }
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.ClearParameters();
             sqlClient.AddParameter("@DescripID", vDescripId);
             sqlClient.AddParameter("@wdr", vWdr);
@@ -4250,7 +4250,7 @@ namespace Mbc5.Forms {
             }
 
 
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select * From EndSheetDat");
 
             var result = sqlQuery.Select<EndSheetDat>();
@@ -5873,7 +5873,7 @@ namespace Mbc5.Forms {
             {
                 isUpdate = false;
             }
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.ClearParameters();
             sqlClient.AddParameter("@DescripID", vDescripId);
             sqlClient.AddParameter("@wdr", vWdr);
@@ -5919,7 +5919,7 @@ namespace Mbc5.Forms {
         private async Task<ApiProcessingResult<int>> GetSupCode()
         {
             var processingResult = new ApiProcessingResult<int>();
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Select supcode from codecnt");
             var result = sqlQuery.SelectSingleColumn();
             if (result.IsError)
@@ -6010,7 +6010,7 @@ namespace Mbc5.Forms {
                 MbcMessageBox.Error("Failed to get end sheet number:" + codeResult.Result.Errors[0].ErrorMessage);
                 return;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Insert Into EndSheet(Invno,Schcode,EndshtNo) Values(@Invno,@Schcode,@EndshtNo)");
             sqlQuery.AddParameter("@Invno",Invno);
             sqlQuery.AddParameter("@Schcode",Schcode);
@@ -6039,7 +6039,7 @@ namespace Mbc5.Forms {
                 MbcMessageBox.Error("Failed to get supplement number:" + codeResult.Result.Errors[0].ErrorMessage);
                 return;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Insert Into Suppl(Invno,Schcode,SupNo) Values(@Invno,@Schcode,@SupNo)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
@@ -6075,7 +6075,7 @@ namespace Mbc5.Forms {
                 MbcMessageBox.Error("Failed to get banner number:" + codeResult.Result.Errors[0].ErrorMessage);
                 return;
             }
-            var sqlQuery = new SQLCustomClient();
+            var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlQuery.CommandText(@"Insert Into Banner(Invno,Schcode,Num) Values(@Invno,@Schcode,@Num)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);

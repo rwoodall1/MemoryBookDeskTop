@@ -43,7 +43,7 @@ namespace Mbc5.Forms.MemoryBook
         private void btnSearch_Click(object sender, EventArgs e)
         {
             bsCancellations.Clear();
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
            
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"
@@ -105,7 +105,7 @@ namespace Mbc5.Forms.MemoryBook
                 return processingResult;
             }
 
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"
 				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
 				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
@@ -231,7 +231,7 @@ namespace Mbc5.Forms.MemoryBook
 					return;
 				}
 			}
-			var sqlClient = new SQLCustomClient();
+			var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 			sqlClient.CommandText(@"
 				SELECT C.SchName,C.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,C.ContFName AS ContactFirstName,
 				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,

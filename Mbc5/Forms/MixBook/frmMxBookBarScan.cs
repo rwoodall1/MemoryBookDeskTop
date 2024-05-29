@@ -120,7 +120,7 @@ namespace Mbc5.Forms.MixBook
                         MessageBox.Show("Invalid scan code");
                         return;
                     }
-                    var sqlQuery = new SQLCustomClient();
+                    var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 
                     switch (this.Company)
                     {
@@ -205,7 +205,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch { }
             //update record by login
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
             string company = txtBarCode.Text.Substring(0, 3);
             DateTime vDateTime = DateTime.Now;
@@ -1118,7 +1118,7 @@ namespace Mbc5.Forms.MixBook
                 }
             }
             string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length - 2, 2);
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             if (currentUser == "QUALITY")
             {
                 sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
@@ -1348,7 +1348,7 @@ namespace Mbc5.Forms.MixBook
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
             sqlClient.AddParameter("@Jobid", jobId);
             sqlClient.AddParameter("@StatusChangedTo", status);
@@ -1369,7 +1369,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void PrintPackingList(int vClientOrderId)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,MO.CoverPreviewUrl
                                     ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
                                     FROM MixbookOrder MO
@@ -1453,7 +1453,7 @@ namespace Mbc5.Forms.MixBook
         {
            
             bool retval = true;
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Select MixbookOrderStatus  FROM MixbookOrder Where Invno=@Invno ");
             sqlClient.AddParameter("@Invno", invno);
             var result = sqlClient.SelectSingleColumn();
@@ -1485,7 +1485,7 @@ namespace Mbc5.Forms.MixBook
         private bool WipCheck(string vDeptCode, string type)
         {
 
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             bool retval = true;
             ApiProcessingResult<string> countResult = new ApiProcessingResult<string>() { Data = "" };
             if (type == "YB")

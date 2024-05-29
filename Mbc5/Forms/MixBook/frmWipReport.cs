@@ -14,7 +14,7 @@ using CsvHelper;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
-
+using Mbc5.Classes;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmWipReport : BaseClass.frmBase
@@ -36,7 +36,7 @@ namespace Mbc5.Forms.MixBook
 
    private void LoadData()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
       string cmd= @"Select 
                                     MO.ShipName									
 									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno

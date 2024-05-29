@@ -379,7 +379,7 @@ public override void Cancel() {
                 var processingResult = new ApiProcessingResult<bool>();
                 try
                 {
-                var sqlquery = new SQLCustomClient();
+                var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 var dr = (DataRowView)custBindingSource.Current;
                 var vYearBookToHome = dr.Row["yb_sth"].ToString();
                 var vOther = dr.Row["shiptocont"].ToString();
@@ -746,7 +746,7 @@ public override void Cancel() {
         private  ApiProcessingResult<bool> PrintProductionTicket()
         {
             var processingResult = new ApiProcessingResult<bool>();
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
              Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
              ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
@@ -814,7 +814,7 @@ public override void Cancel() {
         }
         private void SaveAddressInfo()
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"
                                     UPDATE Cust Set InvoiceAddr=@InvoiceAddr
                                         ,InvoiceName=@InvoiceName
@@ -1019,28 +1019,28 @@ public override void Cancel() {
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
-            xsuppliesTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpPrevPubTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpNoRebookTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
-            this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.xsuppliesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.xSuppliesDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            xsuppliesTableAdapter.Connection.ConnectionString= ApplicationConfig.DefaultConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.statesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpLeadNameTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.custSearchTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpTypeContTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpPromotionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpPrevPubTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpNoRebookTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpCommentsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.datecontTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString= ApplicationConfig.DefaultConnectionString;
+            this.contpstnTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.mktinfoTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.xsuppliesTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+            this.xSuppliesDetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
 
         }
     
@@ -1582,7 +1582,7 @@ public override void Cancel() {
                 int InvNum = this.frmMain.GetNewInvno();
 				if (InvNum != 0)
 				{
-					var sqlClient = new SQLCustomClient();
+					var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
 					try {
                         sqlClient.AddParameter("@Invno", InvNum);
                         sqlClient.AddParameter("@Schcode", this.Schcode);
@@ -1795,7 +1795,7 @@ public override void Cancel() {
         //    return coverNum.ToString();
         //    }
         private void GetSetSchcode() {
-            SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
+            SqlConnection conn = new SqlConnection(ApplicationConfig.DefaultConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -1890,7 +1890,7 @@ public override void Cancel() {
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
-                var sqlquery = new SQLCustomClient();
+                var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlquery.CommandText("UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ");
              
               
@@ -2085,7 +2085,7 @@ public override void Cancel() {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
     
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             string cmdText = @"
                         Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
                         C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
@@ -2537,7 +2537,7 @@ public override void Cancel() {
             }
 
 
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"
                                             INSERT INTO XSuppliesDetail(Item,Quantity,Schcode,Invno,XSuppliesID)
                                             Values(@Item,@Quantity,@Schcode,@Invno,@XSuppliesID)"
@@ -2587,7 +2587,7 @@ public override void Cancel() {
 
         private void btnNewSupplyRecord_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Insert Into XSupplies (Schcode,Schname,Schphone,Invno,AdvisorName,ShipAddress,ShipAddress2,ShipCity,ShipState,ShipZipCode)
                                         VALUES(@Schcode,@Schname,@Schphone,@Invno,@AdvisorName,@ShipAddress,@ShipAddress2,@ShipCity,@ShipState,@ShipZipCode)");
             
@@ -2647,7 +2647,7 @@ public override void Cancel() {
                 e.RowIndex >= 0)
             {
                 var vId = senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText(@"Delete FROM XSuppliesDetail where Id=@Id");
                 sqlClient.AddParameter("@Id", vId);
                var deleteResult= sqlClient.Delete();
@@ -2879,7 +2879,7 @@ public override void Cancel() {
 
         private void btnAddressSave_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlClient.CommandText(@"Update Cust Set Schaddr=@Schaddr,SchAddr2=@SchAddr2,SchCity=@SchCity,SchState=@SchState,SchZip=@SchZip Where Schcode=@Schcode");
             sqlClient.AddParameter("@Schaddr", txtaddress.Text);
             sqlClient.AddParameter("@SchAddr2", txtAddress2.Text);

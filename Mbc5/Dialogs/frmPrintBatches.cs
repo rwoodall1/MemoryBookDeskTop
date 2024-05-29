@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using NLog;
 using BaseClass;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmPrintBatches : Form
@@ -27,7 +28,7 @@ namespace Mbc5.Dialogs
         }
         private void GetData()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Select Top(10) JobPrintBatch,max(JobPrintDate) As JobPrintDate ,count(JobPrintBatch) as NumberTickets From MixBookOrder
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText(@"Select Top(10) JobPrintBatch,max(JobPrintDate) As JobPrintDate ,count(JobPrintBatch) as NumberTickets From MixBookOrder
                                                             Where JobTicketPrinted=1
                                                             Group By JobPrintBatch order by Max(JobPrintDate) desc");
             var jobResult=sqlClient.SelectMany<PrintBatch>();
@@ -80,7 +81,7 @@ namespace Mbc5.Dialogs
             int vbatch = 0;
             if (int.TryParse(txtBatch.Text, out vbatch))
             {
-                var sqlClient = new SQLCustomClient();
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=0,BookStatus=NULL where JobPrintBatch=@JobPrintBatch ");
                 sqlClient.AddParameter("@JobPrintBatch", txtBatch.Text);
                 var result = sqlClient.Update();

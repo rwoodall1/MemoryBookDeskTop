@@ -6,15 +6,24 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Mbc5.Classes;
 namespace BaseClass.Classes
 {
     public class SQLQueryProperties
     {
         //connection
         //private static string _ConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-        private static string _ConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = sedswjpsql02; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = sedswjpsql02; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-        public SQLQueryProperties()
+        private static string _ConnectionString ="Data Source = sedswjpsql02; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" ;
+        public SQLQueryProperties(string newConnectionString)
+        {
+            ConnectionString = newConnectionString;
+            Timeout = 20;
+            CommandParameters = new List<SqlParameter>();
+            CommandType = CommandType.Text;
+            ReturnList = false;
+            IdentityColumn = null;
+        }
+            public SQLQueryProperties()
         {
             ConnectionString = _ConnectionString;
             Timeout = 20;

@@ -8,7 +8,8 @@ using Exceptionless;
 using Mbc5.Forms.MixBook;
 using NLog;
 using System.Threading;
-
+using Mbc5.Classes;
+using System.Configuration;
 namespace Mbc5
 {
     static class Program
@@ -26,7 +27,7 @@ namespace Mbc5
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           
+
             // Set the unhandled exception mode to force all Windows Forms errors to go through
             // our handler.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
@@ -38,7 +39,8 @@ namespace Mbc5
 
             try
             {
-
+                ApplicationConfig.Environment = "DEV";
+                SetConfig();
                 Application.Run(new frmMain());
                 //Application.Run(new frmTest());
 
@@ -51,7 +53,7 @@ namespace Mbc5
             }
         }
 
-       
+
 
         // Handle the UI exceptions by showing a dialog box, and asking the user whether
         // or not they wish to abort execution.
@@ -65,7 +67,7 @@ namespace Mbc5
                 string errorMsg = "An application error occurred. Please contact the adminstrator " +
                     "with the following information:\n\n";
 
-              
+
             }
             catch (Exception exc)
             {
@@ -81,7 +83,21 @@ namespace Mbc5
                 }
             }
         }
+        private static void SetConfig()
+        {
+            if (ApplicationConfig.Environment == "PROD")
+            {
+                ApplicationConfig.DefaultConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.MBC5ConnectionString"].ToString();
+                ApplicationConfig.OPYConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.OPY"].ToString();
+            }
+            else if (ApplicationConfig.Environment == "DEV")
+            {
 
-        
+                ApplicationConfig.DefaultConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.Mbc5_demoConnectionString1"].ToString();
+                ApplicationConfig.OPYConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.OPY_DemoConnectionString"].ToString();
+
+            }
+
+        }
     }
- }
+}
