@@ -21937,20 +21937,20 @@ WHERE        (schcode = @schcode)";
                 "= @OnlinePayIncreased2, \r\n                         MainSchcode = @MainSchcode, S" +
                 "chName = @SchName, PIN = @PIN, ValidateOrderTotal = @ValidateOrderTotal, Closed " +
                 "= @Closed, NoOnlinepay = @NoOnlinepay, IncreaseAmt1 = @IncreaseAmt1, \r\n         " +
-                "                CustOkPastSubmission = @CustOkPastSubmission\r\nWHERE        (Invn" +
-                "o = @Invno);  \r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBas" +
-                "ic, HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt" +
-                ", InkTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, Pic" +
-                "turePersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, AdF" +
-                "ullAmt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, O" +
-                "nlineCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAm" +
-                "t, OpyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, Tax" +
-                "Collected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, Ad, AdType, " +
-                "DonateBook, DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, SponsorPage," +
-                " SponsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, OnlinePayIncrea" +
-                "sed, OnlinePayIncreased1, OnlinePayIncreased2, MainSchcode, SchName, PIN, Valida" +
-                "teOrderTotal, Closed, NoOnlinepay, IncreaseAmt1, CustOkPastSubmission FROM OpyPr" +
-                "oducts WHERE (Id = @Id)";
+                "                CustOkPastSubmission = @CustOkPastSubmission\r\nWHERE        (Id =" +
+                " @Id);    \r\nSELECT Id, Schcode, Invno, Contryear, Basic, BasicAmt, HardBkBasic, " +
+                "HardBkBasicAmt, Ink, InkAmt, InkHardBk, InkHardBkAmt, InkText, Foil, FoilAmt, In" +
+                "kTextAmt, FoilText, FoilHardBk, FoilTextAmt, FoilHardBkAmt, PicturePers, Picture" +
+                "PersAmt, PicturePersHardBk, PicturePersHardBkAmt, LoveLine, LoveLineAmt, AdFullA" +
+                "mt, AdHalfAmt, AdQuarterAmt, AdEigthAmt, AgreementDate, AgreementReceived, Onlin" +
+                "eCutOffDate, AdCutOffDate, TaxRate, TaxOnlinePay, DateToIncrease, IncreaseAmt, O" +
+                "pyNotes, TotalBookSold, TotalPersSold, DollarsCollected, TotalLoveLines, TaxColl" +
+                "ected, TotalAds, OracleCode, NameTitle, PersonalizedDateCutOff, Ad, AdType, Dona" +
+                "teBook, DonateBookAmt, LoveLineType, ShipToHome, ShipToHomeAmt, SponsorPage, Spo" +
+                "nsorPageAmt, DateToIncrease1, DateToIncrease2, IncreaseAmt2, OnlinePayIncreased," +
+                " OnlinePayIncreased1, OnlinePayIncreased2, MainSchcode, SchName, PIN, ValidateOr" +
+                "derTotal, Closed, NoOnlinepay, IncreaseAmt1, CustOkPastSubmission FROM OpyProduc" +
+                "ts WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

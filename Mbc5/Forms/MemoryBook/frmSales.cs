@@ -26,6 +26,7 @@ using Mbc5.DataSets;
 
 using System.Security.Policy;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System.Net;
 
 
 namespace Mbc5.Forms.MemoryBook
@@ -173,6 +174,80 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void EmailLoginInformation()
+        {
+            this.SaveOPYRecord();
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+                var emailHelper = new EmailHelper();
+                string vsub = "Advisor Log In's for Online Parent Pay and Promotional Materials";
+                lblPassword.Text = this.Invno.ToString();
+             
+                string vInvno = ((DataRowView)quotesBindingSource.Current).Row["invno"].ToString().Trim();
+                string vJobNo = ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
+                string vPassword = lblPassword.Text;
+                string vOPySchcode = lblOpySchcodeDisplay.Text;
+                string vContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                string vBContemail = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
+                string vCContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
+                string cutoffDate =  ((DataRowView)opyProductsBindingSource.Current).Row.IsNull("OnlineCutOffDate") ? "" : ((DateTime)((DataRowView)opyProductsBindingSource.Current).Row["OnlineCutOffDate"]).ToString("d");
+               
+                List<string> vEmailList = new List<string>();
+                if (!string.IsNullOrEmpty(vContEmail))
+                {
+                    vEmailList.Add(vContEmail);
+                }
+                if (!string.IsNullOrEmpty(vBContemail))
+                {
+                    vEmailList.Add(vBContemail);
+                }
+                if (!string.IsNullOrEmpty(vCContEmail))
+                {
+                    vEmailList.Add(vCContEmail);
+                }
+
+                string vBody = @"Below please find your Online Pay Advisor access information. You can copy and paste the link below into a browser to take you to the online pay log in page. https://shop.memorybook.com/ this is the site for you to export a list of your orders and create or update the list of teachers. <br/>
+                <br/>&nbsp&nbsp School Code:<b>" + vOPySchcode + @"</b><br/>
+                &nbsp&nbsp User Name/Email Address:<b>" + vOPySchcode + @"</b><br/>
+                &nbsp&nbsp Password:<b>" + lblPassword.Text + @"</b><br/> 
+                &nbsp&nbsp Online Cutoff Date:<b>" + cutoffDate + @"</b><br/> 
+                 <br/> For a quick video tour of the Adviser Portal for Online Pay  Click Here. https://youtu.be/VQL1wExfxG0Reminders:
+                  <br/> *Create the drop down list of teachers-when individuals go to order they can select their grade and teacher -THIS MUST BE DONE BEFORE SHARING THE SITE WITH YOUR SCHOOL COMMUNITY. TEACHER NAMES NEED TO BE UPDATED EACH YEAR. 
+                   <br/><br/>*Search for orders by order ID or Student name under Search Orders.
+                    <br/><br/>*Under Order Report you can generate a report of all orders and order information. This includes Love Line and Ad information (if your school chose to offer those items).
+                    <br/><br/>This is the link that will take parents to the online pay site: https://shop.memorybook.com School Code: 037737M All users will have to Register the first time they access the site.
+
+                <br/><br/>You can order your online pay flyers and customize them by pasting the following link; https://coverorders.memorybook.com/login 
+                <br/><br/>User Name:<b>" + vJobNo + @"</b><br/>
+                Password:<b>Adviser</b> </br><br/> <br/>
+                Once you are logged into the order center then click on yearbook promotional materials and then online pay fliers. Here you will be able to customize your flier, proof and approve it.<br/> 
+                 <br/> &nbsp&nbsp*Enter school name<br/>
+                 &nbsp&nbsp *Enter your Pay Code <b>" + vOPySchcode + @"</b><br/>
+                 &nbsp&nbsp *Enter the amount you would like to charge per book<br/>
+                  &nbsp&nbsp *Enter online order cutoff date <b>"+ cutoffDate + @"</b>
+                  <br/>&nbsp&nbsp *You can also customize the text at the bottom of the flyer to include your contact information.<br/>
+                <br/><br/>You may also order additional promotional materials at this time through the order center.<br/><br/>Thank you.";
+
+                var vattachementList = new List<OutlookAttachemt>();
+                var vAttachement = new OutlookAttachemt()
+                {
+                    Name = "2019 Online Pay Adviser",
+                    Path = ConfigurationManager.AppSettings["AdviserFile"].ToString()
+                };
+                vattachementList.Add(vAttachement);
+           
+                emailHelper.SendOutLookEmail(vsub, vEmailList, null, vBody, EmailType.Mbc, vattachementList);
+
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+                Log.Error(ex, "Email Login Information");
+            }
+        }
         private void CalculatePressCopies()
         {
             int vNoPages = 0;
@@ -4352,31 +4427,35 @@ namespace Mbc5.Forms.MemoryBook
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
+            try
+            {
+                lblPassword.Text = this.Invno.ToString();
 
-            List<string> address = new List<string>();
-            string contact1email = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
-            string contact2email = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
-            string contact3email = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
-            string vJobNo = ((DataRowView)quotesBindingSource.Current).Row.IsNull("jobno") ? "" : ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
-            string vPassword = ((DataRowView)custBindingSource.Current).Row.IsNull("mbconlinepassword") ? "" : ((DataRowView)custBindingSource.Current).Row["mbconlinepassword"].ToString().Trim();
-            if (!string.IsNullOrEmpty(contact1email))
-            {
-                address.Add(contact1email.Trim());
-            }
-            if (!string.IsNullOrEmpty(contact2email))
-            {
-                address.Add(contact2email);
-            }
-            if (!string.IsNullOrEmpty(contact3email))
-            {
-                address.Add(contact3email);
-            }
+                List<string> address = new List<string>();
+                string contact1email = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                string contact2email = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
+                string contact3email = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
+                string vJobNo = ((DataRowView)quotesBindingSource.Current).Row.IsNull("jobno") ? "" : ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
+                string vPassword = lblPassword.Text;
+                string vOPySchcode = lblOpySchcodeDisplay.Text;
+                if (!string.IsNullOrEmpty(contact1email))
+                {
+                    address.Add(contact1email.Trim());
+                }
+                if (!string.IsNullOrEmpty(contact2email))
+                {
+                    address.Add(contact2email);
+                }
+                if (!string.IsNullOrEmpty(contact3email))
+                {
+                    address.Add(contact3email);
+                }
 
-            string vBody = @"Thank you for signing up for Memory Book Online Parent Pay.<br/>
+                string vBody = @"Thank you for signing up for Memory Book Online Parent Pay.<br/>
             Please go to <a href=https://coverorders.memorybook.com/login> <font color=blue> Cover Orders Center </font> </a> to customize your online pay fliers to send home with students or post to your schools website.<br/>
             User Name:" + vJobNo + @" <br/>
             Password:Adviser<br/>
-            PLEASE NOTE YOUR SCHOOLS CODE IS:<strong> " + Schcode + @"</strong> This is the number you will put on the flier.<br/><br/>
+            PLEASE NOTE YOUR SCHOOLS CODE IS:<strong> " + vOPySchcode + @"</strong> This is the number you will put on the flier.<br/><br/>
             Below please find your Online Pay Advisor access information.You can copy and paste this link <a href=http://www.shop.memorybook.com/admin/><font color=blue> http://www.shop.memorybook.com/admin/ </font> </a>  into a browser to take you to the advisor log in page. 
             <br/><br/>
             School Code: " + Schcode + @"<br/>
@@ -4384,14 +4463,21 @@ namespace Mbc5.Forms.MemoryBook
 
             * View Orders Submitted<br/>
             * Generate a report of all orders and order information";
-            var vattachementList = new List<OutlookAttachemt>();
-            var vAttachement = new OutlookAttachemt() {
-                Name = "2019 Online Pay Adviser",
-                Path = ConfigurationManager.AppSettings["AdviserFile"].ToString() };
-            vattachementList.Add(vAttachement);
-            EmailHelper emailHelper = new EmailHelper();
-            emailHelper.SendOutLookEmail("Memory Book Online Pay", address, null, vBody, EmailType.Mbc, vattachementList);
-            Cursor.Current = Cursors.Default;
+                var vattachementList = new List<OutlookAttachemt>();
+                var vAttachement = new OutlookAttachemt()
+                {
+                    Name = "2019 Online Pay Adviser",
+                    Path = ConfigurationManager.AppSettings["AdviserFile"].ToString()
+                };
+                vattachementList.Add(vAttachement);
+                EmailHelper emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("Memory Book Online Pay", address, null, vBody, EmailType.Mbc, vattachementList);
+                Cursor.Current = Cursors.Default;
+            }catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "Error");
+                Log.Error(ex, "Error sending online pay email.");
+            }   
 
         }
 
@@ -5396,58 +5482,9 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
-
-
-
-
-
-
-
         private void btnPassword_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
-            var emailHelper = new EmailHelper();
-            string vsub = "Advisor Log In's for Online Parent Pay and Promotional Materials";
-            string vSchcode = ((DataRowView)quotesBindingSource.Current).Row["schcode"].ToString().Trim();
-            string vInvno = ((DataRowView)quotesBindingSource.Current).Row["invno"].ToString().Trim();
-            string vJobNo = ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
-            string vContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ? "" : ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
-            string vBContemail = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim();
-            string vCContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
-            List<string> vEmailList = new List<string>();
-            if (!string.IsNullOrEmpty(vContEmail))
-            {
-                vEmailList.Add(vContEmail);
-            }
-            if (!string.IsNullOrEmpty(vBContemail))
-            {
-                vEmailList.Add(vBContemail);
-            }
-            if (!string.IsNullOrEmpty(vCContEmail))
-            {
-                vEmailList.Add(vCContEmail);
-            }
-
-            string vBody = @"Below please find your Online Pay Advisor access information. You can copy and paste the link below into a browser to take you to the advisor log in page. http://www.shop.memorybook.com/admin/ <br/>
-                <br/>&nbsp&nbsp School Code:<b>" + vSchcode + @"</b><br/>
-                &nbsp&nbsp Password:<b>" + vInvno + @"</b><br/> <br/>
-                  &nbsp&nbsp*Create the drop down list of teachers - when individuals go to order they can select their grade and teacher <br/> 
-                  &nbsp&nbsp*Search for orders by order ID or Student name<br/>
-                  &nbsp&nbsp*Generate a report of all orders and order information <br/><br/>
-                You can order your online pay flyers and customize them by pasting the following link; https://coverorders.memorybook.com/login <br/><br/>
-                User Name:<b>" + vJobNo + @"</b><br/>
-                Password:<b>Adviser</b> </br><br/> <br/>
-                Once you are logged into the order center then click on yearbook promotional materials and then online pay fliers. Here you will be able to customize your flier, proof and approve it.<br/> 
-                 <br/> &nbsp&nbsp*Enter school name<br/>
-                 &nbsp&nbsp *Enter your Pay Code " + vSchcode + @"<br/>
-                 &nbsp&nbsp *Enter the amount you would like to charge per book<br/>
-                  &nbsp&nbsp *Enter online order cutoff date<br/>
-                  &nbsp&nbsp *You can also customize the text at the bottom of the flyer to include your contact information.<br/>
-                You may also order additional promotional materials at this time through the order center.<br/><br/>Thank you.";
-
-            emailHelper.SendOutLookEmail(vsub, vEmailList, null, vBody, EmailType.Mbc);
-            Cursor.Current = Cursors.Default;
+            EmailLoginInformation();
 
         }
 
@@ -5770,7 +5807,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             if (agreerecCheckBox1.Checked)
             {
-                btnOnlineAgreement_Click(agreerecCheckBox1, null);
+                EmailLoginInformation();
             }
         }
 
@@ -5784,16 +5821,21 @@ namespace Mbc5.Forms.MemoryBook
         protected ApiProcessingResult SaveOPYRecord()
         {
             var processingResult = new ApiProcessingResult();
-            try { 
-            opyProductsBindingSource.EndEdit();
-            this.ValidateChildren();
-            var result = opyProductsTableAdapter.Update(dsSales.o); }
-        catch(Exception ex){
+
+            try {
+                opyProductsBindingSource.EndEdit();
+                this.ValidateChildren();
+                var curRow = (DataRowView)opyProductsBindingSource.Current;
+                if (curRow!=null) {
+                    var result = opyProductsTableAdapter.Update(curRow.Row); } 
+            }
+            catch (Exception ex) {
                 processingResult.IsError = true;
-                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message,""));
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                 MbcMessageBox.Error(ex.Message, "");
 
             }
+            opyProductsTableAdapter.FillByInvno(dsSales.OpyProducts, Invno);
             return processingResult;
 
         }
@@ -5819,29 +5861,31 @@ namespace Mbc5.Forms.MemoryBook
         }
         protected void AddOPYRecord()
         {
-            string schcode = "";
+            string _schcode = "";
             var rowCount = opyProductsBindingSource.Count;
             if (rowCount == 0)
             {
-                schcode = lblOpySchcodeDisplay.Text + "M";
+                _schcode = this.Schcode + "M";
             }
             else if (rowCount == 1)
             {
-                schcode = lblOpySchcodeDisplay.Text + "S";
+                _schcode = this.Schcode + "S";
             }
             else if (rowCount > 1)
             {
-                schcode = lblOpySchcodeDisplay.Text + "S" + (rowCount - 1).ToString();
+                _schcode = this.Schcode + "S" + (rowCount - 1).ToString();
             }
             //ConfigurationManager.ConnectionStrings["MBC5ConnectionString"].ConnectionString;
-            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear) Values(@Schcode,@Invno,@Contryear)");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear,MainSchcode,OracleCode) Values(@Schcode,@Invno,@Contryear,@MainSchcode,@OracleCode)");
             ;
             // var a=ApplicationConfiguration.GetConfigurationValue("ConnectionString");
 
             sqlClient.Target.ConnectionString = "Data Source=Owbswjtsql06.jostens.com,56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=MbcUser_demo;Password=S3dALMbcOct2122;TrustServerCertificate=True";
-            sqlClient.AddParameter("@Schcode", schcode);
+            sqlClient.AddParameter("@Schcode", _schcode);
             sqlClient.AddParameter("@Invno", this.Invno);
             sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+            sqlClient.AddParameter("@MainSchcode",this.Schcode);
+            sqlClient.AddParameter("@OracleCode", "");
             var result = sqlClient.Insert();
             if (result.IsError)
             {
