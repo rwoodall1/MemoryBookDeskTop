@@ -13,7 +13,10 @@ namespace BaseClass.Classes
     {
         //connection
         //private static string _ConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-        private static string _ConnectionString ="Data Source = sedswjpsql02; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" ;
+        private static string _ConnectionString;
+        //="Data Source = sedswjpsql02; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" ;
+        string _environment = ConfigurationManager.AppSettings["Environment"];
+        
         public SQLQueryProperties(string newConnectionString)
         {
             ConnectionString = newConnectionString;
@@ -25,6 +28,16 @@ namespace BaseClass.Classes
         }
             public SQLQueryProperties()
         {
+            //default connection string
+            if (_environment=="PROD")
+            {
+                _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.MBC5ConnectionString"].ConnectionString;
+
+            }else if (_environment == "DEV")
+            {
+                _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.Mbc5_demoConnectionString1"].ConnectionString;
+            }
+          
             ConnectionString = _ConnectionString;
             Timeout = 20;
             CommandParameters = new List<SqlParameter>();

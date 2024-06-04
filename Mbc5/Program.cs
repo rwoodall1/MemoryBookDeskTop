@@ -39,7 +39,8 @@ namespace Mbc5
 
             try
             {
-                ApplicationConfig.Environment = "DEV";
+                
+              
                 SetConfig();
                 Application.Run(new frmMain());
                 //Application.Run(new frmTest());
@@ -84,8 +85,11 @@ namespace Mbc5
             }
         }
         private static void SetConfig()
+            
         {
-            if (ApplicationConfig.Environment == "PROD")
+            string _environment = ConfigurationManager.AppSettings["Environment"];
+            ApplicationConfig.Environment = _environment;
+            if (ApplicationConfig.Environment =="PROD")
             {
                 ApplicationConfig.DefaultConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.MBC5ConnectionString"].ToString();
                 ApplicationConfig.OPYConnectionString = ConfigurationManager.ConnectionStrings["Mbc5.Properties.Settings.OPY"].ToString();
