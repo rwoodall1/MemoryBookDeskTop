@@ -5875,17 +5875,21 @@ namespace Mbc5.Forms.MemoryBook
             {
                 _schcode = this.Schcode + "S" + (rowCount - 1).ToString();
             }
+            string vNameTitle = ((DataRowView)custBindingSource.Current).Row.IsNull("Schname") ? "" : ((DataRowView)custBindingSource.Current).Row["Schname"].ToString().Trim();
+            string vOracleCode= ((DataRowView)custBindingSource.Current).Row.IsNull("OracleCode") ? "" : ((DataRowView)custBindingSource.Current).Row["OracleCode"].ToString().Trim();
+            string vContryear = ((DataRowView)quotesBindingSource.Current).Row.IsNull("Contryear") ? "" : ((DataRowView)quotesBindingSource.Current).Row["Contryear"].ToString().Trim();
             //ConfigurationManager.ConnectionStrings["MBC5ConnectionString"].ConnectionString;
-            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear,MainSchcode,OracleCode) Values(@Schcode,@Invno,@Contryear,@MainSchcode,@OracleCode)");
+            var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString).CommandText("Insert Into OpyProducts (Schcode,Invno,Contryear,MainSchcode,OracleCode,NameTitle) Values(@Schcode,@Invno,@Contryear,@MainSchcode,@OracleCode,@NameTitle)");
             ;
             // var a=ApplicationConfiguration.GetConfigurationValue("ConnectionString");
 
             sqlClient.Target.ConnectionString = "Data Source=Owbswjtsql06.jostens.com,56609;Initial Catalog=OPY_Demo;Persist Security Info=True;User ID=MbcUser_demo;Password=S3dALMbcOct2122;TrustServerCertificate=True";
             sqlClient.AddParameter("@Schcode", _schcode);
             sqlClient.AddParameter("@Invno", this.Invno);
-            sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+            sqlClient.AddParameter("@Contryear", vContryear);
             sqlClient.AddParameter("@MainSchcode",this.Schcode);
-            sqlClient.AddParameter("@OracleCode", "");
+            sqlClient.AddParameter("@OracleCode",vOracleCode);
+            sqlClient.AddParameter("@NameTitle", vNameTitle);
             var result = sqlClient.Insert();
             if (result.IsError)
             {
