@@ -940,29 +940,39 @@ namespace Mbc5.Forms.MemoryBook
             {
                 return retval;
             }
-            var SqlQuery = new SQLQuery();
+            var sqlClient = new SQLCustomClient();
             var cmdText = @"SELECT ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0)),0) AS paymentresult
                          FROM paymnt where Invno=@Invno";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",invoiceNumber) };
-            var result = SqlQuery.ExecuteReaderAsync(CommandType.Text, cmdText, parameters);
-            //paymentTotals =(decimal)this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text));
-            try
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", invoiceNumber);
+            var result = sqlClient.SelectSingleColumn();
+            if(result.IsError)
             {
+                MbcMessageBox.Error(result.Errors[0].DeveloperMessage, "");
+                return retval;
+            }
 
-                paymentTotals = (decimal)result.Rows[0]["paymentresult"];
+           
+            //paymentTotals =(decimal)this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text));
+            
+
+                paymentTotals = Convert.ToDecimal(result.Data);
+                sqlClient.ClearParameters();
                 cmdText = @"Update invoice set payments=@payments,baldue=invtot-@payments  where Invno=@Invno ";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                new SqlParameter("@Invno",invoiceNumber),
-                new SqlParameter("@payments",paymentTotals)};
-                var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", invoiceNumber);
+                sqlClient.AddParameter("@payments", paymentTotals);
+                var updateResult = sqlClient.Update();
+                if(updateResult.IsError)
+                {
+                    MbcMessageBox.Error(updateResult.Errors[0].DeveloperMessage, "");
+                    Log.Error(updateResult.Errors[0].DeveloperMessage);
+                    return retval;
+                }   
+                
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
                 retval = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
+           
             return retval;
         }
         //Invoice
@@ -970,40 +980,43 @@ namespace Mbc5.Forms.MemoryBook
         {
             bool retval = true;
             DialogResult messageResult = MessageBox.Show("This will delete the current invoice. Any payments related to this invoice will remain. Do you want to proceed?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var sqlClient = new SQLCustomClient();
             if (messageResult == DialogResult.Yes)
-            {
-                var sqlQuery = new SQLQuery();
-                var queryString = "Delete  From Invoice where Invno=@Invno ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-                queryString = "Delete  From InvDetail where Invno=@Invno ";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-                try
-                {
-                    //use same parameter
-                    var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters1);
-                    if (result1 == 0 || result == 0) { retval = false; }
+            { 
+                var cmdText = "Delete  From Invoice where Invno=@Invno ";
+                sqlClient.CommandText(cmdText);
+               sqlClient.AddParameter("@Invno", lblInvoice.Text);
 
-                    this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
-                    this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
-                }
-                catch (Exception ex)
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
                 {
-                    MbcMessageBox.Error(ex.Message, "");
+                    Log.Error(deleteResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to delete invoice:"+deleteResult.Errors[0].DeveloperMessage, "Delete Error");
+                    return false;
                 }
-
+                sqlClient.ClearParameters();
+                cmdText = "Delete  From InvDetail where Invno=@Invno ";
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", lblInvoice.Text);
+                var detailDeleteResult=sqlClient.Delete();
+                if(detailDeleteResult.IsError)
+                {
+                    Log.Error(detailDeleteResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to delete invoice details:" + detailDeleteResult.Errors[0].DeveloperMessage, "Delete Error");
+                    return false;
+                }  
+                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+                this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
                 this.Fill();
+                return retval;
             }
-            return retval;
+            else { return false;}    
+        
         }
         private bool CreateInvoice()
         {
             bool retval = true;
-            var connection = new SqlConnection(this.FormConnectionString);
+            var connection = new SqlConnection(ApplicationConfig.DefaultConnectionString);
             string cmdText = "";
             var command = new SqlCommand(cmdText, connection);
 
@@ -1015,7 +1028,7 @@ namespace Mbc5.Forms.MemoryBook
                 connection.Open();
                 var trans = connection.BeginTransaction();
                 command.Transaction = trans;
-                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+              
                 cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
@@ -1037,7 +1050,7 @@ namespace Mbc5.Forms.MemoryBook
                 SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@invno",lblInvoice.Text),
                     new SqlParameter("@schcode",this.Schcode ),
-                    new SqlParameter("@qtedate",qtedateDateBox.Date),
+                    new SqlParameter("@qtedate",qtedateDateBox.Date==null?DateTime.Now.ToString():qtedateDateBox.Date),
                     new SqlParameter("@nopages",txtNoPages.Text ),
                     new SqlParameter("@nocopies",txtNocopies.Text ),
                     new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
@@ -4186,24 +4199,20 @@ namespace Mbc5.Forms.MemoryBook
             }
             else { SaveSucceded = false; }
 
-            var sqlQuery = new SQLQuery();
-            var queryString = "SELECT Invno From Invoice where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            DataTable result = new DataTable();
-            try
+            var sqlClient = new SQLCustomClient().CommandText("SELECT Invno From Invoice where Invno=@Invno ");
+             sqlClient.AddParameter("@Invno", lblInvoice.Text);
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
             {
-                result = sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error(ex.Message, "");
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+                Log.Error(result.Errors[0].ErrorMessage);
                 return;
             }
+            
+          
 
             //refill to keep concurrency correct
-            if (result.Rows.Count > 0)
+            if (!string.IsNullOrEmpty(result.Data))
             {
                 DialogResult invoiceresult = MessageBox.Show("There is already an invoice created, do you want to overwrite the current invoice", "Invoice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (invoiceresult == DialogResult.Yes)
