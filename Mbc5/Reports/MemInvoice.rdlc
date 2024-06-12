@@ -1027,17 +1027,17 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.46007in</Height>
+    <Height>3.44965in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>7.72792in</Width>
+  <Width>7.60292in</Width>
   <Page>
     <PageHeader>
-      <Height>1.10417in</Height>
+      <Height>1.03819in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1162,8 +1162,8 @@
       </Style>
     </PageHeader>
     <PageWidth>8in</PageWidth>
-    <LeftMargin>0.25in</LeftMargin>
-    <RightMargin>0.25in</RightMargin>
+    <LeftMargin>0.1in</LeftMargin>
+    <RightMargin>0.1in</RightMargin>
     <TopMargin>0.25in</TopMargin>
     <BottomMargin>0.25in</BottomMargin>
     <Style />

@@ -1854,6 +1854,7 @@ namespace Mbc5.Dialogs {
                 else
                 {
                     txtSearch.Text = dgSearch.Rows[CurrentIndex].Cells[0].Value == null ? "" : dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    currentSearchValue = txtSearch.Text;
                 }
 
             }

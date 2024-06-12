@@ -27,6 +27,7 @@ using Mbc5.DataSets;
 using System.Security.Policy;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
 using System.Net;
+using System.Threading;
 
 
 namespace Mbc5.Forms.MemoryBook
@@ -144,6 +145,7 @@ namespace Mbc5.Forms.MemoryBook
         public event PropertyChangedEventHandler PropertyChanged;
         private Decimal nPrcTot = 0;
         private Decimal nPrcEach = 0;
+        private bool bLocked=false;
         private UserPrincipal ApplicationUser { get; set; }
         public Decimal PrcTot
         {
@@ -163,6 +165,14 @@ namespace Mbc5.Forms.MemoryBook
                 InvokePropertyChanged(new PropertyChangedEventArgs("PrcEach"));
             }
         }
+        public bool PriceLocked {
+            get { return bLocked; }
+            set
+            {
+                bLocked = value;
+                InvokePropertyChanged(new PropertyChangedEventArgs("PriceLocked"));
+            }
+        }
         public Decimal SalesTax { get; set; } = 0;
         public Decimal TaxRate { get; set; } = 0;
         public List<Price> Pricing { get; set; }
@@ -174,6 +184,24 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void SetFormLock()
+        {
+            this.txtBYear.Enabled = !this.PriceLocked;
+            this.txtYear.Enabled = !this.PriceLocked;
+            this.pnlHard.Enabled=!this.PriceLocked;
+            this.panel1.Enabled = !this.PriceLocked;
+            this.panel2.Enabled = !this.PriceLocked;
+            this.panel3.Enabled = !this.PriceLocked;        
+            this.pnlTot.Enabled = !this.PriceLocked;
+            this.panel4.Enabled=!this.PriceLocked;
+            this.pnlMiscDiscCred.Enabled = !this.PriceLocked;
+            this.txtNoPages.Enabled = !this.PriceLocked;
+            this.txtNocopies.Enabled = !this.PriceLocked;
+            this.txtPriceOverRide.Enabled = !this.PriceLocked;
+            this.chkPromo.Enabled = !this.PriceLocked;
+            this.cmbYrDiscountAmt.Enabled = !this.PriceLocked;
+
+        }
         private void EmailLoginInformation()
         {
             this.SaveOPYRecord();
@@ -468,7 +496,7 @@ namespace Mbc5.Forms.MemoryBook
                 var saveResult = this.Save(tabSales.SelectedIndex);
                 if (saveResult.IsError)
                 {
-
+                    MbcMessageBox.Error(saveResult.Errors[0].ErrorMessage, "Error");
                     return;
                 }
             }
@@ -661,8 +689,9 @@ namespace Mbc5.Forms.MemoryBook
             try
             {
                 DataRowView dr = (DataRowView)quotesBindingSource.Current;
+               
                 bool vHoldPayment = dr.Row.IsNull("holdpmt") ? false : (bool)dr.Row["holdpmt"];
-                lblIncollections.Visible = vHoldPayment;
+                lblIncollections.Visible = holdpmtCheckBox.Checked;
                 bool vshpdate = dr.Row.IsNull("shpdate");
                 lblShipped.Visible = !vshpdate;
 
@@ -847,6 +876,7 @@ namespace Mbc5.Forms.MemoryBook
                         txtAdjustment.Enabled = false;
                         txtCompensation.Enabled = false;
                         txtCompReason.Enabled = false;
+                        btnNewPayment.Enabled = true;
 
                     }
                     catch (DBConcurrencyException ex1)
@@ -883,19 +913,26 @@ namespace Mbc5.Forms.MemoryBook
                 DataRowView current = (DataRowView)paymntBindingSource.Current;
                 var Id = current["Id"];
 
-                var sqlQuery = new SQLQuery();
+                var sqlClient = new SQLCustomClient();
                 var queryString = "Delete  From  paymnt where Id=@Id ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Id",Id)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
+                sqlClient.CommandText(queryString);
+               sqlClient.AddParameter("@Id", Id);  
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    Log.Error(deleteResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to delete payment:" + deleteResult.Errors[0].DeveloperMessage, "Delete Error");
+                    return false;
+                }
+                
                 CalculatePayments();
                 this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
-
-                if (result == 0) { retval = false; }
                 SetCrudButtons();
+                 return true;
+
             }
-            return retval;
+            else { return false; }
+
 
         }
         private void CancelPayment()
@@ -1029,7 +1066,7 @@ namespace Mbc5.Forms.MemoryBook
                 var trans = connection.BeginTransaction();
                 command.Transaction = trans;
               
-                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
+                cmdText = "Update Quotes set invoiced=1,bpovrde=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
                 cmdText = @"Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,contfname,contlname
@@ -1994,6 +2031,12 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void BookCalc()
         {
+           
+            if (this.PriceLocked)
+            {
+               
+                return;
+            }
             // removes old tax calc
             this.TaxRate = 0;
             //
@@ -4171,11 +4214,16 @@ namespace Mbc5.Forms.MemoryBook
 
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
-            catch
-            {
+            //try {
+            //    if (string.IsNullOrEmpty(this.Schcode))
+            //    {
+            //        return;
+            //    }
+            //    this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            //catch
+            //{
 
-            }
+            //}
 
         }
 
@@ -4191,6 +4239,7 @@ namespace Mbc5.Forms.MemoryBook
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             //Check if invoice exist to see what to do.
+            this.BookCalc();
             this.Save(false);
             if (!SaveSucceded)
             {
@@ -4198,6 +4247,12 @@ namespace Mbc5.Forms.MemoryBook
                 return;
             }
             else { SaveSucceded = false; }
+            var vLocked =Convert.ToBoolean(((DataRowView)quotesBindingSource.Current).Row["bpovrde"]);
+            if (vLocked)
+            {
+                MbcMessageBox.Information("This quote is locked. Please unlock the quote before creating an invoice.", "Locked");
+                return;
+            }
 
             var sqlClient = new SQLCustomClient().CommandText("SELECT Invno From Invoice where Invno=@Invno ");
              sqlClient.AddParameter("@Invno", lblInvoice.Text);
@@ -4492,6 +4547,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnNewPayment_Click(object sender, EventArgs e)
         {
+            btnNewPayment.Enabled = false;
             NewPayment();
         }
 
@@ -4533,12 +4589,14 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            btnNewPayment.Enabled = true;
             CancelPayment();
 
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            btnNewPayment.Enabled = false;
             EditPayment();
 
         }
@@ -4548,11 +4606,13 @@ namespace Mbc5.Forms.MemoryBook
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
             SavePayment();
+           
             Cursor.Current = Cursors.Default;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            btnNewPayment.Enabled = true;
             DeletePayment();
         }
 
@@ -4652,11 +4712,19 @@ namespace Mbc5.Forms.MemoryBook
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# " + Invno.ToString() + ")"; }
+            try {
+                if (this.Schcode==null || this.Invno==0)
+                {
+                        this.Text = "No Record Loaded";
+                    return;
+                }
+                this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# " + Invno.ToString() + ")";
+            }
             catch
             {
 
             }
+            SetFormLock();
         }
 
         private void cmbYrDiscountAmt_SelectedIndexChanged(object sender, EventArgs e)
@@ -4959,37 +5027,32 @@ namespace Mbc5.Forms.MemoryBook
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();
-            var sqlQuery = new BaseClass.Classes.SQLQuery();
-
-            SqlParameter[] parameters = new SqlParameter[] {
-
-                    };
+            var sqlClient = new SQLCustomClient();
             var strQuery = "SELECT Invno FROM Invcnum";
-            try
+            sqlClient.CommandText(strQuery);
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
             {
-                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-                DataRow dr = userResult.Rows[0];
-                int Invno = (int)dr["Invno"];
-                int newInvno = Invno + 1;
-                strQuery = "Update Invcnum Set invno=@newInvno";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                      new SqlParameter("@newInvno",newInvno),
-                    };
-                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-
-                return Invno;
-
-            }
-            catch (Exception ex)
-            {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
-
+                Log.Error(result.Errors[0].ErrorMessage);
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
-
+            }
+            int Invno=Convert.ToInt32(result.Data);
+            int newInvno = Invno + 1;
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Update Invcnum Set invno=@newInvno");
+            sqlClient.AddParameter("@newInvno", newInvno);
+            var result1 = sqlClient.Update();
+            if (result1.IsError)
+            {
+                Log.Error(result1.Errors[0].ErrorMessage);
+                MessageBox.Show("Failed to update invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
             Cursor.Current = Cursors.Default;
+            return Invno;
+            
+            
         }
         private void CalculateXtraInvoice()
         {
@@ -5374,10 +5437,16 @@ namespace Mbc5.Forms.MemoryBook
         {
             var vInvno = "0";
             try {
-                var vIndex = grdXtraInvoice.CurrentCell.RowIndex;
-                vInvno = grdXtraInvoice.Rows[vIndex].Cells[0].Value.ToString(); }
+                if (grdXtraInvoice.CurrentCell !=null) {
+                    var vIndex = grdXtraInvoice.CurrentCell.RowIndex;
+                    vInvno = grdXtraInvoice.Rows[vIndex].Cells[1].Value.ToString();
+                }else { MbcMessageBox.Information("There is not an invoice available to print.", "");
+                    return;
+                }
+            }
             catch (Exception ex)
             {
+                Log.Error(ex, "Failed to retrieve invoice number for printing.");
                 MbcMessageBox.Information("Please select a invoice to be printed.", "");
                 return;
             }
@@ -5955,6 +6024,13 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
+        private void bpovrdeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+          this.PriceLocked= bpovrdeCheckBox.Checked;
+          SetFormLock();
+        }
+
+       
     }
 
     public class XtraInvoicePrint
