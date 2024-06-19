@@ -17,7 +17,7 @@ using Exceptionless;
 using Exceptionless.Models;
 using Mbc5.Classes;
 using BindingModels;
-using BaseClass.Core;
+using Core;
 
 using Microsoft.Reporting.WinForms;
 using System.Threading.Tasks;
