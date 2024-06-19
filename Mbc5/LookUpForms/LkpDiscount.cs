@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using NLog;
 using BaseClass;
-using BaseClass.Core;
+using Core;
 namespace Mbc5.LookUpForms
 {
    

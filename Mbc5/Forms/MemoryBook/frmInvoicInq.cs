@@ -13,7 +13,7 @@ using Mbc5.Classes;
 using BaseClass;
 using System.Collections;
 
-using BaseClass.Core;
+using Core;
 using System.Threading;
 using System.Threading.Tasks;
 

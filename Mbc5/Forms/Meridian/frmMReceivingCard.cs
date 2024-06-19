@@ -10,7 +10,7 @@ using BaseClass.Classes;
 using BaseClass;
 using Mbc5.Classes;
 using System.Collections;
-using BaseClass.Core;
+using Core;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;

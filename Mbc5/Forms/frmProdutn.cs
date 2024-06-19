@@ -14,7 +14,7 @@ using System.Data.Sql;
 using Mbc5.Dialogs;
 using System.Data.SqlClient;
 using Mbc5.Classes;
-using BaseClass.Core;
+using Core;
 using Mbc5.LookUpForms;
 using BindingModels;
 using Exceptionless;

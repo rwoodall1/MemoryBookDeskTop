@@ -27,5 +27,6 @@ namespace Mbc5.Classes
         public decimal Yir { get; set; }
         public decimal Supplement { get; set; }
         public decimal Laminationsft { get; set; }
+        public decimal EasyWork { get; set; }
     }
 }

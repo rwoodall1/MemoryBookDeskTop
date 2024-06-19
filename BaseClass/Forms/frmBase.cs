@@ -10,7 +10,7 @@ using System.Windows.Forms;
 //using BaseClass.FormHandler;
 using System.Security.Principal;
 using BaseClass.Classes;
-using BaseClass.Core;
+using Core;
 using NLog;
 using System.Configuration;
 using System.Threading;

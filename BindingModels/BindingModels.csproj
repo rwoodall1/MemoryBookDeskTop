@@ -131,9 +131,6 @@
     <Content Include="Properties\DataSources\InvoiceDetailBindingModel.datasource" />
     <Content Include="Properties\DataSources\MBidInvoiceDetail.datasource" />
     <Content Include="Properties\DataSources\MeridianCoverTicket.datasource" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

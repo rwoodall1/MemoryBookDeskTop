@@ -13,10 +13,14 @@ using Mbc5.Classes;
 using System.Linq;
 using BindingModels;
 using BaseClass;
-using BaseClass.Core;
+using Core;
 using Microsoft.Reporting.WinForms;
 using Mbc5.Dialogs;
 using Exceptionless;
+using Vertex;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using VerTex.VerTexWebService;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -37,7 +41,7 @@ namespace Mbc5.Forms.MemoryBook {
        
         private void SetConnectionString()
         {
-            
+       
             this.FormConnectionString = ApplicationConfig.DefaultConnectionString;
             this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
            
@@ -56,6 +60,7 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmBids_Load_1(object sender, EventArgs e)
         {
            this.frmMain =(frmMain) this.MdiParent;
+           
             this.SetConnectionString();
             //this.custTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             //this.bidsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
@@ -117,10 +122,8 @@ namespace Mbc5.Forms.MemoryBook {
             {
 				try {
 					this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
-					
-					this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
-                    
-                    
+                    this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
+
                 }
                 catch(Exception ex) {
 					MbcMessageBox.Error(ex.Message, "");
@@ -347,9 +350,7 @@ namespace Mbc5.Forms.MemoryBook {
                     var coverinsertResult = sqlclient.Insert();
                     if (coverinsertResult.IsError)
                     {
-                    ExceptionlessClient.Default.CreateLog("Failed to insert covers record.")
-                     .AddObject(coverinsertResult)
-                     .Submit();
+                   
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError("Failed to insert covers record.", "Failed to insert covers record.", ""));
                     return processingResult;
@@ -357,15 +358,14 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                 .AddObject(ex)
-                 .Submit();
+                
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to insert covers record.", "Failed to insert covers record.", ""));
                 return processingResult;
             }
                
             processingResult.Tag = "A sales record with Invoice# " + InvNum + " has been created.";
+            
             return processingResult;
           
         }
@@ -806,16 +806,9 @@ namespace Mbc5.Forms.MemoryBook {
             }
             return retval;
         }
-        private void CalculateEach()
+        private async void CalculateEach()
         {
-            if (!donotchargeschoolsalestaxCheckBox.Checked)
-            {
-                this.TaxRate = this.GetTaxRate();
-            }
-            else { this.TaxRate = 0; }
-            
-            
-            schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
+         
             if (String.IsNullOrEmpty(txtBYear.Text))
             {
 
@@ -1143,8 +1136,9 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void BookCalc()
         {
+          
             decimal vbookTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$", ""));
-            decimal vBookCalcTax = this.TaxRate * vbookTotal;
+            //decimal vBookCalcTax = this.TaxRate * vbookTotal;
             if (!startup)
             {
                 if (bidsBindingSource.Count > 0)
@@ -1177,7 +1171,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkHardBack.Checked)
                         {
                             HardBack = BookOptionPricing.Hardbk * numberOfCopies;
-                            vBookCalcTax += (HardBack * this.TaxRate);
+                          
                             lblHardbackAmt.Text = HardBack.ToString();
                             CalcInk();
                         }
@@ -1191,7 +1185,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkCaseBind.Checked)
                         {
                             Casebind = BookOptionPricing.Customized * numberOfCopies;
-                            vBookCalcTax += (Casebind * this.TaxRate);
+                            
                             lblCaseamt.Text = Casebind.ToString();
                             CalcInk();
                         }
@@ -1210,7 +1204,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkPerfBind.Checked)
                         {
                             Perfectbind = BookOptionPricing.Perfectbind * numberOfCopies;
-                            vBookCalcTax += (Perfectbind * this.TaxRate);
+                        
                             lblPerfbindAmt.Text = Perfectbind.ToString();
 
                         }
@@ -1224,7 +1218,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkSpiral.Checked)
                         {
                             Spiral = (BookOptionPricing.Spiral * numberOfCopies);
-                            vBookCalcTax += (Spiral * this.TaxRate);
+                         
                             lblSpiralAmt.Text = Spiral.ToString();
                         }
                         else
@@ -1237,7 +1231,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkSaddlStitch.Checked)
                         {
                             SaddleStitch = (BookOptionPricing.SaddleStitch * numberOfCopies);
-                            vBookCalcTax += (SaddleStitch * this.TaxRate);
+                            
                             lblSaddleAmt.Text = SaddleStitch.ToString();
 
                         }
@@ -1252,7 +1246,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkProfessional.Checked)
                         {
                             Professional = (BookOptionPricing.Professional * numberOfPages);
-                            vBookCalcTax += (Professional * this.TaxRate);
+                           
                             lblProfAmt.Text = Professional.ToString();
 
                         }
@@ -1267,7 +1261,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkConv.Checked)
                         {
                             Convenient = (BookOptionPricing.Convenient * numberOfPages);
-                            vBookCalcTax += (Convenient * this.TaxRate);
+                            
                             lblConvAmt.Text = Convenient.ToString();
 
                         }
@@ -1281,7 +1275,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkYir.Checked)
                         {
                             Yir = (BookOptionPricing.Ink * numberOfCopies);
-                            vBookCalcTax += (Yir * this.TaxRate);
+                            
                             lblYir.Text = Yir.ToString();
                         }
                         else
@@ -1295,7 +1289,7 @@ namespace Mbc5.Forms.MemoryBook {
 						if (chkStory.Checked)
 						{
 							Story = (BookOptionPricing.Story);
-							vBookCalcTax += (Story * this.TaxRate);
+							
 							lblStoryAmount.Text = Story.ToString();
 
 						}
@@ -1304,7 +1298,20 @@ namespace Mbc5.Forms.MemoryBook {
 							lblStoryAmount.Text = "0.00";
 							Story = 0;
 						}
+                        //easywork
+                        decimal EasyWork = 0;
+                        if (chkEasyWork.Checked)
+                        {
+                            EasyWork = (BookOptionPricing.EasyWork);
+                            
+                            txtEastworkAmt.Text = (EasyWork *numberOfCopies).ToString("0.00");
 
+                        }
+                        else
+                        {
+                            txtEastworkAmt.Text = "0.00";
+                            EasyWork = 0;
+                        }   
 						//Gloss
 						decimal Gloss = 0;
                         if (chkGlossLam.Checked)
@@ -1317,7 +1324,7 @@ namespace Mbc5.Forms.MemoryBook {
                             else
                             {
                                 Gloss = (BookOptionPricing.Lamination * numberOfCopies);
-                                vBookCalcTax += (Gloss * this.TaxRate);
+                                
                                 lblLaminateAmt.Text = Gloss.ToString();
                             }
                         }
@@ -1337,7 +1344,7 @@ namespace Mbc5.Forms.MemoryBook {
                             {
                                 foilamtTextBox.Text = BookOptionPricing.Foil.ToString("0.00");
                                 Foil = (BookOptionPricing.Foil * MsCopies);
-                                vBookCalcTax += (Foil * this.TaxRate);
+                               
                                 lblMsTot.Text = Foil.ToString("0.00");
                             }
                             else
@@ -1356,7 +1363,7 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkMLaminate.Checked)
                         {
                             Lamination = (BookOptionPricing.Lamination * numberOfCopies);
-                            vBookCalcTax += (Lamination * this.TaxRate);
+                           
                             lblMLaminateAmt.Text = Lamination.ToString();
 
                         }
@@ -1375,6 +1382,7 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal Desc1Tot = 0;
                         decimal Desc3Tot = 0;
                         decimal Desc4Tot = 0;
+                      
 
                         vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$", ""), out BookTotal);
                         vParseResult = decimal.TryParse(lblSpeccvrtot.Text, out SpecCvrTot);
@@ -1384,16 +1392,10 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(txtDesc1amt.Text, out Desc1Tot);
                         vParseResult = decimal.TryParse(txtDesc3tot.Text, out Desc3Tot);
                         vParseResult = decimal.TryParse(txtDesc4tot.Text, out Desc4Tot);
-
-                       
-
-
-
-
                         decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Lamination + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
                         lblsubtot.Text = SubTotal.ToString("c");
-                        this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
-                        this.lblSalesTax.Text = this.SalesTax.ToString("c");
+                       // this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
+                       
 
                         //calculate after subtotal
                         decimal disc1 = 0;
@@ -1406,31 +1408,23 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal Credits2 = 0;
                         decimal OtherChrg = 0;
                         decimal OtherChrg2 = 0;
+                        decimal EasyWorkTot = 0;
                         vParseResult = decimal.TryParse(txtCredits.Text, out Credits);
                         vParseResult = decimal.TryParse(txtCredits2.Text, out Credits2);
                         vParseResult = decimal.TryParse(txtOtherChrg.Text, out OtherChrg);
                         vParseResult = decimal.TryParse(txtOtherChrg2.Text, out OtherChrg2);
-
-
                         vParseResult = decimal.TryParse(lbldisc1amount.Text, out disc1);
                         vParseResult = decimal.TryParse(lbldisc2amount.Text, out disc2);
                         vParseResult = decimal.TryParse(otherdiscamt.Text, out disc3);
                         vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                         vParseResult = decimal.TryParse(lblperstotal.Text, out iconTot);
                         vParseResult = decimal.TryParse(lblIconTot.Text, out persTot);
-
-                        vBookCalcTax += (disc1 * this.TaxRate);
-                        vBookCalcTax += (disc2 * this.TaxRate);
-                        vBookCalcTax += (disc3 * this.TaxRate);
-                        vBookCalcTax += (msTot * this.TaxRate);
-                        vBookCalcTax += (persTot * this.TaxRate);
-                        vBookCalcTax += (iconTot * this.TaxRate);
-                        this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
+                        vParseResult = decimal.TryParse(txtEastworkAmt.Text, out EasyWorkTot);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
+                        txtFinalbookprc.Text =((SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot) / numberOfCopies).ToString("c");
+                        lblfilnalsubtotal.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot+Credits+Credits2+OtherChrg+OtherChrg2+ EasyWorkTot).ToString("c");
+                       SubTotal+= disc1 + disc2 + disc3 + msTot + persTot + iconTot + Credits + Credits2 + OtherChrg + OtherChrg2 + EasyWorkTot;
 
-                        lblfilnalsubtotal.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot+Credits+Credits2+OtherChrg+OtherChrg2).ToString("c");
-                        SubTotal += (disc1 + disc2 + disc3 + msTot + persTot + iconTot);
-                        txtFinalbookprc.Text =(SubTotal / numberOfCopies).ToString("c");
                         //other charges and credits
                         decimal credit1 = 0;
                         decimal credit2 = 0;
@@ -1442,7 +1436,8 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(txtOtherChrg.Text, out otherchrg1);
                         vParseResult = decimal.TryParse(txtOtherChrg2.Text, out otherchrg2);
                         vParseResult = decimal.TryParse(lblSalesTax.Text.Replace("$",""), out vTax);
-                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2+vTax).ToString("c");
+                 
+                        lbladjbef.Text = (SubTotal  + credit1 + credit2 + otherchrg1 + otherchrg2 + vTax).ToString("c");
 
                     }
                 }
@@ -1592,53 +1587,66 @@ namespace Mbc5.Forms.MemoryBook {
         private void GetBookOptionPricing()
         {
             this.CurPriceYr = txtBYear.Text;
-            SqlConnection conn = new SqlConnection(FormConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
-
-            try
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText("Select * From BookOptionPricing where yr=@Yr");
+            sqlClient.AddParameter("@Yr", txtBYear.Text);
+            var result = sqlClient.Select<BookOptionPrice>();
+            if (result.IsError)
             {
-
-                cmd.Connection.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    BookOptionPrice vOptionPrice = new BookOptionPrice()
-                    {
-                        Yr = rdr.GetOrdinal("Yr").ToString(),
-                        Case = rdr.GetDecimal(rdr.GetOrdinal("Case")),
-                        Professional = rdr.GetDecimal(rdr.GetOrdinal("Professional")),
-                        Convenient = rdr.GetDecimal(rdr.GetOrdinal("Convenient")),
-                        Specialcvr = rdr.GetDecimal(rdr.GetOrdinal("Specialcvr")),
-                        Lamination = rdr.GetDecimal(rdr.GetOrdinal("Lamination")),
-                        Perfectbind = rdr.GetDecimal(rdr.GetOrdinal("Perfectbind")),
-                        Customized = rdr.GetDecimal(rdr.GetOrdinal("Customized")),
-                        Hardbk = rdr.GetDecimal(rdr.GetOrdinal("Hardbk")),
-                        Foil = rdr.GetDecimal(rdr.GetOrdinal("Foil")),
-                        Ink = rdr.GetDecimal(rdr.GetOrdinal("Ink")),
-                        Spiral = rdr.GetDecimal(rdr.GetOrdinal("Spiral")),
-                        Theme = rdr.GetDecimal(rdr.GetOrdinal("Theme")),
-                        Story = rdr.GetDecimal(rdr.GetOrdinal("Story")),
-                        Yir = rdr.GetDecimal(rdr.GetOrdinal("Yir")),
-                        Supplement = rdr.GetDecimal(rdr.GetOrdinal("Supplement")),
-                        Laminationsft = rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
-
-                    };
-                    this.BookOptionPricing = vOptionPrice;
-
-                }
+                MbcMessageBox.Error("Failed to retrieve Book Option Pricing:" + result.Errors[0].ErrorMessage);
+                return;
             }
-            catch (Exception ex)
-            {
-                Log.Fatal("Error retrieving Book Option Pricing" + ex.Message);
-                MessageBox.Show("There was an error retrieving Book Option Pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.BookOptionPricing = (BookOptionPrice)result.Data;
+
             if (this.BookOptionPricing == null)
             {
                 MessageBox.Show("Book Option pricing for this contract year was not found. Contact your supervisor.");
             }
+
+            //SqlConnection conn = new SqlConnection(FormConnectionString);
+            //SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
+            //cmd.CommandType = CommandType.Text;
+            //cmd.Parameters.Clear();
+            //cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
+
+            //try
+            // {
+
+            //cmd.Connection.Open();
+            //SqlDataReader rdr = cmd.ExecuteReader();
+            //while (rdr.Read())
+            //{
+            //    BookOptionPrice vOptionPrice = new BookOptionPrice()
+            //    {
+            //        Yr = rdr.GetOrdinal("Yr").ToString(),
+            //        Case = rdr.GetDecimal(rdr.GetOrdinal("Case")),
+            //        Professional = rdr.GetDecimal(rdr.GetOrdinal("Professional")),
+            //        Convenient = rdr.GetDecimal(rdr.GetOrdinal("Convenient")),
+            //        Specialcvr = rdr.GetDecimal(rdr.GetOrdinal("Specialcvr")),
+            //        Lamination = rdr.GetDecimal(rdr.GetOrdinal("Lamination")),
+            //        Perfectbind = rdr.GetDecimal(rdr.GetOrdinal("Perfectbind")),
+            //        Customized = rdr.GetDecimal(rdr.GetOrdinal("Customized")),
+            //        Hardbk = rdr.GetDecimal(rdr.GetOrdinal("Hardbk")),
+            //        Foil = rdr.GetDecimal(rdr.GetOrdinal("Foil")),
+            //        Ink = rdr.GetDecimal(rdr.GetOrdinal("Ink")),
+            //        Spiral = rdr.GetDecimal(rdr.GetOrdinal("Spiral")),
+            //        Theme = rdr.GetDecimal(rdr.GetOrdinal("Theme")),
+            //        Story = rdr.GetDecimal(rdr.GetOrdinal("Story")),
+            //        Yir = rdr.GetDecimal(rdr.GetOrdinal("Yir")),
+            //        Supplement = rdr.GetDecimal(rdr.GetOrdinal("Supplement")),
+            //        Laminationsft = rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
+
+            //    };
+            //this.BookOptionPricing = vOptionPrice;
+
+        //}
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Fatal("Error retrieving Book Option Pricing" + ex.Message);
+            //    MessageBox.Show("There was an error retrieving Book Option Pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            
 
         }
 
@@ -1674,7 +1682,9 @@ namespace Mbc5.Forms.MemoryBook {
             //        {
 						try {
 							bidsBindingSource.EndEdit();
-							var a=bidsTableAdapter.Update(dsBids.bids);
+             
+                
+                var a = bidsTableAdapter.Update(dsBids.bids);                                  
                           
 						
 						}catch(Exception ex) {
@@ -1746,33 +1756,96 @@ namespace Mbc5.Forms.MemoryBook {
             bidsBindingSource.CancelEdit();
          
         }
-        private decimal GetTaxRate()
+        private async Task<TaxRequestReturn> GetTax()
         {
-            if (this.SchoolZipCode == null)
+            if (donotchargeschoolsalestaxCheckBox.Checked) { 
+            this.TaxRate = 0;
+            this.SalesTax = 0;
+            lblSalesTax.Text = this.SalesTax.ToString("0.000");
+            schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
+            CalculateEach();
+            BookCalc();
+            return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+        }
+
+            var processingResult = new ApiProcessingResult<decimal>();
+            if (string.IsNullOrEmpty(this.SchoolZipCode))
             {
-                return 0;
+                CalculateEach();
+                BookCalc();
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 }; 
             }
-            var a = this.SchoolZipCode.Trim();
-            decimal val = 0;
-            var sqlQuery = new SQLQuery();
-            string querystring = "SELECT Rate FROM SaleTax where ZipCode=@ZipCode";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Zipcode",this.SchoolZipCode)
-            };
-			try {
-				var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
-				if (result != null) {
-					var vRateList = (List<TaxRate>)result;
-					val = vRateList[0].Rate;
+         
+            var lproducts = new List<LineItemData>();
+                var cust = custBindingSource.Current as DataRowView;
+                var bid = bidsBindingSource.Current as DataRowView;
+                var model = new TaxRequest();
+            decimal vSubTotal = 0;
+            var tservice = new VertexService();
+            try
+            {
+                if (bid == null)
+                {
+                    return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+                }
+                var test= bid.Row["subtotal"];
+                if (test==DBNull.Value)
+                {
+                    return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+                }
+                 vSubTotal = (decimal)bid.Row["subtotal"];
+                
+                lproducts.Add(new LineItemData() { ProductClass = "PRINT", Quantity = 1, UnitPrice = vSubTotal });
+               
+                
+                model.OracleCode = cust.Row["oraclecode"].ToString();
+                model.StreetAddress1 = cust.Row["Schaddr"].ToString();
+                model.StreetAddress2 = cust.Row["Schaddr2"].ToString();
+                model.City = cust.Row["SchCity"].ToString();
+                model.MainDivision = cust.Row["SchState"].ToString();
+                model.SubDivision = null;
+                model.PostalCode = this.SchoolZipCode;
+                model.Country = "US";
+                model.ListItems = lproducts;
+            }
+            catch(Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "Error");
+                this.TaxRate = 0;
+                this.SalesTax = 0;
+                lblSalesTax.Text = this.SalesTax.ToString("0.000");
+                schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
+                CalculateEach();
+                BookCalc();
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
 
-				}
-			} catch(Exception ex) {
-				MbcMessageBox.Error(ex.Message, "");
+       
+            var  result= await tservice.GetTaxAmount(model);
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                this.TaxRate = 0;
+                this.SalesTax = 0;
+                lblSalesTax.Text = this.SalesTax.ToString("0.000");
+                schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
+                CalculateEach();
+                BookCalc();
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+            this.SalesTax = result.Data;
+            this.TaxRate = this.SalesTax / vSubTotal;
+            lblSalesTax.Text = this.SalesTax.ToString("0.000");
+            schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
+            CalculateEach();
+            BookCalc();
 
-			}
-           
-            
-            return val;
+
+            //returns if something else needs data
+            return new TaxRequestReturn() { TaxAmount = this.SalesTax, TaxRate = this.TaxRate };
+
+
+   
         }
         public override void SchCodeSearch()
         {
@@ -2938,7 +3011,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             string curBidId = lblId.Text.Trim();
             Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
+            System.Windows.Forms.Application.DoEvents();
             var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             sqlquery.AddParameter("@schcode", Schcode);
             sqlquery.AddParameter("@Contryear", txtYear.Text);
@@ -2977,5 +3050,31 @@ namespace Mbc5.Forms.MemoryBook {
 
             Cursor.Current = Cursors.Default;
         }
+
+      
+
+        private void txtEastworkAmt_Leave(object sender, EventArgs e)
+        {
+            CalculateEach();
+            BookCalc();
+        }
+
+        private void chkEasyWork_Click(object sender, EventArgs e)
+        {
+             CalculateEach();
+             BookCalc();
+        }
+
+        private void donotchargeschoolsalestaxCheckBox_Click(object sender, EventArgs e)
+        {
+            this.GetTax();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.GetTax();
+        }
+
+      
     }
     }

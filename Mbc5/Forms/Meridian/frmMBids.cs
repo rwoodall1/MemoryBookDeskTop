@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 using BindingModels;
 using Exceptionless;
 using Mbc5.Classes;
-using BaseClass.Core;
+using Core;
 using Microsoft.Reporting.WinForms;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMBids : BaseClass.frmBase {

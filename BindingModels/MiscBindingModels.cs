@@ -4,7 +4,33 @@ using System.Linq;
 using System.Web;
 
 namespace BindingModels
-{
+        {
+    public class TaxRequestReturn
+    {
+        public decimal TaxAmount { get; set; }
+        public decimal TaxRate { get; set; } 
+    }
+    public class TaxRequest
+    {
+
+        public string OracleCode { get; set; }
+        public string StreetAddress1 { get; set; }
+        public string StreetAddress2 { get; set; }
+        public string City { get; set; }
+        public string MainDivision { get; set; }
+        public string SubDivision { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public List<LineItemData> ListItems { get; set; }
+
+    }
+    public class LineItemData
+    {
+        public string ProductClass { get; set; }
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+
+    }
     public class MerBindingWip
     {
        public int Id { get; set; }

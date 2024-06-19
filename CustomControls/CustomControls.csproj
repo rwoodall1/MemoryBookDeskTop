@@ -119,9 +119,6 @@
     <Content Include="download1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="app.config" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

@@ -9,7 +9,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using BaseClass.Core;
+using Core;
 using System.Threading.Tasks;
 using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.DataExtensions;

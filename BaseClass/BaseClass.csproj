@@ -144,8 +144,6 @@
     <Compile Include="Classes\UserIdentity.cs" />
     <Compile Include="Classes\UserPrincipal.cs" />
     <Compile Include="Classes\Utilities.cs" />
-    <Compile Include="Core\ApiProcessingError.cs" />
-    <Compile Include="Core\ApiProcessingResult.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Forms\frmBase.cs">
       <SubType>Form</SubType>
@@ -249,6 +247,10 @@
     <ProjectReference Include="..\BindingModels\BindingModels.csproj">
       <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
       <Name>BindingModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

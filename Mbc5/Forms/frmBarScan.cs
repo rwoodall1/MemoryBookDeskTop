@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BindingModels;
 using BaseClass.Classes;
 using BaseClass;
-using BaseClass.Core;
+using Core;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using Mbc5.Classes;

@@ -17,7 +17,7 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using BaseClass.Core;
+using Core;
 using BaseClass;
 using System.Threading.Tasks;
 using Microsoft.Reporting.WinForms;

@@ -12452,21 +12452,21 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, \r\n" +
                 "                         quotes.booktype, quotes.contryear AS Qyear, quotes.invn" +
                 "o AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd" +
-                ", produtn.jobno, produtn.advpw, produtn.stfpw, cust.oraclecode, cust.TimeStamp, " +
-                "\r\n                         cust.ModifiedBy, cust.DateModified, cust.electronicki" +
-                "toptions, cust.electronickit, cust.cposition, cust.status, cust.TaxExemptionRece" +
-                "ived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, \r\n  " +
-                "                       cust.taxexemptionexpirationdate, produtn.prshpdte, cust.S" +
-                "hippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust." +
-                "InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, \r\n         " +
-                "                cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN, cust.InvoiceEm" +
-                "ail1, cust.InvoiceEmail2, cust.InvoiceEmail3, cust.InvoiceName, cust.ShippingNam" +
-                "e, cust.OtherName, cust.OtherAddr, cust.OtherAddr2, cust.OtherCity, \r\n          " +
-                "               cust.OtherState, cust.OtherZipCode, cust.opyexemptdate, cust.memb" +
-                "k_url, cust.schzipstate, cust.opynotexempt, cust.Pphone, cust.PEmail, cust.Pname" +
-                ", cust.schaddr, cust.CbOnlineDone, cust.CbSetupDone, \r\n                         " +
-                "cust.CbAgreementDate, cust.CbPhone, cust.CustCbName, cust.CbEmail, cust.jobno AS" +
-                " custjobno, csnames.csemail, csnames.csname\r\nFROM            cust LEFT OUTER JOI" +
+                ", produtn.jobno, produtn.advpw, produtn.stfpw, cust.TimeStamp, cust.ModifiedBy, " +
+                "\r\n                         cust.DateModified, cust.electronickitoptions, cust.el" +
+                "ectronickit, cust.cposition, cust.status, cust.TaxExemptionReceived, cust.FirstD" +
+                "aySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpi" +
+                "rationdate, \r\n                         produtn.prshpdte, cust.ShippingAddr2, cus" +
+                "t.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust" +
+                ".InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, cust.Sh" +
+                "ippingAddr, cust.PIN, \r\n                         cust.InvoiceEmail1, cust.Invoic" +
+                "eEmail2, cust.InvoiceEmail3, cust.InvoiceName, cust.ShippingName, cust.OtherName" +
+                ", cust.OtherAddr, cust.OtherAddr2, cust.OtherCity, cust.OtherState, cust.OtherZi" +
+                "pCode, cust.opyexemptdate, \r\n                         cust.membk_url, cust.schzi" +
+                "pstate, cust.opynotexempt, cust.Pphone, cust.PEmail, cust.Pname, cust.schaddr, c" +
+                "ust.CbOnlineDone, cust.CbSetupDone, cust.CbAgreementDate, cust.CbPhone, cust.Cus" +
+                "tCbName, cust.CbEmail, \r\n                         cust.jobno AS custjobno, csnam" +
+                "es.csemail, csnames.csname, cust.oraclecode\r\nFROM            cust LEFT OUTER JOI" +
                 "N\r\n                         csnames ON cust.csrep = csnames.source LEFT OUTER JO" +
                 "IN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT OUTER " +
                 "JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE   " +

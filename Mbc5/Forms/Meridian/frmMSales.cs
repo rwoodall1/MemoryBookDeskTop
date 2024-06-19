@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 using BindingModels;
 using Exceptionless;
 using System.Reflection;
-using BaseClass.Core;
+using Core;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
 namespace Mbc5.Forms.Meridian {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
-using BaseClass.Core;
+using Core;
 using Exceptionless;
 using Exceptionless.Models;
 using System.Configuration;

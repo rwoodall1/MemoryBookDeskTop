@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BaseClass.Classes;
-using BaseClass.Core;
+using Core;
 namespace BaseClass.Classes
 {
     public static class SQLCore

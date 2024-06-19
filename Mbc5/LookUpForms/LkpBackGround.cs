@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
-using BaseClass.Core;
+using Core;
 using BaseClass;
 using NLog;
 namespace Mbc5.LookUpForms

@@ -18,7 +18,7 @@ using NLog;
 using Newtonsoft.Json;
 using RESTModule;
 
-using BaseClass.Core;
+using Core;
 
 
 namespace Mbc5.Forms.MixBook

@@ -140,9 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -158,7 +155,7 @@
       <Name>BindingModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{09659290-37ef-4004-93af-f5549bdbdabd}</Project>
+      <Project>{00ebb3ee-e679-45cf-82f9-a61f3fa26b4b}</Project>
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SqlClient\SQLClient.csproj">

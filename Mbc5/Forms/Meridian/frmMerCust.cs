@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using System.Data.Sql;
 using BaseClass;
-using BaseClass.Core;
+using Core;
 using Exceptionless;
 using Mbc5.Dialogs;
 using System.Data.SqlClient;

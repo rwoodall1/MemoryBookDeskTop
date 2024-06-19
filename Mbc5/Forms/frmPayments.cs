@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BaseClass;
 using BaseClass.Classes;
-using BaseClass.Core;
+using Core;
 using BindingModels;
 using Mbc5.Classes;
 namespace Mbc5.Forms
