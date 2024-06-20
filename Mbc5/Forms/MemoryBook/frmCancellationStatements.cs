@@ -24,10 +24,11 @@ namespace Mbc5.Forms.MemoryBook
         public frmCancellationStatements(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
+           
         }
         private void SetConnectionString()
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
+            
 
         }
         public frmMain frmMain { get; set; }
@@ -35,7 +36,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void frmCancellationStatements_Load(object sender, EventArgs e)
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
+            this.frmMain = (frmMain)this.MdiParent;
 
             dgCancellations.AutoGenerateColumns = false;
             dteStart.Value = DateTime.Now.AddDays(-30);

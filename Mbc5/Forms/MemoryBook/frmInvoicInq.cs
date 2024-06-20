@@ -30,7 +30,7 @@ namespace Mbc5.Forms.MemoryBook
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
+            this.frmMain = (frmMain)this.MdiParent;
 
             dgInvoices.AutoGenerateColumns = false;
         }

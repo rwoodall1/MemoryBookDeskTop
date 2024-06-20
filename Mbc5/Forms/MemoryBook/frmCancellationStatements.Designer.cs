@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCust = new Mbc5.DataSets.dsCust();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -55,9 +53,7 @@
             this.colCancel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCancellations = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
             this.dsSales = new Mbc5.DataSets.dsSales();
-            this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.lblRecDte = new System.Windows.Forms.Label();
             this.dteStart = new System.Windows.Forms.DateTimePicker();
             this.dteEnd = new System.Windows.Forms.DateTimePicker();
@@ -71,11 +67,13 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
+            this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCancellations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCancellations)).BeginInit();
@@ -85,12 +83,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
             // 
             this.TopPanel.Controls.Add(this.lblTitle);
-            this.TopPanel.Size = new System.Drawing.Size(1127, 48);
+            this.TopPanel.Size = new System.Drawing.Size(1142, 48);
             // 
             // BottomPanel
             // 
@@ -99,27 +99,15 @@
             this.BottomPanel.Controls.Add(this.btnClear);
             this.BottomPanel.Controls.Add(this.btnSearch);
             this.BottomPanel.Location = new System.Drawing.Point(0, 422);
-            this.BottomPanel.Size = new System.Drawing.Size(1127, 66);
+            this.BottomPanel.Size = new System.Drawing.Size(1142, 66);
             // 
             // FullInvoiceBindingSource
             // 
             this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // lblTitle
             // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(404, 9);
@@ -130,6 +118,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSearch.Location = new System.Drawing.Point(379, 25);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -140,6 +129,7 @@
             // 
             // btnClear
             // 
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnClear.Location = new System.Drawing.Point(473, 25);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
@@ -150,6 +140,7 @@
             // 
             // btnPrint
             // 
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPrint.Location = new System.Drawing.Point(569, 25);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
@@ -160,6 +151,7 @@
             // 
             // btnEmail
             // 
+            this.btnEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEmail.Location = new System.Drawing.Point(667, 25);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(75, 23);
@@ -179,15 +171,15 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(2, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1125, 323);
+            this.panel1.Size = new System.Drawing.Size(1140, 323);
             this.panel1.TabIndex = 9;
             // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.FullInvoiceBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.FullInvoiceBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(10, 390);
             this.reportViewer1.Name = "reportViewer1";
@@ -216,16 +208,19 @@
             // 
             this.dgCancellations.AllowUserToAddRows = false;
             this.dgCancellations.AllowUserToDeleteRows = false;
+            this.dgCancellations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgCancellations.AutoGenerateColumns = false;
             this.dgCancellations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCancellations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCancellations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgCancellations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCancellations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ToPrint,
@@ -238,25 +233,25 @@
             this.colCancel,
             this.Balance});
             this.dgCancellations.DataSource = this.bsCancellations;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCancellations.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCancellations.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgCancellations.EnableHeadersVisualStyles = false;
             this.dgCancellations.Location = new System.Drawing.Point(29, 29);
             this.dgCancellations.Name = "dgCancellations";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCancellations.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCancellations.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgCancellations.RowHeadersVisible = false;
             this.dgCancellations.Size = new System.Drawing.Size(1096, 245);
             this.dgCancellations.TabIndex = 0;
@@ -317,24 +312,10 @@
             this.Balance.HeaderText = "Balance";
             this.Balance.Name = "Balance";
             // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.custSearchTableAdapter = null;
-            this.tableAdapterManager1.custTableAdapter = null;
-            this.tableAdapterManager1.datecontTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager1.UpsListTableAdapter = null;
-            // 
             // dsSales
             // 
             this.dsSales.DataSetName = "dsSales";
             this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // custTableAdapter
-            // 
-            this.custTableAdapter.ClearBeforeFill = true;
             // 
             // lblRecDte
             // 
@@ -423,10 +404,35 @@
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.custSearchTableAdapter = null;
+            this.tableAdapterManager1.custTableAdapter = null;
+            this.tableAdapterManager1.datecontTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpsListTableAdapter = null;
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
             // frmCancellationStatements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1127, 488);
+            this.ClientSize = new System.Drawing.Size(1142, 488);
             this.Controls.Add(this.dteEnd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dteStart);
@@ -449,8 +455,6 @@
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCancellations)).EndInit();
@@ -461,6 +465,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

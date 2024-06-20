@@ -137,18 +137,20 @@ namespace BaseClass.Classes
             return ldDate;
         }
         public static DateTime BusDaySubtract(DateTime EndDate,int NumberOfDays) {
-            var sqlQuery = new SQLQuery();
-            var queryString = "Select * from Holidays";
-            SqlParameter[] parameters = new SqlParameter[] {
-          
-            };
-       var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text,queryString,parameters);
-            if (result == null) {
-                MessageBox.Show("There are no Holiday dates entered to be calculated.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            var SqlClient= new SQLCustomClient().CommandText( "Select * from Holidays");
+           
+       var result = SqlClient.SelectMany<HolidayDate>();
+            if (result.IsError) {
+                MessageBox.Show("Failed to get Holiday dates.:"+ result.Errors[0].DeveloperMessage,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                
                 }
-            var HolidayDates = new List<HolidayDate>();
-            HolidayDates =(List<HolidayDate>)result;
+            if(result.Data == null)
+            {
+                MessageBox.Show("There are no Holiday dates entered to be calculated.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return EndDate;
+                }
+            var HolidayDates =result.Data as List<HolidayDate>;
+           
             var vEndDate = EndDate;
             //Remember we are subtracing backwards
             for(int i=1; i<= NumberOfDays; i++) {
@@ -184,18 +186,21 @@ namespace BaseClass.Classes
             return vEndDate;
             }
         public static DateTime BusDayAdd(DateTime StartDate,int NumberOfDays) {
-            var sqlQuery = new SQLQuery();
-            var queryString = "Select * from Holidays";
-            SqlParameter[] parameters = new SqlParameter[] {
+            var sqlClient = new SQLCustomClient().CommandText("Select * from Holidays");
+            
+           
+            var result = sqlClient.SelectMany<HolidayDate>();
+            if (result.IsError)
+            {
+                MessageBox.Show("Failed to get Holiday dates.:" + result.Errors[0].DeveloperMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            };
-            var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text,queryString,parameters);
-            if (result == null) {
-                MessageBox.Show("There are no Holiday dates entered to be calculated.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
-              
-                }
-            var HolidayDates = new List<HolidayDate>();
-            HolidayDates = (List<HolidayDate>)result;
+            }
+            if (result.Data == null)
+            {
+                MessageBox.Show("There are no Holiday dates entered to be calculated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return StartDate;
+            }
+            var HolidayDates = result.Data as List<HolidayDate>;
             var vStartDate = StartDate;
             //Remember we are subtracing backwards
             for (int i = 1; i <= NumberOfDays; i++) {
@@ -230,19 +235,18 @@ namespace BaseClass.Classes
             }
         public static DateTime BusinessDay(DateTime StartDate)
         {
-            var sqlQuery = new SQLQuery();
-            var queryString = "Select * from Holidays";
-            SqlParameter[] parameters = new SqlParameter[] {
+            var sqlClient = new SQLCustomClient().CommandText("Select * from Holidays");
 
-            };
-            var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text, queryString, parameters);
-            if (result == null)
+
+            var result = sqlClient.SelectMany<HolidayDate>();
+            if (result.IsError)
             {
-                MessageBox.Show("There are no Holiday dates entered to be calculated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Failed to get Holiday dates.:" + result.Errors[0].DeveloperMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            var HolidayDates = new List<HolidayDate>();
-            HolidayDates = (List<HolidayDate>)result;
+            
+            var HolidayDates = result.Data as List<HolidayDate>;
+           
             var vStartDate = StartDate;
             //Remember we are subtracing backwards
             //for (int i = 1; i <= NumberOfDays; i++)

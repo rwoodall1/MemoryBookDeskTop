@@ -1231,6 +1231,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnMxbClientOrderId;
             
+            private global::System.Data.DataColumn columnpresscopies;
+            
+            private global::System.Data.DataColumn columnProdCustDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public produtnDataTable() {
@@ -2330,6 +2334,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn presscopiesColumn {
+                get {
+                    return this.columnpresscopies;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ProdCustDateColumn {
+                get {
+                    return this.columnProdCustDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2498,7 +2518,9 @@ namespace Mbc5.DataSets {
                         System.DateTime Bindery4, 
                         bool PrintOnWhitePaper, 
                         bool ProofOfPages, 
-                        int MxbClientOrderId) {
+                        int MxbClientOrderId, 
+                        int presscopies, 
+                        System.DateTime ProdCustDate) {
                 produtnRow rowprodutnRow = ((produtnRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2633,7 +2655,9 @@ namespace Mbc5.DataSets {
                         Bindery4,
                         PrintOnWhitePaper,
                         ProofOfPages,
-                        MxbClientOrderId};
+                        MxbClientOrderId,
+                        presscopies,
+                        ProdCustDate};
                 if ((parentquotesRowByquotes_produtn != null)) {
                     columnValuesArray[0] = parentquotesRowByquotes_produtn[0];
                 }
@@ -2799,6 +2823,8 @@ namespace Mbc5.DataSets {
                 this.columnPrintOnWhitePaper = base.Columns["PrintOnWhitePaper"];
                 this.columnProofOfPages = base.Columns["ProofOfPages"];
                 this.columnMxbClientOrderId = base.Columns["MxbClientOrderId"];
+                this.columnpresscopies = base.Columns["presscopies"];
+                this.columnProdCustDate = base.Columns["ProdCustDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3070,6 +3096,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnProofOfPages);
                 this.columnMxbClientOrderId = new global::System.Data.DataColumn("MxbClientOrderId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMxbClientOrderId);
+                this.columnpresscopies = new global::System.Data.DataColumn("presscopies", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpresscopies);
+                this.columnProdCustDate = new global::System.Data.DataColumn("ProdCustDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProdCustDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -14611,6 +14641,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int presscopies {
+                get {
+                    try {
+                        return ((int)(this[this.tableprodutn.presscopiesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'presscopies\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.presscopiesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime ProdCustDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableprodutn.ProdCustDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProdCustDate\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.ProdCustDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_produtn"])));
@@ -16190,6 +16252,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMxbClientOrderIdNull() {
                 this[this.tableprodutn.MxbClientOrderIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IspresscopiesNull() {
+                return this.IsNull(this.tableprodutn.presscopiesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetpresscopiesNull() {
+                this[this.tableprodutn.presscopiesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsProdCustDateNull() {
+                return this.IsNull(this.tableprodutn.ProdCustDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetProdCustDateNull() {
+                this[this.tableprodutn.ProdCustDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25723,6 +25809,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             tableMapping.ColumnMappings.Add("PrintOnWhitePaper", "PrintOnWhitePaper");
             tableMapping.ColumnMappings.Add("ProofOfPages", "ProofOfPages");
             tableMapping.ColumnMappings.Add("MxbClientOrderId", "MxbClientOrderId");
+            tableMapping.ColumnMappings.Add("presscopies", "presscopies");
+            tableMapping.ColumnMappings.Add("ProdCustDate", "ProdCustDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -25948,9 +26036,10 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "inalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet" +
                 ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
                 "rPermission, produtn.PrePress, produtn.Press, produtn.Bindery1, produtn.Bindery2" +
-                ", produtn.Bindery3, produtn.Bindery4, produtn.MxbClientOrderId\r\nFROM            " +
-                "produtn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = en" +
-                "dsheet.invno\r\nWHERE        (produtn.schcode = @Schcode)";
+                ", produtn.Bindery3, produtn.Bindery4, produtn.MxbClientOrderId, produtn.presscop" +
+                "ies, \r\n                         produtn.ProdCustDate\r\nFROM            produtn LE" +
+                "FT OUTER JOIN\r\n                         endsheet ON produtn.invno = endsheet.inv" +
+                "no\r\nWHERE        (produtn.schcode = @Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -25987,9 +26076,10 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "odutn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, \r\n" +
                 "                         produtn.Enhancements, produtn.PhotographerPermission, p" +
                 "rodutn.Icon, produtn.Press, produtn.PrePress, produtn.Bindery1, produtn.Bindery2" +
-                ", produtn.Bindery4, produtn.Bindery3, produtn.MxbClientOrderId\r\nFROM            " +
-                "produtn LEFT OUTER JOIN\r\n                         endsheet ON produtn.invno = en" +
-                "dsheet.invno\r\nWHERE        (produtn.invno = @Invno)";
+                ", produtn.Bindery4, produtn.Bindery3, produtn.MxbClientOrderId, \r\n              " +
+                "           produtn.presscopies, produtn.ProdCustDate\r\nFROM            produtn LE" +
+                "FT OUTER JOIN\r\n                         endsheet ON produtn.invno = endsheet.inv" +
+                "no\r\nWHERE        (produtn.invno = @Invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -26027,8 +26117,9 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 ".endstrecv, \r\n                         produtn.Enhancements, produtn.Photographe" +
                 "rPermission, produtn.ProdCustDate, produtn.PrePress, produtn.Bindery1, produtn.P" +
                 "ress, produtn.Bindery2, produtn.Bindery3, produtn.Bindery4, produtn.MxbClientOrd" +
-                "erId\r\nFROM            produtn LEFT OUTER JOIN\r\n                         endsheet" +
-                " ON produtn.invno = endsheet.invno\r\nWHERE        (produtn.prodno = @Prodno)";
+                "erId, \r\n                         produtn.presscopies\r\nFROM            produtn LE" +
+                "FT OUTER JOIN\r\n                         endsheet ON produtn.invno = endsheet.inv" +
+                "no\r\nWHERE        (produtn.prodno = @Prodno)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prodno", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

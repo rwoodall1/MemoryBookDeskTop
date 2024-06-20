@@ -7000,6 +7000,11 @@ namespace Mbc5.Forms
            
             var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
+            if (!File.Exists(cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\"))
+            {
+            if (!Directory.Exists(cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\"))
+                Directory.CreateDirectory(cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\");
+            }
 			try
 			{
 				var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invno);
@@ -7018,7 +7023,7 @@ namespace Mbc5.Forms
 				//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
 				//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
 
-				byte[] bytes = this.reportViewer1.LocalReport.Render(
+				byte[] bytes = this.reportViewer4.LocalReport.Render(
 					"PDF",
 					null,
 					out mimeType,
@@ -7904,7 +7909,7 @@ namespace Mbc5.Forms
 
 		private void btnCalcDeadLine_Click(object sender, EventArgs e)
 		{
-            if (!String.IsNullOrEmpty(dedayinDateBox.Date))
+            if (!String.IsNullOrEmpty(dedayoutDateBox.Date))
             {
                 int wks = 0;
                 int days = 0;
@@ -7913,14 +7918,13 @@ namespace Mbc5.Forms
 
 
                 var numDays = (wks * 5) + (days);
-                if (dedayinDateBox.Date != null)
-                {
-                    var result = CalulateBusinessDay.BusDaySubtract((DateTime)dedayinDateBox.DateValue, numDays);
+               
+                    var result = CalulateBusinessDay.BusDaySubtract((DateTime)dedayoutDateBox.DateValue, numDays);
                     if (result != null)
                     {
                         dedayinDateBox.Date = result.ToShortDateString();
                     }
-                }
+                
             }
             else { MessageBox.Show("Please enter a Deadline out Date."); }
 
@@ -7992,41 +7996,23 @@ namespace Mbc5.Forms
 
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
-			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
-			{
-				MessageBox.Show("Please enter binding information before issueing a job number.");
-				return;
-			}
-			var vInvno = 0;
-			int.TryParse(lblInvno.Text, out vInvno);
-			var sqlQuery = new SQLQuery();
-			var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";
-			SqlParameter[] parameters = new SqlParameter[] {
-				 new SqlParameter("@Schcode",Schcode),
-				 new SqlParameter("@Invno",vInvno)
-			};
-
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
-			if (result.Rows.Count > 0)
-			{
-				var oldJobNo = result.Rows[0]["jobno"].ToString();
-				if (string.IsNullOrEmpty(oldJobNo.Trim()))
+			
+				if (string.IsNullOrEmpty(txtjobno.Text.Trim()))
 				{
 					txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
-				}
-				else { txtjobno.Text = oldJobNo; }
+            }
+            else
+            {
+                var result=MessageBox.Show("Do you want to apply a new job number to this record?","New Job Number",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+                }
+                
+            }
 
-
-			}
-			else
-			{
-				txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
-
-			}
 			txtadvpw.Text = lblProdNo.Text.Substring(0, 6);
 			txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0, 2) + lblcontryear.Text;
-
-
 
 		}
 
