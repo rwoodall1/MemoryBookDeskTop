@@ -13,8 +13,7 @@ using System.Diagnostics;
 using BaseClass;
 using Mbc5.Dialogs;
 using Mbc5.LookUpForms;
-using Exceptionless;
-using Exceptionless.Models;
+
 using Mbc5.Classes;
 using BindingModels;
 using Core;
@@ -468,9 +467,7 @@ public override void Cancel() {
                 if (selectResult.IsError)
                 {
                
-                ExceptionlessClient.Default.CreateLog("UpsUpdate Error")
-                    .AddObject(selectResult)
-                    .Submit();
+               
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError("UpsUpdate failed:" + selectResult.Errors[0].ErrorMessage, "UpsUpdate failed:" + selectResult.Errors[0].ErrorMessage,""));
                 return processingResult ;
@@ -499,10 +496,7 @@ public override void Cancel() {
                 if (insertResult.IsError)
                 {
                    
-                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                        .AddObject(insertResult)
-                        .AddObject(sqlquery)
-                        .Submit();
+                   
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, ""));
                         return processingResult;
@@ -528,10 +522,7 @@ public override void Cancel() {
                 if (insertResult2.IsError)
                 {
                     
-                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                        .AddObject(insertResult)
-                        .AddObject(sqlquery)
-                        .Submit();
+                   
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, ""));
                         return processingResult;
@@ -563,10 +554,7 @@ public override void Cancel() {
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage);
-                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                        .AddObject(updateResult)
-                        .AddObject(sqlquery)
-                        .Submit();
+                   
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, ""));
                         return processingResult;
@@ -592,10 +580,7 @@ public override void Cancel() {
                 if (updateResult2.IsError)
                 {
                     MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
-                    ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                        .AddObject(updateResult2)
-                        .AddObject(sqlquery)
-                        .Submit();
+                   
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + "Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, ""));
                         return processingResult;
@@ -631,10 +616,7 @@ public override void Cancel() {
                         if (updateResult.IsError)
                         {
                                 
-                                ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                                    .AddObject(updateResult)
-                                    .AddObject(sqlquery)
-                                    .Submit();
+                              
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult.Errors[0].ErrorMessage, ""));
                             return processingResult;
@@ -660,10 +642,7 @@ public override void Cancel() {
                         if (insertResult2.IsError)
                         {
                             MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage);
-                            ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                                .AddObject(insertResult2)
-                                .AddObject(sqlquery)
-                                .Submit();
+                           
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult2.Errors[0].ErrorMessage, ""));
                             return processingResult;
@@ -694,10 +673,7 @@ public override void Cancel() {
                     if (updateResult2.IsError)
                     {
                         MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(updateResult2)
-                            .AddObject(sqlquery)
-                            .Submit();
+                        
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + updateResult2.Errors[0].ErrorMessage, ""));
                             return processingResult;
@@ -724,10 +700,7 @@ public override void Cancel() {
                     if (insertResult.IsError)
                     {
                         MbcMessageBox.Error("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage);
-                        ExceptionlessClient.Default.CreateLog("UpsAddress Error")
-                            .AddObject(insertResult)
-                            .AddObject(sqlquery)
-                            .Submit();
+                       
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, "Failed to insert into UPSAddress Table:" + insertResult.Errors[0].ErrorMessage, ""));
                             return processingResult;
@@ -868,10 +841,7 @@ public override void Cancel() {
                 if (updateResult.IsError)
                 {
                     MbcMessageBox.Error("Error saving address information:" + updateResult.Errors[0].ErrorMessage, "");
-                    ExceptionlessClient.Default.CreateLog("Update Error")
-                        .AddObject(updateResult)
-                        .MarkAsCritical()
-                        .Submit();
+                   
                     return;
                 }
                 //get current timestamp
@@ -926,10 +896,7 @@ public override void Cancel() {
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 MbcMessageBox.Error(ex.Message, "");
             }
             Cursor.Current = Cursors.Default;
@@ -1685,72 +1652,7 @@ public override void Cancel() {
                 }
             return retval;
              }
-        //private int GetInvno()
-        //{
-        //No longer in use
-           
-        //    var sqlQuery = new BaseClass.Classes.SQLQuery();
-
-        //    SqlParameter[] parameters = new SqlParameter[] {
-
-        //            };
-        //    var strQuery = "SELECT Invno FROM Invcnum";
-        //    try
-        //    {
-        //        DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-        //        DataRow dr = userResult.Rows[0];
-        //        int Invno =(int) dr["Invno"];
-        //        int newInvno = Invno + 1;
-        //        strQuery = "Update Invcnum Set invno=@newInvno";
-        //        SqlParameter[] parameters1 = new SqlParameter[] {
-        //              new SqlParameter("@newInvno",newInvno),
-        //            };
-        //        sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-
-        //        return Invno;
-
-        //    }catch(Exception ex)
-        //    {
-        //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to get invoice number for a new record:" + ex.Message);
-        //        MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return 0;
-
-        //    }
-           
-        //}
-        //private string GetProdNo() {
-        //    No longer in user
-        //    var sqlQuery = new SQLQuery();
-        //    //useing hard code until function to generate invno is done
-        //    SqlParameter[] parameters = new SqlParameter[] { };
-        //    var strQuery = "Select * from prodnum";
-        //    var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
-        //    int? prodNum = null;
-        //    try {
-        //        prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
-        //        strQuery = "Update Prodnum Set lstprodno=@lstprodno";
-        //        SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
-        //        var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-        //        if (result1 != 1) {
-        //            ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-        //                 .AddTags("New prod number error.")
-        //                 .Submit();
-
-        //            }
-
-        //        } catch (Exception ex) {
-        //        MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-
-        //        ex.ToExceptionless()
-        //          .AddTags("MBCWindows")
-        //          .SetMessage("Error getting production number.")
-        //          .Submit();
-
-        //        }
-
-        //    return prodNum.ToString();
-
-        //    }
+      
         private void SetInvnoSchCode()
         {
             this.Schcode = lblSchcodeVal.Text;
@@ -1763,37 +1665,7 @@ public override void Cancel() {
             }
            
         }
-        //private string GetCoverNumber() {
-        //    No longer in user
-        //    var sqlQuery = new SQLQuery();
-        //    //useing hard code until function to generate invno is done
-        //    SqlParameter[] parameters = new SqlParameter[] {};
-        //    var strQuery = "Select * from Spcover";
-        //    var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
-        //    int? coverNum=null;
-        //    try {
-        //           coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
-        //          strQuery = "Update Spcover set speccvno=@speccvno";
-        //        SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
-        //        var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-        //        if (result1 != 1) {
-        //            ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-        //                 .AddTags("New cover number error.")
-        //                 .Submit();
-                         
-        //            }
-
-        //        } catch(Exception ex){
-        //        MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-        //        ex.ToExceptionless()
-        //          .AddTags("MBCWindows")
-        //          .SetMessage("Error getting cover number.")
-        //          .Submit();
-
-        //        }
-
-        //    return coverNum.ToString();
-        //    }
+       
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(ApplicationConfig.DefaultConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
@@ -1910,9 +1782,7 @@ public override void Cancel() {
                     if (logResult.IsError)
                     {
                         MbcMessageBox.Error("Failed to insert phone log:"+logResult.Errors[0].ErrorMessage, "");
-                        ExceptionlessClient.Default.CreateLog("Failed to insert phone log")
-                            .AddObject(logResult)
-                            .Submit();
+                       
                         return;
                     }
                    
@@ -1922,9 +1792,7 @@ public override void Cancel() {
 					try {
 						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 					}catch(Exception ex) {
-                        ex.ToExceptionless()
-                            .AddObject(ex)
-                            .Submit();
+                       
 						MbcMessageBox.Error(ex.Message, "");
 					}
                     
@@ -2105,9 +1973,7 @@ public override void Cancel() {
             var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
             if (dataReturnedResult.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("ProdChkList")
-                    .AddObject(dataReturnedResult)
-                    .Submit();
+              
                 MbcMessageBox.Error("Failed to retrieve data for Production Check List");
             }
             var data = (ProductionCheckList)dataReturnedResult.Data;
@@ -2270,9 +2136,7 @@ public override void Cancel() {
                 }
                 catch (Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(ex)
-                        .Submit();
+                    
                     MbcMessageBox.Error(ex.Message, "");
                     return;
                 }
@@ -2294,9 +2158,7 @@ public override void Cancel() {
                 }
                 catch (Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(ex)
-                        .Submit();
+                    
                     MbcMessageBox.Error(ex.Message, "");
                     return;
                 }
@@ -2322,9 +2184,7 @@ public override void Cancel() {
                 }
                 catch (Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(ex)
-                        .Submit();
+                    
                     MbcMessageBox.Error(ex.Message, "");
                     return;
                 }
@@ -2552,9 +2412,7 @@ public override void Cancel() {
             if (insertResult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert xsuppliesDetails record:"+insertResult.Errors[0].ErrorMessage, "");
-                ExceptionlessClient.Default.CreateLog(insertResult.Errors[0].ErrorMessage)
-                    .AddObject(insertResult)
-                    .Submit();
+               
                 return;
             }
 
@@ -2607,9 +2465,7 @@ public override void Cancel() {
             if (insertResult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert a supply record:" + insertResult.Errors[0].ErrorMessage,"");
-                ExceptionlessClient.Default.CreateLog("Failed to insert a supply record")
-                    .AddObject(insertResult)
-                    .Submit();
+               
                 return;
             }
             var vId = insertResult.Data;
