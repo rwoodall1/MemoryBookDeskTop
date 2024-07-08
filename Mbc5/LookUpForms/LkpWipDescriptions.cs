@@ -8,8 +8,6 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
 using Core;
-using Exceptionless;
-using Exceptionless.Models;
 using System.Configuration;
 using Mbc5.Classes;
 namespace Mbc5.LookUpForms
@@ -51,9 +49,7 @@ namespace Mbc5.LookUpForms
               this.tableAdapterManager.UpdateAll(this.dsProdutn);
             }catch(Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddTags("Save Error")
-                    .Submit();
+                
                 MessageBox.Show("Error saving record:"+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				processingResult.IsError = true;
 				processingResult.Errors.Add(new ApiProcessingError("Error saving record:" + ex.Message, "Error saving record:" + ex.Message,""));

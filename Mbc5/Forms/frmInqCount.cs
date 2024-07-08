@@ -8,12 +8,13 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using Core;
 using BaseClass;
-using Exceptionless;
+
 using BindingModels;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using CsvHelper;
 using Mbc5.Classes;
+using System.Globalization;
 namespace Mbc5.Forms
 {
     public partial class frmInqCount : BaseClass.frmBase
@@ -138,9 +139,7 @@ namespace Mbc5.Forms
             var result = sqlQuery.SelectMany<InqCountModel>();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Inqcount Error")
-                    .AddObject(result)
-                    .Submit();
+              
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Query error, failed to get results.", "Query error, failed to get results.",""));     
                 return processingResult; 
@@ -168,9 +167,9 @@ namespace Mbc5.Forms
                 {
                     //using (var mem = new MemoryStream())
                     using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                    using (var csvWriter = new CsvWriter(writer))
+                    using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
                     {
-                        csvWriter.Configuration.Delimiter = ",";
+                       // csvWriter.Configuration.Delimiter = ",";
                         //csvWriter.Configuration.HasHeaderRecord = true;
                         // csvWriter.Configuration.AutoMap<InqCountModel>();
 
@@ -183,10 +182,7 @@ namespace Mbc5.Forms
                     }
                 }catch(Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(saveFileDialog1)
-                        .AddObject(ex)
-                        .Submit();
+                    
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                     return processingResult;
@@ -252,9 +248,7 @@ namespace Mbc5.Forms
             var result = sqlQuery.SelectMany<MInqCountModel>();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Inqcount Error")
-                    .AddObject(result)
-                    .Submit();
+               
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Query error, failed to get results.", "Query error, failed to get results.", ""));
                 return processingResult;
@@ -283,9 +277,9 @@ namespace Mbc5.Forms
                 {
                     //using (var mem = new MemoryStream())
                     using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                    using (var csvWriter = new CsvWriter(writer))
+                    using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
                     {
-                        csvWriter.Configuration.Delimiter = ",";
+                       // csvWriter.Configuration.Delimiter = ",";
                         //csvWriter.Configuration.HasHeaderRecord = true;
                         // csvWriter.Configuration.AutoMap<InqCountModel>();
 
@@ -299,10 +293,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(saveFileDialog1)
-                        .AddObject(ex)
-                        .Submit();
+                   
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                     return processingResult;

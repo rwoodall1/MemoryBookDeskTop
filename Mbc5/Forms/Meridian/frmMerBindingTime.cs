@@ -12,6 +12,7 @@ using BindingModels;
 using CsvHelper;
 using System.IO;
 using System.Diagnostics;
+using System.Globalization;
 namespace Mbc5.Forms.Meridian
 {
     public partial class frmMerBindingTime : BaseClass.frmBase
@@ -300,9 +301,9 @@ namespace Mbc5.Forms.Meridian
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    //csvWriter.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 

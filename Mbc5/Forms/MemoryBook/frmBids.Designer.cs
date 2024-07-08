@@ -152,7 +152,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.chkEasyWork = new System.Windows.Forms.CheckBox();
-            this.txtEastworkAmt = new System.Windows.Forms.TextBox();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
             this.donotchargeschoolsalestaxCheckBox = new System.Windows.Forms.CheckBox();
             this.lblSalesTax = new System.Windows.Forms.Label();
@@ -236,6 +235,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
+            this.lbleasyworkdata = new System.Windows.Forms.Label();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -701,7 +701,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             lbleasywork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             lbleasywork.AutoSize = true;
-            lbleasywork.Location = new System.Drawing.Point(146, 5);
+            lbleasywork.Location = new System.Drawing.Point(146, 6);
             lbleasywork.Name = "lbleasywork";
             lbleasywork.Size = new System.Drawing.Size(96, 13);
             lbleasywork.TabIndex = 285;
@@ -850,6 +850,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -970,6 +971,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.qtedateDateBox.Date = null;
             this.qtedateDateBox.DateValue = null;
             this.qtedateDateBox.Location = new System.Drawing.Point(625, 31);
+            this.qtedateDateBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.qtedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
             this.qtedateDateBox.Name = "qtedateDateBox";
             this.qtedateDateBox.Size = new System.Drawing.Size(133, 21);
@@ -1674,10 +1676,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lbleasyworkdata);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.chkEasyWork);
             this.panel4.Controls.Add(lbleasywork);
-            this.panel4.Controls.Add(this.txtEastworkAmt);
             this.panel4.Controls.Add(this.lblfilnalsubtotal);
             this.panel4.Controls.Add(label19);
             this.panel4.Controls.Add(this.donotchargeschoolsalestaxCheckBox);
@@ -1716,16 +1718,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.chkEasyWork.Text = "Easywork";
             this.chkEasyWork.UseVisualStyleBackColor = true;
             this.chkEasyWork.Click += new System.EventHandler(this.chkEasyWork_Click);
-            // 
-            // txtEastworkAmt
-            // 
-            this.txtEastworkAmt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEastworkAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EastworkTotal", true));
-            this.txtEastworkAmt.Location = new System.Drawing.Point(246, 5);
-            this.txtEastworkAmt.Name = "txtEastworkAmt";
-            this.txtEastworkAmt.Size = new System.Drawing.Size(79, 20);
-            this.txtEastworkAmt.TabIndex = 287;
-            this.txtEastworkAmt.Leave += new System.EventHandler(this.txtEastworkAmt_Leave);
             // 
             // lblfilnalsubtotal
             // 
@@ -1838,6 +1830,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 104;
+            this.txtClrTot.Leave += new System.EventHandler(this.txtClrTot_Leave_2);
             // 
             // txtMisc
             // 
@@ -1848,6 +1841,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 105;
+            this.txtMisc.Leave += new System.EventHandler(this.txtMisc_Leave_2);
             // 
             // txtDesc1amt
             // 
@@ -1858,6 +1852,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 106;
+            this.txtDesc1amt.Leave += new System.EventHandler(this.txtDesc1amt_Leave_2);
             // 
             // txtDesc3tot
             // 
@@ -1868,6 +1863,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 107;
+            this.txtDesc3tot.Leave += new System.EventHandler(this.txtDesc3tot_Leave_2);
             // 
             // txtDesc4tot
             // 
@@ -1878,6 +1874,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 108;
+            this.txtDesc4tot.Leave += new System.EventHandler(this.txtDesc4tot_Leave_2);
             // 
             // label6
             // 
@@ -2632,6 +2629,16 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
+            // lbleasyworkdata
+            // 
+            this.lbleasyworkdata.AutoSize = true;
+            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EastworkTotal", true));
+            this.lbleasyworkdata.Location = new System.Drawing.Point(243, 6);
+            this.lbleasyworkdata.Name = "lbleasyworkdata";
+            this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);
+            this.lbleasyworkdata.TabIndex = 297;
+            this.lbleasyworkdata.Text = "l";
+            // 
             // frmBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2843,7 +2850,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtDesc1;
         private System.Windows.Forms.TextBox txtDesc3;
         private System.Windows.Forms.TextBox txtDesc4;
-        private System.Windows.Forms.TextBox txtEastworkAmt;
         private System.Windows.Forms.Label lblfilnalsubtotal;
         private System.Windows.Forms.Label lblSalesTax;
         private System.Windows.Forms.Label schooltaxrateLabel1;
@@ -2853,5 +2859,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.CheckBox chkEasyWork;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox donotchargeschoolsalestaxCheckBox;
+        private System.Windows.Forms.Label lbleasyworkdata;
     }
     }

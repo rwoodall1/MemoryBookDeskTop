@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
-using Exceptionless;
+
 using Mbc5.Classes;
 namespace Mbc5.Forms
 {
@@ -42,9 +42,7 @@ namespace Mbc5.Forms
                     surv2TableAdapter.FillMBC(dsReceiving.surv2, Invno);
                 }catch(Exception ex)
                 {
-                    ex.ToExceptionless()
-                        .AddObject(ex)
-                        .Submit();
+                   
                     MbcMessageBox.Error(ex.Message);
                     tabControl1.Enabled = false; ;
                 }
@@ -59,9 +57,7 @@ namespace Mbc5.Forms
                 }
                 catch(Exception ex)
                 {
-                    ex.ToExceptionless()
-                       .AddObject(ex)
-                       .Submit();
+                   
                     MbcMessageBox.Error(ex.Message);
                     tabControl1.Enabled = false; ;
                 }
@@ -89,9 +85,7 @@ namespace Mbc5.Forms
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                            .AddObject(ex)
-                            .Submit();
+                       
                         MbcMessageBox.Error(ex.Message);
                         tabControl1.Enabled = false; ;
                     }
@@ -105,9 +99,7 @@ namespace Mbc5.Forms
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                           .AddObject(ex)
-                           .Submit();
+                       
                         MbcMessageBox.Error(ex.Message);
                         tabControl1.Enabled = false; ;
                     }
@@ -135,9 +127,7 @@ namespace Mbc5.Forms
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                            .AddObject(ex)
-                            .Submit();
+                        
                         MbcMessageBox.Error(ex.Message);
                         tabControl1.Enabled = false; ;
                     }
@@ -151,9 +141,7 @@ namespace Mbc5.Forms
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                           .AddObject(ex)
-                           .Submit();
+                        
                         MbcMessageBox.Error(ex.Message);
                         tabControl1.Enabled = false; ;
                     }

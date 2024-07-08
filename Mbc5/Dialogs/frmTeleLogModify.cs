@@ -8,10 +8,11 @@ using System.Windows.Forms;
 using BaseClass;
 using BaseClass.Classes;
 using BaseClass.Forms;
-using Exceptionless;
+
 using Mbc5.Forms;
 using BindingModels;
 using Mbc5.Classes;
+using NLog;
 namespace Mbc5.Dialogs
 {
     public partial class frmTeleLogModify : Form
@@ -31,15 +32,18 @@ namespace Mbc5.Dialogs
             LogId = vLogId;
             frmMain = parent;
             InitializeComponent();
+            Log = LogManager.GetLogger(GetType().FullName);
         }
+        
         public frmTeleLogModify(string company, string schcode, frmMain parent) 
         {
             this.Schcode = schcode;
             frmMain = parent;
             Company = company;
             InitializeComponent();
+            Log = LogManager.GetLogger(GetType().FullName);
         }
-
+        protected Logger Log { get; set; }
         private string EditType;
         private string Schcode;
         private frmMain frmMain;
@@ -71,9 +75,7 @@ namespace Mbc5.Dialogs
                 this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
             }catch(Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+                
                 MbcMessageBox.Error(ex.Message, "");
             }
           var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
@@ -88,10 +90,10 @@ namespace Mbc5.Dialogs
                 var contactResult = sqlquery.Select<TelephonLogRecord>();
                 if (contactResult.IsError)
                 {
+                    
                     MbcMessageBox.Error("Failed to retrieve Telephone Log record", "");
-                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Telephone Log record")
-                          .AddObject(contactResult)
-                            .Submit();
+                    Log.Error("Failed to retrieve Telephone Log record: "+ contactResult.Errors[0].DeveloperMessage);
+                    
                     this.DialogResult = DialogResult.Cancel;
                     return;
                 }
@@ -120,9 +122,8 @@ namespace Mbc5.Dialogs
                 if (mktResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to retrieve Marketing Log record", "");
-                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Marketing Log record")
-                          .AddObject(mktResult)
-                            .Submit();
+                    Log.Error(mktResult.Errors[0].DeveloperMessage);
+                   
                     this.DialogResult = DialogResult.Cancel;
                     return;
                 }
@@ -155,9 +156,7 @@ namespace Mbc5.Dialogs
                 if (contactResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to insert Telephone Log record", "");
-                    ExceptionlessClient.Default.CreateLog("Failed to insert Telephone Log record")
-                          .AddObject(contactResult)
-                            .Submit();
+                   Log.Error("Failed to insert Telephone Log record: " + contactResult.Errors[0].DeveloperMessage);
                     this.DialogResult = DialogResult.Cancel;
                     return;
                 }
@@ -171,9 +170,8 @@ namespace Mbc5.Dialogs
                 if (contactResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to retrieve Telephone Log record", "");
-                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Telephone Log record")
-                          .AddObject(contactResult)
-                            .Submit();
+                    
+                    Log.Error(contactResult1.Errors[0].DeveloperMessage);
                     this.DialogResult = DialogResult.Cancel;
                 }
                 var vData = (TelephonLogRecord)contactResult1.Data;
@@ -209,9 +207,8 @@ namespace Mbc5.Dialogs
             if (contactResult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert Marketing record", "");
-                ExceptionlessClient.Default.CreateLog("Failed to insert Marketing record")
-                      .AddObject(contactResult)
-                        .Submit();
+                Log.Error(contactResult);
+                
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
@@ -238,9 +235,8 @@ namespace Mbc5.Dialogs
             if (contactResult1.IsError)
             {
                 MbcMessageBox.Error("Failed to retrieve Marketing Log record", "");
-                ExceptionlessClient.Default.CreateLog("Failed to retrieve Marketing Log record")
-                      .AddObject(contactResult)
-                        .Submit();
+                Log.Error(contactResult1.Errors[0].DeveloperMessage);
+               
                 this.DialogResult = DialogResult.Cancel;
             }
             var vData = (MktInfo)contactResult1.Data;
@@ -291,9 +287,8 @@ namespace Mbc5.Dialogs
             if (updateResult.IsError)
             {
                 MbcMessageBox.Error("Failed to save Telephone Log record", "");
-                ExceptionlessClient.Default.CreateLog("Failed to save Telephone Log record")
-                      .AddObject(updateResult)
-                        .Submit();
+                Log.Error(updateResult.Errors[0].DeveloperMessage);
+                
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
@@ -312,9 +307,8 @@ namespace Mbc5.Dialogs
                 if (updateResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to save Telephone Log record", "");
-                    ExceptionlessClient.Default.CreateLog("Failed to save Telephone Log record")
-                          .AddObject(updateResult)
-                            .Submit();
+                    Log.Error(updateResult1.Errors[0].DeveloperMessage);
+                  
                     this.DialogResult = DialogResult.Cancel;
                     return;
                 }

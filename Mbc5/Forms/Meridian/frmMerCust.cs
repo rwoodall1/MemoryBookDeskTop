@@ -9,7 +9,7 @@ using BaseClass.Classes;
 using System.Data.Sql;
 using BaseClass;
 using Core;
-using Exceptionless;
+
 using Mbc5.Dialogs;
 using System.Data.SqlClient;
 using System.Reflection;
@@ -168,10 +168,7 @@ namespace Mbc5.Forms.Meridian {
             if (quoteresult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert sales record:"+quoteresult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Error inserting meridian sales record.")
-                    .AddObject(quoteresult)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 return;
             }
             var coverNo = frmMain.GetCoverNumber();
@@ -203,10 +200,7 @@ namespace Mbc5.Forms.Meridian {
             if(prodResult.IsError)
                 {
                 MbcMessageBox.Error("Failed to insert production record:" + prodResult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Error inserting meridian production record.")
-                    .AddObject(prodResult)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 return;
                 }
             DataRowView current = (DataRowView)mcustBindingSource.Current;
@@ -222,10 +216,7 @@ namespace Mbc5.Forms.Meridian {
                 if (coverResult.IsError)
                 {
                     MbcMessageBox.Error("Failed to insert cover record:" + coverResult.Errors[0].ErrorMessage);
-                    ExceptionlessClient.Default.CreateLog("Error inserting meridian cover record.")
-                        .AddObject(quoteresult)
-                        .MarkAsCritical()
-                        .Submit();
+                  
                     return;
                 }
             sqlQuery.ClearParameters();
@@ -236,10 +227,7 @@ namespace Mbc5.Forms.Meridian {
             if (wipResult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert Color Page record:" + wipResult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Error inserting meridian Color Page record.")
-                    .AddObject(quoteresult)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 return;
             }
             sqlQuery.ClearParameters();
@@ -250,10 +238,7 @@ namespace Mbc5.Forms.Meridian {
             if (wipgResult.IsError)
             {
                 MbcMessageBox.Error("Failed to insert Color Page record:" + wipgResult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Error inserting meridian Color Page record.")
-                    .AddObject(quoteresult)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 
             }
             this.Save();
@@ -835,9 +820,7 @@ namespace Mbc5.Forms.Meridian {
                 {
 
                     MessageBox.Show("School record failed to update:" + ex.Message);
-                    ex.ToExceptionless()
-                    .SetMessage("School record failed to update:" + ex.Message)
-                    .Submit();
+                  
                     processingResult.IsError = true;
                     var a = dsMcust.Tables["mcust"].GetErrors();
                     processingResult.Errors.Add(new ApiProcessingError("Record not save:" + ex.Message, "Record not save:" + ex.Message, ""));
@@ -874,10 +857,7 @@ namespace Mbc5.Forms.Meridian {
             catch(Exception ex)
             {
                 var a = dsMcust.Tables["mcust"].GetErrors();
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 var aww=dsMcust.Tables["mcust"].GetErrors();
                 MbcMessageBox.Error(ex.Message);
             }
@@ -1016,10 +996,7 @@ namespace Mbc5.Forms.Meridian {
                 var pricingResult = sqlQuery.Select<MeridianPrice>();
                 if (pricingResult.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error getting Meridian Pricing")
-                        .AddObject(pricingResult)
-                        .MarkAsCritical()
-                        .Submit();
+                   
                     MbcMessageBox.Error("Failed to get meridian pricing" + pricingResult.Errors[0].DeveloperMessage);
                  
                 }

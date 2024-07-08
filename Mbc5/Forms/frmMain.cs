@@ -21,8 +21,8 @@ using NLog;
 //using Mbc5.Reports;
 using Mbc5.Classes;
 
-using Exceptionless;
-using Exceptionless.Models;
+
+
 using BaseClass;
 using BindingModels;
 using Microsoft.Reporting.WinForms;
@@ -626,8 +626,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
+               
 
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -705,10 +704,7 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+                
 
             }
 
@@ -2221,9 +2217,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
                 this.Close();
                 return;
             }
@@ -2240,8 +2234,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+                
                 return;
             }
 

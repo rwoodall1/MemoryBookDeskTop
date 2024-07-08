@@ -14,7 +14,7 @@ using System.IO;
 using Mbc5.Classes;
 using RESTModule;
 using System.Threading.Tasks;
-using Exceptionless;
+
 using System.Configuration;
 namespace Mbc5.Forms
 {
@@ -2948,11 +2948,9 @@ if (trkType == "GS")
             var sqlResult = sqlClient.Insert();
             if (sqlResult.IsError)
             {
+                Log.Error("AddMbEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
                
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+               
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("AddMbEventLog",ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, vBody,EmailType.System);

@@ -15,7 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 using BindingModels;
-using Exceptionless;
+
 namespace Mbc5.Forms.MemoryBook {
 	public partial class frmReceivingCard : BaseClass.Forms.bTopBottom {
 		public frmReceivingCard(UserPrincipal userPrincipal, string vschcode,int vInvno) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
@@ -97,9 +97,7 @@ namespace Mbc5.Forms.MemoryBook {
 				EnableControls(this);
 
 			} catch (Exception ex) {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
 				MbcMessageBox.Error(ex.Message, "");
 
 			}
@@ -117,9 +115,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to create pdf:"+result.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Create Receiving Card Pdf")
-                    .AddObject(result)
-                    .Submit();
+               
                 return;
             }
             var emailHelper = new EmailHelper();

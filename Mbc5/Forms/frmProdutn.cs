@@ -17,8 +17,7 @@ using Mbc5.Classes;
 using Core;
 using Mbc5.LookUpForms;
 using BindingModels;
-using Exceptionless;
-using Exceptionless.Models;
+
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Microsoft.Reporting.WinForms;
 using System.IO;
@@ -1824,10 +1823,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+               
 
                 MbcMessageBox.Error("Failed to refill Partial Book :" + ex.Message);
                 }
@@ -3467,10 +3463,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+                
 
                 MbcMessageBox.Error("Failed to refill cover detail dataset:" + ex.Message);
                 }
@@ -5104,10 +5097,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+               
 
                 MbcMessageBox.Error("Failed to refill reorder detail dataset:" + ex.Message);
                 }
@@ -6984,10 +6974,7 @@ namespace Mbc5.Forms
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+                
 
                 MbcMessageBox.Error("Failed to refill cover detail dataset:" + ex.Message);
                 }
@@ -7626,9 +7613,7 @@ namespace Mbc5.Forms
 					}
 					catch (Exception ex)
 					{
-						ex.ToExceptionless()
-					   .SetMessage("Partial Book A record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processintResult.IsError = true;
 						processintResult.Errors.Add(new ApiProcessingError("Partial Book A record failed to update:" + ex.Message, "Partial Book A record failed to update:" + ex.Message,""))
 ;					}
@@ -7662,9 +7647,7 @@ namespace Mbc5.Forms
 					}
 					catch (Exception ex)
 					{
-						ex.ToExceptionless()
-					   .SetMessage("Photos On CD record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to update:" + ex.Message, "Photos On CD record failed to update:" + ex.Message,""));
 					}
@@ -7833,9 +7816,7 @@ namespace Mbc5.Forms
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                       .SetMessage("ReOrder record failed to update:" + ex.Message)
-                       .Submit();
+                        
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                     }
@@ -10597,10 +10578,7 @@ namespace Mbc5.Forms
 
             }
             catch (Exception ex) {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 MbcMessageBox.Error(ex.Message);
                     };
   
@@ -10704,10 +10682,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 MbcMessageBox.Error(ex.Message);
             };
 
@@ -10787,9 +10762,7 @@ namespace Mbc5.Forms
             if (queryResult.IsError)
             {
                 MbcMessageBox.Error(queryResult.Errors[0].ErrorMessage);
-                ExceptionlessClient.Default.CreateLog("Meridian Cover Ticket Error")
-                    .AddObject(queryResult)
-                    .Submit();
+               
                 return;
 
             }

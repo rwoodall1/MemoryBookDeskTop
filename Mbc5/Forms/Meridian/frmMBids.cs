@@ -11,7 +11,7 @@ using BaseClass;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using BindingModels;
-using Exceptionless;
+
 using Mbc5.Classes;
 using Core;
 using Microsoft.Reporting.WinForms;
@@ -596,10 +596,7 @@ namespace Mbc5.Forms.Meridian {
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 processingResult.Data = false;
                 processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
                 MbcMessageBox.Error(ex.Message);
@@ -802,10 +799,7 @@ namespace Mbc5.Forms.Meridian {
             var pricingResult = sqlQuery.Select<MeridianPrice>();
             if (pricingResult.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Error getting Meridian Pricing")
-                    .AddObject(pricingResult)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 MbcMessageBox.Error("Failed to get meridian base pricing" + pricingResult.Errors[0].DeveloperMessage);
                 lblTotalBasePrice.Text = "0.00";
                 return false;
@@ -915,10 +909,7 @@ namespace Mbc5.Forms.Meridian {
             var result = sqlQuery.Select<MeridianOptionPricing>();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("MeridianOption Pricing")
-                    .AddObject(result)
-                    .MarkAsCritical()
-                    .Submit();
+               
                 MbcMessageBox.Error("Error retrieving Meridian Option Prices:" + result.Errors[0].ErrorMessage);
                 return false;
             }

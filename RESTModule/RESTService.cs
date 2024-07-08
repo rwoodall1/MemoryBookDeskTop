@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Configuration;
-//using Exceptionless;
+//
 using BaseClass.Classes;
 using BindingModels;
 //This class has been modified to only use Mixbook end points and what pertains to Mixbook and uses xml not json

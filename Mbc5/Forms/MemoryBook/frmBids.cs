@@ -16,7 +16,7 @@ using BaseClass;
 using Core;
 using Microsoft.Reporting.WinForms;
 using Mbc5.Dialogs;
-using Exceptionless;
+
 using Vertex;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -273,9 +273,7 @@ namespace Mbc5.Forms.MemoryBook {
                     var quoteInsertResult = sqlclient.Insert();
                     if (quoteInsertResult.IsError)
                     {
-                    ExceptionlessClient.Default.CreateLog("Insert Error Copy To Sales")
-                      .AddObject(quoteInsertResult)
-                      .Submit();
+                   
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError("There was an error creating a the sales record.", "There was an error creating a the sales record.",""));
                         return processingResult;
@@ -315,9 +313,7 @@ namespace Mbc5.Forms.MemoryBook {
                     var prodResult = sqlclient.Insert();
                     if (prodResult.IsError)
                     {
-                       ExceptionlessClient.Default.CreateLog("Insert Error")
-                        .AddObject(prodResult)
-                        .Submit();
+                      
                     processingResult.IsError = true;
                     processingResult.Errors.Add(new ApiProcessingError("Failed to insert production record.", "Failed to insert production record.", ""));
                     return processingResult;
@@ -325,9 +321,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 catch (Exception ex)
                 {
-                ex.ToExceptionless()
-                 .AddObject(ex)
-                 .Submit();
+               
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to insert production record.", "Failed to insert production record.", ""));
                 return processingResult;
@@ -1303,13 +1297,13 @@ namespace Mbc5.Forms.MemoryBook {
                         if (chkEasyWork.Checked)
                         {
                             EasyWork = (BookOptionPricing.EasyWork);
-                            
-                            txtEastworkAmt.Text = (EasyWork *numberOfCopies).ToString("0.00");
+
+                            lbleasyworkdata.Text = (EasyWork *numberOfCopies).ToString("0.00");
 
                         }
                         else
                         {
-                            txtEastworkAmt.Text = "0.00";
+                            lbleasyworkdata.Text = "0.00";
                             EasyWork = 0;
                         }   
 						//Gloss
@@ -1419,7 +1413,7 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                         vParseResult = decimal.TryParse(lblperstotal.Text, out iconTot);
                         vParseResult = decimal.TryParse(lblIconTot.Text, out persTot);
-                        vParseResult = decimal.TryParse(txtEastworkAmt.Text, out EasyWorkTot);
+                        vParseResult = decimal.TryParse(lbleasyworkdata.Text, out EasyWorkTot);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
                         txtFinalbookprc.Text =((SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot) / numberOfCopies).ToString("c");
                         lblfilnalsubtotal.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot+Credits+Credits2+OtherChrg+OtherChrg2+ EasyWorkTot).ToString("c");
@@ -3019,10 +3013,7 @@ namespace Mbc5.Forms.MemoryBook {
             var blankResult = sqlquery.Update();
             if (blankResult.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Current Bid Clear Error")
-                    .AddObject(blankResult)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 MbcMessageBox.Error("Failed to clear current bids from this school");
                 return;
             }
@@ -3034,10 +3025,7 @@ namespace Mbc5.Forms.MemoryBook {
                 var result = sqlquery.Update();
                 if (result.IsError)
                 {
-                    ExceptionlessClient.Default.CreateLog("Current Bid Update Error")
-                        .AddObject(blankResult)
-                        .MarkAsCritical()
-                        .Submit();
+                   
                     MbcMessageBox.Error("Failed to update current bids for this school");
 
                 }
@@ -3075,6 +3063,29 @@ namespace Mbc5.Forms.MemoryBook {
             this.GetTax();
         }
 
-      
+        private void txtClrTot_Leave_2(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtMisc_Leave_2(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc1amt_Leave_2(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc3tot_Leave_2(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc4tot_Leave_2(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
     }
     }

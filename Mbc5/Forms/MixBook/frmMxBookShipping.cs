@@ -14,7 +14,7 @@ using System.IO;
 using Mbc5.Classes;
 using RESTModule;
 using System.Threading.Tasks;
-using Exceptionless;
+
 using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;

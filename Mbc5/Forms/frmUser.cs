@@ -11,7 +11,7 @@ using System.Net.Mail;
 using System.Configuration;
 using BaseClass.Classes;
 using NLog;
-using Exceptionless;
+
 using System.Data.SqlClient;
 using Mbc5.Classes;
 namespace Mbc5.Forms

@@ -12,7 +12,7 @@ using BaseClass;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using BindingModels;
-using Exceptionless;
+
 using System.Reflection;
 using Core;
 using Mbc5.Classes;
@@ -394,9 +394,6 @@ private void UpdateProdutnCopies()
             var result = sqlquery.Update();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Error Production NoCopies")
-                    .AddObject(result)
-                    .Submit();
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Error Updating Production Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
             }
@@ -434,9 +431,7 @@ private void UpdateProdutnCopies()
             var result = sqlquery.Update();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Error PressCopies")
-                    .AddObject(result)
-                    .Submit();
+                
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Error Updating Press Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
             }
@@ -1750,10 +1745,7 @@ try {
     return processingResult;
 } catch (Exception ex)
 {
-    ex.ToExceptionless()
-        .AddObject(ex)
-        .MarkAsCritical()
-        .Submit();
+   
     processingResult.Data = false;
     processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message,""));
     return processingResult;
@@ -1953,10 +1945,7 @@ private bool GetBookPricing()
     var pricingResult = sqlQuery.Select<MeridianPrice>();
     if (pricingResult.IsError)
     {
-        ExceptionlessClient.Default.CreateLog("Error getting Meridian Pricing")
-            .AddObject(pricingResult)
-            .MarkAsCritical()
-            .Submit();
+       
         MbcMessageBox.Error("Failed to get meridian base pricing" + pricingResult.Errors[0].DeveloperMessage);
         lblTotalBasePrice.Text = "0.00";
         return false;
@@ -2042,10 +2031,7 @@ private bool GetOptionPricing()
             var result = sqlQuery.Select<MeridianOptionPricing>();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("MeridianOption Pricing")
-                    .AddObject(result)
-                    .MarkAsCritical()
-                    .Submit();
+                
                 MbcMessageBox.Error("Error retrieving Meridian Option Prices:" + result.Errors[0].ErrorMessage);
                 return false;
             }
@@ -2710,10 +2696,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+                
             }
         }
 
@@ -2789,8 +2772,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
+                
 
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -3041,11 +3023,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(ex)
-                                .MarkAsCritical()
-                                .Submit();
+                
 
                 MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

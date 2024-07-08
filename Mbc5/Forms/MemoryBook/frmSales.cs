@@ -14,8 +14,7 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
 using BindingModels;
-using Exceptionless;
-using Exceptionless.Models;
+
 using Outlook= Microsoft.Office.Interop.Outlook;
 using System.IO;
 using System.Reflection;
@@ -295,9 +294,7 @@ namespace Mbc5.Forms.MemoryBook
             var result = sqlquery.Insert();
             if (result.IsError)
             {
-                ExceptionlessClient.Default.CreateLog("Error PressCopies")
-                    .AddObject(result)
-                    .Submit();
+               
                 var emailHelper = new EmailHelper();
                 emailHelper.SendEmail("Error Updating Press Copies", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, result.Errors[0].DeveloperMessage, EmailType.System);
             }
@@ -1137,11 +1134,7 @@ namespace Mbc5.Forms.MemoryBook
                         }
                         catch (Exception ex)
                         {
-                            ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
+                            
                             command.Transaction.Rollback();
                             MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             retval = false;
@@ -1165,11 +1158,7 @@ namespace Mbc5.Forms.MemoryBook
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
+               
                 command.Transaction.Rollback();
                 MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 retval = false;
@@ -1671,18 +1660,19 @@ namespace Mbc5.Forms.MemoryBook
             DialogResult messageResult = MessageBox.Show("This will delete the current sale record. All related invoices and payments must be removed first. Do you want to proceed?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (messageResult == DialogResult.Yes)
             {
-                var sqlQuery = new SQLQuery();
-                var queryString = "Delete  From Quotes where Invno=@Invno ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-                if (result == 1)
+                var sqlClient = new SQLCustomClient().CommandText("Delete  From Quotes where Invno=@Invno"); ;
+                 sqlClient.AddParameter("@Invno", lblInvoice.Text);
+              
+                var result = sqlClient.Delete();
+                if(result.IsError)
                 {
+                    Log.Error(result.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to delete sale:" + result.Errors[0].DeveloperMessage, "Delete Error");
+                    return false;
+                }   
+               
                     this.Invno = 0;
                     this.Fill();
-                }
-                else { retval = false; }
             }
             if (String.IsNullOrEmpty(lblInvoice.Text) || lblInvoice.Text == "0")
             {
@@ -2260,12 +2250,12 @@ namespace Mbc5.Forms.MemoryBook
                         {
                             EasyWork = (BookOptionPricing.EasyWork);
 
-                            txtEastworkAmt.Text = (EasyWork * numberOfCopies).ToString("0.00");
+                            lbleasyworkdata.Text = (EasyWork * numberOfCopies).ToString("0.00");
 
                         }
                         else
                         {
-                            txtEastworkAmt.Text = "0.00";
+                            lbleasyworkdata.Text = "0.00";
                             EasyWork = 0;
                         }
                         //Lam
@@ -2331,7 +2321,7 @@ namespace Mbc5.Forms.MemoryBook
                         vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
                         vParseResult = decimal.TryParse(lblIconTot.Text, out iconTot);
                         vParseResult = decimal.TryParse(lblIconTot.Text, out persTot);
-                        vParseResult = decimal.TryParse(txtEastworkAmt.Text, out EasyWorkTot);
+                        vParseResult = decimal.TryParse(lbleasyworkdata.Text, out EasyWorkTot);
                         vParseResult = decimal.TryParse(lblOverRunAmt.Text.Replace("$",""), out OverRunAmt);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
                         txtFinalbookprc.Text= ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot) / numberOfCopies).ToString("c");
@@ -4627,10 +4617,7 @@ namespace Mbc5.Forms.MemoryBook
             } catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+               
             }
         }
 
@@ -4908,70 +4895,60 @@ namespace Mbc5.Forms.MemoryBook
                 return;
             }
             var resultData = (WipUpdateCheck)checkResult.Data;
-            var strQuery = "";
-            var sqlQuery = new SQLQuery();
             if (resultData.ProdutnInvno == null)
             {
-                SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@Invno",this.Invno),
-                     new SqlParameter("@Schcode",this.Schcode),
-                     new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
-                      new SqlParameter("@Contryear", txtYear.Text),
-                       new SqlParameter("@Company","MBC")
-                    };
-                strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
-                var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-                if (userResult1 != 1)
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Schcode", this.Schcode);
+                sqlClient.AddParameter("@ProdNo", this.frmMain.GetProdNo());
+                sqlClient.AddParameter("@Contryear", txtYear.Text);
+                sqlClient.AddParameter("@Company", "MBC");
+                var produtnInsert = sqlClient.Insert();
+                if (produtnInsert.IsError)
                 {
-                    MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error(produtnInsert.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to insert production record.:" + produtnInsert.Errors[0].DeveloperMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-            }
+            }        
             if (resultData.CoversInvno == null)
             {
-                string val = "";
-                //custBindingSource.MoveFirst();//make sure on first row
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Schcode", this.Schcode);
+                sqlClient.AddParameter("@Specovr", frmMain.GetCoverNumber());
                 DataRowView current = (DataRowView)custBindingSource.Current;
                 string instructions = current["spcinst"].ToString();
-
-
-                SqlParameter[] parameters2 = new SqlParameter[] {
-                    new SqlParameter("@Invno",this.Invno),
-                     new SqlParameter("@Schcode",this.Schcode),
-                     new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
-                         new SqlParameter("@Specinst",instructions),
-                       new SqlParameter("@Company","MBC")
-                    };
-                strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-                var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
-                if (userResult2 != 1)
+                sqlClient.AddParameter("@Specinst", instructions);
+                sqlClient.AddParameter("@Company", "MBC");
+                var coverInsert = sqlClient.Insert();
+                if (coverInsert.IsError)
                 {
+                    Log.Error(coverInsert.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-
             }
             if (resultData.WipInvno == null)
             {
-                SqlParameter[] parameters3 = new SqlParameter[] {
-                    new SqlParameter("@Invno",this.Invno),
-                     new SqlParameter("@Schcode",this.Schcode),
-
-                    };
-                strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
-                var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
-                if (Result3 != 1)
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Insert into Wip (schcode,invno) Values(@Schcode,@Invno)");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Schcode", this.Schcode);
+           
+                var wipInsert = sqlClient.Insert();
+                if (wipInsert.IsError)
                 {
+                    Log.Error(wipInsert.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                 MessageBox.Show("WIP records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            MessageBox.Show("WIP records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void chkStory_Click_1(object sender, EventArgs e)
@@ -5403,11 +5380,7 @@ namespace Mbc5.Forms.MemoryBook
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(ex)
-                                .MarkAsCritical()
-                                .Submit();
+               
 
                 MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

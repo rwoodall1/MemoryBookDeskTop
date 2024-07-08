@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Exceptionless.Models;
+
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Exceptionless;
+
 using BindingModels;
 
 using Core;
@@ -50,9 +50,7 @@ namespace BaseClass.Classes {
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                ExceptionlessClient.Default.CreateLog("Error Creating Flyer")
-                    .AddObject(ex)
-                    .Submit();
+               
                 apiProcessingResult.IsError = true;
                 apiProcessingResult.Errors.Add(new ApiProcessingError(ex.Message, "Failed to generate attachement:" + ex.Message, ""));
                 return apiProcessingResult;

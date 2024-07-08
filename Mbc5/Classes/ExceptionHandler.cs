@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
-using Exceptionless;
+
 namespace Mbc5.Classes
 {
    public static class ExceptionHandler

@@ -14,8 +14,7 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
 using BindingModels;
-using Exceptionless;
-using Exceptionless.Models;
+
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Core;
 using BaseClass;
@@ -533,9 +532,7 @@ namespace Mbc5.Forms {
 					catch (Exception ex)
 					{
 						
-						ex.ToExceptionless()
-					   .SetMessage("Banner record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Banner record failed to update:" + ex.Message, "Banner record failed to update:" + ex.Message, ""));
 					}
@@ -561,9 +558,7 @@ namespace Mbc5.Forms {
 					catch (Exception ex)
 					{
 						
-						ex.ToExceptionless()
-					   .SetMessage("Supplement record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("Supplement record failed to update:" + ex.Message, "Supplement record failed to update:" + ex.Message, ""));
 					}
@@ -593,9 +588,7 @@ namespace Mbc5.Forms {
                             
                         }catch(Exception ex)
                         {
-                            ex.ToExceptionless()
-                       .SetMessage("EndSheet record failed to update:" + ex.Message)
-                       .Submit();
+                            
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Production record failed to update: " + ex.Message, "Production record failed to update: " + ex.Message, ""));
                         }
@@ -605,9 +598,7 @@ namespace Mbc5.Forms {
 					catch (Exception ex)
 					{
 								
-						ex.ToExceptionless()
-					   .SetMessage("EndSheet record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("EndSheet record failed to update: " + ex.Message,"EndSheet record failed to update: " + ex.Message,""));
 					}
@@ -635,9 +626,7 @@ namespace Mbc5.Forms {
 					{
 					
 						
-						ex.ToExceptionless()
-					   .SetMessage("PreFlight record failed to update:" + ex.Message)
-					   .Submit();
+						
 						processingResult.IsError = true;
 						processingResult.Errors.Add(new ApiProcessingError("PreFlight record failed to update:" + ex.Message, "PreFlight record failed to update:" + ex.Message, ""));
 					}
@@ -647,76 +636,61 @@ namespace Mbc5.Forms {
 		}
 		public override bool Add()
 		{
-			var sqlQuery = new SQLQuery();
-			SqlParameter[] parameters = new SqlParameter[] {
-					new SqlParameter("@Invno",this.Invno),
-					 new SqlParameter("@Schcode",this.Schcode),
-					};
-			var strQuery = "";
+			
 			var pos = endsheetBindingSource.Find("invno", this.Invno);
-			if (pos == -1)
+            var sqlClient = new SQLCustomClient();
+
+            if (pos == -1)
 			{
-				strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode)";
-				var endsheetResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-				if (endsheetResult != 1)
+                 sqlClient.CommandText("INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode)");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.AddParameter("@Schcode", Schcode);
+                var insertResult=sqlClient.Insert();
+                if (insertResult.IsError)
 				{
-					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-						.AddTags("MemoryBook DestTop")
-						.AddObject("Invoice#:" + Invno)
-						.AddObject("Schcode:" + Schcode)
-						.Submit();
+					Log.Error("Failed to insert endsheet record. | "+insertResult.Errors[0].ErrorMessage);
 					MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return false;
 				}
 			}
-
-
-
-			parameters = null;
+            sqlClient.ClearParameters();
 			var pos2 = supplBindingSource.Find("invno", this.Invno);
 			if (pos2 == -1)
 			{
-				parameters = new SqlParameter[] {
-					new SqlParameter("@Invno",this.Invno),
-					 new SqlParameter("@Schcode",this.Schcode),
+                sqlClient.CommandText("INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.AddParameter("@Schcode", Schcode);
 
-					};
-				strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)";
-				var supplResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-				if (supplResult != 1)
+
+                var supplInsertResult = sqlClient.Insert();
+				if (supplInsertResult.IsError)
 				{
-					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-						.AddTags("MemoryBook DestTop")
-						.AddObject("Invoice#:" + Invno)
-						.AddObject("Schcode:" + Schcode)
-						.Submit();
+					
 					MessageBox.Show("Failed to insert supplement record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return false;
 				}
 			}
-			parameters = null;
-			var pos1 = preflitBindingSource.Find("invno", this.Invno);
-			if (pos1 == -1)
-			{
-				strQuery = "INSERT INTO [dbo].[preflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
-				parameters = new SqlParameter[] {
-					new SqlParameter("@Invno",this.Invno),
-					 new SqlParameter("@Schcode",this.Schcode),
 
-					};
-				var priResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-				if (priResult != 1)
-				{
-					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-						.AddTags("MemoryBook DestTop")
-						.AddObject("Invoice#:" + Invno)
-						.AddObject("Schcode:" + Schcode)
-						.Submit();
-					MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-					return false;
-				}
-			}
-			return true;
+            sqlClient.ClearParameters();
+            var pos3 = preflitBindingSource.Find("invno", this.Invno);
+            if (pos3 == -1)
+            {
+                sqlClient.CommandText("INSERT INTO [dbo].[preflit](Invno,Schcode)  VALUES (@Invno,@Schcode)");
+                sqlClient.AddParameter("@Invno", Invno);
+                sqlClient.AddParameter("@Schcode", Schcode);
+
+
+                var preFlightInsertResult = sqlClient.Insert();
+                if (preFlightInsertResult.IsError)
+                {
+                    Log.Error(preFlightInsertResult.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to insert preflight record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            return true;
+
 		}
 		public override void Fill()
 		{
@@ -2475,10 +2449,7 @@ namespace Mbc5.Forms {
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+                
 
                 MbcMessageBox.Error("Failed to refill endsheet detail dataset:" + ex.Message);
             }
@@ -4164,10 +4135,7 @@ namespace Mbc5.Forms {
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+                
 
                 MbcMessageBox.Error("Failed to refill supplement detail dataset:" + ex.Message);
             }
@@ -5853,10 +5821,7 @@ namespace Mbc5.Forms {
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .MarkAsCritical()
-                    .AddObject(ex)
-                    .Submit();
+               
 
                 MbcMessageBox.Error("Failed to refill endsheet detail dataset:" + ex.Message);
             }

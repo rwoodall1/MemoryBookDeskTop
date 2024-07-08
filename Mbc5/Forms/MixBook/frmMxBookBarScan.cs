@@ -14,7 +14,7 @@ using System.IO;
 using Mbc5.Classes;
 using RESTModule;
 using System.Threading.Tasks;
-using Exceptionless;
+
 using System.Configuration;
 using System.Diagnostics;
 using Mbc5.Dialogs;
@@ -356,7 +356,7 @@ namespace Mbc5.Forms.MixBook
                         if (locationresult1.IsError)
                         {
                             MbcMessageBox.Error("Failed to update location of order.");
-                            ExceptionlessClient.Default.CreateLog("Failed to update location of book invno:" + Invno.ToString());
+                         
                             Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location of book invno:" + Invno.ToString());
                         }
                         //QuantityScanned += 1; took out per tf

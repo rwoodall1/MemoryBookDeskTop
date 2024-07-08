@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mbc5.Forms;
-using Exceptionless;
+
 using Mbc5.Forms.MixBook;
 using NLog;
 using System.Threading;
@@ -23,7 +23,7 @@ namespace Mbc5
         static void Main()
         {
             var Log = LogManager.GetCurrentClassLogger();
-            //ExceptionlessClient.Default.Register();
+     
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

@@ -1,5 +1,5 @@
 ﻿
-using Exceptionless;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,13 +41,7 @@ namespace BaseClass.Classes
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                         .SetMessage("Error running ExecuteNonQuery.")
-                         .AddTags("SqlQueryWrapper")
-                         .AddObject(_sqlProperties.CommandText, "Query")
-                        .AddObject(CommandParametersToObj(_sqlProperties.CommandParameters.ToArray()), "Query Parameters")
-                         .MarkAsCritical()
-                         .Submit();
+                      
                         result.IsError = true;
                         result.Errors.Add(new ApiProcessingError("Error running ExecuteNonQueryAsync. Ex: " + ex.Message.ToString(), "Error running ExecuteNonQueryAsync", "EXNQSQL"));
                     }
@@ -115,11 +109,7 @@ namespace BaseClass.Classes
                         }
                         catch (Exception ex)
                         {
-                            ex.ToExceptionless()
-                               .SetMessage("Collection Helper Error")
-                               .AddTags("Collection Helper")
-                               .MarkAsCritical()
-                               .Submit();
+                            
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Error retrieving data from ExecuteReader:" + ex.Message, "Error retrieving data from ExecuteReader: " + ex.Message, "EXROBJ"));
                         }
@@ -128,13 +118,7 @@ namespace BaseClass.Classes
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                           .SetMessage("Error running ExecuteReaderAsync(object).")
-                           .AddTags("Sql Query Wrapper")
-                           .AddObject(_sqlProperties.CommandText, "Query")
-                           .AddObject(CommandParametersToObj(_sqlProperties.CommandParameters.ToArray()), "Query Parameters")
-                           .MarkAsCritical()
-                           .Submit();
+                        
                         processingResult.IsError = true; ;
                         processingResult.Errors.Add(new ApiProcessingError("Error running ExecuteReaderAsync. Ex: " + ex.Message.ToString(), "Error running ExecuteReaderAsync.", "EXRERR"));
                         return processingResult;
@@ -193,13 +177,7 @@ namespace BaseClass.Classes
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                           .SetMessage("Error running ExecuteReaderAsync(object).")
-                           .AddTags("Sql Query Wrapper")
-                           .AddObject(_sqlProperties.CommandText, "Query")
-                           .AddObject(CommandParametersToObj(_sqlProperties.CommandParameters.ToArray()), "Query Parameters")
-                           .MarkAsCritical()
-                           .Submit();
+                        
                         processingResult.IsError = true;
                         processingResult.Errors.Add(new ApiProcessingError("Error running ExecuteReaderAsync. Ex: " + ex.Message.ToString(), "Error running ExecuteReaderAsync. Ex: ", "ERREXR"));
                         return processingResult;
@@ -254,13 +232,7 @@ namespace BaseClass.Classes
                     }
                     catch (Exception ex)
                     {
-                        ex.ToExceptionless()
-                          .SetMessage("Error running ExecuteScalarAsync.")
-                          .AddTags("SqlQueryWrapper")
-                          .AddObject(_sqlProperties.CommandText, "Query")
-                          .AddObject(CommandParametersToObj(_sqlProperties.CommandParameters.ToArray()), "Query Parameters")
-                          .MarkAsCritical()
-                          .Submit();
+                        
                         result.IsError = true;
                         result.Errors.Add(new ApiProcessingError("Error processing ExecuteScalarAsync Ex: " + ex.Message.ToString(), "Error processing ExecuteScalarAsync", "EXSERR"));
                     }

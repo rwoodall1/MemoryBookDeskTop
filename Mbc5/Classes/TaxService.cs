@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Avalara.AvaTax.RestClient;
 using BaseClass;
-using Exceptionless;
+
 using BindingModels;
 namespace Mbc5.Classes {
     //https://www.avalara.com
@@ -40,11 +40,7 @@ namespace Mbc5.Classes {
             }
             catch(AvaException ex)
             {
-                ex.ToExceptionless()
-                      .AddObject(ex)
-                      .AddTags("TaxRate")
-                      .MarkAsCritical()
-                      .Submit();
+              
                 MbcMessageBox.Error(ex.error.message);
               
             }

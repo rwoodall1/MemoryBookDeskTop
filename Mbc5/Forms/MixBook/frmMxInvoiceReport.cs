@@ -13,6 +13,7 @@ using CsvHelper;
 using System.IO;
 using System.Diagnostics;
 using Mbc5.Classes;
+using System.Globalization;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxInvoiceReport : BaseClass.frmBase
@@ -136,9 +137,9 @@ Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from Wip
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                   // csvWriter.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 

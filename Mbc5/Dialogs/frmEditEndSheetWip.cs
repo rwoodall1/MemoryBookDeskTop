@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BindingModels;
 using BaseClass;
-using Exceptionless;
+
 namespace Mbc5.Dialogs
 {
     public partial class frmEditEndSheetWip : Form
@@ -45,9 +45,7 @@ namespace Mbc5.Dialogs
             }
             catch(Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
                 MbcMessageBox.Error("Error retrieving information:" + ex.Message);
                 this.Close();
                 return;

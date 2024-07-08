@@ -12,7 +12,7 @@ using BaseClass;
 using System.Data.Sql;
 using System.Configuration;
 using System.Data.SqlClient;
-using Exceptionless;
+
 using Mbc5.Forms;
 using NLog;
 using Mbc5.Classes;

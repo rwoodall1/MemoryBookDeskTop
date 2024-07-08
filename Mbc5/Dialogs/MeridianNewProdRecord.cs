@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BaseClass;
 using BaseClass.Classes;
 using System.Data.SqlClient;
-using Exceptionless;
+
 namespace Mbc5.Dialogs
 {
     public partial class MeridianNewProdRecord : Form
@@ -63,9 +63,8 @@ namespace Mbc5.Dialogs
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
                 if (result1 != 1)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                    
+                   
 
                 }
 
@@ -74,10 +73,7 @@ namespace Mbc5.Dialogs
             {
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MeridianWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+                
                 return "";
 
             }
