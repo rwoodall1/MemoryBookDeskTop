@@ -5,6 +5,11 @@ using System.Web;
 
 namespace BindingModels
         {
+    public class OPYData
+    {
+        public int TotalBookSold { get; set;}
+        public decimal DollarsCollected { get; set; }
+    }
     public class TaxRequestReturn
     {
         public decimal TaxAmount { get; set; }

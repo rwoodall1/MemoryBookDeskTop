@@ -203,6 +203,10 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label remakeReasonLabel;
             System.Windows.Forms.Label prodCustDateLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -245,15 +249,15 @@ namespace Mbc5.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.dateBox1 = new CustomControls.DateBox();
@@ -266,6 +270,7 @@ namespace Mbc5.Forms
             this.btnspCoverEmail = new System.Windows.Forms.Button();
             this.lblShipped = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.reportViewer4 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerProdticket = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerMboOnline = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerCover = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -633,10 +638,6 @@ namespace Mbc5.Forms
             this.mixBookOrderTableAdapter1 = new Mbc5.DataSets.dsProdutnTableAdapters.MixBookOrderTableAdapter();
             this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
-            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mixBookOrders = new Mbc5.DataSets.MixBookOrders();
             this.lkTypeDataTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkTypeDataTableAdapter();
@@ -661,7 +662,6 @@ namespace Mbc5.Forms
             this.mixBookOrderTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.MixBookOrderTableAdapter();
             this.tableAdapterManager5 = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.remakeReasonsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.RemakeReasonsTableAdapter();
-            this.reportViewer4 = new Microsoft.Reporting.WinForms.ReportViewer();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -836,6 +836,10 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource1)).BeginInit();
@@ -881,10 +885,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).BeginInit();
@@ -2566,6 +2566,15 @@ namespace Mbc5.Forms
             remakeReasonLabel.TabIndex = 227;
             remakeReasonLabel.Text = "Remake Reason";
             // 
+            // prodCustDateLabel
+            // 
+            prodCustDateLabel.AutoSize = true;
+            prodCustDateLabel.Location = new System.Drawing.Point(147, 39);
+            prodCustDateLabel.Name = "prodCustDateLabel";
+            prodCustDateLabel.Size = new System.Drawing.Size(77, 13);
+            prodCustDateLabel.TabIndex = 163;
+            prodCustDateLabel.Text = "Customer Date";
+            // 
             // custBindingSource
             // 
             this.custBindingSource.DataMember = "cust";
@@ -2592,14 +2601,25 @@ namespace Mbc5.Forms
             this.wipBindingSource.DataMember = "wip";
             this.wipBindingSource.DataSource = this.dsProdutn;
             // 
-            // prodCustDateLabel
+            // invoiceBindingSource
             // 
-            prodCustDateLabel.AutoSize = true;
-            prodCustDateLabel.Location = new System.Drawing.Point(147, 39);
-            prodCustDateLabel.Name = "prodCustDateLabel";
-            prodCustDateLabel.Size = new System.Drawing.Size(77, 13);
-            prodCustDateLabel.TabIndex = 163;
-            prodCustDateLabel.Text = "Customer Date";
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
             // tbProdutn
             // 
@@ -2794,10 +2814,33 @@ namespace Mbc5.Forms
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(630, 399);
+            this.panel4.Location = new System.Drawing.Point(613, 399);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(451, 306);
             this.panel4.TabIndex = 131;
+            // 
+            // reportViewer4
+            // 
+            this.reportViewer4.DocumentMapWidth = 35;
+            reportDataSource1.Name = "cust";
+            reportDataSource1.Value = null;
+            reportDataSource2.Name = "invoice";
+            reportDataSource2.Value = this.invoiceBindingSource;
+            reportDataSource3.Name = "invoicedetail";
+            reportDataSource3.Value = this.invdetailBindingSource;
+            reportDataSource4.Name = "payment";
+            reportDataSource4.Value = this.paymntBindingSource;
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer4.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
+            this.reportViewer4.Location = new System.Drawing.Point(89, 171);
+            this.reportViewer4.Name = "reportViewer4";
+            this.reportViewer4.ServerReport.BearerToken = null;
+            this.reportViewer4.Size = new System.Drawing.Size(87, 67);
+            this.reportViewer4.TabIndex = 167;
+            this.reportViewer4.Visible = false;
             // 
             // reportViewerProdticket
             // 
@@ -3089,7 +3132,7 @@ namespace Mbc5.Forms
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(897, 80);
+            this.panel3.Location = new System.Drawing.Point(880, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(184, 316);
             this.panel3.TabIndex = 130;
@@ -3192,7 +3235,7 @@ namespace Mbc5.Forms
             this.panel2.Controls.Add(warndateLabel);
             this.panel2.Controls.Add(prshpdteLabel);
             this.panel2.Controls.Add(shpdateLabel);
-            this.panel2.Location = new System.Drawing.Point(630, 82);
+            this.panel2.Location = new System.Drawing.Point(613, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 316);
             this.panel2.TabIndex = 129;
@@ -3387,7 +3430,7 @@ namespace Mbc5.Forms
             this.panel1.Controls.Add(this.txtCoverType);
             this.panel1.Location = new System.Drawing.Point(265, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 400);
+            this.panel1.Size = new System.Drawing.Size(278, 400);
             this.panel1.TabIndex = 128;
             // 
             // endstrecvDateBox
@@ -3494,7 +3537,7 @@ namespace Mbc5.Forms
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
             this.ptnopgsTextBox.Location = new System.Drawing.Point(173, 277);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(56, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(39, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // colorpgsCheckBox
@@ -3517,7 +3560,7 @@ namespace Mbc5.Forms
             this.txtPerfbind.Location = new System.Drawing.Point(173, 136);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
-            this.txtPerfbind.Size = new System.Drawing.Size(49, 20);
+            this.txtPerfbind.Size = new System.Drawing.Size(32, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
             // 
@@ -3528,7 +3571,7 @@ namespace Mbc5.Forms
             this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
             this.txtCoverDescription.Location = new System.Drawing.Point(173, 34);
             this.txtCoverDescription.Name = "txtCoverDescription";
-            this.txtCoverDescription.Size = new System.Drawing.Size(93, 20);
+            this.txtCoverDescription.Size = new System.Drawing.Size(76, 20);
             this.txtCoverDescription.TabIndex = 102;
             // 
             // txtCoverType
@@ -3540,7 +3583,7 @@ namespace Mbc5.Forms
             this.txtCoverType.Location = new System.Drawing.Point(173, 12);
             this.txtCoverType.MaxLength = 4;
             this.txtCoverType.Name = "txtCoverType";
-            this.txtCoverType.Size = new System.Drawing.Size(93, 20);
+            this.txtCoverType.Size = new System.Drawing.Size(76, 20);
             this.txtCoverType.TabIndex = 100;
             this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
@@ -3667,7 +3710,7 @@ namespace Mbc5.Forms
             this.enhancementsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enhancementsCheckBox.Location = new System.Drawing.Point(16, 389);
             this.enhancementsCheckBox.Name = "enhancementsCheckBox";
-            this.enhancementsCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.enhancementsCheckBox.Size = new System.Drawing.Size(120, 24);
             this.enhancementsCheckBox.TabIndex = 154;
             this.enhancementsCheckBox.Text = "Enhancements";
             this.enhancementsCheckBox.UseVisualStyleBackColor = true;
@@ -3947,7 +3990,7 @@ namespace Mbc5.Forms
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(641, 5);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(624, 5);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
@@ -6903,26 +6946,6 @@ namespace Mbc5.Forms
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.dsInvoice;
-            // 
-            // dsInvoice
-            // 
-            this.dsInvoice.DataSetName = "dsInvoice";
-            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invdetailBindingSource
-            // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.dsInvoice;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
-            // 
             // mixBookOrderBindingSource
             // 
             this.mixBookOrderBindingSource.DataMember = "MixBookOrder";
@@ -7066,29 +7089,6 @@ namespace Mbc5.Forms
             // 
             this.remakeReasonsTableAdapter.ClearBeforeFill = true;
             // 
-            // reportViewer4
-            // 
-            this.reportViewer4.DocumentMapWidth = 35;
-            reportDataSource1.Name = "cust";
-            reportDataSource1.Value = null;
-            reportDataSource2.Name = "invoice";
-            reportDataSource2.Value = this.invoiceBindingSource;
-            reportDataSource3.Name = "invoicedetail";
-            reportDataSource3.Value = this.invdetailBindingSource;
-            reportDataSource4.Name = "payment";
-            reportDataSource4.Value = this.paymntBindingSource;
-            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer4.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer4.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
-            this.reportViewer4.Location = new System.Drawing.Point(89, 171);
-            this.reportViewer4.Name = "reportViewer4";
-            this.reportViewer4.ServerReport.BearerToken = null;
-            this.reportViewer4.Size = new System.Drawing.Size(87, 67);
-            this.reportViewer4.TabIndex = 167;
-            this.reportViewer4.Visible = false;
-            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -7113,6 +7113,10 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.tbProdutn.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
@@ -7169,10 +7173,6 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).EndInit();

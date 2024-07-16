@@ -164,6 +164,10 @@ namespace Mbc5.Forms
        private void SetPressDates()
         {
             var custSvcDate = cstsvcdteDateTimePicker.DateValue;
+            if(custSvcDate == null  )
+            {
+                return;
+            }
             if (vendcdComboBox1.SelectedValue==null||string.IsNullOrEmpty(vendcdComboBox1.SelectedValue.ToString().Trim()))
             {
                 prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();

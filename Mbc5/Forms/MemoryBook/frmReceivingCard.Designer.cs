@@ -40,7 +40,7 @@
             System.Windows.Forms.Label dateCreatedLabel;
             System.Windows.Forms.Label contractYearLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceivingCard));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsRcard = new Mbc5.DataSets.dsRcard();
             this.schnameLabel1 = new System.Windows.Forms.Label();
@@ -112,6 +112,7 @@
             this.lblSchcode = new System.Windows.Forms.Label();
             this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             kitReceivedDateLabel = new System.Windows.Forms.Label();
             guardteLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -746,6 +747,7 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.toolStripButton4,
+            this.toolStripButton5,
             this.toolStripButton2,
             this.bindingNavigatorDeleteItem,
             this.toolStripButton3,
@@ -805,6 +807,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -911,9 +914,9 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource1.Name = "dsReceivingCard";
-            reportDataSource1.Value = this.rCardBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsReceivingCard";
+            reportDataSource2.Value = this.rCardBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ReceivingCard.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(606, 680);
             this.reportViewer1.Name = "reportViewer1";
@@ -990,6 +993,16 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.RCardTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // frmReceivingCard
             // 
@@ -1206,5 +1219,6 @@
         private CustomControls.DateBox estDateDateBox;
         private System.Windows.Forms.TextBox totalSoldOnlineTextBox;
         private System.Windows.Forms.Label lblSchcode;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
     }
 }

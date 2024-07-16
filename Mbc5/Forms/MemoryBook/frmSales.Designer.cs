@@ -234,6 +234,8 @@
             this.btnPoSrch = new System.Windows.Forms.Button();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblTaxRateValue = new System.Windows.Forms.Label();
+            this.lbleasyworkdata = new System.Windows.Forms.Label();
             this.lblOverRunAmt = new System.Windows.Forms.Label();
             this.subTotalTextBox1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -241,7 +243,6 @@
             this.chkEasyWork = new System.Windows.Forms.CheckBox();
             this.lblSalesTax = new System.Windows.Forms.Label();
             this.donotchargeschoolsalestaxCheckBox = new System.Windows.Forms.CheckBox();
-            this.lblTaxRateValue = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.txtfreebooks = new System.Windows.Forms.TextBox();
             this.pnlTot = new System.Windows.Forms.Panel();
@@ -568,7 +569,6 @@
             this.lkpDiscountTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpDiscountTableAdapter();
             this.tableAdapterManager3 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.opyProductsTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.OpyProductsTableAdapter();
-            this.lbleasyworkdata = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
@@ -2675,6 +2675,7 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lblTaxRateValue);
             this.panel4.Controls.Add(this.lbleasyworkdata);
             this.panel4.Controls.Add(this.lblOverRunAmt);
             this.panel4.Controls.Add(this.subTotalTextBox1);
@@ -2686,7 +2687,6 @@
             this.panel4.Controls.Add(this.chkEasyWork);
             this.panel4.Controls.Add(this.lblSalesTax);
             this.panel4.Controls.Add(this.donotchargeschoolsalestaxCheckBox);
-            this.panel4.Controls.Add(this.lblTaxRateValue);
             this.panel4.Controls.Add(label36);
             this.panel4.Controls.Add(schooltaxLabel);
             this.panel4.Controls.Add(adjbefLabel);
@@ -2698,6 +2698,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(379, 172);
             this.panel4.TabIndex = 137;
+            // 
+            // lblTaxRateValue
+            // 
+            this.lblTaxRateValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTaxRateValue.AutoSize = true;
+            this.lblTaxRateValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "schooltaxrate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N3"));
+            this.lblTaxRateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxRateValue.Location = new System.Drawing.Point(164, 75);
+            this.lblTaxRateValue.Name = "lblTaxRateValue";
+            this.lblTaxRateValue.Size = new System.Drawing.Size(14, 13);
+            this.lblTaxRateValue.TabIndex = 302;
+            this.lblTaxRateValue.Text = "0";
+            // 
+            // lbleasyworkdata
+            // 
+            this.lbleasyworkdata.AutoSize = true;
+            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "EastworkTotal", true));
+            this.lbleasyworkdata.Location = new System.Drawing.Point(271, 9);
+            this.lbleasyworkdata.Name = "lbleasyworkdata";
+            this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);
+            this.lbleasyworkdata.TabIndex = 298;
+            this.lbleasyworkdata.Text = "l";
             // 
             // lblOverRunAmt
             // 
@@ -2773,16 +2795,6 @@
             this.donotchargeschoolsalestaxCheckBox.Text = "Do Not Calculate Tax";
             this.donotchargeschoolsalestaxCheckBox.UseVisualStyleBackColor = true;
             this.donotchargeschoolsalestaxCheckBox.Click += new System.EventHandler(this.donotchargeschoolsalestaxCheckBox_Click);
-            // 
-            // lblTaxRateValue
-            // 
-            this.lblTaxRateValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTaxRateValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "schooltaxrate", true));
-            this.lblTaxRateValue.Location = new System.Drawing.Point(148, 75);
-            this.lblTaxRateValue.Name = "lblTaxRateValue";
-            this.lblTaxRateValue.Size = new System.Drawing.Size(35, 13);
-            this.lblTaxRateValue.TabIndex = 183;
-            this.lblTaxRateValue.Text = "0";
             // 
             // lbladjbef
             // 
@@ -6546,16 +6558,6 @@
             // 
             this.opyProductsTableAdapter.ClearBeforeFill = true;
             // 
-            // lbleasyworkdata
-            // 
-            this.lbleasyworkdata.AutoSize = true;
-            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "EastworkTotal", true));
-            this.lbleasyworkdata.Location = new System.Drawing.Point(271, 9);
-            this.lbleasyworkdata.Name = "lbleasyworkdata";
-            this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);
-            this.lbleasyworkdata.TabIndex = 298;
-            this.lbleasyworkdata.Text = "l";
-            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6768,7 +6770,6 @@
         private DataSets.dsSales dsSales;
         private DataSets.dsSalesTableAdapters.quotesTableAdapter quotesTableAdapter;
         private System.Windows.Forms.TabPage pg1;
-        private System.Windows.Forms.Label lblTaxRateValue;
         private System.Windows.Forms.CheckBox donotchargeschoolsalestaxCheckBox;
         private System.Windows.Forms.TextBox txtModifiedByPay;
         private System.Windows.Forms.TextBox txtModifiedByInvdetail;
@@ -7059,5 +7060,6 @@
         private System.Windows.Forms.Label txtFinalbookprc;
         private System.Windows.Forms.Label lblOverRunAmt;
         private System.Windows.Forms.Label lbleasyworkdata;
+        private System.Windows.Forms.Label lblTaxRateValue;
     }
     }

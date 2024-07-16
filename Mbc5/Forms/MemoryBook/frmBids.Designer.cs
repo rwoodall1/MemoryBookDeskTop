@@ -150,6 +150,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtMsQty = new System.Windows.Forms.TextBox();
             this.foilamtTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbleasyworkdata = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.chkEasyWork = new System.Windows.Forms.CheckBox();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
@@ -235,7 +236,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
-            this.lbleasyworkdata = new System.Windows.Forms.Label();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -1697,6 +1697,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.panel4.Size = new System.Drawing.Size(351, 155);
             this.panel4.TabIndex = 268;
             // 
+            // lbleasyworkdata
+            // 
+            this.lbleasyworkdata.AutoSize = true;
+            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EastworkTotal", true));
+            this.lbleasyworkdata.Location = new System.Drawing.Point(243, 6);
+            this.lbleasyworkdata.Name = "lbleasyworkdata";
+            this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);
+            this.lbleasyworkdata.TabIndex = 297;
+            this.lbleasyworkdata.Text = "l";
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1759,7 +1769,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.schooltaxrateLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schooltaxrateLabel1.AutoSize = true;
-            this.schooltaxrateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "schooltaxrate", true));
+            this.schooltaxrateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "schooltaxrate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N3"));
             this.schooltaxrateLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schooltaxrateLabel1.Location = new System.Drawing.Point(158, 54);
             this.schooltaxrateLabel1.Name = "schooltaxrateLabel1";
@@ -2628,16 +2638,6 @@ namespace Mbc5.Forms.MemoryBook {
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // lbleasyworkdata
-            // 
-            this.lbleasyworkdata.AutoSize = true;
-            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EastworkTotal", true));
-            this.lbleasyworkdata.Location = new System.Drawing.Point(243, 6);
-            this.lbleasyworkdata.Name = "lbleasyworkdata";
-            this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);
-            this.lbleasyworkdata.TabIndex = 297;
-            this.lbleasyworkdata.Text = "l";
             // 
             // frmBids
             // 
