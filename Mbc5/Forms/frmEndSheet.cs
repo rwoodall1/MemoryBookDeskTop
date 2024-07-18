@@ -36,6 +36,14 @@ namespace Mbc5.Forms {
 			this.ApplicationUser = userPrincipal;
 			this.Invno = invno;
 			this.Schcode = schcode;
+            if (this.Invno==null)
+            {
+                this.Invno = 0;
+            }
+            if (this.Schcode==null)
+            {
+                this.Schcode = "";
+            }
 		}
 		public frmEndSheet(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -44,7 +52,7 @@ namespace Mbc5.Forms {
 			// this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.ApplicationUser = userPrincipal;
 			this.Invno = 0;
-			this.Schcode = null;
+			this.Schcode = "";
 			DisableControls(this.tbEndSheets.TabPages[0]);
 			foreach (TabPage tab in tbEndSheets.TabPages)
 			{

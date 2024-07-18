@@ -546,6 +546,12 @@
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MemoryBook\frmSchPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmSchPayment.Designer.cs">
+      <DependentUpon>frmSchPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Meridian\frmMerBindingTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -885,6 +891,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmSchPayment.resx">
+      <DependentUpon>frmSchPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMerBindingTime.resx">
       <DependentUpon>frmMerBindingTime.cs</DependentUpon>

@@ -41,8 +41,16 @@ namespace Mbc5.Forms
 			this.ApplicationUser = userPrincipal;
 			this.Invno = invno;
 			this.Schcode = schcode;
+            if (this.Invno == null)
+            {
+                this.Invno = 0;
+            }
+            if (this.Schcode == null)
+            {
+                this.Schcode = "";
+            }
 
-		}
+        }
 		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook", "MBLead","BARCODE"}, userPrincipal)
 		{
 			InitializeComponent();
@@ -51,7 +59,7 @@ namespace Mbc5.Forms
 			// this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.ApplicationUser = userPrincipal;
 			this.Invno = 0;
-			this.Schcode = null;
+			this.Schcode = "";
 			DisableControls(this.tbProdutn.TabPages[0]);
 			foreach (TabPage tab in tbProdutn.TabPages)
 			{
@@ -128,11 +136,16 @@ namespace Mbc5.Forms
                 try
                 {
                     DataRowView row = (DataRowView)produtnBindingSource.Current;
-                    string company = row["Company"].ToString();
-                    if (company == "MXB")
+                    if (row!=null && row["Company"]!=null)
                     {
-                        tbProdutn.SelectTab(1);
+                        string company = row["Company"].ToString();
+                        if (company == "MXB")
+                        {
+                            tbProdutn.SelectTab(1);
+                        }
                     }
+
+                    
                 }
                 catch { };
 			}

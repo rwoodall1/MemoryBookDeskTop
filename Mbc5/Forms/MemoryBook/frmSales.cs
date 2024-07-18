@@ -62,6 +62,7 @@ namespace Mbc5.Forms.MemoryBook
 
         }
         public frmMain frmMain { get; set; }
+        private bool loaded { get; set; } = false;
         private void SetConnectionString()
         {
             this.frmMain = (frmMain)this.MdiParent;
@@ -689,7 +690,7 @@ namespace Mbc5.Forms.MemoryBook
             try
             {
                 DataRowView dr = (DataRowView)quotesBindingSource.Current;
-               
+               if(dr == null) { return; }
                 bool vHoldPayment = dr.Row.IsNull("holdpmt") ? false : (bool)dr.Row["holdpmt"];
                 lblIncollections.Visible = holdpmtCheckBox.Checked;
                 bool vshpdate = dr.Row.IsNull("shpdate");
@@ -4741,6 +4742,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private async Task<TaxRequestReturn> GetTax()
         {
+       
             if (donotchargeschoolsalestaxCheckBox.Checked)
             {
                 this.TaxRate = 0;
@@ -4749,6 +4751,7 @@ namespace Mbc5.Forms.MemoryBook
                 lblTaxRateValue.Text = TaxRate.ToString("0.000");
                 CalculateEach();
                 BookCalc();
+                btnGetTax.BackColor = Control.DefaultBackColor;
                 return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
             }
 
@@ -4802,6 +4805,7 @@ namespace Mbc5.Forms.MemoryBook
                 lblTaxRateValue.Text = TaxRate.ToString("0.000");
                 CalculateEach();
                 BookCalc();
+           
                 return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
             }
 
@@ -4815,6 +4819,7 @@ namespace Mbc5.Forms.MemoryBook
                 lblTaxRateValue.Text = TaxRate.ToString("0.000");
                 CalculateEach();
                 BookCalc();
+                
                 return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
             }
             this.SalesTax = result.Data;
@@ -4823,7 +4828,7 @@ namespace Mbc5.Forms.MemoryBook
             lblTaxRateValue.Text = TaxRate.ToString("0.000");
             CalculateEach();
             BookCalc();
-
+            btnGetTax.BackColor = Control.DefaultBackColor;
 
             //returns if something else needs data
             return new TaxRequestReturn() { TaxAmount = this.SalesTax, TaxRate = this.TaxRate };
@@ -6047,15 +6052,13 @@ namespace Mbc5.Forms.MemoryBook
         private void button2_Click_2(object sender, EventArgs e)
         {
             GetTax();
-            this.CalculateEach();
-            BookCalc();
+          
         }
 
         private void donotchargeschoolsalestaxCheckBox_Click(object sender, EventArgs e)
         {
             GetTax();
-            this.CalculateEach();
-            BookCalc();
+          
         }
 
         private void overRunQtyTextBox_Leave(object sender, EventArgs e)
@@ -6066,6 +6069,16 @@ namespace Mbc5.Forms.MemoryBook
             decimal.TryParse(txtFinalbookprc.Text.Replace("$",""),out vbookPrice);
             lblOverRunAmt.Text= (vQty * vbookPrice).ToString("c");
             BookCalc();
+        }
+
+        private void subTotalTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!this.loaded)
+            {
+                this.loaded = true;
+                return;
+            }
+            btnGetTax.BackColor = Color.Red;
         }
     }
 

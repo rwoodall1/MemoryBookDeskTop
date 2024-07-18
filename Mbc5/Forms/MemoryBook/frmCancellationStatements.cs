@@ -194,8 +194,8 @@ namespace Mbc5.Forms.MemoryBook
 				if (!string.IsNullOrEmpty(rec.Contemail)) {
 					addresses.Add(rec.Contemail.Trim());
 				}
-				if (!string.IsNullOrEmpty(rec.Bcontemail.Trim())) {
-					addresses.Add(rec.Bcontemail);
+				if (!string.IsNullOrEmpty(rec.Bcontemail)) {
+					addresses.Add(rec.Bcontemail.Trim());
 				}
 				var attachments = new List<OutlookAttachemt>();
 				var attachment = new OutlookAttachemt() {

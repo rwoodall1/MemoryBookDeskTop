@@ -238,7 +238,7 @@
             this.lbleasyworkdata = new System.Windows.Forms.Label();
             this.lblOverRunAmt = new System.Windows.Forms.Label();
             this.subTotalTextBox1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGetTax = new System.Windows.Forms.Button();
             this.overRunQtyTextBox = new System.Windows.Forms.TextBox();
             this.chkEasyWork = new System.Windows.Forms.CheckBox();
             this.lblSalesTax = new System.Windows.Forms.Label();
@@ -2679,7 +2679,7 @@
             this.panel4.Controls.Add(this.lbleasyworkdata);
             this.panel4.Controls.Add(this.lblOverRunAmt);
             this.panel4.Controls.Add(this.subTotalTextBox1);
-            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.btnGetTax);
             this.panel4.Controls.Add(subTotalLabel);
             this.panel4.Controls.Add(overRunQtyLabel);
             this.panel4.Controls.Add(this.overRunQtyTextBox);
@@ -2741,17 +2741,18 @@
             this.subTotalTextBox1.Size = new System.Drawing.Size(67, 17);
             this.subTotalTextBox1.TabIndex = 201;
             this.subTotalTextBox1.Text = "label40";
+            this.subTotalTextBox1.TextChanged += new System.EventHandler(this.subTotalTextBox1_TextChanged);
             // 
-            // button2
+            // btnGetTax
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(322, 75);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 20);
-            this.button2.TabIndex = 301;
-            this.button2.Text = "Get Tax";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            this.btnGetTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetTax.Location = new System.Drawing.Point(322, 75);
+            this.btnGetTax.Name = "btnGetTax";
+            this.btnGetTax.Size = new System.Drawing.Size(50, 20);
+            this.btnGetTax.TabIndex = 301;
+            this.btnGetTax.Text = "Get Tax";
+            this.btnGetTax.UseVisualStyleBackColor = true;
+            this.btnGetTax.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // overRunQtyTextBox
             // 
@@ -7055,7 +7056,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn schcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invnoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contryearDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGetTax;
         private System.Windows.Forms.Label subTotalTextBox1;
         private System.Windows.Forms.Label txtFinalbookprc;
         private System.Windows.Forms.Label lblOverRunAmt;

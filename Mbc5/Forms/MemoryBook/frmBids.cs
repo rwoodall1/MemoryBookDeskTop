@@ -38,7 +38,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             this.Schcode = schcode;
             }
-       
+        private bool loaded { get; set; } = false;
         private void SetConnectionString()
         {
        
@@ -1752,6 +1752,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private async Task<TaxRequestReturn> GetTax()
         {
+            
             if (donotchargeschoolsalestaxCheckBox.Checked) { 
             this.TaxRate = 0;
             this.SalesTax = 0;
@@ -1759,7 +1760,8 @@ namespace Mbc5.Forms.MemoryBook {
             schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
             CalculateEach();
             BookCalc();
-            return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+                btnGetTax.BackColor = Control.DefaultBackColor;
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
         }
 
             var processingResult = new ApiProcessingResult<decimal>();
@@ -1833,7 +1835,7 @@ namespace Mbc5.Forms.MemoryBook {
             schooltaxrateLabel1.Text = TaxRate.ToString("0.000");
             CalculateEach();
             BookCalc();
-
+            btnGetTax.BackColor = Control.DefaultBackColor;
 
             //returns if something else needs data
             return new TaxRequestReturn() { TaxAmount = this.SalesTax, TaxRate = this.TaxRate };
@@ -3056,11 +3058,14 @@ namespace Mbc5.Forms.MemoryBook {
         private void donotchargeschoolsalestaxCheckBox_Click(object sender, EventArgs e)
         {
             this.GetTax();
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.GetTax();
+        
+       
         }
 
         private void txtClrTot_Leave_2(object sender, EventArgs e)
@@ -3086,6 +3091,16 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtDesc4tot_Leave_2(object sender, EventArgs e)
         {
             BookCalc();
+        }
+
+        private void lblfilnalsubtotal_TextChanged(object sender, EventArgs e)
+        {
+            if (!this.loaded)
+            {
+                this.loaded = true;
+                return;
+            }
+            btnGetTax.BackColor = Color.Red;
         }
     }
     }

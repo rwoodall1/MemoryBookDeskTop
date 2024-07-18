@@ -1015,6 +1015,8 @@
           <Source>Embedded</Source>
           <Value>MemBookJostensLogo</Value>
           <Sizing>FitProportional</Sizing>
+          <Top>0.125in</Top>
+          <Left>0.125in</Left>
           <Height>0.60417in</Height>
           <Width>2.16667in</Width>
           <Style>
@@ -1065,6 +1067,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>0.125in</Top>
           <Left>4.16542in</Left>
           <Height>0.75in</Height>
           <Width>3.32291in</Width>
@@ -1109,8 +1112,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>0.67361in</Top>
-          <Left>0.04167in</Left>
+          <Top>0.79861in</Top>
+          <Left>0.16667in</Left>
           <Height>0.36458in</Height>
           <Width>1.52083in</Width>
           <ZIndex>2</ZIndex>

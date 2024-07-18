@@ -1160,20 +1160,27 @@ public override void Cancel() {
 				}
 			}
 			DataRowView current = (DataRowView)custBindingSource.Current;
-			string vProdNo = current["Prodno"].ToString().Substring(1,5);
+             
+            string vProdNo = "";
+            if (!string.IsNullOrEmpty(current["Prodno"].ToString())) { 
+                 vProdNo= current["Prodno"].ToString().Substring(1,5);    
+                 }
+			
 
 			frmSearch frmSearch = new frmSearch("PRODNO", "Cust", vProdNo);
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-				if (string.IsNullOrEmpty(retSchcode)) {
+				string retSchcode = frmSearch.ReturnValue.Schcode;
+                string retProdcode=frmSearch.ReturnValue.ProdNo;
+                //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode)) {
 					MbcMessageBox.Hand("A search value was not returned","Error");
 				}
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-					//records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+					
 				} catch (Exception ex) {
 					MbcMessageBox.Error(ex.Message, "Error");
 					return;
@@ -1186,7 +1193,13 @@ public override void Cancel() {
 				} catch (Exception ex) {
 					MbcMessageBox.Error(ex.Message, "Error");
 				}
-				this.Cursor = Cursors.Default;
+                if(!string.IsNullOrEmpty(retProdcode))
+                {  
+                    var pos=custBindingSource.Find("Prodno", retProdcode);
+                custBindingSource.Position = pos;
+                }
+               
+                this.Cursor = Cursors.Default;
 			} else { return; }
 
 			SetInvnoSchCode();

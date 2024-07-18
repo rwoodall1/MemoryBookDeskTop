@@ -151,7 +151,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.foilamtTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbleasyworkdata = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetTax = new System.Windows.Forms.Button();
             this.chkEasyWork = new System.Windows.Forms.CheckBox();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
             this.donotchargeschoolsalestaxCheckBox = new System.Windows.Forms.CheckBox();
@@ -1677,7 +1677,7 @@ namespace Mbc5.Forms.MemoryBook {
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lbleasyworkdata);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btnGetTax);
             this.panel4.Controls.Add(this.chkEasyWork);
             this.panel4.Controls.Add(lbleasywork);
             this.panel4.Controls.Add(this.lblfilnalsubtotal);
@@ -1707,16 +1707,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.lbleasyworkdata.TabIndex = 297;
             this.lbleasyworkdata.Text = "l";
             // 
-            // button1
+            // btnGetTax
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(289, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 20);
-            this.button1.TabIndex = 300;
-            this.button1.Text = "Get Tax";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGetTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetTax.Location = new System.Drawing.Point(289, 51);
+            this.btnGetTax.Name = "btnGetTax";
+            this.btnGetTax.Size = new System.Drawing.Size(50, 20);
+            this.btnGetTax.TabIndex = 300;
+            this.btnGetTax.Text = "Get Tax";
+            this.btnGetTax.UseVisualStyleBackColor = true;
+            this.btnGetTax.Click += new System.EventHandler(this.button1_Click);
             // 
             // chkEasyWork
             // 
@@ -1740,6 +1740,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lblfilnalsubtotal.Size = new System.Drawing.Size(41, 13);
             this.lblfilnalsubtotal.TabIndex = 296;
             this.lblfilnalsubtotal.Text = "label10";
+            this.lblfilnalsubtotal.TextChanged += new System.EventHandler(this.lblfilnalsubtotal_TextChanged);
             // 
             // donotchargeschoolsalestaxCheckBox
             // 
@@ -2857,7 +2858,7 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtfreebooks;
         private System.Windows.Forms.Label lbladjbef;
         private System.Windows.Forms.CheckBox chkEasyWork;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGetTax;
         private System.Windows.Forms.CheckBox donotchargeschoolsalestaxCheckBox;
         private System.Windows.Forms.Label lbleasyworkdata;
     }

@@ -206,6 +206,7 @@
     <Compile Include="MiscBindingModels.cs" />
     <Compile Include="MixbookModels.cs" />
     <Compile Include="NotificationModels.cs" />
+    <Compile Include="OpyBindingModels.cs" />
     <Compile Include="PitneyBowes.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="ProdutnBindingModels.cs" />

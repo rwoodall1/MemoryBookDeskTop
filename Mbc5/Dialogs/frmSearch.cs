@@ -71,6 +71,7 @@ namespace Mbc5.Dialogs {
         private void frmSearch_Load(object sender, EventArgs e)
     
         {
+            
             this.Cursor = Cursors.AppStarting;
 
             var sqlclient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
@@ -631,6 +632,10 @@ namespace Mbc5.Dialogs {
                                 return;
                             }
                             var retVal4 = (List<EndSheetInvnoSearch>)endsheetresult.Data;
+                            if (retVal4==null)
+                            {
+                                retVal4 = new List<EndSheetInvnoSearch>();
+                            }
                             this.EndSheetInvnoList = retVal4;
                             bsData.DataSource = this.EndSheetInvnoList;
                             dgSearch.DataSource = bsData;
@@ -642,7 +647,7 @@ namespace Mbc5.Dialogs {
                     switch (ReturnForm)
                     {
                         case "CUST":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Inner Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var result = sqlclient.SelectMany<ProdNoSearch>();
                             if (result.IsError)
@@ -661,7 +666,7 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "MCUST":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join MCust C On P.Schcode=C.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Inner Join MCust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var resultPn = sqlclient.SelectMany<ProdNoSearch>();
                             if (resultPn.IsError)
@@ -1434,6 +1439,10 @@ namespace Mbc5.Dialogs {
 
                     try
                     {
+                        if (vInvnoList.Count==0)
+                        {
+                            return;
+                        }
                         //value is trimmed to 5 spaces, binding is took out
                         vIndex =vInvnoList.FindIndex(vcust => vcust != "0" && vcust.ToString().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
@@ -1753,6 +1762,7 @@ namespace Mbc5.Dialogs {
                     {
                         //search on schname return code though
                         this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[3].Value.ToString();
+                        this.ReturnValue.ProdNo = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     }
                     else if (SearchType == "PRODNO" && ReturnForm == "PRODUCTION")
                     {
