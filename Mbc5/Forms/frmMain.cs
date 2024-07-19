@@ -2281,7 +2281,14 @@ namespace Mbc5.Forms
 
         }
 
-     
+        private void schoolPaymentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSchPayment frmSchoolPayments = new frmSchPayment(this.ApplicationUser);
+            frmSchoolPayments.MdiParent = this;
+            frmSchoolPayments.Show();
+        }
+
+
 
 
         #endregion

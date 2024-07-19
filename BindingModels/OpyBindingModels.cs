@@ -13,7 +13,7 @@ namespace BindingModels
             public int Id { get; set; }
             public string Schname { get; set; }
             public string Schcode { get; set; }
-            public string PoNumber { get; set; }
+            public string PONumber { get; set; }
             public DateTime  PayDate{ get; set; }
             public decimal Amount{ get; set; }
             public string OrderHeaderGuid{ get; set; }

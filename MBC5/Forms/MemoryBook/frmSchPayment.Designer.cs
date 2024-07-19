@@ -30,29 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtFromDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtToDate = new System.Windows.Forms.DateTimePicker();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsSchPayments = new System.Windows.Forms.BindingSource(this.components);
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbReconciled = new System.Windows.Forms.RadioButton();
             this.rbUnreconciled = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
+            this.dgSchPay = new System.Windows.Forms.DataGridView();
+            this.ToPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Collections = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCancel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsSchPayments)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSchPay)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -113,90 +116,7 @@
             this.btnCopy.TabIndex = 7;
             this.btnCopy.Text = "Copy To Excel";
             this.btnCopy.UseVisualStyleBackColor = true;
-            // 
-            // custDataGridView
-            // 
-            this.custDataGridView.AllowUserToAddRows = false;
-            this.custDataGridView.AllowUserToDeleteRows = false;
-            this.custDataGridView.AllowUserToOrderColumns = true;
-            this.custDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.custDataGridView.AutoGenerateColumns = false;
-            this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.qcontractyear,
-            this.QInvno,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.custDataGridView.DataSource = this.bsSchPayments;
-            this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(40, 80);
-            this.custDataGridView.Name = "custDataGridView";
-            this.custDataGridView.ReadOnly = true;
-            this.custDataGridView.Size = new System.Drawing.Size(840, 294);
-            this.custDataGridView.TabIndex = 8;
-            // 
-            // qcontractyear
-            // 
-            this.qcontractyear.DataPropertyName = "Reconciled";
-            this.qcontractyear.HeaderText = "Reconciled";
-            this.qcontractyear.Name = "qcontractyear";
-            this.qcontractyear.ReadOnly = true;
-            // 
-            // QInvno
-            // 
-            this.QInvno.DataPropertyName = "Schname";
-            this.QInvno.HeaderText = "Name";
-            this.QInvno.Name = "QInvno";
-            this.QInvno.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Schcode";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "PO/Invoice";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Date Paid";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Amount";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Card Type";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Card #";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // rbAll
             // 
@@ -209,6 +129,7 @@
             this.rbAll.TabStop = true;
             this.rbAll.Text = "All Records";
             this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
             // 
             // rbReconciled
             // 
@@ -219,6 +140,7 @@
             this.rbReconciled.TabIndex = 10;
             this.rbReconciled.Text = "Reconciled";
             this.rbReconciled.UseVisualStyleBackColor = true;
+            this.rbReconciled.CheckedChanged += new System.EventHandler(this.rbReconciled_CheckedChanged);
             // 
             // rbUnreconciled
             // 
@@ -229,6 +151,7 @@
             this.rbUnreconciled.TabIndex = 11;
             this.rbUnreconciled.Text = "UnReconciled";
             this.rbUnreconciled.UseVisualStyleBackColor = true;
+            this.rbUnreconciled.CheckedChanged += new System.EventHandler(this.rbUnreconciled_CheckedChanged);
             // 
             // panel1
             // 
@@ -240,12 +163,136 @@
             this.panel1.Size = new System.Drawing.Size(283, 27);
             this.panel1.TabIndex = 12;
             // 
+            // dgSchPay
+            // 
+            this.dgSchPay.AllowUserToAddRows = false;
+            this.dgSchPay.AllowUserToDeleteRows = false;
+            this.dgSchPay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgSchPay.AutoGenerateColumns = false;
+            this.dgSchPay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSchPay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgSchPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSchPay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ToPrint,
+            this.Collections,
+            this.Schcode,
+            this.InvoiceNo,
+            this.colCancel,
+            this.Schemail,
+            this.ContactEmail,
+            this.Balance,
+            this.Column7});
+            this.dgSchPay.DataSource = this.bsSchPayments;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSchPay.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgSchPay.EnableHeadersVisualStyles = false;
+            this.dgSchPay.Location = new System.Drawing.Point(12, 85);
+            this.dgSchPay.Name = "dgSchPay";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSchPay.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgSchPay.RowHeadersVisible = false;
+            this.dgSchPay.Size = new System.Drawing.Size(943, 245);
+            this.dgSchPay.TabIndex = 13;
+            this.dgSchPay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSchPay_CellClick);
+            this.dgSchPay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSchPay_CellContentClick);
+            this.dgSchPay.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSchPay_CellLeave);
+            this.dgSchPay.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSchPay_CellMouseUp);
+            this.dgSchPay.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgSchPay_DataError);
+            // 
+            // ToPrint
+            // 
+            this.ToPrint.DataPropertyName = "Reconciled";
+            this.ToPrint.HeaderText = "Reconciled";
+            this.ToPrint.Name = "ToPrint";
+            // 
+            // Collections
+            // 
+            this.Collections.DataPropertyName = "Schname";
+            this.Collections.HeaderText = "Name";
+            this.Collections.Name = "Collections";
+            this.Collections.ReadOnly = true;
+            this.Collections.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Collections.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Schcode
+            // 
+            this.Schcode.DataPropertyName = "Schcode";
+            this.Schcode.HeaderText = "School Code";
+            this.Schcode.Name = "Schcode";
+            this.Schcode.ReadOnly = true;
+            // 
+            // InvoiceNo
+            // 
+            this.InvoiceNo.DataPropertyName = "PONumber";
+            this.InvoiceNo.HeaderText = "PO/Invoice";
+            this.InvoiceNo.Name = "InvoiceNo";
+            this.InvoiceNo.ReadOnly = true;
+            this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colCancel
+            // 
+            this.colCancel.DataPropertyName = "PayDate";
+            this.colCancel.HeaderText = "Date Paid";
+            this.colCancel.Name = "colCancel";
+            this.colCancel.ReadOnly = true;
+            // 
+            // Schemail
+            // 
+            this.Schemail.DataPropertyName = "Amount";
+            this.Schemail.HeaderText = "Amount";
+            this.Schemail.Name = "Schemail";
+            this.Schemail.ReadOnly = true;
+            // 
+            // ContactEmail
+            // 
+            this.ContactEmail.DataPropertyName = "CardType";
+            this.ContactEmail.HeaderText = "Card Type";
+            this.ContactEmail.Name = "ContactEmail";
+            this.ContactEmail.ReadOnly = true;
+            // 
+            // Balance
+            // 
+            this.Balance.DataPropertyName = "CardNumber";
+            this.Balance.HeaderText = "Card #";
+            this.Balance.Name = "Balance";
+            this.Balance.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "Id";
+            this.Column7.HeaderText = "Id";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
             // frmSchPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(998, 438);
+            this.Controls.Add(this.dgSchPay);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.custDataGridView);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.label2);
@@ -262,12 +309,12 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnQuery, 0);
             this.Controls.SetChildIndex(this.btnCopy, 0);
-            this.Controls.SetChildIndex(this.custDataGridView, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
+            this.Controls.SetChildIndex(this.dgSchPay, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsSchPayments)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSchPay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,19 +328,20 @@
         private System.Windows.Forms.DateTimePicker dtToDate;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Button btnCopy;
-        private System.Windows.Forms.DataGridView custDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qcontractyear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.BindingSource bsSchPayments;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbReconciled;
         private System.Windows.Forms.RadioButton rbUnreconciled;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgSchPay;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToPrint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Collections;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Schcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }
