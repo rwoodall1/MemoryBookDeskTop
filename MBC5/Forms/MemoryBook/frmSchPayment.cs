@@ -10,7 +10,7 @@ using Mbc5.Classes;
 using BindingModels;
 using static BindingModels.OpyBindingModels;
 using Core;
-
+using CsvHelper;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
@@ -19,6 +19,10 @@ using BaseClass;
 using System.Web.UI.WebControls;
 using Microsoft.Office.Interop.Outlook;
 using System.Net.Security;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using Exception = System.Exception;
 
 namespace Mbc5.Forms.MemoryBook
 {
@@ -131,8 +135,41 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
+            var vData = (List<SchoolPayment>)bsSchPayments.DataSource;
           
-            
+            if (vData.Count < 1)
+            {
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
+                return;
+            }
+
+
+            try
+            {
+                saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
+                saveFileDialog1.FileName = "SchoolPaymentReport.csv";
+                saveFileDialog1.ShowDialog();
+                
+                using (var writer = new StreamWriter(saveFileDialog1.FileName))
+                using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    //csvWriter.Configuration.Delimiter = ",";
+                    //csvWriter.Configuration.HasHeaderRecord = true;
+                    // csvWriter.Configuration.AutoMap<InqCountModel>();
+
+                    //csvWriter.WriteHeader<InqCountModel>();
+                    csvWriter.WriteRecords(vData);
+
+                    writer.Flush();
+
+                    Process.Start(saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error("Error creating file:" + ex.Message);
+            }
+
         }
 
         private void dgSchPay_DataError(object sender, DataGridViewDataErrorEventArgs e)
