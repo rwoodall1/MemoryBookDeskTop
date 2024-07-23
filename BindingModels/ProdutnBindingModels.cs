@@ -649,6 +649,28 @@ namespace BindingModels
         public DateTime Schout { get; set; }
 
     }
+    public class MeridianShippingTicketModel
+    {
+        public string Company { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public string SchState { get; set;}
+        public string ProdNo { get; set; }
+        public int Invno { get; set; }
+        public string BookType { get; set; }
+        public int NoPages { get; set; }//produtn
+        public int NoCopies { get; set; }//produtn
+        public string TypeStyle { get; set; }
+        public string CoverDesc { get; set; }
+        public string CoverType { get; set; }
+        public string PerfBind { get; set; }
+        public string Laminated { get; set; }
+        public string VendCd { get; set; }
+        public bool Insck { get; set; }
+        public string CoilClr { get; set; }
+        public DateTime WarnDate { get; set; }
+        public DateTime PrmsDate { get; set; }
+    }
     public class MeridianProdutnTicketModel
     {
             public int Invno { get; set; }
@@ -657,7 +679,6 @@ namespace BindingModels
             public string TypeStyle { get; set; }
             public string ProdNo { get; set; }
             public string PONum { get; set; }
-            public string BookType { get; set; }
             public string SchoolType { get; set; }
             public int NoPages { get; set; }
             public int StudentCopies { get; set; }

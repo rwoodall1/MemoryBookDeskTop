@@ -802,6 +802,7 @@
     <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
     <None Include="Properties\DataSources\BindingModels.JobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.MerBindingWip.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MeridianShippingTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
@@ -940,6 +941,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMerCust.resx">
       <DependentUpon>frmMerCust.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
@@ -1014,6 +1016,7 @@
     <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\MerShipTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />

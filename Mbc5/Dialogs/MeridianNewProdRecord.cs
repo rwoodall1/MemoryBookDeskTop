@@ -49,35 +49,30 @@ namespace Mbc5.Dialogs
         }
         public string GetProdNo()
         {
-            var sqlQuery = new SQLQuery();
-      
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from prodnum";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int? prodNum = null;
-            try
-            {
-                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
-                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-                if (result1 != 1)
-                {
-                    
-                   
 
-                }
-
-            }
-            catch (Exception ex)
+            var sqlClient = new SQLCustomClient().CommandText( "Select * from prodnum");  
+            var selectResult = sqlClient.SelectSingleColumn();
+            if (selectResult.IsError)
             {
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                
-                return "";
+                return "0";
 
             }
-            string vprodNum ="M"+ prodNum.ToString();
+
+                string prodNum = selectResult.Data;
+               int newProdNum = Convert.ToInt32(prodNum) + 1;
+               sqlClient.ClearParameters();
+            sqlClient.CommandText("Update Prodnum Set lstprodno=@lstprodno");
+            sqlClient.AddParameter("@lstprodno", newProdNum);
+            var updateResult=sqlClient.Update();
+            if(updateResult.IsError)
+            {
+                MessageBox.Show("There was an error updating the production number table to new production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+             
+            }
+            
+            
+            string vprodNum =prodNum;
 
             return vprodNum;
 

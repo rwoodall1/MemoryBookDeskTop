@@ -79,6 +79,7 @@
             this.paymentReceiptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memeroyBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meridianInqCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schoolPaymentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixbookReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printJobTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +131,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.schoolPaymentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -212,10 +212,10 @@
             // 
             // receivingSurveyCompensationToolStripMenuItem
             // 
-            this.receivingSurveyCompensationToolStripMenuItem.Enabled = false;
             this.receivingSurveyCompensationToolStripMenuItem.Name = "receivingSurveyCompensationToolStripMenuItem";
             this.receivingSurveyCompensationToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.receivingSurveyCompensationToolStripMenuItem.Text = "Receiving/Survey/Compensation";
+            this.receivingSurveyCompensationToolStripMenuItem.Visible = false;
             this.receivingSurveyCompensationToolStripMenuItem.Click += new System.EventHandler(this.receivingSurveyCompensationToolStripMenuItem_Click);
             // 
             // salesToolStripMenuItem
@@ -237,7 +237,6 @@
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
             this.meridianToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
-            this.meridianToolStripMenuItem.Visible = false;
             // 
             // mbidsToolStripMenuItem
             // 
@@ -272,6 +271,7 @@
             this.receivingSurveyCompensationToolStripMenuItem1.Name = "receivingSurveyCompensationToolStripMenuItem1";
             this.receivingSurveyCompensationToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.receivingSurveyCompensationToolStripMenuItem1.Text = "Receiving/Survey/Compensation";
+            this.receivingSurveyCompensationToolStripMenuItem1.Visible = false;
             this.receivingSurveyCompensationToolStripMenuItem1.Click += new System.EventHandler(this.receivingSurveyCompensationToolStripMenuItem1_Click);
             // 
             // msalesToolStripMenuItem
@@ -456,7 +456,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             // 
             // labelsToolStripMenuItem
@@ -469,7 +469,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -528,7 +528,7 @@
             this.meridianInqCountToolStripMenuItem,
             this.schoolPaymentsToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             // 
             // paymentReceiptsToolStripMenuItem
@@ -552,6 +552,13 @@
             this.meridianInqCountToolStripMenuItem.Text = "Meridian Inq Count";
             this.meridianInqCountToolStripMenuItem.Click += new System.EventHandler(this.meridianInqCountToolStripMenuItem_Click);
             // 
+            // schoolPaymentsToolStripMenuItem
+            // 
+            this.schoolPaymentsToolStripMenuItem.Name = "schoolPaymentsToolStripMenuItem";
+            this.schoolPaymentsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.schoolPaymentsToolStripMenuItem.Text = "School Payments";
+            this.schoolPaymentsToolStripMenuItem.Click += new System.EventHandler(this.schoolPaymentsToolStripMenuItem_Click);
+            // 
             // mixbookReportsToolStripMenuItem
             // 
             this.mixbookReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -562,7 +569,7 @@
             this.resetJobTicketsByBatchToolStripMenuItem,
             this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             this.mixbookReportsToolStripMenuItem.Click += new System.EventHandler(this.mixbookReportsToolStripMenuItem_Click);
             // 
@@ -1005,13 +1012,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // schoolPaymentsToolStripMenuItem
-            // 
-            this.schoolPaymentsToolStripMenuItem.Name = "schoolPaymentsToolStripMenuItem";
-            this.schoolPaymentsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.schoolPaymentsToolStripMenuItem.Text = "School Payments";
-            this.schoolPaymentsToolStripMenuItem.Click += new System.EventHandler(this.schoolPaymentsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
