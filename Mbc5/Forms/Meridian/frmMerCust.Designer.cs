@@ -27,7 +27,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label schnameLabel;
             System.Windows.Forms.Label csrepLabel;
-            System.Windows.Forms.Label taxExemptRecvdLabel;
             System.Windows.Forms.Label junsnoLabel;
             System.Windows.Forms.Label oracleCodeLabel;
             System.Windows.Forms.Label statusLabel;
@@ -94,9 +93,10 @@
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label invnotesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label taxExemptRecvdLabel;
             this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
@@ -236,9 +236,9 @@
             this.lkpMultiYearOptionsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMultiYearOptionsTableAdapter();
             this.lkpJosNameTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpJosNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter();
+            this.dtTaxExemptRecvd = new CustomControls.DateBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
-            taxExemptRecvdLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
             oracleCodeLabel = new System.Windows.Forms.Label();
             statusLabel = new System.Windows.Forms.Label();
@@ -305,6 +305,7 @@
             label13 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             invnotesLabel = new System.Windows.Forms.Label();
+            taxExemptRecvdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prodTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeridianProdutnTicketModelBindingSource)).BeginInit();
             this.merCustTab.SuspendLayout();
@@ -360,15 +361,6 @@
             csrepLabel.Size = new System.Drawing.Size(93, 13);
             csrepLabel.TabIndex = 3;
             csrepLabel.Text = "Cust. Service Rep";
-            // 
-            // taxExemptRecvdLabel
-            // 
-            taxExemptRecvdLabel.AutoSize = true;
-            taxExemptRecvdLabel.Location = new System.Drawing.Point(249, 37);
-            taxExemptRecvdLabel.Name = "taxExemptRecvdLabel";
-            taxExemptRecvdLabel.Size = new System.Drawing.Size(98, 13);
-            taxExemptRecvdLabel.TabIndex = 44;
-            taxExemptRecvdLabel.Text = "Tax Exempt Recvd";
             // 
             // junsnoLabel
             // 
@@ -1021,6 +1013,7 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.dtTaxExemptRecvd);
             this.pg1.Controls.Add(this.reportViewer1);
             this.pg1.Controls.Add(this.btnInterOfficeEmail);
             this.pg1.Controls.Add(this.lblInvno);
@@ -1067,9 +1060,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "dsProdutn";
-            reportDataSource1.Value = this.prodTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsProdutn";
+            reportDataSource2.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1082, 489);
             this.reportViewer1.Name = "reportViewer1";
@@ -1139,14 +1132,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QBooktype,
@@ -1665,6 +1658,13 @@
             this.stagingComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stagingComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "Stage", true));
             this.stagingComboBox.FormattingEnabled = true;
+            this.stagingComboBox.Items.AddRange(new object[] {
+            "Qualify",
+            "Discover",
+            "Advance",
+            "Close",
+            "Submitted",
+            "Lost"});
             this.stagingComboBox.Location = new System.Drawing.Point(754, 37);
             this.stagingComboBox.Name = "stagingComboBox";
             this.stagingComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1675,6 +1675,13 @@
             this.statusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "Status", true));
             this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Prospect",
+            "Renewed",
+            "Deleted",
+            "Cancelled",
+            "Unrenewed",
+            "Renewed"});
             this.statusComboBox.Location = new System.Drawing.Point(899, 6);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1702,7 +1709,7 @@
             // chkNotTaxExempt
             // 
             this.chkNotTaxExempt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "NotTaxExempt", true));
-            this.chkNotTaxExempt.Location = new System.Drawing.Point(482, 37);
+            this.chkNotTaxExempt.Location = new System.Drawing.Point(246, 35);
             this.chkNotTaxExempt.Name = "chkNotTaxExempt";
             this.chkNotTaxExempt.Size = new System.Drawing.Size(104, 24);
             this.chkNotTaxExempt.TabIndex = 44;
@@ -1712,7 +1719,7 @@
             // chkTaxExempt
             // 
             this.chkTaxExempt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "TaxExempt", true));
-            this.chkTaxExempt.Location = new System.Drawing.Point(165, 37);
+            this.chkTaxExempt.Location = new System.Drawing.Point(165, 35);
             this.chkTaxExempt.Name = "chkTaxExempt";
             this.chkTaxExempt.Size = new System.Drawing.Size(104, 24);
             this.chkTaxExempt.TabIndex = 43;
@@ -1722,7 +1729,7 @@
             // chkSchoolClosed
             // 
             this.chkSchoolClosed.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "schclosed", true));
-            this.chkSchoolClosed.Location = new System.Drawing.Point(60, 37);
+            this.chkSchoolClosed.Location = new System.Drawing.Point(60, 35);
             this.chkSchoolClosed.Name = "chkSchoolClosed";
             this.chkSchoolClosed.Size = new System.Drawing.Size(113, 24);
             this.chkSchoolClosed.TabIndex = 42;
@@ -1841,7 +1848,7 @@
             this.pg3.Controls.Add(this.contfnameTextBox);
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
-            this.pg3.Size = new System.Drawing.Size(1237, 679);
+            this.pg3.Size = new System.Drawing.Size(1237, 697);
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Contacts";
             // 
@@ -2227,7 +2234,7 @@
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(1237, 679);
+            this.pg2.Size = new System.Drawing.Size(1237, 697);
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Shipping/Invoice Information";
             // 
@@ -2503,6 +2510,26 @@
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
             // 
+            // taxExemptRecvdLabel
+            // 
+            taxExemptRecvdLabel.AutoSize = true;
+            taxExemptRecvdLabel.Location = new System.Drawing.Point(345, 38);
+            taxExemptRecvdLabel.Name = "taxExemptRecvdLabel";
+            taxExemptRecvdLabel.Size = new System.Drawing.Size(98, 13);
+            taxExemptRecvdLabel.TabIndex = 44;
+            taxExemptRecvdLabel.Text = "Tax Exempt Recvd";
+            // 
+            // dtTaxExemptRecvd
+            // 
+            this.dtTaxExemptRecvd.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "TaxExemptRecvd", true));
+            this.dtTaxExemptRecvd.Date = null;
+            this.dtTaxExemptRecvd.DateValue = null;
+            this.dtTaxExemptRecvd.Location = new System.Drawing.Point(447, 34);
+            this.dtTaxExemptRecvd.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dtTaxExemptRecvd.Name = "dtTaxExemptRecvd";
+            this.dtTaxExemptRecvd.Size = new System.Drawing.Size(138, 21);
+            this.dtTaxExemptRecvd.TabIndex = 427;
+            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2697,5 +2724,6 @@
         private DataSets.LookUpTableAdapters.lkpJosNameTableAdapter lkpJosNameTableAdapter;
         private System.Windows.Forms.BindingSource lkpLeadSourceBindingSource;
         private DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter lkpLeadSourceTableAdapter;
+        private CustomControls.DateBox dtTaxExemptRecvd;
     }
     }

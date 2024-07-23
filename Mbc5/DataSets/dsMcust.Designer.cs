@@ -651,6 +651,16 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnStage;
             
+            private global::System.Data.DataColumn columnProofOfPages;
+            
+            private global::System.Data.DataColumn columnPoReq;
+            
+            private global::System.Data.DataColumn columnPoForPay;
+            
+            private global::System.Data.DataColumn columnCsInvoice;
+            
+            private global::System.Data.DataColumn columnVendNo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public mcustDataTable() {
@@ -1894,6 +1904,46 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ProofOfPagesColumn {
+                get {
+                    return this.columnProofOfPages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PoReqColumn {
+                get {
+                    return this.columnPoReq;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PoForPayColumn {
+                get {
+                    return this.columnPoForPay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CsInvoiceColumn {
+                get {
+                    return this.columnCsInvoice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VendNoColumn {
+                get {
+                    return this.columnVendNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2080,7 +2130,12 @@ namespace Mbc5.DataSets {
                         System.DateTime sourdate, 
                         string source, 
                         string schcode, 
-                        string Stage) {
+                        string Stage, 
+                        bool ProofOfPages, 
+                        bool PoReq, 
+                        bool PoForPay, 
+                        bool CsInvoice, 
+                        string VendNo) {
                 mcustRow rowmcustRow = ((mcustRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schname,
@@ -2233,7 +2288,12 @@ namespace Mbc5.DataSets {
                         sourdate,
                         source,
                         schcode,
-                        Stage};
+                        Stage,
+                        ProofOfPages,
+                        PoReq,
+                        PoForPay,
+                        CsInvoice,
+                        VendNo};
                 rowmcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmcustRow);
                 return rowmcustRow;
@@ -2414,6 +2474,11 @@ namespace Mbc5.DataSets {
                 this.columnsource = base.Columns["source"];
                 this.columnschcode = base.Columns["schcode"];
                 this.columnStage = base.Columns["Stage"];
+                this.columnProofOfPages = base.Columns["ProofOfPages"];
+                this.columnPoReq = base.Columns["PoReq"];
+                this.columnPoForPay = base.Columns["PoForPay"];
+                this.columnCsInvoice = base.Columns["CsInvoice"];
+                this.columnVendNo = base.Columns["VendNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2721,6 +2786,16 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnschcode);
                 this.columnStage = new global::System.Data.DataColumn("Stage", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStage);
+                this.columnProofOfPages = new global::System.Data.DataColumn("ProofOfPages", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProofOfPages);
+                this.columnPoReq = new global::System.Data.DataColumn("PoReq", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoReq);
+                this.columnPoForPay = new global::System.Data.DataColumn("PoForPay", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoForPay);
+                this.columnCsInvoice = new global::System.Data.DataColumn("CsInvoice", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCsInvoice);
+                this.columnVendNo = new global::System.Data.DataColumn("VendNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVendNo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschname.MaxLength = 34;
@@ -2855,6 +2930,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.Unique = true;
                 this.columnschcode.MaxLength = 6;
                 this.columnStage.MaxLength = 50;
+                this.columnVendNo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6043,6 +6119,86 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool ProofOfPages {
+                get {
+                    try {
+                        return ((bool)(this[this.tablemcust.ProofOfPagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProofOfPages\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.ProofOfPagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool PoReq {
+                get {
+                    try {
+                        return ((bool)(this[this.tablemcust.PoReqColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PoReq\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.PoReqColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool PoForPay {
+                get {
+                    try {
+                        return ((bool)(this[this.tablemcust.PoForPayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PoForPay\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.PoForPayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool CsInvoice {
+                get {
+                    try {
+                        return ((bool)(this[this.tablemcust.CsInvoiceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CsInvoice\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.CsInvoiceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string VendNo {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.VendNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VendNo\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.VendNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsschnameNull() {
                 return this.IsNull(this.tablemcust.schnameColumn);
             }
@@ -7576,6 +7732,66 @@ namespace Mbc5.DataSets {
             public void SetStageNull() {
                 this[this.tablemcust.StageColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsProofOfPagesNull() {
+                return this.IsNull(this.tablemcust.ProofOfPagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetProofOfPagesNull() {
+                this[this.tablemcust.ProofOfPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPoReqNull() {
+                return this.IsNull(this.tablemcust.PoReqColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPoReqNull() {
+                this[this.tablemcust.PoReqColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPoForPayNull() {
+                return this.IsNull(this.tablemcust.PoForPayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPoForPayNull() {
+                this[this.tablemcust.PoForPayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCsInvoiceNull() {
+                return this.IsNull(this.tablemcust.CsInvoiceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCsInvoiceNull() {
+                this[this.tablemcust.CsInvoiceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVendNoNull() {
+                return this.IsNull(this.tablemcust.VendNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVendNoNull() {
+                this[this.tablemcust.VendNoColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -8405,6 +8621,11 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             tableMapping.ColumnMappings.Add("source", "source");
             tableMapping.ColumnMappings.Add("schcode", "schcode");
             tableMapping.ColumnMappings.Add("Stage", "Stage");
+            tableMapping.ColumnMappings.Add("ProofOfPages", "ProofOfPages");
+            tableMapping.ColumnMappings.Add("PoReq", "PoReq");
+            tableMapping.ColumnMappings.Add("PoForPay", "PoForPay");
+            tableMapping.ColumnMappings.Add("CsInvoice", "CsInvoice");
+            tableMapping.ColumnMappings.Add("VendNo", "VendNo");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -8450,8 +8671,9 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
                 " invname = @invname, schclosed = @schclosed, shpname = @shpname, schcolors = @sc" +
                 "hcolors, ModifiedBy = @ModifiedBy, \r\n                         TaxExempt = @TaxEx" +
                 "empt, NotTaxExempt = @NotTaxExempt, TaxExemptRecvd = @TaxExemptRecvd, OracleCode" +
-                " = @OracleCode, DateModified = @DateModified, Status = @Status, Stage = @Stage\r\n" +
-                "WHERE        (schcode = @schcode)";
+                " = @OracleCode, DateModified = @DateModified, Status = @Status, Stage = @Stage, " +
+                "VendNo =, CsInvoice =, \r\n                         PoForPay =, PoReq =, ProofOfPa" +
+                "ges =\r\nWHERE        (schcode = @schcode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sourdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8640,7 +8862,8 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
                 "meStamp, \r\n                         covers.specinst, mquotes.invoiced, mcust.ref" +
                 "by, mcust.rebook, mcust.origyear, mcust.rebookdte, mcust.origsour, mcust.cstatus" +
                 ", mcust.contdate, mcust.secsource, mcust.sourdate, mcust.source, mcust.schcode, " +
-                "\r\n                         mcust.Stage\r\nFROM            mcust LEFT OUTER JOIN\r\n " +
+                "mcust.Stage, \r\n                         mcust.ProofOfPages, mcust.PoReq, mcust.P" +
+                "oForPay, mcust.CsInvoice, mcust.VendNo\r\nFROM            mcust LEFT OUTER JOIN\r\n " +
                 "                        mquotes ON mcust.schcode = mquotes.schcode LEFT OUTER JO" +
                 "IN\r\n                         MeridianProducts ON mquotes.prodcode = MeridianProd" +
                 "ucts.ProdCode LEFT OUTER JOIN\r\n                         produtn ON mquotes.invno" +
