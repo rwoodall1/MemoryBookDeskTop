@@ -122,7 +122,6 @@
             this.btnProdTkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.xeldateDateBox = new CustomControls.DateBox();
             this.sourdateDateBox = new CustomControls.DateBox();
             this.contdateDateBox = new CustomControls.DateBox();
@@ -132,12 +131,14 @@
             this.initcontDateBox = new CustomControls.DateBox();
             this.dteschstartDateBox = new CustomControls.DateBox();
             this.josnameComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpJosNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpLeadSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtContryear = new System.Windows.Forms.TextBox();
             this.schuploadiCheckBox = new System.Windows.Forms.CheckBox();
             this.multiyroptComboBox = new System.Windows.Forms.ComboBox();
             this.lkpMultiYearOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lookUp = new Mbc5.DataSets.LookUp();
             this.mktsegmentComboBox = new System.Windows.Forms.ComboBox();
             this.curentprovTextBox = new System.Windows.Forms.TextBox();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
@@ -222,6 +223,7 @@
             this.btnSchoolToShipping = new System.Windows.Forms.Button();
             this.btnSchoolToInvoice = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
+            this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mcustTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.mcustTableAdapter();
             this.datecontTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.datecontTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager();
@@ -232,9 +234,7 @@
             this.meridianCategoryTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.MeridianCategoryTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lkpMultiYearOptionsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMultiYearOptionsTableAdapter();
-            this.lkpJosNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpJosNameTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpJosNameTableAdapter();
-            this.lkpLeadSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -313,9 +313,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpJosNameBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianCategoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
@@ -327,10 +328,9 @@
             this.pg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpJosNameBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -339,7 +339,7 @@
             // 
             // BottomPanel
             // 
-            this.BottomPanel.Location = new System.Drawing.Point(0, 707);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 725);
             this.BottomPanel.Size = new System.Drawing.Size(1249, 10);
             // 
             // schnameLabel
@@ -636,7 +636,7 @@
             // 
             label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(1066, 295);
+            label2.Location = new System.Drawing.Point(1066, 344);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(112, 13);
             label2.TabIndex = 55;
@@ -646,7 +646,7 @@
             // 
             inofficeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             inofficeLabel.AutoSize = true;
-            inofficeLabel.Location = new System.Drawing.Point(62, 595);
+            inofficeLabel.Location = new System.Drawing.Point(62, 613);
             inofficeLabel.Name = "inofficeLabel";
             inofficeLabel.Size = new System.Drawing.Size(59, 13);
             inofficeLabel.TabIndex = 57;
@@ -656,7 +656,7 @@
             // 
             spcinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             spcinstLabel.AutoSize = true;
-            spcinstLabel.Location = new System.Drawing.Point(398, 595);
+            spcinstLabel.Location = new System.Drawing.Point(398, 613);
             spcinstLabel.Name = "spcinstLabel";
             spcinstLabel.Size = new System.Drawing.Size(99, 13);
             spcinstLabel.TabIndex = 58;
@@ -666,7 +666,7 @@
             // 
             exchgLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             exchgLabel.AutoSize = true;
-            exchgLabel.Location = new System.Drawing.Point(890, 595);
+            exchgLabel.Location = new System.Drawing.Point(890, 613);
             exchgLabel.Name = "exchgLabel";
             exchgLabel.Size = new System.Drawing.Size(73, 13);
             exchgLabel.TabIndex = 59;
@@ -1014,7 +1014,7 @@
             this.merCustTab.Location = new System.Drawing.Point(0, 0);
             this.merCustTab.Name = "merCustTab";
             this.merCustTab.SelectedIndex = 0;
-            this.merCustTab.Size = new System.Drawing.Size(1245, 705);
+            this.merCustTab.Size = new System.Drawing.Size(1245, 723);
             this.merCustTab.TabIndex = 2;
             // 
             // pg1
@@ -1061,7 +1061,7 @@
             this.pg1.Location = new System.Drawing.Point(4, 22);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
-            this.pg1.Size = new System.Drawing.Size(1237, 679);
+            this.pg1.Size = new System.Drawing.Size(1237, 697);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             // 
@@ -1071,7 +1071,7 @@
             reportDataSource1.Value = this.prodTicketBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1082, 440);
+            this.reportViewer1.Location = new System.Drawing.Point(1082, 489);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(109, 60);
@@ -1085,7 +1085,7 @@
             this.btnInterOfficeEmail.AutoSize = true;
             this.btnInterOfficeEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnInterOfficeEmail.Image")));
             this.btnInterOfficeEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnInterOfficeEmail.Location = new System.Drawing.Point(25, 590);
+            this.btnInterOfficeEmail.Location = new System.Drawing.Point(25, 608);
             this.btnInterOfficeEmail.Name = "btnInterOfficeEmail";
             this.btnInterOfficeEmail.Size = new System.Drawing.Size(31, 25);
             this.btnInterOfficeEmail.TabIndex = 65;
@@ -1157,11 +1157,11 @@
             this.ProdDescription});
             this.dataGridView1.DataSource = this.mcustBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(62, 293);
+            this.dataGridView1.Location = new System.Drawing.Point(63, 326);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(977, 296);
+            this.dataGridView1.Size = new System.Drawing.Size(977, 272);
             this.dataGridView1.TabIndex = 61;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
@@ -1216,7 +1216,7 @@
             // 
             this.exchgTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exchgTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "exchg", true));
-            this.exchgTextBox.Location = new System.Drawing.Point(968, 595);
+            this.exchgTextBox.Location = new System.Drawing.Point(968, 613);
             this.exchgTextBox.Multiline = true;
             this.exchgTextBox.Name = "exchgTextBox";
             this.exchgTextBox.Size = new System.Drawing.Size(258, 69);
@@ -1227,7 +1227,7 @@
             this.spcinstTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spcinstTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "spcinst", true));
-            this.spcinstTextBox.Location = new System.Drawing.Point(501, 595);
+            this.spcinstTextBox.Location = new System.Drawing.Point(501, 613);
             this.spcinstTextBox.Multiline = true;
             this.spcinstTextBox.Name = "spcinstTextBox";
             this.spcinstTextBox.Size = new System.Drawing.Size(379, 69);
@@ -1237,7 +1237,7 @@
             // 
             this.inofficeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.inofficeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "inoffice", true));
-            this.inofficeTextBox.Location = new System.Drawing.Point(126, 595);
+            this.inofficeTextBox.Location = new System.Drawing.Point(126, 613);
             this.inofficeTextBox.Multiline = true;
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(258, 69);
@@ -1246,7 +1246,7 @@
             // btnEmailProdTkt
             // 
             this.btnEmailProdTkt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEmailProdTkt.Location = new System.Drawing.Point(1077, 365);
+            this.btnEmailProdTkt.Location = new System.Drawing.Point(1077, 414);
             this.btnEmailProdTkt.Name = "btnEmailProdTkt";
             this.btnEmailProdTkt.Size = new System.Drawing.Size(138, 36);
             this.btnEmailProdTkt.TabIndex = 57;
@@ -1257,7 +1257,7 @@
             // btnProdTkt
             // 
             this.btnProdTkt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProdTkt.Location = new System.Drawing.Point(1077, 323);
+            this.btnProdTkt.Location = new System.Drawing.Point(1077, 372);
             this.btnProdTkt.Name = "btnProdTkt";
             this.btnProdTkt.Size = new System.Drawing.Size(138, 36);
             this.btnProdTkt.TabIndex = 56;
@@ -1271,7 +1271,7 @@
             this.button1.AutoSize = true;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(1184, 295);
+            this.button1.Location = new System.Drawing.Point(1184, 344);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 25);
             this.button1.TabIndex = 54;
@@ -1316,13 +1316,8 @@
             this.panel2.Controls.Add(this.categoryComboBox);
             this.panel2.Location = new System.Drawing.Point(60, 162);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1166, 123);
+            this.panel2.Size = new System.Drawing.Size(1166, 158);
             this.panel2.TabIndex = 53;
-            // 
-            // datecontBindingSource
-            // 
-            this.datecontBindingSource.DataMember = "datecont";
-            this.datecontBindingSource.DataSource = this.dsMcust;
             // 
             // xeldateDateBox
             // 
@@ -1431,6 +1426,16 @@
             this.josnameComboBox.TabIndex = 19;
             this.josnameComboBox.ValueMember = "name";
             // 
+            // lkpJosNameBindingSource
+            // 
+            this.lkpJosNameBindingSource.DataMember = "lkpJosName";
+            this.lkpJosNameBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // leadsourceComboBox
             // 
             this.leadsourceComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1444,6 +1449,11 @@
             this.leadsourceComboBox.Size = new System.Drawing.Size(154, 21);
             this.leadsourceComboBox.TabIndex = 17;
             this.leadsourceComboBox.ValueMember = "Name";
+            // 
+            // lkpLeadSourceBindingSource
+            // 
+            this.lkpLeadSourceBindingSource.DataMember = "lkpLeadSource";
+            this.lkpLeadSourceBindingSource.DataSource = this.lookUp;
             // 
             // txtContryear
             // 
@@ -1481,11 +1491,6 @@
             // 
             this.lkpMultiYearOptionsBindingSource.DataMember = "lkpMultiYearOptions";
             this.lkpMultiYearOptionsBindingSource.DataSource = this.lookUp;
-            // 
-            // lookUp
-            // 
-            this.lookUp.DataSetName = "LookUp";
-            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mktsegmentComboBox
             // 
@@ -2418,6 +2423,11 @@
             this.label20.TabIndex = 45;
             this.label20.Text = "Invoice Information";
             // 
+            // datecontBindingSource
+            // 
+            this.datecontBindingSource.DataMember = "datecont";
+            this.datecontBindingSource.DataSource = this.dsMcust;
+            // 
             // mcustTableAdapter
             // 
             this.mcustTableAdapter.ClearBeforeFill = true;
@@ -2462,6 +2472,7 @@
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.lkTypeDataTableAdapter = null;
             this.tableAdapterManager1.MeridianProductsTableAdapter = null;
+            this.tableAdapterManager1.RemakeReasonsTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // contpstnTableAdapter
@@ -2484,19 +2495,9 @@
             // 
             this.lkpMultiYearOptionsTableAdapter.ClearBeforeFill = true;
             // 
-            // lkpJosNameBindingSource
-            // 
-            this.lkpJosNameBindingSource.DataMember = "lkpJosName";
-            this.lkpJosNameBindingSource.DataSource = this.lookUp;
-            // 
             // lkpJosNameTableAdapter
             // 
             this.lkpJosNameTableAdapter.ClearBeforeFill = true;
-            // 
-            // lkpLeadSourceBindingSource
-            // 
-            this.lkpLeadSourceBindingSource.DataMember = "lkpLeadSource";
-            this.lkpLeadSourceBindingSource.DataSource = this.lookUp;
             // 
             // lkpLeadSourceTableAdapter
             // 
@@ -2505,7 +2506,7 @@
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1249, 717);
+            this.ClientSize = new System.Drawing.Size(1249, 735);
             this.Controls.Add(this.merCustTab);
             this.MaxNumForms = 3;
             this.MinimumSize = new System.Drawing.Size(1265, 756);
@@ -2530,9 +2531,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpJosNameBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianCategoryBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2547,10 +2549,9 @@
             this.pg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpJosNameBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
