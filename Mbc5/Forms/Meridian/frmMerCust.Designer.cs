@@ -93,19 +93,21 @@
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label invnotesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label taxExemptRecvdLabel;
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label vendNoLabel;
             this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.dtTaxExemptRecvd = new CustomControls.DateBox();
+            this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMcust = new Mbc5.DataSets.dsMcust();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnInterOfficeEmail = new System.Windows.Forms.Button();
             this.lblInvno = new System.Windows.Forms.Label();
-            this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsMcust = new Mbc5.DataSets.dsMcust();
             this.lblSchcode = new System.Windows.Forms.Label();
             this.lblAppUser = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -125,8 +127,6 @@
             this.xeldateDateBox = new CustomControls.DateBox();
             this.sourdateDateBox = new CustomControls.DateBox();
             this.contdateDateBox = new CustomControls.DateBox();
-            this.dedayinDateBox = new CustomControls.DateBox();
-            this.dedayoutDateBox = new CustomControls.DateBox();
             this.dteschendDateBox = new CustomControls.DateBox();
             this.initcontDateBox = new CustomControls.DateBox();
             this.dteschstartDateBox = new CustomControls.DateBox();
@@ -236,7 +236,13 @@
             this.lkpMultiYearOptionsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMultiYearOptionsTableAdapter();
             this.lkpJosNameTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpJosNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter();
-            this.dtTaxExemptRecvd = new CustomControls.DateBox();
+            this.dedayin = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.proofOfPagesCheckBox = new System.Windows.Forms.CheckBox();
+            this.poReqCheckBox = new System.Windows.Forms.CheckBox();
+            this.poForPayCheckBox = new System.Windows.Forms.CheckBox();
+            this.csInvoiceCheckBox = new System.Windows.Forms.CheckBox();
+            this.vendNoTextBox = new System.Windows.Forms.TextBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -306,6 +312,7 @@
             label14 = new System.Windows.Forms.Label();
             invnotesLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
+            vendNoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prodTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeridianProdutnTicketModelBindingSource)).BeginInit();
             this.merCustTab.SuspendLayout();
@@ -413,7 +420,7 @@
             // dedayoutLabel
             // 
             dedayoutLabel.AutoSize = true;
-            dedayoutLabel.Location = new System.Drawing.Point(287, 62);
+            dedayoutLabel.Location = new System.Drawing.Point(7, 116);
             dedayoutLabel.Name = "dedayoutLabel";
             dedayoutLabel.Size = new System.Drawing.Size(91, 13);
             dedayoutLabel.TabIndex = 50;
@@ -520,7 +527,7 @@
             // 
             curentprovLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             curentprovLabel.AutoSize = true;
-            curentprovLabel.Location = new System.Drawing.Point(688, 60);
+            curentprovLabel.Location = new System.Drawing.Point(693, 60);
             curentprovLabel.Name = "curentprovLabel";
             curentprovLabel.Size = new System.Drawing.Size(83, 13);
             curentprovLabel.TabIndex = 2;
@@ -557,7 +564,7 @@
             // 
             initcontLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             initcontLabel.AutoSize = true;
-            initcontLabel.Location = new System.Drawing.Point(700, 86);
+            initcontLabel.Location = new System.Drawing.Point(705, 86);
             initcontLabel.Name = "initcontLabel";
             initcontLabel.Size = new System.Drawing.Size(71, 13);
             initcontLabel.TabIndex = 10;
@@ -567,7 +574,7 @@
             // 
             contryearLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contryearLabel.AutoSize = true;
-            contryearLabel.Location = new System.Drawing.Point(936, 60);
+            contryearLabel.Location = new System.Drawing.Point(941, 60);
             contryearLabel.Name = "contryearLabel";
             contryearLabel.Size = new System.Drawing.Size(72, 13);
             contryearLabel.TabIndex = 15;
@@ -577,7 +584,7 @@
             // 
             leadsourceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             leadsourceLabel.AutoSize = true;
-            leadsourceLabel.Location = new System.Drawing.Point(703, 6);
+            leadsourceLabel.Location = new System.Drawing.Point(708, 6);
             leadsourceLabel.Name = "leadsourceLabel";
             leadsourceLabel.Size = new System.Drawing.Size(68, 13);
             leadsourceLabel.TabIndex = 16;
@@ -587,7 +594,7 @@
             // 
             josnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             josnameLabel.AutoSize = true;
-            josnameLabel.Location = new System.Drawing.Point(736, 34);
+            josnameLabel.Location = new System.Drawing.Point(741, 34);
             josnameLabel.Name = "josnameLabel";
             josnameLabel.Size = new System.Drawing.Size(35, 13);
             josnameLabel.TabIndex = 18;
@@ -597,7 +604,7 @@
             // 
             sourdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             sourdateLabel.AutoSize = true;
-            sourdateLabel.Location = new System.Drawing.Point(957, 6);
+            sourdateLabel.Location = new System.Drawing.Point(962, 6);
             sourdateLabel.Name = "sourdateLabel";
             sourdateLabel.Size = new System.Drawing.Size(51, 13);
             sourdateLabel.TabIndex = 20;
@@ -607,7 +614,7 @@
             // 
             contdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contdateLabel.AutoSize = true;
-            contdateLabel.Location = new System.Drawing.Point(954, 34);
+            contdateLabel.Location = new System.Drawing.Point(959, 34);
             contdateLabel.Name = "contdateLabel";
             contdateLabel.Size = new System.Drawing.Size(54, 13);
             contdateLabel.TabIndex = 22;
@@ -618,7 +625,7 @@
             xeldateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             xeldateLabel.AutoSize = true;
             xeldateLabel.ForeColor = System.Drawing.Color.Red;
-            xeldateLabel.Location = new System.Drawing.Point(944, 86);
+            xeldateLabel.Location = new System.Drawing.Point(949, 86);
             xeldateLabel.Name = "xeldateLabel";
             xeldateLabel.Size = new System.Drawing.Size(66, 13);
             xeldateLabel.TabIndex = 51;
@@ -991,6 +998,15 @@
             invnotesLabel.TabIndex = 120;
             invnotesLabel.Text = "Notes";
             // 
+            // taxExemptRecvdLabel
+            // 
+            taxExemptRecvdLabel.AutoSize = true;
+            taxExemptRecvdLabel.Location = new System.Drawing.Point(345, 38);
+            taxExemptRecvdLabel.Name = "taxExemptRecvdLabel";
+            taxExemptRecvdLabel.Size = new System.Drawing.Size(98, 13);
+            taxExemptRecvdLabel.TabIndex = 44;
+            taxExemptRecvdLabel.Text = "Tax Exempt Recvd";
+            // 
             // MeridianProdutnTicketModelBindingSource
             // 
             this.MeridianProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.MeridianProdutnTicketModel);
@@ -1058,11 +1074,33 @@
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             // 
+            // dtTaxExemptRecvd
+            // 
+            this.dtTaxExemptRecvd.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "TaxExemptRecvd", true));
+            this.dtTaxExemptRecvd.Date = null;
+            this.dtTaxExemptRecvd.DateValue = null;
+            this.dtTaxExemptRecvd.Location = new System.Drawing.Point(447, 34);
+            this.dtTaxExemptRecvd.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dtTaxExemptRecvd.Name = "dtTaxExemptRecvd";
+            this.dtTaxExemptRecvd.Size = new System.Drawing.Size(138, 21);
+            this.dtTaxExemptRecvd.TabIndex = 427;
+            // 
+            // mcustBindingSource
+            // 
+            this.mcustBindingSource.DataMember = "mcust";
+            this.mcustBindingSource.DataSource = this.dsMcust;
+            // 
+            // dsMcust
+            // 
+            this.dsMcust.DataSetName = "dsMcust";
+            this.dsMcust.EnforceConstraints = false;
+            this.dsMcust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "dsProdutn";
-            reportDataSource2.Value = this.prodTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource4.Name = "dsProdutn";
+            reportDataSource4.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1082, 489);
             this.reportViewer1.Name = "reportViewer1";
@@ -1095,17 +1133,6 @@
             this.lblInvno.TabIndex = 64;
             this.lblInvno.Text = "label3";
             // 
-            // mcustBindingSource
-            // 
-            this.mcustBindingSource.DataMember = "mcust";
-            this.mcustBindingSource.DataSource = this.dsMcust;
-            // 
-            // dsMcust
-            // 
-            this.dsMcust.DataSetName = "dsMcust";
-            this.dsMcust.EnforceConstraints = false;
-            this.dsMcust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // lblSchcode
             // 
             this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "schcode", true));
@@ -1132,14 +1159,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QBooktype,
@@ -1277,11 +1304,17 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(vendNoLabel);
+            this.panel2.Controls.Add(this.vendNoTextBox);
+            this.panel2.Controls.Add(this.csInvoiceCheckBox);
+            this.panel2.Controls.Add(this.poForPayCheckBox);
+            this.panel2.Controls.Add(this.poReqCheckBox);
+            this.panel2.Controls.Add(this.proofOfPagesCheckBox);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.dedayin);
             this.panel2.Controls.Add(this.xeldateDateBox);
             this.panel2.Controls.Add(this.sourdateDateBox);
             this.panel2.Controls.Add(this.contdateDateBox);
-            this.panel2.Controls.Add(this.dedayinDateBox);
-            this.panel2.Controls.Add(this.dedayoutDateBox);
             this.panel2.Controls.Add(this.dteschendDateBox);
             this.panel2.Controls.Add(this.initcontDateBox);
             this.panel2.Controls.Add(this.dteschstartDateBox);
@@ -1309,7 +1342,7 @@
             this.panel2.Controls.Add(this.categoryComboBox);
             this.panel2.Location = new System.Drawing.Point(60, 162);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1166, 158);
+            this.panel2.Size = new System.Drawing.Size(1171, 145);
             this.panel2.TabIndex = 53;
             // 
             // xeldateDateBox
@@ -1318,7 +1351,7 @@
             this.xeldateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "xeldate", true));
             this.xeldateDateBox.Date = null;
             this.xeldateDateBox.DateValue = null;
-            this.xeldateDateBox.Location = new System.Drawing.Point(1016, 86);
+            this.xeldateDateBox.Location = new System.Drawing.Point(1021, 86);
             this.xeldateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.xeldateDateBox.Name = "xeldateDateBox";
             this.xeldateDateBox.Size = new System.Drawing.Size(129, 21);
@@ -1330,7 +1363,7 @@
             this.sourdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "sourdate", true));
             this.sourdateDateBox.Date = null;
             this.sourdateDateBox.DateValue = null;
-            this.sourdateDateBox.Location = new System.Drawing.Point(1016, 6);
+            this.sourdateDateBox.Location = new System.Drawing.Point(1021, 6);
             this.sourdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.sourdateDateBox.Name = "sourdateDateBox";
             this.sourdateDateBox.Size = new System.Drawing.Size(114, 21);
@@ -1342,34 +1375,12 @@
             this.contdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "contdate", true));
             this.contdateDateBox.Date = null;
             this.contdateDateBox.DateValue = null;
-            this.contdateDateBox.Location = new System.Drawing.Point(1016, 34);
+            this.contdateDateBox.Location = new System.Drawing.Point(1021, 34);
             this.contdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.contdateDateBox.Name = "contdateDateBox";
             this.contdateDateBox.Size = new System.Drawing.Size(114, 21);
             this.contdateDateBox.TabIndex = 65;
             this.contdateDateBox.Leave += new System.EventHandler(this.contdateDateBox_Leave);
-            // 
-            // dedayinDateBox
-            // 
-            this.dedayinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayin", true));
-            this.dedayinDateBox.Date = null;
-            this.dedayinDateBox.DateValue = null;
-            this.dedayinDateBox.Location = new System.Drawing.Point(104, 87);
-            this.dedayinDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dedayinDateBox.Name = "dedayinDateBox";
-            this.dedayinDateBox.Size = new System.Drawing.Size(138, 21);
-            this.dedayinDateBox.TabIndex = 65;
-            // 
-            // dedayoutDateBox
-            // 
-            this.dedayoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayout", true));
-            this.dedayoutDateBox.Date = null;
-            this.dedayoutDateBox.DateValue = null;
-            this.dedayoutDateBox.Location = new System.Drawing.Point(383, 63);
-            this.dedayoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dedayoutDateBox.Name = "dedayoutDateBox";
-            this.dedayoutDateBox.Size = new System.Drawing.Size(114, 21);
-            this.dedayoutDateBox.TabIndex = 428;
             // 
             // dteschendDateBox
             // 
@@ -1388,7 +1399,7 @@
             this.initcontDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "initcont", true));
             this.initcontDateBox.Date = null;
             this.initcontDateBox.DateValue = null;
-            this.initcontDateBox.Location = new System.Drawing.Point(775, 86);
+            this.initcontDateBox.Location = new System.Drawing.Point(780, 86);
             this.initcontDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.initcontDateBox.Name = "initcontDateBox";
             this.initcontDateBox.Size = new System.Drawing.Size(153, 21);
@@ -1413,7 +1424,7 @@
             this.josnameComboBox.DataSource = this.lkpJosNameBindingSource;
             this.josnameComboBox.DisplayMember = "name";
             this.josnameComboBox.FormattingEnabled = true;
-            this.josnameComboBox.Location = new System.Drawing.Point(776, 34);
+            this.josnameComboBox.Location = new System.Drawing.Point(781, 34);
             this.josnameComboBox.Name = "josnameComboBox";
             this.josnameComboBox.Size = new System.Drawing.Size(154, 21);
             this.josnameComboBox.TabIndex = 19;
@@ -1437,7 +1448,7 @@
             this.leadsourceComboBox.DataSource = this.lkpLeadSourceBindingSource;
             this.leadsourceComboBox.DisplayMember = "Name";
             this.leadsourceComboBox.FormattingEnabled = true;
-            this.leadsourceComboBox.Location = new System.Drawing.Point(776, 6);
+            this.leadsourceComboBox.Location = new System.Drawing.Point(781, 6);
             this.leadsourceComboBox.Name = "leadsourceComboBox";
             this.leadsourceComboBox.Size = new System.Drawing.Size(154, 21);
             this.leadsourceComboBox.TabIndex = 17;
@@ -1452,7 +1463,7 @@
             // 
             this.txtContryear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContryear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contryear", true));
-            this.txtContryear.Location = new System.Drawing.Point(1016, 60);
+            this.txtContryear.Location = new System.Drawing.Point(1021, 60);
             this.txtContryear.MaxLength = 2;
             this.txtContryear.Name = "txtContryear";
             this.txtContryear.Size = new System.Drawing.Size(44, 20);
@@ -1503,7 +1514,7 @@
             // 
             this.curentprovTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.curentprovTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "curentprov", true));
-            this.curentprovTextBox.Location = new System.Drawing.Point(776, 60);
+            this.curentprovTextBox.Location = new System.Drawing.Point(781, 60);
             this.curentprovTextBox.Name = "curentprovTextBox";
             this.curentprovTextBox.Size = new System.Drawing.Size(154, 20);
             this.curentprovTextBox.TabIndex = 3;
@@ -2510,25 +2521,82 @@
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
             // 
-            // taxExemptRecvdLabel
+            // dedayin
             // 
-            taxExemptRecvdLabel.AutoSize = true;
-            taxExemptRecvdLabel.Location = new System.Drawing.Point(345, 38);
-            taxExemptRecvdLabel.Name = "taxExemptRecvdLabel";
-            taxExemptRecvdLabel.Size = new System.Drawing.Size(98, 13);
-            taxExemptRecvdLabel.TabIndex = 44;
-            taxExemptRecvdLabel.Text = "Tax Exempt Recvd";
+            this.dedayin.AutoSize = true;
+            this.dedayin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayin", true));
+            this.dedayin.Location = new System.Drawing.Point(104, 86);
+            this.dedayin.Name = "dedayin";
+            this.dedayin.Size = new System.Drawing.Size(35, 13);
+            this.dedayin.TabIndex = 429;
+            this.dedayin.Text = "label3";
             // 
-            // dtTaxExemptRecvd
+            // label3
             // 
-            this.dtTaxExemptRecvd.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "TaxExemptRecvd", true));
-            this.dtTaxExemptRecvd.Date = null;
-            this.dtTaxExemptRecvd.DateValue = null;
-            this.dtTaxExemptRecvd.Location = new System.Drawing.Point(447, 34);
-            this.dtTaxExemptRecvd.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dtTaxExemptRecvd.Name = "dtTaxExemptRecvd";
-            this.dtTaxExemptRecvd.Size = new System.Drawing.Size(138, 21);
-            this.dtTaxExemptRecvd.TabIndex = 427;
+            this.label3.AutoSize = true;
+            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayout", true));
+            this.label3.Location = new System.Drawing.Point(104, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 430;
+            this.label3.Text = "label3";
+            // 
+            // proofOfPagesCheckBox
+            // 
+            this.proofOfPagesCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "ProofOfPages", true));
+            this.proofOfPagesCheckBox.Location = new System.Drawing.Point(237, 86);
+            this.proofOfPagesCheckBox.Name = "proofOfPagesCheckBox";
+            this.proofOfPagesCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.proofOfPagesCheckBox.TabIndex = 431;
+            this.proofOfPagesCheckBox.Text = "Proof Of Pages";
+            this.proofOfPagesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // poReqCheckBox
+            // 
+            this.poReqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoReq", true));
+            this.poReqCheckBox.Location = new System.Drawing.Point(374, 111);
+            this.poReqCheckBox.Name = "poReqCheckBox";
+            this.poReqCheckBox.Size = new System.Drawing.Size(145, 24);
+            this.poReqCheckBox.TabIndex = 432;
+            this.poReqCheckBox.Text = "PO Required Before Shipping";
+            this.poReqCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // poForPayCheckBox
+            // 
+            this.poForPayCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoForPay", true));
+            this.poForPayCheckBox.Location = new System.Drawing.Point(374, 89);
+            this.poForPayCheckBox.Name = "poForPayCheckBox";
+            this.poForPayCheckBox.Size = new System.Drawing.Size(150, 24);
+            this.poForPayCheckBox.TabIndex = 433;
+            this.poForPayCheckBox.Text = "PO Required For Payment";
+            this.poForPayCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // csInvoiceCheckBox
+            // 
+            this.csInvoiceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "CsInvoice", true));
+            this.csInvoiceCheckBox.Location = new System.Drawing.Point(237, 105);
+            this.csInvoiceCheckBox.Name = "csInvoiceCheckBox";
+            this.csInvoiceCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.csInvoiceCheckBox.TabIndex = 434;
+            this.csInvoiceCheckBox.Text = "CS Invoice";
+            this.csInvoiceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // vendNoLabel
+            // 
+            vendNoLabel.AutoSize = true;
+            vendNoLabel.Location = new System.Drawing.Point(325, 66);
+            vendNoLabel.Name = "vendNoLabel";
+            vendNoLabel.Size = new System.Drawing.Size(49, 13);
+            vendNoLabel.TabIndex = 434;
+            vendNoLabel.Text = "Vend No";
+            // 
+            // vendNoTextBox
+            // 
+            this.vendNoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "VendNo", true));
+            this.vendNoTextBox.Location = new System.Drawing.Point(383, 63);
+            this.vendNoTextBox.Name = "vendNoTextBox";
+            this.vendNoTextBox.Size = new System.Drawing.Size(204, 20);
+            this.vendNoTextBox.TabIndex = 435;
             // 
             // frmMerCust
             // 
@@ -2698,8 +2766,6 @@
         private CustomControls.DateBox dteschendDateBox;
         private CustomControls.DateBox initcontDateBox;
         private CustomControls.DateBox dteschstartDateBox;
-        private CustomControls.DateBox dedayinDateBox;
-        private CustomControls.DateBox dedayoutDateBox;
         private CustomControls.DateBox xeldateDateBox;
         private CustomControls.DateBox sourdateDateBox;
         private CustomControls.DateBox contdateDateBox;
@@ -2725,5 +2791,12 @@
         private System.Windows.Forms.BindingSource lkpLeadSourceBindingSource;
         private DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter lkpLeadSourceTableAdapter;
         private CustomControls.DateBox dtTaxExemptRecvd;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label dedayin;
+        private System.Windows.Forms.TextBox vendNoTextBox;
+        private System.Windows.Forms.CheckBox csInvoiceCheckBox;
+        private System.Windows.Forms.CheckBox poForPayCheckBox;
+        private System.Windows.Forms.CheckBox poReqCheckBox;
+        private System.Windows.Forms.CheckBox proofOfPagesCheckBox;
     }
     }

@@ -614,6 +614,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnCharacterResourcAmt;
             
+            private global::System.Data.DataColumn columnOracleCode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public mquotesDataTable() {
@@ -1849,6 +1851,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OracleCodeColumn {
+                get {
+                    return this.columnOracleCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2034,7 +2044,8 @@ namespace Mbc5.DataSets {
                         string shpaddr, 
                         string invnotes, 
                         int CharacterResourceQty, 
-                        decimal CharacterResourcAmt) {
+                        decimal CharacterResourcAmt, 
+                        string OracleCode) {
                 mquotesRow rowmquotesRow = ((mquotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -2186,7 +2197,8 @@ namespace Mbc5.DataSets {
                         shpaddr,
                         invnotes,
                         CharacterResourceQty,
-                        CharacterResourcAmt};
+                        CharacterResourcAmt,
+                        OracleCode};
                 rowmquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmquotesRow);
                 return rowmquotesRow;
@@ -2359,6 +2371,7 @@ namespace Mbc5.DataSets {
                 this.columninvnotes = base.Columns["invnotes"];
                 this.columnCharacterResourceQty = base.Columns["CharacterResourceQty"];
                 this.columnCharacterResourcAmt = base.Columns["CharacterResourcAmt"];
+                this.columnOracleCode = base.Columns["OracleCode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2664,6 +2677,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnCharacterResourceQty);
                 this.columnCharacterResourcAmt = new global::System.Data.DataColumn("CharacterResourcAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCharacterResourcAmt);
+                this.columnOracleCode = new global::System.Data.DataColumn("OracleCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOracleCode);
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnbooktype.AllowDBNull = false;
@@ -2709,6 +2724,7 @@ namespace Mbc5.DataSets {
                 this.columnshpaddr2.MaxLength = 50;
                 this.columnshpaddr.MaxLength = 50;
                 this.columninvnotes.MaxLength = 2147483647;
+                this.columnOracleCode.MaxLength = 7;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5509,6 +5525,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OracleCode {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.OracleCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OracleCode\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.OracleCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsqtedateNull() {
                 return this.IsNull(this.tablemquotes.qtedateColumn);
             }
@@ -7198,6 +7230,18 @@ namespace Mbc5.DataSets {
             public void SetCharacterResourcAmtNull() {
                 this[this.tablemquotes.CharacterResourcAmtColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOracleCodeNull() {
+                return this.IsNull(this.tablemquotes.OracleCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOracleCodeNull() {
+                this[this.tablemquotes.OracleCodeColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -7653,6 +7697,7 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             tableMapping.ColumnMappings.Add("invnotes", "invnotes");
             tableMapping.ColumnMappings.Add("CharacterResourceQty", "CharacterResourceQty");
             tableMapping.ColumnMappings.Add("CharacterResourcAmt", "CharacterResourcAmt");
+            tableMapping.ColumnMappings.Add("OracleCode", "OracleCode");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -8048,10 +8093,10 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                 "allprice, produtn.shpdate, mcust.contfname,\r\n                          mcust.con" +
                 "tlname, mcust.shpname, mcust.invname, mcust.shpzip, mcust.shpstate, mcust.shpcit" +
                 "y, mcust.shpaddr2, mcust.shpaddr, mcust.invnotes, mquotes.CharacterResourceQty, " +
-                "mquotes.CharacterResourcAmt\r\nFROM            mquotes LEFT OUTER JOIN\r\n          " +
-                "               produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n       " +
-                "                  mcust ON mquotes.schcode = mcust.schcode\r\nWHERE        (mquote" +
-                "s.invno = @Invno)";
+                "mquotes.CharacterResourcAmt, \r\n                         mcust.OracleCode\r\nFROM  " +
+                "          mquotes LEFT OUTER JOIN\r\n                         produtn ON mquotes.i" +
+                "nvno = produtn.invno LEFT OUTER JOIN\r\n                         mcust ON mquotes." +
+                "schcode = mcust.schcode\r\nWHERE        (mquotes.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

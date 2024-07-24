@@ -1659,7 +1659,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.BackColor = System.Drawing.Color.PaleGreen;
             this.tabPage3.Controls.Add(this.reportViewer1);
             this.tabPage3.Controls.Add(this.btnPrntInvoice);
             this.tabPage3.Controls.Add(this.studentTotalBasePriceLabel1);
@@ -2110,7 +2110,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGreen;
             this.tabPage2.Controls.Add(nohandbkpgsLabel);
             this.tabPage2.Controls.Add(this.nohandbkpgsTextBox);
             this.tabPage2.Controls.Add(nobackcvLabel);
@@ -2550,7 +2550,7 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGreen;
             this.tabPage1.Controls.Add(this.lblShipped);
             this.tabPage1.Controls.Add(this.chkindateDateBox);
             this.tabPage1.Controls.Add(this.panel4);
@@ -3823,7 +3823,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.BackColor = System.Drawing.Color.PaleGreen;
             this.tabPage4.Controls.Add(this.pmtdateDateBox);
             this.tabPage4.Controls.Add(this.btnDelete);
             this.tabPage4.Controls.Add(this.btnSavePayment);
