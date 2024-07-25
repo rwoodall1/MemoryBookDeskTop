@@ -134,12 +134,14 @@ namespace Mbc5.Forms.Meridian {
             }
             //add record
             string vProdNumber = "";
+            string coverNo = "0";
             MeridianNewProdRecord frmGetProdRec = new MeridianNewProdRecord();
 
                     var result = frmGetProdRec.ShowDialog();
                         if (result == DialogResult.OK)
                         {
-                            vProdNumber = frmGetProdRec.retProdNo;
+                            vProdNumber = "M"+frmGetProdRec.retProdNo;
+                            coverNo = frmGetProdRec.retProdNo;
                     }
                     else
                     {
@@ -171,12 +173,7 @@ namespace Mbc5.Forms.Meridian {
                 
                 return;
             }
-            var coverNo = frmMain.GetCoverNumber();
-            if (coverNo=="0")
-            {
-                MbcMessageBox.Error("Production record was not added");
-                return;
-            }
+            
 
             //get cstat
             string vCStat = "";
@@ -963,6 +960,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Activated(object sender, EventArgs e)
         {
+            this.Fill();
             try {
                 frmMain.ShowSearchButtons(this.Name);
                 frmMain.receivingSurveyCompensationToolStripMenuItem1.Enabled = true;
@@ -1023,6 +1021,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void contdateDateBox_Leave(object sender, EventArgs e)
         {
+            this.Save();
             AddSalesRecord();
         }
 
@@ -1154,7 +1153,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            this.Invno =(int)((DataRowView)(mcustBindingSource.Current)).Row["QInvno"];
+           // this.Invno =(int)((DataRowView)(mcustBindingSource.Current)).Row["QInvno"];
         }
 
         private void button3_Click(object sender, EventArgs e)
