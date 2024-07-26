@@ -17,6 +17,7 @@ using Core;
 using Microsoft.Reporting.WinForms;
 using System.Threading.Tasks;
 using Vertex;
+using Mbc5.Forms.MemoryBook;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMBids : BaseClass.frmBase {
         public frmMBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
@@ -591,6 +592,7 @@ namespace Mbc5.Forms.Meridian {
                     var a = mbidsTableAdapter.Update(dsMBids.mbids);
             
                     Fill();
+                    this.frmMain.ShowRecSaved();
                     processingResult.Data = true;
                     return processingResult;
 

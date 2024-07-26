@@ -120,6 +120,22 @@ namespace Mbc5.Forms
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        public void ShowRecSaved(string msg="")
+        {
+            if (string.IsNullOrEmpty(msg))
+            {
+                frmMessage frmMessage = new frmMessage(this);
+                frmMessage.MdiParent = this;
+                frmMessage.Show();
+            }
+            else
+            {
+                frmMessage frmMessage = new frmMessage(this,msg);
+                frmMessage.MdiParent = this;
+                frmMessage.Show();
+            }
+            
+        }
         public bool Login()
         {
             frmLogin Login = new frmLogin(this);
@@ -1320,6 +1336,10 @@ namespace Mbc5.Forms
        
         private void tsSave_Click(object sender, EventArgs e)
         {
+            if (this.ActiveMdiChild==null)
+            {
+                return;
+            }
             var curFrm = this.ActiveMdiChild;
             string frmName = curFrm.Name;
             try
