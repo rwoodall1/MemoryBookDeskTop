@@ -17,6 +17,14 @@ using System.Reflection;
 using Core;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
+using System.Threading.Tasks;
+using Vertex;
+using Microsoft.Office.Interop.Excel;
+using VerTex.VerTexWebService;
+using DataTable = System.Data.DataTable;
+using Point = System.Drawing.Point;
+using System.Security.Cryptography;
+using Mbc5.DataSets;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMSales : BaseClass.frmBase
     {
@@ -44,22 +52,27 @@ this.Schcode = null;
 
 }
 
-        #region Properties
+#region Properties
+public string SchoolZipCode { get; set; }
+public Decimal SalesTax { get; set; } = 0;
+public Decimal TaxRate { get; set; } = 0;
 public List<XtraInvoiceGrid> XrtaInvoicesGridData { get; set; }
 private UserPrincipal ApplicationUser { get; set; }
 protected frmMain frmMain { get; set; }
 protected string CurPriceYr { get; set; }
 protected MeridianPrice Pricing { get; set; }
 protected MeridianOptionPricing OptionPrices { get; set; }
-#endregion
-        
-private void frmMSales_Load(object sender, System.EventArgs e)
+protected bool Loaded { get; set; }
+        #endregion
+
+    private void frmMSales_Load(object sender, System.EventArgs e)
     {    
         SetConnectionString();
         Fill();
         this.salesTabControl.TabPages[0].AutoScroll = false;
         mquotesBindingSource.ResetBindings(true);
-    }
+            this.Loaded=true;
+        }
 #region SearchMethods
  private void NullParseHandler(object sender, ConvertEventArgs e)
 {
@@ -525,20 +538,6 @@ private void UpdateProdutnCopies()
 
         lblFinalPrice.Text = Math.Round((vTotal / lblQtyTotal.ConvertToInt()),2).ToString("0.00");
        lblTotBeforeTax.Text= (afterdisctotLabel2.ConvertToDecimal()+ txtAdditionChrg.ConvertToDecimal()).ToString();
-
-
-
-
-        if (!doNotChargeTaxCheckBox.Checked)
-        {
-            // Control values are set in function
-            GetTax(vTotal);
-        }
-        else
-        {
-            lblTaxRate.Text = "0.00";
-            lblTax.Text = "0.00";
-        }
 
         lblFinalTotal.Text = (lblTotBeforeTax.ConvertToDecimal()+ lblTax.ConvertToDecimal()+ txtShipping.ConvertToDecimal()).ToString();
 
@@ -1149,35 +1148,38 @@ private void UpdateProdutnCopies()
     private bool CalculatePayments(string invoiceNumber)
     {
         bool retval = false;
-        decimal? paymentTotals = 0;
+        decimal paymentTotals = 0;
         if (string.IsNullOrEmpty(invoiceNumber))
         {
             return retval;
         }
-        var SqlQuery = new SQLQuery();
+        var sqlClient = new SQLCustomClient();
         var cmdText = @"SELECT ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0)),0) AS paymentresult
                         FROM paymnt where Invno=@Invno";
-        SqlParameter[] parameters = new SqlParameter[] {
-            new SqlParameter("@Invno",invoiceNumber) };
-        var result = SqlQuery.ExecuteReaderAsync(CommandType.Text, cmdText, parameters);
-        //paymentTotals =(decimal)this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text));
-        try
-        {
-
-            paymentTotals = (decimal)result.Rows[0]["paymentresult"];
-            cmdText = @"Update invoice set payments=@payments,baldue=invtot-@payments  where Invno=@Invno ";
-            SqlParameter[] parameters1 = new SqlParameter[] {
-            new SqlParameter("@Invno",invoiceNumber),
-            new SqlParameter("@payments",paymentTotals)};
-            var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", invoiceNumber);
+           var selectResult= sqlClient.SelectSingleColumn();
+            if(selectResult.IsError)
+            {
+                Log.Error(selectResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error(selectResult.Errors[0].DeveloperMessage, "Error");
+                return retval;
+            }
+            paymentTotals = Convert.ToDecimal(selectResult.Data);
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Update merinvoice set payments = @payments, baldue = FplnTot - @payments  where Invno = @Invno ");
+            sqlClient.AddParameter("@Invno", invoiceNumber);
+            sqlClient.AddParameter("@payments", paymentTotals);
+            var updateResult = sqlClient.Update();
+            if(updateResult.IsError)
+            {
+                Log.Error(updateResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error(updateResult.Errors[0].DeveloperMessage, "Error");
+                return retval;
+            }
             this.merinvoiceTableAdapter.Fill(dsMInvoice.merinvoice, Invno);
             retval = true;
-        }
-        catch (Exception ex)
-        {
-
-        }
-        return retval;
+            return retval;
     }
     private void SetCrudButtons()
     {
@@ -1202,38 +1204,29 @@ private void UpdateProdutnCopies()
 {
         //check if invoice exist
 
-        var sqlQuery1 = new SQLQuery();
-        var queryString = "SELECT Invno From MerInvoice where Invno=@Invno ";
-        SqlParameter[] parameters = new SqlParameter[] {
-            new SqlParameter("@Invno",this.Invno)
-        };
-        DataTable result = new DataTable();
-        try
-        {
-            result = sqlQuery1.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
-        }
-        catch (Exception ex)
-        {
-            MbcMessageBox.Error(ex.Message, "");
-            return;
-        }
-
-        //refill to keep concurrency correct
-        if (result.Rows.Count > 0)
-        {
-            DialogResult invoiceresult = MessageBox.Show("There is already an invoice created, do you want to overwrite the current invoice", "Invoice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (invoiceresult == DialogResult.Yes)
+        var sqlClient = new SQLCustomClient().CommandText("SELECT Invno From MerInvoice where Invno=@Invno ");
+       sqlClient.AddParameter("@Invno", Invno);
+            var selectResult = sqlClient.SelectSingleColumn();
+         if (selectResult.IsError)
             {
-                if (!DeleteInvoice())
-                {
-                        
-                    return;
-                       
-                }
-                this.Fill();
+                MbcMessageBox.Error(selectResult.Errors[0].DeveloperMessage, "Error");
+                return;
             }
-
-        }
+           if(!string.IsNullOrEmpty(selectResult.Data))
+            {
+                DialogResult invoiceresult = MessageBox.Show("There is already an invoice created, do you want to overwrite the current invoice", "Invoice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (invoiceresult == DialogResult.Yes)
+                {
+                    if (!DeleteInvoice())
+                    {
+                        return;
+                    }
+                    this.Fill();
+                }
+                
+            }
+            
+        
         //Create the invoice
 
         //txtModifiedBy.Text = this.ApplicationUser.id;
@@ -1242,16 +1235,21 @@ private void UpdateProdutnCopies()
         //txtModifiedByPay.Text = this.ApplicationUser.id;
         var sqlQuery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
         var cmd = @"
-                    Insert INTO MerInvoice (Schcode,Invno,QteDate,NoPages,QtyTotal,FplnPrc,Source,PoNum,fplntot,BalDue,ContFname,ContLname
-                    ,SchName,InvName,InvAddr,InvAddr2,InvCity,InvState,InvZip,ShpName,ShpAddr,ShpAddr2,ShpCity,ShpState,ShpZip,ContrYear,BasePrc,BaseTot,FormatType,SchType
-                ,QtyStudent,QtyTeacher,Generic,TeBasePrc,ShpDate,SalesTax,ModifiedBy,ProdCode,SubTotal,TeacherBaseTotal,ShpHandling,StudentTotalBasePrice,invnotes) 
-                    Values(@Schcode,@Invno,@QteDate,@NoPages,@QtyTotal,@FplnPrc,@Source,@PoNum,@fplntot,@BalDue,@ContFname,@ContLname
-                    ,@SchName,@InvName,@InvAddr,@InvAddr2,@InvCity,@InvState,@InvZip,@ShpName,@ShipAddr,@ShpAddr2,@ShpCity,@ShpState,@ShpZip,@ContrYear,@BasePrc,@BaseTot,@FormatType,@SchType
-                ,@QtyStudent,@QtyTeacher,@Generic,@TeBasePrc,@ShpDate,@SalesTax,@ModifiedBy,@ProdCode,@SubTotal,@TeacherBaseTotal,@ShpHandling,@StudentTotalBasePrice,@invnotes)
-                    ";
-        sqlQuery.CommandText(cmd);
+                    Insert INTO MerInvoice (Schcode,Invno,QteDate,NoPages,QtyTotal,FplnPrc,Source,PoNum,fplntot,BalDue
+                    ,ContFname,ContLname,SchName,InvName,InvAddr,InvAddr2,InvCity,InvState,InvZip,ShpName,ShpAddr,ShpAddr2,ShpCity
+                    ,ShpState,ShpZip,ContrYear,BasePrc,BaseTot,FormatType,SchType,QtyStudent,QtyTeacher,Generic,TeBasePrc,ShpDate
+                    ,SalesTax,ModifiedBy,ProdCode,SubTotal,TeacherBaseTotal,ShpHandling,StudentTotalBasePrice,invnotes) 
+
+                    Values(@Schcode,@Invno,@QteDate,@NoPages,@QtyTotal,@FplnPrc,@Source,@PoNum,@fplntot,@BalDue,@ContFname
+                    ,@ContLname,@SchName,@InvName,@InvAddr,@InvAddr2,@InvCity,@InvState,@InvZip,@ShpName,@ShipAddr,@ShpAddr2
+                    ,@ShpCity,@ShpState,@ShpZip,@ContrYear,@BasePrc,@BaseTot,@FormatType,@SchType,@QtyStudent,@QtyTeacher,@Generic
+                    ,@TeBasePrc,@ShpDate,@SalesTax,@ModifiedBy,@ProdCode,@SubTotal,@TeacherBaseTotal,@ShpHandling,@StudentTotalBasePrice,@invnotes)";
+
+            //
+            //
+            sqlQuery.CommandText(cmd);
         var dr = (DataRowView)mquotesBindingSource.Current;
-     
+   
         sqlQuery.AddParameter("@StudentTotalBasePrice", (txtQtyStudent.ConvertToInt()* lblBasePrice.ConvertToDecimal()));
         sqlQuery.AddParameter("@ShpHandling", txtShipping.Text==""?"0": txtShipping.Text);
         sqlQuery.AddParameter("@invnotes", dr["invnotes"].ToString());
@@ -1263,8 +1261,9 @@ private void UpdateProdutnCopies()
         sqlQuery.AddParameter("@FplnPrc", lblFinalPrice.Text);
         sqlQuery.AddParameter("@Source", sourceTextBox.Text);
         sqlQuery.AddParameter("@PoNum", ponumTextBox.Text);
-        sqlQuery.AddParameter("@fplntot", lblFinalTotal.Text);
-        sqlQuery.AddParameter("@BalDue", lblFinalTotal.Text);
+        sqlQuery.AddParameter("@fplntot", lblFinalTotal.ConvertToDecimal());
+            var a = lblFinalTotal.ConvertToDecimal();
+        sqlQuery.AddParameter("@BalDue", lblFinalTotal.ConvertToDecimal());
         sqlQuery.AddParameter("@ContFname",dr["ContFname"].ToString());
         sqlQuery.AddParameter("@ContLname", dr["ContLname"].ToString());
         sqlQuery.AddParameter("@SchName", dr["schname"].ToString());
@@ -1281,10 +1280,10 @@ private void UpdateProdutnCopies()
         sqlQuery.AddParameter("@ShpState", dr["ShpState"].ToString());
         sqlQuery.AddParameter("@ShpZip", dr["ShpZip"].ToString());
         sqlQuery.AddParameter("@ContrYear", contryearTextBox.Text);
-        sqlQuery.AddParameter("@BasePrc", lblBasePrice.Text);
-        sqlQuery.AddParameter("@BaseTot", lblTotalBasePrice.Text);
+        sqlQuery.AddParameter("@BasePrc", lblBasePrice.ConvertToDecimal());
+        sqlQuery.AddParameter("@BaseTot", lblTotalBasePrice.ConvertToDecimal());
         sqlQuery.AddParameter("@FormatType",lfRadioButton.Checked?"Large Format":"Small Format");
-        sqlQuery.AddParameter("@SubTotal", afterdisctotLabel2.Text);
+        sqlQuery.AddParameter("@SubTotal", lblTotBeforeTax.ConvertToDecimal());
         sqlQuery.AddParameter("@ProdCode",dr["prodcode"].ToString());
         sqlQuery.AddParameter("ModifiedBy", this.ApplicationUser.id);
         sqlQuery.AddParameter("TeacherBaseTotal", (lblTeachBasePrice.ConvertToDecimal()* txtQtyTeacher.ConvertToInt()));
@@ -1316,18 +1315,18 @@ private void UpdateProdutnCopies()
         sqlQuery.AddParameter("@QtyStudent", txtQtyStudent.Text);
         sqlQuery.AddParameter("@QtyTeacher", txtQtyTeacher.Text);
         sqlQuery.AddParameter("@Generic", chkGeneric.Checked);
-        sqlQuery.AddParameter("@TeBasePrc", lblTeachBasePrice.Text);
-        sqlQuery.AddParameter("@SalesTax", lblTax.Text);
+        sqlQuery.AddParameter("@TeBasePrc", lblTeachBasePrice.ConvertToDecimal());
+        sqlQuery.AddParameter("@SalesTax", lblTax.ConvertToDecimal());
         sqlQuery.AddParameter("@ShpDate",dr["shpdate"].ToString());
-        var updateResult=sqlQuery.Update();
-        if (updateResult.IsError)
+        var insertResult = sqlQuery.Insert();
+        if (insertResult.IsError)
         {
-            MbcMessageBox.Error("Failed to create invoice:" + updateResult.Errors[0].ErrorMessage);
+            MbcMessageBox.Error("Failed to create invoice:" + insertResult.Errors[0].ErrorMessage);
             return;
         }
         sqlQuery.ClearParameters();
         sqlQuery.CommandText(@"Insert INTO MerInvDetail (Schcode,Invno,Descr,Amount,Discpercent,Quantity,UnitPrice) Values(@Schcode,@Invno,@Descr,@Amount,@Discpercent,@Quantity,@UnitPrice)");
-        var updateDetailResult = new ApiProcessingResult<int>();
+        //var updateDetailResult = new ApiProcessingResult<int>();
             
         if (lblCoverPricetotal.ConvertToDecimal() > 0)
         {
@@ -1356,10 +1355,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice",DBNull.Value);
-                updateDetailResult=sqlQuery.Update();
-            if (updateDetailResult.IsError)
+             var  insertDetailResult=sqlQuery.Insert();
+            if (insertDetailResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertDetailResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1373,10 +1372,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", hallpqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (hallppriceTextBox.ConvertToDecimal()/ hallpqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+            insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
 
@@ -1391,10 +1390,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", bmarkqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (bmarkprcTextBox.ConvertToDecimal() / bmarkqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
 
@@ -1409,10 +1408,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", vpaqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (vpprcTextBox.ConvertToDecimal() / vpaqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1428,10 +1427,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", vpbqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (vpbprcTextBox.ConvertToDecimal() / vpbqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1447,10 +1446,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", idpouchqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (idpouchprcTextBox.ConvertToDecimal() / idpouchqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1466,10 +1465,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", stttitpgqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (stdttitpgprcTextBox.ConvertToDecimal() / stttitpgqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1485,10 +1484,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", duraglzqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (duraglzprcTextBox.ConvertToDecimal() / duraglzqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1504,10 +1503,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", duraglzqtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (duraglzprcTextBox.ConvertToDecimal() / duraglzqtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1523,10 +1522,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", characterResourceQtyTextBox.Text);
             sqlQuery.AddParameter("@UnitPrice", (characterResourceAmtTextBox.ConvertToDecimal() / characterResourceQtyTextBox.ConvertToInt()));
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
 
         }
@@ -1540,10 +1539,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------
@@ -1557,10 +1556,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------------
@@ -1574,10 +1573,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------------
@@ -1591,10 +1590,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------------
@@ -1608,10 +1607,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------------
@@ -1625,10 +1624,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         //---------------------------------------------------------------
@@ -1642,10 +1641,10 @@ private void UpdateProdutnCopies()
             sqlQuery.AddParameter("@Discpercent", DBNull.Value);
             sqlQuery.AddParameter("@Quantity", DBNull.Value);
             sqlQuery.AddParameter("@UnitPrice", DBNull.Value);
-            updateDetailResult = sqlQuery.Update();
-            if (updateDetailResult.IsError)
+                insertResult = sqlQuery.Insert();
+            if (insertResult.IsError)
             {
-                MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
+                MbcMessageBox.Error("Failed to insert invoice detail record:" + insertResult.Errors[0].ErrorMessage);
             }
         }
         sqlQuery.ClearParameters();
@@ -1657,6 +1656,7 @@ private void UpdateProdutnCopies()
         {
             MbcMessageBox.Error("Failed to set meridian sale as invoiced:" + invoicedResult.Errors[0].ErrorMessage);
         }
+            CalculatePayments(Invno.ToString());
         Fill();
 
     }
@@ -1787,6 +1787,7 @@ try
     }
     coversTableAdapter.Fill(dsMSales.covers, Invno);
     merinvoiceTableAdapter.Fill(dsMInvoice.merinvoice, Invno);
+                 
     merinvdetailTableAdapter.Fill(dsMInvoice.merinvdetail, Invno);
     xtraTableAdapter.Fill(dsExtra.xtra, Invno);
     SetCodeInvno();
@@ -2117,39 +2118,101 @@ retval = false; ;
 
 return retval;
 }
-private decimal GetTax(decimal vAmount)
+private async Task<TaxRequestReturn> GetTax()
 {
-try
-{
-var vschname = ((DataRowView)mquotesBindingSource.Current).Row["schname"].ToString().Trim();
-var vaddress = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr"].ToString().Trim();
-var vaddress2 = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr2"].ToString().Trim();
-var vcity = ((DataRowView)mquotesBindingSource.Current).Row["InvCity"].ToString().Trim();
-var vState = ((DataRowView)mquotesBindingSource.Current).Row["InvState"].ToString().Trim();
-var vzipCode = ((DataRowView)mquotesBindingSource.Current).Row["InvZip"].ToString().Trim();
-var vTaxingInfo = new AvaSalesTaxingInfo()
-{
-    CompanyName = vschname,
-    Address = vaddress,
-    Address2 = vaddress2,
-    City = vcity,
-    State = vState,
-    ZipCode = vzipCode,
-    TaxableAmount = vAmount
-};
 
-var totalTaxCharged = TaxService.CaclulateTax(vTaxingInfo);
-    lblTaxRate.Text = (totalTaxCharged / vAmount).ToString("0.0000");
-    lblTax.Text = totalTaxCharged.ToString("0.00");
+        if (doNotChargeTaxCheckBox.Checked)
+        {
+            this.TaxRate = 0;
+            this.SalesTax = 0;
+            lblTax.Text = this.SalesTax.ToString("0.000");
+            lblTaxRate.Text = TaxRate.ToString("0.000");
+            CalculateOptions();
+            btnGetTax.BackColor = Control.DefaultBackColor;
+            return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+        }
+            var sale = mquotesBindingSource.Current as DataRowView;
+            this.SchoolZipCode = sale.Row["InvZip"].ToString(); ;
+        if (this.SchoolZipCode == null)
+        {
+            return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+        }
 
-    return totalTaxCharged;
-}
-catch
-{
-return 0;
-}
-}
-#endregion
+        var lproducts = new List<LineItemData>();
+       
+       
+
+        var model = new TaxRequest();
+        decimal vSubTotal = 0;
+        var tservice = new VertexService();
+        try
+        {
+            if (sale == null)
+            {
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+            var test = (decimal)sale.Row["FinalSubTot"];
+            if ( test==0)
+            {
+                    this.TaxRate = 0;
+                    this.SalesTax = 0;
+                    lblTax.Text = this.SalesTax.ToString("0.000");
+                    lblTaxRate.Text = TaxRate.ToString("0.000");
+                    return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+            vSubTotal = (decimal)sale.Row["FinalSubTot"];
+
+            lproducts.Add(new LineItemData() { ProductClass = "PRINT", Quantity = 1, UnitPrice = vSubTotal });
+
+
+            model.OracleCode = sale.Row["oraclecode"].ToString();
+            model.StreetAddress1 = sale.Row["InvAddr"].ToString();
+            model.StreetAddress2 = sale.Row["InvAddr2"].ToString();
+            model.City = sale.Row["InvCity"].ToString();
+            model.MainDivision = sale.Row["InvState"].ToString();
+            model.SubDivision = null;
+            model.PostalCode = this.SchoolZipCode;
+            model.Country = "US";
+            model.ListItems = lproducts;
+                }
+            catch (Exception ex)
+        {
+
+            MbcMessageBox.Error(ex.Message, "Error");
+            this.TaxRate = 0;
+            this.SalesTax = 0;
+            lblTax.Text = this.SalesTax.ToString("0.000");
+            lblTaxRate.Text = TaxRate.ToString("0.000");
+            CalculateOptions();
+
+             return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+        }
+
+        var result = await tservice.GetTaxAmount(model);
+        if (result.IsError)
+        {
+            MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+            this.TaxRate = 0;
+            this.SalesTax = 0;
+                lblTax.Text = this.SalesTax.ToString("0.000");
+                lblTaxRate.Text = TaxRate.ToString("0.000");
+                CalculateOptions(); 
+
+            return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+        }
+            this.SalesTax = result.Data;
+            this.TaxRate = this.SalesTax / vSubTotal;
+            lblTax.Text = this.SalesTax.ToString("0.000");
+            lblTaxRate.Text = TaxRate.ToString("0.000");
+            CalculateOptions();          
+            btnGetTax.BackColor = Control.DefaultBackColor;
+
+        //returns if something else needs data
+        return new TaxRequestReturn() { TaxAmount = this.SalesTax, TaxRate = this.TaxRate };
+
+    }
+    
+    #endregion
 private void collectionsCheckBox_CheckedChanged(object sender, System.EventArgs e)
 {
     SetNoticeLabels();
@@ -2322,7 +2385,8 @@ private void disc3CheckBox_Click(object sender, EventArgs e)
 }
 private void doNotChargeTaxCheckBox_Click(object sender, EventArgs e)
 {
-CalculateOptions();
+   GetTax();
+   CalculateOptions();
 }
 private void dp1TextBox_Validating(object sender, CancelEventArgs e)
 {
@@ -2785,71 +2849,8 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             }
 
         }
-        private void CalculateXtraInvoice()
-        {
-
-            DataRowView current = (DataRowView)mquotesBindingSource.Current;
-
-            lblBookPrice.Text = extrbkprcTextBox1.Text;
-            //lblInvoiceTaxRate.Text = vTaxRate.ToString("0.000");
-            decimal vBookPrice = 0;
-            decimal vBookSubtotal = 0;
-            decimal vTaxTotal = 0;
-            decimal vShipping = 0;
-            int quantity = 0;
-
-            decimal.TryParse(lblBookPrice.Text, out vBookPrice);
-
-            decimal.TryParse(txtShippingCharges.Text, out vShipping);
-            int.TryParse(txtQuantity.Text, out quantity);
-            lblBookTotalValue.Text = (quantity * vBookPrice).ToString();
-            decimal.TryParse(lblBookTotalValue.Text, out vBookSubtotal);
-            if (!doNotChargeTaxCheckBox.Checked)
-            {
-                vTaxTotal = GetTax(vBookSubtotal);
-            }
-            else
-            {
-                vTaxTotal = 0;
-            }
-
-
-            try
-            {
-
-                lblInvoiceTaxRate.Text = Math.Round((vTaxTotal / vBookSubtotal), 3).ToString();
-
-            }
-            catch { };
-            lblTaxTotal.Text = vTaxTotal.ToString("0.00");
-            lblInvoiceTotal.Text = ((quantity * vBookPrice) + vTaxTotal + vShipping).ToString("0.00");
-        }
-        private void CleanUpExtraInvoiceScreen()
-        {
-            //adjust inventory
-            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
-            string cmdText = @"Update Xtra Set exonhand=exonhand-@extrbkshpd,extrbkshpd=extrbkshpd+@extrbkshpd where Invno=@Invno";
-            sqlquery.CommandText(cmdText);
-            sqlquery.AddParameter("@Invno", Invno);
-
-            sqlquery.AddParameter("@extrbkshpd", txtQuantity.Text);
-            var result = sqlquery.Update();
-            if (result.IsError)
-            {
-                MbcMessageBox.Error("Failed to update inventory.", "");
-            }
-
-            lblBookPrice.Text = "0.00";
-            lblInvoiceTaxRate.Text = "0.00";
-            txtQuantity.Text = "0";
-            lblBookTotalValue.Text = "0.00";
-
-            lblTaxTotal.Text = "0.00";
-            lblInvoiceTotal.Text = "0.00";
-            pnlInvoice.Visible = false;
-            xtraTableAdapter.Fill(dsExtra.xtra, Invno);
-
-        }
+        
+       
         private void extrabooksTextBox_Leave(object sender, EventArgs e)
         {
             CalculateXtra();
@@ -2865,214 +2866,6 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
             CalculateXtra();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var xtraInvoiceNumber = GetNewInvno();
-            lblXtraInvoiceNo.Text = xtraInvoiceNumber.ToString();
-
-            pnlInvoice.Visible = true;
-
-            CalculateXtraInvoice();
-        }
-
-        private void btnCancelXtraInvoice_Click(object sender, EventArgs e)
-        {
-            lblBookPrice.Text = "0.00";
-            lblInvoiceTaxRate.Text = "0.00";
-            txtQuantity.Text = "0";
-            lblBookTotalValue.Text = "0.00";
-
-            lblTaxTotal.Text = "0.00";
-            lblInvoiceTotal.Text = "0.00";
-            pnlInvoice.Visible = false;
-        }
-
-        private void btnApplyInvoice_Click(object sender, EventArgs e)
-        {
-            if (txtQuantity.Text == "" || txtQuantity.Text == "0")
-            {
-                errorProvider1.SetError(txtQuantity, "Quantity required");
-                return;
-            }
-            errorProvider1.SetError(txtQuantity, "");
-            int vInvoiceQty = 0;
-            int vInventoryQty = 0;
-            int.TryParse(txtQuantity.Text, out vInvoiceQty);
-            int.TryParse(lblOnHand.Text, out vInventoryQty);
-            if (vInventoryQty == 0)
-            {
-                errorProvider1.SetError(txtQuantity, "There is no inventory to invoice.");
-                return;
-            }
-
-            if (vInvoiceQty > vInventoryQty)
-            {
-                errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
-
-                return;
-
-            }
-
-
-            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
-
-            try
-            {
-                string cmdText = @"INSERT INTO merinvoice (schname,contryear,qtedate,schcode,QtyTotal,FplnPrc,Invtot,Subtotal,shphandling,FplnTot,salestax,invname,InvAddr
-		                            ,InvAddr2,InvCity,InvState,InvZip,contfname,contlname,baldue,contryear,shpname,shpaddr,shpaddr2,shpcity,shpstate,shpzip,DateCreated
-		                            ,DateModified,ModifiedBy,InvNotes,invno)
-                    VALUES(@schname,@contryear,@qtedate,@schcode,@QtyTotal,@FplnPrc,@Invtot,@Subtotal,@shphandling,@FplnTot,@salestax,@invname,@InvAddr
-		                            ,@InvAddr2,@InvCity,@InvState,@InvZip,@contfname,@contlname,@baldue,@contryear,@shpname,@shpaddr,@shpaddr2,@shpcity,@shpstate,@shpzip,@DateCreated
-		                            ,@DateModified,@ModifiedBy,@InvNotes,@invno)";
-                sqlquery.CommandText(cmdText);
-                sqlquery.AddParameter("@Schname", ((DataRowView)this.mquotesBindingSource.Current).Row["InvName"].ToString().Trim());
-                sqlquery.AddParameter("@contryear", lblinvoiceYear.Text);
-                sqlquery.AddParameter("@qtedate", DateTime.Now);
-                sqlquery.AddParameter("@schcode", this.Schcode);
-                sqlquery.AddParameter("@QtyTotal", txtQuantity.Text.Trim());
-                sqlquery.AddParameter("@FplnPrc", lblBookPrice.Text);
-                sqlquery.AddParameter("@Invtot", lblInvoiceTotal.Text);
-                sqlquery.AddParameter("@Subtotal", lblBookTotalValue.Text);
-                sqlquery.AddParameter("@shphandling", txtShippingCharges);
-                sqlquery.AddParameter("@FplnTot", 2);
-                sqlquery.AddParameter("@salestax", lblTaxTotal.Text);
-                sqlquery.AddParameter("@invname", ((DataRowView)this.mquotesBindingSource.Current).Row["invname"].ToString().Trim());
-                sqlquery.AddParameter("@InvAddr", ((DataRowView)this.mquotesBindingSource.Current).Row["invaddr"].ToString().Trim());
-                sqlquery.AddParameter("@InvAddr2", ((DataRowView)this.mquotesBindingSource.Current).Row["invaddr2"].ToString().Trim());
-                sqlquery.AddParameter("@InvCity", ((DataRowView)this.mquotesBindingSource.Current).Row["invcity"].ToString().Trim());
-                sqlquery.AddParameter("@InvState", ((DataRowView)this.mquotesBindingSource.Current).Row["invstate"].ToString().Trim());
-                sqlquery.AddParameter("@InvZip", ((DataRowView)this.mquotesBindingSource.Current).Row["invzip"].ToString().Trim());
-                sqlquery.AddParameter("@contfname", ((DataRowView)this.mquotesBindingSource.Current).Row["contfname"].ToString().Trim());
-                sqlquery.AddParameter("@contlname", ((DataRowView)this.mquotesBindingSource.Current).Row["contlname"].ToString().Trim());
-                sqlquery.AddParameter("@baldue", lblInvoiceTotal.Text);
-                sqlquery.AddParameter("@contryear", lblinvoiceYear.Text);
-                sqlquery.AddParameter("@shpname", ((DataRowView)this.mquotesBindingSource.Current).Row["shpname"].ToString().Trim());
-                sqlquery.AddParameter("@shpaddr", ((DataRowView)this.mquotesBindingSource.Current).Row["shpaddr"].ToString().Trim());
-                sqlquery.AddParameter("@shpaddr2", ((DataRowView)this.mquotesBindingSource.Current).Row["shpaddr2"].ToString().Trim());
-                sqlquery.AddParameter("@shpcity", ((DataRowView)this.mquotesBindingSource.Current).Row["shpcity"].ToString().Trim());
-                sqlquery.AddParameter("@shpzip", ((DataRowView)this.mquotesBindingSource.Current).Row["shpzip"].ToString().Trim());
-                sqlquery.AddParameter("@InvNotes", ((DataRowView)this.mquotesBindingSource.Current).Row["invnotes"].ToString().Trim());
-                sqlquery.AddParameter("@invno", Invno);
-                sqlquery.AddParameter("@ModifiedBy", ApplicationUser.id);
-
-                //var vBookTotal = lblBookTotalValue.ConvertToDecimal();
-                //var vShipping = txtShippingCharges.ConvertToDecimal();
-
-                var result = sqlquery.Insert();
-                if (result.IsError)
-                {
-                    MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-
-                MessageBox.Show("Invoice has been created.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                sqlquery.ClearParameters();
-                sqlquery.CommandText("Insert Into Sales_ExtraInvoice (SalesInvoice,XtraInvoice) Values(@SalesInvoice,@XtraInvoice)");
-                sqlquery.AddParameter("@SalesInvoice", this.Invno);
-                sqlquery.AddParameter("@XtraInvoice", lblXtraInvoiceNo.Text);
-                var result1 = sqlquery.Insert();
-                if (result.IsError)
-                {
-
-                    MessageBox.Show("There was an error creating a table link, please notify IT immediately.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
-                //add base alway true
-                string baseDescrip;
-                //    if (chkAllClr.Checked)
-                //    {
-                //        baseDescrip = "(Extra Book Sale) All color book with " + txtNoPages.Text + " Pages and " + txtNocopies.Text + " Copies";
-                //    }
-                //    else
-                //    {
-                //        baseDescrip = "(Extra Book Sale) Black and White book with " + txtNoPages.Text + " Pages and " + txtNocopies.Text + " Copies";
-                //    }
-
-                //    sqlquery.ClearParameters();
-                //    sqlquery.CommandText(@"INSERT INTO InvDetail (schcode,invno,descr,price,DateCreated,DateModified, ModifiedBy) 
-                //                           Values(@schcode,@invno,@descr,@price,GetDate(),GetDate(),@ModifiedBy)");
-                //    sqlquery.AddParameter("@schcode", this.Schcode);
-                //    sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
-                //    sqlquery.AddParameter("@descr", baseDescrip);
-                //    sqlquery.AddParameter("@price", Convert.ToDecimal(lblBookTotalValue.Text.Replace("$", "")));
-
-                //    sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);
-                //    var detailResult = sqlquery.Insert();
-                //    if (detailResult.IsError) { MbcMessageBox.Error("Failed to insert invoice detail record. Contact IT.", ""); }
-
-
-                //    if (!string.IsNullOrEmpty(txtShippingCharges.Text))
-                //    {
-
-                //        decimal price = 0;
-                //        if (decimal.TryParse(txtShippingCharges.Text.Replace("$", ""), out price))
-                //        {
-
-
-                //            sqlquery.ClearParameters();
-
-                //            sqlquery.AddParameter("@schcode", this.Schcode);
-                //            sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
-                //            sqlquery.AddParameter("@descr", "Shipping");
-                //            sqlquery.AddParameter("@price", price);
-
-                //            sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);
-                //            var detailResult1 = sqlquery.Insert();
-                //            if (detailResult1.IsError) { MbcMessageBox.Error("Failed to insert invoice detail record. Contact IT.", ""); }
-                //        }
-                //    }
-                //    CalculatePayments(lblXtraInvoiceNo.Text);
-
-            }
-            catch (Exception ex)
-            {
-                
-
-                MessageBox.Show("There was an error creating the invoice.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-            }
-            finally { }
-            //int qtyshipped = 0;
-            //int currentQtyOnHand = 0;
-            //int.TryParse(txtQuantity.Text, out qtyshipped);
-            //int.TryParse(lblOnHand.Text, out currentQtyOnHand);
-            //extrbkshpdTextBox.Text = (currentQtyOnHand - qtyshipped).ToString();
-            //CleanUpExtraInvoiceScreen();
-            //tabSales_Selecting(sender, null);
-        }
-            
-
-        private void txtQuantity_Leave(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(txtQuantity, "");
-            int vInvoiceQty = 0;
-            int vInventoryQty = 0;
-            int.TryParse(txtQuantity.Text, out vInvoiceQty);
-            int.TryParse(lblOnHand.Text, out vInventoryQty);
-            if (vInventoryQty == 0)
-            {
-                errorProvider1.SetError(txtQuantity, "There is no inventory to invoice.");
-
-            }
-
-            if (vInvoiceQty > vInventoryQty)
-            {
-                errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
-
-
-
-            }
-
-            CalculateXtraInvoice();
-        }
-
-        private void txtShippingCharges_Leave(object sender, EventArgs e)
-        {
-            CalculateXtraInvoice();
-        }
 
         private void btnAddExtra_Click(object sender, EventArgs e)
         {
@@ -3141,29 +2934,12 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
                     MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
                     return;
                 }
+                try { xtraTableAdapter.Fill(dsExtra.xtra, Invno); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+                this.EnableAllControls(salesTabControl.SelectedTab);
 
             }
         }
-        private void GetXtraInvoices()
-        {
-            var sqlquery = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
-            var cmdtext = @"Select X.Invno AS SalesInvno, I.Invno AS XtraInvno,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
-                                    Left Join Sales_ExtraInvoice SX ON X.Invno=SX.SalesInvoice
-                                     Left Join Invoice I ON SX.XtraInvoice=I.Invno 
-                                        Where SX.SalesInvoice=@Invno Order By I.qtedate desc";
-            sqlquery.CommandText(cmdtext);
-            sqlquery.AddParameter("@Invno", Invno);
-            var xtraResult = sqlquery.SelectMany<XtraInvoiceGrid>();
-            if (xtraResult.IsError)
-            {
-                MbcMessageBox.Information("Failed to get Xtra Invoices", "");
-                return;
-            }
-            var vXtra = (List<XtraInvoiceGrid>)xtraResult.Data;
-            this.XrtaInvoicesGridData = vXtra;
-            XtraInvoiceBindingSource.DataSource = this.XrtaInvoicesGridData;
-            grdXtraInvoice.DataSource = XtraInvoiceBindingSource;
-        }
+       
         private void salesTabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (this.salesTabControl.SelectedIndex == 4)
@@ -3173,11 +2949,27 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
                     this.DisableControls(salesTabControl.SelectedTab);
                     this.EnableControls(btnAddExtra);
                 }
-                else
-                {
-                    GetXtraInvoices();
-                }
+               
             }
+        }
+
+        private void btnPrintXInvoice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGetTax_Click(object sender, EventArgs e)
+        {
+            GetTax();
+        }
+
+        private void lblTotBeforeTax_TextChanged(object sender, EventArgs e)
+        {
+            if (Loaded)
+            {
+                btnGetTax.BackColor = Color.Red;
+            }
+            
         }
 
 

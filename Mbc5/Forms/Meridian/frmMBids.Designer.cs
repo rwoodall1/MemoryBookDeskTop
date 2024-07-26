@@ -1973,9 +1973,13 @@
             this.tableAdapterManager1.contpstnTableAdapter = null;
             this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager1.lkpCoverStockTableAdapter = null;
             this.tableAdapterManager1.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager1.lkpDiscountTableAdapter = null;
+            this.tableAdapterManager1.lkpJosNameTableAdapter = null;
             this.tableAdapterManager1.lkpLeadNameTableAdapter = null;
             this.tableAdapterManager1.lkpLeadSourceTableAdapter = null;
+            this.tableAdapterManager1.lkpMascotTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager1.lkpMultiYearOptionsTableAdapter = null;
             this.tableAdapterManager1.lkpNoRebookTableAdapter = null;
@@ -1986,6 +1990,7 @@
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.lkTypeDataTableAdapter = null;
             this.tableAdapterManager1.MeridianProductsTableAdapter = this.meridianProductsTableAdapter;
+            this.tableAdapterManager1.RemakeReasonsTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // idLabel1
@@ -2028,6 +2033,7 @@
             // frmMBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1161, 611);
             this.Controls.Add(this.orderDateDateBox);
             this.Controls.Add(this.idLabel1);

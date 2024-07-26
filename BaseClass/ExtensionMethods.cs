@@ -62,13 +62,14 @@ namespace BaseClass
         }
         public static decimal ConvertToDecimal(this Label ctrl)
         {
-            ctrl.Text.Replace("$", "").Replace(",", "");
+           string newVal = "0";
+             newVal=ctrl.Text.Replace("$", "").Replace(",", "");
             decimal retval = 0;
-            if (ctrl.Text.Trim() == "")
+            if (newVal == "")
             {
-                ctrl.Text = "0";
+                newVal = "0";
             }
-            decimal.TryParse(ctrl.Text, out retval);
+            decimal.TryParse(newVal, out retval);
             return retval;
         }
         public static int ConvertToInt(this Label ctrl)

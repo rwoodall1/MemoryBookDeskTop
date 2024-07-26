@@ -365,8 +365,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnponum;
             
-            private global::System.Data.DataColumn columninvtot;
-            
             private global::System.Data.DataColumn columnpayments;
             
             private global::System.Data.DataColumn columnbaldue;
@@ -442,6 +440,14 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnStudentTotalBasePrice;
             
             private global::System.Data.DataColumn columnInvNotes;
+            
+            private global::System.Data.DataColumn columnnopages1;
+            
+            private global::System.Data.DataColumn columnQtyTotal1;
+            
+            private global::System.Data.DataColumn columnInvtot;
+            
+            private global::System.Data.DataColumn columninvno1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -537,14 +543,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn ponumColumn {
                 get {
                     return this.columnponum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn invtotColumn {
-                get {
-                    return this.columninvtot;
                 }
             }
             
@@ -854,6 +852,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nopages1Column {
+                get {
+                    return this.columnnopages1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QtyTotal1Column {
+                get {
+                    return this.columnQtyTotal1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InvtotColumn {
+                get {
+                    return this.columnInvtot;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn invno1Column {
+                get {
+                    return this.columninvno1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -898,7 +928,6 @@ namespace Mbc5.DataSets {
                         decimal FplnPrc, 
                         string source, 
                         string ponum, 
-                        decimal invtot, 
                         decimal payments, 
                         decimal baldue, 
                         string contfname, 
@@ -936,7 +965,11 @@ namespace Mbc5.DataSets {
                         decimal TeacherBaseTotal, 
                         decimal shphandling, 
                         decimal StudentTotalBasePrice, 
-                        string InvNotes) {
+                        string InvNotes, 
+                        int nopages1, 
+                        int QtyTotal1, 
+                        decimal Invtot, 
+                        int invno1) {
                 merinvoiceRow rowmerinvoiceRow = ((merinvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -947,7 +980,6 @@ namespace Mbc5.DataSets {
                         FplnPrc,
                         source,
                         ponum,
-                        invtot,
                         payments,
                         baldue,
                         contfname,
@@ -985,7 +1017,11 @@ namespace Mbc5.DataSets {
                         TeacherBaseTotal,
                         shphandling,
                         StudentTotalBasePrice,
-                        InvNotes};
+                        InvNotes,
+                        nopages1,
+                        QtyTotal1,
+                        Invtot,
+                        invno1};
                 rowmerinvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmerinvoiceRow);
                 return rowmerinvoiceRow;
@@ -1016,7 +1052,6 @@ namespace Mbc5.DataSets {
                 this.columnFplnPrc = base.Columns["FplnPrc"];
                 this.columnsource = base.Columns["source"];
                 this.columnponum = base.Columns["ponum"];
-                this.columninvtot = base.Columns["invtot"];
                 this.columnpayments = base.Columns["payments"];
                 this.columnbaldue = base.Columns["baldue"];
                 this.columncontfname = base.Columns["contfname"];
@@ -1055,6 +1090,10 @@ namespace Mbc5.DataSets {
                 this.columnshphandling = base.Columns["shphandling"];
                 this.columnStudentTotalBasePrice = base.Columns["StudentTotalBasePrice"];
                 this.columnInvNotes = base.Columns["InvNotes"];
+                this.columnnopages1 = base.Columns["nopages1"];
+                this.columnQtyTotal1 = base.Columns["QtyTotal1"];
+                this.columnInvtot = base.Columns["Invtot"];
+                this.columninvno1 = base.Columns["invno1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1076,8 +1115,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnsource);
                 this.columnponum = new global::System.Data.DataColumn("ponum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnponum);
-                this.columninvtot = new global::System.Data.DataColumn("invtot", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvtot);
                 this.columnpayments = new global::System.Data.DataColumn("payments", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpayments);
                 this.columnbaldue = new global::System.Data.DataColumn("baldue", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1154,6 +1191,14 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnStudentTotalBasePrice);
                 this.columnInvNotes = new global::System.Data.DataColumn("InvNotes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvNotes);
+                this.columnnopages1 = new global::System.Data.DataColumn("nopages1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnopages1);
+                this.columnQtyTotal1 = new global::System.Data.DataColumn("QtyTotal1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyTotal1);
+                this.columnInvtot = new global::System.Data.DataColumn("Invtot", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvtot);
+                this.columninvno1 = new global::System.Data.DataColumn("invno1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninvno1);
                 this.columnschcode.MaxLength = 6;
                 this.columnsource.MaxLength = 2;
                 this.columnponum.MaxLength = 25;
@@ -1180,6 +1225,9 @@ namespace Mbc5.DataSets {
                 this.columnprodcode.MaxLength = 6;
                 this.columnModifiedBy.MaxLength = 128;
                 this.columnInvNotes.MaxLength = 2147483647;
+                this.columnnopages1.Caption = "nopages";
+                this.columnQtyTotal1.Caption = "QtyTotal";
+                this.columninvno1.Caption = "invno";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2388,22 +2436,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal invtot {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablemerinvoice.invtotColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invtot\' in table \'merinvoice\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemerinvoice.invtotColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal payments {
                 get {
                     try {
@@ -3007,6 +3039,70 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int nopages1 {
+                get {
+                    try {
+                        return ((int)(this[this.tablemerinvoice.nopages1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nopages1\' in table \'merinvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemerinvoice.nopages1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int QtyTotal1 {
+                get {
+                    try {
+                        return ((int)(this[this.tablemerinvoice.QtyTotal1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyTotal1\' in table \'merinvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemerinvoice.QtyTotal1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Invtot {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablemerinvoice.InvtotColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Invtot\' in table \'merinvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemerinvoice.InvtotColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int invno1 {
+                get {
+                    try {
+                        return ((int)(this[this.tablemerinvoice.invno1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'invno1\' in table \'merinvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemerinvoice.invno1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablemerinvoice.schcodeColumn);
             }
@@ -3099,18 +3195,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetponumNull() {
                 this[this.tablemerinvoice.ponumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsinvtotNull() {
-                return this.IsNull(this.tablemerinvoice.invtotColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetinvtotNull() {
-                this[this.tablemerinvoice.invtotColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3555,6 +3639,54 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetInvNotesNull() {
                 this[this.tablemerinvoice.InvNotesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isnopages1Null() {
+                return this.IsNull(this.tablemerinvoice.nopages1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setnopages1Null() {
+                this[this.tablemerinvoice.nopages1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQtyTotal1Null() {
+                return this.IsNull(this.tablemerinvoice.QtyTotal1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQtyTotal1Null() {
+                this[this.tablemerinvoice.QtyTotal1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInvtotNull() {
+                return this.IsNull(this.tablemerinvoice.InvtotColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInvtotNull() {
+                this[this.tablemerinvoice.InvtotColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isinvno1Null() {
+                return this.IsNull(this.tablemerinvoice.invno1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setinvno1Null() {
+                this[this.tablemerinvoice.invno1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -4475,14 +4607,10 @@ namespace Mbc5.DataSets.dsMInvoiceTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "merinvoice";
             tableMapping.ColumnMappings.Add("schcode", "schcode");
-            tableMapping.ColumnMappings.Add("invno", "invno");
             tableMapping.ColumnMappings.Add("qtedate", "qtedate");
-            tableMapping.ColumnMappings.Add("nopages", "nopages");
-            tableMapping.ColumnMappings.Add("QtyTotal", "QtyTotal");
             tableMapping.ColumnMappings.Add("FplnPrc", "FplnPrc");
             tableMapping.ColumnMappings.Add("source", "source");
             tableMapping.ColumnMappings.Add("ponum", "ponum");
-            tableMapping.ColumnMappings.Add("invtot", "invtot");
             tableMapping.ColumnMappings.Add("payments", "payments");
             tableMapping.ColumnMappings.Add("baldue", "baldue");
             tableMapping.ColumnMappings.Add("contfname", "contfname");
@@ -4521,6 +4649,10 @@ namespace Mbc5.DataSets.dsMInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("shphandling", "shphandling");
             tableMapping.ColumnMappings.Add("StudentTotalBasePrice", "StudentTotalBasePrice");
             tableMapping.ColumnMappings.Add("InvNotes", "InvNotes");
+            tableMapping.ColumnMappings.Add("nopages", "nopages1");
+            tableMapping.ColumnMappings.Add("QtyTotal", "QtyTotal1");
+            tableMapping.ColumnMappings.Add("Invtot", "Invtot");
+            tableMapping.ColumnMappings.Add("invno", "invno1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4537,23 +4669,23 @@ namespace Mbc5.DataSets.dsMInvoiceTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        schcode, invno, qtedate, nopages, QtyTotal, FplnPrc, source, ponum, invtot, payments, baldue, contfname, contlname, schname, InvAddr, InvAddr2, InvCity, InvState, InvZip, contryear, poamt, baseprc, basetot, formattype, 
-                         invaddnote, invname, shpdate, qtystudent, schtype, qtyteacher, generic, TeBasePrc, shpname, shpaddr, shpaddr2, shpcity, shpstate, shpzip, prodcode, salestax, ModifiedBy, FplnTot, Subtotal, TeacherBaseTotal, shphandling, 
-                         StudentTotalBasePrice, InvNotes
+            this._commandCollection[0].CommandText = @"SELECT        schcode, qtedate, nopages, QtyTotal, FplnPrc, source, ponum, Invtot, payments, baldue, contfname, contlname, schname, InvAddr, InvAddr2, InvCity, InvState, InvZip, contryear, poamt, baseprc, basetot, formattype, invaddnote, 
+                         invname, shpdate, qtystudent, schtype, qtyteacher, generic, TeBasePrc, shpname, shpaddr, shpaddr2, shpcity, shpstate, shpzip, prodcode, salestax, ModifiedBy, FplnTot, Subtotal, TeacherBaseTotal, shphandling, 
+                         StudentTotalBasePrice, InvNotes, invno
 FROM            merinvoice
 WHERE        (invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsMInvoice.merinvoiceDataTable dataTable, global::System.Nullable<decimal> Invno) {
+        public virtual int Fill(dsMInvoice.merinvoiceDataTable dataTable, global::System.Nullable<int> Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Invno.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(Invno.Value));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -4569,10 +4701,10 @@ WHERE        (invno = @Invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsMInvoice.merinvoiceDataTable GetData(global::System.Nullable<decimal> Invno) {
+        public virtual dsMInvoice.merinvoiceDataTable GetData(global::System.Nullable<int> Invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Invno.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(Invno.Value));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;

@@ -94,10 +94,10 @@
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label invnotesLabel;
             System.Windows.Forms.Label taxExemptRecvdLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label vendNoLabel;
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
@@ -124,6 +124,13 @@
             this.btnProdTkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.vendNoTextBox = new System.Windows.Forms.TextBox();
+            this.csInvoiceCheckBox = new System.Windows.Forms.CheckBox();
+            this.poForPayCheckBox = new System.Windows.Forms.CheckBox();
+            this.poReqCheckBox = new System.Windows.Forms.CheckBox();
+            this.proofOfPagesCheckBox = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dedayin = new System.Windows.Forms.Label();
             this.xeldateDateBox = new CustomControls.DateBox();
             this.sourdateDateBox = new CustomControls.DateBox();
             this.contdateDateBox = new CustomControls.DateBox();
@@ -236,13 +243,6 @@
             this.lkpMultiYearOptionsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMultiYearOptionsTableAdapter();
             this.lkpJosNameTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpJosNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpLeadSourceTableAdapter();
-            this.dedayin = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.proofOfPagesCheckBox = new System.Windows.Forms.CheckBox();
-            this.poReqCheckBox = new System.Windows.Forms.CheckBox();
-            this.poForPayCheckBox = new System.Windows.Forms.CheckBox();
-            this.csInvoiceCheckBox = new System.Windows.Forms.CheckBox();
-            this.vendNoTextBox = new System.Windows.Forms.TextBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -1007,6 +1007,15 @@
             taxExemptRecvdLabel.TabIndex = 44;
             taxExemptRecvdLabel.Text = "Tax Exempt Recvd";
             // 
+            // vendNoLabel
+            // 
+            vendNoLabel.AutoSize = true;
+            vendNoLabel.Location = new System.Drawing.Point(325, 66);
+            vendNoLabel.Name = "vendNoLabel";
+            vendNoLabel.Size = new System.Drawing.Size(49, 13);
+            vendNoLabel.TabIndex = 434;
+            vendNoLabel.Text = "Vend No";
+            // 
             // MeridianProdutnTicketModelBindingSource
             // 
             this.MeridianProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.MeridianProdutnTicketModel);
@@ -1028,7 +1037,7 @@
             // pg1
             // 
             this.pg1.AutoScroll = true;
-            this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.BackColor = System.Drawing.Color.PaleGreen;
             this.pg1.Controls.Add(this.dtTaxExemptRecvd);
             this.pg1.Controls.Add(this.reportViewer1);
             this.pg1.Controls.Add(this.btnInterOfficeEmail);
@@ -1098,9 +1107,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource4.Name = "dsProdutn";
-            reportDataSource4.Value = this.prodTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "dsProdutn";
+            reportDataSource1.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1082, 489);
             this.reportViewer1.Name = "reportViewer1";
@@ -1159,14 +1168,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QBooktype,
@@ -1344,6 +1353,74 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1171, 145);
             this.panel2.TabIndex = 53;
+            // 
+            // vendNoTextBox
+            // 
+            this.vendNoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "VendNo", true));
+            this.vendNoTextBox.Location = new System.Drawing.Point(383, 63);
+            this.vendNoTextBox.Name = "vendNoTextBox";
+            this.vendNoTextBox.Size = new System.Drawing.Size(204, 20);
+            this.vendNoTextBox.TabIndex = 435;
+            // 
+            // csInvoiceCheckBox
+            // 
+            this.csInvoiceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "CsInvoice", true));
+            this.csInvoiceCheckBox.Location = new System.Drawing.Point(237, 105);
+            this.csInvoiceCheckBox.Name = "csInvoiceCheckBox";
+            this.csInvoiceCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.csInvoiceCheckBox.TabIndex = 434;
+            this.csInvoiceCheckBox.Text = "CS Invoice";
+            this.csInvoiceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // poForPayCheckBox
+            // 
+            this.poForPayCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoForPay", true));
+            this.poForPayCheckBox.Location = new System.Drawing.Point(374, 89);
+            this.poForPayCheckBox.Name = "poForPayCheckBox";
+            this.poForPayCheckBox.Size = new System.Drawing.Size(150, 24);
+            this.poForPayCheckBox.TabIndex = 433;
+            this.poForPayCheckBox.Text = "PO Required For Payment";
+            this.poForPayCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // poReqCheckBox
+            // 
+            this.poReqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoReq", true));
+            this.poReqCheckBox.Location = new System.Drawing.Point(374, 111);
+            this.poReqCheckBox.Name = "poReqCheckBox";
+            this.poReqCheckBox.Size = new System.Drawing.Size(145, 24);
+            this.poReqCheckBox.TabIndex = 432;
+            this.poReqCheckBox.Text = "PO Required Before Shipping";
+            this.poReqCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // proofOfPagesCheckBox
+            // 
+            this.proofOfPagesCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "ProofOfPages", true));
+            this.proofOfPagesCheckBox.Location = new System.Drawing.Point(237, 86);
+            this.proofOfPagesCheckBox.Name = "proofOfPagesCheckBox";
+            this.proofOfPagesCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.proofOfPagesCheckBox.TabIndex = 431;
+            this.proofOfPagesCheckBox.Text = "Proof Of Pages";
+            this.proofOfPagesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayout", true));
+            this.label3.Location = new System.Drawing.Point(104, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 430;
+            this.label3.Text = "label3";
+            // 
+            // dedayin
+            // 
+            this.dedayin.AutoSize = true;
+            this.dedayin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayin", true));
+            this.dedayin.Location = new System.Drawing.Point(104, 86);
+            this.dedayin.Name = "dedayin";
+            this.dedayin.Size = new System.Drawing.Size(35, 13);
+            this.dedayin.TabIndex = 429;
+            this.dedayin.Text = "label3";
             // 
             // xeldateDateBox
             // 
@@ -1800,7 +1877,7 @@
             // 
             // pg3
             // 
-            this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.BackColor = System.Drawing.Color.PaleGreen;
             this.pg3.Controls.Add(this.button3);
             this.pg3.Controls.Add(this.contcityTextBox);
             this.pg3.Controls.Add(this.contaddr2TextBox1);
@@ -2214,7 +2291,7 @@
             // 
             // pg2
             // 
-            this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.BackColor = System.Drawing.Color.PaleGreen;
             this.pg2.Controls.Add(invnotesLabel);
             this.pg2.Controls.Add(this.invnotesTextBox);
             this.pg2.Controls.Add(this.txtShpZip);
@@ -2521,86 +2598,10 @@
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
             // 
-            // dedayin
-            // 
-            this.dedayin.AutoSize = true;
-            this.dedayin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayin", true));
-            this.dedayin.Location = new System.Drawing.Point(104, 86);
-            this.dedayin.Name = "dedayin";
-            this.dedayin.Size = new System.Drawing.Size(35, 13);
-            this.dedayin.TabIndex = 429;
-            this.dedayin.Text = "label3";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "dedayout", true));
-            this.label3.Location = new System.Drawing.Point(104, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 430;
-            this.label3.Text = "label3";
-            // 
-            // proofOfPagesCheckBox
-            // 
-            this.proofOfPagesCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "ProofOfPages", true));
-            this.proofOfPagesCheckBox.Location = new System.Drawing.Point(237, 86);
-            this.proofOfPagesCheckBox.Name = "proofOfPagesCheckBox";
-            this.proofOfPagesCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.proofOfPagesCheckBox.TabIndex = 431;
-            this.proofOfPagesCheckBox.Text = "Proof Of Pages";
-            this.proofOfPagesCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // poReqCheckBox
-            // 
-            this.poReqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoReq", true));
-            this.poReqCheckBox.Location = new System.Drawing.Point(374, 111);
-            this.poReqCheckBox.Name = "poReqCheckBox";
-            this.poReqCheckBox.Size = new System.Drawing.Size(145, 24);
-            this.poReqCheckBox.TabIndex = 432;
-            this.poReqCheckBox.Text = "PO Required Before Shipping";
-            this.poReqCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // poForPayCheckBox
-            // 
-            this.poForPayCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "PoForPay", true));
-            this.poForPayCheckBox.Location = new System.Drawing.Point(374, 89);
-            this.poForPayCheckBox.Name = "poForPayCheckBox";
-            this.poForPayCheckBox.Size = new System.Drawing.Size(150, 24);
-            this.poForPayCheckBox.TabIndex = 433;
-            this.poForPayCheckBox.Text = "PO Required For Payment";
-            this.poForPayCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // csInvoiceCheckBox
-            // 
-            this.csInvoiceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mcustBindingSource, "CsInvoice", true));
-            this.csInvoiceCheckBox.Location = new System.Drawing.Point(237, 105);
-            this.csInvoiceCheckBox.Name = "csInvoiceCheckBox";
-            this.csInvoiceCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.csInvoiceCheckBox.TabIndex = 434;
-            this.csInvoiceCheckBox.Text = "CS Invoice";
-            this.csInvoiceCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // vendNoLabel
-            // 
-            vendNoLabel.AutoSize = true;
-            vendNoLabel.Location = new System.Drawing.Point(325, 66);
-            vendNoLabel.Name = "vendNoLabel";
-            vendNoLabel.Size = new System.Drawing.Size(49, 13);
-            vendNoLabel.TabIndex = 434;
-            vendNoLabel.Text = "Vend No";
-            // 
-            // vendNoTextBox
-            // 
-            this.vendNoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "VendNo", true));
-            this.vendNoTextBox.Location = new System.Drawing.Point(383, 63);
-            this.vendNoTextBox.Name = "vendNoTextBox";
-            this.vendNoTextBox.Size = new System.Drawing.Size(204, 20);
-            this.vendNoTextBox.TabIndex = 435;
-            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1249, 735);
             this.Controls.Add(this.merCustTab);
             this.MaxNumForms = 3;

@@ -3592,7 +3592,6 @@ namespace Mbc5.DataSets {
                 this.columndesc4.MaxLength = 40;
                 this.columnclrpgdesc.MaxLength = 40;
                 this.columnbpyear.MaxLength = 2;
-                this.columndp1desc.MaxLength = 20;
                 this.columnfldtype.MaxLength = 12;
                 this.columncred_etc2.MaxLength = 40;
                 this.columndesc22.MaxLength = 40;
