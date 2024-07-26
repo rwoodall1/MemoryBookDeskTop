@@ -1566,9 +1566,10 @@ public override void Cancel() {
 					try {
                         sqlClient.AddParameter("@Invno", InvNum);
                         sqlClient.AddParameter("@Schcode", this.Schcode);
-                        sqlClient.AddParameter("@Contryear", contryearTextBox.Text);	
-                        sqlClient.AddParameter("@BookType", lblBookTypeVal.Text);
-						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear,Booktype)  VALUES (@Invno,@Schcode,@Contryear,@BookType)";
+                        sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+                        sqlClient.AddParameter("@BPyear", contryearTextBox.Text);
+                        sqlClient.AddParameter("@BookType", lblBookTypeVal.Text==""?"MBO": lblBookTypeVal.Text);
+						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear,BPYear,Booktype)  VALUES (@Invno,@Schcode,@Contryear,@BPyear,@BookType)";
                         sqlClient.CommandText(strQuery);
                         var insertResult = sqlClient.Insert();
 						if (insertResult.IsError) {
@@ -1582,6 +1583,7 @@ public override void Cancel() {
                         sqlClient.AddParameter("@Schcode", this.Schcode);
                         sqlClient.AddParameter("@ProdNo", vProdNo);
                         sqlClient.AddParameter("@Contryear", contryearTextBox.Text);
+                                              
                         sqlClient.AddParameter("@Company", "MBC");
                         sqlClient.AddParameter("@ProdCustDate", contdateDateBox.Date);
                         strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company,ProdCustDate)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company,@ProdCustDate)";
@@ -2462,18 +2464,18 @@ public override void Cancel() {
             sqlClient.CommandText(@"Insert Into XSupplies (Schcode,Schname,Schphone,Invno,AdvisorName,ShipAddress,ShipAddress2,ShipCity,ShipState,ShipZipCode)
                                         VALUES(@Schcode,@Schname,@Schphone,@Invno,@AdvisorName,@ShipAddress,@ShipAddress2,@ShipCity,@ShipState,@ShipZipCode)");
             
-
-            var vAdvisorName = ((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim()+" "+ ((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim();
+            var custRow = (DataRowView)custBindingSource.Current;
+            string vAdvisorName = custRow["contfname"].ToString().Trim()+" "+ custRow["contlname"].ToString().Trim();
             sqlClient.AddParameter("@AdvisorName", vAdvisorName);
-            sqlClient.AddParameter("@Schname", ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim());
-            sqlClient.AddParameter("@Schphone", ((DataRowView)custBindingSource.Current).Row["schphone"].ToString().Trim());
+            sqlClient.AddParameter("@Schname", custRow["schname"].ToString().Trim());
+            sqlClient.AddParameter("@Schphone", custRow["schphone"].ToString().Trim());
             sqlClient.AddParameter("@Schcode",Schcode);
             sqlClient.AddParameter("@Invno",Invno);
-            sqlClient.AddParameter("@ShipAddress", ((DataRowView)custBindingSource.Current).Row.IsNull("shipaddr") ?"":((DataRowView)custBindingSource.Current).Row["shipaddr"].ToString());
-            sqlClient.AddParameter("@ShipAddress2", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingAddr2") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString());
-            sqlClient.AddParameter("@ShipCity", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingCity") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString());
-            sqlClient.AddParameter("@ShipState", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingState") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString());
-            sqlClient.AddParameter("@ShipZipCode", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingZipCode") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString());
+            sqlClient.AddParameter("@ShipAddress",custRow.Row.IsNull("ShippingAddr") ?"":custRow["ShippingAddr"].ToString());
+            sqlClient.AddParameter("@ShipAddress2", custRow.Row.IsNull("ShippingAddr2") ? "" : custRow["ShippingAddr2"].ToString());
+            sqlClient.AddParameter("@ShipCity", custRow.Row.IsNull("ShippingCity") ? "" : custRow["ShippingCity"].ToString());
+            sqlClient.AddParameter("@ShipState", custRow.Row.IsNull("ShippingState") ? "" : custRow["ShippingState"].ToString());
+            sqlClient.AddParameter("@ShipZipCode", custRow.Row.IsNull("ShippingZipCode") ? "" : custRow["ShippingZipCode"].ToString());
             var insertResult = sqlClient.Insert();
             if (insertResult.IsError)
             {
