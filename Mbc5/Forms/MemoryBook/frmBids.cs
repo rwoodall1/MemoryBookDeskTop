@@ -2814,7 +2814,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             EnableAllControls(this.tabBids);
             this.lblschode.Text = this.Schcode;
-            qtedateDateBox.DateValue = DateTime.Now;
+            qtedateDateBox.DateValue = DateTime.Now.Date;
             qtedateDateBox.Date = qtedateDateBox.DateValue.ToString();
         }
 

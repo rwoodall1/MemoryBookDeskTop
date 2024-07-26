@@ -1709,6 +1709,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // btnGetTax
             // 
+            this.btnGetTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetTax.Location = new System.Drawing.Point(289, 51);
             this.btnGetTax.Name = "btnGetTax";

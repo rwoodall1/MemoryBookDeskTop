@@ -15,6 +15,8 @@ using BindingModels;
 using Mbc5.Classes;
 using Core;
 using Microsoft.Reporting.WinForms;
+using System.Threading.Tasks;
+using Vertex;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMBids : BaseClass.frmBase {
         public frmMBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
@@ -32,6 +34,9 @@ namespace Mbc5.Forms.Meridian {
         }
 
         #region Properties
+      
+        public Decimal SalesTax { get; set; } = 0;
+        public Decimal TaxRate { get; set; } = 0;
         private UserPrincipal ApplicationUser { get; set; }
         protected frmMain frmMain { get; set; }
         protected string CurPriceYr { get; set; }
@@ -137,21 +142,15 @@ namespace Mbc5.Forms.Meridian {
             + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
             //___________________________________________________________________
             decimal vTotal = afterdisctotLabel2.ConvertToDecimal();
-
-            lblFinalPrice.Text =( vTotal/ lblQtyTotal.ConvertToInt()).ToString();
-            if (!doNotChargeTaxCheckBox.Checked)
+            if (lblQtyTotal.ConvertToInt()>0)
             {
-                // Control tax values are set in function
-                GetTax(vTotal);
+                lblFinalPrice.Text = (vTotal / lblQtyTotal.ConvertToInt()).ToString();
+                lblFinalTotal.Text = (afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal()+ lblTax.ConvertToDecimal()).ToString();
             }
-            else
-            {
-                lblTaxRate.Text = "0.00";
-                lblTax.Text = "0.00";
-            }
-           
           
-             lblFinalTotal.Text = (afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal()+ lblTax.ConvertToDecimal()).ToString();
+            
+          
+       
 
 
 
@@ -550,21 +549,26 @@ namespace Mbc5.Forms.Meridian {
         #endregion
         public override void Save(bool ShowSpinner)
         {
+            var result = SaveBid();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            }
             //so call can be made from menu
-            if (ShowSpinner)
-            {
-                basePanel.Visible = true;
-                // backgroundWorker1.RunWorkerAsync("Save");
-            }
-            else
-            {
-                var result = SaveBid();
-                if (result.IsError)
-                {
-                    MbcMessageBox.Error(result.Errors[0].ErrorMessage);
-                }
+            //if (ShowSpinner)
+            //{
+            //   // basePanel.Visible = true;
+            //     //backgroundWorker1.RunWorkerAsync("Save");
+            //}
+            //else
+            //{
+            //    var result = SaveBid();
+            //    if (result.IsError)
+            //    {
+            //        MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            //    }
 
-            }
+           // }
 
 
         }
@@ -634,6 +638,7 @@ namespace Mbc5.Forms.Meridian {
             {
                 DisableControls(this);
                 EnableControls(this);
+                EnableControls(mbidBindingNav);
             }
             else
             {
@@ -644,7 +649,7 @@ namespace Mbc5.Forms.Meridian {
                 if (mbidsBindingSource.Count > 0)
                 {
                     this.Schname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
-                    this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
+                    this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["InvZip"].ToString().Trim().Substring(0, 5);
                 }
 
             }
@@ -992,44 +997,106 @@ namespace Mbc5.Forms.Meridian {
 
             return retval;
         }
-        private decimal GetTax(decimal vAmount)
+        private async Task<TaxRequestReturn> GetTax()
         {
+
+            if (doNotChargeTaxCheckBox.Checked)
+            {
+                this.TaxRate = 0;
+                this.SalesTax = 0;
+                lblTax.Text = this.SalesTax.ToString("0.00");
+                lblTaxRate.Text = TaxRate.ToString("0.000");
+                CalculateOptions();
+                btnGetTax.BackColor = Control.DefaultBackColor;
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+            var bid = mbidsBindingSource.Current as DataRowView;
+            this.SchoolZipCode = bid.Row["InvZip"].ToString(); ;
+            if (this.SchoolZipCode == null)
+            {
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+
+            var lproducts = new List<LineItemData>();
+
+
+
+            var model = new TaxRequest();
+            decimal vSubTotal = 0;
+            var tservice = new VertexService();
             try
             {
-                var vschname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
-                var vaddress = ((DataRowView)mbidsBindingSource.Current).Row["InvAddr"].ToString().Trim();
-                var vaddress2 = ((DataRowView)mbidsBindingSource.Current).Row["InvAddr2"].ToString().Trim();
-                var vcity = ((DataRowView)mbidsBindingSource.Current).Row["InvCity"].ToString().Trim();
-                var vState = ((DataRowView)mbidsBindingSource.Current).Row["InvState"].ToString().Trim();
-                var vzipCode = ((DataRowView)mbidsBindingSource.Current).Row["InvZip"].ToString().Trim();
-                var vTaxingInfo = new AvaSalesTaxingInfo()
+                if (bid == null)
                 {
-                    CompanyName = vschname,
-                    Address = vaddress,
-                    Address2 = vaddress2,
-                    City = vcity,
-                    State = vState,
-                    ZipCode = vzipCode,
-                    TaxableAmount = vAmount
-                };
+                    return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+                }
+                var test = (decimal)bid.Row["afterdisctot"];
+                if (test == 0)
+                {
+                    this.TaxRate = 0;
+                    this.SalesTax = 0;
+                    lblTax.Text = this.SalesTax.ToString("0.00");
+                    lblTaxRate.Text = TaxRate.ToString("0.000");
+                    return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+                }
+                vSubTotal = (decimal)bid.Row["afterdisctot"];
 
-                var totalTaxCharged = TaxService.CaclulateTax(vTaxingInfo);
-                lblTaxRate.Text = (totalTaxCharged / vAmount).ToString("0.0000");
-                lblTax.Text = totalTaxCharged.ToString("0.00");
+                lproducts.Add(new LineItemData() { ProductClass = "PRINT", Quantity = 1, UnitPrice = vSubTotal });
 
-                return totalTaxCharged;
+
+                model.OracleCode = bid.Row["oraclecode"].ToString();
+                model.StreetAddress1 = bid.Row["InvAddr"].ToString();
+                model.StreetAddress2 = bid.Row["InvAddr2"].ToString();
+                model.City = bid.Row["InvCity"].ToString();
+                model.MainDivision = bid.Row["InvState"].ToString();
+                model.SubDivision = null;
+                model.PostalCode = this.SchoolZipCode;
+                model.Country = "US";
+                model.ListItems = lproducts;
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+
+                MbcMessageBox.Error(ex.Message, "Error");
+                this.TaxRate = 0;
+                this.SalesTax = 0;
+                lblTax.Text = this.SalesTax.ToString("0.00");
+                lblTaxRate.Text = TaxRate.ToString("0.000");
+                CalculateOptions();
+
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
             }
+
+            var result = await tservice.GetTaxAmount(model);
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                this.TaxRate = 0;
+                this.SalesTax = 0;
+                lblTax.Text = this.SalesTax.ToString("0.00");
+                lblTaxRate.Text = TaxRate.ToString("0.000");
+                CalculateOptions();
+
+                return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
+            }
+            this.SalesTax = result.Data;
+            this.TaxRate = this.SalesTax / vSubTotal;
+            lblTax.Text = this.SalesTax.ToString("0.00");
+            lblTaxRate.Text = TaxRate.ToString("0.0000");
+            CalculateOptions();
+            btnGetTax.BackColor = Control.DefaultBackColor;
+
+            //returns if something else needs data
+            return new TaxRequestReturn() { TaxAmount = this.SalesTax, TaxRate = this.TaxRate };
+
         }
+      
 
 
         #endregion
-        
 
-       
+
+
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {
@@ -1897,6 +1964,55 @@ namespace Mbc5.Forms.Meridian {
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            var curMonth = DateTime.Now.Month;
+            string vcontryear = "";
+            if (curMonth > 6)
+            {
+                vcontryear = (DateTime.Now.Year + 1).ToString().Substring(2, 2);
+            }
+            else { vcontryear = (DateTime.Now.Year).ToString().Substring(2, 2); }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"INSERT INTO mbids
+                         (schcode, booktype, qtedate, contryear, bpyear)
+                        VALUES(@schcode,@booktype,@qtedate,@contryear,@bpyear)");
+            sqlClient.AddParameter("@schcode", this.Schcode);
+            sqlClient.AddParameter("@booktype", "PG");
+            sqlClient.AddParameter("@qtedate", DateTime.Now.Date);
+            sqlClient.AddParameter("@contryear", vcontryear);
+            sqlClient.AddParameter("@bpyear", vcontryear);
+            var insertResult=sqlClient.Insert();
+            if(insertResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to add new record.", "");
+                return;
+            }
+            this.Fill();
+
+
+
+            EnableAllControls(this);
+       
+        
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            SaveBid();
+        }
+
+        private void btnGetTax_Click(object sender, EventArgs e)
+        {
+            this.GetTax();
+        }
+
+        private void doNotChargeTaxCheckBox_Click_1(object sender, EventArgs e)
+        {
+            this.GetTax();
         }
     }
     }

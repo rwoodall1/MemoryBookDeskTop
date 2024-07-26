@@ -34,9 +34,7 @@
             System.Windows.Forms.Label schcodeLabel;
             System.Windows.Forms.Label qtedateLabel;
             System.Windows.Forms.Label orderDateLabel;
-            System.Windows.Forms.Label schoolTaxRateLabel;
             System.Windows.Forms.Label fplntotLabel;
-            System.Windows.Forms.Label salestxLabel;
             System.Windows.Forms.Label fplnprcLabel;
             System.Windows.Forms.Label shpphndlLabel;
             System.Windows.Forms.Label totoptionprcLabel;
@@ -58,7 +56,6 @@
             System.Windows.Forms.Label vpaqtyLabel;
             System.Windows.Forms.Label bmarkqtyLabel;
             System.Windows.Forms.Label hallpqtyLabel;
-            System.Windows.Forms.Label afterdisctotLabel;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label desc1Label;
             System.Windows.Forms.Label label2;
@@ -76,8 +73,12 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label mdescLabel;
             System.Windows.Forms.Label notesLabel;
+            System.Windows.Forms.Label label19;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label17;
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMBids));
             this.MBidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMBids = new Mbc5.DataSets.dsMBids();
@@ -95,6 +96,11 @@
             this.schcodeLabel1 = new System.Windows.Forms.Label();
             this.oaCheckBox = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnGetTax = new System.Windows.Forms.Button();
+            this.lblTax = new System.Windows.Forms.Label();
+            this.lblTaxRate = new System.Windows.Forms.Label();
+            this.doNotChargeTaxCheckBox = new System.Windows.Forms.CheckBox();
+            this.afterdisctotLabel2 = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblModifiedby = new System.Windows.Forms.Label();
@@ -104,12 +110,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblTotalOptions = new System.Windows.Forms.Label();
             this.lblSpecialCoverPrice = new System.Windows.Forms.Label();
-            this.lblTax = new System.Windows.Forms.Label();
-            this.lblTaxRate = new System.Windows.Forms.Label();
             this.lblFinalTotal = new System.Windows.Forms.Label();
             this.lblFinalPrice = new System.Windows.Forms.Label();
             this.lblAppUser = new System.Windows.Forms.Label();
-            this.doNotChargeTaxCheckBox = new System.Windows.Forms.CheckBox();
             this.txtShipping = new System.Windows.Forms.TextBox();
             this.custpuCheckBox = new System.Windows.Forms.CheckBox();
             this.desc4TextBox1 = new System.Windows.Forms.TextBox();
@@ -136,7 +139,6 @@
             this.hallppriceTextBox = new System.Windows.Forms.TextBox();
             this.hallpqtyTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.afterdisctotLabel2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblCoverPricetotal = new System.Windows.Forms.Label();
@@ -187,6 +189,19 @@
             this.OnlineFlyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qtedateDateBox = new CustomControls.DateBox();
             this.orderDateDateBox = new CustomControls.DateBox();
+            this.mbidBindingNav = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             sourceLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -196,9 +211,7 @@
             schcodeLabel = new System.Windows.Forms.Label();
             qtedateLabel = new System.Windows.Forms.Label();
             orderDateLabel = new System.Windows.Forms.Label();
-            schoolTaxRateLabel = new System.Windows.Forms.Label();
             fplntotLabel = new System.Windows.Forms.Label();
-            salestxLabel = new System.Windows.Forms.Label();
             fplnprcLabel = new System.Windows.Forms.Label();
             shpphndlLabel = new System.Windows.Forms.Label();
             totoptionprcLabel = new System.Windows.Forms.Label();
@@ -220,7 +233,6 @@
             vpaqtyLabel = new System.Windows.Forms.Label();
             bmarkqtyLabel = new System.Windows.Forms.Label();
             hallpqtyLabel = new System.Windows.Forms.Label();
-            afterdisctotLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             desc1Label = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -238,6 +250,9 @@
             sbtotLabel = new System.Windows.Forms.Label();
             mdescLabel = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MBidInvoiceDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).BeginInit();
@@ -249,6 +264,8 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineFlyerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidBindingNav)).BeginInit();
+            this.mbidBindingNav.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -351,45 +368,23 @@
             orderDateLabel.TabIndex = 222;
             orderDateLabel.Text = "Order Date";
             // 
-            // schoolTaxRateLabel
-            // 
-            schoolTaxRateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            schoolTaxRateLabel.AutoSize = true;
-            schoolTaxRateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            schoolTaxRateLabel.Location = new System.Drawing.Point(945, 61);
-            schoolTaxRateLabel.Name = "schoolTaxRateLabel";
-            schoolTaxRateLabel.Size = new System.Drawing.Size(16, 13);
-            schoolTaxRateLabel.TabIndex = 57;
-            schoolTaxRateLabel.Text = "%";
-            // 
             // fplntotLabel
             // 
             fplntotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             fplntotLabel.AutoSize = true;
             fplntotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fplntotLabel.Location = new System.Drawing.Point(917, 84);
+            fplntotLabel.Location = new System.Drawing.Point(917, 86);
             fplntotLabel.Name = "fplntotLabel";
             fplntotLabel.Size = new System.Drawing.Size(114, 13);
             fplntotLabel.TabIndex = 54;
             fplntotLabel.Text = "Final Planner Total";
-            // 
-            // salestxLabel
-            // 
-            salestxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            salestxLabel.AutoSize = true;
-            salestxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            salestxLabel.Location = new System.Drawing.Point(968, 61);
-            salestxLabel.Name = "salestxLabel";
-            salestxLabel.Size = new System.Drawing.Size(63, 13);
-            salestxLabel.TabIndex = 52;
-            salestxLabel.Text = "Sales Tax";
             // 
             // fplnprcLabel
             // 
             fplnprcLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             fplnprcLabel.AutoSize = true;
             fplnprcLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fplnprcLabel.Location = new System.Drawing.Point(917, 32);
+            fplnprcLabel.Location = new System.Drawing.Point(699, 6);
             fplnprcLabel.Name = "fplnprcLabel";
             fplnprcLabel.Size = new System.Drawing.Size(114, 13);
             fplnprcLabel.TabIndex = 50;
@@ -400,7 +395,7 @@
             shpphndlLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             shpphndlLabel.AutoSize = true;
             shpphndlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            shpphndlLabel.Location = new System.Drawing.Point(1000, 2);
+            shpphndlLabel.Location = new System.Drawing.Point(1000, 49);
             shpphndlLabel.Name = "shpphndlLabel";
             shpphndlLabel.Size = new System.Drawing.Size(31, 13);
             shpphndlLabel.TabIndex = 45;
@@ -596,16 +591,6 @@
             hallpqtyLabel.TabIndex = 0;
             hallpqtyLabel.Text = "Hall Pass";
             // 
-            // afterdisctotLabel
-            // 
-            afterdisctotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            afterdisctotLabel.AutoSize = true;
-            afterdisctotLabel.Location = new System.Drawing.Point(907, 132);
-            afterdisctotLabel.Name = "afterdisctotLabel";
-            afterdisctotLabel.Size = new System.Drawing.Size(122, 13);
-            afterdisctotLabel.TabIndex = 46;
-            afterdisctotLabel.Text = "After Disc Sub Total";
-            // 
             // label3
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -772,11 +757,44 @@
             notesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             notesLabel.AutoSize = true;
             notesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            notesLabel.Location = new System.Drawing.Point(676, 206);
+            notesLabel.Location = new System.Drawing.Point(676, 114);
             notesLabel.Name = "notesLabel";
             notesLabel.Size = new System.Drawing.Size(40, 13);
             notesLabel.TabIndex = 158;
             notesLabel.Text = "Notes";
+            // 
+            // label19
+            // 
+            label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label19.AutoSize = true;
+            label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label19.Location = new System.Drawing.Point(916, 6);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(115, 13);
+            label19.TabIndex = 298;
+            label19.Text = "Total Before Taxes";
+            // 
+            // label16
+            // 
+            label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label16.AutoSize = true;
+            label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label16.Location = new System.Drawing.Point(951, 26);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(16, 13);
+            label16.TabIndex = 304;
+            label16.Text = "%";
+            // 
+            // label17
+            // 
+            label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label17.AutoSize = true;
+            label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label17.Location = new System.Drawing.Point(972, 26);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(63, 13);
+            label17.TabIndex = 303;
+            label17.Text = "Sales Tax";
             // 
             // MBidInvoiceDetailBindingSource
             // 
@@ -800,7 +818,7 @@
             this.contryearTextBox.Location = new System.Drawing.Point(400, 37);
             this.contryearTextBox.Name = "contryearTextBox";
             this.contryearTextBox.Size = new System.Drawing.Size(32, 20);
-            this.contryearTextBox.TabIndex = 218;
+            this.contryearTextBox.TabIndex = 1;
             this.contryearTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.contryearTextBox_Validating);
             // 
             // txtBYear
@@ -810,7 +828,7 @@
             this.txtBYear.Location = new System.Drawing.Point(556, 37);
             this.txtBYear.Name = "txtBYear";
             this.txtBYear.Size = new System.Drawing.Size(39, 20);
-            this.txtBYear.TabIndex = 217;
+            this.txtBYear.TabIndex = 2;
             this.txtBYear.Leave += new System.EventHandler(this.txtBYear_Leave);
             // 
             // sourceTextBox
@@ -833,7 +851,7 @@
             this.prodcodeComboBox.Location = new System.Drawing.Point(150, 37);
             this.prodcodeComboBox.Name = "prodcodeComboBox";
             this.prodcodeComboBox.Size = new System.Drawing.Size(199, 21);
-            this.prodcodeComboBox.TabIndex = 208;
+            this.prodcodeComboBox.TabIndex = 0;
             this.prodcodeComboBox.ValueMember = "ProdCode";
             this.prodcodeComboBox.SelectionChangeCommitted += new System.EventHandler(this.prodcodeComboBox_SelectionChangeCommitted);
             // 
@@ -931,6 +949,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnGetTax);
+            this.panel4.Controls.Add(this.lblTax);
+            this.panel4.Controls.Add(this.lblTaxRate);
+            this.panel4.Controls.Add(label16);
+            this.panel4.Controls.Add(this.doNotChargeTaxCheckBox);
+            this.panel4.Controls.Add(label17);
+            this.panel4.Controls.Add(label19);
+            this.panel4.Controls.Add(this.afterdisctotLabel2);
             this.panel4.Controls.Add(this.reportViewer1);
             this.panel4.Controls.Add(this.chkPrntAsInvoice);
             this.panel4.Controls.Add(this.lblModifiedby);
@@ -941,15 +967,10 @@
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.lblTotalOptions);
             this.panel4.Controls.Add(this.lblSpecialCoverPrice);
-            this.panel4.Controls.Add(this.lblTax);
-            this.panel4.Controls.Add(this.lblTaxRate);
             this.panel4.Controls.Add(this.lblFinalTotal);
             this.panel4.Controls.Add(this.lblFinalPrice);
             this.panel4.Controls.Add(this.lblAppUser);
-            this.panel4.Controls.Add(schoolTaxRateLabel);
-            this.panel4.Controls.Add(this.doNotChargeTaxCheckBox);
             this.panel4.Controls.Add(fplntotLabel);
-            this.panel4.Controls.Add(salestxLabel);
             this.panel4.Controls.Add(fplnprcLabel);
             this.panel4.Controls.Add(shpphndlLabel);
             this.panel4.Controls.Add(this.txtShipping);
@@ -998,8 +1019,66 @@
             this.panel4.Controls.Add(this.hallpqtyTextBox);
             this.panel4.Location = new System.Drawing.Point(49, 321);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1100, 284);
+            this.panel4.Size = new System.Drawing.Size(1100, 283);
             this.panel4.TabIndex = 226;
+            // 
+            // btnGetTax
+            // 
+            this.btnGetTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetTax.Location = new System.Drawing.Point(688, 26);
+            this.btnGetTax.Name = "btnGetTax";
+            this.btnGetTax.Size = new System.Drawing.Size(50, 20);
+            this.btnGetTax.TabIndex = 309;
+            this.btnGetTax.Text = "Get Tax";
+            this.btnGetTax.UseVisualStyleBackColor = true;
+            this.btnGetTax.Click += new System.EventHandler(this.btnGetTax_Click);
+            // 
+            // lblTax
+            // 
+            this.lblTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "salestx", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTax.Location = new System.Drawing.Point(1041, 26);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(52, 13);
+            this.lblTax.TabIndex = 307;
+            this.lblTax.Text = "0.00";
+            // 
+            // lblTaxRate
+            // 
+            this.lblTaxRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTaxRate.AutoSize = true;
+            this.lblTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "SchoolTaxRate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N3"));
+            this.lblTaxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxRate.Location = new System.Drawing.Point(911, 26);
+            this.lblTaxRate.Name = "lblTaxRate";
+            this.lblTaxRate.Size = new System.Drawing.Size(22, 13);
+            this.lblTaxRate.TabIndex = 306;
+            this.lblTaxRate.Text = ".00";
+            // 
+            // doNotChargeTaxCheckBox
+            // 
+            this.doNotChargeTaxCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.doNotChargeTaxCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doNotChargeTaxCheckBox.Location = new System.Drawing.Point(744, 26);
+            this.doNotChargeTaxCheckBox.Name = "doNotChargeTaxCheckBox";
+            this.doNotChargeTaxCheckBox.Size = new System.Drawing.Size(161, 16);
+            this.doNotChargeTaxCheckBox.TabIndex = 305;
+            this.doNotChargeTaxCheckBox.Text = "Do Not Calculate Taxes";
+            this.doNotChargeTaxCheckBox.UseVisualStyleBackColor = true;
+            this.doNotChargeTaxCheckBox.Click += new System.EventHandler(this.doNotChargeTaxCheckBox_Click_1);
+            // 
+            // afterdisctotLabel2
+            // 
+            this.afterdisctotLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.afterdisctotLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "afterdisctot", true));
+            this.afterdisctotLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.afterdisctotLabel2.Location = new System.Drawing.Point(1041, 3);
+            this.afterdisctotLabel2.Name = "afterdisctotLabel2";
+            this.afterdisctotLabel2.Size = new System.Drawing.Size(52, 18);
+            this.afterdisctotLabel2.TabIndex = 158;
+            this.afterdisctotLabel2.Text = "label9";
             // 
             // reportViewer1
             // 
@@ -1021,7 +1100,7 @@
             // chkPrntAsInvoice
             // 
             this.chkPrntAsInvoice.AutoSize = true;
-            this.chkPrntAsInvoice.Location = new System.Drawing.Point(911, 124);
+            this.chkPrntAsInvoice.Location = new System.Drawing.Point(810, 214);
             this.chkPrntAsInvoice.Name = "chkPrntAsInvoice";
             this.chkPrntAsInvoice.Size = new System.Drawing.Size(113, 17);
             this.chkPrntAsInvoice.TabIndex = 296;
@@ -1041,7 +1120,7 @@
             // 
             this.btnPrnQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrnQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrnQuote.Location = new System.Drawing.Point(929, 143);
+            this.btnPrnQuote.Location = new System.Drawing.Point(929, 210);
             this.btnPrnQuote.Name = "btnPrnQuote";
             this.btnPrnQuote.Size = new System.Drawing.Size(103, 23);
             this.btnPrnQuote.TabIndex = 161;
@@ -1054,7 +1133,7 @@
             this.notesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.notesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "notes", true));
             this.notesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notesTextBox.Location = new System.Drawing.Point(724, 203);
+            this.notesTextBox.Location = new System.Drawing.Point(724, 111);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
             this.notesTextBox.Size = new System.Drawing.Size(346, 60);
@@ -1079,7 +1158,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(650, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1, 282);
+            this.label13.Size = new System.Drawing.Size(1, 281);
             this.label13.TabIndex = 157;
             this.label13.Text = "label13";
             // 
@@ -1105,36 +1184,12 @@
             this.lblSpecialCoverPrice.TabIndex = 155;
             this.lblSpecialCoverPrice.Text = "label10";
             // 
-            // lblTax
-            // 
-            this.lblTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "salestx", true));
-            this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTax.Location = new System.Drawing.Point(1035, 61);
-            this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(52, 13);
-            this.lblTax.TabIndex = 154;
-            this.lblTax.Text = "label10";
-            // 
-            // lblTaxRate
-            // 
-            this.lblTaxRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTaxRate.AutoSize = true;
-            this.lblTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "SchoolTaxRate", true));
-            this.lblTaxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaxRate.Location = new System.Drawing.Point(908, 61);
-            this.lblTaxRate.Name = "lblTaxRate";
-            this.lblTaxRate.Size = new System.Drawing.Size(41, 13);
-            this.lblTaxRate.TabIndex = 153;
-            this.lblTaxRate.Text = "label10";
-            this.lblTaxRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lblFinalTotal
             // 
             this.lblFinalTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFinalTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "fplntot", true));
+            this.lblFinalTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "fplntot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
             this.lblFinalTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinalTotal.Location = new System.Drawing.Point(1035, 84);
+            this.lblFinalTotal.Location = new System.Drawing.Point(1041, 86);
             this.lblFinalTotal.Name = "lblFinalTotal";
             this.lblFinalTotal.Size = new System.Drawing.Size(52, 13);
             this.lblFinalTotal.TabIndex = 152;
@@ -1145,7 +1200,7 @@
             this.lblFinalPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFinalPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "fplnprc", true));
             this.lblFinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinalPrice.Location = new System.Drawing.Point(1035, 32);
+            this.lblFinalPrice.Location = new System.Drawing.Point(823, 4);
             this.lblFinalPrice.Name = "lblFinalPrice";
             this.lblFinalPrice.Size = new System.Drawing.Size(52, 16);
             this.lblFinalPrice.TabIndex = 151;
@@ -1159,25 +1214,12 @@
             this.lblAppUser.TabIndex = 25;
             this.lblAppUser.Text = "au";
             // 
-            // doNotChargeTaxCheckBox
-            // 
-            this.doNotChargeTaxCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.doNotChargeTaxCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mbidsBindingSource, "DoNotChargeTax", true));
-            this.doNotChargeTaxCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doNotChargeTaxCheckBox.Location = new System.Drawing.Point(738, 61);
-            this.doNotChargeTaxCheckBox.Name = "doNotChargeTaxCheckBox";
-            this.doNotChargeTaxCheckBox.Size = new System.Drawing.Size(161, 16);
-            this.doNotChargeTaxCheckBox.TabIndex = 57;
-            this.doNotChargeTaxCheckBox.Text = "Do Not Calculate Taxes";
-            this.doNotChargeTaxCheckBox.UseVisualStyleBackColor = true;
-            this.doNotChargeTaxCheckBox.Click += new System.EventHandler(this.doNotChargeTaxCheckBox_Click);
-            // 
             // txtShipping
             // 
             this.txtShipping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtShipping.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "shpphndl", true));
             this.txtShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShipping.Location = new System.Drawing.Point(1035, 2);
+            this.txtShipping.Location = new System.Drawing.Point(1041, 49);
             this.txtShipping.Name = "txtShipping";
             this.txtShipping.Size = new System.Drawing.Size(52, 20);
             this.txtShipping.TabIndex = 46;
@@ -1188,7 +1230,7 @@
             this.custpuCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.custpuCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mbidsBindingSource, "custpu", true));
             this.custpuCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custpuCheckBox.Location = new System.Drawing.Point(879, 2);
+            this.custpuCheckBox.Location = new System.Drawing.Point(879, 49);
             this.custpuCheckBox.Name = "custpuCheckBox";
             this.custpuCheckBox.Size = new System.Drawing.Size(104, 17);
             this.custpuCheckBox.TabIndex = 45;
@@ -1430,14 +1472,12 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.afterdisctotLabel2);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.lblCoverPricetotal);
             this.panel2.Controls.Add(this.lblSchtype);
             this.panel2.Controls.Add(this.disc3CheckBox);
             this.panel2.Controls.Add(this.disc4CheckBox);
-            this.panel2.Controls.Add(afterdisctotLabel);
             this.panel2.Controls.Add(this.desc3amtTextBox);
             this.panel2.Controls.Add(this.desc3TextBox);
             this.panel2.Controls.Add(this.desc4amtTextBox);
@@ -1464,17 +1504,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1102, 156);
             this.panel2.TabIndex = 225;
-            // 
-            // afterdisctotLabel2
-            // 
-            this.afterdisctotLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.afterdisctotLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "afterdisctot", true));
-            this.afterdisctotLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.afterdisctotLabel2.Location = new System.Drawing.Point(1037, 132);
-            this.afterdisctotLabel2.Name = "afterdisctotLabel2";
-            this.afterdisctotLabel2.Size = new System.Drawing.Size(52, 18);
-            this.afterdisctotLabel2.TabIndex = 158;
-            this.afterdisctotLabel2.Text = "label9";
             // 
             // label12
             // 
@@ -1761,7 +1790,7 @@
             this.panel3.Location = new System.Drawing.Point(46, 68);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1103, 85);
-            this.panel3.TabIndex = 224;
+            this.panel3.TabIndex = 3;
             // 
             // label11
             // 
@@ -1914,7 +1943,7 @@
             this.txtQtyStudent.Location = new System.Drawing.Point(92, 13);
             this.txtQtyStudent.Name = "txtQtyStudent";
             this.txtQtyStudent.Size = new System.Drawing.Size(47, 20);
-            this.txtQtyStudent.TabIndex = 38;
+            this.txtQtyStudent.TabIndex = 1;
             this.txtQtyStudent.Leave += new System.EventHandler(this.txtQtyStudent_Leave);
             this.txtQtyStudent.Validating += new System.ComponentModel.CancelEventHandler(this.txtQtyStudent_Validating);
             // 
@@ -1957,6 +1986,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.mbidsTableAdapter = this.mbidsTableAdapter;
+            this.tableAdapterManager.mcustTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // errorProvider1
@@ -2010,6 +2040,7 @@
             // 
             // qtedateDateBox
             // 
+            this.qtedateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mbidsBindingSource, "qtedate", true));
             this.qtedateDateBox.Date = null;
             this.qtedateDateBox.DateValue = null;
@@ -2021,6 +2052,7 @@
             // 
             // orderDateDateBox
             // 
+            this.orderDateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.orderDateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mbidsBindingSource, "OrderDate", true));
             this.orderDateDateBox.Date = null;
             this.orderDateDateBox.DateValue = null;
@@ -2030,11 +2062,140 @@
             this.orderDateDateBox.Size = new System.Drawing.Size(133, 21);
             this.orderDateDateBox.TabIndex = 299;
             // 
+            // mbidBindingNav
+            // 
+            this.mbidBindingNav.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.mbidBindingNav.BindingSource = this.mbidsBindingSource;
+            this.mbidBindingNav.CountItem = this.bindingNavigatorCountItem;
+            this.mbidBindingNav.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.mbidBindingNav.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.mbidBindingNav.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.toolStripButton1});
+            this.mbidBindingNav.Location = new System.Drawing.Point(0, 607);
+            this.mbidBindingNav.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.mbidBindingNav.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.mbidBindingNav.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.mbidBindingNav.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.mbidBindingNav.Name = "mbidBindingNav";
+            this.mbidBindingNav.PositionItem = this.bindingNavigatorPositionItem;
+            this.mbidBindingNav.Size = new System.Drawing.Size(1161, 25);
+            this.mbidBindingNav.TabIndex = 300;
+            this.mbidBindingNav.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // frmMBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(1161, 611);
+            this.ClientSize = new System.Drawing.Size(1161, 632);
+            this.Controls.Add(this.mbidBindingNav);
             this.Controls.Add(this.orderDateDateBox);
             this.Controls.Add(this.idLabel1);
             this.Controls.Add(this.qtedateDateBox);
@@ -2060,7 +2221,7 @@
             this.Controls.Add(schcodeLabel);
             this.Controls.Add(this.schcodeLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(1123, 650);
+            this.MinimumSize = new System.Drawing.Size(1177, 671);
             this.Name = "frmMBids";
             this.Text = "Meridian Bids";
             this.Activated += new System.EventHandler(this.frmMBids_Activated);
@@ -2092,6 +2253,7 @@
             this.Controls.SetChildIndex(this.qtedateDateBox, 0);
             this.Controls.SetChildIndex(this.idLabel1, 0);
             this.Controls.SetChildIndex(this.orderDateDateBox, 0);
+            this.Controls.SetChildIndex(this.mbidBindingNav, 0);
             ((System.ComponentModel.ISupportInitialize)(this.MBidInvoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();
@@ -2106,6 +2268,9 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineFlyerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidBindingNav)).EndInit();
+            this.mbidBindingNav.ResumeLayout(false);
+            this.mbidBindingNav.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2131,12 +2296,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblTotalOptions;
         private System.Windows.Forms.Label lblSpecialCoverPrice;
-        private System.Windows.Forms.Label lblTax;
-        private System.Windows.Forms.Label lblTaxRate;
         private System.Windows.Forms.Label lblFinalTotal;
         private System.Windows.Forms.Label lblFinalPrice;
         private System.Windows.Forms.Label lblAppUser;
-        private System.Windows.Forms.CheckBox doNotChargeTaxCheckBox;
         private System.Windows.Forms.TextBox txtShipping;
         private System.Windows.Forms.CheckBox custpuCheckBox;
         private System.Windows.Forms.TextBox desc4TextBox1;
@@ -2221,5 +2383,22 @@
         private System.Windows.Forms.BindingSource OnlineFlyerBindingSource;
         private CustomControls.DateBox orderDateDateBox;
         private CustomControls.DateBox qtedateDateBox;
+        private System.Windows.Forms.Label lblTax;
+        private System.Windows.Forms.Label lblTaxRate;
+        private System.Windows.Forms.CheckBox doNotChargeTaxCheckBox;
+        private System.Windows.Forms.Button btnGetTax;
+        private System.Windows.Forms.BindingNavigator mbidBindingNav;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
     }

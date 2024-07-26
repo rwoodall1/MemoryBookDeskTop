@@ -48,7 +48,7 @@ InitializeComponent();
     this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
 this.ApplicationUser = userPrincipal;
 this.Invno = 0;
-this.Schcode = null;
+this.Schcode = "";
 
 }
 
@@ -2120,12 +2120,12 @@ return retval;
 }
 private async Task<TaxRequestReturn> GetTax()
 {
-
-        if (doNotChargeTaxCheckBox.Checked)
+    mquotesBindingSource.EndEdit();
+            if (doNotChargeTaxCheckBox.Checked)
         {
             this.TaxRate = 0;
             this.SalesTax = 0;
-            lblTax.Text = this.SalesTax.ToString("0.000");
+            lblTax.Text = this.SalesTax.ToString("0.00");
             lblTaxRate.Text = TaxRate.ToString("0.000");
             CalculateOptions();
             btnGetTax.BackColor = Control.DefaultBackColor;
@@ -2156,7 +2156,7 @@ private async Task<TaxRequestReturn> GetTax()
             {
                     this.TaxRate = 0;
                     this.SalesTax = 0;
-                    lblTax.Text = this.SalesTax.ToString("0.000");
+                    lblTax.Text = this.SalesTax.ToString("0.00");
                     lblTaxRate.Text = TaxRate.ToString("0.000");
                     return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
             }
@@ -2181,7 +2181,7 @@ private async Task<TaxRequestReturn> GetTax()
             MbcMessageBox.Error(ex.Message, "Error");
             this.TaxRate = 0;
             this.SalesTax = 0;
-            lblTax.Text = this.SalesTax.ToString("0.000");
+            lblTax.Text = this.SalesTax.ToString("0.00");
             lblTaxRate.Text = TaxRate.ToString("0.000");
             CalculateOptions();
 
@@ -2194,16 +2194,16 @@ private async Task<TaxRequestReturn> GetTax()
             MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
             this.TaxRate = 0;
             this.SalesTax = 0;
-                lblTax.Text = this.SalesTax.ToString("0.000");
-                lblTaxRate.Text = TaxRate.ToString("0.000");
+                lblTax.Text = this.SalesTax.ToString("0.00");
+                lblTaxRate.Text = TaxRate.ToString("0.0000");
                 CalculateOptions(); 
 
             return new TaxRequestReturn() { TaxAmount = 0, TaxRate = 0 };
         }
             this.SalesTax = result.Data;
             this.TaxRate = this.SalesTax / vSubTotal;
-            lblTax.Text = this.SalesTax.ToString("0.000");
-            lblTaxRate.Text = TaxRate.ToString("0.000");
+            lblTax.Text = this.SalesTax.ToString("0.00");
+            lblTaxRate.Text = TaxRate.ToString("0.0000");
             CalculateOptions();          
             btnGetTax.BackColor = Control.DefaultBackColor;
 
