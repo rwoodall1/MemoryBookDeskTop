@@ -133,10 +133,10 @@ private  ApiProcessingResult<bool> Save()
 {
 
           
-            var processingResult = new ApiProcessingResult<bool>();
+         var processingResult = new ApiProcessingResult<bool>();
            
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
-    bool retval = false;
+  
            
     txtSchname.ReadOnly = true;
            
@@ -146,13 +146,13 @@ private  ApiProcessingResult<bool> Save()
     {
         this.custBindingSource.EndEdit();
               
-                try
+         try
         {
            var aa= custTableAdapter.Update(dsCust);
             this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
             this.SetInvnoSchCode();
 
-            retval = true;
+            processingResult.Data = true;
         }
         catch (DBConcurrencyException dbex)
         {
@@ -196,7 +196,8 @@ public override bool Add() {
             
     this.txtModifiedBy.Text = this.ApplicationUser.id;
     this.lblHiddenSchcode.Text = Schcode;
-    frmMbcCust_Paint(null, null);
+    this.CustTab.SelectTab(1);
+            frmMbcCust_Paint(null, null);
 
     return true;
     }
@@ -2893,7 +2894,21 @@ and students. If you know someone on another campus that is interested in buildi
             JobNoSearch();
         }
 
-       
+        private void button13_Click(object sender, EventArgs e)
+        {
+            this.Cancel();
+            this.CustTab.SelectTab(0);
+        }
+
+            private void button12_Click(object sender, EventArgs e)
+        {
+            var result = this.Save();
+            if(result.Data==true) {
+                this.CustTab.SelectTab(0);
+            } 
+        }
+
+
         #endregion
 
         //Nothing below here
