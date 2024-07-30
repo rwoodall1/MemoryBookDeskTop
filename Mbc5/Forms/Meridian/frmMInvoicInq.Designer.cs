@@ -478,8 +478,7 @@
             this.MinimumSize = new System.Drawing.Size(1149, 527);
             this.Name = "frmMInvoicInq";
             this.Text = "Print MBC Invoice\'s";
-            this.Activated += new System.EventHandler(this.frmInvoicInq_Activated);
-            this.Load += new System.EventHandler(this.frmInvoicInq_Load);
+            this.Activated += new System.EventHandler(this.frmMInvoicInq_Activated);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
