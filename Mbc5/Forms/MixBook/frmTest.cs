@@ -41,7 +41,7 @@ namespace Mbc5.Forms.MixBook
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            this.mixBookOrderTableAdapter.Connection.ConnectionString = "Data Source=sedswjpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            this.mixBookOrderTableAdapter.Connection.ConnectionString = "Data Source=sedswjpsql02;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;";
         }
     }
 }

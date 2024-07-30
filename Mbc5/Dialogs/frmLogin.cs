@@ -36,18 +36,18 @@ namespace Mbc5.Dialogs {
 
  private void btnLogin_Click(object sender, EventArgs e)      
     {
-    ////connection
-    //this.pbLoading.Visible = true;
-    //var AppConnectionString = "";
-    //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            ////connection
+            //this.pbLoading.Visible = true;
+            //var AppConnectionString = "";
+            //var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
 
-    //if (Environment == "DEV")
-    //{
-    //    AppConnectionString = "Data Source=SEDSWJPSQL01;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
-    //}
-    //else if (Environment == "PROD") { AppConnectionString = "Data Source=SEDSWJPSQL01;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
+            //if (Environment == "DEV")
+            //{
+            //    AppConnectionString = "Data Source=sedswjpsql02;Initial Catalog=Mbc5_demo;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck";
+            //}
+            //else if (Environment == "PROD") { AppConnectionString = "Data Source=sedswjpsql02;Initial Catalog=;Persist Security Info=True;User ID=mbcuser_demo;Password=F8GFxAtT9Hpzbnck"; }
 
-    SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
+            SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
        
 
     string cPassword = this.txtpassword.Text;
