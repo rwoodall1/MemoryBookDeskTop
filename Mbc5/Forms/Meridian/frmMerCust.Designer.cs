@@ -95,9 +95,9 @@
             System.Windows.Forms.Label invnotesLabel;
             System.Windows.Forms.Label taxExemptRecvdLabel;
             System.Windows.Forms.Label vendNoLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prodTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MeridianProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merCustTab = new System.Windows.Forms.TabControl();
@@ -120,8 +120,6 @@
             this.exchgTextBox = new System.Windows.Forms.TextBox();
             this.spcinstTextBox = new System.Windows.Forms.TextBox();
             this.inofficeTextBox = new System.Windows.Forms.TextBox();
-            this.btnEmailProdTkt = new System.Windows.Forms.Button();
-            this.btnProdTkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.vendNoTextBox = new System.Windows.Forms.TextBox();
@@ -1051,8 +1049,6 @@
             this.pg1.Controls.Add(this.spcinstTextBox);
             this.pg1.Controls.Add(inofficeLabel);
             this.pg1.Controls.Add(this.inofficeTextBox);
-            this.pg1.Controls.Add(this.btnEmailProdTkt);
-            this.pg1.Controls.Add(this.btnProdTkt);
             this.pg1.Controls.Add(label2);
             this.pg1.Controls.Add(this.button1);
             this.pg1.Controls.Add(this.panel2);
@@ -1107,9 +1103,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "dsProdutn";
-            reportDataSource1.Value = this.prodTicketBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsProdutn";
+            reportDataSource2.Value = this.prodTicketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1082, 489);
             this.reportViewer1.Name = "reportViewer1";
@@ -1168,14 +1164,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QBooktype,
@@ -1271,28 +1267,6 @@
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(258, 69);
             this.inofficeTextBox.TabIndex = 58;
-            // 
-            // btnEmailProdTkt
-            // 
-            this.btnEmailProdTkt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEmailProdTkt.Location = new System.Drawing.Point(1077, 414);
-            this.btnEmailProdTkt.Name = "btnEmailProdTkt";
-            this.btnEmailProdTkt.Size = new System.Drawing.Size(138, 36);
-            this.btnEmailProdTkt.TabIndex = 57;
-            this.btnEmailProdTkt.Text = "Email Production Ticket";
-            this.btnEmailProdTkt.UseVisualStyleBackColor = true;
-            this.btnEmailProdTkt.Click += new System.EventHandler(this.btnEmailProdTkt_Click);
-            // 
-            // btnProdTkt
-            // 
-            this.btnProdTkt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProdTkt.Location = new System.Drawing.Point(1077, 372);
-            this.btnProdTkt.Name = "btnProdTkt";
-            this.btnProdTkt.Size = new System.Drawing.Size(138, 36);
-            this.btnProdTkt.TabIndex = 56;
-            this.btnProdTkt.Text = "Production Ticket";
-            this.btnProdTkt.UseVisualStyleBackColor = true;
-            this.btnProdTkt.Click += new System.EventHandler(this.btnProdTkt_Click);
             // 
             // button1
             // 
@@ -2694,8 +2668,6 @@
         private System.Windows.Forms.TextBox schfaxTextBox;
         private System.Windows.Forms.BindingSource datecontBindingSource;
         private DataSets.dsMcustTableAdapters.datecontTableAdapter datecontTableAdapter;
-        private System.Windows.Forms.Button btnEmailProdTkt;
-        private System.Windows.Forms.Button btnProdTkt;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox exchgTextBox;
         private System.Windows.Forms.TextBox spcinstTextBox;

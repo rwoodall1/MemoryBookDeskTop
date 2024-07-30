@@ -557,10 +557,6 @@
           <DataField>invzip</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="invname">
-          <DataField>invname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="OrderDate">
           <DataField>OrderDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -568,10 +564,6 @@
         <Field Name="ReOrder">
           <DataField>ReOrder</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="schzip">
-          <DataField>schzip</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Id">
           <DataField>Id</DataField>
@@ -601,6 +593,18 @@
           <DataField>notes</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CharacterResourceQty">
+          <DataField>CharacterResourceQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CharacterResourcAmt">
+          <DataField>CharacterResourcAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OracleCode">
+          <DataField>OracleCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="shpaddr">
           <DataField>shpaddr</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -619,6 +623,10 @@
         </Field>
         <Field Name="shpzip">
           <DataField>shpzip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="invname">
+          <DataField>invname</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="shpname">
@@ -645,6 +653,7 @@
             <Value>MeridianJostensLogo282NEW1</Value>
             <Sizing>FitProportional</Sizing>
             <Top>0.125in</Top>
+            <Left>0.625in</Left>
             <Height>0.52083in</Height>
             <Width>2.02083in</Width>
             <Style>
@@ -674,7 +683,7 @@
             </Paragraphs>
             <rd:DefaultName>qtedate</rd:DefaultName>
             <Top>0.125in</Top>
-            <Left>2.55751in</Left>
+            <Left>3.35729in</Left>
             <Height>0.31511in</Height>
             <Width>1.50998in</Width>
             <ZIndex>1</ZIndex>
@@ -1370,7 +1379,7 @@
             <Top>2.3507in</Top>
             <Left>0.34896in</Left>
             <Height>0.25in</Height>
-            <Width>7.45534in</Width>
+            <Width>7.45536in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>

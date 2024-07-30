@@ -1939,7 +1939,13 @@ namespace Mbc5.Forms.Meridian {
             ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
 
             reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMeridianBidDetails", bsBidQuote));
+            ReportDataSource rds1 = new ReportDataSource("dsMBid",mbidsBindingSource);
+            ReportDataSource rds = new ReportDataSource("dsMeridianBidDetails",MBidInvoiceDetailBindingSource);
+            
+
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(rds);
+            reportViewer1.LocalReport.DataSources.Add(rds1);
 
             Cursor.Current = Cursors.WaitCursor;
 

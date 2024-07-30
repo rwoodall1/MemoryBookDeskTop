@@ -11599,7 +11599,8 @@ namespace Mbc5.Forms
                 }
                 emailHelper.SendOutLookEmail(subject, emailList,null, body, EmailType.Mbc,attachments);
             }
-            else {
+            else if (Company == "MER")
+            {
                
                 var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
                 string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
@@ -11673,7 +11674,115 @@ namespace Mbc5.Forms
 
         }
 
+        private void btnProdTckt_Click(object sender, EventArgs e)
+        {
+            //this.basePanel.Visible = true;
+            //backgroundWorker1.RunWorkerAsync("PrintProductionTicket");
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+            var result = PrintProductionTicket();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage);
+            }
 
+            Cursor.Current = Cursors.Default;
+        }
+
+        private ApiProcessingResult<bool> PrintProductionTicket()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (txtCompany.Text == "MBC")
+            {
+                
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
+                string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
+             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+                if (dataReturned.IsError)
+                {
+                    MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(dataReturned.Errors[0].ErrorMessage, dataReturned.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                }
+
+                var data = (ProdutnTicketModel)dataReturned.Data;
+
+                productionTicketBindingSource.Clear();
+                productionTicketBindingSource.DataSource = data;
+                reportViewerProdticketPrint.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdutnTicket.rdlc";
+                reportViewerProdticketPrint.LocalReport.DataSources.Clear();
+                reportViewerProdticketPrint.LocalReport.DataSources.Add(new ReportDataSource("dsRptProdutn", productionTicketBindingSource));
+                reportViewerProdticketPrint.RefreshReport();
+
+              
+            }else if(txtCompany.Text == "MER")
+            {
+
+                var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
+                string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
+                                    Case
+                                      When Q.prodcode='MAG' THEN 'MAGNET'
+                                      When Q.prodcode='ADVLOG' THEN 'ADVENTURE LOG'
+									  When Q.prodcode='HSP' THEN 'HS'
+                                      When Q.prodcode='LTE' THEN 'LTE'
+                                      When Q.prodcode='STE' THEN 'STE'
+                                      When Q.prodcode='MSP' THEN 'MS'
+                                      When Q.prodcode='ELSP' THEN 'ELSP'
+                                      When Q.prodcode='PRISP' THEN 'PRISP'
+                                    END AS SchoolType,
+                            Q.stttitpgqty AS TitlePageQty,Q.vpbqty AS VinylBQty,Q.vpaqty AS VinylAQty,Q.wallchqty AS WallChartQty,Q.typesetqty AS TypeSetQty,Q.impguidqty AS ImplGuideQty,
+                           Q.duraglzqty AS DuraGlazeQty,Q.BookType,Q.NoPages,Q.qtystud AS StudentCopies,Q.qtyteacher AS TeacherCopies,Q.qtytot AS TotalCopies,Q.hallpqty AS HallPassQty,
+                          Q.bmarkqty AS BookMrkQty,Q.idpouchqty AS IdPouchQty,P.CoverType,P.ProdNo,P.CoverDesc,P.Prshpdte,P.ProofOfPages,P.PrintOnWhitePaper,Cvr.desc2 AS CoverInsideFront,Cvr.desc3 AS CoverInsideBack,
+                         Cvr.desc4 AS CoverOutsideBack
+                FROM MCust C
+                LEFT JOIN MQuotes Q ON C.Schcode=Q.Schcode
+                LEFT Join Covers Cvr ON Q.Invno=Cvr.Invno
+				 LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+                sqlClient.CommandText(cmdText);
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var dataReturned = sqlClient.Select<MeridianProdutnTicketModel>();
+                if (dataReturned.IsError)
+                {
+                    MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError(dataReturned.Errors[0].ErrorMessage, dataReturned.Errors[0].ErrorMessage, ""));
+                    return processingResult;
+                   
+                   
+                }
+
+                var vData = (MeridianProdutnTicketModel)dataReturned.Data;
+                productionTicketBindingSource.Clear();
+                productionTicketBindingSource.DataSource =vData;
+
+                reportViewerProdticketPrint.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MProdutnTicket.rdlc";
+                reportViewerProdticketPrint.LocalReport.DataSources.Clear();
+                reportViewerProdticketPrint.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", productionTicketBindingSource));
+                reportViewerProdticketPrint.RefreshReport();
+
+            }
+
+            return processingResult;
+        }
+
+        private void reportViewerProdticketPrint_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewerProdticketPrint.PrintDialog();
+        }
 
 
 

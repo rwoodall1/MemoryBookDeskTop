@@ -30,6 +30,9 @@ using System.Threading;
 using Vertex;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Microsoft.Office.Interop.Outlook;
+using Application = System.Windows.Forms.Application;
+using Exception = System.Exception;
 
 
 namespace Mbc5.Forms.MemoryBook
@@ -4886,8 +4889,11 @@ namespace Mbc5.Forms.MemoryBook
         private void btnCreateWIP_Click(object sender, EventArgs e)
         {
             var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
+            DataRowView current = (DataRowView)custBindingSource.Current;
+            string instructions = current["spcinst"].ToString();
             sqlClient.CommandText(@"
-			Select Q.Invno AS QuoteInvno,Q.Schcode,P.Invno AS ProdutnInvno,C.Invno AS CoversInvno,W.Invno AS WipInvno 
+			Select Q.Invno AS QuoteInvno,Q.Schcode,Q.BookType,Q.Contryear,Q.NoCopies,Q.NoPages,Q.FreeBooks,P.Invno AS ProdutnInvno,P.Screcv,C.Invno AS CoversInvno
+            ,C.reqstdcpy As CoverCopies,W.Invno AS WipInvno 
 			From Quotes Q
 				LEFT JOIN Produtn P ON Q.Invno=P.Invno
 				Left Join Covers C ON Q.Invno=C.Invno
@@ -4902,6 +4908,49 @@ namespace Mbc5.Forms.MemoryBook
                 return;
             }
             var resultData = (WipUpdateCheck)checkResult.Data;
+            if (resultData.CoversInvno == null)
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Schcode", this.Schcode);
+                sqlClient.AddParameter("@Specovr", frmMain.GetCoverNumber());
+              
+                sqlClient.AddParameter("@Specinst", instructions);
+                sqlClient.AddParameter("@Company", "MBC");
+                var coverInsert = sqlClient.Insert();
+                if (coverInsert.IsError)
+                {
+                    Log.Error(coverInsert.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+            }
+
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Update Covers Set Specinst=@Specinst,Reqstdcpy=@Reqstdcpy where Invno=@Invno");
+            sqlClient.AddParameter("@Specinst", instructions);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            if (!string.IsNullOrEmpty(resultData.Contryear))
+            {
+                if (resultData.Screcv == null)
+                {
+                    var Reqstdcpy = resultData.NoCopies + resultData.FreeBooks + 2;
+                    sqlClient.AddParameter("@Reqstdcpy", Reqstdcpy);
+                }
+                else { sqlClient.AddParameter("@Reqstdcpy", resultData.NoCopies); }
+            }
+            else { sqlClient.AddParameter("@Reqstdcpy", resultData.NoCopies); }
+            var coverUpdate = sqlClient.Update();
+            if (coverUpdate.IsError)
+            {
+                Log.Error(coverUpdate.Errors[0].DeveloperMessage);
+                MessageBox.Show("Failed to update covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             if (resultData.ProdutnInvno == null)
             {
                 sqlClient.ClearParameters();
@@ -4918,27 +4967,73 @@ namespace Mbc5.Forms.MemoryBook
                     MessageBox.Show("Failed to insert production record.:" + produtnInsert.Errors[0].DeveloperMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-            }        
-            if (resultData.CoversInvno == null)
-            {
-                sqlClient.ClearParameters();
-                sqlClient.CommandText("Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)");
-                sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.AddParameter("@Schcode", this.Schcode);
-                sqlClient.AddParameter("@Specovr", frmMain.GetCoverNumber());
-                DataRowView current = (DataRowView)custBindingSource.Current;
-                string instructions = current["spcinst"].ToString();
-                sqlClient.AddParameter("@Specinst", instructions);
-                sqlClient.AddParameter("@Company", "MBC");
-                var coverInsert = sqlClient.Insert();
-                if (coverInsert.IsError)
-                {
-                    Log.Error(coverInsert.Errors[0].DeveloperMessage);
-                    MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
             }
+            if (resultData.QuoteInvno!=null)
+            {
+                //get previous year information
+                int _contryear=23;
+                sqlClient.ClearParameters();
+                sqlClient.CommandText("Select Invno from Quotes where BookType=@MBO AND Contryear=@Contryear");
+                int.TryParse(resultData.Contryear,out _contryear);
+                sqlClient.AddParameter("@MBO", "MBO");
+                sqlClient.AddParameter("@Contryear", _contryear - 1);
+                var qresult = sqlClient.SelectSingleColumn();
+                if (qresult.IsError)
+                {
+                    Log.Error(qresult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to get previous year quote information.", "");
+                    return;
+                }
+                var oldInvno = qresult.Data;
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", oldInvno);
+                sqlClient.CommandText("Select JobNo,Advpw,Stfpw from produtn where Invno=@Invno");
+                var oldProdutnResult = sqlClient.Select<OldProdutn>();
+                if (oldProdutnResult.IsError)
+                {
+                    Log.Error(oldProdutnResult.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to get previous year production information.", "");
+                    return;
+
+                }
+                var oldProdutnRecord = (OldProdutn)oldProdutnResult.Data;
+                if (oldProdutnRecord!=null)
+                {
+                resultData.Advpw = oldProdutnRecord.Advpw;
+                resultData.JobNo = oldProdutnRecord.JobNo;
+                resultData.Stfpw = oldProdutnRecord.Stfpw;
+                }
+                
+
+            }
+            sqlClient.ClearParameters();
+            sqlClient.CommandText("Update Produtn Set Advpw=@advpw,JobNo=@JobNo,Stfpw=@Stfpw,NoPages=@NoPages,NoCopies=@NoCopies where Invno=@Invno");
+            sqlClient.AddParameter("@advpw", resultData.Advpw);
+            sqlClient.AddParameter("@JobNo", resultData.JobNo);
+            sqlClient.AddParameter("@Stfpw", resultData.Stfpw);
+            sqlClient.AddParameter("@NoPages",resultData.NoPages );
+            sqlClient.AddParameter("@Invno",Invno);
+            int numCopies=0;
+            if (!string.IsNullOrEmpty(resultData.Contryear))
+            {
+                numCopies = resultData.NoCopies + resultData.FreeBooks + 2;
+            }
+            else {
+                numCopies = resultData.NoCopies;
+            }
+
+
+            sqlClient.AddParameter("@NoCopies", numCopies);
+            var prodUpdateResult = sqlClient.Update();
+            if (prodUpdateResult.IsError)
+            {
+                Log.Error(prodUpdateResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to update production record.", "");
+                return;
+            }
+
+
             if (resultData.WipInvno == null)
             {
                 sqlClient.ClearParameters();
@@ -4953,7 +5048,7 @@ namespace Mbc5.Forms.MemoryBook
                     MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                 MessageBox.Show("WIP records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 MessageBox.Show("Records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }
@@ -5739,7 +5834,13 @@ namespace Mbc5.Forms.MemoryBook
         public decimal price { get; set; }
         public string discpercent { get; set; }
     }
-
+    public class OldProdutn
+    {
+        public string JobNo { get; set; }
+        public string Advpw { get; set;}
+        public string Stfpw { get; set; }
+    }
+    
 }
 
 

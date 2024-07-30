@@ -1082,6 +1082,7 @@
             // 
             // reportViewer1
             // 
+            this.reportViewer1.DocumentMapWidth = 87;
             reportDataSource1.Name = "dsMeridianBidDetails";
             reportDataSource1.Value = this.MBidInvoiceDetailBindingSource;
             reportDataSource2.Name = "dsMBid";
@@ -1089,10 +1090,10 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianQuote.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(459, 196);
+            this.reportViewer1.Location = new System.Drawing.Point(679, 177);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(115, 72);
+            this.reportViewer1.Size = new System.Drawing.Size(101, 85);
             this.reportViewer1.TabIndex = 297;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);

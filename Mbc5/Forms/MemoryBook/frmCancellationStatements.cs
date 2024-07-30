@@ -74,7 +74,13 @@ namespace Mbc5.Forms.MemoryBook
                     this.Cancellations = vCancellations;
                     dgCancellations.AutoGenerateColumns = false;
                     bsCancellations.DataSource = Cancellations;
-                }
+                lblNoRecs.Visible = false;
+            }
+			else
+			{
+				lblNoRecs.Visible = true;
+            }
+		
       
            
 

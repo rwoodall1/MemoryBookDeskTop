@@ -691,7 +691,7 @@ namespace Mbc5.Forms
         {
             var sqlClient = new SQLCustomClient(ApplicationConfig.DefaultConnectionString);
             //useing hard code until function to generate invno is done
-            var strQuery = "Select spcover from Spcover";
+            var strQuery = "Select speccvno from Spcover";
             sqlClient.CommandText(strQuery);
             var result = sqlClient.SelectSingleColumn();
             if (result.IsError)

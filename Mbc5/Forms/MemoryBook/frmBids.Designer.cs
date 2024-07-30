@@ -2619,6 +2619,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager2.mbidsTableAdapter = this.mbidsTableAdapter;
+            this.tableAdapterManager2.mcustTableAdapter = null;
             this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // backgroundWorker1

@@ -229,10 +229,20 @@ namespace BindingModels
     public class WipUpdateCheck
 	{
 		public int QuoteInvno { get; set; }
-		public string Schcode { get; set; }
-		public int? ProdutnInvno { get; set; }
-		public int? CoversInvno { get; set; }
-		public int? WipInvno { get; set; }
+        public string Contryear { get; set;}
+        public string Schcode { get; set; }
+        public DateTime Screcv { get; set; }
+        public string BookType { get; set; }
+        public int NoCopies { get; set; }
+        public int NoPages{ get; set; }
+        public int CoverCopies { get; set; }
+        public int FreeBooks { get; set; }  
+        public int? ProdutnInvno { get; set; }
+        public string JobNo { get; set; }
+        public string Advpw { get; set; }
+        public string Stfpw { get; set;}
+        public int? CoversInvno { get; set;}
+		public int? WipInvno { get; set;}
 	}
 	public class OutlookAttachemt
 	{
