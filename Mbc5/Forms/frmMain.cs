@@ -1472,10 +1472,10 @@ namespace Mbc5.Forms
 
         private void scanDescriptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LkpWipDescriptions frmWipDesc = new LkpWipDescriptions(this.ApplicationUser);
+            LkpWipDescriptions frmLkpWipDescriptions = new LkpWipDescriptions(this.ApplicationUser);
             this.Cursor = Cursors.AppStarting;
-            frmWipDesc.MdiParent = this;
-            frmWipDesc.Show();
+            frmLkpWipDescriptions.MdiParent = this;
+            frmLkpWipDescriptions.Show();
             this.Cursor = Cursors.Default;
         }
 

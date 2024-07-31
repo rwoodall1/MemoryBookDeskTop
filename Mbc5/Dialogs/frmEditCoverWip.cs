@@ -16,6 +16,7 @@ using BaseClass;
 
 
 using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Mbc5.Classes;
 
 namespace Mbc5.Dialogs
 {
@@ -34,19 +35,12 @@ namespace Mbc5.Dialogs
         public bool Refill { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
-            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
-            string AppConnectionString = "";
           
-            if (Environment == "DEV")
-            {
-                AppConnectionString = "Data Source = SEDSWJPSQL01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
-                this.Text = "Environment:" + Environment + "    Mbc5";
-            }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=SEDSWJPSQL01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
+           
             try
             {
-                this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-                this.coverdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.coverdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
                 wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
                 coverdetailTableAdapter.EditFillBy(dsProdutn.coverdetail, Invno);
             }

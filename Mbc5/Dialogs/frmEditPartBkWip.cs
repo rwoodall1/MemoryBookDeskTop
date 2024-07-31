@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs {
     public partial class frmEditPartBkWip : Form {
         public frmEditPartBkWip(int id,int invno,string schcode) {
@@ -23,9 +24,8 @@ namespace Mbc5.Dialogs {
         
         private void frmEditPartBkWip_Load(object sender,EventArgs e) {
             
-            string AppConnectionString = "";
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-            this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+          
+            this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "PartialBook");
             this.partBkDetailTableAdapter.EditFillBy(this.dsProdutn.PartBkDetail,Invno);
           

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BaseClass;
 using BaseClass.Classes;
+using Mbc5.Classes;
 namespace Mbc5.Forms
 {
     public partial class frmWipDescriptions : BaseClass.frmBase
@@ -26,6 +27,7 @@ namespace Mbc5.Forms
         private UserPrincipal ApplicationUser { get; set; }
         private void WipDescriptions_Load(object sender, EventArgs e)
         {
+            SetConnectionString();
             try
             {
                 wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions);
@@ -42,6 +44,14 @@ namespace Mbc5.Forms
          
 
         }
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+          
+            this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+        }
+
+
 
         private void tableNameComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {

@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BindingModels;
 using BaseClass;
+using Mbc5.Classes;
 
 namespace Mbc5.Dialogs
 {
@@ -31,13 +32,11 @@ namespace Mbc5.Dialogs
         public bool Refill { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
-            
-            string AppConnectionString = "";
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+           
             try
             {
-                this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
-                this.endsheetdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+                this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.endsheetdetailTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
                 wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "EndSheet");
                 endsheetdetailTableAdapter.Fill(dsEndSheet.endsheetdetail, Invno);
 

@@ -9,6 +9,8 @@ using BaseClass.Classes;
 using Core;
 using BaseClass;
 using NLog;
+using Mbc5.DataSets.LookUpTableAdapters;
+using Mbc5.Classes;
 namespace Mbc5.LookUpForms
 {
 
@@ -25,7 +27,9 @@ namespace Mbc5.LookUpForms
         {
 			// TODO: This line of code loads data into the 'lookUp.lkpCustType' table. You can move, or remove it, as needed.
 			try {
-				this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
+                lkpCustTypeTableAdapter.Connection.ConnectionString=ApplicationConfig.DefaultConnectionString;
+
+                this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
 			}catch(Exception ex) {
 				MbcMessageBox.Error(ex.Message, "");
 			}

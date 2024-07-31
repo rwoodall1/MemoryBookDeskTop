@@ -67,6 +67,7 @@
             this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).BeginInit();
@@ -87,6 +88,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.bindingNavigator1);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnSave);
@@ -236,7 +238,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(47, 104);
+            this.btnCancel.Location = new System.Drawing.Point(47, 128);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 23);
             this.btnCancel.TabIndex = 3;
@@ -324,6 +326,7 @@
             // 
             this.bindingNavigatorPositionItem1.AccessibleName = "Position";
             this.bindingNavigatorPositionItem1.AutoSize = false;
+            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
             this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem1.Text = "0";
@@ -409,6 +412,16 @@
             this.button1.Text = "Reset Password";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(48, 101);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(112, 23);
+            this.btnDelete.TabIndex = 28;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmUser
             // 
@@ -505,5 +518,6 @@
         private System.Windows.Forms.BindingSource rolesBindingSource;
         private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

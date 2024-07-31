@@ -125,15 +125,15 @@
             System.Windows.Forms.Label nobackcvLabel;
             System.Windows.Forms.Label nohandbkpgsLabel;
             System.Windows.Forms.Label label19;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.merinvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMInvoice = new Mbc5.DataSets.dsMInvoice();
             this.merinvdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -504,7 +504,7 @@
             mdescLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             mdescLabel.AutoSize = true;
             mdescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mdescLabel.Location = new System.Drawing.Point(618, 16);
+            mdescLabel.Location = new System.Drawing.Point(649, 16);
             mdescLabel.Name = "mdescLabel";
             mdescLabel.Size = new System.Drawing.Size(109, 13);
             mdescLabel.TabIndex = 33;
@@ -515,7 +515,7 @@
             sbtotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             sbtotLabel.AutoSize = true;
             sbtotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sbtotLabel.Location = new System.Drawing.Point(848, 42);
+            sbtotLabel.Location = new System.Drawing.Point(879, 42);
             sbtotLabel.Name = "sbtotLabel";
             sbtotLabel.Size = new System.Drawing.Size(62, 13);
             sbtotLabel.TabIndex = 35;
@@ -576,7 +576,7 @@
             baseprcLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             baseprcLabel.AutoSize = true;
             baseprcLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            baseprcLabel.Location = new System.Drawing.Point(304, 16);
+            baseprcLabel.Location = new System.Drawing.Point(335, 16);
             baseprcLabel.Name = "baseprcLabel";
             baseprcLabel.Size = new System.Drawing.Size(94, 13);
             baseprcLabel.TabIndex = 41;
@@ -587,7 +587,7 @@
             basetotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             basetotLabel.AutoSize = true;
             basetotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            basetotLabel.Location = new System.Drawing.Point(297, 61);
+            basetotLabel.Location = new System.Drawing.Point(328, 61);
             basetotLabel.Name = "basetotLabel";
             basetotLabel.Size = new System.Drawing.Size(101, 13);
             basetotLabel.TabIndex = 42;
@@ -598,7 +598,7 @@
             basetotLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             basetotLabel1.AutoSize = true;
             basetotLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            basetotLabel1.Location = new System.Drawing.Point(285, 36);
+            basetotLabel1.Location = new System.Drawing.Point(316, 36);
             basetotLabel1.Name = "basetotLabel1";
             basetotLabel1.Size = new System.Drawing.Size(113, 13);
             basetotLabel1.TabIndex = 43;
@@ -608,7 +608,7 @@
             // 
             wghtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             wghtLabel.AutoSize = true;
-            wghtLabel.Location = new System.Drawing.Point(454, 61);
+            wghtLabel.Location = new System.Drawing.Point(485, 61);
             wghtLabel.Name = "wghtLabel";
             wghtLabel.Size = new System.Drawing.Size(47, 13);
             wghtLabel.TabIndex = 49;
@@ -713,7 +713,7 @@
             // 
             cvrtotprcLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             cvrtotprcLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cvrtotprcLabel.Location = new System.Drawing.Point(282, 14);
+            cvrtotprcLabel.Location = new System.Drawing.Point(312, 14);
             cvrtotprcLabel.Name = "cvrtotprcLabel";
             cvrtotprcLabel.Size = new System.Drawing.Size(113, 22);
             cvrtotprcLabel.TabIndex = 32;
@@ -723,7 +723,7 @@
             // 
             dp1Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             dp1Label.AutoSize = true;
-            dp1Label.Location = new System.Drawing.Point(884, 17);
+            dp1Label.Location = new System.Drawing.Point(914, 17);
             dp1Label.Name = "dp1Label";
             dp1Label.Size = new System.Drawing.Size(16, 13);
             dp1Label.TabIndex = 33;
@@ -733,7 +733,7 @@
             // 
             label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(791, 14);
+            label2.Location = new System.Drawing.Point(821, 14);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(89, 13);
             label2.TabIndex = 36;
@@ -743,7 +743,7 @@
             // 
             desc1Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             desc1Label.AutoSize = true;
-            desc1Label.Location = new System.Drawing.Point(617, 41);
+            desc1Label.Location = new System.Drawing.Point(647, 41);
             desc1Label.Name = "desc1Label";
             desc1Label.Size = new System.Drawing.Size(109, 13);
             desc1Label.TabIndex = 37;
@@ -753,7 +753,7 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(617, 64);
+            label3.Location = new System.Drawing.Point(647, 64);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(109, 13);
             label3.TabIndex = 39;
@@ -763,7 +763,7 @@
             // 
             afterdisctotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             afterdisctotLabel.AutoSize = true;
-            afterdisctotLabel.Location = new System.Drawing.Point(814, 132);
+            afterdisctotLabel.Location = new System.Drawing.Point(844, 132);
             afterdisctotLabel.Name = "afterdisctotLabel";
             afterdisctotLabel.Size = new System.Drawing.Size(122, 13);
             afterdisctotLabel.TabIndex = 46;
@@ -1616,15 +1616,15 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 25;
-            reportDataSource4.Name = "dsMerInvoice";
-            reportDataSource4.Value = this.merinvoiceBindingSource;
-            reportDataSource5.Name = "dsMerInvDetails";
-            reportDataSource5.Value = this.merinvdetailBindingSource;
-            reportDataSource6.Name = "dsPayments";
-            reportDataSource6.Value = this.paymntBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource1.Name = "dsMerInvoice";
+            reportDataSource1.Value = this.merinvoiceBindingSource;
+            reportDataSource2.Name = "dsMerInvDetails";
+            reportDataSource2.Value = this.merinvdetailBindingSource;
+            reportDataSource3.Name = "dsPayments";
+            reportDataSource3.Value = this.paymntBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MerInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(932, 100);
             this.reportViewer1.Name = "reportViewer1";
@@ -1669,14 +1669,14 @@
             // 
             this.merinvdetailDataGridView.AllowUserToDeleteRows = false;
             this.merinvdetailDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.merinvdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.merinvdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1695,32 +1695,32 @@
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "descr";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle3;
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             // 
             // UnitPrice
             // 
             this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
             // 
             // Amount
             // 
             this.Amount.DataPropertyName = "Amount";
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle5;
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
             // 
@@ -2256,7 +2256,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1090, 659);
+            this.tabPage1.Size = new System.Drawing.Size(1090, 668);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sales";
             // 
@@ -2266,7 +2266,7 @@
             this.lblShipped.BackColor = System.Drawing.Color.Transparent;
             this.lblShipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShipped.ForeColor = System.Drawing.Color.Red;
-            this.lblShipped.Location = new System.Drawing.Point(514, 101);
+            this.lblShipped.Location = new System.Drawing.Point(514, 106);
             this.lblShipped.Name = "lblShipped";
             this.lblShipped.Size = new System.Drawing.Size(63, 457);
             this.lblShipped.TabIndex = 202;
@@ -2367,7 +2367,7 @@
             this.panel4.Controls.Add(this.hallpqtyTextBox);
             this.panel4.Location = new System.Drawing.Point(10, 316);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1028, 343);
+            this.panel4.Size = new System.Drawing.Size(1028, 346);
             this.panel4.TabIndex = 200;
             // 
             // btnGetTax
@@ -2411,7 +2411,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(593, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1, 341);
+            this.label13.Size = new System.Drawing.Size(1, 344);
             this.label13.TabIndex = 157;
             this.label13.Text = "label13";
             // 
@@ -2862,7 +2862,7 @@
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(8, 154);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1000, 156);
+            this.panel2.Size = new System.Drawing.Size(1030, 156);
             this.panel2.TabIndex = 199;
             // 
             // lblIncollections
@@ -2883,7 +2883,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(566, 0);
+            this.label12.Location = new System.Drawing.Point(596, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(1, 156);
             this.label12.TabIndex = 157;
@@ -2894,7 +2894,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(852, 4);
+            this.label10.Location = new System.Drawing.Point(882, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 7);
             this.label10.TabIndex = 54;
@@ -2915,7 +2915,7 @@
             this.lblCoverPricetotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCoverPricetotal.AutoSize = true;
             this.lblCoverPricetotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "cvrtotprc", true));
-            this.lblCoverPricetotal.Location = new System.Drawing.Point(389, 14);
+            this.lblCoverPricetotal.Location = new System.Drawing.Point(419, 14);
             this.lblCoverPricetotal.Name = "lblCoverPricetotal";
             this.lblCoverPricetotal.Size = new System.Drawing.Size(41, 13);
             this.lblCoverPricetotal.TabIndex = 51;
@@ -2934,7 +2934,7 @@
             // 
             this.disc3CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.disc3CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "disc3", true));
-            this.disc3CheckBox.Location = new System.Drawing.Point(594, 106);
+            this.disc3CheckBox.Location = new System.Drawing.Point(624, 106);
             this.disc3CheckBox.Name = "disc3CheckBox";
             this.disc3CheckBox.Size = new System.Drawing.Size(134, 20);
             this.disc3CheckBox.TabIndex = 49;
@@ -2946,7 +2946,7 @@
             // 
             this.disc4CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.disc4CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "disc4", true));
-            this.disc4CheckBox.Location = new System.Drawing.Point(646, 85);
+            this.disc4CheckBox.Location = new System.Drawing.Point(676, 85);
             this.disc4CheckBox.Name = "disc4CheckBox";
             this.disc4CheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.disc4CheckBox.Size = new System.Drawing.Size(80, 15);
@@ -2960,7 +2960,7 @@
             this.desc3amtTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc3amtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc3amt", true));
             this.desc3amtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desc3amtTextBox.Location = new System.Drawing.Point(943, 106);
+            this.desc3amtTextBox.Location = new System.Drawing.Point(973, 106);
             this.desc3amtTextBox.Name = "desc3amtTextBox";
             this.desc3amtTextBox.Size = new System.Drawing.Size(52, 20);
             this.desc3amtTextBox.TabIndex = 46;
@@ -2970,7 +2970,7 @@
             // 
             this.desc3TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc3", true));
-            this.desc3TextBox.Location = new System.Drawing.Point(734, 106);
+            this.desc3TextBox.Location = new System.Drawing.Point(764, 106);
             this.desc3TextBox.Name = "desc3TextBox";
             this.desc3TextBox.Size = new System.Drawing.Size(205, 20);
             this.desc3TextBox.TabIndex = 45;
@@ -2980,7 +2980,7 @@
             this.desc4amtTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc4amtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc4amt", true));
             this.desc4amtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desc4amtTextBox.Location = new System.Drawing.Point(943, 83);
+            this.desc4amtTextBox.Location = new System.Drawing.Point(973, 83);
             this.desc4amtTextBox.Name = "desc4amtTextBox";
             this.desc4amtTextBox.Size = new System.Drawing.Size(52, 20);
             this.desc4amtTextBox.TabIndex = 44;
@@ -2990,7 +2990,7 @@
             // 
             this.desc4TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc4", true));
-            this.desc4TextBox.Location = new System.Drawing.Point(734, 83);
+            this.desc4TextBox.Location = new System.Drawing.Point(764, 83);
             this.desc4TextBox.Name = "desc4TextBox";
             this.desc4TextBox.Size = new System.Drawing.Size(205, 20);
             this.desc4TextBox.TabIndex = 43;
@@ -3000,7 +3000,7 @@
             this.desc1amtTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc1amtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc1amt", true));
             this.desc1amtTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desc1amtTextBox1.Location = new System.Drawing.Point(943, 38);
+            this.desc1amtTextBox1.Location = new System.Drawing.Point(973, 38);
             this.desc1amtTextBox1.Name = "desc1amtTextBox1";
             this.desc1amtTextBox1.Size = new System.Drawing.Size(52, 20);
             this.desc1amtTextBox1.TabIndex = 42;
@@ -3011,7 +3011,7 @@
             this.descamtTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.descamtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "descamt", true));
             this.descamtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descamtTextBox.Location = new System.Drawing.Point(943, 61);
+            this.descamtTextBox.Location = new System.Drawing.Point(973, 61);
             this.descamtTextBox.Name = "descamtTextBox";
             this.descamtTextBox.Size = new System.Drawing.Size(52, 20);
             this.descamtTextBox.TabIndex = 41;
@@ -3021,7 +3021,7 @@
             // 
             this.desc2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc2", true));
-            this.desc2TextBox.Location = new System.Drawing.Point(734, 61);
+            this.desc2TextBox.Location = new System.Drawing.Point(764, 61);
             this.desc2TextBox.Name = "desc2TextBox";
             this.desc2TextBox.Size = new System.Drawing.Size(205, 20);
             this.desc2TextBox.TabIndex = 40;
@@ -3030,7 +3030,7 @@
             // 
             this.desc1TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.desc1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "desc1", true));
-            this.desc1TextBox.Location = new System.Drawing.Point(734, 38);
+            this.desc1TextBox.Location = new System.Drawing.Point(764, 38);
             this.desc1TextBox.Name = "desc1TextBox";
             this.desc1TextBox.Size = new System.Drawing.Size(205, 20);
             this.desc1TextBox.TabIndex = 38;
@@ -3040,7 +3040,7 @@
             this.erldiscamtTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.erldiscamtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "erldiscamt", true));
             this.erldiscamtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erldiscamtTextBox.Location = new System.Drawing.Point(943, 14);
+            this.erldiscamtTextBox.Location = new System.Drawing.Point(973, 14);
             this.erldiscamtTextBox.Name = "erldiscamtTextBox";
             this.erldiscamtTextBox.ReadOnly = true;
             this.erldiscamtTextBox.Size = new System.Drawing.Size(52, 20);
@@ -3052,7 +3052,7 @@
             this.dp1TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dp1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "dp1", true));
             this.dp1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dp1TextBox.Location = new System.Drawing.Point(903, 14);
+            this.dp1TextBox.Location = new System.Drawing.Point(933, 14);
             this.dp1TextBox.Name = "dp1TextBox";
             this.dp1TextBox.Size = new System.Drawing.Size(36, 20);
             this.dp1TextBox.TabIndex = 34;
@@ -3063,7 +3063,7 @@
             this.hrdcpyprfCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.hrdcpyprfCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "hrdcpyprf", true));
             this.hrdcpyprfCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hrdcpyprfCheckBox.Location = new System.Drawing.Point(147, 34);
+            this.hrdcpyprfCheckBox.Location = new System.Drawing.Point(177, 34);
             this.hrdcpyprfCheckBox.Name = "hrdcpyprfCheckBox";
             this.hrdcpyprfCheckBox.Size = new System.Drawing.Size(122, 24);
             this.hrdcpyprfCheckBox.TabIndex = 32;
@@ -3087,7 +3087,7 @@
             this.coverapprdCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.coverapprdCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "coverapprd", true));
             this.coverapprdCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coverapprdCheckBox.Location = new System.Drawing.Point(147, 12);
+            this.coverapprdCheckBox.Location = new System.Drawing.Point(177, 12);
             this.coverapprdCheckBox.Name = "coverapprdCheckBox";
             this.coverapprdCheckBox.Size = new System.Drawing.Size(129, 24);
             this.coverapprdCheckBox.TabIndex = 31;
@@ -3309,7 +3309,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(7, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1000, 85);
+            this.panel3.Size = new System.Drawing.Size(1031, 85);
             this.panel3.TabIndex = 72;
             // 
             // label11
@@ -3318,7 +3318,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(565, 0);
+            this.label11.Location = new System.Drawing.Point(596, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1, 83);
             this.label11.TabIndex = 156;
@@ -3328,7 +3328,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(400, 51);
+            this.label1.Location = new System.Drawing.Point(431, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 1);
             this.label1.TabIndex = 155;
@@ -3338,7 +3338,7 @@
             this.lblsbtot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblsbtot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "sbtot", true));
             this.lblsbtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsbtot.Location = new System.Drawing.Point(910, 42);
+            this.lblsbtot.Location = new System.Drawing.Point(941, 42);
             this.lblsbtot.Name = "lblsbtot";
             this.lblsbtot.Size = new System.Drawing.Size(57, 20);
             this.lblsbtot.TabIndex = 154;
@@ -3349,7 +3349,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(859, 3);
+            this.label9.Location = new System.Drawing.Point(890, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(126, 7);
             this.label9.TabIndex = 53;
@@ -3370,7 +3370,7 @@
             this.lblTotalBasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalBasePrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "basetot", true));
             this.lblTotalBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBasePrice.Location = new System.Drawing.Point(397, 61);
+            this.lblTotalBasePrice.Location = new System.Drawing.Point(428, 61);
             this.lblTotalBasePrice.Name = "lblTotalBasePrice";
             this.lblTotalBasePrice.Size = new System.Drawing.Size(51, 19);
             this.lblTotalBasePrice.TabIndex = 152;
@@ -3381,7 +3381,7 @@
             this.lblTeachBasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTeachBasePrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "TeBasePrc", true));
             this.lblTeachBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeachBasePrice.Location = new System.Drawing.Point(397, 36);
+            this.lblTeachBasePrice.Location = new System.Drawing.Point(428, 36);
             this.lblTeachBasePrice.Name = "lblTeachBasePrice";
             this.lblTeachBasePrice.Size = new System.Drawing.Size(33, 20);
             this.lblTeachBasePrice.TabIndex = 151;
@@ -3392,7 +3392,7 @@
             this.lblBasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBasePrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "baseprc", true));
             this.lblBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBasePrice.Location = new System.Drawing.Point(396, 16);
+            this.lblBasePrice.Location = new System.Drawing.Point(427, 16);
             this.lblBasePrice.Name = "lblBasePrice";
             this.lblBasePrice.Size = new System.Drawing.Size(33, 17);
             this.lblBasePrice.TabIndex = 51;
@@ -3403,7 +3403,7 @@
             this.wghtTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wghtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "wght", true));
             this.wghtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wghtTextBox.Location = new System.Drawing.Point(503, 61);
+            this.wghtTextBox.Location = new System.Drawing.Point(534, 61);
             this.wghtTextBox.Name = "wghtTextBox";
             this.wghtTextBox.Size = new System.Drawing.Size(44, 20);
             this.wghtTextBox.TabIndex = 50;
@@ -3414,7 +3414,7 @@
             this.chkJostens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkJostens.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "jostens", true));
             this.chkJostens.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkJostens.Location = new System.Drawing.Point(451, 28);
+            this.chkJostens.Location = new System.Drawing.Point(482, 28);
             this.chkJostens.Name = "chkJostens";
             this.chkJostens.Size = new System.Drawing.Size(70, 24);
             this.chkJostens.TabIndex = 49;
@@ -3427,7 +3427,7 @@
             this.chkGeneric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkGeneric.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mquotesBindingSource, "generic", true));
             this.chkGeneric.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGeneric.Location = new System.Drawing.Point(451, 9);
+            this.chkGeneric.Location = new System.Drawing.Point(482, 9);
             this.chkGeneric.Name = "chkGeneric";
             this.chkGeneric.Size = new System.Drawing.Size(70, 24);
             this.chkGeneric.TabIndex = 48;
@@ -3489,7 +3489,7 @@
             this.mdescTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "mdesc", true));
             this.mdescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mdescTextBox.Location = new System.Drawing.Point(734, 13);
+            this.mdescTextBox.Location = new System.Drawing.Point(765, 13);
             this.mdescTextBox.Name = "mdescTextBox";
             this.mdescTextBox.Size = new System.Drawing.Size(205, 20);
             this.mdescTextBox.TabIndex = 34;
@@ -3499,7 +3499,7 @@
             this.txtmisc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtmisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "misc", true));
             this.txtmisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtmisc.Location = new System.Drawing.Point(943, 13);
+            this.txtmisc.Location = new System.Drawing.Point(974, 13);
             this.txtmisc.Name = "txtmisc";
             this.txtmisc.Size = new System.Drawing.Size(52, 20);
             this.txtmisc.TabIndex = 35;
@@ -3518,7 +3518,7 @@
             this.salesTabControl.Location = new System.Drawing.Point(1, 1);
             this.salesTabControl.Name = "salesTabControl";
             this.salesTabControl.SelectedIndex = 0;
-            this.salesTabControl.Size = new System.Drawing.Size(1098, 685);
+            this.salesTabControl.Size = new System.Drawing.Size(1098, 694);
             this.salesTabControl.TabIndex = 4;
             this.salesTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.salesTabControl_Selecting);
             this.salesTabControl.Enter += new System.EventHandler(this.salesTabControl_Enter);
@@ -3632,14 +3632,14 @@
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,

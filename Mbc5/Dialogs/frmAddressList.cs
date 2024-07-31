@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using Mbc5.Forms;
 using System.Configuration;
+using Mbc5.Classes;
 namespace Mbc5.Dialogs
 {
     public partial class frmAddressList : Form
@@ -25,10 +26,8 @@ namespace Mbc5.Dialogs
         private void frmAddressList_Load(object sender, EventArgs e)
         {
            
-            string AppConnectionString = "";
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
-            // TODO: This line of code loads data into the 'dsUser.mbcUsers' table. You can move, or remove it, as needed.
-            this.mbcUsersTableAdapter.Connection.ConnectionString = AppConnectionString;
+            
+            this.mbcUsersTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);
 
         }

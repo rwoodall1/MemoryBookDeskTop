@@ -229,5 +229,13 @@ namespace Mbc5.Forms
             frmPassword.ShowDialog();
             this.Cursor = Cursors.Default;
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var row =(DataRowView) bsUser.Current;
+            row.Delete();
+            mbcUsersTableAdapter.Update(dsUser);
+
+        }
     }
 }

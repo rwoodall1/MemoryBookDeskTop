@@ -9,6 +9,7 @@ using BaseClass.Classes;
 using NLog;
 using BaseClass;
 using Core;
+using Mbc5.Classes;
 namespace Mbc5.LookUpForms
 {
    
@@ -21,6 +22,7 @@ namespace Mbc5.LookUpForms
         }
         private void LkpDiscount_Load(object sender, EventArgs e)
         {
+            this.lkpDiscountTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             lkpDiscountTableAdapter.Fill(lookUp.lkpDiscount);
         }
         private void lkpDdiscntBindingNavigatorSaveItem_Click(object sender, EventArgs e)

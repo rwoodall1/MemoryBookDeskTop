@@ -9,6 +9,8 @@ using BaseClass.Classes;
 using Core;
 using BaseClass;
 using NLog;
+using Mbc5.Classes;
+using Mbc5.DataSets.LookUpTableAdapters;
 namespace Mbc5.LookUpForms
 {
 
@@ -26,7 +28,9 @@ namespace Mbc5.LookUpForms
         {
 
 			// TODO: This line of code loads data into the 'lookUp.lkTypeData' table. You can move, or remove it, as needed.
-			try { this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround); }catch(Exception ex) {
+			try {
+                lkpBackGroundTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+                this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround); }catch(Exception ex) {
 				MbcMessageBox.Error(ex.Message, "");
 			}
            

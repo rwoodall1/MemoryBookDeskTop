@@ -9,6 +9,8 @@ using BaseClass.Classes;
 using BaseClass;
 using Core;
 using NLog;
+using Mbc5.Classes;
+using Mbc5.DataSets.dsProdutnTableAdapters;
 namespace Mbc5.LookUpForms
 {
 
@@ -28,6 +30,7 @@ namespace Mbc5.LookUpForms
 
         private void LkpLeadSource_Load(object sender, EventArgs e)
         {
+            this.lkTypeDataTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             // TODO: This line of code loads data into the 'lookUp.lkTypeData' table. You can move, or remove it, as needed.
             this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
            

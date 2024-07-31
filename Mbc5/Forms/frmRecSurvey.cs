@@ -9,6 +9,7 @@ using BaseClass.Classes;
 using BaseClass;
 
 using Mbc5.Classes;
+using Mbc5.DataSets.LookUpTableAdapters;
 namespace Mbc5.Forms
 {
     public partial class frmRecSurvey : BaseClass.frmBase
@@ -24,6 +25,7 @@ namespace Mbc5.Forms
        
         private void frmRecSurvey_Load(object sender, EventArgs e)
         {
+            recv2TableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
             if (Invno == null || Invno == 0)
             {
                 MbcMessageBox.Warning("Invoice number is missing. ", "");

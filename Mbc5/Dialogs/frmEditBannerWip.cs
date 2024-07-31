@@ -34,10 +34,7 @@ namespace Mbc5.Dialogs
         public frmMain frmMain { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
-
-            
-            string AppConnectionString = "";
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+   
             try
             {
                 this.wipDescriptionsTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;

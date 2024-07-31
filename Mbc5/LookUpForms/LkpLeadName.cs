@@ -9,6 +9,7 @@ using BaseClass.Classes;
 using BaseClass;
 using Core;
 using NLog;
+using Mbc5.Classes;
 namespace Mbc5.LookUpForms
 {
 
@@ -32,7 +33,9 @@ namespace Mbc5.LookUpForms
         private void LkpLeadSource_Load(object sender, EventArgs e)
         {
 			try {
-				this.lkpLeadNameTableAdapter.Fill(this.lookUp.lkpLeadName);
+                this.lkpLeadNameTableAdapter.Connection.ConnectionString = ApplicationConfig.DefaultConnectionString;
+
+               
 				// TODO: This line of code loads data into the 'lookUp.lkpLeadSource' table. You can move, or remove it, as needed.
 				this.lkpLeadNameTableAdapter.Fill(this.lookUp.lkpLeadName);
 			}catch(Exception ex) {
