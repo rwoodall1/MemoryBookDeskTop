@@ -34,3 +34,10 @@
 /packages
 /.vs/MemoryBook/copilot-chat/43bfe064/sessions
 /BindingModels/.vs
+/StartUpApp/Properties/Resources.Designer.cs
+/Mbc5/Properties/AssemblyInfo.cs
+/StartUpApp/Properties/Settings.Designer.cs
+/VertexTax/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/VertexTax/obj/Debug/Vertex.csproj.FileListAbsolute.txt
+/VertexTax/obj/Release/Vertex.csproj.AssemblyReference.cache
+/VertexTax/obj/Debug/Vertex.csproj.AssemblyReference.cache
