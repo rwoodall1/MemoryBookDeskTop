@@ -150,7 +150,7 @@ namespace Mbc5.Forms
                    var _emailHelper = new EmailHelper();
                    
 
-                    string body = "<h1> Your Temporary Password </h1><p> Login in with your email address as user name and " + pwd + " as your password.Once you are logged in you will be required to change your password.</p> ";
+                    string body = "<h1> Your Temporary Password </h1><p> Login in with "+ txtUserName.Text +" as user name and " + pwd + " as your password.Once you are logged in you will be required to change your password.</p> ";
                     try {
                         if(_emailHelper.SendEmail("Your temporary password.", txtEmail.Text,"",body,EmailType.System))
                         {
