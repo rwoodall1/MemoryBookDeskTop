@@ -13,6 +13,8 @@ using Equin.ApplicationFramework;
 using CsvHelper;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
+
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmWipReport : BaseClass.frmBase
@@ -91,6 +93,8 @@ namespace Mbc5.Forms.MixBook
             BindingListView<WipReportModel> vOrders1 = new BindingListView<WipReportModel>(vOrders);
             bsWip.DataSource = vOrders1;
             lblRecCount.Text = vOrders1.Count.ToString() + " Records";
+            var vcopies = vOrders1.Sum(a => a.Copies);
+            lblcopycnt.Text = vcopies.ToString() + " Total Copies";
       
         }
 

@@ -679,7 +679,9 @@
     <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
     </Compile>
-    <Compile Include="LookUpForms\LkpCustType.cs" />
+    <Compile Include="LookUpForms\LkpCustType.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LookUpForms\LkpCustType.Designer.cs">
       <DependentUpon>LkpCustType.cs</DependentUpon>
     </Compile>

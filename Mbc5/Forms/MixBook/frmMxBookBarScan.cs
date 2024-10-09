@@ -433,17 +433,19 @@ namespace Mbc5.Forms.MixBook
 
                         if (MbxModel.Backing == "HC")
                         {
+                            string _Location = txtLocation.Text + this.Invno.ToString().Substring(1, 7) + "   X" + this.Invno.ToString().Substring(8, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
+                              
                                 if (!chkPrToLabeler.Checked)
                                 {
-                                    PrintDataMatrix(txtBarCode.Text,txtLocation.Text );//
+                                    PrintDataMatrix(txtBarCode.Text,_Location );//
                                 }
                                 else
                                 {
                                     //Print to labeler
                                     List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                                    var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location =txtLocation.Text  };//
+                                    var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location =_Location  };//
                                     listData.Add(vData);
                                     reportViewer2.LocalReport.DataSources.Clear();
                                     reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";

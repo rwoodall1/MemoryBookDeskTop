@@ -398,11 +398,17 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" || mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            {
+                lblCanceled.Visible = true;
+            }
+            else { lblCanceled.Visible = false; }
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
             else { lblHold.Visible = false; }
+
         }
         private void PrintJobTicket()
         {
@@ -443,8 +449,10 @@ namespace Mbc5.Forms.MixBook
                 ELSE
 
                 Case
-                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') Then
+                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
                 ProdCopies/1
+                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
+                1
                 else
                 0
                 End
@@ -1083,7 +1091,12 @@ namespace Mbc5.Forms.MixBook
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" || mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+           if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            {
+                lblCanceled.Visible = true;
+            }
+            else { lblCanceled.Visible = false; }
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
@@ -1124,6 +1137,7 @@ namespace Mbc5.Forms.MixBook
 
         private void CancelOrder()
         {
+            MbcMessageBox.Information("This procedure cancels the order in DB only. It does not send a notification to Mixbook. Use websit if Mixbook needs notification.");
           
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',BookPreviewUrl='',BookUrl='',CoverPreviewUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
@@ -1151,16 +1165,19 @@ namespace Mbc5.Forms.MixBook
                 
             }
             this.Fill();
-            //var processingResult = new ApiProcessingResult();
-            //var returnNotification = new MixbookNotification();
-            //var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
-            //string reason = "";
-            //InputBox.Show("Reason", "Enter a reason", ref reason);
-            //returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
-            //returnNotification.Request.Status.occurredAt = DateTime.Now;
-            //returnNotification.Request.Status.Value = "Cancelled";
-            //returnNotification.Request.Status.message = reason;
-            //var vReturnNotification = Serialize.ToXml(returnNotification);
+            var processingResult = new ApiProcessingResult();
+            var returnNotification = new MixbookNotification();
+            var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
+            string reason = "";
+            InputBox.Show("Reason", "Enter a reason", ref reason);
+            returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
+            returnNotification.Request.Status.occurredAt = DateTime.Now;
+            returnNotification.Request.Status.Value = "Cancelled";
+            returnNotification.Request.Status.message = reason;
+            var vReturnNotification = Serialize.ToXml(returnNotification);
+            //This is disabled in the event it is canclled before we start the order. Do not want a notification going to customer.
+            //Cancel from website if we need the customer and mixbook to know
+
             //var restServiceResult = new RESTService().MakeRESTCall("POST", vReturnNotification);
             //if (!restServiceResult.Result.IsError)
             //{
@@ -1181,7 +1198,7 @@ namespace Mbc5.Forms.MixBook
             //    MbcMessageBox.Exclamation("Order has been cancelled and but Mixbook notification failed.");
             //}
 
-          
+
 
 
         }

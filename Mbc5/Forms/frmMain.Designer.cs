@@ -41,6 +41,7 @@
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meridianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mbidsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bindingTimesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MerToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.invoicesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.receivingSurveyCompensationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,7 +130,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.bindingTimesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -245,6 +245,12 @@
             this.mbidsToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.mbidsToolStripMenuItem.Text = "&Bids";
             this.mbidsToolStripMenuItem.Click += new System.EventHandler(this.mbidsToolStripMenuItem_Click);
+            // 
+            // bindingTimesToolStripMenuItem
+            // 
+            this.bindingTimesToolStripMenuItem.Name = "bindingTimesToolStripMenuItem";
+            this.bindingTimesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.bindingTimesToolStripMenuItem.Text = "Binding Times";
             // 
             // MerToolStrip
             // 
@@ -1003,13 +1009,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // bindingTimesToolStripMenuItem
-            // 
-            this.bindingTimesToolStripMenuItem.Name = "bindingTimesToolStripMenuItem";
-            this.bindingTimesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.bindingTimesToolStripMenuItem.Text = "Binding Times";
-         
             // 
             // frmMain
             // 

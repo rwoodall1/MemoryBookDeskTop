@@ -24,7 +24,7 @@ namespace Mbc5.Dialogs {
         private void frmEditPrtBkWip_Load(object sender,EventArgs e) {
             
             string AppConnectionString = "";
-            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = SedswjpSql01; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = SedswjpSql01; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
+            AppConnectionString = ConfigurationManager.AppSettings["Environment"].ToString() == "DEV" ? "Data Source = sedswjpsql02; Initial Catalog = Mbc5_demo; Persist Security Info =True;Trusted_Connection=True;" : "Data Source = sedswjpsql02; Initial Catalog = Mbc5; Persist Security Info =True;Trusted_Connection=True;";
 
             this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "PhotosCD");
