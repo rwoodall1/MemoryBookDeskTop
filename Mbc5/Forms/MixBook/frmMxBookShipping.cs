@@ -715,7 +715,7 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
-            var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL" };
+            var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL","USPS_GROUND_ADVANTAGE" };
 
 
             if (vPartTrack.ToUpper() == "1ZR")//ups
@@ -749,12 +749,12 @@ namespace Mbc5.Forms.MixBook
 
 
             }
-            else if (vPartTrack == "420" || vPartTrack == "940")//usps
+            else if (vPartTrack == "420" || vPartTrack == "940"|| vPartTrack == "943")//usps
             {
                 bool found = false;
-                foreach (var a in uspsList)
+                foreach (var shipmethod in uspsList)
                 {
-                    if (a == MbxModel.ShipMethod.Trim())
+                    if (shipmethod == MbxModel.ShipMethod.Trim())
                     {
                         found = true;
                         break;
