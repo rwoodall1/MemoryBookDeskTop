@@ -433,7 +433,8 @@ namespace Mbc5.Forms.MixBook
 
                         if (MbxModel.Backing == "HC")
                         {
-                            string _Location = txtLocation.Text + this.Invno.ToString().Substring(1, 7) + "   X" + this.Invno.ToString().Substring(8, this.Invno.ToString().Length - 7);
+                            //string _Location = txtLocation.Text + this.Invno.ToString().Substring(1, 7) + "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
+                            string _Location = txtLocation.Text  + "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
                               
@@ -544,11 +545,12 @@ namespace Mbc5.Forms.MixBook
                         
                         if (MbxModel.Backing == "HC")
                         {
+                            string _Location = txtLocation.Text + "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
                                 if (!chkPrToLabeler.Checked)
                                 {
-                                    PrintDataMatrix(txtBarCode.Text, txtLocation.Text);
+                                    PrintDataMatrix(txtBarCode.Text, _Location);
                                 }
                                 else
                                 {
