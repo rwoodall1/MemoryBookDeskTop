@@ -1009,15 +1009,12 @@ namespace Mbc5.Forms
 
           
         }
-        private void UpdateRemakePrintedBy(List<RemakeTicketQuery>Jobs)
-        {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
-        }
+       
         private void SetRemakeTicketsPrinted()
         {
             string _userIntial = "";
             InputBox.Show("Enter your initials to print remake tickets.", "User Initials",ref _userIntial);
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy,ReMakePrntDate=GETDATE() Where Invno=@Invno");
             foreach (RemakeTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
