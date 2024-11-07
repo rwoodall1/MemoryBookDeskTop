@@ -751,6 +751,7 @@ namespace Mbc5.Forms.MixBook
             }
             else if (vPartTrack == "420" || vPartTrack == "940"|| vPartTrack == "943")//usps
             {
+                //First Class has 4201stClass as trk number. First Class does not get a trk number but we need one to pass validation
                 bool found = false;
                 foreach (var shipmethod in uspsList)
                 {
