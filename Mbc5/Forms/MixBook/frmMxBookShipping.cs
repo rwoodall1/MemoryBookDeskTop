@@ -823,6 +823,7 @@ namespace Mbc5.Forms.MixBook
 
         private void txtItemBarcode_Enter(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtTrackingNo.Text))
             {
                 MbcMessageBox.Hand("Tracking number is required", "Tracking Number");
@@ -836,6 +837,5 @@ namespace Mbc5.Forms.MixBook
             
             txtClientIdLookup.Focus();
         }
-       
     }
 }

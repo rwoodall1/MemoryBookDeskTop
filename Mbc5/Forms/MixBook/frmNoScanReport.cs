@@ -17,7 +17,7 @@ namespace Mbc5.Forms.MixBook
 {
     public partial class frmNoScanReport : BaseClass.frmBase
     {
-        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead" }, userPrincipal)
+        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead","MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;

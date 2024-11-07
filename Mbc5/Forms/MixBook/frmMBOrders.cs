@@ -626,7 +626,7 @@ namespace Mbc5.Forms.MixBook
                         reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter });
                     }
 
-                    reportViewer2.LocalReport.EnableExternalImages = true;
+                    reportViewer3.LocalReport.EnableExternalImages = true;
 
 
                     this.reportViewer3.RefreshReport();
@@ -657,14 +657,16 @@ namespace Mbc5.Forms.MixBook
         }
         private void SetRemakeTicketPrinted()
         {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
-           
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
+            string _userIntials = "";
+            InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
 
-                var vInvno = this.Invno.ToString();
+            var vInvno = this.Invno.ToString();
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
                 sqlClient.AddParameter("@RemakeTicketPrinted", 1);
-                var updateResult = sqlClient.Update();
+            sqlClient.AddParameter("@RemakePrintedBy",_userIntials);
+            var updateResult = sqlClient.Update();
         
         }
         #endregion

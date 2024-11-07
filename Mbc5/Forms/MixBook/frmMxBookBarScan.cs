@@ -705,41 +705,41 @@ namespace Mbc5.Forms.MixBook
 
                         
                         string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
-                        try
-                        {
-                            if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
-                            {
+                        //try
+                        //{
+                        //    if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
+                        //    {
 
-                                Process.Start(MbxModel.BookPreviewUrl);
-                                Process.Start(MbxModel.CoverPreviewUrl);
-                                var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-                                if (dialogResult != DialogResult.Yes)
-                                {
-                                    MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
-                                    return;
-                                }
-                                else if (dialogResult == DialogResult.Yes)
-                                {
-                                    var processes = Process.GetProcessesByName("chrome");
-                                    foreach (var process in processes)
-                                    {
-                                        process.Kill();
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                MbcMessageBox.Hand("Preview file is missing. Contact a supervisor.", "Preview file is Missing");
-                                return;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(MbxModel));
-                            lblHoldLocation.Text = "";
-                            return;
-                        }
+                        //        Process.Start(MbxModel.BookPreviewUrl);
+                        //        Process.Start(MbxModel.CoverPreviewUrl);
+                        //        var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                        //        if (dialogResult != DialogResult.Yes)
+                        //        {
+                        //            MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
+                        //            return;
+                        //        }
+                        //        else if (dialogResult == DialogResult.Yes)
+                        //        {
+                        //            var processes = Process.GetProcessesByName("chrome");
+                        //            foreach (var process in processes)
+                        //            {
+                        //                process.Kill();
+                        //            }
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        MbcMessageBox.Hand("Preview file is missing. Contact a supervisor.", "Preview file is Missing");
+                        //        return;
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MbcMessageBox.Error("An error has occurred:" + ex.Message);
+                        //    Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(MbxModel));
+                        //    lblHoldLocation.Text = "";
+                        //    return;
+                        //}
                         string location = "";
                         if (MbxModel.NumProducts > 1)
                         {

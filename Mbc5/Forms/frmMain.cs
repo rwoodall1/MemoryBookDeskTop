@@ -50,7 +50,7 @@ namespace Mbc5.Forms
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
+                //AppConnectionString = "Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;User Id=mbcuser_demo;password=F8GFxAtT9Hpzbnck; Connect Timeout=5";
                 AppConnectionString = "Data Source=sedswjpsql02; Initial Catalog=Mbc5_demo;Persist Security Info =True;Trusted_Connection=True;Connect Timeout=5";
                 this.label1.Text = "Using Test Environment Notify Supervisor Immediatly";
                 this.pnlNotice.Visible = true;
@@ -187,7 +187,35 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = true;
                 barScanToolStripMenuItem.Visible = false;
             }
-            else if (ApplicationUser.UserName.ToUpper() == "PRESS" || ApplicationUser.UserName.ToUpper() == "QUALITY")
+            else if (ApplicationUser.UserName.ToUpper() == "PRESS")
+            {
+                toolStripMenuItem2.Visible = true;
+                stoneFieldToolStripMenuItem.Visible = false;
+                labelsToolStripMenuItem.Visible=false;
+                customeReportsToolStripMenuItem.Visible=false;
+                mixbookReportsToolStripMenuItem.Visible = true;
+                invoiceReportToolStripMenuItem.Visible = false;
+                resetJobTicketsByBatchToolStripMenuItem.Visible = false;
+
+
+
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = true;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                
+                systemToolStripMenuItem.Visible = false;
+                mBCToolStripMenuItem.Visible = false;
+                meridianToolStripMenuItem.Visible = false;
+                productionWIPToolStripMenuItem.Visible = false;
+                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem_Click(null, null);
+
+                shippingScanToolStripMenuItem.Visible = false;
+
+            }
+            else if (  ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = true;
@@ -965,6 +993,7 @@ namespace Mbc5.Forms
                 var jobData = (List<RemakeTicketQuery>)result.Data;
                 if (jobData != null)
                 {
+                  
                     reportViewer1.LocalReport.DataSources.Clear();
                     JobTicketQueryBindingSource.DataSource = jobData;
                     reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
@@ -980,15 +1009,22 @@ namespace Mbc5.Forms
 
           
         }
-        private void SetRemakeTicketsPrinted()
+        private void UpdateRemakePrintedBy(List<RemakeTicketQuery>Jobs)
         {
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted Where Invno=@Invno");
+        }
+        private void SetRemakeTicketsPrinted()
+        {
+            string _userIntial = "";
+            InputBox.Show("Enter your initials to print remake tickets.", "User Initials",ref _userIntial);
+            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
             foreach (RemakeTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
                 var vInvno = rec.Invno.ToString();
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@RemakePrintedBy", _userIntial);
                 sqlClient.AddParameter("@RemakeTicketPrinted", 1);
                 var updateResult = sqlClient.Update();
             }
