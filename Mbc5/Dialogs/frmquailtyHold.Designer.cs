@@ -86,6 +86,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(113, 20);
             this.txtLocation.TabIndex = 4;
+            this.txtLocation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLocation_KeyPress);
             // 
             // pnlLocation
             // 

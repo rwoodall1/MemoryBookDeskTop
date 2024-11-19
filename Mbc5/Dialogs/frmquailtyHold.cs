@@ -29,7 +29,7 @@ namespace Mbc5.Dialogs
                 lblCurLocation.Text = "Current Location:" + _currrentlocation;
             }
             else { lblCurLocation.Text = ""; }
-         
+      
         }
 
         private void lblText_Click(object sender, EventArgs e)
@@ -48,6 +48,7 @@ namespace Mbc5.Dialogs
             {
                 button1.Text = "Save";
                 pnlLocation.Visible = true;
+                lblCurLocation.Focus();
             }
             else
             {
@@ -63,6 +64,18 @@ namespace Mbc5.Dialogs
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No;
+        }
+
+        private void txtLocation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (true)
+            {
+                button1.Text = "Yes";
+                this.Location = txtLocation.Text;
+                this.DialogResult = DialogResult.Yes;
+                txtLocation.Text = "";
+                pnlLocation.Visible = false;
+            }
         }
     }
 }
