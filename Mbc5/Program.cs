@@ -39,8 +39,8 @@ namespace Mbc5
             try
             {
 
-                Application.Run(new frmMain());
-                //Application.Run(new frmTest());
+               Application.Run(new frmMain());
+               // Application.Run(new Form1());
 
             }
             catch (Exception ex)

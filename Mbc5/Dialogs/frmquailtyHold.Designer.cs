@@ -55,7 +55,7 @@
             this.button1.Location = new System.Drawing.Point(105, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Yes";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -65,7 +65,7 @@
             this.button2.Location = new System.Drawing.Point(186, 148);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 3;
             this.button2.Text = "No";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -85,7 +85,9 @@
             this.txtLocation.MaxLength = 3;
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(113, 20);
-            this.txtLocation.TabIndex = 4;
+            this.txtLocation.TabIndex = 1;
+          
+            this.txtLocation.EnabledChanged += new System.EventHandler(this.txtLocation_EnabledChanged);
             this.txtLocation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLocation_KeyPress);
             // 
             // pnlLocation
@@ -97,6 +99,8 @@
             this.pnlLocation.Size = new System.Drawing.Size(170, 32);
             this.pnlLocation.TabIndex = 5;
             this.pnlLocation.Visible = false;
+         
+
             // 
             // label2
             // 

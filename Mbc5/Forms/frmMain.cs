@@ -218,6 +218,7 @@ namespace Mbc5.Forms
             else if (  ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
+                
                 mixBookOrdersToolStripMenuItem.Visible = true;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;

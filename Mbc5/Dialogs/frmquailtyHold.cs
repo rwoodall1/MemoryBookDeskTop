@@ -48,7 +48,10 @@ namespace Mbc5.Dialogs
             {
                 button1.Text = "Save";
                 pnlLocation.Visible = true;
-                lblCurLocation.Focus();
+                this.Focus();
+                txtLocation.Focus();
+                this.Activate();
+              
             }
             else
             {
@@ -68,7 +71,7 @@ namespace Mbc5.Dialogs
 
         private void txtLocation_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (true)
+            if (e.KeyChar == 13)
             {
                 button1.Text = "Yes";
                 this.Location = txtLocation.Text;
@@ -77,5 +80,12 @@ namespace Mbc5.Dialogs
                 pnlLocation.Visible = false;
             }
         }
+
+        private void txtLocation_EnabledChanged(object sender, EventArgs e)
+        {
+            txtLocation.Focus();
+        }
+
+       
     }
 }
