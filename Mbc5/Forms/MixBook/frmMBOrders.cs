@@ -931,15 +931,15 @@ namespace Mbc5.Forms.MixBook
             }
             var sqlClient = new SQLCustomClient();
             string status = "";
-            if (mixbookOrderStatusLabel2.Text=="Hold")
+            if (mixbookOrderStatusLabel2.Text=="Hold" || mixbookOrderStatusLabel2.Text == "On Hold")
             {
                 sqlClient.AddParameter("@OrderStatus","In Process");
                 status = "In Process";
             }
             else if(mixbookOrderStatusLabel2.Text == "In Process")
             {
-                sqlClient.AddParameter("@OrderStatus", "Hold");
-                status = "Hold";
+                sqlClient.AddParameter("@OrderStatus", "On Hold");
+                status = "On Hold";
 
             }
             else
