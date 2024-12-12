@@ -833,7 +833,7 @@ namespace Mbc5.Forms
                 //    }
                 //    catch (Exception ex) { }
                 //}
-                List<JobTicketQuery> printData = new List<JobTicketQuery>();
+               // List<JobTicketQuery> printData = new List<JobTicketQuery>();
             
                 //Only 200 in query will repeat until all records printed.
                     reportViewer1.LocalReport.DataSources.Clear();

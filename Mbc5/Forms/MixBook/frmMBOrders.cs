@@ -403,9 +403,11 @@ namespace Mbc5.Forms.MixBook
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD" || mixbookOrderStatusLabel2.Text.ToUpper()=="ON HOLD")
             {
                 lblHold.Visible = true;
+                lblHold.BringToFront(); 
+
             }
             else { lblHold.Visible = false; }
 
