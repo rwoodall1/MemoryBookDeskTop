@@ -77,3 +77,10 @@ Temporary Items
 /Setup/Debug
 /CustomControls/obj
 /BindingModels/obj/Release
+/BaseClass/.vs
+/.vs/MemoryBook/FileContentIndex
+/Core/.vs
+/Core/.vs/Core.csproj.dtbcache.json
+/CustomControls/.vs
+/Mbc5/.vs
+/RESTModule/.vs
