@@ -890,8 +890,7 @@ namespace Mbc5.Forms.MemoryBook
 
                 // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
                 this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
-                // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
-                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+
                 // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
                 this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
                 this.txtModifiedBy.Text = this.ApplicationUser.id;
