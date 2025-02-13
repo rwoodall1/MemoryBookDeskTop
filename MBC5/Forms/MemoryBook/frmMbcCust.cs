@@ -903,7 +903,7 @@ namespace Mbc5.Forms.MemoryBook
                 this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
                 this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
                 this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
-                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+
                 // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
                 this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
                 this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
