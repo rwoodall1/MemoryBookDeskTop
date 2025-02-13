@@ -9009,7 +9009,7 @@ namespace Mbc5.DataSets.LookUpTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9421,7 +9421,7 @@ namespace Mbc5.DataSets.LookUpTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9761,7 +9761,7 @@ namespace Mbc5.DataSets.LookUpTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10101,7 +10101,7 @@ namespace Mbc5.DataSets.LookUpTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10456,7 +10456,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10850,7 +10850,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11141,7 +11141,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11420,7 +11420,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11649,7 +11649,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11896,7 +11896,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12208,7 +12208,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12499,7 +12499,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12790,7 +12790,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13068,7 +13068,7 @@ SELECT Id, Promo, OrderNum, Company FROM lkpPromotions WHERE (Id = @Id) ORDER BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13327,7 +13327,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13693,7 +13693,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13993,7 +13993,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14317,7 +14317,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14519,7 +14519,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14768,7 +14768,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15063,7 +15063,7 @@ SELECT Description, ProdCode, [Order] FROM MeridianProducts WHERE (ProdCode = @P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.OPY;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
