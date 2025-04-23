@@ -896,13 +896,13 @@ namespace Mbc5.Forms.MemoryBook
                 this.txtModifiedBy.Text = this.ApplicationUser.id;
                 this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
                 xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies, Schcode);
-                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
+
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
                 // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
                 this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
                 this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
-                this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+
 
                 // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
                 this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
@@ -912,6 +912,7 @@ namespace Mbc5.Forms.MemoryBook
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
                 this.xsuppliesTableAdapter.Fill(this.dsXSupplies.xsupplies, Schcode);
                 this.xSuppliesDetailTableAdapter.Fill(dsXSupplies.XSuppliesDetail, Schcode);
+                this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
 
             }
             catch (Exception ex)

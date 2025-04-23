@@ -1700,7 +1700,7 @@ namespace Mbc5.Forms.MemoryBook {
             // lbleasyworkdata
             // 
             this.lbleasyworkdata.AutoSize = true;
-            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EastworkTotal", true));
+            this.lbleasyworkdata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "EasyworkTotal", true));
             this.lbleasyworkdata.Location = new System.Drawing.Point(243, 6);
             this.lbleasyworkdata.Name = "lbleasyworkdata";
             this.lbleasyworkdata.Size = new System.Drawing.Size(10, 13);

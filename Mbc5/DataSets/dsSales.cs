@@ -17,9 +17,12 @@ namespace Mbc5.DataSets {
     }
 }
 
-namespace Mbc5.DataSets.dsSalesTableAdapters {
-    
-    
+namespace Mbc5.DataSets.dsSalesTableAdapters
+{
+    partial class quotesTableAdapter
+    {
+    }
+
     public partial class OpyProductsTableAdapter {
     }
 }
