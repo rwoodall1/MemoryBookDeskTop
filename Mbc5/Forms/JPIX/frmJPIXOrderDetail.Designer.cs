@@ -43,8 +43,8 @@
             System.Windows.Forms.Label referenceLabel;
             System.Windows.Forms.Label oracleCodeLabel;
             System.Windows.Forms.Label notesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
             this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
@@ -478,19 +478,20 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource3.Name = "dsMxPackingSlip";
-            reportDataSource3.Value = null;
-            reportDataSource4.Name = "dsMixBookRemakeTkt";
-            reportDataSource4.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "dsMxPackingSlip";
+            reportDataSource1.Value = null;
+            reportDataSource2.Name = "dsMixBookRemakeTkt";
+            reportDataSource2.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(14, 504);
+            this.reportViewer1.Location = new System.Drawing.Point(37, 440);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(77, 96);
+            this.reportViewer1.Size = new System.Drawing.Size(117, 169);
             this.reportViewer1.TabIndex = 10021;
             this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // frmJPIXOrderDetail
             // 

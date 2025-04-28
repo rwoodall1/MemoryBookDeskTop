@@ -43,6 +43,18 @@ namespace Mbc5.Forms.JPIX
             }
         }
 
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            try
+            {
+
+                reportViewer1.PrintDialog();
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJPIXJobTicketSingle" + ex.Message);
+            }
+        }
     }
 }
 
