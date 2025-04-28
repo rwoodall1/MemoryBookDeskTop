@@ -228,6 +228,11 @@
     <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </Compile>
+    <Compile Include="dsJPIXOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsJPIXOrders.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,6 +489,24 @@
     </Compile>
     <Compile Include="Forms\frmRecSurvey.Designer.cs">
       <DependentUpon>frmRecSurvey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXOrder.Designer.cs">
+      <DependentUpon>frmJPIXOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXOrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXOrderDetail.Designer.cs">
+      <DependentUpon>frmJPIXOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JPIX\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JPIX\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MemoryBook\frmCancellationStatements.cs">
       <SubType>Form</SubType>
@@ -759,6 +782,17 @@
     <None Include="DataSets\dsZazzle.xss">
       <DependentUpon>dsZazzle.xsd</DependentUpon>
     </None>
+    <None Include="dsJPIXOrders.xsc">
+      <DependentUpon>dsJPIXOrders.xsd</DependentUpon>
+    </None>
+    <None Include="dsJPIXOrders.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsJPIXOrders.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsJPIXOrders.xss">
+      <DependentUpon>dsJPIXOrders.xsd</DependentUpon>
+    </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -856,6 +890,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRecSurvey.resx">
       <DependentUpon>frmRecSurvey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JPIX\frmJPIXOrder.resx">
+      <DependentUpon>frmJPIXOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JPIX\frmJPIXOrderDetail.resx">
+      <DependentUpon>frmJPIXOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JPIX\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmCancellationStatements.resx">
       <DependentUpon>frmCancellationStatements.cs</DependentUpon>
@@ -991,8 +1034,8 @@
     <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\JPIXJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
-    <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />

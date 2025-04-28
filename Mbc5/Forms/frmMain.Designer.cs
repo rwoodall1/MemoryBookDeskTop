@@ -130,6 +130,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.jPIXOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jPIXOrdersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -157,6 +159,7 @@
             // formsToolStripMenuItem
             // 
             this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jPIXOrdersToolStripMenuItem,
             this.mBCToolStripMenuItem,
             this.meridianToolStripMenuItem,
             this.mixBookToolStripMenuItem,
@@ -1010,6 +1013,21 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // jPIXOrdersToolStripMenuItem
+            // 
+            this.jPIXOrdersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jPIXOrdersToolStripMenuItem1});
+            this.jPIXOrdersToolStripMenuItem.Name = "jPIXOrdersToolStripMenuItem";
+            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.jPIXOrdersToolStripMenuItem.Text = "JPIX ";
+            // 
+            // jPIXOrdersToolStripMenuItem1
+            // 
+            this.jPIXOrdersToolStripMenuItem1.Name = "jPIXOrdersToolStripMenuItem1";
+            this.jPIXOrdersToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.jPIXOrdersToolStripMenuItem1.Text = "JPIX Orders";
+            this.jPIXOrdersToolStripMenuItem1.Click += new System.EventHandler(this.jPIXOrdersToolStripMenuItem1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1140,5 +1158,7 @@
         private System.Windows.Forms.ToolStripMenuItem scnCheckToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem bindingTimesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jPIXOrdersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jPIXOrdersToolStripMenuItem1;
     }
 }
