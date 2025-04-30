@@ -96,8 +96,10 @@
             this.FullMerInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plnTracking = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.txtTrackingNo = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblRef = new System.Windows.Forms.Label();
+            this.txtRef = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
@@ -687,6 +689,14 @@
             this.plnTracking.TabIndex = 10001;
             this.plnTracking.Visible = false;
             // 
+            // txtTrackingNo
+            // 
+            this.txtTrackingNo.Location = new System.Drawing.Point(75, 3);
+            this.txtTrackingNo.Name = "txtTrackingNo";
+            this.txtTrackingNo.Size = new System.Drawing.Size(244, 20);
+            this.txtTrackingNo.TabIndex = 4;
+            this.txtTrackingNo.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -697,18 +707,32 @@
             this.label13.TabIndex = 3;
             this.label13.Text = "Tracking #";
             // 
-            // txtTrackingNo
+            // lblRef
             // 
-            this.txtTrackingNo.Location = new System.Drawing.Point(75, 3);
-            this.txtTrackingNo.Name = "txtTrackingNo";
-            this.txtTrackingNo.Size = new System.Drawing.Size(244, 20);
-            this.txtTrackingNo.TabIndex = 4;
-            this.txtTrackingNo.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.lblRef.AutoSize = true;
+            this.lblRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRef.Location = new System.Drawing.Point(474, 100);
+            this.lblRef.Name = "lblRef";
+            this.lblRef.Size = new System.Drawing.Size(35, 13);
+            this.lblRef.TabIndex = 10002;
+            this.lblRef.Text = "Ref#";
+            this.lblRef.Visible = false;
+            // 
+            // txtRef
+            // 
+            this.txtRef.Location = new System.Drawing.Point(514, 100);
+            this.txtRef.Name = "txtRef";
+            this.txtRef.ReadOnly = true;
+            this.txtRef.Size = new System.Drawing.Size(49, 20);
+            this.txtRef.TabIndex = 10003;
+            this.txtRef.Visible = false;
             // 
             // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(904, 555);
+            this.Controls.Add(this.lblRef);
+            this.Controls.Add(this.txtRef);
             this.Controls.Add(this.plnTracking);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.pnlPressNumber);
@@ -823,6 +847,8 @@
             this.Controls.SetChildIndex(this.pnlPressNumber, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.Controls.SetChildIndex(this.plnTracking, 0);
+            this.Controls.SetChildIndex(this.txtRef, 0);
+            this.Controls.SetChildIndex(this.lblRef, 0);
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailBindingModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
@@ -907,5 +933,7 @@
         private System.Windows.Forms.Panel plnTracking;
         private System.Windows.Forms.TextBox txtTrackingNo;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblRef;
+        private System.Windows.Forms.TextBox txtRef;
     }
 }

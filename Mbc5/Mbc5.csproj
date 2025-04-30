@@ -1034,10 +1034,11 @@
     <EmbeddedResource Include="Reports\BarScanMerInvoicerdlc.rdlc" />
     <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\EndSheetTicket.rdlc" />
+    <EmbeddedResource Include="Reports\JPIXJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\JPIXJobTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
-    <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />

@@ -44,9 +44,9 @@ SELECT [Document], NeedsByDate, ProductType, Quantity, ShipToContact, ShipToCust
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
 FROM            JPIXOrders
-WHERE        (DateShipped IS NULL)
+WHERE        (DateShipped IS NULL) AND (PticketPrinted = 0)
 ORDER BY NeedsByDate</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -110,13 +110,25 @@ SELECT [Document], NeedsByDate, ProductType, Quantity, ShipToContact, ShipToCust
               <Mapping SourceColumn="DateReceived" DataSetColumn="DateReceived" />
               <Mapping SourceColumn="OracleCode" DataSetColumn="OracleCode" />
               <Mapping SourceColumn="RequestId" DataSetColumn="RequestId" />
+              <Mapping SourceColumn="PticketPrinted" DataSetColumn="PticketPrinted" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="Mbc5_demoConnectionString1 (Settings)" DbObjectName="Mbc5_demo.dbo.JPIXOrders" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetAll" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAll" UserSourceName="FillAll">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
+FROM            JPIXOrders
+ORDER BY DateReceived DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="Mbc5_demoConnectionString1 (Settings)" DbObjectName="Mbc5_demo.dbo.JPIXOrders" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
 FROM            JPIXOrders
 WHERE        (Invno = @Invno)
 ORDER BY NeedsByDate</CommandText>
@@ -245,6 +257,7 @@ ORDER BY NeedsByDate</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="PticketPrinted" msprop:Generator_UserColumnName="PticketPrinted" msprop:Generator_ColumnPropNameInTable="PticketPrintedColumn" msprop:Generator_ColumnPropNameInRow="PticketPrinted" msprop:Generator_ColumnVarNameInTable="columnPticketPrinted" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

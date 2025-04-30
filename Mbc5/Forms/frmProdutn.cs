@@ -1,68 +1,60 @@
-﻿using System;
-using CustomControls;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using System.Configuration;
+﻿using BaseClass;
 using BaseClass.Classes;
-using System.Data.Sql;
-using Mbc5.Dialogs;
-using System.Data.SqlClient;
-using Mbc5.Classes;
 using BaseClass.Core;
-using Mbc5.LookUpForms;
 using BindingModels;
 using Exceptionless;
-using Exceptionless.Models;
-using Outlook = Microsoft.Office.Interop.Outlook;
+using Mbc5.Classes;
+using Mbc5.Dialogs;
+using Mbc5.Forms.MemoryBook;
+using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
-using BaseClass;
-using Mbc5.Forms.MemoryBook;
-using System.Collections;
-using System.Collections.Specialized;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 namespace Mbc5.Forms
 {
-	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
-	{
+    public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
+    {
 
-		
-	private bool startup = true;
-		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook","MBLead","BARCODE" }, userPrincipal)
-		{
-			InitializeComponent();
-			//this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-			// this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-			this.ApplicationUser = userPrincipal;
-			this.Invno = invno;
-			this.Schcode = schcode;
 
-		}
-		public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS","Mixbook", "MBLead","BARCODE"}, userPrincipal)
-		{
-			InitializeComponent();
+        private bool startup = true;
+        public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS", "Mixbook", "MBLead", "BARCODE" }, userPrincipal)
+        {
+            InitializeComponent();
+            //this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            // this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ApplicationUser = userPrincipal;
+            this.Invno = invno;
+            this.Schcode = schcode;
 
-			// this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-			// this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-			this.ApplicationUser = userPrincipal;
-			this.Invno = 0;
-			this.Schcode = null;
-			DisableControls(this.tbProdutn.TabPages[0]);
-			foreach (TabPage tab in tbProdutn.TabPages)
-			{
-				DisableControls(tab);
-			}
-	
+        }
+        public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS", "Mixbook", "MBLead", "BARCODE" }, userPrincipal)
+        {
+            InitializeComponent();
 
-		}
+            // this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            // this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ApplicationUser = userPrincipal;
+            this.Invno = 0;
+            this.Schcode = "";
+            DisableControls(this.tbProdutn.TabPages[0]);
+            foreach (TabPage tab in tbProdutn.TabPages)
+            {
+                DisableControls(tab);
+            }
+
+
+        }
         private string CoverTicketPrinterName { get; set; }
-       private string BinderyTicketPrinter { get; set; }
+        private string BinderyTicketPrinter { get; set; }
         private string BinderyLabelerPrinter { get; set; }
         private string AddressLabelerName { get; set; }
         private string CoverLabelerName { get; set; }
@@ -71,29 +63,29 @@ namespace Mbc5.Forms
         public int ClientId { get; set; }
         public new frmMain frmMain { get; set; }
         private void SetConnectionString()
-		{
-			frmMain frmMain = (frmMain)this.MdiParent;
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
             this.remakeReasonsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            reorderDetailTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            reorderDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             reOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -102,30 +94,34 @@ namespace Mbc5.Forms
             lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mixBookOrderTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
         }
-		private void frmProdutn_Load(object sender, EventArgs e)
-		{
+        private void frmProdutn_Load(object sender, EventArgs e)
+        {
 
-            if (ApplicationUser.IsInOneOfRoles(new StringCollection() {"SA","Administrator"}))
+            if (ApplicationUser.IsInOneOfRoles(new StringCollection() { "SA", "Administrator" }))
             {
                 txtwipPressnumber.Enabled = true;
                 txtcoverPressnumber.Enabled = true;
             }
             this.frmMain = (frmMain)this.MdiParent;
- 			this.SetConnectionString();
-			try
-			{
+            this.SetConnectionString();
+            try
+            {
                 remakeReasonsTableAdapter.Fill(lookUp.RemakeReasons);
                 this.lkpMascotTableAdapter.Fill(this.lookUp.lkpMascot);
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
                 this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
-				//LookUp Data
-				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
-				vendorTableAdapter.Fill(dsProdutn.vendor);
-				
-				Fill();
-				SetShipLabel();
-				SetEmail();
-				CurrentProdNo = lblProdNo.Text;
+                //LookUp Data
+                this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
+                vendorTableAdapter.Fill(dsProdutn.vendor);
+
+                Fill();
+                SetShipLabel();
+                SetEmail();
+                CurrentProdNo = lblProdNo.Text;
+                if (produtnBindingSource.Count == 0)
+                {
+                    return;
+                }
                 try
                 {
                     DataRowView row = (DataRowView)produtnBindingSource.Current;
@@ -136,36 +132,37 @@ namespace Mbc5.Forms
                     }
                 }
                 catch { };
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Error");
-			}
-           
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+
+
         }
 
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e)
-		{
-			PropertyChangedEventHandler handler = PropertyChanged;
-			if (handler != null)
-				handler(this, e);
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
-		private UserPrincipal ApplicationUser { get; set; }
-		private string CurrentCompany { get; set; }
-		private string SchEmail { get; set; }
-		private string ContactEmail { get; set; }
-		private string BcontactEmail { get; set; }
-		private string CcontactEmail { get; set; }
-		private List<string> AllEmails { get; set; }
-		private string CurrentProdNo { get; set; }
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private UserPrincipal ApplicationUser { get; set; }
+        private string CurrentCompany { get; set; }
+        private string SchEmail { get; set; }
+        private string ContactEmail { get; set; }
+        private string BcontactEmail { get; set; }
+        private string CcontactEmail { get; set; }
+        private List<string> AllEmails { get; set; }
+        private string CurrentProdNo { get; set; }
         #endregion
         #region "Methods"
-       private void SetPressDates()
+        private void SetPressDates()
         {
             var custSvcDate = cstsvcdteDateTimePicker.DateValue;
-            if (vendcdComboBox1.SelectedValue==null||string.IsNullOrEmpty(vendcdComboBox1.SelectedValue.ToString().Trim()))
+            if (vendcdComboBox1.SelectedValue == null || string.IsNullOrEmpty(vendcdComboBox1.SelectedValue.ToString().Trim()))
             {
                 prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
                 dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
@@ -174,9 +171,9 @@ namespace Mbc5.Forms
                 bindery2DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery3DateBox.DateValue, 4).ToShortDateString();
                 bindery1DateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery2DateBox.DateValue, 4).ToShortDateString();
                 pressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)bindery1DateBox.DateValue, 4).ToShortDateString();
-                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)pressDateBox.DateValue, 5).ToShortDateString();               
+                prePressDateBox.Date = CalulateBusinessDay.BusDaySubtract((DateTime)pressDateBox.DateValue, 5).ToShortDateString();
             }
-            else 
+            else
             {
                 prshpdteDateTimePicker.Date = CalulateBusinessDay.BusDaySubtract((DateTime)custSvcDate, 6).ToShortDateString();
                 dteWarnDate.Date = CalulateBusinessDay.BusDaySubtract((DateTime)prshpdteDateTimePicker.DateValue, 9).ToShortDateString();
@@ -186,64 +183,64 @@ namespace Mbc5.Forms
                 bindery2DateBox.Date = null;
                 bindery3DateBox.Date = null;
                 bindery4DateBox.Date = null;
-                
-                
-               
+
+
+
             }
 
 
         }
         private async Task<ApiProcessingResult> UpdatePartialDates()
-                {
+        {
 
 
-                var processingResult = new ApiProcessingResult();
+            var processingResult = new ApiProcessingResult();
 
-                var partialResult =SavePtBkB();
+            var partialResult = SavePtBkB();
 
-                if (partialResult.IsError)
-                {
+            if (partialResult.IsError)
+            {
 
                 processingResult.IsError = true;
                 processingResult.Errors = partialResult.Errors;
                 return processingResult;
-                }
-                if (partialRecvDate.Date == null)
-                {
+            }
+            if (partialRecvDate.Date == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Recieved date is empty.", "Recieved date is empty.", ""));
                 return processingResult;
-                }
-                if (string.IsNullOrEmpty(txtPartialBookType.Text))
-                {
+            }
+            if (string.IsNullOrEmpty(txtPartialBookType.Text))
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Book Type is empty.", "Book Type is empty.", ""));
                 return processingResult;
-                }
+            }
 
-                var sqlQuery = new SQLCustomClient();
-                sqlQuery.CommandText(@"Select * From PartialBkData Where BookType=@BookType");
-                sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
-                var result = sqlQuery.Select<PartialbDat>();
-                if (result.IsError)
-                {
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From PartialBkData Where BookType=@BookType");
+            sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
+            var result = sqlQuery.Select<PartialbDat>();
+            if (result.IsError)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve Partial Book Update Information,Partial Book WIP update failed:" + result.Errors[0].ErrorMessage, "Failed to retrieve Partial Book Update Information,Partial Book WIP update failed:" + result.Errors[0].ErrorMessage, ""));
                 return processingResult;
-                }
+            }
 
-                var vDats = (PartialbDat)result.Data;
-                if (vDats == null)
-                {
+            var vDats = (PartialbDat)result.Data;
+            if (vDats == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve Partial Book Update Information", "Failed to retrieve Partial Book Update Information", ""));
                 return processingResult;
-                }
-                int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
-                                        //---------------------------------------------------------------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr1 != 0)
-                {
+            }
+            int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
+                                      //---------------------------------------------------------------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr1 != 0)
+            {
                 wCalc[1] = vDats.L_dwdr1;
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[1]);
                 var updateResult = await UpdatePartialBKDetailCall(1, vWdr, Invno.ToString());
@@ -256,9 +253,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[1] = vDats.L_dwdr1;
 
                 var updateResult = await UpdatePtbKbDetailCall(1, null, Invno.ToString());
@@ -270,12 +267,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr2 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr2 != 0)
+            {
                 wCalc[2] = vDats.L_dwdr2 + wCalc[1];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[2]);
                 var updateResult = await UpdatePtbKbDetailCall(2, vWdr, Invno.ToString());
@@ -288,9 +285,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[2] = vDats.L_dwdr2 + wCalc[1];
 
                 var updateResult = await UpdatePtbKbDetailCall(2, null, Invno.ToString());
@@ -302,11 +299,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr3 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr3 != 0)
+            {
                 wCalc[3] = vDats.L_dwdr3 + wCalc[2];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[3]);
                 var updateResult = await UpdatePtbKbDetailCall(3, vWdr, Invno.ToString());
@@ -319,9 +316,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[3] = vDats.L_dwdr3 + wCalc[2];
 
                 var updateResult = await UpdatePtbKbDetailCall(3, null, Invno.ToString());
@@ -333,11 +330,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr4 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr4 != 0)
+            {
                 wCalc[4] = vDats.L_dwdr4 + wCalc[3];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[4]);
                 var updateResult = await UpdatePtbKbDetailCall(4, vWdr, Invno.ToString());
@@ -350,9 +347,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[4] = vDats.L_dwdr4 + wCalc[3];
 
                 var updateResult = await UpdatePtbKbDetailCall(4, null, Invno.ToString());
@@ -364,12 +361,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr5 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr5 != 0)
+            {
                 wCalc[5] = vDats.L_dwdr5 + wCalc[4];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[5]);
                 var updateResult = await UpdatePtbKbDetailCall(5, vWdr, Invno.ToString());
@@ -382,9 +379,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[5] = vDats.L_dwdr5 + wCalc[4];
 
                 var updateResult = await UpdatePtbKbDetailCall(5, null, Invno.ToString());
@@ -396,11 +393,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr6 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr6 != 0)
+            {
                 wCalc[6] = vDats.L_dwdr6 + wCalc[5];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[6]);
                 var updateResult = await UpdatePtbKbDetailCall(6, vWdr, Invno.ToString());
@@ -413,9 +410,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[6] = vDats.L_dwdr6 + wCalc[5];
 
                 var updateResult = await UpdatePtbKbDetailCall(6, null, Invno.ToString());
@@ -427,12 +424,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr7 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr7 != 0)
+            {
                 wCalc[7] = vDats.L_dwdr7 + wCalc[6];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[7]);
                 var updateResult = await UpdatePtbKbDetailCall(7, vWdr, Invno.ToString());
@@ -445,9 +442,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[7] = vDats.L_dwdr7 + wCalc[6];
 
                 var updateResult = await UpdatePtbKbDetailCall(7, null, Invno.ToString());
@@ -459,11 +456,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr8 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr8 != 0)
+            {
                 wCalc[8] = vDats.L_dwdr8 + wCalc[7];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[8]);
                 var updateResult = await UpdatePtbKbDetailCall(8, vWdr, Invno.ToString());
@@ -476,9 +473,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[8] = vDats.L_dwdr8 + wCalc[7];
 
                 var updateResult = await UpdatePtbKbDetailCall(8, null, Invno.ToString());
@@ -490,11 +487,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr9 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr9 != 0)
+            {
                 wCalc[9] = vDats.L_dwdr9 + wCalc[8];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[9]);
                 var updateResult = await UpdatePtbKbDetailCall(9, vWdr, Invno.ToString());
@@ -507,9 +504,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[9] = vDats.L_dwdr9 + wCalc[8];
 
                 var updateResult = await UpdatePtbKbDetailCall(9, null, Invno.ToString());
@@ -521,11 +518,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr10 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr10 != 0)
+            {
                 wCalc[10] = vDats.L_dwdr10 + wCalc[9];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[10]);
                 var updateResult = await UpdatePtbKbDetailCall(10, vWdr, Invno.ToString());
@@ -538,9 +535,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[10] = vDats.L_dwdr10 + wCalc[9];
 
                 var updateResult = await UpdatePtbKbDetailCall(10, null, Invno.ToString());
@@ -552,12 +549,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr11 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr11 != 0)
+            {
                 wCalc[11] = vDats.L_dwdr11 + wCalc[10];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[11]);
                 var updateResult = await UpdatePtbKbDetailCall(11, vWdr, Invno.ToString());
@@ -570,9 +567,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[11] = vDats.L_dwdr11 + wCalc[10];
 
                 var updateResult = await UpdatePtbKbDetailCall(11, null, Invno.ToString());
@@ -584,11 +581,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr12 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr12 != 0)
+            {
                 wCalc[12] = vDats.L_dwdr12 + wCalc[11];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[12]);
                 var updateResult = await UpdatePtbKbDetailCall(12, vWdr, Invno.ToString());
@@ -601,9 +598,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[12] = vDats.L_dwdr12 + wCalc[11];
 
                 var updateResult = await UpdatePtbKbDetailCall(12, null, Invno.ToString());
@@ -615,11 +612,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr13 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr13 != 0)
+            {
                 wCalc[13] = vDats.L_dwdr13 + wCalc[12];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[13]);
                 var updateResult = await UpdatePtbKbDetailCall(13, vWdr, Invno.ToString());
@@ -632,9 +629,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[13] = vDats.L_dwdr13 + wCalc[12];
 
                 var updateResult = await UpdatePtbKbDetailCall(13, null, Invno.ToString());
@@ -646,11 +643,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr14 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr14 != 0)
+            {
                 wCalc[14] = vDats.L_dwdr14 + wCalc[13];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[14]);
                 var updateResult = await UpdatePtbKbDetailCall(14, vWdr, Invno.ToString());
@@ -663,9 +660,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[14] = vDats.L_dwdr14 + wCalc[13];
 
                 var updateResult = await UpdatePtbKbDetailCall(14, null, Invno.ToString());
@@ -677,11 +674,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr15 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr15 != 0)
+            {
                 wCalc[15] = vDats.L_dwdr15 + wCalc[14];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[15]);
                 var updateResult = await UpdatePtbKbDetailCall(15, vWdr, Invno.ToString());
@@ -694,9 +691,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[15] = vDats.L_dwdr15 + wCalc[14];
 
                 var updateResult = await UpdatePtbKbDetailCall(15, null, Invno.ToString());
@@ -708,11 +705,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr16 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr16 != 0)
+            {
                 wCalc[16] = vDats.L_dwdr16 + wCalc[15];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[16]);
                 var updateResult = await UpdatePtbKbDetailCall(16, vWdr, Invno.ToString());
@@ -725,9 +722,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[16] = vDats.L_dwdr16 + wCalc[15];
 
                 var updateResult = await UpdatePtbKbDetailCall(16, null, Invno.ToString());
@@ -739,12 +736,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr17 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr17 != 0)
+            {
                 wCalc[17] = vDats.L_dwdr17 + wCalc[16];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[17]);
                 var updateResult = await UpdatePtbKbDetailCall(17, vWdr, Invno.ToString());
@@ -757,9 +754,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[17] = vDats.L_dwdr17 + wCalc[16];
 
                 var updateResult = await UpdatePtbKbDetailCall(17, null, Invno.ToString());
@@ -771,12 +768,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr18 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr18 != 0)
+            {
                 wCalc[18] = vDats.L_dwdr18 + wCalc[17];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[18]);
                 var updateResult = await UpdatePtbKbDetailCall(18, vWdr, Invno.ToString());
@@ -789,9 +786,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[18] = vDats.L_dwdr18 + wCalc[17];
 
                 var updateResult = await UpdatePtbKbDetailCall(18, null, Invno.ToString());
@@ -803,12 +800,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr19 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr19 != 0)
+            {
                 wCalc[19] = vDats.L_dwdr19 + wCalc[18];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[19]);
                 var updateResult = await UpdatePtbKbDetailCall(19, vWdr, Invno.ToString());
@@ -821,9 +818,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[19] = vDats.L_dwdr19 + wCalc[18];
 
                 var updateResult = await UpdatePtbKbDetailCall(19, null, Invno.ToString());
@@ -835,12 +832,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr20 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr20 != 0)
+            {
                 wCalc[20] = vDats.L_dwdr20 + wCalc[19];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[20]);
                 var updateResult = await UpdatePtbKbDetailCall(20, vWdr, Invno.ToString());
@@ -853,9 +850,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[20] = vDats.L_dwdr20 + wCalc[19];
 
                 var updateResult = await UpdatePtbKbDetailCall(20, null, Invno.ToString());
@@ -867,12 +864,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr21 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr21 != 0)
+            {
                 wCalc[21] = vDats.L_dwdr21 + wCalc[20];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[21]);
                 var updateResult = await UpdatePtbKbDetailCall(21, vWdr, Invno.ToString());
@@ -885,9 +882,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[21] = vDats.L_dwdr21 + wCalc[20];
 
                 var updateResult = await UpdatePtbKbDetailCall(21, null, Invno.ToString());
@@ -899,12 +896,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr22 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr22 != 0)
+            {
                 wCalc[22] = vDats.L_dwdr22 + wCalc[21];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[22]);
                 var updateResult = await UpdatePtbKbDetailCall(22, vWdr, Invno.ToString());
@@ -917,9 +914,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[22] = vDats.L_dwdr22 + wCalc[21];
 
                 var updateResult = await UpdatePtbKbDetailCall(22, null, Invno.ToString());
@@ -931,11 +928,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr23 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr23 != 0)
+            {
                 wCalc[23] = vDats.L_dwdr23 + wCalc[22];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[23]);
                 var updateResult = await UpdatePtbKbDetailCall(23, vWdr, Invno.ToString());
@@ -948,9 +945,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[23] = vDats.L_dwdr23 + wCalc[22];
 
                 var updateResult = await UpdatePtbKbDetailCall(23, null, Invno.ToString());
@@ -962,11 +959,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr24 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr24 != 0)
+            {
                 wCalc[24] = vDats.L_dwdr24 + wCalc[23];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[24]);
                 var updateResult = await UpdatePtbKbDetailCall(24, vWdr, Invno.ToString());
@@ -979,9 +976,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[24] = vDats.L_dwdr24 + wCalc[23];
 
                 var updateResult = await UpdatePtbKbDetailCall(24, null, Invno.ToString());
@@ -993,11 +990,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr25 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr25 != 0)
+            {
                 wCalc[25] = vDats.L_dwdr25 + wCalc[24];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[25]);
                 var updateResult = await UpdatePtbKbDetailCall(25, vWdr, Invno.ToString());
@@ -1010,9 +1007,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[25] = vDats.L_dwdr25 + wCalc[24];
 
                 var updateResult = await UpdatePtbKbDetailCall(25, null, Invno.ToString());
@@ -1024,12 +1021,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr26 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr26 != 0)
+            {
                 wCalc[26] = vDats.L_dwdr26 + wCalc[25];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[26]);
                 var updateResult = await UpdatePtbKbDetailCall(26, vWdr, Invno.ToString());
@@ -1042,9 +1039,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[26] = vDats.L_dwdr26 + wCalc[25];
 
                 var updateResult = await UpdatePtbKbDetailCall(26, null, Invno.ToString());
@@ -1056,11 +1053,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr27 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr27 != 0)
+            {
                 wCalc[27] = vDats.L_dwdr27 + wCalc[26];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[27]);
                 var updateResult = await UpdatePtbKbDetailCall(27, vWdr, Invno.ToString());
@@ -1073,9 +1070,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[27] = vDats.L_dwdr27 + wCalc[26];
 
                 var updateResult = await UpdatePtbKbDetailCall(27, null, Invno.ToString());
@@ -1087,12 +1084,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr28 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr28 != 0)
+            {
                 wCalc[28] = vDats.L_dwdr28 + wCalc[27];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[28]);
                 var updateResult = await UpdatePtbKbDetailCall(28, vWdr, Invno.ToString());
@@ -1105,9 +1102,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[28] = vDats.L_dwdr28 + wCalc[27];
 
                 var updateResult = await UpdatePtbKbDetailCall(28, null, Invno.ToString());
@@ -1119,11 +1116,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr29 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr29 != 0)
+            {
                 wCalc[29] = vDats.L_dwdr29 + wCalc[28];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[29]);
                 var updateResult = await UpdatePtbKbDetailCall(29, vWdr, Invno.ToString());
@@ -1136,9 +1133,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[29] = vDats.L_dwdr29 + wCalc[28];
 
                 var updateResult = await UpdatePtbKbDetailCall(29, null, Invno.ToString());
@@ -1150,11 +1147,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr30 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr30 != 0)
+            {
                 wCalc[30] = vDats.L_dwdr30 + wCalc[29];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[30]);
                 var updateResult = await UpdatePtbKbDetailCall(30, vWdr, Invno.ToString());
@@ -1167,9 +1164,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[30] = vDats.L_dwdr30 + wCalc[29];
 
                 var updateResult = await UpdatePtbKbDetailCall(30, null, Invno.ToString());
@@ -1181,12 +1178,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr31 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr31 != 0)
+            {
                 wCalc[31] = vDats.L_dwdr31 + wCalc[30];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[31]);
                 var updateResult = await UpdatePtbKbDetailCall(31, vWdr, Invno.ToString());
@@ -1199,9 +1196,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[31] = vDats.L_dwdr31 + wCalc[30];
 
                 var updateResult = await UpdatePtbKbDetailCall(31, null, Invno.ToString());
@@ -1213,12 +1210,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr32 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr32 != 0)
+            {
                 wCalc[32] = vDats.L_dwdr32 + wCalc[31];
                 var vWdr = CalulateBusinessDay.PromiseDate((DateTime)partialRecvDate.DateValue, wCalc[32]);
                 var updateResult = await UpdatePtbKbDetailCall(32, vWdr, Invno.ToString());
@@ -1231,9 +1228,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[32] = vDats.L_dwdr32 + wCalc[31];
 
                 var updateResult = await UpdatePtbKbDetailCall(32, null, Invno.ToString());
@@ -1245,12 +1242,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr33 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr33 != 0)
+            {
                 wCalc[33] = vDats.L_dwdr33 + wCalc[32];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[33]);
                 var updateResult = await UpdatePtbKbDetailCall(33, vWdr, Invno.ToString());
@@ -1263,9 +1260,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[33] = vDats.L_dwdr33 + wCalc[32];
 
                 var updateResult = await UpdatePtbKbDetailCall(33, null, Invno.ToString());
@@ -1277,12 +1274,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr34 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr34 != 0)
+            {
                 wCalc[34] = vDats.L_dwdr34 + wCalc[33];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[34]);
                 var updateResult = await UpdatePtbKbDetailCall(34, vWdr, Invno.ToString());
@@ -1295,9 +1292,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[34] = vDats.L_dwdr34 + wCalc[33];
 
                 var updateResult = await UpdatePtbKbDetailCall(34, null, Invno.ToString());
@@ -1309,11 +1306,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr35 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr35 != 0)
+            {
                 wCalc[35] = vDats.L_dwdr35 + wCalc[34];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[35]);
                 var updateResult = await UpdatePtbKbDetailCall(35, vWdr, Invno.ToString());
@@ -1326,9 +1323,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[35] = vDats.L_dwdr35 + wCalc[34];
 
                 var updateResult = await UpdatePtbKbDetailCall(35, null, Invno.ToString());
@@ -1340,12 +1337,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr36 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr36 != 0)
+            {
                 wCalc[36] = vDats.L_dwdr36 + wCalc[35];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[36]);
                 var updateResult = await UpdatePtbKbDetailCall(36, vWdr, Invno.ToString());
@@ -1358,9 +1355,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[36] = vDats.L_dwdr36 + wCalc[35];
 
                 var updateResult = await UpdatePtbKbDetailCall(36, null, Invno.ToString());
@@ -1372,11 +1369,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr37 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr37 != 0)
+            {
                 wCalc[37] = vDats.L_dwdr37 + wCalc[36];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[37]);
                 var updateResult = await UpdatePtbKbDetailCall(37, vWdr, Invno.ToString());
@@ -1389,9 +1386,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[37] = vDats.L_dwdr37 + wCalc[36];
 
                 var updateResult = await UpdatePtbKbDetailCall(37, null, Invno.ToString());
@@ -1403,11 +1400,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr38 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr38 != 0)
+            {
                 wCalc[38] = vDats.L_dwdr38 + wCalc[37];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[38]);
                 var updateResult = await UpdatePtbKbDetailCall(38, vWdr, Invno.ToString());
@@ -1420,9 +1417,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[38] = vDats.L_dwdr38 + wCalc[37];
 
                 var updateResult = await UpdatePtbKbDetailCall(38, null, Invno.ToString());
@@ -1434,12 +1431,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr39 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr39 != 0)
+            {
                 wCalc[39] = vDats.L_dwdr39 + wCalc[38];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[39]);
                 var updateResult = await UpdatePtbKbDetailCall(39, vWdr, Invno.ToString());
@@ -1452,9 +1449,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[39] = vDats.L_dwdr39 + wCalc[38];
 
                 var updateResult = await UpdatePtbKbDetailCall(39, null, Invno.ToString());
@@ -1466,12 +1463,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr40 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr40 != 0)
+            {
                 wCalc[40] = vDats.L_dwdr40 + wCalc[39];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[40]);
                 var updateResult = await UpdatePtbKbDetailCall(40, vWdr, Invno.ToString());
@@ -1484,9 +1481,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[40] = vDats.L_dwdr40 + wCalc[39];
 
                 var updateResult = await UpdatePtbKbDetailCall(40, null, Invno.ToString());
@@ -1498,12 +1495,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr41 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr41 != 0)
+            {
                 wCalc[41] = vDats.L_dwdr41 + wCalc[40];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[41]);
                 var updateResult = await UpdatePtbKbDetailCall(41, vWdr, Invno.ToString());
@@ -1516,9 +1513,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[41] = vDats.L_dwdr41 + wCalc[40];
 
                 var updateResult = await UpdatePtbKbDetailCall(41, null, Invno.ToString());
@@ -1530,12 +1527,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr42 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr42 != 0)
+            {
                 wCalc[42] = vDats.L_dwdr42 + wCalc[41];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[42]);
                 var updateResult = await UpdatePtbKbDetailCall(42, vWdr, Invno.ToString());
@@ -1548,9 +1545,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[42] = vDats.L_dwdr42 + wCalc[41];
 
                 var updateResult = await UpdatePtbKbDetailCall(42, null, Invno.ToString());
@@ -1562,12 +1559,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr43 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr43 != 0)
+            {
                 wCalc[43] = vDats.L_dwdr43 + wCalc[42];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[43]);
                 var updateResult = await UpdatePtbKbDetailCall(43, vWdr, Invno.ToString());
@@ -1580,9 +1577,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[43] = vDats.L_dwdr43 + wCalc[42];
 
                 var updateResult = await UpdatePtbKbDetailCall(43, null, Invno.ToString());
@@ -1594,11 +1591,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr44 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr44 != 0)
+            {
                 wCalc[44] = vDats.L_dwdr44 + wCalc[43];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[44]);
                 var updateResult = await UpdatePtbKbDetailCall(44, vWdr, Invno.ToString());
@@ -1611,9 +1608,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[44] = vDats.L_dwdr44 + wCalc[43];
 
                 var updateResult = await UpdatePtbKbDetailCall(44, null, Invno.ToString());
@@ -1625,13 +1622,13 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr45 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr45 != 0)
+            {
                 wCalc[45] = vDats.L_dwdr45 + wCalc[44];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[45]);
                 var updateResult = await UpdatePtbKbDetailCall(45, vWdr, Invno.ToString());
@@ -1644,9 +1641,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[45] = vDats.L_dwdr45 + wCalc[44];
 
                 var updateResult = await UpdatePtbKbDetailCall(45, null, Invno.ToString());
@@ -1658,12 +1655,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr46 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr46 != 0)
+            {
                 wCalc[46] = vDats.L_dwdr46 + wCalc[45];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[46]);
                 var updateResult = await UpdatePtbKbDetailCall(46, vWdr, Invno.ToString());
@@ -1676,9 +1673,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[46] = vDats.L_dwdr46 + wCalc[45];
 
                 var updateResult = await UpdatePtbKbDetailCall(46, null, Invno.ToString());
@@ -1690,12 +1687,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr47 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr47 != 0)
+            {
                 wCalc[47] = vDats.L_dwdr47 + wCalc[46];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[47]);
                 var updateResult = await UpdatePtbKbDetailCall(47, vWdr, Invno.ToString());
@@ -1708,9 +1705,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[47] = vDats.L_dwdr47 + wCalc[46];
 
                 var updateResult = await UpdatePtbKbDetailCall(47, null, Invno.ToString());
@@ -1722,11 +1719,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr48 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr48 != 0)
+            {
                 wCalc[48] = vDats.L_dwdr48 + wCalc[47];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[48]);
                 var updateResult = await UpdatePtbKbDetailCall(48, vWdr, Invno.ToString());
@@ -1739,9 +1736,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[48] = vDats.L_dwdr48 + wCalc[47];
 
                 var updateResult = await UpdatePtbKbDetailCall(48, null, Invno.ToString());
@@ -1753,12 +1750,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr49 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr49 != 0)
+            {
                 wCalc[49] = vDats.L_dwdr49 + wCalc[48];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[49]);
                 var updateResult = await UpdatePtbKbDetailCall(49, vWdr, Invno.ToString());
@@ -1771,9 +1768,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[49] = vDats.L_dwdr49 + wCalc[48];
 
                 var updateResult = await UpdatePtbKbDetailCall(49, null, Invno.ToString());
@@ -1785,12 +1782,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.L_dwdr50 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.L_dwdr50 != 0)
+            {
                 wCalc[50] = vDats.L_dwdr50 + wCalc[48];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)partialRecvDate.DateValue, wCalc[50]);
                 var updateResult = await UpdatePtbKbDetailCall(50, vWdr, Invno.ToString());
@@ -1803,9 +1800,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[50] = vDats.L_dwdr50 + wCalc[48];
 
                 var updateResult = await UpdatePtbKbDetailCall(50, null, Invno.ToString());
@@ -1817,76 +1814,76 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                try
-                {
+            }
+            try
+            {
                 partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
                 ex.ToExceptionless()
                     .MarkAsCritical()
                     .AddObject(ex)
                     .Submit();
 
                 MbcMessageBox.Error("Failed to refill Partial Book :" + ex.Message);
-                }
-                return processingResult;
+            }
+            return processingResult;
 
 
 
-                }
+        }
         private async Task<ApiProcessingResult> UpdatePhotoCD()
-                {
+        {
 
 
-                var processingResult = new ApiProcessingResult();
+            var processingResult = new ApiProcessingResult();
 
-                var ptbkbResult = SavePtBkB();
+            var ptbkbResult = SavePtBkB();
 
-                if (ptbkbResult.IsError)
-                {
+            if (ptbkbResult.IsError)
+            {
 
                 processingResult.IsError = true;
                 processingResult.Errors = ptbkbResult.Errors;
                 return processingResult;
-                }
-                if (ptbrcvd.Date == null)
-                {
+            }
+            if (ptbrcvd.Date == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Recieved date is empty.", "Recieved date is empty.", ""));
                 return processingResult;
-                }
-                if (string.IsNullOrEmpty(txtPhotoBookType.Text))
-                {
+            }
+            if (string.IsNullOrEmpty(txtPhotoBookType.Text))
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Book Type is empty.", "Book Type is empty.", ""));
                 return processingResult;
-                }
+            }
 
-                var sqlQuery = new SQLCustomClient();
-                sqlQuery.CommandText(@"Select * From PtbDat Where BookType=@BookType");
-                sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
-                var result = sqlQuery.Select<PtbDat>();
-                if (result.IsError)
-                {
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From PtbDat Where BookType=@BookType");
+            sqlQuery.AddParameter("@BookType", txtPhotoBookType.Text.ToString().ToUpper().Trim());
+            var result = sqlQuery.Select<PtbDat>();
+            if (result.IsError)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve Photo On CD Dat,Photo On CD update failed:" + result.Errors[0].ErrorMessage, "Failed to retrieve Photo On CD Dat,Photo On CD update failed:" + result.Errors[0].ErrorMessage, ""));
                 return processingResult;
-                }
+            }
 
-                var vDats = (PtbDat)result.Data;
-                if (vDats == null)
-                {
+            var vDats = (PtbDat)result.Data;
+            if (vDats == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve to find Photo On CD update Dats.", "Failed to retrieve to find Photo On CD update Dats.", ""));
                 return processingResult;
-                }
-                int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
-                                        //---------------------------------------------------------------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_1 != 0)
-                {
+            }
+            int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
+                                      //---------------------------------------------------------------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_1 != 0)
+            {
                 wCalc[1] = vDats.LWdr_1;
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[1]);
                 var updateResult = await UpdatePtbKbDetailCall(1, vWdr, Invno.ToString());
@@ -1899,9 +1896,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[1] = vDats.LWdr_1;
 
                 var updateResult = await UpdatePtbKbDetailCall(1, null, Invno.ToString());
@@ -1913,12 +1910,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_2 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_2 != 0)
+            {
                 wCalc[2] = vDats.LWdr_2 + wCalc[1];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[2]);
                 var updateResult = await UpdatePtbKbDetailCall(2, vWdr, Invno.ToString());
@@ -1931,9 +1928,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[2] = vDats.LWdr_2 + wCalc[1];
 
                 var updateResult = await UpdatePtbKbDetailCall(2, null, Invno.ToString());
@@ -1945,11 +1942,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_3 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_3 != 0)
+            {
                 wCalc[3] = vDats.LWdr_3 + wCalc[2];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[3]);
                 var updateResult = await UpdatePtbKbDetailCall(3, vWdr, Invno.ToString());
@@ -1962,9 +1959,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[3] = vDats.LWdr_3 + wCalc[2];
 
                 var updateResult = await UpdatePtbKbDetailCall(3, null, Invno.ToString());
@@ -1976,11 +1973,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_4 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_4 != 0)
+            {
                 wCalc[4] = vDats.LWdr_4 + wCalc[3];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[4]);
                 var updateResult = await UpdatePtbKbDetailCall(4, vWdr, Invno.ToString());
@@ -1993,9 +1990,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[4] = vDats.LWdr_4 + wCalc[3];
 
                 var updateResult = await UpdatePtbKbDetailCall(4, null, Invno.ToString());
@@ -2007,12 +2004,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_5 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_5 != 0)
+            {
                 wCalc[5] = vDats.LWdr_5 + wCalc[4];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[5]);
                 var updateResult = await UpdatePtbKbDetailCall(5, vWdr, Invno.ToString());
@@ -2025,9 +2022,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[5] = vDats.LWdr_5 + wCalc[4];
 
                 var updateResult = await UpdatePtbKbDetailCall(5, null, Invno.ToString());
@@ -2039,11 +2036,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_6 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_6 != 0)
+            {
                 wCalc[6] = vDats.LWdr_6 + wCalc[5];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[6]);
                 var updateResult = await UpdatePtbKbDetailCall(6, vWdr, Invno.ToString());
@@ -2056,9 +2053,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[6] = vDats.LWdr_6 + wCalc[5];
 
                 var updateResult = await UpdatePtbKbDetailCall(6, null, Invno.ToString());
@@ -2070,12 +2067,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_7 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_7 != 0)
+            {
                 wCalc[7] = vDats.LWdr_7 + wCalc[6];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[7]);
                 var updateResult = await UpdatePtbKbDetailCall(7, vWdr, Invno.ToString());
@@ -2088,9 +2085,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[7] = vDats.LWdr_7 + wCalc[6];
 
                 var updateResult = await UpdatePtbKbDetailCall(7, null, Invno.ToString());
@@ -2102,11 +2099,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_8 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_8 != 0)
+            {
                 wCalc[8] = vDats.LWdr_8 + wCalc[7];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[8]);
                 var updateResult = await UpdatePtbKbDetailCall(8, vWdr, Invno.ToString());
@@ -2119,9 +2116,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[8] = vDats.LWdr_8 + wCalc[7];
 
                 var updateResult = await UpdatePtbKbDetailCall(8, null, Invno.ToString());
@@ -2133,11 +2130,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_9 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_9 != 0)
+            {
                 wCalc[9] = vDats.LWdr_9 + wCalc[8];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[9]);
                 var updateResult = await UpdatePtbKbDetailCall(9, vWdr, Invno.ToString());
@@ -2150,9 +2147,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[9] = vDats.LWdr_9 + wCalc[8];
 
                 var updateResult = await UpdatePtbKbDetailCall(9, null, Invno.ToString());
@@ -2164,11 +2161,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_10 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_10 != 0)
+            {
                 wCalc[10] = vDats.LWdr_10 + wCalc[9];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[10]);
                 var updateResult = await UpdatePtbKbDetailCall(10, vWdr, Invno.ToString());
@@ -2181,9 +2178,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[10] = vDats.LWdr_10 + wCalc[9];
 
                 var updateResult = await UpdatePtbKbDetailCall(10, null, Invno.ToString());
@@ -2195,12 +2192,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_11 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_11 != 0)
+            {
                 wCalc[11] = vDats.LWdr_11 + wCalc[10];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[11]);
                 var updateResult = await UpdatePtbKbDetailCall(11, vWdr, Invno.ToString());
@@ -2213,9 +2210,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[11] = vDats.LWdr_11 + wCalc[10];
 
                 var updateResult = await UpdatePtbKbDetailCall(11, null, Invno.ToString());
@@ -2227,11 +2224,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_12 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_12 != 0)
+            {
                 wCalc[12] = vDats.LWdr_12 + wCalc[11];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[12]);
                 var updateResult = await UpdatePtbKbDetailCall(12, vWdr, Invno.ToString());
@@ -2244,9 +2241,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[12] = vDats.LWdr_12 + wCalc[11];
 
                 var updateResult = await UpdatePtbKbDetailCall(12, null, Invno.ToString());
@@ -2258,11 +2255,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_13 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_13 != 0)
+            {
                 wCalc[13] = vDats.LWdr_13 + wCalc[12];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[13]);
                 var updateResult = await UpdatePtbKbDetailCall(13, vWdr, Invno.ToString());
@@ -2275,9 +2272,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[13] = vDats.LWdr_13 + wCalc[12];
 
                 var updateResult = await UpdatePtbKbDetailCall(13, null, Invno.ToString());
@@ -2289,11 +2286,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_14 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_14 != 0)
+            {
                 wCalc[14] = vDats.LWdr_14 + wCalc[13];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[14]);
                 var updateResult = await UpdatePtbKbDetailCall(14, vWdr, Invno.ToString());
@@ -2306,9 +2303,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[14] = vDats.LWdr_14 + wCalc[13];
 
                 var updateResult = await UpdatePtbKbDetailCall(14, null, Invno.ToString());
@@ -2320,11 +2317,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_15 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_15 != 0)
+            {
                 wCalc[15] = vDats.LWdr_15 + wCalc[14];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[15]);
                 var updateResult = await UpdatePtbKbDetailCall(15, vWdr, Invno.ToString());
@@ -2337,9 +2334,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[15] = vDats.LWdr_15 + wCalc[14];
 
                 var updateResult = await UpdatePtbKbDetailCall(15, null, Invno.ToString());
@@ -2351,11 +2348,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_16 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_16 != 0)
+            {
                 wCalc[16] = vDats.LWdr_16 + wCalc[15];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[16]);
                 var updateResult = await UpdatePtbKbDetailCall(16, vWdr, Invno.ToString());
@@ -2368,9 +2365,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[16] = vDats.LWdr_16 + wCalc[15];
 
                 var updateResult = await UpdatePtbKbDetailCall(16, null, Invno.ToString());
@@ -2382,12 +2379,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_17 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_17 != 0)
+            {
                 wCalc[17] = vDats.LWdr_17 + wCalc[16];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[17]);
                 var updateResult = await UpdatePtbKbDetailCall(17, vWdr, Invno.ToString());
@@ -2400,9 +2397,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[17] = vDats.LWdr_17 + wCalc[16];
 
                 var updateResult = await UpdatePtbKbDetailCall(17, null, Invno.ToString());
@@ -2414,12 +2411,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_18 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_18 != 0)
+            {
                 wCalc[18] = vDats.LWdr_18 + wCalc[17];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[18]);
                 var updateResult = await UpdatePtbKbDetailCall(18, vWdr, Invno.ToString());
@@ -2432,9 +2429,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[18] = vDats.LWdr_18 + wCalc[17];
 
                 var updateResult = await UpdatePtbKbDetailCall(18, null, Invno.ToString());
@@ -2446,12 +2443,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_19 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_19 != 0)
+            {
                 wCalc[19] = vDats.LWdr_19 + wCalc[18];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[19]);
                 var updateResult = await UpdatePtbKbDetailCall(19, vWdr, Invno.ToString());
@@ -2464,9 +2461,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[19] = vDats.LWdr_19 + wCalc[18];
 
                 var updateResult = await UpdatePtbKbDetailCall(19, null, Invno.ToString());
@@ -2478,12 +2475,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_20 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_20 != 0)
+            {
                 wCalc[20] = vDats.LWdr_20 + wCalc[19];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[20]);
                 var updateResult = await UpdatePtbKbDetailCall(20, vWdr, Invno.ToString());
@@ -2496,9 +2493,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[20] = vDats.LWdr_20 + wCalc[19];
 
                 var updateResult = await UpdatePtbKbDetailCall(20, null, Invno.ToString());
@@ -2510,12 +2507,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_21 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_21 != 0)
+            {
                 wCalc[21] = vDats.LWdr_21 + wCalc[20];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[21]);
                 var updateResult = await UpdatePtbKbDetailCall(21, vWdr, Invno.ToString());
@@ -2528,9 +2525,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[21] = vDats.LWdr_21 + wCalc[20];
 
                 var updateResult = await UpdatePtbKbDetailCall(21, null, Invno.ToString());
@@ -2542,12 +2539,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_22 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_22 != 0)
+            {
                 wCalc[22] = vDats.LWdr_22 + wCalc[21];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[22]);
                 var updateResult = await UpdatePtbKbDetailCall(22, vWdr, Invno.ToString());
@@ -2560,9 +2557,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[22] = vDats.LWdr_22 + wCalc[21];
 
                 var updateResult = await UpdatePtbKbDetailCall(22, null, Invno.ToString());
@@ -2574,11 +2571,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_23 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_23 != 0)
+            {
                 wCalc[23] = vDats.LWdr_23 + wCalc[22];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[23]);
                 var updateResult = await UpdatePtbKbDetailCall(23, vWdr, Invno.ToString());
@@ -2591,9 +2588,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[23] = vDats.LWdr_23 + wCalc[22];
 
                 var updateResult = await UpdatePtbKbDetailCall(23, null, Invno.ToString());
@@ -2605,11 +2602,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_24 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_24 != 0)
+            {
                 wCalc[24] = vDats.LWdr_24 + wCalc[23];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[24]);
                 var updateResult = await UpdatePtbKbDetailCall(24, vWdr, Invno.ToString());
@@ -2622,9 +2619,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[24] = vDats.LWdr_24 + wCalc[23];
 
                 var updateResult = await UpdatePtbKbDetailCall(24, null, Invno.ToString());
@@ -2636,11 +2633,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_25 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_25 != 0)
+            {
                 wCalc[25] = vDats.LWdr_25 + wCalc[24];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[25]);
                 var updateResult = await UpdatePtbKbDetailCall(25, vWdr, Invno.ToString());
@@ -2653,9 +2650,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[25] = vDats.LWdr_25 + wCalc[24];
 
                 var updateResult = await UpdatePtbKbDetailCall(25, null, Invno.ToString());
@@ -2667,12 +2664,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_26 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_26 != 0)
+            {
                 wCalc[26] = vDats.LWdr_26 + wCalc[25];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[26]);
                 var updateResult = await UpdatePtbKbDetailCall(26, vWdr, Invno.ToString());
@@ -2685,9 +2682,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[26] = vDats.LWdr_26 + wCalc[25];
 
                 var updateResult = await UpdatePtbKbDetailCall(26, null, Invno.ToString());
@@ -2699,11 +2696,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_27 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_27 != 0)
+            {
                 wCalc[27] = vDats.LWdr_27 + wCalc[26];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[27]);
                 var updateResult = await UpdatePtbKbDetailCall(27, vWdr, Invno.ToString());
@@ -2716,9 +2713,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[27] = vDats.LWdr_27 + wCalc[26];
 
                 var updateResult = await UpdatePtbKbDetailCall(27, null, Invno.ToString());
@@ -2730,12 +2727,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_28 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_28 != 0)
+            {
                 wCalc[28] = vDats.LWdr_28 + wCalc[27];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[28]);
                 var updateResult = await UpdatePtbKbDetailCall(28, vWdr, Invno.ToString());
@@ -2748,9 +2745,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[28] = vDats.LWdr_28 + wCalc[27];
 
                 var updateResult = await UpdatePtbKbDetailCall(28, null, Invno.ToString());
@@ -2762,11 +2759,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_29 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_29 != 0)
+            {
                 wCalc[29] = vDats.LWdr_29 + wCalc[28];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[29]);
                 var updateResult = await UpdatePtbKbDetailCall(29, vWdr, Invno.ToString());
@@ -2779,9 +2776,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[29] = vDats.LWdr_29 + wCalc[28];
 
                 var updateResult = await UpdatePtbKbDetailCall(29, null, Invno.ToString());
@@ -2793,11 +2790,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_30 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_30 != 0)
+            {
                 wCalc[30] = vDats.LWdr_30 + wCalc[29];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[30]);
                 var updateResult = await UpdatePtbKbDetailCall(30, vWdr, Invno.ToString());
@@ -2810,9 +2807,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[30] = vDats.LWdr_30 + wCalc[29];
 
                 var updateResult = await UpdatePtbKbDetailCall(30, null, Invno.ToString());
@@ -2824,12 +2821,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_31 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_31 != 0)
+            {
                 wCalc[31] = vDats.LWdr_31 + wCalc[30];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[31]);
                 var updateResult = await UpdatePtbKbDetailCall(31, vWdr, Invno.ToString());
@@ -2842,9 +2839,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[31] = vDats.LWdr_31 + wCalc[30];
 
                 var updateResult = await UpdatePtbKbDetailCall(31, null, Invno.ToString());
@@ -2856,12 +2853,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_32 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_32 != 0)
+            {
                 wCalc[32] = vDats.LWdr_32 + wCalc[31];
                 var vWdr = CalulateBusinessDay.PromiseDate((DateTime)ptbrcvd.DateValue, wCalc[32]);
                 var updateResult = await UpdatePtbKbDetailCall(32, vWdr, Invno.ToString());
@@ -2874,9 +2871,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[32] = vDats.LWdr_32 + wCalc[31];
 
                 var updateResult = await UpdatePtbKbDetailCall(32, null, Invno.ToString());
@@ -2888,12 +2885,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_33 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_33 != 0)
+            {
                 wCalc[33] = vDats.LWdr_33 + wCalc[32];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[33]);
                 var updateResult = await UpdatePtbKbDetailCall(33, vWdr, Invno.ToString());
@@ -2906,9 +2903,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[33] = vDats.LWdr_33 + wCalc[32];
 
                 var updateResult = await UpdatePtbKbDetailCall(33, null, Invno.ToString());
@@ -2920,12 +2917,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_34 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_34 != 0)
+            {
                 wCalc[34] = vDats.LWdr_34 + wCalc[33];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[34]);
                 var updateResult = await UpdatePtbKbDetailCall(34, vWdr, Invno.ToString());
@@ -2938,9 +2935,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[34] = vDats.LWdr_34 + wCalc[33];
 
                 var updateResult = await UpdatePtbKbDetailCall(34, null, Invno.ToString());
@@ -2952,11 +2949,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_35 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_35 != 0)
+            {
                 wCalc[35] = vDats.LWdr_35 + wCalc[34];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[35]);
                 var updateResult = await UpdatePtbKbDetailCall(35, vWdr, Invno.ToString());
@@ -2969,9 +2966,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[35] = vDats.LWdr_35 + wCalc[34];
 
                 var updateResult = await UpdatePtbKbDetailCall(35, null, Invno.ToString());
@@ -2983,12 +2980,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_36 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_36 != 0)
+            {
                 wCalc[36] = vDats.LWdr_36 + wCalc[35];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[36]);
                 var updateResult = await UpdatePtbKbDetailCall(36, vWdr, Invno.ToString());
@@ -3001,9 +2998,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[36] = vDats.LWdr_36 + wCalc[35];
 
                 var updateResult = await UpdatePtbKbDetailCall(36, null, Invno.ToString());
@@ -3015,11 +3012,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_37 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_37 != 0)
+            {
                 wCalc[37] = vDats.LWdr_37 + wCalc[36];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[37]);
                 var updateResult = await UpdatePtbKbDetailCall(37, vWdr, Invno.ToString());
@@ -3032,9 +3029,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[37] = vDats.LWdr_37 + wCalc[36];
 
                 var updateResult = await UpdatePtbKbDetailCall(37, null, Invno.ToString());
@@ -3046,11 +3043,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_38 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_38 != 0)
+            {
                 wCalc[38] = vDats.LWdr_38 + wCalc[37];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[38]);
                 var updateResult = await UpdatePtbKbDetailCall(38, vWdr, Invno.ToString());
@@ -3063,9 +3060,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[38] = vDats.LWdr_38 + wCalc[37];
 
                 var updateResult = await UpdatePtbKbDetailCall(38, null, Invno.ToString());
@@ -3077,12 +3074,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_39 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_39 != 0)
+            {
                 wCalc[39] = vDats.LWdr_39 + wCalc[38];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[39]);
                 var updateResult = await UpdatePtbKbDetailCall(39, vWdr, Invno.ToString());
@@ -3095,9 +3092,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[39] = vDats.LWdr_39 + wCalc[38];
 
                 var updateResult = await UpdatePtbKbDetailCall(39, null, Invno.ToString());
@@ -3109,12 +3106,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_40 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_40 != 0)
+            {
                 wCalc[40] = vDats.LWdr_40 + wCalc[39];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[40]);
                 var updateResult = await UpdatePtbKbDetailCall(40, vWdr, Invno.ToString());
@@ -3127,9 +3124,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[40] = vDats.LWdr_40 + wCalc[39];
 
                 var updateResult = await UpdatePtbKbDetailCall(40, null, Invno.ToString());
@@ -3141,12 +3138,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_41 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_41 != 0)
+            {
                 wCalc[41] = vDats.LWdr_41 + wCalc[40];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[41]);
                 var updateResult = await UpdatePtbKbDetailCall(41, vWdr, Invno.ToString());
@@ -3159,9 +3156,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[41] = vDats.LWdr_41 + wCalc[40];
 
                 var updateResult = await UpdatePtbKbDetailCall(41, null, Invno.ToString());
@@ -3173,12 +3170,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_42 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_42 != 0)
+            {
                 wCalc[42] = vDats.LWdr_42 + wCalc[41];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[42]);
                 var updateResult = await UpdatePtbKbDetailCall(42, vWdr, Invno.ToString());
@@ -3191,9 +3188,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[42] = vDats.LWdr_42 + wCalc[41];
 
                 var updateResult = await UpdatePtbKbDetailCall(42, null, Invno.ToString());
@@ -3205,12 +3202,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_43 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_43 != 0)
+            {
                 wCalc[43] = vDats.LWdr_43 + wCalc[42];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[43]);
                 var updateResult = await UpdatePtbKbDetailCall(43, vWdr, Invno.ToString());
@@ -3223,9 +3220,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[43] = vDats.LWdr_43 + wCalc[42];
 
                 var updateResult = await UpdatePtbKbDetailCall(43, null, Invno.ToString());
@@ -3237,11 +3234,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_44 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_44 != 0)
+            {
                 wCalc[44] = vDats.LWdr_44 + wCalc[43];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[44]);
                 var updateResult = await UpdatePtbKbDetailCall(44, vWdr, Invno.ToString());
@@ -3254,9 +3251,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[44] = vDats.LWdr_44 + wCalc[43];
 
                 var updateResult = await UpdatePtbKbDetailCall(44, null, Invno.ToString());
@@ -3268,13 +3265,13 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_45 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_45 != 0)
+            {
                 wCalc[45] = vDats.LWdr_45 + wCalc[44];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[45]);
                 var updateResult = await UpdatePtbKbDetailCall(45, vWdr, Invno.ToString());
@@ -3287,9 +3284,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[45] = vDats.LWdr_45 + wCalc[44];
 
                 var updateResult = await UpdatePtbKbDetailCall(45, null, Invno.ToString());
@@ -3301,12 +3298,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_46 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_46 != 0)
+            {
                 wCalc[46] = vDats.LWdr_46 + wCalc[45];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[46]);
                 var updateResult = await UpdatePtbKbDetailCall(46, vWdr, Invno.ToString());
@@ -3319,9 +3316,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[46] = vDats.LWdr_46 + wCalc[45];
 
                 var updateResult = await UpdatePtbKbDetailCall(46, null, Invno.ToString());
@@ -3333,12 +3330,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_47 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_47 != 0)
+            {
                 wCalc[47] = vDats.LWdr_47 + wCalc[46];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[47]);
                 var updateResult = await UpdatePtbKbDetailCall(47, vWdr, Invno.ToString());
@@ -3351,9 +3348,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[47] = vDats.LWdr_47 + wCalc[46];
 
                 var updateResult = await UpdatePtbKbDetailCall(47, null, Invno.ToString());
@@ -3365,11 +3362,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_48 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_48 != 0)
+            {
                 wCalc[48] = vDats.LWdr_48 + wCalc[47];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[48]);
                 var updateResult = await UpdatePtbKbDetailCall(48, vWdr, Invno.ToString());
@@ -3382,9 +3379,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[48] = vDats.LWdr_48 + wCalc[47];
 
                 var updateResult = await UpdatePtbKbDetailCall(48, null, Invno.ToString());
@@ -3396,12 +3393,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_49 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_49 != 0)
+            {
                 wCalc[49] = vDats.LWdr_49 + wCalc[48];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[49]);
                 var updateResult = await UpdatePtbKbDetailCall(49, vWdr, Invno.ToString());
@@ -3414,9 +3411,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[49] = vDats.LWdr_49 + wCalc[48];
 
                 var updateResult = await UpdatePtbKbDetailCall(49, null, Invno.ToString());
@@ -3428,12 +3425,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.LWdr_50 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.LWdr_50 != 0)
+            {
                 wCalc[50] = vDats.LWdr_50 + wCalc[49];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)ptbrcvd.DateValue, wCalc[50]);
                 var updateResult = await UpdatePtbKbDetailCall(50, vWdr, Invno.ToString());
@@ -3446,9 +3443,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[50] = vDats.LWdr_50 + wCalc[49];
 
                 var updateResult = await UpdatePtbKbDetailCall(50, null, Invno.ToString());
@@ -3460,46 +3457,46 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                try
-                {
+            }
+            try
+            {
                 prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
                 ex.ToExceptionless()
                     .MarkAsCritical()
                     .AddObject(ex)
                     .Submit();
 
                 MbcMessageBox.Error("Failed to refill cover detail dataset:" + ex.Message);
-                }
-                return processingResult;
+            }
+            return processingResult;
 
 
 
-                }
+        }
         private async Task<ApiProcessingResult> UpdateReOrderDates()
-                {
+        {
 
 
-                var processingResult = new ApiProcessingResult();
+            var processingResult = new ApiProcessingResult();
 
-                var reOrderResult = SaveReOrder();
+            var reOrderResult = SaveReOrder();
 
-                if (reOrderResult.IsError)
-                {
+            if (reOrderResult.IsError)
+            {
 
                 processingResult.IsError = true;
                 processingResult.Errors = reOrderResult.Errors;
                 return processingResult;
-                }
-                if (cstsvcdteDateTimePicker.Date == null)
-                {
+            }
+            if (cstsvcdteDateTimePicker.Date == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Customer Service Date is empty.", "Customer Service Date is empty.", ""));
                 return processingResult;
-                }
+            }
             var vCustServiceDate = cstsvcdteDateTimePicker.DateValue;
             if (string.IsNullOrEmpty(booktypeTextBox.Text.Trim()))
             {
@@ -3509,25 +3506,25 @@ namespace Mbc5.Forms
             }
 
             var sqlQuery = new SQLCustomClient();
-                sqlQuery.CommandText(@"Select * From ReOrderDat Where BookType=@BookType");
-                sqlQuery.AddParameter("@BookType", booktypeTextBox.Text.ToString().ToUpper().Trim());
-                var result = sqlQuery.Select<ReorderDat>();
-                if (result.IsError)
-                {
+            sqlQuery.CommandText(@"Select * From ReOrderDat Where BookType=@BookType");
+            sqlQuery.AddParameter("@BookType", booktypeTextBox.Text.ToString().ToUpper().Trim());
+            var result = sqlQuery.Select<ReorderDat>();
+            if (result.IsError)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve ReOrder Update Information,ReOrder update failed:" + result.Errors[0].ErrorMessage, "Failed to retrieve ReOrder Update Information,Special ReOrder update failed:" + result.Errors[0].ErrorMessage, ""));
                 return processingResult;
-                }
+            }
 
-                var vDats = (ReorderDat)result.Data;
-                if (vDats == null)
-                {
+            var vDats = (ReorderDat)result.Data;
+            if (vDats == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve ReOrder update Dats.", "Failed to retrieve ReOrder update Dats.", ""));
                 return processingResult;
-                }
-                int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
-                                          //-------------------------------------------------
+            }
+            int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
+                                      //-------------------------------------------------
             sqlQuery.ClearParameters();
             //if (vDats.LWdr_50 != 0)
             // {
@@ -3565,9 +3562,9 @@ namespace Mbc5.Forms
 
             //---------------------------------------------------------------------------------------------------------
             sqlQuery.ClearParameters();
-                if (vDats.LWdr_49 != 0)
-                {
-                wCalc[49] = vDats.LWdr_49+ wCalc[50];
+            if (vDats.LWdr_49 != 0)
+            {
+                wCalc[49] = vDats.LWdr_49 + wCalc[50];
                 var vWdr = CalulateBusinessDay.PromiseDate((DateTime)vCustServiceDate, wCalc[50]);
                 var updateResult = await UpdateReOrderDetailCall(1, vWdr, Invno.ToString());
                 if (updateResult.IsError)
@@ -3579,9 +3576,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[49] = vDats.LWdr_49 + wCalc[50];
 
                 var updateResult = await UpdateReOrderDetailCall(1, null, Invno.ToString());
@@ -3593,7 +3590,7 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
             //-------------------------------------------------
             sqlQuery.ClearParameters();
@@ -5101,21 +5098,21 @@ namespace Mbc5.Forms
             try
             {
                 reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
                 ex.ToExceptionless()
                     .MarkAsCritical()
                     .AddObject(ex)
                     .Submit();
 
                 MbcMessageBox.Error("Failed to refill reorder detail dataset:" + ex.Message);
-                }
-                return processingResult;
+            }
+            return processingResult;
 
 
 
-                }     
+        }
         public async Task<ApiProcessingResult<bool>> UpdateReOrderDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
         {
             var processingResult = new ApiProcessingResult<bool>();
@@ -5168,22 +5165,22 @@ namespace Mbc5.Forms
 
         }
         public async Task<ApiProcessingResult<bool>> UpdatePartialBKDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
-                {
-                var processingResult = new ApiProcessingResult<bool>();
-                bool isUpdate = true;
-                if (vWdr == null)
-                {
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
+            {
                 isUpdate = false;
-                }
-                var sqlClient = new SQLCustomClient();
-                sqlClient.ClearParameters();
-                sqlClient.AddParameter("@DescripID", vDescripId);
-                sqlClient.AddParameter("@wdr", vWdr);
-                sqlClient.AddParameter("@invno", vInvno);
-                sqlClient.AddParameter("@Schcode", this.Schcode);
-                var commandText = "";
-                if (isUpdate)
-                {
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
                 commandText = @"
                             IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from PartBkDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PartialBook')) 
                                 Begin
@@ -5193,49 +5190,49 @@ namespace Mbc5.Forms
 				                BEGIN
 					                UPDATE PartBkDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PartialBook')
 				                END ";
-                }
-                else
-                {
+            }
+            else
+            {
                 commandText = @"
 					                UPDATE PartBkDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = (SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PartialBook')
 				                ";
 
-                }
+            }
 
-                sqlClient.CommandText(commandText);
-                var wipResult = sqlClient.Update();
-                if (wipResult.IsError)
-                {
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
                 processingResult.IsError = true;
                 processingResult.Data = false;
                 return processingResult;
 
-                }
+            }
 
 
-                processingResult.IsError = false;
-                processingResult.Data = true;
-                return processingResult;
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
 
-                }
+        }
         public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
         {
-        var processingResult = new ApiProcessingResult<bool>();
-        bool isUpdate = true;
-        if (vWdr == null)
-        {
-        isUpdate = false;
-        }
-        var sqlClient = new SQLCustomClient();
-        sqlClient.ClearParameters();
-        sqlClient.AddParameter("@DescripID", vDescripId);
-        sqlClient.AddParameter("@wdr", vWdr);
-        sqlClient.AddParameter("@invno", vInvno);
-        sqlClient.AddParameter("@Schcode", this.Schcode);
-        var commandText = "";
-        if (isUpdate)
-        {
-        commandText = @"
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
+            {
+                isUpdate = false;
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
+                commandText = @"
                     IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='WIP')) 
                         Begin
                         INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES((SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='WIP'),@Invno,@wdr,@Schcode);
@@ -5244,48 +5241,48 @@ namespace Mbc5.Forms
 				        BEGIN
 					        UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='WIP')
 				        END ";
-        }
-        else
-        {
-        commandText = @"
+            }
+            else
+            {
+                commandText = @"
 					        UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = (SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='WIP')
 				        ";
-              
+
+            }
+
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Data = false;
+                return processingResult;
+
+            }
+
+
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
         }
-
-        sqlClient.CommandText(commandText);
-        var wipResult = sqlClient.Update();
-        if (wipResult.IsError)
-        {
-        processingResult.IsError = true;
-        processingResult.Data = false;
-        return processingResult;
-
-        }
-
-
-        processingResult.IsError = false;
-        processingResult.Data = true;
-        return processingResult;
-        }       
         public async Task<ApiProcessingResult<bool>> UpdatePtbKbDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
         {
-        var processingResult = new ApiProcessingResult<bool>();
-        bool isUpdate = true;
-        if (vWdr == null)
-        {
-        isUpdate = false;
-        }
-        var sqlClient = new SQLCustomClient();
-        sqlClient.ClearParameters();
-        sqlClient.AddParameter("@DescripID", vDescripId);
-        sqlClient.AddParameter("@wdr", vWdr);
-        sqlClient.AddParameter("@invno", vInvno);
-        sqlClient.AddParameter("@Schcode", this.Schcode);
-        var commandText = "";
-        if (isUpdate)
-        {
-        commandText = @"
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
+            {
+                isUpdate = false;
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
+                commandText = @"
                     IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from prtbkbdetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PhotosCD')) 
                         Begin
                         INSERT INTO prtbkbdetail (DescripID,Invno,Wdr,Schcode) VALUES((SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PhotosCD'),@Invno,@wdr,@Schcode);
@@ -5294,49 +5291,49 @@ namespace Mbc5.Forms
 				        BEGIN
 					        UPDATE prtbkbdetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PhotosCD')
 				        END ";
-        }
-        else
-        {
-        commandText = @"
+            }
+            else
+            {
+                commandText = @"
 					        UPDATE prtbkbdetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = (SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='PhotosCD')
 				        ";
 
-        }
+            }
 
-        sqlClient.CommandText(commandText);
-        var wipResult = sqlClient.Update();
-        if (wipResult.IsError)
-        {
-        processingResult.IsError = true;
-        processingResult.Data = false;
-        return processingResult;
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Data = false;
+                return processingResult;
 
-        }
+            }
 
 
-        processingResult.IsError = false;
-        processingResult.Data = true;
-        return processingResult;
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
 
         }
         private async Task<ApiProcessingResult<bool>> UpdateWipCoverDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
         {
-        var processingResult = new ApiProcessingResult<bool>();
-        bool isUpdate = true;
-        if (vWdr == null)
-        {
-        isUpdate = false;
-        }
-        var sqlClient = new SQLCustomClient();
-        sqlClient.ClearParameters();
-        sqlClient.AddParameter("@DescripID", vDescripId);
-        sqlClient.AddParameter("@wdr", vWdr);
-        sqlClient.AddParameter("@invno", vInvno);
-        sqlClient.AddParameter("@Schcode", this.Schcode);
-        var commandText = "";
-        if (isUpdate)
-        {
-        commandText = @"
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
+            {
+                isUpdate = false;
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
+                commandText = @"
                     IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='COVERS')) 
                         Begin
                         INSERT INTO CoverDetail (DescripID,Invno,Wdr,Schcode) VALUES((SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='COVERS'),@Invno,@wdr,@Schcode);
@@ -5345,65 +5342,65 @@ namespace Mbc5.Forms
 				        BEGIN
 					        UPDATE CoverDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=(SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='COVERS')
 				        END ";
-        }
-        else
-        {
-        commandText = @"
+            }
+            else
+            {
+                commandText = @"
 					        UPDATE CoverDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = (SELECT Id From WipDescriptions WHERE DescriptionId=@DescripID AND TableName='COVERS')
 				        ";
-               
-        }
 
-        sqlClient.CommandText(commandText);
-        var wipResult = sqlClient.Update();
-        if (wipResult.IsError)
-        {
-        processingResult.IsError = true;
-        processingResult.Data = false;
-        return processingResult;
+            }
 
-        }
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Data = false;
+                return processingResult;
+
+            }
 
 
-        processingResult.IsError = false;
-        processingResult.Data = true;
-        return processingResult;
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
         }
         private async Task<ApiProcessingResult<string>> UpdateCoverWip()
-                {
-                var processingResult = new ApiProcessingResult<string>();
+        {
+            var processingResult = new ApiProcessingResult<string>();
 
-                var coverResult = SaveCovers();
+            var coverResult = SaveCovers();
 
-                if (coverResult.IsError)
-                {
+            if (coverResult.IsError)
+            {
 
                 processingResult.IsError = true;
                 processingResult.Errors = coverResult.Errors;
                 return processingResult;
-                }
-                if (ptbrcvd.Date == null)
-                {
+            }
+            if (ptbrcvd.Date == null)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Recieved date is empty.", "Recieved date is empty.", ""));
                 return processingResult;
-                }
-                var sqlQuery = new SQLCustomClient();
-                sqlQuery.CommandText(@"Select * From ScWip");//only 1 record
-                var result = sqlQuery.Select<SpecialCoverDats>();
-                if (result.IsError)
-                {
+            }
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From ScWip");//only 1 record
+            var result = sqlQuery.Select<SpecialCoverDats>();
+            if (result.IsError)
+            {
 
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve Special Cover Update Information,Special Cover WIP update failed:" + result.Errors[0].ErrorMessage, "Failed to retrieve Special Cover Update Information,Special Cover WIP update failed:" + result.Errors[0].ErrorMessage, ""));
                 return processingResult;
-                }
-                var vDats = (SpecialCoverDats)result.Data;
-                int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
-                //---------------------------------------------------------------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr1 != 0)
-                {
+            }
+            var vDats = (SpecialCoverDats)result.Data;
+            int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
+                                      //---------------------------------------------------------------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr1 != 0)
+            {
                 wCalc[1] = vDats.l_wdr1;
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[1]);
                 var updateResult = await UpdateWipCoverDetailCall(1, vWdr, Invno.ToString());
@@ -5416,9 +5413,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[1] = vDats.l_wdr1;
 
                 var updateResult = await UpdateWipCoverDetailCall(1, null, Invno.ToString());
@@ -5430,12 +5427,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr2 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr2 != 0)
+            {
                 wCalc[2] = vDats.l_wdr2 + wCalc[1];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[2]);
                 var updateResult = await UpdateWipCoverDetailCall(2, vWdr, Invno.ToString());
@@ -5448,9 +5445,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[2] = vDats.l_wdr2 + wCalc[1];
 
                 var updateResult = await UpdateWipCoverDetailCall(2, null, Invno.ToString());
@@ -5462,11 +5459,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr3 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr3 != 0)
+            {
                 wCalc[3] = vDats.l_wdr3 + wCalc[2];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[3]);
                 var updateResult = await UpdateWipCoverDetailCall(3, vWdr, Invno.ToString());
@@ -5479,9 +5476,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[3] = vDats.l_wdr3 + wCalc[2];
 
                 var updateResult = await UpdateWipCoverDetailCall(3, null, Invno.ToString());
@@ -5493,11 +5490,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr4 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr4 != 0)
+            {
                 wCalc[4] = vDats.l_wdr4 + wCalc[3];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[4]);
                 var updateResult = await UpdateWipCoverDetailCall(4, vWdr, Invno.ToString());
@@ -5510,9 +5507,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[4] = vDats.l_wdr4 + wCalc[3];
 
                 var updateResult = await UpdateWipCoverDetailCall(4, null, Invno.ToString());
@@ -5524,12 +5521,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr5 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr5 != 0)
+            {
                 wCalc[5] = vDats.l_wdr5 + wCalc[4];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[5]);
                 var updateResult = await UpdateWipCoverDetailCall(5, vWdr, Invno.ToString());
@@ -5542,9 +5539,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[5] = vDats.l_wdr5 + wCalc[4];
 
                 var updateResult = await UpdateWipCoverDetailCall(5, null, Invno.ToString());
@@ -5556,11 +5553,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr6 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr6 != 0)
+            {
                 wCalc[6] = vDats.l_wdr6 + wCalc[5];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[6]);
                 var updateResult = await UpdateWipCoverDetailCall(6, vWdr, Invno.ToString());
@@ -5573,9 +5570,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[6] = vDats.l_wdr6 + wCalc[5];
 
                 var updateResult = await UpdateWipCoverDetailCall(6, null, Invno.ToString());
@@ -5587,12 +5584,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr7 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr7 != 0)
+            {
                 wCalc[7] = vDats.l_wdr7 + wCalc[6];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[7]);
                 var updateResult = await UpdateWipCoverDetailCall(7, vWdr, Invno.ToString());
@@ -5605,9 +5602,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[7] = vDats.l_wdr7 + wCalc[6];
 
                 var updateResult = await UpdateWipCoverDetailCall(7, null, Invno.ToString());
@@ -5619,11 +5616,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr8 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr8 != 0)
+            {
                 wCalc[8] = vDats.l_wdr8 + wCalc[7];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[8]);
                 var updateResult = await UpdateWipCoverDetailCall(8, vWdr, Invno.ToString());
@@ -5636,9 +5633,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[8] = vDats.l_wdr8 + wCalc[7];
 
                 var updateResult = await UpdateWipCoverDetailCall(8, null, Invno.ToString());
@@ -5650,11 +5647,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr9 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr9 != 0)
+            {
                 wCalc[9] = vDats.l_wdr9 + wCalc[8];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[9]);
                 var updateResult = await UpdateWipCoverDetailCall(9, vWdr, Invno.ToString());
@@ -5667,9 +5664,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[9] = vDats.l_wdr9 + wCalc[8];
 
                 var updateResult = await UpdateWipCoverDetailCall(9, null, Invno.ToString());
@@ -5681,11 +5678,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr10 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr10 != 0)
+            {
                 wCalc[10] = vDats.l_wdr10 + wCalc[9];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[10]);
                 var updateResult = await UpdateWipCoverDetailCall(10, vWdr, Invno.ToString());
@@ -5698,9 +5695,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[10] = vDats.l_wdr10 + wCalc[9];
 
                 var updateResult = await UpdateWipCoverDetailCall(10, null, Invno.ToString());
@@ -5712,12 +5709,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr11 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr11 != 0)
+            {
                 wCalc[11] = vDats.l_wdr11 + wCalc[10];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[11]);
                 var updateResult = await UpdateWipCoverDetailCall(11, vWdr, Invno.ToString());
@@ -5730,9 +5727,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[11] = vDats.l_wdr11 + wCalc[10];
 
                 var updateResult = await UpdateWipCoverDetailCall(11, null, Invno.ToString());
@@ -5744,11 +5741,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr12 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr12 != 0)
+            {
                 wCalc[12] = vDats.l_wdr12 + wCalc[11];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[12]);
                 var updateResult = await UpdateWipCoverDetailCall(12, vWdr, Invno.ToString());
@@ -5761,9 +5758,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[12] = vDats.l_wdr12 + wCalc[11];
 
                 var updateResult = await UpdateWipCoverDetailCall(12, null, Invno.ToString());
@@ -5775,11 +5772,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr13 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr13 != 0)
+            {
                 wCalc[13] = vDats.l_wdr13 + wCalc[12];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[13]);
                 var updateResult = await UpdateWipCoverDetailCall(13, vWdr, Invno.ToString());
@@ -5792,9 +5789,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[13] = vDats.l_wdr13 + wCalc[12];
 
                 var updateResult = await UpdateWipCoverDetailCall(13, null, Invno.ToString());
@@ -5806,11 +5803,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr14 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr14 != 0)
+            {
                 wCalc[14] = vDats.l_wdr14 + wCalc[13];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[14]);
                 var updateResult = await UpdateWipCoverDetailCall(14, vWdr, Invno.ToString());
@@ -5823,9 +5820,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[14] = vDats.l_wdr14 + wCalc[13];
 
                 var updateResult = await UpdateWipCoverDetailCall(14, null, Invno.ToString());
@@ -5837,11 +5834,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr15 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr15 != 0)
+            {
                 wCalc[15] = vDats.l_wdr15 + wCalc[14];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[15]);
                 var updateResult = await UpdateWipCoverDetailCall(15, vWdr, Invno.ToString());
@@ -5854,9 +5851,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[15] = vDats.l_wdr15 + wCalc[14];
 
                 var updateResult = await UpdateWipCoverDetailCall(15, null, Invno.ToString());
@@ -5868,11 +5865,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr16 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr16 != 0)
+            {
                 wCalc[16] = vDats.l_wdr16 + wCalc[15];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[16]);
                 var updateResult = await UpdateWipCoverDetailCall(16, vWdr, Invno.ToString());
@@ -5885,9 +5882,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[16] = vDats.l_wdr16 + wCalc[15];
 
                 var updateResult = await UpdateWipCoverDetailCall(16, null, Invno.ToString());
@@ -5899,12 +5896,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr17 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr17 != 0)
+            {
                 wCalc[17] = vDats.l_wdr17 + wCalc[16];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[17]);
                 var updateResult = await UpdateWipCoverDetailCall(17, vWdr, Invno.ToString());
@@ -5917,9 +5914,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[17] = vDats.l_wdr17 + wCalc[16];
 
                 var updateResult = await UpdateWipCoverDetailCall(17, null, Invno.ToString());
@@ -5931,12 +5928,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr18 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr18 != 0)
+            {
                 wCalc[18] = vDats.l_wdr18 + wCalc[17];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[18]);
                 var updateResult = await UpdateWipCoverDetailCall(18, vWdr, Invno.ToString());
@@ -5949,9 +5946,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[18] = vDats.l_wdr18 + wCalc[17];
 
                 var updateResult = await UpdateWipCoverDetailCall(18, null, Invno.ToString());
@@ -5963,12 +5960,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr19 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr19 != 0)
+            {
                 wCalc[19] = vDats.l_wdr19 + wCalc[18];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[19]);
                 var updateResult = await UpdateWipCoverDetailCall(19, vWdr, Invno.ToString());
@@ -5981,9 +5978,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[19] = vDats.l_wdr19 + wCalc[18];
 
                 var updateResult = await UpdateWipCoverDetailCall(19, null, Invno.ToString());
@@ -5995,12 +5992,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr20 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr20 != 0)
+            {
                 wCalc[20] = vDats.l_wdr20 + wCalc[19];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[20]);
                 var updateResult = await UpdateWipCoverDetailCall(20, vWdr, Invno.ToString());
@@ -6013,9 +6010,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[20] = vDats.l_wdr20 + wCalc[19];
 
                 var updateResult = await UpdateWipCoverDetailCall(20, null, Invno.ToString());
@@ -6027,12 +6024,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr21 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr21 != 0)
+            {
                 wCalc[21] = vDats.l_wdr21 + wCalc[20];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[21]);
                 var updateResult = await UpdateWipCoverDetailCall(21, vWdr, Invno.ToString());
@@ -6045,9 +6042,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[21] = vDats.l_wdr21 + wCalc[20];
 
                 var updateResult = await UpdateWipCoverDetailCall(21, null, Invno.ToString());
@@ -6059,12 +6056,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr22 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr22 != 0)
+            {
                 wCalc[22] = vDats.l_wdr22 + wCalc[21];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[22]);
                 var updateResult = await UpdateWipCoverDetailCall(22, vWdr, Invno.ToString());
@@ -6077,9 +6074,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[22] = vDats.l_wdr22 + wCalc[21];
 
                 var updateResult = await UpdateWipCoverDetailCall(22, null, Invno.ToString());
@@ -6091,11 +6088,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr23 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr23 != 0)
+            {
                 wCalc[23] = vDats.l_wdr23 + wCalc[22];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[23]);
                 var updateResult = await UpdateWipCoverDetailCall(23, vWdr, Invno.ToString());
@@ -6108,9 +6105,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[23] = vDats.l_wdr23 + wCalc[22];
 
                 var updateResult = await UpdateWipCoverDetailCall(23, null, Invno.ToString());
@@ -6122,11 +6119,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr24 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr24 != 0)
+            {
                 wCalc[24] = vDats.l_wdr24 + wCalc[23];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[24]);
                 var updateResult = await UpdateWipCoverDetailCall(24, vWdr, Invno.ToString());
@@ -6139,9 +6136,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[24] = vDats.l_wdr24 + wCalc[23];
 
                 var updateResult = await UpdateWipCoverDetailCall(24, null, Invno.ToString());
@@ -6153,11 +6150,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr25 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr25 != 0)
+            {
                 wCalc[25] = vDats.l_wdr25 + wCalc[24];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[25]);
                 var updateResult = await UpdateWipCoverDetailCall(25, vWdr, Invno.ToString());
@@ -6170,9 +6167,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[25] = vDats.l_wdr25 + wCalc[24];
 
                 var updateResult = await UpdateWipCoverDetailCall(25, null, Invno.ToString());
@@ -6184,12 +6181,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr26 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr26 != 0)
+            {
                 wCalc[26] = vDats.l_wdr26 + wCalc[25];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[26]);
                 var updateResult = await UpdateWipCoverDetailCall(26, vWdr, Invno.ToString());
@@ -6202,9 +6199,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[26] = vDats.l_wdr26 + wCalc[25];
 
                 var updateResult = await UpdateWipCoverDetailCall(26, null, Invno.ToString());
@@ -6216,11 +6213,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr27 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr27 != 0)
+            {
                 wCalc[27] = vDats.l_wdr27 + wCalc[26];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[27]);
                 var updateResult = await UpdateWipCoverDetailCall(27, vWdr, Invno.ToString());
@@ -6233,9 +6230,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[27] = vDats.l_wdr27 + wCalc[26];
 
                 var updateResult = await UpdateWipCoverDetailCall(27, null, Invno.ToString());
@@ -6247,12 +6244,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr28 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr28 != 0)
+            {
                 wCalc[28] = vDats.l_wdr28 + wCalc[27];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[28]);
                 var updateResult = await UpdateWipCoverDetailCall(28, vWdr, Invno.ToString());
@@ -6265,9 +6262,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[28] = vDats.l_wdr28 + wCalc[27];
 
                 var updateResult = await UpdateWipCoverDetailCall(28, null, Invno.ToString());
@@ -6279,11 +6276,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr29 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr29 != 0)
+            {
                 wCalc[29] = vDats.l_wdr29 + wCalc[28];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[29]);
                 var updateResult = await UpdateWipCoverDetailCall(29, vWdr, Invno.ToString());
@@ -6296,9 +6293,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[29] = vDats.l_wdr29 + wCalc[28];
 
                 var updateResult = await UpdateWipCoverDetailCall(29, null, Invno.ToString());
@@ -6310,11 +6307,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr30 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr30 != 0)
+            {
                 wCalc[30] = vDats.l_wdr30 + wCalc[29];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[30]);
                 var updateResult = await UpdateWipCoverDetailCall(30, vWdr, Invno.ToString());
@@ -6327,9 +6324,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[30] = vDats.l_wdr30 + wCalc[29];
 
                 var updateResult = await UpdateWipCoverDetailCall(30, null, Invno.ToString());
@@ -6341,12 +6338,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr31 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr31 != 0)
+            {
                 wCalc[31] = vDats.l_wdr31 + wCalc[30];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[31]);
                 var updateResult = await UpdateWipCoverDetailCall(31, vWdr, Invno.ToString());
@@ -6359,9 +6356,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[31] = vDats.l_wdr31 + wCalc[30];
 
                 var updateResult = await UpdateWipCoverDetailCall(31, null, Invno.ToString());
@@ -6373,12 +6370,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr32 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr32 != 0)
+            {
                 wCalc[32] = vDats.l_wdr32 + wCalc[31];
                 var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dbScRecvDate.DateValue, wCalc[32]);
                 var updateResult = await UpdateWipCoverDetailCall(32, vWdr, Invno.ToString());
@@ -6391,9 +6388,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[32] = vDats.l_wdr32 + wCalc[31];
 
                 var updateResult = await UpdateWipCoverDetailCall(32, null, Invno.ToString());
@@ -6405,12 +6402,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr33 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr33 != 0)
+            {
                 wCalc[33] = vDats.l_wdr33 + wCalc[32];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[33]);
                 var updateResult = await UpdateWipCoverDetailCall(33, vWdr, Invno.ToString());
@@ -6423,9 +6420,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[33] = vDats.l_wdr33 + wCalc[32];
 
                 var updateResult = await UpdateWipCoverDetailCall(33, null, Invno.ToString());
@@ -6437,12 +6434,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr34 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr34 != 0)
+            {
                 wCalc[34] = vDats.l_wdr34 + wCalc[33];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[34]);
                 var updateResult = await UpdateWipCoverDetailCall(34, vWdr, Invno.ToString());
@@ -6455,9 +6452,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[34] = vDats.l_wdr34 + wCalc[33];
 
                 var updateResult = await UpdateWipCoverDetailCall(34, null, Invno.ToString());
@@ -6469,11 +6466,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr35 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr35 != 0)
+            {
                 wCalc[35] = vDats.l_wdr35 + wCalc[34];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[35]);
                 var updateResult = await UpdateWipCoverDetailCall(35, vWdr, Invno.ToString());
@@ -6486,9 +6483,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[35] = vDats.l_wdr35 + wCalc[34];
 
                 var updateResult = await UpdateWipCoverDetailCall(35, null, Invno.ToString());
@@ -6500,12 +6497,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr36 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr36 != 0)
+            {
                 wCalc[36] = vDats.l_wdr36 + wCalc[35];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[36]);
                 var updateResult = await UpdateWipCoverDetailCall(36, vWdr, Invno.ToString());
@@ -6518,9 +6515,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[36] = vDats.l_wdr36 + wCalc[35];
 
                 var updateResult = await UpdateWipCoverDetailCall(36, null, Invno.ToString());
@@ -6532,11 +6529,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr37 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr37 != 0)
+            {
                 wCalc[37] = vDats.l_wdr37 + wCalc[36];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[37]);
                 var updateResult = await UpdateWipCoverDetailCall(37, vWdr, Invno.ToString());
@@ -6549,9 +6546,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[37] = vDats.l_wdr37 + wCalc[36];
 
                 var updateResult = await UpdateWipCoverDetailCall(37, null, Invno.ToString());
@@ -6563,11 +6560,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr38 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr38 != 0)
+            {
                 wCalc[38] = vDats.l_wdr38 + wCalc[37];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[38]);
                 var updateResult = await UpdateWipCoverDetailCall(38, vWdr, Invno.ToString());
@@ -6580,9 +6577,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[38] = vDats.l_wdr38 + wCalc[37];
 
                 var updateResult = await UpdateWipCoverDetailCall(38, null, Invno.ToString());
@@ -6594,12 +6591,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr39 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr39 != 0)
+            {
                 wCalc[39] = vDats.l_wdr39 + wCalc[38];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[39]);
                 var updateResult = await UpdateWipCoverDetailCall(39, vWdr, Invno.ToString());
@@ -6612,9 +6609,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[39] = vDats.l_wdr39 + wCalc[38];
 
                 var updateResult = await UpdateWipCoverDetailCall(39, null, Invno.ToString());
@@ -6626,12 +6623,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr40 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr40 != 0)
+            {
                 wCalc[40] = vDats.l_wdr40 + wCalc[39];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[40]);
                 var updateResult = await UpdateWipCoverDetailCall(40, vWdr, Invno.ToString());
@@ -6644,9 +6641,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[40] = vDats.l_wdr40 + wCalc[39];
 
                 var updateResult = await UpdateWipCoverDetailCall(40, null, Invno.ToString());
@@ -6658,12 +6655,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr41 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr41 != 0)
+            {
                 wCalc[41] = vDats.l_wdr41 + wCalc[40];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[41]);
                 var updateResult = await UpdateWipCoverDetailCall(41, vWdr, Invno.ToString());
@@ -6676,9 +6673,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[41] = vDats.l_wdr41 + wCalc[40];
 
                 var updateResult = await UpdateWipCoverDetailCall(41, null, Invno.ToString());
@@ -6690,12 +6687,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr42 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr42 != 0)
+            {
                 wCalc[42] = vDats.l_wdr42 + wCalc[41];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[42]);
                 var updateResult = await UpdateWipCoverDetailCall(42, vWdr, Invno.ToString());
@@ -6708,9 +6705,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[42] = vDats.l_wdr42 + wCalc[41];
 
                 var updateResult = await UpdateWipCoverDetailCall(42, null, Invno.ToString());
@@ -6722,12 +6719,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr43 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr43 != 0)
+            {
                 wCalc[43] = vDats.l_wdr43 + wCalc[42];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[43]);
                 var updateResult = await UpdateWipCoverDetailCall(43, vWdr, Invno.ToString());
@@ -6740,9 +6737,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[43] = vDats.l_wdr43 + wCalc[42];
 
                 var updateResult = await UpdateWipCoverDetailCall(43, null, Invno.ToString());
@@ -6754,11 +6751,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr44 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr44 != 0)
+            {
                 wCalc[44] = vDats.l_wdr44 + wCalc[43];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[44]);
                 var updateResult = await UpdateWipCoverDetailCall(44, vWdr, Invno.ToString());
@@ -6771,9 +6768,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[44] = vDats.l_wdr44 + wCalc[43];
 
                 var updateResult = await UpdateWipCoverDetailCall(44, null, Invno.ToString());
@@ -6785,13 +6782,13 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr45 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr45 != 0)
+            {
                 wCalc[45] = vDats.l_wdr45 + wCalc[44];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[45]);
                 var updateResult = await UpdateWipCoverDetailCall(45, vWdr, Invno.ToString());
@@ -6804,9 +6801,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[45] = vDats.l_wdr45 + wCalc[44];
 
                 var updateResult = await UpdateWipCoverDetailCall(45, null, Invno.ToString());
@@ -6818,12 +6815,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr46 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr46 != 0)
+            {
                 wCalc[46] = vDats.l_wdr46 + wCalc[45];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[46]);
                 var updateResult = await UpdateWipCoverDetailCall(46, vWdr, Invno.ToString());
@@ -6836,9 +6833,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[46] = vDats.l_wdr46 + wCalc[45];
 
                 var updateResult = await UpdateWipCoverDetailCall(46, null, Invno.ToString());
@@ -6850,12 +6847,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr47 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr47 != 0)
+            {
                 wCalc[47] = vDats.l_wdr47 + wCalc[46];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[47]);
                 var updateResult = await UpdateWipCoverDetailCall(47, vWdr, Invno.ToString());
@@ -6868,9 +6865,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[47] = vDats.l_wdr47 + wCalc[46];
 
                 var updateResult = await UpdateWipCoverDetailCall(47, null, Invno.ToString());
@@ -6882,11 +6879,11 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr48 != 0)
-                {
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr48 != 0)
+            {
                 wCalc[48] = vDats.l_wdr48 + wCalc[47];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[48]);
                 var updateResult = await UpdateWipCoverDetailCall(48, vWdr, Invno.ToString());
@@ -6899,9 +6896,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[48] = vDats.l_wdr48 + wCalc[47];
 
                 var updateResult = await UpdateWipCoverDetailCall(48, null, Invno.ToString());
@@ -6913,12 +6910,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr49 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr49 != 0)
+            {
                 wCalc[49] = vDats.l_wdr49 + wCalc[48];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[49]);
                 var updateResult = await UpdateWipCoverDetailCall(49, vWdr, Invno.ToString());
@@ -6931,9 +6928,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[49] = vDats.l_wdr49 + wCalc[48];
 
                 var updateResult = await UpdateWipCoverDetailCall(49, null, Invno.ToString());
@@ -6945,12 +6942,12 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
+            }
 
-                //-------------------------------------------------
-                sqlQuery.ClearParameters();
-                if (vDats.l_wdr50 != 0)
-                {
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr50 != 0)
+            {
                 wCalc[50] = vDats.l_wdr50 + wCalc[48];
                 var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[50]);
                 var updateResult = await UpdateWipCoverDetailCall(50, vWdr, Invno.ToString());
@@ -6963,9 +6960,9 @@ namespace Mbc5.Forms
                     return processingResult;
                 }
 
-                }
-                else
-                {
+            }
+            else
+            {
                 wCalc[50] = vDats.l_wdr50 + wCalc[48];
 
                 var updateResult = await UpdateWipCoverDetailCall(50, null, Invno.ToString());
@@ -6977,79 +6974,79 @@ namespace Mbc5.Forms
                     processingResult.IsError = true;
                     return processingResult;
                 }
-                }
-                try
-                {
+            }
+            try
+            {
                 coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
                 ex.ToExceptionless()
                     .MarkAsCritical()
                     .AddObject(ex)
                     .Submit();
 
                 MbcMessageBox.Error("Failed to refill cover detail dataset:" + ex.Message);
-                }
-                return processingResult;
+            }
+            return processingResult;
 
-                }
+        }
         private void ShippingEmail()
-		{
+        {
             Cursor.Current = Cursors.WaitCursor;
-           
+
             var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
-			try
-			{
-				var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invno);
-				var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invno);
-				this.paymntTableAdapter.Fill(dsInvoice.paymnt,this.Invno);
-				var aaaa = this.invoiceCustTableAdapter.Fill(dsCust.cust, this.Schcode);
-				
-				Warning[] warnings;
-				string[] streamIds;
-				string mimeType = string.Empty;
-				string encoding = string.Empty;
-				string extension = string.Empty;
-				//string HIJRA_TODAY = "01/10/1435";
-				// ReportParameter[] param = new ReportParameter[3];
-				//param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
-				//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
-				//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+            var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
+            try
+            {
+                var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invno);
+                var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invno);
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt, this.Invno);
+                var aaaa = this.invoiceCustTableAdapter.Fill(dsCust.cust, this.Schcode);
 
-				byte[] bytes = this.reportViewer1.LocalReport.Render(
-					"PDF",
-					null,
-					out mimeType,
-					out encoding,
-					out extension,
-					out streamIds,
-					out warnings);
+                Warning[] warnings;
+                string[] streamIds;
+                string mimeType = string.Empty;
+                string encoding = string.Empty;
+                string extension = string.Empty;
+                //string HIJRA_TODAY = "01/10/1435";
+                // ReportParameter[] param = new ReportParameter[3];
+                //param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+                //param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+                //param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
 
-				using (FileStream fs = new FileStream(cPdfPath, FileMode.Create))
-				{
-					fs.Write(bytes, 0, bytes.Length);
-				}
+                byte[] bytes = this.reportViewer1.LocalReport.Render(
+                    "PDF",
+                    null,
+                    out mimeType,
+                    out encoding,
+                    out extension,
+                    out streamIds,
+                    out warnings);
+
+                using (FileStream fs = new FileStream(cPdfPath, FileMode.Create))
+                {
+                    fs.Write(bytes, 0, bytes.Length);
+                }
 
 
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Failed to create invoice pdf.");
-			}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to create invoice pdf.");
+            }
 
-			this.Cursor = Cursors.AppStarting;
-			
+            this.Cursor = Cursors.AppStarting;
+
             var emailList = new List<string>();
             string subj = "";
             string body = "";
             EmailType type = EmailType.Mbc;
-            if (txtCompany.Text=="MBC")
+            if (txtCompany.Text == "MBC")
             {
                 type = EmailType.Mbc;
                 subj = "Your Yearbooks  have shipped!";
-               body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
+                body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
 							Thanks for a being a great customer and we look forward to working with you again next year.
 							If you have already rebooked for next year, thank you! <p/><p>If you are not already rebooked, please 
 							contact your Sales Consultant today at 1 - 800 - 247 - 1526. We appreciate your business and look
@@ -7059,7 +7056,7 @@ namespace Mbc5.Forms
 							Please do not reply to this email.  If you have questions, please contact your Customer Service Representative.	<p/>
 
 							<p><a href=www.memorybook.com>Memorybook</a> <p>";
-                var row =(DataRowView) custBindingSource.Current;
+                var row = (DataRowView)custBindingSource.Current;
                 string email = row["schemail"].ToString();
                 string email1 = row["contemail"].ToString();
                 if (!string.IsNullOrEmpty(email))
@@ -7071,17 +7068,17 @@ namespace Mbc5.Forms
                     emailList.Add(email1);
                 }
             }
-            else if(txtCompany.Text == "MER")
+            else if (txtCompany.Text == "MER")
             {
-               type = EmailType.Meridian;
-                subj  = "Your Planners have shipped!";
+                type = EmailType.Meridian;
+                subj = "Your Planners have shipped!";
                 body = body = @"Please do not reply to this email.<br/><br/>
                         Your planners have shipped! If you need additional planners, call 1-888-724-8512 to reorder more at a great price with fast delivery. Plus, don’t forget to renew your order for next year at <font color=blue><a href=http://www.meridianplanners.com/business-agreement> Meridian Planners</a></font>.
                 </br> Thank you for your business and we look forward to working with you again.";
                 var row = (DataRowView)mcustBindingSource.Current;
                 string email = row["schemail"].ToString();
                 string email1 = row["contemail"].ToString();
-                
+
                 if (!string.IsNullOrEmpty(email))
                 {
                     emailList.Add(email);
@@ -7097,95 +7094,95 @@ namespace Mbc5.Forms
                 MbcMessageBox.Information("There are no email addresses to send a product shipped email out.", "");
             }
             var emailHelper = new EmailHelper();
-           
+
             List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
             OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString() + ".pdf" };
             attachment.Add(att);
 
-            emailHelper.SendOutLookEmail(subj, emailList,null, body, type,attachment);
-			this.Cursor = Cursors.Default;
-		}
-		private void DisableControls(Control con)
-		{
-			foreach (Control c in con.Controls)
-			{
-				DisableControls(c);
-			}
-			con.Enabled = false;
-		}
-		private void EnableControls(Control con)
-		{
-			if (con != null)
-			{
-				con.Enabled = true;
-				EnableControls(con.Parent);
-			}
-		}
-		private void EnableAllControls(Control con)
-		{
-			foreach (Control c in con.Controls)
-			{
-				EnableAllControls(c);
-			}
-			con.Enabled = true;
-		}
-		private void SetShipLabel()
-		{
-			var current = (DataRowView)produtnBindingSource.Current;
-			if (current != null)
-			{
+            emailHelper.SendOutLookEmail(subj, emailList, null, body, type, attachment);
+            this.Cursor = Cursors.Default;
+        }
+        private void DisableControls(Control con)
+        {
+            foreach (Control c in con.Controls)
+            {
+                DisableControls(c);
+            }
+            con.Enabled = false;
+        }
+        private void EnableControls(Control con)
+        {
+            if (con != null)
+            {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+            }
+        }
+        private void EnableAllControls(Control con)
+        {
+            foreach (Control c in con.Controls)
+            {
+                EnableAllControls(c);
+            }
+            con.Enabled = true;
+        }
+        private void SetShipLabel()
+        {
+            var current = (DataRowView)produtnBindingSource.Current;
+            if (current != null)
+            {
 
 
-				var shipdate = current["shpdate"].ToString();
-				lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
-			}
+                var shipdate = current["shpdate"].ToString();
+                lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+            }
 
-		}
-		private void SetEmail()
-		{
-			var current = (DataRowView)custBindingSource.Current;
+        }
+        private void SetEmail()
+        {
+            var current = (DataRowView)custBindingSource.Current;
             if (current == null)
-			{
-				return;
-			}
+            {
+                return;
+            }
 
-            SchEmail = current.Row["schemail"].ToString(); 
-			ContactEmail = current.Row["contemail"].ToString();            
-			BcontactEmail = current.Row["bcontemail"].ToString();                    
-			CcontactEmail = current.Row["ccontemail"].ToString();                         
-			var vAllEmails = new List<string>();
-			if (!String.IsNullOrEmpty(SchEmail))
-			{
-				vAllEmails.Add(SchEmail);
-			}
-			if (!String.IsNullOrEmpty(ContactEmail))
-			{
-				vAllEmails.Add(ContactEmail);
-			}
-			if (!String.IsNullOrEmpty(BcontactEmail))
-			{
-				vAllEmails.Add(BcontactEmail);
-			}
+            SchEmail = current.Row["schemail"].ToString();
+            ContactEmail = current.Row["contemail"].ToString();
+            BcontactEmail = current.Row["bcontemail"].ToString();
+            CcontactEmail = current.Row["ccontemail"].ToString();
+            var vAllEmails = new List<string>();
+            if (!String.IsNullOrEmpty(SchEmail))
+            {
+                vAllEmails.Add(SchEmail);
+            }
+            if (!String.IsNullOrEmpty(ContactEmail))
+            {
+                vAllEmails.Add(ContactEmail);
+            }
+            if (!String.IsNullOrEmpty(BcontactEmail))
+            {
+                vAllEmails.Add(BcontactEmail);
+            }
 
-			if (!String.IsNullOrEmpty(CcontactEmail))
-			{
-				vAllEmails.Add(CcontactEmail);
-			}
-			AllEmails = vAllEmails;
+            if (!String.IsNullOrEmpty(CcontactEmail))
+            {
+                vAllEmails.Add(CcontactEmail);
+            }
+            AllEmails = vAllEmails;
 
-		}
+        }
         public void PrintYearBookLabel()
         {
             Cursor.Current = Cursors.WaitCursor;
-           
+
             //put in check for nulls
             var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
             var vRecvCardSent = ((DataRowView)this.produtnBindingSource.Current).Row["reccardsent"].ToString();
-            if (vRecvCardSent!="True")
+            if (vRecvCardSent != "True")
             {
                 MbcMessageBox.Information("A receiving card has not been sent for this customer.", "Receiving Card");
             }
-            var vSchoolState= ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim();
+            var vSchoolState = ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim();
             if (string.IsNullOrEmpty(vKitRecvd))
             {
                 MbcMessageBox.Information("Kit received date must be entered before printing a label.", "");
@@ -7202,145 +7199,171 @@ namespace Mbc5.Forms
             reportViewer1.RefreshReport();
             Cursor.Current = Cursors.Default;
         }
-		//General
-		private void SetCodeInvno()
-		{
-			if (quotesBindingSource.Count > 0)
-			{
-				DataRowView current = (DataRowView)quotesBindingSource.Current;
-				this.Schcode = current["schcode"].ToString();
-				this.Invno = Convert.ToInt32(current["invno"]);
-			}
-		}
-		public override void Fill()
-		{
+        //General
+        private void SetCodeInvno()
+        {
+            if (quotesBindingSource.Count > 0)
+            {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
+            }
+        }
+        public override void Fill()
+        {
             Cursor.Current = Cursors.WaitCursor;
             //Application.DoEvents(); breaks form handler when closing a unauthorize form
-            
+
             if (Schcode != null)
-			{
-				try {
+            {
+                try
+                {
                     // TODO: This line of code loads data into the 'lookUp.lkpCoverStock' table. You can move, or remove it, as needed.
                     this.lkpCoverStockTableAdapter.Fill(this.lookUp.lkpCoverStock);
                     // TODO: This line of code loads data into the 'lookUp.lkpCustType' table. You can move, or remove it, as needed.
                     this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        Schcode = "01";
+                    }
                     custTableAdapter.Fill(dsProdutn.cust, Schcode);
-                    
-				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
+
+                    quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
                     mcustTableAdapter.Fill(dsMcust.mcust, Schcode);
-                  
+
                     mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
-				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
-                    if (produtnBindingSource.Count>0)
+
+                    produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
+                    if (produtnBindingSource.Count > 0)
                     {
                         Company = ((DataRowView)produtnBindingSource.Current).Row["Company"].ToString();
-                        if (Company=="MXB")
+                        if (Company == "MXB")
                         {
-                            ClientId=(int)((DataRowView)produtnBindingSource.Current).Row["MxbClientOrderId"];
-                            this.mixBookOrderTableAdapter1.Fill(this.dsProdutn.MixBookOrder,Invno);
+                            ClientId = (int)((DataRowView)produtnBindingSource.Current).Row["MxbClientOrderId"];
+                            this.mixBookOrderTableAdapter1.Fill(this.dsProdutn.MixBookOrder, Invno);
                         }
                     }
-                
 
-				}catch(Exception ex) {
+
+                }
+                catch (Exception ex)
+                {
                     var a = dsProdutn.Tables["cust"].GetErrors();
                     MbcMessageBox.Error(ex.Message, "");
-				}
+                }
 
-				if (dsProdutn.produtn.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[0]);
-					foreach (TabPage tab in tbProdutn.TabPages)
-					{
-						DisableControls(tab);
-					}
-					
-				}
-				else { EnableAllControls(this); }
-				try {
-					coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-					//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
-					coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
-				} catch(Exception ex) {
-
-					MbcMessageBox.Error(ex.Message, "");
-					return;
-				};
-               
-
-                
-                    if (dsProdutn.covers.Count < 1)
+                if (dsProdutn.produtn.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[0]);
+                    foreach (TabPage tab in tbProdutn.TabPages)
                     {
-                        DisableControls(this.tbProdutn.TabPages[2]);
-                    btnAddCoverRec.Visible = true;
-                        EnableControls(btnAddCoverRec);
+                        DisableControls(tab);
                     }
-                    else {
-                    btnAddCoverRec.Visible =false;
-                    EnableAllControls(this.tbProdutn.TabPages[2]); }
 
-                
-				try {
-					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
-                                     
-					wipDetailTableAdapter.Fill(dsProdutn.WipDetail,"", Invno);
-				} catch(Exception ex) {
+                }
+                else { EnableAllControls(this); }
+                try
+                {
+                    coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+                    //coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
+                    coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+                }
+                catch (Exception ex)
+                {
 
-					MbcMessageBox.Error(ex.Message, "");
-					return;
-				}
-				
-				if (dsProdutn.wip.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[1]);
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                };
+
+
+
+                if (dsProdutn.covers.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                    btnAddCoverRec.Visible = true;
+                    EnableControls(btnAddCoverRec);
+                }
+                else
+                {
+                    btnAddCoverRec.Visible = false;
+                    EnableAllControls(this.tbProdutn.TabPages[2]);
+                }
+
+
+                try
+                {
+                    wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+
+                    wipDetailTableAdapter.Fill(dsProdutn.WipDetail, "", Invno);
+                }
+                catch (Exception ex)
+                {
+
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+
+                if (dsProdutn.wip.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[1]);
                     btnAddWipRec.Visible = true;
                     EnableControls(btnAddWipRec);
                 }
-				else {
+                else
+                {
                     btnAddWipRec.Visible = false;
                     EnableAllControls(this.tbProdutn.TabPages[1]);
                 }
-				try {
-					this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-					this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
-				}catch(Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
-					return;
-				}
-				
-				if (dsProdutn.partbk.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[3]);
+                try
+                {
+                    this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
+                    this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+
+                if (dsProdutn.partbk.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[3]);
                     btnAddPartial.Visible = true;
                     EnableControls(btnAddPartial);
-                  
+
                 }
-				else { EnableAllControls(
+                else
+                {
+                    EnableAllControls(
                     this.tbProdutn.TabPages[3]);
                     btnAddPartial.Visible = false;
                 }
-				try         {
-					ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-					prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+                try
+                {
+                    ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
+                    prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
                     var a = prtbkbdetailBindingSource.Count;
-				} catch (Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
-					return;
-				}
-				
-				if (dsProdutn.ptbkb.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[4]);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+
+                if (dsProdutn.ptbkb.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[4]);
                     btnCDAdd.Visible = true;
                     EnableControls(btnCDAdd);
-				}
-				else {
+                }
+                else
+                {
                     EnableAllControls(this.tbProdutn.TabPages[4]);
                     btnCDAdd.Visible = false;
                 }
 
                 produtnBindingSource.ResetBindings(true);
-			}
+            }
             if (Invno != 0)
             {
                 try
@@ -7381,7 +7404,7 @@ namespace Mbc5.Forms
 
                 }
             }
-     
+
             btnCoverTicket.Visible = this.Company == "MBC";
             Cursor.Current = Cursors.Default;
         }
@@ -7390,14 +7413,14 @@ namespace Mbc5.Forms
         public override void Save(bool FromMenu)
         {
             //called from menu
-            var result=Save(); 
-            
+            var result = Save();
+
         }
 
         public ApiProcessingResult<bool> Save()
         {
             Cursor.Current = Cursors.WaitCursor;
-          
+
             var processingResult = new ApiProcessingResult<bool>();
             switch (tbProdutn.SelectedIndex)
             {
@@ -7449,7 +7472,7 @@ namespace Mbc5.Forms
                         break;
                     }
 
-               
+
                 case 3:
                     var partBkResult = SavePartBK();
 
@@ -7501,11 +7524,11 @@ namespace Mbc5.Forms
             return processingResult;
         }
         private bool SaveOrStop()
-		{
-			bool retval = true;
-			switch (tbProdutn.SelectedIndex)
-			{
-				case 0:
+        {
+            bool retval = true;
+            switch (tbProdutn.SelectedIndex)
+            {
+                case 0:
                     if (produtnBindingSource.Count > 0)
                     {
                         var produtnResult = SaveProdutn();
@@ -7519,9 +7542,9 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-					break;
+                    break;
 
-				case 1:
+                case 1:
                     if (wipBindingSource.Count > 0)
                     {
                         var wipResult = SaveWip();
@@ -7534,9 +7557,9 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-					break;
+                    break;
 
-				case 2:
+                case 2:
                     if (coversBindingSource1.Count > 0)
                     {
                         var coverResult = SaveCovers();
@@ -7549,8 +7572,8 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-					break;
-				case 3:
+                    break;
+                case 3:
                     if (partbkBindingSource.Count > 0)
                     {
                         var partBkResult = SavePartBK();
@@ -7563,10 +7586,11 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-					break;
+                    break;
 
-				case 4:
-                    if (ptbkbBindingSource.Count>0) {
+                case 4:
+                    if (ptbkbBindingSource.Count > 0)
+                    {
                         var ptBkBResult = SavePtBkB();
                         if (ptBkBResult.IsError)
                         {
@@ -7577,9 +7601,9 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-					break;
+                    break;
 
-				case 5:
+                case 5:
                     if (reOrderBindingSource.Count > 0)
                     {
                         var reorderResult = SaveReOrder();
@@ -7593,192 +7617,199 @@ namespace Mbc5.Forms
                         }
                     }
                     break;
-                  
-			}
 
-			return retval;
+            }
 
-		}
-		private ApiProcessingResult<bool> SavePartBK()
-		{
-			var processintResult = new ApiProcessingResult<bool>();
-			if (dsProdutn.partbk.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.partbkBindingSource.EndEdit();
-						var a = partbkTableAdapter.Update(dsProdutn.partbk);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-						
-					}
-					catch (DBConcurrencyException dbex)
-					{
-						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.partbkRow)(dbex.Row), ref dsProdutn);
-						if (result == DialogResult.Yes) { SavePartBK(); };
-					}
-					catch (Exception ex)
-					{
-						ex.ToExceptionless()
-					   .SetMessage("Partial Book A record failed to update:" + ex.Message)
-					   .Submit();
-						processintResult.IsError = true;
-						processintResult.Errors.Add(new ApiProcessingError("Partial Book A record failed to update:" + ex.Message, "Partial Book A record failed to update:" + ex.Message,""))
-;					}
-				}
-			}
-			else {
-				processintResult.IsError = true;
-				processintResult.Errors.Add(new ApiProcessingError("PartBk record failed to update.", "PartBk record failed to update.", "")); }
+            return retval;
 
-			return processintResult;
-		}
-		private ApiProcessingResult<bool> SavePtBkB()
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			if (dsProdutn.ptbkb.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.ptbkbBindingSource.EndEdit();
-						var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-					
-					}
-					catch (DBConcurrencyException dbex)
-					{
-						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row), ref dsProdutn);
-						if (result == DialogResult.Yes) { SavePtBkB(); };
-					}
-					catch (Exception ex)
-					{
-						ex.ToExceptionless()
-					   .SetMessage("Photos On CD record failed to update:" + ex.Message)
-					   .Submit();
-						processingResult.IsError = true;
-						processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to update:" + ex.Message, "Photos On CD record failed to update:" + ex.Message,""));
-					}
-				}
-			}
-			else {
-				processingResult.IsError = true;
-				processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to validate.", "Photos On CD record failed to validate.", ""));
-			}
+        }
+        private ApiProcessingResult<bool> SavePartBK()
+        {
+            var processintResult = new ApiProcessingResult<bool>();
+            if (dsProdutn.partbk.Count > 0)
+            {
+                if (this.ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    try
+                    {
+                        this.partbkBindingSource.EndEdit();
+                        var a = partbkTableAdapter.Update(dsProdutn.partbk);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
 
-			return processingResult;
-		}
-		private ApiProcessingResult<bool> SaveProdutn()
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-           
-            
+                    }
+                    catch (DBConcurrencyException dbex)
+                    {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.partbkRow)(dbex.Row), ref dsProdutn);
+                        if (result == DialogResult.Yes) { SavePartBK(); };
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToExceptionless()
+                       .SetMessage("Partial Book A record failed to update:" + ex.Message)
+                       .Submit();
+                        processintResult.IsError = true;
+                        processintResult.Errors.Add(new ApiProcessingError("Partial Book A record failed to update:" + ex.Message, "Partial Book A record failed to update:" + ex.Message, ""))
+;
+                    }
+                }
+            }
+            else
+            {
+                processintResult.IsError = true;
+                processintResult.Errors.Add(new ApiProcessingError("PartBk record failed to update.", "PartBk record failed to update.", ""));
+            }
+
+            return processintResult;
+        }
+        private ApiProcessingResult<bool> SavePtBkB()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (dsProdutn.ptbkb.Count > 0)
+            {
+                if (this.ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    try
+                    {
+                        this.ptbkbBindingSource.EndEdit();
+                        var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
+
+                    }
+                    catch (DBConcurrencyException dbex)
+                    {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row), ref dsProdutn);
+                        if (result == DialogResult.Yes) { SavePtBkB(); };
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToExceptionless()
+                       .SetMessage("Photos On CD record failed to update:" + ex.Message)
+                       .Submit();
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to update:" + ex.Message, "Photos On CD record failed to update:" + ex.Message, ""));
+                    }
+                }
+            }
+            else
+            {
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to validate.", "Photos On CD record failed to validate.", ""));
+            }
+
+            return processingResult;
+        }
+        private ApiProcessingResult<bool> SaveProdutn()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+
+
             if (dsProdutn.produtn.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.produtnBindingSource.EndEdit();
-						var a = produtnTableAdapter.Update(dsProdutn.produtn);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
-						var aa = Invno;
-						var pos = produtnBindingSource.Find("invno", this.Invno);
-						if (pos > -1)
-						{
-							produtnBindingSource.Position = pos;
+            {
+                if (this.ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    try
+                    {
+                        this.produtnBindingSource.EndEdit();
+                        var a = produtnTableAdapter.Update(dsProdutn.produtn);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
+                        var aa = Invno;
+                        var pos = produtnBindingSource.Find("invno", this.Invno);
+                        if (pos > -1)
+                        {
+                            produtnBindingSource.Position = pos;
 
-						}
+                        }
 
-						SetShipLabel();
-					
+                        SetShipLabel();
 
-					}
-					catch (DBConcurrencyException dbex)
-					{
-                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.","");
+
+                    }
+                    catch (DBConcurrencyException dbex)
+                    {
+                        MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "");
                         Fill();
                         SaveProdutn();
-						//DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
-						//if (result == DialogResult.Yes) { SaveProdutn(); }
-					}
-					catch (Exception ex)
-					{
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
+                        //if (result == DialogResult.Yes) { SaveProdutn(); }
+                    }
+                    catch (Exception ex)
+                    {
 
                         Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Production record failed to update:" + ex.Message);
-						processingResult.IsError = true;
-						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
-					}
-				} else {
-					processingResult.IsError = true;
-					processingResult.Errors.Add(new ApiProcessingError("Production record failed to validate.", "Production record failed to validate.",""));
-				}
-			}
-			
-			return processingResult;
-		}
-		private ApiProcessingResult<bool> SaveWip()
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			if (dsProdutn.wip.Count > 0)
-			{
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message, ""));
+                    }
+                }
+                else
+                {
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("Production record failed to validate.", "Production record failed to validate.", ""));
+                }
+            }
 
-				//  if (this.Validate()) {
-				try
-				{
-					this.wipBindingSource.EndEdit();
-					var a = wipTableAdapter.Update(dsProdutn.wip);
-					//must refill so we get updated time stamp so concurrency is not thrown
-					wipTableAdapter.FillByInvno(dsProdutn.wip,Invno);
-					
-				}
-				catch (DBConcurrencyException ex1)
-				{
+            return processingResult;
+        }
+        private ApiProcessingResult<bool> SaveWip()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (dsProdutn.wip.Count > 0)
+            {
+
+                //  if (this.Validate()) {
+                try
+                {
+                    this.wipBindingSource.EndEdit();
+                    var a = wipTableAdapter.Update(dsProdutn.wip);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+
+                }
+                catch (DBConcurrencyException ex1)
+                {
                     //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row), ref dsProdutn);
                     //if (result == DialogResult.Yes) { SaveWip(); };
                     MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "WIP");
                     this.Fill();
                     SaveWip();
-				}
-				catch (Exception ex)
-				{
-					
-					processingResult.IsError = true;
-					processingResult.Errors.Add(new ApiProcessingError("Wip record failed to update:" + ex.Message, "Wip record failed to update:" + ex.Message, ""));
-					
-				}
-				// }
-			}
-			else {
-				processingResult.IsError = true;
-				processingResult.Errors.Add(new ApiProcessingError("Wip Record failed to validate.", "Wip Record failed to validate.", ""));
-			}
+                }
+                catch (Exception ex)
+                {
 
-			return processingResult;
+                    processingResult.IsError = true;
+                    processingResult.Errors.Add(new ApiProcessingError("Wip record failed to update:" + ex.Message, "Wip record failed to update:" + ex.Message, ""));
 
-		}
-		private ApiProcessingResult<bool> SaveCovers()
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			if (dsProdutn.covers.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.coversBindingSource1.EndEdit();
-						var a = coversTableAdapter.Update(dsProdutn.covers);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-						
-					}
-					catch (DBConcurrencyException dbex)
-					{
+                }
+                // }
+            }
+            else
+            {
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Wip Record failed to validate.", "Wip Record failed to validate.", ""));
+            }
+
+            return processingResult;
+
+        }
+        private ApiProcessingResult<bool> SaveCovers()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (dsProdutn.covers.Count > 0)
+            {
+                if (this.ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    try
+                    {
+                        this.coversBindingSource1.EndEdit();
+                        var a = coversTableAdapter.Update(dsProdutn.covers);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+
+                    }
+                    catch (DBConcurrencyException dbex)
+                    {
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
                         //if (result == DialogResult.Yes) { SaveCovers(); };
                         MbcMessageBox.Warning("Data has been saved with another users changes. Check to be sure your was not over written.", "Covers");
@@ -7786,22 +7817,23 @@ namespace Mbc5.Forms
                         SaveCovers();
 
                     }
-					catch (Exception ex)
-					{
-					
-						processingResult.IsError = true;
-						processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
-					}
-				}
-			}
-			else {
+                    catch (Exception ex)
+                    {
+
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+                    }
+                }
+            }
+            else
+            {
                 var a = dsProdutn.Tables["covers"].GetErrors();
                 processingResult.IsError = true;
-				processingResult.Errors.Add(new ApiProcessingError("Cover record missing", "Cover record missing", ""));
-			}
+                processingResult.Errors.Add(new ApiProcessingError("Cover record missing", "Cover record missing", ""));
+            }
 
-			return processingResult;
-		}
+            return processingResult;
+        }
         private ApiProcessingResult<bool> SaveReOrder()
         {
             var processingResult = new ApiProcessingResult<bool>();
@@ -7812,7 +7844,7 @@ namespace Mbc5.Forms
                     try
                     {
                         this.reOrderBindingSource.EndEdit();
-                    
+
                         var a = reOrderTableAdapter.Update(dsProdutn.ReOrder);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         reOrderTableAdapter.Fill(dsProdutn.ReOrder, Invno);
@@ -7820,7 +7852,7 @@ namespace Mbc5.Forms
                     }
                     catch (DBConcurrencyException dbex)
                     {
-                       // MbcMessageBox.Information("Another user has edited the reorder data since you have opened the record. Refresh your data and then apply your edits.");
+                        // MbcMessageBox.Information("Another user has edited the reorder data since you have opened the record. Refresh your data and then apply your edits.");
                         Fill();
                         SaveReOrder();
                         //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row), ref dsProdutn);
@@ -7845,65 +7877,73 @@ namespace Mbc5.Forms
             return processingResult;
         }
         public override bool Add()
-		{
-			MessageBox.Show("Add record is not available from the production screen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			return true;
-		}
-		public override void Delete()
-		{
-			//switch (tabSales.SelectedIndex) {
-			//    case 0:
-			//    case 1:
-			//            {
-			//            DeleteSale();
-			//            break;
-			//            }
-			//    case 2:
-			//        DeleteInvoice();
-			//        break;
-			//    case 3:
-			//        DeletePayment();
-			//        break;
+        {
+            MessageBox.Show("Add record is not available from the production screen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return true;
+        }
+        public override void Delete()
+        {
+            //switch (tabSales.SelectedIndex) {
+            //    case 0:
+            //    case 1:
+            //            {
+            //            DeleteSale();
+            //            break;
+            //            }
+            //    case 2:
+            //        DeleteInvoice();
+            //        break;
+            //    case 3:
+            //        DeletePayment();
+            //        break;
 
-			//    }
-		}
-		public override void Cancel()
-		{
-			//CancelPayment();
-			//quotesBindingSource.CancelEdit();
-			//invdetailBindingSource.CancelEdit();
-			//invoiceBindingSource.CancelEdit();
-		}
-		public void CoverSrch()
-		{
-			var pos = coversBindingSource1.Find("Specovr", txtspecov.Text);
-			coversBindingSource1.Position = pos;
+            //    }
+        }
+        public override void Cancel()
+        {
+            //CancelPayment();
+            //quotesBindingSource.CancelEdit();
+            //invdetailBindingSource.CancelEdit();
+            //invoiceBindingSource.CancelEdit();
+        }
+        public void CoverSrch()
+        {
+            var pos = coversBindingSource1.Find("Specovr", txtspecov.Text);
+            coversBindingSource1.Position = pos;
 
-		}
-		#endregion
-		
-		private void frmProdutn_Paint(object sender, PaintEventArgs e)
-		{
+        }
+        #endregion
 
-			try {
-                if (txtCompany.Text=="MXB")
+        private void frmProdutn_Paint(object sender, PaintEventArgs e)
+        {
+
+            try
+            {
+                if (txtCompany.Text == "MXB")
                 {
                     this.Text = "Production-Mixbook Ship Name:" + lblShipname.Text + " (Client OrderId:" + lblClientOrderId.Text + ")(Invoice# " + Invno.ToString() + ")";
                 }
                 else
                 {
-                    this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# "+Invno.ToString()+")";
+                    try
+                    {
+                        this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")(Invoice# " + Invno.ToString() + ")";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.Text = "";
+                    }
                 }
-               
+
             }
-			catch
-			{
+            catch
+            {
 
-			}
-		}
+            }
+        }
 
-		private void btnCalcDeadLine_Click(object sender, EventArgs e)
-		{
+        private void btnCalcDeadLine_Click(object sender, EventArgs e)
+        {
             if (!String.IsNullOrEmpty(dedayinDateBox.Date))
             {
                 int wks = 0;
@@ -7927,419 +7967,419 @@ namespace Mbc5.Forms
 
         }
 
-		private void btnCalCS_Click(object sender, EventArgs e)
-		{
-			if (!String.IsNullOrEmpty(kitrecvdDateTimePicker.Date))
-			{
-				int wks = 0;
-				int days = 0;
-				int.TryParse(txtWeeks.Text, out wks);
-				int.TryParse(txtDays.Text, out days);
+        private void btnCalCS_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(kitrecvdDateTimePicker.Date))
+            {
+                int wks = 0;
+                int days = 0;
+                int.TryParse(txtWeeks.Text, out wks);
+                int.TryParse(txtDays.Text, out days);
 
 
-				var numDays = (wks * 5) + (days);
+                var numDays = (wks * 5) + (days);
                 DateTime vKitrecvd;
                 if (kitrecvdDateTimePicker.Date != null)
                 {
-                     vKitrecvd = DateTime.Parse(kitrecvdDateTimePicker.Date);
+                    vKitrecvd = DateTime.Parse(kitrecvdDateTimePicker.Date);
                     var result = CalulateBusinessDay.BusDayAdd(vKitrecvd, numDays);
-				  
-                    cstsvcdteDateTimePicker.Date= result.ToShortDateString();
+
+                    cstsvcdteDateTimePicker.Date = result.ToShortDateString();
                     cstsvcdteDateTimePicker.Focus();
 
                 }
-				
-
-			}
-		}
-
-		private void btnDeadLineInfo_Click(object sender, EventArgs e)
-		{
-			//var emailHelper = new EmailHelper();
-			//string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Deadlines";
-			//string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + ((DateTime)dedayinDateTimePicker.Value).ToShortDateString() + "<br/>Delivery date " +((DateTime) dedayoutDateTimePicker.Value).ToShortDateString();
-			//EmailType type = EmailType.Blank;
-			//if (CurrentCompany == "MBC")
-			//{
-			//	type = EmailType.Mbc;
-			//}
-			//else if (CurrentCompany == "MER")
-			//{
-			//	type = EmailType.Meridian;
-			//}
-
-			//emailHelper.SendOutLookEmail(subject, AllEmails, "", body, EmailType.Mbc);
-		}
-
-		private void btnEmailPw_Click(object sender, EventArgs e)
-		{
-			var emailHelper = new EmailHelper();
-			string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Online Access";
-			string body = "Here is your Memory Book Online Access information.<br/>(Online account available the following business day by noon central time)<br/><br/>Job Number - " + txtjobno.Text + "<br/>Adviser User Name - Adviser<br/>Adviser Password - " + txtadvpw.Text + "<br/>Staff User Name - Staff <br/>Staff Password - " + txtstfpw.Text + "<br/><br/>Please note the passwords are case sensitive<br/>You can copy and paste the link below into a web browser to take you to the online website to enter your password information.<br/><br/>www.memoryebooks.com";
-			EmailType type = EmailType.Blank;
-			if (CurrentCompany == "MBC")
-			{
-				type = EmailType.Mbc;
-			}
-			else if (CurrentCompany == "MER")
-			{
-				type = EmailType.Meridian;
-			}
-
-			emailHelper.SendOutLookEmail(subject, this.AllEmails, "", body, type);
-		}
 
 
-		private void btnUpdateJob_Click(object sender, EventArgs e)
-		{
-			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
-			{
-				MessageBox.Show("Please enter binding information before issueing a job number.");
-				return;
-			}
-			var vInvno = 0;
-			int.TryParse(lblInvno.Text, out vInvno);
-			var sqlQuery = new SQLQuery();
-			var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";
-			SqlParameter[] parameters = new SqlParameter[] {
-				 new SqlParameter("@Schcode",Schcode),
-				 new SqlParameter("@Invno",vInvno)
-			};
+            }
+        }
 
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
-			if (result.Rows.Count > 0)
-			{
-				var oldJobNo = result.Rows[0]["jobno"].ToString();
-				if (string.IsNullOrEmpty(oldJobNo.Trim()))
-				{
-					txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
-				}
-				else { txtjobno.Text = oldJobNo; }
+        private void btnDeadLineInfo_Click(object sender, EventArgs e)
+        {
+            //var emailHelper = new EmailHelper();
+            //string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Deadlines";
+            //string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + ((DateTime)dedayinDateTimePicker.Value).ToShortDateString() + "<br/>Delivery date " +((DateTime) dedayoutDateTimePicker.Value).ToShortDateString();
+            //EmailType type = EmailType.Blank;
+            //if (CurrentCompany == "MBC")
+            //{
+            //	type = EmailType.Mbc;
+            //}
+            //else if (CurrentCompany == "MER")
+            //{
+            //	type = EmailType.Meridian;
+            //}
 
+            //emailHelper.SendOutLookEmail(subject, AllEmails, "", body, EmailType.Mbc);
+        }
 
-			}
-			else
-			{
-				txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+        private void btnEmailPw_Click(object sender, EventArgs e)
+        {
+            var emailHelper = new EmailHelper();
+            string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Online Access";
+            string body = "Here is your Memory Book Online Access information.<br/>(Online account available the following business day by noon central time)<br/><br/>Job Number - " + txtjobno.Text + "<br/>Adviser User Name - Adviser<br/>Adviser Password - " + txtadvpw.Text + "<br/>Staff User Name - Staff <br/>Staff Password - " + txtstfpw.Text + "<br/><br/>Please note the passwords are case sensitive<br/>You can copy and paste the link below into a web browser to take you to the online website to enter your password information.<br/><br/>www.memoryebooks.com";
+            EmailType type = EmailType.Blank;
+            if (CurrentCompany == "MBC")
+            {
+                type = EmailType.Mbc;
+            }
+            else if (CurrentCompany == "MER")
+            {
+                type = EmailType.Meridian;
+            }
 
-			}
-			txtadvpw.Text = lblProdNo.Text.Substring(0, 6);
-			txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0, 2) + lblcontryear.Text;
-
-
-
-		}
-
-		private void txtPerfbind_Leave(object sender, EventArgs e)
-		{
-			var row = (DataRowView)produtnBindingSource.Current;
-
-			string prodno = lblProdNo.Text;
-			switch (txtCompany.Text.ToUpper())
-			{
-				case "MBC":
-					if (!String.IsNullOrEmpty(prodno.Substring(0, 2)))//has prodno
-					{
-						if (!String.IsNullOrEmpty(prodno))//letter changed not added
-						{
-							var vVal = prodno.Substring(0, 1);
-							if (txtPerfbind.Text != vVal)
-							{
-								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press OK to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
-								{
-									if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")
-									{
-
-										//replacing binding
-										lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Substring(1).Trim();
-
-									}
-									else
-									{
-										//adding binding
-
-										lblProdNo.Text = txtPerfbind.Text + (lblProdNo.Text.Trim());
-									
+            emailHelper.SendOutLookEmail(subject, this.AllEmails, "", body, type);
+        }
 
 
-									}
-								}
-								else { MessageBox.Show("Unknow binding!", "Binding"); }
+        private void btnUpdateJob_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
+            {
+                MessageBox.Show("Please enter binding information before issueing a job number.");
+                return;
+            }
+            var vInvno = 0;
+            int.TryParse(lblInvno.Text, out vInvno);
+            var sqlQuery = new SQLQuery();
+            var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";
+            SqlParameter[] parameters = new SqlParameter[] {
+                 new SqlParameter("@Schcode",Schcode),
+                 new SqlParameter("@Invno",vInvno)
+            };
 
-							}
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
+            if (result.Rows.Count > 0)
+            {
+                var oldJobNo = result.Rows[0]["jobno"].ToString();
+                if (string.IsNullOrEmpty(oldJobNo.Trim()))
+                {
+                    txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+                }
+                else { txtjobno.Text = oldJobNo; }
 
 
+            }
+            else
+            {
+                txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+
+            }
+            txtadvpw.Text = lblProdNo.Text.Substring(0, 6);
+            txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0, 2) + lblcontryear.Text;
+
+
+
+        }
+
+        private void txtPerfbind_Leave(object sender, EventArgs e)
+        {
+            var row = (DataRowView)produtnBindingSource.Current;
+
+            string prodno = lblProdNo.Text;
+            switch (txtCompany.Text.ToUpper())
+            {
+                case "MBC":
+                    if (!String.IsNullOrEmpty(prodno.Substring(0, 2)))//has prodno
+                    {
+                        if (!String.IsNullOrEmpty(prodno))//letter changed not added
+                        {
+                            var vVal = prodno.Substring(0, 1);
+                            if (txtPerfbind.Text != vVal)
+                            {
+                                MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press OK to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
+                                {
+                                    if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")
+                                    {
+
+                                        //replacing binding
+                                        lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Substring(1).Trim();
+
+                                    }
+                                    else
+                                    {
+                                        //adding binding
+
+                                        lblProdNo.Text = txtPerfbind.Text + (lblProdNo.Text.Trim());
+
+
+
+                                    }
+                                }
+                                else { MessageBox.Show("Unknow binding!", "Binding"); }
+
+                            }
 
 
 
 
 
-						}//if2
 
-					}//if 1
-					break;
-				case "MER":
 
-					break;
-			}
+                        }//if2
 
-		}
-		
+                    }//if 1
+                    break;
+                case "MER":
+
+                    break;
+            }
+
+        }
+
         private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-		{
-			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
-			int id = (int)row["id"];
-			int invno = (int)row["invno"];
-			frmEditWip frmeditWip = new frmEditWip(id, invno,Schcode,frmMain);
-			var result = frmeditWip.ShowDialog();
-			if (result == DialogResult.OK)
-			{
+        {
+            DataRowView row = (DataRowView)wipDetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditWip frmeditWip = new frmEditWip(id, invno, Schcode, frmMain);
+            var result = frmeditWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, "", Invno);
             }
-		}
-		private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
-		{
-			this.errorProvider1.SetError(nocopiesTextBox, "");
-			int vInt;
-			if (String.IsNullOrEmpty(nocopiesTextBox.Text))
-			{ nocopiesTextBox.Text = "0"; }
-			if (!String.IsNullOrEmpty(nocopiesTextBox.Text) && !int.TryParse(nocopiesTextBox.Text, out vInt))
-			{
+        }
+        private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(nocopiesTextBox, "");
+            int vInt;
+            if (String.IsNullOrEmpty(nocopiesTextBox.Text))
+            { nocopiesTextBox.Text = "0"; }
+            if (!String.IsNullOrEmpty(nocopiesTextBox.Text) && !int.TryParse(nocopiesTextBox.Text, out vInt))
+            {
 
-				this.errorProvider1.SetError(nocopiesTextBox, "Only numbers are allowed.");
-				e.Cancel = true;
-			}
-		}
+                this.errorProvider1.SetError(nocopiesTextBox, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
+        }
 
-		private void totsigsTextBox_Validating(object sender, CancelEventArgs e)
-		{
-			this.errorProvider1.SetError(totsigsTextBox, "");
-			int vInt;
-			if (String.IsNullOrEmpty(totsigsTextBox.Text))
-			{ totsigsTextBox.Text = "0"; }
-			if (!String.IsNullOrEmpty(totsigsTextBox.Text) && !int.TryParse(totsigsTextBox.Text, out vInt))
-			{
+        private void totsigsTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(totsigsTextBox, "");
+            int vInt;
+            if (String.IsNullOrEmpty(totsigsTextBox.Text))
+            { totsigsTextBox.Text = "0"; }
+            if (!String.IsNullOrEmpty(totsigsTextBox.Text) && !int.TryParse(totsigsTextBox.Text, out vInt))
+            {
 
-				this.errorProvider1.SetError(totsigsTextBox, "Only numbers are allowed.");
-				e.Cancel = true;
-			}
-			else { e.Cancel = false; }
-		}
+                this.errorProvider1.SetError(totsigsTextBox, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
+            else { e.Cancel = false; }
+        }
 
-		private void reqstdcpyTextBox_Validating(object sender, CancelEventArgs e)
-		{
-			this.errorProvider1.SetError(reqstdcpyTextBox, "");
-			if (String.IsNullOrEmpty(reqstdcpyTextBox.Text))
-			{
-				reqstdcpyTextBox.Text = "0";
-			}
-			int vInt;
-			if (!String.IsNullOrEmpty(reqstdcpyTextBox.Text) && !int.TryParse(reqstdcpyTextBox.Text, out vInt))
-			{
+        private void reqstdcpyTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(reqstdcpyTextBox, "");
+            if (String.IsNullOrEmpty(reqstdcpyTextBox.Text))
+            {
+                reqstdcpyTextBox.Text = "0";
+            }
+            int vInt;
+            if (!String.IsNullOrEmpty(reqstdcpyTextBox.Text) && !int.TryParse(reqstdcpyTextBox.Text, out vInt))
+            {
 
-				this.errorProvider1.SetError(reqstdcpyTextBox, "Only numbers are allowed.");
-				e.Cancel = true;
-			}
-		}
+                this.errorProvider1.SetError(reqstdcpyTextBox, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
+        }
 
-		private void txtnoPlates_Validating(object sender, CancelEventArgs e)
-		{
-			this.errorProvider1.SetError(txtnoPlates, "");
-			if (String.IsNullOrEmpty(txtnoPlates.Text))
-			{ txtnoPlates.Text = "0"; }
-			int vInt;
-			if (!String.IsNullOrEmpty(txtnoPlates.Text) && !int.TryParse(txtnoPlates.Text, out vInt))
-			{
+        private void txtnoPlates_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(txtnoPlates, "");
+            if (String.IsNullOrEmpty(txtnoPlates.Text))
+            { txtnoPlates.Text = "0"; }
+            int vInt;
+            if (!String.IsNullOrEmpty(txtnoPlates.Text) && !int.TryParse(txtnoPlates.Text, out vInt))
+            {
 
-				this.errorProvider1.SetError(txtnoPlates, "Only numbers are allowed.");
-				e.Cancel = true;
-			}
-		}
+                this.errorProvider1.SetError(txtnoPlates, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
+        }
 
-		private void textBox7_Validating(object sender, CancelEventArgs e)
-		{
-			this.errorProvider1.SetError(textBox7, "");
-			int vInt;
-			if (!String.IsNullOrEmpty(textBox7.Text) && !int.TryParse(textBox7.Text, out vInt))
-			{
+        private void textBox7_Validating(object sender, CancelEventArgs e)
+        {
+            this.errorProvider1.SetError(textBox7, "");
+            int vInt;
+            if (!String.IsNullOrEmpty(textBox7.Text) && !int.TryParse(textBox7.Text, out vInt))
+            {
 
-				this.errorProvider1.SetError(textBox7, "Only numbers are allowed.");
-				e.Cancel = true;
-			}
-		}
+                this.errorProvider1.SetError(textBox7, "Only numbers are allowed.");
+                e.Cancel = true;
+            }
+        }
 
-		private void btncoverSrch_Click(object sender, EventArgs e)
-		{
-			CoverSrch();
-		}
+        private void btncoverSrch_Click(object sender, EventArgs e)
+        {
+            CoverSrch();
+        }
 
-		private void coverdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-		{
-			DataRowView row = (DataRowView)coverdetailBindingSource.Current;
-			int id = (int)row["id"];
-			int invno = (int)row["invno"];
-			frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno,Schcode);
-			var result = frmeditCoverWip.ShowDialog();
-			if (result == DialogResult.OK)
-			{
+        private void coverdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)coverdetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
                 coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
             }
-		}
+        }
 
-		private void partBkDetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-		{
-			DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
-			int id = (int)row["id"];
-			
-            frmEditPartBkWip frmeditCoverWip = new frmEditPartBkWip(id, Invno,Schcode);
-			var result = frmeditCoverWip.ShowDialog();
-			if (result == DialogResult.OK)
-			{
+        private void partBkDetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
+            int id = (int)row["id"];
+
+            frmEditPartBkWip frmeditCoverWip = new frmEditPartBkWip(id, Invno, Schcode);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
                 this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
             }
-		}
+        }
 
-		private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (!SaveOrStop())
-			{
-				e.Cancel = true;
+        private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!SaveOrStop())
+            {
+                e.Cancel = true;
 
-			}
+            }
 
-		}
-		private void tbProdutn_Deselecting(object sender, TabControlCancelEventArgs e)
-		{
-           
-                if (!SaveOrStop())
+        }
+        private void tbProdutn_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+
+            if (!SaveOrStop())
+            {
+                e.Cancel = true;
+
+            }
+
+        }
+
+
+
+        #region Validation
+        private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void frmProdutn_Shown(object sender, EventArgs e)
+        {
+            //Leave here. This is put in to give dataset time to fill
+            //ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
+            this.tbProdutn.Visible = true;
+        }
+
+        private void mnCust_Click(object sender, EventArgs e)
+        {
+            LkpCustType frmLkpCust = new LkpCustType(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpCust.MdiParent = this.ParentForm;
+            frmLkpCust.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void mnBackGround_Click(object sender, EventArgs e)
+        {
+            LkpBackGround frmLkpBackGround = new LkpBackGround(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpBackGround.MdiParent = this.ParentForm;
+            frmLkpBackGround.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void mnType_Click(object sender, EventArgs e)
+        {
+            LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpTypeStyle.MdiParent = this.ParentForm;
+            frmLkpTypeStyle.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void vendcdComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
                 {
-                    e.Cancel = true;
-
+                    addItemMenu.Items["mnType"].Visible = true;
+                    addItemMenu.Items["mnCust"].Visible = false;
+                    addItemMenu.Items["mnBackGround"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
                 }
-            
-		}
-      
-		
+            }
+        }
 
-		#region Validation
-		private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
-		{
+        private void cstatComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["mnType"].Visible = false;
+                    addItemMenu.Items["mnCust"].Visible = true;
+                    addItemMenu.Items["mnBackGround"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
 
-		}
+        private void bkgrndComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["mnType"].Visible = false;
+                    addItemMenu.Items["mnCust"].Visible = false;
+                    addItemMenu.Items["mnBackGround"].Visible = true;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
 
-		private void frmProdutn_Shown(object sender, EventArgs e)
-		{
-			//Leave here. This is put in to give dataset time to fill
-			//ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
-			this.tbProdutn.Visible = true;
-		}
+        private void nopagesTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+                {
+                    this.nopagesTextBox.ReadOnly = false;
+                }
+            }
+        }
 
-		private void mnCust_Click(object sender, EventArgs e)
-		{
-			LkpCustType frmLkpCust = new LkpCustType(this.ApplicationUser);
-			this.Cursor = Cursors.AppStarting;
-			frmLkpCust.MdiParent = this.ParentForm;
-			frmLkpCust.Show();
-			this.Cursor = Cursors.Default;
-		}
+        private void nopagesTextBox_Leave(object sender, EventArgs e)
+        {
+            this.nopagesTextBox.ReadOnly = true;
+        }
 
-		private void mnBackGround_Click(object sender, EventArgs e)
-		{
-			LkpBackGround frmLkpBackGround = new LkpBackGround(this.ApplicationUser);
-			this.Cursor = Cursors.AppStarting;
-			frmLkpBackGround.MdiParent = this.ParentForm;
-			frmLkpBackGround.Show();
-			this.Cursor = Cursors.Default;
-		}
+        private void nocopiesTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+                {
+                    this.nocopiesTextBox.ReadOnly = false;
+                }
+            }
+        }
 
-		private void mnType_Click(object sender, EventArgs e)
-		{
-			LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
-			this.Cursor = Cursors.AppStarting;
-			frmLkpTypeStyle.MdiParent = this.ParentForm;
-			frmLkpTypeStyle.Show();
-			this.Cursor = Cursors.Default;
-		}
+        private void nocopiesTextBox_Leave(object sender, EventArgs e)
+        {
+            this.nocopiesTextBox.ReadOnly = true;
+        }
 
-		private void vendcdComboBox_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-			{
-				if (e.Button == MouseButtons.Right)
-				{
-					addItemMenu.Items["mnType"].Visible = true;
-					addItemMenu.Items["mnCust"].Visible = false;
-					addItemMenu.Items["mnBackGround"].Visible = false;
-					addItemMenu.Show(this, new Point(e.X, e.Y));
-				}
-			}
-		}
-
-		private void cstatComboBox_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-			{
-				if (e.Button == MouseButtons.Right)
-				{
-					addItemMenu.Items["mnType"].Visible = false;
-					addItemMenu.Items["mnCust"].Visible = true;
-					addItemMenu.Items["mnBackGround"].Visible = false;
-					addItemMenu.Show(this, new Point(e.X, e.Y));
-				}
-			}
-		}
-
-		private void bkgrndComboBox_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-			{
-				if (e.Button == MouseButtons.Right)
-				{
-					addItemMenu.Items["mnType"].Visible = false;
-					addItemMenu.Items["mnCust"].Visible = false;
-					addItemMenu.Items["mnBackGround"].Visible = true;
-					addItemMenu.Show(this, new Point(e.X, e.Y));
-				}
-			}
-		}
-
-		private void nopagesTextBox_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Right)
-			{
-				if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-				{
-					this.nopagesTextBox.ReadOnly = false;
-				}
-			}
-		}
-
-		private void nopagesTextBox_Leave(object sender, EventArgs e)
-		{
-			this.nopagesTextBox.ReadOnly = true;
-		}
-
-		private void nocopiesTextBox_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Right)
-			{
-				if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-				{
-					this.nocopiesTextBox.ReadOnly = false;
-				}
-			}
-		}
-
-		private void nocopiesTextBox_Leave(object sender, EventArgs e)
-		{
-			this.nocopiesTextBox.ReadOnly = true;
-		}
-
-		private void lblModifiedBy_Paint(object sender, PaintEventArgs e)
-		{
-			lblModifiedBy.Text = ApplicationUser.id;
-		}
+        private void lblModifiedBy_Paint(object sender, PaintEventArgs e)
+        {
+            lblModifiedBy.Text = ApplicationUser.id;
+        }
 
         private async Task<ApiProcessingResult<string>> WipUpdate()
         {
@@ -8352,7 +8392,7 @@ namespace Mbc5.Forms
                 return processingResult;
 
             }
-           
+
             var sqlClient = new SQLCustomClient();
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"SELECT ProdType,bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
@@ -8420,7 +8460,7 @@ namespace Mbc5.Forms
 
             string commandText = "";
             DateTime? custSvcDate;
-            if (cstsvcdteDateTimePicker.Date==null)
+            if (cstsvcdteDateTimePicker.Date == null)
             {
                 custSvcDate = null;
             }
@@ -9827,7 +9867,7 @@ namespace Mbc5.Forms
 
         }
         private void dpCustomerServiceDate_Leave(object sender, EventArgs e)
-		{
+        {
             produtnBindingSource.EndEdit();
             var result = this.WipUpdate();
             if (result.Result.IsError)
@@ -9836,150 +9876,152 @@ namespace Mbc5.Forms
             }
         }
 
-		
 
-		
 
-		private void btnPrntMbOnline_Click(object sender, EventArgs e)
-		{
+
+
+        private void btnPrntMbOnline_Click(object sender, EventArgs e)
+        {
             try
             {
-             reportViewerMboOnline.RefreshReport();
-            }catch(Exception ex)
+                reportViewerMboOnline.RefreshReport();
+            }
+            catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
             }
-          
+
 
         }
 
-		private void shpdateDateTimePicker_Leave(object sender, EventArgs e)
-		{
-			ShippingEmail();
-		}
+        private void shpdateDateTimePicker_Leave(object sender, EventArgs e)
+        {
+            ShippingEmail();
+        }
 
-		private void covertypeTextBox_Leave(object sender, EventArgs e)
-		{
-			string vDescription = "";
-			if (CoverDescriptions == null || CoverDescriptions.Count == 0)
-			{
-				if (!GetCoverDescriptions())
-				{
-					MessageBox.Show("Could not retrieve Cover Descriptions.");
-					return;
-				}
-			}
-				int vIndex = CoverDescriptions.FindIndex(s=>s.CoverType.ToUpper()==txtCoverType.Text.ToUpper());
-			if (vIndex > 0)
-			{
-				vDescription = CoverDescriptions[vIndex].CoverDescription;
-			}
-				switch (txtCoverType.Text.ToUpper())
-				{
-					case "":
-						{
-							txtCoverDescription.Text = "";
-							break;
-						}
-					case "SPE":
-						{
-							txtCoverDescription.Text = "Special Cover";
-							break;
-						}
-					case "MSOS":
-						{ txtCoverDescription.Text = "My Story/Our Story";
-						break;
-						}
-						
-					default:
-						{
-							txtCoverDescription.Text = vDescription;
-							break;
-						}		
+        private void covertypeTextBox_Leave(object sender, EventArgs e)
+        {
+            string vDescription = "";
+            if (CoverDescriptions == null || CoverDescriptions.Count == 0)
+            {
+                if (!GetCoverDescriptions())
+                {
+                    MessageBox.Show("Could not retrieve Cover Descriptions.");
+                    return;
+                }
+            }
+            int vIndex = CoverDescriptions.FindIndex(s => s.CoverType.ToUpper() == txtCoverType.Text.ToUpper());
+            if (vIndex > 0)
+            {
+                vDescription = CoverDescriptions[vIndex].CoverDescription;
+            }
+            switch (txtCoverType.Text.ToUpper())
+            {
+                case "":
+                    {
+                        txtCoverDescription.Text = "";
+                        break;
+                    }
+                case "SPE":
+                    {
+                        txtCoverDescription.Text = "Special Cover";
+                        break;
+                    }
+                case "MSOS":
+                    {
+                        txtCoverDescription.Text = "My Story/Our Story";
+                        break;
+                    }
 
-				}
-		}
-		private bool GetCoverDescriptions()
-		{
-			var sqlClient = new SQLCustomClient();
-			sqlClient.CommandText(@"Select CoverType,CoverDescription FROM CoverDescriptions Order By CoverType ");
-			var result = sqlClient.SelectMany<CoverDescriptions>();
-			if (result.IsError)
-			{ return false; }
-			else
-			{
-				CoverDescriptions = (List<CoverDescriptions>)result.Data;
+                default:
+                    {
+                        txtCoverDescription.Text = vDescription;
+                        break;
+                    }
 
-				return true;
-			}
+            }
+        }
+        private bool GetCoverDescriptions()
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select CoverType,CoverDescription FROM CoverDescriptions Order By CoverType ");
+            var result = sqlClient.SelectMany<CoverDescriptions>();
+            if (result.IsError)
+            { return false; }
+            else
+            {
+                CoverDescriptions = (List<CoverDescriptions>)result.Data;
 
-		}
+                return true;
+            }
 
-		
+        }
 
-		private void btnspCoverEmail_Click(object sender, EventArgs e)
-		{
+
+
+        private void btnspCoverEmail_Click(object sender, EventArgs e)
+        {
             Cursor.Current = Cursors.WaitCursor;
-          
+
             var emailList = new List<string>();
-			DataRowView row =(DataRowView) custBindingSource.Current;
-			string vState = row["schstate"].ToString().Trim();
-			string vcontEmail = row["contemail"] != null ? row["contemail"].ToString().Trim() : "";
-			string vBcontEmail = row["bcontemail"] != null ? row["bcontemail"].ToString().Trim() : "";
-			string vCcontEmail = row["ccontemail"] != null ? row["ccontemail"].ToString().Trim() : "";
-			if (!string.IsNullOrEmpty(vcontEmail))
-			{
-				emailList.Add(vcontEmail);
-			}
-			if (!string.IsNullOrEmpty(vBcontEmail))
-			{
-				emailList.Add(vBcontEmail);
-			}
-			if (!string.IsNullOrEmpty(vCcontEmail))
-			{
-				emailList.Add(vCcontEmail);
-			}
-			var emailHelper = new EmailHelper();
-			string subject = "Cover upload Site (account available the following business day by noon central time)";
-			string body = @"Submission is easy: Go to the website https://ftp.memorybook.com <br /><br />
+            DataRowView row = (DataRowView)custBindingSource.Current;
+            string vState = row["schstate"].ToString().Trim();
+            string vcontEmail = row["contemail"] != null ? row["contemail"].ToString().Trim() : "";
+            string vBcontEmail = row["bcontemail"] != null ? row["bcontemail"].ToString().Trim() : "";
+            string vCcontEmail = row["ccontemail"] != null ? row["ccontemail"].ToString().Trim() : "";
+            if (!string.IsNullOrEmpty(vcontEmail))
+            {
+                emailList.Add(vcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vBcontEmail))
+            {
+                emailList.Add(vBcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vCcontEmail))
+            {
+                emailList.Add(vCcontEmail);
+            }
+            var emailHelper = new EmailHelper();
+            string subject = "Cover upload Site (account available the following business day by noon central time)";
+            string body = @"Submission is easy: Go to the website https://ftp.memorybook.com <br /><br />
 							<strong>Login:</strong>  <br />User Name: " + Schcode + @"m <br />
 							Password:" + vState + @"65301<br /><br /><br />
 			           Once logged in, drag and drop your files into the window. Please be sure to include a word document if you have additional instructions for your cover.";
 
-		
-			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
-            Cursor.Current = Cursors.Default;
-		}
 
-		private void btnStandarCoverEmail_Click(object sender, EventArgs e)
-		{
+            emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void btnStandarCoverEmail_Click(object sender, EventArgs e)
+        {
             Cursor.Current = Cursors.WaitCursor;
-          
+
             var emailList = new List<string>();
-			DataRowView custRow = (DataRowView)custBindingSource.Current;
-			DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
-			string vSchname = custRow["schname"].ToString().Trim();
-			string vJobNo= prodRow["jobno"]!=null ?prodRow["jobno"].ToString().Trim():"";
-			string vcontEmail = custRow["contemail"]!=null?custRow["contemail"].ToString().Trim():"";
-			string vBcontEmail = custRow["bcontemail"]!=null?custRow["bcontemail"].ToString().Trim():"";
-			string vCcontEmail= custRow["ccontemail"]!=null? custRow["ccontemail"].ToString().Trim():"";
-			if (!string.IsNullOrEmpty(vcontEmail))
-			{
-				emailList.Add(vcontEmail);
-			}
-			if (!string.IsNullOrEmpty(vBcontEmail))
-			{
-				emailList.Add(vBcontEmail);
-			}
-			if (!string.IsNullOrEmpty(vCcontEmail))
-			{
-				emailList.Add(vCcontEmail);
-			}
-			var emailHelper = new EmailHelper();
-			string subject = Schcode + " " + vSchname + " Center Login Information https://coverorders.memorybook.com/login";
-			string body = @"Order Center Login (Online account available the following business day by noon central time)<br /><br /> 
+            DataRowView custRow = (DataRowView)custBindingSource.Current;
+            DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+            string vSchname = custRow["schname"].ToString().Trim();
+            string vJobNo = prodRow["jobno"] != null ? prodRow["jobno"].ToString().Trim() : "";
+            string vcontEmail = custRow["contemail"] != null ? custRow["contemail"].ToString().Trim() : "";
+            string vBcontEmail = custRow["bcontemail"] != null ? custRow["bcontemail"].ToString().Trim() : "";
+            string vCcontEmail = custRow["ccontemail"] != null ? custRow["ccontemail"].ToString().Trim() : "";
+            if (!string.IsNullOrEmpty(vcontEmail))
+            {
+                emailList.Add(vcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vBcontEmail))
+            {
+                emailList.Add(vBcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vCcontEmail))
+            {
+                emailList.Add(vCcontEmail);
+            }
+            var emailHelper = new EmailHelper();
+            string subject = Schcode + " " + vSchname + " Center Login Information https://coverorders.memorybook.com/login";
+            string body = @"Order Center Login (Online account available the following business day by noon central time)<br /><br /> 
 						Ordering is easy:  Go to the website https://coverorders.memorybook.com/login <br /><br /> 
-						<strong>Login:</strong>  <br />User Name: "+ vJobNo +@"<br />
+						<strong>Login:</strong>  <br />User Name: " + vJobNo + @"<br />
 						Password: Adviser  <br /><br />
 						<strong>Ordering your cover:</strong> <br /> &nbsp;&nbsp;•Select Yearbook covers  <br />&nbsp;&nbsp; •Choose cover type <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a. Standard cover  
 						<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. Customizable Standard covers (11 covers you can choose <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors and add a mascot)<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. NEW Mascot Standard Covers, customizable with color <br/>  
@@ -9989,12 +10031,13 @@ namespace Mbc5.Forms
 						&nbsp;&nbsp;•Proceed to checkout <br /><br />
 						Step by step instructions for all of the Order Center options can be found at http://www.memorybook.com/documents/standard_covers_online.pdf ";
 
-			
-			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+
+            emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
             Cursor.Current = Cursors.Default;
         }
 
-        private void btnRecvHistory_Click(object sender, EventArgs e) {
+        private void btnRecvHistory_Click(object sender, EventArgs e)
+        {
             if (Company == "MBC")
             {
                 this.Cursor = Cursors.AppStarting;
@@ -10002,23 +10045,27 @@ namespace Mbc5.Forms
                 frmReceivingCard.MdiParent = this.MdiParent;
                 frmReceivingCard.Show();
                 this.Cursor = Cursors.Default;
-            } else if (Company == "MER")
+            }
+            else if (Company == "MER")
             {
                 this.Cursor = Cursors.AppStarting;
                 frmMReceivingCard frmReceivingCard = new frmMReceivingCard(this.ApplicationUser, this.Schcode, this.Invno);
                 frmReceivingCard.MdiParent = this.MdiParent;
                 frmReceivingCard.Show();
                 this.Cursor = Cursors.Default;
-            } else { MbcMessageBox.Warning("Company was not found, can not open form.",""); }
-            
-			
-		}
+            }
+            else { MbcMessageBox.Warning("Company was not found, can not open form.", ""); }
 
-		private void laminatedTextBox_Leave(object sender, EventArgs e) {
-			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G" && laminatedTextBox.Text != "") {
-				laminatedTextBox.Focus();
-			}
-		}
+
+        }
+
+        private void laminatedTextBox_Leave(object sender, EventArgs e)
+        {
+            if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G" && laminatedTextBox.Text != "")
+            {
+                laminatedTextBox.Focus();
+            }
+        }
 
         private void frmProdutn_Activated(object sender, EventArgs e)
         {
@@ -10033,7 +10080,8 @@ namespace Mbc5.Forms
         #endregion
         public override void SchCodeSearch()
         {
-            if (produtnBindingSource.Count>0) {
+            if (produtnBindingSource.Count > 0)
+            {
                 var produtnResult = SaveProdutn();
                 if (produtnResult.IsError)
                 {
@@ -10048,7 +10096,7 @@ namespace Mbc5.Forms
 
 
             var currentSchool = this.Schcode;
-           
+
             frmSearch frmSearch = new frmSearch("Schcode", "PRODUCTION", Schcode);
 
             var result = frmSearch.ShowDialog();
@@ -10065,23 +10113,23 @@ namespace Mbc5.Forms
                         MbcMessageBox.Hand("A search value was not returned", "Error");
                         return;
                     }
-                    
+
                     Fill();
                     DataRowView current = (DataRowView)produtnBindingSource.Current;
 
                     this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
                     this.Schcode = current["Schcode"].ToString();
                 }
-			
+
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
                     return;
 
                 }
-             this.Cursor = Cursors.Default;
-            frmProdutn_Paint(this, null);
-            
+                this.Cursor = Cursors.Default;
+                frmProdutn_Paint(this, null);
+
             }
             SetShipLabel();
         }
@@ -10100,11 +10148,11 @@ namespace Mbc5.Forms
 
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
             string Schname = "";
-            if (currentrow!=null)
+            if (currentrow != null)
             {
                 Schname = currentrow["schname"].ToString();
             }
-            
+
             frmSearch frmSearch = new frmSearch("Schname", "PRODUCTION", Schname);
 
             var result = frmSearch.ShowDialog();
@@ -10143,7 +10191,7 @@ namespace Mbc5.Forms
         }
         public override void OracleCodeSearch()
         {
-           
+
             var produtnResult = SaveProdutn();
             if (produtnResult.IsError)
             {
@@ -10161,7 +10209,7 @@ namespace Mbc5.Forms
             {
                 oraclecode = currentrow["oraclecode"].ToString();
             }
-             frmSearch frmSearch = new frmSearch("OracleCode", "PRODUCTION", oraclecode);
+            frmSearch frmSearch = new frmSearch("OracleCode", "PRODUCTION", oraclecode);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
@@ -10202,8 +10250,8 @@ namespace Mbc5.Forms
         public override void InvoiceNumberSearch()
         {
 
-    
-                var produtnResult = SaveProdutn();
+
+            var produtnResult = SaveProdutn();
             if (produtnResult.IsError)
             {
                 var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -10272,14 +10320,14 @@ namespace Mbc5.Forms
                     return;
                 }
             }
-            
+
             DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
             string prodno = "";
-            if (currentrow!=null)
-                {
+            if (currentrow != null)
+            {
 
-                    prodno = currentrow["prodno"].ToString();
-                }
+                prodno = currentrow["prodno"].ToString();
+            }
 
             frmSearch frmSearch = new frmSearch("PRODNO", "PRODUCTION", prodno);
 
@@ -10319,54 +10367,63 @@ namespace Mbc5.Forms
             SetShipLabel();
 
         }
-		public override void JobNoSearch() {
+        public override void JobNoSearch()
+        {
 
-			var produtnResult = SaveProdutn();
-			if (produtnResult.IsError) {
-				var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-				if (result1 == DialogResult.No) {
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
+            {
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
+                {
 
-					return;
-				}
-			}
+                    return;
+                }
+            }
 
-			DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
+            DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
             string jobno = "";
-            try {
-			 jobno = currentrow["jobno"].ToString();
+            try
+            {
+                jobno = currentrow["jobno"].ToString();
             }
             catch (Exception ex)
             {
 
             }
-			frmSearch frmSearch = new frmSearch("JOBNO", "PRODUCTION", jobno);
+            frmSearch frmSearch = new frmSearch("JOBNO", "PRODUCTION", jobno);
 
-			var result = frmSearch.ShowDialog();
-			if (result == DialogResult.OK) {
-				//values preserved after close
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
 
-				try {
-					this.Invno = frmSearch.ReturnValue.Invno;
-					this.Schcode = frmSearch.ReturnValue.Schcode;
-					if (string.IsNullOrEmpty(Schcode)) {
-						MbcMessageBox.Hand("A search value was not returned", "Error");
-						return;
-					}
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
 
-					Fill();
-					DataRowView current = (DataRowView)produtnBindingSource.Current;
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
 
-					this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-					this.Schcode = current["Schcode"].ToString();
-				} catch (Exception ex) {
-					MbcMessageBox.Error(ex.Message, "Error");
-					return;
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
 
-				}
-				this.Cursor = Cursors.Default;
-				frmProdutn_Paint(this, null);
+                }
+                this.Cursor = Cursors.Default;
+                frmProdutn_Paint(this, null);
 
-			}
+            }
 
             SetShipLabel();
 
@@ -10395,7 +10452,7 @@ namespace Mbc5.Forms
             //{
 
             //}
-            frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION","");
+            frmSearch frmSearch = new frmSearch("OrderId", "PRODUCTION", "");
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
@@ -10406,12 +10463,12 @@ namespace Mbc5.Forms
                 {
                     this.Invno = frmSearch.ReturnValue.Invno;
                     this.Schcode = "01";//mixbook default
- 
+
                     Fill();
                     DataRowView current = (DataRowView)produtnBindingSource.Current;
 
                     this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-              
+
                 }
                 catch (Exception ex)
                 {
@@ -10435,10 +10492,10 @@ namespace Mbc5.Forms
 
 
 
-            if (dedmadeTextBox.Text=="Y")
+            if (dedmadeTextBox.Text == "Y")
             {
-              
-                var result=  this.WipUpdate();
+
+                var result = this.WipUpdate();
                 if (result.Result.IsError)
                 {
                     MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
@@ -10449,8 +10506,9 @@ namespace Mbc5.Forms
         private void btnBkDue_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-           
-            if (Company=="MBC") {
+
+            if (Company == "MBC")
+            {
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
                 DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
@@ -10510,7 +10568,8 @@ namespace Mbc5.Forms
 
                 emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
             }
-            else {
+            else
+            {
                 MbcMessageBox.Information("This function not supported for a Meridian record.");
             }
             Cursor.Current = Cursors.Default;
@@ -10547,10 +10606,11 @@ namespace Mbc5.Forms
         private void btnCoverTicket_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-           
-            if (Company == "MBC") {
-               var dResult= MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-                if (dResult ==DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
+
+            if (Company == "MBC")
+            {
+                var dResult = MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dResult == DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
 
 
             }
@@ -10563,18 +10623,18 @@ namespace Mbc5.Forms
         private void PrintCoverTicketDiminished()
         {
             Cursor.Current = Cursors.WaitCursor;
-            
+
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
             var vReqCopy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"];
-            var vLaminated =  drProd.Row["laminated"].ToString();
+            var vLaminated = drProd.Row["laminated"].ToString();
             if (vReqCopy == 0)
             {
                 MbcMessageBox.Information("Please enter the number of  requested copies before printing.");
                 return;
             }
-            if (vLaminated=="Y")
+            if (vLaminated == "Y")
             {
                 MbcMessageBox.Information("Lamination value must be M,N or G.");
                 return;
@@ -10601,24 +10661,25 @@ namespace Mbc5.Forms
                     IndivName = drProd.Row.IsNull("IndivName") ? false : (bool)drProd.Row["IndivName"],
                     Foiling = drProd.Row.IsNull("Foiling") ? false : (bool)drProd.Row["Foiling"],
                     Laminated = drProd.Row["laminated"].ToString()
-                    
+
                 };
                 CoverTicketBindingSource.DataSource = cvrData;
                 reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket3rd.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
-              
+
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 ex.ToExceptionless()
                     .AddObject(ex)
                     .MarkAsCritical()
                     .Submit();
                 MbcMessageBox.Error(ex.Message);
-                    };
-  
-            
+            };
+
+
             try
             {
 
@@ -10633,7 +10694,7 @@ namespace Mbc5.Forms
         private void PrintCoverTicket()
         {
             Cursor.Current = Cursors.WaitCursor;
-           
+
             var drCover = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProd = (DataRowView)produtnBindingSource.Current;
@@ -10698,7 +10759,7 @@ namespace Mbc5.Forms
 
                 };
                 CoverTicketBindingSource.DataSource = cvrData;
-               
+
                 reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket.rdlc";
                 reportViewer2.LocalReport.DataSources.Clear();
                 reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
@@ -10714,7 +10775,7 @@ namespace Mbc5.Forms
                 reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsProd", produtnBindingSource));
                 reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsCovers", coversBindingSource1));
                 reportViewerCover.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321CoverLabel.rdlc";
-                
+
             }
             catch (Exception ex)
             {
@@ -10733,7 +10794,7 @@ namespace Mbc5.Forms
                 CoverTicketPrinterName = printDialog1.PrinterSettings.PrinterName;
                 MbcMessageBox.Information("Choose a printer for Address Labels.");
                 printDialog1.ShowDialog();
-                    AddressLabelerName = printDialog1.PrinterSettings.PrinterName;
+                AddressLabelerName = printDialog1.PrinterSettings.PrinterName;
                 MbcMessageBox.Information("Choose a printer for Cover Labels.");
                 printDialog1.ShowDialog();
                 CoverLabelerName = printDialog1.PrinterSettings.PrinterName;
@@ -10751,7 +10812,7 @@ namespace Mbc5.Forms
         private void PrintMeridianCoverTicket()
         {
             Cursor.Current = Cursors.WaitCursor;
-          
+
             var sqlQuery = new SQLCustomClient();
             string cmdText = @"
                             Select 
@@ -10821,16 +10882,16 @@ namespace Mbc5.Forms
         private void btnAddPhotoCd_Click(object sender, EventArgs e)
         {
             var sqlQuery = new SQLCustomClient();
-            
-            sqlQuery.AddParameter("@Invno",Invno);
+
+            sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.ClearParameters();
             sqlQuery.CommandText(@"INSERT INTO PtBkb (Invno,Schcode,Company,BookType)Values(@Invno,@Schcode,@Company,@BookType)");
-            sqlQuery.AddParameter("@Invno",Invno);
-            sqlQuery.AddParameter("@Schcode",Schcode);
+            sqlQuery.AddParameter("@Invno", Invno);
+            sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@BookType", txtBookType.Text);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
-   
-           var insertResult=sqlQuery.Insert();
+
+            var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
             {
                 MbcMessageBox.Error("Failed to instert Photo On CD Record:" + insertResult.Errors[0].ErrorMessage);
@@ -10849,7 +10910,7 @@ namespace Mbc5.Forms
             }
         }
 
-       
+
 
         private void cstsvcdteDateTimePicker_Leave(object sender, EventArgs e)
         {
@@ -10861,12 +10922,12 @@ namespace Mbc5.Forms
             }
         }
 
-        
+
 
         private void shpdateDateTimePicker_Leave_1(object sender, EventArgs e)
         {
-            if (Company!="MXB") {ShippingEmail(); }
-            
+            if (Company != "MXB") { ShippingEmail(); }
+
         }
 
         private void cstsvcdteDateTimePicker_Leave_1(object sender, EventArgs e)
@@ -10887,13 +10948,13 @@ namespace Mbc5.Forms
 
         private void btnCvrUpdate_Click(object sender, EventArgs e)
         {
-            var result=UpdateCoverWip();
+            var result = UpdateCoverWip();
             if (result.Result.IsError)
             {
                 MbcMessageBox.Error("Failed to update cover WIP: " + result.Result.Errors[0].ErrorMessage);
             }
         }
-        
+
         private void btnBindery_Click(object sender, EventArgs e)
         {
 
@@ -10902,8 +10963,8 @@ namespace Mbc5.Forms
 
                 return;
             }
-            var result=PrintBindery();
-      
+            var result = PrintBindery();
+
             if (result.Result.IsError)
             {
                 MbcMessageBox.Information(result.Result.Errors[0].ErrorMessage);
@@ -10925,7 +10986,7 @@ namespace Mbc5.Forms
             var labelResult = await PrintBinderyLabel();
             if (labelResult.IsError)
             {
-                
+
                 processingResult.IsError = true;
                 processingResult.Errors = labelResult.Errors;
                 return processingResult;
@@ -10944,7 +11005,7 @@ namespace Mbc5.Forms
             reportViewerBinderyTicket.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
             MbcMessageBox.Hand("Choose a printer for bindery ticket.", "Ticket Printer");
             printDialog1.ShowDialog();
-            this.BinderyTicketPrinter= printDialog1.PrinterSettings.PrinterName;
+            this.BinderyTicketPrinter = printDialog1.PrinterSettings.PrinterName;
             this.reportViewerBinderyTicket.RefreshReport();
 
             return processingResult;
@@ -10964,8 +11025,9 @@ namespace Mbc5.Forms
             var tmpQuantity = (int)drCovers.Row["reqstdcpy"];
             var vQuantity = vBinding == "S" || vBinding == "P" ? tmpQuantity + 30 : tmpQuantity + 40;
 
-            var numLabelsResult =await GetNumberOfBinderyLabels();
-            if (numLabelsResult.IsError) {
+            var numLabelsResult = await GetNumberOfBinderyLabels();
+            if (numLabelsResult.IsError)
+            {
                 processingResult.IsError = true;
                 processingResult.Errors = numLabelsResult.Errors;
                 return processingResult;
@@ -10985,7 +11047,7 @@ namespace Mbc5.Forms
                     Binding = vBinding,
                     Quantity = vQuantity,
                     LabelTotal = numLabelsToPrint,
-                    CurrentLabel = i+1
+                    CurrentLabel = i + 1
                 };
 
                 vLabelList.Add(labelData);
@@ -11027,23 +11089,23 @@ namespace Mbc5.Forms
             return processingResult;
         }
 
-            private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
 
-           
+
 
         }
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
 
             ////For printing cover ticket long form only main form
-            
+
 
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
             var result = dp.Export(reportViewer2.LocalReport, CoverTicketPrinterName, 2);
-          
+
             if (result.IsError)
             {
                 var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -11055,9 +11117,9 @@ namespace Mbc5.Forms
         {
             //Short cover ticket
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-            
+
             var result = dp.Export(reportViewer3.LocalReport, CoverTicketPrinterName, 1);
-           
+
 
             if (result.IsError)
             {
@@ -11069,7 +11131,7 @@ namespace Mbc5.Forms
         private void reportViewerAddress_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             //Address Labels 
-           
+
 
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
@@ -11089,7 +11151,7 @@ namespace Mbc5.Forms
 
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewerCover.LocalReport, CoverLabelerName, 1,true);
+            var result = dp.Export(reportViewerCover.LocalReport, CoverLabelerName, 1, true);
 
             if (result.IsError)
             {
@@ -11121,7 +11183,7 @@ namespace Mbc5.Forms
             var vBinding = drProdutn.Row["PerfBind"].ToString();
             var tmpQuantity = (int)drCovers.Row["reqstdcpy"];
             var vQuantity = vBinding == "S" || vBinding == "P" ? tmpQuantity + 30 : tmpQuantity + 40;
-     
+
             if (!int.TryParse(value, out numLabelsToPrint))
             {
                 MbcMessageBox.Error("Return value needs to be an integer.");
@@ -11138,7 +11200,7 @@ namespace Mbc5.Forms
                     Binding = vBinding,
                     Quantity = vQuantity,
                     LabelTotal = numLabelsToPrint,
-                    CurrentLabel=i+1
+                    CurrentLabel = i + 1
                 };
 
                 vLabelList.Add(labelData);
@@ -11147,19 +11209,19 @@ namespace Mbc5.Forms
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321BinderySCLabel.rdlc";
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsBinderyLabel", binderyLabelBindingSource.DataSource));
-         
+
             this.reportViewer1.RefreshReport();
         }
 
-        
+
 
         private void reportViewerBindery_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-           
+
 
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewerBinderyTicket.LocalReport,this.BinderyTicketPrinter, false);
+            var result = dp.Export(reportViewerBinderyTicket.LocalReport, this.BinderyTicketPrinter, false);
 
             if (result.IsError)
             {
@@ -11170,7 +11232,7 @@ namespace Mbc5.Forms
 
         private void reportViewerBinderyLabel_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-           
+
 
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
@@ -11185,12 +11247,12 @@ namespace Mbc5.Forms
 
         private void btnCDTicket_Click(object sender, EventArgs e)
         {
-           
+
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.PhotoOnCDTicket.rdlc";
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", produtnBindingSource));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsSales", quotesBindingSource));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsPtbKb",ptbkbBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsPtbKb", ptbkbBindingSource));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
             reportViewer1.RefreshReport();
         }
@@ -11202,23 +11264,23 @@ namespace Mbc5.Forms
             {
                 MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage);
             }
-            
+
         }
-        
+
 
         private void btnAddPartial_Click(object sender, EventArgs e)
         {
-           var vBooktype= ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+            var vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
             var sqlQuery = new SQLCustomClient();
-           
-           
+
+
             sqlQuery.ClearParameters();
             sqlQuery.CommandText(@"INSERT INTO PartBk (Invno,Schcode,Company,BookType) Values(@Invno,@Schcode,@Company,@BookType)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@BookType", txtBookType.Text);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
-         
+
             var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
             {
@@ -11280,7 +11342,7 @@ namespace Mbc5.Forms
             try
             {
                 reOrderTableAdapter.Fill(dsProdutn.ReOrder, Invno);
-              reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
+                reorderDetailTableAdapter.Fill(dsProdutn.ReorderDetail, Invno);
                 btnAddReorder.Visible = false;
                 EnableAllControls(this.tbProdutn.TabPages[5]);
             }
@@ -11321,13 +11383,13 @@ namespace Mbc5.Forms
             if (!string.IsNullOrEmpty(dedayoutDateBox.Date))
             {
                 var result = CalulateBusinessDay.BusinessDay((DateTime)dedayoutDateBox.DateValue);
-                if(result.ToShortDateString()!= dedayoutDateBox.Date)
+                if (result.ToShortDateString() != dedayoutDateBox.Date)
                 {
                     dedayoutDateBox.Date = result.ToShortDateString();
                     MbcMessageBox.Information("Dead Line Out Date is a holiday or weekend! The next available date has been entered.");
                 }
             }
-         
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -11337,7 +11399,7 @@ namespace Mbc5.Forms
 
         private void txtCalcResult_Leave(object sender, EventArgs e)
         {
-          
+
         }
 
         private void dateBox1_Load(object sender, EventArgs e)
@@ -11350,10 +11412,10 @@ namespace Mbc5.Forms
             SetPressDates();
         }
 
-        
+
         private void mcoverReportViewer_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
         {
-                try { mcoverReportViewer.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            try { mcoverReportViewer.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
         private void reportViewerMboOnline_RenderingComplete(object sender, RenderingCompleteEventArgs e)
@@ -11370,44 +11432,49 @@ namespace Mbc5.Forms
                 {
                     DataRowView current = (DataRowView)custBindingSource.Current;
                     instructions = current["spcinst"].ToString();
-                }else if (Company == "MER"){
+                }
+                else if (Company == "MER")
+                {
                     DataRowView current = (DataRowView)mcustBindingSource.Current;
                     instructions = current["spcinst"].ToString();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MbcMessageBox.Hand("Customer data is not available.", "");
                 return;
             }
             string vBooktype = "";
-            try {
-                    if (Company == "MBC")
-                    {
-                        vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
-                    }
-                    else if (Company == "MER")
-                    {
-                        vBooktype = ((DataRowView)mquotesBindingSource.Current).Row["BookType"].ToString();
-                    }
+            try
+            {
+                if (Company == "MBC")
+                {
+                    vBooktype = ((DataRowView)quotesBindingSource.Current).Row["BookType"].ToString();
+                }
+                else if (Company == "MER")
+                {
+                    vBooktype = ((DataRowView)mquotesBindingSource.Current).Row["BookType"].ToString();
+                }
 
-                } catch(Exception ex)
-                    {
-                        MbcMessageBox.Hand("Sales data is not available.", "");
-                        return;
-                    }
-          
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Hand("Sales data is not available.", "");
+                return;
+            }
+
             var sqlQuery = new SQLCustomClient();
 
-            
+
             sqlQuery.ClearParameters();
-  
+
             sqlQuery.CommandText(@"INSERT INTO Covers (Invno,Schcode,Company,specovr, Specinst) Values(@Invno,@Schcode,@Company, @Specovr, @Specinst)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@Company", txtCompany.Text);
             string vCoverNum = frmMain.GetCoverNumber();
             sqlQuery.AddParameter("@Specovr", vCoverNum);
-                                
+
             sqlQuery.AddParameter("@Specinst", instructions);
             var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
@@ -11431,11 +11498,11 @@ namespace Mbc5.Forms
 
         private void btnNewCvrScanRec_Click(object sender, EventArgs e)
         {
-            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(0, Invno,Schcode);
+            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(0, Invno, Schcode);
             var result = frmeditCoverWip.ShowDialog();
             if (result == DialogResult.OK)
             {
-               
+
                 try { coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno); } catch { }
             }
         }
@@ -11445,19 +11512,19 @@ namespace Mbc5.Forms
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;
             int id = (int)row["id"];
             int invno = (int)row["invno"];
-            frmEditWip frmeditWip = new frmEditWip(0, invno,Schcode,frmMain);
+            frmEditWip frmeditWip = new frmEditWip(0, invno, Schcode, frmMain);
             var result = frmeditWip.ShowDialog();
             if (result == DialogResult.OK)
             {
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,"", Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, "", Invno);
             }
         }
 
         private void btnAddPartialBKScan_Click(object sender, EventArgs e)
         {
             DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
-           
-            frmEditPartBkWip frmeditPartBk = new frmEditPartBkWip(0,Invno,Schcode);
+
+            frmEditPartBkWip frmeditPartBk = new frmEditPartBkWip(0, Invno, Schcode);
             var result = frmeditPartBk.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -11468,7 +11535,7 @@ namespace Mbc5.Forms
         private void btnAddScanPhotos_Click(object sender, EventArgs e)
         {
             DataRowView row = (DataRowView)prtbkbdetailBindingSource.Current;
-            
+
 
             frmEditPrtBkWip frmeditCoverWip = new frmEditPrtBkWip(0, Invno, Schcode);
             var result = frmeditCoverWip.ShowDialog();
@@ -11481,7 +11548,7 @@ namespace Mbc5.Forms
 
         private void prtbkbdetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataRowView row = (DataRowView)  prtbkbdetailBindingSource.Current;
+            DataRowView row = (DataRowView)prtbkbdetailBindingSource.Current;
             int id = (int)row["id"];
 
             frmEditPrtBkWip frmeditCoverWip = new frmEditPrtBkWip(id, Invno, Schcode);
@@ -11489,7 +11556,7 @@ namespace Mbc5.Forms
             if (result == DialogResult.OK)
             {
                 prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
-            
+
             }
         }
 
@@ -11527,14 +11594,14 @@ namespace Mbc5.Forms
 
         private void btnAddWipRec_Click(object sender, EventArgs e)
         {
-            
+
             var sqlQuery = new SQLCustomClient();
 
             sqlQuery.ClearParameters();
             sqlQuery.CommandText(@"INSERT INTO WIP (Invno,Schcode) Values(@Invno,@Schcode)");
             sqlQuery.AddParameter("@Invno", Invno);
             sqlQuery.AddParameter("@Schcode", Schcode);
-           
+
 
             var insertResult = sqlQuery.Insert();
             if (insertResult.IsError)
@@ -11561,19 +11628,19 @@ namespace Mbc5.Forms
             if (Company == "MBC")
             {
                 Cursor.Current = Cursors.WaitCursor;
-             
+
                 var emailList = new List<string>();
                 DataRowView custRow = (DataRowView)custBindingSource.Current;
-                
-                string vSchname = custRow["schname"].ToString().Trim() ;
-               
-                
-                    emailList.Add("Mark.Baughman@jostens.com");
-                    emailList.Add("Renette.Brown@jostens.com");
-                    emailList.Add("Denise.Swearingin@jostens.com");
-                
+
+                string vSchname = custRow["schname"].ToString().Trim();
+
+
+                emailList.Add("Mark.Baughman@jostens.com");
+                emailList.Add("Renette.Brown@jostens.com");
+                emailList.Add("Denise.Swearingin@jostens.com");
+
                 var emailHelper = new EmailHelper();
-                string subject = vSchname+ " Production Ticket";
+                string subject = vSchname + " Production Ticket";
                 string body = @"See Attachement";
                 // var printResult = PrintMbcProductionTicket();
                 var sqlClient = new SQLCustomClient();
@@ -11594,7 +11661,7 @@ namespace Mbc5.Forms
                 {
                     MbcMessageBox.Error("Failed to generate production ticket:" + dataReturned.Errors[0].ErrorMessage);
                     return;
-                 
+
                 }
 
                 var data = (ProdutnTicketModel)dataReturned.Data;
@@ -11608,7 +11675,7 @@ namespace Mbc5.Forms
                 var attachments = new List<OutlookAttachemt>();
                 if (!printResult.IsError)
                 {
-                   
+
                     var attachment = new OutlookAttachemt()
                     {
                         Path = printResult.Data,
@@ -11621,10 +11688,11 @@ namespace Mbc5.Forms
                     MbcMessageBox.Error("Production Ticket could not be generated:" + printResult.Errors[0].ErrorMessage);
                     return;
                 }
-                emailHelper.SendOutLookEmail(subject, emailList,null, body, EmailType.Mbc,attachments);
+                emailHelper.SendOutLookEmail(subject, emailList, null, body, EmailType.Mbc, attachments);
             }
-            else {
-               
+            else
+            {
+
                 var sqlClient = new SQLCustomClient();
                 string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,Q.Invno,Q.contryear as ContractYear,Q.PONum,Q. typesetqty AS TypeSetQty,IIF(Q.lf=1,'LF','SF') AS TypeStyle,
                                     Case
@@ -11671,7 +11739,7 @@ namespace Mbc5.Forms
                 var newPath = result.Data;
                 var emailHelper = new EmailHelper();
                 string subject = vData.Schname.Trim() + " Production Ticket";
-                
+
                 string body = "Attached is a Meridian Production Ticket.";
                 List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
                 OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Invno + " ProductionTicket.pdf", Path = newPath };
@@ -11685,7 +11753,7 @@ namespace Mbc5.Forms
             Cursor.Current = Cursors.Default;
         }
 
-      
+
 
         private void pg3_Click(object sender, EventArgs e)
         {
@@ -11704,16 +11772,16 @@ namespace Mbc5.Forms
         //nothing below here  
     }
     public class BinderyInfo
-	{
-		public string Schname { get; set; }
-		public string CoverType { get; set; }
-		public string ProdNo { get; set; }
-		public int NoPages { get; set; }
-		public int NoCopies { get; set; }
-		public bool Diecut { get; set; }
-		public string CoilClr { get; set; }
-		public DateTime ProjShpDate { get; set; }
-	}
+    {
+        public string Schname { get; set; }
+        public string CoverType { get; set; }
+        public string ProdNo { get; set; }
+        public int NoPages { get; set; }
+        public int NoCopies { get; set; }
+        public bool Diecut { get; set; }
+        public string CoilClr { get; set; }
+        public DateTime ProjShpDate { get; set; }
+    }
 }
 
 

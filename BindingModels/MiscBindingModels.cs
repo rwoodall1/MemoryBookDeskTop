@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BindingModels
 {
     public class MerBindingWip
     {
-       public int Id { get; set; }
+        public int Id { get; set; }
         public DateTime DateCreated { get; set; }
         public string ProductType { get; set; }
-        public string Task{ get; set; }
-        public string Initials{ get; set; }
-        public decimal  Time{ get; set; }
-        public string Description{ get; set; }
-        public int Quantity{ get; set; }
+        public string Task { get; set; }
+        public string Initials { get; set; }
+        public decimal Time { get; set; }
+        public string Description { get; set; }
+        public int Quantity { get; set; }
 
     }
     public class Item
@@ -81,7 +78,7 @@ namespace BindingModels
         public string Email1 { get; set; }
         public string Email2 { get; set; }
         public string CONTRYEAR { get; set; }
-        public string Stage { get; set; }      
+        public string Stage { get; set; }
         public string QTEDATE { get; set; }
         public decimal ADJBEF { get; set; }
         public string INITIAL { get; set; }
@@ -109,7 +106,8 @@ namespace BindingModels
         public string DATECONT { get; set; }
         public string REASON { get; set; }
     }
-    public class OnlineFlyer {
+    public class OnlineFlyer
+    {
         public string SchName { get; set; }
         public string SchCode { get; set; }
         public string BasicPrice { get; set; }
@@ -125,7 +123,8 @@ namespace BindingModels
         public DateTime? OnlineCutoff { get; set; }
         public DateTime? AdCutoff { get; set; }
     }
-    public class OnlineAgreementHeader {
+    public class OnlineAgreementHeader
+    {
         public int Invno { get; set; }
         public string PoNumber { get; set; }
         public decimal BeforeTaxTotal { get; set; }
@@ -142,8 +141,8 @@ namespace BindingModels
         public string SchState { get; set; }
         public string SchZipCode { get; set; }
         public string NoCopies { get; set; }
-     }
-    
+    }
+
     public class TaxRate
     {
         public decimal Rate { get; set; }
@@ -165,7 +164,7 @@ namespace BindingModels
         public string Refered { get; set; }
         public string Company { get; set; }
         public int ProspectId { get; set; }
-        
+
     }
     public class MbcBarScanModel
     {
@@ -176,43 +175,51 @@ namespace BindingModels
         public string CpNum { get; set; }
         public string SchEmail { get; set; }
         public string BContEmail { get; set; }
-        public string CContEmail{get;set;}
+        public string CContEmail { get; set; }
         public string ContEmail { get; set; }
         public int Invno { get; set; }
     }
-   
+    public class JPIXBarScanModel
+    {
+        public string ShipToCustomerName { get; set; }
+        public string OracleCode { get; set; }
+        public int Reference { get; set; }
+        public int Invno { get; set; }
+        public int Quantity { get; set; }
+        public string ProdNo { get; set; }
+    }
     public class MerBarScanModel
     {
         public string SchCode { get; set; }
         public string Schname { get; set; }
         public string Specovr { get; set; }
         public string ProdNo { get; set; }
-      
+
         public string SchEmail { get; set; }
         public string BContEmail { get; set; }
         public string CContEmail { get; set; }
         public string ContEmail { get; set; }
         public int Invno { get; set; }
     }
- 
+
     public class WipUpdateCheck
-	{
-		public int QuoteInvno { get; set; }
-		public string Schcode { get; set; }
-		public int? ProdutnInvno { get; set; }
-		public int? CoversInvno { get; set; }
-		public int? WipInvno { get; set; }
-	}
-	public class OutlookAttachemt
-	{
-		public string Path { get; set; }
-		public string Name { get; set; }
-	}
-	public class CoverDescriptions
-	{
-		public string CoverType { get; set; }
-		public string CoverDescription { get; set; }
-	}
+    {
+        public int QuoteInvno { get; set; }
+        public string Schcode { get; set; }
+        public int? ProdutnInvno { get; set; }
+        public int? CoversInvno { get; set; }
+        public int? WipInvno { get; set; }
+    }
+    public class OutlookAttachemt
+    {
+        public string Path { get; set; }
+        public string Name { get; set; }
+    }
+    public class CoverDescriptions
+    {
+        public string CoverType { get; set; }
+        public string CoverDescription { get; set; }
+    }
     public class TelephonLogRecord
     {
         public string Schname { get; set; }

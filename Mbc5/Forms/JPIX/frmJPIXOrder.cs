@@ -2,10 +2,16 @@
 using BaseClass.Classes;
 using BindingModels;
 using Core;
+using Microsoft.Reporting.WinForms;
 using System;
+using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
+
+
 
 namespace Mbc5.Forms.JPIX
 {
@@ -16,6 +22,7 @@ namespace Mbc5.Forms.JPIX
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
+
         }
 
         public UserPrincipal ApplicationUser { get; set; }
@@ -23,7 +30,8 @@ namespace Mbc5.Forms.JPIX
         private void frmJPIXOrder_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dsJPIXOrders.JPIXOrders' table. You can move, or remove it, as needed.
-
+            frmMain = (frmMain)this.MdiParent;
+            this.SetConnectionString();
             this.GetOrders();
         }
         private async void GetOrders()
@@ -55,6 +63,23 @@ namespace Mbc5.Forms.JPIX
                 this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
                 this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
 
+            }
+
+        }
+        private void Fill()
+        {
+            this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
+            this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
+
+            if (((DataRowView)jPIXOrdersBindingSource.Current).Row.IsNull("Invno"))
+            {
+                this.Invno = 0;
+                this.Schcode = "";
+            }
+            else
+            {
+                this.Invno = (int)((DataRowView)this.jPIXOrdersBindingSource.Current).Row["Invno"];
+                this.Schcode = ((DataRowView)this.jPIXOrdersBindingSource.Current).Row["OracleCode"].ToString();
             }
 
         }
@@ -132,12 +157,14 @@ namespace Mbc5.Forms.JPIX
         private async Task<ApiProcessingResult> InsertProduction(JostensPIXFulfillmentRequestsJostensPIXOrder order, string invno)
         {
             var processingResult = new ApiProcessingResult();
-            var sqlClient = new SQLCustomClient().CommandText(@"Insert INTO Produtn (Company,OracleCode,Invno,Prodno,NoCopies,KitRecvd,Prshpdte)
-                                                                 Values(@Company,@OracleCode,@Invno,@Prodno,@NoCopies,@KitRecvd,@Prshpdte)");
+            var sqlClient = new SQLCustomClient().CommandText(@"Insert INTO Produtn (Company,Contryear,OracleCode,Schcode,Invno,Prodno,NoCopies,KitRecvd,Prshpdte)
+                                                                 Values(@Company,@Contryear,@OracleCode,@Schcode,@Invno,@Prodno,@NoCopies,@KitRecvd,@Prshpdte)");
             sqlClient.ClearParameters();
             // is actually oracle code
             sqlClient.AddParameter("@OracleCode", order.JostensPIXOrderItem.SchoolCode);
             sqlClient.AddParameter("@Invno", invno);
+            sqlClient.AddParameter("@Schcode", "01");
+            sqlClient.AddParameter("@Contryear", ConfigurationManager.AppSettings["Contryear"]);
             sqlClient.AddParameter("@Company", "JPX");
             sqlClient.AddParameter("@Prodno", "J" + invno.ToString());
             sqlClient.AddParameter("@NoCopies", order.JostensPIXOrderItem.Quantity);
@@ -214,6 +241,95 @@ namespace Mbc5.Forms.JPIX
             frmJPIXOrderDetail.MdiParent = this.MdiParent;
             frmJPIXOrderDetail.frmMain = this.frmMain;
             frmJPIXOrderDetail.Show();
+        }
+
+        private void btnPrntProd_Click(object sender, EventArgs e)
+        {
+            if (jPIXOrdersBindingSource.Count < 1)
+            {
+                return;
+            }
+            reportViewer1.LocalReport.DataSources.Clear();
+
+            try
+            {
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", jPIXOrdersBindingSource));
+
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.JPIXJobTicketQuery.rdlc";
+                this.reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void SetRecordPrinted()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"Update JPIXOrders Set PTicketPrinted = 1 Where Invno = @Invno");
+
+            int _invno;
+            foreach (DataRowView row in jPIXOrdersBindingSource)
+            {
+                sqlClient.ClearParameters();
+                _invno = (int)row["Invno"];
+                sqlClient.AddParameter("@Invno", _invno);
+                var result = sqlClient.Update();
+            }
+
+            this.Fill();
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+
+
+
+            try
+            {
+
+                if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                {
+                    this.SetRecordPrinted();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJPIXJobTicketQuery" + ex.Message);
+            }
+        }
+        private void SetConnectionString()
+        {
+            try
+            {
+
+                this.jPIXOrdersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
+
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set JPIX orders connection strings");
+
+            }
+        }
+
+        private void jPIXOrdersDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (jPIXOrdersDataGridView.Rows[e.RowIndex].Cells[0].Value != null)
+            {
+                try
+                {
+                    this.Invno = (int)jPIXOrdersDataGridView.Rows[e.RowIndex].Cells[0].Value;
+                    this.Schcode = jPIXOrdersDataGridView.Rows[e.RowIndex].Cells[11].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+
+
         }
     }
 }

@@ -417,6 +417,22 @@ namespace Mbc5.Forms
             int vInvno = 0;
             switch (this.ActiveMdiChild.Name)
             {
+                case "frmJPIXOrderDetail":
+                    {
+
+                        var tmpForm = (frmJPIXOrderDetail)this.ActiveMdiChild;
+
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmJPIXOrder":
+                    {
+
+                        var tmpForm = (frmJPIXOrder)this.ActiveMdiChild;
+
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
 
                 case "frmMbcCust":
                     {
@@ -471,7 +487,7 @@ namespace Mbc5.Forms
         }
         private string GetSchcode(string company)
         {
-            string vSchcode = null;
+            string vSchcode = "";
             if (company == "MBC")
             {
                 switch (this.ActiveMdiChild.Name)
@@ -549,6 +565,13 @@ namespace Mbc5.Forms
             {
                 switch (this.ActiveMdiChild.Name)
                 {
+                    case "frmJPIXOrderDetail":
+                        {
+                            var tmpForm = (frmJPIXOrderDetail)this.ActiveMdiChild;
+
+                            vSchcode = tmpForm.Schcode;
+                            break;
+                        }
                     case "frmSales":
                         {
 
@@ -2306,6 +2329,14 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
 
 
+        }
+
+        private void jPIXOrderDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmJPIXOrderDetail frmJPIXOrderDetail = new frmJPIXOrderDetail(this.ApplicationUser, 0);
+            frmJPIXOrderDetail.MdiParent = this;
+            frmJPIXOrderDetail.frmMain = this;
+            frmJPIXOrderDetail.Show();
         }
 
 

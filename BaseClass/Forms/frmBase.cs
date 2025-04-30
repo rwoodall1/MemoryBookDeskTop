@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-//using BaseClass.FormHandler;
-using System.Security.Principal;
+﻿//using BaseClass.FormHandler;
 using BaseClass.Classes;
 using BaseClass.Core;
 using NLog;
-using System.Configuration;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace BaseClass
 {
     public partial class frmBase : Form
     {
-      
+
         public frmBase()
         {
-           
+
             InitializeComponent();
         }
-       protected Logger Log { get;set; } 
-        
+        protected Logger Log { get; set; }
+
         #region "Properties" 
 
         [Browsable(true)]
         //protected Logger Log { get; private set; }
         private bool CloseForm { get; set; }
         [Browsable(true)]
-        public int MaxNumForms { get; set; } = 1;   
+        public int MaxNumForms { get; set; } = 1;
         public string CurrentInstance { get; set; }
         private enum CalledShowMethod
         {
@@ -80,18 +74,18 @@ namespace BaseClass
             }
             else
             {
-                   foreach (string role in _formRoles)
-               
-                if (_formPrincipal.IsInRole(role))
-                    this.ValidatedUserRoles.Add(role);
+                foreach (string role in _formRoles)
+
+                    if (_formPrincipal.IsInRole(role))
+                        this.ValidatedUserRoles.Add(role);
 
                 this.UserCanOpenForm = this.ValidatedUserRoles.Count > 0;
 
             }
-            
-          
+
+
         }
-        
+
         public new virtual void Show()
         {
             Show(CalledShowMethod.Show, null);
@@ -180,8 +174,8 @@ namespace BaseClass
         private static void UIThreadException(object sender, ThreadExceptionEventArgs t)
         {
             var Log1 = LogManager.GetCurrentClassLogger();
-            
-            Log1.Error(t.Exception,"Unhandled Windows Forms Error:" + t.Exception.Message);
+
+            Log1.Error(t.Exception, "Unhandled Windows Forms Error:" + t.Exception.Message);
             DialogResult result = DialogResult.Cancel;
             try
             {
@@ -209,7 +203,7 @@ namespace BaseClass
             Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
             if (!this.DesignMode)
             {
-                FormAllowed allowedResult= ((ParentForm)this.MdiParent).AllowedInstance(this.Name,this.MaxNumForms);
+                FormAllowed allowedResult = ((ParentForm)this.MdiParent).AllowedInstance(this.Name, this.MaxNumForms);
                 if (!allowedResult.Allowed)
                 {
                     //close
@@ -220,13 +214,13 @@ namespace BaseClass
                     this.Text = this.Text + "(" + allowedResult.Number.ToString() + ")";
                 }
             }
-           
+
         }
-       
+
 
         private void BaseForm_Disposed(object sender, EventArgs e)
-        {            
-            
+        {
+
         }
         private DialogResult ShowDialogForm(CalledShowMethod calledShowMethod, IWin32Window owner)
         {
@@ -238,15 +232,15 @@ namespace BaseClass
 
         private void Base_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-             ((ParentForm)this.MdiParent).Decrease(this.Name);
+
+            ((ParentForm)this.MdiParent).Decrease(this.Name);
             this.Dispose();
-           
+
         }
         [Browsable(true)]
         public virtual void Save(bool FromMenu)
         {
-			
+
         }
         public virtual ApiProcessingResult<bool> Save()
         {
@@ -254,21 +248,26 @@ namespace BaseClass
         }
 
         [Browsable(true)]
-		public virtual void SchCodeSearch() {
+        public virtual void SchCodeSearch()
+        {
 
-		}
-		public virtual void SchnameSearch() {
+        }
+        public virtual void SchnameSearch()
+        {
 
-		}
-		public virtual void OracleCodeSearch() {
+        }
+        public virtual void OracleCodeSearch()
+        {
 
-		}
-		public virtual void ProdutnNoSearch() {
+        }
+        public virtual void ProdutnNoSearch()
+        {
 
-		}
-		public virtual void InvoiceNumberSearch() {
+        }
+        public virtual void InvoiceNumberSearch()
+        {
 
-		}
+        }
         public virtual void FirstNameSearch()
         {
 
@@ -298,14 +297,15 @@ namespace BaseClass
 
         }
         [Browsable(true)]
-        public virtual void Cancel() {
+        public virtual void Cancel()
+        {
 
 
-            }
+        }
         [Browsable(true)]
         public virtual bool Add()
         {
-			return true;
+            return true;
         }
 
         private void basePanel_VisibleChanged(object sender, EventArgs e)
@@ -314,17 +314,17 @@ namespace BaseClass
             {
 
                 this.basePanel.Dock = DockStyle.Fill;
-                
+
                 basePanel.BringToFront();
-                var t = basePanel.Height/2;
-                var s = (basePanel.Width/2)-92;
-                this.innerPanel.Location= new Point(t, s);
+                var t = basePanel.Height / 2;
+                var s = (basePanel.Width / 2) - 92;
+                this.innerPanel.Location = new Point(t, s);
                 this.workingLabel.BringToFront();
             }
             else
             {
                 this.basePanel.Dock = DockStyle.None;
-               this.workingLabel.SendToBack();
+                this.workingLabel.SendToBack();
                 basePanel.SendToBack();
             }
         }

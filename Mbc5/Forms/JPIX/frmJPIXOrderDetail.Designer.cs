@@ -45,10 +45,7 @@
             System.Windows.Forms.Label notesLabel;
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
-            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
-            this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJPIXOrderDetail));
             this.panel1 = new System.Windows.Forms.Panel();
             this.shipToPostalCodeTextBox = new System.Windows.Forms.TextBox();
             this.shipToStateOrProvinceComboBox = new System.Windows.Forms.ComboBox();
@@ -69,6 +66,26 @@
             this.button1 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.pticketPrintedCheckBox = new System.Windows.Forms.CheckBox();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
+            this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
+            this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             shipToPostalCodeLabel = new System.Windows.Forms.Label();
             shipToStateOrProvinceLabel = new System.Windows.Forms.Label();
             shipToCityLabel = new System.Windows.Forms.Label();
@@ -83,10 +100,12 @@
             referenceLabel = new System.Windows.Forms.Label();
             oracleCodeLabel = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -239,26 +258,6 @@
             notesLabel.Size = new System.Drawing.Size(44, 13);
             notesLabel.TabIndex = 29;
             notesLabel.Text = "Notes:";
-            // 
-            // dsJPIXOrders
-            // 
-            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
-            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // jPIXOrdersBindingSource
-            // 
-            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
-            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
-            // 
-            // jPIXOrdersTableAdapter
-            // 
-            this.jPIXOrdersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // panel1
             // 
@@ -471,7 +470,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(727, 270);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(240, 319);
+            this.webBrowser1.Size = new System.Drawing.Size(240, 336);
             this.webBrowser1.TabIndex = 33;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 
@@ -493,10 +492,179 @@
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
+            // pticketPrintedCheckBox
+            // 
+            this.pticketPrintedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.jPIXOrdersBindingSource, "pticketPrinted", true));
+            this.pticketPrintedCheckBox.Location = new System.Drawing.Point(238, 22);
+            this.pticketPrintedCheckBox.Name = "pticketPrintedCheckBox";
+            this.pticketPrintedCheckBox.Size = new System.Drawing.Size(181, 24);
+            this.pticketPrintedCheckBox.TabIndex = 10022;
+            this.pticketPrintedCheckBox.Text = "Production Ticket Printed";
+            this.pticketPrintedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.BindingSource = this.jPIXOrdersBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.toolStripButton2,
+            this.toolStripSeparator2,
+            this.toolStripSeparator1,
+            this.toolStripButton1,
+            this.txtSearch});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(1127, 25);
+            this.bindingNavigator1.TabIndex = 10023;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(87, 22);
+            this.toolStripButton1.Text = "Search Invoice";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // jPIXOrdersBindingSource
+            // 
+            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
+            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
+            // 
+            // dsJPIXOrders
+            // 
+            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
+            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // jPIXOrdersTableAdapter
+            // 
+            this.jPIXOrdersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Save";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // frmJPIXOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(1127, 612);
+            this.ClientSize = new System.Drawing.Size(1127, 629);
+            this.Controls.Add(this.bindingNavigator1);
+            this.Controls.Add(this.pticketPrintedCheckBox);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
@@ -517,12 +685,17 @@
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.webBrowser1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).EndInit();
+            this.Controls.SetChildIndex(this.pticketPrintedCheckBox, 0);
+            this.Controls.SetChildIndex(this.bindingNavigator1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,5 +727,21 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.CheckBox pticketPrintedCheckBox;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripTextBox txtSearch;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

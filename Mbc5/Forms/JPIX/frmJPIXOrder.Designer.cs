@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.btnEdit = new System.Windows.Forms.Button();
             this.jPIXOrdersDataGridView = new System.Windows.Forms.DataGridView();
+            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
+            this.lblRecCount = new System.Windows.Forms.Label();
+            this.btnPrntProd = new System.Windows.Forms.Button();
+            this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
+            this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.RequestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +49,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
-            this.lblRecCount = new System.Windows.Forms.Label();
-            this.btnPrntProd = new System.Windows.Forms.Button();
-            this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
-            this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
@@ -85,7 +87,8 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn14});
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn7});
             this.jPIXOrdersDataGridView.DataSource = this.jPIXOrdersBindingSource;
             this.jPIXOrdersDataGridView.Location = new System.Drawing.Point(3, 45);
             this.jPIXOrdersDataGridView.Name = "jPIXOrdersDataGridView";
@@ -93,6 +96,60 @@
             this.jPIXOrdersDataGridView.TabIndex = 10019;
             this.jPIXOrdersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.jPIXOrdersDataGridView_CellClick);
             this.jPIXOrdersDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.jPIXOrdersDataGridView_CellDoubleClick);
+            this.jPIXOrdersDataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.jPIXOrdersDataGridView_RowEnter);
+            // 
+            // jPIXOrdersBindingSource
+            // 
+            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
+            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
+            // 
+            // dsJPIXOrders
+            // 
+            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
+            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblRecCount
+            // 
+            this.lblRecCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRecCount.AutoSize = true;
+            this.lblRecCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecCount.Location = new System.Drawing.Point(504, 522);
+            this.lblRecCount.Name = "lblRecCount";
+            this.lblRecCount.Size = new System.Drawing.Size(130, 13);
+            this.lblRecCount.TabIndex = 10020;
+            this.lblRecCount.Text = "No Records Available";
+            // 
+            // btnPrntProd
+            // 
+            this.btnPrntProd.Location = new System.Drawing.Point(12, 8);
+            this.btnPrntProd.Name = "btnPrntProd";
+            this.btnPrntProd.Size = new System.Drawing.Size(128, 23);
+            this.btnPrntProd.TabIndex = 10022;
+            this.btnPrntProd.Text = "Print Produtin Ticket";
+            this.btnPrntProd.UseVisualStyleBackColor = true;
+            this.btnPrntProd.Click += new System.EventHandler(this.btnPrntProd_Click);
+            // 
+            // jPIXOrdersTableAdapter
+            // 
+            this.jPIXOrdersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 35;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.JPIXJobTicketQuery.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(3, 491);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(68, 62);
+            this.reportViewer1.TabIndex = 10023;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -174,50 +231,18 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.Width = 82;
             // 
-            // jPIXOrdersBindingSource
+            // dataGridViewTextBoxColumn7
             // 
-            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
-            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
-            // 
-            // dsJPIXOrders
-            // 
-            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
-            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lblRecCount
-            // 
-            this.lblRecCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRecCount.AutoSize = true;
-            this.lblRecCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecCount.Location = new System.Drawing.Point(504, 522);
-            this.lblRecCount.Name = "lblRecCount";
-            this.lblRecCount.Size = new System.Drawing.Size(130, 13);
-            this.lblRecCount.TabIndex = 10020;
-            this.lblRecCount.Text = "No Records Available";
-            // 
-            // btnPrntProd
-            // 
-            this.btnPrntProd.Location = new System.Drawing.Point(12, 8);
-            this.btnPrntProd.Name = "btnPrntProd";
-            this.btnPrntProd.Size = new System.Drawing.Size(128, 23);
-            this.btnPrntProd.TabIndex = 10022;
-            this.btnPrntProd.Text = "Print Produtin Ticket";
-            this.btnPrntProd.UseVisualStyleBackColor = true;
-            // 
-            // jPIXOrdersTableAdapter
-            // 
-            this.jPIXOrdersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "OracleCode";
+            this.dataGridViewTextBoxColumn7.HeaderText = "OracleCode";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
             // 
             // frmJPIXOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1172, 554);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btnPrntProd);
             this.Controls.Add(this.lblRecCount);
             this.Controls.Add(this.jPIXOrdersDataGridView);
@@ -230,6 +255,7 @@
             this.Controls.SetChildIndex(this.jPIXOrdersDataGridView, 0);
             this.Controls.SetChildIndex(this.lblRecCount, 0);
             this.Controls.SetChildIndex(this.btnPrntProd, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).EndInit();
@@ -249,6 +275,7 @@
         private System.Windows.Forms.DataGridView jPIXOrdersDataGridView;
         private System.Windows.Forms.Label lblRecCount;
         private System.Windows.Forms.Button btnPrntProd;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.DataGridViewLinkColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -260,5 +287,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

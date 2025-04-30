@@ -323,6 +323,8 @@ namespace Mbc5 {
             
             private global::System.Data.DataColumn columnRequestId;
             
+            private global::System.Data.DataColumn columnPticketPrinted;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public JPIXOrdersDataTable() {
@@ -534,6 +536,14 @@ namespace Mbc5 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PticketPrintedColumn {
+                get {
+                    return this.columnPticketPrinted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -590,7 +600,8 @@ namespace Mbc5 {
                         bool IsCanceled, 
                         System.DateTime DateReceived, 
                         string OracleCode, 
-                        string RequestId) {
+                        string RequestId, 
+                        bool PticketPrinted) {
                 JPIXOrdersRow rowJPIXOrdersRow = ((JPIXOrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Document,
@@ -614,7 +625,8 @@ namespace Mbc5 {
                         IsCanceled,
                         DateReceived,
                         OracleCode,
-                        RequestId};
+                        RequestId,
+                        PticketPrinted};
                 rowJPIXOrdersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowJPIXOrdersRow);
                 return rowJPIXOrdersRow;
@@ -666,6 +678,7 @@ namespace Mbc5 {
                 this.columnDateReceived = base.Columns["DateReceived"];
                 this.columnOracleCode = base.Columns["OracleCode"];
                 this.columnRequestId = base.Columns["RequestId"];
+                this.columnPticketPrinted = base.Columns["PticketPrinted"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -715,6 +728,8 @@ namespace Mbc5 {
                 base.Columns.Add(this.columnOracleCode);
                 this.columnRequestId = new global::System.Data.DataColumn("RequestId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequestId);
+                this.columnPticketPrinted = new global::System.Data.DataColumn("PticketPrinted", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPticketPrinted);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnProductType.MaxLength = 50;
@@ -737,6 +752,7 @@ namespace Mbc5 {
                 this.columnNotes.MaxLength = 2147483647;
                 this.columnOracleCode.MaxLength = 50;
                 this.columnRequestId.MaxLength = 20;
+                this.columnPticketPrinted.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1226,6 +1242,17 @@ namespace Mbc5 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool PticketPrinted {
+                get {
+                    return ((bool)(this[this.tableJPIXOrders.PticketPrintedColumn]));
+                }
+                set {
+                    this[this.tableJPIXOrders.PticketPrintedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDocumentNull() {
                 return this.IsNull(this.tableJPIXOrders.DocumentColumn);
             }
@@ -1658,6 +1685,7 @@ namespace Mbc5.dsJPIXOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("DateReceived", "DateReceived");
             tableMapping.ColumnMappings.Add("OracleCode", "OracleCode");
             tableMapping.ColumnMappings.Add("RequestId", "RequestId");
+            tableMapping.ColumnMappings.Add("PticketPrinted", "PticketPrinted");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1726,24 +1754,31 @@ SELECT [Document], NeedsByDate, ProductType, Quantity, ShipToContact, ShipToCust
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
 FROM            JPIXOrders
-WHERE        (DateShipped IS NULL)
+WHERE        (DateShipped IS NULL) AND (PticketPrinted = 0)
 ORDER BY NeedsByDate";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
+FROM            JPIXOrders
+ORDER BY DateReceived DESC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
 FROM            JPIXOrders
 WHERE        (Invno = @Invno)
 ORDER BY NeedsByDate";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1774,8 +1809,32 @@ ORDER BY NeedsByDate";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByInvno(dsJPIXOrders.JPIXOrdersDataTable dataTable, int Invno) {
+        public virtual int FillAll(dsJPIXOrders.JPIXOrdersDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsJPIXOrders.JPIXOrdersDataTable GetAll() {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            dsJPIXOrders.JPIXOrdersDataTable dataTable = new dsJPIXOrders.JPIXOrdersDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByInvno(dsJPIXOrders.JPIXOrdersDataTable dataTable, int Invno) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1789,7 +1848,7 @@ ORDER BY NeedsByDate";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsJPIXOrders.JPIXOrdersDataTable GetDataByInvno(int Invno) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
             dsJPIXOrders.JPIXOrdersDataTable dataTable = new dsJPIXOrders.JPIXOrdersDataTable();
             this.Adapter.Fill(dataTable);
