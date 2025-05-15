@@ -36,7 +36,8 @@ namespace Mbc5.Forms.JPIX
         }
         private async void GetOrders()
         {
-            string path = "D:\\JPIX\\";
+            //string path = "D:\\JPIX\\";
+            string path = "\\\\sedsujpisl01\\Plant_Transfer\\JPIX\\Flyers\\";
             if (Directory.Exists(path))
             {
                 System.IO.DirectoryInfo dir = new DirectoryInfo(path);
@@ -50,6 +51,8 @@ namespace Mbc5.Forms.JPIX
                         var stringreader = new StringReader(contents);
                         JostensPIXFulfillmentRequests jpixOrders = (JostensPIXFulfillmentRequests)serializer.Deserialize(stringreader);
                         var result = await this.InsertOrders(jpixOrders);
+
+
                         await SetFoldersAndFiles(jpixOrders, file.Name);
 
                     }
@@ -193,9 +196,13 @@ namespace Mbc5.Forms.JPIX
 
         private async Task SetFoldersAndFiles(JostensPIXFulfillmentRequests jpixOrders, string xmlName)
         {
-            string rootpath = "D:\\JPIX\\";
-            string workpath = "D:\\JPIX\\Work\\";
-            string archivepath = "D:\\JPIX\\Archive\\";
+            // string dropPath = "D:\\JPIX\\";
+            string dropPath = "\\\\sedsujpisl01\\Plant_Transfer\\JPIX\\Flyers\\";
+            //string workpath = "D:\\JPIX\\Work\\";
+            string workpath = " \\\\sedsujpisl01\\workflow\\_App-HotFolders\\Prinergy_Processing\\JPix\\Flatwork_Funnel_JPix\\";// isilon/printergy
+
+            // string archivepath = "D:\\JPIX\\Archive\\";
+            string archivepath = "\\\\sedsujpisl01\\workflow\\JPixFlyers\\Archive\\";
             string newFolder = archivepath + jpixOrders.RequestId.ToString();
             Directory.CreateDirectory(newFolder);
             foreach (var order in jpixOrders.JostensPIXOrder)
@@ -203,20 +210,24 @@ namespace Mbc5.Forms.JPIX
                 try
                 {
 
-                    string fileToCopy = rootpath + order.JostensPIXOrderItem.Document;
+                    string fileToCopy = dropPath + order.JostensPIXOrderItem.Document;
                     string destinationDirectory = workpath + order.JostensPIXOrderItem.Document;
                     File.Copy(fileToCopy, destinationDirectory, true);
 
-                    File.Move(fileToCopy, newFolder + "\\" + order.JostensPIXOrderItem.Document);
+                    File.Copy(fileToCopy, newFolder + "\\" + order.JostensPIXOrderItem.Document, true);
+                    File.Delete(fileToCopy);
+
                 }
                 catch (Exception ex)
                 {
+                    MbcMessageBox.Error("Failed to copy file:" + order.JostensPIXOrderItem.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "|" + ex.Message);
                     Log.Error(ex.Message);
                 }
 
             }
             //moves xml file
-            File.Move(rootpath + xmlName, archivepath + jpixOrders.RequestId.ToString() + "\\" + xmlName);
+            File.Copy(dropPath + xmlName, archivepath + jpixOrders.RequestId.ToString() + "\\" + xmlName, true);
+            File.Delete(dropPath + xmlName);
 
         }
 
