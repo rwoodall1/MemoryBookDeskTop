@@ -63,10 +63,10 @@ namespace Mbc5.Forms.JPIX
 
 
                 }
-                this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
-                this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
+
 
             }
+            this.Fill();
 
         }
         private void Fill()
@@ -74,7 +74,8 @@ namespace Mbc5.Forms.JPIX
             this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
             this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
 
-            if (((DataRowView)jPIXOrdersBindingSource.Current).Row.IsNull("Invno"))
+
+            if (jPIXOrdersBindingSource.Count == 0 || ((DataRowView)jPIXOrdersBindingSource.Current).Row.IsNull("Invno"))
             {
                 this.Invno = 0;
                 this.Schcode = "";
@@ -128,7 +129,7 @@ namespace Mbc5.Forms.JPIX
             foreach (var order in jpixOrders.JostensPIXOrder)
             {
                 sqlClient.ClearParameters();
-                sqlClient.AddParameter("@Document", "D:\\JPIX\\Archive\\" + jpixOrders.RequestId + "\\" + order.JostensPIXOrderItem.Document);
+                sqlClient.AddParameter("@Document", "\\\\sedsujpisl01\\workflow\\JPixFlyers\\Archive\\" + jpixOrders.RequestId + "\\" + order.JostensPIXOrderItem.Document);
                 sqlClient.AddParameter("@NeedsByDate", order.JostensPIXOrderItem.DateNeedsByDate);
                 sqlClient.AddParameter("@ProductType", order.JostensPIXOrderItem.ProductType);
                 sqlClient.AddParameter("@Quantity", order.JostensPIXOrderItem.Quantity);
@@ -176,7 +177,7 @@ namespace Mbc5.Forms.JPIX
             var insertResult = sqlClient.Insert();
             if (insertResult.IsError)
             {
-                Log.Error("Failed to insert produtn record for JPXIX document:" + order.JostensPIXOrderItem.Document + " Invno:" + invno.ToString() + "|" + insertResult.Errors[0].DeveloperMessage);
+                Log.Error("Failed to insert produtn record for JPIX document:" + order.JostensPIXOrderItem.Document + " Invno:" + invno.ToString() + "|" + insertResult.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Failed to insert produtn record for document:" + order.JostensPIXOrderItem.Document + " Invno:" + invno.ToString() + "|" + insertResult.Errors[0].DeveloperMessage);
             }
             sqlClient.ClearParameters();

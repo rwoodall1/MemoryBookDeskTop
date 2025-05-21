@@ -244,7 +244,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First("*JPIX0" + Str(Fields!Invno.Value).Trim + "*", "DataSet1")</Value>
+                                      <Value>=First("*JPX0" + Str(Fields!Invno.Value).Trim + "*", "DataSet1")</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
                                         <FontSize>26pt</FontSize>
@@ -461,7 +461,6 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
                               <Top>2.91319in</Top>
-                              <Left>0in</Left>
                               <Height>0.36458in</Height>
                               <Width>1.37786in</Width>
                               <ZIndex>9</ZIndex>
@@ -563,7 +562,6 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
                               <Top>3.45139in</Top>
-                              <Left>0in</Left>
                               <Height>0.36458in</Height>
                               <Width>1.37786in</Width>
                               <ZIndex>12</ZIndex>
@@ -699,6 +697,40 @@
                               <Height>0.97916in</Height>
                               <Width>3.09796in</Width>
                               <ZIndex>16</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Invno2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First("*JPX0" + Str(Fields!Invno.Value).Trim + "*", "DataSet1")</Value>
+                                      <Style>
+                                        <FontSize>16pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Invno1</rd:DefaultName>
+                              <Top>6.20486in</Top>
+                              <Left>2.32279in</Left>
+                              <Height>0.32292in</Height>
+                              <Width>2.77083in</Width>
+                              <ZIndex>17</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>

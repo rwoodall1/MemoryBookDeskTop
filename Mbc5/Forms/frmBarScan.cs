@@ -380,7 +380,8 @@ namespace Mbc5.Forms
                 }
             }
 
-            catch (Exception ex) { };
+            catch (Exception ex) { }
+            ;
         }
         #region "Methods"
         private void MbcScan()
@@ -393,8 +394,10 @@ namespace Mbc5.Forms
             decimal vWtr = 0;
             int.TryParse(txtDeptCode.Text, out vDeptCode);
             var vWIR = txtIntitials.Text;
-            try { vWtr = decimal.Parse(txtTime.Text); } catch { };
-            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { };
+            try { vWtr = decimal.Parse(txtTime.Text); } catch { }
+            ;
+            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { }
+            ;
             var sqlClient = new SQLCustomClient();
 
 
@@ -1517,8 +1520,10 @@ namespace Mbc5.Forms
             decimal vWtr = 0;
             int.TryParse(txtDeptCode.Text, out vDeptCode);
             var vWIR = txtIntitials.Text;
-            try { vWtr = decimal.Parse(txtTime.Text); } catch { };
-            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { };
+            try { vWtr = decimal.Parse(txtTime.Text); } catch { }
+            ;
+            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { }
+            ;
             var sqlClient = new SQLCustomClient();
 
 
@@ -2634,9 +2639,11 @@ namespace Mbc5.Forms
             int vDeptCode = 0;
             int.TryParse(txtDeptCode.Text, out vDeptCode);
             var vDateTime = DateTime.Now;
-            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { };
+            try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { }
+            ;
             decimal vWtr = 0;
-            try { vWtr = decimal.Parse(txtTime.Text); } catch { };
+            try { vWtr = decimal.Parse(txtTime.Text); } catch { }
+            ;
             var vWIR = txtIntitials.Text;
             var sqlClient = new SQLCustomClient();
             string company = txtBarCode.Text.Substring(0, 3);
@@ -2663,7 +2670,8 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                        sqlClient.AddParameter("@Schcode", "");
+                        sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@"Update WIPDetail SET
                         WAR=
                             CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
@@ -2685,10 +2693,11 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                        sqlClient.AddParameter("@Schcode", "");
+                        sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode,@OracleCode);
                                         END
                                         ");
 
@@ -2735,6 +2744,7 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
                         sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
                                         INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);

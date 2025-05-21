@@ -47,10 +47,14 @@ namespace Mbc5.Forms.JPIX
         private void button1_Click(object sender, EventArgs e)
         {
             reportViewer1.LocalReport.DataSources.Clear();
+            var curRecPos = jPIXOrdersBindingSource.Position;
+            var dt = ((DataRowView)jPIXOrdersBindingSource.Current).DataView.ToTable();
+            var tmpdt = dt.Clone();
 
+            tmpdt.ImportRow(dt.Rows[curRecPos]);
             try
             {
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", jPIXOrdersBindingSource));
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tmpdt));
 
                 reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.JPIXJobTicketSingle.rdlc";
                 this.reportViewer1.RefreshReport();
