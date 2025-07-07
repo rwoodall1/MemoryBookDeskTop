@@ -18,7 +18,7 @@ namespace Mbc5.Forms.JPIX
     public partial class frmJPIXOrder : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmJPIXOrder(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
+        public frmJPIXOrder(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead","MbcCs"}, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -45,11 +45,13 @@ namespace Mbc5.Forms.JPIX
                 foreach (FileInfo file in dir.GetFiles("*.xml"))
                 {
                     string contents = File.ReadAllText(file.FullName);
+                 
                     try
                     {
 
                         var stringreader = new StringReader(contents);
                         JostensPIXFulfillmentRequests jpixOrders = (JostensPIXFulfillmentRequests)serializer.Deserialize(stringreader);
+                      
                         var result = await this.InsertOrders(jpixOrders);
 
 
@@ -58,7 +60,7 @@ namespace Mbc5.Forms.JPIX
                     }
                     catch (Exception ex)
                     {
-
+                        MbcMessageBox.Error(ex.InnerException.Message,"Error reading XML");
                     }
 
 
@@ -145,7 +147,8 @@ namespace Mbc5.Forms.JPIX
                 sqlClient.AddParameter("@Reference", order.JostensPIXOrderItem.Reference);
                 sqlClient.AddParameter("@DateReceived", DateTime.Now);
                 sqlClient.AddParameter("@OracleCode", order.JostensPIXOrderItem.SchoolCode);
-                sqlClient.AddParameter("@RequestId", jpixOrders.RequestId);
+                string DateId = DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Year.ToString();
+                sqlClient.AddParameter("@RequestId", jpixOrders.RequestId +DateId);
                 var result = sqlClient.Insert();
                 if (result.IsError)
                 {

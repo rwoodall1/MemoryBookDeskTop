@@ -2709,6 +2709,57 @@ namespace Mbc5.Forms
                         //_____________________________
                         break;
                     }
+                case "29":
+                    {
+
+                        //UPDATE FIRST_________________________________________________________________________________
+                        sqlClient.ClearParameters();
+                        //war is datetime
+                        //wir is initials
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Wtr", vWtr);
+                        sqlClient.AddParameter("@Schcode", "");
+                        sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+                        sqlClient.CommandText(@"Update WIPDetail SET
+                        WAR=
+                            CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+                        , WIR =
+                            CASE When WIR IS NULL THEN @WIR ELSE WIR END
+                            ,WTR=@Wtr+COALESCE(WTR,0)
+                    WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+                        var result = sqlClient.Update();
+                        if (result.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        //INSERT_____________________________________________________________________________________________________________________________
+                        sqlClient.ClearParameters();
+                        sqlClient.ReturnSqlIdentityId(true);
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        sqlClient.AddParameter("@DescripID", vDeptCode);
+                        sqlClient.AddParameter("@WAR", vDateTime);
+                        sqlClient.AddParameter("@WIR", vWIR);
+                        sqlClient.AddParameter("@Wtr", vWtr);
+                        sqlClient.AddParameter("@Schcode", "");
+                        sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                        Begin
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode,@OracleCode);
+                                        END
+                                        ");
+
+                        var result1 = sqlClient.Insert();
+                        if (result1.IsError)
+                        {
+                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        //_____________________________
+                        break;
+                    }
                 default:
                     {
 
