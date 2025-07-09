@@ -46,6 +46,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJPIXOrderDetail));
+            System.Windows.Forms.Label quantityLabel;
             this.panel1 = new System.Windows.Forms.Panel();
             this.shipToPostalCodeTextBox = new System.Windows.Forms.TextBox();
             this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -86,6 +87,7 @@
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
             this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
+            this.quantityLabel2 = new System.Windows.Forms.Label();
             shipToPostalCodeLabel = new System.Windows.Forms.Label();
             shipToStateOrProvinceLabel = new System.Windows.Forms.Label();
             shipToCityLabel = new System.Windows.Forms.Label();
@@ -100,6 +102,7 @@
             referenceLabel = new System.Windows.Forms.Label();
             oracleCodeLabel = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
+            quantityLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
@@ -192,7 +195,7 @@
             // requestIdLabel
             // 
             requestIdLabel.AutoSize = true;
-            requestIdLabel.Location = new System.Drawing.Point(28, 140);
+            requestIdLabel.Location = new System.Drawing.Point(28, 157);
             requestIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             requestIdLabel.Name = "requestIdLabel";
             requestIdLabel.Size = new System.Drawing.Size(73, 13);
@@ -202,7 +205,7 @@
             // dateShippedLabel
             // 
             dateShippedLabel.AutoSize = true;
-            dateShippedLabel.Location = new System.Drawing.Point(13, 114);
+            dateShippedLabel.Location = new System.Drawing.Point(13, 131);
             dateShippedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dateShippedLabel.Name = "dateShippedLabel";
             dateShippedLabel.Size = new System.Drawing.Size(88, 13);
@@ -212,7 +215,7 @@
             // dateReceivedLabel
             // 
             dateReceivedLabel.AutoSize = true;
-            dateReceivedLabel.Location = new System.Drawing.Point(5, 88);
+            dateReceivedLabel.Location = new System.Drawing.Point(5, 105);
             dateReceivedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dateReceivedLabel.Name = "dateReceivedLabel";
             dateReceivedLabel.Size = new System.Drawing.Size(96, 13);
@@ -280,7 +283,7 @@
             this.panel1.Location = new System.Drawing.Point(14, 58);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(547, 205);
+            this.panel1.Size = new System.Drawing.Size(711, 205);
             this.panel1.TabIndex = 28;
             // 
             // shipToPostalCodeTextBox
@@ -360,6 +363,8 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.quantityLabel2);
+            this.panel2.Controls.Add(quantityLabel);
             this.panel2.Controls.Add(this.isCanceledCheckBox);
             this.panel2.Controls.Add(requestIdLabel);
             this.panel2.Controls.Add(this.requestIdLabel1);
@@ -376,13 +381,13 @@
             this.panel2.Location = new System.Drawing.Point(743, 58);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(265, 205);
+            this.panel2.Size = new System.Drawing.Size(429, 225);
             this.panel2.TabIndex = 29;
             // 
             // isCanceledCheckBox
             // 
             this.isCanceledCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.jPIXOrdersBindingSource, "IsCanceled", true));
-            this.isCanceledCheckBox.Location = new System.Drawing.Point(26, 164);
+            this.isCanceledCheckBox.Location = new System.Drawing.Point(26, 181);
             this.isCanceledCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.isCanceledCheckBox.Name = "isCanceledCheckBox";
             this.isCanceledCheckBox.Size = new System.Drawing.Size(121, 24);
@@ -393,7 +398,7 @@
             // requestIdLabel1
             // 
             this.requestIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "RequestId", true));
-            this.requestIdLabel1.Location = new System.Drawing.Point(107, 140);
+            this.requestIdLabel1.Location = new System.Drawing.Point(107, 157);
             this.requestIdLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.requestIdLabel1.Name = "requestIdLabel1";
             this.requestIdLabel1.Size = new System.Drawing.Size(117, 23);
@@ -403,7 +408,7 @@
             // dateShippedLabel1
             // 
             this.dateShippedLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "DateShipped", true));
-            this.dateShippedLabel1.Location = new System.Drawing.Point(107, 114);
+            this.dateShippedLabel1.Location = new System.Drawing.Point(107, 131);
             this.dateShippedLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dateShippedLabel1.Name = "dateShippedLabel1";
             this.dateShippedLabel1.Size = new System.Drawing.Size(117, 23);
@@ -413,7 +418,7 @@
             // dateReceivedLabel1
             // 
             this.dateReceivedLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "DateReceived", true));
-            this.dateReceivedLabel1.Location = new System.Drawing.Point(107, 88);
+            this.dateReceivedLabel1.Location = new System.Drawing.Point(107, 105);
             this.dateReceivedLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dateReceivedLabel1.Name = "dateReceivedLabel1";
             this.dateReceivedLabel1.Size = new System.Drawing.Size(117, 23);
@@ -480,7 +485,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(727, 276);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(240, 336);
+            this.webBrowser1.Size = new System.Drawing.Size(404, 336);
             this.webBrowser1.TabIndex = 33;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 
@@ -540,7 +545,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1127, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1291, 25);
             this.bindingNavigator1.TabIndex = 10023;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -659,10 +664,28 @@
             this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // quantityLabel
+            // 
+            quantityLabel.AutoSize = true;
+            quantityLabel.Location = new System.Drawing.Point(44, 85);
+            quantityLabel.Name = "quantityLabel";
+            quantityLabel.Size = new System.Drawing.Size(58, 13);
+            quantityLabel.TabIndex = 40;
+            quantityLabel.Text = "Quantity:";
+            // 
+            // quantityLabel2
+            // 
+            this.quantityLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "Quantity", true));
+            this.quantityLabel2.Location = new System.Drawing.Point(107, 83);
+            this.quantityLabel2.Name = "quantityLabel2";
+            this.quantityLabel2.Size = new System.Drawing.Size(117, 23);
+            this.quantityLabel2.TabIndex = 41;
+            this.quantityLabel2.Text = "label1";
+            // 
             // frmJPIXOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(1127, 629);
+            this.ClientSize = new System.Drawing.Size(1291, 629);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.pticketPrintedCheckBox);
             this.Controls.Add(this.reportViewer1);
@@ -743,5 +766,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Label quantityLabel2;
     }
 }

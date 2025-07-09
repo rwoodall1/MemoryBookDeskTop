@@ -279,7 +279,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Sum(Fields!Reference.Value, "DataSet1")</Value>
+                                      <Value>=Fields!Reference.Value</Value>
                                       <Style>
                                         <FontSize>16pt</FontSize>
                                       </Style>
@@ -293,7 +293,7 @@
                               <rd:DefaultName>Reference</rd:DefaultName>
                               <Top>2.88889in</Top>
                               <Left>5.13309in</Left>
-                              <Height>0.46875in</Height>
+                              <Height>0.36458in</Height>
                               <Width>1.59266in</Width>
                               <ZIndex>4</ZIndex>
                               <Style>
@@ -328,7 +328,7 @@
                               <rd:DefaultName>Textbox43</rd:DefaultName>
                               <Top>2.88889in</Top>
                               <Left>3.31252in</Left>
-                              <Height>0.46875in</Height>
+                              <Height>0.36458in</Height>
                               <Width>1.73613in</Width>
                               <ZIndex>5</ZIndex>
                               <Style>
@@ -348,7 +348,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!OracleCode.Value, "DataSet1")</Value>
+                                      <Value>=Fields!OracleCode.Value</Value>
                                       <Style>
                                         <FontSize>16pt</FontSize>
                                       </Style>
@@ -358,9 +358,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>OracleCode</rd:DefaultName>
-                              <Top>3.44097in</Top>
+                              <Top>3.32291in</Top>
                               <Left>5.13309in</Left>
-                              <Height>0.42708in</Height>
+                              <Height>0.36458in</Height>
                               <Width>1.59266in</Width>
                               <ZIndex>6</ZIndex>
                               <Style>
@@ -393,9 +393,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>3.3993in</Top>
+                              <Top>3.32291in</Top>
                               <Left>3.31252in</Left>
-                              <Height>0.46875in</Height>
+                              <Height>0.36458in</Height>
                               <Width>1.73613in</Width>
                               <ZIndex>7</ZIndex>
                               <Style>
@@ -415,7 +415,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!ProductType.Value, "DataSet1")</Value>
+                                      <Value>=Fields!ProductType.Value</Value>
                                       <Style>
                                         <FontSize>16pt</FontSize>
                                       </Style>
@@ -425,9 +425,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>ProductType</rd:DefaultName>
-                              <Top>2.91319in</Top>
+                              <Top>2.88889in</Top>
                               <Left>1.36822in</Left>
-                              <Height>0.46875in</Height>
+                              <Height>0.36458in</Height>
                               <Width>1.54922in</Width>
                               <ZIndex>8</ZIndex>
                               <Style>
@@ -460,7 +460,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>2.91319in</Top>
+                              <Top>2.88889in</Top>
                               <Height>0.36458in</Height>
                               <Width>1.37786in</Width>
                               <ZIndex>9</ZIndex>
@@ -561,7 +561,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>3.45139in</Top>
+                              <Top>3.32291in</Top>
                               <Height>0.36458in</Height>
                               <Width>1.37786in</Width>
                               <ZIndex>12</ZIndex>
@@ -582,7 +582,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!Notes.Value, "DataSet1")</Value>
+                                      <Value>=Fields!Notes.Value</Value>
                                       <Style />
                                     </TextRun>
                                   </TextRuns>
@@ -595,38 +595,6 @@
                               <Height>0.875in</Height>
                               <Width>6.08335in</Width>
                               <ZIndex>13</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="RequestId">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=First(Fields!RequestId.Value, "DataSet1")</Value>
-                                      <Style>
-                                        <FontSize>16pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>RequestId</rd:DefaultName>
-                              <Top>3.45139in</Top>
-                              <Left>1.396in</Left>
-                              <Height>0.35763in</Height>
-                              <Width>1in</Width>
-                              <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -661,7 +629,7 @@
                               <Left>3.01291in</Left>
                               <Height>0.46875in</Height>
                               <Width>1.3906in</Width>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -679,10 +647,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!ShipToContact.Value.ToString().Trim()+Environment.NewLine
+                                      <Value>=Fields!ShipToContact.Value.ToString().Trim()+Environment.NewLine
 +Fields!ShipToAddress1.Value + " "+Fields!ShipToAddress1.Value
 +Environment.NewLine + Fields!ShipToCity.Value.ToString().Trim()+", " +Fields!ShipToStateOrProvince.Value.ToString().Trim()
-+" "+Fields!ShipToPostalCode.Value.ToString().Trim(), "DataSet1")</Value>
++" "+Fields!ShipToPostalCode.Value.ToString().Trim()</Value>
                                       <Style>
                                         <FontSize>14pt</FontSize>
                                       </Style>
@@ -696,7 +664,7 @@
                               <Left>0.11805in</Left>
                               <Height>0.97916in</Height>
                               <Width>3.09796in</Width>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>15</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -730,7 +698,108 @@
                               <Left>2.32279in</Left>
                               <Height>0.32292in</Height>
                               <Width>2.77083in</Width>
+                              <ZIndex>16</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox60">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>QTY </Value>
+                                      <Style>
+                                        <FontSize>18pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>2.45487in</Top>
+                              <Left>3.35749in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.73613in</Width>
                               <ZIndex>17</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Reference3">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Quantity.Value</Value>
+                                      <Style>
+                                        <FontSize>16pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Reference</rd:DefaultName>
+                              <Top>2.45487in</Top>
+                              <Left>5.13309in</Left>
+                              <Height>0.36458in</Height>
+                              <Width>1.59266in</Width>
+                              <ZIndex>18</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="ProductType2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RequestId.Value</Value>
+                                      <Style>
+                                        <FontSize>16pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>ProductType</rd:DefaultName>
+                              <Top>3.32291in</Top>
+                              <Left>1.36822in</Left>
+                              <Height>0.35763in</Height>
+                              <Width>1.54922in</Width>
+                              <ZIndex>19</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
