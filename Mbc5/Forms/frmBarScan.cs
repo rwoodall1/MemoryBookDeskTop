@@ -2670,7 +2670,7 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", "");
+
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@"Update WIPDetail SET
                         WAR=
@@ -2693,11 +2693,11 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", "");
+
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode,@OracleCode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
                                         END
                                         ");
 
@@ -2721,7 +2721,7 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", "");
+
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@"Update WIPDetail SET
                         WAR=
@@ -2744,11 +2744,11 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", "");
+
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode,@OracleCode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
                                         END
                                         ");
 
@@ -2772,7 +2772,7 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+
                         sqlClient.CommandText(@"Update WIPDetail SET
                         WAR=
                             CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
@@ -2794,11 +2794,11 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-                        sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+
 
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno);
                                         END
                                         ");
 
