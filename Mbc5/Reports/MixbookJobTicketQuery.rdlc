@@ -219,9 +219,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Left>5.03472in</Left>
+                              <Left>4.99305in</Left>
                               <Height>0.36458in</Height>
-                              <Width>1.23959in</Width>
+                              <Width>1.28126in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
@@ -320,7 +320,7 @@
                               <rd:DefaultName>ShipName</rd:DefaultName>
                               <Left>0.11805in</Left>
                               <Height>0.36458in</Height>
-                              <Width>3.14583in</Width>
+                              <Width>2.94791in</Width>
                               <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
@@ -608,7 +608,7 @@
                               <Top>8.63542in</Top>
                               <Left>1.32985in</Left>
                               <Height>0.25in</Height>
-                              <Width>1.375in</Width>
+                              <Width>1.93403in</Width>
                               <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
@@ -705,9 +705,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>DSInvno</rd:DefaultName>
-                              <Left>3.37848in</Left>
+                              <Left>3.06596in</Left>
                               <Height>0.36458in</Height>
-                              <Width>1.64582in</Width>
+                              <Width>1.85073in</Width>
                               <ZIndex>17</ZIndex>
                               <Style>
                                 <Border>

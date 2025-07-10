@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using Mbc5.Dialogs;
-using Mbc5.Classes;
-using BaseClass;
-using System.Diagnostics;
-using Microsoft.Reporting.WinForms;
-using BindingModels;
-using System.Drawing.Printing;
-using NLog;
-
-using Newtonsoft.Json;
-using RESTModule;
-
 using BaseClass.Core;
+using BindingModels;
+using Mbc5.Classes;
+using Mbc5.Dialogs;
+using Microsoft.Reporting.WinForms;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.Windows.Forms;
 
 
 namespace Mbc5.Forms.MixBook
@@ -27,12 +21,12 @@ namespace Mbc5.Forms.MixBook
     {
         //
         public frmMain frmMain { get; set; }
-        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook","BARCODE","MBLead"}, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook","BARCODE","MBLead"}, userPrincipal)
+        public frmMBOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -48,20 +42,20 @@ namespace Mbc5.Forms.MixBook
             if (this.ApplicationUser.IsInOneOfRoles(mylist2))
             {
                 btnCancelOrder.Visible = true;
-               // btnRemoveOrder.Visible = true;
+                // btnRemoveOrder.Visible = true;
             }
-            List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook","MBLead" });
-            if (this.ApplicationUser.IsInOneOfRoles(mylist1))            
+            List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook", "MBLead" });
+            if (this.ApplicationUser.IsInOneOfRoles(mylist1))
             {
                 this.pnlRemake.Visible = true;
                 this.btnEmailTrk.Visible = true;
             }
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
-          
+
             List<string> mylist = new List<string>(new string[] { "SA", "Administrator", "MixBook" });
-            this.btnEdit.Enabled = ApplicationUser.IsInOneOfRoles(mylist) ;
-            btnDownloadFiles.Enabled = ApplicationUser.IsInOneOfRoles(mylist) ;
+            this.btnEdit.Enabled = ApplicationUser.IsInOneOfRoles(mylist);
+            btnDownloadFiles.Enabled = ApplicationUser.IsInOneOfRoles(mylist);
             SetConnectionString();
             this.Invno = 0;
             if (OrderId > 0)
@@ -73,9 +67,9 @@ namespace Mbc5.Forms.MixBook
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.SaveOrder();
-           
+
         }
-        public  void SaveOrder()
+        public void SaveOrder()
         {
             try
             {
@@ -93,7 +87,7 @@ namespace Mbc5.Forms.MixBook
             this.Fill();
         }
 
-        
+
         private void SetConnectionString()
         {
             try
@@ -101,7 +95,7 @@ namespace Mbc5.Forms.MixBook
                 this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                
+
             }
             catch (Exception ex)
             {
@@ -113,7 +107,7 @@ namespace Mbc5.Forms.MixBook
         private void OrderIdSearch()
         {
             string vcurrentOrderId = "0";
-            if (mixBookOrderBindingSource.Current!=null)
+            if (mixBookOrderBindingSource.Current != null)
             {
                 try
                 {
@@ -121,7 +115,7 @@ namespace Mbc5.Forms.MixBook
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             }
-            
+
 
             frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
@@ -130,7 +124,7 @@ namespace Mbc5.Forms.MixBook
                 try
                 {
                     var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
-                    
+
                     if (string.IsNullOrEmpty(retOrderId))
                     {
                         BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
@@ -140,10 +134,10 @@ namespace Mbc5.Forms.MixBook
                         int iOrderId = 0;
                         if (int.TryParse(retOrderId, out iOrderId))
                         {
-                           
-                           
+
+
                             this.OrderId = iOrderId;
-                            Fill();   
+                            Fill();
                         }
                         else
                         {
@@ -162,10 +156,12 @@ namespace Mbc5.Forms.MixBook
         private void ItemIdSearch()
         {
             string vcurrentItemId = "";
-            if (mixBookOrderBindingSource.Current!=null) {
+            if (mixBookOrderBindingSource.Current != null)
+            {
                 try
                 {
-                    if (mixBookOrderBindingSource.Current!=null) {
+                    if (mixBookOrderBindingSource.Current != null)
+                    {
                         vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
                     }
                 }
@@ -198,8 +194,10 @@ namespace Mbc5.Forms.MixBook
             string vcurrentName = "";
             try
             {
-                if (mixBookOrderBindingSource.Current!=null) {
-                    vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString(); }
+                if (mixBookOrderBindingSource.Current != null)
+                {
+                    vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString();
+                }
             }
             catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Name"); }
 
@@ -230,11 +228,11 @@ namespace Mbc5.Forms.MixBook
         private void Remake(string remakeType)
         {
             string vreasonCode = "";
-            InputBox.Show("Reason Code", "Enter a reason code",ref vreasonCode);
+            InputBox.Show("Reason Code", "Enter a reason code", ref vreasonCode);
 
             if (string.IsNullOrEmpty(vreasonCode))
             {
-                MbcMessageBox.Stop("Invalid reason code","Reason Code");
+                MbcMessageBox.Stop("Invalid reason code", "Reason Code");
                 return;
             }
             if (vreasonCode.Length > 2)
@@ -267,16 +265,16 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error("Quantity can not be zero");
                 return;
             }
-            
+
             var sqlClient = new SQLCustomClient();
-           
+
             //insure we have correct invno, should already be set
             if (this.Invno.ToString() != invnoLabel1.Text.Trim())
             {
                 MbcMessageBox.Stop("The invoice number does not match the system invoice number. Re-search the record and try again.", "Invoice# Error");
                 return;
             }
-             
+
             if (remakeType == "CVR")
             {
                 sqlClient.ClearParameters();
@@ -322,7 +320,7 @@ namespace Mbc5.Forms.MixBook
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
                     return;
                 }
-                vreasonCode=null;
+                vreasonCode = null;
                 vQuantity = null;
             }
             else if (remakeType == "BK")
@@ -339,7 +337,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() +" on "+DateTime.Now.ToString();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo + ' | ' + CAST(COALESCE(WipMemo,' ') as varchar) Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -376,7 +374,7 @@ namespace Mbc5.Forms.MixBook
         }
         public override void Fill()
         {
-            
+
             pnlOrder.Enabled = false;
             if (OrderId == 0)
             {
@@ -398,15 +396,15 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD" || mixbookOrderStatusLabel2.Text.ToUpper()=="ON HOLD")
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD" || mixbookOrderStatusLabel2.Text.ToUpper() == "ON HOLD")
             {
                 lblHold.Visible = true;
-                lblHold.BringToFront(); 
+                lblHold.BringToFront();
 
             }
             else { lblHold.Visible = false; }
@@ -507,7 +505,7 @@ namespace Mbc5.Forms.MixBook
                         reportViewer3.LocalReport.EnableExternalImages = true;
                         ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
                         ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter,parameter1 });
+                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1 });
                     }
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
@@ -648,14 +646,14 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
-           
 
-                var vInvno = this.Invno.ToString();
-                sqlClient.ClearParameters();
-                sqlClient.AddParameter("@Invno", vInvno);
-                sqlClient.AddParameter("@SetJobTicketPrinted", 1);
-                var updateResult = sqlClient.Update();
-            
+
+            var vInvno = this.Invno.ToString();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@Invno", vInvno);
+            sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+            var updateResult = sqlClient.Update();
+
         }
         private void SetRemakeTicketPrinted()
         {
@@ -664,12 +662,12 @@ namespace Mbc5.Forms.MixBook
             InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
 
             var vInvno = this.Invno.ToString();
-                sqlClient.ClearParameters();
-                sqlClient.AddParameter("@Invno", vInvno);
-                sqlClient.AddParameter("@RemakeTicketPrinted", 1);
-            sqlClient.AddParameter("@RemakePrintedBy",_userIntials);
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@Invno", vInvno);
+            sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+            sqlClient.AddParameter("@RemakePrintedBy", _userIntials);
             var updateResult = sqlClient.Update();
-        
+
         }
         #endregion
 
@@ -687,14 +685,17 @@ namespace Mbc5.Forms.MixBook
         private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
         {
             int vIInvno = 0;
+
+
             try
             {
+
                 string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
             }
             catch { }
-            
+
         }
 
         private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -730,7 +731,8 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
         {
-            if (mixBookOrderDataGridView.CurrentRow!=null) {
+            if (mixBookOrderDataGridView.CurrentRow != null)
+            {
                 try
                 {
                     var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
@@ -763,7 +765,7 @@ namespace Mbc5.Forms.MixBook
 
         private void btnMixbookPkgList_Click(object sender, EventArgs e)
         {
-           
+
             int vClientOrderId = 0;
             int.TryParse(orderIdLabel1.Text, out vClientOrderId);
             if (vClientOrderId == 0)
@@ -773,7 +775,7 @@ namespace Mbc5.Forms.MixBook
             }
             PrintPackingList(vClientOrderId);
         }
-       
+
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -927,18 +929,18 @@ namespace Mbc5.Forms.MixBook
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(invnoLabel1.Text)|| string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
+            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
             {
                 return;
             }
             var sqlClient = new SQLCustomClient();
             string status = "";
-            if (mixbookOrderStatusLabel2.Text=="Hold" || mixbookOrderStatusLabel2.Text == "On Hold")
+            if (mixbookOrderStatusLabel2.Text == "Hold" || mixbookOrderStatusLabel2.Text == "On Hold")
             {
-                sqlClient.AddParameter("@OrderStatus","In Process");
+                sqlClient.AddParameter("@OrderStatus", "In Process");
                 status = "In Process";
             }
-            else if(mixbookOrderStatusLabel2.Text == "In Process")
+            else if (mixbookOrderStatusLabel2.Text == "In Process")
             {
                 sqlClient.AddParameter("@OrderStatus", "On Hold");
                 status = "On Hold";
@@ -949,17 +951,17 @@ namespace Mbc5.Forms.MixBook
                 MbcMessageBox.Information("Status can not be changed if Cancelled or Shipped.");
                 return;
             }
-         
+
             sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
-                 var result = sqlClient.Update();
+            var result = sqlClient.Update();
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to change status:" + result.Errors[0].DeveloperMessage);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to change hold status:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-            MbcMessageBox.Exclamation("Status has been changed to " +status);
+            MbcMessageBox.Exclamation("Status has been changed to " + status);
             Fill();
         }
 
@@ -985,7 +987,8 @@ namespace Mbc5.Forms.MixBook
                         SetJobTicketPrinted();
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
                 }
             }
@@ -1001,9 +1004,9 @@ namespace Mbc5.Forms.MixBook
 
         private void pnlOrder_EnabledChanged(object sender, EventArgs e)
         {
-            foreach (Control c in   this.pnlOrder.Controls)
+            foreach (Control c in this.pnlOrder.Controls)
             {
-               if(c is TextBox||c is ComboBox||c is CustomControls.DateBox)
+                if (c is TextBox || c is ComboBox || c is CustomControls.DateBox)
                 {
                     c.BackColor = Color.White;
                 }
@@ -1028,7 +1031,8 @@ namespace Mbc5.Forms.MixBook
 
         private void coverStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (ApplicationUser.UserName.ToUpper()=="TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY") {
+            if (ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY")
+            {
                 var result = MessageBox.Show("Do you want to clear the cover status of this cover?", "Clear Cover Status", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
 
                 if (result == DialogResult.Yes)
@@ -1047,7 +1051,8 @@ namespace Mbc5.Forms.MixBook
 
         private void bookStatusLabel_Click(object sender, EventArgs e)
         {
-            if(ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY"){ 
+            if (ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "HILLARY")
+            {
                 var result = MessageBox.Show("Do you want to clear the book status of this book?", "Clear book Status", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                 if (result == DialogResult.Yes)
                 {
@@ -1084,7 +1089,7 @@ namespace Mbc5.Forms.MixBook
 
         private void btnEmailTrk_Click(object sender, EventArgs e)
         {
-            string vBody = @"The tracking numbers for order <b>#" + orderIdLabel1.Text+ @"</b> have been updated. You may not have all the tracking numbers. <br/><br/><b>" + trackingNumberTextBox.Text.Replace("|",",")+"</b>";
+            string vBody = @"The tracking numbers for order <b>#" + orderIdLabel1.Text + @"</b> have been updated. You may not have all the tracking numbers. <br/><br/><b>" + trackingNumberTextBox.Text.Replace("|", ",") + "</b>";
             new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
         }
 
@@ -1095,7 +1100,7 @@ namespace Mbc5.Forms.MixBook
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-           if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" )
+            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
@@ -1114,8 +1119,8 @@ namespace Mbc5.Forms.MixBook
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var result=MessageBox.Show("This will totally remove the order from the system. Mixbook is not notified. Do you still want to remove this order?","Remove Order",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
-            if (result==DialogResult.Yes)
+            var result = MessageBox.Show("This will totally remove the order from the system. Mixbook is not notified. Do you still want to remove this order?", "Remove Order", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            if (result == DialogResult.Yes)
             {
                 var sqlClient = new SQLCustomClient();
                 sqlClient.CommandText("Delete from MixbookOrders where ClientOrderId=@ClientOrderId");
@@ -1142,7 +1147,7 @@ namespace Mbc5.Forms.MixBook
         private void CancelOrder()
         {
             MbcMessageBox.Information("This procedure cancels the order in DB only. It does not send a notification to Mixbook. Use websit if Mixbook needs notification.");
-          
+
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',BookPreviewUrl='',BookUrl='',CoverPreviewUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
@@ -1163,10 +1168,10 @@ namespace Mbc5.Forms.MixBook
             if (prodResult.IsError)
             {
                 Log.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
-             
-               MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+
+                MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
                 return;
-                
+
             }
             this.Fill();
             var processingResult = new ApiProcessingResult();
@@ -1222,7 +1227,7 @@ namespace Mbc5.Forms.MixBook
             {
                 Log.Error(sqlResult.Errors[0].ErrorMessage);
 
-               
+
                 return retval;
             }
             retval = sqlResult.Data;
