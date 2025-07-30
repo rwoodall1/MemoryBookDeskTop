@@ -2643,13 +2643,13 @@ namespace Mbc5.Forms
             ;
             decimal vWtr = 0;
             try { vWtr = decimal.Parse(txtTime.Text); } catch { }
-            ;
+
             var vWIR = txtIntitials.Text;
             var sqlClient = new SQLCustomClient();
             string company = txtBarCode.Text.Substring(0, 3);
             switch (vDeptCode.ToString())
             {
-                case "36":
+                case "40":
                     {
                         //shipped
                         sqlClient.ClearParameters();
@@ -2693,20 +2693,32 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@Wtr", vWtr);
-
+                        sqlClient.AddParameter("@SchcodeCode", "1");
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode,@SchcodeCode);
                                         END
                                         ");
 
                         var result1 = sqlClient.Insert();
                         if (result1.IsError)
                         {
+                            Log.Error(result1.Errors[0].DeveloperMessage);
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         //_____________________________
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update JPIXOrders Set DateShipped=@ShippedDate,TrackingNumber=@TrackingNumber,OrderStatus='Shipped' where Invno=@Invno");
+                        sqlClient.AddParameter("@ShippedDate", DateTime.Now);
+                        sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text.Trim());
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        var updateOrderResult = sqlClient.Update();
+                        if (updateOrderResult.IsError)
+                        {
+                            Log.Error(updateOrderResult.Errors[0].DeveloperMessage);
+                            MessageBox.Show("Failed to update order status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         break;
                     }
                 case "29":
@@ -2748,7 +2760,7 @@ namespace Mbc5.Forms
                         sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                         Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
+                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
                                         END
                                         ");
 
@@ -2758,56 +2770,22 @@ namespace Mbc5.Forms
                             MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         //_____________________________
+                        sqlClient.ClearParameters();
+                        sqlClient.CommandText(@"Update JPIXOrders Set OrderStatus='Press' where Invno=@Invno");
+                        sqlClient.AddParameter("@Invno", this.Invno);
+                        var updateOrderResult = sqlClient.Update();
+                        if (updateOrderResult.IsError)
+                        {
+                            Log.Error(updateOrderResult.Errors[0].DeveloperMessage);
+                            MessageBox.Show("Failed to update order status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         break;
                     }
                 default:
                     {
 
-                        //UPDATE FIRST_________________________________________________________________________________
-                        sqlClient.ClearParameters();
-                        //war is datetime
-                        //wir is initials
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Wtr", vWtr);
-
-                        sqlClient.CommandText(@"Update WIPDetail SET
-                        WAR=
-                            CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
-                        , WIR =
-                            CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                            ,WTR=@Wtr+COALESCE(WTR,0)
-                    WHERE Invno=@Invno AND DescripID=@DescripID ");
-
-                        var result = sqlClient.Update();
-                        if (result.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        //INSERT_____________________________________________________________________________________________________________________________
-                        sqlClient.ClearParameters();
-                        sqlClient.ReturnSqlIdentityId(true);
-                        sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@WAR", vDateTime);
-                        sqlClient.AddParameter("@WIR", vWIR);
-                        sqlClient.AddParameter("@Wtr", vWtr);
-
-
-                        sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                        Begin
-                                        INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno);
-                                        END
-                                        ");
-
-                        var result1 = sqlClient.Insert();
-                        if (result1.IsError)
-                        {
-                            MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        //_____________________________----------------------------______________________________________________________________________________________________________
+                        MbcMessageBox.Error("Department code not recognized for JPIX scan. Please contact support.");
                         break;
                     }
             }

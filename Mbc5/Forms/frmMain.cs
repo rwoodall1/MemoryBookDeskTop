@@ -55,7 +55,8 @@ namespace Mbc5.Forms
                 if (this.Login())
                 {
                     break;
-                };
+                }
+                ;
                 if (i == 2)
                 {
                     //if 2 tries close 
@@ -1857,7 +1858,8 @@ namespace Mbc5.Forms
                 if (this.Login())
                 {
                     break;
-                };
+                }
+                ;
                 if (i == 2)
                 {
                     //if 2 tries close 
@@ -2337,6 +2339,24 @@ namespace Mbc5.Forms
             frmJPIXOrderDetail.MdiParent = this;
             frmJPIXOrderDetail.frmMain = this;
             frmJPIXOrderDetail.Show();
+        }
+
+        private void wipReportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmJPIXWipReport frmJPIXWipReport = new frmJPIXWipReport(this.ApplicationUser);
+            frmJPIXWipReport.MdiParent = this;
+            frmJPIXWipReport.Show();
+
+        }
+
+        private void invoiceReportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmJPIXFlyerInvoiceReport frmJPIXFlyerInvoiceReport = new frmJPIXFlyerInvoiceReport(this.ApplicationUser, this);
+            frmJPIXFlyerInvoiceReport.MdiParent = this;
+            frmJPIXFlyerInvoiceReport.Show();
+            this.Cursor = Cursors.Default;
         }
 
 

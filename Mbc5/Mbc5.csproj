@@ -502,6 +502,18 @@
     <Compile Include="Forms\JPIX\frmJPIXOrderDetail.Designer.cs">
       <DependentUpon>frmJPIXOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXWipReport.Designer.cs">
+      <DependentUpon>frmJPIXWipReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.Designer.cs">
+      <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\JPIX\Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -799,6 +811,7 @@
     <None Include="Properties\DataSources\BindingModels.BookBlockLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.Exemption.datasource" />
     <None Include="Properties\DataSources\BindingModels.JobTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.JPIXWipReportModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.MerBindingWip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
@@ -896,6 +909,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JPIX\frmJPIXOrderDetail.resx">
       <DependentUpon>frmJPIXOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JPIX\frmJPIXWipReport.resx">
+      <DependentUpon>frmJPIXWipReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.resx">
+      <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JPIX\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
@@ -1048,6 +1067,7 @@
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
+    <EmbeddedResource Include="Reports\JPIXFlyerWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />

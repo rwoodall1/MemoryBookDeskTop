@@ -18,7 +18,7 @@ namespace Mbc5.Forms.JPIX
     public partial class frmJPIXOrder : BaseClass.frmBase
     {
         public frmMain frmMain { get; set; }
-        public frmJPIXOrder(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead","MbcCs"}, userPrincipal)
+        public frmJPIXOrder(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead", "MbcCs" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -45,13 +45,13 @@ namespace Mbc5.Forms.JPIX
                 foreach (FileInfo file in dir.GetFiles("*.xml"))
                 {
                     string contents = File.ReadAllText(file.FullName);
-                 
+
                     try
                     {
 
                         var stringreader = new StringReader(contents);
                         JostensPIXFulfillmentRequests jpixOrders = (JostensPIXFulfillmentRequests)serializer.Deserialize(stringreader);
-                      
+
                         var result = await this.InsertOrders(jpixOrders);
 
 
@@ -60,7 +60,7 @@ namespace Mbc5.Forms.JPIX
                     }
                     catch (Exception ex)
                     {
-                        MbcMessageBox.Error(ex.InnerException.Message,"Error reading XML");
+                        MbcMessageBox.Error(ex.InnerException.Message, "Error reading XML");
                     }
 
 
@@ -96,6 +96,7 @@ namespace Mbc5.Forms.JPIX
             var sqlClient = new SQLCustomClient().CommandText(@"Insert Into JPIXOrders
            (Document
            ,NeedsByDate
+            ,ProjectedShipDate
            ,ProductType
            ,Quantity
            ,ShipToContact
@@ -109,9 +110,10 @@ namespace Mbc5.Forms.JPIX
            ,ShipToGroup
            ,Reference
            ,DateReceived
-           ,OracleCode,RequestId) Values(
+           ,OracleCode,RequestId,OrderStatus) Values(
             @Document
            ,@NeedsByDate
+            ,@ProjectedShipDate
            ,@ProductType
            ,@Quantity
            ,@ShipToContact
@@ -125,7 +127,7 @@ namespace Mbc5.Forms.JPIX
            ,@ShipToGroup
            ,@Reference
            ,@DateReceived
-           ,@OracleCode,@RequestId)");
+           ,@OracleCode,@RequestId,@OrderStatus)");
 
 
             foreach (var order in jpixOrders.JostensPIXOrder)
@@ -133,6 +135,7 @@ namespace Mbc5.Forms.JPIX
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Document", "\\\\sedsujpisl01\\workflow\\JPixFlyers\\Archive\\" + jpixOrders.RequestId + "\\" + order.JostensPIXOrderItem.Document);
                 sqlClient.AddParameter("@NeedsByDate", order.JostensPIXOrderItem.DateNeedsByDate);
+                sqlClient.AddParameter("@@ProjectedShipDate", order.JostensPIXOrderItem.DateNeedsByDate.AddDays(-4));
                 sqlClient.AddParameter("@ProductType", order.JostensPIXOrderItem.ProductType);
                 sqlClient.AddParameter("@Quantity", order.JostensPIXOrderItem.Quantity);
                 sqlClient.AddParameter("@ShipToContact", order.JostensPIXOrderItem.ShipToContact);
@@ -147,13 +150,14 @@ namespace Mbc5.Forms.JPIX
                 sqlClient.AddParameter("@Reference", order.JostensPIXOrderItem.Reference);
                 sqlClient.AddParameter("@DateReceived", DateTime.Now);
                 sqlClient.AddParameter("@OracleCode", order.JostensPIXOrderItem.SchoolCode);
+                sqlClient.AddParameter("@OrderStatus", "Received");
                 string DateId = DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Year.ToString();
-                sqlClient.AddParameter("@RequestId", jpixOrders.RequestId +DateId);
+                sqlClient.AddParameter("@RequestId", jpixOrders.RequestId + DateId);
                 var result = sqlClient.Insert();
                 if (result.IsError)
                 {
-                    Log.Error("Failed to insert record for JPXIX document:" + order.JostensPIXOrderItem.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "|" + result.Errors[0].DeveloperMessage);
-                    MbcMessageBox.Error("Failed to insert record for document:" + order.JostensPIXOrderItem.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "|" + result.Errors[0].DeveloperMessage);
+                    Log.Error("Failed to insert record for JPXIX document:" + order.JostensPIXOrderItem.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "Name:" + order.JostensPIXOrderItem.ShipToCustomerName + "|" + result.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to insert record for document:" + order.JostensPIXOrderItem.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "Name:" + order.JostensPIXOrderItem.ShipToCustomerName + "|" + result.Errors[0].DeveloperMessage);
                 }
                 await InsertProduction(order, result.Data);
 

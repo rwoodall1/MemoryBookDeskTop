@@ -21,6 +21,7 @@ namespace Mbc5.Forms.JPIX
 
         private void frmJPIXOrderDetail_Load(object sender, EventArgs e)
         {
+            this.SetConnectionString();
             this.Fill();
         }
         private void Fill()
@@ -109,6 +110,21 @@ namespace Mbc5.Forms.JPIX
         {
             jPIXOrdersBindingSource.EndEdit();
             this.jPIXOrdersTableAdapter.Update(this.dsJPIXOrders.JPIXOrders);
+        }
+        private void SetConnectionString()
+        {
+            try
+            {
+
+                this.jPIXOrdersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
+
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set JPIX orders connection strings");
+
+            }
         }
     }
 }
