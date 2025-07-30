@@ -5,7 +5,7 @@ using BindingModels;
 using Exceptionless;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
-using Mbc5.Forms.MemoryBook;
+
 using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -87,8 +87,7 @@ namespace Mbc5.Forms
             vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             reorderDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             reOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mcustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
             lkpCustTypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpCoverStockTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lkpMascotTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -131,7 +130,8 @@ namespace Mbc5.Forms
                         tbProdutn.SelectTab(1);
                     }
                 }
-                catch { };
+                catch { }
+                ;
             }
             catch (Exception ex)
             {
@@ -7228,10 +7228,7 @@ namespace Mbc5.Forms
                     }
                     custTableAdapter.Fill(dsProdutn.cust, Schcode);
 
-                    quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
-                    mcustTableAdapter.Fill(dsMcust.mcust, Schcode);
 
-                    mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
 
                     produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
                     if (produtnBindingSource.Count > 0)
@@ -7273,7 +7270,8 @@ namespace Mbc5.Forms
 
                     MbcMessageBox.Error(ex.Message, "");
                     return;
-                };
+                }
+                ;
 
 
 
@@ -7641,7 +7639,8 @@ namespace Mbc5.Forms
                     catch (DBConcurrencyException dbex)
                     {
                         DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.partbkRow)(dbex.Row), ref dsProdutn);
-                        if (result == DialogResult.Yes) { SavePartBK(); };
+                        if (result == DialogResult.Yes) { SavePartBK(); }
+                        ;
                     }
                     catch (Exception ex)
                     {
@@ -7680,7 +7679,8 @@ namespace Mbc5.Forms
                     catch (DBConcurrencyException dbex)
                     {
                         DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row), ref dsProdutn);
-                        if (result == DialogResult.Yes) { SavePtBkB(); };
+                        if (result == DialogResult.Yes) { SavePtBkB(); }
+                        ;
                     }
                     catch (Exception ex)
                     {
@@ -10036,28 +10036,7 @@ namespace Mbc5.Forms
             Cursor.Current = Cursors.Default;
         }
 
-        private void btnRecvHistory_Click(object sender, EventArgs e)
-        {
-            if (Company == "MBC")
-            {
-                this.Cursor = Cursors.AppStarting;
-                frmReceivingCard frmReceivingCard = new frmReceivingCard(this.ApplicationUser, this.Schcode, this.Invno);
-                frmReceivingCard.MdiParent = this.MdiParent;
-                frmReceivingCard.Show();
-                this.Cursor = Cursors.Default;
-            }
-            else if (Company == "MER")
-            {
-                this.Cursor = Cursors.AppStarting;
-                frmMReceivingCard frmReceivingCard = new frmMReceivingCard(this.ApplicationUser, this.Schcode, this.Invno);
-                frmReceivingCard.MdiParent = this.MdiParent;
-                frmReceivingCard.Show();
-                this.Cursor = Cursors.Default;
-            }
-            else { MbcMessageBox.Warning("Company was not found, can not open form.", ""); }
 
-
-        }
 
         private void laminatedTextBox_Leave(object sender, EventArgs e)
         {
@@ -10677,7 +10656,8 @@ namespace Mbc5.Forms
                     .MarkAsCritical()
                     .Submit();
                 MbcMessageBox.Error(ex.Message);
-            };
+            }
+            ;
 
 
             try
@@ -10784,7 +10764,8 @@ namespace Mbc5.Forms
                     .MarkAsCritical()
                     .Submit();
                 MbcMessageBox.Error(ex.Message);
-            };
+            }
+            ;
 
 
             try
