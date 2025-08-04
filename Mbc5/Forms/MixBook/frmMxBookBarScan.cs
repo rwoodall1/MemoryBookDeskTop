@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using BindingModels;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
 using BaseClass.Core;
-using Microsoft.Reporting.WinForms;
-using System.IO;
-using Mbc5.Classes;
-using RESTModule;
-using System.Threading.Tasks;
+using BindingModels;
 using Exceptionless;
-using System.Configuration;
-using System.Diagnostics;
+using Mbc5.Classes;
 using Mbc5.Dialogs;
-using System.Drawing.Printing;
-using Microsoft.ReportingServices.RdlObjectModel;
-using System.Net.Sockets;
+using Microsoft.Reporting.WinForms;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Drawing.Printing;
+using System.Net.Sockets;
+using System.Text;
+using System.Windows.Forms;
 namespace Mbc5.Forms.MixBook
 {
 
@@ -32,9 +25,16 @@ namespace Mbc5.Forms.MixBook
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
+            JPIXScanner = new JPIXScan(userPrincipal);
+            MXBScanner = new MixbookScan(userPrincipal);
             lblScanQty.Text = "0";
         }
-        private static readonly string _matrixPrinterA=ConfigurationManager.AppSettings["MatrixPrinterA"].ToString();
+        private JPIXScan JPIXScanner;
+        private MixbookScan MXBScanner;
+        private Department Department = new Department();
+
+        //OldProperties
+        private static readonly string _matrixPrinterA = ConfigurationManager.AppSettings["MatrixPrinterA"].ToString();
         private static readonly string _matrixPrinterB = ConfigurationManager.AppSettings["MatrixPrinterB"].ToString();
         public string LabelPrinter { get; set; }
         public string Company { get; set; }
@@ -43,12 +43,17 @@ namespace Mbc5.Forms.MixBook
         public int QuantityScanned { get; set; } = 0;
         public int PkgQuantity { get; set; } = 0;
         public List<PackageData> PrintedPackageList { get; set; } = new List<PackageData>();
+
+
+
+
         private void frmMxBookBarScan_Load(object sender, EventArgs e)
         {
+            this.SetDepartmentCode();
             txtQtyToScan.Text = "40"; //default
-            if (ApplicationUser.UserName.ToUpper() == "ONBOARD" || ApplicationUser.UserName.ToUpper() == "TRIMMING" || ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "BINDING2")
+            if (ApplicationUser.UserName.ToUpper() == "ONBOARD" || ApplicationUser.UserName.ToUpper() == "TRIMMING" || ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
             {
-                if (ApplicationUser.UserName.ToUpper() == "BINDING"|| ApplicationUser.UserName.ToUpper() == "BINDING2")
+                if (ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
                 {
                     chkPrToLabeler.Visible = true;
                     btnClearPrinter.Visible = true;
@@ -75,110 +80,168 @@ namespace Mbc5.Forms.MixBook
             {
                 pnlQty.Visible = true;
                 pnlImpersonate.Visible = true;
-            };
+            }
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarCode.Text))
+            {
+                txtBarCode_Leave(this.btnSave, null);
+            }
         }
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
-           
+
             lblLastScan.Text = txtBarCode.Text;
             string vInvno = "";
-           
-                try
+            if (string.IsNullOrEmpty(txtBarCode.Text))
+            {
+                return;
+            }
+
+            this.Company = txtBarCode.Text.ToUpper().Substring(0, 3);
+
+
+            try
+            {
+
+
+                //if (this.Company == "MXB")
+                //{
+                //    //expecting MXB1111111YB
+                //    vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
+                //}
+                //else
+                //{
+                //    if (txtBarCode.Text.Length == 12)
+                //    {
+                //        vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
+                //    }
+                //    else if (txtBarCode.Text.Length == 11)
+                //    {
+                //        vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
+                //    }
+                //    else
+                //    {
+                //        MbcMessageBox.Error("Scan code is not in correct format");
+                //        return;
+                //    }
+                //}
+
+                //int parsedInvno = 0;
+                //var parseResult = int.TryParse(vInvno, out parsedInvno);
+                //this.Invno = parsedInvno;
+                //if (!parseResult)
+                //{
+                //    MessageBox.Show("Invalid scan code");
+                //    return;
+                //}
+                //var sqlQuery = new SQLCustomClient();
+
+                switch (this.Company)
                 {
-                if (string.IsNullOrEmpty(txtBarCode.Text))
-                {
-                    return;
-                }
-                this.Company = txtBarCode.Text.ToUpper().Substring(0, 3);
-                    if (this.Company == "MXB")
-                    {
-                        //expecting MXB1111111YB
-                        vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
-                    }
-                    else
-                    {
-                        if (txtBarCode.Text.Length == 12)
+                    case "MXB":
                         {
-                            vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
+                            try
+                            {
+                                vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+
+
+                            //string cmdText = @"
+                            //                SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
+                            //                M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
+                            //                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
+                            //                Left Join Covers C ON M.Invno=C.Invno
+                            //                Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
+                            //sqlQuery.CommandText(cmdText);
+                            //sqlQuery.AddParameter("@Invno", Invno);
+                            //var result = sqlQuery.Select<MixBookBarScanModel>();
+                            //if (result.IsError)
+                            //{
+                            //    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
+                            //    return;
+                            //}
+                            //if (result.Data == null)
+                            //{
+                            //    MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            //    return;
+                            //}
+                            //MbxModel = (MixBookBarScanModel)result.Data;
+                            //if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
+                            //{
+                            //    if (this.ApplicationUser.UserName.ToUpper() != "TRIMMING")
+                            //    {
+                            //        MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
+                            //        ClearScan();
+                            //        return;
+                            //    }
+                            //}
+                            //lblBkLocation.Text = MbxModel.BookLocation;
+                            //txtDateTime.Text = DateTime.Now.ToString();
+                            //MXBScan();
+                            //ClearScan();
+                            break;
                         }
-                        else if (txtBarCode.Text.Length == 11)
+                    case "JPX":
                         {
-                            vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
+                            JPXScan();
+                            break;
                         }
-                        else
+                    default:
                         {
-                            MbcMessageBox.Error("Scan code is not in correct format");
+                            MbcMessageBox.Error("Scan code does not have a valid company prefix");
+                            ClearScan();
                             return;
                         }
-                    }
 
-                    int parsedInvno = 0;
-                    var parseResult = int.TryParse(vInvno, out parsedInvno);
-                    this.Invno = parsedInvno;
-                    if (!parseResult)
-                    {
-                        MessageBox.Show("Invalid scan code");
-                        return;
-                    }
-                    var sqlQuery = new SQLCustomClient();
 
-                    switch (this.Company)
-                    {
-                        case "MXB":
-                            {
-                                string cmdText = @"
-                                            SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
-                                            M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
-                                            From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
-                                            Left Join Covers C ON M.Invno=C.Invno
-                                            Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
-                                sqlQuery.CommandText(cmdText);
-                                sqlQuery.AddParameter("@Invno", Invno);
-                                var result = sqlQuery.Select<MixBookBarScanModel>();
-                                if (result.IsError)
-                                {
-                                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
-                                    return;
-                                }
-                                if (result.Data == null)
-                                {
-                                    MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                                    return;
-                                }
-                                MbxModel = (MixBookBarScanModel)result.Data;
-                                if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
-                                {
-                                if (this.ApplicationUser.UserName.ToUpper() !="TRIMMING") {
-                                    MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
-                                    ClearScan();
-                                    return;
-                                }
-                                }
-                                lblBkLocation.Text = MbxModel.BookLocation;
-                                txtDateTime.Text = DateTime.Now.ToString();
-                                MXBScan();
-                                ClearScan();
-                                break;
-                            }
-                    }
                 }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error("An error has occured:" + ex.Message + " Stack: "+ ex.StackTrace);
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("An error has occured:" + ex.Message);
-                    ClearScan();
             }
-            
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error("An error has occured:" + ex.Message + " Stack: " + ex.StackTrace);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("An error has occured:" + ex.Message);
+                ClearScan();
+            }
+
+        }
+
+        private void SetDepartmentCode()
+        {
+            string currentUser = ApplicationUser.UserName.ToUpper();
+            switch (currentUser)
+            {
+                case "PRESS":
+                    this.Department.DeptCode = "29";
+                    this.Department.Initials = "PS";
+                    this.Department.AutoTime = .1m;
+                    break;
+                case "Shipping":
+                    this.Department.DeptCode = "40";
+                    this.Department.Initials = "SH";
+                    this.Department.AutoTime = .1m;
+                    break;
+            }
+
         }
         private void ClearScan()
         {
             txtBarCode.Text = "";
             txtDateTime.Text = "";
-
+            txtTrackingNumber.Text = "";
             chkRemake.Checked = false;
+            txtReasonCode.Text = "";
+            txtRemakeQty.Text = "0";
 
-            MbxModel = null;
+
             txtBarCode.Focus();
         }
         private void MXBScan()
@@ -228,7 +291,7 @@ namespace Mbc5.Forms.MixBook
                         //check if scan exist stop if it does per tf
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                           
+
                             return;
                         }
                         sqlClient.ClearParameters();
@@ -279,10 +342,10 @@ namespace Mbc5.Forms.MixBook
                         vWIR = "TR";
                         if (!WipCheck(vDeptCode, "YB"))
                         {
-                            
+
                             //return; do not check for duplicate
                         }
-                      
+
                         string cmd = "Select Count(Invno) AS NumRec from WipDetail where DescripId=@DescripId AND Invno=@Invno";
 
 
@@ -434,19 +497,19 @@ namespace Mbc5.Forms.MixBook
                         if (MbxModel.Backing == "HC")
                         {
                             //string _Location = txtLocation.Text + this.Invno.ToString().Substring(1, 7) + "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
-                            string _Location =  "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
+                            string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
-                              
+
                                 if (!chkPrToLabeler.Checked)
                                 {
-                                    PrintDataMatrix(txtBarCode.Text,_Location );//
+                                    PrintDataMatrix(txtBarCode.Text, _Location);//
                                 }
                                 else
                                 {
                                     //Print to labeler
                                     List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                                    var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location =_Location  };//
+                                    var vData = new BookBlockLabel() { Barcode = "*" + txtBarCode.Text + "*", Location = _Location };//
                                     listData.Add(vData);
                                     reportViewer2.LocalReport.DataSources.Clear();
                                     reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
@@ -542,10 +605,10 @@ namespace Mbc5.Forms.MixBook
                             Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert scan.", result111.Errors[0].DeveloperMessage);
                             return;
                         }
-                        
+
                         if (MbxModel.Backing == "HC")
                         {
-                            string _Location =  "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
+                            string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
                                 if (!chkPrToLabeler.Checked)
@@ -703,7 +766,7 @@ namespace Mbc5.Forms.MixBook
                             }
                         }
 
-                        
+
                         string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
                         //try
                         //{
@@ -759,7 +822,7 @@ namespace Mbc5.Forms.MixBook
                                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update location in order tabel of order invno:" + Invno.ToString());
                                 }
                             }
-                            
+
                         }
                         else { PrintPackingList(MbxModel.ClientOrderId); }
                         sqlClient.ClearParameters();
@@ -834,7 +897,7 @@ namespace Mbc5.Forms.MixBook
                             if (orderDone)
                             {
                                 lblBkLocation.Text = strLoc;
-                                var printResult=MessageBox.Show("Order is complete, all items have been scanned. Would you like to print a packing slip? " + strLoc,"Order Complete",MessageBoxButtons.YesNo,MessageBoxIcon.Information,MessageBoxDefaultButton.Button1)
+                                var printResult = MessageBox.Show("Order is complete, all items have been scanned. Would you like to print a packing slip? " + strLoc, "Order Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                                     ;
                                 if (printResult == DialogResult.Yes)
                                 {
@@ -854,7 +917,7 @@ namespace Mbc5.Forms.MixBook
                         MbcMessageBox.Stop("Login not found for scan.", "Missing Login");
                         break;
                 }
-                
+
             }
             else if (trkType == "SC")
             {
@@ -876,43 +939,44 @@ namespace Mbc5.Forms.MixBook
                         sqlClient.CommandText(@"Select FullRemake,Remake
                                                 from Covers C 
                                                 Where C.Invno=@Invno And Remake = 1 ");
-                                                  
+
                         sqlClient.AddParameter("@Invno", MbxModel.Invno);
                         var remakeResult = sqlClient.Select<RemakeChk>();
                         if (remakeResult.IsError)
                         {
                             Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(remakeResult.Errors[0].DeveloperMessage);
-                           //go on we are not stopping the process
+                            //go on we are not stopping the process
                         }
-                        var remakeData =(RemakeChk) remakeResult.Data;
+                        var remakeData = (RemakeChk)remakeResult.Data;
                         //msg num of remakes
-                        if ( remakeData!=null && remakeData.Remake && remakeData.FullRemake>1)
+                        if (remakeData != null && remakeData.Remake && remakeData.FullRemake > 1)
                         {
                             if (MbxModel.Quantity > 1)
                             {
                                 MbcMessageBox.Information("THIS IS A REMAKE: You should have " + remakeData.FullRemake.ToString() + "remake copies in this order");
                             }
                         }
-                        else {
+                        else
+                        {
                             if (MbxModel.Quantity > 1)
                             {
                                 MbcMessageBox.Information("You should have " + MbxModel.Quantity.ToString() + " copies in this order");
                             }
                         }
-                       
-                        string input = Interaction.InputBox("Qty in Order:"+ MbxModel.Quantity.ToString(), "Assign Cover Location", "Enter A Location");
-                           string updateLocation = input;
-                            if (string.IsNullOrEmpty(input))
-                            {
-                                MbcMessageBox.Information("Scan has been canceled.");
-                                return;
-                            }
-                            if (input.Length > 2)
-                            {
-                                MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
-                                return;
-                            }
-                       
+
+                        string input = Interaction.InputBox("Qty in Order:" + MbxModel.Quantity.ToString(), "Assign Cover Location", "Enter A Location");
+                        string updateLocation = input;
+                        if (string.IsNullOrEmpty(input))
+                        {
+                            MbcMessageBox.Information("Scan has been canceled.");
+                            return;
+                        }
+                        if (input.Length > 2)
+                        {
+                            MbcMessageBox.Information("Invalid location, please enter another location. Scan has been canceled.", "Invalid Location");
+                            return;
+                        }
+
                         //war is datetime
                         //wir is initials
                         sqlClient.ClearParameters();
@@ -958,14 +1022,14 @@ namespace Mbc5.Forms.MixBook
                         var orderLocResult = sqlClient.Update();
                         if (orderLocResult.IsError)
                         {
-                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString()+" Input:"+ updateLocation + " | "+JsonConvert.SerializeObject(orderLocResult));
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover location in order tabel of order invno:" + Invno.ToString() + " Input:" + updateLocation + " | " + JsonConvert.SerializeObject(orderLocResult));
                         }
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CoverStatus=@BookStatus where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@BookStatus", "OnBoard");
                         sqlClient.Update();
-                       
+
                         ClearScan();
                         break;
                     case "TRIMMING":
@@ -975,7 +1039,7 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                        
+
                             //return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -1034,7 +1098,7 @@ namespace Mbc5.Forms.MixBook
                         //wir is initials
                         if (!WipCheck(vDeptCode, "SC"))
                         {
-                          
+
                             return;
                         }
                         sqlClient.AddParameter("@Invno", this.Invno);
@@ -1082,6 +1146,171 @@ namespace Mbc5.Forms.MixBook
             }
             ClearScan();
         }
+        private void JPXScan()
+        {
+            ScanData _scanData = new ScanData(txtBarCode.Text,this.Department);
+           bool completed= this.JPIXScanner.Scan(_scanData);
+            if (completed)
+            {
+                ClearScan();
+            }
+            //int vDeptCode = 0;
+            //int.TryParse(txtDeptCode.Text, out vDeptCode);
+            //var vDateTime = DateTime.Now;
+            //try { vDateTime = DateTime.Parse(txtDateTime.Text); } catch { }
+            //;
+            //decimal vWtr = 0;
+            //try { vWtr = decimal.Parse(txtTime.Text); } catch { }
+
+            //var vWIR = txtIntitials.Text;
+            //var sqlClient = new SQLCustomClient();
+            //string company = txtBarCode.Text.Substring(0, 3);
+            //switch (vDeptCode.ToString())
+            //{
+            //    case "40":
+            //        {
+            //            //shipped
+            //            sqlClient.ClearParameters();
+            //            sqlClient.CommandText(@"Update Produtn Set ShpDate=@ShpDate Where Invno=@Invno");
+            //            sqlClient.AddParameter("@ShpDate", vDateTime);
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            var produtnUpdateResult = sqlClient.Update();
+            //            if (produtnUpdateResult.IsError)
+            //            {
+            //                MbcMessageBox.Error("Failed to update production with shipped date.");
+            //            }
+            //            //UPDATE FIRST_________________________________________________________________________________
+            //            sqlClient.ClearParameters();
+            //            //war is datetime
+            //            //wir is initials
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            sqlClient.AddParameter("@DescripID", vDeptCode);
+            //            sqlClient.AddParameter("@WAR", vDateTime);
+            //            sqlClient.AddParameter("@WIR", vWIR);
+            //            sqlClient.AddParameter("@Wtr", vWtr);
+
+            //            sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+            //            sqlClient.CommandText(@"Update WIPDetail SET
+            //            WAR=
+            //                CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+            //            , WIR =
+            //                CASE When WIR IS NULL THEN @WIR ELSE WIR END
+            //                ,WTR=@Wtr+COALESCE(WTR,0)
+            //        WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+            //            var result = sqlClient.Update();
+            //            if (result.IsError)
+            //            {
+            //                MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            //INSERT_____________________________________________________________________________________________________________________________
+            //            sqlClient.ClearParameters();
+            //            sqlClient.ReturnSqlIdentityId(true);
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            sqlClient.AddParameter("@DescripID", vDeptCode);
+            //            sqlClient.AddParameter("@WAR", vDateTime);
+            //            sqlClient.AddParameter("@WIR", vWIR);
+            //            sqlClient.AddParameter("@Wtr", vWtr);
+            //            sqlClient.AddParameter("@SchcodeCode", "1");
+            //            sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+            //            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+            //                            Begin
+            //                            INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode,@SchcodeCode);
+            //                            END
+            //                            ");
+
+            //            var result1 = sqlClient.Insert();
+            //            if (result1.IsError)
+            //            {
+            //                Log.Error(result1.Errors[0].DeveloperMessage);
+            //                MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            //_____________________________
+            //            sqlClient.ClearParameters();
+            //            sqlClient.CommandText(@"Update JPIXOrders Set DateShipped=@ShippedDate,TrackingNumber=@TrackingNumber,OrderStatus='Shipped' where Invno=@Invno");
+            //            sqlClient.AddParameter("@ShippedDate", DateTime.Now);
+            //            sqlClient.AddParameter("@TrackingNumber", txtTrackingNo.Text.Trim());
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            var updateOrderResult = sqlClient.Update();
+            //            if (updateOrderResult.IsError)
+            //            {
+            //                Log.Error(updateOrderResult.Errors[0].DeveloperMessage);
+            //                MessageBox.Show("Failed to update order status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            break;
+            //        }
+            //    case "29":
+            //        {
+
+            //            //UPDATE FIRST_________________________________________________________________________________
+            //            sqlClient.ClearParameters();
+            //            //war is datetime
+            //            //wir is initials
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            sqlClient.AddParameter("@DescripID", vDeptCode);
+            //            sqlClient.AddParameter("@WAR", vDateTime);
+            //            sqlClient.AddParameter("@WIR", vWIR);
+            //            sqlClient.AddParameter("@Wtr", vWtr);
+
+            //            sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+            //            sqlClient.CommandText(@"Update WIPDetail SET
+            //            WAR=
+            //                CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+            //            , WIR =
+            //                CASE When WIR IS NULL THEN @WIR ELSE WIR END
+            //                ,WTR=@Wtr+COALESCE(WTR,0)
+            //        WHERE Invno=@Invno AND DescripID=@DescripID ");
+
+            //            var result = sqlClient.Update();
+            //            if (result.IsError)
+            //            {
+            //                MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            //INSERT_____________________________________________________________________________________________________________________________
+            //            sqlClient.ClearParameters();
+            //            sqlClient.ReturnSqlIdentityId(true);
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            sqlClient.AddParameter("@DescripID", vDeptCode);
+            //            sqlClient.AddParameter("@WAR", vDateTime);
+            //            sqlClient.AddParameter("@WIR", vWIR);
+            //            sqlClient.AddParameter("@Wtr", vWtr);
+
+            //            sqlClient.AddParameter("@OracleCode", txtSchcode.Text);
+            //            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+            //                            Begin
+            //                            INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,OracleCode,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@OracleCode);
+            //                            END
+            //                            ");
+
+            //            var result1 = sqlClient.Insert();
+            //            if (result1.IsError)
+            //            {
+            //                MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+            //            //_____________________________
+            //            sqlClient.ClearParameters();
+            //            sqlClient.CommandText(@"Update JPIXOrders Set OrderStatus='Press' where Invno=@Invno");
+            //            sqlClient.AddParameter("@Invno", this.Invno);
+            //            var updateOrderResult = sqlClient.Update();
+            //            if (updateOrderResult.IsError)
+            //            {
+            //                Log.Error(updateOrderResult.Errors[0].DeveloperMessage);
+            //                MessageBox.Show("Failed to update order status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            }
+
+            //            break;
+            //        }
+            //    default:
+            //        {
+
+            //            MbcMessageBox.Error("Department code not recognized for JPIX scan. Please contact support.");
+            //            break;
+            //        }
+            //}
+
+            //ClearScan();
+
+        }
         private void ScanRemake(string currentUser)
         {
 
@@ -1102,7 +1331,7 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
 
-            int vRemakeQuantity =this.MbxModel.Quantity ;
+            int vRemakeQuantity = this.MbxModel.Quantity;
             if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 if (string.IsNullOrEmpty(txtRemakeQty.Text))
@@ -1110,7 +1339,7 @@ namespace Mbc5.Forms.MixBook
                     MbcMessageBox.Stop("Enter a quantity", "Quantity");
                     return;
                 }
-              
+
                 if (!int.TryParse(txtRemakeQty.Text, out vRemakeQuantity))
                 {
                     MbcMessageBox.Error("Invalid Quantity");
@@ -1199,8 +1428,8 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                var result22=sqlClient.Update();
-                if(result22.IsError)
+                var result22 = sqlClient.Update();
+                if (result22.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data Q:" + result22.Errors[0].DeveloperMessage);
@@ -1245,7 +1474,7 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                var updateResult11=sqlClient.Update();
+                var updateResult11 = sqlClient.Update();
                 if (updateResult11.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
@@ -1269,7 +1498,7 @@ namespace Mbc5.Forms.MixBook
                 }
 
                 sqlClient.ClearParameters();
-                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString(); 
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
                 sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo + ' | ' + Convert(nvarchar(max),COALESCE(WipMemo,' '))   Where INVNO=@Invno");
                 sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
@@ -1292,7 +1521,7 @@ namespace Mbc5.Forms.MixBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                var updateResul1t=sqlClient.Update();
+                var updateResul1t = sqlClient.Update();
                 if (updateResul1t.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
@@ -1304,74 +1533,13 @@ namespace Mbc5.Forms.MixBook
             txtRemakeQty.Text = "0";
             txtReasonCode.Text = "";
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtBarCode.Text))
-            {
-                txtBarCode_Leave(this.btnSave, null);
-            }
-        }
-        public async Task<ApiProcessingResult> NotifyMixbookOfShipment(ShippingNotificationInfo model)
-        {
-            var processingResult = new ApiProcessingResult();
-            var returnNotification = new MixbookNotification();
 
-            returnNotification.Request.identifier = model.JobId;//needs to be set with jobid should always have one element
-            returnNotification.Request.Status.occurredAt = DateTime.Now;
-            returnNotification.Request.Status.Value = "Shipped";
-            returnNotification.Request.Shipment[0].trackingNumber = model.TrackingNumber;
-            returnNotification.Request.Shipment[0].shippedAt = DateTime.Now;
-            returnNotification.Request.Shipment[0].method = model.ShipMethod;
-            returnNotification.Request.Shipment[0].weight = model.Weight;
-            returnNotification.Request.Shipment[0].Package[0].Item.identifier = model.ItemId;
-            returnNotification.Request.Shipment[0].Package[0].Item.quantity = model.Qty;
-            var vReturnNotification = Serialize.ToXml(returnNotification);
 
-            var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
-            if (!restServiceResult.IsError)
-            {
-                if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
-                {
-                    //if not set to notified scheduled task will try again
-                    AddMbEventLog(model.JobId, "Shipped", "", vReturnNotification, true);
-                }
-                else
-                {
-                    AddMbEventLog(model.JobId, "Error", restServiceResult.Data.APIResult.ToString(), vReturnNotification, true);
-                    var emailHelper = new EmailHelper();
-                    emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Data.APIResult.ToString(), EmailType.System);
-                }
-            }
-            else
-            {
-                AddMbEventLog(model.JobId, "Error", "", vReturnNotification, false);
-                var emailHelper = new EmailHelper();
-                emailHelper.SendEmail("Failed to notify mixbook of shipped order", "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
-            }
-            return processingResult;
-        }
-        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
-        {
-            var retval = "0";
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
-            sqlClient.AddParameter("@Jobid", jobId);
-            sqlClient.AddParameter("@StatusChangedTo", status);
-            sqlClient.AddParameter("@Notified", notified);
-            sqlClient.AddParameter("@Note", note);
-            sqlClient.AddParameter("@NotificationXML", notificationXML);
-            var sqlResult = sqlClient.Insert();
-            if (sqlResult.IsError)
-            {
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(sqlResult.Errors[0].DeveloperMessage);
-                var emailHelper = new EmailHelper();
-                string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
-                emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);
-                return retval;
-            }
-            retval = sqlResult.Data;
-            return retval;
-        }
+
+
+
+
+
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
@@ -1391,7 +1559,7 @@ namespace Mbc5.Forms.MixBook
                 return;
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
-            
+
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
@@ -1400,22 +1568,22 @@ namespace Mbc5.Forms.MixBook
         }
         private void PrintDataMatrix(string vbarcode, string vlocation)
         {
-            string ip="";
-            
+            string ip = "";
+
             if (this.ApplicationUser.UserName == "binding")
             {
-                 ip = _matrixPrinterA;
+                ip = _matrixPrinterA;
 
             }
-            else if(this.ApplicationUser.UserName == "binding2")
+            else if (this.ApplicationUser.UserName == "binding2")
             {
                 ip = _matrixPrinterB;
-           
+
             }
-          
+
             try
             {
-                TcpClient client = new TcpClient(ip,10200);
+                TcpClient client = new TcpClient(ip, 10200);
 
                 //byte[] escapeb = new byte[] { 0x1B, 0x43, 0x0D };
                 //string escape = System.Text.Encoding.ASCII.GetString(escapeb);
@@ -1450,13 +1618,13 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-                
+
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to print DataMatrix Label");
             }
         }
-        private bool ScanCheck(int invno, string login,string type)
+        private bool ScanCheck(int invno, string login, string type)
         {
-           
+
             bool retval = true;
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Select MixbookOrderStatus  FROM MixbookOrder Where Invno=@Invno ");
@@ -1480,7 +1648,7 @@ namespace Mbc5.Forms.MixBook
                 }
             }
 
-         
+
             return retval;
         }
         private bool WipCheck(string vDeptCode)
@@ -1524,7 +1692,7 @@ namespace Mbc5.Forms.MixBook
             switch (vDeptCode)
             {
                 case "29":
-                    if (countResult.Data != "" && countResult.Data != "0" )
+                    if (countResult.Data != "" && countResult.Data != "0")
                     {
                         MbcMessageBox.Hand("This record may have already been scanned, check for duplicate.", "Duplicate Scan");
                         return false;
@@ -1550,7 +1718,7 @@ namespace Mbc5.Forms.MixBook
                                                 INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
                                                 END
                                                 ");
-                                                                    }
+                    }
                     else if (type == "SC")
                     {
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
@@ -1812,24 +1980,24 @@ namespace Mbc5.Forms.MixBook
             }
             if (chkRemake.Checked)
             {
-               
+
                 pnlQty.Visible = false;
                 pnlRemake.Visible = true;
-                if (currentUser == "QUALITY" || currentUser== "ONBOARD")
+                if (currentUser == "QUALITY" || currentUser == "ONBOARD")
                 {
                     pnlQtyInner.Visible = true;
                 }
                 else { pnlQtyInner.Visible = false; }
-               
+
                 txtReasonCode.Focus();
-            
+
             }
             else
             {
-                
+
                 pnlRemake.Visible = false;
 
-                if (currentUser == "BINDING"|| currentUser == "TRIMMING"|| currentUser == "BINDING2" )
+                if (currentUser == "BINDING" || currentUser == "TRIMMING" || currentUser == "BINDING2")
                 {
 
                     pnlQty.Visible = true;
@@ -1854,7 +2022,7 @@ namespace Mbc5.Forms.MixBook
 
         private void txtBarCode_Validating(object sender, CancelEventArgs e)
         {
-           
+
         }
 
         private void txtReasonCode_KeyUp(object sender, KeyEventArgs e)
@@ -1862,27 +2030,28 @@ namespace Mbc5.Forms.MixBook
             //if (txtReasonCode.TextLength >= 2)
             //{
             //    txtRemakeQty.Focus();
-              
+
             //}
         }
 
         private void txtRemakeQty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar ==13 ||e.KeyChar==9) {
+            if (e.KeyChar == 13 || e.KeyChar == 9)
+            {
                 txtBarCode.Focus();
             }
         }
 
         private void txtRemakeQty_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyData == Keys.Tab) 
+            if (e.KeyData == Keys.Tab)
             {
-               
+
                 e.IsInputKey = true;
             }
         }
 
-        
+
     }
     public class PackageData
     {

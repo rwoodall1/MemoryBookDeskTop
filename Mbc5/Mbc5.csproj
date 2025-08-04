@@ -201,6 +201,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\IScan.cs" />
+    <Compile Include="Classes\JPIXScan.cs" />
+    <Compile Include="Classes\MixbookScan.cs" />
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

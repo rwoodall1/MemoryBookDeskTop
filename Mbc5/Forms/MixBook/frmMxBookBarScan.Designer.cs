@@ -34,13 +34,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.pnlQty = new System.Windows.Forms.Panel();
-            this.txtLocation = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtQtyToScan = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblScanQty = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlRemake = new System.Windows.Forms.Panel();
             this.pnlQtyInner = new System.Windows.Forms.Panel();
             this.txtRemakeQty = new System.Windows.Forms.TextBox();
@@ -65,13 +58,16 @@
             this.cmbLogin = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlImpersonate = new System.Windows.Forms.Panel();
-            this.pnlQty.SuspendLayout();
+            this.txtTrackingNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlRemake.SuspendLayout();
             this.pnlQtyInner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlBookLocation.SuspendLayout();
             this.pnlHoldLocation.SuspendLayout();
             this.pnlImpersonate.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -132,81 +128,12 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // pnlQty
-            // 
-            this.pnlQty.Controls.Add(this.txtLocation);
-            this.pnlQty.Controls.Add(this.label4);
-            this.pnlQty.Controls.Add(this.txtQtyToScan);
-            this.pnlQty.Controls.Add(this.label3);
-            this.pnlQty.Controls.Add(this.lblScanQty);
-            this.pnlQty.Controls.Add(this.label2);
-            this.pnlQty.Location = new System.Drawing.Point(373, 96);
-            this.pnlQty.Name = "pnlQty";
-            this.pnlQty.Size = new System.Drawing.Size(299, 57);
-            this.pnlQty.TabIndex = 2;
-            this.pnlQty.Visible = false;
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.Location = new System.Drawing.Point(227, 30);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(64, 20);
-            this.txtLocation.TabIndex = 3;
-            this.txtLocation.Validating += new System.ComponentModel.CancelEventHandler(this.txtLocation_Validating);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(165, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Location";
-            // 
-            // txtQtyToScan
-            // 
-            this.txtQtyToScan.Location = new System.Drawing.Point(227, 4);
-            this.txtQtyToScan.Name = "txtQtyToScan";
-            this.txtQtyToScan.Size = new System.Drawing.Size(64, 20);
-            this.txtQtyToScan.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(147, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Qty to Scan";
-            // 
-            // lblScanQty
-            // 
-            this.lblScanQty.AutoSize = true;
-            this.lblScanQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScanQty.Location = new System.Drawing.Point(124, 4);
-            this.lblScanQty.Name = "lblScanQty";
-            this.lblScanQty.Size = new System.Drawing.Size(14, 13);
-            this.lblScanQty.TabIndex = 26;
-            this.lblScanQty.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Quantity Scanned";
-            // 
             // pnlRemake
             // 
             this.pnlRemake.Controls.Add(this.pnlQtyInner);
             this.pnlRemake.Controls.Add(this.label7);
             this.pnlRemake.Controls.Add(this.txtReasonCode);
-            this.pnlRemake.Location = new System.Drawing.Point(100, 80);
+            this.pnlRemake.Location = new System.Drawing.Point(102, 96);
             this.pnlRemake.Name = "pnlRemake";
             this.pnlRemake.Size = new System.Drawing.Size(235, 66);
             this.pnlRemake.TabIndex = 10018;
@@ -445,10 +372,37 @@
             this.pnlImpersonate.TabIndex = 10029;
             this.pnlImpersonate.Visible = false;
             // 
+            // txtTrackingNumber
+            // 
+            this.txtTrackingNumber.Location = new System.Drawing.Point(81, 2);
+            this.txtTrackingNumber.Name = "txtTrackingNumber";
+            this.txtTrackingNumber.Size = new System.Drawing.Size(294, 20);
+            this.txtTrackingNumber.TabIndex = 10030;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 10031;
+            this.label5.Text = "Tracking #";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtTrackingNumber);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(42, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(388, 25);
+            this.panel1.TabIndex = 10032;
+            // 
             // frmMxBookBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(691, 242);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);
@@ -459,7 +413,6 @@
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.chkRemake);
             this.Controls.Add(this.lbllastscanlbl);
-            this.Controls.Add(this.pnlQty);
             this.Controls.Add(this.lblLastScan);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBarCode);
@@ -480,7 +433,6 @@
             this.Controls.SetChildIndex(this.txtBarCode, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
-            this.Controls.SetChildIndex(this.pnlQty, 0);
             this.Controls.SetChildIndex(this.lbllastscanlbl, 0);
             this.Controls.SetChildIndex(this.chkRemake, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
@@ -491,8 +443,7 @@
             this.Controls.SetChildIndex(this.pnlBookLocation, 0);
             this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
             this.Controls.SetChildIndex(this.pnlImpersonate, 0);
-            this.pnlQty.ResumeLayout(false);
-            this.pnlQty.PerformLayout();
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.pnlRemake.ResumeLayout(false);
             this.pnlRemake.PerformLayout();
             this.pnlQtyInner.ResumeLayout(false);
@@ -504,6 +455,8 @@
             this.pnlHoldLocation.PerformLayout();
             this.pnlImpersonate.ResumeLayout(false);
             this.pnlImpersonate.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,13 +469,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Panel pnlQty;
-        private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtQtyToScan;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblScanQty;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lbllastscanlbl;
         private System.Windows.Forms.Label lblLastScan;
@@ -547,5 +493,8 @@
         private System.Windows.Forms.Panel pnlQtyInner;
         private System.Windows.Forms.TextBox txtRemakeQty;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtTrackingNumber;
+        private System.Windows.Forms.Label label5;
     }
 }

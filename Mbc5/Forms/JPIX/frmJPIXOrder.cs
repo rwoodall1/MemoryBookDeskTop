@@ -74,6 +74,7 @@ namespace Mbc5.Forms.JPIX
         private void Fill()
         {
             this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
+           
             this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
 
 

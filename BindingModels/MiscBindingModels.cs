@@ -2,6 +2,35 @@
 
 namespace BindingModels
 {
+    public class ScanData
+    {
+        public ScanData(string _barcode, Department _department, string _trackingnumber = "", bool _remake = false, int _remakeqty = 0, bool _printtolabeler = false, int _reasoncode = 0, int RemakeQty = 0)
+        {
+            Department = _department;
+
+            Barcode = _barcode;
+
+            TrackingNumber = _trackingnumber;
+            Remake = _remake;
+            RemakeQty = _remakeqty;
+            PrintToLabeler = _printtolabeler;
+            ReasonCode = _reasoncode;
+        }
+        public string Barcode { get; set; }
+        public Department Department { get; set; }
+        public string TrackingNumber { get; set; }
+        public bool Remake { get; set; }
+        public bool PrintToLabeler { get; set; }
+        public int ReasonCode { get; set; }
+        public int RemakeQty { get; set; }
+    }
+    public class Department
+    {
+        public string DeptCode { get; set; }
+        public string Initials { get; set; }
+        public decimal AutoTime { get; set; }
+    }
+
     public class MerBindingWip
     {
         public int Id { get; set; }
