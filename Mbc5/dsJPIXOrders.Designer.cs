@@ -325,6 +325,12 @@ namespace Mbc5 {
             
             private global::System.Data.DataColumn columnPticketPrinted;
             
+            private global::System.Data.DataColumn columnOrderStatus;
+            
+            private global::System.Data.DataColumn columnInvoiced;
+            
+            private global::System.Data.DataColumn columnInvoiceDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public JPIXOrdersDataTable() {
@@ -544,6 +550,30 @@ namespace Mbc5 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OrderStatusColumn {
+                get {
+                    return this.columnOrderStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InvoicedColumn {
+                get {
+                    return this.columnInvoiced;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InvoiceDateColumn {
+                get {
+                    return this.columnInvoiceDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -601,7 +631,10 @@ namespace Mbc5 {
                         System.DateTime DateReceived, 
                         string OracleCode, 
                         string RequestId, 
-                        bool PticketPrinted) {
+                        bool PticketPrinted, 
+                        string OrderStatus, 
+                        bool Invoiced, 
+                        System.DateTime InvoiceDate) {
                 JPIXOrdersRow rowJPIXOrdersRow = ((JPIXOrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Document,
@@ -626,7 +659,10 @@ namespace Mbc5 {
                         DateReceived,
                         OracleCode,
                         RequestId,
-                        PticketPrinted};
+                        PticketPrinted,
+                        OrderStatus,
+                        Invoiced,
+                        InvoiceDate};
                 rowJPIXOrdersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowJPIXOrdersRow);
                 return rowJPIXOrdersRow;
@@ -679,6 +715,9 @@ namespace Mbc5 {
                 this.columnOracleCode = base.Columns["OracleCode"];
                 this.columnRequestId = base.Columns["RequestId"];
                 this.columnPticketPrinted = base.Columns["PticketPrinted"];
+                this.columnOrderStatus = base.Columns["OrderStatus"];
+                this.columnInvoiced = base.Columns["Invoiced"];
+                this.columnInvoiceDate = base.Columns["InvoiceDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -730,6 +769,12 @@ namespace Mbc5 {
                 base.Columns.Add(this.columnRequestId);
                 this.columnPticketPrinted = new global::System.Data.DataColumn("PticketPrinted", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPticketPrinted);
+                this.columnOrderStatus = new global::System.Data.DataColumn("OrderStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderStatus);
+                this.columnInvoiced = new global::System.Data.DataColumn("Invoiced", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiced);
+                this.columnInvoiceDate = new global::System.Data.DataColumn("InvoiceDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnProductType.MaxLength = 50;
@@ -753,6 +798,7 @@ namespace Mbc5 {
                 this.columnOracleCode.MaxLength = 50;
                 this.columnRequestId.MaxLength = 20;
                 this.columnPticketPrinted.AllowDBNull = false;
+                this.columnOrderStatus.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1253,6 +1299,54 @@ namespace Mbc5 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OrderStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableJPIXOrders.OrderStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderStatus\' in table \'JPIXOrders\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJPIXOrders.OrderStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Invoiced {
+                get {
+                    try {
+                        return ((bool)(this[this.tableJPIXOrders.InvoicedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Invoiced\' in table \'JPIXOrders\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJPIXOrders.InvoicedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime InvoiceDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableJPIXOrders.InvoiceDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceDate\' in table \'JPIXOrders\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJPIXOrders.InvoiceDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDocumentNull() {
                 return this.IsNull(this.tableJPIXOrders.DocumentColumn);
             }
@@ -1502,6 +1596,42 @@ namespace Mbc5 {
             public void SetRequestIdNull() {
                 this[this.tableJPIXOrders.RequestIdColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOrderStatusNull() {
+                return this.IsNull(this.tableJPIXOrders.OrderStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOrderStatusNull() {
+                this[this.tableJPIXOrders.OrderStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInvoicedNull() {
+                return this.IsNull(this.tableJPIXOrders.InvoicedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInvoicedNull() {
+                this[this.tableJPIXOrders.InvoicedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInvoiceDateNull() {
+                return this.IsNull(this.tableJPIXOrders.InvoiceDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInvoiceDateNull() {
+                this[this.tableJPIXOrders.InvoiceDateColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -1686,6 +1816,9 @@ namespace Mbc5.dsJPIXOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("OracleCode", "OracleCode");
             tableMapping.ColumnMappings.Add("RequestId", "RequestId");
             tableMapping.ColumnMappings.Add("PticketPrinted", "PticketPrinted");
+            tableMapping.ColumnMappings.Add("OrderStatus", "OrderStatus");
+            tableMapping.ColumnMappings.Add("Invoiced", "Invoiced");
+            tableMapping.ColumnMappings.Add("InvoiceDate", "InvoiceDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1758,22 +1891,22 @@ SELECT [Document], NeedsByDate, ProductType, Quantity, ShipToContact, ShipToCust
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
+                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted, OrderStatus, Invoiced, InvoiceDate
 FROM            JPIXOrders
 WHERE        (DateShipped IS NULL) AND (PticketPrinted = 0)
 ORDER BY NeedsByDate";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
+            this._commandCollection[1].CommandText = @"SELECT        DateReceived, DateShipped, [Document], Invno, InvoiceDate, Invoiced, IsCanceled, NeedsByDate, Notes, OracleCode, OrderStatus, ProductType, PticketPrinted, Quantity, Reference, RequestId, ShipToAddress1, 
+                         ShipToAddress2, ShipToCity, ShipToContact, ShipToCountry, ShipToCustomerName, ShipToGroup, ShipToPostalCode, ShipToStateOrProvince, TrackingNumber
 FROM            JPIXOrders
 ORDER BY DateReceived DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        ProductType, [Document], NeedsByDate, Quantity, ShipToCustomerName, ShipToContact, ShipToAddress1, ShipToAddress2, ShipToCity, ShipToStateOrProvince, ShipToPostalCode, ShipToCountry, ShipToGroup, Invno, 
-                         TrackingNumber, Notes, DateShipped, IsCanceled, DateReceived, OracleCode, Reference, RequestId, PticketPrinted
+            this._commandCollection[2].CommandText = @"SELECT        DateReceived, DateShipped, [Document], Invno, InvoiceDate, Invoiced, IsCanceled, NeedsByDate, Notes, OracleCode, OrderStatus, ProductType, PticketPrinted, Quantity, Reference, RequestId, ShipToAddress1, 
+                         ShipToAddress2, ShipToCity, ShipToContact, ShipToCountry, ShipToCustomerName, ShipToGroup, ShipToPostalCode, ShipToStateOrProvince, TrackingNumber
 FROM            JPIXOrders
 WHERE        (Invno = @Invno)
 ORDER BY NeedsByDate";

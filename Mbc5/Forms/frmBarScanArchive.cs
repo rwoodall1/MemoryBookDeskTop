@@ -15,9 +15,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Mbc5.Forms
 {
-    public partial class frmBarScan : BaseClass.frmBase
+    public partial class frmBarScanArchive : BaseClass.frmBase
     {
-        public frmBarScan(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
+        public frmBarScanArchive(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
 
             InitializeComponent();

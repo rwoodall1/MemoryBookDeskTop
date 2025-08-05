@@ -191,7 +191,8 @@ namespace Mbc5.Forms
 
                 productionWIPToolStripMenuItem.Visible = false;
 
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
 
@@ -251,7 +252,7 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
             }
-            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
+            else if (ApplicationUser.UserName.ToUpper() == "MXBSHIPPING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixbookBarscanToolStripMenuItem.Visible = false;
@@ -266,6 +267,23 @@ namespace Mbc5.Forms
 
                 productionToolStripMenuItem.Visible = false;
                 shippingScanToolStripMenuItem_Click(null, null);
+
+            }
+            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
+            {
+                caseMatchScanToolStripMenuItem.Visible = false;
+                mixbookBarscanToolStripMenuItem.Visible = false;
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+
+                productionWIPToolStripMenuItem.Visible = false;
+
+                productionToolStripMenuItem.Visible = false;
+                barScanToolStripMenuItem_Click(null, null);
 
             }
 
@@ -1144,8 +1162,13 @@ namespace Mbc5.Forms
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+
+
             this.Cursor = Cursors.AppStarting;
 
+            //frmBarScanArchive frmBarScan = new frmBarScanArchive(this.ApplicationUser);
+            //frmBarScan.MdiParent = this;
+            //frmBarScan.Show();
             frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
             frmBarScan.MdiParent = this;
             frmBarScan.Show();
@@ -1552,10 +1575,10 @@ namespace Mbc5.Forms
         {
             this.Cursor = Cursors.AppStarting;
 
-            frmMxBookBarScan frmBarScan = new frmMxBookBarScan(this.ApplicationUser);
-            frmBarScan.MdiParent = this;
-            frmBarScan.Show();
-            this.Cursor = Cursors.Default;
+            //frmMxBookBarScan frmBarScan = new frmMxBookBarScan(this.ApplicationUser);
+            //frmBarScan.MdiParent = this;
+            //frmBarScan.Show();
+            //this.Cursor = Cursors.Default;
         }
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)

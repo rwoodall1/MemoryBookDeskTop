@@ -2,17 +2,17 @@
 using BindingModels;
 namespace Mbc5.Classes
 {
-    public class MixbookScan : IScan
+    public class MixBookScan : IScan
     {
-        public MixbookScan(UserPrincipal userPrincipal)
+        public MixBookScan(UserPrincipal userPrincipal)
         {
             // Constructor logic if needed
             ApplicationUser = userPrincipal;
         }
         public UserPrincipal ApplicationUser { get; set; }
-        public void Scan(ScanData data)
+        public bool Scan(ScanData data)
         {
-
+            return true; // Placeholder return value, implement logic as needed
         }
         public void ScanRemake()
         {

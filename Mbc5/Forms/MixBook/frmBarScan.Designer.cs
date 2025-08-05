@@ -1,6 +1,6 @@
 ﻿namespace Mbc5.Forms.MixBook
 {
-    partial class frmMxBookBarScan
+    partial class frmBarScan
     {
         /// <summary>
         /// Required designer variable.
@@ -60,14 +60,14 @@
             this.pnlImpersonate = new System.Windows.Forms.Panel();
             this.txtTrackingNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTracking = new System.Windows.Forms.Panel();
             this.pnlRemake.SuspendLayout();
             this.pnlQtyInner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlBookLocation.SuspendLayout();
             this.pnlHoldLocation.SuspendLayout();
             this.pnlImpersonate.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlTracking.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
@@ -147,7 +147,6 @@
             this.pnlQtyInner.Name = "pnlQtyInner";
             this.pnlQtyInner.Size = new System.Drawing.Size(217, 29);
             this.pnlQtyInner.TabIndex = 10020;
-            this.pnlQtyInner.Visible = false;
             // 
             // txtRemakeQty
             // 
@@ -157,6 +156,7 @@
             this.txtRemakeQty.Size = new System.Drawing.Size(100, 20);
             this.txtRemakeQty.TabIndex = 10020;
             this.txtRemakeQty.Text = "0";
+            this.txtRemakeQty.Leave += new System.EventHandler(this.txtRemakeQty_Leave);
             // 
             // label10
             // 
@@ -378,6 +378,7 @@
             this.txtTrackingNumber.Name = "txtTrackingNumber";
             this.txtTrackingNumber.Size = new System.Drawing.Size(294, 20);
             this.txtTrackingNumber.TabIndex = 10030;
+            this.txtTrackingNumber.Leave += new System.EventHandler(this.txtTrackingNumber_Leave);
             // 
             // label5
             // 
@@ -389,20 +390,21 @@
             this.label5.TabIndex = 10031;
             this.label5.Text = "Tracking #";
             // 
-            // panel1
+            // pnlTracking
             // 
-            this.panel1.Controls.Add(this.txtTrackingNumber);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(42, 65);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 25);
-            this.panel1.TabIndex = 10032;
+            this.pnlTracking.Controls.Add(this.txtTrackingNumber);
+            this.pnlTracking.Controls.Add(this.label5);
+            this.pnlTracking.Location = new System.Drawing.Point(42, 65);
+            this.pnlTracking.Name = "pnlTracking";
+            this.pnlTracking.Size = new System.Drawing.Size(388, 25);
+            this.pnlTracking.TabIndex = 10032;
+            this.pnlTracking.Visible = false;
             // 
-            // frmMxBookBarScan
+            // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(691, 242);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlTracking);
             this.Controls.Add(this.pnlImpersonate);
             this.Controls.Add(this.pnlHoldLocation);
             this.Controls.Add(this.pnlBookLocation);
@@ -422,8 +424,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmMxBookBarScan";
-            this.Text = "Mixbook Scan Form";
+            this.Name = "frmBarScan";
+            this.Text = "Barcode Scan Form";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmMxBookBarScan_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
@@ -443,7 +445,7 @@
             this.Controls.SetChildIndex(this.pnlBookLocation, 0);
             this.Controls.SetChildIndex(this.pnlHoldLocation, 0);
             this.Controls.SetChildIndex(this.pnlImpersonate, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.pnlTracking, 0);
             this.pnlRemake.ResumeLayout(false);
             this.pnlRemake.PerformLayout();
             this.pnlQtyInner.ResumeLayout(false);
@@ -455,8 +457,8 @@
             this.pnlHoldLocation.PerformLayout();
             this.pnlImpersonate.ResumeLayout(false);
             this.pnlImpersonate.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlTracking.ResumeLayout(false);
+            this.pnlTracking.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,7 +495,7 @@
         private System.Windows.Forms.Panel pnlQtyInner;
         private System.Windows.Forms.TextBox txtRemakeQty;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTracking;
         private System.Windows.Forms.TextBox txtTrackingNumber;
         private System.Windows.Forms.Label label5;
     }

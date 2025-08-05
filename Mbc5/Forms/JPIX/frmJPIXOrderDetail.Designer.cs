@@ -43,14 +43,14 @@
             System.Windows.Forms.Label referenceLabel;
             System.Windows.Forms.Label oracleCodeLabel;
             System.Windows.Forms.Label notesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJPIXOrderDetail));
             System.Windows.Forms.Label quantityLabel;
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJPIXOrderDetail));
+            System.Windows.Forms.Label orderStatusLabel;
+            System.Windows.Forms.Label invoiceDateLabel;
             this.panel1 = new System.Windows.Forms.Panel();
             this.shipToPostalCodeTextBox = new System.Windows.Forms.TextBox();
-            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
             this.shipToStateOrProvinceComboBox = new System.Windows.Forms.ComboBox();
             this.shipToCityTextBox = new System.Windows.Forms.TextBox();
             this.shipToAddress2TextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +58,7 @@
             this.shipToContactTextBox = new System.Windows.Forms.TextBox();
             this.shipToCustomerNameTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.quantityLabel2 = new System.Windows.Forms.Label();
             this.isCanceledCheckBox = new System.Windows.Forms.CheckBox();
             this.requestIdLabel1 = new System.Windows.Forms.Label();
             this.dateShippedLabel1 = new System.Windows.Forms.Label();
@@ -85,9 +86,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.jPIXOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsJPIXOrders = new Mbc5.dsJPIXOrders();
             this.jPIXOrdersTableAdapter = new Mbc5.dsJPIXOrdersTableAdapters.JPIXOrdersTableAdapter();
             this.tableAdapterManager = new Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager();
-            this.quantityLabel2 = new System.Windows.Forms.Label();
+            this.orderStatusLabel1 = new System.Windows.Forms.Label();
+            this.invoicedCheckBox = new System.Windows.Forms.CheckBox();
+            this.invoiceDateLabel1 = new System.Windows.Forms.Label();
             shipToPostalCodeLabel = new System.Windows.Forms.Label();
             shipToStateOrProvinceLabel = new System.Windows.Forms.Label();
             shipToCityLabel = new System.Windows.Forms.Label();
@@ -103,12 +108,14 @@
             oracleCodeLabel = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
             quantityLabel = new System.Windows.Forms.Label();
+            orderStatusLabel = new System.Windows.Forms.Label();
+            invoiceDateLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -262,6 +269,15 @@
             notesLabel.TabIndex = 29;
             notesLabel.Text = "Notes:";
             // 
+            // quantityLabel
+            // 
+            quantityLabel.AutoSize = true;
+            quantityLabel.Location = new System.Drawing.Point(44, 85);
+            quantityLabel.Name = "quantityLabel";
+            quantityLabel.Size = new System.Drawing.Size(58, 13);
+            quantityLabel.TabIndex = 40;
+            quantityLabel.Text = "Quantity:";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -294,16 +310,6 @@
             this.shipToPostalCodeTextBox.Name = "shipToPostalCodeTextBox";
             this.shipToPostalCodeTextBox.Size = new System.Drawing.Size(401, 20);
             this.shipToPostalCodeTextBox.TabIndex = 29;
-            // 
-            // jPIXOrdersBindingSource
-            // 
-            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
-            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
-            // 
-            // dsJPIXOrders
-            // 
-            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
-            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // shipToStateOrProvinceComboBox
             // 
@@ -384,6 +390,15 @@
             this.panel2.Size = new System.Drawing.Size(429, 225);
             this.panel2.TabIndex = 29;
             // 
+            // quantityLabel2
+            // 
+            this.quantityLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "Quantity", true));
+            this.quantityLabel2.Location = new System.Drawing.Point(107, 83);
+            this.quantityLabel2.Name = "quantityLabel2";
+            this.quantityLabel2.Size = new System.Drawing.Size(117, 23);
+            this.quantityLabel2.TabIndex = 41;
+            this.quantityLabel2.Text = "label1";
+            // 
             // isCanceledCheckBox
             // 
             this.isCanceledCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.jPIXOrdersBindingSource, "IsCanceled", true));
@@ -392,7 +407,7 @@
             this.isCanceledCheckBox.Name = "isCanceledCheckBox";
             this.isCanceledCheckBox.Size = new System.Drawing.Size(121, 24);
             this.isCanceledCheckBox.TabIndex = 40;
-            this.isCanceledCheckBox.Text = "Cancelled";
+            this.isCanceledCheckBox.Text = "Canceled";
             this.isCanceledCheckBox.UseVisualStyleBackColor = true;
             // 
             // requestIdLabel1
@@ -482,24 +497,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.DataBindings.Add(new System.Windows.Forms.Binding("Url", this.jPIXOrdersBindingSource, "Document", true));
-            this.webBrowser1.Location = new System.Drawing.Point(727, 276);
+            this.webBrowser1.Location = new System.Drawing.Point(743, 289);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(404, 336);
+            this.webBrowser1.Size = new System.Drawing.Size(404, 361);
             this.webBrowser1.TabIndex = 33;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource1.Name = "dsMxPackingSlip";
-            reportDataSource1.Value = null;
-            reportDataSource2.Name = "dsMixBookRemakeTkt";
-            reportDataSource2.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource9.Name = "dsMxPackingSlip";
+            reportDataSource9.Value = null;
+            reportDataSource10.Name = "dsMixBookRemakeTkt";
+            reportDataSource10.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource9);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource10);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(37, 446);
+            this.reportViewer1.Location = new System.Drawing.Point(470, 452);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(117, 169);
@@ -654,6 +669,16 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 25);
             // 
+            // jPIXOrdersBindingSource
+            // 
+            this.jPIXOrdersBindingSource.DataMember = "JPIXOrders";
+            this.jPIXOrdersBindingSource.DataSource = this.dsJPIXOrders;
+            // 
+            // dsJPIXOrders
+            // 
+            this.dsJPIXOrders.DataSetName = "dsJPIXOrders";
+            this.dsJPIXOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // jPIXOrdersTableAdapter
             // 
             this.jPIXOrdersTableAdapter.ClearBeforeFill = true;
@@ -664,28 +689,65 @@
             this.tableAdapterManager.JPIXOrdersTableAdapter = this.jPIXOrdersTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.dsJPIXOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // quantityLabel
+            // orderStatusLabel
             // 
-            quantityLabel.AutoSize = true;
-            quantityLabel.Location = new System.Drawing.Point(44, 85);
-            quantityLabel.Name = "quantityLabel";
-            quantityLabel.Size = new System.Drawing.Size(58, 13);
-            quantityLabel.TabIndex = 40;
-            quantityLabel.Text = "Quantity:";
+            orderStatusLabel.AutoSize = true;
+            orderStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            orderStatusLabel.Location = new System.Drawing.Point(15, 598);
+            orderStatusLabel.Name = "orderStatusLabel";
+            orderStatusLabel.Size = new System.Drawing.Size(117, 20);
+            orderStatusLabel.TabIndex = 10023;
+            orderStatusLabel.Text = "Order Status:";
             // 
-            // quantityLabel2
+            // orderStatusLabel1
             // 
-            this.quantityLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "Quantity", true));
-            this.quantityLabel2.Location = new System.Drawing.Point(107, 83);
-            this.quantityLabel2.Name = "quantityLabel2";
-            this.quantityLabel2.Size = new System.Drawing.Size(117, 23);
-            this.quantityLabel2.TabIndex = 41;
-            this.quantityLabel2.Text = "label1";
+            this.orderStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "OrderStatus", true));
+            this.orderStatusLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderStatusLabel1.Location = new System.Drawing.Point(133, 598);
+            this.orderStatusLabel1.Name = "orderStatusLabel1";
+            this.orderStatusLabel1.Size = new System.Drawing.Size(146, 23);
+            this.orderStatusLabel1.TabIndex = 10024;
+            this.orderStatusLabel1.Text = "label1";
+            // 
+            // invoicedCheckBox
+            // 
+            this.invoicedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.jPIXOrdersBindingSource, "Invoiced", true));
+            this.invoicedCheckBox.Enabled = false;
+            this.invoicedCheckBox.Location = new System.Drawing.Point(39, 370);
+            this.invoicedCheckBox.Name = "invoicedCheckBox";
+            this.invoicedCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.invoicedCheckBox.TabIndex = 10025;
+            this.invoicedCheckBox.Text = "Invoiced";
+            this.invoicedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // invoiceDateLabel
+            // 
+            invoiceDateLabel.AutoSize = true;
+            invoiceDateLabel.Location = new System.Drawing.Point(34, 397);
+            invoiceDateLabel.Name = "invoiceDateLabel";
+            invoiceDateLabel.Size = new System.Drawing.Size(84, 13);
+            invoiceDateLabel.TabIndex = 10025;
+            invoiceDateLabel.Text = "Invoice Date:";
+            // 
+            // invoiceDateLabel1
+            // 
+            this.invoiceDateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jPIXOrdersBindingSource, "InvoiceDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.invoiceDateLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceDateLabel1.Location = new System.Drawing.Point(124, 397);
+            this.invoiceDateLabel1.Name = "invoiceDateLabel1";
+            this.invoiceDateLabel1.Size = new System.Drawing.Size(108, 23);
+            this.invoiceDateLabel1.TabIndex = 10026;
+            this.invoiceDateLabel1.Text = "label1";
             // 
             // frmJPIXOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(1291, 629);
+            this.ClientSize = new System.Drawing.Size(1291, 654);
+            this.Controls.Add(invoiceDateLabel);
+            this.Controls.Add(this.invoiceDateLabel1);
+            this.Controls.Add(this.invoicedCheckBox);
+            this.Controls.Add(orderStatusLabel);
+            this.Controls.Add(this.orderStatusLabel1);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.pticketPrintedCheckBox);
             this.Controls.Add(this.reportViewer1);
@@ -710,15 +772,20 @@
             this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.Controls.SetChildIndex(this.pticketPrintedCheckBox, 0);
             this.Controls.SetChildIndex(this.bindingNavigator1, 0);
+            this.Controls.SetChildIndex(this.orderStatusLabel1, 0);
+            this.Controls.SetChildIndex(orderStatusLabel, 0);
+            this.Controls.SetChildIndex(this.invoicedCheckBox, 0);
+            this.Controls.SetChildIndex(this.invoiceDateLabel1, 0);
+            this.Controls.SetChildIndex(invoiceDateLabel, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.jPIXOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsJPIXOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -767,5 +834,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Label quantityLabel2;
+        private System.Windows.Forms.Label orderStatusLabel1;
+        private System.Windows.Forms.CheckBox invoicedCheckBox;
+        private System.Windows.Forms.Label invoiceDateLabel1;
     }
 }

@@ -2,9 +2,22 @@
 
 namespace BindingModels
 {
+    public class RemakeData
+    {
+        public RemakeData(bool _remake = false, string _reasonCode = "", string _remakeQty = "")
+        {
+            Remake = _remake;
+            ReasonCode = _reasonCode;
+            RemakeQty = _remakeQty;
+        }
+        public bool Remake { get; set; }
+        public string ReasonCode { get; set; }
+        public string RemakeQty { get; set; }
+    }
     public class ScanData
     {
-        public ScanData(string _barcode, Department _department, string _trackingnumber = "", bool _remake = false, int _remakeqty = 0, bool _printtolabeler = false, int _reasoncode = 0, int RemakeQty = 0)
+
+        public ScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false)
         {
             Department = _department;
 
@@ -12,14 +25,13 @@ namespace BindingModels
 
             TrackingNumber = _trackingnumber;
             Remake = _remake;
-            RemakeQty = _remakeqty;
             PrintToLabeler = _printtolabeler;
-            ReasonCode = _reasoncode;
+
         }
         public string Barcode { get; set; }
         public Department Department { get; set; }
         public string TrackingNumber { get; set; }
-        public bool Remake { get; set; }
+        public RemakeData Remake { get; set; }
         public bool PrintToLabeler { get; set; }
         public int ReasonCode { get; set; }
         public int RemakeQty { get; set; }

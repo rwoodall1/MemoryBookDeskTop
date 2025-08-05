@@ -203,7 +203,7 @@
   <ItemGroup>
     <Compile Include="Classes\IScan.cs" />
     <Compile Include="Classes\JPIXScan.cs" />
-    <Compile Include="Classes\MixbookScan.cs" />
+    <Compile Include="Classes\MixBookScan.cs" />
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -372,11 +372,11 @@
     <Compile Include="Dialogs\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmBarScan.cs">
+    <Compile Include="Forms\frmBarScanArchive.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmBarScan.Designer.cs">
-      <DependentUpon>frmBarScan.cs</DependentUpon>
+    <Compile Include="Forms\frmBarScanArchive.Designer.cs">
+      <DependentUpon>frmBarScanArchive.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmEndSheet.cs">
       <SubType>Form</SubType>
@@ -494,11 +494,11 @@
     <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxBookBarScan.cs">
+    <Compile Include="Forms\MixBook\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxBookBarScan.Designer.cs">
-      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    <Compile Include="Forms\MixBook\frmBarScan.Designer.cs">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
       <SubType>Form</SubType>
@@ -672,8 +672,8 @@
     <EmbeddedResource Include="Dialogs\frmSearch.resx">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmBarScan.resx">
-      <DependentUpon>frmBarScan.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmBarScanArchive.resx">
+      <DependentUpon>frmBarScanArchive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEndSheet.resx">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
@@ -731,8 +731,8 @@
     <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMxBookBarScan.resx">
-      <DependentUpon>frmMxBookBarScan.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MixBook\frmBarScan.resx">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
