@@ -12,8 +12,41 @@ namespace Mbc5.Classes
         public UserPrincipal ApplicationUser { get; set; }
         public bool Scan(ScanData data)
         {
-            return true; // Placeholder return value, implement logic as needed
+            //string cmdText = @"
+            //                                SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
+            //                                M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
+            //                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
+            //                                Left Join Covers C ON M.Invno=C.Invno
+            //                                Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
+            //sqlQuery.CommandText(cmdText);
+            //sqlQuery.AddParameter("@Invno", Invno);
+            //var result = sqlQuery.Select<MixBookBarScanModel>();
+            //if (result.IsError)
+            //{
+            //    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
+            //    return;
+            //}
+            //if (result.Data == null)
+            //{
+            //    MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //    return;
+            //}
+            //MbxModel = (MixBookBarScanModel)result.Data;
+            //if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
+            //{
+            //    if (this.ApplicationUser.UserName.ToUpper() != "TRIMMING")
+            //    {
+            //        MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
+            //        ClearScan();
+            //        return;
+            //    }
+            //}
+            //lblBkLocation.Text = MbxModel.BookLocation;
+            //txtDateTime.Text = DateTime.Now.ToString();
+            return true;
         }
+
         public bool ScanRemake()
         {
             return true; // Placeholder return value, implement logic as needed
