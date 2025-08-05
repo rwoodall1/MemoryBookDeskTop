@@ -346,11 +346,13 @@
             "BINDING",
             "TRIMMING",
             "ONBOARD",
-            "QUALITY"});
+            "QUALITY",
+            "SHIPPING"});
             this.cmbLogin.Location = new System.Drawing.Point(82, 6);
             this.cmbLogin.Name = "cmbLogin";
             this.cmbLogin.Size = new System.Drawing.Size(169, 21);
             this.cmbLogin.TabIndex = 10027;
+            this.cmbLogin.SelectedValueChanged += new System.EventHandler(this.cmbLogin_SelectedValueChanged);
             // 
             // label9
             // 

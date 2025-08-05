@@ -28,6 +28,7 @@ namespace BindingModels
             PrintToLabeler = _printtolabeler;
 
         }
+
         public string Barcode { get; set; }
         public Department Department { get; set; }
         public string TrackingNumber { get; set; }

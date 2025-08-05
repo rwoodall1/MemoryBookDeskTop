@@ -184,13 +184,13 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = true;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
+
                 tsMain.Visible = false;
 
                 systemToolStripMenuItem.Visible = false;
 
                 productionWIPToolStripMenuItem.Visible = false;
-
+                productionToolStripMenuItem.Visible = true;
 
                 barScanToolStripMenuItem_Click(null, null);
 
@@ -281,8 +281,7 @@ namespace Mbc5.Forms
                 systemToolStripMenuItem.Visible = false;
 
                 productionWIPToolStripMenuItem.Visible = false;
-
-                productionToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = true;
                 barScanToolStripMenuItem_Click(null, null);
 
             }

@@ -83,36 +83,7 @@ namespace Mbc5.Forms.MixBook
                 pnlImpersonate.Visible = true;
             }
 
-            //if (ApplicationUser.UserName.ToUpper() == "ONBOARD" || ApplicationUser.UserName.ToUpper() == "TRIMMING" || ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
-            //{
-            //    if (ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
-            //    {
-            //        chkPrToLabeler.Visible = true;
-            //        btnClearPrinter.Visible = true;
 
-            //        pnlBookLocation.Visible = true;
-            //    }
-            //    if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
-            //    {
-
-            //        pnlBookLocation.Visible = true;
-            //    }
-            //    if (ApplicationUser.UserName.ToUpper() == "TRIMMING")
-            //    {
-            //        //pnlQty.Visible = true;
-            //        //pnlBookLocation.Visible = true;
-            //    }
-
-            //}
-            //else if (ApplicationUser.UserName.ToUpper() == "QUALITY")
-            //{
-            //    pnlHoldLocation.Visible = true;
-            //}
-            //else if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
-            //{
-
-            //    pnlImpersonate.Visible = true;
-            //}
 
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -245,11 +216,14 @@ namespace Mbc5.Forms.MixBook
             }
 
         }
-
         private void SetDepartmentCode()
         {
-            string currentUser = ApplicationUser.UserName.ToUpper();
-            switch (currentUser)
+            SetDepartmentCode(ApplicationUser.UserName.ToUpper());
+        }
+        private void SetDepartmentCode(string name)
+        {
+
+            switch (name)
             {
                 case "PRESS":
                     this.Department.DeptCode = "29";
@@ -260,6 +234,9 @@ namespace Mbc5.Forms.MixBook
                     this.Department.DeptCode = "40";
                     this.Department.Initials = "SH";
                     this.Department.AutoTime = .1m;
+                    break;
+                default:
+                    MbcMessageBox.Warning("Set Department Code!", "Department Code");
                     break;
             }
 
@@ -2096,6 +2073,11 @@ namespace Mbc5.Forms.MixBook
         private void txtRemakeQty_Leave(object sender, EventArgs e)
         {
             txtBarCode.Focus();
+        }
+
+        private void cmbLogin_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.SetDepartmentCode(cmbLogin.SelectedItem.ToString());
         }
     }
     public class PackageData

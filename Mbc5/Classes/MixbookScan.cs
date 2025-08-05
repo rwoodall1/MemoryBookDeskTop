@@ -14,7 +14,11 @@ namespace Mbc5.Classes
         {
             return true; // Placeholder return value, implement logic as needed
         }
-        public void ScanRemake()
+        public bool ScanRemake()
+        {
+            return true; // Placeholder return value, implement logic as needed
+        }
+        public void AddEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
 
         }

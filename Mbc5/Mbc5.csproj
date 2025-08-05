@@ -494,10 +494,10 @@
     <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmBarScan.cs">
+    <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MixBook\frmBarScan.Designer.cs">
+    <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
@@ -731,7 +731,7 @@
     <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmBarScan.resx">
+    <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
