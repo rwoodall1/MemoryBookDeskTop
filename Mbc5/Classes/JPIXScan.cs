@@ -17,9 +17,11 @@ namespace Mbc5.Classes
         UserPrincipal ApplicationUser { get; set; }
         string Invno { get; set; }
         protected Logger Log { get; set; }
+        protected JPIXScanData data { get; set; }
         //public void Scan(string _barcode,string _deptCode, string _custId = "",string _trackingNumber="", string _datetime, bool _remake = false, bool _prntToLabeler = false, int _reasoncode = 0, int _remakeQty = 0)
-        public bool Scan(ScanData data)
+        public bool Scan(ScanData model)
         {
+            this.data = model.JPIXScanData;
             if (data == null || string.IsNullOrEmpty(data.Barcode) || string.IsNullOrEmpty(data.Department.DeptCode))
             {
 

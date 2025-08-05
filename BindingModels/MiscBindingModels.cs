@@ -14,10 +14,9 @@ namespace BindingModels
         public string ReasonCode { get; set; }
         public string RemakeQty { get; set; }
     }
-    public class ScanData
+    public class RawScanData
     {
-
-        public ScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false)
+        public RawScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false)
         {
             Department = _department;
 
@@ -28,7 +27,6 @@ namespace BindingModels
             PrintToLabeler = _printtolabeler;
 
         }
-
         public string Barcode { get; set; }
         public Department Department { get; set; }
         public string TrackingNumber { get; set; }
@@ -36,6 +34,43 @@ namespace BindingModels
         public bool PrintToLabeler { get; set; }
         public int ReasonCode { get; set; }
         public int RemakeQty { get; set; }
+    }
+    public class MXBScanData : RawScanData
+    {
+        public MXBScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false, MixBookBarScanModel _mxbdata = null, object _form = null)
+            : base(_barcode, _department, _trackingnumber, _remake, _printtolabeler)
+        {
+            MxbData = _mxbdata;
+            ScanForm = _form;//frmBarScan can not inject form type in BindingModels
+        }
+        public MixBookBarScanModel MxbData { get; set; }
+        public object ScanForm { get; set; }
+    }
+    public class JPIXScanData : RawScanData
+    {
+        public JPIXScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false)
+           : base(_barcode, _department, _trackingnumber, _remake, _printtolabeler)
+        {
+
+        }
+    }
+
+
+
+    public class ScanData
+    {
+
+        public ScanData(JPIXScanData _jpixscandata = null, MXBScanData mxbscandata = null)
+        {
+            JPIXScanData = _jpixscandata;
+
+            MxbScanData = mxbscandata;
+
+
+        }
+        public JPIXScanData JPIXScanData { get; set; }
+        public MXBScanData MxbScanData { get; set; }
+
     }
     public class Department
     {
