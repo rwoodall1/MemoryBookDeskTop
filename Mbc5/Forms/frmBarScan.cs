@@ -1917,6 +1917,11 @@ namespace Mbc5.Forms.MixBook
         {
             this.SetDepartmentCode(cmbLogin.SelectedItem.ToString());
         }
+
+        private void pnlBookLocation_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     public class PackageData
     {

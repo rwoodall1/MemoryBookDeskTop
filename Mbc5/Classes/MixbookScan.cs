@@ -6,6 +6,7 @@ using Mbc5.Dialogs;
 using Mbc5.Forms.MixBook;
 using Microsoft.Reporting.WinForms;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -366,11 +367,11 @@ namespace Mbc5.Classes
                                     List<BookBlockLabel> listData = new List<BookBlockLabel>();
                                     var vData = new BookBlockLabel() { Barcode = "*" + this.scanData.Barcode + "*", Location = _Location };//
                                     listData.Add(vData);
-                                    reportViewer2.LocalReport.DataSources.Clear();
-                                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                                    reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                    this.Scanform.reportViewer2.LocalReport.DataSources.Clear();
+                                    this.Scanform.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                    this.Scanform.reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
                                     DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                                    dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                    dp.Export(true, this.Scanform.reportViewer2.LocalReport, Scanform.LabelPrinter);
                                 }
                             }
                             //Mark says orders will not be split on location so insert into one location
@@ -477,11 +478,11 @@ namespace Mbc5.Classes
                                     List<BookBlockLabel> listData = new List<BookBlockLabel>();
                                     var vData = new BookBlockLabel() { Barcode = "*" + scanData.Barcode + "*", Location = Scanform.txtLocation.Text };
                                     listData.Add(vData);
-                                    reportViewer2.LocalReport.DataSources.Clear();
-                                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                                    reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                    this.Scanform.reportViewer2.LocalReport.DataSources.Clear();
+                                    this.Scanform.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                    this.Scanform.reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
                                     DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                                    dp.Export(true, reportViewer2.LocalReport, this.LabelPrinter);
+                                    dp.Export(true, this.Scanform.reportViewer2.LocalReport, Scanform.LabelPrinter);
                                 }
                             }
                             //Mark says orders will not be split on location so insert into one location
@@ -511,7 +512,7 @@ namespace Mbc5.Classes
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentBookLoc", Scanform.txtLocation.Text); this.Scanform.txtLocation
+                        sqlClient.AddParameter("@CurrentBookLoc", Scanform.txtLocation.Text); //this.Scanform.txtLocation
                         var orderLocResult11 = sqlClient.Update();
                         if (orderLocResult11.IsError)
                         {
@@ -752,7 +753,8 @@ namespace Mbc5.Classes
                             }
                             if (orderDone)
                             {
-                                lblBkLocation.Text = strLoc;
+
+                                this.Scanform.lblBkLocation.Text = strLoc;
                                 var printResult = MessageBox.Show("Order is complete, all items have been scanned. Would you like to print a packing slip? " + strLoc, "Order Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                                     ;
                                 if (printResult == DialogResult.Yes)
@@ -1434,11 +1436,11 @@ namespace Mbc5.Classes
             }
             var packingSlipData = (List<MixbookPackingSlip>)result.Data;
 
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
-            reportViewer1.LocalReport.EnableExternalImages = true;
-            reportViewer1.RefreshReport();
+            this.Scanform.reportViewer1.LocalReport.DataSources.Clear();
+            this.Scanform.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            this.Scanform.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            this.Scanform.reportViewer1.LocalReport.EnableExternalImages = true;
+            this.Scanform.reportViewer1.RefreshReport();
         }
     }
 }

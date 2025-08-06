@@ -295,6 +295,7 @@
             this.pnlBookLocation.Size = new System.Drawing.Size(265, 29);
             this.pnlBookLocation.TabIndex = 10023;
             this.pnlBookLocation.Visible = false;
+            this.pnlBookLocation.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBookLocation_Paint);
             // 
             // lblBkLocation
             // 
@@ -565,7 +566,6 @@
         private System.Windows.Forms.Button btnClearPrinter;
         private System.Windows.Forms.Panel pnlBookLocation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblBkLocation;
         private System.Windows.Forms.Panel pnlHoldLocation;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -587,5 +587,6 @@
         public System.Windows.Forms.Label lblHoldLocation;
         public Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         public Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        public System.Windows.Forms.Label lblBkLocation;
     }
 }
