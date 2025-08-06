@@ -1745,7 +1745,7 @@ namespace Mbc5.Forms.MixBook
             }
             return retval;
         }
-        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        public void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             Application.DoEvents();

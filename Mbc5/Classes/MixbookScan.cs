@@ -263,7 +263,7 @@ namespace Mbc5.Classes
                         sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                         sqlClient.AddParameter("@Invno", this.Invno);
                         sqlClient.AddParameter("@DescripID", vDeptCode);
-                        sqlClient.AddParameter("@Location", Scanform.txt txtLocation.Text);
+                        sqlClient.AddParameter("@Location", Scanform.txtLocation.Text);
                         var locationresult1 = sqlClient.Update();
                         if (locationresult1.IsError)
                         {
@@ -284,7 +284,8 @@ namespace Mbc5.Classes
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+
+                        sqlClient.AddParameter("@CurrentBookLoc", Scanform.txtLocation.Text);
                         var orderLocResult2 = sqlClient.Update();
                         if (orderLocResult2.IsError)
                         {
@@ -304,7 +305,7 @@ namespace Mbc5.Classes
                         //war is datetime
                         //wir is initials
 
-                        if (string.IsNullOrEmpty(txtLocation.Text) && MbxModel.Backing == "HC")
+                        if (string.IsNullOrEmpty(Scanform.txtLocation.Text) && MbxModel.Backing == "HC")
                         {
                             MbcMessageBox.Hand("Please enter a location.", "Enter Location");
                             return false;
@@ -354,7 +355,7 @@ namespace Mbc5.Classes
                             string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
-                                this.scanData.PrintToLabeler
+
                                 if (!this.scanData.PrintToLabeler)
                                 {
                                     PrintDataMatrix(this.scanData.Barcode, _Location);//
@@ -377,7 +378,7 @@ namespace Mbc5.Classes
                             sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                             sqlClient.AddParameter("@Invno", this.Invno);
                             sqlClient.AddParameter("@DescripID", vDeptCode);
-                            sqlClient.AddParameter("@Location", txtLocation.Text);
+                            sqlClient.AddParameter("@Location", Scanform.txtLocation.Text);
                             var locationresult = sqlClient.Update();
                             if (locationresult.IsError)
                             {
@@ -399,7 +400,7 @@ namespace Mbc5.Classes
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        sqlClient.AddParameter("@CurrentBookLoc", Scanform.txtLocation.Text);
                         var orderLocResult1 = sqlClient.Update();
                         if (orderLocResult1.IsError)
                         {
@@ -416,7 +417,7 @@ namespace Mbc5.Classes
                     case "BINDING":
                         //war is datetime
                         //wir is initials
-                        if (string.IsNullOrEmpty(txtLocation.Text) && MbxModel.Backing == "HC")
+                        if (string.IsNullOrEmpty(Scanform.txtLocation.Text) && MbxModel.Backing == "HC")
                         {
                             MbcMessageBox.Hand("Please enter a location.", "Enter Location");
                             return false;
@@ -474,7 +475,7 @@ namespace Mbc5.Classes
                                 {
                                     //Print to labeler
                                     List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                                    var vData = new BookBlockLabel() { Barcode = "*" + scanData.Barcode + "*", Location = txtLocation.Text };
+                                    var vData = new BookBlockLabel() { Barcode = "*" + scanData.Barcode + "*", Location = Scanform.txtLocation.Text };
                                     listData.Add(vData);
                                     reportViewer2.LocalReport.DataSources.Clear();
                                     reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
@@ -488,7 +489,7 @@ namespace Mbc5.Classes
                             sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");
                             sqlClient.AddParameter("@Invno", this.Invno);
                             sqlClient.AddParameter("@DescripID", vDeptCode);
-                            sqlClient.AddParameter("@Location", txtLocation.Text);
+                            sqlClient.AddParameter("@Location", Scanform.txtLocation.Text);
                             var locationresult = sqlClient.Update();
                             if (locationresult.IsError)
                             {
@@ -510,7 +511,7 @@ namespace Mbc5.Classes
                         sqlClient.ClearParameters();
                         sqlClient.CommandText(@"Update MixbookOrder Set CurrentBookLoc=@CurrentBookLoc Where Invno=@Invno");
                         sqlClient.AddParameter("@Invno", this.Invno);
-                        sqlClient.AddParameter("@CurrentBookLoc", txtLocation.Text);
+                        sqlClient.AddParameter("@CurrentBookLoc", Scanform.txtLocation.Text); this.Scanform.txtLocation
                         var orderLocResult11 = sqlClient.Update();
                         if (orderLocResult11.IsError)
                         {
@@ -572,10 +573,10 @@ namespace Mbc5.Classes
 
                         break;
                     case "QUALITY":
-                        lblHoldLocation.Text = "";//clear last scan
-                                                  //war is datetime
-                                                  //wir is initials
-                                                  //PrintPackingList(MbxModel.ClientOrderId);
+                        Scanform.lblHoldLocation.Text = "";//clear last scan
+                                                           //war is datetime
+                                                           //wir is initials
+                                                           //PrintPackingList(MbxModel.ClientOrderId);
                         vDeptCode = "50";
                         vWIR = "QY";
                         int ScannedProducts = 0;
@@ -612,11 +613,11 @@ namespace Mbc5.Classes
                                 {
                                     holdLocation = string.IsNullOrEmpty(recsWithLocations[0].MxbLocation) ? "" : recsWithLocations[0].MxbLocation;
 
-                                    lblHoldLocation.Text = holdLocation;
+                                    Scanform.lblHoldLocation.Text = holdLocation;
                                 }
                                 else
                                 {
-                                    lblHoldLocation.Text = "";
+                                    Scanform.lblHoldLocation.Text = "";
                                 }
                             }
                         }
@@ -661,7 +662,7 @@ namespace Mbc5.Classes
                         string location = "";
                         if (MbxModel.NumProducts > 1)
                         {
-                            var frmQH = new frmquailtyHold(MbxModel.NumProducts, lblHoldLocation.Text);
+                            var frmQH = new frmquailtyHold(MbxModel.NumProducts, Scanform.lblHoldLocation.Text);
                             DialogResult holdresult = frmQH.ShowDialog();
                             if (holdresult == DialogResult.Yes)
                             {
