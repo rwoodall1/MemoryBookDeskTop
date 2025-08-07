@@ -46,18 +46,23 @@ namespace Mbc5.Forms.MixBook
         private void frmMxBookBarScan_Load(object sender, EventArgs e)
         {
             this.SetDepartmentCode();
+
             switch (ApplicationUser.UserName.ToUpper())
             {
                 case "PRESS":
 
                     break;
-                case "SHIPPING":
-                    pnlTracking.Visible = true;
-                    txtTrackingNumber.Focus();
+                case "TRIMMING":
+
                     break;
-                case "Binding":
+                case "BINDING":
+                    chkPrToLabeler.Visible = true;
+                    pnlQty.Visible = true;
+                    btnClearPrinter.Visible = true;
+                    pnlBookLocation.Visible = true;
                     break;
-                case "Binding2":
+                case "BINDING2":
+                    pnlQty.Visible = true;
                     chkPrToLabeler.Visible = true;
                     btnClearPrinter.Visible = true;
                     pnlBookLocation.Visible = true;
@@ -65,15 +70,19 @@ namespace Mbc5.Forms.MixBook
                 case "ONBOARD":
                     pnlBookLocation.Visible = true;
                     break;
-                case "TRIMMING":
-                    //pnlQty.Visible = true;
-                    //pnlBookLocation.Visible = true;
-                    break;
+
                 case "QUALITY":
                     pnlHoldLocation.Visible = true;
                     break;
+                case "SHIPPING":
+                    pnlTracking.Visible = true;
+                    txtTrackingNumber.Focus();
+                    break;
                 case "SA":
                     pnlImpersonate.Visible = true;
+                    break;
+                default:
+                    var a = 1;
                     break;
 
             }
@@ -96,7 +105,7 @@ namespace Mbc5.Forms.MixBook
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
 
-            lblLastScan.Text = txtBarCode.Text;
+            lblLastScan.Text = txtBarCode.Text + "  " + DateTime.Now.ToString();
             string vInvno = "";
             if (string.IsNullOrEmpty(txtBarCode.Text))
             {
@@ -156,6 +165,22 @@ namespace Mbc5.Forms.MixBook
                     this.Department.Initials = "PS";
                     this.Department.AutoTime = .1m;
                     break;
+                case "TRIMMING":
+                    this.Department.DeptCode = "43";
+                    this.Department.Initials = "TR";
+                    this.Department.AutoTime = .1m;
+                    break;
+                case "BINDING":
+                    this.Department.DeptCode = "39";
+                    this.Department.Initials = "BI";
+                    this.Department.AutoTime = .1m;
+                    break;
+                case "BINDING2":
+                    this.Department.DeptCode = "39";
+                    this.Department.Initials = "B2";
+                    this.Department.AutoTime = .1m;
+                    break;
+
                 case "SHIPPING":
                     this.Department.DeptCode = "40";
                     this.Department.Initials = "SH";
@@ -170,7 +195,7 @@ namespace Mbc5.Forms.MixBook
         private void ClearScan()
         {
             txtBarCode.Text = "";
-            txtDateTime.Text = "";
+
             txtTrackingNumber.Text = "";
             chkRemake.Checked = false;
             txtReasonCode.Text = "";
@@ -191,66 +216,67 @@ namespace Mbc5.Forms.MixBook
         }
         private void MXBScan()
         {
-            string vInvno = "";
-            if (txtBarCode.Text.Length == 12)
-            {
-                vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 5);
-            }
-            else if (txtBarCode.Text.Length == 11)
-            {
-                vInvno = txtBarCode.Text.Substring(4, txtBarCode.Text.Length - 4);
-            }
-            else
-            {
-                MbcMessageBox.Error("Scan code is not in correct format");
-                return;
-            }
-            int parsedInvno = 0;
-            var parseResult = int.TryParse(vInvno, out parsedInvno);
-
-            if (!parseResult)
-            {
-                MbcMessageBox.Information("Invalid scan code");
-                return;
-            }
+            //string vInvno = "";
+            //string _company = txtBarCode.Text.ToUpper().Substring(0, 3);
+            //if (_company == "MXB")
+            //{
+            //    //expecting MXB1111111YB
+            //    vInvno = data.Barcode.Substring(3, data.Barcode.Length - 5);
+            //}
+            //else
+            //{
+            //    if (data.Barcode.Length == 12)
+            //    {
+            //        vInvno = data.Barcode.Substring(3, data.Barcode.Length - 5);
+            //    }
+            //    else if (data.Barcode.Length == 11)
+            //    {
+            //        vInvno = data.Barcode.Substring(4, data.Barcode.Length - 4);
+            //    }
+            //    else
+            //    {
+            //        MbcMessageBox.Error("Scan code is not in correct format");
+            //        return false;
+            //    }
+            //}
             ////Check if order exists
-            var sqlQuery = new SQLCustomClient();
-            string cmdText = @"
-                                            SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
-                                            M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
-                                            From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
-                                            Left Join Covers C ON M.Invno=C.Invno
-                                            Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
-            sqlQuery.CommandText(cmdText);
-            sqlQuery.AddParameter("@Invno", vInvno);
-            var result = sqlQuery.Select<MixBookBarScanModel>();
-            if (result.IsError)
-            {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-            if (result.Data == null)
-            {
-                MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                return;
-            }
-            var MbxModel = (MixBookBarScanModel)result.Data;
-            if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
-            {
-                if (this.ApplicationUser.UserName.ToUpper() != "TRIMMING")
-                {
-                    MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
+            //var sqlQuery = new SQLCustomClient();
+            //string cmdText = @"
+            //                                SELECT M.ShipName,M.ProdInOrder,(Select Max(ProdInOrder) from MixbookOrder where ClientOrderId=M.ClientOrderId)AS NumProducts,M.ClientOrderId,M.PrintergyFile,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,
+            //                                M.MixbookOrderStatus,C.Specovr,WD.MxbLocation AS BookLocation
+            //                                From MixBookOrder M Left Join Produtn P ON M.Invno=P.Invno
+            //                                Left Join Covers C ON M.Invno=C.Invno
+            //                                Left Join WipDetail WD On M.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=M.Invno  Order by DescripId desc )Where M.Invno=@Invno";
+            //sqlQuery.CommandText(cmdText);
+            //sqlQuery.AddParameter("@Invno", vInvno);
+            //var result = sqlQuery.Select<MixBookBarScanModel>();
+            //if (result.IsError)
+            //{
+            //    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve order for scan:" + result.Errors[0].DeveloperMessage);
+            //    return;
+            //}
+            //if (result.Data == null)
+            //{
+            //    MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //    return;
+            //}
+            //var MbxModel = (MixBookBarScanModel)result.Data;
+            //if (MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "CANCELLED" || MbxModel.MixbookOrderStatus != null && MbxModel.MixbookOrderStatus.Trim().ToUpper() == "SHIPPED")
+            //{
+            //    if (this.ApplicationUser.UserName.ToUpper() != "TRIMMING")
+            //    {
+            //        MbcMessageBox.Information("This order has been " + MbxModel.MixbookOrderStatus.ToUpper());
 
-                    return;
-                }
-            }
-            lblBkLocation.Text = MbxModel.BookLocation;
-            txtDateTime.Text = DateTime.Now.ToString();
+            //        return;
+            //    }
+            //}
+            //lblBkLocation.Text = MbxModel.BookLocation;
+            //txtDateTime.Text = DateTime.Now.ToString();
 
             //_____________________________________Good above
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
-            MXBScanData _scanData = new MXBScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, MbxModel, this);
+            MXBScanData _scanData = new MXBScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, null, this);
             bool completed = this.MXBScanner.Scan(new ScanData(null, _scanData));
 
 

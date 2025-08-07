@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.txtBarCode = new System.Windows.Forms.MaskedTextBox();
-            this.txtDateTime = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlRemake = new System.Windows.Forms.Panel();
@@ -93,26 +91,6 @@
             this.txtBarCode.TabIndex = 0;
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             this.txtBarCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtBarCode_Validating);
-            // 
-            // txtDateTime
-            // 
-            this.txtDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateTime.Location = new System.Drawing.Point(401, 40);
-            this.txtDateTime.Name = "txtDateTime";
-            this.txtDateTime.ReadOnly = true;
-            this.txtDateTime.Size = new System.Drawing.Size(143, 22);
-            this.txtDateTime.TabIndex = 15;
-            this.txtDateTime.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(318, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Date && Time";
             // 
             // lbl1
             // 
@@ -498,8 +476,6 @@
             this.Controls.Add(this.lblLastScan);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBarCode);
-            this.Controls.Add(this.txtDateTime);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.lbl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -510,8 +486,6 @@
             this.Load += new System.EventHandler(this.frmMxBookBarScan_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.lbl1, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.txtDateTime, 0);
             this.Controls.SetChildIndex(this.txtBarCode, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.lblLastScan, 0);
@@ -550,8 +524,6 @@
         #endregion
 
         private System.Windows.Forms.MaskedTextBox txtBarCode;
-        private System.Windows.Forms.TextBox txtDateTime;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ErrorProvider errorProvider1;

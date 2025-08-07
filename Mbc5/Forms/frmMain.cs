@@ -209,8 +209,8 @@ namespace Mbc5.Forms
                 systemToolStripMenuItem.Visible = false;
 
                 productionWIPToolStripMenuItem.Visible = false;
-
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
             }
@@ -228,8 +228,8 @@ namespace Mbc5.Forms
                 systemToolStripMenuItem.Visible = false;
 
                 productionWIPToolStripMenuItem.Visible = true;
-
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
 
