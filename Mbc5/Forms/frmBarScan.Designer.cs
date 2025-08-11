@@ -426,6 +426,7 @@
             this.txtQtyToScan.Name = "txtQtyToScan";
             this.txtQtyToScan.Size = new System.Drawing.Size(64, 20);
             this.txtQtyToScan.TabIndex = 2;
+            this.txtQtyToScan.Visible = false;
             // 
             // label3
             // 
@@ -436,6 +437,7 @@
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "Qty to Scan";
+            this.label3.Visible = false;
             // 
             // lblScanQty
             // 
@@ -446,6 +448,7 @@
             this.lblScanQty.Size = new System.Drawing.Size(14, 13);
             this.lblScanQty.TabIndex = 26;
             this.lblScanQty.Text = "0";
+            this.lblScanQty.Visible = false;
             // 
             // label2
             // 
@@ -456,6 +459,7 @@
             this.label2.Size = new System.Drawing.Size(108, 13);
             this.label2.TabIndex = 25;
             this.label2.Text = "Quantity Scanned";
+            this.label2.Visible = false;
             // 
             // frmBarScan
             // 

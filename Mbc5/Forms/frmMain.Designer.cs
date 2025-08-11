@@ -38,7 +38,6 @@
             this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookLoadTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mixbookBarscanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caseMatchScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coverSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +59,6 @@
             this.tsDeptScanLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsEnvelopeLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsFileFolder = new System.Windows.Forms.ToolStripMenuItem();
-          
             this.tsReceivingLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsYearBookLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.customeReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -185,7 +183,6 @@
             this.mixBookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mixBookOrdersToolStripMenuItem,
             this.mixBookLoadTestToolStripMenuItem,
-            this.mixbookBarscanToolStripMenuItem,
             this.caseMatchScanToolStripMenuItem,
             this.coverSearchToolStripMenuItem,
             this.shippingScanToolStripMenuItem,
@@ -208,13 +205,6 @@
             this.mixBookLoadTestToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.mixBookLoadTestToolStripMenuItem.Text = "MixBook Load Test";
             this.mixBookLoadTestToolStripMenuItem.Click += new System.EventHandler(this.mixBookLoadTestToolStripMenuItem_Click);
-            // 
-            // mixbookBarscanToolStripMenuItem
-            // 
-            this.mixbookBarscanToolStripMenuItem.Name = "mixbookBarscanToolStripMenuItem";
-            this.mixbookBarscanToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.mixbookBarscanToolStripMenuItem.Text = "Mixbook Barscan";
-            this.mixbookBarscanToolStripMenuItem.Click += new System.EventHandler(this.mixbookBarscanToolStripMenuItem_Click);
             // 
             // caseMatchScanToolStripMenuItem
             // 
@@ -256,14 +246,14 @@
             // productionWIPToolStripMenuItem
             // 
             this.productionWIPToolStripMenuItem.Name = "productionWIPToolStripMenuItem";
-            this.productionWIPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionWIPToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.productionWIPToolStripMenuItem.Text = "Production/WIP";
             this.productionWIPToolStripMenuItem.Click += new System.EventHandler(this.productionWIPToolStripMenuItem_Click);
             // 
             // barScanToolStripMenuItem
             // 
             this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
-            this.barScanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.barScanToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.barScanToolStripMenuItem.Text = "Bar Scan";
             this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
             // 
@@ -992,7 +982,6 @@
         private System.Windows.Forms.ToolStripMenuItem mixBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mixBookOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mixBookLoadTestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mixbookBarscanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsMxbClientOrderId;
         private System.Windows.Forms.ToolStripMenuItem mixbookReportsToolStripMenuItem;
