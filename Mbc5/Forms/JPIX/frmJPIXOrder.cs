@@ -44,11 +44,11 @@ namespace Mbc5.Forms.JPIX
                 var serializer = new XmlSerializer(typeof(JostensPIXFulfillmentRequests));
                 foreach (FileInfo file in dir.GetFiles("*.xml"))
                 {
-                    string contents = File.ReadAllText(file.FullName);
+
 
                     try
                     {
-
+                        string contents = File.ReadAllText(file.FullName);
                         var stringreader = new StringReader(contents);
                         JostensPIXFulfillmentRequests jpixOrders = (JostensPIXFulfillmentRequests)serializer.Deserialize(stringreader);
 
@@ -74,7 +74,7 @@ namespace Mbc5.Forms.JPIX
         private void Fill()
         {
             this.jPIXOrdersTableAdapter.Fill(this.dsJPIXOrders.JPIXOrders);
-           
+
             this.lblRecCount.Text = jPIXOrdersBindingSource.Count.ToString() + " Records";
 
 
@@ -136,7 +136,7 @@ namespace Mbc5.Forms.JPIX
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Document", "\\\\sedsujpisl01\\workflow\\JPixFlyers\\Archive\\" + jpixOrders.RequestId + "\\" + order.JostensPIXOrderItem.Document);
                 sqlClient.AddParameter("@NeedsByDate", order.JostensPIXOrderItem.DateNeedsByDate);
-                sqlClient.AddParameter("@@ProjectedShipDate", order.JostensPIXOrderItem.DateNeedsByDate.AddDays(-4));
+                sqlClient.AddParameter("@ProjectedShipDate", order.JostensPIXOrderItem.DateNeedsByDate.AddDays(-4));
                 sqlClient.AddParameter("@ProductType", order.JostensPIXOrderItem.ProductType);
                 sqlClient.AddParameter("@Quantity", order.JostensPIXOrderItem.Quantity);
                 sqlClient.AddParameter("@ShipToContact", order.JostensPIXOrderItem.ShipToContact);
