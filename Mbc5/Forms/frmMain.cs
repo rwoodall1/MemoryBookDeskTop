@@ -751,7 +751,7 @@ namespace Mbc5.Forms
         }
         private void ResetJobTickets()
         {
-            frmPrintBatches frmPrintBatches = new frmPrintBatches();
+            frmPrintBatches frmPrintBatches = new frmPrintBatches("MXB");
             frmPrintBatches.Show();
         }
         private void PrintRemakeTickets()
@@ -1822,6 +1822,12 @@ namespace Mbc5.Forms
             frmJPIXFlyerInvoiceReport.MdiParent = this;
             frmJPIXFlyerInvoiceReport.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void resetJobTicketsByBatchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmPrintBatches frmPrintBatches = new frmPrintBatches("JPX");
+            frmPrintBatches.Show();
         }
 
 
