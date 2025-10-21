@@ -152,6 +152,8 @@
     <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="Invoice.cs" />
+    <Compile Include="JPIXModels.cs" />
+    <Compile Include="JPIXOrder.cs" />
     <Compile Include="MiscBindingModels.cs" />
     <Compile Include="MixbookModels.cs" />
     <Compile Include="NotificationModels.cs" />

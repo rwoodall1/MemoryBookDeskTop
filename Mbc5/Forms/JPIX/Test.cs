@@ -28,6 +28,8 @@ namespace Mbc5.Forms.JPIX
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             string path = "D:\\JPIX\\";
             if (Directory.Exists(path))
             {

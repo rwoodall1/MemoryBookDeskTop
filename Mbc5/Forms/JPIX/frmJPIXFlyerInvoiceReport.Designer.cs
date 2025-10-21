@@ -37,15 +37,16 @@
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RequestedShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsData = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrintReport = new System.Windows.Forms.Button();
             this.btnMarkInvoiced = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
-            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RequestedShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +123,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
+            this.Name,
             this.RequestedShipDate,
             this.ShipDate,
             this.orderStatus});
@@ -130,8 +132,41 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(780, 417);
+            this.dataGridView1.Size = new System.Drawing.Size(875, 417);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // Invno
+            // 
+            this.Invno.DataPropertyName = "Invno";
+            this.Invno.HeaderText = "Invno";
+            this.Invno.Name = "Invno";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "ShipToCustomerName";
+            this.Name.HeaderText = "Ship Name";
+            this.Name.Name = "Name";
+            // 
+            // RequestedShipDate
+            // 
+            this.RequestedShipDate.DataPropertyName = "ProjectedShipDate";
+            this.RequestedShipDate.HeaderText = "Proj Ship Date";
+            this.RequestedShipDate.Name = "RequestedShipDate";
+            this.RequestedShipDate.Width = 150;
+            // 
+            // ShipDate
+            // 
+            this.ShipDate.DataPropertyName = "DateShipped";
+            this.ShipDate.HeaderText = "Ship Date";
+            this.ShipDate.Name = "ShipDate";
+            this.ShipDate.Width = 150;
+            // 
+            // orderStatus
+            // 
+            this.orderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.orderStatus.DataPropertyName = "OrderStatus";
+            this.orderStatus.HeaderText = "Status";
+            this.orderStatus.Name = "orderStatus";
             // 
             // btnPrintReport
             // 
@@ -176,37 +211,10 @@
             this.lblRecords.TabIndex = 10;
             this.lblRecords.Text = ".";
             // 
-            // Invno
-            // 
-            this.Invno.DataPropertyName = "Invno";
-            this.Invno.HeaderText = "Invno";
-            this.Invno.Name = "Invno";
-            // 
-            // RequestedShipDate
-            // 
-            this.RequestedShipDate.DataPropertyName = "ProjectedShipDate";
-            this.RequestedShipDate.HeaderText = "Proj Ship Date";
-            this.RequestedShipDate.Name = "RequestedShipDate";
-            this.RequestedShipDate.Width = 150;
-            // 
-            // ShipDate
-            // 
-            this.ShipDate.DataPropertyName = "DateShipped";
-            this.ShipDate.HeaderText = "Ship Date";
-            this.ShipDate.Name = "ShipDate";
-            this.ShipDate.Width = 150;
-            // 
-            // orderStatus
-            // 
-            this.orderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.orderStatus.DataPropertyName = "OrderStatus";
-            this.orderStatus.HeaderText = "Status";
-            this.orderStatus.Name = "orderStatus";
-            // 
             // frmJPIXFlyerInvoiceReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(780, 528);
+            this.ClientSize = new System.Drawing.Size(875, 528);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnMarkInvoiced);
@@ -220,8 +228,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmJPIXFlyerInvoiceReport";
-            this.Text = "Mixbook Pricing Report";
+          
+            this.Text = "JPIX Invoice Report";
             this.Load += new System.EventHandler(this.frmMxInvoiceReport_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.button1, 0);
@@ -256,6 +264,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestedShipDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
