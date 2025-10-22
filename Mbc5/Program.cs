@@ -1,6 +1,8 @@
 ﻿using Mbc5.Forms;
 using NLog;
 using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Mbc5
@@ -32,6 +34,7 @@ namespace Mbc5
 
             try
             {
+                NativePathHelper.AddPdfiumNativePath();
 
                 Application.Run(new frmMain());
                 //Application.Run(new Form1());
@@ -77,5 +80,22 @@ namespace Mbc5
         }
 
 
+    }
+
+    static class NativePathHelper
+    {
+        [DllImport("kernel32", SetLastError = true)]
+        private static extern bool SetDllDirectory(string lpPathName);
+
+        public static void AddPdfiumNativePath()
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string arch = Environment.Is64BitProcess ? "x64" : "x86";
+            string nativePath = Path.Combine(baseDir, arch);
+            if (Directory.Exists(nativePath))
+            {
+                SetDllDirectory(nativePath);
+            }
+        }
     }
 }

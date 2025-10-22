@@ -674,6 +674,10 @@ namespace Mbc5.Forms
             JobTicketQueryBindingSource.DataSource = jobData;
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
+
+            // IMPORTANT: allow external images and ensure LastPageLocation contains a file:// URI
+            reportViewer1.LocalReport.EnableExternalImages = true;
+
             this.reportViewer1.RefreshReport();
 
 
@@ -682,30 +686,36 @@ namespace Mbc5.Forms
         {
             foreach (JobTicketQuery data in model)
             {
-
                 var pdfPath = data.BookUrl;
                 Stream pdfStream = null;
-                if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
-                    pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-                {
-                    using (var http = new HttpClient())
-                    {
-                        var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                        resp.EnsureSuccessStatusCode();
-                        // copy to memory so stream is seekable for PdfiumViewer
-                        var ms = new MemoryStream();
-                        resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                        ms.Position = 0;
-                        pdfStream = ms;
-                    }
-                }
-
 
                 try
                 {
-                    using (pdfStream)
+                    // Support HTTP/HTTPS downloads (keep in memory so Pdfium can seek)
+                    if (!string.IsNullOrEmpty(pdfPath) &&
+                        (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                         pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
                     {
-                        // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+                        using (var http = new HttpClient())
+                        {
+                            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                            resp.EnsureSuccessStatusCode();
+                            var ms = new MemoryStream();
+                            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                            ms.Position = 0;
+                            pdfStream = ms; // keep stream open for Pdfium
+                        }
+                    }
+                    // Support local or UNC paths
+                    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+                    {
+                        pdfStream = File.OpenRead(pdfPath);
+                    }
+
+                    // Load PDF and render. Use PdfDocument.Load overload depending on whether we have a stream.
+                    if (pdfStream != null)
+                    {
+                        using (pdfStream)
                         using (var doc = PdfDocument.Load(pdfStream))
                         {
                             if (doc.PageCount <= 0)
@@ -715,19 +725,12 @@ namespace Mbc5.Forms
                                 continue;
                             }
 
-                            // Render the last page (choose another index if you want)
                             int pageIndex = Math.Max(0, doc.PageCount - 1);
-
-                            // Desired DPI
                             int dpi = 300;
-
-                            // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
-                            // PageSizes entries are in points (1 point = 1/72 inch)
-                            var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+                            var pageSize = doc.PageSizes[pageIndex];
                             int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
                             int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
 
-                            // Clamp to avoid extremely large bitmaps (adjust limit as needed)
                             const int maxDimension = 10000;
                             if (pixelWidth > maxDimension || pixelHeight > maxDimension)
                             {
@@ -736,24 +739,60 @@ namespace Mbc5.Forms
                                 pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
                             }
 
-                            // Render page to a Bitmap using Pdfium (includes annotations)
                             using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                             {
-                                // Suggest default filename based on PDF name
+                                // Ensure storage directory exists
+                                try { Directory.CreateDirectory(LastPageStorage); } catch { /* ignore if cannot create */ }
+
                                 string defaultName = data.Invno.ToString() + "LastPage.jpeg";
                                 var fullPath = Path.Combine(LastPageStorage, defaultName);
                                 rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                string lastPageImageFilePath = fullPath;
-                                data.LastPageLocation = lastPageImageFilePath;
-                                //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                // Store file:// URI so the report's external image control can read it
+                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // If no stream and file path wasn't found, try loading directly (Pdfium can load by path)
+                        using (var doc = PdfDocument.Load(pdfPath))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+                            int dpi = 300;
+                            var pageSize = doc.PageSizes[pageIndex];
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+                                try { Directory.CreateDirectory(LastPageStorage); } catch { }
+
+                                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Show full exception to aid diagnosis of native/pdfium issues
                     MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
                     new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
@@ -845,7 +884,7 @@ namespace Mbc5.Forms
                 ,MO.RequestedShipDate
                 ,MO.Description
                 ,MO.Copies,MO.Pages
-               ,MO.CoverPreviewUrl
+               ,MO. CoverPreviewUrl
                 ,MO.BookPreviewUrl
                 ,MO.Backing,MO.OrderReceivedDate
                 ,MO.ProdInOrder
@@ -1727,7 +1766,7 @@ namespace Mbc5.Forms
                     if (reportViewer1.PrintDialog() != DialogResult.Cancel)
                     {
                         SetJobTicketsPrinted();
-                        PrintJobTickets();//do this until they are all printed.
+                        PrintJobTickets();//do this until all records printed.
                         var holdtime = DateTime.Now.AddSeconds(4);
                         do { } while (DateTime.Now < holdtime);
 
@@ -1736,7 +1775,7 @@ namespace Mbc5.Forms
                     //else
                     //{
                     //    SetJobTicketsPrinted();
-                    //    PrintJobTickets();//do this until they are all printed.
+                    //    PrintJobTickets();//do this until all records printed.
                     //    var holdtime = DateTime.Now.AddSeconds(4);
                     //    do { } while (DateTime.Now < holdtime);
                     //}
