@@ -1198,10 +1198,10 @@
                               <Source>External</Source>
                               <Value>=Fields!CoverPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>4.67534in</Top>
-                              <Left>4.09023in</Left>
-                              <Height>2.55036in</Height>
-                              <Width>3.57298in</Width>
+                              <Top>4.96701in</Top>
+                              <Left>5.52773in</Left>
+                              <Height>2.11633in</Height>
+                              <Width>2.184in</Width>
                               <ZIndex>29</ZIndex>
                               <Style>
                                 <Border>
@@ -1213,10 +1213,10 @@
                               <Source>External</Source>
                               <Value>=Fields!BookPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>4.66146in</Top>
-                              <Left>0.11456in</Left>
-                              <Height>2.56424in</Height>
-                              <Width>3.80557in</Width>
+                              <Top>4.96701in</Top>
+                              <Left>0.15069in</Left>
+                              <Height>2.11633in</Height>
+                              <Width>2.184in</Width>
                               <ZIndex>30</ZIndex>
                               <Style>
                                 <Border>
@@ -1244,8 +1244,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>4.3559in</Top>
-                              <Left>4.11458in</Left>
+                              <Top>4.64756in</Top>
+                              <Left>5.5139in</Left>
                               <Height>0.25in</Height>
                               <Width>0.80551in</Width>
                               <ZIndex>31</ZIndex>
@@ -1279,11 +1279,61 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>4.38368in</Top>
-                              <Left>0.13197in</Left>
+                              <Top>4.64756in</Top>
+                              <Left>0.15069in</Left>
                               <Height>0.25in</Height>
                               <Width>0.80551in</Width>
                               <ZIndex>32</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Image Name="Image12">
+                              <Source>External</Source>
+                              <Value>=Parameters!ImagePath2.ValueParameters!Image1.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>4.96701in</Top>
+                              <Left>2.74168in</Left>
+                              <Height>2.11633in</Height>
+                              <Width>2.184in</Width>
+                              <ZIndex>33</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Textbox Name="Textbox65">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Last Page</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>4.64756in</Top>
+                              <Left>2.76041in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.82986in</Width>
+                              <ZIndex>34</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1391,10 +1441,23 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Image1">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Image1</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <Code>Public Function ConvertValue(ByVal value As Object) As String

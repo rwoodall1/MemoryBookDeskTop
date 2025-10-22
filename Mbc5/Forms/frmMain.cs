@@ -10,12 +10,15 @@ using Mbc5.Forms.MixBook;
 using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
 using NLog;
+using PdfiumViewer;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
 using System.Windows.Forms;
 
 namespace Mbc5.Forms
@@ -29,7 +32,9 @@ namespace Mbc5.Forms
             Log = LogManager.GetLogger(GetType().FullName);
 
         }
+        private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
         protected Logger Log { get; set; }
+        protected int JobTicketsPrinted { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
@@ -573,9 +578,10 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
 
             sqlClient.CommandText(@"
-                    Select Top(200) Invno,ShipName
+                    Select Top(10) Invno,ShipName
                     ,ClientOrderId
                     ,CoverPreviewUrl
+                    ,BookUrl
                     ,BookPreviewUrl
                     ,RequestedShipDate
                     ,Description
@@ -655,27 +661,15 @@ namespace Mbc5.Forms
             var jobData = (List<JobTicketQuery>)result.Data;
             if (jobData == null)
             {
+                JobTicketsPrinted = 0;
                 MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
                 return;
             }
 
-            //tmp rule 10/29/2022
-            //if (jobData != null)
-            //{
-            //    try {
-            //        var badRecs = jobData.FindAll(a => a.Pages > 350);
-            //        if (badRecs.Count > 0)
-            //        {
-            //            foreach (var rec in badRecs) {
-            //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-            //                    }
-            //        }
-            //    }
-            //    catch (Exception ex) { }
-            //}
-            // List<JobTicketQuery> printData = new List<JobTicketQuery>();
+            var goodtoPrint = SetLastPageImage(jobData);
+            this.JobTicketsPrinted += 10;
 
-            //Only 200 in query will repeat until all records printed.
+            //Only 10 in query will repeat until all records printed.
             reportViewer1.LocalReport.DataSources.Clear();
             JobTicketQueryBindingSource.DataSource = jobData;
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
@@ -684,6 +678,93 @@ namespace Mbc5.Forms
 
 
         }
+        private List<JobTicketQuery> SetLastPageImage(List<JobTicketQuery> model)
+        {
+            foreach (JobTicketQuery data in model)
+            {
+
+                var pdfPath = data.BookUrl;
+                Stream pdfStream = null;
+                if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                    pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                {
+                    using (var http = new HttpClient())
+                    {
+                        var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                        resp.EnsureSuccessStatusCode();
+                        // copy to memory so stream is seekable for PdfiumViewer
+                        var ms = new MemoryStream();
+                        resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                        ms.Position = 0;
+                        pdfStream = ms;
+                    }
+                }
+
+
+                try
+                {
+                    using (pdfStream)
+                    {
+                        // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+                        using (var doc = PdfDocument.Load(pdfStream))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            // Render the last page (choose another index if you want)
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+
+                            // Desired DPI
+                            int dpi = 300;
+
+                            // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
+                            // PageSizes entries are in points (1 point = 1/72 inch)
+                            var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            // Clamp to avoid extremely large bitmaps (adjust limit as needed)
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            // Render page to a Bitmap using Pdfium (includes annotations)
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+                                // Suggest default filename based on PDF name
+                                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                string lastPageImageFilePath = fullPath;
+                                data.LastPageLocation = lastPageImageFilePath;
+                                //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Show full exception to aid diagnosis of native/pdfium issues
+                    MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                    continue;
+                }
+
+            }
+            return model;
+
+        }
+
         private void MixbookOrderRuleCheck()
         {
             //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
@@ -1630,6 +1711,7 @@ namespace Mbc5.Forms
 
         private void printJobTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            JobTicketsPrinted = 0;
             PrintJobTickets();
         }
 
@@ -1639,7 +1721,9 @@ namespace Mbc5.Forms
             {
                 try
                 {
-
+                    //if (JobTicketsPrinted == 100)
+                    //{
+                    JobTicketsPrinted = 0;
                     if (reportViewer1.PrintDialog() != DialogResult.Cancel)
                     {
                         SetJobTicketsPrinted();
@@ -1648,6 +1732,15 @@ namespace Mbc5.Forms
                         do { } while (DateTime.Now < holdtime);
 
                     }
+                    //}
+                    //else
+                    //{
+                    //    SetJobTicketsPrinted();
+                    //    PrintJobTickets();//do this until they are all printed.
+                    //    var holdtime = DateTime.Now.AddSeconds(4);
+                    //    do { } while (DateTime.Now < holdtime);
+                    //}
+
                 }
                 catch (Exception ex) { }
             }
@@ -1828,6 +1921,13 @@ namespace Mbc5.Forms
         {
             frmPrintBatches frmPrintBatches = new frmPrintBatches("JPX");
             frmPrintBatches.Show();
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            frm1.MdiParent = this;
+            frm1.Show();
         }
 
 

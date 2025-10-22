@@ -25,6 +25,10 @@
           <DataField>BookPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookUrl">
+          <DataField>BookUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -60,6 +64,10 @@
         <Field Name="LargePressQty">
           <DataField>LargePressQty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LastPageLocation">
+          <DataField>LastPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumInOrder">
           <DataField>NumInOrder</DataField>
@@ -121,7 +129,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.76041in</Width>
+                  <Width>8.05026in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -888,10 +896,10 @@
                               <Source>External</Source>
                               <Value>=Fields!CoverPreviewUrl.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>5.39583in</Top>
-                              <Left>4.07987in</Left>
-                              <Height>2.53125in</Height>
-                              <Width>3.64238in</Width>
+                              <Top>5.40973in</Top>
+                              <Left>5.43292in</Left>
+                              <Height>2.29375in</Height>
+                              <Width>2.49234in</Width>
                               <ZIndex>24</ZIndex>
                               <Style>
                                 <Border>
@@ -1039,8 +1047,8 @@
                               <Sizing>FitProportional</Sizing>
                               <Top>5.40973in</Top>
                               <Left>0.11805in</Left>
-                              <Height>2.53125in</Height>
-                              <Width>3.64238in</Width>
+                              <Height>2.29375in</Height>
+                              <Width>2.49234in</Width>
                               <ZIndex>29</ZIndex>
                               <Style>
                                 <Border>
@@ -1104,10 +1112,90 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
                               <Top>5.09028in</Top>
-                              <Left>4.07987in</Left>
+                              <Left>5.55792in</Left>
                               <Height>0.25in</Height>
                               <Width>0.83682in</Width>
                               <ZIndex>31</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Image Name="Image12">
+                              <Source>External</Source>
+                              <Value>=Fields!LastPageLocation.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>5.40973in</Top>
+                              <Left>2.79935in</Left>
+                              <Height>2.29375in</Height>
+                              <Width>2.49234in</Width>
+                              <ZIndex>32</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Textbox Name="Textbox63">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Last Page </Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>5.09028in</Top>
+                              <Left>2.79935in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.83682in</Width>
+                              <ZIndex>33</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LastPageLocation">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!LastPageLocation.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>LastPageLocation</rd:DefaultName>
+                              <Top>4.71875in</Top>
+                              <Left>2.90737in</Left>
+                              <Height>0.25in</Height>
+                              <Width>2.38432in</Width>
+                              <ZIndex>34</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1152,7 +1240,7 @@
             <Top>0.12375in</Top>
             <Left>0.11333in</Left>
             <Height>8.98957in</Height>
-            <Width>7.76041in</Width>
+            <Width>8.05026in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1163,7 +1251,7 @@
         <Height>9.21749in</Height>
         <Style />
       </Body>
-      <Width>7.99875in</Width>
+      <Width>8.16359in</Width>
       <Page>
         <PageFooter>
           <Height>0.25001in</Height>

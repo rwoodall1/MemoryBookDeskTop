@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BindingModels
 {
     public class OrdecheckRule1
     {
         public int ClientOrderId { get; set; }
-       public string ShipName { get; set; }
+        public string ShipName { get; set; }
     }
     public class RemakeChk
     {
@@ -44,7 +41,9 @@ namespace BindingModels
     public class JobTicketQuery
     {
 
-        public int Invno { get; set; }  
+        public int Invno { get; set; }
+        public string LastPageLocation { get; set; }
+        public string BookUrl { get; set; }
         public int ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
@@ -78,7 +77,7 @@ namespace BindingModels
         public int Invno { get; set; }
         public int ClientOrderId { get; set; }
         public DateTime OrderReceivedDate { get; set; }
-        public DateTime RequestedShipDate{get;set;}
+        public DateTime RequestedShipDate { get; set; }
         public DateTime DateShipped { get; set; }
         public string ItemCode { get; set; }
         public string ItemId { get; set; }
@@ -94,38 +93,38 @@ namespace BindingModels
         public decimal UnitPrice { get; set; }
         public decimal UnitTotal { get; set; }
         public decimal PageFee { get; set; }
-        public decimal Fulfillment{get;set;}
+        public decimal Fulfillment { get; set; }
         public decimal Total { get; set; }
         public string MixbookOrderStatus { get; set; }
     }
     public class BookBlockLabel
     {
         public string Barcode { get; set; }
-         public string Location { get; set; }
+        public string Location { get; set; }
     }
     public class WipReportModel
     {
-        public string Invno { get; set; }  
+        public string Invno { get; set; }
         public string ShipName { get; set; }
         public string Backing { get; set; }
         public int Copies { get; set; }
         public int Pages { get; set; }
         public string IsBookRemake { get; set; }
         public string IsCoverRemake { get; set; }
-        public string CTrimming { get; set;}
+        public string CTrimming { get; set; }
         //public string CTrimLoc { get; set; }
         public string PTrimming { get; set; }
         // public string PTrimLoc { get; set; }
         public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
-        public string Description { get; set; } 
+        public string Description { get; set; }
         public string CPress { get; set; }
         public string OnBoards { get; set; }
         public string CCart { get; set; }
-        public string WipPress { get; set; }     
+        public string WipPress { get; set; }
         public string Binding { get; set; }
-        public string PCart { get; set; }     
-        public string CaseIn { get; set; }      
+        public string PCart { get; set; }
+        public string CaseIn { get; set; }
         public string Quality { get; set; }
         public string SCBarcode { get; set; }
         public string YBBarcode { get; set; }
@@ -144,16 +143,16 @@ namespace BindingModels
         public string IsBookRemake { get; set; }
         public string IsCoverRemake { get; set; }
         public string CTrimming { get; set; }
-       
-       
+
+
         public string Description { get; set; }
         public string CPress { get; set; }
         public string OnBoards { get; set; }
-      
+
         public string War { get; set; }
         public string Scan { get; set; }
-     
-        
+
+
 
 
     }
@@ -175,14 +174,14 @@ namespace BindingModels
         public string BookLocation { get; set; }
         public string PrintergyFile { get; set; }
         public int ProdInOrder { get; set; }
-       public int NumProducts{get;set;}
+        public int NumProducts { get; set; }
         public string ShippingMethodName { get; set; }
         public string MixbookOrderStatus { get; set; }
-        
+
     }
     public class MixBookItemScanModel
     {
-        
+
         public int ClientOrderId { get; set; }
         public int Invno { get; set; }
         public string ItemId { get; set; }
