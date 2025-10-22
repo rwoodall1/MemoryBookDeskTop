@@ -1135,6 +1135,7 @@ namespace Mbc5.Forms.MixBook
             //}
             //ClearScan();
         }
+
         private void JPXScan()
         {
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
