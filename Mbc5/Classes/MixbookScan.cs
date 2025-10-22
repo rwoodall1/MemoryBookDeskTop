@@ -1057,7 +1057,211 @@ namespace Mbc5.Classes
 
         public bool ScanRemake()
         {
-            return true; // Placeholder return value, implement logic as needed
+            if (string.IsNullOrEmpty(this.data.ReasonCode.ToString()))
+            {
+                MbcMessageBox.Stop("Scan a reason code", "Reason Code");
+                return false;
+            }
+            if (this.data.ReasonCode.ToString().Length > 2)
+            {
+                MbcMessageBox.Stop("Invalid Reason Code", "Reason Code");
+                return false;
+            }
+
+
+            int vRemakeQuantity = this.data.RemakeQty;
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY")
+            {
+                if (data.RemakeQty == 0)
+                {
+                    MbcMessageBox.Stop("Enter a quantity", "Quantity");
+                    return false;
+                }
+
+
+
+            }
+            string trkType = data.Barcode.Substring(data.Barcode.Length - 2, 2);
+            var sqlClient = new SQLCustomClient();
+            if (ApplicationUser.UserName.ToUpper() == "QUALITY")
+            {
+                sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE()
+                             ,remake=1
+                             ,FullRemake=@FullRemake
+                             ,RemakeReason=@RemakeReason
+                             ,persondest=@persondest
+                             ,specinst=@Memo +' | ' + CONVERT(varchar(max),COALESCE(specinst,'')) Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
+                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("FullRemake", vRemakeQuantity);
+                sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                if (data.ReasonCode == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return false;
+                }
+
+                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                //Wip
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult1 = sqlClient.Delete();
+                if (deleteResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                string vmemo1 = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),iinit=@iinit,Rmbtot=@RmbTot,WipMemo= @Memo +' | ' + Convert(nvarchar(max),COALESCE(WipMemo,'')),RemakeReason=@RemakeReason Where INVNO=@Invno");
+                sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@Memo", vmemo1);
+                if (data.ReasonCode == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return false;
+                }
+                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                var updateResult1 = sqlClient.Update();
+                if (updateResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',BookStatus='',CurrentBookLoc='',CurrentCoverLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                var result22 = sqlClient.Update();
+                if (result22.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data Q:" + result22.Errors[0].DeveloperMessage);
+                    return false;
+                }
+            }
+            else if (trkType == "SC")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From COVERDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove cover scans for this order. Try again or contact a supervisor.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove cover scans for this order. Try again or contact a supervisor." + deleteResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"UPDATE COVERS SET  Reprntdte=GETDATE(),FullRemake=@FullRemake,remake=1,RemakeReason=@RemakeReason,persondest=@persondest,specinst=@Memo +' | ' + Convert(nvarchar(max),COALESCE(specinst,''))  Where INVNO=@Invno");
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
+                sqlClient.AddParameter("@Memo", vmemo);
+                sqlClient.AddParameter("FullRemake", vRemakeQuantity);
+                sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                if (data.ReasonCode == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return false;
+                }
+                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update cover reprint date.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update cover reprint date:" + updateResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                var updateResult11 = sqlClient.Update();
+                if (updateResult11.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+
+            }
+            else if (trkType == "YB")
+            {
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Delete From WIPDETAIL Where INVNO=@Invno");
+                sqlClient.AddParameter("@Invno", this.Invno);
+                var deleteResult = sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                string vmemo = "Remake issued by:" + ApplicationUser.UserName.ToUpper() + " on " + DateTime.Now.ToString();
+                sqlClient.CommandText(@"UPDATE WIP SET  RmbTo=GETDATE(),RmbTot=@RmbTot,iinit=@iinit,RemakeReason=@RemakeReason,WipMemo=@Memo + ' | ' + Convert(nvarchar(max),COALESCE(WipMemo,' '))   Where INVNO=@Invno");
+                sqlClient.AddParameter("@iinit", ApplicationUser.UserName.ToUpper());
+                sqlClient.AddParameter("@Invno", this.Invno);
+                sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
+                sqlClient.AddParameter("@Memo", vmemo);
+                if (data.ReasonCode == 0)
+                {
+                    MbcMessageBox.Error("Invalid reason code.");
+                    return false;
+                }
+                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update wip remake date.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
+                sqlClient.AddParameter("@Invno", Invno);
+                var updateResul1t = sqlClient.Update();
+                if (updateResul1t.IsError)
+                {
+                    MbcMessageBox.Error("Failed to update Order remake data.");
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    return false;
+                }
+
+            }
+            return true;
+
         }
         public void AddEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {

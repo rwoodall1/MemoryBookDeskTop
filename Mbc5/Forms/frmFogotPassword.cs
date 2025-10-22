@@ -35,10 +35,10 @@ namespace Mbc5.Forms
             string AppConnectionString = "";
             if (Environment == "DEV")
             {
-                AppConnectionString = "Data Source = Sedswbpsql01; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
+                AppConnectionString = "Data Source = Sedswbpsql02; Initial Catalog = Mbc5_demo; Persist Security Info = True; Trusted_Connection = True; ";
                 this.Text = "Environment:" + Environment + "    Mbc5";
             }
-            else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql01;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=Sedswbpsql02;Initial Catalog=Mbc5; Persist Security Info =True;Trusted_Connection=True;"; }
 
             EmailHelper vEmail = new EmailHelper();
             string pwd = RandomPasswordGenerator.Generate();
