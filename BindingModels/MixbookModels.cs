@@ -16,6 +16,7 @@ namespace BindingModels
     public class RemakeTicketQuery
     {
         public int Invno { get; set; }
+        public string LastPageLocation { get; set; }
         public int ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
@@ -35,6 +36,7 @@ namespace BindingModels
         public int NumToShip { get; set; }
         public string CoverPreviewUrl { get; set; }
         public string BookPreviewUrl { get; set; }
+        public string BookUrl { get; set; }
         public int LargePressQty { get; set; }
         public int SmallPressQty { get; set; }
     }
