@@ -682,11 +682,19 @@ namespace Mbc5.Forms
 
 
         }
-        private List<JobTicketQuery> SetLastPageImage(List<JobTicketQuery> model)
+        private List<RemakeTicketQuery> SetLastPageImage(List<RemakeTicketQuery> model)
         {
-            foreach (JobTicketQuery data in model)
+            foreach (RemakeTicketQuery data in model)
             {
                 var pdfPath = data.BookUrl;
+                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                if (File.Exists(fullPath))
+                {
+                    data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                    continue;
+                }
+
                 Stream pdfStream = null;
 
                 try
@@ -744,8 +752,131 @@ namespace Mbc5.Forms
                                 // Ensure storage directory exists
                                 try { Directory.CreateDirectory(LastPageStorage); } catch { /* ignore if cannot create */ }
 
-                                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
-                                var fullPath = Path.Combine(LastPageStorage, defaultName);
+
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                                // Store file:// URI so the report's external image control can read it
+                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // If no stream and file path wasn't found, try loading directly (Pdfium can load by path)
+                        using (var doc = PdfDocument.Load(pdfPath))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+                            int dpi = 300;
+                            var pageSize = doc.PageSizes[pageIndex];
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+                                try { Directory.CreateDirectory(LastPageStorage); } catch { }
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                    continue;
+                }
+
+            }
+            return model;
+
+        }
+        private List<JobTicketQuery> SetLastPageImage(List<JobTicketQuery> model)
+        {
+            foreach (JobTicketQuery data in model)
+            {
+                var pdfPath = data.BookUrl;
+                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                if (File.Exists(fullPath))
+                {
+                    data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                    continue;
+                }
+                Stream pdfStream = null;
+
+                try
+                {
+                    // Support HTTP/HTTPS downloads (keep in memory so Pdfium can seek)
+                    if (!string.IsNullOrEmpty(pdfPath) &&
+                        (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                         pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        using (var http = new HttpClient())
+                        {
+                            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                            resp.EnsureSuccessStatusCode();
+                            var ms = new MemoryStream();
+                            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                            ms.Position = 0;
+                            pdfStream = ms; // keep stream open for Pdfium
+                        }
+                    }
+                    // Support local or UNC paths
+                    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+                    {
+                        pdfStream = File.OpenRead(pdfPath);
+                    }
+
+                    // Load PDF and render. Use PdfDocument.Load overload depending on whether we have a stream.
+                    if (pdfStream != null)
+                    {
+                        using (pdfStream)
+                        using (var doc = PdfDocument.Load(pdfStream))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+                            int dpi = 300;
+                            var pageSize = doc.PageSizes[pageIndex];
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+                                // Ensure storage directory exists
+                                try { Directory.CreateDirectory(LastPageStorage); } catch { /* ignore if cannot create */ }
+
+
                                 rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                                 // Store file:// URI so the report's external image control can read it
@@ -783,8 +914,7 @@ namespace Mbc5.Forms
                             {
                                 try { Directory.CreateDirectory(LastPageStorage); } catch { }
 
-                                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
-                                var fullPath = Path.Combine(LastPageStorage, defaultName);
+
                                 rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
                                 data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
                             }
@@ -878,7 +1008,7 @@ namespace Mbc5.Forms
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno
+                Select  MO.Invno
                 ,MO.ShipName
                 ,MO.ClientOrderId
                 ,MO.RequestedShipDate
@@ -939,7 +1069,7 @@ namespace Mbc5.Forms
 
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
-                Where  (MO.MixbookOrderStatus!='Cancelled' OR MO.MixbookOrderStatus!='Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
+                Where(MO.MixbookOrderStatus != 'Cancelled' OR MO.MixbookOrderStatus != 'Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted = 0 and Wd.Invno Is Null
             ");
 
 
@@ -953,9 +1083,10 @@ namespace Mbc5.Forms
             }
 
             var jobData = (List<RemakeTicketQuery>)result.Data;
+
             if (jobData != null)
             {
-
+                jobData = SetLastPageImage(jobData);
                 reportViewer1.LocalReport.DataSources.Clear();
                 JobTicketQueryBindingSource.DataSource = jobData;
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));

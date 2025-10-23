@@ -540,7 +540,8 @@ namespace Mbc5.Forms.MixBook
             string lastPageImageFilePath = fullPath;
             if (File.Exists(lastPageImageFilePath))
             {
-                data.LastPageLocation = lastPageImageFilePath;
+                //data.LastPageLocation = lastPageImageFilePath;
+                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
                 return data;
 
             }
