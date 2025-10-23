@@ -33,6 +33,7 @@ namespace Mbc5.Forms
 
         }
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
+        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         protected Logger Log { get; set; }
         protected int JobTicketsPrinted { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
@@ -578,7 +579,7 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
 
             sqlClient.CommandText(@"
-                    Select Top(10) Invno,ShipName
+                    Select Top(10) Invno,ShipName,PrintergyFile
                     ,ClientOrderId
                     ,CoverPreviewUrl
                     ,BookUrl
@@ -686,13 +687,37 @@ namespace Mbc5.Forms
         {
             foreach (RemakeTicketQuery data in model)
             {
-                var pdfPath = data.BookUrl;
+                string pdfPath = "";
+                string file = data.PrintergyFile ?? "";
+                int idx = file.IndexOf("_.");
+                if (idx > 0)
+                {
+                    file = file.Substring(0, idx);
+                }
+                // original logic appended _BB.pdf
+                file += "_BB.pdf";
+
+                // combine UNC share + filename
+                string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+                if (File.Exists(archiveFullPath))
+                {
+                    pdfPath = archiveFullPath;
+                }
+                else
+                {
+                    pdfPath = data.BookUrl;
+                }
+
+                // Suggest default filename based on PDF name
                 string defaultName = data.Invno.ToString() + "LastPage.jpeg";
                 var fullPath = Path.Combine(LastPageStorage, defaultName);
-                if (File.Exists(fullPath))
+                string lastPageImageFilePath = fullPath;
+                if (File.Exists(lastPageImageFilePath))
                 {
-                    data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                    data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
                     continue;
+
                 }
 
                 Stream pdfStream = null;
@@ -750,7 +775,7 @@ namespace Mbc5.Forms
                             using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                             {
                                 // Ensure storage directory exists
-                                try { Directory.CreateDirectory(LastPageStorage); } catch { /* ignore if cannot create */ }
+
 
 
                                 rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -760,40 +785,7 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-                    else
-                    {
-                        // If no stream and file path wasn't found, try loading directly (Pdfium can load by path)
-                        using (var doc = PdfDocument.Load(pdfPath))
-                        {
-                            if (doc.PageCount <= 0)
-                            {
-                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
-                                continue;
-                            }
 
-                            int pageIndex = Math.Max(0, doc.PageCount - 1);
-                            int dpi = 300;
-                            var pageSize = doc.PageSizes[pageIndex];
-                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
-                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
-
-                            const int maxDimension = 10000;
-                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
-                            {
-                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
-                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
-                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
-                            }
-
-                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
-                            {
-                                try { Directory.CreateDirectory(LastPageStorage); } catch { }
-                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                            }
-                        }
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -807,16 +799,42 @@ namespace Mbc5.Forms
             return model;
 
         }
+
+
         private List<JobTicketQuery> SetLastPageImage(List<JobTicketQuery> model)
         {
             foreach (JobTicketQuery data in model)
             {
-                var pdfPath = data.BookUrl;
+
+
+                string pdfPath = "";
+                string file = data.PrintergyFile ?? "";
+                int idx = file.IndexOf("_.");
+                if (idx > 0)
+                {
+                    file = file.Substring(0, idx);
+                }
+                // original logic appended _BB.pdf
+                file += "_BB.pdf";
+                string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+                if (File.Exists(archiveFullPath))
+                {
+                    pdfPath = archiveFullPath;
+                }
+                else
+                {
+                    pdfPath = data.BookUrl;
+                }
+
                 string defaultName = data.Invno.ToString() + "LastPage.jpeg";
                 var fullPath = Path.Combine(LastPageStorage, defaultName);
-                if (File.Exists(fullPath))
+                string lastPageImageFilePath = fullPath;
+
+                if (File.Exists(lastPageImageFilePath))
                 {
-                    data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                    data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
+                    //data.LastPageLocation = lastPageImageFilePath;
                     continue;
                 }
                 Stream pdfStream = null;
@@ -873,53 +891,16 @@ namespace Mbc5.Forms
 
                             using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                             {
-                                // Ensure storage directory exists
-                                try { Directory.CreateDirectory(LastPageStorage); } catch { /* ignore if cannot create */ }
-
 
                                 rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                                 // Store file:// URI so the report's external image control can read it
                                 data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+
                             }
                         }
                     }
-                    else
-                    {
-                        // If no stream and file path wasn't found, try loading directly (Pdfium can load by path)
-                        using (var doc = PdfDocument.Load(pdfPath))
-                        {
-                            if (doc.PageCount <= 0)
-                            {
-                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
-                                continue;
-                            }
 
-                            int pageIndex = Math.Max(0, doc.PageCount - 1);
-                            int dpi = 300;
-                            var pageSize = doc.PageSizes[pageIndex];
-                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
-                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
-
-                            const int maxDimension = 10000;
-                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
-                            {
-                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
-                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
-                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
-                            }
-
-                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
-                            {
-                                try { Directory.CreateDirectory(LastPageStorage); } catch { }
-
-
-                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
-                            }
-                        }
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -1016,7 +997,7 @@ namespace Mbc5.Forms
                 ,MO.Copies,MO.Pages
                ,MO. CoverPreviewUrl
                 ,MO.BookPreviewUrl
-                ,MO.Backing,MO.OrderReceivedDate
+                ,MO.Backing,MO.OrderReceivedDate,PrintergyFile
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno                

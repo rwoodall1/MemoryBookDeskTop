@@ -36,6 +36,7 @@ namespace Mbc5.Forms.MixBook
             this.OrderId = clientId;
         }
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
+        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         public int OrderId { get; set; } = 0;
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
@@ -419,7 +420,7 @@ namespace Mbc5.Forms.MixBook
 
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-               Select Invno,ClientOrderId,BookUrl,
+               Select Invno,ClientOrderId,BookUrl,PrintergyFile,
                 ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
                 SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
                 (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
@@ -532,16 +533,35 @@ namespace Mbc5.Forms.MixBook
         }
         private RemakeTicketQuery SetLastPageImage(RemakeTicketQuery data)
         {
+            string pdfPath = "";
+            string file = data.PrintergyFile ?? "";
+            int idx = file.IndexOf("_.");
+            if (idx > 0)
+            {
+                file = file.Substring(0, idx);
+            }
+            // original logic appended _BB.pdf
+            file += "_BB.pdf";
 
-            var pdfPath = data.BookUrl;
+            // combine UNC share + filename
+            string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+            if (File.Exists(archiveFullPath))
+            {
+                pdfPath = archiveFullPath;
+            }
+            else
+            {
+                pdfPath = data.BookUrl;
+            }
+
             // Suggest default filename based on PDF name
             string defaultName = data.Invno.ToString() + "LastPage.jpeg";
             var fullPath = Path.Combine(LastPageStorage, defaultName);
             string lastPageImageFilePath = fullPath;
             if (File.Exists(lastPageImageFilePath))
             {
-                //data.LastPageLocation = lastPageImageFilePath;
-                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
                 return data;
 
             }
@@ -561,7 +581,10 @@ namespace Mbc5.Forms.MixBook
                     pdfStream = ms;
                 }
             }
-
+            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+            {
+                pdfStream = File.OpenRead(pdfPath);
+            }
 
             try
             {
@@ -603,7 +626,7 @@ namespace Mbc5.Forms.MixBook
 
                             rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-                            data.LastPageLocation = lastPageImageFilePath;
+                            data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
                             return data;
                             //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -621,8 +644,29 @@ namespace Mbc5.Forms.MixBook
         }
         private JobTicketQuery SetLastPageImage(JobTicketQuery data)
         {
+            string pdfPath = "";
+            string file = data.PrintergyFile ?? "";
+            int idx = file.IndexOf("_.");
+            if (idx > 0)
+            {
+                file = file.Substring(0, idx);
+            }
+            // original logic appended _BB.pdf
+            file += "_BB.pdf";
 
-            var pdfPath = data.BookUrl;
+            // combine UNC share + filename
+            string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+            if (File.Exists(archiveFullPath))
+            {
+                pdfPath = archiveFullPath;
+
+            }
+            else
+            {
+                pdfPath = data.BookUrl;
+            }
+
             // Suggest default filename based on PDF name
             string defaultName = data.Invno.ToString() + "LastPage.jpeg";
             var fullPath = Path.Combine(LastPageStorage, defaultName);
@@ -648,6 +692,10 @@ namespace Mbc5.Forms.MixBook
                     pdfStream = ms;
                 }
             }
+            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+            {
+                pdfStream = File.OpenRead(pdfPath);
+            }
 
 
             try
@@ -707,6 +755,10 @@ namespace Mbc5.Forms.MixBook
 
 
         }
+
+
+
+
         private void PrintPackingList(int vClientOrderId)
         {
             var sqlClient = new SQLCustomClient();
@@ -735,7 +787,7 @@ namespace Mbc5.Forms.MixBook
         {
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl,MO.BookUrl
+                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl,MO.BookUrl,MO.PrintergyFile
                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
                  MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
                     (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,

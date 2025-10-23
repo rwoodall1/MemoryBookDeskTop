@@ -25,6 +25,10 @@
           <DataField>BookPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookUrl">
+          <DataField>BookUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -57,6 +61,10 @@
           <DataField>LargePressQty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="LastPageLocation">
+          <DataField>LastPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NumToShip">
           <DataField>NumToShip</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -68,6 +76,10 @@
         <Field Name="Pages">
           <DataField>Pages</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrintergyFile">
+          <DataField>PrintergyFile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ProdCopies">
           <DataField>ProdCopies</DataField>
@@ -1284,6 +1296,56 @@
                               <Height>0.25in</Height>
                               <Width>0.80551in</Width>
                               <ZIndex>32</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Image Name="Image3">
+                              <Source>External</Source>
+                              <Value>=Fields!LastPageLocation.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>4.967in</Top>
+                              <Left>2.84727in</Left>
+                              <Height>2.11633in</Height>
+                              <Width>2.184in</Width>
+                              <ZIndex>33</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Textbox Name="Textbox65">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Last Page</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox43</rd:DefaultName>
+                              <Top>4.64756in</Top>
+                              <Left>2.84727in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.7986in</Width>
+                              <ZIndex>34</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>

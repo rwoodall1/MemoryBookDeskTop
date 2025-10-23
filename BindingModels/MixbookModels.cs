@@ -17,6 +17,7 @@ namespace BindingModels
     {
         public int Invno { get; set; }
         public string LastPageLocation { get; set; }
+        public string PrintergyFile { get; set; }
         public int ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
@@ -45,6 +46,7 @@ namespace BindingModels
 
         public int Invno { get; set; }
         public string LastPageLocation { get; set; }
+        public string PrintergyFile { get; set; }
         public string BookUrl { get; set; }
         public int ClientOrderId { get; set; }
         public string DSInvno { get; set; }
