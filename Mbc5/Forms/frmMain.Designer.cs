@@ -32,9 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.formsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jPIXOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jPIXOrdersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.jPIXOrderDetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookLoadTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +39,9 @@
             this.coverSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mixBookUSPSLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jPIXOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jPIXOrdersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.jPIXOrderDetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -158,29 +158,6 @@
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "&Forms";
             // 
-            // jPIXOrdersToolStripMenuItem
-            // 
-            this.jPIXOrdersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jPIXOrdersToolStripMenuItem1,
-            this.jPIXOrderDetailToolStripMenuItem});
-            this.jPIXOrdersToolStripMenuItem.Name = "jPIXOrdersToolStripMenuItem";
-            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jPIXOrdersToolStripMenuItem.Text = "JPIX ";
-            // 
-            // jPIXOrdersToolStripMenuItem1
-            // 
-            this.jPIXOrdersToolStripMenuItem1.Name = "jPIXOrdersToolStripMenuItem1";
-            this.jPIXOrdersToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
-            this.jPIXOrdersToolStripMenuItem1.Text = "JPIX Orders";
-            this.jPIXOrdersToolStripMenuItem1.Click += new System.EventHandler(this.jPIXOrdersToolStripMenuItem1_Click);
-            // 
-            // jPIXOrderDetailToolStripMenuItem
-            // 
-            this.jPIXOrderDetailToolStripMenuItem.Name = "jPIXOrderDetailToolStripMenuItem";
-            this.jPIXOrderDetailToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.jPIXOrderDetailToolStripMenuItem.Text = "JPIX Order Detail";
-            this.jPIXOrderDetailToolStripMenuItem.Click += new System.EventHandler(this.jPIXOrderDetailToolStripMenuItem_Click);
-            // 
             // mixBookToolStripMenuItem
             // 
             this.mixBookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -191,7 +168,7 @@
             this.shippingScanToolStripMenuItem,
             this.mixBookUSPSLabelToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
             this.mixBookToolStripMenuItem.Click += new System.EventHandler(this.mixBookToolStripMenuItem_Click);
             // 
@@ -237,13 +214,36 @@
             this.mixBookUSPSLabelToolStripMenuItem.Text = "MixBook USPS Label";
             this.mixBookUSPSLabelToolStripMenuItem.Visible = false;
             // 
+            // jPIXOrdersToolStripMenuItem
+            // 
+            this.jPIXOrdersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jPIXOrdersToolStripMenuItem1,
+            this.jPIXOrderDetailToolStripMenuItem});
+            this.jPIXOrdersToolStripMenuItem.Name = "jPIXOrdersToolStripMenuItem";
+            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.jPIXOrdersToolStripMenuItem.Text = "JPIX ";
+            // 
+            // jPIXOrdersToolStripMenuItem1
+            // 
+            this.jPIXOrdersToolStripMenuItem1.Name = "jPIXOrdersToolStripMenuItem1";
+            this.jPIXOrdersToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
+            this.jPIXOrdersToolStripMenuItem1.Text = "JPIX Orders";
+            this.jPIXOrdersToolStripMenuItem1.Click += new System.EventHandler(this.jPIXOrdersToolStripMenuItem1_Click);
+            // 
+            // jPIXOrderDetailToolStripMenuItem
+            // 
+            this.jPIXOrderDetailToolStripMenuItem.Name = "jPIXOrderDetailToolStripMenuItem";
+            this.jPIXOrderDetailToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.jPIXOrderDetailToolStripMenuItem.Text = "JPIX Order Detail";
+            this.jPIXOrderDetailToolStripMenuItem.Click += new System.EventHandler(this.jPIXOrderDetailToolStripMenuItem_Click);
+            // 
             // productionToolStripMenuItem
             // 
             this.productionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productionWIPToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -263,21 +263,21 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -340,7 +340,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -354,7 +354,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             this.labelsToolStripMenuItem.Visible = false;
             // 
@@ -410,7 +410,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -439,7 +439,7 @@
             this.resetJobTicketsByBatchToolStripMenuItem,
             this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             this.mixbookReportsToolStripMenuItem.Click += new System.EventHandler(this.mixbookReportsToolStripMenuItem_Click);
             // 
@@ -494,7 +494,7 @@
             this.invoiceReportToolStripMenuItem1,
             this.resetJobTicketsByBatchToolStripMenuItem1});
             this.jPIXReportsToolStripMenuItem.Name = "jPIXReportsToolStripMenuItem";
-            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.jPIXReportsToolStripMenuItem.Text = "JPIX Reports";
             // 
             // wipReportToolStripMenuItem1
@@ -869,10 +869,10 @@
             this.reportViewer1.DocumentMapWidth = 38;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1052, 544);
+            this.reportViewer1.Location = new System.Drawing.Point(971, 486);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(117, 118);
+            this.reportViewer1.Size = new System.Drawing.Size(150, 148);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
