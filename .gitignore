@@ -59,3 +59,5 @@
 /Core/.vs/Core.csproj.dtbcache.json
 /CustomControls/.vs/CustomControls.csproj.dtbcache.json
 /RESTModule/.vs/RESTModule.csproj.dtbcache.json
+/RESTModule/obj/x64/Release
+/BindingModels/obj/x64/Release
