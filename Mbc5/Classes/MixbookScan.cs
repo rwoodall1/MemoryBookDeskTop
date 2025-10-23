@@ -11,7 +11,6 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
@@ -663,8 +662,8 @@ namespace Mbc5.Classes
                             if (!string.IsNullOrEmpty(MbxModel.PrintergyFile))
                             {
 
-                                Process.Start(MbxModel.BookPreviewUrl);
-                                Process.Start(MbxModel.CoverPreviewUrl);
+                                //Process.Start(MbxModel.BookPreviewUrl);
+                                //Process.Start(MbxModel.CoverPreviewUrl);
                                 var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                                 if (dialogResult != DialogResult.Yes)
                                 {
@@ -673,11 +672,11 @@ namespace Mbc5.Classes
                                 }
                                 else if (dialogResult == DialogResult.Yes)
                                 {
-                                    var processes = Process.GetProcessesByName("chrome");
-                                    foreach (var process in processes)
-                                    {
-                                        process.Kill();
-                                    }
+                                    //var processes = Process.GetProcessesByName("chrome");
+                                    //foreach (var process in processes)
+                                    //{
+                                    //    process.Kill();
+                                    //}
                                 }
                             }
                             else
@@ -1057,22 +1056,23 @@ namespace Mbc5.Classes
 
         public bool ScanRemake()
         {
-            if (string.IsNullOrEmpty(this.data.ReasonCode.ToString()))
+            string _reasonCode = data.Remake.ReasonCode;
+            if (string.IsNullOrEmpty(_reasonCode))
             {
                 MbcMessageBox.Stop("Scan a reason code", "Reason Code");
                 return false;
             }
-            if (this.data.ReasonCode.ToString().Length > 2)
+            if (_reasonCode.Length > 2)
             {
                 MbcMessageBox.Stop("Invalid Reason Code", "Reason Code");
                 return false;
             }
 
 
-            int vRemakeQuantity = this.data.RemakeQty;
+            int vRemakeQuantity = int.Parse(this.data.Remake.RemakeQty);
             if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
-                if (data.RemakeQty == 0)
+                if (vRemakeQuantity == 0)
                 {
                     MbcMessageBox.Stop("Enter a quantity", "Quantity");
                     return false;
@@ -1107,13 +1107,13 @@ namespace Mbc5.Classes
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
-                if (data.ReasonCode == 0)
+                if (_reasonCode == "0")
                 {
                     MbcMessageBox.Error("Invalid reason code.");
                     return false;
                 }
 
-                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                sqlClient.AddParameter("@RemakeReason", _reasonCode);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
@@ -1141,12 +1141,12 @@ namespace Mbc5.Classes
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@Memo", vmemo1);
-                if (data.ReasonCode == 0)
+                if (_reasonCode == "0")
                 {
                     MbcMessageBox.Error("Invalid reason code.");
                     return false;
                 }
-                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                sqlClient.AddParameter("@RemakeReason", _reasonCode);
                 var updateResult1 = sqlClient.Update();
                 if (updateResult1.IsError)
                 {
@@ -1187,12 +1187,12 @@ namespace Mbc5.Classes
                 sqlClient.AddParameter("FullRemake", vRemakeQuantity);
                 sqlClient.AddParameter("@persondest", ApplicationUser.UserName.ToUpper());
                 sqlClient.AddParameter("@Invno", this.Invno);
-                if (data.ReasonCode == 0)
+                if (_reasonCode == "0")
                 {
                     MbcMessageBox.Error("Invalid reason code.");
                     return false;
                 }
-                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                sqlClient.AddParameter("@RemakeReason", _reasonCode);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
@@ -1234,12 +1234,12 @@ namespace Mbc5.Classes
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@RmbTot", vRemakeQuantity);
                 sqlClient.AddParameter("@Memo", vmemo);
-                if (data.ReasonCode == 0)
+                if (_reasonCode == "0")
                 {
                     MbcMessageBox.Error("Invalid reason code.");
                     return false;
                 }
-                sqlClient.AddParameter("@RemakeReason", data.ReasonCode);
+                sqlClient.AddParameter("@RemakeReason", _reasonCode);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
