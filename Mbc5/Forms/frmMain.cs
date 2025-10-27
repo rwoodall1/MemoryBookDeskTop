@@ -579,7 +579,7 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
 
             sqlClient.CommandText(@"
-                    Select Top(10) Invno,ShipName,PrintergyFile
+                    Select Top(50) Invno,ShipName,PrintergyFile
                     ,ClientOrderId
                     ,CoverPreviewUrl
                     ,BookUrl
@@ -668,9 +668,9 @@ namespace Mbc5.Forms
             }
 
             var goodtoPrint = SetLastPageImage(jobData);
-            this.JobTicketsPrinted += 10;
+            this.JobTicketsPrinted += 50;
 
-            //Only 10 in query will repeat until all records printed.
+            //Only 50 in query will repeat until all records printed.
             reportViewer1.LocalReport.DataSources.Clear();
             JobTicketQueryBindingSource.DataSource = jobData;
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
@@ -1872,25 +1872,18 @@ namespace Mbc5.Forms
             {
                 try
                 {
-                    //if (JobTicketsPrinted == 100)
-                    //{
-                    JobTicketsPrinted = 0;
-                    if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                    if (JobTicketsPrinted == 50)
                     {
-                        SetJobTicketsPrinted();
-                        PrintJobTickets();//do this until all records printed.
-                        var holdtime = DateTime.Now.AddSeconds(4);
-                        do { } while (DateTime.Now < holdtime);
+                        JobTicketsPrinted = 0;
+                        if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                        {
+                            SetJobTicketsPrinted();
+                            PrintJobTickets();//do this until all records printed.
+                            var holdtime = DateTime.Now.AddSeconds(4);
+                            do { } while (DateTime.Now < holdtime);
 
+                        }
                     }
-                    //}
-                    //else
-                    //{
-                    //    SetJobTicketsPrinted();
-                    //    PrintJobTickets();//do this until all records printed.
-                    //    var holdtime = DateTime.Now.AddSeconds(4);
-                    //    do { } while (DateTime.Now < holdtime);
-                    //}
 
                 }
                 catch (Exception ex) { }

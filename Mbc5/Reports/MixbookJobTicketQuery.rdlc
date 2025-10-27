@@ -134,7 +134,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>8.98957in</Height>
+                  <Height>8.96874in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1209,7 +1209,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.12375in</Top>
             <Left>0.11333in</Left>
-            <Height>8.98957in</Height>
+            <Height>8.96874in</Height>
             <Width>8.05026in</Width>
             <Style>
               <Border>
@@ -1218,13 +1218,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.21749in</Height>
+        <Height>9.15499in</Height>
         <Style />
       </Body>
       <Width>8.16359in</Width>
       <Page>
         <PageFooter>
-          <Height>0.25001in</Height>
+          <Height>0.61459in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
