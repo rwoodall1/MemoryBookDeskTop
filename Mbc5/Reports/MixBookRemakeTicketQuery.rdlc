@@ -138,7 +138,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>8.36459in</Height>
+                  <Height>8.15626in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -196,7 +196,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>7.29515in</Top>
+                              <Top>7.17015in</Top>
                               <Left>0.2639in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
@@ -555,7 +555,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>SCBarcode</rd:DefaultName>
-                              <Top>7.6007in</Top>
+                              <Top>7.48959in</Top>
                               <Left>0.2639in</Left>
                               <Height>0.25in</Height>
                               <Width>3.96875in</Width>
@@ -585,7 +585,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-                              <Top>8.02431in</Top>
+                              <Top>7.80904in</Top>
                               <Left>1.4757in</Left>
                               <Height>0.25in</Height>
                               <Width>1.375in</Width>
@@ -619,7 +619,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.02431in</Top>
+                              <Top>7.80904in</Top>
                               <Left>0.2639in</Left>
                               <Height>0.25in</Height>
                               <Width>1.14236in</Width>
@@ -941,7 +941,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox43</rd:DefaultName>
-                              <Top>8.02431in</Top>
+                              <Top>7.80904in</Top>
                               <Left>3.95139in</Left>
                               <Height>0.25in</Height>
                               <Width>2.19098in</Width>
@@ -971,7 +971,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>NumToShip</rd:DefaultName>
-                              <Top>8.02431in</Top>
+                              <Top>7.80904in</Top>
                               <Left>6.17015in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
@@ -1392,7 +1392,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.10985in</Top>
             <Left>0.11333in</Left>
-            <Height>8.36459in</Height>
+            <Height>8.15626in</Height>
             <Width>7.97571in</Width>
             <Style>
               <Border>
@@ -1401,13 +1401,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>8.49527in</Height>
+        <Height>8.28694in</Height>
         <Style />
       </Body>
       <Width>8.25571in</Width>
       <Page>
         <PageFooter>
-          <Height>0.23958in</Height>
+          <Height>0.4375in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>

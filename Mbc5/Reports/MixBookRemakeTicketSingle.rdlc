@@ -471,8 +471,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>7.80209in</Top>
-            <Left>0.25638in</Left>
+            <Top>7.37847in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
             <ZIndex>10</ZIndex>
@@ -504,8 +504,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SCBarcode</rd:DefaultName>
-            <Top>8.10764in</Top>
-            <Left>0.25638in</Left>
+            <Top>7.68402in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>3.96875in</Width>
             <ZIndex>11</ZIndex>
@@ -538,8 +538,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>0.25638in</Left>
+            <Top>8.10764in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
             <ZIndex>12</ZIndex>
@@ -568,8 +568,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>1.46818in</Left>
+            <Top>8.10764in</Top>
+            <Left>1.52028in</Left>
             <Height>0.25in</Height>
             <Width>1.375in</Width>
             <ZIndex>13</ZIndex>
@@ -890,8 +890,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>4.58971in</Left>
+            <Top>8.10764in</Top>
+            <Left>4.64181in</Left>
             <Height>0.25in</Height>
             <Width>2.19098in</Width>
             <ZIndex>19</ZIndex>
@@ -922,8 +922,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NumToShip</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>6.79458in</Left>
+            <Top>8.10764in</Top>
+            <Left>6.84668in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>20</ZIndex>
@@ -1308,7 +1308,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>8.91667in</Height>
+        <Height>8.45834in</Height>
         <Style />
       </Body>
       <Width>8.44041in</Width>
