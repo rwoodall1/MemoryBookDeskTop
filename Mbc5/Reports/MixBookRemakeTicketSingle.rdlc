@@ -25,6 +25,10 @@
           <DataField>BookPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookUrl">
+          <DataField>BookUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -56,6 +60,10 @@
         <Field Name="LargePressQty">
           <DataField>LargePressQty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LastPageLocation">
+          <DataField>LastPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumToShip">
           <DataField>NumToShip</DataField>
@@ -463,8 +471,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>7.80209in</Top>
-            <Left>0.25638in</Left>
+            <Top>7.37847in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
             <ZIndex>10</ZIndex>
@@ -496,8 +504,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SCBarcode</rd:DefaultName>
-            <Top>8.10764in</Top>
-            <Left>0.25638in</Left>
+            <Top>7.68402in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>3.96875in</Width>
             <ZIndex>11</ZIndex>
@@ -530,8 +538,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>0.25638in</Left>
+            <Top>8.10764in</Top>
+            <Left>0.30848in</Left>
             <Height>0.25in</Height>
             <Width>1.14236in</Width>
             <ZIndex>12</ZIndex>
@@ -560,8 +568,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>OrderReceivedDate</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>1.46818in</Left>
+            <Top>8.10764in</Top>
+            <Left>1.52028in</Left>
             <Height>0.25in</Height>
             <Width>1.375in</Width>
             <ZIndex>13</ZIndex>
@@ -882,8 +890,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>4.58971in</Left>
+            <Top>8.10764in</Top>
+            <Left>4.64181in</Left>
             <Height>0.25in</Height>
             <Width>2.19098in</Width>
             <ZIndex>19</ZIndex>
@@ -914,8 +922,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NumToShip</rd:DefaultName>
-            <Top>8.53126in</Top>
-            <Left>6.79458in</Left>
+            <Top>8.10764in</Top>
+            <Left>6.84668in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>20</ZIndex>
@@ -1154,9 +1162,9 @@
             <Value>=First(Fields!CoverPreviewUrl.Value, "DataSet1")</Value>
             <Sizing>FitProportional</Sizing>
             <Top>4.89584in</Top>
-            <Left>4.36402in</Left>
-            <Height>2.77083in</Height>
-            <Width>3.69376in</Width>
+            <Left>5.61402in</Left>
+            <Height>2.41666in</Height>
+            <Width>2.62499in</Width>
             <ZIndex>29</ZIndex>
             <Style>
               <Border>
@@ -1170,8 +1178,8 @@
             <Sizing>FitProportional</Sizing>
             <Top>4.89584in</Top>
             <Left>0.30154in</Left>
-            <Height>2.77083in</Height>
-            <Width>3.77431in</Width>
+            <Height>2.41666in</Height>
+            <Width>2.54164in</Width>
             <ZIndex>30</ZIndex>
             <Style>
               <Border>
@@ -1235,7 +1243,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
             <Top>4.5764in</Top>
-            <Left>4.36402in</Left>
+            <Left>5.61402in</Left>
             <Height>0.25in</Height>
             <Width>1.05208in</Width>
             <ZIndex>32</ZIndex>
@@ -1249,11 +1257,61 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Image Name="Image3">
+            <Source>External</Source>
+            <Value>=First(Fields!LastPageLocation.Value, "DataSet1")</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>4.89584in</Top>
+            <Left>2.95432in</Left>
+            <Height>2.41666in</Height>
+            <Width>2.54856in</Width>
+            <ZIndex>33</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox65">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Last Page</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>4.5764in</Top>
+            <Left>2.95432in</Left>
+            <Height>0.25in</Height>
+            <Width>0.7986in</Width>
+            <ZIndex>34</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>8.91667in</Height>
+        <Height>8.45834in</Height>
         <Style />
       </Body>
-      <Width>8.20723in</Width>
+      <Width>8.44041in</Width>
       <Page>
         <PageFooter>
           <Height>0.4375in</Height>

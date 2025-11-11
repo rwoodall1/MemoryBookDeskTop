@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Mbc5.Forms;
-using Exceptionless;
-using Mbc5.Forms.MixBook;
+﻿using Mbc5.Forms;
 using NLog;
-using System.Threading;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Mbc5
 {
@@ -26,7 +22,7 @@ namespace Mbc5
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           
+
             // Set the unhandled exception mode to force all Windows Forms errors to go through
             // our handler.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
@@ -38,9 +34,10 @@ namespace Mbc5
 
             try
             {
+                NativePathHelper.AddPdfiumNativePath();
 
-               Application.Run(new frmMain());
-               // Application.Run(new Form1());
+                Application.Run(new frmMain());
+                //Application.Run(new Form1());
 
             }
             catch (Exception ex)
@@ -51,7 +48,7 @@ namespace Mbc5
             }
         }
 
-       
+
 
         // Handle the UI exceptions by showing a dialog box, and asking the user whether
         // or not they wish to abort execution.
@@ -65,7 +62,7 @@ namespace Mbc5
                 string errorMsg = "An application error occurred. Please contact the adminstrator " +
                     "with the following information:\n\n";
 
-              
+
             }
             catch (Exception exc)
             {
@@ -82,6 +79,23 @@ namespace Mbc5
             }
         }
 
-        
+
     }
- }
+
+    static class NativePathHelper
+    {
+        [DllImport("kernel32", SetLastError = true)]
+        private static extern bool SetDllDirectory(string lpPathName);
+
+        public static void AddPdfiumNativePath()
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string arch = Environment.Is64BitProcess ? "x64" : "x86";
+            string nativePath = Path.Combine(baseDir, arch);
+            if (Directory.Exists(nativePath))
+            {
+                SetDllDirectory(nativePath);
+            }
+        }
+    }
+}

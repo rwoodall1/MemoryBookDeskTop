@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Mbc5.Classes;
-using BaseClass;
-using System.Media;
+﻿using BaseClass;
 using BaseClass.Classes;
 using BindingModels;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmCaseMatch : BaseClass.frmBase
@@ -17,9 +11,11 @@ namespace Mbc5.Forms.MixBook
         public frmCaseMatch(UserPrincipal userPrincipal, frmMain frmMain) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
+            ApplicationUser = userPrincipal;
 
         }
         public int CoverCount { get; set; }
+        public UserPrincipal ApplicationUser { get; set; }
         private void Button2_Click(object sender, EventArgs e)
         {
             Button2.BackColor = Color.Green;
@@ -131,7 +127,7 @@ namespace Mbc5.Forms.MixBook
         }
         private void RemoveScan()
         {
-            if (TextBox1.Text.Length<3)
+            if (TextBox1.Text.Length < 3)
             {
                 return;
             }
@@ -160,7 +156,7 @@ namespace Mbc5.Forms.MixBook
             }
             catch (Exception ex)
             {
-                Log.Error("Error removing scan (Invno:"+ TextBox1.Text + ") : " + ex.Message);
+                Log.Error("Error removing scan (Invno:" + TextBox1.Text + ") : " + ex.Message);
             }
         }
         private void Button5_Click(object sender, EventArgs e)
@@ -193,7 +189,7 @@ namespace Mbc5.Forms.MixBook
         }
         private bool InsertWip(string vInvno)
         {
-          
+
             var sqlClient = new SQLCustomClient();
             string cmdText = @"
                                 SELECT M.ShipName,M.ClientOrderId,M.ItemId,M.JobId,M.Invno,M.Backing,M.ShipMethod,M.CoverPreviewUrl,M.BookPreviewUrl,M.Copies As Quantity,P.ProdNo,C.Specovr
@@ -216,6 +212,7 @@ namespace Mbc5.Forms.MixBook
                 MessageBox.Show("Record was not found.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
+            WhipCheck(MbxModel);
             sqlClient.ClearParameters();
             //war is datetime
             //wir is initials
@@ -259,12 +256,12 @@ namespace Mbc5.Forms.MixBook
             sqlClient.CommandText(@"Update MixbookOrder Set BookStatus=@BookStatus where Invno=@Invno");
             sqlClient.AddParameter("@Invno", vInvno);
             sqlClient.AddParameter("@BookStatus", "CaseMatch");
-            var updateresult=sqlClient.Update();
+            var updateresult = sqlClient.Update();
             if (updateresult.IsError)
             {
-                Log.Error("Failed to update book status:("+this.Invno.ToString()+")"+updateresult.Errors[0].DeveloperMessage);
+                Log.Error("Failed to update book status:(" + this.Invno.ToString() + ")" + updateresult.Errors[0].DeveloperMessage);
             }
-          
+
             return true;
         }
         private bool CheckStatus(string vInvno)
@@ -277,8 +274,8 @@ namespace Mbc5.Forms.MixBook
                 return false;
 
             }
-            string vStatus=sqlResult.Data;
-            if (vStatus == "Cancelled"|| vStatus == "Hold"|| vStatus == "Shipped")
+            string vStatus = sqlResult.Data;
+            if (vStatus == "Cancelled" || vStatus == "Hold" || vStatus == "Shipped")
             {
                 System.IO.Stream str = Properties.Resources.Whistling;
                 System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
@@ -287,12 +284,77 @@ namespace Mbc5.Forms.MixBook
                 {
                     snd.Play();
                 }
-                MbcMessageBox.Hand("This order status is " + vStatus + " Notify supervisor","Status");
+                MbcMessageBox.Hand("This order status is " + vStatus + " Notify supervisor", "Status");
                 return false;
             }
             return true;
 
 
         }
+        private void WhipCheck(MixBookBarScanModel MbxModel)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.ReturnSqlIdentityId(true);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@DescripID", "29");
+            sqlClient.AddParameter("@WAR", DateTime.Now);
+            sqlClient.AddParameter("@WIR", "SYS");
+            sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                Begin
+                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                END
+                                                ");
+            var result12 = sqlClient.Insert();
+            if (result12.IsError)
+            {
+
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result12.Errors[0].DeveloperMessage);
+
+            }
+            sqlClient.ClearParameters();
+            sqlClient.ReturnSqlIdentityId(true);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@DescripID", "43");
+            sqlClient.AddParameter("@WAR", DateTime.Now);
+            sqlClient.AddParameter("@WIR", "SYS");
+            sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                            Begin
+                                            INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                            END
+                                            ");
+
+            var result112 = sqlClient.Insert();
+            if (result112.IsError)
+            {
+
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result112.Errors[0].DeveloperMessage);
+
+            }
+            sqlClient.ClearParameters();
+            sqlClient.ReturnSqlIdentityId(true);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            sqlClient.AddParameter("@DescripID", "39");
+            sqlClient.AddParameter("@WAR", DateTime.Now);
+            sqlClient.AddParameter("@WIR", "SYS");
+            sqlClient.AddParameter("@Jobno", MbxModel.JobId);
+            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                            Begin
+                                            INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                            END
+                                            ");
+
+            var result1123 = sqlClient.Insert();
+            if (result1123.IsError)
+            {
+
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert corrective scan.", result1123.Errors[0].DeveloperMessage);
+
+            }
+
+        }
     }
 }
+
