@@ -48,6 +48,9 @@
 /.vs/MemoryBook/CopilotIndices/17.14.1091.29919
 /BindingModels/.vs/BindingModels.csproj.dtbcache.json
 /BindingModels/obj/x64/Release/BindingModels.csproj.AssemblyReference.cache
+/BindingModels/obj/x64/Release/DesignTimeResolveAssemblyReferencesInput.cache
+/RESTModule/obj/x64/Release/DesignTimeResolveAssemblyReferencesInput.cache
+/BindingModels/obj/x64/Release/BindingModels.csproj.AssemblyReference.cache
 /BindingModels/obj/x64/Release/BindingModels.dll
 /BindingModels/obj/x64/Release/BindingModels.pdb
 /Mbc5/Properties/AssemblyInfo.cs
@@ -63,3 +66,4 @@
 /BindingModels/obj/x64/Release
 /BindingModels/obj/x64/Release
 /RESTModule/obj/x64/Release
+/RESTModule/obj/x64/Release/build.force
