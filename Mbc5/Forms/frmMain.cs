@@ -576,6 +576,7 @@ namespace Mbc5.Forms
         {
             //MixbookOrderRuleCheck();
             string value = "";
+            DateTime startTime = DateTime.Now;
             var sqlClient = new SQLCustomClient();
 
             sqlClient.CommandText(@"
@@ -664,6 +665,7 @@ namespace Mbc5.Forms
             {
                 JobTicketsPrinted = 0;
                 MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                ClearLastPage(startTime);
                 return;
             }
 
@@ -682,6 +684,26 @@ namespace Mbc5.Forms
             this.reportViewer1.RefreshReport();
 
 
+        }
+        private void ClearLastPage(DateTime startTime)
+        {
+            try
+            {
+                var dir = new DirectoryInfo(LastPageStorage);
+                foreach (var file1 in dir.GetFiles("*.jpeg"))
+                {
+                    var fileAge = file1.LastWriteTime;
+                    if (file1.LastWriteTime < startTime.AddDays(-3))
+                    {
+                        file1.Delete();
+                    }
+                    //file1.Delete();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error clearing last page images:" + ex.ToString());
+            }
         }
         private List<RemakeTicketQuery> SetLastPageImage(List<RemakeTicketQuery> model)
         {
@@ -2073,6 +2095,9 @@ namespace Mbc5.Forms
             frm1.MdiParent = this;
             frm1.Show();
         }
+
+
+
 
 
 
