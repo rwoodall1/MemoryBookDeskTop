@@ -17,7 +17,7 @@ namespace BaseClass.Classes
         public SQLQueryProperties()
         {
             ConnectionString = _ConnectionString;
-            Timeout = 20;
+            Timeout = 60;
             CommandParameters = new List<SqlParameter>();
             CommandType = CommandType.Text;
             ReturnList = false;
