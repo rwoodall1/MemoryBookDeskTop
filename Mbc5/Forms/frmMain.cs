@@ -2,6 +2,7 @@
 using BaseClass.Classes;
 using BindingModels;
 using Exceptionless;
+
 //using Mbc5.Reports;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -605,8 +606,8 @@ namespace Mbc5.Forms
 
             sqlClient.CommandText(@"
                     Select Top(50) Invno,ShipName,PrintergyFile
-                    ,ClientOrderId
-                    ,CoverPreviewUrl
+                   ,ClientOrderId
+                    ,CoverPreviewUrl    
                     ,BookUrl
                     ,BookPreviewUrl
                     ,RequestedShipDate
@@ -692,8 +693,12 @@ namespace Mbc5.Forms
                 ClearLastPage(startTime);
                 return;
             }
+            foreach (JobTicketQuery job in jobData)
+            {
+                job.LastPageLocation = new Uri(LastPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+            }
 
-            SetLastPageImage();
+            //SetLastPageImage();
             this.JobTicketsPrinted += 50;
 
             //Only 50 in query will repeat until all records printed.
@@ -799,8 +804,8 @@ namespace Mbc5.Forms
                         {
                             if (doc.PageCount <= 0)
                             {
-                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                //MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
                                 continue;
                             }
 
@@ -944,8 +949,8 @@ namespace Mbc5.Forms
                         {
                             if (doc.PageCount <= 0)
                             {
-                                MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                //MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
                                 continue;
                             }
 
@@ -979,8 +984,8 @@ namespace Mbc5.Forms
                 catch (Exception ex)
                 {
                     //MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
-                    new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                    //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    //new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
                     continue;
                 }
 
