@@ -19,6 +19,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mbc5.Forms
@@ -36,6 +37,7 @@ namespace Mbc5.Forms
         private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         protected Logger Log { get; set; }
         protected int JobTicketsPrinted { get; set; }
+        protected int test { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
@@ -97,9 +99,31 @@ namespace Mbc5.Forms
                 this.WindowState = FormWindowState.Maximized;
             }
 
-
-
-
+            // Run SetLastPageImage in background so frmMain_Load doesn't block UI.
+            // Any UI-specific calls inside SetLastPageImage (MessageBox.Show(this, ...), etc.)
+            // may still need to be marshaled to the UI thread inside that method.
+            Task.Run(() =>
+            {
+                try
+                {
+                    SetLastPageImage();
+                }
+                catch (Exception ex)
+                {
+                    // Log on UI thread to be safe
+                    try
+                    {
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Background SetLastPageImage failed: " + ex.ToString());
+                        }));
+                    }
+                    catch
+                    {
+                        // swallow - best effort logging only
+                    }
+                }
+            });
         }
         #region "Properties"
         public bool keepLoading { get; set; } = true;
@@ -669,7 +693,7 @@ namespace Mbc5.Forms
                 return;
             }
 
-            var goodtoPrint = SetLastPageImage(jobData);
+            SetLastPageImage();
             this.JobTicketsPrinted += 50;
 
             //Only 50 in query will repeat until all records printed.
@@ -823,12 +847,40 @@ namespace Mbc5.Forms
         }
 
 
-        private List<JobTicketQuery> SetLastPageImage(List<JobTicketQuery> model)
+        async private void SetLastPageImage()
         {
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.CommandText(@"
+                    Select 
+                    Invno
+                    ,PrintergyFile
+                    ,BookUrl
+                    ,RequestedShipDate
+                    ,Description
+                    ,Copies
+                    ,OrderReceivedDate
+                     From MixBookOrder MO Where (MixbookOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                     AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
+                ");
+
+            var result = sqlClient.SelectMany<JobTicketQuery>();
+            if (result.IsError)
+            {
+                //MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+
+            var model = (List<JobTicketQuery>)result.Data;
+            if (model == null)
+            {
+                return;
+            }
+            var aa = 0;
             foreach (JobTicketQuery data in model)
             {
-
-
+                test += 1;
                 string pdfPath = "";
                 string file = data.PrintergyFile ?? "";
                 int idx = file.IndexOf("_.");
@@ -922,18 +974,18 @@ namespace Mbc5.Forms
                             }
                         }
                     }
-
+                    var a = 1;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
                     new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
                     continue;
                 }
 
             }
-            return model;
+
 
         }
 
@@ -1089,7 +1141,7 @@ namespace Mbc5.Forms
 
             if (jobData != null)
             {
-                jobData = SetLastPageImage(jobData);
+                //jobData = SetLastPageImage(jobData);
                 reportViewer1.LocalReport.DataSources.Clear();
                 JobTicketQueryBindingSource.DataSource = jobData;
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
@@ -2091,9 +2143,39 @@ namespace Mbc5.Forms
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 frm1 = new Form1();
-            frm1.MdiParent = this;
-            frm1.Show();
+            MessageBox.Show(this.test.ToString());
+            //Form1 frm1 = new Form1();
+            //frm1.MdiParent = this;
+            //frm1.Show();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // Run SetLastPageImage in background so frmMain_Load doesn't block UI.
+            // Any UI-specific calls inside SetLastPageImage (MessageBox.Show(this, ...), etc.)
+            // may still need to be marshaled to the UI thread inside that method.
+            Task.Run(() =>
+            {
+                try
+                {
+                    SetLastPageImage();
+                }
+                catch (Exception ex)
+                {
+                    // Log on UI thread to be safe
+                    try
+                    {
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Background SetLastPageImage failed: " + ex.ToString());
+                        }));
+                    }
+                    catch
+                    {
+                        // swallow - best effort logging only
+                    }
+                }
+            });
         }
 
 
