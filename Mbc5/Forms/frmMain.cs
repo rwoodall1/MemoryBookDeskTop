@@ -903,7 +903,11 @@ namespace Mbc5.Forms
                 }
                 else
                 {
-                    pdfPath = data.BookUrl;
+                    // pdfPath = data.BookUrl;
+                }
+                if (string.IsNullOrEmpty(pdfPath))
+                {
+                    continue;
                 }
 
                 string defaultName = data.Invno.ToString() + "LastPage.jpeg";
