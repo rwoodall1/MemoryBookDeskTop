@@ -1147,6 +1147,15 @@ namespace Mbc5.Forms
             }
 
             var jobData = (List<RemakeTicketQuery>)result.Data;
+            if (jobData == null)
+            {
+                MbcMessageBox.Hand("All remake tickets have been printed", "Remake Tickets");
+                return;
+            }
+            foreach (RemakeTicketQuery job in jobData)
+            {
+                job.LastPageLocation = new Uri(LastPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+            }
 
             if (jobData != null)
             {
@@ -1158,10 +1167,7 @@ namespace Mbc5.Forms
 
                 this.reportViewer1.RefreshReport();
             }
-            else
-            {
-                MbcMessageBox.Hand("There were no records found to print.", "No Records");
-            }
+
 
 
 
