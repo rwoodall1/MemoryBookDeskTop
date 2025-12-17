@@ -706,6 +706,7 @@ namespace Mbc5.Forms
             JobTicketQueryBindingSource.DataSource = jobData;
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
+            SetBatchNumber();
 
             // IMPORTANT: allow external images and ensure LastPageLocation contains a file:// URI
             reportViewer1.LocalReport.EnableExternalImages = true;
@@ -1034,7 +1035,7 @@ namespace Mbc5.Forms
 
 
         }
-        private void SetJobTicketsPrinted()
+        private void SetBatchNumber()
         {
             int batchNumber = 0;
             var sqlClient = new SQLCustomClient();
@@ -1051,7 +1052,25 @@ namespace Mbc5.Forms
             int.TryParse(tmpbatchNumber, out batchNumber);
             batchNumber += 1;
             sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintBatch=@PrintBatch,JobPrintDate=GETDATE() Where Invno=@Invno");
+            sqlClient.CommandText(@"Update MixbookOrder Set JobPrintBatch=@PrintBatch Where Invno=@Invno");
+            foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+
+                sqlClient.AddParameter("@PrintBatch", batchNumber);
+                var updateResult = sqlClient.Update();
+            }
+        }
+        private void SetJobTicketsPrinted()
+        {
+
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintDate=GETDATE() Where Invno=@Invno");
             foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
@@ -1059,7 +1078,7 @@ namespace Mbc5.Forms
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
                 sqlClient.AddParameter("@SetJobTicketPrinted", 1);
-                sqlClient.AddParameter("@PrintBatch", batchNumber);
+
                 var updateResult = sqlClient.Update();
             }
         }
