@@ -642,11 +642,8 @@ namespace Mbc5.Forms
             this.tableAdapterManager2 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-            
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
-           
             this.mquotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-          
             this.lkpCustTypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCustTypeTableAdapter();
             this.lkpCoverStockTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCoverStockTableAdapter();
             this.lkpMascotTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMascotTableAdapter();
@@ -877,9 +874,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
-           
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
-         
             ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -3744,26 +3739,26 @@ namespace Mbc5.Forms
             this.mnCust,
             this.mnBackGround});
             this.addItemMenu.Name = "addItemMenu";
-            this.addItemMenu.Size = new System.Drawing.Size(179, 70);
+            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
             // 
             // mnType
             // 
             this.mnType.Name = "mnType";
-            this.mnType.Size = new System.Drawing.Size(178, 22);
+            this.mnType.Size = new System.Drawing.Size(179, 22);
             this.mnType.Text = "Add Type Style";
             this.mnType.Click += new System.EventHandler(this.mnType_Click);
             // 
             // mnCust
             // 
             this.mnCust.Name = "mnCust";
-            this.mnCust.Size = new System.Drawing.Size(178, 22);
+            this.mnCust.Size = new System.Drawing.Size(179, 22);
             this.mnCust.Text = "Add Customer Type";
             this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
             // 
             // mnBackGround
             // 
             this.mnBackGround.Name = "mnBackGround";
-            this.mnBackGround.Size = new System.Drawing.Size(178, 22);
+            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
             this.mnBackGround.Text = "Add Back Ground";
             this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
@@ -3884,10 +3879,19 @@ namespace Mbc5.Forms
             this.btnRecvLabel.UseVisualStyleBackColor = true;
             this.btnRecvLabel.Click += new System.EventHandler(this.btnRecvLabel_Click);
             // 
-          
+            // btnRecvHistory
+            // 
+            this.btnRecvHistory.Location = new System.Drawing.Point(0, 0);
+            this.btnRecvHistory.Name = "btnRecvHistory";
+            this.btnRecvHistory.Size = new System.Drawing.Size(75, 23);
+            this.btnRecvHistory.TabIndex = 164;
             // 
             // btnBkDue
-
+            // 
+            this.btnBkDue.Location = new System.Drawing.Point(0, 0);
+            this.btnBkDue.Name = "btnBkDue";
+            this.btnBkDue.Size = new System.Drawing.Size(75, 23);
+            this.btnBkDue.TabIndex = 165;
             // 
             // bkmixedCheckBox
             // 
@@ -4038,7 +4042,7 @@ namespace Mbc5.Forms
             this.descriptionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.remakeReasonsBindingSource, "Description", true));
             this.descriptionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.wipBindingSource, "RemakeReason", true));
             this.descriptionComboBox.DataSource = this.remakeReasonsBindingSource;
-            this.descriptionComboBox.DisplayMember = "Description";
+            this.descriptionComboBox.DisplayMember = "Id";
             this.descriptionComboBox.FormattingEnabled = true;
             this.descriptionComboBox.Location = new System.Drawing.Point(496, 165);
             this.descriptionComboBox.Name = "descriptionComboBox";
@@ -6945,9 +6949,15 @@ namespace Mbc5.Forms
             this.tableAdapterManager2.quotesTableAdapter = null;
             this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            
-         
-           
+            // invdetailTableAdapter
+            // 
+            this.invdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // paymntTableAdapter
+            // 
+            this.paymntTableAdapter.ClearBeforeFill = true;
+            // 
+            // lkpCustTypeTableAdapter
             // 
             this.lkpCustTypeTableAdapter.ClearBeforeFill = true;
             // 
@@ -7060,8 +7070,8 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
-           
-           
+            ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
