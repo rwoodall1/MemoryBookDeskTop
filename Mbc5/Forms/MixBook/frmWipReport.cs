@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
 using BindingModels;
-using Microsoft.Reporting.WinForms;
-using Equin.ApplicationFramework;
 using CsvHelper;
-using System.IO;
+using Equin.ApplicationFramework;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmWipReport : BaseClass.frmBase
     {
-        public frmWipReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead", "MixBook" }, userPrincipal)
+        public frmWipReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MBLead", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -31,13 +26,13 @@ namespace Mbc5.Forms.MixBook
             LoadData();
         }
 
-      private List<WipReportModel> DataResult { get; set; }
+        private List<WipReportModel> DataResult { get; set; }
 
 
-   private void LoadData()
+        private void LoadData()
         {
             var sqlClient = new SQLCustomClient();
-      string cmd= @"Select 
+            string cmd = @"Select 
                                     MO.ShipName									
 									,(Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),1,7)+'   X'+Substring(LTRIM(RTRIM(Convert(varchar,MO.Invno))),8,Len(Convert(varchar,MO.Invno)-7)))AS Invno
 									,MO.Copies
@@ -82,7 +77,7 @@ namespace Mbc5.Forms.MixBook
                                  Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War,MxbLocation From WipDetail Where DescripId=50  ) WD50 On MO.Invno=WD50.Invno
                                  Where  MO.MixbookOrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Mo.OrderReceivedDate,MO.ClientOrderId,MO.Invno,P.Kitrecvd";
             sqlClient.CommandText(cmd);
-       var orderResult = sqlClient.SelectMany<WipReportModel>();
+            var orderResult = sqlClient.SelectMany<WipReportModel>();
             if (orderResult.IsError)
             {
                 MbcMessageBox.Error("Failed to retrieve records:" + orderResult.Errors[0].DeveloperMessage);
@@ -95,7 +90,7 @@ namespace Mbc5.Forms.MixBook
             lblRecCount.Text = vOrders1.Count.ToString() + " Records";
             var vcopies = vOrders1.Sum(a => a.Copies);
             lblcopycnt.Text = vcopies.ToString() + " Total Copies";
-      
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -116,9 +111,9 @@ namespace Mbc5.Forms.MixBook
             //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookWipReport.rdlc";
             //this.reportViewer1.RefreshReport();
 
-            if (bsWip.Count<1)
+            if (bsWip.Count < 1)
             {
-                MbcMessageBox.Hand("There are no records to print.","No Records");
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
                 return;
             }
             try
@@ -150,7 +145,7 @@ namespace Mbc5.Forms.MixBook
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
 
         }
 
@@ -160,17 +155,19 @@ namespace Mbc5.Forms.MixBook
                 if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.Value != null)
                 {
                     int theClinetOrderId;
-                  string _clientOrderId= dataGridView1.CurrentRow.Cells[0].Value.ToString().Replace("*","");
-                    if (int.TryParse(_clientOrderId, out theClinetOrderId)) { 
-                    
-                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, theClinetOrderId);
-                    frmMBOrders.MdiParent = this.MdiParent;
-                    frmMBOrders.Show();
-                    this.Cursor = Cursors.Default;}
+                    string _clientOrderId = dataGridView1.CurrentRow.Cells[0].Value.ToString().Replace("*", "");
+                    if (int.TryParse(_clientOrderId, out theClinetOrderId))
+                    {
+
+                        frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, theClinetOrderId);
+                        frmMBOrders.MdiParent = this.MdiParent;
+                        frmMBOrders.Show();
+                        this.Cursor = Cursors.Default;
+                    }
                 }
-           
-         
-            
+
+
+
         }
     }
 }

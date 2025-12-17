@@ -642,14 +642,8 @@ namespace Mbc5.Forms
             this.tableAdapterManager2 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-            this.tableAdapterManager3 = new Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager();
-            this.dsMcust = new Mbc5.DataSets.dsMcust();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mcustTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.mcustTableAdapter();
-            this.dsMSales = new Mbc5.DataSets.dsMSales();
             this.mquotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mquotesTableAdapter = new Mbc5.DataSets.dsMSalesTableAdapters.mquotesTableAdapter();
-            this.tableAdapterManager4 = new Mbc5.DataSets.dsMSalesTableAdapters.TableAdapterManager();
             this.lkpCustTypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCustTypeTableAdapter();
             this.lkpCoverStockTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCoverStockTableAdapter();
             this.lkpMascotTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMascotTableAdapter();
@@ -880,9 +874,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -3747,26 +3739,26 @@ namespace Mbc5.Forms
             this.mnCust,
             this.mnBackGround});
             this.addItemMenu.Name = "addItemMenu";
-            this.addItemMenu.Size = new System.Drawing.Size(179, 70);
+            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
             // 
             // mnType
             // 
             this.mnType.Name = "mnType";
-            this.mnType.Size = new System.Drawing.Size(178, 22);
+            this.mnType.Size = new System.Drawing.Size(179, 22);
             this.mnType.Text = "Add Type Style";
             this.mnType.Click += new System.EventHandler(this.mnType_Click);
             // 
             // mnCust
             // 
             this.mnCust.Name = "mnCust";
-            this.mnCust.Size = new System.Drawing.Size(178, 22);
+            this.mnCust.Size = new System.Drawing.Size(179, 22);
             this.mnCust.Text = "Add Customer Type";
             this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
             // 
             // mnBackGround
             // 
             this.mnBackGround.Name = "mnBackGround";
-            this.mnBackGround.Size = new System.Drawing.Size(178, 22);
+            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
             this.mnBackGround.Text = "Add Back Ground";
             this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
@@ -3889,29 +3881,17 @@ namespace Mbc5.Forms
             // 
             // btnRecvHistory
             // 
-            this.btnRecvHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecvHistory.Location = new System.Drawing.Point(16, 622);
+            this.btnRecvHistory.Location = new System.Drawing.Point(0, 0);
             this.btnRecvHistory.Name = "btnRecvHistory";
-            this.btnRecvHistory.Size = new System.Drawing.Size(86, 23);
-            this.btnRecvHistory.TabIndex = 93;
-            this.btnRecvHistory.Text = "Rcv. Card Hist";
-            this.btnRecvHistory.UseVisualStyleBackColor = true;
-            this.btnRecvHistory.Click += new System.EventHandler(this.btnRecvHistory_Click);
+            this.btnRecvHistory.Size = new System.Drawing.Size(75, 23);
+            this.btnRecvHistory.TabIndex = 164;
             // 
             // btnBkDue
             // 
-            this.btnBkDue.AutoSize = true;
-            this.btnBkDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBkDue.Image = ((System.Drawing.Image)(resources.GetObject("btnBkDue.Image")));
-            this.btnBkDue.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBkDue.Location = new System.Drawing.Point(54, 557);
+            this.btnBkDue.Location = new System.Drawing.Point(0, 0);
             this.btnBkDue.Name = "btnBkDue";
-            this.btnBkDue.Size = new System.Drawing.Size(117, 38);
-            this.btnBkDue.TabIndex = 38;
-            this.btnBkDue.Text = "BK Due Reminder";
-            this.btnBkDue.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBkDue.UseVisualStyleBackColor = true;
-            this.btnBkDue.Click += new System.EventHandler(this.btnBkDue_Click);
+            this.btnBkDue.Size = new System.Drawing.Size(75, 23);
+            this.btnBkDue.TabIndex = 165;
             // 
             // bkmixedCheckBox
             // 
@@ -4062,7 +4042,7 @@ namespace Mbc5.Forms
             this.descriptionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.remakeReasonsBindingSource, "Description", true));
             this.descriptionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.wipBindingSource, "RemakeReason", true));
             this.descriptionComboBox.DataSource = this.remakeReasonsBindingSource;
-            this.descriptionComboBox.DisplayMember = "Description";
+            this.descriptionComboBox.DisplayMember = "Id";
             this.descriptionComboBox.FormattingEnabled = true;
             this.descriptionComboBox.Location = new System.Drawing.Point(496, 165);
             this.descriptionComboBox.Name = "descriptionComboBox";
@@ -6977,52 +6957,6 @@ namespace Mbc5.Forms
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
             // 
-            // tableAdapterManager3
-            // 
-            this.tableAdapterManager3.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager3.Connection = null;
-            this.tableAdapterManager3.datecontTableAdapter = null;
-            this.tableAdapterManager3.mcustTableAdapter = null;
-            this.tableAdapterManager3.MeridianCategoryTableAdapter = null;
-            this.tableAdapterManager3.UpdateOrder = Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // dsMcust
-            // 
-            this.dsMcust.DataSetName = "dsMcust";
-            this.dsMcust.EnforceConstraints = false;
-            this.dsMcust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mcustBindingSource
-            // 
-            this.mcustBindingSource.DataMember = "mcust";
-            this.mcustBindingSource.DataSource = this.dsMcust;
-            // 
-            // mcustTableAdapter
-            // 
-            this.mcustTableAdapter.ClearBeforeFill = true;
-            // 
-            // dsMSales
-            // 
-            this.dsMSales.DataSetName = "dsMSales";
-            this.dsMSales.EnforceConstraints = false;
-            this.dsMSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mquotesBindingSource
-            // 
-            this.mquotesBindingSource.DataMember = "mquotes";
-            this.mquotesBindingSource.DataSource = this.dsMSales;
-            // 
-            // mquotesTableAdapter
-            // 
-            this.mquotesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager4
-            // 
-            this.tableAdapterManager4.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager4.coversTableAdapter = null;
-            this.tableAdapterManager4.mquotesTableAdapter = this.mquotesTableAdapter;
-            this.tableAdapterManager4.UpdateOrder = Mbc5.DataSets.dsMSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // lkpCustTypeTableAdapter
             // 
             this.lkpCustTypeTableAdapter.ClearBeforeFill = true;
@@ -7136,9 +7070,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mixBookOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMcust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -7521,14 +7453,11 @@ namespace Mbc5.Forms
         private System.Windows.Forms.Button btnEmailProdForm;
         private System.Windows.Forms.BindingSource productionTicketBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerProdticket;
-        private DataSets.dsMcustTableAdapters.TableAdapterManager tableAdapterManager3;
-        private DataSets.dsMcust dsMcust;
+       
         private System.Windows.Forms.BindingSource mcustBindingSource;
-        private DataSets.dsMcustTableAdapters.mcustTableAdapter mcustTableAdapter;
-        private DataSets.dsMSales dsMSales;
+       
         private System.Windows.Forms.BindingSource mquotesBindingSource;
-        private DataSets.dsMSalesTableAdapters.mquotesTableAdapter mquotesTableAdapter;
-        private DataSets.dsMSalesTableAdapters.TableAdapterManager tableAdapterManager4;
+      
         private System.Windows.Forms.BindingSource lkpCustTypeBindingSource;
         private DataSets.LookUpTableAdapters.lkpCustTypeTableAdapter lkpCustTypeTableAdapter;
         private System.Windows.Forms.BindingSource lkpCoverStockBindingSource;

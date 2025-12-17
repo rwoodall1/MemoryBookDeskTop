@@ -1,37 +1,27 @@
-﻿using System;
-using System.Configuration;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Data.SqlClient;
-
-using Mbc5.Dialogs;
-using Mbc5.Forms.MemoryBook;
-using Mbc5.Forms.Meridian;
-using Mbc5.Forms.MixBook;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass.Forms;
+using BindingModels;
+using Exceptionless;
 
-using Mbc5.LookUpForms;
-using NLog;
 //using Mbc5.Reports;
 using Mbc5.Classes;
-
-using Exceptionless;
-using Exceptionless.Models;
-using BaseClass;
-using BindingModels;
+using Mbc5.Dialogs;
+using Mbc5.Forms.JPIX;
+using Mbc5.Forms.MixBook;
+using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
-using Microsoft.VisualBasic;
-using CustomControls;
-using CsvHelper;
+using NLog;
+using PdfiumViewer;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Drawing.Drawing2D;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Mbc5.Forms
 {
@@ -42,9 +32,13 @@ namespace Mbc5.Forms
         {
             InitializeComponent();
             Log = LogManager.GetLogger(GetType().FullName);
-           
+
         }
+        private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
+        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         protected Logger Log { get; set; }
+        protected int JobTicketsPrinted { get; set; }
+        protected int test { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
@@ -60,7 +54,7 @@ namespace Mbc5.Forms
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
-            
+
             this.Hide();
 
             for (int i = 0; i < 3; i++)
@@ -68,7 +62,8 @@ namespace Mbc5.Forms
                 if (this.Login())
                 {
                     break;
-                };
+                }
+                ;
                 if (i == 2)
                 {
                     //if 2 tries close 
@@ -81,7 +76,7 @@ namespace Mbc5.Forms
             if (keepLoading)
             {
                 this.WindowState = FormWindowState.Maximized;
-          
+
 
                 if (this.ForcePasswordChange)
                 {
@@ -97,17 +92,39 @@ namespace Mbc5.Forms
                         Application.Exit();
                     }
                 }
-           
+
                 ValidateUserRoles();
-               SetMenu();
+                SetMenu();
                 mnuMain.Enabled = true;
-                 
+
                 this.WindowState = FormWindowState.Maximized;
             }
 
-
-
-            
+            // Run SetLastPageImage in background so frmMain_Load doesn't block UI.
+            // Any UI-specific calls inside SetLastPageImage (MessageBox.Show(this, ...), etc.)
+            // may still need to be marshaled to the UI thread inside that method.
+            Task.Run(() =>
+            {
+                try
+                {
+                    SetLastPageImage();
+                }
+                catch (Exception ex)
+                {
+                    // Log on UI thread to be safe
+                    try
+                    {
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Background SetLastPageImage failed: " + ex.ToString());
+                        }));
+                    }
+                    catch
+                    {
+                        // swallow - best effort logging only
+                    }
+                }
+            });
         }
         #region "Properties"
         public bool keepLoading { get; set; } = true;
@@ -131,12 +148,12 @@ namespace Mbc5.Forms
                 return false;
             }
 
-           // SetMenu();
+            // SetMenu();
 
             return true;
         }
         private void SetMenu()
-        
+
         {
 
 
@@ -147,10 +164,9 @@ namespace Mbc5.Forms
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+
                 barScanToolStripMenuItem_Click(null, null);
 
 
@@ -161,13 +177,11 @@ namespace Mbc5.Forms
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+
                 mixBookToolStripMenuItem.Visible = false;
-                meridianBindingWIPToolStripMenuItem.Visible = true;
-                meridianBindingWIPToolStripMenuItem_Click(null, null);
+
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")
             {
@@ -178,21 +192,19 @@ namespace Mbc5.Forms
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                barScanToolStripMenuItem_Click(null, null);
                 shippingScanToolStripMenuItem.Visible = false;
                 productionWIPToolStripMenuItem.Visible = true;
-                barScanToolStripMenuItem.Visible = false;
+                barScanToolStripMenuItem.Visible = true;
             }
             else if (ApplicationUser.UserName.ToUpper() == "PRESS")
             {
                 toolStripMenuItem2.Visible = true;
                 stoneFieldToolStripMenuItem.Visible = false;
-                labelsToolStripMenuItem.Visible=false;
-                customeReportsToolStripMenuItem.Visible=false;
+                labelsToolStripMenuItem.Visible = false;
+                customeReportsToolStripMenuItem.Visible = false;
                 mixbookReportsToolStripMenuItem.Visible = true;
                 invoiceReportToolStripMenuItem.Visible = false;
                 resetJobTicketsByBatchToolStripMenuItem.Visible = false;
@@ -202,37 +214,37 @@ namespace Mbc5.Forms
                 caseMatchScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = true;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
-                productionToolStripMenuItem.Visible = false;
+
                 tsMain.Visible = false;
-                
+
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = true;
+
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
 
             }
-            else if (  ApplicationUser.UserName.ToUpper() == "QUALITY")
+            else if (ApplicationUser.UserName.ToUpper() == "QUALITY")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
+
                 mixBookOrdersToolStripMenuItem.Visible = true;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
             }
-            else if (ApplicationUser.UserName.ToUpper() == "TRIMMING"|| ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
+            else if (ApplicationUser.UserName.ToUpper() == "TRIMMING" || ApplicationUser.UserName.ToUpper() == "BINDING" || ApplicationUser.UserName.ToUpper() == "BINDING2")
             {
 
                 caseMatchScanToolStripMenuItem.Visible = false;
@@ -244,11 +256,10 @@ namespace Mbc5.Forms
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = true;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem_Click(null, null);
+                productionToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem_Click(null, null);
 
                 shippingScanToolStripMenuItem.Visible = false;
 
@@ -256,38 +267,52 @@ namespace Mbc5.Forms
             }
             else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
-                mixbookBarscanToolStripMenuItem.Visible = false;
+
                 mixBookOrdersToolStripMenuItem.Visible = false;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+
                 productionToolStripMenuItem.Visible = false;
 
                 caseMatchScanToolStripMenuItem_Click(null, null);
 
             }
-            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
+            else if (ApplicationUser.UserName.ToUpper() == "MXBSHIPPING")
             {
                 caseMatchScanToolStripMenuItem.Visible = false;
-                mixbookBarscanToolStripMenuItem.Visible = false;
+
                 mixBookOrdersToolStripMenuItem.Visible = false;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
                 productionToolStripMenuItem.Visible = false;
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
                 systemToolStripMenuItem.Visible = false;
-                mBCToolStripMenuItem.Visible = false;
-                meridianToolStripMenuItem.Visible = false;
+
                 productionWIPToolStripMenuItem.Visible = false;
-                endSheetSupplementPreFlightToolStripMenuItem.Visible = false;
+
                 productionToolStripMenuItem.Visible = false;
                 shippingScanToolStripMenuItem_Click(null, null);
+
+            }
+            else if (ApplicationUser.UserName.ToUpper() == "SHIPPING")
+            {
+                caseMatchScanToolStripMenuItem.Visible = false;
+
+                mixBookOrdersToolStripMenuItem.Visible = false;
+                mixBookLoadTestToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = false;
+                tsMain.Visible = false;
+                toolStripMenuItem2.Visible = false;
+                systemToolStripMenuItem.Visible = false;
+
+                productionWIPToolStripMenuItem.Visible = false;
+                productionToolStripMenuItem.Visible = true;
+                barScanToolStripMenuItem_Click(null, null);
 
             }
 
@@ -309,18 +334,14 @@ namespace Mbc5.Forms
                 this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
                 lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                meridianBindingWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MBLead" });
 
-                //invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
-                //meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
-                //mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
-                //cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+
                 CleanShipping();
             }
 
 
 
-            }
+        }
         public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
@@ -329,52 +350,11 @@ namespace Mbc5.Forms
             tsProdutnNumberSearch.Visible = true;
             tsOracleCodeSearch.Visible = true;
             tsJobNo.Visible = true;
-            if (formName == "frmMbcCust")
-            {
-                tsFirstNameSearch.Visible = true;
-                tsLastNameSearch.Visible = true;
-                tsZipCodeSearch.Visible = true;
-                tsEmailSearch.Visible = true;
-                tsJobNo.Visible = true;
-            }
-            else if (formName == "frmMerCust")
-            {
-                tsFirstNameSearch.Visible = true;
-                tsLastNameSearch.Visible = true;
-                tsZipCodeSearch.Visible = true;
-                tsEmailSearch.Visible = true;
-                tsJobNo.Visible = false;
 
-            }
-            else if (formName == "frmSales")
-            {
-
-                tsJobNo.Visible = true;
-            }
-            else if (formName == "frmMSales")
-            {
-                tsJobNo.Visible = false;
-            }
-            else if (formName == "frmProdutn")
+            if (formName == "frmProdutn")
             {
                 tsJobNo.Visible = true;
                 tsMxbClientOrderId.Visible = true;
-            }
-            else if (formName == "frmBids")
-            {
-
-                tsInvno.Visible = false;
-                tsProdutnNumberSearch.Visible = false;
-                tsOracleCodeSearch.Visible = false;
-                tsJobNo.Visible = false;
-            }
-            else if (formName == "frmMBids")
-            {
-
-                tsInvno.Visible = false;
-                tsProdutnNumberSearch.Visible = false;
-                tsOracleCodeSearch.Visible = false;
-                tsJobNo.Visible = false;
             }
             else
             {
@@ -408,7 +388,7 @@ namespace Mbc5.Forms
         }
         public void ValidateUserRoles()
         {
-            string[] AvailableRoles = new string[] { "SA", "Administrator","MixBook","MBLead" };//list all roles when completed
+            string[] AvailableRoles = new string[] { "SA", "Administrator", "MixBook", "MBLead" };//list all roles when completed
             foreach (string role in AvailableRoles)
                 try
                 {
@@ -429,41 +409,24 @@ namespace Mbc5.Forms
             int vInvno = 0;
             switch (this.ActiveMdiChild.Name)
             {
-
-                case "frmMbcCust":
+                case "frmJPIXOrderDetail":
                     {
 
-                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+                        var tmpForm = (frmJPIXOrderDetail)this.ActiveMdiChild;
 
                         vInvno = tmpForm.Invno;
                         break;
                     }
-                case "frmSales":
+                case "frmJPIXOrder":
                     {
-                        var tmpForm = (frmSales)this.ActiveMdiChild;
-                        vInvno = tmpForm.Invno;
-                        break;
-                    }
-                case "frmMerCust":
-                    {
-                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
-                        vInvno = tmpForm.Invno;
-                        break;
 
-                    }
-                case "frmMSales":
-                    {
-                        var tmpForm = (frmMSales)this.ActiveMdiChild;
-                        vInvno = tmpForm.Invno;
-                        break;
+                        var tmpForm = (frmJPIXOrder)this.ActiveMdiChild;
 
-                    }
-                case "frmBids":
-                    {
-                        var tmpForm = (frmBids)this.ActiveMdiChild;
                         vInvno = tmpForm.Invno;
                         break;
                     }
+
+
                 case "frmProdutn":
                     {
                         var tmpForm = (frmProdutn)this.ActiveMdiChild;
@@ -483,34 +446,12 @@ namespace Mbc5.Forms
         }
         private string GetSchcode(string company)
         {
-            string vSchcode = null;
+            string vSchcode = "";
             if (company == "MBC")
             {
                 switch (this.ActiveMdiChild.Name)
                 {
-                    case "frmSales":
-                        {
 
-                            var tmpForm = (frmSales)this.ActiveMdiChild;
-
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                    case "frmMbcCust":
-                        {
-
-                            var tmpForm = (frmMbcCust)this.ActiveMdiChild;
-
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-
-                    case "frmBids":
-                        {
-                            var tmpForm = (frmBids)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
 
                     case "frmProdutn":
                         {
@@ -522,68 +463,19 @@ namespace Mbc5.Forms
 
                 }
             }
-            else if (company == "MER")
-            {
-                switch (this.ActiveMdiChild.Name)
-                {
 
-                    case "frmMerCust":
-                        {
-
-                            var tmpForm = (frmMerCust)this.ActiveMdiChild;
-
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-
-                    case "frmMBids":
-                        {
-                            var tmpForm = (frmMBids)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                    case "frmMSales":
-                        {
-                            var tmpForm = (frmMSales)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                    case "frmProdutn":
-                        {
-                            var tmpForm = (frmProdutn)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                }
-
-            }
             else if (company == "")
             {
                 switch (this.ActiveMdiChild.Name)
                 {
-                    case "frmSales":
+                    case "frmJPIXOrderDetail":
                         {
-
-                            var tmpForm = (frmSales)this.ActiveMdiChild;
-
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                    case "frmMbcCust":
-                        {
-
-                            var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+                            var tmpForm = (frmJPIXOrderDetail)this.ActiveMdiChild;
 
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
 
-                    case "frmBids":
-                        {
-                            var tmpForm = (frmBids)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
 
                     case "frmProdutn":
                         {
@@ -591,27 +483,7 @@ namespace Mbc5.Forms
                             vSchcode = tmpForm.Schcode;
                             break;
                         }
-                    case "frmMerCust":
-                        {
 
-                            var tmpForm = (frmMerCust)this.ActiveMdiChild;
-
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-
-                    case "frmMBids":
-                        {
-                            var tmpForm = (frmMBids)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
-                    case "frmMSales":
-                        {
-                            var tmpForm = (frmMSales)this.ActiveMdiChild;
-                            vSchcode = tmpForm.Schcode;
-                            break;
-                        }
                 }
             }
             return vSchcode;
@@ -729,12 +601,14 @@ namespace Mbc5.Forms
         {
             //MixbookOrderRuleCheck();
             string value = "";
+            DateTime startTime = DateTime.Now;
             var sqlClient = new SQLCustomClient();
-            
-                sqlClient.CommandText(@"
-                    Select Top(200) Invno,ShipName
-                    ,ClientOrderId
-                    ,CoverPreviewUrl
+
+            sqlClient.CommandText(@"
+                    Select Top(50) Invno,ShipName,PrintergyFile
+                   ,ClientOrderId
+                    ,CoverPreviewUrl    
+                    ,BookUrl
                     ,BookPreviewUrl
                     ,RequestedShipDate
                     ,Description
@@ -802,47 +676,329 @@ namespace Mbc5.Forms
                         From MixBookOrder MO Where (MixbookOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
                        AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
                 ");
-            
-                var result =sqlClient.SelectMany<JobTicketQuery>();
-                if (result.IsError)
-                {
-                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
-                    return;
-                }
-          
-                var jobData = (List<JobTicketQuery>)result.Data;
-            if (jobData == null)
+
+            var result = sqlClient.SelectMany<JobTicketQuery>();
+            if (result.IsError)
             {
-                MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                 return;
             }
 
-                //tmp rule 10/29/2022
-                //if (jobData != null)
-                //{
-                //    try {
-                //        var badRecs = jobData.FindAll(a => a.Pages > 350);
-                //        if (badRecs.Count > 0)
-                //        {
-                //            foreach (var rec in badRecs) {
-                //                new EmailHelper().SendEmail("Order with more than 350 pages", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com","OrderID "+ rec.ClientOrderId.ToString(), EmailType.System);
-                //                    }
-                //        }
-                //    }
-                //    catch (Exception ex) { }
-                //}
-                List<JobTicketQuery> printData = new List<JobTicketQuery>();
-            
-                //Only 200 in query will repeat until all records printed.
-                    reportViewer1.LocalReport.DataSources.Clear();
-                    JobTicketQueryBindingSource.DataSource = jobData;
-                    reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
-                    this.reportViewer1.RefreshReport();
-                    
-         
+            var jobData = (List<JobTicketQuery>)result.Data;
+            if (jobData == null)
+            {
+                JobTicketsPrinted = 0;
+                MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                ClearLastPage(startTime);
+                return;
+            }
+            foreach (JobTicketQuery job in jobData)
+            {
+                job.LastPageLocation = new Uri(LastPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+            }
+
+            //SetLastPageImage();
+            this.JobTicketsPrinted += 50;
+
+            //Only 50 in query will repeat until all records printed.
+            reportViewer1.LocalReport.DataSources.Clear();
+            JobTicketQueryBindingSource.DataSource = jobData;
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketQuery.rdlc";
+            SetBatchNumber();
+
+            // IMPORTANT: allow external images and ensure LastPageLocation contains a file:// URI
+            reportViewer1.LocalReport.EnableExternalImages = true;
+
+            this.reportViewer1.RefreshReport();
+
+
         }
+        private void ClearLastPage(DateTime startTime)
+        {
+            try
+            {
+                var dir = new DirectoryInfo(LastPageStorage);
+                foreach (var file1 in dir.GetFiles("*.jpeg"))
+                {
+                    var fileAge = file1.LastWriteTime;
+                    if (file1.LastWriteTime < startTime.AddDays(-3))
+                    {
+                        file1.Delete();
+                    }
+                    //file1.Delete();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error clearing last page images:" + ex.ToString());
+            }
+        }
+        private List<RemakeTicketQuery> SetLastPageImage(List<RemakeTicketQuery> model)
+        {
+            foreach (RemakeTicketQuery data in model)
+            {
+                string pdfPath = "";
+                string file = data.PrintergyFile ?? "";
+                int idx = file.IndexOf("_.");
+                if (idx > 0)
+                {
+                    file = file.Substring(0, idx);
+                }
+                // original logic appended _BB.pdf
+                file += "_BB.pdf";
+
+                // combine UNC share + filename
+                string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+                if (File.Exists(archiveFullPath))
+                {
+                    pdfPath = archiveFullPath;
+                }
+                else
+                {
+                    pdfPath = data.BookUrl;
+                }
+
+                // Suggest default filename based on PDF name
+                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                string lastPageImageFilePath = fullPath;
+                if (File.Exists(lastPageImageFilePath))
+                {
+                    data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
+                    continue;
+
+                }
+
+                Stream pdfStream = null;
+
+                try
+                {
+                    // Support HTTP/HTTPS downloads (keep in memory so Pdfium can seek)
+                    if (!string.IsNullOrEmpty(pdfPath) &&
+                        (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                         pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        using (var http = new HttpClient())
+                        {
+                            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                            resp.EnsureSuccessStatusCode();
+                            var ms = new MemoryStream();
+                            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                            ms.Position = 0;
+                            pdfStream = ms; // keep stream open for Pdfium
+                        }
+                    }
+                    // Support local or UNC paths
+                    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+                    {
+                        pdfStream = File.OpenRead(pdfPath);
+                    }
+
+                    // Load PDF and render. Use PdfDocument.Load overload depending on whether we have a stream.
+                    if (pdfStream != null)
+                    {
+                        using (pdfStream)
+                        using (var doc = PdfDocument.Load(pdfStream))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                //MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+                            int dpi = 300;
+                            var pageSize = doc.PageSizes[pageIndex];
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+                                // Ensure storage directory exists
+
+
+
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                                // Store file:// URI so the report's external image control can read it
+                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                    continue;
+                }
+
+            }
+            return model;
+
+        }
+
+
+        async private void SetLastPageImage()
+        {
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.CommandText(@"
+                    Select 
+                    Invno
+                    ,PrintergyFile
+                    ,BookUrl
+                    ,RequestedShipDate
+                    ,Description
+                    ,Copies
+                    ,OrderReceivedDate
+                     From MixBookOrder MO Where (MixbookOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                     AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
+                ");
+
+            var result = sqlClient.SelectMany<JobTicketQuery>();
+            if (result.IsError)
+            {
+                //MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+
+            var model = (List<JobTicketQuery>)result.Data;
+            if (model == null)
+            {
+                return;
+            }
+            var aa = 0;
+            foreach (JobTicketQuery data in model)
+            {
+                test += 1;
+                string pdfPath = "";
+                string file = data.PrintergyFile ?? "";
+                int idx = file.IndexOf("_.");
+                if (idx > 0)
+                {
+                    file = file.Substring(0, idx);
+                }
+                // original logic appended _BB.pdf
+                file += "_BB.pdf";
+                string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+                if (File.Exists(archiveFullPath))
+                {
+                    pdfPath = archiveFullPath;
+                }
+                else
+                {
+                    // pdfPath = data.BookUrl;
+                }
+                if (string.IsNullOrEmpty(pdfPath))
+                {
+                    continue;
+                }
+
+                string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+                var fullPath = Path.Combine(LastPageStorage, defaultName);
+                string lastPageImageFilePath = fullPath;
+
+                if (File.Exists(lastPageImageFilePath))
+                {
+                    data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
+                    //data.LastPageLocation = lastPageImageFilePath;
+                    continue;
+                }
+                Stream pdfStream = null;
+
+                try
+                {
+                    // Support HTTP/HTTPS downloads (keep in memory so Pdfium can seek)
+                    if (!string.IsNullOrEmpty(pdfPath) &&
+                        (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                         pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        using (var http = new HttpClient())
+                        {
+                            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                            resp.EnsureSuccessStatusCode();
+                            var ms = new MemoryStream();
+                            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                            ms.Position = 0;
+                            pdfStream = ms; // keep stream open for Pdfium
+                        }
+                    }
+                    // Support local or UNC paths
+                    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+                    {
+                        pdfStream = File.OpenRead(pdfPath);
+                    }
+
+                    // Load PDF and render. Use PdfDocument.Load overload depending on whether we have a stream.
+                    if (pdfStream != null)
+                    {
+                        using (pdfStream)
+                        using (var doc = PdfDocument.Load(pdfStream))
+                        {
+                            if (doc.PageCount <= 0)
+                            {
+                                //MessageBox.Show(this, "PDF contains no pages. Order:" + data.Invno.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //new EmailHelper().SendOutLookEmail("Mixbook Order with no pages in PDF INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                                continue;
+                            }
+
+                            int pageIndex = Math.Max(0, doc.PageCount - 1);
+                            int dpi = 300;
+                            var pageSize = doc.PageSizes[pageIndex];
+                            int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                            int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                            const int maxDimension = 10000;
+                            if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                            {
+                                double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                                pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                                pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                            }
+
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            {
+
+                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                                // Store file:// URI so the report's external image control can read it
+                                data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
+
+                            }
+                        }
+                    }
+                    var a = 1;
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    //new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
+                    continue;
+                }
+
+            }
+
+
+        }
+
         private void MixbookOrderRuleCheck()
         {
             //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
@@ -857,36 +1013,37 @@ namespace Mbc5.Forms
                 return;
             }
             var emailData = (List<OrdecheckRule1>)result.Data;
-            if(emailData == null)
+            if (emailData == null)
             {
                 return;
             }
-            foreach(var order in emailData) {
-            sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Hold' Where ClientOrderId=@ClientOrderId");//all invo on hold for order
-            sqlClient.AddParameter("@ClientOrderId",order.ClientOrderId);
-            var result1=sqlClient.Update();
-            if (result1.IsError)
+            foreach (var order in emailData)
             {
-                Log.Error("Failed to update Order Status:" + result1.Errors[0].DeveloperMessage);
-                MbcMessageBox.Error("Failed to update order status to hold for order "+order.ClientOrderId.ToString()+ " having pages over 200.");
-              continue;
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Hold' Where ClientOrderId=@ClientOrderId");//all invo on hold for order
+                sqlClient.AddParameter("@ClientOrderId", order.ClientOrderId);
+                var result1 = sqlClient.Update();
+                if (result1.IsError)
+                {
+                    Log.Error("Failed to update Order Status:" + result1.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to update order status to hold for order " + order.ClientOrderId.ToString() + " having pages over 200.");
+                    continue;
+                }
+                string body = @"Please re-route order #" + order.ClientOrderId + " (" + order.ShipName + "). An item has a page count of 200 or more. Please reply to Tammy Fowler when done.";
+                new EmailHelper().SendOutLookEmail("Re-Route request for Client Order #" + order.ClientOrderId.ToString(), "Brian Nelson<brian@mixbook.com>", new List<string> { "spasamante@mixbook.com", "Tammy.Fowler@jostens.com", "randy.woodall@jostens.com" }, body, EmailType.System);
             }
-               string body =@"Please re-route order #"+order.ClientOrderId+" ("+order.ShipName+"). An item has a page count of 200 or more. Please reply to Tammy Fowler when done.";
-               new EmailHelper().SendOutLookEmail("Re-Route request for Client Order #" + order.ClientOrderId.ToString(), "Brian Nelson<brian@mixbook.com>", new List<string> { "spasamante@mixbook.com", "Tammy.Fowler@jostens.com","randy.woodall@jostens.com" },body,EmailType.System);
-            } 
-            
+
 
         }
-        private void SetJobTicketsPrinted()
+        private void SetBatchNumber()
         {
-           int batchNumber = 0;
+            int batchNumber = 0;
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"Select Max(JobPrintBatch)From Mixbookorder");
             var result = sqlClient.SelectSingleColumn();
             if (result.IsError)
             {
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting batch number:"+result.Errors[0].DeveloperMessage);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting batch number:" + result.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Error getting batch number, print cancelled.");
                 return;
             }
@@ -895,7 +1052,25 @@ namespace Mbc5.Forms
             int.TryParse(tmpbatchNumber, out batchNumber);
             batchNumber += 1;
             sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintBatch=@PrintBatch,JobPrintDate=GETDATE() Where Invno=@Invno");
+            sqlClient.CommandText(@"Update MixbookOrder Set JobPrintBatch=@PrintBatch Where Invno=@Invno");
+            foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+
+                sqlClient.AddParameter("@PrintBatch", batchNumber);
+                var updateResult = sqlClient.Update();
+            }
+        }
+        private void SetJobTicketsPrinted()
+        {
+
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintDate=GETDATE() Where Invno=@Invno");
             foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
@@ -903,28 +1078,28 @@ namespace Mbc5.Forms
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@Invno", vInvno);
                 sqlClient.AddParameter("@SetJobTicketPrinted", 1);
-                sqlClient.AddParameter("@PrintBatch",batchNumber);
+
                 var updateResult = sqlClient.Update();
             }
         }
         private void ResetJobTickets()
         {
-            frmPrintBatches frmPrintBatches = new frmPrintBatches();
+            frmPrintBatches frmPrintBatches = new frmPrintBatches("MXB");
             frmPrintBatches.Show();
         }
         private void PrintRemakeTickets()
         {
-         
-              var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno
+
+            var sqlClient = new SQLCustomClient().CommandText(@"
+                Select  MO.Invno
                 ,MO.ShipName
                 ,MO.ClientOrderId
                 ,MO.RequestedShipDate
                 ,MO.Description
                 ,MO.Copies,MO.Pages
-               ,MO.CoverPreviewUrl
+               ,MO. CoverPreviewUrl
                 ,MO.BookPreviewUrl
-                ,MO.Backing,MO.OrderReceivedDate
+                ,MO.Backing,MO.OrderReceivedDate,PrintergyFile
                 ,MO.ProdInOrder
                 ,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode
                 ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(MO.Invno as varchar),8,LEN(CAST(MO.Invno as varchar))-7) AS DSInvno                
@@ -977,43 +1152,50 @@ namespace Mbc5.Forms
 
                 From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
                 Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
-                Where  (MO.MixbookOrderStatus!='Cancelled' OR MO.MixbookOrderStatus!='Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted=0 and Wd.Invno Is Null
-            "); 
-
-           
-
-                var result = sqlClient.SelectMany<RemakeTicketQuery>();
-                if (result.IsError)
-                {
-                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
-                    return;
-                }
-
-                var jobData = (List<RemakeTicketQuery>)result.Data;
-                if (jobData != null)
-                {
-                  
-                    reportViewer1.LocalReport.DataSources.Clear();
-                    JobTicketQueryBindingSource.DataSource = jobData;
-                    reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketQuery.rdlc";
-                
-                    this.reportViewer1.RefreshReport();
-                }
-                else
-                {
-                    MbcMessageBox.Hand("There were no records found to print.", "No Records");
-                }
+                Where(MO.MixbookOrderStatus != 'Cancelled' OR MO.MixbookOrderStatus != 'Hold') and W.Rmbto IS NOT NULL AND MO.RemakeTicketPrinted = 0 and Wd.Invno Is Null
+            ");
 
 
-          
+
+            var result = sqlClient.SelectMany<RemakeTicketQuery>();
+            if (result.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+
+            var jobData = (List<RemakeTicketQuery>)result.Data;
+            if (jobData == null)
+            {
+                MbcMessageBox.Hand("All remake tickets have been printed", "Remake Tickets");
+                return;
+            }
+            foreach (RemakeTicketQuery job in jobData)
+            {
+                job.LastPageLocation = new Uri(LastPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+            }
+
+            if (jobData != null)
+            {
+                //jobData = SetLastPageImage(jobData);
+                reportViewer1.LocalReport.DataSources.Clear();
+                JobTicketQueryBindingSource.DataSource = jobData;
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketQuery.rdlc";
+
+                this.reportViewer1.RefreshReport();
+            }
+
+
+
+
         }
-       
+
         private void SetRemakeTicketsPrinted()
         {
             string _userIntial = "";
-            InputBox.Show("Enter your initials to print remake tickets.", "User Initials",ref _userIntial);
+            InputBox.Show("Enter your initials to print remake tickets.", "User Initials", ref _userIntial);
             var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy,ReMakePrntDate=GETDATE() Where Invno=@Invno");
             foreach (RemakeTicketQuery rec in JobTicketQueryBindingSource.List)
             {
@@ -1026,8 +1208,8 @@ namespace Mbc5.Forms
                 var updateResult = sqlClient.Update();
             }
         }
-    
-      
+
+
 
         #endregion
 
@@ -1054,213 +1236,6 @@ namespace Mbc5.Forms
 
         }
 
-        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            if (this.ActiveMdiChild == null)
-            {
-                this.Cursor = Cursors.AppStarting;
-
-                frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
-                frmCust.MdiParent = this;
-                frmCust.Show();
-                this.Cursor = Cursors.Default;
-
-
-            }
-            else
-            {
-                this.Cursor = Cursors.AppStarting;
-                string vSchcode = GetSchcode("MBC");
-
-                if (String.IsNullOrEmpty(vSchcode))
-                {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
-                    frmCust1.MdiParent = this;
-                    frmCust1.Show();
-                    this.Cursor = Cursors.Default;
-                }
-                else
-                {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser, vSchcode);
-                    frmCust.MdiParent = this;
-                    frmCust.Show();
-                    this.Cursor = Cursors.Default;
-
-                }
-
-            }
-
-
-        }
-
-        private void MerToolStrip_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-
-            if (this.ActiveMdiChild == null)
-            {
-                frmMerCust frmMer = new frmMerCust(this.ApplicationUser);
-                frmMer.MdiParent = this;
-                frmMer.Show();
-                this.Cursor = Cursors.Default;
-
-            }
-            else
-            {
-                this.Cursor = Cursors.AppStarting;
-                string vSchcode = GetSchcode("MER");
-
-                if (String.IsNullOrEmpty(vSchcode))
-                {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmMerCust frmMer1 = new frmMerCust(this.ApplicationUser);
-                    frmMer1.MdiParent = this;
-                    frmMer1.Show();
-                    this.Cursor = Cursors.Default;
-                }
-                else
-                {
-                    this.Cursor = Cursors.AppStarting;
-
-                    frmMerCust frmCust = new frmMerCust(this.ApplicationUser, vSchcode);
-                    frmCust.MdiParent = this;
-                    frmCust.Show();
-                    this.Cursor = Cursors.Default;
-
-                }
-
-            }
-        }
-
-        private void bidsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-
-            if (this.ActiveMdiChild == null)
-            {
-                //default cs record
-                frmBids frmSales = new frmBids(this.ApplicationUser, "038752");
-                frmSales.MdiParent = this;
-                frmSales.Show();
-                this.Cursor = Cursors.Default;
-
-
-            }
-            else
-            {
-                string vSchcode = GetSchcode("MBC");
-                frmBids frmSales = new frmBids(this.ApplicationUser, vSchcode);
-                frmSales.MdiParent = this;
-                frmSales.Show();
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        private void mbidsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-            if (this.ActiveMdiChild == null)
-            {
-
-                frmMBids frmMBids = new frmMBids(this.ApplicationUser, "124487");
-                frmMBids.MdiParent = this;
-                frmMBids.Show();
-                this.Cursor = Cursors.Default;
-            }
-            else
-            {
-                string vSchcode = GetSchcode("MER");
-                frmMBids frmMBids = new frmMBids(this.ApplicationUser, vSchcode);
-                frmMBids.MdiParent = this;
-                frmMBids.Show();
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        private void msalesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild == null)
-            {
-                frmMSales frmMSales = new frmMSales(this.ApplicationUser);
-                frmMSales.MdiParent = this;
-                frmMSales.Show();
-                this.Cursor = Cursors.Default;
-
-
-            }
-            else
-            {
-                this.Cursor = Cursors.AppStarting;
-                int vInvno = GetInvno();
-                string vSchcode = GetSchcode("MER");
-
-                if (vInvno == 0)
-                {
-                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmMSales frmSales1 = new frmMSales(this.ApplicationUser);
-                    frmSales1.MdiParent = this;
-                    frmSales1.Show();
-                    this.Cursor = Cursors.Default;
-                }
-                else
-                {
-
-                    frmMSales frmSales = new frmMSales(this.ApplicationUser, vInvno, vSchcode);
-                    frmSales.MdiParent = this;
-                    frmSales.Show();
-                    this.Cursor = Cursors.Default;
-                }
-
-            }
-
-        }
-
-        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            if (this.ActiveMdiChild == null)
-            {
-                frmSales frmSales = new frmSales(this.ApplicationUser);
-                frmSales.MdiParent = this;
-                frmSales.Show();
-                this.Cursor = Cursors.Default;
-
-
-            }
-            else
-            {
-                this.Cursor = Cursors.AppStarting;
-                int vInvno = GetInvno();
-                string vSchcode = GetSchcode("MBC");
-
-                if (vInvno == 0)
-                {
-                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmSales frmSales1 = new frmSales(this.ApplicationUser);
-                    frmSales1.MdiParent = this;
-                    frmSales1.Show();
-                    this.Cursor = Cursors.Default;
-                }
-                else
-                {
-
-                    frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
-                    frmSales.MdiParent = this;
-                    frmSales.Show();
-                    this.Cursor = Cursors.Default;
-                }
-
-            }
-
-
-
-        }
         private void productionWIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.ActiveMdiChild == null)
@@ -1271,11 +1246,12 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
 
 
-            }else if (ActiveMdiChild.Name == "frmMBOrders")
+            }
+            else if (ActiveMdiChild.Name == "frmMBOrders")
             {
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
-               
+
                 if (vInvno == 0)
                 {
                     MessageBox.Show("This book does not have a production record to go to. Please search for record from Production Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1286,13 +1262,13 @@ namespace Mbc5.Forms
                 }
                 else
                 {
-                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
-                frmProduction.MdiParent = this;
-                frmProduction.Show();
-                this.Cursor = Cursors.Default;
+                    frmProdutn frmProduction = new frmProdutn(this.ApplicationUser, vInvno, "");
+                    frmProduction.MdiParent = this;
+                    frmProduction.Show();
+                    this.Cursor = Cursors.Default;
                 }
 
-                
+
 
             }
             else
@@ -1323,37 +1299,25 @@ namespace Mbc5.Forms
         }
         #endregion
         #region DataMaint
-        private void discountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LkpDiscount frmDiscount = new LkpDiscount(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmDiscount.MdiParent = this;
-            frmDiscount.Show();
-            this.Cursor = Cursors.Default;
-        }
+
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Cut();
         }
 
-       
+
         private void tsSave_Click(object sender, EventArgs e)
         {
             var curFrm = this.ActiveMdiChild;
             string frmName = curFrm.Name;
             try
             {
-                if (frmName == "frmMBOrders")
-                {
-                    var activeform = this.ActiveMdiChild as frmMBOrders;
-                    activeform.SaveOrder();
-                }
-                else
-                {
-                    var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                    activeform.Save(true);
-                }
+
+
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.Save(true);
+
 
             }
             catch (Exception ex)
@@ -1427,7 +1391,7 @@ namespace Mbc5.Forms
 
         private void tsPrint_Click(object sender, EventArgs e)
         {
-        
+
             try
             {
                 Process snippingToolProcess = new Process();
@@ -1479,39 +1443,39 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
-        private void endSheetSupplementPreFlightToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild == null)
-            {
-                frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
-                frmEndSheet.MdiParent = this;
-                frmEndSheet.Show();
-                this.Cursor = Cursors.Default;
+        //private void endSheetSupplementPreFlightToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (this.ActiveMdiChild == null)
+        //    {
+        //        frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
+        //        frmEndSheet.MdiParent = this;
+        //        frmEndSheet.Show();
+        //        this.Cursor = Cursors.Default;
 
 
-            }
-            else
-            {
-                this.Cursor = Cursors.AppStarting;
-                int vInvno = GetInvno();
-                string vSchcode = GetSchcode("MBC");
+        //    }
+        //    else
+        //    {
+        //        this.Cursor = Cursors.AppStarting;
+        //        int vInvno = GetInvno();
+        //        string vSchcode = GetSchcode("MBC");
 
-                if (vInvno == 0)
-                {
-                    MessageBox.Show("This school does not have a end sheet record to go to. Please search for record from end sheet Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
-                    frmProdutn1.MdiParent = this;
-                    frmProdutn1.Show();
-                    this.Cursor = Cursors.Default;
-                }
+        //        if (vInvno == 0)
+        //        {
+        //            MessageBox.Show("This school does not have a end sheet record to go to. Please search for record from end sheet Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
+        //            frmProdutn1.MdiParent = this;
+        //            frmProdutn1.Show();
+        //            this.Cursor = Cursors.Default;
+        //        }
 
-                frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser, vInvno, vSchcode);
-                frmEndSheet.MdiParent = this;
-                frmEndSheet.Show();
-                this.Cursor = Cursors.Default;
+        //        frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser, vInvno, vSchcode);
+        //        frmEndSheet.MdiParent = this;
+        //        frmEndSheet.Show();
+        //        this.Cursor = Cursors.Default;
 
-            }
-        }
+        //    }
+        //}
 
 
         #endregion
@@ -1536,8 +1500,13 @@ namespace Mbc5.Forms
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+
+
             this.Cursor = Cursors.AppStarting;
 
+            //frmBarScanArchive frmBarScan = new frmBarScanArchive(this.ApplicationUser);
+            //frmBarScan.MdiParent = this;
+            //frmBarScan.Show();
             frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
             frmBarScan.MdiParent = this;
             frmBarScan.Show();
@@ -1545,23 +1514,6 @@ namespace Mbc5.Forms
 
         }
 
-        private void leadSourceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpLeadSource.MdiParent = this;
-            frmLkpLeadSource.Show();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void leadNamesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpLeadName.MdiParent = this;
-            frmLkpLeadName.Show();
-            this.Cursor = Cursors.Default;
-        }
 
         private void typeStylesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1572,15 +1524,7 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
-        private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
 
-            frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
-            frmInvoice.MdiParent = this;
-            frmInvoice.Show();
-            this.Cursor = Cursors.Default;
-        }
 
         private void tsSchcodeSearch_Click(object sender, EventArgs e)
         {
@@ -1730,83 +1674,71 @@ namespace Mbc5.Forms
 
         private void tsFileFolder_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
-            {
-                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
-                cusFrm.PrintLabel("FILEFOLDER");
+            //if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            //{
+            //    var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+            //    cusFrm.PrintLabel("FILEFOLDER");
 
 
-            }
-            else
-            {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
+            //}
+            //else
+            //{
+            //    MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
 
-            }
+            //}
 
         }
 
         private void tsAddress_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
-            {
-                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
-                cusFrm.PrintLabel("ADDRESSLABEL");
+            //if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            //{
+            //    var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+            //    cusFrm.PrintLabel("ADDRESSLABEL");
 
 
-            }
-            else
-            {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
+            //}
+            //else
+            //{
+            //    MbcMessageBox.Stop("You must be on the proper screen to print this label.", "Stop");
 
-            }
+            //}
 
         }
 
         private void tsReceivingLabel_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
-            {
-                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
-                cusFrm.PrintLabel("RECEIVINGLABEL");
+            //if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            //{
+            //    var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+            //    cusFrm.PrintLabel("RECEIVINGLABEL");
 
 
-            }
-            else
-            {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+            //}
+            //else
+            //{
+            //    MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
 
-            }
+            //}
         }
 
         private void tsEnvelopeLabel_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
-            {
-                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
-                cusFrm.PrintLabel("ENVELOPELABEL");
+            //if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            //{
+            //    var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+            //    cusFrm.PrintLabel("ENVELOPELABEL");
 
 
-            }
-            else
-            {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+            //}
+            //else
+            //{
+            //    MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
 
-            }
+            //}
         }
 
-        private void tsYearBookLabel_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmProdutn"))
-            {
-                var produtnFrm = (frmProdutn)this.ActiveMdiChild;
-                produtnFrm.PrintYearBookLabel();
-            }
-            else
-            {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
 
-            }
-        }
 
         private void tsDeptScanLabel_Click(object sender, EventArgs e)
         {
@@ -1819,14 +1751,6 @@ namespace Mbc5.Forms
 
         }
 
-        private void cancelationStatementsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmCancellationStatements frmCancel = new frmCancellationStatements(this.ApplicationUser);
-            frmCancel.MdiParent = this;
-            frmCancel.Show();
-            this.Cursor = Cursors.Default;
-
-        }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1844,7 +1768,8 @@ namespace Mbc5.Forms
                 if (this.Login())
                 {
                     break;
-                };
+                }
+                ;
                 if (i == 2)
                 {
                     //if 2 tries close 
@@ -1922,98 +1847,6 @@ namespace Mbc5.Forms
 
         }
 
-        private void invoicesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-
-            frmMInvoicInq frmMInvoice = new frmMInvoicInq(this.ApplicationUser);
-            frmMInvoice.MdiParent = this;
-            frmMInvoice.Show();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void paymentReceiptsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var vReceiptform = new frmPayments(this.ApplicationUser);
-            vReceiptform.MdiParent = this;
-            vReceiptform.Show();
-
-        }
-
-        private void receivingSurveyCompensationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild != null)
-            {
-
-                var vInvno = GetInvno();
-                string vCompany = "";
-                string vSchcode = "";
-                if (this.ActiveMdiChild.Name == "frmMbcCust")
-                {
-                    vCompany = "MBC";
-                    frmMbcCust custFrm = (frmMbcCust)ActiveMdiChild;
-                    vSchcode = custFrm.Schcode;
-                }
-                else if (this.ActiveMdiChild.Name == "frmMerCust")
-                {
-                    vCompany = "MER";
-                    frmMerCust mcustFrm = (frmMerCust)ActiveMdiChild;
-                    vSchcode = mcustFrm.Schcode;
-                }
-                else
-                {
-                    //don't open form
-                    return;
-                }
-                frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
-                form.MdiParent = this;
-                form.Show();
-            }
-            else
-            {
-
-            }
-        }
-
-        private void receivingSurveyCompensationToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var vInvno = GetInvno();
-            string vCompany = "";
-            string vSchcode = "";
-            if (this.ActiveMdiChild.Name == "frmMbcCust")
-            {
-                vCompany = "MBC";
-                frmMbcCust custFrm = (frmMbcCust)ActiveMdiChild;
-                vSchcode = custFrm.Schcode;
-            }
-            else if (this.ActiveMdiChild.Name == "frmMerCust")
-            {
-                vCompany = "MER";
-                frmMerCust mcustFrm = (frmMerCust)ActiveMdiChild;
-                vSchcode = mcustFrm.Schcode;
-            }
-            else
-            {
-                //don't open form
-            }
-            frmRecSurvey form = new frmRecSurvey(ApplicationUser, vInvno, vCompany, vSchcode);
-            form.MdiParent = this;
-            form.Show();
-        }
-
-        private void memeroyBookToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new frmInqCount(ApplicationUser, "MBC");
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void meridianInqCountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new frmInqCount(ApplicationUser, "MER");
-            frm.MdiParent = this;
-            frm.Show();
-        }
 
         private void mixBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2035,23 +1868,23 @@ namespace Mbc5.Forms
             else
             {
                 this.Cursor = Cursors.AppStarting;
-                int vClientId =0;
+                int vClientId = 0;
                 if (this.ActiveMdiChild.Name == "frmProdutn")
                 {
                     var tmpForm = (frmProdutn)this.ActiveMdiChild;
-                    
-                    if (tmpForm.Company=="MXB")
+
+                    if (tmpForm.Company == "MXB")
                     {
-                         vClientId = tmpForm.ClientId;
+                        vClientId = tmpForm.ClientId;
                     }
-                 
+
                 }
 
-                if (vClientId>0)
+                if (vClientId > 0)
                 {
                     this.Cursor = Cursors.AppStarting;
 
-                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser,vClientId);
+                    frmMBOrders frmMBOrders = new frmMBOrders(this.ApplicationUser, vClientId);
                     frmMBOrders.MdiParent = this;
                     frmMBOrders.Show();
                     this.Cursor = Cursors.Default;
@@ -2073,22 +1906,14 @@ namespace Mbc5.Forms
 
         private void mixBookLoadTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void mixbookBarscanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
 
-            frmMxBookBarScan frmBarScan = new frmMxBookBarScan(this.ApplicationUser);
-            frmBarScan.MdiParent = this;
-            frmBarScan.Show();
-            this.Cursor = Cursors.Default;
-        }
 
         private void caseMatchScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser,this);
+            frmCaseMatch frmCaseMatch = new frmCaseMatch(this.ApplicationUser, this);
 
             frmCaseMatch.MdiParent = this;
             frmCaseMatch.Show();
@@ -2128,12 +1953,12 @@ namespace Mbc5.Forms
             frmWipReport.MdiParent = this;
             frmWipReport.Show();
 
-           
-          
+
+
 
         }
 
-     
+
         private void shippingScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMxBookShipping frmMxBookShipping = new frmMxBookShipping(this.ApplicationUser);
@@ -2145,24 +1970,31 @@ namespace Mbc5.Forms
 
         private void printJobTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            JobTicketsPrinted = 0;
             PrintJobTickets();
         }
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            if (reportViewer1.LocalReport.ReportEmbeddedResource== "Mbc5.Reports.MixbookJobTicketQuery.rdlc")
+            if (reportViewer1.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.MixbookJobTicketQuery.rdlc")
             {
-                try {
-                   
-                    if (reportViewer1.PrintDialog()!=DialogResult.Cancel)
+                try
+                {
+                    if (JobTicketsPrinted == 50)
                     {
-                        SetJobTicketsPrinted();
-                        PrintJobTickets();//do this until they are all printed.
-                        var holdtime=DateTime.Now.AddSeconds(4);
-                        do { }while (DateTime.Now< holdtime);
+                        JobTicketsPrinted = 0;
+                        if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                        {
+                            SetJobTicketsPrinted();
+                            PrintJobTickets();//do this until all records printed.
+                            var holdtime = DateTime.Now.AddSeconds(4);
+                            do { } while (DateTime.Now < holdtime);
 
+                        }
                     }
-                } catch (Exception ex) { }
+
+                }
+                catch (Exception ex) { }
             }
             else
             {
@@ -2172,7 +2004,7 @@ namespace Mbc5.Forms
                     SetRemakeTicketsPrinted();
                 }
             }
-            
+
         }
 
         private void printRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2180,7 +2012,7 @@ namespace Mbc5.Forms
             PrintRemakeTickets();
         }
 
-       
+
 
         private void coverSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2274,7 +2106,7 @@ namespace Mbc5.Forms
         {
             this.Cursor = Cursors.AppStarting;
 
-            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser,this);
+            frmMxInvoiceReport frmMxInvoiceReport = new frmMxInvoiceReport(this.ApplicationUser, this);
             frmMxInvoiceReport.MdiParent = this;
             frmMxInvoiceReport.Show();
             this.Cursor = Cursors.Default;
@@ -2285,16 +2117,11 @@ namespace Mbc5.Forms
             ResetJobTickets();
         }
 
-        private void meridianBindingWIPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMerBindingTime frmMerBinding = new frmMerBindingTime(this.ApplicationUser);
-            frmMerBinding.MdiParent = this;
-            frmMerBinding.Show();
-        }
+
 
         private void scanCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          frmNoScanReport frmNoScanReport=new frmNoScanReport(this.ApplicationUser);
+            frmNoScanReport frmNoScanReport = new frmNoScanReport(this.ApplicationUser);
             frmNoScanReport.MdiParent = this;
             frmNoScanReport.Show();
         }
@@ -2304,7 +2131,91 @@ namespace Mbc5.Forms
 
         }
 
-     
+        private void jPIXOrdersToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmJPIXOrder frmJPIXOrder = new frmJPIXOrder(this.ApplicationUser);
+            frmJPIXOrder.MdiParent = this;
+            frmJPIXOrder.Show();
+
+            this.Cursor = Cursors.Default;
+
+
+        }
+
+        private void jPIXOrderDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmJPIXOrderDetail frmJPIXOrderDetail = new frmJPIXOrderDetail(this.ApplicationUser, 0);
+            frmJPIXOrderDetail.MdiParent = this;
+            frmJPIXOrderDetail.frmMain = this;
+            frmJPIXOrderDetail.Show();
+        }
+
+        private void wipReportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmJPIXWipReport frmJPIXWipReport = new frmJPIXWipReport(this.ApplicationUser);
+            frmJPIXWipReport.MdiParent = this;
+            frmJPIXWipReport.Show();
+
+        }
+
+        private void invoiceReportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmJPIXFlyerInvoiceReport frmJPIXFlyerInvoiceReport = new frmJPIXFlyerInvoiceReport(this.ApplicationUser, this);
+            frmJPIXFlyerInvoiceReport.MdiParent = this;
+            frmJPIXFlyerInvoiceReport.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void resetJobTicketsByBatchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmPrintBatches frmPrintBatches = new frmPrintBatches("JPX");
+            frmPrintBatches.Show();
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.test.ToString());
+            //Form1 frm1 = new Form1();
+            //frm1.MdiParent = this;
+            //frm1.Show();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // Run SetLastPageImage in background so frmMain_Load doesn't block UI.
+            // Any UI-specific calls inside SetLastPageImage (MessageBox.Show(this, ...), etc.)
+            // may still need to be marshaled to the UI thread inside that method.
+            Task.Run(() =>
+            {
+                try
+                {
+                    SetLastPageImage();
+                }
+                catch (Exception ex)
+                {
+                    // Log on UI thread to be safe
+                    try
+                    {
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Background SetLastPageImage failed: " + ex.ToString());
+                        }));
+                    }
+                    catch
+                    {
+                        // swallow - best effort logging only
+                    }
+                }
+            });
+        }
+
+
+
+
+
 
 
         #endregion
