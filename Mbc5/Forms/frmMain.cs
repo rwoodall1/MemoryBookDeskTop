@@ -181,6 +181,16 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
 
                 mixBookToolStripMenuItem.Visible = false;
+                this.Cursor = Cursors.AppStarting;
+
+                //frmBarScanArchive frmBarScan = new frmBarScanArchive(this.ApplicationUser);
+                //frmBarScan.MdiParent = this;
+                //frmBarScan.Show();
+                frmMerBindingTime frmCalendars = new frmMerBindingTime(this.ApplicationUser);
+                frmCalendars.MdiParent = this;
+                frmCalendars.Show();
+                this.Cursor = Cursors.Default;
+
 
             }
             else if (ApplicationUser.UserName.ToUpper() == "ONBOARD")

@@ -474,6 +474,12 @@
     <Compile Include="Forms\frmEndSheet.designer.cs">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMerBindingTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMerBindingTime.Designer.cs">
+      <DependentUpon>frmMerBindingTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -767,6 +773,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEndSheet.resx">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMerBindingTime.resx">
+      <DependentUpon>frmMerBindingTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
