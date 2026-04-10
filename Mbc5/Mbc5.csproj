@@ -299,6 +299,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MixBookOrders.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\TukiosOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmPrintBatches.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,17 +589,17 @@
     <Compile Include="Forms\frmWipDescriptions.Designer.cs">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMBOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
-      <DependentUpon>frmMBOrders.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
       <SubType>Form</SubType>
@@ -637,6 +642,12 @@
     </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKOrders.Designer.cs">
+      <DependentUpon>frmTKOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="LookUpForms\LkpCustType.cs">
       <SubType>Form</SubType>
@@ -689,6 +700,17 @@
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="DataSets\TukiosOrders.xsc">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\TukiosOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TukiosOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\TukiosOrders.xss">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </None>
     <None Include="dsJPIXOrders.xsc">
       <DependentUpon>dsJPIXOrders.xsd</DependentUpon>
     </None>
@@ -827,11 +849,11 @@
     <EmbeddedResource Include="Forms\frmWipDescriptions.resx">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
-      <DependentUpon>frmMBOrders.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
@@ -853,6 +875,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTKOrders.resx">
+      <DependentUpon>frmTKOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
       <DependentUpon>LkpCustType.cs</DependentUpon>
