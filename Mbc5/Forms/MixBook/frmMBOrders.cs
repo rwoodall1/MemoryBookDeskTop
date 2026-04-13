@@ -941,7 +941,7 @@ namespace Mbc5.Forms.MixBook
 
         }
 
-        private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tukiosOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
                 if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
@@ -961,7 +961,7 @@ namespace Mbc5.Forms.MixBook
 
         }
 
-        private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.Cursor = Cursors.AppStarting;
             int vInvno = this.Invno;
@@ -972,7 +972,7 @@ namespace Mbc5.Forms.MixBook
             this.Cursor = Cursors.Default;
         }
 
-        private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
+        private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
         {
             if (mixBookOrderDataGridView.CurrentRow != null)
             {

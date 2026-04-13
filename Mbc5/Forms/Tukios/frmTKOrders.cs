@@ -10,7 +10,6 @@ using PdfiumViewer;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -39,9 +38,9 @@ namespace Mbc5.Forms.Tukios
         //private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         public int OrderId { get; set; } = 0;
         public UserPrincipal ApplicationUser { get; set; }
-        private void TKOrders_Load(object sender, EventArgs e)
-        {
 
+        private void frmTKOrders_Load(object sender, EventArgs e)
+        {
             List<string> mylist2 = new List<string>(new string[] { "SA", "Administrator", });
             if (this.ApplicationUser.IsInOneOfRoles(mylist2))
             {
@@ -66,6 +65,7 @@ namespace Mbc5.Forms.Tukios
             {
                 Fill();
             }
+
         }
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -78,9 +78,9 @@ namespace Mbc5.Forms.Tukios
             try
             {
                 this.Validate();
-                this.mixBookOrderBindingSource.EndEdit();
+                this.tukiosOrderBindingSource.EndEdit();
 
-                this.mixBookOrderTableAdapter.Update(dsmixBookOrders.MixBookOrder);
+                this.mixBookOrderTableAdapter.Update(dstukiosOrders.MixBookOrder);
                 this.pnlOrder.Enabled = false;
             }
             catch (Exception ex)
@@ -111,11 +111,11 @@ namespace Mbc5.Forms.Tukios
         private void OrderIdSearch()
         {
             string vcurrentOrderId = "0";
-            if (mixBookOrderBindingSource.Current != null)
+            if (tukiosOrderBindingSource.Current != null)
             {
                 try
                 {
-                    vcurrentOrderId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ClientOrderId"].ToString();
+                    vcurrentOrderId = ((DataRowView)tukiosOrderBindingSource.Current).Row["ClientOrderId"].ToString();
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Mixbook OrderId Search"); }
             }
@@ -160,13 +160,13 @@ namespace Mbc5.Forms.Tukios
         private void ItemIdSearch()
         {
             string vcurrentItemId = "";
-            if (mixBookOrderBindingSource.Current != null)
+            if (tukiosOrderBindingSource.Current != null)
             {
                 try
                 {
-                    if (mixBookOrderBindingSource.Current != null)
+                    if (tukiosOrderBindingSource.Current != null)
                     {
-                        vcurrentItemId = ((DataRowView)mixBookOrderBindingSource.Current).Row["ItemId"].ToString();
+                        vcurrentItemId = ((DataRowView)tukiosOrderBindingSource.Current).Row["ItemId"].ToString();
                     }
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Item Id"); }
@@ -198,9 +198,9 @@ namespace Mbc5.Forms.Tukios
             string vcurrentName = "";
             try
             {
-                if (mixBookOrderBindingSource.Current != null)
+                if (tukiosOrderBindingSource.Current != null)
                 {
-                    vcurrentName = ((DataRowView)mixBookOrderBindingSource.Current).Row["ShipName"].ToString();
+                    vcurrentName = ((DataRowView)tukiosOrderBindingSource.Current).Row["ShipName"].ToString();
                 }
             }
             catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Name"); }
@@ -382,16 +382,16 @@ namespace Mbc5.Forms.Tukios
             pnlOrder.Enabled = false;
             if (OrderId == 0)
             {
-                dsmixBookOrders.MixBookOrder.Clear();
+                dstukiosOrders.MixBookOrder.Clear();
                 return;
             }
             try
             {
                 this.statesTableAdapter.Fill(this.lookUp.states);
-                this.shipCarriersTableAdapter.Fill(this.dsmixBookOrders.ShipCarriers);
+                this.shipCarriersTableAdapter.Fill(this.dstukiosOrders.ShipCarriers);
                 int vIInvno = 0;
-                mixBookOrderTableAdapter.Fill(dsmixBookOrders.MixBookOrder, OrderId);
-                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                mixBookOrderTableAdapter.Fill(dstukiosOrders.MixBookOrder, OrderId);
+                string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
             }
@@ -400,12 +400,12 @@ namespace Mbc5.Forms.Tukios
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD" || mixbookOrderStatusLabel2.Text.ToUpper() == "ON HOLD")
+            if (orderStatusLabel2.Text.ToUpper() == "HOLD" || orderStatusLabel2.Text.ToUpper() == "ON HOLD")
             {
                 lblHold.Visible = true;
                 lblHold.BringToFront();
@@ -416,7 +416,7 @@ namespace Mbc5.Forms.Tukios
         }
         private void PrintJobTicket()
         {
-            var value = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+            var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
 
 
             var sqlClient = new SQLCustomClient().CommandText(@"
@@ -933,7 +933,7 @@ namespace Mbc5.Forms.Tukios
             try
             {
 
-                string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
+                string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
             }
@@ -943,21 +943,6 @@ namespace Mbc5.Forms.Tukios
 
         private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
-                if (mixBookOrderDataGridView.CurrentCell != null && mixBookOrderDataGridView.CurrentCell.Value != null)
-                {
-                    try
-                    { Process.Start(mixBookOrderDataGridView.CurrentCell.Value.ToString()); }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Url is invalid.");
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
-                    }
-                }
-            if (mixBookOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
-            {
-
-            }
 
         }
 
@@ -972,13 +957,13 @@ namespace Mbc5.Forms.Tukios
             this.Cursor = Cursors.Default;
         }
 
-        private void mixBookOrderDataGridView_Enter(object sender, EventArgs e)
+        private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
         {
-            if (mixBookOrderDataGridView.CurrentRow != null)
+            if (tukiosOrderDataGridView.CurrentRow != null)
             {
                 try
                 {
-                    var value = (int)mixBookOrderDataGridView.CurrentRow.Cells[1].Value;
+                    var value = (int)tukiosOrderDataGridView.CurrentRow.Cells[1].Value;
                     this.Invno = value;
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
@@ -994,17 +979,7 @@ namespace Mbc5.Forms.Tukios
             MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
         }
 
-        private void mixBookOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 6)
-            {
-                e.Value = "Cover.pdf";
-            }
-            if (e.ColumnIndex == 7)
-            {
-                e.Value = "Book.pdf";
-            }
-        }
+
 
         private void btnMixbookPkgList_Click(object sender, EventArgs e)
         {
@@ -1075,7 +1050,7 @@ namespace Mbc5.Forms.Tukios
                 MbcMessageBox.Error("Invoice number is not valid");
                 return;
             }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED" || mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED" || orderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1172,18 +1147,18 @@ namespace Mbc5.Forms.Tukios
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(mixbookOrderStatusLabel2.Text))
+            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(orderStatusLabel2.Text))
             {
                 return;
             }
             var sqlClient = new SQLCustomClient();
             string status = "";
-            if (mixbookOrderStatusLabel2.Text == "Hold" || mixbookOrderStatusLabel2.Text == "On Hold")
+            if (orderStatusLabel2.Text == "Hold" || orderStatusLabel2.Text == "On Hold")
             {
                 sqlClient.AddParameter("@OrderStatus", "In Process");
                 status = "In Process";
             }
-            else if (mixbookOrderStatusLabel2.Text == "In Process")
+            else if (orderStatusLabel2.Text == "In Process")
             {
                 sqlClient.AddParameter("@OrderStatus", "On Hold");
                 status = "On Hold";
@@ -1195,7 +1170,7 @@ namespace Mbc5.Forms.Tukios
                 return;
             }
 
-            sqlClient.CommandText("Update MixbookOrder Set MixbookOrderStatus=@OrderStatus Where ClientOrderId=@ClientOrderId");
+            sqlClient.CommandText("Update TukiosOrder Set TukiosOrderStatus=@OrderStatus Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
             var result = sqlClient.Update();
             if (result.IsError)
@@ -1210,7 +1185,7 @@ namespace Mbc5.Forms.Tukios
 
         private void cmdJobTicket_Click(object sender, EventArgs e)
         {
-            if (mixbookOrderStatusLabel2.Text == "CANCELLED" || mixbookOrderStatusLabel2.Text == "HOLD")
+            if (orderStatusLabel2.Text == "CANCELLED" || orderStatusLabel2.Text == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1343,12 +1318,12 @@ namespace Mbc5.Forms.Tukios
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (mixbookOrderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (orderStatusLabel2.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
@@ -1362,11 +1337,11 @@ namespace Mbc5.Forms.Tukios
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("This will totally remove the order from the system. Mixbook is not notified. Do you still want to remove this order?", "Remove Order", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            var result = MessageBox.Show("This will totally remove the order from the system. Tukios is not notified. Do you still want to remove this order?", "Remove Order", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (result == DialogResult.Yes)
             {
                 var sqlClient = new SQLCustomClient();
-                sqlClient.CommandText("Delete from MixbookOrders where ClientOrderId=@ClientOrderId");
+                sqlClient.CommandText("Delete from TukiosOrder where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
@@ -1375,7 +1350,7 @@ namespace Mbc5.Forms.Tukios
                     return;
                 }
                 MbcMessageBox.Information("Order has been removed.");
-                mixBookOrderBindingSource.Clear();
+                tukiosOrderBindingSource.Clear();
             }
         }
 
@@ -1389,23 +1364,23 @@ namespace Mbc5.Forms.Tukios
 
         private void CancelOrder()
         {
-            MbcMessageBox.Information("This procedure cancels the order in DB only. It does not send a notification to Mixbook. Use websit if Mixbook needs notification.");
+            MbcMessageBox.Information("This procedure cancels the order in DB only. It does not send a notification to Tukios.");
 
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Update MixbookOrder Set MixbookOrderStatus='Cancelled',BookPreviewUrl='',BookUrl='',CoverPreviewUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
+            sqlClient.CommandText(@"Update TukiosOrder Set TukiosOrderStatus='Cancelled',BookBlockUrl='',CoverUrl='',DateModified=GETDATE(),ModifiedBy=@ModifiedBy Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
             sqlClient.AddParameter("@ModifiedBy", ApplicationUser.Initials);
             var result = sqlClient.Update();
             if (result.IsError)
             {
-                Log.Error("Failed to update mixbook order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
-                MbcMessageBox.Error("Failed to update mixbook order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
+                Log.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
+                MbcMessageBox.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
 
                 return;
             }
             sqlClient.ClearParameters();
             //going with clientid are 7 digits long
-            sqlClient.CommandText(@"Update produtn Set KitRecvd=null, prshpdte=null,DateModified=GETDATE(),ModifiedBy='APICANCEL' Where MxbClientOrderId=@ClientOrderId");
+            sqlClient.CommandText(@"Update produtn Set KitRecvd=null, prshpdte=null,DateModified=GETDATE(),ModifiedBy='APICANCEL' Where TukiosClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
             var prodResult = sqlClient.Update();
             if (prodResult.IsError)
@@ -1419,7 +1394,7 @@ namespace Mbc5.Forms.Tukios
             this.Fill();
             var processingResult = new ApiProcessingResult();
             var returnNotification = new MixbookNotification();
-            var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
+            var jobId = ((DataRowView)tukiosOrderBindingSource.Current).Row["JobId"].ToString();
             string reason = "";
             InputBox.Show("Reason", "Enter a reason", ref reason);
             returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
@@ -1427,39 +1402,14 @@ namespace Mbc5.Forms.Tukios
             returnNotification.Request.Status.Value = "Cancelled";
             returnNotification.Request.Status.message = reason;
             var vReturnNotification = Serialize.ToXml(returnNotification);
-            //This is disabled in the event it is canclled before we start the order. Do not want a notification going to customer.
-            //Cancel from website if we need the customer and mixbook to know
-
-            //var restServiceResult = new RESTService().MakeRESTCall("POST", vReturnNotification);
-            //if (!restServiceResult.Result.IsError)
-            //{
-            //    if (restServiceResult.Result.Data.APIResult.ToString().Contains("Success"))
-            //    {
-            //        //if not set to notified scheduled task will try again
-            //        AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, true);
-            //    }
-            //    else
-            //    {
-            //        AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, false);
-            //    }
-            //    MbcMessageBox.Exclamation("Order has been cancelled and Mixbook Nofified.");
-            //}
-            //else
-            //{
-            //    AddMbEventLog(jobId, "Cancelled", "", vReturnNotification, false);
-            //    MbcMessageBox.Exclamation("Order has been cancelled and but Mixbook notification failed.");
-            //}
-
-
-
 
         }
 
-        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
+        public string AddEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Insert Into MixBookEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
+            sqlClient.CommandText(@"Insert Into TukiosEventLog (JobId,DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationXML) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
             sqlClient.AddParameter("@Jobid", jobId);
             sqlClient.AddParameter("@StatusChangedTo", status);
             sqlClient.AddParameter("@Notified", notified);
@@ -1477,7 +1427,17 @@ namespace Mbc5.Forms.Tukios
             return retval;
         }
 
-        private void TKOrders_Load(object sender, EventArgs e)
+        private void tukiosOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tukiosOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
         }
