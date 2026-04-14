@@ -61,6 +61,7 @@ namespace Mbc5.Forms
         public List<CoverDescriptions> CoverDescriptions { get; set; }
         public string Company { get; set; }
         public int ClientId { get; set; }
+        public string TukiosClientId { get; set; }
         public new frmMain frmMain { get; set; }
         private void SetConnectionString()
         {

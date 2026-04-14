@@ -2690,54 +2690,54 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TukiosOrder] WHERE (([Invno] = @Original_Invno) AND ([ClientOr" +
-                "derId] = @Original_ClientOrderId) AND ((@IsNull_OrderReceivedDate = 1 AND [Order" +
-                "ReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) A" +
-                "ND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([Request" +
-                "edShipDate] = @Original_RequestedShipDate)) AND ((@IsNull_DateShipped = 1 AND [D" +
-                "ateShipped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_S" +
-                "hipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)" +
-                ") AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_" +
-                "ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @" +
-                "Original_ShipAddr)) AND ((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([Sh" +
-                "ipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NU" +
-                "LL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipS" +
-                "tate] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1" +
-                " AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_BookId" +
-                " = 1 AND [BookId] IS NULL) OR ([BookId] = @Original_BookId)) AND ((@IsNull_Copie" +
-                "s = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_Book" +
-                "Type = 1 AND [BookType] IS NULL) OR ([BookType] = @Original_BookType)) AND ((@Is" +
-                "Null_BookBlockId = 1 AND [BookBlockId] IS NULL) OR ([BookBlockId] = @Original_Bo" +
-                "okBlockId)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original" +
-                "_Pages)) AND ((@IsNull_CoverId = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Origi" +
-                "nal_CoverId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Desc" +
-                "ription] = @Original_Description)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies]" +
-                " IS NULL) OR ([ProdCopies] = @Original_ProdCopies)) AND ((@IsNull_ProdInOrder = " +
-                "1 AND [ProdInOrder] IS NULL) OR ([ProdInOrder] = @Original_ProdInOrder)) AND ((@" +
-                "IsNull_DateModified = 1 AND [DateModified] IS NULL) OR ([DateModified] = @Origin" +
-                "al_DateModified)) AND ((@IsNull_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([Mo" +
-                "difiedBy] = @Original_ModifiedBy)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL" +
-                ") OR ([Weight] = @Original_Weight)) AND ((@IsNull_TukiosOrderStatus = 1 AND [Tuk" +
-                "iosOrderStatus] IS NULL) OR ([TukiosOrderStatus] = @Original_TukiosOrderStatus))" +
-                " AND ([FilesDownloaded] = @Original_FilesDownloaded) AND ([FilesCopied] = @Origi" +
-                "nal_FilesCopied) AND ((@IsNull_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR (" +
-                "[DownloadTrys] = @Original_DownloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [P" +
-                "rintergyFile] IS NULL) OR ([PrintergyFile] = @Original_PrintergyFile)) AND ((@Is" +
-                "Null_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookS" +
-                "tatus)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatu" +
-                "s] = @Original_CoverStatus)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLo" +
-                "c] IS NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_Curr" +
-                "entCoverLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original" +
-                "_CurrentCoverLoc)) AND ((@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoi" +
-                "ced] = @Original_Invoiced)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS N" +
-                "ULL) OR ([InvoiceDate] = @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Orig" +
-                "inal_JobTicketPrinted) AND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinte" +
-                "d) AND ((@IsNull_ReMakePrntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrn" +
-                "tDate] = @Original_ReMakePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderReP" +
-                "rint] IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPr" +
-                "intBatch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPri" +
-                "ntBatch)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPri" +
-                "ntDate] = @Original_JobPrintDate)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TukiosOrder] WHERE (([Invno] = @Original_Invno) AND ([ClientOrderId]" +
+                " = @Original_ClientOrderId) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceiv" +
+                "edDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@" +
+                "IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShip" +
+                "Date] = @Original_RequestedShipDate)) AND ((@IsNull_DateShipped = 1 AND [DateShi" +
+                "pped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipMet" +
+                "hod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND " +
+                "((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipNa" +
+                "me)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Origin" +
+                "al_ShipAddr)) AND ((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr" +
+                "2] = @Original_ShipAddr2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR" +
+                " ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] " +
+                "IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [" +
+                "ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_BookId = 1 A" +
+                "ND [BookId] IS NULL) OR ([BookId] = @Original_BookId)) AND ((@IsNull_Copies = 1 " +
+                "AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_BookType =" +
+                " 1 AND [BookType] IS NULL) OR ([BookType] = @Original_BookType)) AND ((@IsNull_B" +
+                "ookBlockId = 1 AND [BookBlockId] IS NULL) OR ([BookBlockId] = @Original_BookBloc" +
+                "kId)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages" +
+                ")) AND ((@IsNull_CoverId = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Original_Co" +
+                "verId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Descriptio" +
+                "n] = @Original_Description)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies] IS NU" +
+                "LL) OR ([ProdCopies] = @Original_ProdCopies)) AND ((@IsNull_ProdInOrder = 1 AND " +
+                "[ProdInOrder] IS NULL) OR ([ProdInOrder] = @Original_ProdInOrder)) AND ((@IsNull" +
+                "_DateModified = 1 AND [DateModified] IS NULL) OR ([DateModified] = @Original_Dat" +
+                "eModified)) AND ((@IsNull_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([Modified" +
+                "By] = @Original_ModifiedBy)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR (" +
+                "[Weight] = @Original_Weight)) AND ((@IsNull_TukiosOrderStatus = 1 AND [TukiosOrd" +
+                "erStatus] IS NULL) OR ([TukiosOrderStatus] = @Original_TukiosOrderStatus)) AND (" +
+                "[FilesDownloaded] = @Original_FilesDownloaded) AND ([FilesCopied] = @Original_Fi" +
+                "lesCopied) AND ((@IsNull_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR ([Downl" +
+                "oadTrys] = @Original_DownloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [Printer" +
+                "gyFile] IS NULL) OR ([PrintergyFile] = @Original_PrintergyFile)) AND ((@IsNull_B" +
+                "ookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)" +
+                ") AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @" +
+                "Original_CoverStatus)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS " +
+                "NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCov" +
+                "erLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_Curre" +
+                "ntCoverLoc)) AND ((@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] =" +
+                " @Original_Invoiced)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) O" +
+                "R ([InvoiceDate] = @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Original_J" +
+                "obTicketPrinted) AND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinted) AND" +
+                " ((@IsNull_ReMakePrntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate]" +
+                " = @Original_ReMakePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] " +
+                "IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBat" +
+                "ch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatc" +
+                "h)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate" +
+                "] = @Original_JobPrintDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2817,32 +2817,33 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TukiosOrder] ([Invno], [ClientOrderId], [OrderReceivedDate], [" +
-                "RequestedShipDate], [DateShipped], [ShipMethod], [ShipName], [ShipAddr], [ShipAd" +
-                "dr2], [ShipCity], [ShipState], [ShipZip], [BookId], [Copies], [BookType], [BookB" +
-                "lockId], [Pages], [BookBlockURL], [BookBlockPreviewURL], [CoverId], [CoverURL], " +
-                "[CoverPreviewURL], [Description], [ProdCopies], [ProdInOrder], [DateModified], [" +
-                "ModifiedBy], [TrackingNumber], [Weight], [TukiosOrderStatus], [FilesDownloaded]," +
-                " [FilesCopied], [DownloadTrys], [Notes], [PrintergyFile], [BookStatus], [CoverSt" +
-                "atus], [CurrentBookLoc], [CurrentCoverLoc], [Invoiced], [InvoiceDate], [JobTicke" +
-                "tPrinted], [RemakeTicketPrinted], [ReMakePrntDate], [OrderRePrint], [JobPrintBat" +
-                "ch], [JobPrintDate]) VALUES (@Invno, @ClientOrderId, @OrderReceivedDate, @Reques" +
-                "tedShipDate, @DateShipped, @ShipMethod, @ShipName, @ShipAddr, @ShipAddr2, @ShipC" +
-                "ity, @ShipState, @ShipZip, @BookId, @Copies, @BookType, @BookBlockId, @Pages, @B" +
-                "ookBlockURL, @BookBlockPreviewURL, @CoverId, @CoverURL, @CoverPreviewURL, @Descr" +
-                "iption, @ProdCopies, @ProdInOrder, @DateModified, @ModifiedBy, @TrackingNumber, " +
-                "@Weight, @TukiosOrderStatus, @FilesDownloaded, @FilesCopied, @DownloadTrys, @Not" +
-                "es, @PrintergyFile, @BookStatus, @CoverStatus, @CurrentBookLoc, @CurrentCoverLoc" +
-                ", @Invoiced, @InvoiceDate, @JobTicketPrinted, @RemakeTicketPrinted, @ReMakePrntD" +
-                "ate, @OrderRePrint, @JobPrintBatch, @JobPrintDate);\r\nSELECT Invno, ClientOrderId" +
-                ", OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipA" +
-                "ddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBloc" +
-                "kId, Pages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewUR" +
-                "L, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumbe" +
-                "r, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes," +
-                " PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoic" +
-                "ed, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderReP" +
-                "rint, JobPrintBatch, JobPrintDate FROM TukiosOrder WHERE (Invno = @Invno)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [TukiosOrder] ([Invno], [ClientOrderId], [OrderReceivedDate], [Reques" +
+                "tedShipDate], [DateShipped], [ShipMethod], [ShipName], [ShipAddr], [ShipAddr2], " +
+                "[ShipCity], [ShipState], [ShipZip], [BookId], [Copies], [BookType], [BookBlockId" +
+                "], [Pages], [BookBlockURL], [BookBlockPreviewURL], [CoverId], [CoverURL], [Cover" +
+                "PreviewURL], [Description], [ProdCopies], [ProdInOrder], [DateModified], [Modifi" +
+                "edBy], [TrackingNumber], [Weight], [TukiosOrderStatus], [FilesDownloaded], [File" +
+                "sCopied], [DownloadTrys], [Notes], [PrintergyFile], [BookStatus], [CoverStatus]," +
+                " [CurrentBookLoc], [CurrentCoverLoc], [Invoiced], [InvoiceDate], [JobTicketPrint" +
+                "ed], [RemakeTicketPrinted], [ReMakePrntDate], [OrderRePrint], [JobPrintBatch], [" +
+                "JobPrintDate]) VALUES (@Invno, @ClientOrderId, @OrderReceivedDate, @RequestedShi" +
+                "pDate, @DateShipped, @ShipMethod, @ShipName, @ShipAddr, @ShipAddr2, @ShipCity, @" +
+                "ShipState, @ShipZip, @BookId, @Copies, @BookType, @BookBlockId, @Pages, @BookBlo" +
+                "ckURL, @BookBlockPreviewURL, @CoverId, @CoverURL, @CoverPreviewURL, @Description" +
+                ", @ProdCopies, @ProdInOrder, @DateModified, @ModifiedBy, @TrackingNumber, @Weigh" +
+                "t, @TukiosOrderStatus, @FilesDownloaded, @FilesCopied, @DownloadTrys, @Notes, @P" +
+                "rintergyFile, @BookStatus, @CoverStatus, @CurrentBookLoc, @CurrentCoverLoc, @Inv" +
+                "oiced, @InvoiceDate, @JobTicketPrinted, @RemakeTicketPrinted, @ReMakePrntDate, @" +
+                "OrderRePrint, @JobPrintBatch, @JobPrintDate);\r\nSELECT Invno, ClientOrderId, Orde" +
+                "rReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, S" +
+                "hipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, P" +
+                "ages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Des" +
+                "cription, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Wei" +
+                "ght, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes, Print" +
+                "ergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, In" +
+                "voiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, " +
+                "JobPrintBatch, JobPrintDate FROM TukiosOrder WHERE (Invno = @Invno) ORDER BY Inv" +
+                "no, OrderReceivedDate DESC";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2893,80 +2894,80 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TukiosOrder] SET [Invno] = @Invno, [ClientOrderId] = @ClientOrderId" +
-                ", [OrderReceivedDate] = @OrderReceivedDate, [RequestedShipDate] = @RequestedShip" +
-                "Date, [DateShipped] = @DateShipped, [ShipMethod] = @ShipMethod, [ShipName] = @Sh" +
-                "ipName, [ShipAddr] = @ShipAddr, [ShipAddr2] = @ShipAddr2, [ShipCity] = @ShipCity" +
-                ", [ShipState] = @ShipState, [ShipZip] = @ShipZip, [BookId] = @BookId, [Copies] =" +
-                " @Copies, [BookType] = @BookType, [BookBlockId] = @BookBlockId, [Pages] = @Pages" +
-                ", [BookBlockURL] = @BookBlockURL, [BookBlockPreviewURL] = @BookBlockPreviewURL, " +
-                "[CoverId] = @CoverId, [CoverURL] = @CoverURL, [CoverPreviewURL] = @CoverPreviewU" +
-                "RL, [Description] = @Description, [ProdCopies] = @ProdCopies, [ProdInOrder] = @P" +
-                "rodInOrder, [DateModified] = @DateModified, [ModifiedBy] = @ModifiedBy, [Trackin" +
-                "gNumber] = @TrackingNumber, [Weight] = @Weight, [TukiosOrderStatus] = @TukiosOrd" +
-                "erStatus, [FilesDownloaded] = @FilesDownloaded, [FilesCopied] = @FilesCopied, [D" +
-                "ownloadTrys] = @DownloadTrys, [Notes] = @Notes, [PrintergyFile] = @PrintergyFile" +
-                ", [BookStatus] = @BookStatus, [CoverStatus] = @CoverStatus, [CurrentBookLoc] = @" +
-                "CurrentBookLoc, [CurrentCoverLoc] = @CurrentCoverLoc, [Invoiced] = @Invoiced, [I" +
-                "nvoiceDate] = @InvoiceDate, [JobTicketPrinted] = @JobTicketPrinted, [RemakeTicke" +
-                "tPrinted] = @RemakeTicketPrinted, [ReMakePrntDate] = @ReMakePrntDate, [OrderRePr" +
-                "int] = @OrderRePrint, [JobPrintBatch] = @JobPrintBatch, [JobPrintDate] = @JobPri" +
-                "ntDate WHERE (([Invno] = @Original_Invno) AND ([ClientOrderId] = @Original_Clien" +
-                "tOrderId) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) O" +
-                "R ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_RequestedSh" +
-                "ipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_" +
-                "RequestedShipDate)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR " +
-                "([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipMethod = 1 AND [ShipM" +
-                "ethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_ShipName" +
-                " = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull" +
-                "_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND " +
-                "((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_Shi" +
-                "pAddr2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Or" +
-                "iginal_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([Ship" +
-                "State] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) " +
-                "OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_BookId = 1 AND [BookId] IS NUL" +
-                "L) OR ([BookId] = @Original_BookId)) AND ((@IsNull_Copies = 1 AND [Copies] IS NU" +
-                "LL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_BookType = 1 AND [BookType] " +
-                "IS NULL) OR ([BookType] = @Original_BookType)) AND ((@IsNull_BookBlockId = 1 AND" +
-                " [BookBlockId] IS NULL) OR ([BookBlockId] = @Original_BookBlockId)) AND ((@IsNul" +
-                "l_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_C" +
-                "overId = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Original_CoverId)) AND ((@IsN" +
-                "ull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Des" +
-                "cription)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies] IS NULL) OR ([ProdCopie" +
-                "s] = @Original_ProdCopies)) AND ((@IsNull_ProdInOrder = 1 AND [ProdInOrder] IS N" +
-                "ULL) OR ([ProdInOrder] = @Original_ProdInOrder)) AND ((@IsNull_DateModified = 1 " +
-                "AND [DateModified] IS NULL) OR ([DateModified] = @Original_DateModified)) AND ((" +
-                "@IsNull_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([ModifiedBy] = @Original_Mo" +
-                "difiedBy)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Origin" +
-                "al_Weight)) AND ((@IsNull_TukiosOrderStatus = 1 AND [TukiosOrderStatus] IS NULL)" +
-                " OR ([TukiosOrderStatus] = @Original_TukiosOrderStatus)) AND ([FilesDownloaded] " +
-                "= @Original_FilesDownloaded) AND ([FilesCopied] = @Original_FilesCopied) AND ((@" +
-                "IsNull_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR ([DownloadTrys] = @Origin" +
-                "al_DownloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [PrintergyFile] IS NULL) O" +
-                "R ([PrintergyFile] = @Original_PrintergyFile)) AND ((@IsNull_BookStatus = 1 AND " +
-                "[BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_Co" +
-                "verStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStat" +
-                "us)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([Current" +
-                "BookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCoverLoc = 1 AND [Cur" +
-                "rentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND (" +
-                "(@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] = @Original_Invoice" +
-                "d)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) OR ([InvoiceDate] =" +
-                " @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Original_JobTicketPrinted) A" +
-                "ND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinted) AND ((@IsNull_ReMakeP" +
-                "rntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate] = @Original_ReMak" +
-                "ePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([Orde" +
-                "rRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPri" +
-                "ntBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatch)) AND ((@IsNull_" +
-                "JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_JobP" +
-                "rintDate)));\r\nSELECT Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate," +
-                " DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, Sh" +
-                "ipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPrev" +
-                "iewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder" +
-                ", DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDown" +
-                "loaded, FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus" +
-                ", CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, Rema" +
-                "keTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate FROM " +
-                "TukiosOrder WHERE (Invno = @Invno)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [TukiosOrder] SET [Invno] = @Invno, [ClientOrderId] = @ClientOrderId, [Ord" +
+                "erReceivedDate] = @OrderReceivedDate, [RequestedShipDate] = @RequestedShipDate, " +
+                "[DateShipped] = @DateShipped, [ShipMethod] = @ShipMethod, [ShipName] = @ShipName" +
+                ", [ShipAddr] = @ShipAddr, [ShipAddr2] = @ShipAddr2, [ShipCity] = @ShipCity, [Shi" +
+                "pState] = @ShipState, [ShipZip] = @ShipZip, [BookId] = @BookId, [Copies] = @Copi" +
+                "es, [BookType] = @BookType, [BookBlockId] = @BookBlockId, [Pages] = @Pages, [Boo" +
+                "kBlockURL] = @BookBlockURL, [BookBlockPreviewURL] = @BookBlockPreviewURL, [Cover" +
+                "Id] = @CoverId, [CoverURL] = @CoverURL, [CoverPreviewURL] = @CoverPreviewURL, [D" +
+                "escription] = @Description, [ProdCopies] = @ProdCopies, [ProdInOrder] = @ProdInO" +
+                "rder, [DateModified] = @DateModified, [ModifiedBy] = @ModifiedBy, [TrackingNumbe" +
+                "r] = @TrackingNumber, [Weight] = @Weight, [TukiosOrderStatus] = @TukiosOrderStat" +
+                "us, [FilesDownloaded] = @FilesDownloaded, [FilesCopied] = @FilesCopied, [Downloa" +
+                "dTrys] = @DownloadTrys, [Notes] = @Notes, [PrintergyFile] = @PrintergyFile, [Boo" +
+                "kStatus] = @BookStatus, [CoverStatus] = @CoverStatus, [CurrentBookLoc] = @Curren" +
+                "tBookLoc, [CurrentCoverLoc] = @CurrentCoverLoc, [Invoiced] = @Invoiced, [Invoice" +
+                "Date] = @InvoiceDate, [JobTicketPrinted] = @JobTicketPrinted, [RemakeTicketPrint" +
+                "ed] = @RemakeTicketPrinted, [ReMakePrntDate] = @ReMakePrntDate, [OrderRePrint] =" +
+                " @OrderRePrint, [JobPrintBatch] = @JobPrintBatch, [JobPrintDate] = @JobPrintDate" +
+                " WHERE (([Invno] = @Original_Invno) AND ([ClientOrderId] = @Original_ClientOrder" +
+                "Id) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([Or" +
+                "derReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_RequestedShipDate" +
+                " = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_Reques" +
+                "tedShipDate)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([Date" +
+                "Shipped] = @Original_DateShipped)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod]" +
+                " IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_ShipName = 1 A" +
+                "ND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipA" +
+                "ddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsN" +
+                "ull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2" +
+                ")) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original" +
+                "_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState]" +
+                " = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([S" +
+                "hipZip] = @Original_ShipZip)) AND ((@IsNull_BookId = 1 AND [BookId] IS NULL) OR " +
+                "([BookId] = @Original_BookId)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR" +
+                " ([Copies] = @Original_Copies)) AND ((@IsNull_BookType = 1 AND [BookType] IS NUL" +
+                "L) OR ([BookType] = @Original_BookType)) AND ((@IsNull_BookBlockId = 1 AND [Book" +
+                "BlockId] IS NULL) OR ([BookBlockId] = @Original_BookBlockId)) AND ((@IsNull_Page" +
+                "s = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_CoverId" +
+                " = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Original_CoverId)) AND ((@IsNull_De" +
+                "scription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descripti" +
+                "on)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies] IS NULL) OR ([ProdCopies] = @" +
+                "Original_ProdCopies)) AND ((@IsNull_ProdInOrder = 1 AND [ProdInOrder] IS NULL) O" +
+                "R ([ProdInOrder] = @Original_ProdInOrder)) AND ((@IsNull_DateModified = 1 AND [D" +
+                "ateModified] IS NULL) OR ([DateModified] = @Original_DateModified)) AND ((@IsNul" +
+                "l_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([ModifiedBy] = @Original_Modified" +
+                "By)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Wei" +
+                "ght)) AND ((@IsNull_TukiosOrderStatus = 1 AND [TukiosOrderStatus] IS NULL) OR ([" +
+                "TukiosOrderStatus] = @Original_TukiosOrderStatus)) AND ([FilesDownloaded] = @Ori" +
+                "ginal_FilesDownloaded) AND ([FilesCopied] = @Original_FilesCopied) AND ((@IsNull" +
+                "_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR ([DownloadTrys] = @Original_Dow" +
+                "nloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [PrintergyFile] IS NULL) OR ([Pr" +
+                "intergyFile] = @Original_PrintergyFile)) AND ((@IsNull_BookStatus = 1 AND [BookS" +
+                "tatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_CoverSta" +
+                "tus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus)) A" +
+                "ND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([CurrentBookLo" +
+                "c] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCoverLoc = 1 AND [CurrentCo" +
+                "verLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND ((@IsNu" +
+                "ll_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] = @Original_Invoiced)) AN" +
+                "D ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) OR ([InvoiceDate] = @Orig" +
+                "inal_InvoiceDate)) AND ([JobTicketPrinted] = @Original_JobTicketPrinted) AND ([R" +
+                "emakeTicketPrinted] = @Original_RemakeTicketPrinted) AND ((@IsNull_ReMakePrntDat" +
+                "e = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate] = @Original_ReMakePrntD" +
+                "ate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([OrderRePri" +
+                "nt] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPrintBatc" +
+                "h] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatch)) AND ((@IsNull_JobPri" +
+                "ntDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_JobPrintDa" +
+                "te)));\r\nSELECT Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateS" +
+                "hipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip," +
+                " BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL" +
+                ", CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, Date" +
+                "Modified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded" +
+                ", FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, Curr" +
+                "entBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTick" +
+                "etPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate FROM Tukios" +
+                "Order WHERE (Invno = @Invno) ORDER BY Invno, OrderReceivedDate DESC";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3106,16 +3107,28 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate FROM dbo.TukiosOrder";
+            this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, 
+                         BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, 
+                         Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate
+FROM            TukiosOrder
+WHERE        (ClientOrderId = @ClientOrderId)
+ORDER BY Invno, OrderReceivedDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TukiosOrders.TukiosOrderDataTable dataTable) {
+        public virtual int Fill(TukiosOrders.TukiosOrderDataTable dataTable, string ClientOrderId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ClientOrderId == null)) {
+                throw new global::System.ArgumentNullException("ClientOrderId");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ClientOrderId));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3127,8 +3140,14 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TukiosOrders.TukiosOrderDataTable GetData() {
+        public virtual TukiosOrders.TukiosOrderDataTable GetData(string ClientOrderId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ClientOrderId == null)) {
+                throw new global::System.ArgumentNullException("ClientOrderId");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ClientOrderId));
+            }
             TukiosOrders.TukiosOrderDataTable dataTable = new TukiosOrders.TukiosOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

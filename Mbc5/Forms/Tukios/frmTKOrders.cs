@@ -6,14 +6,12 @@ using Mbc5.Classes;
 using Mbc5.Dialogs;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
-using PdfiumViewer;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.IO;
-using System.Net.Http;
 using System.Windows.Forms;
 
 
@@ -23,12 +21,12 @@ namespace Mbc5.Forms.Tukios
     {
         //
         public frmMain frmMain { get; set; }
-        public frmTKOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
+        public frmTKOrders(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "Tukios", "BARCODE", "MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
         }
-        public frmTKOrders(UserPrincipal userPrincipal, int clientId) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
+        public frmTKOrders(UserPrincipal userPrincipal, string clientId) : base(new string[] { "SA", "Administrator", "MixBook", "BARCODE", "MBLead" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -36,7 +34,7 @@ namespace Mbc5.Forms.Tukios
         }
         //private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
         //private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
-        public int OrderId { get; set; } = 0;
+        public string OrderId { get; set; } = "";
         public UserPrincipal ApplicationUser { get; set; }
 
         private void frmTKOrders_Load(object sender, EventArgs e)
@@ -47,7 +45,7 @@ namespace Mbc5.Forms.Tukios
                 btnCancelOrder.Visible = true;
                 // btnRemoveOrder.Visible = true;
             }
-            List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "MixBook", "MBLead" });
+            List<string> mylist1 = new List<string>(new string[] { "SA", "Administrator", "Tukios", "MBLead" });
             if (this.ApplicationUser.IsInOneOfRoles(mylist1))
             {
                 this.pnlRemake.Visible = true;
@@ -56,19 +54,19 @@ namespace Mbc5.Forms.Tukios
             this.pnlOrder.Enabled = false;
             this.frmMain = (frmMain)this.MdiParent;
 
-            List<string> mylist = new List<string>(new string[] { "SA", "Administrator", "MixBook" });
+            List<string> mylist = new List<string>(new string[] { "SA", "Administrator", "Tukios" });
             this.btnEdit.Enabled = ApplicationUser.IsInOneOfRoles(mylist);
             btnDownloadFiles.Enabled = ApplicationUser.IsInOneOfRoles(mylist);
             SetConnectionString();
             this.Invno = 0;
-            if (OrderId > 0)
+            if (!string.IsNullOrEmpty(this.OrderId))
             {
                 Fill();
             }
 
         }
 
-        private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void tukiosOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.SaveOrder();
 
@@ -80,7 +78,7 @@ namespace Mbc5.Forms.Tukios
                 this.Validate();
                 this.tukiosOrderBindingSource.EndEdit();
 
-                this.mixBookOrderTableAdapter.Update(dstukiosOrders.MixBookOrder);
+                this.tukiosOrderTableAdapter.Update(dsTukiosOrders);
                 this.pnlOrder.Enabled = false;
             }
             catch (Exception ex)
@@ -97,13 +95,13 @@ namespace Mbc5.Forms.Tukios
             try
             {
                 this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                this.mixBookOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-                this.shipCarriersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                this.tukiosOrderTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
 
             }
             catch (Exception ex)
             {
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set Mixbook orders connection strings");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to set Tukios orders connection strings");
 
             }
         }
@@ -117,11 +115,11 @@ namespace Mbc5.Forms.Tukios
                 {
                     vcurrentOrderId = ((DataRowView)tukiosOrderBindingSource.Current).Row["ClientOrderId"].ToString();
                 }
-                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Mixbook OrderId Search"); }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderId not found. Tukios OrderId Search"); }
             }
 
 
-            frmSearch frmSearch = new frmSearch("OrderId", "MixBook", vcurrentOrderId);
+            frmSearch frmSearch = new frmSearch("OrderId", "TUKIOS", vcurrentOrderId);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -135,20 +133,11 @@ namespace Mbc5.Forms.Tukios
                     }
                     else
                     {
-                        int iOrderId = 0;
-                        if (int.TryParse(retOrderId, out iOrderId))
-                        {
-
-
-                            this.OrderId = iOrderId;
-                            Fill();
-                        }
-                        else
-                        {
-                            MbcMessageBox.Hand("A valid search value was not returned", "");
-
-                        }
+                        this.OrderId = retOrderId;
+                        Fill();
                     }
+
+
                 }
                 catch (Exception ex)
                 {
@@ -172,7 +161,7 @@ namespace Mbc5.Forms.Tukios
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Item Id"); }
             }
 
-            frmSearch frmSearch = new frmSearch("ITEMID", "MixBook", vcurrentItemId);
+            frmSearch frmSearch = new frmSearch("ITEMID", "Tukios", vcurrentItemId);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -183,13 +172,9 @@ namespace Mbc5.Forms.Tukios
                 }
                 else
                 {
-                    int iOrderId = 0;
-                    if (int.TryParse(retOrderId, out iOrderId))
-                    {
-                        this.OrderId = iOrderId;
-                        Fill();
-                    }
-                    else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+
+                    this.OrderId = retOrderId;
+                    Fill();
                 }
             }
         }
@@ -205,7 +190,7 @@ namespace Mbc5.Forms.Tukios
             }
             catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Order Name"); }
 
-            frmSearch frmSearch = new frmSearch("SHIPNAME", "MixBook", vcurrentName);
+            frmSearch frmSearch = new frmSearch("SHIPNAME", "Tukios", vcurrentName);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -216,13 +201,10 @@ namespace Mbc5.Forms.Tukios
                 }
                 else
                 {
-                    int iOrderId = 0;
-                    if (int.TryParse(retOrderId, out iOrderId))
-                    {
-                        this.OrderId = iOrderId;
-                        Fill();
-                    }
-                    else { MbcMessageBox.Hand("A valid search value was not returned", ""); }
+
+                    this.OrderId = retOrderId;
+                    Fill();
+
                 }
             }
         }
@@ -321,7 +303,7 @@ namespace Mbc5.Forms.Tukios
                 if (updateResult11.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Tukios Order Remake Data SC:" + updateResult11.Errors[0].DeveloperMessage);
                     return;
                 }
                 vreasonCode = null;
@@ -368,7 +350,7 @@ namespace Mbc5.Forms.Tukios
                 if (updateResul1t.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Mixbook Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Tukios Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
                     return;
                 }
 
@@ -380,17 +362,17 @@ namespace Mbc5.Forms.Tukios
         {
 
             pnlOrder.Enabled = false;
-            if (OrderId == 0)
+            if (string.IsNullOrEmpty(OrderId))
             {
-                dstukiosOrders.MixBookOrder.Clear();
+                dsTukiosOrders.Clear();
                 return;
             }
             try
             {
                 this.statesTableAdapter.Fill(this.lookUp.states);
-                this.shipCarriersTableAdapter.Fill(this.dstukiosOrders.ShipCarriers);
+
                 int vIInvno = 0;
-                mixBookOrderTableAdapter.Fill(dstukiosOrders.MixBookOrder, OrderId);
+                tukiosOrderTableAdapter.Fill(dsTukiosOrders.TukiosOrder, OrderId);
                 string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
@@ -398,7 +380,7 @@ namespace Mbc5.Forms.Tukios
             catch (Exception ex)
             {
                 MbcMessageBox.Error(ex.Message);
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill mixbook orders data adapters,INVNO:" + Invno.ToString());
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill tukios orders data adapters,INVNO:" + Invno.ToString());
             }
             if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
             {
@@ -416,500 +398,501 @@ namespace Mbc5.Forms.Tukios
         }
         private void PrintJobTicket()
         {
-            var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
+            //        var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
 
 
-            var sqlClient = new SQLCustomClient().CommandText(@"
-               Select Invno,ClientOrderId,BookUrl,PrintergyFile,
-                ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
-                SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
-                Description,
-                Copies,ProdCopies,Pages,
-                Backing,OrderReceivedDate,
-                ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
-		        Case
+            //        var sqlClient = new SQLCustomClient().CommandText(@"
+            //           Select Invno,ClientOrderId,BookUrl,PrintergyFile,
+            //            ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
+            //            SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+            //            (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
+            //            Description,
+            //            Copies,ProdCopies,Pages,
+            //            Backing,OrderReceivedDate,
+            //            ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+            //            '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+            //      Case
 
-                when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
-                Case
-                When  ProdCopies % 8=0 Then
-                (ProdCopies/8)
-                When ProdCopies % 8>0 Then
-                (ProdCopies/8)+1
-                END
-                when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
-		  
-                CASE
-                When  ProdCopies % 4=0 Then
-                ProdCopies/4
+            //            when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
+            //            Case
+            //            When  ProdCopies % 8=0 Then
+            //            (ProdCopies/8)
+            //            When ProdCopies % 8>0 Then
+            //            (ProdCopies/8)+1
+            //            END
+            //            when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
 
-                When ProdCopies % 4>0 Then
-                (ProdCopies/4)+1
+            //            CASE
+            //            When  ProdCopies % 4=0 Then
+            //            ProdCopies/4
 
-                else
-                0
-                End 
+            //            When ProdCopies % 4>0 Then
+            //            (ProdCopies/4)+1
 
-                ELSE
+            //            else
+            //            0
+            //            End 
 
-                Case
-                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
-                ProdCopies/1
-                When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
-                1
-                else
-                0
-                End
-                End AS LargePressQty,
-				Case
-				  when ProdCopies>4 Then
-				  
-				    CASE
-					  When Substring(ItemCode,4,4)IN('7755') Then
-						ProdCopies/4
-					When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-					  ProdCopies/1
-					  else
-					  0
-					  End 
-									  
-				 ELSE
-				  Case
-				     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-						ProdCopies/1
-						else
-						0
-				     End
+            //            ELSE
 
-				End AS SmallPressQty 
+            //            Case
+            //            When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
+            //            ProdCopies/1
+            //            When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
+            //            1
+            //            else
+            //            0
+            //            End
+            //            End AS LargePressQty,
+            //Case
+            //  when ProdCopies>4 Then
 
-                From MixBookOrder MO  Where Invno=@Invno
-            ");
+            //    CASE
+            //	  When Substring(ItemCode,4,4)IN('7755') Then
+            //		ProdCopies/4
+            //	When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
+            //	  ProdCopies/1
+            //	  else
+            //	  0
+            //	  End 
 
-            sqlClient.AddParameter("@Invno", value);
+            // ELSE
+            //  Case
+            //     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+            //		ProdCopies/1
+            //		else
+            //		0
+            //     End
 
-            var result = sqlClient.Select<JobTicketQuery>();
-            if (result.IsError)
-            {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-            var jobData = (JobTicketQuery)result.Data;
-            if (jobData != null)
-            {
-                jobData = this.SetLastPageImage(jobData);
-                string imagePath2Param = null;
-                if (!string.IsNullOrEmpty(jobData.LastPageLocation) && File.Exists(jobData.LastPageLocation))
-                {
-                    imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
-                }
-                else { return; }
+            //End AS SmallPressQty 
 
-                reportViewer3.LocalReport.DataSources.Clear();
-                JobTicketQueryBindingSource.DataSource = jobData;
-                try
-                {
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl))
-                    {
-                        reportViewer3.LocalReport.EnableExternalImages = true;
-                        ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
-                        ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
+            //            From MixBookOrder MO  Where Invno=@Invno
+            //        ");
 
-                        ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
-                    }
-                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-                    this.reportViewer3.RefreshReport();
-                }
-                catch (Exception ex) { }
-            }
-            else
-            {
-                MbcMessageBox.Hand("There were no records found to print.", "No Records");
-            }
+            //        sqlClient.AddParameter("@Invno", value);
+
+            //        var result = sqlClient.Select<JobTicketQuery>();
+            //        if (result.IsError)
+            //        {
+            //            MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+            //            return;
+            //        }
+            //        var jobData = (JobTicketQuery)result.Data;
+            //        if (jobData != null)
+            //        {
+            //            jobData = this.SetLastPageImage(jobData);
+            //            string imagePath2Param = null;
+            //            if (!string.IsNullOrEmpty(jobData.LastPageLocation) && File.Exists(jobData.LastPageLocation))
+            //            {
+            //                imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
+            //            }
+            //            else { return; }
+
+            //            reportViewer3.LocalReport.DataSources.Clear();
+            //            JobTicketQueryBindingSource.DataSource = jobData;
+            //            try
+            //            {
+            //                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+            //                if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl))
+            //                {
+            //                    reportViewer3.LocalReport.EnableExternalImages = true;
+            //                    ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
+            //                    ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
+
+            //                    ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
+            //                    reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
+            //                }
+            //                reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+            //                this.reportViewer3.RefreshReport();
+            //            }
+            //            catch (Exception ex) { }
+            //        }
+            //        else
+            //        {
+            //            MbcMessageBox.Hand("There were no records found to print.", "No Records");
+            //        }
         }
-        private RemakeTicketQuery SetLastPageImage(RemakeTicketQuery data)
-        {
-            string pdfPath = "";
-            string file = data.PrintergyFile ?? "";
-            int idx = file.IndexOf("_.");
-            if (idx > 0)
-            {
-                file = file.Substring(0, idx);
-            }
-            // original logic appended _BB.pdf
-            file += "_BB.pdf";
+        //private RemakeTicketQuery SetLastPageImage(RemakeTicketQuery data)
+        //{
+        //    string pdfPath = "";
+        //    string file = data.PrintergyFile ?? "";
+        //    int idx = file.IndexOf("_.");
+        //    if (idx > 0)
+        //    {
+        //        file = file.Substring(0, idx);
+        //    }
+        //    // original logic appended _BB.pdf
+        //    file += "_BB.pdf";
 
-            // combine UNC share + filename
-            string archiveFullPath = Path.Combine(BookArchivePath, file);
+        //    // combine UNC share + filename
+        //    string archiveFullPath = Path.Combine(BookArchivePath, file);
 
-            if (File.Exists(archiveFullPath))
-            {
-                pdfPath = archiveFullPath;
-            }
-            else
-            {
-                pdfPath = data.BookUrl;
-            }
+        //    if (File.Exists(archiveFullPath))
+        //    {
+        //        pdfPath = archiveFullPath;
+        //    }
+        //    else
+        //    {
+        //        pdfPath = data.BookUrl;
+        //    }
 
-            // Suggest default filename based on PDF name
-            string defaultName = data.Invno.ToString() + "LastPage.jpeg";
-            var fullPath = Path.Combine(LastPageStorage, defaultName);
-            string lastPageImageFilePath = fullPath;
-            if (File.Exists(lastPageImageFilePath))
-            {
-                data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
-                return data;
+        //    // Suggest default filename based on PDF name
+        //    string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+        //    var fullPath = Path.Combine(LastPageStorage, defaultName);
+        //    string lastPageImageFilePath = fullPath;
+        //    if (File.Exists(lastPageImageFilePath))
+        //    {
+        //        data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
+        //        return data;
 
-            }
+        //    }
 
-            Stream pdfStream = null;
-            if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
-                pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-            {
-                using (var http = new HttpClient())
-                {
-                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                    resp.EnsureSuccessStatusCode();
-                    // copy to memory so stream is seekable for PdfiumViewer
-                    var ms = new MemoryStream();
-                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                    ms.Position = 0;
-                    pdfStream = ms;
-                }
-            }
-            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
-            {
-                pdfStream = File.OpenRead(pdfPath);
-            }
+        //    Stream pdfStream = null;
+        //    if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+        //        pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        using (var http = new HttpClient())
+        //        {
+        //            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+        //            resp.EnsureSuccessStatusCode();
+        //            // copy to memory so stream is seekable for PdfiumViewer
+        //            var ms = new MemoryStream();
+        //            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+        //            ms.Position = 0;
+        //            pdfStream = ms;
+        //        }
+        //    }
+        //    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+        //    {
+        //        pdfStream = File.OpenRead(pdfPath);
+        //    }
 
-            try
-            {
-                using (pdfStream)
-                {
-                    // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
-                    using (var doc = PdfDocument.Load(pdfStream))
-                    {
-                        if (doc.PageCount <= 0)
-                        {
-                            MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return data;
-                        }
+        //    try
+        //    {
+        //        using (pdfStream)
+        //        {
+        //            // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+        //            using (var doc = PdfDocument.Load(pdfStream))
+        //            {
+        //                if (doc.PageCount <= 0)
+        //                {
+        //                    MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    return data;
+        //                }
 
-                        // Render the last page (choose another index if you want)
-                        int pageIndex = Math.Max(0, doc.PageCount - 1);
+        //                // Render the last page (choose another index if you want)
+        //                int pageIndex = Math.Max(0, doc.PageCount - 1);
 
-                        // Desired DPI
-                        int dpi = 300;
+        //                // Desired DPI
+        //                int dpi = 300;
 
-                        // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
-                        // PageSizes entries are in points (1 point = 1/72 inch)
-                        var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
-                        int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
-                        int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+        //                // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
+        //                // PageSizes entries are in points (1 point = 1/72 inch)
+        //                var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+        //                int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+        //                int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
 
-                        // Clamp to avoid extremely large bitmaps (adjust limit as needed)
-                        const int maxDimension = 10000;
-                        if (pixelWidth > maxDimension || pixelHeight > maxDimension)
-                        {
-                            double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
-                            pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
-                            pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
-                        }
+        //                // Clamp to avoid extremely large bitmaps (adjust limit as needed)
+        //                const int maxDimension = 10000;
+        //                if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+        //                {
+        //                    double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+        //                    pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+        //                    pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+        //                }
 
-                        // Render page to a Bitmap using Pdfium (includes annotations)
-                        using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
-                        {
+        //                // Render page to a Bitmap using Pdfium (includes annotations)
+        //                using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+        //                {
 
-                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //                    rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-                            data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
-                            return data;
-                            //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                    data.LastPageLocation = new Uri(lastPageImageFilePath).AbsoluteUri;
+        //                    return data;
+        //                    //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Show full exception to aid diagnosis of native/pdfium issues
-                MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return data;
-            }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Show full exception to aid diagnosis of native/pdfium issues
+        //        MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return data;
+        //    }
 
-        }
-        private JobTicketQuery SetLastPageImage(JobTicketQuery data)
-        {
-            string pdfPath = "";
-            string file = data.PrintergyFile ?? "";
-            int idx = file.IndexOf("_.");
-            if (idx > 0)
-            {
-                file = file.Substring(0, idx);
-            }
-            // original logic appended _BB.pdf
-            file += "_BB.pdf";
+        //}
+        //private JobTicketQuery SetLastPageImage(JobTicketQuery data)
+        //{
+        //    string pdfPath = "";
+        //    string file = data.PrintergyFile ?? "";
+        //    int idx = file.IndexOf("_.");
+        //    if (idx > 0)
+        //    {
+        //        file = file.Substring(0, idx);
+        //    }
+        //    // original logic appended _BB.pdf
+        //    file += "_BB.pdf";
 
-            // combine UNC share + filename
-            string archiveFullPath = Path.Combine(BookArchivePath, file);
+        //    // combine UNC share + filename
+        //    string archiveFullPath = Path.Combine(BookArchivePath, file);
 
-            if (File.Exists(archiveFullPath))
-            {
-                pdfPath = archiveFullPath;
+        //    if (File.Exists(archiveFullPath))
+        //    {
+        //        pdfPath = archiveFullPath;
 
-            }
-            else
-            {
-                pdfPath = data.BookUrl;
-            }
+        //    }
+        //    else
+        //    {
+        //        pdfPath = data.BookUrl;
+        //    }
 
-            // Suggest default filename based on PDF name
-            string defaultName = data.Invno.ToString() + "LastPage.jpeg";
-            var fullPath = Path.Combine(LastPageStorage, defaultName);
-            string lastPageImageFilePath = fullPath;
-            if (File.Exists(lastPageImageFilePath))
-            {
-                data.LastPageLocation = lastPageImageFilePath;
-                return data;
+        //    // Suggest default filename based on PDF name
+        //    string defaultName = data.Invno.ToString() + "LastPage.jpeg";
+        //    var fullPath = Path.Combine(LastPageStorage, defaultName);
+        //    string lastPageImageFilePath = fullPath;
+        //    if (File.Exists(lastPageImageFilePath))
+        //    {
+        //        data.LastPageLocation = lastPageImageFilePath;
+        //        return data;
 
-            }
-            Stream pdfStream = null;
-            if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
-                pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-            {
-                using (var http = new HttpClient())
-                {
-                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                    resp.EnsureSuccessStatusCode();
-                    // copy to memory so stream is seekable for PdfiumViewer
-                    var ms = new MemoryStream();
-                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                    ms.Position = 0;
-                    pdfStream = ms;
-                }
-            }
-            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
-            {
-                pdfStream = File.OpenRead(pdfPath);
-            }
-
-
-            try
-            {
-                using (pdfStream)
-                {
-                    // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
-                    using (var doc = PdfDocument.Load(pdfStream))
-                    {
-                        if (doc.PageCount <= 0)
-                        {
-                            MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return data;
-                        }
-
-                        // Render the last page (choose another index if you want)
-                        int pageIndex = Math.Max(0, doc.PageCount - 1);
-
-                        // Desired DPI
-                        int dpi = 300;
-
-                        // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
-                        // PageSizes entries are in points (1 point = 1/72 inch)
-                        var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
-                        int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
-                        int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
-
-                        // Clamp to avoid extremely large bitmaps (adjust limit as needed)
-                        const int maxDimension = 10000;
-                        if (pixelWidth > maxDimension || pixelHeight > maxDimension)
-                        {
-                            double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
-                            pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
-                            pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
-                        }
-
-                        // Render page to a Bitmap using Pdfium (includes annotations)
-                        using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
-                        {
-
-                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
-                            data.LastPageLocation = lastPageImageFilePath;
-                            return data;
-                            //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Show full exception to aid diagnosis of native/pdfium issues
-                MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return data;
-            }
+        //    }
+        //    Stream pdfStream = null;
+        //    if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+        //        pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        using (var http = new HttpClient())
+        //        {
+        //            var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+        //            resp.EnsureSuccessStatusCode();
+        //            // copy to memory so stream is seekable for PdfiumViewer
+        //            var ms = new MemoryStream();
+        //            resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+        //            ms.Position = 0;
+        //            pdfStream = ms;
+        //        }
+        //    }
+        //    else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+        //    {
+        //        pdfStream = File.OpenRead(pdfPath);
+        //    }
 
 
+        //    try
+        //    {
+        //        using (pdfStream)
+        //        {
+        //            // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+        //            using (var doc = PdfDocument.Load(pdfStream))
+        //            {
+        //                if (doc.PageCount <= 0)
+        //                {
+        //                    MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    return data;
+        //                }
 
-        }
+        //                // Render the last page (choose another index if you want)
+        //                int pageIndex = Math.Max(0, doc.PageCount - 1);
+
+        //                // Desired DPI
+        //                int dpi = 300;
+
+        //                // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
+        //                // PageSizes entries are in points (1 point = 1/72 inch)
+        //                var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+        //                int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+        //                int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+        //                // Clamp to avoid extremely large bitmaps (adjust limit as needed)
+        //                const int maxDimension = 10000;
+        //                if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+        //                {
+        //                    double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+        //                    pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+        //                    pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+        //                }
+
+        //                // Render page to a Bitmap using Pdfium (includes annotations)
+        //                using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+        //                {
+
+        //                    rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //                    data.LastPageLocation = lastPageImageFilePath;
+        //                    return data;
+        //                    //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Show full exception to aid diagnosis of native/pdfium issues
+        //        MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return data;
+        //    }
+
+
+
+        //}
 
 
 
 
         private void PrintPackingList(int vClientOrderId)
         {
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
-                                ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
-                                FROM MixbookOrder MO
-                                Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
-                                Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
-                                Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
-                                Where ClientOrderId=@ClientOrderId");
-            sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
-            var result = sqlClient.SelectMany<MixbookPackingSlip>();
-            if (result.IsError || result.Data == null)
-            {
-                MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-            var packingSlipData = (List<MixbookPackingSlip>)result.Data;
-            reportViewer2.LocalReport.DataSources.Clear();
-            reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
-            reportViewer2.RefreshReport();
+            MessageBox.Show("Packing slip printing is currently unavailable. Please contact a supervisor.", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        var sqlClient = new SQLCustomClient();
+            //        sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            //                            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
+            //                            FROM MixbookOrder MO
+            //                            Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
+            //                            Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
+            //                            Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
+            //                            Where ClientOrderId=@ClientOrderId");
+            //        sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
+            //        var result = sqlClient.SelectMany<MixbookPackingSlip>();
+            //        if (result.IsError || result.Data == null)
+            //        {
+            //            MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+            //            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
+            //            return;
+            //        }
+            //        var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            //        reportViewer2.LocalReport.DataSources.Clear();
+            //        reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            //        reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            //        reportViewer2.RefreshReport();
         }
         private void PrintRemakeTicket(int vInvno)
         {
 
-            var sqlClient = new SQLCustomClient().CommandText(@"
-                Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl,MO.BookUrl,MO.PrintergyFile
-                ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
-                 MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
-                    (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
-                 '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal,
+            //        var sqlClient = new SQLCustomClient().CommandText(@"
+            //            Select MO.Invno,ClientOrderId,MO.CoverPreviewUrl,MO.BookPreviewUrl,MO.BookUrl,MO.PrintergyFile
+            //            ,SUBSTRING(CAST(MO.Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Mo.Invno as varchar),8,LEN(CAST(Mo.Invno as varchar))-7) AS DSInvno,
+            //             MO.ShipName,MO.RequestedShipDate,MO.Description,MO.Copies,MO.Pages,MO.Backing,MO.OrderReceivedDate,MO.ProdInOrder,'*MXB'+CAST(MO.Invno as varchar)+'SC*' AS SCBarcode,
+            //                (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
+            //             '*MXB'+CAST(MO.Invno as varchar)+'YB*' AS YBBarcode,W.Rmbto AS RemakeDate,W.Rmbtot As RemakeTotal,
 
-               Case
-                when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
-						Case
-						When  W.Rmbtot % 8=0 Then
-						(W.Rmbtot/8)
-						When W.Rmbtot % 8>0 Then
-						(W.Rmbtot/8)+1
-						END
+            //           Case
+            //            when W.Rmbtot>7 AND Substring(ItemCode,4,4 )='7755'  Then
+            //		Case
+            //		When  W.Rmbtot % 8=0 Then
+            //		(W.Rmbtot/8)
+            //		When W.Rmbtot % 8>0 Then
+            //		(W.Rmbtot/8)+1
+            //		END
 
-                when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
-                 1          
-                when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
-					CASE
-						When  W.Rmbtot % 4=0 Then
-						W.Rmbtot/4
-						When W.Rmbtot % 4>0 Then
-						(W.Rmbtot/4)+1
-					End
-				when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
-		            1
-                ELSE
-                  W.Rmbtot/1                        
-                End AS LargePressQty
-				,
-				Case
-				  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
-					Case
-						When  W.Rmbtot % 4=0 Then
-						(W.Rmbtot/4)
-						When W.Rmbtot % 4>0 Then
-						(W.Rmbtot/4)+1
-					END
+            //            when W.Rmbtot<8 AND Substring(ItemCode,4,4 )='7755'  Then
+            //             1          
+            //            when (W.Rmbtot>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then		  
+            //	CASE
+            //		When  W.Rmbtot % 4=0 Then
+            //		W.Rmbtot/4
+            //		When W.Rmbtot % 4>0 Then
+            //		(W.Rmbtot/4)+1
+            //	End
+            //when (W.Rmbtot<4 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+            //          1
+            //            ELSE
+            //              W.Rmbtot/1                        
+            //            End AS LargePressQty
+            //,
+            //Case
+            //  when W.Rmbtot>3 AND Substring(ItemCode,4,4)IN('7755')Then
+            //	Case
+            //		When  W.Rmbtot % 4=0 Then
+            //		(W.Rmbtot/4)
+            //		When W.Rmbtot % 4>0 Then
+            //		(W.Rmbtot/4)+1
+            //	END
 
-                  when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
-                    1
-                 When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
-                    0
-				When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
-					  W.Rmbtot/1					
-				End AS SmallPressQty
+            //              when W.Rmbtot<4 AND Substring(ItemCode,4,4)IN('7755')Then
+            //                1
+            //             When Substring(ItemCode,4,4 ) IN ('1175','1010','1212') Then
+            //                0
+            //When  Substring(ItemCode,4,4)IN('8511','8585','1185') Then
+            //	  W.Rmbtot/1					
+            //End AS SmallPressQty
 
-                    From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
-                Where MO.Invno=@Invno
-            ");
-            sqlClient.AddParameter("@Invno", vInvno);
-            var result = sqlClient.Select<RemakeTicketQuery>();
-            if (result.IsError)
-            {
-                MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
-                return;
-            }
-            if (result.Data == null)
-            {
-                MbcMessageBox.Error("There are no records availble to print.");
-                return;
-            }
+            //                From MixBookOrder MO LEFT JOIN WIP W ON MO.Invno=W.INVNO
+            //            Where MO.Invno=@Invno
+            //        ");
+            //        sqlClient.AddParameter("@Invno", vInvno);
+            //        var result = sqlClient.Select<RemakeTicketQuery>();
+            //        if (result.IsError)
+            //        {
+            //            MbcMessageBox.Error("Failed to retrieve order, remake ticket could not be printed");
+            //            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve order, remake ticket could not be printed:" + result.Errors[0].DeveloperMessage);
+            //            return;
+            //        }
+            //        if (result.Data == null)
+            //        {
+            //            MbcMessageBox.Error("There are no records availble to print.");
+            //            return;
+            //        }
 
-            var remakeData = (RemakeTicketQuery)result.Data;
-            remakeData = this.SetLastPageImage(remakeData);
+            //        var remakeData = (RemakeTicketQuery)result.Data;
+            //        remakeData = this.SetLastPageImage(remakeData);
 
-            reportViewer3.LocalReport.DataSources.Clear();
-            MixbookRemakeBindingSource.DataSource = remakeData;
-            if (remakeData != null)
-            {
-                try
-                {
-                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
-                    if (!string.IsNullOrEmpty(remakeData.CoverPreviewUrl))
-                    {
-                        reportViewer3.LocalReport.EnableExternalImages = true;
-                        ReportParameter parameter = new ReportParameter("ImagePath1", "https://media.mixbook.com/print_generation_jobs/6600495_TZ3smz/cover.pdf");
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter });
-                    }
+            //        reportViewer3.LocalReport.DataSources.Clear();
+            //        MixbookRemakeBindingSource.DataSource = remakeData;
+            //        if (remakeData != null)
+            //        {
+            //            try
+            //            {
+            //                reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
+            //                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", MixbookRemakeBindingSource));
+            //                if (!string.IsNullOrEmpty(remakeData.CoverPreviewUrl))
+            //                {
+            //                    reportViewer3.LocalReport.EnableExternalImages = true;
+            //                    ReportParameter parameter = new ReportParameter("ImagePath1", "https://media.mixbook.com/print_generation_jobs/6600495_TZ3smz/cover.pdf");
+            //                    reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter });
+            //                }
 
-                    reportViewer3.LocalReport.EnableExternalImages = true;
+            //                reportViewer3.LocalReport.EnableExternalImages = true;
 
 
-                    this.reportViewer3.RefreshReport();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(ex.Message);
-                    ;
-                }
-            }
-            else
-            {
-                MbcMessageBox.Hand("There were no records found to print.", "No Records");
-            }
+            //                this.reportViewer3.RefreshReport();
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                Log.Error(ex.Message);
+            //                ;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MbcMessageBox.Hand("There were no records found to print.", "No Records");
+            //        }
         }
         private void SetJobTicketPrinted()
         {
 
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
+            //        var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
 
 
-            var vInvno = this.Invno.ToString();
-            sqlClient.ClearParameters();
-            sqlClient.AddParameter("@Invno", vInvno);
-            sqlClient.AddParameter("@SetJobTicketPrinted", 1);
-            var updateResult = sqlClient.Update();
+            //        var vInvno = this.Invno.ToString();
+            //        sqlClient.ClearParameters();
+            //        sqlClient.AddParameter("@Invno", vInvno);
+            //        sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+            //        var updateResult = sqlClient.Update();
 
-        }
-        private void SetRemakeTicketPrinted()
-        {
-            var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
-            string _userIntials = "";
-            InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
+            //    }
+            //    private void SetRemakeTicketPrinted()
+            //    {
+            //        var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
+            //        string _userIntials = "";
+            //        InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
 
-            var vInvno = this.Invno.ToString();
-            sqlClient.ClearParameters();
-            sqlClient.AddParameter("@Invno", vInvno);
-            sqlClient.AddParameter("@RemakeTicketPrinted", 1);
-            sqlClient.AddParameter("@RemakePrintedBy", _userIntials);
-            var updateResult = sqlClient.Update();
+            //        var vInvno = this.Invno.ToString();
+            //        sqlClient.ClearParameters();
+            //        sqlClient.AddParameter("@Invno", vInvno);
+            //        sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+            //        sqlClient.AddParameter("@RemakePrintedBy", _userIntials);
+            //        var updateResult = sqlClient.Update();
 
         }
         #endregion
@@ -919,69 +902,15 @@ namespace Mbc5.Forms.Tukios
         {
             OrderIdSearch();
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             OrderNameSearch();
-        }
-
-        private void mixBookOrderBindingSource_PositionChanged(object sender, EventArgs e)
-        {
-            int vIInvno = 0;
-
-
-            try
-            {
-
-                string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
-                int.TryParse(vSInvno, out vIInvno);
-                this.Invno = vIInvno;
-            }
-            catch { }
-
-        }
-
-        private void mixBookOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void mixBookOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-            int vInvno = this.Invno;
-            string vSchcode = "01";
-            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
-            frmProdutn.MdiParent = this.MdiParent;
-            frmProdutn.Show();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
-        {
-            if (tukiosOrderDataGridView.CurrentRow != null)
-            {
-                try
-                {
-                    var value = (int)tukiosOrderDataGridView.CurrentRow.Cells[1].Value;
-                    this.Invno = value;
-                }
-                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
-            }
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
         {
             ItemIdSearch();
         }
-
-        private void shipMethodComboBox_DropDown(object sender, EventArgs e)
-        {
-            MbcMessageBox.Information("Check WIP screen to be sure 'Binding' has not been scanned.");
-        }
-
-
-
-        private void btnMixbookPkgList_Click(object sender, EventArgs e)
+        private void btnTukiosPkgList_Click(object sender, EventArgs e)
         {
 
             int vClientOrderId = 0;
@@ -993,26 +922,25 @@ namespace Mbc5.Forms.Tukios
             }
             PrintPackingList(vClientOrderId);
         }
-
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            Application.DoEvents();
-            PrinterSettings printerName = new PrinterSettings();
-            string printer = printerName.PrinterName;
-            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+            MessageBox.Show("Packing slip rendering is currently unavailable. Please contact a supervisor.", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Cursor.Current = Cursors.WaitCursor;
+            //Application.DoEvents();
+            //PrinterSettings printerName = new PrinterSettings();
+            //string printer = printerName.PrinterName;
+            //DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-            var result = dp.Export(reportViewer2.LocalReport, printer, 1, false);
+            //var result = dp.Export(reportViewer2.LocalReport, printer, 1, false);
 
-            if (result.IsError)
-            {
-                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
-            }
+            //if (result.IsError)
+            //{
+            //    var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Printing Error:" + result.Errors[0].ErrorMessage);
+            //}
 
-            Cursor.Current = Cursors.Default;
+            //Cursor.Current = Cursors.Default;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (pnlOrder.Enabled == true)
@@ -1022,24 +950,27 @@ namespace Mbc5.Forms.Tukios
             else { pnlOrder.Enabled = true; }
 
         }
-
         private void btnDownloadFiles_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(orderIdLabel1.Text))
             {
                 var sqlClient = new SQLCustomClient();
-                sqlClient.CommandText(@"Update MixbookOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId");
+                sqlClient.CommandText(@"Update TukiosOrder Set FilesDownloaded=0 where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var result = sqlClient.Update();
                 if (result.IsError)
                 {
-                    MbcMessageBox.Error("Failed to iniated download of files, try again or contact developer.");
+                    MbcMessageBox.Error("Failed to iniate download of files, try again or contact developer.");
                     Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to iniated download of files:" + result.Errors[0].DeveloperMessage);
                     return;
                 }
                 MbcMessageBox.Information("Files are marked to be downloaded. Check for them in 15 minutes.");
             }
         }
+
+
+
+
 
         private void btnRemake_Click(object sender, EventArgs e)
         {
@@ -1085,7 +1016,7 @@ namespace Mbc5.Forms.Tukios
             {
 
                 var sqlClient = new SQLCustomClient();
-                sqlClient.CommandText(@"Delete From MixbookOrder Where ClientOrderId=@ClientOrderId");
+                sqlClient.CommandText(@"Delete From TukiosOrder Where ClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var deleteResult = sqlClient.Delete();
                 if (deleteResult.IsError)
@@ -1095,7 +1026,7 @@ namespace Mbc5.Forms.Tukios
                     return;
                 }
                 sqlClient.ClearParameters();
-                sqlClient.CommandText("Delete From Produtn Where MxbClientOrderId=@ClientOrderId");
+                sqlClient.CommandText("Delete From Produtn Where TukiosClientOrderId=@ClientOrderId");
                 sqlClient.AddParameter("@ClientOrderId", orderIdLabel1.Text);
                 var deleteResult1 = sqlClient.Delete();
                 if (deleteResult1.IsError)
@@ -1140,7 +1071,7 @@ namespace Mbc5.Forms.Tukios
                     return;
                 }
                 MbcMessageBox.Information("Order has been purged");
-                this.OrderId = 0;
+                this.OrderId = "";
                 Fill();
             }
         }
@@ -1195,29 +1126,29 @@ namespace Mbc5.Forms.Tukios
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            if (reportViewer3.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.MixbookJobTicketSingle.rdlc")
-            {
-                try
-                {
+            //if (reportViewer3.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.MixbookJobTicketSingle.rdlc")
+            //{
+            //    try
+            //    {
 
-                    if (reportViewer3.PrintDialog() != DialogResult.Cancel)
-                    {
-                        SetJobTicketPrinted();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
-                }
-            }
-            else
-            {
-                //Remake Ticket
-                if (reportViewer3.PrintDialog() != DialogResult.Cancel)
-                {
-                    SetRemakeTicketPrinted();
-                }
-            }
+            //        if (reportViewer3.PrintDialog() != DialogResult.Cancel)
+            //        {
+            //            SetJobTicketPrinted();
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
+            //    }
+            //}
+            //else
+            //{
+            //    //Remake Ticket
+            //    if (reportViewer3.PrintDialog() != DialogResult.Cancel)
+            //    {
+            //        SetRemakeTicketPrinted();
+            //    }
+            //}
         }
 
         private void pnlOrder_EnabledChanged(object sender, EventArgs e)
@@ -1242,10 +1173,7 @@ namespace Mbc5.Forms.Tukios
             Remake("BK");
         }
 
-        private void pnlOrder_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void coverStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1258,7 +1186,7 @@ namespace Mbc5.Forms.Tukios
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set CoverStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient().CommandText("Update TukiosOrder Set CoverStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1277,7 +1205,7 @@ namespace Mbc5.Forms.Tukios
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set BookStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient().CommandText("Update TukiosOrder Set BookStatus='' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1285,7 +1213,7 @@ namespace Mbc5.Forms.Tukios
             }
         }
 
-        private void mixbookOrderStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void tukiosOrderStatusLabel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (ApplicationUser.UserName.ToUpper() == "TAMMY" || ApplicationUser.UserName.ToUpper() == "SA" || ApplicationUser.UserName.ToUpper() == "HILARY")
             {
@@ -1296,7 +1224,7 @@ namespace Mbc5.Forms.Tukios
                     int vInvno = 0;
                     if (int.TryParse(invnoLabel1.Text, out vInvno))
                     {
-                        var sqlclient = new SQLCustomClient().CommandText("Update MixbookOrder Set MixbookOrderStatus='In Process' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
+                        var sqlclient = new SQLCustomClient().CommandText("Update TukiosOrder Set TukiosOrderStatus='In Process' Where Invno=@Invno").AddParameter("Invno", vInvno).Update();
                         Fill();
                     }
                     else { MbcMessageBox.Error("Failed to parse Invoice number"); }
@@ -1308,12 +1236,12 @@ namespace Mbc5.Forms.Tukios
         private void btnEmailTrk_Click(object sender, EventArgs e)
         {
             string vBody = @"The tracking numbers for order <b>#" + orderIdLabel1.Text + @"</b> have been updated. You may not have all the tracking numbers. <br/><br/><b>" + trackingNumberTextBox.Text.Replace("|", ",") + "</b>";
-            new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "brian@mixbook.com", "", vBody, EmailType.System);
+            //new EmailHelper().SendOutLookEmail("#" + orderIdLabel1.Text + " Updated Tracking Numbers", "email@tukios.com", "", vBody, EmailType.System);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Log.Error("testerrorlog");
+
         }
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
@@ -1330,10 +1258,7 @@ namespace Mbc5.Forms.Tukios
             else { lblHold.Visible = false; }
         }
 
-        private void lblHold_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -1429,17 +1354,76 @@ namespace Mbc5.Forms.Tukios
 
         private void tukiosOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
+                if (tukiosOrderDataGridView.CurrentCell != null && tukiosOrderDataGridView.CurrentCell.Value != null)
+                {
+                    try
+                    { Process.Start(tukiosOrderDataGridView.CurrentCell.Value.ToString()); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Url is invalid.");
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
+                    }
+                }
+            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
+            {
 
+            }
         }
 
         private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            this.Cursor = Cursors.AppStarting;
+            int vInvno = this.Invno;
+            string vSchcode = "01";
+            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
+            frmProdutn.MdiParent = this.MdiParent;
+            frmProdutn.Show();
+            this.Cursor = Cursors.Default;
         }
 
         private void tukiosOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.ColumnIndex == 6)
+            {
+                e.Value = "Cover.pdf";
+            }
+            if (e.ColumnIndex == 7)
+            {
+                e.Value = "Book.pdf";
+            }
+        }
+        private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
+        {
+            if (tukiosOrderDataGridView.CurrentRow != null)
+            {
+                try
+                {
+                    var value = (int)tukiosOrderDataGridView.CurrentRow.Cells[1].Value;
+                    this.Invno = value;
+                }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }
+            }
+        }
 
+        private void tukiosOrderBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            int vIInvno = 0;
+
+
+            try
+            {
+
+                string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
+                int.TryParse(vSInvno, out vIInvno);
+                this.Invno = vIInvno;
+            }
+            catch { }
+        }
+
+        private void tukiosOrderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Save();
         }
     }
 }

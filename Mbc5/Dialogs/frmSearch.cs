@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
 using BindingModels;
-namespace Mbc5.Dialogs {
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
+namespace Mbc5.Dialogs
+{
     public partial class frmSearch : Form
     {
         public frmSearch(string vSearchType, string vForm, string vcurrentSearchValue)
@@ -18,7 +15,7 @@ namespace Mbc5.Dialogs {
         {
             this.SearchType = vSearchType.ToUpper();
             this.ReturnForm = vForm.ToUpper();
-            currentSearchValue = vcurrentSearchValue==null?"": vcurrentSearchValue.Trim();
+            currentSearchValue = vcurrentSearchValue == null ? "" : vcurrentSearchValue.Trim();
             InitializeComponent();
 
             //SearchType:
@@ -29,24 +26,26 @@ namespace Mbc5.Dialogs {
             //Production
 
         }
-    
+
         private int CurrentIndex { get; set; }
         private string SearchType { get; set; }
         private string ReturnForm { get; set; }
         private List<MixBookOrderIdSearch> OrderIdList { get; set; }
-       private List<MixBookProdOrderIdSearch> ProdOrderIdList { get; set; }
+        private List<TukiosOrderIdSearch> TukiosOrderIdList { get; set; }
+        private List<MixBookProdOrderIdSearch> ProdOrderIdList { get; set; }
         private List<MixBookOrderShipNameSearch> ShipNameList { get; set; }
+        private List<TukiosOrderShipNameSearch> TukiosShipNameList { get; set; }
         private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
-       private List<ProdutnSchnameSearch> ProdutnSchnameList { get; set; }
+        private List<ProdutnSchnameSearch> ProdutnSchnameList { get; set; }
         private List<OracleCodeSearch> OracleCodeList { get; set; }
         private List<ProdutnOracleCodeSearch> ProdutnOracleCodeList { get; set; }
         private List<ProdNoSearch> ProdutnNoList { get; set; }
         private List<ProdutnSchcodeSearch> ProdutnSchoolCodeList { get; set; }
         private List<InvnoSearch> InvnoList { get; set; }
-        private List<ProdutnInvnoSearch>ProdutnInvnoList{ get; set; }
+        private List<ProdutnInvnoSearch> ProdutnInvnoList { get; set; }
         private List<FirstNameSearch> FirstNameList { get; set; }
         private List<LastNameSearch> LastNameList { get; set; }
         private List<ZipCodeSearch> ZipeCodeList { get; set; }
@@ -55,8 +54,8 @@ namespace Mbc5.Dialogs {
         private List<OracleSalesSearch> OracleSalesCodeList { get; set; }
         private List<JobNoSearch> CustJobCodeList { get; set; }
         private List<SalesJobCode> SalesJobCodeList { get; set; }
-		private List<SalesJobCode> ProdJobCodeList { get; set; }
-		private List<EndSheetSchcodeSearch> EndSheetSchoolCodeList { get; set; }
+        private List<SalesJobCode> ProdJobCodeList { get; set; }
+        private List<EndSheetSchcodeSearch> EndSheetSchoolCodeList { get; set; }
         private List<EndSheetSchNameSearch> EndSheetSchoolNameList { get; set; }
         private List<EndSheetOracleCodeSearch> EndSheetOracleCodeList { get; set; }
         private List<EndSheetJobNoSearch> EndSheetJobNoList { get; set; }
@@ -68,7 +67,7 @@ namespace Mbc5.Dialogs {
         private string currentSearchValue;
 
         private void frmSearch_Load(object sender, EventArgs e)
-    
+
         {
             this.Cursor = Cursors.AppStarting;
 
@@ -334,23 +333,23 @@ namespace Mbc5.Dialogs {
                     switch (ReturnForm)
                     {
                         case "CUST":
-                            
-                                cmdtext = @"Select COALESCE(C.OracleCode,'')AS OracleCode,C.Schname,C.Schcode,C.Contryear,C.SchZip,C.SchState From Cust C  WHERE C.OracleCode !='' ORDER By OracleCode";
-                                sqlclient.CommandText(cmdtext);
-                                var result = sqlclient.SelectMany<OracleCodeSearch>();
-                                if (result.IsError)
-                                {
-                                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
-                                    return;
-                                }
-                                var lRetRecs = (List<OracleCodeSearch>)result.Data;
-                                this.OracleCodeList = lRetRecs==null?new List<OracleCodeSearch>():lRetRecs;
-                                bsData.DataSource = this.OracleCodeList;
 
-                                dgSearch.DataSource = bsData.DataSource;
+                            cmdtext = @"Select COALESCE(C.OracleCode,'')AS OracleCode,C.Schname,C.Schcode,C.Contryear,C.SchZip,C.SchState From Cust C  WHERE C.OracleCode !='' ORDER By OracleCode";
+                            sqlclient.CommandText(cmdtext);
+                            var result = sqlclient.SelectMany<OracleCodeSearch>();
+                            if (result.IsError)
+                            {
+                                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecs = (List<OracleCodeSearch>)result.Data;
+                            this.OracleCodeList = lRetRecs == null ? new List<OracleCodeSearch>() : lRetRecs;
+                            bsData.DataSource = this.OracleCodeList;
 
-                                txtSearch.Select();
-                                break;
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
                         case "MCUST":
 
                             cmdtext = @"Select COALESCE(C.OracleCode,'')AS OracleCode,C.Schname,C.Schcode,C.Contryear,C.SchZip,C.SchState From MCust C  WHERE C.OracleCode !='' ORDER By OracleCode";
@@ -466,7 +465,7 @@ namespace Mbc5.Dialogs {
                             bsData.DataSource = this.CustJobCodeList;
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
-                       
+
                             break;
                         case "SALES":
                             cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno  Where P.JobNo !='' Order By Jobno";
@@ -503,19 +502,20 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-							cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
-							sqlclient.CommandText(cmdtext);
-							var prodJobcoderesult = sqlclient.SelectMany<SalesJobCode>();
-							if (prodJobcoderesult.IsError) {
-								MbcMessageBox.Error(prodJobcoderesult.Errors[0].ErrorMessage, "Error");
-								return;
-							}
-							var vProdJobCodes = (List<SalesJobCode>)prodJobcoderesult.Data;
-							this.ProdJobCodeList = vProdJobCodes;
-							bsData.DataSource = this.ProdJobCodeList;
-							dgSearch.DataSource = bsData;
-							txtSearch.Select();
-							break;
+                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
+                            sqlclient.CommandText(cmdtext);
+                            var prodJobcoderesult = sqlclient.SelectMany<SalesJobCode>();
+                            if (prodJobcoderesult.IsError)
+                            {
+                                MbcMessageBox.Error(prodJobcoderesult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var vProdJobCodes = (List<SalesJobCode>)prodJobcoderesult.Data;
+                            this.ProdJobCodeList = vProdJobCodes;
+                            bsData.DataSource = this.ProdJobCodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                     }
                     break;
                 case "INVNO":
@@ -591,14 +591,14 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                           
-                                cmdtext = @"Select P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode) AS Schcode,C.OracleCode,C.Contryear From Produtn P
+
+                            cmdtext = @"Select P.Invno AS Invoice,IIF(MC.Schname IS NULL ,C.Schname,MC.Schname)AS Schname,IIF(MC.Schcode IS NULL ,C.Schcode,MC.Schcode) AS Schcode,C.OracleCode,C.Contryear From Produtn P
                                     LEFT JOIN Cust C On P.Schcode=C.Schcode 
                                     LEFT JOIN MCust MC On P.Schcode=MC.Schcode 
                                         Order By Invoice";
-                           
-                          
-                            
+
+
+
                             sqlclient.CommandText(cmdtext);
                             var result4 = sqlclient.SelectMany<ProdutnInvnoSearch>();
                             if (result4.IsError)
@@ -615,7 +615,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
 
                             break;
-                        
+
                         case "ENDSHEET":
                             cmdtext = @"Select E.Invno AS Invoice,C.Schname,C.Schcode,E.endshtno As EndSheetNo,C.Contryear,P.ProdNo From EndSheet E  
                                         Inner JOIN Quotes Q  ON E.Invno=Q.Invno
@@ -679,21 +679,22 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "SALES":
-							cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno as Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
-							sqlclient.CommandText(cmdtext);
-							var result1 = sqlclient.SelectMany<ProdNoSearch>();
-							if (result1.IsError) {
-								MbcMessageBox.Error(result1.Errors[0].ErrorMessage, "Error");
-								return;
-							}
-							var lRetRecs1 = (List<ProdNoSearch>)result1.Data;
-							this.ProdutnNoList = lRetRecs1;
-							bsData.DataSource = this.ProdutnNoList;
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno as Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+                            sqlclient.CommandText(cmdtext);
+                            var result1 = sqlclient.SelectMany<ProdNoSearch>();
+                            if (result1.IsError)
+                            {
+                                MbcMessageBox.Error(result1.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecs1 = (List<ProdNoSearch>)result1.Data;
+                            this.ProdutnNoList = lRetRecs1;
+                            bsData.DataSource = this.ProdutnNoList;
 
-							dgSearch.DataSource = bsData.DataSource;
+                            dgSearch.DataSource = bsData.DataSource;
 
-							txtSearch.Select();
-							break;
+                            txtSearch.Select();
+                            break;
                         case "MSALES":
                             cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno as Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join MCust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
@@ -1097,6 +1098,27 @@ namespace Mbc5.Dialogs {
                 case "ORDERID":
                     switch (ReturnForm)
                     {
+                        case "TUKIOS":
+                            cmdtext = @"SELECT 
+                                              ClientOrderId
+                                              ,ShipName 
+                                                                                                                               
+                                          FROM TukiosOrder Group By ClientOrderId,ShipName Order By ClientOrderId desc";
+                            sqlclient.CommandText(cmdtext);
+                            var resultTukios = sqlclient.SelectMany<TukiosOrderIdSearch>();
+                            if (resultTukios.IsError)
+                            {
+                                MbcMessageBox.Error(resultTukios.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecsTukios = (List<TukiosOrderIdSearch>)resultTukios.Data;
+                            this.TukiosOrderIdList = lRetRecsTukios;
+                            bsData.DataSource = this.TukiosOrderIdList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
                         case "MIXBOOK":
                             cmdtext = @"SELECT 
                                               ClientOrderId
@@ -1115,7 +1137,7 @@ namespace Mbc5.Dialogs {
                             bsData.DataSource = this.OrderIdList;
 
                             dgSearch.DataSource = bsData.DataSource;
-                            
+
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
@@ -1159,12 +1181,33 @@ namespace Mbc5.Dialogs {
                             var lRetRecsZC = (List<MixBookOrderShipNameSearch>)resultZC.Data;
                             this.ShipNameList = lRetRecsZC;
                             bsData.DataSource = this.ShipNameList;
-                            
+
                             dgSearch.DataSource = bsData.DataSource;
 
                             txtSearch.Select();
                             break;
-                        
+                        case "TUKIOS":
+
+                            cmdtext = @"SELECT 
+                                            ShipName
+                                            ,ClientOrderId                                                                                                                                
+                                        FROM TukiosOrder Where ShipName !='' Group By ShipName,ClientOrderId Order By ShipName";
+                            sqlclient.CommandText(cmdtext);
+                            var resultZC1 = sqlclient.SelectMany<TukiosOrderShipNameSearch>();
+                            if (resultZC1.IsError)
+                            {
+                                MbcMessageBox.Error(resultZC1.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecsZC1 = (List<TukiosOrderShipNameSearch>)resultZC1.Data;
+                            this.TukiosShipNameList = lRetRecsZC1;
+                            bsData.DataSource = this.TukiosShipNameList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
+
                     }
                     break;
                 case "ITEMID":
@@ -1193,16 +1236,17 @@ namespace Mbc5.Dialogs {
                             break;
 
                     }
-         
+
                     break;
-                 
+
             }
-            try {this.dgSearch.Columns[0].Width = 125; } catch{ }
-            
+            try { this.dgSearch.Columns[0].Width = 125; } catch { }
+
             this.Cursor = Cursors.Default;
             if (SearchType == "PRODNO")
             {
-                if (currentSearchValue!="") {
+                if (currentSearchValue != "")
+                {
                     txtSearch.Text = currentSearchValue.Substring(1);
                 }
             }
@@ -1210,43 +1254,46 @@ namespace Mbc5.Dialogs {
             {
                 txtSearch.Text = currentSearchValue;
             }
-            
+
             Search(txtSearch.Text);
         }
 
 
         private void Search(string value)
-     {
+        {
             int vIndex;
-  
-         
+
+
             switch (SearchType)
             {
-                  
+
                 case "SCHCODE":
-                    List<string>  vList =new List<string>();
-                    if (ReturnForm == "CUST"|| ReturnForm == "MCUST")
+                    List<string> vList = new List<string>();
+                    if (ReturnForm == "CUST" || ReturnForm == "MCUST")
                     {
                         vList = this.CustCode.Select(x => x.Schcode).ToList();
                     }
-                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
+                    else if (ReturnForm == "SALES" || ReturnForm == "MSALES")
                     {
                         vList = this.SaleSchoolCodeList.Select(x => x.Schcode).ToList();
-                    }else if (ReturnForm == "PRODUCTION")
+                    }
+                    else if (ReturnForm == "PRODUCTION")
                     {
-                        vList=this.ProdutnSchoolCodeList.Select(x => x.Schcode).ToList();
-                    }else if (ReturnForm == "ENDSHEET")
+                        vList = this.ProdutnSchoolCodeList.Select(x => x.Schcode).ToList();
+                    }
+                    else if (ReturnForm == "ENDSHEET")
                     {
                         vList = this.EndSheetSchoolCodeList.Select(x => x.Schcode).ToList();
-                    }else if (ReturnForm=="BIDS")
+                    }
+                    else if (ReturnForm == "BIDS")
                     {
                         vList = this.BidSchcodeList.Select(x => x.Schcode).ToList();
                     }
-                        
-    
+
+
                     try
                     {
-                        vIndex = vList.FindIndex(vcust => !string.IsNullOrEmpty(vcust)&& vcust.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
+                        vIndex = vList.FindIndex(vcust => !string.IsNullOrEmpty(vcust) && vcust.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();
@@ -1266,17 +1313,19 @@ namespace Mbc5.Dialogs {
                     break;
                 case "SCHNAME":
                     List<string> vListName = new List<string>();
-                    if (ReturnForm == "CUST"|| ReturnForm == "MCUST")
+                    if (ReturnForm == "CUST" || ReturnForm == "MCUST")
                     {
                         vListName = this.CustName.Select(x => x.Schname).ToList();
                     }
-                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
+                    else if (ReturnForm == "SALES" || ReturnForm == "MSALES")
                     {
                         vListName = this.SalesCustName.Select(x => x.Schname).ToList();
-                    }else if (ReturnForm == "PRODUCTION")
+                    }
+                    else if (ReturnForm == "PRODUCTION")
                     {
                         vListName = this.ProdutnSchnameList.Select(x => x.Schname).ToList();
-                    }else if (ReturnForm == "BIDS")
+                    }
+                    else if (ReturnForm == "BIDS")
                     {
                         vListName = this.BidSchnameList.Select(x => x.Schname).ToList();
                     }
@@ -1304,11 +1353,12 @@ namespace Mbc5.Dialogs {
                     }
                     break;
                 case "JOBNO":
-                   List<string> vJobList = new List<string>();
-                    if (ReturnForm == "CUST" )
+                    List<string> vJobList = new List<string>();
+                    if (ReturnForm == "CUST")
                     {
                         vJobList = this.CustJobCodeList.Select(x => x.JobNo).ToList();
-                    }else if (ReturnForm == "SALES")
+                    }
+                    else if (ReturnForm == "SALES")
                     {
                         vJobList = this.SalesJobCodeList.Select(x => x.JobNo).ToList();
                     }
@@ -1318,8 +1368,9 @@ namespace Mbc5.Dialogs {
                         {
                             vJobList = this.ProdJobCodeList.Select(x => x.JobNo).ToList();
                         }
-                        catch (Exception ex) { };
-					}
+                        catch (Exception ex) { }
+                        ;
+                    }
                     else if (ReturnForm == "ENDSHEET")
                     {
                         vJobList = this.EndSheetJobNoList.Select(x => x.JobNo).ToList();
@@ -1327,8 +1378,8 @@ namespace Mbc5.Dialogs {
 
                     try
                     {
-                        
-                        vIndex = vJobList.FindIndex(vcust => vcust !=null && vcust.ToString().StartsWith(value.ToUpper()));
+
+                        vIndex = vJobList.FindIndex(vcust => vcust != null && vcust.ToString().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();
@@ -1349,14 +1400,15 @@ namespace Mbc5.Dialogs {
                 case "ORACLECODE":
 
                     List<string> vOracleList = new List<string>();
-                    if (ReturnForm == "CUST"|| ReturnForm == "MCUST")
+                    if (ReturnForm == "CUST" || ReturnForm == "MCUST")
                     {
                         vOracleList = this.OracleCodeList.Select(x => x.OracleCode).ToList();
                     }
-                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
+                    else if (ReturnForm == "SALES" || ReturnForm == "MSALES")
                     {
                         vOracleList = this.OracleSalesCodeList.Select(x => x.OracleCode).ToList();
-                    }else if (ReturnForm == "PRODUCTION")
+                    }
+                    else if (ReturnForm == "PRODUCTION")
                     {
                         vOracleList = this.ProdutnOracleCodeList.Select(x => x.OracleCode).ToList();
                     }
@@ -1386,8 +1438,8 @@ namespace Mbc5.Dialogs {
                     }
                     break;
                 case "PRODNO":
-                     List<string> vProdNoList = new List<string>();
-                    if (ReturnForm == "CUST"|| ReturnForm == "MCUST")
+                    List<string> vProdNoList = new List<string>();
+                    if (ReturnForm == "CUST" || ReturnForm == "MCUST")
                     {
                         vProdNoList = this.ProdutnNoList.Select(x => x.ProdNo).ToList();
                     }
@@ -1401,13 +1453,13 @@ namespace Mbc5.Dialogs {
                         vIndex = vProdNoList.FindIndex(vcust => vcust != null && vcust.Substring(1).ToUpper().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
-                           
+
                             dgSearch.ClearSelection();
                             bsData.Position = vIndex;
                             dgSearch.Rows[vIndex].Selected = true;
                             dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
                             CurrentIndex = vIndex;
-                            
+
 
                         }
                     }
@@ -1419,10 +1471,11 @@ namespace Mbc5.Dialogs {
                     break;
                 case "INVNO":
                     List<string> vInvnoList = new List<string>();
-                    if (ReturnForm == "CUST"|| ReturnForm == "SALES"|| ReturnForm == "MCUST" || ReturnForm == "MSALES")
+                    if (ReturnForm == "CUST" || ReturnForm == "SALES" || ReturnForm == "MCUST" || ReturnForm == "MSALES")
                     {
                         vInvnoList = this.InvnoList.Select(x => x.Invoice.ToString()).ToList();
-                    }else if (ReturnForm == "PRODUCTION")
+                    }
+                    else if (ReturnForm == "PRODUCTION")
                     {
                         vInvnoList = this.ProdutnInvnoList.Select(x => x.Invoice.ToString()).ToList();
                     }
@@ -1434,7 +1487,7 @@ namespace Mbc5.Dialogs {
                     try
                     {
                         //value is trimmed to 5 spaces, binding is took out
-                        vIndex =vInvnoList.FindIndex(vcust => vcust != "0" && vcust.ToString().StartsWith(value.ToUpper()));
+                        vIndex = vInvnoList.FindIndex(vcust => vcust != "0" && vcust.ToString().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();
@@ -1457,7 +1510,7 @@ namespace Mbc5.Dialogs {
 
                     try
                     {
-                        
+
                         vIndex = this.FirstNameList.FindIndex(vcust => !string.IsNullOrEmpty(vcust.FirstName) && vcust.FirstName.ToUpper().Trim().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
@@ -1469,7 +1522,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
-                      
+
                     }
                     catch (Exception ex)
                     {
@@ -1493,7 +1546,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
-                      
+
                     }
                     catch (Exception ex)
                     {
@@ -1517,7 +1570,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -1529,7 +1582,7 @@ namespace Mbc5.Dialogs {
 
                     try
                     {
-                      
+
                         vIndex = this.EmailList.FindIndex(vcust => vcust.Email != null && vcust.Email.ToUpper().Trim().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
@@ -1541,7 +1594,7 @@ namespace Mbc5.Dialogs {
                             CurrentIndex = vIndex;
 
                         }
-                       
+
                     }
                     catch (Exception ex)
                     {
@@ -1550,39 +1603,15 @@ namespace Mbc5.Dialogs {
 
                     break;
                 case "SHIPNAME":
-                    
-                    if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString() ==txtSearch.Text) { return; }
-                    try
-                    {
-
-
-                        vIndex = this.ShipNameList.FindIndex(vcust => vcust.ShipName.ToString() != "" && vcust.ShipName.ToUpper().ToString().Trim().StartsWith(value.ToUpper()));
-                        if (vIndex != -1)
-                        {
-                            dgSearch.ClearSelection();
-                            bsData.Position = vIndex;
-                            dgSearch.Rows[vIndex].Selected = true;
-                            dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
-
-                            CurrentIndex = vIndex;
-
-                        }
-                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    break;
-
-                case "ORDERID":
                     if (ReturnForm == "MIXBOOK")
                     {
+                        if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString().ToUpper() == txtSearch.Text) { return; }
                         try
                         {
-                            if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString() == txtSearch.Text|| txtSearch.Text=="0") { return; }
-                            vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
-                           if (vIndex != -1)
+
+
+                            vIndex = this.ShipNameList.FindIndex(vcust => vcust.ShipName.ToString() != "" && vcust.ShipName.ToUpper().ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
                             {
                                 dgSearch.ClearSelection();
                                 bsData.Position = vIndex;
@@ -1598,7 +1627,60 @@ namespace Mbc5.Dialogs {
                         {
 
                         }
-                    }else if (ReturnForm == "PRODUCTION")
+
+                    }
+                    else if (ReturnForm == "TUKIOS")
+                    {
+                        if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString().ToUpper() == txtSearch.Text) { return; }
+                        try
+                        {
+
+
+                            vIndex = this.TukiosShipNameList.FindIndex(vcust => vcust.ShipName.ToString() != "" && vcust.ShipName.ToUpper().ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                    }
+                    break;
+                case "ORDERID":
+                    if (ReturnForm == "MIXBOOK")
+                    {
+                        try
+                        {
+                            if (dgSearch.Rows[dgSearch.CurrentRow.Index].Cells[0].Value.ToString() == txtSearch.Text || txtSearch.Text == "0") { return; }
+                            vIndex = this.OrderIdList.FindIndex(vcust => vcust.ClientOrderId.ToString() != "0" && vcust.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    else if (ReturnForm == "PRODUCTION")
                     {
                         try
                         {
@@ -1621,7 +1703,7 @@ namespace Mbc5.Dialogs {
 
                         }
                     }
-                    
+
                     break;
                 case "ITEMID":
                     try
@@ -1651,7 +1733,7 @@ namespace Mbc5.Dialogs {
 
         }
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-      {
+        {
             try
 
             {
@@ -1802,8 +1884,8 @@ namespace Mbc5.Dialogs {
                     }
                     else if (SearchType == "ORDERID" && (ReturnForm == "MIXBOOK"))
                     {
-                       
-                      this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     }
                     else if (SearchType == "ORDERID" && (ReturnForm == "PRODUCTION"))
                     {
@@ -1817,21 +1899,40 @@ namespace Mbc5.Dialogs {
                     {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
+
+                    else if (SearchType == "ORDERID" && (ReturnForm == "TUKIOS"))
+                    {
+
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    }
+                    else if (SearchType == "ORDERID" && (ReturnForm == "PRODUCTION"))
+                    {
+                        this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                    }
+                    else if (SearchType == "SHIPNAME" && (ReturnForm == "TUKIOS"))
+                    {
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
+                    else if (SearchType == "ITEMID" && (ReturnForm == "TUKIOS"))
+                    {
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
                     this.Close();
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 //means a row value was null
                 //return empty or null let form handle 
             }
 
-                //
+            //
 
-               
 
-            }
 
-        
+        }
+
+
 
         private void dgSearch_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -1864,27 +1965,27 @@ namespace Mbc5.Dialogs {
         private void dgSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-         
+
         }
         private void dgSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            char a =(char)13;
+            char a = (char)13;
             KeyPressEventArgs ee = new KeyPressEventArgs(a);
 
             txtSearch_KeyPress(sender, ee);
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-           
+
             Search(txtSearch.Text);
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-          
-            if (e.KeyCode==Keys.Down)
+
+            if (e.KeyCode == Keys.Down)
             {
-                if(this.ActiveControl== txtSearch)
+                if (this.ActiveControl == txtSearch)
                 {
                     this.dgSearch.Focus();
                 }
@@ -1896,24 +1997,24 @@ namespace Mbc5.Dialogs {
             switch (e.KeyCode)
             {
                 case Keys.Down:
-                 e.IsInputKey = true;
+                    e.IsInputKey = true;
                     break;
             }
         }
 
         private void dgSearch_KeyDown(object sender, KeyEventArgs e)
         {
-          
+
             if (e.KeyValue == 13)
             {
                 CurrentIndex = dgSearch.CurrentCell.RowIndex;
-            txtSearch_KeyPress(sender, new KeyPressEventArgs((Char)e.KeyData));
+                txtSearch_KeyPress(sender, new KeyPressEventArgs((Char)e.KeyData));
             }
-            
-            
+
+
 
         }
     }
-   
+
 
 }

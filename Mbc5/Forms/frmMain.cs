@@ -8,6 +8,7 @@ using Mbc5.Classes;
 using Mbc5.Dialogs;
 using Mbc5.Forms.JPIX;
 using Mbc5.Forms.MixBook;
+using Mbc5.Forms.Tukios;
 using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
 using NLog;
@@ -1858,10 +1859,7 @@ namespace Mbc5.Forms
         }
 
 
-        private void mixBookToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void mixBookOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2220,6 +2218,56 @@ namespace Mbc5.Forms
                     }
                 }
             });
+        }
+
+        private void tukiosOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
+                this.Cursor = Cursors.AppStarting;
+
+                frmTKOrders frmTKOrders = new frmTKOrders(this.ApplicationUser);
+                frmTKOrders.MdiParent = this;
+                frmTKOrders.Show();
+                this.Cursor = Cursors.Default;
+
+            }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                string vClientId = "";
+                if (this.ActiveMdiChild.Name == "frmProdutn")
+                {
+                    var tmpForm = (frmProdutn)this.ActiveMdiChild;
+
+                    if (tmpForm.Company == "TK")
+                    {
+                        vClientId = tmpForm.TukiosClientId;
+                    }
+
+                }
+
+                if (!String.IsNullOrEmpty(vClientId))
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmTKOrders frmTKOrders = new frmTKOrders(this.ApplicationUser, vClientId);
+                    frmTKOrders.MdiParent = this;
+                    frmTKOrders.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmTKOrders frmTKOrders = new frmTKOrders(this.ApplicationUser);
+                    frmTKOrders.MdiParent = this;
+                    frmTKOrders.Show();
+                    this.Cursor = Cursors.Default;
+
+                }
+
+            }
         }
 
 

@@ -47,20 +47,20 @@
             System.Windows.Forms.Label coverStatusLabel;
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label jobPrintBatchLabel;
+            System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
-            this.shipCarriersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tukiosOrderDataGridView = new System.Windows.Forms.DataGridView();
+            this.tukiosOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsTukiosOrders = new Mbc5.DataSets.TukiosOrders();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
-            this.shipCarriersTableAdapter = new Mbc5.DataSets.MixBookOrdersTableAdapters.ShipCarriersTableAdapter();
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
@@ -70,6 +70,7 @@
             this.btnEmailTrk = new System.Windows.Forms.Button();
             this.orderRePrintCheckBox = new System.Windows.Forms.CheckBox();
             this.btnHold = new System.Windows.Forms.Button();
+            this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
             this.shipAddr2TextBox = new System.Windows.Forms.TextBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.lblDateShipped = new System.Windows.Forms.Label();
@@ -107,7 +108,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.mixBookOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.tukiosOrderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
@@ -116,13 +117,10 @@
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblCanceled = new System.Windows.Forms.Label();
             this.lblHold = new System.Windows.Forms.Label();
-            this.tukiosOrders = new Mbc5.DataSets.TukiosOrders();
-            this.tukiosOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tukiosOrderTableAdapter = new Mbc5.DataSets.TukiosOrdersTableAdapters.TukiosOrderTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager();
-            this.requestedShipMethodLabel1 = new System.Windows.Forms.Label();
             this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,15 +148,14 @@
             requestedShipMethodLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTukiosOrders)).BeginInit();
             this.pnlOrder.SuspendLayout();
             this.pnlRemake.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingNavigator)).BeginInit();
             this.tukiosOrderBindingNavigator.SuspendLayout();
             this.pnlButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -205,7 +202,7 @@
             orderStatusLabel.Size = new System.Drawing.Size(66, 13);
             orderStatusLabel.TabIndex = 325;
             orderStatusLabel.Text = "Order Status";
-            orderStatusLabel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mixbookOrderStatusLabel_MouseDoubleClick);
+            orderStatusLabel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tukiosOrderStatusLabel_MouseDoubleClick);
             // 
             // invnoLabel
             // 
@@ -345,9 +342,21 @@
             jobPrintBatchLabel.TabIndex = 337;
             jobPrintBatchLabel.Text = "Job Print Batch";
             // 
+            // requestedShipMethodLabel
+            // 
+            requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            requestedShipMethodLabel.AutoSize = true;
+            requestedShipMethodLabel.Location = new System.Drawing.Point(431, 66);
+            requestedShipMethodLabel.Name = "requestedShipMethodLabel";
+            requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
+            requestedShipMethodLabel.TabIndex = 334;
+            requestedShipMethodLabel.Text = "Requested Ship Method";
+            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.MixBookOrderTableAdapter = null;
             this.tableAdapterManager.ShipCarriersTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
@@ -381,7 +390,7 @@
             this.tukiosOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tukiosOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
-            this.Invno,
+            this.dataGridViewTextBoxColumn1,
             this.ItemId,
             this.descriptionDataGridViewTextBoxColumn,
             this.copiesDataGridViewTextBoxColumn,
@@ -401,13 +410,20 @@
             this.tukiosOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tukiosOrderDataGridView_CellFormatting);
             this.tukiosOrderDataGridView.Enter += new System.EventHandler(this.tukiosOrderDataGridView_Enter);
             // 
+            // tukiosOrderBindingSource
+            // 
+            this.tukiosOrderBindingSource.DataMember = "TukiosOrder";
+            this.tukiosOrderBindingSource.DataSource = this.dsTukiosOrders;
+            this.tukiosOrderBindingSource.PositionChanged += new System.EventHandler(this.tukiosOrderBindingSource_PositionChanged);
+            // 
+            // dsTukiosOrders
+            // 
+            this.dsTukiosOrders.DataSetName = "TukiosOrders";
+            this.dsTukiosOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // statesTableAdapter
             // 
             this.statesTableAdapter.ClearBeforeFill = true;
-            // 
-            // shipCarriersTableAdapter
-            // 
-            this.shipCarriersTableAdapter.ClearBeforeFill = true;
             // 
             // btnMixbookPkgList
             // 
@@ -416,9 +432,9 @@
             this.btnMixbookPkgList.Name = "btnMixbookPkgList";
             this.btnMixbookPkgList.Size = new System.Drawing.Size(153, 23);
             this.btnMixbookPkgList.TabIndex = 300;
-            this.btnMixbookPkgList.Text = "Print Mixbook Pkg List";
+            this.btnMixbookPkgList.Text = "Print Tukios Pkg List";
             this.btnMixbookPkgList.UseVisualStyleBackColor = true;
-            this.btnMixbookPkgList.Click += new System.EventHandler(this.btnMixbookPkgList_Click);
+            this.btnMixbookPkgList.Click += new System.EventHandler(this.btnTukiosPkgList_Click);
             // 
             // reportViewer2
             // 
@@ -484,13 +500,12 @@
             this.pnlOrder.Size = new System.Drawing.Size(1171, 258);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
-            this.pnlOrder.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrder_Paint);
             // 
             // btnCancelOrder
             // 
             this.btnCancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelOrder.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelOrder.Location = new System.Drawing.Point(149, 226);
+            this.btnCancelOrder.Location = new System.Drawing.Point(16, 226);
             this.btnCancelOrder.Name = "btnCancelOrder";
             this.btnCancelOrder.Size = new System.Drawing.Size(122, 27);
             this.btnCancelOrder.TabIndex = 342;
@@ -559,6 +574,16 @@
             this.toolTip1.SetToolTip(this.btnHold, "Place order on hold. Plant only.");
             this.btnHold.UseVisualStyleBackColor = true;
             this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
+            // 
+            // requestedShipMethodLabel1
+            // 
+            this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.requestedShipMethodLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "ShipMethod", true));
+            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(559, 66);
+            this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
+            this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
+            this.requestedShipMethodLabel1.TabIndex = 335;
+            this.requestedShipMethodLabel1.Text = "label1";
             // 
             // shipAddr2TextBox
             // 
@@ -904,13 +929,13 @@
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
-            // mixBookOrderBindingNavigatorSaveItem
+            // tukiosOrderBindingNavigatorSaveItem
             // 
-            this.mixBookOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("mixBookOrderBindingNavigatorSaveItem.Image")));
-            this.mixBookOrderBindingNavigatorSaveItem.Name = "mixBookOrderBindingNavigatorSaveItem";
-            this.mixBookOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
-            this.mixBookOrderBindingNavigatorSaveItem.Text = "Save ";
-            this.mixBookOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.mixBookOrderBindingNavigatorSaveItem_Click);
+            this.tukiosOrderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("tukiosOrderBindingNavigatorSaveItem.Image")));
+            this.tukiosOrderBindingNavigatorSaveItem.Name = "tukiosOrderBindingNavigatorSaveItem";
+            this.tukiosOrderBindingNavigatorSaveItem.Size = new System.Drawing.Size(54, 22);
+            this.tukiosOrderBindingNavigatorSaveItem.Text = "Save ";
+            this.tukiosOrderBindingNavigatorSaveItem.Click += new System.EventHandler(this.tukiosOrderBindingNavigatorSaveItem_Click_1);
             // 
             // toolStripButton3
             // 
@@ -968,7 +993,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.mixBookOrderBindingNavigatorSaveItem,
+            this.tukiosOrderBindingNavigatorSaveItem,
             this.toolStripButton3,
             this.toolStripButton1,
             this.itemIdToolStripBtn,
@@ -1024,16 +1049,6 @@
             this.lblHold.Text = "On Hold";
             this.lblHold.Visible = false;
             // 
-            // tukiosOrders
-            // 
-            this.tukiosOrders.DataSetName = "TukiosOrders";
-            this.tukiosOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tukiosOrderBindingSource
-            // 
-            this.tukiosOrderBindingSource.DataMember = "TukiosOrder";
-            this.tukiosOrderBindingSource.DataSource = this.tukiosOrders;
-            // 
             // tukiosOrderTableAdapter
             // 
             this.tukiosOrderTableAdapter.ClearBeforeFill = true;
@@ -1043,25 +1058,6 @@
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.TukiosOrderTableAdapter = this.tukiosOrderTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // requestedShipMethodLabel1
-            // 
-            this.requestedShipMethodLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.requestedShipMethodLabel1.Location = new System.Drawing.Point(559, 66);
-            this.requestedShipMethodLabel1.Name = "requestedShipMethodLabel1";
-            this.requestedShipMethodLabel1.Size = new System.Drawing.Size(227, 23);
-            this.requestedShipMethodLabel1.TabIndex = 335;
-            this.requestedShipMethodLabel1.Text = "label1";
-            // 
-            // requestedShipMethodLabel
-            // 
-            requestedShipMethodLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            requestedShipMethodLabel.AutoSize = true;
-            requestedShipMethodLabel.Location = new System.Drawing.Point(431, 66);
-            requestedShipMethodLabel.Name = "requestedShipMethodLabel";
-            requestedShipMethodLabel.Size = new System.Drawing.Size(122, 13);
-            requestedShipMethodLabel.TabIndex = 334;
-            requestedShipMethodLabel.Text = "Requested Ship Method";
             // 
             // prodticket
             // 
@@ -1074,17 +1070,17 @@
             this.prodticket.Visible = false;
             this.prodticket.Width = 75;
             // 
-            // Invno
+            // dataGridViewTextBoxColumn1
             // 
-            this.Invno.DataPropertyName = "Invno";
-            this.Invno.HeaderText = "Invno";
-            this.Invno.Name = "Invno";
-            this.Invno.ReadOnly = true;
-            this.Invno.Visible = false;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // ItemId
             // 
-            this.ItemId.DataPropertyName = "ItemId";
+            this.ItemId.DataPropertyName = "BookId";
             this.ItemId.HeaderText = "Item Id";
             this.ItemId.Name = "ItemId";
             this.ItemId.ReadOnly = true;
@@ -1174,8 +1170,9 @@
             this.Controls.SetChildIndex(this.lblHold, 0);
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shipCarriersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTukiosOrders)).EndInit();
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
             this.pnlRemake.ResumeLayout(false);
@@ -1183,8 +1180,6 @@
             this.tukiosOrderBindingNavigator.ResumeLayout(false);
             this.tukiosOrderBindingNavigator.PerformLayout();
             this.pnlButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1197,8 +1192,6 @@
         private DataSets.LookUp lookUp;
         private System.Windows.Forms.BindingSource statesBindingSource;
         private DataSets.LookUpTableAdapters.statesTableAdapter statesTableAdapter;
-        private System.Windows.Forms.BindingSource shipCarriersBindingSource;
-        private DataSets.MixBookOrdersTableAdapters.ShipCarriersTableAdapter shipCarriersTableAdapter;
         private System.Windows.Forms.Button btnMixbookPkgList;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.Panel pnlOrder;
@@ -1242,7 +1235,7 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton mixBookOrderBindingNavigatorSaveItem;
+        private System.Windows.Forms.ToolStripButton tukiosOrderBindingNavigatorSaveItem;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton itemIdToolStripBtn;
@@ -1254,13 +1247,13 @@
         private System.Windows.Forms.Button btnRemoveOrder;
         private System.Windows.Forms.Label lblCanceled;
         private System.Windows.Forms.Label lblHold;
-        private DataSets.TukiosOrders tukiosOrders;
+        private DataSets.TukiosOrders dsTukiosOrders;
         private System.Windows.Forms.BindingSource tukiosOrderBindingSource;
         private DataSets.TukiosOrdersTableAdapters.TukiosOrderTableAdapter tukiosOrderTableAdapter;
         private DataSets.TukiosOrdersTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.Label requestedShipMethodLabel1;
         private System.Windows.Forms.DataGridViewLinkColumn prodticket;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn copiesDataGridViewTextBoxColumn;
