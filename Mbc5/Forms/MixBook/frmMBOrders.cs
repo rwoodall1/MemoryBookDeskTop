@@ -1,6 +1,5 @@
 ﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass.Core;
 using BindingModels;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -932,6 +931,10 @@ namespace Mbc5.Forms.MixBook
 
             try
             {
+                if (mixBookOrderBindingSource.Current == null)
+                {
+                    return;
+                }
 
                 string vSInvno = ((DataRowView)mixBookOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
@@ -1417,16 +1420,16 @@ namespace Mbc5.Forms.MixBook
 
             }
             this.Fill();
-            var processingResult = new ApiProcessingResult();
-            var returnNotification = new MixbookNotification();
-            var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
-            string reason = "";
-            InputBox.Show("Reason", "Enter a reason", ref reason);
-            returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
-            returnNotification.Request.Status.occurredAt = DateTime.Now;
-            returnNotification.Request.Status.Value = "Cancelled";
-            returnNotification.Request.Status.message = reason;
-            var vReturnNotification = Serialize.ToXml(returnNotification);
+            //var processingResult = new ApiProcessingResult();
+            //var returnNotification = new MixbookNotification();
+            //var jobId = ((DataRowView)mixBookOrderBindingSource.Current).Row["JobId"].ToString();
+            //string reason = "";
+            //InputBox.Show("Reason", "Enter a reason", ref reason);
+            //returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
+            //returnNotification.Request.Status.occurredAt = DateTime.Now;
+            //returnNotification.Request.Status.Value = "Cancelled";
+            //returnNotification.Request.Status.message = reason;
+            //var vReturnNotification = Serialize.ToXml(returnNotification);
             //This is disabled in the event it is canclled before we start the order. Do not want a notification going to customer.
             //Cancel from website if we need the customer and mixbook to know
 

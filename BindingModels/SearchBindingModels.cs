@@ -273,6 +273,11 @@
     {
         public string ShipName { get; set; }
         public string ClientOrderId { get; set; }
+    }
+    public class TukiosOrderBookIdSearch
+    {
+        public string BookId { get; set; }
+        public string ClientOrderId { get; set; }
 
 
     }

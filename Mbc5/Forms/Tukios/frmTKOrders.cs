@@ -1,6 +1,5 @@
 ﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass.Core;
 using BindingModels;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -12,9 +11,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
-
-
 namespace Mbc5.Forms.Tukios
 {
     public partial class frmTKOrders : BaseClass.frmBase
@@ -66,11 +64,7 @@ namespace Mbc5.Forms.Tukios
 
         }
 
-        private void tukiosOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.SaveOrder();
 
-        }
         public void SaveOrder()
         {
             try
@@ -146,7 +140,7 @@ namespace Mbc5.Forms.Tukios
             }
 
         }
-        private void ItemIdSearch()
+        private void BookIdSearch()
         {
             string vcurrentItemId = "";
             if (tukiosOrderBindingSource.Current != null)
@@ -155,13 +149,13 @@ namespace Mbc5.Forms.Tukios
                 {
                     if (tukiosOrderBindingSource.Current != null)
                     {
-                        vcurrentItemId = ((DataRowView)tukiosOrderBindingSource.Current).Row["ItemId"].ToString();
+                        vcurrentItemId = ((DataRowView)tukiosOrderBindingSource.Current).Row["BookId"].ToString();
                     }
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Item Id"); }
             }
 
-            frmSearch frmSearch = new frmSearch("ITEMID", "Tukios", vcurrentItemId);
+            frmSearch frmSearch = new frmSearch("BOOKID", "TUKIOS", vcurrentItemId);
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -398,120 +392,120 @@ namespace Mbc5.Forms.Tukios
         }
         private void PrintJobTicket()
         {
-            //        var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
+            var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
 
 
-            //        var sqlClient = new SQLCustomClient().CommandText(@"
-            //           Select Invno,ClientOrderId,BookUrl,PrintergyFile,
-            //            ShipName,RequestedShipDate,CoverPreviewUrl,BookPreviewUrl,Substring(ItemCode,4,4 ),
-            //            SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-            //            (Select Sum(Copies) from mixbookorder where Clientorderid=MO.clientOrderid )As NumToShip,
-            //            Description,
-            //            Copies,ProdCopies,Pages,
-            //            Backing,OrderReceivedDate,
-            //            ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-            //            '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
-            //      Case
+            var sqlClient = new SQLCustomClient().CommandText(@"
+                       Select Invno,ClientOrderId,BookUrl,PrintergyFile,
+                        ShipName,RequestedShipDate,Substring(ItemCode,4,4 ),
+                        SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
+                        (Select Sum(Copies) from tukiosorder where Clientorderid=TO.clientOrderid )As NumToShip,
+                        Description,
+                        Copies,ProdCopies,Pages,
+                        Backing,OrderReceivedDate,
+                        ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+                        '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+                  Case
 
-            //            when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
-            //            Case
-            //            When  ProdCopies % 8=0 Then
-            //            (ProdCopies/8)
-            //            When ProdCopies % 8>0 Then
-            //            (ProdCopies/8)+1
-            //            END
-            //            when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+                        when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
+                        Case
+                        When  ProdCopies % 8=0 Then
+                        (ProdCopies/8)
+                        When ProdCopies % 8>0 Then
+                        (ProdCopies/8)+1
+                        END
+                        when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
 
-            //            CASE
-            //            When  ProdCopies % 4=0 Then
-            //            ProdCopies/4
+                        CASE
+                        When  ProdCopies % 4=0 Then
+                        ProdCopies/4
 
-            //            When ProdCopies % 4>0 Then
-            //            (ProdCopies/4)+1
+                        When ProdCopies % 4>0 Then
+                        (ProdCopies/4)+1
 
-            //            else
-            //            0
-            //            End 
+                        else
+                        0
+                        End 
 
-            //            ELSE
+                        ELSE
 
-            //            Case
-            //            When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
-            //            ProdCopies/1
-            //            When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
-            //            1
-            //            else
-            //            0
-            //            End
-            //            End AS LargePressQty,
-            //Case
-            //  when ProdCopies>4 Then
+                        Case
+                        When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
+                        ProdCopies/1
+                        When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
+                        1
+                        else
+                        0
+                        End
+                        End AS LargePressQty,
+            Case
+              when ProdCopies>4 Then
 
-            //    CASE
-            //	  When Substring(ItemCode,4,4)IN('7755') Then
-            //		ProdCopies/4
-            //	When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-            //	  ProdCopies/1
-            //	  else
-            //	  0
-            //	  End 
+                CASE
+            	  When Substring(ItemCode,4,4)IN('7755') Then
+            		ProdCopies/4
+            	When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
+            	  ProdCopies/1
+            	  else
+            	  0
+            	  End 
 
-            // ELSE
-            //  Case
-            //     When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-            //		ProdCopies/1
-            //		else
-            //		0
-            //     End
+             ELSE
+              Case
+                 When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
+            		ProdCopies/1
+            		else
+            		0
+                 End
 
-            //End AS SmallPressQty 
+            End AS SmallPressQty 
 
-            //            From MixBookOrder MO  Where Invno=@Invno
-            //        ");
+                        From TukiosOrder TO  Where Invno=@Invno
+                    ");
 
-            //        sqlClient.AddParameter("@Invno", value);
+            sqlClient.AddParameter("@Invno", value);
 
-            //        var result = sqlClient.Select<JobTicketQuery>();
-            //        if (result.IsError)
-            //        {
-            //            MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
-            //            return;
-            //        }
-            //        var jobData = (JobTicketQuery)result.Data;
-            //        if (jobData != null)
-            //        {
-            //            jobData = this.SetLastPageImage(jobData);
-            //            string imagePath2Param = null;
-            //            if (!string.IsNullOrEmpty(jobData.LastPageLocation) && File.Exists(jobData.LastPageLocation))
-            //            {
-            //                imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
-            //            }
-            //            else { return; }
+            var result = sqlClient.Select<JobTicketQuery>();
+            if (result.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+            var jobData = (JobTicketQuery)result.Data;
+            if (jobData != null)
+            {
+                //jobData = this.SetLastPageImage(jobData);
+                string imagePath2Param = null;
+                if (!string.IsNullOrEmpty(jobData.LastPageLocation) && File.Exists(jobData.LastPageLocation))
+                {
+                    imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
+                }
+                else { return; }
 
-            //            reportViewer3.LocalReport.DataSources.Clear();
-            //            JobTicketQueryBindingSource.DataSource = jobData;
-            //            try
-            //            {
-            //                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-            //                if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl))
-            //                {
-            //                    reportViewer3.LocalReport.EnableExternalImages = true;
-            //                    ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
-            //                    ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
+                reportViewer3.LocalReport.DataSources.Clear();
+                JobTicketQueryBindingSource.DataSource = jobData;
+                try
+                {
+                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl))
+                    {
+                        reportViewer3.LocalReport.EnableExternalImages = true;
+                        ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
+                        ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
 
-            //                    ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
-            //                    reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
-            //                }
-            //                reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            //                this.reportViewer3.RefreshReport();
-            //            }
-            //            catch (Exception ex) { }
-            //        }
-            //        else
-            //        {
-            //            MbcMessageBox.Hand("There were no records found to print.", "No Records");
-            //        }
+                        ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
+                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
+                    }
+                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+                    this.reportViewer3.RefreshReport();
+                }
+                catch (Exception ex) { }
+            }
+            else
+            {
+                MbcMessageBox.Hand("There were no records found to print.", "No Records");
+            }
         }
         //private RemakeTicketQuery SetLastPageImage(RemakeTicketQuery data)
         //{
@@ -908,7 +902,7 @@ namespace Mbc5.Forms.Tukios
         }
         private void itemIdToolStripBtn_Click(object sender, EventArgs e)
         {
-            ItemIdSearch();
+            BookIdSearch();
         }
         private void btnTukiosPkgList_Click(object sender, EventArgs e)
         {
@@ -1317,16 +1311,16 @@ namespace Mbc5.Forms.Tukios
 
             }
             this.Fill();
-            var processingResult = new ApiProcessingResult();
-            var returnNotification = new MixbookNotification();
-            var jobId = ((DataRowView)tukiosOrderBindingSource.Current).Row["JobId"].ToString();
-            string reason = "";
-            InputBox.Show("Reason", "Enter a reason", ref reason);
-            returnNotification.Request.identifier = jobId;//neeeds to be set with jobid
-            returnNotification.Request.Status.occurredAt = DateTime.Now;
-            returnNotification.Request.Status.Value = "Cancelled";
-            returnNotification.Request.Status.message = reason;
-            var vReturnNotification = Serialize.ToXml(returnNotification);
+            //var processingResult = new ApiProcessingResult();
+            //var returnNotification = new MixbookNotification();
+            //var bookId = ((DataRowView)tukiosOrderBindingSource.Current).Row["BookId"].ToString();
+            //string reason = "";
+            //InputBox.Show("Reason", "Enter a reason", ref reason);
+            //returnNotification.Request.identifier = bookId;//neeeds to be set with bookId
+            //returnNotification.Request.Status.occurredAt = DateTime.Now;
+            //returnNotification.Request.Status.Value = "Cancelled";
+            //returnNotification.Request.Status.message = reason;
+            //var vReturnNotification = Serialize.ToXml(returnNotification);
 
         }
 
@@ -1371,16 +1365,7 @@ namespace Mbc5.Forms.Tukios
             }
         }
 
-        private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.Cursor = Cursors.AppStarting;
-            int vInvno = this.Invno;
-            string vSchcode = "01";
-            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
-            frmProdutn.MdiParent = this.MdiParent;
-            frmProdutn.Show();
-            this.Cursor = Cursors.Default;
-        }
+
 
         private void tukiosOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -1413,7 +1398,10 @@ namespace Mbc5.Forms.Tukios
 
             try
             {
-
+                if (tukiosOrderBindingSource.Current == null)
+                {
+                    return;
+                }
                 string vSInvno = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
                 int.TryParse(vSInvno, out vIInvno);
                 this.Invno = vIInvno;
@@ -1423,7 +1411,18 @@ namespace Mbc5.Forms.Tukios
 
         private void tukiosOrderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            this.Save();
+            this.SaveOrder();
+        }
+
+        private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            int vInvno = this.Invno;
+            string vSchcode = "01";
+            frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser, vInvno, vSchcode);
+            frmProdutn.MdiParent = this.MdiParent;
+            frmProdutn.Show();
+            this.Cursor = Cursors.Default;
         }
     }
 }

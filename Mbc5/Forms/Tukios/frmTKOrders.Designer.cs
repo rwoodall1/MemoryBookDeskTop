@@ -49,15 +49,23 @@
             System.Windows.Forms.Label jobPrintBatchLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.tukiosOrderDataGridView = new System.Windows.Forms.DataGridView();
+            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
             this.tukiosOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTukiosOrders = new Mbc5.DataSets.TukiosOrders();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
@@ -119,14 +127,7 @@
             this.lblHold = new System.Windows.Forms.Label();
             this.tukiosOrderTableAdapter = new Mbc5.DataSets.TukiosOrdersTableAdapters.TukiosOrderTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager();
-            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -156,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderBindingNavigator)).BeginInit();
             this.tukiosOrderBindingNavigator.SuspendLayout();
             this.pnlButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -409,6 +411,79 @@
             this.tukiosOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tukiosOrderDataGridView_CellContentDoubleClick);
             this.tukiosOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tukiosOrderDataGridView_CellFormatting);
             this.tukiosOrderDataGridView.Enter += new System.EventHandler(this.tukiosOrderDataGridView_Enter);
+            // 
+            // prodticket
+            // 
+            this.prodticket.HeaderText = "";
+            this.prodticket.Name = "prodticket";
+            this.prodticket.ReadOnly = true;
+            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.prodticket.Text = "Print Ticket";
+            this.prodticket.UseColumnTextForLinkValue = true;
+            this.prodticket.Visible = false;
+            this.prodticket.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // ItemId
+            // 
+            this.ItemId.DataPropertyName = "BookId";
+            this.ItemId.HeaderText = "Item Id";
+            this.ItemId.Name = "ItemId";
+            this.ItemId.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // copiesDataGridViewTextBoxColumn
+            // 
+            this.copiesDataGridViewTextBoxColumn.DataPropertyName = "Copies";
+            this.copiesDataGridViewTextBoxColumn.HeaderText = "Copies";
+            this.copiesDataGridViewTextBoxColumn.Name = "copiesDataGridViewTextBoxColumn";
+            this.copiesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.copiesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // pagesDataGridViewTextBoxColumn
+            // 
+            this.pagesDataGridViewTextBoxColumn.DataPropertyName = "Pages";
+            this.pagesDataGridViewTextBoxColumn.HeaderText = "Pages";
+            this.pagesDataGridViewTextBoxColumn.Name = "pagesDataGridViewTextBoxColumn";
+            this.pagesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pagesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // CoverUrl
+            // 
+            this.CoverUrl.DataPropertyName = "CoverUrl";
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CoverUrl.HeaderText = "Cover Url";
+            this.CoverUrl.Name = "CoverUrl";
+            this.CoverUrl.ReadOnly = true;
+            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CoverUrl.Text = "";
+            // 
+            // BookUrl
+            // 
+            this.BookUrl.DataPropertyName = "BookBlockURL";
+            this.BookUrl.HeaderText = "Book Url";
+            this.BookUrl.Name = "BookUrl";
+            this.BookUrl.ReadOnly = true;
+            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BookUrl.Text = "";
             // 
             // tukiosOrderBindingSource
             // 
@@ -962,8 +1037,8 @@
             this.itemIdToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("itemIdToolStripBtn.Image")));
             this.itemIdToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.itemIdToolStripBtn.Name = "itemIdToolStripBtn";
-            this.itemIdToolStripBtn.Size = new System.Drawing.Size(64, 22);
-            this.itemIdToolStripBtn.Text = "Item Id";
+            this.itemIdToolStripBtn.Size = new System.Drawing.Size(67, 22);
+            this.itemIdToolStripBtn.Text = "Book Id";
             this.itemIdToolStripBtn.Click += new System.EventHandler(this.itemIdToolStripBtn_Click);
             // 
             // purgeStripButton2
@@ -1059,79 +1134,6 @@
             this.tableAdapterManager1.TukiosOrderTableAdapter = this.tukiosOrderTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // prodticket
-            // 
-            this.prodticket.HeaderText = "";
-            this.prodticket.Name = "prodticket";
-            this.prodticket.ReadOnly = true;
-            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.prodticket.Text = "Print Ticket";
-            this.prodticket.UseColumnTextForLinkValue = true;
-            this.prodticket.Visible = false;
-            this.prodticket.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // ItemId
-            // 
-            this.ItemId.DataPropertyName = "BookId";
-            this.ItemId.HeaderText = "Item Id";
-            this.ItemId.Name = "ItemId";
-            this.ItemId.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // copiesDataGridViewTextBoxColumn
-            // 
-            this.copiesDataGridViewTextBoxColumn.DataPropertyName = "Copies";
-            this.copiesDataGridViewTextBoxColumn.HeaderText = "Copies";
-            this.copiesDataGridViewTextBoxColumn.Name = "copiesDataGridViewTextBoxColumn";
-            this.copiesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.copiesDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // pagesDataGridViewTextBoxColumn
-            // 
-            this.pagesDataGridViewTextBoxColumn.DataPropertyName = "Pages";
-            this.pagesDataGridViewTextBoxColumn.HeaderText = "Pages";
-            this.pagesDataGridViewTextBoxColumn.Name = "pagesDataGridViewTextBoxColumn";
-            this.pagesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pagesDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // CoverUrl
-            // 
-            this.CoverUrl.DataPropertyName = "CoverPreviewUrl";
-            dataGridViewCellStyle2.Format = "Cover";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CoverUrl.HeaderText = "Cover Url";
-            this.CoverUrl.Name = "CoverUrl";
-            this.CoverUrl.ReadOnly = true;
-            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CoverUrl.Text = "";
-            // 
-            // BookUrl
-            // 
-            this.BookUrl.DataPropertyName = "BookPreviewUrl";
-            this.BookUrl.HeaderText = "Book Url";
-            this.BookUrl.Name = "BookUrl";
-            this.BookUrl.ReadOnly = true;
-            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BookUrl.Text = "";
-            // 
             // frmTKOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1180,6 +1182,7 @@
             this.tukiosOrderBindingNavigator.ResumeLayout(false);
             this.tukiosOrderBindingNavigator.PerformLayout();
             this.pnlButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1260,5 +1263,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pagesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewLinkColumn CoverUrl;
         private System.Windows.Forms.DataGridViewLinkColumn BookUrl;
+        private System.Windows.Forms.BindingSource JobTicketQueryBindingSource;
     }
 }

@@ -36,6 +36,7 @@ namespace Mbc5.Dialogs
         private List<MixBookOrderShipNameSearch> ShipNameList { get; set; }
         private List<TukiosOrderShipNameSearch> TukiosShipNameList { get; set; }
         private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
+        private List<TukiosOrderBookIdSearch> BookIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
@@ -1163,6 +1164,28 @@ namespace Mbc5.Dialogs
                             break;
                     }
                     break;
+                case "BOOKID":
+
+                    cmdtext = @"SELECT 
+                                            BookId
+                                            ,ClientOrderId                                                                                                                                
+                                        FROM TukiosOrder  Order By BookId";
+                    sqlclient.CommandText(cmdtext);
+                    var resultZC2 = sqlclient.SelectMany<TukiosOrderBookIdSearch>();
+                    if (resultZC2.IsError)
+                    {
+                        MbcMessageBox.Error(resultZC2.Errors[0].ErrorMessage, "Error");
+                        return;
+                    }
+                    var lRetRecsZC2 = (List<TukiosOrderBookIdSearch>)resultZC2.Data;
+                    this.BookIdList = lRetRecsZC2;
+                    bsData.DataSource = this.BookIdList;
+
+                    dgSearch.DataSource = bsData.DataSource;
+
+                    txtSearch.Select();
+
+                    break;
                 case "SHIPNAME":
                     switch (ReturnForm)
                     {
@@ -1727,6 +1750,28 @@ namespace Mbc5.Dialogs
 
                     }
                     break;
+                case "BOOKID":
+                    try
+                    {
+
+                        vIndex = this.BookIdList.FindIndex(vcust => vcust.BookId.ToString() != "0" && vcust.BookId.ToString().Trim().StartsWith(value.ToUpper()));
+                        if (vIndex != -1)
+                        {
+                            dgSearch.ClearSelection();
+                            bsData.Position = vIndex;
+                            dgSearch.Rows[vIndex].Selected = true;
+                            dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                            CurrentIndex = vIndex;
+
+                        }
+                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    break;
             }
 
 
@@ -1914,6 +1959,10 @@ namespace Mbc5.Dialogs
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
                     else if (SearchType == "ITEMID" && (ReturnForm == "TUKIOS"))
+                    {
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
+                    else if (SearchType == "BOOKID" && (ReturnForm == "TUKIOS"))
                     {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
