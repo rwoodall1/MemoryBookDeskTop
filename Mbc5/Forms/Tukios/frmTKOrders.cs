@@ -396,25 +396,18 @@ namespace Mbc5.Forms.Tukios
 
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                       Select Invno,ClientOrderId,BookUrl,PrintergyFile,
-                        ShipName,RequestedShipDate,Substring(ItemCode,4,4 ),
-                        SUBSTRING(CAST(Invno as varchar),1,7)+'   X'+SUBSTRING(CAST(Invno as varchar),8,LEN(CAST(Invno as varchar))-7) AS DSInvno,
-                        (Select Sum(Copies) from tukiosorder where Clientorderid=TO.clientOrderid )As NumToShip,
+                      Select Invno,ClientOrderId,BookBlockUrl,PrintergyFile,
+                        ShipName,RequestedShipDate,BookId,
+                        SUBSTRING(CAST(Invno as varchar),1,LEN(CAST(Invno as varchar)))+'   X'+SUBSTRING(CAST(Invno as varchar), Len(Replace(ClientOrderId,'-',''))+1, LEN(CAST(Invno as varchar))-Len(Replace(ClientOrderId,'-','')+1)) AS DSInvno,
+                         (Select Sum(Copies) from tukiosorder  where Clientorderid=clientOrderid )As NumToShip,
                         Description,
                         Copies,ProdCopies,Pages,
                         Backing,OrderReceivedDate,
                         ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
                         '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
-                  Case
+                Case
 
-                        when ProdCopies>7 AND Substring(ItemCode,4,4 )='7755'  Then
-                        Case
-                        When  ProdCopies % 8=0 Then
-                        (ProdCopies/8)
-                        When ProdCopies % 8>0 Then
-                        (ProdCopies/8)+1
-                        END
-                        when (ProdCopies>3 AND Substring(ItemCode,4,4 )IN('8511','8585','1185'))  Then
+                        when (ProdCopies>3 )  Then
 
                         CASE
                         When  ProdCopies % 4=0 Then
@@ -422,57 +415,28 @@ namespace Mbc5.Forms.Tukios
 
                         When ProdCopies % 4>0 Then
                         (ProdCopies/4)+1
-
-                        else
-                        0
-                        End 
-
-                        ELSE
-
-                        Case
-                        When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies>4 Then
-                        ProdCopies/1
-                        When Substring(ItemCode,4,4 ) IN ('1175','1010','1212','8511','8585','1185','7755','1212','8060','8050') And ProdCopies<4 Then
-                        1
-                        else
-                        0
                         End
+                       
                         End AS LargePressQty,
+
             Case
               when ProdCopies>4 Then
-
-                CASE
-            	  When Substring(ItemCode,4,4)IN('7755') Then
-            		ProdCopies/4
-            	When Substring(ItemCode,4,4)IN('8511','8585','1185','7755','1212','8060','8050') Then
-            	  ProdCopies/1
-            	  else
-            	  0
-            	  End 
-
-             ELSE
-              Case
-                 When Substring(ItemCode,4,4 ) IN ('1175','8511','8585','1185','7755','1212','8060','8050') Then
-            		ProdCopies/1
-            		else
-            		0
-                 End
-
-            End AS SmallPressQty 
-
-                        From TukiosOrder TO  Where Invno=@Invno
+           		ProdCopies/1
+            End AS SmallPressQty
+                        From TukiosOrder
+        Where Invno=@Invno
                     ");
 
             sqlClient.AddParameter("@Invno", value);
 
-            var result = sqlClient.Select<JobTicketQuery>();
+            var result = sqlClient.Select<TukiosJobTicketQuery>();
             if (result.IsError)
             {
                 MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for JobTicketQuery:" + result.Errors[0].DeveloperMessage);
                 return;
             }
-            var jobData = (JobTicketQuery)result.Data;
+            var jobData = (TukiosJobTicketQuery)result.Data;
             if (jobData != null)
             {
                 //jobData = this.SetLastPageImage(jobData);
@@ -481,7 +445,7 @@ namespace Mbc5.Forms.Tukios
                 {
                     imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
                 }
-                else { return; }
+                // else { return; }
 
                 reportViewer3.LocalReport.DataSources.Clear();
                 JobTicketQueryBindingSource.DataSource = jobData;
@@ -497,7 +461,7 @@ namespace Mbc5.Forms.Tukios
                         ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
                         reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
                     }
-                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
+                    reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.TukiosJobTicketSingle.rdlc";
                     this.reportViewer3.RefreshReport();
                 }
                 catch (Exception ex) { }
@@ -865,28 +829,28 @@ namespace Mbc5.Forms.Tukios
         private void SetJobTicketPrinted()
         {
 
-            //        var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
+            var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set JobTicketPrinted=@SetJobTicketPrinted Where Invno=@Invno");
 
 
-            //        var vInvno = this.Invno.ToString();
-            //        sqlClient.ClearParameters();
-            //        sqlClient.AddParameter("@Invno", vInvno);
-            //        sqlClient.AddParameter("@SetJobTicketPrinted", 1);
-            //        var updateResult = sqlClient.Update();
+            var vInvno = this.Invno.ToString();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@Invno", vInvno);
+            sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+            var updateResult = sqlClient.Update();
 
-            //    }
-            //    private void SetRemakeTicketPrinted()
-            //    {
-            //        var sqlClient = new SQLCustomClient().CommandText(@"Update MixbookOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
-            //        string _userIntials = "";
-            //        InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
+        }
+        private void SetRemakeTicketPrinted()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy Where Invno=@Invno");
+            string _userIntials = "";
+            InputBox.Show("User Intials", "Enter your intials", ref _userIntials);
 
-            //        var vInvno = this.Invno.ToString();
-            //        sqlClient.ClearParameters();
-            //        sqlClient.AddParameter("@Invno", vInvno);
-            //        sqlClient.AddParameter("@RemakeTicketPrinted", 1);
-            //        sqlClient.AddParameter("@RemakePrintedBy", _userIntials);
-            //        var updateResult = sqlClient.Update();
+            var vInvno = this.Invno.ToString();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@Invno", vInvno);
+            sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+            sqlClient.AddParameter("@RemakePrintedBy", _userIntials);
+            var updateResult = sqlClient.Update();
 
         }
         #endregion
@@ -1120,29 +1084,29 @@ namespace Mbc5.Forms.Tukios
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            //if (reportViewer3.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.MixbookJobTicketSingle.rdlc")
-            //{
-            //    try
-            //    {
+            if (reportViewer3.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.TukiosJobTicketSingle.rdlc")
+            {
+                try
+                {
 
-            //        if (reportViewer3.PrintDialog() != DialogResult.Cancel)
-            //        {
-            //            SetJobTicketPrinted();
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    //Remake Ticket
-            //    if (reportViewer3.PrintDialog() != DialogResult.Cancel)
-            //    {
-            //        SetRemakeTicketPrinted();
-            //    }
-            //}
+                    if (reportViewer3.PrintDialog() != DialogResult.Cancel)
+                    {
+                        SetJobTicketPrinted();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("PrintJobTicketSingle" + ex.Message);
+                }
+            }
+            else
+            {
+                //Remake Ticket
+                if (reportViewer3.PrintDialog() != DialogResult.Cancel)
+                {
+                    //SetRemakeTicketPrinted();
+                }
+            }
         }
 
         private void pnlOrder_EnabledChanged(object sender, EventArgs e)

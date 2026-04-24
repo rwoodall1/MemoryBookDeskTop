@@ -806,12 +806,11 @@
             this.reportViewer3.DocumentMapWidth = 35;
             this.reportViewer3.LocalReport.EnableExternalImages = true;
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
+            this.reportViewer3.Location = new System.Drawing.Point(172, 391);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(61, 71);
+            this.reportViewer3.Size = new System.Drawing.Size(977, 274);
             this.reportViewer3.TabIndex = 10024;
-            this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
             // 
             // btnEdit
