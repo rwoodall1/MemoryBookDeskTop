@@ -48,13 +48,13 @@
             System.Windows.Forms.Label bookStatusLabel;
             System.Windows.Forms.Label jobPrintBatchLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.Label groupIdLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -73,6 +73,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.groupIdLabel1 = new System.Windows.Forms.Label();
             this.btnCancelOrder = new System.Windows.Forms.Button();
             this.btnRemoveOrder = new System.Windows.Forms.Button();
             this.jobPrintBatchLabel1 = new System.Windows.Forms.Label();
@@ -123,14 +124,13 @@
             this.itemIdToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.purgeStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tukiosOrderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblCanceled = new System.Windows.Forms.Label();
             this.lblHold = new System.Windows.Forms.Label();
             this.tukiosOrderTableAdapter = new Mbc5.DataSets.TukiosOrdersTableAdapters.TukiosOrderTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupIdLabel1 = new System.Windows.Forms.Label();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -358,6 +358,15 @@
             requestedShipMethodLabel.TabIndex = 334;
             requestedShipMethodLabel.Text = "Requested Ship Method";
             // 
+            // groupIdLabel
+            // 
+            groupIdLabel.AutoSize = true;
+            groupIdLabel.Location = new System.Drawing.Point(903, 157);
+            groupIdLabel.Name = "groupIdLabel";
+            groupIdLabel.Size = new System.Drawing.Size(51, 13);
+            groupIdLabel.TabIndex = 342;
+            groupIdLabel.Text = "Group Id:";
+            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -385,14 +394,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tukiosOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tukiosOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tukiosOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -469,9 +478,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverUrl";
-            dataGridViewCellStyle4.Format = "Cover";
-            dataGridViewCellStyle4.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -518,9 +527,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = null;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = null;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.EnableExternalImages = true;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
@@ -581,6 +590,14 @@
             this.pnlOrder.Size = new System.Drawing.Size(1187, 273);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
+            // 
+            // groupIdLabel1
+            // 
+            this.groupIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "GroupId", true));
+            this.groupIdLabel1.Location = new System.Drawing.Point(960, 157);
+            this.groupIdLabel1.Name = "groupIdLabel1";
+            this.groupIdLabel1.Size = new System.Drawing.Size(100, 23);
+            this.groupIdLabel1.TabIndex = 343;
             // 
             // btnCancelOrder
             // 
@@ -856,12 +873,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource5.Name = "dsMxPackingSlip";
-            reportDataSource5.Value = null;
-            reportDataSource6.Name = "dsMixBookRemakeTkt";
-            reportDataSource6.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = null;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -1090,6 +1107,15 @@
             this.tukiosOrderBindingNavigator.TabIndex = 1;
             this.tukiosOrderBindingNavigator.Text = "bindingNavigator1";
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(73, 22);
+            this.toolStripButton2.Text = "Group Id";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // pnlButtons
             // 
             this.pnlButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1139,31 +1165,6 @@
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.TukiosOrderTableAdapter = this.tukiosOrderTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // groupIdLabel
-            // 
-            groupIdLabel.AutoSize = true;
-            groupIdLabel.Location = new System.Drawing.Point(903, 157);
-            groupIdLabel.Name = "groupIdLabel";
-            groupIdLabel.Size = new System.Drawing.Size(51, 13);
-            groupIdLabel.TabIndex = 342;
-            groupIdLabel.Text = "Group Id:";
-            // 
-            // groupIdLabel1
-            // 
-            this.groupIdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "GroupId", true));
-            this.groupIdLabel1.Location = new System.Drawing.Point(960, 157);
-            this.groupIdLabel1.Name = "groupIdLabel1";
-            this.groupIdLabel1.Size = new System.Drawing.Size(100, 23);
-            this.groupIdLabel1.TabIndex = 343;
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(73, 22);
-            this.toolStripButton2.Text = "Group Id";
             // 
             // frmTKOrders
             // 

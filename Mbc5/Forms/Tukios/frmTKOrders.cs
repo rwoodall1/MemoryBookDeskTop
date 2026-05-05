@@ -142,6 +142,38 @@ namespace Mbc5.Forms.Tukios
             }
 
         }
+        private void GroupIdSearch()
+        {
+            string vcurrentItemId = "";
+            if (tukiosOrderBindingSource.Current != null)
+            {
+                try
+                {
+                    if (tukiosOrderBindingSource.Current != null)
+                    {
+                        vcurrentItemId = ((DataRowView)tukiosOrderBindingSource.Current).Row["GroupId"].ToString();
+                    }
+                }
+                catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to search Group ID"); }
+            }
+
+            frmSearch frmSearch = new frmSearch("GROUPID", "TUKIOS", vcurrentItemId);
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var retOrderId = frmSearch.ReturnValue.OrderId;            //values preserved after close
+                if (string.IsNullOrEmpty(retOrderId))
+                {
+                    BaseClass.MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                else
+                {
+
+                    this.OrderId = retOrderId;
+                    Fill();
+                }
+            }
+        }
         private void InvnoSearch()
         {
             string vcurrentItemId = "";
@@ -873,6 +905,10 @@ namespace Mbc5.Forms.Tukios
         {
             InvnoSearch();
         }
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            GroupIdSearch();
+        }
         private void btnTukiosPkgList_Click(object sender, EventArgs e)
         {
 
@@ -1393,5 +1429,7 @@ namespace Mbc5.Forms.Tukios
             frmProdutn.Show();
             this.Cursor = Cursors.Default;
         }
+
+       
     }
 }

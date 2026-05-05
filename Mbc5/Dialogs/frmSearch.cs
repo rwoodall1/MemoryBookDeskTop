@@ -63,6 +63,9 @@ namespace Mbc5.Dialogs
         private List<BidsSchcodeSearch> BidSchcodeList { get; set; }
         private List<BidsSchnameSearch> BidSchnameList { get; set; }
         private List<EndSheetInvnoSearch> EndSheetInvnoList { get; set; }
+        private List<TukiosInvnoSearch> TukiosInvnoList { get; set; }
+        private List<TukiosGroupIdSearch> TukiosGroupIdList { get; set; }
+        
         public ReturnValues ReturnValue { get; set; } = new ReturnValues();
 
         private string currentSearchValue;
@@ -519,6 +522,26 @@ namespace Mbc5.Dialogs
                             break;
                     }
                     break;
+                case "GROUPID":
+                    switch (ReturnForm)
+                    {
+                        case "TUKIOS":
+                            cmdtext = @"Select GroupId,ClientOrderId AS OrderId,ShipName From TukiosOrder Order By Invno DESC";
+                            sqlclient.CommandText(cmdtext);
+                            var tukiosresult = sqlclient.SelectMany<TukiosGroupIdSearch>();
+                            if (tukiosresult.IsError)
+                            {
+                                MbcMessageBox.Error(tukiosresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var tr = (List<TukiosGroupIdSearch>)tukiosresult.Data;
+                            this.TukiosGroupIdList = tr;
+                            bsData.DataSource = this.TukiosGroupIdList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
+                    }
+                    break;
                 case "INVNO":
                     this.Text = "Invoice # Search";
                     switch (ReturnForm)
@@ -637,6 +660,19 @@ namespace Mbc5.Dialogs
                             txtSearch.Select();
                             break;
                         case "TUKIOS":
+                            cmdtext = @"Select Invno as Invoice,ClientOrderId AS OrderId,ShipName From TukiosOrder Order By Invno DESC";
+                            sqlclient.CommandText(cmdtext);
+                            var tukiosresult = sqlclient.SelectMany<TukiosInvnoSearch>();
+                            if (tukiosresult.IsError)
+                            {
+                                MbcMessageBox.Error(tukiosresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var tr = (List<TukiosInvnoSearch>)tukiosresult.Data;
+                            this.TukiosInvnoList = tr;
+                            bsData.DataSource = this.TukiosInvnoList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
                             break;
                     }
                     break;
@@ -1509,11 +1545,15 @@ namespace Mbc5.Dialogs
                     {
                         vInvnoList = this.EndSheetInvnoList.Select(x => x.Invoice.ToString()).ToList();
                     }
+                    else if (ReturnForm == "TUKIOS")
+                    {
+                        vInvnoList = this.TukiosInvnoList.Select(x => x.Invoice.ToString()).ToList();
+                    }
 
                     try
                     {
                         //value is trimmed to 5 spaces, binding is took out
-                        vIndex = vInvnoList.FindIndex(vcust => vcust != "0" && vcust.ToString().StartsWith(value.ToUpper()));
+                        vIndex = vInvnoList.FindIndex(vinvno => vinvno != "0" && vinvno.ToString().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();
@@ -1966,6 +2006,14 @@ namespace Mbc5.Dialogs
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
                     else if (SearchType == "BOOKID" && (ReturnForm == "TUKIOS"))
+                    {
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
+                    else if (SearchType == "INVNO" && (ReturnForm == "TUKIOS"))
+                    {
+                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    }
+                    else if (SearchType == "GROUPID" && (ReturnForm == "TUKIOS"))
                     {
                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
