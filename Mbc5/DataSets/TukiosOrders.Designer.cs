@@ -29,7 +29,7 @@ namespace Mbc5.DataSets {
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public TukiosOrders() {
             this.BeginInit();
             this.InitClass();
@@ -40,7 +40,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected TukiosOrders(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
@@ -76,7 +76,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public TukiosOrderDataTable TukiosOrder {
@@ -86,7 +86,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -99,7 +99,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataTableCollection Tables {
             get {
@@ -108,7 +108,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataRelationCollection Relations {
             get {
@@ -117,7 +117,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
@@ -125,7 +125,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public override global::System.Data.DataSet Clone() {
             TukiosOrders cln = ((TukiosOrders)(base.Clone()));
             cln.InitVars();
@@ -134,19 +134,19 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected override bool ShouldSerializeTables() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected override bool ShouldSerializeRelations() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
             if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
@@ -171,7 +171,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
@@ -180,13 +180,13 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         internal void InitVars() {
             this.InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         internal void InitVars(bool initTable) {
             this.tableTukiosOrder = ((TukiosOrderDataTable)(base.Tables["TukiosOrder"]));
             if ((initTable == true)) {
@@ -197,7 +197,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitClass() {
             this.DataSetName = "TukiosOrders";
             this.Prefix = "";
@@ -209,13 +209,13 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private bool ShouldSerializeTukiosOrder() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -223,7 +223,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             TukiosOrders ds = new TukiosOrders();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
@@ -269,7 +269,7 @@ namespace Mbc5.DataSets {
             return type;
         }
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public delegate void TukiosOrderRowChangeEventHandler(object sender, TukiosOrderRowChangeEvent e);
         
         /// <summary>
@@ -280,8 +280,6 @@ namespace Mbc5.DataSets {
         public partial class TukiosOrderDataTable : global::System.Data.TypedTableBase<TukiosOrderRow> {
             
             private global::System.Data.DataColumn columnInvno;
-            
-            private global::System.Data.DataColumn columnClientOrderId;
             
             private global::System.Data.DataColumn columnOrderReceivedDate;
             
@@ -373,8 +371,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnJobPrintDate;
             
+            private global::System.Data.DataColumn columnClientOrderId;
+            
+            private global::System.Data.DataColumn columnGroupId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderDataTable() {
                 this.TableName = "TukiosOrder";
                 this.BeginInit();
@@ -383,7 +385,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal TukiosOrderDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -400,14 +402,14 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected TukiosOrderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn InvnoColumn {
                 get {
                     return this.columnInvno;
@@ -415,15 +417,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ClientOrderIdColumn {
-                get {
-                    return this.columnClientOrderId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn OrderReceivedDateColumn {
                 get {
                     return this.columnOrderReceivedDate;
@@ -431,7 +425,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn RequestedShipDateColumn {
                 get {
                     return this.columnRequestedShipDate;
@@ -439,7 +433,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn DateShippedColumn {
                 get {
                     return this.columnDateShipped;
@@ -447,7 +441,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipMethodColumn {
                 get {
                     return this.columnShipMethod;
@@ -455,7 +449,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipNameColumn {
                 get {
                     return this.columnShipName;
@@ -463,7 +457,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipAddrColumn {
                 get {
                     return this.columnShipAddr;
@@ -471,7 +465,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipAddr2Column {
                 get {
                     return this.columnShipAddr2;
@@ -479,7 +473,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipCityColumn {
                 get {
                     return this.columnShipCity;
@@ -487,7 +481,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipStateColumn {
                 get {
                     return this.columnShipState;
@@ -495,7 +489,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ShipZipColumn {
                 get {
                     return this.columnShipZip;
@@ -503,7 +497,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookIdColumn {
                 get {
                     return this.columnBookId;
@@ -511,7 +505,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CopiesColumn {
                 get {
                     return this.columnCopies;
@@ -519,7 +513,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookTypeColumn {
                 get {
                     return this.columnBookType;
@@ -527,7 +521,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookBlockIdColumn {
                 get {
                     return this.columnBookBlockId;
@@ -535,7 +529,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn PagesColumn {
                 get {
                     return this.columnPages;
@@ -543,7 +537,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookBlockURLColumn {
                 get {
                     return this.columnBookBlockURL;
@@ -551,7 +545,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookBlockPreviewURLColumn {
                 get {
                     return this.columnBookBlockPreviewURL;
@@ -559,7 +553,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CoverIdColumn {
                 get {
                     return this.columnCoverId;
@@ -567,7 +561,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CoverURLColumn {
                 get {
                     return this.columnCoverURL;
@@ -575,7 +569,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CoverPreviewURLColumn {
                 get {
                     return this.columnCoverPreviewURL;
@@ -583,7 +577,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn DescriptionColumn {
                 get {
                     return this.columnDescription;
@@ -591,7 +585,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ProdCopiesColumn {
                 get {
                     return this.columnProdCopies;
@@ -599,7 +593,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ProdInOrderColumn {
                 get {
                     return this.columnProdInOrder;
@@ -607,7 +601,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn DateModifiedColumn {
                 get {
                     return this.columnDateModified;
@@ -615,7 +609,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ModifiedByColumn {
                 get {
                     return this.columnModifiedBy;
@@ -623,7 +617,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn TrackingNumberColumn {
                 get {
                     return this.columnTrackingNumber;
@@ -631,7 +625,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn WeightColumn {
                 get {
                     return this.columnWeight;
@@ -639,7 +633,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn TukiosOrderStatusColumn {
                 get {
                     return this.columnTukiosOrderStatus;
@@ -647,7 +641,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn FilesDownloadedColumn {
                 get {
                     return this.columnFilesDownloaded;
@@ -655,7 +649,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn FilesCopiedColumn {
                 get {
                     return this.columnFilesCopied;
@@ -663,7 +657,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn DownloadTrysColumn {
                 get {
                     return this.columnDownloadTrys;
@@ -671,7 +665,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn NotesColumn {
                 get {
                     return this.columnNotes;
@@ -679,7 +673,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn PrintergyFileColumn {
                 get {
                     return this.columnPrintergyFile;
@@ -687,7 +681,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn BookStatusColumn {
                 get {
                     return this.columnBookStatus;
@@ -695,7 +689,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CoverStatusColumn {
                 get {
                     return this.columnCoverStatus;
@@ -703,7 +697,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CurrentBookLocColumn {
                 get {
                     return this.columnCurrentBookLoc;
@@ -711,7 +705,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn CurrentCoverLocColumn {
                 get {
                     return this.columnCurrentCoverLoc;
@@ -719,7 +713,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn InvoicedColumn {
                 get {
                     return this.columnInvoiced;
@@ -727,7 +721,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn InvoiceDateColumn {
                 get {
                     return this.columnInvoiceDate;
@@ -735,7 +729,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn JobTicketPrintedColumn {
                 get {
                     return this.columnJobTicketPrinted;
@@ -743,7 +737,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn RemakeTicketPrintedColumn {
                 get {
                     return this.columnRemakeTicketPrinted;
@@ -751,7 +745,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn ReMakePrntDateColumn {
                 get {
                     return this.columnReMakePrntDate;
@@ -759,7 +753,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn OrderRePrintColumn {
                 get {
                     return this.columnOrderRePrint;
@@ -767,7 +761,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn JobPrintBatchColumn {
                 get {
                     return this.columnJobPrintBatch;
@@ -775,7 +769,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn JobPrintDateColumn {
                 get {
                     return this.columnJobPrintDate;
@@ -783,7 +777,23 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn ClientOrderIdColumn {
+                get {
+                    return this.columnClientOrderId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn GroupIdColumn {
+                get {
+                    return this.columnGroupId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -792,36 +802,35 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRow this[int index] {
                 get {
                     return ((TukiosOrderRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event TukiosOrderRowChangeEventHandler TukiosOrderRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event TukiosOrderRowChangeEventHandler TukiosOrderRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event TukiosOrderRowChangeEventHandler TukiosOrderRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event TukiosOrderRowChangeEventHandler TukiosOrderRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void AddTukiosOrderRow(TukiosOrderRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRow AddTukiosOrderRow(
                         int Invno, 
-                        string ClientOrderId, 
                         System.DateTime OrderReceivedDate, 
                         System.DateTime RequestedShipDate, 
                         System.DateTime DateShipped, 
@@ -866,11 +875,12 @@ namespace Mbc5.DataSets {
                         System.DateTime ReMakePrntDate, 
                         bool OrderRePrint, 
                         int JobPrintBatch, 
-                        System.DateTime JobPrintDate) {
+                        System.DateTime JobPrintDate, 
+                        string ClientOrderId, 
+                        int GroupId) {
                 TukiosOrderRow rowTukiosOrderRow = ((TukiosOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Invno,
-                        ClientOrderId,
                         OrderReceivedDate,
                         RequestedShipDate,
                         DateShipped,
@@ -915,21 +925,23 @@ namespace Mbc5.DataSets {
                         ReMakePrntDate,
                         OrderRePrint,
                         JobPrintBatch,
-                        JobPrintDate};
+                        JobPrintDate,
+                        ClientOrderId,
+                        GroupId};
                 rowTukiosOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTukiosOrderRow);
                 return rowTukiosOrderRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRow FindByInvno(int Invno) {
                 return ((TukiosOrderRow)(this.Rows.Find(new object[] {
                             Invno})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 TukiosOrderDataTable cln = ((TukiosOrderDataTable)(base.Clone()));
                 cln.InitVars();
@@ -937,16 +949,15 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new TukiosOrderDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
                 this.columnInvno = base.Columns["Invno"];
-                this.columnClientOrderId = base.Columns["ClientOrderId"];
                 this.columnOrderReceivedDate = base.Columns["OrderReceivedDate"];
                 this.columnRequestedShipDate = base.Columns["RequestedShipDate"];
                 this.columnDateShipped = base.Columns["DateShipped"];
@@ -992,15 +1003,15 @@ namespace Mbc5.DataSets {
                 this.columnOrderRePrint = base.Columns["OrderRePrint"];
                 this.columnJobPrintBatch = base.Columns["JobPrintBatch"];
                 this.columnJobPrintDate = base.Columns["JobPrintDate"];
+                this.columnClientOrderId = base.Columns["ClientOrderId"];
+                this.columnGroupId = base.Columns["GroupId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             private void InitClass() {
                 this.columnInvno = new global::System.Data.DataColumn("Invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvno);
-                this.columnClientOrderId = new global::System.Data.DataColumn("ClientOrderId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnClientOrderId);
                 this.columnOrderReceivedDate = new global::System.Data.DataColumn("OrderReceivedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderReceivedDate);
                 this.columnRequestedShipDate = new global::System.Data.DataColumn("RequestedShipDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -1091,12 +1102,14 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnJobPrintBatch);
                 this.columnJobPrintDate = new global::System.Data.DataColumn("JobPrintDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJobPrintDate);
+                this.columnClientOrderId = new global::System.Data.DataColumn("ClientOrderId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientOrderId);
+                this.columnGroupId = new global::System.Data.DataColumn("GroupId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvno}, true));
                 this.columnInvno.AllowDBNull = false;
                 this.columnInvno.Unique = true;
-                this.columnClientOrderId.AllowDBNull = false;
-                this.columnClientOrderId.MaxLength = 50;
                 this.columnShipMethod.MaxLength = 50;
                 this.columnShipName.MaxLength = 100;
                 this.columnShipAddr.MaxLength = 50;
@@ -1106,10 +1119,10 @@ namespace Mbc5.DataSets {
                 this.columnShipZip.MaxLength = 50;
                 this.columnBookId.MaxLength = 50;
                 this.columnBookType.MaxLength = 25;
-                this.columnBookBlockId.MaxLength = 25;
+                this.columnBookBlockId.MaxLength = 2147483647;
                 this.columnBookBlockURL.MaxLength = 2147483647;
                 this.columnBookBlockPreviewURL.MaxLength = 2147483647;
-                this.columnCoverId.MaxLength = 25;
+                this.columnCoverId.MaxLength = 2147483647;
                 this.columnCoverURL.MaxLength = 2147483647;
                 this.columnCoverPreviewURL.MaxLength = 2147483647;
                 this.columnDescription.MaxLength = 50;
@@ -1119,35 +1132,37 @@ namespace Mbc5.DataSets {
                 this.columnFilesDownloaded.AllowDBNull = false;
                 this.columnFilesCopied.AllowDBNull = false;
                 this.columnNotes.MaxLength = 2147483647;
-                this.columnPrintergyFile.MaxLength = 50;
+                this.columnPrintergyFile.MaxLength = 2147483647;
                 this.columnBookStatus.MaxLength = 50;
                 this.columnCoverStatus.MaxLength = 50;
                 this.columnCurrentBookLoc.MaxLength = 10;
                 this.columnCurrentCoverLoc.MaxLength = 10;
                 this.columnJobTicketPrinted.AllowDBNull = false;
                 this.columnRemakeTicketPrinted.AllowDBNull = false;
+                this.columnClientOrderId.AllowDBNull = false;
+                this.columnClientOrderId.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRow NewTukiosOrderRow() {
                 return ((TukiosOrderRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new TukiosOrderRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(TukiosOrderRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.TukiosOrderRowChanged != null)) {
@@ -1156,7 +1171,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.TukiosOrderRowChanging != null)) {
@@ -1165,7 +1180,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.TukiosOrderRowDeleted != null)) {
@@ -1174,7 +1189,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.TukiosOrderRowDeleting != null)) {
@@ -1183,13 +1198,13 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void RemoveTukiosOrderRow(TukiosOrderRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -1260,14 +1275,14 @@ namespace Mbc5.DataSets {
             private TukiosOrderDataTable tableTukiosOrder;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal TukiosOrderRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableTukiosOrder = ((TukiosOrderDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int Invno {
                 get {
                     return ((int)(this[this.tableTukiosOrder.InvnoColumn]));
@@ -1278,18 +1293,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ClientOrderId {
-                get {
-                    return ((string)(this[this.tableTukiosOrder.ClientOrderIdColumn]));
-                }
-                set {
-                    this[this.tableTukiosOrder.ClientOrderIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime OrderReceivedDate {
                 get {
                     try {
@@ -1305,7 +1309,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime RequestedShipDate {
                 get {
                     try {
@@ -1321,7 +1325,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime DateShipped {
                 get {
                     try {
@@ -1337,7 +1341,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipMethod {
                 get {
                     try {
@@ -1353,7 +1357,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipName {
                 get {
                     try {
@@ -1369,7 +1373,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipAddr {
                 get {
                     try {
@@ -1385,7 +1389,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipAddr2 {
                 get {
                     try {
@@ -1401,7 +1405,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipCity {
                 get {
                     try {
@@ -1417,7 +1421,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipState {
                 get {
                     try {
@@ -1433,7 +1437,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ShipZip {
                 get {
                     try {
@@ -1449,7 +1453,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookId {
                 get {
                     try {
@@ -1465,7 +1469,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int Copies {
                 get {
                     try {
@@ -1481,7 +1485,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookType {
                 get {
                     try {
@@ -1497,7 +1501,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookBlockId {
                 get {
                     try {
@@ -1513,7 +1517,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int Pages {
                 get {
                     try {
@@ -1529,7 +1533,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookBlockURL {
                 get {
                     try {
@@ -1545,7 +1549,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookBlockPreviewURL {
                 get {
                     try {
@@ -1561,7 +1565,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CoverId {
                 get {
                     try {
@@ -1577,7 +1581,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CoverURL {
                 get {
                     try {
@@ -1593,7 +1597,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CoverPreviewURL {
                 get {
                     try {
@@ -1609,7 +1613,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string Description {
                 get {
                     try {
@@ -1625,7 +1629,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int ProdCopies {
                 get {
                     try {
@@ -1641,7 +1645,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int ProdInOrder {
                 get {
                     try {
@@ -1657,7 +1661,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime DateModified {
                 get {
                     try {
@@ -1673,7 +1677,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string ModifiedBy {
                 get {
                     try {
@@ -1689,7 +1693,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string TrackingNumber {
                 get {
                     try {
@@ -1705,7 +1709,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public decimal Weight {
                 get {
                     try {
@@ -1721,7 +1725,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string TukiosOrderStatus {
                 get {
                     try {
@@ -1737,7 +1741,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool FilesDownloaded {
                 get {
                     return ((bool)(this[this.tableTukiosOrder.FilesDownloadedColumn]));
@@ -1748,7 +1752,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool FilesCopied {
                 get {
                     return ((bool)(this[this.tableTukiosOrder.FilesCopiedColumn]));
@@ -1759,7 +1763,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int DownloadTrys {
                 get {
                     try {
@@ -1775,7 +1779,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string Notes {
                 get {
                     try {
@@ -1791,7 +1795,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string PrintergyFile {
                 get {
                     try {
@@ -1807,7 +1811,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string BookStatus {
                 get {
                     try {
@@ -1823,7 +1827,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CoverStatus {
                 get {
                     try {
@@ -1839,7 +1843,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CurrentBookLoc {
                 get {
                     try {
@@ -1855,7 +1859,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public string CurrentCoverLoc {
                 get {
                     try {
@@ -1871,7 +1875,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool Invoiced {
                 get {
                     try {
@@ -1887,7 +1891,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime InvoiceDate {
                 get {
                     try {
@@ -1903,7 +1907,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool JobTicketPrinted {
                 get {
                     return ((bool)(this[this.tableTukiosOrder.JobTicketPrintedColumn]));
@@ -1914,7 +1918,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool RemakeTicketPrinted {
                 get {
                     return ((bool)(this[this.tableTukiosOrder.RemakeTicketPrintedColumn]));
@@ -1925,7 +1929,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime ReMakePrntDate {
                 get {
                     try {
@@ -1941,7 +1945,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool OrderRePrint {
                 get {
                     try {
@@ -1957,7 +1961,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int JobPrintBatch {
                 get {
                     try {
@@ -1973,7 +1977,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public System.DateTime JobPrintDate {
                 get {
                     try {
@@ -1989,502 +1993,541 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string ClientOrderId {
+                get {
+                    return ((string)(this[this.tableTukiosOrder.ClientOrderIdColumn]));
+                }
+                set {
+                    this[this.tableTukiosOrder.ClientOrderIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public int GroupId {
+                get {
+                    try {
+                        return ((int)(this[this.tableTukiosOrder.GroupIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupId\' in table \'TukiosOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTukiosOrder.GroupIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsOrderReceivedDateNull() {
                 return this.IsNull(this.tableTukiosOrder.OrderReceivedDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetOrderReceivedDateNull() {
                 this[this.tableTukiosOrder.OrderReceivedDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsRequestedShipDateNull() {
                 return this.IsNull(this.tableTukiosOrder.RequestedShipDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetRequestedShipDateNull() {
                 this[this.tableTukiosOrder.RequestedShipDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsDateShippedNull() {
                 return this.IsNull(this.tableTukiosOrder.DateShippedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetDateShippedNull() {
                 this[this.tableTukiosOrder.DateShippedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipMethodNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipMethodColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipMethodNull() {
                 this[this.tableTukiosOrder.ShipMethodColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipNameNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipNameNull() {
                 this[this.tableTukiosOrder.ShipNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipAddrNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipAddrColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipAddrNull() {
                 this[this.tableTukiosOrder.ShipAddrColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipAddr2Null() {
                 return this.IsNull(this.tableTukiosOrder.ShipAddr2Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipAddr2Null() {
                 this[this.tableTukiosOrder.ShipAddr2Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipCityNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipCityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipCityNull() {
                 this[this.tableTukiosOrder.ShipCityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipStateNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipStateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipStateNull() {
                 this[this.tableTukiosOrder.ShipStateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsShipZipNull() {
                 return this.IsNull(this.tableTukiosOrder.ShipZipColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetShipZipNull() {
                 this[this.tableTukiosOrder.ShipZipColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookIdNull() {
                 return this.IsNull(this.tableTukiosOrder.BookIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookIdNull() {
                 this[this.tableTukiosOrder.BookIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCopiesNull() {
                 return this.IsNull(this.tableTukiosOrder.CopiesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCopiesNull() {
                 this[this.tableTukiosOrder.CopiesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookTypeNull() {
                 return this.IsNull(this.tableTukiosOrder.BookTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookTypeNull() {
                 this[this.tableTukiosOrder.BookTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookBlockIdNull() {
                 return this.IsNull(this.tableTukiosOrder.BookBlockIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookBlockIdNull() {
                 this[this.tableTukiosOrder.BookBlockIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsPagesNull() {
                 return this.IsNull(this.tableTukiosOrder.PagesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetPagesNull() {
                 this[this.tableTukiosOrder.PagesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookBlockURLNull() {
                 return this.IsNull(this.tableTukiosOrder.BookBlockURLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookBlockURLNull() {
                 this[this.tableTukiosOrder.BookBlockURLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookBlockPreviewURLNull() {
                 return this.IsNull(this.tableTukiosOrder.BookBlockPreviewURLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookBlockPreviewURLNull() {
                 this[this.tableTukiosOrder.BookBlockPreviewURLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCoverIdNull() {
                 return this.IsNull(this.tableTukiosOrder.CoverIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCoverIdNull() {
                 this[this.tableTukiosOrder.CoverIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCoverURLNull() {
                 return this.IsNull(this.tableTukiosOrder.CoverURLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCoverURLNull() {
                 this[this.tableTukiosOrder.CoverURLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCoverPreviewURLNull() {
                 return this.IsNull(this.tableTukiosOrder.CoverPreviewURLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCoverPreviewURLNull() {
                 this[this.tableTukiosOrder.CoverPreviewURLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableTukiosOrder.DescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetDescriptionNull() {
                 this[this.tableTukiosOrder.DescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsProdCopiesNull() {
                 return this.IsNull(this.tableTukiosOrder.ProdCopiesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetProdCopiesNull() {
                 this[this.tableTukiosOrder.ProdCopiesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsProdInOrderNull() {
                 return this.IsNull(this.tableTukiosOrder.ProdInOrderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetProdInOrderNull() {
                 this[this.tableTukiosOrder.ProdInOrderColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsDateModifiedNull() {
                 return this.IsNull(this.tableTukiosOrder.DateModifiedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetDateModifiedNull() {
                 this[this.tableTukiosOrder.DateModifiedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsModifiedByNull() {
                 return this.IsNull(this.tableTukiosOrder.ModifiedByColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetModifiedByNull() {
                 this[this.tableTukiosOrder.ModifiedByColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsTrackingNumberNull() {
                 return this.IsNull(this.tableTukiosOrder.TrackingNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetTrackingNumberNull() {
                 this[this.tableTukiosOrder.TrackingNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsWeightNull() {
                 return this.IsNull(this.tableTukiosOrder.WeightColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetWeightNull() {
                 this[this.tableTukiosOrder.WeightColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsTukiosOrderStatusNull() {
                 return this.IsNull(this.tableTukiosOrder.TukiosOrderStatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetTukiosOrderStatusNull() {
                 this[this.tableTukiosOrder.TukiosOrderStatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsDownloadTrysNull() {
                 return this.IsNull(this.tableTukiosOrder.DownloadTrysColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetDownloadTrysNull() {
                 this[this.tableTukiosOrder.DownloadTrysColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsNotesNull() {
                 return this.IsNull(this.tableTukiosOrder.NotesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetNotesNull() {
                 this[this.tableTukiosOrder.NotesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsPrintergyFileNull() {
                 return this.IsNull(this.tableTukiosOrder.PrintergyFileColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetPrintergyFileNull() {
                 this[this.tableTukiosOrder.PrintergyFileColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsBookStatusNull() {
                 return this.IsNull(this.tableTukiosOrder.BookStatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetBookStatusNull() {
                 this[this.tableTukiosOrder.BookStatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCoverStatusNull() {
                 return this.IsNull(this.tableTukiosOrder.CoverStatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCoverStatusNull() {
                 this[this.tableTukiosOrder.CoverStatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCurrentBookLocNull() {
                 return this.IsNull(this.tableTukiosOrder.CurrentBookLocColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCurrentBookLocNull() {
                 this[this.tableTukiosOrder.CurrentBookLocColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsCurrentCoverLocNull() {
                 return this.IsNull(this.tableTukiosOrder.CurrentCoverLocColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetCurrentCoverLocNull() {
                 this[this.tableTukiosOrder.CurrentCoverLocColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsInvoicedNull() {
                 return this.IsNull(this.tableTukiosOrder.InvoicedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetInvoicedNull() {
                 this[this.tableTukiosOrder.InvoicedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsInvoiceDateNull() {
                 return this.IsNull(this.tableTukiosOrder.InvoiceDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetInvoiceDateNull() {
                 this[this.tableTukiosOrder.InvoiceDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsReMakePrntDateNull() {
                 return this.IsNull(this.tableTukiosOrder.ReMakePrntDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetReMakePrntDateNull() {
                 this[this.tableTukiosOrder.ReMakePrntDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsOrderRePrintNull() {
                 return this.IsNull(this.tableTukiosOrder.OrderRePrintColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetOrderRePrintNull() {
                 this[this.tableTukiosOrder.OrderRePrintColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsJobPrintBatchNull() {
                 return this.IsNull(this.tableTukiosOrder.JobPrintBatchColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetJobPrintBatchNull() {
                 this[this.tableTukiosOrder.JobPrintBatchColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsJobPrintDateNull() {
                 return this.IsNull(this.tableTukiosOrder.JobPrintDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetJobPrintDateNull() {
                 this[this.tableTukiosOrder.JobPrintDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool IsGroupIdNull() {
+                return this.IsNull(this.tableTukiosOrder.GroupIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void SetGroupIdNull() {
+                this[this.tableTukiosOrder.GroupIdColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public class TukiosOrderRowChangeEvent : global::System.EventArgs {
             
             private TukiosOrderRow eventRow;
@@ -2492,14 +2535,14 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRowChangeEvent(TukiosOrderRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public TukiosOrderRow Row {
                 get {
                     return this.eventRow;
@@ -2507,7 +2550,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -2541,13 +2584,13 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public TukiosOrderTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -2558,7 +2601,7 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -2586,7 +2629,7 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -2612,7 +2655,7 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -2623,7 +2666,7 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -2634,14 +2677,13 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TukiosOrder";
             tableMapping.ColumnMappings.Add("Invno", "Invno");
-            tableMapping.ColumnMappings.Add("ClientOrderId", "ClientOrderId");
             tableMapping.ColumnMappings.Add("OrderReceivedDate", "OrderReceivedDate");
             tableMapping.ColumnMappings.Add("RequestedShipDate", "RequestedShipDate");
             tableMapping.ColumnMappings.Add("DateShipped", "DateShipped");
@@ -2687,60 +2729,60 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             tableMapping.ColumnMappings.Add("OrderRePrint", "OrderRePrint");
             tableMapping.ColumnMappings.Add("JobPrintBatch", "JobPrintBatch");
             tableMapping.ColumnMappings.Add("JobPrintDate", "JobPrintDate");
+            tableMapping.ColumnMappings.Add("ClientOrderId", "ClientOrderId");
+            tableMapping.ColumnMappings.Add("GroupId", "GroupId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TukiosOrder] WHERE (([Invno] = @Original_Invno) AND ([ClientOrderId]" +
-                " = @Original_ClientOrderId) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceiv" +
-                "edDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDate)) AND ((@" +
-                "IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShip" +
-                "Date] = @Original_RequestedShipDate)) AND ((@IsNull_DateShipped = 1 AND [DateShi" +
-                "pped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@IsNull_ShipMet" +
-                "hod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND " +
-                "((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipNa" +
-                "me)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Origin" +
-                "al_ShipAddr)) AND ((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr" +
-                "2] = @Original_ShipAddr2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR" +
-                " ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] " +
-                "IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [" +
-                "ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_BookId = 1 A" +
-                "ND [BookId] IS NULL) OR ([BookId] = @Original_BookId)) AND ((@IsNull_Copies = 1 " +
-                "AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNull_BookType =" +
-                " 1 AND [BookType] IS NULL) OR ([BookType] = @Original_BookType)) AND ((@IsNull_B" +
-                "ookBlockId = 1 AND [BookBlockId] IS NULL) OR ([BookBlockId] = @Original_BookBloc" +
-                "kId)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages" +
-                ")) AND ((@IsNull_CoverId = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Original_Co" +
-                "verId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Descriptio" +
-                "n] = @Original_Description)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies] IS NU" +
-                "LL) OR ([ProdCopies] = @Original_ProdCopies)) AND ((@IsNull_ProdInOrder = 1 AND " +
-                "[ProdInOrder] IS NULL) OR ([ProdInOrder] = @Original_ProdInOrder)) AND ((@IsNull" +
-                "_DateModified = 1 AND [DateModified] IS NULL) OR ([DateModified] = @Original_Dat" +
-                "eModified)) AND ((@IsNull_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([Modified" +
-                "By] = @Original_ModifiedBy)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR (" +
-                "[Weight] = @Original_Weight)) AND ((@IsNull_TukiosOrderStatus = 1 AND [TukiosOrd" +
-                "erStatus] IS NULL) OR ([TukiosOrderStatus] = @Original_TukiosOrderStatus)) AND (" +
-                "[FilesDownloaded] = @Original_FilesDownloaded) AND ([FilesCopied] = @Original_Fi" +
-                "lesCopied) AND ((@IsNull_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR ([Downl" +
-                "oadTrys] = @Original_DownloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [Printer" +
-                "gyFile] IS NULL) OR ([PrintergyFile] = @Original_PrintergyFile)) AND ((@IsNull_B" +
-                "ookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)" +
-                ") AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @" +
-                "Original_CoverStatus)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS " +
-                "NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCov" +
-                "erLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_Curre" +
-                "ntCoverLoc)) AND ((@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] =" +
-                " @Original_Invoiced)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) O" +
-                "R ([InvoiceDate] = @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Original_J" +
-                "obTicketPrinted) AND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinted) AND" +
-                " ((@IsNull_ReMakePrntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate]" +
-                " = @Original_ReMakePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] " +
-                "IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBat" +
-                "ch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatc" +
-                "h)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate" +
-                "] = @Original_JobPrintDate)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TukiosOrder] WHERE (([Invno] = @Original_Invno) AND ((@IsNull_OrderR" +
+                "eceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Orig" +
+                "inal_OrderReceivedDate)) AND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipD" +
+                "ate] IS NULL) OR ([RequestedShipDate] = @Original_RequestedShipDate)) AND ((@IsN" +
+                "ull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([DateShipped] = @Original_Dat" +
+                "eShipped)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMetho" +
+                "d] = @Original_ShipMethod)) AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) O" +
+                "R ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] I" +
+                "S NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsNull_ShipAddr2 = 1 AND [S" +
+                "hipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_ShipCit" +
+                "y = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNul" +
+                "l_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState] = @Original_ShipState))" +
+                " AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_Ship" +
+                "Zip)) AND ((@IsNull_BookId = 1 AND [BookId] IS NULL) OR ([BookId] = @Original_Bo" +
+                "okId)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_C" +
+                "opies)) AND ((@IsNull_BookType = 1 AND [BookType] IS NULL) OR ([BookType] = @Ori" +
+                "ginal_BookType)) AND ((@IsNull_BookBlockId = 1 AND [BookBlockId] IS NULL) OR ([B" +
+                "ookBlockId] = @Original_BookBlockId)) AND ((@IsNull_Pages = 1 AND [Pages] IS NUL" +
+                "L) OR ([Pages] = @Original_Pages)) AND ((@IsNull_CoverId = 1 AND [CoverId] IS NU" +
+                "LL) OR ([CoverId] = @Original_CoverId)) AND ((@IsNull_Description = 1 AND [Descr" +
+                "iption] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_ProdC" +
+                "opies = 1 AND [ProdCopies] IS NULL) OR ([ProdCopies] = @Original_ProdCopies)) AN" +
+                "D ((@IsNull_ProdInOrder = 1 AND [ProdInOrder] IS NULL) OR ([ProdInOrder] = @Orig" +
+                "inal_ProdInOrder)) AND ((@IsNull_DateModified = 1 AND [DateModified] IS NULL) OR" +
+                " ([DateModified] = @Original_DateModified)) AND ((@IsNull_ModifiedBy = 1 AND [Mo" +
+                "difiedBy] IS NULL) OR ([ModifiedBy] = @Original_ModifiedBy)) AND ((@IsNull_Weigh" +
+                "t = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_Tuki" +
+                "osOrderStatus = 1 AND [TukiosOrderStatus] IS NULL) OR ([TukiosOrderStatus] = @Or" +
+                "iginal_TukiosOrderStatus)) AND ([FilesDownloaded] = @Original_FilesDownloaded) A" +
+                "ND ([FilesCopied] = @Original_FilesCopied) AND ((@IsNull_DownloadTrys = 1 AND [D" +
+                "ownloadTrys] IS NULL) OR ([DownloadTrys] = @Original_DownloadTrys)) AND ((@IsNul" +
+                "l_BookStatus = 1 AND [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStat" +
+                "us)) AND ((@IsNull_CoverStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] " +
+                "= @Original_CoverStatus)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] " +
+                "IS NULL) OR ([CurrentBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_Current" +
+                "CoverLoc = 1 AND [CurrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_Cu" +
+                "rrentCoverLoc)) AND ((@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced" +
+                "] = @Original_Invoiced)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL" +
+                ") OR ([InvoiceDate] = @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Origina" +
+                "l_JobTicketPrinted) AND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinted) " +
+                "AND ((@IsNull_ReMakePrntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDa" +
+                "te] = @Original_ReMakePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrin" +
+                "t] IS NULL) OR ([OrderRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrint" +
+                "Batch = 1 AND [JobPrintBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintB" +
+                "atch)) AND ((@IsNull_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintD" +
+                "ate] = @Original_JobPrintDate)) AND ((@IsNull_GroupId = 1 AND [GroupId] IS NULL)" +
+                " OR ([GroupId] = @Original_GroupId)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderReceivedDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderReceivedDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RequestedShipDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2791,8 +2833,6 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FilesCopied", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FilesCopied", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DownloadTrys", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DownloadTrys", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DownloadTrys", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DownloadTrys", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PrintergyFile", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrintergyFile", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PrintergyFile", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrintergyFile", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BookStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CoverStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2815,38 +2855,37 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintBatch", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JobPrintDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GroupId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GroupId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [TukiosOrder] ([Invno], [ClientOrderId], [OrderReceivedDate], [Reques" +
-                "tedShipDate], [DateShipped], [ShipMethod], [ShipName], [ShipAddr], [ShipAddr2], " +
-                "[ShipCity], [ShipState], [ShipZip], [BookId], [Copies], [BookType], [BookBlockId" +
-                "], [Pages], [BookBlockURL], [BookBlockPreviewURL], [CoverId], [CoverURL], [Cover" +
-                "PreviewURL], [Description], [ProdCopies], [ProdInOrder], [DateModified], [Modifi" +
-                "edBy], [TrackingNumber], [Weight], [TukiosOrderStatus], [FilesDownloaded], [File" +
-                "sCopied], [DownloadTrys], [Notes], [PrintergyFile], [BookStatus], [CoverStatus]," +
-                " [CurrentBookLoc], [CurrentCoverLoc], [Invoiced], [InvoiceDate], [JobTicketPrint" +
-                "ed], [RemakeTicketPrinted], [ReMakePrntDate], [OrderRePrint], [JobPrintBatch], [" +
-                "JobPrintDate]) VALUES (@Invno, @ClientOrderId, @OrderReceivedDate, @RequestedShi" +
-                "pDate, @DateShipped, @ShipMethod, @ShipName, @ShipAddr, @ShipAddr2, @ShipCity, @" +
-                "ShipState, @ShipZip, @BookId, @Copies, @BookType, @BookBlockId, @Pages, @BookBlo" +
-                "ckURL, @BookBlockPreviewURL, @CoverId, @CoverURL, @CoverPreviewURL, @Description" +
-                ", @ProdCopies, @ProdInOrder, @DateModified, @ModifiedBy, @TrackingNumber, @Weigh" +
-                "t, @TukiosOrderStatus, @FilesDownloaded, @FilesCopied, @DownloadTrys, @Notes, @P" +
-                "rintergyFile, @BookStatus, @CoverStatus, @CurrentBookLoc, @CurrentCoverLoc, @Inv" +
-                "oiced, @InvoiceDate, @JobTicketPrinted, @RemakeTicketPrinted, @ReMakePrntDate, @" +
-                "OrderRePrint, @JobPrintBatch, @JobPrintDate);\r\nSELECT Invno, ClientOrderId, Orde" +
-                "rReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, S" +
-                "hipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, P" +
-                "ages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Des" +
-                "cription, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Wei" +
-                "ght, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes, Print" +
-                "ergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, In" +
-                "voiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, " +
-                "JobPrintBatch, JobPrintDate FROM TukiosOrder WHERE (Invno = @Invno) ORDER BY Inv" +
-                "no, OrderReceivedDate DESC";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [TukiosOrder] ([OrderReceivedDate], [RequestedShipDate], [DateShipped" +
+                "], [ShipMethod], [ShipName], [ShipAddr], [ShipAddr2], [ShipCity], [ShipState], [" +
+                "ShipZip], [BookId], [Copies], [BookType], [BookBlockId], [Pages], [BookBlockURL]" +
+                ", [BookBlockPreviewURL], [CoverId], [CoverURL], [CoverPreviewURL], [Description]" +
+                ", [ProdCopies], [ProdInOrder], [DateModified], [ModifiedBy], [TrackingNumber], [" +
+                "Weight], [TukiosOrderStatus], [FilesDownloaded], [FilesCopied], [DownloadTrys], " +
+                "[Notes], [PrintergyFile], [BookStatus], [CoverStatus], [CurrentBookLoc], [Curren" +
+                "tCoverLoc], [Invoiced], [InvoiceDate], [JobTicketPrinted], [RemakeTicketPrinted]" +
+                ", [ReMakePrntDate], [OrderRePrint], [JobPrintBatch], [JobPrintDate]) VALUES (@Or" +
+                "derReceivedDate, @RequestedShipDate, @DateShipped, @ShipMethod, @ShipName, @Ship" +
+                "Addr, @ShipAddr2, @ShipCity, @ShipState, @ShipZip, @BookId, @Copies, @BookType, " +
+                "@BookBlockId, @Pages, @BookBlockURL, @BookBlockPreviewURL, @CoverId, @CoverURL, " +
+                "@CoverPreviewURL, @Description, @ProdCopies, @ProdInOrder, @DateModified, @Modif" +
+                "iedBy, @TrackingNumber, @Weight, @TukiosOrderStatus, @FilesDownloaded, @FilesCop" +
+                "ied, @DownloadTrys, @Notes, @PrintergyFile, @BookStatus, @CoverStatus, @CurrentB" +
+                "ookLoc, @CurrentCoverLoc, @Invoiced, @InvoiceDate, @JobTicketPrinted, @RemakeTic" +
+                "ketPrinted, @ReMakePrntDate, @OrderRePrint, @JobPrintBatch, @JobPrintDate);\r\nSEL" +
+                "ECT Invno, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipNa" +
+                "me, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType," +
+                " BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, Cover" +
+                "PreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, Trac" +
+                "kingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTry" +
+                "s, Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLo" +
+                "c, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate," +
+                " OrderRePrint, JobPrintBatch, JobPrintDate FROM TukiosOrder WHERE (Invno = SCOPE" +
+                "_IDENTITY()) ORDER BY Invno, OrderReceivedDate DESC";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderReceivedDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestedShipDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateShipped", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateShipped", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2894,83 +2933,81 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [TukiosOrder] SET [Invno] = @Invno, [ClientOrderId] = @ClientOrderId, [Ord" +
-                "erReceivedDate] = @OrderReceivedDate, [RequestedShipDate] = @RequestedShipDate, " +
-                "[DateShipped] = @DateShipped, [ShipMethod] = @ShipMethod, [ShipName] = @ShipName" +
-                ", [ShipAddr] = @ShipAddr, [ShipAddr2] = @ShipAddr2, [ShipCity] = @ShipCity, [Shi" +
-                "pState] = @ShipState, [ShipZip] = @ShipZip, [BookId] = @BookId, [Copies] = @Copi" +
-                "es, [BookType] = @BookType, [BookBlockId] = @BookBlockId, [Pages] = @Pages, [Boo" +
-                "kBlockURL] = @BookBlockURL, [BookBlockPreviewURL] = @BookBlockPreviewURL, [Cover" +
-                "Id] = @CoverId, [CoverURL] = @CoverURL, [CoverPreviewURL] = @CoverPreviewURL, [D" +
-                "escription] = @Description, [ProdCopies] = @ProdCopies, [ProdInOrder] = @ProdInO" +
-                "rder, [DateModified] = @DateModified, [ModifiedBy] = @ModifiedBy, [TrackingNumbe" +
-                "r] = @TrackingNumber, [Weight] = @Weight, [TukiosOrderStatus] = @TukiosOrderStat" +
-                "us, [FilesDownloaded] = @FilesDownloaded, [FilesCopied] = @FilesCopied, [Downloa" +
-                "dTrys] = @DownloadTrys, [Notes] = @Notes, [PrintergyFile] = @PrintergyFile, [Boo" +
-                "kStatus] = @BookStatus, [CoverStatus] = @CoverStatus, [CurrentBookLoc] = @Curren" +
-                "tBookLoc, [CurrentCoverLoc] = @CurrentCoverLoc, [Invoiced] = @Invoiced, [Invoice" +
-                "Date] = @InvoiceDate, [JobTicketPrinted] = @JobTicketPrinted, [RemakeTicketPrint" +
-                "ed] = @RemakeTicketPrinted, [ReMakePrntDate] = @ReMakePrntDate, [OrderRePrint] =" +
-                " @OrderRePrint, [JobPrintBatch] = @JobPrintBatch, [JobPrintDate] = @JobPrintDate" +
-                " WHERE (([Invno] = @Original_Invno) AND ([ClientOrderId] = @Original_ClientOrder" +
-                "Id) AND ((@IsNull_OrderReceivedDate = 1 AND [OrderReceivedDate] IS NULL) OR ([Or" +
-                "derReceivedDate] = @Original_OrderReceivedDate)) AND ((@IsNull_RequestedShipDate" +
-                " = 1 AND [RequestedShipDate] IS NULL) OR ([RequestedShipDate] = @Original_Reques" +
-                "tedShipDate)) AND ((@IsNull_DateShipped = 1 AND [DateShipped] IS NULL) OR ([Date" +
-                "Shipped] = @Original_DateShipped)) AND ((@IsNull_ShipMethod = 1 AND [ShipMethod]" +
-                " IS NULL) OR ([ShipMethod] = @Original_ShipMethod)) AND ((@IsNull_ShipName = 1 A" +
-                "ND [ShipName] IS NULL) OR ([ShipName] = @Original_ShipName)) AND ((@IsNull_ShipA" +
-                "ddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAddr] = @Original_ShipAddr)) AND ((@IsN" +
-                "ull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) OR ([ShipAddr2] = @Original_ShipAddr2" +
-                ")) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original" +
-                "_ShipCity)) AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState]" +
-                " = @Original_ShipState)) AND ((@IsNull_ShipZip = 1 AND [ShipZip] IS NULL) OR ([S" +
-                "hipZip] = @Original_ShipZip)) AND ((@IsNull_BookId = 1 AND [BookId] IS NULL) OR " +
-                "([BookId] = @Original_BookId)) AND ((@IsNull_Copies = 1 AND [Copies] IS NULL) OR" +
-                " ([Copies] = @Original_Copies)) AND ((@IsNull_BookType = 1 AND [BookType] IS NUL" +
-                "L) OR ([BookType] = @Original_BookType)) AND ((@IsNull_BookBlockId = 1 AND [Book" +
-                "BlockId] IS NULL) OR ([BookBlockId] = @Original_BookBlockId)) AND ((@IsNull_Page" +
-                "s = 1 AND [Pages] IS NULL) OR ([Pages] = @Original_Pages)) AND ((@IsNull_CoverId" +
-                " = 1 AND [CoverId] IS NULL) OR ([CoverId] = @Original_CoverId)) AND ((@IsNull_De" +
-                "scription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descripti" +
-                "on)) AND ((@IsNull_ProdCopies = 1 AND [ProdCopies] IS NULL) OR ([ProdCopies] = @" +
-                "Original_ProdCopies)) AND ((@IsNull_ProdInOrder = 1 AND [ProdInOrder] IS NULL) O" +
-                "R ([ProdInOrder] = @Original_ProdInOrder)) AND ((@IsNull_DateModified = 1 AND [D" +
-                "ateModified] IS NULL) OR ([DateModified] = @Original_DateModified)) AND ((@IsNul" +
-                "l_ModifiedBy = 1 AND [ModifiedBy] IS NULL) OR ([ModifiedBy] = @Original_Modified" +
-                "By)) AND ((@IsNull_Weight = 1 AND [Weight] IS NULL) OR ([Weight] = @Original_Wei" +
-                "ght)) AND ((@IsNull_TukiosOrderStatus = 1 AND [TukiosOrderStatus] IS NULL) OR ([" +
-                "TukiosOrderStatus] = @Original_TukiosOrderStatus)) AND ([FilesDownloaded] = @Ori" +
-                "ginal_FilesDownloaded) AND ([FilesCopied] = @Original_FilesCopied) AND ((@IsNull" +
-                "_DownloadTrys = 1 AND [DownloadTrys] IS NULL) OR ([DownloadTrys] = @Original_Dow" +
-                "nloadTrys)) AND ((@IsNull_PrintergyFile = 1 AND [PrintergyFile] IS NULL) OR ([Pr" +
-                "intergyFile] = @Original_PrintergyFile)) AND ((@IsNull_BookStatus = 1 AND [BookS" +
-                "tatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_CoverSta" +
-                "tus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverStatus)) A" +
-                "ND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([CurrentBookLo" +
-                "c] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCoverLoc = 1 AND [CurrentCo" +
-                "verLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND ((@IsNu" +
-                "ll_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] = @Original_Invoiced)) AN" +
-                "D ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) OR ([InvoiceDate] = @Orig" +
-                "inal_InvoiceDate)) AND ([JobTicketPrinted] = @Original_JobTicketPrinted) AND ([R" +
-                "emakeTicketPrinted] = @Original_RemakeTicketPrinted) AND ((@IsNull_ReMakePrntDat" +
-                "e = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate] = @Original_ReMakePrntD" +
-                "ate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([OrderRePri" +
-                "nt] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPrintBatc" +
-                "h] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatch)) AND ((@IsNull_JobPri" +
-                "ntDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_JobPrintDa" +
-                "te)));\r\nSELECT Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateS" +
-                "hipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip," +
-                " BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL" +
-                ", CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, Date" +
-                "Modified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded" +
-                ", FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, Curr" +
-                "entBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTick" +
-                "etPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate FROM Tukios" +
-                "Order WHERE (Invno = @Invno) ORDER BY Invno, OrderReceivedDate DESC";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [TukiosOrder] SET [OrderReceivedDate] = @OrderReceivedDate, [RequestedShip" +
+                "Date] = @RequestedShipDate, [DateShipped] = @DateShipped, [ShipMethod] = @ShipMe" +
+                "thod, [ShipName] = @ShipName, [ShipAddr] = @ShipAddr, [ShipAddr2] = @ShipAddr2, " +
+                "[ShipCity] = @ShipCity, [ShipState] = @ShipState, [ShipZip] = @ShipZip, [BookId]" +
+                " = @BookId, [Copies] = @Copies, [BookType] = @BookType, [BookBlockId] = @BookBlo" +
+                "ckId, [Pages] = @Pages, [BookBlockURL] = @BookBlockURL, [BookBlockPreviewURL] = " +
+                "@BookBlockPreviewURL, [CoverId] = @CoverId, [CoverURL] = @CoverURL, [CoverPrevie" +
+                "wURL] = @CoverPreviewURL, [Description] = @Description, [ProdCopies] = @ProdCopi" +
+                "es, [ProdInOrder] = @ProdInOrder, [DateModified] = @DateModified, [ModifiedBy] =" +
+                " @ModifiedBy, [TrackingNumber] = @TrackingNumber, [Weight] = @Weight, [TukiosOrd" +
+                "erStatus] = @TukiosOrderStatus, [FilesDownloaded] = @FilesDownloaded, [FilesCopi" +
+                "ed] = @FilesCopied, [DownloadTrys] = @DownloadTrys, [Notes] = @Notes, [Printergy" +
+                "File] = @PrintergyFile, [BookStatus] = @BookStatus, [CoverStatus] = @CoverStatus" +
+                ", [CurrentBookLoc] = @CurrentBookLoc, [CurrentCoverLoc] = @CurrentCoverLoc, [Inv" +
+                "oiced] = @Invoiced, [InvoiceDate] = @InvoiceDate, [JobTicketPrinted] = @JobTicke" +
+                "tPrinted, [RemakeTicketPrinted] = @RemakeTicketPrinted, [ReMakePrntDate] = @ReMa" +
+                "kePrntDate, [OrderRePrint] = @OrderRePrint, [JobPrintBatch] = @JobPrintBatch, [J" +
+                "obPrintDate] = @JobPrintDate, [ClientOrderId] = @ClientOrderId, [GroupId] = @Gro" +
+                "upId WHERE (([Invno] = @Original_Invno) AND ((@IsNull_OrderReceivedDate = 1 AND " +
+                "[OrderReceivedDate] IS NULL) OR ([OrderReceivedDate] = @Original_OrderReceivedDa" +
+                "te)) AND ((@IsNull_RequestedShipDate = 1 AND [RequestedShipDate] IS NULL) OR ([R" +
+                "equestedShipDate] = @Original_RequestedShipDate)) AND ((@IsNull_DateShipped = 1 " +
+                "AND [DateShipped] IS NULL) OR ([DateShipped] = @Original_DateShipped)) AND ((@Is" +
+                "Null_ShipMethod = 1 AND [ShipMethod] IS NULL) OR ([ShipMethod] = @Original_ShipM" +
+                "ethod)) AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Ori" +
+                "ginal_ShipName)) AND ((@IsNull_ShipAddr = 1 AND [ShipAddr] IS NULL) OR ([ShipAdd" +
+                "r] = @Original_ShipAddr)) AND ((@IsNull_ShipAddr2 = 1 AND [ShipAddr2] IS NULL) O" +
+                "R ([ShipAddr2] = @Original_ShipAddr2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity]" +
+                " IS NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND " +
+                "[ShipState] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipZ" +
+                "ip = 1 AND [ShipZip] IS NULL) OR ([ShipZip] = @Original_ShipZip)) AND ((@IsNull_" +
+                "BookId = 1 AND [BookId] IS NULL) OR ([BookId] = @Original_BookId)) AND ((@IsNull" +
+                "_Copies = 1 AND [Copies] IS NULL) OR ([Copies] = @Original_Copies)) AND ((@IsNul" +
+                "l_BookType = 1 AND [BookType] IS NULL) OR ([BookType] = @Original_BookType)) AND" +
+                " ((@IsNull_BookBlockId = 1 AND [BookBlockId] IS NULL) OR ([BookBlockId] = @Origi" +
+                "nal_BookBlockId)) AND ((@IsNull_Pages = 1 AND [Pages] IS NULL) OR ([Pages] = @Or" +
+                "iginal_Pages)) AND ((@IsNull_CoverId = 1 AND [CoverId] IS NULL) OR ([CoverId] = " +
+                "@Original_CoverId)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR " +
+                "([Description] = @Original_Description)) AND ((@IsNull_ProdCopies = 1 AND [ProdC" +
+                "opies] IS NULL) OR ([ProdCopies] = @Original_ProdCopies)) AND ((@IsNull_ProdInOr" +
+                "der = 1 AND [ProdInOrder] IS NULL) OR ([ProdInOrder] = @Original_ProdInOrder)) A" +
+                "ND ((@IsNull_DateModified = 1 AND [DateModified] IS NULL) OR ([DateModified] = @" +
+                "Original_DateModified)) AND ((@IsNull_ModifiedBy = 1 AND [ModifiedBy] IS NULL) O" +
+                "R ([ModifiedBy] = @Original_ModifiedBy)) AND ((@IsNull_Weight = 1 AND [Weight] I" +
+                "S NULL) OR ([Weight] = @Original_Weight)) AND ((@IsNull_TukiosOrderStatus = 1 AN" +
+                "D [TukiosOrderStatus] IS NULL) OR ([TukiosOrderStatus] = @Original_TukiosOrderSt" +
+                "atus)) AND ([FilesDownloaded] = @Original_FilesDownloaded) AND ([FilesCopied] = " +
+                "@Original_FilesCopied) AND ((@IsNull_DownloadTrys = 1 AND [DownloadTrys] IS NULL" +
+                ") OR ([DownloadTrys] = @Original_DownloadTrys)) AND ((@IsNull_BookStatus = 1 AND" +
+                " [BookStatus] IS NULL) OR ([BookStatus] = @Original_BookStatus)) AND ((@IsNull_C" +
+                "overStatus = 1 AND [CoverStatus] IS NULL) OR ([CoverStatus] = @Original_CoverSta" +
+                "tus)) AND ((@IsNull_CurrentBookLoc = 1 AND [CurrentBookLoc] IS NULL) OR ([Curren" +
+                "tBookLoc] = @Original_CurrentBookLoc)) AND ((@IsNull_CurrentCoverLoc = 1 AND [Cu" +
+                "rrentCoverLoc] IS NULL) OR ([CurrentCoverLoc] = @Original_CurrentCoverLoc)) AND " +
+                "((@IsNull_Invoiced = 1 AND [Invoiced] IS NULL) OR ([Invoiced] = @Original_Invoic" +
+                "ed)) AND ((@IsNull_InvoiceDate = 1 AND [InvoiceDate] IS NULL) OR ([InvoiceDate] " +
+                "= @Original_InvoiceDate)) AND ([JobTicketPrinted] = @Original_JobTicketPrinted) " +
+                "AND ([RemakeTicketPrinted] = @Original_RemakeTicketPrinted) AND ((@IsNull_ReMake" +
+                "PrntDate = 1 AND [ReMakePrntDate] IS NULL) OR ([ReMakePrntDate] = @Original_ReMa" +
+                "kePrntDate)) AND ((@IsNull_OrderRePrint = 1 AND [OrderRePrint] IS NULL) OR ([Ord" +
+                "erRePrint] = @Original_OrderRePrint)) AND ((@IsNull_JobPrintBatch = 1 AND [JobPr" +
+                "intBatch] IS NULL) OR ([JobPrintBatch] = @Original_JobPrintBatch)) AND ((@IsNull" +
+                "_JobPrintDate = 1 AND [JobPrintDate] IS NULL) OR ([JobPrintDate] = @Original_Job" +
+                "PrintDate)) AND ((@IsNull_GroupId = 1 AND [GroupId] IS NULL) OR ([GroupId] = @Or" +
+                "iginal_GroupId)));\r\nSELECT Invno, OrderReceivedDate, RequestedShipDate, DateShip" +
+                "ped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, Bo" +
+                "okId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL, C" +
+                "overId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateMod" +
+                "ified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, F" +
+                "ilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, Current" +
+                "BookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketP" +
+                "rinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate, ClientOrderId" +
+                ", GroupId FROM TukiosOrder WHERE (Invno = @Invno) ORDER BY Invno, OrderReceivedD" +
+                "ate DESC";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderReceivedDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestedShipDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateShipped", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateShipped", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3016,8 +3053,9 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderRePrint", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderRePrint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintBatch", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GroupId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GroupId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientOrderId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderReceivedDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderReceivedDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderReceivedDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RequestedShipDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestedShipDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3068,8 +3106,6 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FilesCopied", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FilesCopied", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DownloadTrys", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DownloadTrys", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DownloadTrys", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DownloadTrys", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PrintergyFile", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrintergyFile", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PrintergyFile", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrintergyFile", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BookStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CoverStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CoverStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3092,33 +3128,37 @@ namespace Mbc5.DataSets.TukiosOrdersTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintBatch", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintBatch", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JobPrintDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JobPrintDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JobPrintDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GroupId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GroupId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5_demoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, 
+            this._commandCollection[0].CommandText = @"SELECT        Invno, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, 
                          BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, 
-                         Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate
+                         Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate, ClientOrderId, 
+                         GroupId
 FROM            TukiosOrder
 WHERE        (ClientOrderId = @ClientOrderId)
 ORDER BY Invno, OrderReceivedDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientOrderId", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ClientOrderId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(TukiosOrders.TukiosOrderDataTable dataTable, string ClientOrderId) {
@@ -3137,7 +3177,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual TukiosOrders.TukiosOrderDataTable GetData(string ClientOrderId) {
@@ -3154,21 +3194,21 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(TukiosOrders.TukiosOrderDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(TukiosOrders dataSet) {
             return this.Adapter.Update(dataSet, "TukiosOrder");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
@@ -3176,19 +3216,18 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     int Original_Invno, 
-                    string Original_ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> Original_OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> Original_RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> Original_DateShipped, 
@@ -3215,7 +3254,6 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     bool Original_FilesDownloaded, 
                     bool Original_FilesCopied, 
                     global::System.Nullable<int> Original_DownloadTrys, 
-                    string Original_PrintergyFile, 
                     string Original_BookStatus, 
                     string Original_CoverStatus, 
                     string Original_CurrentBookLoc, 
@@ -3227,297 +3265,292 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<global::System.DateTime> Original_ReMakePrntDate, 
                     global::System.Nullable<bool> Original_OrderRePrint, 
                     global::System.Nullable<int> Original_JobPrintBatch, 
-                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate) {
+                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate, 
+                    global::System.Nullable<int> Original_GroupId) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Invno));
-            if ((Original_ClientOrderId == null)) {
-                throw new global::System.ArgumentNullException("Original_ClientOrderId");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ClientOrderId));
-            }
             if ((Original_OrderReceivedDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_OrderReceivedDate.Value));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_OrderReceivedDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((Original_RequestedShipDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_RequestedShipDate.Value));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_RequestedShipDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((Original_DateShipped.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_DateShipped.Value));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_DateShipped.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Original_ShipMethod == null)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_ShipMethod));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_ShipMethod));
             }
             if ((Original_ShipName == null)) {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_ShipName));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_ShipName));
             }
             if ((Original_ShipAddr == null)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_ShipAddr));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_ShipAddr));
             }
             if ((Original_ShipAddr2 == null)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_ShipAddr2));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_ShipAddr2));
             }
             if ((Original_ShipCity == null)) {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_ShipCity));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_ShipCity));
             }
             if ((Original_ShipState == null)) {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_ShipState));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_ShipState));
             }
             if ((Original_ShipZip == null)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((string)(Original_ShipZip));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_ShipZip));
             }
             if ((Original_BookId == null)) {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_BookId));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_BookId));
             }
             if ((Original_Copies.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((int)(Original_Copies.Value));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_Copies.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_BookType == null)) {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_BookType));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_BookType));
             }
             if ((Original_BookBlockId == null)) {
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_BookBlockId));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_BookBlockId));
             }
             if ((Original_Pages.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((int)(Original_Pages.Value));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((int)(Original_Pages.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_CoverId == null)) {
-                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((string)(Original_CoverId));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((string)(Original_CoverId));
             }
             if ((Original_Description == null)) {
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[35].Value = ((string)(Original_Description));
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((string)(Original_Description));
             }
             if ((Original_ProdCopies.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((int)(Original_ProdCopies.Value));
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((int)(Original_ProdCopies.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             if ((Original_ProdInOrder.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((int)(Original_ProdInOrder.Value));
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((int)(Original_ProdInOrder.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             if ((Original_DateModified.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((System.DateTime)(Original_DateModified.Value));
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((System.DateTime)(Original_DateModified.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             if ((Original_ModifiedBy == null)) {
-                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[43].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((string)(Original_ModifiedBy));
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((string)(Original_ModifiedBy));
             }
             if ((Original_Weight.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((decimal)(Original_Weight.Value));
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_Weight.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             if ((Original_TukiosOrderStatus == null)) {
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[47].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((string)(Original_TukiosOrderStatus));
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((string)(Original_TukiosOrderStatus));
             }
-            this.Adapter.DeleteCommand.Parameters[48].Value = ((bool)(Original_FilesDownloaded));
-            this.Adapter.DeleteCommand.Parameters[49].Value = ((bool)(Original_FilesCopied));
+            this.Adapter.DeleteCommand.Parameters[47].Value = ((bool)(Original_FilesDownloaded));
+            this.Adapter.DeleteCommand.Parameters[48].Value = ((bool)(Original_FilesCopied));
             if ((Original_DownloadTrys.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[51].Value = ((int)(Original_DownloadTrys.Value));
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((int)(Original_DownloadTrys.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[51].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PrintergyFile == null)) {
-                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[53].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[53].Value = ((string)(Original_PrintergyFile));
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             if ((Original_BookStatus == null)) {
-                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[55].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[55].Value = ((string)(Original_BookStatus));
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((string)(Original_BookStatus));
             }
             if ((Original_CoverStatus == null)) {
-                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[57].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[57].Value = ((string)(Original_CoverStatus));
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((string)(Original_CoverStatus));
             }
             if ((Original_CurrentBookLoc == null)) {
-                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[59].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[59].Value = ((string)(Original_CurrentBookLoc));
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((string)(Original_CurrentBookLoc));
             }
             if ((Original_CurrentCoverLoc == null)) {
-                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[61].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[61].Value = ((string)(Original_CurrentCoverLoc));
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((string)(Original_CurrentCoverLoc));
             }
             if ((Original_Invoiced.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[63].Value = ((bool)(Original_Invoiced.Value));
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((bool)(Original_Invoiced.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[63].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             if ((Original_InvoiceDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[65].Value = ((System.DateTime)(Original_InvoiceDate.Value));
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((System.DateTime)(Original_InvoiceDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[65].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[66].Value = ((bool)(Original_JobTicketPrinted));
-            this.Adapter.DeleteCommand.Parameters[67].Value = ((bool)(Original_RemakeTicketPrinted));
+            this.Adapter.DeleteCommand.Parameters[63].Value = ((bool)(Original_JobTicketPrinted));
+            this.Adapter.DeleteCommand.Parameters[64].Value = ((bool)(Original_RemakeTicketPrinted));
             if ((Original_ReMakePrntDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[68].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[69].Value = ((System.DateTime)(Original_ReMakePrntDate.Value));
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((System.DateTime)(Original_ReMakePrntDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[68].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[69].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
             if ((Original_OrderRePrint.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[70].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[71].Value = ((bool)(Original_OrderRePrint.Value));
+                this.Adapter.DeleteCommand.Parameters[67].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[68].Value = ((bool)(Original_OrderRePrint.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[70].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[71].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[67].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[68].Value = global::System.DBNull.Value;
             }
             if ((Original_JobPrintBatch.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[72].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[73].Value = ((int)(Original_JobPrintBatch.Value));
+                this.Adapter.DeleteCommand.Parameters[69].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[70].Value = ((int)(Original_JobPrintBatch.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[72].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[73].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[69].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[70].Value = global::System.DBNull.Value;
             }
             if ((Original_JobPrintDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[74].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[75].Value = ((System.DateTime)(Original_JobPrintDate.Value));
+                this.Adapter.DeleteCommand.Parameters[71].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[72].Value = ((System.DateTime)(Original_JobPrintDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[74].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[75].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[71].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[72].Value = global::System.DBNull.Value;
+            }
+            if ((Original_GroupId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[73].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[74].Value = ((int)(Original_GroupId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[73].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3536,12 +3569,10 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    int Invno, 
-                    string ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> DateShipped, 
@@ -3587,262 +3618,255 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<bool> OrderRePrint, 
                     global::System.Nullable<int> JobPrintBatch, 
                     global::System.Nullable<global::System.DateTime> JobPrintDate) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Invno));
-            if ((ClientOrderId == null)) {
-                throw new global::System.ArgumentNullException("ClientOrderId");
+            if ((OrderReceivedDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(OrderReceivedDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ClientOrderId));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((OrderReceivedDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(OrderReceivedDate.Value));
+            if ((RequestedShipDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(RequestedShipDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((DateShipped.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateShipped.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((RequestedShipDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(RequestedShipDate.Value));
-            }
-            else {
+            if ((ShipMethod == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((DateShipped.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(DateShipped.Value));
-            }
             else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ShipMethod));
+            }
+            if ((ShipName == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ShipMethod == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ShipName));
+            }
+            if ((ShipAddr == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ShipMethod));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ShipAddr));
             }
-            if ((ShipName == null)) {
+            if ((ShipAddr2 == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(ShipName));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(ShipAddr2));
             }
-            if ((ShipAddr == null)) {
+            if ((ShipCity == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(ShipAddr));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(ShipCity));
             }
-            if ((ShipAddr2 == null)) {
+            if ((ShipState == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ShipAddr2));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ShipState));
             }
-            if ((ShipCity == null)) {
+            if ((ShipZip == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(ShipCity));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(ShipZip));
             }
-            if ((ShipState == null)) {
+            if ((BookId == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(ShipState));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(BookId));
             }
-            if ((ShipZip == null)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            if ((Copies.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(Copies.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(ShipZip));
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((BookId == null)) {
+            if ((BookType == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(BookId));
-            }
-            if ((Copies.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(Copies.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((BookType == null)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(BookType));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(BookType));
             }
             if ((BookBlockId == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(BookBlockId));
+            }
+            if ((Pages.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(Pages.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((BookBlockURL == null)) {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(BookBlockId));
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(BookBlockURL));
             }
-            if ((Pages.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((int)(Pages.Value));
-            }
-            else {
+            if ((BookBlockPreviewURL == null)) {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((BookBlockURL == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(BookBlockPreviewURL));
+            }
+            if ((CoverId == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(BookBlockURL));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(CoverId));
             }
-            if ((BookBlockPreviewURL == null)) {
+            if ((CoverURL == null)) {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(BookBlockPreviewURL));
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(CoverURL));
             }
-            if ((CoverId == null)) {
+            if ((CoverPreviewURL == null)) {
                 this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(CoverId));
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(CoverPreviewURL));
             }
-            if ((CoverURL == null)) {
+            if ((Description == null)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(CoverURL));
-            }
-            if ((CoverPreviewURL == null)) {
-                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(CoverPreviewURL));
-            }
-            if ((Description == null)) {
-                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(Description));
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(Description));
             }
             if ((ProdCopies.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[23].Value = ((int)(ProdCopies.Value));
+                this.Adapter.InsertCommand.Parameters[21].Value = ((int)(ProdCopies.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((ProdInOrder.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((int)(ProdInOrder.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((System.DateTime)(DateModified.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((ProdInOrder.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[24].Value = ((int)(ProdInOrder.Value));
-            }
-            else {
+            if ((ModifiedBy == null)) {
                 this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((System.DateTime)(DateModified.Value));
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
-            }
-            if ((ModifiedBy == null)) {
-                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(ModifiedBy));
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(ModifiedBy));
             }
             if ((TrackingNumber == null)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(TrackingNumber));
+            }
+            if ((Weight.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(Weight.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((TukiosOrderStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(TrackingNumber));
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(TukiosOrderStatus));
             }
-            if ((Weight.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(Weight.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
-            }
-            if ((TukiosOrderStatus == null)) {
-                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(TukiosOrderStatus));
-            }
-            this.Adapter.InsertCommand.Parameters[30].Value = ((bool)(FilesDownloaded));
-            this.Adapter.InsertCommand.Parameters[31].Value = ((bool)(FilesCopied));
+            this.Adapter.InsertCommand.Parameters[28].Value = ((bool)(FilesDownloaded));
+            this.Adapter.InsertCommand.Parameters[29].Value = ((bool)(FilesCopied));
             if ((DownloadTrys.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[32].Value = ((int)(DownloadTrys.Value));
+                this.Adapter.InsertCommand.Parameters[30].Value = ((int)(DownloadTrys.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Notes == null)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(Notes));
+            }
+            if ((PrintergyFile == null)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(PrintergyFile));
+            }
+            if ((BookStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(Notes));
+                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(BookStatus));
             }
-            if ((PrintergyFile == null)) {
+            if ((CoverStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(PrintergyFile));
+                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(CoverStatus));
             }
-            if ((BookStatus == null)) {
+            if ((CurrentBookLoc == null)) {
                 this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[35].Value = ((string)(BookStatus));
+                this.Adapter.InsertCommand.Parameters[35].Value = ((string)(CurrentBookLoc));
             }
-            if ((CoverStatus == null)) {
+            if ((CurrentCoverLoc == null)) {
                 this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[36].Value = ((string)(CoverStatus));
-            }
-            if ((CurrentBookLoc == null)) {
-                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[37].Value = ((string)(CurrentBookLoc));
-            }
-            if ((CurrentCoverLoc == null)) {
-                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[38].Value = ((string)(CurrentCoverLoc));
+                this.Adapter.InsertCommand.Parameters[36].Value = ((string)(CurrentCoverLoc));
             }
             if ((Invoiced.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[39].Value = ((bool)(Invoiced.Value));
+                this.Adapter.InsertCommand.Parameters[37].Value = ((bool)(Invoiced.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((InvoiceDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[40].Value = ((System.DateTime)(InvoiceDate.Value));
+                this.Adapter.InsertCommand.Parameters[38].Value = ((System.DateTime)(InvoiceDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[41].Value = ((bool)(JobTicketPrinted));
-            this.Adapter.InsertCommand.Parameters[42].Value = ((bool)(RemakeTicketPrinted));
+            this.Adapter.InsertCommand.Parameters[39].Value = ((bool)(JobTicketPrinted));
+            this.Adapter.InsertCommand.Parameters[40].Value = ((bool)(RemakeTicketPrinted));
             if ((ReMakePrntDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[43].Value = ((System.DateTime)(ReMakePrntDate.Value));
+                this.Adapter.InsertCommand.Parameters[41].Value = ((System.DateTime)(ReMakePrntDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            if ((OrderRePrint.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[42].Value = ((bool)(OrderRePrint.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            if ((JobPrintBatch.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[43].Value = ((int)(JobPrintBatch.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((OrderRePrint.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[44].Value = ((bool)(OrderRePrint.Value));
+            if ((JobPrintDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[44].Value = ((System.DateTime)(JobPrintDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[44].Value = global::System.DBNull.Value;
-            }
-            if ((JobPrintBatch.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[45].Value = ((int)(JobPrintBatch.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[45].Value = global::System.DBNull.Value;
-            }
-            if ((JobPrintDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[46].Value = ((System.DateTime)(JobPrintDate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3861,12 +3885,10 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Invno, 
-                    string ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> DateShipped, 
@@ -3912,8 +3934,9 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<bool> OrderRePrint, 
                     global::System.Nullable<int> JobPrintBatch, 
                     global::System.Nullable<global::System.DateTime> JobPrintDate, 
+                    string ClientOrderId, 
+                    global::System.Nullable<int> GroupId, 
                     int Original_Invno, 
-                    string Original_ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> Original_OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> Original_RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> Original_DateShipped, 
@@ -3940,7 +3963,6 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     bool Original_FilesDownloaded, 
                     bool Original_FilesCopied, 
                     global::System.Nullable<int> Original_DownloadTrys, 
-                    string Original_PrintergyFile, 
                     string Original_BookStatus, 
                     string Original_CoverStatus, 
                     string Original_CurrentBookLoc, 
@@ -3952,555 +3974,557 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<global::System.DateTime> Original_ReMakePrntDate, 
                     global::System.Nullable<bool> Original_OrderRePrint, 
                     global::System.Nullable<int> Original_JobPrintBatch, 
-                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Invno));
-            if ((ClientOrderId == null)) {
-                throw new global::System.ArgumentNullException("ClientOrderId");
+                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate, 
+                    global::System.Nullable<int> Original_GroupId, 
+                    int Invno) {
+            if ((OrderReceivedDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(OrderReceivedDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ClientOrderId));
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((OrderReceivedDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(OrderReceivedDate.Value));
+            if ((RequestedShipDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(RequestedShipDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((DateShipped.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DateShipped.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((RequestedShipDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(RequestedShipDate.Value));
-            }
-            else {
+            if ((ShipMethod == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((DateShipped.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(DateShipped.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ShipMethod));
+            }
+            if ((ShipName == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ShipMethod == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ShipName));
+            }
+            if ((ShipAddr == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ShipMethod));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ShipAddr));
             }
-            if ((ShipName == null)) {
+            if ((ShipAddr2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ShipName));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ShipAddr2));
             }
-            if ((ShipAddr == null)) {
+            if ((ShipCity == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ShipAddr));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ShipCity));
             }
-            if ((ShipAddr2 == null)) {
+            if ((ShipState == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ShipAddr2));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ShipState));
             }
-            if ((ShipCity == null)) {
+            if ((ShipZip == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(ShipCity));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(ShipZip));
             }
-            if ((ShipState == null)) {
+            if ((BookId == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(ShipState));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(BookId));
             }
-            if ((ShipZip == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            if ((Copies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Copies.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(ShipZip));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((BookId == null)) {
+            if ((BookType == null)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(BookId));
-            }
-            if ((Copies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Copies.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((BookType == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(BookType));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(BookType));
             }
             if ((BookBlockId == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(BookBlockId));
+            }
+            if ((Pages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Pages.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((BookBlockURL == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(BookBlockId));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(BookBlockURL));
             }
-            if ((Pages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Pages.Value));
-            }
-            else {
+            if ((BookBlockPreviewURL == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((BookBlockURL == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(BookBlockPreviewURL));
+            }
+            if ((CoverId == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(BookBlockURL));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(CoverId));
             }
-            if ((BookBlockPreviewURL == null)) {
+            if ((CoverURL == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(BookBlockPreviewURL));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(CoverURL));
             }
-            if ((CoverId == null)) {
+            if ((CoverPreviewURL == null)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(CoverId));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(CoverPreviewURL));
             }
-            if ((CoverURL == null)) {
+            if ((Description == null)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(CoverURL));
-            }
-            if ((CoverPreviewURL == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(CoverPreviewURL));
-            }
-            if ((Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Description));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Description));
             }
             if ((ProdCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(ProdCopies.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(ProdCopies.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((ProdInOrder.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(ProdInOrder.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(DateModified.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((ProdInOrder.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(ProdInOrder.Value));
-            }
-            else {
+            if ((ModifiedBy == null)) {
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((System.DateTime)(DateModified.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
-            }
-            if ((ModifiedBy == null)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(ModifiedBy));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(ModifiedBy));
             }
             if ((TrackingNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(TrackingNumber));
+            }
+            if ((Weight.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Weight.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((TukiosOrderStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(TrackingNumber));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(TukiosOrderStatus));
             }
-            if ((Weight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(Weight.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
-            }
-            if ((TukiosOrderStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(TukiosOrderStatus));
-            }
-            this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(FilesDownloaded));
-            this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(FilesCopied));
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(FilesDownloaded));
+            this.Adapter.UpdateCommand.Parameters[29].Value = ((bool)(FilesCopied));
             if ((DownloadTrys.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(DownloadTrys.Value));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(DownloadTrys.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Notes == null)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Notes));
+            }
+            if ((PrintergyFile == null)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(PrintergyFile));
+            }
+            if ((BookStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Notes));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(BookStatus));
             }
-            if ((PrintergyFile == null)) {
+            if ((CoverStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(PrintergyFile));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(CoverStatus));
             }
-            if ((BookStatus == null)) {
+            if ((CurrentBookLoc == null)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(BookStatus));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(CurrentBookLoc));
             }
-            if ((CoverStatus == null)) {
+            if ((CurrentCoverLoc == null)) {
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(CoverStatus));
-            }
-            if ((CurrentBookLoc == null)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(CurrentBookLoc));
-            }
-            if ((CurrentCoverLoc == null)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(CurrentCoverLoc));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(CurrentCoverLoc));
             }
             if ((Invoiced.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(Invoiced.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((bool)(Invoiced.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((InvoiceDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(InvoiceDate.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(InvoiceDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[41].Value = ((bool)(JobTicketPrinted));
-            this.Adapter.UpdateCommand.Parameters[42].Value = ((bool)(RemakeTicketPrinted));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(JobTicketPrinted));
+            this.Adapter.UpdateCommand.Parameters[40].Value = ((bool)(RemakeTicketPrinted));
             if ((ReMakePrntDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((System.DateTime)(ReMakePrntDate.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((System.DateTime)(ReMakePrntDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            if ((OrderRePrint.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((bool)(OrderRePrint.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            if ((JobPrintBatch.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(JobPrintBatch.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((OrderRePrint.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((bool)(OrderRePrint.Value));
+            if ((JobPrintDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((System.DateTime)(JobPrintDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
-            if ((JobPrintBatch.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((int)(JobPrintBatch.Value));
+            if ((ClientOrderId == null)) {
+                throw new global::System.ArgumentNullException("ClientOrderId");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(ClientOrderId));
             }
-            if ((JobPrintDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((System.DateTime)(JobPrintDate.Value));
+            if ((GroupId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(GroupId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(Original_Invno));
-            if ((Original_ClientOrderId == null)) {
-                throw new global::System.ArgumentNullException("Original_ClientOrderId");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_ClientOrderId));
-            }
             if ((Original_OrderReceivedDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((System.DateTime)(Original_OrderReceivedDate.Value));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((System.DateTime)(Original_OrderReceivedDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             if ((Original_RequestedShipDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((System.DateTime)(Original_RequestedShipDate.Value));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((System.DateTime)(Original_RequestedShipDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             if ((Original_DateShipped.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((System.DateTime)(Original_DateShipped.Value));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((System.DateTime)(Original_DateShipped.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             if ((Original_ShipMethod == null)) {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_ShipMethod));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_ShipMethod));
             }
             if ((Original_ShipName == null)) {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_ShipName));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(Original_ShipName));
             }
             if ((Original_ShipAddr == null)) {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_ShipAddr));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(Original_ShipAddr));
             }
             if ((Original_ShipAddr2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_ShipAddr2));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(Original_ShipAddr2));
             }
             if ((Original_ShipCity == null)) {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_ShipCity));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(Original_ShipCity));
             }
             if ((Original_ShipState == null)) {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(Original_ShipState));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((string)(Original_ShipState));
             }
             if ((Original_ShipZip == null)) {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(Original_ShipZip));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((string)(Original_ShipZip));
             }
             if ((Original_BookId == null)) {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((string)(Original_BookId));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((string)(Original_BookId));
             }
             if ((Original_Copies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((int)(Original_Copies.Value));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((int)(Original_Copies.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
             }
             if ((Original_BookType == null)) {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((string)(Original_BookType));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((string)(Original_BookType));
             }
             if ((Original_BookBlockId == null)) {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((string)(Original_BookBlockId));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((string)(Original_BookBlockId));
             }
             if ((Original_Pages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((int)(Original_Pages.Value));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((int)(Original_Pages.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
             if ((Original_CoverId == null)) {
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((string)(Original_CoverId));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((string)(Original_CoverId));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((string)(Original_Description));
             }
             if ((Original_ProdCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((int)(Original_ProdCopies.Value));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((int)(Original_ProdCopies.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
             }
             if ((Original_ProdInOrder.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((int)(Original_ProdInOrder.Value));
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((int)(Original_ProdInOrder.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
             }
             if ((Original_DateModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((System.DateTime)(Original_DateModified.Value));
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((System.DateTime)(Original_DateModified.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
             }
             if ((Original_ModifiedBy == null)) {
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((string)(Original_ModifiedBy));
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((string)(Original_ModifiedBy));
             }
             if ((Original_Weight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((decimal)(Original_Weight.Value));
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((decimal)(Original_Weight.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
             }
             if ((Original_TukiosOrderStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((string)(Original_TukiosOrderStatus));
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((string)(Original_TukiosOrderStatus));
             }
-            this.Adapter.UpdateCommand.Parameters[95].Value = ((bool)(Original_FilesDownloaded));
-            this.Adapter.UpdateCommand.Parameters[96].Value = ((bool)(Original_FilesCopied));
+            this.Adapter.UpdateCommand.Parameters[94].Value = ((bool)(Original_FilesDownloaded));
+            this.Adapter.UpdateCommand.Parameters[95].Value = ((bool)(Original_FilesCopied));
             if ((Original_DownloadTrys.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((int)(Original_DownloadTrys.Value));
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((int)(Original_DownloadTrys.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[98].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PrintergyFile == null)) {
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[100].Value = ((string)(Original_PrintergyFile));
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
             }
             if ((Original_BookStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[101].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[102].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[101].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[102].Value = ((string)(Original_BookStatus));
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((string)(Original_BookStatus));
             }
             if ((Original_CoverStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[103].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[104].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[103].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[104].Value = ((string)(Original_CoverStatus));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((string)(Original_CoverStatus));
             }
             if ((Original_CurrentBookLoc == null)) {
-                this.Adapter.UpdateCommand.Parameters[105].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[106].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[105].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[106].Value = ((string)(Original_CurrentBookLoc));
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((string)(Original_CurrentBookLoc));
             }
             if ((Original_CurrentCoverLoc == null)) {
-                this.Adapter.UpdateCommand.Parameters[107].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[108].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[104].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[105].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[107].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[108].Value = ((string)(Original_CurrentCoverLoc));
+                this.Adapter.UpdateCommand.Parameters[104].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((string)(Original_CurrentCoverLoc));
             }
             if ((Original_Invoiced.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[109].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[110].Value = ((bool)(Original_Invoiced.Value));
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((bool)(Original_Invoiced.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[109].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[110].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[107].Value = global::System.DBNull.Value;
             }
             if ((Original_InvoiceDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[111].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[112].Value = ((System.DateTime)(Original_InvoiceDate.Value));
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((System.DateTime)(Original_InvoiceDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[111].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[112].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[109].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[113].Value = ((bool)(Original_JobTicketPrinted));
-            this.Adapter.UpdateCommand.Parameters[114].Value = ((bool)(Original_RemakeTicketPrinted));
+            this.Adapter.UpdateCommand.Parameters[110].Value = ((bool)(Original_JobTicketPrinted));
+            this.Adapter.UpdateCommand.Parameters[111].Value = ((bool)(Original_RemakeTicketPrinted));
             if ((Original_ReMakePrntDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[115].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[116].Value = ((System.DateTime)(Original_ReMakePrntDate.Value));
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((System.DateTime)(Original_ReMakePrntDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[115].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[116].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[113].Value = global::System.DBNull.Value;
             }
             if ((Original_OrderRePrint.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[117].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[118].Value = ((bool)(Original_OrderRePrint.Value));
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((bool)(Original_OrderRePrint.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[117].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[115].Value = global::System.DBNull.Value;
             }
             if ((Original_JobPrintBatch.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[119].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[120].Value = ((int)(Original_JobPrintBatch.Value));
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((int)(Original_JobPrintBatch.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[119].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[117].Value = global::System.DBNull.Value;
             }
             if ((Original_JobPrintDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[121].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[122].Value = ((System.DateTime)(Original_JobPrintDate.Value));
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((System.DateTime)(Original_JobPrintDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[121].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[119].Value = global::System.DBNull.Value;
             }
+            if ((Original_GroupId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[121].Value = ((int)(Original_GroupId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[121].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[122].Value = ((int)(Invno));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4518,11 +4542,10 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> DateShipped, 
@@ -4568,8 +4591,9 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<bool> OrderRePrint, 
                     global::System.Nullable<int> JobPrintBatch, 
                     global::System.Nullable<global::System.DateTime> JobPrintDate, 
+                    string ClientOrderId, 
+                    global::System.Nullable<int> GroupId, 
                     int Original_Invno, 
-                    string Original_ClientOrderId, 
                     global::System.Nullable<global::System.DateTime> Original_OrderReceivedDate, 
                     global::System.Nullable<global::System.DateTime> Original_RequestedShipDate, 
                     global::System.Nullable<global::System.DateTime> Original_DateShipped, 
@@ -4596,7 +4620,6 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     bool Original_FilesDownloaded, 
                     bool Original_FilesCopied, 
                     global::System.Nullable<int> Original_DownloadTrys, 
-                    string Original_PrintergyFile, 
                     string Original_BookStatus, 
                     string Original_CoverStatus, 
                     string Original_CurrentBookLoc, 
@@ -4608,8 +4631,9 @@ ORDER BY Invno, OrderReceivedDate DESC";
                     global::System.Nullable<global::System.DateTime> Original_ReMakePrntDate, 
                     global::System.Nullable<bool> Original_OrderRePrint, 
                     global::System.Nullable<int> Original_JobPrintBatch, 
-                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate) {
-            return this.Update(Original_Invno, ClientOrderId, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate, Original_Invno, Original_ClientOrderId, Original_OrderReceivedDate, Original_RequestedShipDate, Original_DateShipped, Original_ShipMethod, Original_ShipName, Original_ShipAddr, Original_ShipAddr2, Original_ShipCity, Original_ShipState, Original_ShipZip, Original_BookId, Original_Copies, Original_BookType, Original_BookBlockId, Original_Pages, Original_CoverId, Original_Description, Original_ProdCopies, Original_ProdInOrder, Original_DateModified, Original_ModifiedBy, Original_Weight, Original_TukiosOrderStatus, Original_FilesDownloaded, Original_FilesCopied, Original_DownloadTrys, Original_PrintergyFile, Original_BookStatus, Original_CoverStatus, Original_CurrentBookLoc, Original_CurrentCoverLoc, Original_Invoiced, Original_InvoiceDate, Original_JobTicketPrinted, Original_RemakeTicketPrinted, Original_ReMakePrntDate, Original_OrderRePrint, Original_JobPrintBatch, Original_JobPrintDate);
+                    global::System.Nullable<global::System.DateTime> Original_JobPrintDate, 
+                    global::System.Nullable<int> Original_GroupId) {
+            return this.Update(OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, ShipName, ShipAddr, ShipAddr2, ShipCity, ShipState, ShipZip, BookId, Copies, BookType, BookBlockId, Pages, BookBlockURL, BookBlockPreviewURL, CoverId, CoverURL, CoverPreviewURL, Description, ProdCopies, ProdInOrder, DateModified, ModifiedBy, TrackingNumber, Weight, TukiosOrderStatus, FilesDownloaded, FilesCopied, DownloadTrys, Notes, PrintergyFile, BookStatus, CoverStatus, CurrentBookLoc, CurrentCoverLoc, Invoiced, InvoiceDate, JobTicketPrinted, RemakeTicketPrinted, ReMakePrntDate, OrderRePrint, JobPrintBatch, JobPrintDate, ClientOrderId, GroupId, Original_Invno, Original_OrderReceivedDate, Original_RequestedShipDate, Original_DateShipped, Original_ShipMethod, Original_ShipName, Original_ShipAddr, Original_ShipAddr2, Original_ShipCity, Original_ShipState, Original_ShipZip, Original_BookId, Original_Copies, Original_BookType, Original_BookBlockId, Original_Pages, Original_CoverId, Original_Description, Original_ProdCopies, Original_ProdInOrder, Original_DateModified, Original_ModifiedBy, Original_Weight, Original_TukiosOrderStatus, Original_FilesDownloaded, Original_FilesCopied, Original_DownloadTrys, Original_BookStatus, Original_CoverStatus, Original_CurrentBookLoc, Original_CurrentCoverLoc, Original_Invoiced, Original_InvoiceDate, Original_JobTicketPrinted, Original_RemakeTicketPrinted, Original_ReMakePrntDate, Original_OrderRePrint, Original_JobPrintBatch, Original_JobPrintDate, Original_GroupId, Original_Invno);
         }
     }
     
@@ -4632,7 +4656,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         private global::System.Data.IDbConnection _connection;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public UpdateOrderOption UpdateOrder {
             get {
                 return this._updateOrder;
@@ -4643,7 +4667,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
@@ -4657,7 +4681,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -4668,7 +4692,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public global::System.Data.IDbConnection Connection {
             get {
@@ -4687,7 +4711,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public int TableAdapterInstanceCount {
             get {
@@ -4703,7 +4727,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         ///Update rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private int UpdateUpdatedRows(TukiosOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._tukiosOrderTableAdapter != null)) {
@@ -4722,7 +4746,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         ///Insert rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private int UpdateInsertedRows(TukiosOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._tukiosOrderTableAdapter != null)) {
@@ -4740,7 +4764,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         ///Delete rows in bottom-up order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private int UpdateDeletedRows(TukiosOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._tukiosOrderTableAdapter != null)) {
@@ -4758,7 +4782,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             if (((updatedRows == null) 
                         || (updatedRows.Length < 1))) {
@@ -4782,7 +4806,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         ///Update all changes to the dataset.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public virtual int UpdateAll(TukiosOrders dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
@@ -4911,13 +4935,13 @@ ORDER BY Invno, OrderReceivedDate DESC";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
             global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
             if ((this._connection != null)) {
                 return true;
@@ -4935,7 +4959,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         /// <summary>
         ///Update Order Option
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public enum UpdateOrderOption {
             
             InsertUpdateDelete = 0,
@@ -4946,7 +4970,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
         /// <summary>
         ///Used to sort self-referenced table's rows
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
             
             private global::System.Data.DataRelation _relation;
@@ -4954,7 +4978,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
             private int _childFirst;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
                 this._relation = relation;
                 if (childFirst) {
@@ -4966,7 +4990,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance) {
                 global::System.Diagnostics.Debug.Assert((row != null));
                 global::System.Data.DataRow root = row;
@@ -5005,7 +5029,7 @@ ORDER BY Invno, OrderReceivedDate DESC";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
                 if (object.ReferenceEquals(row1, row2)) {
                     return 0;

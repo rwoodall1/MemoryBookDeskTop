@@ -299,6 +299,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MixBookOrders.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\TukiosOrders.cs">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\TukiosOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

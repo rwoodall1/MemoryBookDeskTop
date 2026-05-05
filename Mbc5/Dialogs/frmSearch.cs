@@ -636,6 +636,8 @@ namespace Mbc5.Dialogs
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
                             break;
+                        case "TUKIOS":
+                            break;
                     }
                     break;
                 case "PRODNO":
@@ -733,6 +735,7 @@ namespace Mbc5.Dialogs
                             break;
                         case "COVERS":
                             break;
+                        
                     }
                     break;
                 case "FIRSTNAME":
