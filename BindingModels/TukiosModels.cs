@@ -7,8 +7,11 @@ namespace BindingModels
 
         public int Invno { get; set; }
         public string LastPageLocation { get; set; }
+        public string FirstPageLocation { get; set; }
+        public string CoverPageLocation { get; set; }
+
         public string PrintergyFile { get; set; }
-        public string BookBlockUrl { get; set; }
+        public string BookBlockURL { get; set; }
         public string ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
@@ -28,7 +31,7 @@ namespace BindingModels
         public bool JobTicketPrinted { get; set; }
         public int NumToShip { get; set; }
         public int JobPrintBatch { get; set; }
-        public string CoverPreviewUrl { get; set; }
+        public string CoverURL { get; set; }
         public string BookPreviewUrl { get; set; }
     }
 }

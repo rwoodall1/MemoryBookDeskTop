@@ -863,8 +863,10 @@ namespace Mbc5.Forms
 
         }
 
-
-        async private void SetLastPageImage()
+        async private void TukiosSetLastPageImage()
+        {
+        }
+            async private void SetLastPageImage()
         {
             var sqlClient = new SQLCustomClient();
 

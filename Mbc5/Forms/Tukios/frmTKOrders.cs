@@ -430,16 +430,26 @@ namespace Mbc5.Forms.Tukios
 
 
             var sqlClient = new SQLCustomClient().CommandText(@"
-                      Select Invno,ClientOrderId,BookBlockUrl,PrintergyFile,
-                        ShipName,RequestedShipDate,BookId,
-                        SUBSTRING(CAST(Invno as varchar),1,LEN(CAST(Invno as varchar)))+'   X'+SUBSTRING(CAST(Invno as varchar), Len(Replace(ClientOrderId,'-',''))+1, LEN(CAST(Invno as varchar))-Len(Replace(ClientOrderId,'-','')+1)) AS DSInvno,
-                         (Select Sum(Copies) from tukiosorder  where Clientorderid=clientOrderid )As NumToShip,
-                        Description,
-                        Copies,ProdCopies,Pages,
-                        Backing,OrderReceivedDate,
-                        ProdInOrder,'*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-                        '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
-                Case
+                      
+  Select Invno,
+  ClientOrderId,
+  BookBlockURL,
+CoverURL,
+  PrintergyFile,
+     ShipName,
+     RequestedShipDate,
+     BookId,
+     CAST(Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno,
+     (Select Sum(Copies) from tukiosorder  where Clientorderid=clientOrderid )As NumToShip,
+     Description,
+     Copies,ProdCopies,
+     Pages,
+    Backing,
+    OrderReceivedDate,
+    ProdInOrder,
+    '*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+    '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+    Case
 
                         when (ProdCopies>3 )  Then
 
@@ -460,7 +470,8 @@ namespace Mbc5.Forms.Tukios
             else
                 ProdCopies
             End AS SmallPressQty
-                        From TukiosOrder
+                
+        From TukiosOrder
         Where Invno=@Invno
                     ");
 
@@ -476,29 +487,31 @@ namespace Mbc5.Forms.Tukios
             var jobData = (TukiosJobTicketQuery)result.Data;
             if (jobData != null)
             {
-                jobData = this.SetLastPageImage(jobData);
+                jobData = this.SetPageImage(jobData);
+                string imagePath1Param = null;
                 string imagePath2Param = null;
-                if (!string.IsNullOrEmpty(jobData.LastPageLocation) && File.Exists(jobData.LastPageLocation))
-                {
-                    imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://...
-                }
-                else { return; }
+                string imagePath3Param = null;
+
+                imagePath1Param = new Uri(jobData.FirstPageLocation).AbsoluteUri; // yields file://...
+                imagePath2Param = new Uri(jobData.LastPageLocation).AbsoluteUri; // yields file://..
+                imagePath3Param = new Uri(jobData.CoverPageLocation).AbsoluteUri; // yields file://..
+
+
 
                 reportViewer3.LocalReport.DataSources.Clear();
                 JobTicketQueryBindingSource.DataSource = jobData;
                 try
                 {
-                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
-                    if (!string.IsNullOrEmpty(jobData.CoverPreviewUrl))
-                    {
-                        reportViewer3.LocalReport.EnableExternalImages = true;
-                        ReportParameter parameter = new ReportParameter("ImagePath", jobData.CoverPreviewUrl);
-                        ReportParameter parameter1 = new ReportParameter("ImagePath1", jobData.BookPreviewUrl);
-
-                        ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param);//path to image
-                        reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter1, parameter2 });
-                    }
                     reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.TukiosJobTicketSingle.rdlc";
+                    reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                    reportViewer3.LocalReport.EnableExternalImages = true;
+                    ReportParameter parameter = new ReportParameter("ImagePath", imagePath1Param ?? string.Empty);
+                    ReportParameter parameter2 = new ReportParameter("ImagePath2", imagePath2Param ?? string.Empty);
+                    ReportParameter parameter3 = new ReportParameter("ImagePath3", imagePath3Param ?? string.Empty);//path to image
+
+                    reportViewer3.LocalReport.SetParameters(new ReportParameter[] { parameter, parameter2, parameter3 });
+
+
                     this.reportViewer3.RefreshReport();
                 }
                 catch (Exception ex) { }
@@ -619,8 +632,19 @@ namespace Mbc5.Forms.Tukios
         //    //    }
 
         //    }
+        private TukiosJobTicketQuery SetPageImage(TukiosJobTicketQuery data)
+        {
+            TukiosJobTicketQuery result = SetLastPageImage(data);
+            result = SetFirstPageImage(result);
+            result = SetCoverPageImage(result);
+            return result;
+        }
         private TukiosJobTicketQuery SetLastPageImage(TukiosJobTicketQuery data)
         {
+            if (string.IsNullOrEmpty(data.BookBlockURL))
+            {
+                return data;
+            }
             string pdfPath = "";
             string file = data.PrintergyFile ?? "";
             int idx = file.IndexOf("_.");
@@ -641,7 +665,7 @@ namespace Mbc5.Forms.Tukios
             }
             else
             {
-                pdfPath = data.BookBlockUrl;
+                pdfPath = data.BookBlockURL;
             }
 
             // Suggest default filename based on PDF name
@@ -680,6 +704,7 @@ namespace Mbc5.Forms.Tukios
                 using (pdfStream)
                 {
                     // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+                    //LastPage
                     using (var doc = PdfDocument.Load(pdfStream))
                     {
                         if (doc.PageCount <= 0)
@@ -720,6 +745,7 @@ namespace Mbc5.Forms.Tukios
 
                         }
                     }
+
                 }
             }
             catch (Exception ex)
@@ -732,8 +758,244 @@ namespace Mbc5.Forms.Tukios
 
 
         }
+        private TukiosJobTicketQuery SetFirstPageImage(TukiosJobTicketQuery data)
+        {
+            if (string.IsNullOrEmpty(data.BookBlockURL))
+            {
+                return data;
+            }
+            string pdfPath = "";
+            string file = data.PrintergyFile ?? "";
+            int idx = file.IndexOf("_.");
+            if (idx > 0)
+            {
+                file = file.Substring(0, idx);
+            }
+            // original logic appended _BB.pdf
+            file += "_BB.pdf";
+
+            // combine UNC share + filename
+            string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+            if (File.Exists(archiveFullPath))
+            {
+                pdfPath = archiveFullPath;
+
+            }
+            else
+            {
+                pdfPath = data.BookBlockURL;
+            }
+
+            // Suggest default filename based on PDF name
+            string defaultName = data.Invno.ToString() + "FirstPage.jpeg";
+            var fullPath = Path.Combine(LastPageStorage, defaultName);
+            string firstPageImageFilePath = fullPath;
+            if (File.Exists(firstPageImageFilePath))
+            {
+                data.FirstPageLocation = firstPageImageFilePath;
+                return data;
+
+            }
+            Stream pdfStream = null;
+            if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                using (var http = new HttpClient())
+                {
+                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                    resp.EnsureSuccessStatusCode();
+                    // copy to memory so stream is seekable for PdfiumViewer
+                    var ms = new MemoryStream();
+                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                    ms.Position = 0;
+                    pdfStream = ms;
+                }
+            }
+            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+            {
+                pdfStream = File.OpenRead(pdfPath);
+            }
 
 
+            try
+            {
+                using (pdfStream)
+                {
+                    // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+                    //LastPage
+                    using (var doc = PdfDocument.Load(pdfStream))
+                    {
+                        if (doc.PageCount <= 0)
+                        {
+                            MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return data;
+                        }
+
+                        // Render the last page (choose another index if you want)
+                        int pageIndex = Math.Max(0, 1 - 1);
+
+                        // Desired DPI
+                        int dpi = 300;
+
+                        // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
+                        // PageSizes entries are in points (1 point = 1/72 inch)
+                        var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+                        int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                        int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                        // Clamp to avoid extremely large bitmaps (adjust limit as needed)
+                        const int maxDimension = 10000;
+                        if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                        {
+                            double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                            pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                            pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                        }
+
+                        // Render page to a Bitmap using Pdfium (includes annotations)
+                        using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                        {
+
+                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            data.FirstPageLocation = firstPageImageFilePath;
+                            return data;
+                            //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show full exception to aid diagnosis of native/pdfium issues
+                MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return data;
+            }
+
+
+
+        }
+        private TukiosJobTicketQuery SetCoverPageImage(TukiosJobTicketQuery data)
+        {
+            if (string.IsNullOrEmpty(data.CoverURL))
+            {
+                return data;
+            }
+            string pdfPath = "";
+            string file = data.PrintergyFile ?? "";
+            int idx = file.IndexOf("_.");
+            if (idx > 0)
+            {
+                file = file.Substring(0, idx);
+            }
+            // original logic appended _BB.pdf
+            file += "_CV.pdf";
+
+            // combine UNC share + filename
+            string archiveFullPath = Path.Combine(BookArchivePath, file);
+
+            if (File.Exists(archiveFullPath))
+            {
+                pdfPath = archiveFullPath;
+
+            }
+            else
+            {
+                pdfPath = data.CoverURL;
+            }
+
+            // Suggest default filename based on PDF name
+            string defaultName = data.Invno.ToString() + "CoverPage.jpeg";
+            var fullPath = Path.Combine(LastPageStorage, defaultName);
+            string coverPageImageFilePath = fullPath;
+            if (File.Exists(coverPageImageFilePath))
+            {
+                data.CoverPageLocation = coverPageImageFilePath;
+                return data;
+
+            }
+            Stream pdfStream = null;
+            if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                using (var http = new HttpClient())
+                {
+                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
+                    resp.EnsureSuccessStatusCode();
+                    // copy to memory so stream is seekable for PdfiumViewer
+                    var ms = new MemoryStream();
+                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
+                    ms.Position = 0;
+                    pdfStream = ms;
+                }
+            }
+            else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
+            {
+                pdfStream = File.OpenRead(pdfPath);
+            }
+
+
+            try
+            {
+                using (pdfStream)
+                {
+                    // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
+                    //LastPage
+                    using (var doc = PdfDocument.Load(pdfStream))
+                    {
+                        if (doc.PageCount <= 0)
+                        {
+                            MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return data;
+                        }
+
+                        // Render the last page (choose another index if you want)
+                        int pageIndex = Math.Max(0, 1 - 1);
+
+                        // Desired DPI
+                        int dpi = 300;
+
+                        // Determine target pixel size from PDF page size (PdfiumViewer exposes PageSizes in points)
+                        // PageSizes entries are in points (1 point = 1/72 inch)
+                        var pageSize = doc.PageSizes[pageIndex]; // SizeF (width/height in points)
+                        int pixelWidth = (int)Math.Ceiling(pageSize.Width / 72.0f * dpi);
+                        int pixelHeight = (int)Math.Ceiling(pageSize.Height / 72.0f * dpi);
+
+                        // Clamp to avoid extremely large bitmaps (adjust limit as needed)
+                        const int maxDimension = 10000;
+                        if (pixelWidth > maxDimension || pixelHeight > maxDimension)
+                        {
+                            double scale = Math.Min((double)maxDimension / pixelWidth, (double)maxDimension / pixelHeight);
+                            pixelWidth = Math.Max(1, (int)(pixelWidth * scale));
+                            pixelHeight = Math.Max(1, (int)(pixelHeight * scale));
+                        }
+
+                        // Render page to a Bitmap using Pdfium (includes annotations)
+                        using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                        {
+
+                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            data.CoverPageLocation = coverPageImageFilePath;
+                            return data;
+                            //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show full exception to aid diagnosis of native/pdfium issues
+                MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return data;
+            }
+
+
+
+        }
 
 
         private void PrintPackingList(int vClientOrderId)
@@ -1430,6 +1692,6 @@ namespace Mbc5.Forms.Tukios
             this.Cursor = Cursors.Default;
         }
 
-       
+
     }
 }
