@@ -426,6 +426,10 @@ namespace Mbc5.Forms.Tukios
         }
         private void PrintJobTicket()
         {
+            if (tukiosOrderBindingSource.Current == null)
+            {
+                return;
+            }
             var value = ((DataRowView)tukiosOrderBindingSource.Current).Row["Invno"].ToString();
 
 

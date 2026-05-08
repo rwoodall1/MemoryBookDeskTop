@@ -49,12 +49,12 @@
             System.Windows.Forms.Label jobPrintBatchLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label groupIdLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -394,14 +394,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tukiosOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tukiosOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tukiosOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodticket,
@@ -478,9 +478,9 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverUrl";
-            dataGridViewCellStyle10.Format = "Cover";
-            dataGridViewCellStyle10.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "Cover";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -527,9 +527,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource13.Name = "DataSet1";
-            reportDataSource13.Value = null;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource13);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = null;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer2.LocalReport.EnableExternalImages = true;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
@@ -829,11 +829,12 @@
             this.reportViewer3.DocumentMapWidth = 35;
             this.reportViewer3.LocalReport.EnableExternalImages = true;
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(172, 391);
+            this.reportViewer3.Location = new System.Drawing.Point(0, 443);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(977, 274);
+            this.reportViewer3.Size = new System.Drawing.Size(92, 93);
             this.reportViewer3.TabIndex = 10024;
+            this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
             // 
             // btnEdit
@@ -873,12 +874,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource14.Name = "dsMxPackingSlip";
-            reportDataSource14.Value = null;
-            reportDataSource15.Name = "dsMixBookRemakeTkt";
-            reportDataSource15.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource14);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource15);
+            reportDataSource2.Name = "dsMxPackingSlip";
+            reportDataSource2.Value = null;
+            reportDataSource3.Name = "dsMixBookRemakeTkt";
+            reportDataSource3.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";

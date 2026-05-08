@@ -950,18 +950,27 @@ namespace Mbc5.Forms
                 return;
             }
 
-            foreach (TukiosJobTicketQuery data in model)
+            // Fire and forget using Task.Run
+            Task.Run(async () =>
             {
-                Task.Run(() =>
+                foreach (TukiosJobTicketQuery data in model)
                 {
-                    TukiosJobTicketQuery updateResult = SetTukiosLastPageImage(data);
-                    updateResult = SetFirstPageImage(updateResult);
-                    updateResult = SetCoverPageImage(updateResult);
-                });
-            }
+                    try
+                    {
+                        TukiosJobTicketQuery updateResult = await SetTukiosLastPageImageAsync(data);
+                        updateResult = await SetFirstPageImageAsync(updateResult);
+                        updateResult = await SetCoverPageImageAsync(updateResult);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Error processing document flow for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    }
+                }
+            });
+            var done = 1;
         }
 
-        private TukiosJobTicketQuery SetTukiosLastPageImage(TukiosJobTicketQuery data)
+        private async Task<TukiosJobTicketQuery> SetTukiosLastPageImageAsync(TukiosJobTicketQuery data)
         {
             if (string.IsNullOrEmpty(data.BookBlockURL))
             {
@@ -983,7 +992,6 @@ namespace Mbc5.Forms
             if (File.Exists(archiveFullPath))
             {
                 pdfPath = archiveFullPath;
-
             }
             else
             {
@@ -1004,15 +1012,24 @@ namespace Mbc5.Forms
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
                 pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
             {
-                using (var http = new HttpClient())
+                // Increase the timeout to prevent TaskCanceledException due to slow connections
+                using (var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) })
                 {
-                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                    resp.EnsureSuccessStatusCode();
-                    // copy to memory so stream is seekable for PdfiumViewer
-                    var ms = new MemoryStream();
-                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                    ms.Position = 0;
-                    pdfStream = ms;
+                    try
+                    {
+                        var resp = await http.GetAsync(pdfPath);
+                        resp.EnsureSuccessStatusCode();
+                        // copy to memory so stream is seekable for PdfiumViewer
+                        var ms = new MemoryStream();
+                        await resp.Content.CopyToAsync(ms);
+                        ms.Position = 0;
+                        pdfStream = ms;
+                    }
+                    catch (TaskCanceledException ex)
+                    {
+                        Log.Error($"Download timed out for URL: {pdfPath}. Exception: {ex.Message}");
+                        return data;
+                    }
                 }
             }
             else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
@@ -1025,13 +1042,20 @@ namespace Mbc5.Forms
             {
                 using (pdfStream)
                 {
+                    // If pdfStream is still null, early return.
+                    if (pdfStream == null) return data;
+
                     // Load PDF with PdfiumViewer (uses native pdfium for reliable rendering)
                     //LastPage
                     using (var doc = PdfDocument.Load(pdfStream))
                     {
                         if (doc.PageCount <= 0)
                         {
-                            MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // If showing a MessageBox here, invoke it on the UI thread since we're in Task.Run
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                MessageBox.Show(this, "PDF contains no pages.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            });
                             return data;
                         }
 
@@ -1081,7 +1105,7 @@ namespace Mbc5.Forms
 
 
         }
-        private TukiosJobTicketQuery SetFirstPageImage(TukiosJobTicketQuery data)
+        private async Task<TukiosJobTicketQuery> SetFirstPageImageAsync(TukiosJobTicketQuery data)
         {
             if (string.IsNullOrEmpty(data.BookBlockURL))
             {
@@ -1124,15 +1148,23 @@ namespace Mbc5.Forms
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
                 pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
             {
-                using (var http = new HttpClient())
+                using (var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) })
                 {
-                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                    resp.EnsureSuccessStatusCode();
-                    // copy to memory so stream is seekable for PdfiumViewer
-                    var ms = new MemoryStream();
-                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                    ms.Position = 0;
-                    pdfStream = ms;
+                    try
+                    {
+                        var resp = await http.GetAsync(pdfPath);
+                        resp.EnsureSuccessStatusCode();
+                        // copy to memory so stream is seekable for PdfiumViewer
+                        var ms = new MemoryStream();
+                        await resp.Content.CopyToAsync(ms);
+                        ms.Position = 0;
+                        pdfStream = ms;
+                    }
+                    catch (TaskCanceledException ex)
+                    {
+                        Log.Error($"Download timed out for URL: {pdfPath}. Exception: {ex.Message}");
+                        return data;
+                    }
                 }
             }
             else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
@@ -1202,7 +1234,7 @@ namespace Mbc5.Forms
 
 
         }
-        private TukiosJobTicketQuery SetCoverPageImage(TukiosJobTicketQuery data)
+        private async Task<TukiosJobTicketQuery> SetCoverPageImageAsync(TukiosJobTicketQuery data)
         {
             if (string.IsNullOrEmpty(data.CoverURL))
             {
@@ -1245,15 +1277,23 @@ namespace Mbc5.Forms
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
                 pdfPath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
             {
-                using (var http = new HttpClient())
+                using (var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) })
                 {
-                    var resp = http.GetAsync(pdfPath).GetAwaiter().GetResult();
-                    resp.EnsureSuccessStatusCode();
-                    // copy to memory so stream is seekable for PdfiumViewer
-                    var ms = new MemoryStream();
-                    resp.Content.ReadAsStreamAsync().GetAwaiter().GetResult().CopyTo(ms);
-                    ms.Position = 0;
-                    pdfStream = ms;
+                    try
+                    {
+                        var resp = await http.GetAsync(pdfPath);
+                        resp.EnsureSuccessStatusCode();
+                        // copy to memory so stream is seekable for PdfiumViewer
+                        var ms = new MemoryStream();
+                        await resp.Content.CopyToAsync(ms);
+                        ms.Position = 0;
+                        pdfStream = ms;
+                    }
+                    catch (TaskCanceledException ex)
+                    {
+                        Log.Error($"Download timed out for URL: {pdfPath}. Exception: {ex.Message}");
+                        return data;
+                    }
                 }
             }
             else if (!string.IsNullOrEmpty(pdfPath) && File.Exists(pdfPath))
@@ -1322,12 +1362,6 @@ namespace Mbc5.Forms
 
 
         }
-
-
-
-
-
-
         async private void SetLastPageImage()
         {
             var sqlClient = new SQLCustomClient();
@@ -1474,7 +1508,6 @@ namespace Mbc5.Forms
 
 
         }
-
         private void MixbookOrderRuleCheck()
         {
             //Look for order with pages 200 or more. Put whole order on hold send a notifiction to MB and TF.
@@ -1600,6 +1633,7 @@ namespace Mbc5.Forms
 					CASE
 						When  W.Rmbtot % 4=0 Then
 						W.Rmbtot/4
+
 						When W.Rmbtot % 4>0 Then
 						(W.Rmbtot/4)+1
 					End
