@@ -444,7 +444,7 @@ CoverURL,
      RequestedShipDate,
      BookId,
      CAST(Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno,
-     (Select Sum(Copies) from tukiosorder  where Clientorderid=clientOrderid )As NumToShip,
+     (Select Sum(Copies) from tukiosorder  where Clientorderid=TO1.ClientOrderid )As NumToShip,
      Description,
      Copies,ProdCopies,
      Pages,
@@ -475,7 +475,7 @@ CoverURL,
                 ProdCopies
             End AS SmallPressQty
                 
-        From TukiosOrder
+        From TukiosOrder TO1
         Where Invno=@Invno
                     ");
 

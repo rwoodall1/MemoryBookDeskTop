@@ -735,6 +735,7 @@
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />

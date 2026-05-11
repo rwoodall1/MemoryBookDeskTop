@@ -3,6 +3,7 @@ using BaseClass.Classes;
 using BindingModels;
 using Exceptionless;
 
+
 //using Mbc5.Reports;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -752,6 +753,104 @@ namespace Mbc5.Forms
 
 
         }
+        public async void PrintTukiosJobTickets()
+        {
+
+            string value = "";
+            DateTime startTime = DateTime.Now;
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.CommandText(@"
+                   Select Top(50) Invno,
+  ClientOrderId,
+  BookBlockURL,
+CoverURL,
+  PrintergyFile,
+     ShipName,
+     RequestedShipDate,
+     BookId,
+     CAST(Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno,
+     (Select Sum(Copies) from tukiosorder  where Clientorderid=TO1.ClientOrderid ) As NumToShip,
+     Description,
+     Copies,ProdCopies,
+     Pages,
+    Backing,
+    OrderReceivedDate,
+    ProdInOrder,
+    '*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+    '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+    Case
+
+                        when (ProdCopies>3 )  Then
+
+                        CASE
+                        When  ProdCopies % 4=0 Then
+                        ProdCopies/4
+
+                        When ProdCopies % 4>0 Then
+                        (ProdCopies/4)+1
+                        End
+                       else
+                        ProdCopies
+                        End AS LargePressQty,
+
+            Case
+              when ProdCopies>4 Then
+           		ProdCopies/1
+            else
+                ProdCopies
+            End AS SmallPressQty
+                
+        From TukiosOrder  TO1
+Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTicketPrinted = 0)
+                       AND(BookStatus IS Null OR BookStatus = '') ORDER BY Description,Copies
+                ");
+
+            var result = sqlClient.SelectMany<TukiosJobTicketQuery>();
+            if (result.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for TukiosJobTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+
+            var jobData = (List<TukiosJobTicketQuery>)result.Data;
+            if (jobData == null)
+            {
+                JobTicketsPrinted = 0;
+                MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
+                ClearLastPage(startTime);
+                return;
+            }
+            foreach (TukiosJobTicketQuery job in jobData)
+            {
+
+                job.LastPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+                job.FirstPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "FirstPage.jpeg").AbsoluteUri;
+                job.CoverPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "CoverPage.jpeg").AbsoluteUri;
+            }
+
+
+            this.JobTicketsPrinted += 50;
+
+            //Only 50 in query will repeat until all records printed.
+            reportViewer1.LocalReport.DataSources.Clear();
+            JobTicketQueryBindingSource.DataSource = jobData;
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.TukiosJobTicketQuery.rdlc";
+            SetBatchNumber();
+
+            // IMPORTANT: allow external images and ensure LastPageLocation contains a file:// URI
+            reportViewer1.LocalReport.EnableExternalImages = true;
+
+            this.reportViewer1.RefreshReport();
+
+
+        }
+
+
+
+
         private void ClearLastPage(DateTime startTime)
         {
             try
@@ -1563,6 +1662,35 @@ namespace Mbc5.Forms
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"Update MixbookOrder Set JobPrintBatch=@PrintBatch Where Invno=@Invno");
             foreach (JobTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+
+                sqlClient.AddParameter("@PrintBatch", batchNumber);
+                var updateResult = sqlClient.Update();
+            }
+        }
+        private void SetTukiosBatchNumber()
+        {
+            int batchNumber = 0;
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Max(JobPrintBatch)From TukiosOrder");
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error getting tukios batch number:" + result.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Error getting batch number, print cancelled.");
+                return;
+            }
+
+            string tmpbatchNumber = result.Data;
+            int.TryParse(tmpbatchNumber, out batchNumber);
+            batchNumber += 1;
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update TukiosOrder Set JobPrintBatch=@PrintBatch Where Invno=@Invno");
+            foreach (TukiosJobTicketQuery rec in JobTicketQueryBindingSource.List)
             {
 
                 var vInvno = rec.Invno.ToString();
@@ -2767,6 +2895,12 @@ namespace Mbc5.Forms
                 }
 
             }
+        }
+
+        private void printJobTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JobTicketsPrinted = 0;
+            PrintTukiosJobTickets();
         }
 
 

@@ -21,20 +21,28 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookBlockURL">
+          <DataField>BookBlockURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="BookPreviewUrl">
           <DataField>BookPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Copies">
           <DataField>Copies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CoverPreviewUrl">
-          <DataField>CoverPreviewUrl</DataField>
+        <Field Name="CoverPageLocation">
+          <DataField>CoverPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CoverURL">
+          <DataField>CoverURL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Description">
@@ -43,6 +51,10 @@
         </Field>
         <Field Name="DSInvno">
           <DataField>DSInvno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstPageLocation">
+          <DataField>FirstPageLocation</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Invno">
@@ -61,6 +73,10 @@
           <DataField>LargePressQty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="LastPageLocation">
+          <DataField>LastPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NumInOrder">
           <DataField>NumInOrder</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -76,6 +92,10 @@
         <Field Name="Pages">
           <DataField>Pages</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrintergyFile">
+          <DataField>PrintergyFile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ProdCopies">
           <DataField>ProdCopies</DataField>
@@ -108,8 +128,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BindingModels</rd:DataSetName>
-        <rd:TableName>JobTicketQuery</rd:TableName>
-        <rd:ObjectDataSourceType>BindingModels.JobTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>TukiosJobTicketQuery</rd:TableName>
+        <rd:ObjectDataSourceType>BindingModels.TukiosJobTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

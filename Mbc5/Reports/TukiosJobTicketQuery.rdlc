@@ -21,24 +21,28 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BookBlockURL">
+          <DataField>BookBlockURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="BookPreviewUrl">
           <DataField>BookPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BookUrl">
-          <DataField>BookUrl</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Copies">
           <DataField>Copies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CoverPreviewUrl">
-          <DataField>CoverPreviewUrl</DataField>
+        <Field Name="CoverPageLocation">
+          <DataField>CoverPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CoverURL">
+          <DataField>CoverURL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Description">
@@ -47,6 +51,10 @@
         </Field>
         <Field Name="DSInvno">
           <DataField>DSInvno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstPageLocation">
+          <DataField>FirstPageLocation</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Invno">
@@ -85,6 +93,10 @@
           <DataField>Pages</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="PrintergyFile">
+          <DataField>PrintergyFile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ProdCopies">
           <DataField>ProdCopies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -116,8 +128,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BindingModels</rd:DataSetName>
-        <rd:TableName>JobTicketQuery</rd:TableName>
-        <rd:ObjectDataSourceType>BindingModels.JobTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>TukiosJobTicketQuery</rd:TableName>
+        <rd:ObjectDataSourceType>BindingModels.TukiosJobTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -894,7 +906,7 @@
                             </Line>
                             <Image Name="Image1">
                               <Source>External</Source>
-                              <Value>=Fields!CoverPreviewUrl.Value</Value>
+                              <Value>=Fields!CoverPageLocation.Value</Value>
                               <Sizing>FitProportional</Sizing>
                               <Top>5.40973in</Top>
                               <Left>5.43292in</Left>
@@ -1043,7 +1055,7 @@
                             </Textbox>
                             <Image Name="Image2">
                               <Source>External</Source>
-                              <Value>=Fields!BookPreviewUrl.Value</Value>
+                              <Value>=Fields!FirstPageLocation.Value</Value>
                               <Sizing>FitProportional</Sizing>
                               <Top>5.40973in</Top>
                               <Left>0.11805in</Left>
@@ -1338,10 +1350,47 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ImagePath">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ImagePath2">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ImagePath3">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ImagePath</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ImagePath2</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ImagePath3</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <Code>Public Function ConvertValue(ByVal value As Object) As String
