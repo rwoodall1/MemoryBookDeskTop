@@ -294,6 +294,10 @@ namespace Mbc5.Classes
                         sqlClient.AddParameter("@BookStatus", "Trimming");
 
                         var result111 = sqlClient.Update();
+                        if (result111.IsError)
+                        {
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Order Status:" + result111.Errors[0].DeveloperMessage);
+                        }
 
                         break;
                     case "BINDING2":
@@ -1232,11 +1236,11 @@ namespace Mbc5.Classes
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"Update TukiosOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
-                var updateResul1t = sqlClient.Update();
-                if (updateResul1t.IsError)
+                var updateResult2 = sqlClient.Update();
+                if (updateResult2.IsError)
                 {
                     MbcMessageBox.Error("Failed to update Order remake data.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Tukios Order Remake Data YB:" + updateResul1t.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update Tukios Order Remake Data YB:" + updateResult2.Errors[0].DeveloperMessage);
                     return false;
                 }
 
@@ -1608,7 +1612,7 @@ namespace Mbc5.Classes
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to print DataMatrix Label");
             }
         }
-        private void PrintPackingList(int vClientOrderId)
+        private void PrintPackingList(string vClientOrderId)
         {
             MbcMessageBox.Information("Packing slip printing is not currently available. Contact your supervisor.", "Packing Slip Unavailable");
             //var sqlClient = new SQLCustomClient();

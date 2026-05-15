@@ -195,7 +195,7 @@ namespace BindingModels
         public string ShipName { get; set; }
         public string ShipMethod { get; set; }
 
-        public int ClientOrderId { get; set; }
+        public string ClientOrderId { get; set; }
         public int Invno { get; set; }
         public string ProdNo { get; set; }
         public string Specovr { get; set; }
