@@ -1111,7 +1111,7 @@ namespace Mbc5.Classes
                 if (deleteResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to remove wip scans for this order. Try again or contact a supervisor.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to remove wip scans for this order:" + deleteResult1.Errors[0].DeveloperMessage);
                     return false;
                 }
 
@@ -1132,7 +1132,7 @@ namespace Mbc5.Classes
                 if (updateResult1.IsError)
                 {
                     MbcMessageBox.Error("Failed to update wip remake date.");
-                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult.Errors[0].DeveloperMessage);
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update wip remake date:" + updateResult1.Errors[0].DeveloperMessage);
                     return false;
                 }
 
