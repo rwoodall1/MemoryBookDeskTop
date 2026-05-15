@@ -524,12 +524,6 @@
     <Compile Include="Forms\JPIX\Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MixBook\frmCaseMatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -627,12 +621,6 @@
     </Compile>
     <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmTest.Designer.cs">
-      <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
@@ -823,9 +811,6 @@
     <EmbeddedResource Include="Forms\JPIX\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -871,9 +856,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmTest.resx">
-      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>
@@ -921,8 +903,8 @@
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\JPIXFlyerWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
@@ -946,6 +928,7 @@
     <EmbeddedResource Include="Reports\test.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosPkgList.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />

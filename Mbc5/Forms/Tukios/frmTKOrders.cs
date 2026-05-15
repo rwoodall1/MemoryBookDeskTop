@@ -325,7 +325,7 @@ namespace Mbc5.Forms.Tukios
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
+                sqlClient.CommandText(@"Update TukiosOrder SET CoverStatus='',CurrentCoverLoc='' where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 var updateResult11 = sqlClient.Update();
                 if (updateResult11.IsError)
@@ -372,7 +372,7 @@ namespace Mbc5.Forms.Tukios
                 }
 
                 sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Update MixbookOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
+                sqlClient.CommandText(@"Update TukiosOrder SET BookStatus='',CurrentBookLoc='',RemakeTicketPrinted=0 where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", Invno);
                 var updateResul1t = sqlClient.Update();
                 if (updateResul1t.IsError)
@@ -1260,27 +1260,27 @@ CoverURL,
         private void PrintPackingList(int vClientOrderId)
         {
             MessageBox.Show("Packing slip printing is currently unavailable. Please contact a supervisor.", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        var sqlClient = new SQLCustomClient();
-            //        sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
+            //var sqlClient = new SQLCustomClient();
+            //sqlClient.CommandText(@"Select MO.Invno,MO.CoverPreviewUrl,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode
             //                            ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
             //                            FROM MixbookOrder MO
             //                            Left Join ShipCarriers SC On MO.ShipMethod=SC.ShipAlias
             //                            Left Join CoverDetail CD On MO.Invno=CD.Invno AND CD.DescripId IN (Select TOP 1 DescripId From coverdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc )
             //                            Left Join WipDetail WD On MO.Invno=WD.Invno AND WD.DescripId IN (Select TOP 1 DescripId From wipdetail where  COALESCE(mxbLocation,'')!='' AND Invno=MO.Invno  Order by DescripId desc ) 
             //                            Where ClientOrderId=@ClientOrderId");
-            //        sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
-            //        var result = sqlClient.SelectMany<MixbookPackingSlip>();
-            //        if (result.IsError || result.Data == null)
-            //        {
-            //            MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
-            //            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
-            //            return;
-            //        }
-            //        var packingSlipData = (List<MixbookPackingSlip>)result.Data;
-            //        reportViewer2.LocalReport.DataSources.Clear();
-            //        reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
-            //        reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
-            //        reportViewer2.RefreshReport();
+            //sqlClient.AddParameter("@ClientOrderId", vClientOrderId);
+            //var result = sqlClient.SelectMany<MixbookPackingSlip>();
+            //if (result.IsError || result.Data == null)
+            //{
+            //    MbcMessageBox.Error("Failed to retrieve order, packing slip could not be printed");
+            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to print packing list:" + result.Errors[0].DeveloperMessage);
+            //    return;
+            //}
+            //var packingSlipData = (List<MixbookPackingSlip>)result.Data;
+            //reportViewer2.LocalReport.DataSources.Clear();
+            //reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookPkgList.rdlc";
+            //reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsMxPackingSlip", packingSlipData));
+            //reportViewer2.RefreshReport();
         }
         private void PrintRemakeTicket(int vInvno)
         {
