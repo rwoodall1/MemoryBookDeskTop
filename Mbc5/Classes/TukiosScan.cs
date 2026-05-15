@@ -452,7 +452,7 @@ namespace Mbc5.Classes
                         sqlClient.AddParameter("@Schcode", "1");
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                                     Begin
-                                                                    INSERT INTO WipDetail (DescripID,War,Wir,WTR,Invno,Schcode) VALUES(@DescripID,@WAR,@WIR,@WTR,@Invno,@Schcode)
+                                                                    INSERT INTO WipDetail (DescripID,War,Wir,WTR,Invno,Schcode) VALUES(@DescripID,@WAR,@WIR,@WTR,@Invno,@Schcode);
                                                                     END
                                                                     ");
 
@@ -547,7 +547,7 @@ namespace Mbc5.Classes
 
                         sqlClient.AddParameter("@Schcode", "1");
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                                                WAR=@WAR,WTR=@WTR,WIR =@WIR,Schcode@Schcode WHERE Invno=@Invno AND DescripID=@DescripID ");
+                                                                WAR=@WAR,WTR=@WTR,WIR =@WIR,Schcode=@Schcode WHERE Invno=@Invno AND DescripID=@DescripID ");
 
                         var mxResult2 = sqlClient.Update();
                         if (mxResult2.IsError)
@@ -562,6 +562,7 @@ namespace Mbc5.Classes
                         sqlClient.AddParameter("@DescripID", vDeptCode);
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
+
 
                         sqlClient.AddParameter("@Schcode", "1");
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
@@ -703,7 +704,7 @@ namespace Mbc5.Classes
 
                         sqlClient.AddParameter("@MxbLocation", location);
                         sqlClient.CommandText(@"Update WIPDetail SET
-                                                                WAR=@WAR, WIR =@WIR,WTR=@WTR,MxbLocation=@MxbLocationWHERE Invno=@Invno AND DescripID=@DescripID");
+                                                                WAR=@WAR, WIR =@WIR,WTR=@WTR,MxbLocation=@MxbLocation WHERE Invno=@Invno AND DescripID=@DescripID");
                         var mxResult3 = sqlClient.Update();
                         if (mxResult3.IsError)
                         {
@@ -1480,10 +1481,10 @@ namespace Mbc5.Classes
                     sqlClient.AddParameter("@WIR", "SYS");
 
                     sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                Begin
-                                                INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-                                                END
-                                                ");
+                                            Begin
+                                            INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                            END
+                                            ");
                     var result12 = sqlClient.Insert();
                     if (result12.IsError)
                     {
