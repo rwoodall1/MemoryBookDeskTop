@@ -131,6 +131,7 @@
             this.tukiosOrderTableAdapter = new Mbc5.DataSets.TukiosOrdersTableAdapters.TukiosOrderTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -162,6 +163,7 @@
             this.tukiosOrderBindingNavigator.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -1167,6 +1169,10 @@
             this.tableAdapterManager1.TukiosOrderTableAdapter = this.tukiosOrderTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // RemakeTicketQueryBindingSource
+            // 
+            this.RemakeTicketQueryBindingSource.DataSource = typeof(BindingModels.RemakeTicketQuery);
+            // 
             // frmTKOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,6 +1222,7 @@
             this.tukiosOrderBindingNavigator.PerformLayout();
             this.pnlButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.JobTicketQueryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemakeTicketQueryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1299,5 +1306,6 @@
         private System.Windows.Forms.BindingSource JobTicketQueryBindingSource;
         private System.Windows.Forms.Label groupIdLabel1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.BindingSource RemakeTicketQueryBindingSource;
     }
 }

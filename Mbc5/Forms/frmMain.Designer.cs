@@ -80,6 +80,8 @@
             this.invoiceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetJobTicketsByBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scnCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tukiosReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printJobTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,8 +126,7 @@
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.tukiosReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printJobTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printRemakeTicketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -521,7 +522,6 @@
             this.printRemakeTicketsToolStripMenuItem.Name = "printRemakeTicketsToolStripMenuItem";
             this.printRemakeTicketsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.printRemakeTicketsToolStripMenuItem.Text = "Print Remake Tickets";
-            this.printRemakeTicketsToolStripMenuItem.Click += new System.EventHandler(this.printRemakeTicketsToolStripMenuItem_Click);
             // 
             // invoiceReportToolStripMenuItem
             // 
@@ -545,6 +545,22 @@
             this.scnCheckToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.scnCheckToolStripMenuItem.Text = "Scan Check";
             this.scnCheckToolStripMenuItem.Click += new System.EventHandler(this.scanCheckToolStripMenuItem_Click);
+            // 
+            // tukiosReportsToolStripMenuItem
+            // 
+            this.tukiosReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printJobTicketsToolStripMenuItem,
+            this.printRemakeTicketsToolStripMenuItem1});
+            this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
+            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
+            // 
+            // printJobTicketsToolStripMenuItem
+            // 
+            this.printJobTicketsToolStripMenuItem.Name = "printJobTicketsToolStripMenuItem";
+            this.printJobTicketsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printJobTicketsToolStripMenuItem.Text = "Print Job Tickets";
+            this.printJobTicketsToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketsToolStripMenuItem_Click);
             // 
             // jPIXReportsToolStripMenuItem
             // 
@@ -937,20 +953,12 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // tukiosReportsToolStripMenuItem
+            // printRemakeTicketsToolStripMenuItem1
             // 
-            this.tukiosReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.printJobTicketsToolStripMenuItem});
-            this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
-            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
-            // 
-            // printJobTicketsToolStripMenuItem
-            // 
-            this.printJobTicketsToolStripMenuItem.Name = "printJobTicketsToolStripMenuItem";
-            this.printJobTicketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.printJobTicketsToolStripMenuItem.Text = "Print Job Tickets";
-            this.printJobTicketsToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketsToolStripMenuItem_Click);
+            this.printRemakeTicketsToolStripMenuItem1.Name = "printRemakeTicketsToolStripMenuItem1";
+            this.printRemakeTicketsToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.printRemakeTicketsToolStripMenuItem1.Text = "Print Remake Tickets";
+            this.printRemakeTicketsToolStripMenuItem1.Click += new System.EventHandler(this.printTukiosRemakeTicketsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1079,5 +1087,6 @@
         private System.Windows.Forms.ToolStripMenuItem tukiosOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tukiosReportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printJobTicketsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printRemakeTicketsToolStripMenuItem1;
     }
 }

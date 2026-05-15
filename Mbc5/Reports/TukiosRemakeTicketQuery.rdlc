@@ -37,6 +37,10 @@
           <DataField>Copies</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="CoverPageLocation">
+          <DataField>CoverPageLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="CoverPreviewUrl">
           <DataField>CoverPreviewUrl</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -47,6 +51,10 @@
         </Field>
         <Field Name="DSInvno">
           <DataField>DSInvno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstPageLocation">
+          <DataField>FirstPageLocation</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Invno">
@@ -120,8 +128,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BindingModels</rd:DataSetName>
-        <rd:TableName>RemakeTicketQuery</rd:TableName>
-        <rd:ObjectDataSourceType>BindingModels.RemakeTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>TukiosRemakeTicketQuery</rd:TableName>
+        <rd:ObjectDataSourceType>BindingModels.TukiosRemakeTicketQuery, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -1176,7 +1184,7 @@
                             </Textbox>
                             <Image Name="Image10">
                               <Source>External</Source>
-                              <Value>=Fields!CoverPreviewUrl.Value</Value>
+                              <Value>=Fields!CoverPageLocation.Value</Value>
                               <Sizing>FitProportional</Sizing>
                               <Top>4.96701in</Top>
                               <Left>5.52773in</Left>
@@ -1191,7 +1199,7 @@
                             </Image>
                             <Image Name="Image11">
                               <Source>External</Source>
-                              <Value>=Fields!BookPreviewUrl.Value</Value>
+                              <Value>=Fields!FirstPageLocation.Value</Value>
                               <Sizing>FitProportional</Sizing>
                               <Top>4.96701in</Top>
                               <Left>0.15069in</Left>
@@ -1278,7 +1286,7 @@
                               <Source>External</Source>
                               <Value>=Fields!LastPageLocation.Value</Value>
                               <Sizing>FitProportional</Sizing>
-                              <Top>4.967in</Top>
+                              <Top>4.96701in</Top>
                               <Left>2.84727in</Left>
                               <Height>2.11633in</Height>
                               <Width>2.184in</Width>

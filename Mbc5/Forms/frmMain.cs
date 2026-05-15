@@ -819,7 +819,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             {
                 JobTicketsPrinted = 0;
                 MbcMessageBox.Hand("All jobs have been printed", "Job Tickets");
-                ClearLastPage(startTime);
+                ClearTukiosLastPage(startTime);
                 return;
             }
             foreach (TukiosJobTicketQuery job in jobData)
@@ -847,9 +847,26 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
 
 
         }
-
-
-
+        private void ClearTukiosLastPage(DateTime startTime)
+        {
+            try
+            {
+                var dir = new DirectoryInfo(TukiosPageStorage);
+                foreach (var file1 in dir.GetFiles("*.jpeg"))
+                {
+                    var fileAge = file1.LastWriteTime;
+                    if (file1.LastWriteTime < startTime.AddDays(-3))
+                    {
+                        file1.Delete();
+                    }
+                    //file1.Delete();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error clearing tukios last page images:" + ex.ToString());
+            }
+        }
 
         private void ClearLastPage(DateTime startTime)
         {
@@ -1829,6 +1846,91 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
 
 
         }
+        private void PrintTukiosRemakeTickets()
+        {
+            var sqlClient = new SQLCustomClient().CommandText(@"
+           Select  TO1.Invno
+                ,TO1.ShipName
+                ,TO1.ClientOrderId
+                ,TO1.RequestedShipDate
+                ,TO1.Description
+                ,TO1.Copies,TO1.Pages
+               ,TO1. CoverURL
+                ,TO1.BookBlockURL
+                ,TO1.Backing,TO1.OrderReceivedDate,PrintergyFile
+                ,TO1.ProdInOrder
+                ,CAST(TO1.Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno             
+                ,(Select Sum(Copies) from TukiosOrder where Clientorderid=TO1.clientOrderid )As NumToShip 
+                ,'*MXB'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
+                              
+                ,'*MXB'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
+                ,W.Rmbto AS RemakeDate
+                ,W.Rmbtot As RemakeTotal
+                ,wd.invno
+                 ,Case
+
+                        when (ProdCopies>3 )  Then
+
+                        CASE
+                        When  ProdCopies % 4=0 Then
+                        ProdCopies/4
+
+                        When ProdCopies % 4>0 Then
+                        (ProdCopies/4)+1
+                        End
+                       else
+                        ProdCopies
+                        End AS LargePressQty
+
+            ,Case
+              when ProdCopies>4 Then
+           		ProdCopies/1
+            else
+                ProdCopies
+            End AS SmallPressQty
+
+                From TukiosOrder TO1 LEFT JOIN WIP W ON TO1.Invno=W.INVNO
+                Left Join (Select * From WipDetail)Wd On W.Invno=wd.invno
+                Where(TO1.TukiosOrderStatus != 'Cancelled' OR TO1.TukiosOrderStatus != 'Hold') and W.Rmbto IS NOT NULL AND TO1.RemakeTicketPrinted = 0 and Wd.Invno Is Null
+            ");
+
+
+
+            var result = sqlClient.SelectMany<TukiosRemakeTicketQuery>();
+            if (result.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retieve orders for RemakeTicketQuery:" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+
+            var jobData = (List<TukiosRemakeTicketQuery>)result.Data;
+            if (jobData == null)
+            {
+                MbcMessageBox.Hand("All remake tickets have been printed", "Remake Tickets");
+                return;
+            }
+            foreach (TukiosRemakeTicketQuery job in jobData)
+            {
+                job.LastPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "LastPage.jpeg").AbsoluteUri;
+                job.FirstPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "FirstPage.jpeg").AbsoluteUri;
+                job.CoverPageLocation = new Uri(TukiosPageStorage + job.Invno.ToString() + "CoverPage.jpeg").AbsoluteUri;
+            }
+
+            if (jobData != null)
+            {
+                //jobData = SetLastPageImage(jobData);
+                reportViewer1.LocalReport.DataSources.Clear();
+                JobTicketQueryBindingSource.DataSource = jobData;
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.TukiosRemakeTicketQuery.rdlc";
+
+                this.reportViewer1.RefreshReport();
+            }
+
+
+
+        }
 
         private void SetRemakeTicketsPrinted()
         {
@@ -2646,7 +2748,10 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
         {
             PrintRemakeTickets();
         }
-
+        private void printTukiosRemakeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintTukiosRemakeTickets();
+        }
 
 
         private void coverSearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2902,6 +3007,9 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             JobTicketsPrinted = 0;
             PrintTukiosJobTickets();
         }
+
+
+
 
 
 

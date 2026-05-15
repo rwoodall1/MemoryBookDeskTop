@@ -736,6 +736,7 @@
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TukiosRemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -918,12 +919,12 @@
     <EmbeddedResource Include="Reports\JPIXJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
     <EmbeddedResource Include="Reports\JPIXFlyerWipReport.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
@@ -945,6 +946,8 @@
     <EmbeddedResource Include="Reports\test.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosRemakeTicketQuery.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>
