@@ -190,6 +190,27 @@ namespace BindingModels
 
 
     }
+    public class TukiosBarScanModel
+    {
+        public string ShipName { get; set; }
+        public string ShipMethod { get; set; }
+
+        public int ClientOrderId { get; set; }
+        public int Invno { get; set; }
+        public string ProdNo { get; set; }
+        public string Specovr { get; set; }
+        public string BookId { get; set; }
+        public int Quantity { get; set; }
+        public string Backing { get; set; }
+        public string BookPreviewUrl { get; set; }
+        public string CoverPreviewUrl { get; set; }
+        public string BookLocation { get; set; }
+        public string PrintergyFile { get; set; }
+        public int ProdInOrder { get; set; }
+        public int NumProducts { get; set; }
+        public string ShippingMethodName { get; set; }
+        public string TukiosOrderStatus { get; set; }
+    }
 
     public class MixBookBarScanModel
     {

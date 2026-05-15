@@ -133,6 +133,11 @@ namespace Mbc5.Forms.MixBook
                             JPXScan();
                             break;
                         }
+                    case "TUK":
+                        {
+                            TUKScan();
+                            break;
+                        }
                     default:
                         {
                             MbcMessageBox.Error("Scan code does not have a valid company prefix");

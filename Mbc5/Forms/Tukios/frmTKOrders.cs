@@ -451,8 +451,8 @@ CoverURL,
     Backing,
     OrderReceivedDate,
     ProdInOrder,
-    '*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-    '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+    '*TUK'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+    '*TUK'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
     Case
 
                         when (ProdCopies>3 )  Then

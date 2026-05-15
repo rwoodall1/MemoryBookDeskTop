@@ -54,22 +54,34 @@ namespace BindingModels
 
         }
     }
+    public class TUKScanData : RawScanData
+    {
+        public TUKScanData(string _barcode, Department _department, string _trackingnumber = "", RemakeData _remake = null, bool _printtolabeler = false, TukiosBarScanModel _tukdata = null, object _form = null)
+           : base(_barcode, _department, _trackingnumber, _remake, _printtolabeler)
+        {
+            TukData = _tukdata;
+            ScanForm = _form;
+        }
+        public TukiosBarScanModel TukData { get; set; }
+        public object ScanForm { get; set; }
+    }
 
 
 
     public class ScanData
     {
 
-        public ScanData(JPIXScanData _jpixscandata = null, MXBScanData mxbscandata = null)
+        public ScanData(JPIXScanData _jpixscandata = null, MXBScanData mxbscandata = null, TUKScanData tukiosscandata = null)
         {
             JPIXScanData = _jpixscandata;
 
             MxbScanData = mxbscandata;
-
+            TukiosScanData = tukiosscandata;
 
         }
         public JPIXScanData JPIXScanData { get; set; }
         public MXBScanData MxbScanData { get; set; }
+        public TUKScanData TukiosScanData { get; set; }
 
     }
     public class Department

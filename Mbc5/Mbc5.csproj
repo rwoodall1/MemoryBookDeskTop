@@ -294,6 +294,7 @@
     <Compile Include="Classes\IScan.cs" />
     <Compile Include="Classes\JPIXScan.cs" />
     <Compile Include="Classes\MixBookScan.cs" />
+    <Compile Include="Classes\TukiosScan.cs" />
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
