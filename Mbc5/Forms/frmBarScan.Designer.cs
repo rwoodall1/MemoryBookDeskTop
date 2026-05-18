@@ -85,6 +85,7 @@
             this.txtBarCode.AsciiOnly = true;
             this.txtBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarCode.Location = new System.Drawing.Point(169, 40);
+            this.txtBarCode.Mask = ">LLL0000000CCLL";
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(143, 22);
             this.txtBarCode.TabIndex = 0;
@@ -338,6 +339,7 @@
             this.cmbLogin.Name = "cmbLogin";
             this.cmbLogin.Size = new System.Drawing.Size(169, 21);
             this.cmbLogin.TabIndex = 10027;
+            this.cmbLogin.Visible = false;
             this.cmbLogin.SelectedValueChanged += new System.EventHandler(this.cmbLogin_SelectedValueChanged);
             // 
             // label9
