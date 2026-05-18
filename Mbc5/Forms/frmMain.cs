@@ -3016,6 +3016,13 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTukiosCoverSearch.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void wIPReportToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmTukiosWipReport frmTukiosWipReport = new frmTukiosWipReport(this.ApplicationUser);
+            frmTukiosWipReport.MdiParent = this;
+            frmTukiosWipReport.Show();
+        }
         #endregion
         //nothing below here
     }

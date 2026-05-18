@@ -623,17 +623,17 @@
     <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmWipReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
-      <DependentUpon>frmWipReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tukios\frmTukiosCoverSearch.cs">
       <SubType>Form</SubType>
@@ -646,6 +646,12 @@
     </Compile>
     <Compile Include="Forms\Tukios\frmTKOrders.Designer.cs">
       <DependentUpon>frmTKOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosWipReport.Designer.cs">
+      <DependentUpon>frmTukiosWipReport.cs</DependentUpon>
     </Compile>
     <Compile Include="LookUpForms\LkpCustType.cs">
       <SubType>Form</SubType>
@@ -864,17 +870,20 @@
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
-      <DependentUpon>frmWipReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
+      <DependentUpon>frmWipReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosCoverSearch.resx">
       <DependentUpon>frmTukiosCoverSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTKOrders.resx">
       <DependentUpon>frmTKOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosWipReport.resx">
+      <DependentUpon>frmTukiosWipReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
       <DependentUpon>LkpCustType.cs</DependentUpon>

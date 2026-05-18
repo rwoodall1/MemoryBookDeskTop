@@ -139,6 +139,7 @@ namespace BindingModels
     public class WipReportModel
     {
         public string Invno { get; set; }
+        public int GroupId { get; set; }
         public string ShipName { get; set; }
         public string Backing { get; set; }
         public int Copies { get; set; }
