@@ -84,6 +84,7 @@
             this.tukiosReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printJobTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printRemakeTicketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +129,7 @@
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.caseMatchScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -179,7 +180,7 @@
             this.shippingScanToolStripMenuItem,
             this.mixBookUSPSLabelToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
             // 
             // mixBookOrdersToolStripMenuItem
@@ -230,7 +231,7 @@
             this.jPIXOrdersToolStripMenuItem1,
             this.jPIXOrderDetailToolStripMenuItem});
             this.jPIXOrdersToolStripMenuItem.Name = "jPIXOrdersToolStripMenuItem";
-            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jPIXOrdersToolStripMenuItem.Text = "JPIX ";
             // 
             // jPIXOrdersToolStripMenuItem1
@@ -251,9 +252,10 @@
             // 
             this.tukiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tukiosOrdersToolStripMenuItem,
-            this.tukiosCoverSearchToolStripMenuItem});
+            this.tukiosCoverSearchToolStripMenuItem,
+            this.caseMatchScanToolStripMenuItem1});
             this.tukiosToolStripMenuItem.Name = "tukiosToolStripMenuItem";
-            this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosToolStripMenuItem.Text = "Tukios";
             // 
             // tukiosOrdersToolStripMenuItem
@@ -276,7 +278,7 @@
             this.productionWIPToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -296,21 +298,21 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Visible = false;
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
@@ -410,7 +412,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -424,7 +426,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             this.labelsToolStripMenuItem.Visible = false;
             // 
@@ -480,7 +482,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -509,7 +511,7 @@
             this.resetJobTicketsByBatchToolStripMenuItem,
             this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             this.mixbookReportsToolStripMenuItem.Click += new System.EventHandler(this.mixbookReportsToolStripMenuItem_Click);
             // 
@@ -563,7 +565,7 @@
             this.printRemakeTicketsToolStripMenuItem1,
             this.wIPReportToolStripMenuItem2});
             this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
-            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
             // 
             // printJobTicketsToolStripMenuItem
@@ -580,6 +582,13 @@
             this.printRemakeTicketsToolStripMenuItem1.Text = "Print Remake Tickets";
             this.printRemakeTicketsToolStripMenuItem1.Click += new System.EventHandler(this.printTukiosRemakeTicketsToolStripMenuItem_Click);
             // 
+            // wIPReportToolStripMenuItem2
+            // 
+            this.wIPReportToolStripMenuItem2.Name = "wIPReportToolStripMenuItem2";
+            this.wIPReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.wIPReportToolStripMenuItem2.Text = "WIP Report";
+            this.wIPReportToolStripMenuItem2.Click += new System.EventHandler(this.wIPReportToolStripMenuItem2_Click);
+            // 
             // jPIXReportsToolStripMenuItem
             // 
             this.jPIXReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -587,7 +596,7 @@
             this.invoiceReportToolStripMenuItem1,
             this.resetJobTicketsByBatchToolStripMenuItem1});
             this.jPIXReportsToolStripMenuItem.Name = "jPIXReportsToolStripMenuItem";
-            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.jPIXReportsToolStripMenuItem.Text = "JPIX Reports";
             // 
             // wipReportToolStripMenuItem1
@@ -971,12 +980,12 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // wIPReportToolStripMenuItem2
+            // caseMatchScanToolStripMenuItem1
             // 
-            this.wIPReportToolStripMenuItem2.Name = "wIPReportToolStripMenuItem2";
-            this.wIPReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.wIPReportToolStripMenuItem2.Text = "WIP Report";
-            this.wIPReportToolStripMenuItem2.Click += new System.EventHandler(this.wIPReportToolStripMenuItem2_Click);
+            this.caseMatchScanToolStripMenuItem1.Name = "caseMatchScanToolStripMenuItem1";
+            this.caseMatchScanToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.caseMatchScanToolStripMenuItem1.Text = "Case Match Scan";
+            this.caseMatchScanToolStripMenuItem1.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem1_Click);
             // 
             // frmMain
             // 
@@ -1108,5 +1117,6 @@
         private System.Windows.Forms.ToolStripMenuItem printRemakeTicketsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tukiosCoverSearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wIPReportToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem1;
     }
 }

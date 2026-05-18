@@ -3023,6 +3023,15 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTukiosWipReport.MdiParent = this;
             frmTukiosWipReport.Show();
         }
+
+        private void caseMatchScanToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTukiosCaseMatch frmTukiosCaseMatch = new frmTukiosCaseMatch(this.ApplicationUser, this);
+
+            frmTukiosCaseMatch.MdiParent = this;
+            frmTukiosCaseMatch.Show();
+            this.Cursor = Cursors.Default;
+        }
         #endregion
         //nothing below here
     }
