@@ -531,12 +531,6 @@
     <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
-      <DependentUpon>frmCoverSearch.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -593,6 +587,12 @@
     <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MixBook\frmMBOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -634,6 +634,12 @@
     </Compile>
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCoverSearch.Designer.cs">
+      <DependentUpon>frmTukiosCoverSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tukios\frmTKOrders.cs">
       <SubType>Form</SubType>
@@ -815,9 +821,6 @@
     <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
       <DependentUpon>frmCaseMatch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
-      <DependentUpon>frmCoverSearch.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -843,6 +846,9 @@
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
       <DependentUpon>frmMBOrders.cs</DependentUpon>
     </EmbeddedResource>
@@ -863,6 +869,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosCoverSearch.resx">
+      <DependentUpon>frmTukiosCoverSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTKOrders.resx">
       <DependentUpon>frmTKOrders.cs</DependentUpon>

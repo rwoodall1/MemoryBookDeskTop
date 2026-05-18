@@ -3008,15 +3008,14 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             PrintTukiosJobTickets();
         }
 
+        private void tukiosCoverSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTukiosCoverSearch frmTukiosCoverSearch = new frmTukiosCoverSearch(this.ApplicationUser);
 
-
-
-
-
-
-
-
-
+            frmTukiosCoverSearch.MdiParent = this;
+            frmTukiosCoverSearch.Show();
+            this.Cursor = Cursors.Default;
+        }
         #endregion
         //nothing below here
     }
