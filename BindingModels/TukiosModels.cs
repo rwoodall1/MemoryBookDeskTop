@@ -34,4 +34,6 @@ namespace BindingModels
         public string CoverURL { get; set; }
         public string BookPreviewUrl { get; set; }
     }
+
+
 }

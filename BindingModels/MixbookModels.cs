@@ -169,6 +169,7 @@ namespace BindingModels
     public class NoBookScannedReportModel
     {
         public string Invno { get; set; }
+        public int GroupId { get; set; }
         public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string ShipName { get; set; }
@@ -190,6 +191,15 @@ namespace BindingModels
 
 
 
+    }
+    public class TukiosItemScanModel
+    {
+
+        public int ClientOrderId { get; set; }
+        public int Invno { get; set; }
+        public string ItemId { get; set; }
+        public int Quantity { get; set; }
+        public string Description { get; set; }
     }
     public class TukiosBarScanModel
     {

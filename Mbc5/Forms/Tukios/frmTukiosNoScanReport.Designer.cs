@@ -1,6 +1,6 @@
 ﻿namespace Mbc5.Forms.Tukios
 {
-    partial class frmTukiosWipReport
+    partial class frmTukiosNoScanReport
     {
         /// <summary>
         /// Required designer variable.
@@ -30,41 +30,40 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clientOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgScans = new System.Windows.Forms.DataGridView();
             this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Backing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoverPress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Trimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coverremake = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coverRemake = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Scan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoverPress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTrimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OnBoards = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoverCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WipPress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PTrimming = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shpCarrier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsWip = new System.Windows.Forms.BindingSource(this.components);
+            this.Binding = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PressCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CaseIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsData = new System.Windows.Forms.BindingSource(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataSet1 = new System.Data.DataSet();
             this.lblRecCount = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lblcopycnt = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsWip)).BeginInit();
+            this.rbBooks = new System.Windows.Forms.RadioButton();
+            this.rbCovers = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dgScans)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,16 +71,16 @@
             // 
             this.basePanel.Size = new System.Drawing.Size(29, 28);
             // 
-            // dataGridView1
+            // dgScans
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgScans.AllowUserToAddRows = false;
+            this.dgScans.AllowUserToDeleteRows = false;
+            this.dgScans.AllowUserToOrderColumns = true;
+            this.dgScans.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgScans.AutoGenerateColumns = false;
+            this.dgScans.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,10 +88,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientOrderId,
+            this.dgScans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgScans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgScans.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipName,
             this.Column1,
             this.GroupId,
@@ -101,37 +99,29 @@
             this.Column7,
             this.Column8,
             this.Backing,
-            this.CoverPress,
-            this.Trimming,
-            this.Column10,
-            this.Column11,
-            this.coverremake,
             this.BookRemake,
-            this.Column14,
+            this.coverRemake,
+            this.WarDate,
+            this.Scan,
+            this.CoverPress,
+            this.CTrimming,
+            this.OnBoards,
+            this.CoverCart,
+            this.WipPress,
             this.PTrimming,
-            this.Column15,
-            this.Column16,
-            this.Column17,
-            this.Column18,
-            this.shpCarrier});
-            this.dataGridView1.DataSource = this.bsWip;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1172, 518);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            // 
-            // clientOrderId
-            // 
-            this.clientOrderId.DataPropertyName = "ClientOrderId";
-            this.clientOrderId.HeaderText = "clientorderid";
-            this.clientOrderId.Name = "clientOrderId";
-            this.clientOrderId.ReadOnly = true;
-            this.clientOrderId.Visible = false;
+            this.Binding,
+            this.PressCart,
+            this.CaseIn,
+            this.Quality});
+            this.dgScans.DataSource = this.bsData;
+            this.dgScans.EnableHeadersVisualStyles = false;
+            this.dgScans.Location = new System.Drawing.Point(12, 76);
+            this.dgScans.Name = "dgScans";
+            this.dgScans.ReadOnly = true;
+            this.dgScans.RowHeadersVisible = false;
+            this.dgScans.Size = new System.Drawing.Size(1172, 518);
+            this.dgScans.TabIndex = 1;
+            this.dgScans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgScans_CellContentClick);
             // 
             // ShipName
             // 
@@ -146,8 +136,6 @@
             this.Column1.HeaderText = "Invno";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // GroupId
             // 
@@ -191,41 +179,6 @@
             this.Backing.Name = "Backing";
             this.Backing.ReadOnly = true;
             // 
-            // CoverPress
-            // 
-            this.CoverPress.DataPropertyName = "CPress";
-            this.CoverPress.HeaderText = "CoverPress";
-            this.CoverPress.Name = "CoverPress";
-            this.CoverPress.ReadOnly = true;
-            // 
-            // Trimming
-            // 
-            this.Trimming.DataPropertyName = "CTrimming";
-            this.Trimming.HeaderText = "CTrim";
-            this.Trimming.Name = "Trimming";
-            this.Trimming.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "OnBoards";
-            this.Column10.HeaderText = "OnBoards";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "CCart";
-            this.Column11.HeaderText = "CoverCart";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // coverremake
-            // 
-            this.coverremake.DataPropertyName = "IsCoverRemake";
-            this.coverremake.HeaderText = "IsCoverRemake";
-            this.coverremake.Name = "coverremake";
-            this.coverremake.ReadOnly = true;
-            // 
             // BookRemake
             // 
             this.BookRemake.DataPropertyName = "IsBookRemake";
@@ -233,12 +186,61 @@
             this.BookRemake.Name = "BookRemake";
             this.BookRemake.ReadOnly = true;
             // 
-            // Column14
+            // coverRemake
             // 
-            this.Column14.DataPropertyName = "WipPress";
-            this.Column14.HeaderText = "WipPress";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
+            this.coverRemake.DataPropertyName = "IsCoverRemake";
+            this.coverRemake.HeaderText = "IsCoverRemake";
+            this.coverRemake.Name = "coverRemake";
+            this.coverRemake.ReadOnly = true;
+            // 
+            // WarDate
+            // 
+            this.WarDate.DataPropertyName = "War";
+            this.WarDate.HeaderText = "Last Scan";
+            this.WarDate.Name = "WarDate";
+            this.WarDate.ReadOnly = true;
+            // 
+            // Scan
+            // 
+            this.Scan.DataPropertyName = "Scan";
+            this.Scan.HeaderText = "Scan";
+            this.Scan.Name = "Scan";
+            this.Scan.ReadOnly = true;
+            // 
+            // CoverPress
+            // 
+            this.CoverPress.DataPropertyName = "CPress";
+            this.CoverPress.HeaderText = "CoverPress";
+            this.CoverPress.Name = "CoverPress";
+            this.CoverPress.ReadOnly = true;
+            // 
+            // CTrimming
+            // 
+            this.CTrimming.DataPropertyName = "CTrimming";
+            this.CTrimming.HeaderText = "CTrim";
+            this.CTrimming.Name = "CTrimming";
+            this.CTrimming.ReadOnly = true;
+            // 
+            // OnBoards
+            // 
+            this.OnBoards.DataPropertyName = "OnBoards";
+            this.OnBoards.HeaderText = "OnBoards";
+            this.OnBoards.Name = "OnBoards";
+            this.OnBoards.ReadOnly = true;
+            // 
+            // CoverCart
+            // 
+            this.CoverCart.DataPropertyName = "CCart";
+            this.CoverCart.HeaderText = "CoverCart";
+            this.CoverCart.Name = "CoverCart";
+            this.CoverCart.ReadOnly = true;
+            // 
+            // WipPress
+            // 
+            this.WipPress.DataPropertyName = "WipPress";
+            this.WipPress.HeaderText = "WipPress";
+            this.WipPress.Name = "WipPress";
+            this.WipPress.ReadOnly = true;
             // 
             // PTrimming
             // 
@@ -247,40 +249,33 @@
             this.PTrimming.Name = "PTrimming";
             this.PTrimming.ReadOnly = true;
             // 
-            // Column15
+            // Binding
             // 
-            this.Column15.DataPropertyName = "Binding";
-            this.Column15.HeaderText = "Binding";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
+            this.Binding.DataPropertyName = "Binding";
+            this.Binding.HeaderText = "Binding";
+            this.Binding.Name = "Binding";
+            this.Binding.ReadOnly = true;
             // 
-            // Column16
+            // PressCart
             // 
-            this.Column16.DataPropertyName = "Location39";
-            this.Column16.HeaderText = "PressCart";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
+            this.PressCart.DataPropertyName = "Location39";
+            this.PressCart.HeaderText = "PressCart";
+            this.PressCart.Name = "PressCart";
+            this.PressCart.ReadOnly = true;
             // 
-            // Column17
+            // CaseIn
             // 
-            this.Column17.DataPropertyName = "CaseIn";
-            this.Column17.HeaderText = "CaseIn";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
+            this.CaseIn.DataPropertyName = "CaseIn";
+            this.CaseIn.HeaderText = "CaseIn";
+            this.CaseIn.Name = "CaseIn";
+            this.CaseIn.ReadOnly = true;
             // 
-            // Column18
+            // Quality
             // 
-            this.Column18.DataPropertyName = "Quality";
-            this.Column18.HeaderText = "Quality";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // shpCarrier
-            // 
-            this.shpCarrier.DataPropertyName = "ShipCarrier";
-            this.shpCarrier.HeaderText = "Ship Carrier";
-            this.shpCarrier.Name = "shpCarrier";
-            this.shpCarrier.ReadOnly = true;
+            this.Quality.DataPropertyName = "Qaulity";
+            this.Quality.HeaderText = "Quality";
+            this.Quality.Name = "Quality";
+            this.Quality.ReadOnly = true;
             // 
             // btnRefresh
             // 
@@ -322,65 +317,62 @@
             // lblRecCount
             // 
             this.lblRecCount.AutoSize = true;
-            this.lblRecCount.Location = new System.Drawing.Point(401, 56);
+            this.lblRecCount.Location = new System.Drawing.Point(605, 52);
             this.lblRecCount.Name = "lblRecCount";
-            this.lblRecCount.Size = new System.Drawing.Size(0, 13);
+            this.lblRecCount.Size = new System.Drawing.Size(34, 13);
             this.lblRecCount.TabIndex = 5;
+            this.lblRecCount.Text = "count";
             // 
-            // label1
+            // rbBooks
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(650, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "RequestDate Equal to or less than";
-            this.label1.Visible = false;
+            this.rbBooks.AutoSize = true;
+            this.rbBooks.Checked = true;
+            this.rbBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbBooks.Location = new System.Drawing.Point(248, 50);
+            this.rbBooks.Name = "rbBooks";
+            this.rbBooks.Size = new System.Drawing.Size(133, 17);
+            this.rbBooks.TabIndex = 6;
+            this.rbBooks.TabStop = true;
+            this.rbBooks.Text = "Check Book Scans";
+            this.rbBooks.UseVisualStyleBackColor = true;
+            this.rbBooks.CheckedChanged += new System.EventHandler(this.rbBooks_CheckedChanged);
             // 
-            // dateTimePicker1
+            // rbCovers
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(835, 45);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
-            this.dateTimePicker1.TabIndex = 6;
-            this.dateTimePicker1.Visible = false;
+            this.rbCovers.AutoSize = true;
+            this.rbCovers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCovers.Location = new System.Drawing.Point(387, 50);
+            this.rbCovers.Name = "rbCovers";
+            this.rbCovers.Size = new System.Drawing.Size(137, 17);
+            this.rbCovers.TabIndex = 7;
+            this.rbCovers.Text = "Check Cover Scans";
+            this.rbCovers.UseVisualStyleBackColor = true;
+            this.rbCovers.CheckedChanged += new System.EventHandler(this.rbCovers_CheckedChanged);
             // 
-            // lblcopycnt
-            // 
-            this.lblcopycnt.AutoSize = true;
-            this.lblcopycnt.Location = new System.Drawing.Point(506, 55);
-            this.lblcopycnt.Name = "lblcopycnt";
-            this.lblcopycnt.Size = new System.Drawing.Size(35, 13);
-            this.lblcopycnt.TabIndex = 8;
-            this.lblcopycnt.Text = "label2";
-            // 
-            // frmTukiosWipReport
+            // frmTukiosNoScanReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1196, 626);
-            this.Controls.Add(this.lblcopycnt);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.rbCovers);
+            this.Controls.Add(this.rbBooks);
             this.Controls.Add(this.lblRecCount);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "frmTukiosWipReport";
-            this.Text = "Tukios WIP Report";
+            this.Controls.Add(this.dgScans);
+            this.Name = "frmTukiosNoScanReport";
+            this.Text = "Tukiois No Scan Report";
             this.Load += new System.EventHandler(this.frmWipReport_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
-            this.Controls.SetChildIndex(this.dataGridView1, 0);
+            this.Controls.SetChildIndex(this.dgScans, 0);
             this.Controls.SetChildIndex(this.btnRefresh, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
             this.Controls.SetChildIndex(this.lblRecCount, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker1, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.lblcopycnt, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsWip)).EndInit();
+            this.Controls.SetChildIndex(this.rbBooks, 0);
+            this.Controls.SetChildIndex(this.rbCovers, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.dgScans)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -389,38 +381,37 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource bsWip;
+        private System.Windows.Forms.DataGridView dgScans;
+        private System.Windows.Forms.BindingSource bsData;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Data.DataSet dataSet1;
         private System.Windows.Forms.Label lblRecCount;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label lblcopycnt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientOrderId;
+        private System.Windows.Forms.RadioButton rbBooks;
+        private System.Windows.Forms.RadioButton rbCovers;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
-        private System.Windows.Forms.DataGridViewLinkColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Backing;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CoverPress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Trimming;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coverremake;
         private System.Windows.Forms.DataGridViewTextBoxColumn BookRemake;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coverRemake;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WarDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Scan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CoverPress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTrimming;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OnBoards;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CoverCart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WipPress;
         private System.Windows.Forms.DataGridViewTextBoxColumn PTrimming;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shpCarrier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Binding;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PressCart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CaseIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quality;
     }
 }

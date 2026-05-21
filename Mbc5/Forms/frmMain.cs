@@ -3032,6 +3032,22 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTukiosCaseMatch.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void scanCheckToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmTukiosNoScanReport frmTukiosNoScanReport = new frmTukiosNoScanReport(this.ApplicationUser);
+            frmTukiosNoScanReport.MdiParent = this;
+            frmTukiosNoScanReport.Show();
+        }
+
+        private void shippingScanToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTKBookShipping frmTkBookShipping = new frmTKBookShipping(this.ApplicationUser);
+
+            frmTkBookShipping.MdiParent = this;
+            frmTkBookShipping.Show();
+            this.Cursor = Cursors.Default;
+        }
         #endregion
         //nothing below here
     }

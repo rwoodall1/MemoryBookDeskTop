@@ -45,6 +45,8 @@
             this.tukiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tukiosOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tukiosCoverSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caseMatchScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.shippingScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +87,7 @@
             this.printJobTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printRemakeTicketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scanCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,10 +129,9 @@
             this.pnlNotice = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.caseMatchScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -253,7 +255,8 @@
             this.tukiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tukiosOrdersToolStripMenuItem,
             this.tukiosCoverSearchToolStripMenuItem,
-            this.caseMatchScanToolStripMenuItem1});
+            this.caseMatchScanToolStripMenuItem1,
+            this.shippingScanToolStripMenuItem1});
             this.tukiosToolStripMenuItem.Name = "tukiosToolStripMenuItem";
             this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosToolStripMenuItem.Text = "Tukios";
@@ -271,6 +274,20 @@
             this.tukiosCoverSearchToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.tukiosCoverSearchToolStripMenuItem.Text = "Tukios Cover Search";
             this.tukiosCoverSearchToolStripMenuItem.Click += new System.EventHandler(this.tukiosCoverSearchToolStripMenuItem_Click);
+            // 
+            // caseMatchScanToolStripMenuItem1
+            // 
+            this.caseMatchScanToolStripMenuItem1.Name = "caseMatchScanToolStripMenuItem1";
+            this.caseMatchScanToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.caseMatchScanToolStripMenuItem1.Text = "Case Match Scan";
+            this.caseMatchScanToolStripMenuItem1.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem1_Click);
+            // 
+            // shippingScanToolStripMenuItem1
+            // 
+            this.shippingScanToolStripMenuItem1.Name = "shippingScanToolStripMenuItem1";
+            this.shippingScanToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.shippingScanToolStripMenuItem1.Text = "Shipping Scan";
+            this.shippingScanToolStripMenuItem1.Click += new System.EventHandler(this.shippingScanToolStripMenuItem1_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -563,7 +580,8 @@
             this.tukiosReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.printJobTicketsToolStripMenuItem,
             this.printRemakeTicketsToolStripMenuItem1,
-            this.wIPReportToolStripMenuItem2});
+            this.wIPReportToolStripMenuItem2,
+            this.scanCheckToolStripMenuItem});
             this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
             this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
@@ -588,6 +606,13 @@
             this.wIPReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
             this.wIPReportToolStripMenuItem2.Text = "WIP Report";
             this.wIPReportToolStripMenuItem2.Click += new System.EventHandler(this.wIPReportToolStripMenuItem2_Click);
+            // 
+            // scanCheckToolStripMenuItem
+            // 
+            this.scanCheckToolStripMenuItem.Name = "scanCheckToolStripMenuItem";
+            this.scanCheckToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.scanCheckToolStripMenuItem.Text = "Scan Check";
+            this.scanCheckToolStripMenuItem.Click += new System.EventHandler(this.scanCheckToolStripMenuItem_Click_1);
             // 
             // jPIXReportsToolStripMenuItem
             // 
@@ -980,13 +1005,6 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // caseMatchScanToolStripMenuItem1
-            // 
-            this.caseMatchScanToolStripMenuItem1.Name = "caseMatchScanToolStripMenuItem1";
-            this.caseMatchScanToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
-            this.caseMatchScanToolStripMenuItem1.Text = "Case Match Scan";
-            this.caseMatchScanToolStripMenuItem1.Click += new System.EventHandler(this.caseMatchScanToolStripMenuItem1_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1118,5 +1136,7 @@
         private System.Windows.Forms.ToolStripMenuItem tukiosCoverSearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wIPReportToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem shippingScanToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem scanCheckToolStripMenuItem;
     }
 }
