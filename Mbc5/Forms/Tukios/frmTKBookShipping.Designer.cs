@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
@@ -56,20 +56,23 @@
             this.pnlGrid = new System.Windows.Forms.Panel();
             this.txt1 = new System.Windows.Forms.TextBox();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtItemBarcode = new System.Windows.Forms.TextBox();
             this.btnAddPkg = new System.Windows.Forms.Button();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.pnlGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // basePanel
@@ -214,11 +217,16 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // bsItems
+            // 
+            this.bsItems.DataMember = "Items";
+            this.bsItems.DataSource = typeof(BindingModels.Package);
+            // 
             // btnShip
             // 
             this.btnShip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShip.Location = new System.Drawing.Point(37, 339);
+            this.btnShip.Location = new System.Drawing.Point(37, 349);
             this.btnShip.Name = "btnShip";
             this.btnShip.Size = new System.Drawing.Size(121, 34);
             this.btnShip.TabIndex = 7;
@@ -230,7 +238,7 @@
             // 
             this.btnItemReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnItemReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemReset.Location = new System.Drawing.Point(487, 339);
+            this.btnItemReset.Location = new System.Drawing.Point(487, 349);
             this.btnItemReset.Name = "btnItemReset";
             this.btnItemReset.Size = new System.Drawing.Size(121, 34);
             this.btnItemReset.TabIndex = 8;
@@ -242,7 +250,7 @@
             // 
             this.btnShipmentReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShipmentReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShipmentReset.Location = new System.Drawing.Point(615, 339);
+            this.btnShipmentReset.Location = new System.Drawing.Point(623, 349);
             this.btnShipmentReset.Name = "btnShipmentReset";
             this.btnShipmentReset.Size = new System.Drawing.Size(121, 34);
             this.btnShipmentReset.TabIndex = 9;
@@ -310,7 +318,7 @@
             this.pnlGrid.Enabled = false;
             this.pnlGrid.Location = new System.Drawing.Point(37, 136);
             this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Size = new System.Drawing.Size(709, 179);
+            this.pnlGrid.Size = new System.Drawing.Size(717, 189);
             this.pnlGrid.TabIndex = 10037;
             // 
             // txt1
@@ -331,60 +339,29 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
+            this.BookType,
+            this.Identifier,
             this.Quantity,
-            this.qcontractyear,
-            this.QInvno});
+            this.Description});
             this.custDataGridView.DataSource = this.bsItems;
             this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(20, 37);
+            this.custDataGridView.Location = new System.Drawing.Point(27, 35);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
-            this.custDataGridView.Size = new System.Drawing.Size(689, 139);
+            this.custDataGridView.Size = new System.Drawing.Size(697, 149);
             this.custDataGridView.TabIndex = 6;
             this.custDataGridView.TabStop = false;
-            // 
-            // Invno
-            // 
-            this.Invno.DataPropertyName = "Invno";
-            this.Invno.FillWeight = 35.61034F;
-            this.Invno.HeaderText = "Invo";
-            this.Invno.Name = "Invno";
-            this.Invno.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.FillWeight = 28.91615F;
-            this.Quantity.HeaderText = "Qty";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // qcontractyear
-            // 
-            this.qcontractyear.DataPropertyName = "Identifier";
-            this.qcontractyear.FillWeight = 35F;
-            this.qcontractyear.HeaderText = "Book Id";
-            this.qcontractyear.Name = "qcontractyear";
-            this.qcontractyear.ReadOnly = true;
-            // 
-            // QInvno
-            // 
-            this.QInvno.DataPropertyName = "Description";
-            this.QInvno.FillWeight = 81.66639F;
-            this.QInvno.HeaderText = "Desc";
-            this.QInvno.Name = "QInvno";
-            this.QInvno.ReadOnly = true;
             // 
             // label1
             // 
@@ -405,13 +382,12 @@
             this.txtItemBarcode.Enter += new System.EventHandler(this.txtItemBarcode_Enter);
             this.txtItemBarcode.Leave += new System.EventHandler(this.txtItemBarcode_Leave);
             this.txtItemBarcode.Validating += new System.ComponentModel.CancelEventHandler(this.txtItemBarcode_Validating);
-          
             // 
             // btnAddPkg
             // 
             this.btnAddPkg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPkg.Location = new System.Drawing.Point(174, 339);
+            this.btnAddPkg.Location = new System.Drawing.Point(174, 349);
             this.btnAddPkg.Name = "btnAddPkg";
             this.btnAddPkg.Size = new System.Drawing.Size(121, 34);
             this.btnAddPkg.TabIndex = 10038;
@@ -430,10 +406,49 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Invno
+            // 
+            this.Invno.DataPropertyName = "Invno";
+            this.Invno.HeaderText = "Invno";
+            this.Invno.Name = "Invno";
+            this.Invno.ReadOnly = true;
+            // 
+            // BookType
+            // 
+            this.BookType.DataPropertyName = "BookType";
+            this.BookType.HeaderText = "BookType";
+            this.BookType.Name = "BookType";
+            this.BookType.ReadOnly = true;
+            // 
+            // Identifier
+            // 
+            this.Identifier.DataPropertyName = "Identifier";
+            this.Identifier.HeaderText = "Identifier";
+            this.Identifier.Name = "Identifier";
+            this.Identifier.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataSource = typeof(BindingModels.TItem);
+            // 
             // frmTKBookShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(758, 411);
+            this.ClientSize = new System.Drawing.Size(766, 421);
             this.Controls.Add(this.btnAddPkg);
             this.Controls.Add(this.pnlGrid);
             this.Controls.Add(this.lblShpMethod);
@@ -480,6 +495,7 @@
             this.pnlGrid.ResumeLayout(false);
             this.pnlGrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,9 +535,10 @@
         private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Identifier;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qcontractyear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
     }
 }
