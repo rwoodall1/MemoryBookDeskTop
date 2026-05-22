@@ -2,10 +2,13 @@
 using BaseClass.Classes;
 using BaseClass.Core;
 using BindingModels;
+using RESTModule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Mbc5.Forms.Tukios
@@ -25,12 +28,8 @@ namespace Mbc5.Forms.Tukios
         public Shipment Shipment { get; set; }
         public List<Package> Packages { get; set; } = new List<Package>();
         public Package CurrentPackage { get; set; }
-        //public List<MixbookNotificationRequestShipment> Shipments { get; set; } = new List<MixbookNotificationRequestShipment>();
-
-        //public List<MixBookItemScanModel> NotificationItems { get; set; } = new List<MixBookItemScanModel>();
-        //public List<MixBookItemScanModel> Items { get; set; } = new List<MixBookItemScanModel>();
         public bool Loading { get; set; } = true;
-        public int Itemcount { get; set; } = 0;
+
         public bool ByPassTrkValidation { get; set; } = false;
         private void txtClientIdLookup_Leave(object sender, EventArgs e)
         {
@@ -40,7 +39,7 @@ namespace Mbc5.Forms.Tukios
             var sqlQuery = new SQLCustomClient();
 
             string cmdText = @"
-                            SELECT TO1.ShipName,TO1.TukiosOrderStatus,TO1.ClientOrderId,'UPS' As ShipMethod,'GROUND SAVER' as ShippingMethodName,TO1.ProdInOrder
+                            SELECT TO1.ShipName,TO1.TukiosOrderStatus,TO1.RequestedShipDate,TO1.BookType,TO1.ClientOrderId,'UPS' As ShipMethod,'GROUND SAVER' as ShippingMethodName,TO1.ProdInOrder
                                 From TukiosOrder TO1 
                                Where TO1.ClientOrderId=@ClientOrderId AND ProdInOrder IN(Select Max(ProdInOrder) from TukiosOrder where ClientOrderId=@ClientOrderId)";
             sqlQuery.CommandText(cmdText);
@@ -231,20 +230,13 @@ namespace Mbc5.Forms.Tukios
 
                     return;
                 }
+
+
                 CreateItemAddToPkg(vItem);
                 txtItemBarcode.Clear();
 
 
-                ////////var singleItem = Packages.Exists(pkg => pkg.Item.Invno == vItem.Invno);
-                ////////if (singleItem == true)
-                ////////{
-                ////////    MbcMessageBox.Information("This item is already in the shipment, scan another Item.");
-                ////////    return;
-                ////////}
 
-                ////////Packages.Add(vPkg);
-                ////////BindingListView<Package> Items1 = new BindingListView<Package>(Packages);
-                ////////var a = Shipment;
 
             }
             catch (Exception ex)
@@ -259,221 +251,189 @@ namespace Mbc5.Forms.Tukios
 
         private void btnShip_Click(object sender, EventArgs e)
         {
-            //this.btnShip.Enabled = false;
-            //Shipment.trackingNumber = txtTrackingNo.Text;
-            //decimal vWeight = 0;
-            //decimal.TryParse(txtWeight.Text, out vWeight);
-            //Shipment.weight = vWeight;
-            //Shipment.shippedAt = DateTime.Now;
-            //Shipment.method = TukModel.ShipMethod;
-            //this.ShipNotification.Request.Shipment.Add(this.Shipment);
-            //foreach (var shipment in ShipNotification.Request.Shipment)
-            //{
-            //    if (shipment.Package[0].Item.quantity < 1)
-            //    {
-            //        MbcMessageBox.Error("You have an invalid quantity (0) in a packages. Please Clear all shipments and rescan the order.");
-            //        return;
-            //    }
-            //}
-            //if (Itemcount != TukModel.ProdInOrder)
-            //{
-            //    MbcMessageBox.Error("You have " + Itemcount.ToString() + " items in the shipments but the order has " + TukModel.ProdInOrder.ToString() + " items. Please Clear all shipments and rescan the order.");
-            //    return;
-            //}
-            ////new
-            //// Get items in order and check
-            //var sqlClient = new SQLCustomClient();
-            //sqlClient.CommandText(@"Select ItemId From MixbookOrder Where ClientOrderId=@ClientOrderId");
-            //sqlClient.AddParameter("@ClientOrderId", TukModel.JobId.Substring(8, 7));
-            //var vItems = new List<Item>();
-            //var itemResult = sqlClient.SelectMany<Item>();
-            //if (itemResult.IsError)
-            //{
-            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve items for item check:" + itemResult.Errors[0].DeveloperMessage);
-            //}
-            //else
-            //{
-            //    vItems = (List<Item>)itemResult.Data;
+            this.btnShip.Enabled = false;
+
+            foreach (var pkg in Shipment.Packages)
+            {
+                if (pkg.Items == null || pkg.Items.Count == 0)
+                {
+                    MbcMessageBox.Error("You have an invalid quantity (0) in a packages. Please Clear all shipments and rescan the order.");
+                    return;
+                }
+            }
+            int numProductsInOrder = Shipment.Packages
+                .SelectMany(package => package.Items)
+                .Select(item => item.Invno)
+                .Distinct().Count();
+
+            if (numProductsInOrder != TukModel.ProdInOrder)
+            {
+                MbcMessageBox.Error("You have " + numProductsInOrder.ToString() + " items in the shipments but the order has " + TukModel.ProdInOrder.ToString() + " items. Please Clear all shipments and rescan the order.");
+                return;
+            }
+            //new
+            // Get items in order and check
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Select Invno From TukiosOrder Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ClientOrderId", TukModel.ClientOrderId);
+            var vItems = new List<TItem>();
+            var itemResult = sqlClient.SelectMany<TItem>();
+            if (itemResult.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to retrieve tukios items for item check:" + itemResult.Errors[0].DeveloperMessage);
+            }
+            else
+            {
+                vItems = (List<TItem>)itemResult.Data;
 
 
-            //}
-            //bool vBreak = false;
-            //if (vItems.Count > 0)
-            //{
+            }
 
-            //    foreach (var vshipment in ShipNotification.Request.Shipment)
-            //    {
+            if (vItems.Count > 0)
+            {
+                foreach (var pkg in Shipment.Packages)
+                {
+                    foreach (var item in pkg.Items)
+                    {
+                        bool itemExist = vItems.Exists(x => x.Invno == item.Invno);
+                        if (!itemExist)
+                        {
+                            Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("item exist that does not belong to this order:" + TukModel.ClientOrderId + " Item Invno:" + item.Invno.ToString());
+                            MbcMessageBox.Hand(@"An item exist that does not belong to this order. Click the Clear All Shipments and rescan order.(" + item.Invno.ToString() + ")", "Invalid Item");
+                            return;
 
-            //        foreach (var pkg in vshipment.Package)
-            //        {
-            //            bool itemExist = vItems.Exists(x => x.ItemId == pkg.Item.identifier);
-            //            if (!itemExist)
-            //            {
-            //                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("item exist that does not belong to this order Job:" + TukModel.JobId + " ItemId:" + pkg.Item.identifier);
-            //                MbcMessageBox.Hand(@"An item exist that does not belong to this order. Click the Clear All Shipments and rescan order.", "Invalid Item");
-            //                vBreak = true;
-            //                break;
-            //            }
-            //        }
-            //        if (vBreak)
-            //        {
-            //            break;
+                        }
+                    }
+                }
 
-            //        }
+                //end new
+                UpdateShippingWip();
+                NotifyTukiosOfShipment();
 
-            //    }
-            //}
-            //if (vBreak)
-            //{
-            //    return;
-            //}
-            ////end new
-            //UpdateShippingWip();
-            //Items.Clear();
-            //this.btnShip.Enabled = true;
-            //this.Enabled = false;
-            //timer1.Enabled = true;
-            //bgWorker.RunWorkerAsync();
+                Shipment = null;
+                CurrentPackage = null;
+                bsItems.DataSource = null;
+                this.btnShip.Enabled = true;
+                this.Enabled = false;
+                //timer1.Enabled = true;
+                //bgWorker.RunWorkerAsync();
 
 
 
+            }
         }
         private void UpdateShippingWip()
         {
-            //var sqlClient = new SQLCustomClient();
-            //string vDeptCode = "40";
-            //string vWIR = "SH";
+            var sqlClient = new SQLCustomClient();
+            string vDeptCode = "40";
+            string vWIR = "SH";
 
-            //foreach (var item in Items)
-            //{
-            //    sqlClient.ClearParameters();
-            //    sqlClient.CommandText(@"Update WIPDetail SET
-            //                        WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
-            //    sqlClient.AddParameter("@Invno", item.Invno);
-            //    sqlClient.AddParameter("@DescripID", vDeptCode);
-            //    sqlClient.AddParameter("@WAR", DateTime.Now);
-            //    sqlClient.AddParameter("@WIR", vWIR);
+            foreach (var pkg in Shipment.Packages)
+            {
+                foreach (var item in pkg.Items)
+                {
 
-            //    var mxResult4 = sqlClient.Update();
-            //    if (mxResult4.IsError)
-            //    {
 
-            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update shipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
-            //        MessageBox.Show("Failed to update shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //    sqlClient.ClearParameters();
-            //    sqlClient.ReturnSqlIdentityId(true);
-            //    sqlClient.AddParameter("@Invno", item.Invno);
-            //    sqlClient.AddParameter("@DescripID", vDeptCode);
-            //    sqlClient.AddParameter("@WAR", DateTime.Now);
-            //    sqlClient.AddParameter("@WIR", vWIR);
+                    sqlClient.ClearParameters();
+                    sqlClient.CommandText(@"Update WIPDetail SET
+                                        WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                    sqlClient.AddParameter("@Invno", item.Invno);
+                    sqlClient.AddParameter("@DescripID", vDeptCode);
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", vWIR);
 
-            //    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-            //                                        Begin
-            //                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-            //                                        END
-            //                                        ");
+                    var mxResult4 = sqlClient.Update();
+                    if (mxResult4.IsError)
+                    {
 
-            //    var result4 = sqlClient.Insert();
-            //    if (result4.IsError)
-            //    {
-            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert shipping WIP:" + result4.Errors[0].DeveloperMessage);
-            //        MessageBox.Show("Failed to insert shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //    sqlClient.ClearParameters();
-            //    sqlClient.CommandText(@"UPDATE Produtn Set Shpdate=GETDATE() where Invno=@Invno");
-            //    sqlClient.AddParameter("@Invno", item.Invno);
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update  tukiosshipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
+                        MessageBox.Show("Failed to updatetukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
+                    sqlClient.AddParameter("@Invno", item.Invno);
+                    sqlClient.AddParameter("@DescripID", vDeptCode);
+                    sqlClient.AddParameter("@WAR", DateTime.Now);
+                    sqlClient.AddParameter("@WIR", vWIR);
 
-            //    var produtnResult = sqlClient.Update();
-            //    if (produtnResult.IsError)
-            //    {
-            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update production ship date:" + produtnResult.Errors[0].DeveloperMessage);
-            //        MbcMessageBox.Error("Failed to update shipdate on production screen.");
+                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                        Begin
+                                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                        END
+                                                        ");
 
-            //    }
-            //    sqlClient.ClearParameters();
+                    var result4 = sqlClient.Insert();
+                    if (result4.IsError)
+                    {
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert tukios shipping WIP:" + result4.Errors[0].DeveloperMessage);
+                        MessageBox.Show("Failed to insert tukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    sqlClient.ClearParameters();
+                    sqlClient.CommandText(@"UPDATE Produtn Set Shpdate=GETDATE() where Invno=@Invno");
+                    sqlClient.AddParameter("@Invno", item.Invno);
 
-            //    sqlClient.CommandText(@"UPDATE TukiosOrder  Set Weight = Coalesce(Weight,0)+@Weight
-            //                            ,TrackingNumber=@TrackingNumber + COALESCE(CONVERT(nvarchar(max),TrackingNumber),CONVERT(nvarchar(max),''))
-            //                            ,TukiosOrderStatus='Shipped'
-            //                            ,DateShipped=GETDATE()
-            //                            ,DateModified=GETDATE()
-            //                            ,ModifiedBy='SYS' where Invno=@Invno");
-            //    sqlClient.AddParameter("@Invno", item.Invno);
-            //    sqlClient.AddParameter("@Weight", Shipment.weight);//ShipNotification.Request.Shipment[0].weight)
-            //    string vTracking = txtTrackingNo.Text.Trim() + " | ";
-            //    if (string.IsNullOrEmpty(vTracking))
-            //    {
-            //        MbcMessageBox.Error("Tracking Number is missing.");
-            //        return;
-            //    }
-            //    sqlClient.AddParameter("@TrackingNumber", vTracking);
-            //    var trackingResult = sqlClient.Update();
-            //    if (trackingResult.IsError)
-            //    {
-            //        MbcMessageBox.Error("Failed to update tracking number in order screen.");
-            //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update tracking number in order screen:" + trackingResult.Errors[0].DeveloperMessage);
-            //    }
-            //}
+                    var produtnResult = sqlClient.Update();
+                    if (produtnResult.IsError)
+                    {
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update production tukios ship date:" + produtnResult.Errors[0].DeveloperMessage);
+                        MbcMessageBox.Error("Failed to update tukios shipdate on production screen.");
+
+                    }
+                    sqlClient.ClearParameters();
+
+                    sqlClient.CommandText(@"UPDATE TukiosOrder  Set Weight = Coalesce(Weight,0)+@Weight
+                                            ,TrackingNumber=@TrackingNumber + COALESCE(CONVERT(nvarchar(max),TrackingNumber),CONVERT(nvarchar(max),''))
+                                            ,TukiosOrderStatus='Shipped'
+                                            ,DateShipped=GETDATE()
+                                            ,DateModified=GETDATE()
+                                            ,ModifiedBy='SYS' where Invno=@Invno");
+                    sqlClient.AddParameter("@Invno", item.Invno);
+                    sqlClient.AddParameter("@Weight", pkg.Weight);
+                    string vTracking = txtTrackingNo.Text.Trim() + " | ";
+                    if (string.IsNullOrEmpty(vTracking))
+                    {
+                        MbcMessageBox.Error("Tracking Number is missing.");
+                        return;
+                    }
+                    sqlClient.AddParameter("@TrackingNumber", vTracking);
+                    var trackingResult = sqlClient.Update();
+                    if (trackingResult.IsError)
+                    {
+                        MbcMessageBox.Error("Failed to update tukios tracking number in order screen.");
+                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update tukios tracking number in order screen:" + trackingResult.Errors[0].DeveloperMessage);
+                    }
+                }
+            }
         }
 
         private void btnItemReset_Click(object sender, EventArgs e)
         {
-            //try
-            //{
 
-            //    int start = NotificationItems.Count - Items.Count;
-            //    if (NotificationItems.Count > 0 && NotificationItems.Count >= Items.Count)
-            //    {
-            //        NotificationItems.RemoveRange(start, Items.Count);
-            //    }
+            CurrentPackage.Items.Clear();
+            txtClientIdLookup.Clear();
+            txtTrackingNo.Clear();
+            txtWeight.Clear();
+            txtItemBarcode.Clear();
 
-
-
-            //    Items.Clear();
-            //    BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
-            //    bsItems.DataSource = Items1;
-            //    custDataGridView.DataSource = bsItems;
-            //    txtItemBarcode.Focus();
-            //    Itemcount = 0;
-            //    txtClientIdLookup.ReadOnly = false;
-            //    txtClientIdLookup.ReadOnly = false;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Error clearing shipment items");
-
-
-            //}
-
+            Shipment.Packages.Remove(CurrentPackage);
+            Shipment.Packages.Add(CurrentPackage);//replace withnew
+            bsItems.DataSource = null;
+            bsItems.DataSource = CurrentPackage;
+            bsItems.DataMember = "Items";
+            custDataGridView.DataSource = bsItems;
 
         }
 
         private void btnShipmentReset_Click(object sender, EventArgs e)
         {
+            Shipment = null;
+            CurrentPackage = null;
+            bsItems.DataSource = null;
 
-
-            //txtClientIdLookup.Text = "";
-            //txtTrackingNo.Text = "";
-            //txtWeight.Text = "";
-            //txtDateTime.Text = "";
-            //Itemcount = 0;
-
-
-            //txtClientIdLookup.Focus();
-            //Items.Clear();
-            //NotificationItems.Clear();
-            //BindingListView<MixBookItemScanModel> Items1 = new BindingListView<MixBookItemScanModel>(Items);
-            //bsItems.DataSource = Items1;
-            //custDataGridView.DataSource = bsItems;
-            //this.ShipNotification = null;//clear out existing
-            //CreateShipNotification();
-            //SetPanels();
-            //txtClientIdLookup.ReadOnly = false;
-            //txtClientIdLookup.Focus();
+            custDataGridView.DataSource = bsItems;
+            SetPanels();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
         {
@@ -492,55 +452,8 @@ namespace Mbc5.Forms.Tukios
 
 
         }
-        private void frmMxBookShipping_Load(object sender, EventArgs e)
-        {
-            if (Loading)
-            {
-                Loading = false;
-
-                this.CreateShipNotification();
-
-            }
-        }
-        public async Task<ApiProcessingResult> NotifyTukiosOfShipment()
-        {
-            var processingResult = new ApiProcessingResult();
 
 
-            //ShipNotification.Request.identifier = TukModel.JobId;//needs to be set with jobid should always have one element
-            //ShipNotification.Request.Status.occurredAt = DateTime.Now;
-            //ShipNotification.Request.Status.Value = "Shipped";
-            //var vReturnNotification = Serialize.ToXml(this.ShipNotification);
-
-            //var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
-            //if (!restServiceResult.IsError)
-            //{
-            //    if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
-            //    {
-            //        //if not set to notified scheduled task will try again
-            //        AddMbEventLog(TukModel.JobId, "Shipped", "", vReturnNotification, true);
-            //    }
-            //    else
-            //    {
-            //        string msg = restServiceResult.Data.APIResult.ToString();
-            //        AddMbEventLog(TukModel.JobId, "Shippped ERROR 2", msg, vReturnNotification, false);
-            //        var emailHelper = new EmailHelper();
-            //        string emailmsg = msg.Replace("<?xml version=1.0 encoding=UTF - 8?>", "").Replace("<", " | ").Replace(">", " | ");
-            //        emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + Invno, "randy.woodall@jostens.com", null, msg, EmailType.System);
-            //        MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
-            //    }
-
-
-            //}
-            //else
-            //{
-            //    AddMbEventLog(TukModel.JobId, "Shipped Error", "", vReturnNotification, false);
-            //    var emailHelper = new EmailHelper();
-            //    emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.JobId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
-            //    MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
-            //}
-            return processingResult;
-        }
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
             var retval = "0";
@@ -615,6 +528,7 @@ namespace Mbc5.Forms.Tukios
             CurrentPackage.Items.Add(_item);
 
             Shipment.Packages.Add(CurrentPackage);//replace withnew
+            bsItems.DataSource = null;
             bsItems.DataSource = CurrentPackage;
             bsItems.DataMember = "Items";
             custDataGridView.DataSource = bsItems;
@@ -626,25 +540,23 @@ namespace Mbc5.Forms.Tukios
 
 
 
-
-
         private void CreateShipNotification()
         {
-            //ShipNotification = new TukiosNotification();
+            ShipNotification = new TukiosNotification();
 
 
 
-            //ShipNotification.Request.Identifier = ClientOrderId;//neeeds to be set with ClientOrderId 
-            //ShipNotification.Request.Status.OccurredAt = DateTime.UtcNow;
-            //ShipNotification.Request.Status.StatusText = "Shipped";
-            //ShipNotification.Request.Status.Message = "";
-            //ShipNotification.Request.Shipment = new Shipment()
-            //{
-            //    TrackingNumber = txtTrackingNo.Text,
-            //    ShippedAt = DateTime.Now,
-            //    Method = TukModel.ShipMethod,
-            //    Packages = new List<Package>()
-            //};
+            ShipNotification.Request.Identifier = ClientOrderId;//neeeds to be set with ClientOrderId 
+            ShipNotification.Request.Status.OccurredAt = DateTime.UtcNow;
+            ShipNotification.Request.Status.StatusText = "Shipped";
+            ShipNotification.Request.Status.Message = "";
+            ShipNotification.Request.Shipment = new Shipment()
+            {
+
+                ShippedAt = DateTime.Now,
+                Method = TukModel.ShipMethod,
+                Packages = new List<Package>()
+            };
 
 
         }
@@ -832,17 +744,17 @@ namespace Mbc5.Forms.Tukios
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Enabled = true;
-            plnTracking.Enabled = false;//get in sync so it is true
-            timer1.Enabled = false;
-            btnShipmentReset_Click(null, null);
+            //this.Enabled = true;
+            //plnTracking.Enabled = false;//get in sync so it is true
+            //timer1.Enabled = false;
+            //btnShipmentReset_Click(null, null);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            MbcMessageBox.Stop("Shipping Notification Failed,rescan package. If this continues notify supervisor.", "Nofification Error");
-            btnShipmentReset_Click(null, null);
-            bgWorker.CancelAsync();
+            //MbcMessageBox.Stop("Shipping Notification Failed,rescan package. If this continues notify supervisor.", "Nofification Error");
+            //btnShipmentReset_Click(null, null);
+            //bgWorker.CancelAsync();
 
 
         }
@@ -869,7 +781,68 @@ namespace Mbc5.Forms.Tukios
             txtClientIdLookup.Focus();
         }
 
+        public async Task<ApiProcessingResult> NotifyTukiosOfShipment()
+        {
+            var processingResult = new ApiProcessingResult();
+            ShipNotification = new TukiosNotification();
+            ShipNotification.Request.Identifier = TukModel.ClientOrderId;//neeeds to be set with ClientOrderId
+            ShipNotification.Request.Status.StatusText = "Shipped";
+            ShipNotification.Request.Status.OccurredAt = DateTime.Now;
+            ShipNotification.Request.Status.ProjectedShipDate = TukModel.RequestedShipDate.ToShortDateString();
+            this.Shipment.ShippedAt = DateTime.Now;
+            this.Shipment.Method = TukModel.ShipMethod;
+            ShipNotification.Request.Shipment = this.Shipment;
+            string vReturnNotification;
+            try
+            {
+                vReturnNotification = JsonSerializer.Serialize(this.ShipNotification);
+                string endpoint;
+                if (TukModel.BookType.ToUpper() == "PHOTO")
+                {
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString(); ;
+                }
+                else
+                {
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString(); ;
+                }
 
+                var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, null, null, "application/json");
+                if (!restServiceResult.IsError)
+                {
+                    if (restServiceResult.Data.APIResult.ToString().Contains("Success"))
+                    {
+                        //if not set to notified scheduled task will try again
+                        AddMbEventLog(TukModel.ClientOrderId, "Shipped", "", vReturnNotification, true);
+                    }
+                    else
+                    {
+                        string msg = restServiceResult.Data.APIResult.ToString();
+                        AddMbEventLog(TukModel.ClientOrderId, "Shippped ERROR 2", msg, vReturnNotification, false);
+                        var emailHelper = new EmailHelper();
+                        string emailmsg = msg;
+                        emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + Invno, "randy.woodall@jostens.com", null, msg, EmailType.System);
+                        MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+                    }
+
+
+                }
+                else
+                {
+                    AddMbEventLog(TukModel.ClientOrderId, "Shipped Error", "", vReturnNotification, false);
+                    var emailHelper = new EmailHelper();
+                    emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.ClientOrderId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+                    MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                var a = 1;
+            }
+
+
+
+            return processingResult;
+        }
 
 
     }

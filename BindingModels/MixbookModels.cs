@@ -205,7 +205,7 @@ namespace BindingModels
     {
         public string ShipName { get; set; }
         public string ShipMethod { get; set; }
-
+        public string BookType { get; set; }
         public string ClientOrderId { get; set; }
         public int Invno { get; set; }
         public string ProdNo { get; set; }
@@ -221,6 +221,7 @@ namespace BindingModels
         public int NumProducts { get; set; }
         public string ShippingMethodName { get; set; }
         public string TukiosOrderStatus { get; set; }
+        public DateTime RequestedShipDate { get; set; }
     }
 
     public class MixBookBarScanModel
