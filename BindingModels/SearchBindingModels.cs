@@ -240,18 +240,7 @@
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
-    public class TukiosGroupIdSearch
-    {
-        public int GroupId { get; set; }
-        public string OrderId { get; set; }
-        public string ShipName { get; set; }
-    }
-    public class TukiosInvnoSearch
-    {
-        public int Invoice { get; set; }
-          public string OrderId { get; set; }
-        public string ShipName { get; set; }
-    }
+
     //Bids
     public class BidsSchcodeSearch
     {
@@ -292,6 +281,18 @@
         public string ClientOrderId { get; set; }
 
 
+    }
+    public class TukiosGroupIdSearch
+    {
+        public int GroupId { get; set; }
+        public string OrderId { get; set; }
+        public string ShipName { get; set; }
+    }
+    public class TukiosInvnoSearch
+    {
+        public int Invoice { get; set; }
+        public string OrderId { get; set; }
+        public string ShipName { get; set; }
     }
     //Mixbooks
     public class MixBookOrderIdSearch

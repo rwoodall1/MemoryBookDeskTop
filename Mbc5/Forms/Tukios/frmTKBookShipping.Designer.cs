@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
@@ -56,17 +56,23 @@
             this.pnlGrid = new System.Windows.Forms.Panel();
             this.txt1 = new System.Windows.Forms.TextBox();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtItemBarcode = new System.Windows.Forms.TextBox();
-            this.btnAddPkg = new System.Windows.Forms.Button();
-            this.bgWorker = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtItemBarcode = new System.Windows.Forms.TextBox();
+            this.btnAddPkg = new System.Windows.Forms.Button();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identifierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientOrderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
@@ -339,21 +345,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
             this.BookType,
             this.Identifier,
             this.Quantity,
-            this.Description});
+            this.Description,
+            this.invnoDataGridViewTextBoxColumn,
+            this.bookTypeDataGridViewTextBoxColumn,
+            this.identifierDataGridViewTextBoxColumn,
+            this.clientOrderIdDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
             this.custDataGridView.DataSource = this.bsItems;
             this.custDataGridView.EnableHeadersVisualStyles = false;
             this.custDataGridView.Location = new System.Drawing.Point(27, 35);
@@ -362,6 +374,41 @@
             this.custDataGridView.Size = new System.Drawing.Size(697, 149);
             this.custDataGridView.TabIndex = 6;
             this.custDataGridView.TabStop = false;
+            // 
+            // Invno
+            // 
+            this.Invno.DataPropertyName = "Invno";
+            this.Invno.HeaderText = "Invno";
+            this.Invno.Name = "Invno";
+            this.Invno.ReadOnly = true;
+            // 
+            // BookType
+            // 
+            this.BookType.DataPropertyName = "BookType";
+            this.BookType.HeaderText = "BookType";
+            this.BookType.Name = "BookType";
+            this.BookType.ReadOnly = true;
+            // 
+            // Identifier
+            // 
+            this.Identifier.DataPropertyName = "Identifier";
+            this.Identifier.HeaderText = "Identifier";
+            this.Identifier.Name = "Identifier";
+            this.Identifier.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
             // label1
             // 
@@ -406,44 +453,51 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Invno
-            // 
-            this.Invno.DataPropertyName = "Invno";
-            this.Invno.HeaderText = "Invno";
-            this.Invno.Name = "Invno";
-            this.Invno.ReadOnly = true;
-            // 
-            // BookType
-            // 
-            this.BookType.DataPropertyName = "BookType";
-            this.BookType.HeaderText = "BookType";
-            this.BookType.Name = "BookType";
-            this.BookType.ReadOnly = true;
-            // 
-            // Identifier
-            // 
-            this.Identifier.DataPropertyName = "Identifier";
-            this.Identifier.HeaderText = "Identifier";
-            this.Identifier.Name = "Identifier";
-            this.Identifier.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
             // itemsBindingSource
             // 
             this.itemsBindingSource.DataSource = typeof(BindingModels.TItem);
+            // 
+            // invnoDataGridViewTextBoxColumn
+            // 
+            this.invnoDataGridViewTextBoxColumn.DataPropertyName = "Invno";
+            this.invnoDataGridViewTextBoxColumn.HeaderText = "Invno";
+            this.invnoDataGridViewTextBoxColumn.Name = "invnoDataGridViewTextBoxColumn";
+            this.invnoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookTypeDataGridViewTextBoxColumn
+            // 
+            this.bookTypeDataGridViewTextBoxColumn.DataPropertyName = "BookType";
+            this.bookTypeDataGridViewTextBoxColumn.HeaderText = "BookType";
+            this.bookTypeDataGridViewTextBoxColumn.Name = "bookTypeDataGridViewTextBoxColumn";
+            this.bookTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // identifierDataGridViewTextBoxColumn
+            // 
+            this.identifierDataGridViewTextBoxColumn.DataPropertyName = "Identifier";
+            this.identifierDataGridViewTextBoxColumn.HeaderText = "Identifier";
+            this.identifierDataGridViewTextBoxColumn.Name = "identifierDataGridViewTextBoxColumn";
+            this.identifierDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clientOrderIdDataGridViewTextBoxColumn
+            // 
+            this.clientOrderIdDataGridViewTextBoxColumn.DataPropertyName = "ClientOrderId";
+            this.clientOrderIdDataGridViewTextBoxColumn.HeaderText = "ClientOrderId";
+            this.clientOrderIdDataGridViewTextBoxColumn.Name = "clientOrderIdDataGridViewTextBoxColumn";
+            this.clientOrderIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmTKBookShipping
             // 
@@ -469,7 +523,6 @@
             this.MinimumSize = new System.Drawing.Size(774, 450);
             this.Name = "frmTKBookShipping";
             this.Text = "Tukios Shipping";
-          
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtDateTime, 0);
@@ -540,5 +593,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.BindingSource itemsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invnoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identifierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientOrderIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

@@ -37,6 +37,7 @@ namespace Mbc5.Dialogs
         private List<TukiosOrderShipNameSearch> TukiosShipNameList { get; set; }
         private List<MixBookOrderItemIdSearch> ItemIdList { get; set; }
         private List<TukiosOrderBookIdSearch> BookIdList { get; set; }
+        private List<TukiosGroupIdSearch> TukiosGroupIdList { get; set; }
         private List<SchcodeSearch> CustCode { get; set; }
         private List<SchnameSearch> CustName { get; set; }
         private List<SchnameSalesSearch> SalesCustName { get; set; }
@@ -64,8 +65,8 @@ namespace Mbc5.Dialogs
         private List<BidsSchnameSearch> BidSchnameList { get; set; }
         private List<EndSheetInvnoSearch> EndSheetInvnoList { get; set; }
         private List<TukiosInvnoSearch> TukiosInvnoList { get; set; }
-        private List<TukiosGroupIdSearch> TukiosGroupIdList { get; set; }
-        
+
+
         public ReturnValues ReturnValue { get; set; } = new ReturnValues();
 
         private string currentSearchValue;
@@ -771,7 +772,7 @@ namespace Mbc5.Dialogs
                             break;
                         case "COVERS":
                             break;
-                        
+
                     }
                     break;
                 case "FIRSTNAME":
@@ -1769,6 +1770,30 @@ namespace Mbc5.Dialogs
 
                         }
                     }
+                    else if (ReturnForm == "TUKIOS")
+                    {
+                        try
+                        {
+
+                            vIndex = this.TukiosOrderIdList.FindIndex(vorderid => vorderid.ClientOrderId.ToString() != "0" && vorderid.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
+                            if (vIndex != -1)
+                            {
+                                dgSearch.ClearSelection();
+                                bsData.Position = vIndex;
+                                dgSearch.Rows[vIndex].Selected = true;
+                                dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                                CurrentIndex = vIndex;
+
+                            }
+                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                    }
 
                     break;
                 case "ITEMID":
@@ -1798,6 +1823,28 @@ namespace Mbc5.Dialogs
                     {
 
                         vIndex = this.BookIdList.FindIndex(vcust => vcust.BookId.ToString() != "0" && vcust.BookId.ToString().Trim().StartsWith(value.ToUpper()));
+                        if (vIndex != -1)
+                        {
+                            dgSearch.ClearSelection();
+                            bsData.Position = vIndex;
+                            dgSearch.Rows[vIndex].Selected = true;
+                            dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+                            CurrentIndex = vIndex;
+
+                        }
+                        else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    break;
+                case "GROUPID":
+                    try
+                    {
+
+                        vIndex = this.TukiosGroupIdList.FindIndex(vGroupId => vGroupId.GroupId.ToString().Trim().StartsWith(value.ToUpper()));
                         if (vIndex != -1)
                         {
                             dgSearch.ClearSelection();
@@ -2011,7 +2058,7 @@ namespace Mbc5.Dialogs
                     }
                     else if (SearchType == "INVNO" && (ReturnForm == "TUKIOS"))
                     {
-                         this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                        this.ReturnValue.OrderId = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     }
                     else if (SearchType == "GROUPID" && (ReturnForm == "TUKIOS"))
                     {

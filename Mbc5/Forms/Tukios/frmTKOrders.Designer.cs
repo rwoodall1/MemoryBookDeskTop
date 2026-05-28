@@ -737,7 +737,7 @@
             // 
             this.orderStatusLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.orderStatusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "TukiosOrderStatus", true));
-            this.orderStatusLabel2.Location = new System.Drawing.Point(960, 113);
+            this.orderStatusLabel2.Location = new System.Drawing.Point(960, 119);
             this.orderStatusLabel2.Name = "orderStatusLabel2";
             this.orderStatusLabel2.Size = new System.Drawing.Size(216, 29);
             this.orderStatusLabel2.TabIndex = 326;
