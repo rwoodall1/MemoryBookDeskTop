@@ -11,7 +11,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Web.Configuration;
 using System.Windows.Forms;
 namespace Mbc5.Forms.Tukios
 {
@@ -87,27 +86,27 @@ namespace Mbc5.Forms.Tukios
 
         private void txtTrackingNo_Validating(object sender, CancelEventArgs e)
         {
-            //errorProvider1.SetError(txtTrackingNo, "");
-            //if (ByPassTrkValidation)
-            //{
-            //    ByPassTrkValidation = false;
-            //    txtTrackingNo.Text = "";
-            //    txtClientIdLookup.Text = "";
-            //    txtWeight.Text = "";
-            //    return;
-            //}
-            //if (string.IsNullOrEmpty(txtTrackingNo.Text))
-            //{
+            errorProvider1.SetError(txtTrackingNo, "");
+            if (ByPassTrkValidation)
+            {
+                ByPassTrkValidation = false;
+                txtTrackingNo.Text = "";
+                txtClientIdLookup.Text = "";
+                txtWeight.Text = "";
+                return;
+            }
+            if (string.IsNullOrEmpty(txtTrackingNo.Text))
+            {
 
 
-            //    errorProvider1.SetError(txtTrackingNo, "Please enter a valid  tracking number.");
-            //    e.Cancel = true;
-            //}
+                errorProvider1.SetError(txtTrackingNo, "Please enter a valid  tracking number.");
+                e.Cancel = true;
+            }
             //else if (txtTrackingNo.Text.Length < 10)
             //{
             //    errorProvider1.SetError(txtTrackingNo, "Please enter a valid tracking number.");
             //    e.Cancel = true;
-            //}
+            //    }
 
         }
 
@@ -613,20 +612,20 @@ namespace Mbc5.Forms.Tukios
 
         private void txtTrackingNo_Leave(object sender, EventArgs e)
         {
-            //if (ByPassTrkValidation)
-            //{
-            //    return;
-            //}
-            //if (string.IsNullOrEmpty(txtTrackingNo.Text))
-            //{
-            //    return;
-            //}
-            //if (TukModel == null)
-            //{
-            //    MbcMessageBox.Hand("Rescan shipment barcode.", "Barcode");
-            //    txtClientIdLookup.Focus();
-            //    return;
-            //}
+            if (ByPassTrkValidation)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(txtTrackingNo.Text))
+            {
+                return;
+            }
+            if (TukModel == null)
+            {
+                MbcMessageBox.Hand("Rescan shipment barcode.", "Barcode");
+                txtClientIdLookup.Focus();
+                return;
+            }
             //try
             //{
             //    string vTracking = txtTrackingNo.Text.Trim();
@@ -642,23 +641,23 @@ namespace Mbc5.Forms.Tukios
             //    txtClientIdLookup.Focus();
             //    return;
             //}
-            //string vPartTrack = "";
+            string vPartTrack = "";
 
-            //try
-            //{
-            //    if (txtTrackingNo.Text.Trim().Length < 3)
-            //    {
-            //        return;
+            try
+            {
+                if (txtTrackingNo.Text.Trim().Length < 3)
+                {
+                    return;
 
-            //    }
-            //    vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Value is not valid for subst:" + txtTrackingNo.Text);
-            //    txtClientIdLookup.Focus();
-            //    return;
-            //}
+                }
+                vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+            }
+            catch (Exception ex)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Value is not valid for subst:" + txtTrackingNo.Text);
+                txtClientIdLookup.Focus();
+                return;
+            }
             //var upsList = new List<string>() { "MX_2DAY", "MX_OVERNIGHT_SAVER", "MX_MI_INT", "MX_INT_EXPRESS", "MX_INT_EXPEDITED", "MX_GROUND" };
             //var uspsList = new List<string>() { "MX_USPS_PRIORITY_CUBIC_3", "MX_USPS_PRIORITY_CUBIC_1", "MX_USPS_PRIORITY", "MX_USPS_PRIORITY_CUBIC_2", "MX_USPS_FIRST_CLASS_PARCEL", "USPS_GROUND_ADVANTAGE" };
 
