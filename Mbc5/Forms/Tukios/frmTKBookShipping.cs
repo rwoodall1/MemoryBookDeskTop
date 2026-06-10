@@ -824,9 +824,10 @@ namespace Mbc5.Forms.Tukios
                 };
 
                 var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
+                var response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
                 if (!restServiceResult.IsError)
                 {
-                    if (restServiceResult.Data.APIResult.ToString().Contains("OK"))
+                    if (response.success == true)
                     {
                         //if not set to notified scheduled task will try again
                         AddMbEventLog(TukModel.ClientOrderId, "Shipped", "", vReturnNotification, true);
