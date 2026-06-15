@@ -213,7 +213,9 @@
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
@@ -326,6 +328,12 @@
     </Compile>
     <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosBookChk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosBookChk.Designer.cs">
+      <DependentUpon>frmTukiosBookChk.cs</DependentUpon>
     </Compile>
     <Compile Include="dsJPIXOrders.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -796,6 +804,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosBookChk.resx">
+      <DependentUpon>frmTukiosBookChk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>

@@ -132,6 +132,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.shippingCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -256,7 +257,8 @@
             this.tukiosOrdersToolStripMenuItem,
             this.tukiosCoverSearchToolStripMenuItem,
             this.caseMatchScanToolStripMenuItem1,
-            this.shippingScanToolStripMenuItem1});
+            this.shippingScanToolStripMenuItem1,
+            this.shippingCheckToolStripMenuItem});
             this.tukiosToolStripMenuItem.Name = "tukiosToolStripMenuItem";
             this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosToolStripMenuItem.Text = "Tukios";
@@ -1005,6 +1007,13 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // shippingCheckToolStripMenuItem
+            // 
+            this.shippingCheckToolStripMenuItem.Name = "shippingCheckToolStripMenuItem";
+            this.shippingCheckToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.shippingCheckToolStripMenuItem.Text = "Shipping Check";
+            this.shippingCheckToolStripMenuItem.Click += new System.EventHandler(this.shippingCheckToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1138,5 +1147,6 @@
         private System.Windows.Forms.ToolStripMenuItem caseMatchScanToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem shippingScanToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem scanCheckToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shippingCheckToolStripMenuItem;
     }
 }

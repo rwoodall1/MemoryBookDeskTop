@@ -3048,6 +3048,13 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTkBookShipping.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void shippingCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmTukiosBookChk = new frmTukiosBookChk(this.ApplicationUser);
+            frmTukiosBookChk.MdiParent = this;
+            frmTukiosBookChk.Show();
+        }
         #endregion
         //nothing below here
     }

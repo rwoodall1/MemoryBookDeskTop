@@ -61,18 +61,18 @@
             this.Identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtItemBarcode = new System.Windows.Forms.TextBox();
-            this.btnAddPkg = new System.Windows.Forms.Button();
-            this.bgWorker = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.identifierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientOrderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtItemBarcode = new System.Windows.Forms.TextBox();
+            this.btnAddPkg = new System.Windows.Forms.Button();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
@@ -236,7 +236,7 @@
             this.btnShip.Name = "btnShip";
             this.btnShip.Size = new System.Drawing.Size(121, 34);
             this.btnShip.TabIndex = 7;
-            this.btnShip.Text = "Mark As Shipped";
+            this.btnShip.Text = "Mark Ready To Ship";
             this.btnShip.UseVisualStyleBackColor = true;
             this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
             // 
@@ -410,6 +410,48 @@
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
             // 
+            // invnoDataGridViewTextBoxColumn
+            // 
+            this.invnoDataGridViewTextBoxColumn.DataPropertyName = "Invno";
+            this.invnoDataGridViewTextBoxColumn.HeaderText = "Invno";
+            this.invnoDataGridViewTextBoxColumn.Name = "invnoDataGridViewTextBoxColumn";
+            this.invnoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookTypeDataGridViewTextBoxColumn
+            // 
+            this.bookTypeDataGridViewTextBoxColumn.DataPropertyName = "BookType";
+            this.bookTypeDataGridViewTextBoxColumn.HeaderText = "BookType";
+            this.bookTypeDataGridViewTextBoxColumn.Name = "bookTypeDataGridViewTextBoxColumn";
+            this.bookTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // identifierDataGridViewTextBoxColumn
+            // 
+            this.identifierDataGridViewTextBoxColumn.DataPropertyName = "Identifier";
+            this.identifierDataGridViewTextBoxColumn.HeaderText = "Identifier";
+            this.identifierDataGridViewTextBoxColumn.Name = "identifierDataGridViewTextBoxColumn";
+            this.identifierDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clientOrderIdDataGridViewTextBoxColumn
+            // 
+            this.clientOrderIdDataGridViewTextBoxColumn.DataPropertyName = "ClientOrderId";
+            this.clientOrderIdDataGridViewTextBoxColumn.HeaderText = "ClientOrderId";
+            this.clientOrderIdDataGridViewTextBoxColumn.Name = "clientOrderIdDataGridViewTextBoxColumn";
+            this.clientOrderIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -456,48 +498,6 @@
             // itemsBindingSource
             // 
             this.itemsBindingSource.DataSource = typeof(BindingModels.TItem);
-            // 
-            // invnoDataGridViewTextBoxColumn
-            // 
-            this.invnoDataGridViewTextBoxColumn.DataPropertyName = "Invno";
-            this.invnoDataGridViewTextBoxColumn.HeaderText = "Invno";
-            this.invnoDataGridViewTextBoxColumn.Name = "invnoDataGridViewTextBoxColumn";
-            this.invnoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bookTypeDataGridViewTextBoxColumn
-            // 
-            this.bookTypeDataGridViewTextBoxColumn.DataPropertyName = "BookType";
-            this.bookTypeDataGridViewTextBoxColumn.HeaderText = "BookType";
-            this.bookTypeDataGridViewTextBoxColumn.Name = "bookTypeDataGridViewTextBoxColumn";
-            this.bookTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // identifierDataGridViewTextBoxColumn
-            // 
-            this.identifierDataGridViewTextBoxColumn.DataPropertyName = "Identifier";
-            this.identifierDataGridViewTextBoxColumn.HeaderText = "Identifier";
-            this.identifierDataGridViewTextBoxColumn.Name = "identifierDataGridViewTextBoxColumn";
-            this.identifierDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clientOrderIdDataGridViewTextBoxColumn
-            // 
-            this.clientOrderIdDataGridViewTextBoxColumn.DataPropertyName = "ClientOrderId";
-            this.clientOrderIdDataGridViewTextBoxColumn.HeaderText = "ClientOrderId";
-            this.clientOrderIdDataGridViewTextBoxColumn.Name = "clientOrderIdDataGridViewTextBoxColumn";
-            this.clientOrderIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmTKBookShipping
             // 

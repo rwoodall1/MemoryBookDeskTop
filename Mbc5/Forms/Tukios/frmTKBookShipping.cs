@@ -2,12 +2,9 @@
 using BaseClass.Classes;
 using BaseClass.Core;
 using BindingModels;
-using Mbc5.Classes;
-using RESTModule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -148,6 +145,7 @@ namespace Mbc5.Forms.Tukios
             lblLastScan.Text = txtItemBarcode.Text;
             txtItemBarcode.Tag = "";
             string vInvno = "";
+
 
 
             try
@@ -310,12 +308,11 @@ namespace Mbc5.Forms.Tukios
 
                 //end new
                 UpdateShippingWip();
-                NotifyTukiosOfShipment();
+                UpdateTukiosShipmentJSON();
 
-                //Shipment = null;
-                //CurrentPackage = null;
-                //bsItems.DataSource = null;
-                //this.btnShip.Enabled = true;
+                ClearShipment();
+                this.btnShip.Enabled = true;
+
                 //this.Enabled = false;
                 //timer1.Enabled = true;
                 //bgWorker.RunWorkerAsync();
@@ -414,10 +411,8 @@ namespace Mbc5.Forms.Tukios
         {
 
             CurrentPackage.Items.Clear();
-            txtClientIdLookup.Clear();
-            txtTrackingNo.Clear();
-            txtWeight.Clear();
-            txtItemBarcode.Clear();
+
+
 
             Shipment.Packages.Remove(CurrentPackage);
             Shipment.Packages.Add(CurrentPackage);//replace withnew
@@ -430,12 +425,8 @@ namespace Mbc5.Forms.Tukios
 
         private void btnShipmentReset_Click(object sender, EventArgs e)
         {
-            Shipment = null;
-            CurrentPackage = null;
-            bsItems.DataSource = null;
+            ClearShipment();
 
-            custDataGridView.DataSource = bsItems;
-            SetPanels();
         }
         private void plnTracking_Leave(object sender, EventArgs e)
         {
@@ -454,7 +445,21 @@ namespace Mbc5.Forms.Tukios
 
 
         }
+        private void ClearShipment()
+        {
+            lblShpName.Text = "";
+            lblShpMethod.Text = "";
+            txtClientIdLookup.Clear();
+            txtTrackingNo.Clear();
+            txtWeight.Clear();
+            Shipment.Packages.Clear();
+            Shipment = null;
+            CurrentPackage = null;
+            bsItems.DataSource = null;
 
+            custDataGridView.DataSource = bsItems;
+            SetPanels();
+        }
 
         public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
         {
@@ -783,7 +788,7 @@ namespace Mbc5.Forms.Tukios
             txtClientIdLookup.Focus();
         }
 
-        public async Task<ApiProcessingResult> NotifyTukiosOfShipment()
+        public async Task<ApiProcessingResult> UpdateTukiosShipmentJSON()
         {
             var processingResult = new ApiProcessingResult();
             ShipNotification = new TukiosNotification();
@@ -794,90 +799,89 @@ namespace Mbc5.Forms.Tukios
             this.Shipment.ShippedAt = DateTime.Now;
             this.Shipment.Method = TukModel.ShipMethod;
             ShipNotification.Request.Shipment = this.Shipment;
-            string vReturnNotification;
-            try
+            string vReturnNotification = JsonSerializer.Serialize(this.ShipNotification);
+            var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set ShipNotification=@ShipNotification Where ClientOrderId=@ClientOrderId");
+            sqlClient.AddParameter("@ShipNotification", vReturnNotification);
+            sqlClient.AddParameter("@ClientOrderId", TukModel.ClientOrderId);
+            var sqlResult = sqlClient.Update();
+            if (sqlResult.IsError)
             {
-                vReturnNotification = JsonSerializer.Serialize(this.ShipNotification);
-                string endpoint;
-                if (TukModel.BookType.ToUpper() == "PHOTO")
-                {
-                    endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString(); ;
-                }
-                else
-                {
-                    endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString(); ;
-                }
-                string AccessKey = ConfigurationManager.AppSettings["TukiosApiKey"].ToString();
-                string curDate = DateTime.UtcNow.ToString();
-                string accessString = curDate + "|" + AccessKey;
-                string headerValue = Encryptor.Encrypt(accessString, ConfigurationManager.AppSettings["TukiosPassPhrase"].ToString(), true);
-
-                var headers = new List<RESTModule.Header>()
-                {
-                    new RESTModule.Header()
-                    {
-                       Key="Authorize",
-                       Value=headerValue
-
-                    },
-
-                };
-
-                var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
-                var response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
-                if (!restServiceResult.IsError)
-                {
-                    if (response.success == true)
-                    {
-                        //if not set to notified scheduled task will try again
-                        AddMbEventLog(TukModel.ClientOrderId, "Shipped", "", vReturnNotification, true);
-                    }
-                    else
-                    {
-                        string msg = restServiceResult.Data.APIResult.ToString();
-                        AddMbEventLog(TukModel.ClientOrderId, "Shippped ERROR 2", msg, vReturnNotification, false);
-                        var emailHelper = new EmailHelper();
-                        string emailmsg = msg;
-                        emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.Invno.ToString(), "randy.woodall@jostens.com", null, msg, EmailType.System);
-                        MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
-                    }
-
-
-                }
-                else
-                {
-                    AddMbEventLog(TukModel.ClientOrderId, "Shipped Error", "", vReturnNotification, false);
-                    var emailHelper = new EmailHelper();
-                    emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.ClientOrderId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
-                    MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
-                }
+                MbcMessageBox.Error("Failed to update tukios order with ship notification.", "Error");
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update tukios order with ship notification:" + sqlResult.Errors[0].DeveloperMessage);
+                processingResult.IsError = true;
+                processingResult.Errors = sqlResult.Errors;
+                return processingResult;
             }
-            catch (Exception ex)
-            {
-                Log.Error("Error notifying tukios of ClientOrderId " + TukModel.ClientOrderId + " shipment:" + ex.Message);
-                MbcMessageBox.Error("Error notifying tukios of shipment:" + ex.Message);
-
-            }
-
-
-            ResetScreen();
-
             return processingResult;
-        }
-        private void ResetScreen()
-        {
-            Shipment = null;
-            CurrentPackage = null;
-            Packages.Clear();
-            bsItems.DataSource = null;
-            this.btnShip.Enabled = true;
-            this.Enabled = true;
-            SetPanels();
-            txtClientIdLookup.Clear();
-            txtTrackingNo.Clear();
-            txtWeight.Clear();
+
+            //    try
+            //{
+
+            //    string endpoint;
+            //    if (TukModel.BookType.ToUpper() == "PHOTO")
+            //    {
+            //        endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString(); ;
+            //    }
+            //    else
+            //    {
+            //        endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString(); ;
+            //    }
+            //    string AccessKey = ConfigurationManager.AppSettings["TukiosApiKey"].ToString();
+            //    string curDate = DateTime.UtcNow.ToString();
+            //    string accessString = curDate + "|" + AccessKey;
+            //    string headerValue = Encryptor.Encrypt(accessString, ConfigurationManager.AppSettings["TukiosPassPhrase"].ToString(), true);
+
+            //    var headers = new List<RESTModule.Header>()
+            //    {
+            //        new RESTModule.Header()
+            //        {
+            //           Key="Authorize",
+            //           Value=headerValue
+
+            //        },
+
+            //    };
+
+            //    var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
+            //    var response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
+            //    if (!restServiceResult.IsError)
+            //    {
+            //        if (response.success == true)
+            //        {
+            //            //if not set to notified scheduled task will try again
+            //            AddMbEventLog(TukModel.ClientOrderId, "Shipped", "", vReturnNotification, true);
+            //        }
+            //        else
+            //        {
+            //            string msg = restServiceResult.Data.APIResult.ToString();
+            //            AddMbEventLog(TukModel.ClientOrderId, "Shippped ERROR 2", msg, vReturnNotification, false);
+            //            var emailHelper = new EmailHelper();
+            //            string emailmsg = msg;
+            //            emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.Invno.ToString(), "randy.woodall@jostens.com", null, msg, EmailType.System);
+            //            MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+            //        }
+
+
+            //    }
+            //    else
+            //    {
+            //        AddMbEventLog(TukModel.ClientOrderId, "Shipped Error", "", vReturnNotification, false);
+            //        var emailHelper = new EmailHelper();
+            //        emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + TukModel.ClientOrderId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+            //        MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Error("Error notifying tukios of ClientOrderId " + TukModel.ClientOrderId + " shipment:" + ex.Message);
+            //    MbcMessageBox.Error("Error notifying tukios of shipment:" + ex.Message);
+
+            //}
+
+
 
         }
+
 
     }
 }
