@@ -151,7 +151,6 @@
     <Compile Include="AvaTaxBindingModels.cs" />
     <Compile Include="BidInvoice.cs" />
     <Compile Include="TukiosBindingModels.cs" />
-    <Compile Include="TukiosModels.cs" />
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="JPIXModels.cs" />

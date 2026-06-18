@@ -329,6 +329,18 @@
     <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosInvoiceReport.Designer.cs">
+      <DependentUpon>frmTukiosInvoiceReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Tukios\frmTukiosBookChk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -620,12 +632,6 @@
     <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
-      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MixBook\frmNoScanReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -805,6 +811,12 @@
     <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosInvoiceReport.resx">
+      <DependentUpon>frmTukiosInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosBookChk.resx">
       <DependentUpon>frmTukiosBookChk.cs</DependentUpon>
     </EmbeddedResource>
@@ -909,9 +921,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
       <DependentUpon>frmMxBookShipping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
-      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
       <DependentUpon>frmNoScanReport.cs</DependentUpon>

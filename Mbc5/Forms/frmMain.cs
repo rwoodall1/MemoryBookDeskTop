@@ -2,8 +2,6 @@
 using BaseClass.Classes;
 using BindingModels;
 using Exceptionless;
-
-
 //using Mbc5.Reports;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -11,7 +9,6 @@ using Mbc5.Forms.JPIX;
 using Mbc5.Forms.MixBook;
 using Mbc5.Forms.Tukios;
 using Mbc5.LookUpForms;
-
 using Microsoft.Reporting.WinForms;
 using NLog;
 using PdfiumViewer;
@@ -3054,6 +3051,16 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             var frmTukiosBookChk = new frmTukiosBookChk(this.ApplicationUser);
             frmTukiosBookChk.MdiParent = this;
             frmTukiosBookChk.Show();
+        }
+
+        private void invoiceReportToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmTukiosInvoiceReport frmTkInvoiceReport = new frmTukiosInvoiceReport(this.ApplicationUser, this);
+            frmTkInvoiceReport.MdiParent = this;
+            frmTkInvoiceReport.Show();
+            this.Cursor = Cursors.Default;
         }
         #endregion
         //nothing below here

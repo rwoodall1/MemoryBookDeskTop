@@ -42,7 +42,7 @@ namespace Mbc5.Forms.Tukios
                 return;
             }
             InvnoInOrder = (List<TukiosInvno>)result.Data;
-            this.Enabled = false;
+            this.txtClientOrderId.Enabled = false;
         }
         private void txtBarcode_Enter(object sender, EventArgs e)
         {
@@ -113,7 +113,7 @@ namespace Mbc5.Forms.Tukios
                     recordToUpdate.Checked = true;
                     txtBarcode.Clear();
                     txtUPSLabel.Clear();
-                    txtBarcode.Select();
+                    //txtBarcode.Select();
                 }
             }
             else
@@ -143,11 +143,12 @@ namespace Mbc5.Forms.Tukios
                 string endpoint;
                 if (OrderInfo.BookType.ToUpper() == "PHOTO")
                 {
-                    endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString(); ;
+
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString();
                 }
                 else
                 {
-                    endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString(); ;
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString();
                 }
                 string AccessKey = ConfigurationManager.AppSettings["TukiosApiKey"].ToString();
                 string curDate = DateTime.UtcNow.ToString();
