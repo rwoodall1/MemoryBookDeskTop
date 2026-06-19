@@ -49,7 +49,7 @@ namespace Mbc5.Forms.Tukios
                         ,TP.SellPrice * T.Copies AS UnitTotal
                         ,TP.PerPage * (T.Pages * T.Copies )AS PageFee
                         ,TP.HandlingPerBox AS Fulfillment
-                        ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox) AS Total
+                        ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox) + TS.Cost AS Total
                         FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
                         Left Join TukiosShipping TS On T.ClientOrderId=TS.ClientOrderId
                         Where T.TukiosOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0) 
@@ -96,7 +96,7 @@ namespace Mbc5.Forms.Tukios
 ,TP.SellPrice * T.Copies AS UnitTotal
 ,TP.PerPage * (T.Pages * T.Copies )AS PageFee
 ,TP.HandlingPerBox AS Fulfillment
-,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox) AS Total
+,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox)+ TS.Cost AS Total
 FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
 Left Join TukiosShipping TS ON T.ClientOrderId=TS.ClientOrderId
 Where (T.Invoiced IS NULL OR T.Invoiced =0) and T.Invno IN(Select Invno from WipDetail where Invno=T.invno) AND T.TukiosOrderStatus ='Cancelled' ";
@@ -131,9 +131,9 @@ Where (T.Invoiced IS NULL OR T.Invoiced =0) and T.Invno IN(Select Invno from Wip
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 

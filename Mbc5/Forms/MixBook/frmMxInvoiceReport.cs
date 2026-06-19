@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
-using BaseClass.Core;
 using BindingModels;
 using CsvHelper;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 namespace Mbc5.Forms.MixBook
 {
@@ -134,12 +127,12 @@ Where (M.Invoiced IS NULL OR M.Invoiced =0) and M.Invno IN(Select Invno from Wip
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
-                using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var writer = new System.IO.StreamWriter(saveFileDialog1.FileName))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
-                    //csvWriter.Configuration.HasHeaderRecord = true;
-                    // csvWriter.Configuration.AutoMap<InqCountModel>();
+                    csvWriter.Context.Configuration.Delimiter = ",";
+                    //csvWriter.Context.Configuration.HasHeaderRecord = true;
+                    // csvWriter.Context.Configuration.AutoMap<InqCountModel>();
 
                     //csvWriter.WriteHeader<InqCountModel>();
                     csvWriter.WriteRecords(data);

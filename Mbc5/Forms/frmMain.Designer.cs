@@ -89,6 +89,7 @@
             this.printRemakeTicketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.scanCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,7 +134,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoiceReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importUPSShippingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -592,7 +593,8 @@
             this.printRemakeTicketsToolStripMenuItem1,
             this.wIPReportToolStripMenuItem2,
             this.scanCheckToolStripMenuItem,
-            this.invoiceReportToolStripMenuItem2});
+            this.invoiceReportToolStripMenuItem2,
+            this.importUPSShippingToolStripMenuItem});
             this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
             this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
@@ -624,6 +626,13 @@
             this.scanCheckToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.scanCheckToolStripMenuItem.Text = "Scan Check";
             this.scanCheckToolStripMenuItem.Click += new System.EventHandler(this.scanCheckToolStripMenuItem_Click_1);
+            // 
+            // invoiceReportToolStripMenuItem2
+            // 
+            this.invoiceReportToolStripMenuItem2.Name = "invoiceReportToolStripMenuItem2";
+            this.invoiceReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.invoiceReportToolStripMenuItem2.Text = "Invoice Report";
+            this.invoiceReportToolStripMenuItem2.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem2_Click);
             // 
             // jPIXReportsToolStripMenuItem
             // 
@@ -1016,12 +1025,12 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // invoiceReportToolStripMenuItem2
+            // importUPSShippingToolStripMenuItem
             // 
-            this.invoiceReportToolStripMenuItem2.Name = "invoiceReportToolStripMenuItem2";
-            this.invoiceReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.invoiceReportToolStripMenuItem2.Text = "Invoice Report";
-            this.invoiceReportToolStripMenuItem2.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem2_Click);
+            this.importUPSShippingToolStripMenuItem.Name = "importUPSShippingToolStripMenuItem";
+            this.importUPSShippingToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.importUPSShippingToolStripMenuItem.Text = "Import UPS Shipping";
+            this.importUPSShippingToolStripMenuItem.Click += new System.EventHandler(this.importUPSShippingToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1158,5 +1167,6 @@
         private System.Windows.Forms.ToolStripMenuItem scanCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shippingCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem importUPSShippingToolStripMenuItem;
     }
 }

@@ -3062,6 +3062,13 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTkInvoiceReport.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void importUPSShippingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTukiosUPSImport frmTukiosUPSImport = new frmTukiosUPSImport(this.ApplicationUser);
+            frmTukiosUPSImport.MdiParent = this;
+            frmTukiosUPSImport.Show();
+        }
         #endregion
         //nothing below here
     }

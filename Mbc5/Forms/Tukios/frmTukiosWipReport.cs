@@ -124,9 +124,9 @@ namespace Mbc5.Forms.Tukios
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 

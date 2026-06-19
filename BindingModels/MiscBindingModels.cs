@@ -2,6 +2,16 @@
 
 namespace BindingModels
 {
+    public class UPSInvoceData
+    {
+        public string InvoiceNumber { get; set; }
+        public decimal InvoiceAmount { get; set; }
+        public DateTime RunDate { get; set; }
+        public string AccountNumber { get; set; }
+        public string CustRef { get; set; }
+        public string ShipmentRef { get; set; }
+        public decimal ShipmentTotal { get; set; }
+    }
     public class RemakeData
     {
         public RemakeData(bool _remake = false, string _reasonCode = "", string _remakeQty = "")

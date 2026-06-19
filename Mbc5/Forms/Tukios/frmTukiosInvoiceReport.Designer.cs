@@ -37,15 +37,15 @@
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RequestedShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsData = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrintReport = new System.Windows.Forms.Button();
             this.btnMarkInvoiced = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
-            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RequestedShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +133,33 @@
             this.dataGridView1.Size = new System.Drawing.Size(749, 417);
             this.dataGridView1.TabIndex = 6;
             // 
+            // Invno
+            // 
+            this.Invno.DataPropertyName = "Invno";
+            this.Invno.HeaderText = "Invno";
+            this.Invno.Name = "Invno";
+            // 
+            // RequestedShipDate
+            // 
+            this.RequestedShipDate.DataPropertyName = "RequestedShipDate";
+            this.RequestedShipDate.HeaderText = "Req Ship Date";
+            this.RequestedShipDate.Name = "RequestedShipDate";
+            this.RequestedShipDate.Width = 150;
+            // 
+            // ShipDate
+            // 
+            this.ShipDate.DataPropertyName = "DateShipped";
+            this.ShipDate.HeaderText = "Ship Date";
+            this.ShipDate.Name = "ShipDate";
+            this.ShipDate.Width = 150;
+            // 
+            // orderStatus
+            // 
+            this.orderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.orderStatus.DataPropertyName = "Status";
+            this.orderStatus.HeaderText = "Status";
+            this.orderStatus.Name = "orderStatus";
+            // 
             // btnPrintReport
             // 
             this.btnPrintReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -176,33 +203,6 @@
             this.lblRecords.TabIndex = 10;
             this.lblRecords.Text = ".";
             // 
-            // Invno
-            // 
-            this.Invno.DataPropertyName = "Invno";
-            this.Invno.HeaderText = "Invno";
-            this.Invno.Name = "Invno";
-            // 
-            // RequestedShipDate
-            // 
-            this.RequestedShipDate.DataPropertyName = "RequestedShipDate";
-            this.RequestedShipDate.HeaderText = "Req Ship Date";
-            this.RequestedShipDate.Name = "RequestedShipDate";
-            this.RequestedShipDate.Width = 150;
-            // 
-            // ShipDate
-            // 
-            this.ShipDate.DataPropertyName = "DateShipped";
-            this.ShipDate.HeaderText = "Ship Date";
-            this.ShipDate.Name = "ShipDate";
-            this.ShipDate.Width = 150;
-            // 
-            // orderStatus
-            // 
-            this.orderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.orderStatus.DataPropertyName = "Status";
-            this.orderStatus.HeaderText = "Status";
-            this.orderStatus.Name = "orderStatus";
-            // 
             // frmTukiosInvoiceReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,7 +221,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTukiosInvoiceReport";
-            this.Text = "Mixbook Pricing Report";
+            this.Text = "Tukios Pricing Report";
             this.Load += new System.EventHandler(this.frmMxInvoiceReport_Load);
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.button1, 0);

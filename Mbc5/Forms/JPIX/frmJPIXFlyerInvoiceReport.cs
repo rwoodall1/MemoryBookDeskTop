@@ -5,7 +5,7 @@ using CsvHelper;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
+using System.Windows.Forms;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmJPIXFlyerInvoiceReport : BaseClass.frmBase
@@ -93,19 +93,26 @@ Where JO.OrderStatus='Shipped' AND (Invoiced IS NULL OR Invoiced =0)And (JO.Date
             try
             {
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
-                saveFileDialog1.ShowDialog();
-                //using (var mem = new MemoryStream())
-                using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+
+                // It is best practice to verify the user clicked 'OK' or 'Save' before writing
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    csvWriter.Configuration.Delimiter = ",";
-                    //csvWriter.Configuration.HasHeaderRecord = true;
-                    // csvWriter.Configuration.AutoMap<InqCountModel>();
+                    // 1. Setup the new CsvConfiguration object
+                    var config = new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
+                    {
+                        Delimiter = ",",
+                        HasHeaderRecord = true
+                    };
 
-                    //csvWriter.WriteHeader<InqCountModel>();
-                    csvWriter.WriteRecords(data);
+                    // 2. Pass the config into the CsvWriter
+                    using (var writer = new System.IO.StreamWriter(saveFileDialog1.FileName))
+                    using (var csvWriter = new CsvWriter(writer, config))
+                    {
+                        // 3. WriteRecords automatically maps the properties and writes the header for you
+                        csvWriter.WriteRecords(data);
 
-                    writer.Flush();
+                        writer.Flush();
+                    }
 
                     Process.Start(saveFileDialog1.FileName);
                 }

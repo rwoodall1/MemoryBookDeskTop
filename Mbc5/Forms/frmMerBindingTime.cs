@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
-using Mbc5.Classes;
 using BindingModels;
 using CsvHelper;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
+
 namespace Mbc5.Forms
 {
     public partial class frmMerBindingTime : BaseClass.frmBase
@@ -19,7 +16,7 @@ namespace Mbc5.Forms
         public frmMerBindingTime(UserPrincipal userPrincipal) : base(new string[] { }, userPrincipal)
         {
             InitializeComponent();
-            if (userPrincipal.UserName.ToUpper() == "SA" || userPrincipal.UserName.ToUpper() == "MARK" || userPrincipal.UserName.ToUpper() =="CHRIS")
+            if (userPrincipal.UserName.ToUpper() == "SA" || userPrincipal.UserName.ToUpper() == "MARK" || userPrincipal.UserName.ToUpper() == "CHRIS")
             {
                 btnDelete.Visible = true;
             }
@@ -48,15 +45,15 @@ namespace Mbc5.Forms
             txtTime.Text = "";
             txtDesc.Text = "";
         }
-       new private bool Save()
+        new private bool Save()
         {
             var sqlQuery = new SQLCustomClient().CommandText("Insert INTO MerBindingWip (ProductType,Task,Initials,Time,Description,Quantity) Values(@ProductType,@Task,@Initials,@Time,@Description,@Quantity)");
-            sqlQuery.AddParameter("@ProductType",cmbProduct.Text);
-            sqlQuery.AddParameter("@Task",cmbTask.Text);
-            sqlQuery.AddParameter("@Initials",txtInitials.Text);
-            sqlQuery.AddParameter("@Time",txtTime.Text);
-            sqlQuery.AddParameter("@Description",txtDesc.Text);
-            sqlQuery.AddParameter("@Quantity",txtQty.Text);
+            sqlQuery.AddParameter("@ProductType", cmbProduct.Text);
+            sqlQuery.AddParameter("@Task", cmbTask.Text);
+            sqlQuery.AddParameter("@Initials", txtInitials.Text);
+            sqlQuery.AddParameter("@Time", txtTime.Text);
+            sqlQuery.AddParameter("@Description", txtDesc.Text);
+            sqlQuery.AddParameter("@Quantity", txtQty.Text);
             var result = sqlQuery.Insert();
 
             if (result.IsError)
@@ -71,7 +68,7 @@ namespace Mbc5.Forms
         private void LoadData()
         {
             var sqlQuery = new SQLCustomClient().CommandText("SELECT Top(200) Id,DateCreated,ProductType,Task,Initials,Time,Description,Quantity FROM MerBindingWip   Where Year(GETDate())=Year(DateCreated) Order By DateCreated Desc");
-            var selectResult=sqlQuery.SelectMany<MerBindingWip>();
+            var selectResult = sqlQuery.SelectMany<MerBindingWip>();
             if (selectResult.IsError)
             {
                 Log.Error("Failed to retrieve MerBinding Wip Data");
@@ -79,13 +76,13 @@ namespace Mbc5.Forms
                 return;
             }
             bsWipData.DataSource = null;
-            bsWipData.DataSource =(List<MerBindingWip>)selectResult.Data;
+            bsWipData.DataSource = (List<MerBindingWip>)selectResult.Data;
         }
         private void DeleteRow()
         {
             var sqlQuery = new SQLCustomClient().CommandText("Delete FROM Where Id=@Id");
-            sqlQuery.AddParameter("@Id",0);
-           var result= sqlQuery.Delete();
+            sqlQuery.AddParameter("@Id", 0);
+            var result = sqlQuery.Delete();
             if (result.IsError)
             {
                 MbcMessageBox.Error("Failed to delete record.");
@@ -176,11 +173,11 @@ namespace Mbc5.Forms
 
         private void dgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-      
+
             if (e.RowIndex == -1)
             {
-                List<MerBindingWip> dataList = (List<MerBindingWip>) bsWipData.DataSource;
-               
+                List<MerBindingWip> dataList = (List<MerBindingWip>)bsWipData.DataSource;
+
                 switch (e.ColumnIndex)
                 {
                     case 1:
@@ -195,7 +192,7 @@ namespace Mbc5.Forms
                             dataList.Sort((x1, x2) => x2.DateCreated.CompareTo(x1.DateCreated));
                             dgData.Columns[e.ColumnIndex].HeaderText = dgData.Columns[e.ColumnIndex].HeaderText.Replace(".", "..");
                         }
-                       
+
                         bsWipData.DataSource = dataList;
                         break;
                     case 2:
@@ -291,8 +288,8 @@ namespace Mbc5.Forms
                 MbcMessageBox.Hand("There are no records to print.", "No Records");
                 return;
             }
-            
-            
+
+
             try
             {
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
@@ -300,9 +297,9 @@ namespace Mbc5.Forms
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 
@@ -321,7 +318,7 @@ namespace Mbc5.Forms
         }
         private void Delete()
         {
-            var curRow =(MerBindingWip)bsWipData.Current;
+            var curRow = (MerBindingWip)bsWipData.Current;
             var vId = curRow.Id;
             var sqlQuery = new SQLCustomClient().CommandText("Delete from MerBindingWip Where Id=@Id");
             sqlQuery.AddParameter("@Id", vId);

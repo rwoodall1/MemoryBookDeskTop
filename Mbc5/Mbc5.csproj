@@ -83,8 +83,8 @@
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
       <HintPath>..\packages\Avalara.AvaTax.19.7.0.1\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
     </Reference>
-    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\packages\CsvHelper.12.1.3\lib\net45\CsvHelper.dll</HintPath>
+    <Reference Include="CsvHelper, Version=33.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.33.1.0\lib\net48\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="CustomControls">
       <HintPath>.\CustomControls.dll</HintPath>
@@ -104,6 +104,9 @@
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.11.0.0-preview.4.26230.115\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -698,6 +701,12 @@
     <Compile Include="Forms\Tukios\frmTukiosShippingReport.Designer.cs">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosUPSImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosUPSImport.Designer.cs">
+      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Tukios\frmTukiosWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -790,6 +799,7 @@
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosRemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.UPSInvoceData.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -954,6 +964,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosShippingReport.resx">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosUPSImport.resx">
+      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosWipReport.resx">
       <DependentUpon>frmTukiosWipReport.cs</DependentUpon>
