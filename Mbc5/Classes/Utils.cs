@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using System.Xml.Serialization;
 using System.IO;
-using System.Security;
 using System.Security.Cryptography;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using BindingModels;
+using System.Text;
+using System.Xml.Serialization;
 
 namespace Mbc5.Classes
 {
@@ -42,6 +34,7 @@ namespace Mbc5.Classes
             }
 
         }
+
     }
     public static class Encryptor
     {
@@ -153,7 +146,7 @@ namespace Mbc5.Classes
 
 
     }
-  
+
 }
 
 

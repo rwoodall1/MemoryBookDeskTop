@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace BindingModels
+﻿namespace BindingModels
 {
     public class ReturnValues
     {
@@ -11,7 +6,7 @@ namespace BindingModels
         public string OracleCode { get; set; }
         public int Invno { get; set; }
         public string ProdNo { get; set; }
-        public string OrderId { get; set;}
+        public string OrderId { get; set; }
 
     }
     //cust
@@ -69,7 +64,7 @@ namespace BindingModels
         public string SchState { get; set; }
 
     }
-  
+
     public class SchcodeSearch
     {
         public string Schcode { get; set; }
@@ -155,9 +150,9 @@ namespace BindingModels
         public string Schcode { get; set; }
         public string Schname { get; set; }
         public int Invoice { get; set; }
-		public string ProdNo { get; set; }
-		public string Contryear { get; set; }
-        
+        public string ProdNo { get; set; }
+        public string Contryear { get; set; }
+
     }
     //Produtn
     public class ProdutnSchcodeSearch
@@ -166,12 +161,12 @@ namespace BindingModels
         public string Schname { get; set; }
         public int Invoice { get; set; }
         public string ProdNo { get; set; }
-       
-        
+
+
     }
     public class ProdutnSchnameSearch
     {
-        public string Schname { get; set; }   
+        public string Schname { get; set; }
         public string Schcode { get; set; }
         public int Invoice { get; set; }
         public string ProdNo { get; set; }
@@ -185,7 +180,7 @@ namespace BindingModels
         public string Schname { get; set; }
         public int Invoice { get; set; }
         public string ProdNo { get; set; }
-        
+
     }
     public class ProdutnInvnoSearch
     {
@@ -195,11 +190,11 @@ namespace BindingModels
         public string OracleCode { get; set; }
         public string ProdNo { get; set; }
         public string Contryear { get; set; }
-        
+
     }
     //EndSheet
-    
- public class EndSheetSchcodeSearch
+
+    public class EndSheetSchcodeSearch
     {
         public string Schcode { get; set; }
         public string Schname { get; set; }
@@ -238,13 +233,14 @@ namespace BindingModels
     }
     public class EndSheetInvnoSearch
     {
-       public int Invoice { get; set; }
+        public int Invoice { get; set; }
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string ProdNo { get; set; }
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
+
     //Bids
     public class BidsSchcodeSearch
     {
@@ -260,16 +256,48 @@ namespace BindingModels
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string Contryear { get; set; }
-        public int Id {get; set;}
+        public int Id { get; set; }
         public string SchZip { get; set; }
         public string Schstate { get; set; }
 
 
     }
+    //Tukios
+    public class TukiosOrderIdSearch
+    {
+        public string ClientOrderId { get; set; }
+        public string ShipName { get; set; }
+        public int Invno { get; set; }
+
+    }
+    public class TukiosOrderShipNameSearch
+    {
+        public string ShipName { get; set; }
+        public string ClientOrderId { get; set; }
+    }
+    public class TukiosOrderBookIdSearch
+    {
+        public string BookId { get; set; }
+        public string ClientOrderId { get; set; }
+
+
+    }
+    public class TukiosGroupIdSearch
+    {
+        public int GroupId { get; set; }
+        public string OrderId { get; set; }
+        public string ShipName { get; set; }
+    }
+    public class TukiosInvnoSearch
+    {
+        public int Invoice { get; set; }
+        public string OrderId { get; set; }
+        public string ShipName { get; set; }
+    }
     //Mixbooks
     public class MixBookOrderIdSearch
     {
-       public int ClientOrderId { get; set; }
+        public int ClientOrderId { get; set; }
         public string ShipName { get; set; }
         public int Invno { get; set; }
 
@@ -285,7 +313,7 @@ namespace BindingModels
     {
         public string ShipName { get; set; }
         public int ClientOrderId { get; set; }
-      
+
 
     }
     public class MixBookOrderItemIdSearch

@@ -41,6 +41,8 @@ namespace BindingModels
         public int LargePressQty { get; set; }
         public int SmallPressQty { get; set; }
     }
+
+
     public class JobTicketQuery
     {
 
@@ -109,6 +111,7 @@ namespace BindingModels
     public class WipReportModel
     {
         public string Invno { get; set; }
+        public int GroupId { get; set; }
         public string ShipName { get; set; }
         public string Backing { get; set; }
         public int Copies { get; set; }
@@ -138,6 +141,7 @@ namespace BindingModels
     public class NoBookScannedReportModel
     {
         public string Invno { get; set; }
+        public int GroupId { get; set; }
         public string OrderReceivedDate { get; set; }
         public string RequestedShipDate { get; set; }
         public string ShipName { get; set; }
@@ -160,6 +164,7 @@ namespace BindingModels
 
 
     }
+
 
     public class MixBookBarScanModel
     {

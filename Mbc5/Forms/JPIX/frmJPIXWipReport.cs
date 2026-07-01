@@ -80,11 +80,7 @@ namespace Mbc5.Forms.JPIX
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //reportViewer1.LocalReport.DataSources.Clear();
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", bsWip));
 
-            //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.JPIXFlyerWipReport.rdlc";
-            //this.reportViewer1.RefreshReport();
 
             if (bsWip.Count < 1)
             {
@@ -98,9 +94,9 @@ namespace Mbc5.Forms.JPIX
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 

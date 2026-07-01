@@ -23,10 +23,11 @@ namespace Mbc5.Forms.MixBook
             this.ApplicationUser = userPrincipal;
             JPIXScanner = new JPIXScan(userPrincipal);
             MXBScanner = new MixBookScan(userPrincipal);
-
+            TUKScanner = new TukiosScan(userPrincipal);
         }
         private JPIXScan JPIXScanner;
         private MixBookScan MXBScanner;
+        private TukiosScan TUKScanner;
         private Department Department = new Department();
 
         //OldProperties
@@ -133,6 +134,11 @@ namespace Mbc5.Forms.MixBook
                             JPXScan();
                             break;
                         }
+                    case "TUK":
+                        {
+                            TUKScan();
+                            break;
+                        }
                     default:
                         {
                             MbcMessageBox.Error("Scan code does not have a valid company prefix");
@@ -230,9 +236,13 @@ namespace Mbc5.Forms.MixBook
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
             MXBScanData _scanData = new MXBScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, null, this);
             bool completed = this.MXBScanner.Scan(new ScanData(null, _scanData));
+            if (completed)
+            {
+                ClearScan();
+
+            }
 
 
-            ClearScan();
 
 
             ////to impersonate finish later
@@ -1135,7 +1145,6 @@ namespace Mbc5.Forms.MixBook
             //}
             //ClearScan();
         }
-
         private void JPXScan()
         {
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
@@ -1147,6 +1156,17 @@ namespace Mbc5.Forms.MixBook
             }
 
 
+        }
+        private void TUKScan()
+        {
+            //_____________________________________Good above
+            RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
+            TUKScanData _scanData = new TUKScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, null, this);
+            bool completed = this.TUKScanner.Scan(new ScanData(null, null, _scanData));
+            if (completed)
+            {
+                ClearScan();
+            }
         }
         //private void ScanRemake(string currentUser)
         //{
