@@ -1317,7 +1317,10 @@ namespace Mbc5.Dialogs
             {
                 txtSearch.Text = currentSearchValue;
             }
-
+            if (txtSearch.Text == "0")
+            {
+                return;
+            }
             Search(txtSearch.Text);
         }
 
@@ -1774,7 +1777,10 @@ namespace Mbc5.Dialogs
                     {
                         try
                         {
-
+                            if (value == "0")
+                            {
+                                return;
+                            }
                             vIndex = this.TukiosOrderIdList.FindIndex(vorderid => vorderid.ClientOrderId.ToString() != "0" && vorderid.ClientOrderId.ToString().Trim().StartsWith(value.ToUpper()));
                             if (vIndex != -1)
                             {
@@ -1786,7 +1792,10 @@ namespace Mbc5.Dialogs
                                 CurrentIndex = vIndex;
 
                             }
-                            else { MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found"); }
+                            else
+                            {
+                                MbcMessageBox.Information("The record you are looking for was not found.", "Record Not Found");
+                            }
                         }
                         catch (Exception ex)
                         {
