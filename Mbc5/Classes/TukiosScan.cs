@@ -476,7 +476,7 @@ namespace Mbc5.Classes
 
                                 if (!this.scanData.PrintToLabeler)
                                 {
-                                    PrintDataMatrix(this.scanData.Barcode, _Location);
+                                    PrintDataMatrix(this.scanData.Barcode, _Location+"1");
                                 }
                                 else
                                 {
