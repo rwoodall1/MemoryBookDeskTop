@@ -1179,6 +1179,7 @@
             this.purgeStripButton2.Name = "purgeStripButton2";
             this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
             this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Visible = false;
             this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // mixBookOrderBindingNavigator

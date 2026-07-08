@@ -39,6 +39,11 @@ namespace Mbc5.Dialogs
                                                             Where PTicketPrinted = 1
                                                             Group By RequestId order by Max(DateReceived) desc";
                     break;
+                case "TUK":
+                    cmd = @"Select Top(10) Cast(JobPrintBatch As varchar)As JobPrintBatch,max(JobPrintDate) As JobPrintDate ,count(JobPrintBatch) as NumberTickets From TukiosOrder
+                                                            Where JobTicketPrinted=1
+                                                            Group By JobPrintBatch order by Max(JobPrintDate) desc";
+                    break;
                 default:
                     MbcMessageBox.Error("Company not supported for resetting print jobs.");
                     return;
@@ -112,10 +117,36 @@ namespace Mbc5.Dialogs
                 case "JPX":
                     ResetJpix();
                     break;
+                case "TUK":
+                    ResetTukios();
+                    break;
 
             }
 
 
+        }
+        protected void ResetTukios()
+        {
+            int vbatch = 0;
+            if (int.TryParse(txtBatch.Text, out vbatch))
+            {
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"Update TukiosOrder Set JobTicketPrinted=0,BookStatus=NULL where JobPrintBatch=@JobPrintBatch ");
+                sqlClient.AddParameter("@JobPrintBatch", txtBatch.Text);
+                var result = sqlClient.Update();
+                if (result.IsError)
+                {
+                    Log.Error("Failed to update JobtukiosTicketPrinted:" + result.Errors[0].DeveloperMessage);
+                    MbcMessageBox.Error("Failed to update JobTicketPrinted");
+                    return;
+                }
+            }
+            else
+            {
+                MbcMessageBox.Hand("Batch number must be all numeric.", "Invalid Batch Number");
+                return;
+            }
+            this.Close();
         }
         protected void ResetMixBook()
         {

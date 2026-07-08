@@ -471,27 +471,27 @@ namespace Mbc5.Classes
                         if (TukModel.Backing == "HC")
                         {
                             string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
-                            if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
-                            {
+                            //if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
+                            //{
 
-                                if (!this.scanData.PrintToLabeler)
-                                {
-                                    PrintDataMatrix(this.scanData.Barcode, _Location+"1");
-                                }
-                                else
-                                {
-                                    MbcMessageBox.Information("Printing to labeler is not enabled. Contact a supervisor if you need this feature.");
-                                    //Print to labeler
-                                    //List<BookBlockLabel> listData = new List<BookBlockLabel>();
-                                    //var vData = new BookBlockLabel() { Barcode = "*" + scanData.Barcode + "*", Location = Scanform.txtLocation.Text };
-                                    //listData.Add(vData);
-                                    //this.Scanform.reportViewer2.LocalReport.DataSources.Clear();
-                                    //this.Scanform.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
-                                    //this.Scanform.reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
-                                    //DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-                                    //dp.Export(true, this.Scanform.reportViewer2.LocalReport, Scanform.LabelPrinter);
-                                }
+                            if (!this.scanData.PrintToLabeler)
+                            {
+                                PrintDataMatrix(this.scanData.Barcode, _Location);
                             }
+                            else
+                            {
+                                MbcMessageBox.Information("Printing to labeler is not enabled. Contact a supervisor if you need this feature.");
+                                //Print to labeler
+                                //List<BookBlockLabel> listData = new List<BookBlockLabel>();
+                                //var vData = new BookBlockLabel() { Barcode = "*" + scanData.Barcode + "*", Location = Scanform.txtLocation.Text };
+                                //listData.Add(vData);
+                                //this.Scanform.reportViewer2.LocalReport.DataSources.Clear();
+                                //this.Scanform.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321MixbookBookBlock.rdlc";
+                                //this.Scanform.reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsBookBlock", listData));
+                                //DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+                                //dp.Export(true, this.Scanform.reportViewer2.LocalReport, Scanform.LabelPrinter);
+                            }
+                            //}
                             //Mark says orders will not be split on location so insert into one location
                             sqlClient.ClearParameters();
                             sqlClient.CommandText(@"Update Wipdetail Set MxbLocation=@Location Where Invno=@Invno And DescripID=@DescripID  ");

@@ -90,6 +90,7 @@
             this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.scanCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importUPSShippingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +135,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.importUPSShippingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetJobTicketsByBatchToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.pnlNotice.SuspendLayout();
@@ -185,7 +186,7 @@
             this.shippingScanToolStripMenuItem,
             this.mixBookUSPSLabelToolStripMenuItem});
             this.mixBookToolStripMenuItem.Name = "mixBookToolStripMenuItem";
-            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mixBookToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mixBookToolStripMenuItem.Text = "Mix Book";
             // 
             // mixBookOrdersToolStripMenuItem
@@ -236,7 +237,7 @@
             this.jPIXOrdersToolStripMenuItem1,
             this.jPIXOrderDetailToolStripMenuItem});
             this.jPIXOrdersToolStripMenuItem.Name = "jPIXOrdersToolStripMenuItem";
-            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jPIXOrdersToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.jPIXOrdersToolStripMenuItem.Text = "JPIX ";
             // 
             // jPIXOrdersToolStripMenuItem1
@@ -262,7 +263,7 @@
             this.shippingScanToolStripMenuItem1,
             this.shippingCheckToolStripMenuItem});
             this.tukiosToolStripMenuItem.Name = "tukiosToolStripMenuItem";
-            this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.tukiosToolStripMenuItem.Text = "Tukios";
             // 
             // tukiosOrdersToolStripMenuItem
@@ -306,7 +307,7 @@
             this.productionWIPToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -326,21 +327,21 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Visible = false;
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
@@ -594,7 +595,8 @@
             this.wIPReportToolStripMenuItem2,
             this.scanCheckToolStripMenuItem,
             this.invoiceReportToolStripMenuItem2,
-            this.importUPSShippingToolStripMenuItem});
+            this.importUPSShippingToolStripMenuItem,
+            this.resetJobTicketsByBatchToolStripMenuItem2});
             this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
             this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
@@ -602,37 +604,44 @@
             // printJobTicketsToolStripMenuItem
             // 
             this.printJobTicketsToolStripMenuItem.Name = "printJobTicketsToolStripMenuItem";
-            this.printJobTicketsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.printJobTicketsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.printJobTicketsToolStripMenuItem.Text = "Print Job Tickets";
             this.printJobTicketsToolStripMenuItem.Click += new System.EventHandler(this.printJobTicketsToolStripMenuItem_Click);
             // 
             // printRemakeTicketsToolStripMenuItem1
             // 
             this.printRemakeTicketsToolStripMenuItem1.Name = "printRemakeTicketsToolStripMenuItem1";
-            this.printRemakeTicketsToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.printRemakeTicketsToolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
             this.printRemakeTicketsToolStripMenuItem1.Text = "Print Remake Tickets";
             this.printRemakeTicketsToolStripMenuItem1.Click += new System.EventHandler(this.printTukiosRemakeTicketsToolStripMenuItem_Click);
             // 
             // wIPReportToolStripMenuItem2
             // 
             this.wIPReportToolStripMenuItem2.Name = "wIPReportToolStripMenuItem2";
-            this.wIPReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.wIPReportToolStripMenuItem2.Size = new System.Drawing.Size(212, 22);
             this.wIPReportToolStripMenuItem2.Text = "WIP Report";
             this.wIPReportToolStripMenuItem2.Click += new System.EventHandler(this.wIPReportToolStripMenuItem2_Click);
             // 
             // scanCheckToolStripMenuItem
             // 
             this.scanCheckToolStripMenuItem.Name = "scanCheckToolStripMenuItem";
-            this.scanCheckToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.scanCheckToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.scanCheckToolStripMenuItem.Text = "Scan Check";
             this.scanCheckToolStripMenuItem.Click += new System.EventHandler(this.scanCheckToolStripMenuItem_Click_1);
             // 
             // invoiceReportToolStripMenuItem2
             // 
             this.invoiceReportToolStripMenuItem2.Name = "invoiceReportToolStripMenuItem2";
-            this.invoiceReportToolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.invoiceReportToolStripMenuItem2.Size = new System.Drawing.Size(212, 22);
             this.invoiceReportToolStripMenuItem2.Text = "Invoice Report";
             this.invoiceReportToolStripMenuItem2.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem2_Click);
+            // 
+            // importUPSShippingToolStripMenuItem
+            // 
+            this.importUPSShippingToolStripMenuItem.Name = "importUPSShippingToolStripMenuItem";
+            this.importUPSShippingToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.importUPSShippingToolStripMenuItem.Text = "Import UPS Shipping";
+            this.importUPSShippingToolStripMenuItem.Click += new System.EventHandler(this.importUPSShippingToolStripMenuItem_Click);
             // 
             // jPIXReportsToolStripMenuItem
             // 
@@ -1025,12 +1034,12 @@
             this.timer2.Interval = 1800000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // importUPSShippingToolStripMenuItem
+            // resetJobTicketsByBatchToolStripMenuItem2
             // 
-            this.importUPSShippingToolStripMenuItem.Name = "importUPSShippingToolStripMenuItem";
-            this.importUPSShippingToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.importUPSShippingToolStripMenuItem.Text = "Import UPS Shipping";
-            this.importUPSShippingToolStripMenuItem.Click += new System.EventHandler(this.importUPSShippingToolStripMenuItem_Click);
+            this.resetJobTicketsByBatchToolStripMenuItem2.Name = "resetJobTicketsByBatchToolStripMenuItem2";
+            this.resetJobTicketsByBatchToolStripMenuItem2.Size = new System.Drawing.Size(212, 22);
+            this.resetJobTicketsByBatchToolStripMenuItem2.Text = "Reset Job Tickets By Batch";
+            this.resetJobTicketsByBatchToolStripMenuItem2.Click += new System.EventHandler(this.resetJobTicketsByBatchToolStripMenuItem2_Click);
             // 
             // frmMain
             // 
@@ -1168,5 +1177,6 @@
         private System.Windows.Forms.ToolStripMenuItem shippingCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem importUPSShippingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetJobTicketsByBatchToolStripMenuItem2;
     }
 }

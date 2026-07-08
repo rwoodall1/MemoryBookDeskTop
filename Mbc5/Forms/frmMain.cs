@@ -37,7 +37,7 @@ namespace Mbc5.Forms
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
         private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
         private static string TukiosPageStorage = "\\\\sedsujpisl01\\workflow\\TukiosLastPageImage\\";
-        private static string TukiosBookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosBookArchive\\";
+        private static string TukiosBookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosArchive\\";
         protected Logger Log { get; set; }
         protected int JobTicketsPrinted { get; set; }
         protected int test { get; set; }
@@ -774,8 +774,8 @@ CoverURL,
     Backing,
     OrderReceivedDate,
     ProdInOrder,
-    '*MXB'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
-    '*MXB'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
+    '*TUK'+CAST(Invno as varchar)+'SC*' AS SCBarcode,
+    '*TUK'+CAST(Invno as varchar)+'YB*' AS YBBarcode,
     Case
 
                         when (ProdCopies>3 )  Then
@@ -835,7 +835,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             JobTicketQueryBindingSource.DataSource = jobData;
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", JobTicketQueryBindingSource));
             reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.TukiosJobTicketQuery.rdlc";
-            SetBatchNumber();
+            SetTukiosBatchNumber();
 
             // IMPORTANT: allow external images and ensure LastPageLocation contains a file:// URI
             reportViewer1.LocalReport.EnableExternalImages = true;
@@ -1715,6 +1715,24 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 var updateResult = sqlClient.Update();
             }
         }
+        private void SetTukiosJobTicketsPrinted()
+        {
+
+            var sqlClient = new SQLCustomClient();
+
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"Update TukiosOrder Set JobTicketPrinted=@SetJobTicketPrinted,JobPrintDate=GETDATE() Where Invno=@Invno");
+            foreach (TukiosJobTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
+
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@SetJobTicketPrinted", 1);
+
+                var updateResult = sqlClient.Update();
+            }
+        }
         private void SetJobTicketsPrinted()
         {
 
@@ -1733,6 +1751,12 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 var updateResult = sqlClient.Update();
             }
         }
+        private void ResetTukiosJobTickets()
+        {
+            frmPrintBatches frmPrintBatches = new frmPrintBatches("TUK");
+            frmPrintBatches.Show();
+        }
+
         private void ResetJobTickets()
         {
             frmPrintBatches frmPrintBatches = new frmPrintBatches("MXB");
@@ -1858,9 +1882,9 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 ,TO1.ProdInOrder
                 ,CAST(TO1.Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno             
                 ,(Select Sum(Copies) from TukiosOrder where Clientorderid=TO1.clientOrderid )As NumToShip 
-                ,'*MXB'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
+                ,'*TUK'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
                               
-                ,'*MXB'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
+                ,'*TUK'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
                 ,W.Rmbto AS RemakeDate
                 ,W.Rmbtot As RemakeTotal
                 ,wd.invno
@@ -2730,6 +2754,26 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 }
                 catch (Exception ex) { }
             }
+            else if (reportViewer1.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.TukiosJobTicketQuery.rdlc")
+            {
+                try
+                {
+                    if (JobTicketsPrinted == 50)
+                    {
+                        JobTicketsPrinted = 0;
+                        if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                        {
+                            SetTukiosJobTicketsPrinted();
+                            PrintTukiosJobTickets();//do this until all records printed.
+                            var holdtime = DateTime.Now.AddSeconds(4);
+                            do { } while (DateTime.Now < holdtime);
+
+                        }
+                    }
+
+                }
+                catch (Exception ex) { }
+            }
             else
             {
                 //Remake Ticket
@@ -2853,7 +2897,10 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
         {
             ResetJobTickets();
         }
-
+        private void resetJobTicketsByBatchToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ResetTukiosJobTickets();
+        }
 
 
         private void scanCheckToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3069,6 +3116,8 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTukiosUPSImport.MdiParent = this;
             frmTukiosUPSImport.Show();
         }
+
+
         #endregion
         //nothing below here
     }

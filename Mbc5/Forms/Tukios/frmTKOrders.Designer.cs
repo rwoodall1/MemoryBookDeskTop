@@ -49,13 +49,13 @@
             System.Windows.Forms.Label jobPrintBatchLabel;
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label groupIdLabel;
+            System.Windows.Forms.Label bookTypeLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.Label bookTypeLabel;
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -74,6 +74,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.bookTypeLabel1 = new System.Windows.Forms.Label();
             this.groupIdLabel1 = new System.Windows.Forms.Label();
             this.btnCancelOrder = new System.Windows.Forms.Button();
             this.btnRemoveOrder = new System.Windows.Forms.Button();
@@ -133,7 +134,7 @@
             this.tableAdapterManager1 = new Mbc5.DataSets.TukiosOrdersTableAdapters.TableAdapterManager();
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bookTypeLabel1 = new System.Windows.Forms.Label();
+            this.lblcvrStatus = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -324,7 +325,7 @@
             coverStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             coverStatusLabel.AutoSize = true;
             coverStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverStatusLabel.Location = new System.Drawing.Point(95, 682);
+            coverStatusLabel.Location = new System.Drawing.Point(95, 703);
             coverStatusLabel.Name = "coverStatusLabel";
             coverStatusLabel.Size = new System.Drawing.Size(84, 13);
             coverStatusLabel.TabIndex = 10020;
@@ -336,7 +337,7 @@
             bookStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             bookStatusLabel.AutoSize = true;
             bookStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bookStatusLabel.Location = new System.Drawing.Point(709, 682);
+            bookStatusLabel.Location = new System.Drawing.Point(709, 703);
             bookStatusLabel.Name = "bookStatusLabel";
             bookStatusLabel.Size = new System.Drawing.Size(80, 13);
             bookStatusLabel.TabIndex = 10021;
@@ -371,6 +372,15 @@
             groupIdLabel.Size = new System.Drawing.Size(51, 13);
             groupIdLabel.TabIndex = 342;
             groupIdLabel.Text = "Group Id:";
+            // 
+            // bookTypeLabel
+            // 
+            bookTypeLabel.AutoSize = true;
+            bookTypeLabel.Location = new System.Drawing.Point(901, 203);
+            bookTypeLabel.Name = "bookTypeLabel";
+            bookTypeLabel.Size = new System.Drawing.Size(62, 13);
+            bookTypeLabel.TabIndex = 343;
+            bookTypeLabel.Text = "Book Type:";
             // 
             // tableAdapterManager
             // 
@@ -423,7 +433,7 @@
             this.tukiosOrderDataGridView.Name = "tukiosOrderDataGridView";
             this.tukiosOrderDataGridView.ReadOnly = true;
             this.tukiosOrderDataGridView.RowHeadersWidth = 20;
-            this.tukiosOrderDataGridView.Size = new System.Drawing.Size(1131, 340);
+            this.tukiosOrderDataGridView.Size = new System.Drawing.Size(1131, 361);
             this.tukiosOrderDataGridView.TabIndex = 131;
             this.tukiosOrderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tukiosOrderDataGridView_CellContentClick);
             this.tukiosOrderDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tukiosOrderDataGridView_CellContentDoubleClick);
@@ -597,6 +607,14 @@
             this.pnlOrder.Size = new System.Drawing.Size(1196, 286);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
+            // 
+            // bookTypeLabel1
+            // 
+            this.bookTypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "BookType", true));
+            this.bookTypeLabel1.Location = new System.Drawing.Point(969, 203);
+            this.bookTypeLabel1.Name = "bookTypeLabel1";
+            this.bookTypeLabel1.Size = new System.Drawing.Size(139, 23);
+            this.bookTypeLabel1.TabIndex = 344;
             // 
             // groupIdLabel1
             // 
@@ -899,7 +917,8 @@
             // bookStatusLabel1
             // 
             this.bookStatusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 682);
+            this.bookStatusLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "BookStatus", true));
+            this.bookStatusLabel1.Location = new System.Drawing.Point(792, 703);
             this.bookStatusLabel1.Name = "bookStatusLabel1";
             this.bookStatusLabel1.Size = new System.Drawing.Size(100, 23);
             this.bookStatusLabel1.TabIndex = 10022;
@@ -1078,6 +1097,7 @@
             this.purgeStripButton2.Name = "purgeStripButton2";
             this.purgeStripButton2.Size = new System.Drawing.Size(58, 22);
             this.purgeStripButton2.Text = "Purge";
+            this.purgeStripButton2.Visible = false;
             this.purgeStripButton2.Click += new System.EventHandler(this.purgeStripButton2_Click);
             // 
             // tukiosOrderBindingNavigator
@@ -1178,27 +1198,20 @@
             // 
             this.RemakeTicketQueryBindingSource.DataSource = typeof(BindingModels.RemakeTicketQuery);
             // 
-            // bookTypeLabel
+            // lblcvrStatus
             // 
-            bookTypeLabel.AutoSize = true;
-            bookTypeLabel.Location = new System.Drawing.Point(901, 203);
-            bookTypeLabel.Name = "bookTypeLabel";
-            bookTypeLabel.Size = new System.Drawing.Size(62, 13);
-            bookTypeLabel.TabIndex = 343;
-            bookTypeLabel.Text = "Book Type:";
-            // 
-            // bookTypeLabel1
-            // 
-            this.bookTypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "BookType", true));
-            this.bookTypeLabel1.Location = new System.Drawing.Point(969, 203);
-            this.bookTypeLabel1.Name = "bookTypeLabel1";
-            this.bookTypeLabel1.Size = new System.Drawing.Size(139, 23);
-            this.bookTypeLabel1.TabIndex = 344;
+            this.lblcvrStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblcvrStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "CoverStatus", true));
+            this.lblcvrStatus.Location = new System.Drawing.Point(176, 701);
+            this.lblcvrStatus.Name = "lblcvrStatus";
+            this.lblcvrStatus.Size = new System.Drawing.Size(100, 23);
+            this.lblcvrStatus.TabIndex = 10027;
             // 
             // frmTKOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1270, 711);
+            this.ClientSize = new System.Drawing.Size(1270, 732);
+            this.Controls.Add(this.lblcvrStatus);
             this.Controls.Add(this.lblHold);
             this.Controls.Add(this.lblCanceled);
             this.Controls.Add(this.pnlButtons);
@@ -1231,6 +1244,7 @@
             this.Controls.SetChildIndex(this.pnlButtons, 0);
             this.Controls.SetChildIndex(this.lblCanceled, 0);
             this.Controls.SetChildIndex(this.lblHold, 0);
+            this.Controls.SetChildIndex(this.lblcvrStatus, 0);
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderDataGridView)).EndInit();
@@ -1330,5 +1344,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.BindingSource RemakeTicketQueryBindingSource;
         private System.Windows.Forms.Label bookTypeLabel1;
+        private System.Windows.Forms.Label lblcvrStatus;
     }
 }

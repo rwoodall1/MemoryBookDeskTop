@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Exceptionless;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using System.Diagnostics;
 using System.IO;
-using Exceptionless;
+using System.Windows.Forms;
 namespace StartUpApp
 {
     public partial class Splash : Form
@@ -22,7 +15,7 @@ namespace StartUpApp
         private string StartPath { get; set; }
         private void Splash_Shown(object sender, EventArgs e)
         {
-          
+
             backgroundWorker1.RunWorkerAsync();
 
         }
@@ -40,16 +33,17 @@ namespace StartUpApp
                 var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 localfilePath = root.Replace("StartUpApp", "Mbc5");
                 var localfile = localfilePath + "\\Mbc5.exe";
+                // File.AppendAllText("D:\\temp\\log.txt", "local" + localfile);
                 StartPath = localfilePath + "\\Mbc5.exe";
                 try
                 {
-                   var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
-                   localVersion = localfileInfo.FileVersion;
-                //in order of entry
-                var lMajor = localfileInfo.FileMajorPart;
-                var lMinor = localfileInfo.FileMinorPart;
-                var lBuild = localfileInfo.FileBuildPart;
-                var lPrivate = localfileInfo.FilePrivatePart;
+                    var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+                    localVersion = localfileInfo.FileVersion;
+                    //in order of entry
+                    var lMajor = localfileInfo.FileMajorPart;
+                    var lMinor = localfileInfo.FileMinorPart;
+                    var lBuild = localfileInfo.FileBuildPart;
+                    var lPrivate = localfileInfo.FilePrivatePart;
 
                 }
                 catch (Exception ex)
@@ -59,7 +53,7 @@ namespace StartUpApp
                     .Submit();
                     return;
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -86,7 +80,7 @@ namespace StartUpApp
                     .Submit();
                 return;
             }
-
+            // File.AppendAllText("D:\\temp\\log.txt", "localvers" + localVersion + " | serververs:" + serverVersion);
             if (!String.IsNullOrEmpty(serverVersion) && serverVersion != localVersion)
             {
                 //copy server to local then run
@@ -96,6 +90,13 @@ namespace StartUpApp
                     //File.Copy(serverfilePath + "BindingModels.dll", localfilePath + "\\BindingModels.dll", true);
                     //File.Copy(serverfilePath + "BaseClass.dll", localfilePath + "\\BaseClass.dll", true);
                     //-----------------------------------------
+                    var result = MessageBox.Show("A new version of MBC is available. Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+
+
                     string localfilePathDir = localfilePath.Substring(0, localfilePath.IndexOf("bin") + 3);
 
                     DirectoryCopy(serverfilePathDir, localfilePathDir, true);
@@ -119,7 +120,7 @@ namespace StartUpApp
                          .AddObject("ServerPath:" + serverfilePath)
                          .AddObject("LocalPath:" + localfilePath)
                          .Submit();
-                  
+
                     return;
                 }
 
@@ -174,25 +175,25 @@ namespace StartUpApp
 
         private void Splash_Load(object sender, EventArgs e)
         {
-          
-        
+
+
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-        
+
             VersionCheck();
-           System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(3000);
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Process mbc = new Process();
             mbc.StartInfo.FileName = StartPath;
-        this.Close();
-           
+            this.Close();
+
             mbc.Start();
-         
+
         }
     }
 }

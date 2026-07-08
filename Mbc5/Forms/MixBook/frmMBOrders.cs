@@ -40,7 +40,13 @@ namespace Mbc5.Forms.MixBook
         public UserPrincipal ApplicationUser { get; set; }
         private void MBOrders_Load(object sender, EventArgs e)
         {
-
+            
+             List<string> mylistPurge = new List<string>(new string[] { "SA", });
+            if (this.ApplicationUser.IsInOneOfRoles(mylistPurge))
+            {
+                purgeStripButton2.Visible = true;
+                // btnRemoveOrder.Visible = true;
+            }
             List<string> mylist2 = new List<string>(new string[] { "SA", "Administrator", });
             if (this.ApplicationUser.IsInOneOfRoles(mylist2))
             {

@@ -39,6 +39,13 @@ namespace Mbc5.Forms.Tukios
 
         private void frmTKOrders_Load(object sender, EventArgs e)
         {
+
+            List<string> mylistPurge = new List<string>(new string[] { "SA", });
+            if (this.ApplicationUser.IsInOneOfRoles(mylistPurge))
+            {
+                purgeStripButton2.Visible = true;
+                // btnRemoveOrder.Visible = true;
+            }
             List<string> mylist2 = new List<string>(new string[] { "SA", "Administrator", });
             if (this.ApplicationUser.IsInOneOfRoles(mylist2))
             {
@@ -1298,9 +1305,9 @@ CoverURL,
                 ,TO1.ProdInOrder
                 ,CAST(TO1.Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno             
                 ,(Select Sum(Copies) from TukiosOrder where Clientorderid=TO1.clientOrderid )As NumToShip 
-                ,'*MXB'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
+                ,'*TUK'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
                               
-                ,'*MXB'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
+                ,'*TUK'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
                 ,W.Rmbto AS RemakeDate
                 ,W.Rmbtot As RemakeTotal
                 ,wd.invno
