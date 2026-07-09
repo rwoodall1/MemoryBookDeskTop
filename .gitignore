@@ -80,3 +80,5 @@
 /.vs/MemoryBook
 /.vs/CopilotSnapshots/88043837C2133841806DAD2B5C2C961E
 /.vs
+/StartUpApp/bin/Release/StartUpApp.exe
+/StartUpApp/bin/Release/StartUpApp.pdb
