@@ -1974,7 +1974,22 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 var updateResult = sqlClient.Update();
             }
         }
+        private void SetTukiosRemakeTicketsPrinted()
+        {
+            string _userIntial = "";
+            InputBox.Show("Enter your initials to print remake tickets.", "User Initials", ref _userIntial);
+            var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set RemakeTicketPrinted=@RemakeTicketPrinted,RemakePrintedBy=@RemakePrintedBy,ReMakePrntDate=GETDATE() Where Invno=@Invno");
+            foreach (TukiosRemakeTicketQuery rec in JobTicketQueryBindingSource.List)
+            {
 
+                var vInvno = rec.Invno.ToString();
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", vInvno);
+                sqlClient.AddParameter("@RemakePrintedBy", _userIntial);
+                sqlClient.AddParameter("@RemakeTicketPrinted", 1);
+                var updateResult = sqlClient.Update();
+            }
+        }
 
 
         #endregion
@@ -2779,9 +2794,16 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 }
                 catch (Exception ex) { }
             }
-            else
+            else if(reportViewer1.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.TukiosRemakeTicketQuery.rdlc")
             {
                 //Remake Ticket
+                if (reportViewer1.PrintDialog() != DialogResult.Cancel)
+                {
+                    SetTukiosRemakeTicketsPrinted();
+                }
+            }
+            else
+            {
                 if (reportViewer1.PrintDialog() != DialogResult.Cancel)
                 {
                     SetRemakeTicketsPrinted();

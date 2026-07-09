@@ -803,8 +803,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>NumToShip</rd:DefaultName>
-                              <Top>8.63542in</Top>
-                              <Left>6.6389in</Left>
+                              <Top>8.6632in</Top>
+                              <Left>6.69446in</Left>
                               <Height>0.25in</Height>
                               <Width>1in</Width>
                               <ZIndex>19</ZIndex>
@@ -1178,6 +1178,71 @@
                               <Height>0.25in</Height>
                               <Width>0.83682in</Width>
                               <ZIndex>33</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox3">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>of</Value>
+                                      <Style>
+                                        <FontSize>11pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox2</rd:DefaultName>
+                              <Top>8.35764in</Top>
+                              <Left>6.67125in</Left>
+                              <Height>0.25in</Height>
+                              <Width>0.24889in</Width>
+                              <ZIndex>34</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="ProdInOrder">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!ProdInOrder.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>ProdInOrder</rd:DefaultName>
+                              <Top>8.10764in</Top>
+                              <Left>6.69446in</Left>
+                              <Height>0.25in</Height>
+                              <Width>1in</Width>
+                              <ZIndex>35</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>

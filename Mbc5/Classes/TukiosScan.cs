@@ -86,6 +86,7 @@ namespace Mbc5.Classes
                             TO1.CoverURL,
                             TO1.BookBlockURL,
                             TO1.Copies As Quantity,
+                            TO1.ProdInOrder,
                             P.ProdNo,
                             TO1.TukiosOrderStatus,
                             C.Specovr,
@@ -354,7 +355,8 @@ namespace Mbc5.Classes
                         if (TukModel.Backing == "HC")
                         {
                             //string _Location = txtLocation.Text + this.Invno.ToString().Substring(1, 7) + "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
-                            string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
+
+                            string _Location = "   X" + TukModel.ProdInOrder.ToString();
                             if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             {
 
@@ -470,7 +472,7 @@ namespace Mbc5.Classes
 
                         if (TukModel.Backing == "HC")
                         {
-                            string _Location = "   X" + this.Invno.ToString().Substring(7, this.Invno.ToString().Length - 7);
+                            string _Location = "   X" + TukModel.ProdInOrder.ToString();
                             //if (ConfigurationManager.AppSettings["Environment"].ToString() != "DEV")
                             //{
 
@@ -641,42 +643,42 @@ namespace Mbc5.Classes
                         }
 
 
-                        string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();
-                        try
-                        {
-                            if (!string.IsNullOrEmpty(TukModel.PrintergyFile))
-                            {
+                        ////string printeryPath = ConfigurationManager.AppSettings["PrintergyPath"].ToString();//needs a tukios path
+                        //try
+                        //{
+                        //    if (!string.IsNullOrEmpty(TukModel.PrintergyFile))
+                        //    {
 
-                                //Process.Start(TukModel.BookPreviewUrl);
-                                //Process.Start(TukModel.CoverPreviewUrl);
-                                var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-                                if (dialogResult != DialogResult.Yes)
-                                {
-                                    MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
-                                    return false;
-                                }
-                                else if (dialogResult == DialogResult.Yes)
-                                {
-                                    //var processes = Process.GetProcessesByName("chrome");
-                                    //foreach (var process in processes)
-                                    //{
-                                    //    process.Kill();
-                                    //}
-                                }
-                            }
-                            else
-                            {
-                                MbcMessageBox.Hand("Preview file is missing. Contact a supervisor.", "Preview file is Missing");
-                                return false;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MbcMessageBox.Error("An error has occurred:" + ex.Message);
-                            Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(TukModel));
-                            this.Scanform.lblHoldLocation.Text = "";
-                            return false;
-                        }
+                        //        //Process.Start(TukModel.BookPreviewUrl);
+                        //        //Process.Start(TukModel.CoverPreviewUrl);
+                        //        var dialogResult = MessageBox.Show("Do images match the product?", "Quality Check", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                        //        if (dialogResult != DialogResult.Yes)
+                        //        {
+                        //            MbcMessageBox.Exclamation("Contact a supervisor immediatly about the mismatch.");
+                        //            return false;
+                        //        }
+                        //        else if (dialogResult == DialogResult.Yes)
+                        //        {
+                        //            //var processes = Process.GetProcessesByName("chrome");
+                        //            //foreach (var process in processes)
+                        //            //{
+                        //            //    process.Kill();
+                        //            //}
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        MbcMessageBox.Hand("Preview file is missing. Contact a supervisor.", "Preview file is Missing");
+                        //        return false;
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MbcMessageBox.Error("An error has occurred:" + ex.Message);
+                        //    Log.Warn("An error has occurred:" + ex.Message + " | Model:" + JsonConvert.SerializeObject(TukModel));
+                        //    this.Scanform.lblHoldLocation.Text = "";
+                        //    return false;
+                        //}
                         string location = "";
                         if (TukModel.NumProducts > 1)
                         {
@@ -1614,7 +1616,8 @@ namespace Mbc5.Classes
         }
         private void PrintPackingList(string vClientOrderId)
         {
-            MbcMessageBox.Information("Packing slip printing is not currently available. Contact your supervisor.", "Packing Slip Unavailable");
+            //No Packing List for Tukios
+            //MbcMessageBox.Information("Packing slip printing is not currently available. Contact your supervisor.", "Packing Slip Unavailable");
             //var sqlClient = new SQLCustomClient();
             //sqlClient.CommandText(@"Select MO.Invno,MO.ShipName,MO.ShipAddr,MO.ShipAddr2,MO.ShipCity,MO.ShipState,'*MXB'+CAST(MO.Invno AS varchar)+'YB*' AS BarCode,MO.CoverPreviewUrl
             //                        ,MO.ShipZip,MO.OrderNumber,MO.ClientOrderId,MO.Copies,Mo.Pages,Mo.Description,Mo.ItemCode,MO.JobId,MO.ItemId, SC.ShipName AS ShipMethod,SC.Carrier,CD.MxbLocation AS CoverLocation,WD.MxbLocation As BookLocation
