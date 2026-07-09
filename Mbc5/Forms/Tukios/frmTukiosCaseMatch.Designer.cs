@@ -134,9 +134,10 @@
             this.chkRemoveScan.Text = "Remove Scan";
             this.chkRemoveScan.UseVisualStyleBackColor = true;
             // 
-            // frmCaseMatch
+            // frmTukiosCaseMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(764, 614);
             this.Controls.Add(this.chkRemoveScan);
             this.Controls.Add(this.TextBox1);
@@ -148,8 +149,8 @@
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "frmCaseMatch";
-            this.Text = "Case Make Matcher";
+            this.Name = "frmTukiosCaseMatch";
+            this.Text = "Tukios Case Make Matcher";
             this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.listBox1, 0);
             this.Controls.SetChildIndex(this.Label1, 0);

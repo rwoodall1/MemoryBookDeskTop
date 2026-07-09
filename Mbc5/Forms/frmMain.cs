@@ -302,9 +302,14 @@ namespace Mbc5.Forms
             }
             else if (ApplicationUser.UserName.ToUpper() == "CASEIN")
             {
-
+                jPIXOrdersToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem.Visible = false;
                 mixBookOrdersToolStripMenuItem.Visible = false;
                 mixBookLoadTestToolStripMenuItem.Visible = false;
+                tukiosOrdersToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem1.Visible = false;
+                shippingCheckToolStripMenuItem.Visible = false;
+
                 productionToolStripMenuItem.Visible = false;
                 tsMain.Visible = false;
                 toolStripMenuItem2.Visible = false;
@@ -314,7 +319,7 @@ namespace Mbc5.Forms
 
                 productionToolStripMenuItem.Visible = false;
 
-                caseMatchScanToolStripMenuItem_Click(null, null);
+
 
             }
             else if (ApplicationUser.UserName.ToUpper() == "MXBSHIPPING")
