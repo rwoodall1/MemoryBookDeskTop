@@ -549,12 +549,6 @@
     <Compile Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.Designer.cs">
       <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\JPIX\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\JPIX\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -892,9 +886,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.resx">
       <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\JPIX\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>

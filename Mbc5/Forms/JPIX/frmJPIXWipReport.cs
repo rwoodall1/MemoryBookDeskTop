@@ -50,7 +50,7 @@ namespace Mbc5.Forms.JPIX
                     Left Join Wip W ON JO.Invno=W.Invno                              
                     Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On JO.Invno=WD29.Invno                               
                     Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=40  ) WD40 On JO.Invno=WD40.Invno                                
-                    Where  JO.OrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Jo.DateReceived,JO.Invno,P.Kitrecvd";
+                    Where (JO.OrderStatus !='Cancelled' OR JO.OrderStatus IS NULL ) and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Jo.DateReceived,JO.Invno,P.Kitrecvd";
             sqlClient.CommandText(cmd);
             var orderResult = sqlClient.SelectMany<JPIXWipReportModel>();
             if (orderResult.IsError)
