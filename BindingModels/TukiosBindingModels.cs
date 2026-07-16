@@ -15,6 +15,11 @@ namespace BindingModels
         public string ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
+        public string ShipAddr { get; set; }
+        public string ShipAddr2 { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
         public int Copies { get; set; }
@@ -77,6 +82,11 @@ namespace BindingModels
         public string ClientOrderId { get; set; }
         public string DSInvno { get; set; }
         public string ShipName { get; set; }
+        public string ShipAddr { get; set; }
+        public string ShipAddr2 { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipState { get; set; }
+        public string ShipZip { get; set; }
         public DateTime RequestedShipDate { get; set; }
         public string Description { get; set; }
         public int Copies { get; set; }

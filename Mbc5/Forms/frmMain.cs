@@ -11,6 +11,7 @@ using Mbc5.Forms.Tukios;
 using Mbc5.LookUpForms;
 using Microsoft.Reporting.WinForms;
 using NLog;
+using NLog.Targets;
 using PdfiumViewer;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,24 @@ namespace Mbc5.Forms
         protected Logger Log { get; set; }
         protected int JobTicketsPrinted { get; set; }
         protected int test { get; set; }
+        //Not Implemented yet, but this is how you would change the connection string for NLog at runtime.
+        //public void SwitchConnectionString(string newConnectionString)
+        //{
+        //    // 1. Get the current configuration
+        //    var config = LogManager.Configuration;
+
+        //    // 2. Find your database target by the name defined in nlog.config
+        //    var dbTarget = config.FindTargetByName("database") as DatabaseTarget;
+
+        //    if (dbTarget != null)
+        //    {
+        //        // 3. Update the connection string
+        //        dbTarget.ConnectionString = newConnectionString;
+
+        //        // 4. Notify NLog to update active loggers
+        //        LogManager.ReconfigExistingLoggers();
+        //    }
+        //}
         private void frmMain_Load(object sender, EventArgs e)
         {
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
@@ -769,6 +788,11 @@ namespace Mbc5.Forms
 CoverURL,
   PrintergyFile,
      ShipName,
+ShipAddr,
+ShipAddr2,
+ShipCity,
+ShipState,  
+ShipZip, 
      RequestedShipDate,
      BookId,
      CAST(Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno,
@@ -1877,6 +1901,11 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             var sqlClient = new SQLCustomClient().CommandText(@"
            Select  TO1.Invno
                 ,TO1.ShipName
+                ,TO1.ShipAddr
+                ,TO1.ShipAddr2
+                ,TO1.ShipCity
+                ,TO1.ShipState 
+                ,TO1.ShipZip
                 ,TO1.ClientOrderId
                 ,TO1.RequestedShipDate
                 ,TO1.Description
@@ -2794,7 +2823,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 }
                 catch (Exception ex) { }
             }
-            else if(reportViewer1.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.TukiosRemakeTicketQuery.rdlc")
+            else if (reportViewer1.LocalReport.ReportEmbeddedResource == "Mbc5.Reports.TukiosRemakeTicketQuery.rdlc")
             {
                 //Remake Ticket
                 if (reportViewer1.PrintDialog() != DialogResult.Cancel)

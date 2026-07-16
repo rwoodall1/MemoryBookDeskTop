@@ -21,17 +21,13 @@
           <DataField>Backing</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BookPreviewUrl">
-          <DataField>BookPreviewUrl</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BookUrl">
-          <DataField>BookUrl</DataField>
+        <Field Name="BookBlockURL">
+          <DataField>BookBlockURL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ClientOrderId">
           <DataField>ClientOrderId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Copies">
           <DataField>Copies</DataField>
@@ -41,8 +37,8 @@
           <DataField>CoverPageLocation</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="CoverPreviewUrl">
-          <DataField>CoverPreviewUrl</DataField>
+        <Field Name="CoverURL">
+          <DataField>CoverURL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Description">
@@ -113,8 +109,28 @@
           <DataField>SCBarcode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ShipAddr">
+          <DataField>ShipAddr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShipAddr2">
+          <DataField>ShipAddr2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShipCity">
+          <DataField>ShipCity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ShipName">
           <DataField>ShipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShipState">
+          <DataField>ShipState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShipZip">
+          <DataField>ShipZip</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SmallPressQty">
@@ -141,12 +157,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.97571in</Width>
+                  <Width>8.08904in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>8.15626in</Height>
+                  <Height>9.00001in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1332,6 +1348,185 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <Rectangle Name="Rectangle3">
+                              <ReportItems>
+                                <Textbox Name="Textbox67">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>Client ID</Value>
+                                          <Style>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox43</rd:DefaultName>
+                                  <Top>0.04167in</Top>
+                                  <Left>2.37424in</Left>
+                                  <Height>0.25in</Height>
+                                  <Width>0.73616in</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="ClientOrderId">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>="*" + First(Fields!ClientOrderId.Value, "DataSet1") + "*"</Value>
+                                          <Style>
+                                            <FontFamily>3 of 9 Barcode</FontFamily>
+                                            <FontSize>24pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>ClientOrderId</rd:DefaultName>
+                                  <Top>0.04167in</Top>
+                                  <Left>3.16596in</Left>
+                                  <Height>0.25in</Height>
+                                  <Width>2.68476in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Invno2">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>="*" + CStr(First(Fields!Invno.Value, "DataSet1")) + "*"</Value>
+                                          <Style>
+                                            <FontFamily>3 of 9 Barcode</FontFamily>
+                                            <FontSize>24pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Invno1</rd:DefaultName>
+                                  <Top>0.31945in</Top>
+                                  <Left>4.51313in</Left>
+                                  <Height>0.25in</Height>
+                                  <Width>2.50772in</Width>
+                                  <ZIndex>2</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox68">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>Ref2</Value>
+                                          <Style>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox43</rd:DefaultName>
+                                  <Top>0.31945in</Top>
+                                  <Left>3.98876in</Left>
+                                  <Height>0.25in</Height>
+                                  <Width>0.46881in</Width>
+                                  <ZIndex>3</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="ShipAddr">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=First(Fields!ShipAddr.Value + " " + Fields!ShipAddr2.Value + System.Environment.NewLine + Fields!ShipCity.Value.ToString.Trim + ", " + Fields!ShipState.Value.ToString.Trim + " " + Fields!ShipZip.Value.ToString.Trim, "DataSet1")</Value>
+                                          <Style />
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>ShipAddr</rd:DefaultName>
+                                  <Top>0.04167in</Top>
+                                  <Left>0.07752in</Left>
+                                  <Height>0.61458in</Height>
+                                  <Width>2.29052in</Width>
+                                  <ZIndex>4</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Top>8.12848in</Top>
+                              <Left>0.24652in</Left>
+                              <Height>0.76389in</Height>
+                              <Width>7.12732in</Width>
+                              <ZIndex>35</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -1367,9 +1562,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.10985in</Top>
-            <Left>0.11333in</Left>
-            <Height>8.15626in</Height>
-            <Width>7.97571in</Width>
+            <Height>9.00001in</Height>
+            <Width>8.08904in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1377,13 +1571,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>8.28694in</Height>
+        <Height>9.16083in</Height>
         <Style />
       </Body>
       <Width>8.25571in</Width>
       <Page>
         <PageFooter>
-          <Height>0.4375in</Height>
+          <Height>0.27083in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>

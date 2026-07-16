@@ -448,6 +448,11 @@ namespace Mbc5.Forms.Tukios
 CoverURL,
   PrintergyFile,
      ShipName,
+ShipAddr,
+ShipAddr2,
+ShipCity,
+ShipState,  
+ShipZip,    
      RequestedShipDate,
      BookId,
      CAST(Invno as varchar)+'   X'+CAST(ProdInOrder as varchar) AS DSInvno,
@@ -1295,6 +1300,11 @@ CoverURL,
             var sqlClient = new SQLCustomClient().CommandText(@"
                         Select  TO1.Invno
                 ,TO1.ShipName
+                ,TO1.ShipAddr
+                ,TO1.ShipAddr2
+                ,TO1.ShipCity
+                ,TO1.ShipState 
+                ,TO1.ShipZip 
                 ,TO1.ClientOrderId
                 ,TO1.RequestedShipDate
                 ,TO1.Description
@@ -1915,7 +1925,7 @@ CoverURL,
             {
                 try
                 {
-                    var value = (int)tukiosOrderDataGridView.CurrentRow.Cells[1].Value;
+                    var value = (int)tukiosOrderDataGridView.CurrentRow.Cells[0].Value;
                     this.Invno = value;
                 }
                 catch (Exception ex) { Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "OrderDataGridview Enter Error,INVNO:" + Invno.ToString()); }

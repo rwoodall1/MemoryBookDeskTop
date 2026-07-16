@@ -235,7 +235,7 @@
             this.btnShip.Location = new System.Drawing.Point(37, 349);
             this.btnShip.Name = "btnShip";
             this.btnShip.Size = new System.Drawing.Size(121, 34);
-            this.btnShip.TabIndex = 7;
+            this.btnShip.TabIndex = 5;
             this.btnShip.Text = "Mark Ready To Ship";
             this.btnShip.UseVisualStyleBackColor = true;
             this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
@@ -247,7 +247,7 @@
             this.btnItemReset.Location = new System.Drawing.Point(487, 349);
             this.btnItemReset.Name = "btnItemReset";
             this.btnItemReset.Size = new System.Drawing.Size(121, 34);
-            this.btnItemReset.TabIndex = 8;
+            this.btnItemReset.TabIndex = 7;
             this.btnItemReset.Text = "Reset Items";
             this.btnItemReset.UseVisualStyleBackColor = true;
             this.btnItemReset.Click += new System.EventHandler(this.btnItemReset_Click);
@@ -259,7 +259,7 @@
             this.btnShipmentReset.Location = new System.Drawing.Point(623, 349);
             this.btnShipmentReset.Name = "btnShipmentReset";
             this.btnShipmentReset.Size = new System.Drawing.Size(121, 34);
-            this.btnShipmentReset.TabIndex = 9;
+            this.btnShipmentReset.TabIndex = 8;
             this.btnShipmentReset.Text = "Clear All Shipments";
             this.btnShipmentReset.UseVisualStyleBackColor = true;
             this.btnShipmentReset.Click += new System.EventHandler(this.btnShipmentReset_Click);
@@ -479,7 +479,7 @@
             this.btnAddPkg.Location = new System.Drawing.Point(174, 349);
             this.btnAddPkg.Name = "btnAddPkg";
             this.btnAddPkg.Size = new System.Drawing.Size(121, 34);
-            this.btnAddPkg.TabIndex = 10038;
+            this.btnAddPkg.TabIndex = 6;
             this.btnAddPkg.Text = "Add Package To Shipment";
             this.btnAddPkg.UseVisualStyleBackColor = true;
             this.btnAddPkg.Click += new System.EventHandler(this.btnAddPkg_Click);

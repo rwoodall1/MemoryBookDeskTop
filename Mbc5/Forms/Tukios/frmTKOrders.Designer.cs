@@ -419,14 +419,14 @@
             this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tukiosOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tukiosOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.prodticket,
             this.dataGridViewTextBoxColumn1,
             this.ItemId,
             this.descriptionDataGridViewTextBoxColumn,
             this.copiesDataGridViewTextBoxColumn,
             this.pagesDataGridViewTextBoxColumn,
             this.CoverUrl,
-            this.BookUrl});
+            this.BookUrl,
+            this.prodticket});
             this.tukiosOrderDataGridView.DataSource = this.tukiosOrderBindingSource;
             this.tukiosOrderDataGridView.EnableHeadersVisualStyles = false;
             this.tukiosOrderDataGridView.Location = new System.Drawing.Point(85, 337);
@@ -854,10 +854,10 @@
             this.reportViewer3.DocumentMapWidth = 35;
             this.reportViewer3.LocalReport.EnableExternalImages = true;
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 443);
+            this.reportViewer3.Location = new System.Drawing.Point(23, 425);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(92, 93);
+            this.reportViewer3.Size = new System.Drawing.Size(102, 111);
             this.reportViewer3.TabIndex = 10024;
             this.reportViewer3.Visible = false;
             this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete);
@@ -1214,8 +1214,8 @@
             this.Controls.Add(this.lblcvrStatus);
             this.Controls.Add(this.lblHold);
             this.Controls.Add(this.lblCanceled);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.reportViewer3);
+            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(bookStatusLabel);
             this.Controls.Add(this.bookStatusLabel1);
             this.Controls.Add(coverStatusLabel);
@@ -1230,7 +1230,6 @@
             this.Name = "frmTKOrders";
             this.Text = "Tukios Orders";
             this.Load += new System.EventHandler(this.frmTKOrders_Load);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.tukiosOrderBindingNavigator, 0);
             this.Controls.SetChildIndex(this.tukiosOrderDataGridView, 0);
             this.Controls.SetChildIndex(this.reportViewer2, 0);
@@ -1240,11 +1239,12 @@
             this.Controls.SetChildIndex(coverStatusLabel, 0);
             this.Controls.SetChildIndex(this.bookStatusLabel1, 0);
             this.Controls.SetChildIndex(bookStatusLabel, 0);
-            this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.pnlButtons, 0);
+            this.Controls.SetChildIndex(this.reportViewer3, 0);
             this.Controls.SetChildIndex(this.lblCanceled, 0);
             this.Controls.SetChildIndex(this.lblHold, 0);
             this.Controls.SetChildIndex(this.lblcvrStatus, 0);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderDataGridView)).EndInit();

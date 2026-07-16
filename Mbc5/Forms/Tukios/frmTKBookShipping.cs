@@ -118,10 +118,7 @@ namespace Mbc5.Forms.Tukios
                 errorProvider1.SetError(txtWeight, "Please enter a  valid weight.");
                 e.Cancel = true;
             }
-        }
 
-        private void txtWeight_Leave(object sender, EventArgs e)
-        {
             if (Shipment == null)
             {
                 this.CreateShipment();
@@ -133,6 +130,21 @@ namespace Mbc5.Forms.Tukios
             }
 
             txtItemBarcode.Focus();
+        }
+
+        private void txtWeight_Leave(object sender, EventArgs e)
+        {
+            //if (Shipment == null)
+            //{
+            //    this.CreateShipment();
+            //    CreatePackage();
+            //}
+            //else
+            //{
+            //    UpdatePackage();
+            //}
+
+            //txtItemBarcode.Focus();
         }
 
         private void txtWeight_DoubleClick(object sender, EventArgs e)
@@ -436,7 +448,7 @@ namespace Mbc5.Forms.Tukios
             {
                 plnTracking.Enabled = false;
                 pnlGrid.Enabled = true;
-                //txtItemBarcode.Focus();
+                txtItemBarcode.Focus();
             }
         }
         private void btnEnable_Click(object sender, EventArgs e)
@@ -461,29 +473,29 @@ namespace Mbc5.Forms.Tukios
             SetPanels();
         }
 
-        public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
-        {
-            var retval = "0";
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"Insert Into TukiosEventLog (DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationJSON) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
-            sqlClient.AddParameter("@Jobid", jobId);
-            sqlClient.AddParameter("@StatusChangedTo", status);
-            sqlClient.AddParameter("@Notified", notified);
-            sqlClient.AddParameter("@Note", note);
-            sqlClient.AddParameter("@NotificationJSON", notificationXML);
-            var sqlResult = sqlClient.Insert();
-            if (sqlResult.IsError)
-            {
-                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("AddMbEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
+        //public string AddMbEventLog(string jobId, string status, string note, string notificationXML, bool notified)
+        //{
+        //    var retval = "0";
+        //    var sqlClient = new SQLCustomClient();
+        //    sqlClient.CommandText(@"Insert Into TukiosEventLog (DateCreated,ModifiedDate,StatusChangedTo,Notified,Note,NotificationJSON) Values(@JobId,GetDate(),GETDATE(),@StatusChangedTo,@Notified,@Note,@NotificationXML)");
+        //    sqlClient.AddParameter("@Jobid", jobId);
+        //    sqlClient.AddParameter("@StatusChangedTo", status);
+        //    sqlClient.AddParameter("@Notified", notified);
+        //    sqlClient.AddParameter("@Note", note);
+        //    sqlClient.AddParameter("@NotificationJSON", notificationXML);
+        //    var sqlResult = sqlClient.Insert();
+        //    if (sqlResult.IsError)
+        //    {
+        //        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("AddMbEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
 
-                var emailHelper = new EmailHelper();
-                string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
-                emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);
-                return retval;
-            }
-            retval = sqlResult.Data;
-            return retval;
-        }
+        //        var emailHelper = new EmailHelper();
+        //        string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
+        //        emailHelper.SendEmail("Failed to notify item shipped", "randy.woodall@jostens.com", null, vBody, EmailType.System);
+        //        return retval;
+        //    }
+        //    retval = sqlResult.Data;
+        //    return retval;
+        //}
         private void CreateShipment()
         {
             this.Shipment = null;
