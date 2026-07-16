@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using BaseClass;
 using BaseClass.Classes;
-using BaseClass;
 using BindingModels;
-using Microsoft.Reporting.WinForms;
-using Equin.ApplicationFramework;
 using CsvHelper;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmNoScanReport : BaseClass.frmBase
     {
-        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator","MBLead","MixBook" }, userPrincipal)
+        public frmNoScanReport(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MBLead", "MixBook" }, userPrincipal)
         {
             InitializeComponent();
             this.ApplicationUser = userPrincipal;
@@ -27,16 +21,16 @@ namespace Mbc5.Forms.MixBook
         private void frmWipReport_Load(object sender, EventArgs e)
         {
             SetColumns();
-        
+
         }
 
-      private List<WipReportModel> DataResult { get; set; }
+        private List<WipReportModel> DataResult { get; set; }
 
         private void SetColumns()
         {
             if (rbCovers.Checked)
             {
-                 dgScans.Columns["CoverPress"].Visible = true;//cd29        
+                dgScans.Columns["CoverPress"].Visible = true;//cd29        
                 dgScans.Columns["CTrimming"].Visible = true;//43
                 dgScans.Columns["OnBoards"].Visible = true;//37
                 dgScans.Columns["CoverCart"].Visible = true;//37loc
@@ -51,7 +45,7 @@ namespace Mbc5.Forms.MixBook
             }
             else if (rbBooks.Checked)
             {
-               
+
 
                 dgScans.Columns["CoverPress"].Visible = false;//cd29        
                 dgScans.Columns["CTrimming"].Visible = false;//43
@@ -68,22 +62,22 @@ namespace Mbc5.Forms.MixBook
             }
             LoadData();
         }
-   private void LoadData()
+        private void LoadData()
         {
-            
+
             if (rbBooks.Checked)
             {
-               
+
                 LoadBooks();
             }
             else if (rbCovers.Checked)
             {
                 LoadCovers();
             }
-          
 
-            
-      
+
+
+
         }
         private void LoadBooks()
         {
@@ -140,18 +134,18 @@ namespace Mbc5.Forms.MixBook
             bsData.DataSource = data;
             if (data == null)
             {
-                lblRecCount.Text="0 Records";
+                lblRecCount.Text = "0 Records";
             }
             else
             {
                 lblRecCount.Text = data.Count.ToString() + " Records";
             }
-           
+
 
         }
         private void LoadCovers()
         {
-            
+
             var sqlClient1 = new SQLCustomClient();
             //OLD Do Not remove
             //string cmdBook = @"Select 
@@ -286,7 +280,7 @@ namespace Mbc5.Forms.MixBook
             {
                 lblRecCount.Text = data.Count.ToString() + " Records";
             }
-            
+
 
 
         }
@@ -308,9 +302,9 @@ namespace Mbc5.Forms.MixBook
             //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookWipReport.rdlc";
             //this.reportViewer1.RefreshReport();
 
-            if (bsData.Count<1)
+            if (bsData.Count < 1)
             {
-                MbcMessageBox.Hand("There are no records to print.","No Records");
+                MbcMessageBox.Hand("There are no records to print.", "No Records");
                 return;
             }
             try
@@ -318,19 +312,19 @@ namespace Mbc5.Forms.MixBook
                 saveFileDialog1.Filter = "Comma Seperated Value|*.csv";
                 if (rbBooks.Checked)
                 {
-                     saveFileDialog1.FileName = "BooksNotScanned.csv";
+                    saveFileDialog1.FileName = "BooksNotScanned.csv";
                 }
                 else
                 {
                     saveFileDialog1.FileName = "CoversNotScanned.csv";
                 }
-               
+
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 
@@ -348,7 +342,7 @@ namespace Mbc5.Forms.MixBook
             }
         }
 
-      
+
 
         private void rbBooks_CheckedChanged(object sender, EventArgs e)
         {
@@ -357,7 +351,7 @@ namespace Mbc5.Forms.MixBook
 
         private void rbCovers_CheckedChanged(object sender, EventArgs e)
         {
-        
+
         }
 
         private void dgScans_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -366,7 +360,7 @@ namespace Mbc5.Forms.MixBook
                 if (dgScans.CurrentCell != null && dgScans.CurrentCell.Value != null)
                 {
                     int theClinetOrderId;
-                    string _clientOrderId = dgScans.CurrentRow.Cells[1].Value.ToString().Substring(0,7);
+                    string _clientOrderId = dgScans.CurrentRow.Cells[1].Value.ToString().Substring(0, 7);
                     if (int.TryParse(_clientOrderId, out theClinetOrderId))
                     {
 
@@ -381,5 +375,5 @@ namespace Mbc5.Forms.MixBook
 
         }
     }
-    
+
 }

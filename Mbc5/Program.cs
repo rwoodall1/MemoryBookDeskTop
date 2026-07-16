@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
 namespace Mbc5
 {
     static class Program
@@ -37,7 +36,7 @@ namespace Mbc5
                 NativePathHelper.AddPdfiumNativePath();
 
                 Application.Run(new frmMain());
-                //Application.Run(new Form1());
+                //Application.Run(new frmTukiosUPSImport());
 
             }
             catch (Exception ex)

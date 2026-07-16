@@ -765,38 +765,6 @@
                                     <PaddingBottom>2pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
-                                <Textbox Name="RemakeTotal2">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>="*"+RTrim(LTrim(Str(Fields!RemakeTotal.Value)))+"*"</Value>
-                                          <Style />
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style>
-                                        <TextAlign>Left</TextAlign>
-                                      </Style>
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>RemakeTotal</rd:DefaultName>
-                                  <Top>0.78819in</Top>
-                                  <Left>1.65623in</Left>
-                                  <Height>0.25in</Height>
-                                  <Width>1in</Width>
-                                  <ZIndex>4</ZIndex>
-                                  <Style>
-                                    <Border>
-                                      <Style>None</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
                               <Top>2.49653in</Top>

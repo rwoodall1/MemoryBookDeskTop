@@ -40,6 +40,14 @@ namespace Mbc5.Forms.MixBook
 
         private void TextBox1_Leave(object sender, EventArgs e)
         {
+            string _company = TextBox1.Text.Substring(0, 3).ToUpper();
+            if (_company != "MXB")
+            {
+                MbcMessageBox.Information("This is not a Mixbook barcode. Please scan another barcode.");
+                TextBox1.Clear();
+                TextBox1.Focus();
+                return;
+            }
             if (chkRemoveScan.Checked)
             {
                 RemoveScan();

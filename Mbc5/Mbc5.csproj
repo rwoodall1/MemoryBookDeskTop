@@ -39,7 +39,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>M:\UpdateExe\</OutputPath>
+    <OutputPath>M:\UpdateExe\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -83,8 +83,8 @@
     <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
       <HintPath>..\packages\Avalara.AvaTax.19.7.0.1\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
     </Reference>
-    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\packages\CsvHelper.12.1.3\lib\net45\CsvHelper.dll</HintPath>
+    <Reference Include="CsvHelper, Version=33.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.33.1.0\lib\net48\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="CustomControls">
       <HintPath>.\CustomControls.dll</HintPath>
@@ -102,8 +102,11 @@
     <Reference Include="Ghostscript.NET, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ghostscript.NET.1.3.1-rc.3\lib\netstandard2.0\Ghostscript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.11.0.0-preview.4.26230.115\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -213,9 +216,11 @@
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -236,18 +241,21 @@
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Pipelines, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.11.0.0-preview.4.26230.115\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Messaging" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -261,13 +269,17 @@
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.11.0.0-preview.4.26230.115\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.8, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.8\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ValueTuple" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
@@ -294,10 +306,19 @@
     <Compile Include="Classes\IScan.cs" />
     <Compile Include="Classes\JPIXScan.cs" />
     <Compile Include="Classes\MixBookScan.cs" />
+    <Compile Include="Classes\TukiosScan.cs" />
     <Compile Include="DataSets\MixBookOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MixBookOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\TukiosOrders.cs">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\TukiosOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\frmPrintBatches.cs">
       <SubType>Form</SubType>
@@ -310,6 +331,24 @@
     </Compile>
     <Compile Include="Dialogs\frmquailtyHold.Designer.cs">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosInvoiceReport.Designer.cs">
+      <DependentUpon>frmTukiosInvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosBookChk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosBookChk.Designer.cs">
+      <DependentUpon>frmTukiosBookChk.cs</DependentUpon>
     </Compile>
     <Compile Include="dsJPIXOrders.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -474,6 +513,12 @@
     <Compile Include="Forms\frmEndSheet.designer.cs">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMerBindingTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMerBindingTime.Designer.cs">
+      <DependentUpon>frmMerBindingTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -503,30 +548,6 @@
     </Compile>
     <Compile Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.Designer.cs">
       <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\JPIX\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\JPIX\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MixBook\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmCaseMatch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
-      <DependentUpon>frmCaseMatch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
-      <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -578,23 +599,41 @@
     <Compile Include="Forms\frmWipDescriptions.Designer.cs">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMBOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
-      <DependentUpon>frmMBOrders.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxInvoiceReport.cs">
+    <Compile Include="Forms\MixBook\frmCaseMatch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
-      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    <Compile Include="Forms\MixBook\frmCaseMatch.Designer.cs">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmCoverSearch.Designer.cs">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMBOrders.Designer.cs">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookShipping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
+      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmNoScanReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
+      <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MixBook\frmScrubExemptions.cs">
       <SubType>Form</SubType>
@@ -608,29 +647,65 @@
     <Compile Include="Forms\MixBook\frmShippingReport.Designer.cs">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmNoScanReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmNoScanReport.Designer.cs">
-      <DependentUpon>frmNoScanReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MixBook\frmTest.Designer.cs">
-      <DependentUpon>frmTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MixBook\frmWipReport.Designer.cs">
       <DependentUpon>frmWipReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxBookShipping.cs">
+    <Compile Include="Forms\Tukios\frmTKBookShipping.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MixBook\frmMxBookShipping.Designer.cs">
-      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    <Compile Include="Forms\Tukios\frmTKBookShipping.Designer.cs">
+      <DependentUpon>frmTKBookShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKInvoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKInvoiceReport.Designer.cs">
+      <DependentUpon>frmTKInvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCaseMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCaseMatch.Designer.cs">
+      <DependentUpon>frmTukiosCaseMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCoverSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosCoverSearch.Designer.cs">
+      <DependentUpon>frmTukiosCoverSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTKOrders.Designer.cs">
+      <DependentUpon>frmTKOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosNoScanReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosNoScanReport.Designer.cs">
+      <DependentUpon>frmTukiosNoScanReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosShippingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosShippingReport.Designer.cs">
+      <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosUPSImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosUPSImport.Designer.cs">
+      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosWipReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmTukiosWipReport.Designer.cs">
+      <DependentUpon>frmTukiosWipReport.cs</DependentUpon>
     </Compile>
     <Compile Include="LookUpForms\LkpCustType.cs">
       <SubType>Form</SubType>
@@ -683,6 +758,17 @@
     <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="mbc5_logo_282_cZq_2.ico" />
     <Content Include="NOTES TODO.txt" />
+    <None Include="DataSets\TukiosOrders.xsc">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\TukiosOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TukiosOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\TukiosOrders.xss">
+      <DependentUpon>TukiosOrders.xsd</DependentUpon>
+    </None>
     <None Include="dsJPIXOrders.xsc">
       <DependentUpon>dsJPIXOrders.xsd</DependentUpon>
     </None>
@@ -704,7 +790,11 @@
     <None Include="Properties\DataSources\BindingModels.MerBindingWip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookPackingSlip.datasource" />
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Package.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TukiosRemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.UPSInvoceData.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -726,8 +816,18 @@
     <EmbeddedResource Include="Dialogs\frmquailtyHold.resx">
       <DependentUpon>frmquailtyHold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
+      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosInvoiceReport.resx">
+      <DependentUpon>frmTukiosInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosBookChk.resx">
+      <DependentUpon>frmTukiosBookChk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
@@ -768,6 +868,9 @@
     <EmbeddedResource Include="Forms\frmEndSheet.resx">
       <DependentUpon>frmEndSheet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMerBindingTime.resx">
+      <DependentUpon>frmMerBindingTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -783,18 +886,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JPIX\frmJPIXFlyerInvoiceReport.resx">
       <DependentUpon>frmJPIXFlyerInvoiceReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\JPIX\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
-      <DependentUpon>frmCaseMatch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
-      <DependentUpon>frmCoverSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
@@ -818,14 +909,23 @@
     <EmbeddedResource Include="Forms\frmWipDescriptions.resx">
       <DependentUpon>frmWipDescriptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
-      <DependentUpon>frmMBOrders.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
-      <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MixBook\frmCaseMatch.resx">
+      <DependentUpon>frmCaseMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmCoverSearch.resx">
+      <DependentUpon>frmCoverSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMBOrders.resx">
+      <DependentUpon>frmMBOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
+      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
+      <DependentUpon>frmNoScanReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmScrubExemptions.resx">
       <DependentUpon>frmScrubExemptions.cs</DependentUpon>
@@ -833,17 +933,35 @@
     <EmbeddedResource Include="Forms\MixBook\frmShippingReport.resx">
       <DependentUpon>frmShippingReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmNoScanReport.resx">
-      <DependentUpon>frmNoScanReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmTest.resx">
-      <DependentUpon>frmTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmWipReport.resx">
       <DependentUpon>frmWipReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MixBook\frmMxBookShipping.resx">
-      <DependentUpon>frmMxBookShipping.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tukios\frmTKBookShipping.resx">
+      <DependentUpon>frmTKBookShipping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTKInvoiceReport.resx">
+      <DependentUpon>frmTKInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosCaseMatch.resx">
+      <DependentUpon>frmTukiosCaseMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosCoverSearch.resx">
+      <DependentUpon>frmTukiosCoverSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTKOrders.resx">
+      <DependentUpon>frmTKOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosNoScanReport.resx">
+      <DependentUpon>frmTukiosNoScanReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosShippingReport.resx">
+      <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosUPSImport.resx">
+      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmTukiosWipReport.resx">
+      <DependentUpon>frmTukiosWipReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
       <DependentUpon>LkpCustType.cs</DependentUpon>
@@ -880,12 +998,12 @@
     <EmbeddedResource Include="Reports\JPIXJobTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MixbookJobTicketSingle.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\MbcInqReport.rdlc" />
     <EmbeddedResource Include="Reports\MboOnlineReport.rdlc" />
-    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MixBookPkgList.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\JPIXFlyerWipReport.rdlc" />
+    <EmbeddedResource Include="Reports\MixBookRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\MProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\MixbookWipReport.rdlc" />
     <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
@@ -905,6 +1023,11 @@
     <EmbeddedResource Include="Reports\SpecialCoverTicket3rd.rdlc" />
     <EmbeddedResource Include="Reports\SupplementTicket.rdlc" />
     <EmbeddedResource Include="Reports\test.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosJobTicketQuery.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosJobTicketSingle.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosPkgList.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosRemakeTicketQuery.rdlc" />
+    <EmbeddedResource Include="Reports\TukiosRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>
@@ -1140,11 +1263,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

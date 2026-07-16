@@ -352,8 +352,6 @@ namespace Mbc5.Forms
             this.btnCalcDeadLine = new System.Windows.Forms.Button();
             this.reccardsentCheckBox = new System.Windows.Forms.CheckBox();
             this.btnRecvLabel = new System.Windows.Forms.Button();
-            this.btnRecvHistory = new System.Windows.Forms.Button();
-            this.btnBkDue = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             this.txtBookType = new System.Windows.Forms.TextBox();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
@@ -2616,8 +2614,6 @@ namespace Mbc5.Forms
             this.pg1.Controls.Add(this.pnl11);
             this.pg1.Controls.Add(this.reccardsentCheckBox);
             this.pg1.Controls.Add(this.btnRecvLabel);
-            this.pg1.Controls.Add(this.btnRecvHistory);
-            this.pg1.Controls.Add(this.btnBkDue);
             this.pg1.Controls.Add(this.bkmixedCheckBox);
             this.pg1.Controls.Add(this.txtBookType);
             this.pg1.Controls.Add(this.allclrckCheckBox);
@@ -3878,20 +3874,6 @@ namespace Mbc5.Forms
             this.btnRecvLabel.Text = "Recieving Label";
             this.btnRecvLabel.UseVisualStyleBackColor = true;
             this.btnRecvLabel.Click += new System.EventHandler(this.btnRecvLabel_Click);
-            // 
-            // btnRecvHistory
-            // 
-            this.btnRecvHistory.Location = new System.Drawing.Point(0, 0);
-            this.btnRecvHistory.Name = "btnRecvHistory";
-            this.btnRecvHistory.Size = new System.Drawing.Size(75, 23);
-            this.btnRecvHistory.TabIndex = 164;
-            // 
-            // btnBkDue
-            // 
-            this.btnBkDue.Location = new System.Drawing.Point(0, 0);
-            this.btnBkDue.Name = "btnBkDue";
-            this.btnBkDue.Size = new System.Drawing.Size(75, 23);
-            this.btnBkDue.TabIndex = 165;
             // 
             // bkmixedCheckBox
             // 
@@ -7098,9 +7080,7 @@ namespace Mbc5.Forms
         private System.Windows.Forms.CheckBox allclrckCheckBox;
         private System.Windows.Forms.CheckBox bkmixedCheckBox;
         private System.Windows.Forms.TextBox txtBookType;
-        private System.Windows.Forms.Button btnBkDue;
         private System.Windows.Forms.Button btnRecvLabel;
-        private System.Windows.Forms.Button btnRecvHistory;
         private System.Windows.Forms.CheckBox reccardsentCheckBox;
         private System.Windows.Forms.Panel pnl11;
         private System.Windows.Forms.Label label2;

@@ -1,22 +1,21 @@
 ﻿
-using Core;
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http.Headers;
-using System.Configuration;
 //using Exceptionless;
 using BaseClass.Classes;
 using BindingModels;
+using Core;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 //This class has been modified to only use Mixbook end points and what pertains to Mixbook and uses xml not json
-namespace RESTModule {
-    public class RESTAPIInit {
+namespace RESTModule
+{
+    public class RESTAPIInit
+    {
         public string BaseURL { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -31,12 +30,14 @@ namespace RESTModule {
         public string AuthHeaderString { get; set; }
         public List<Header> AdditionalHeaders { get; set; }
     }
-    public class RESTAPIResult {
+    public class RESTAPIResult
+    {
         public bool IsError { get; set; }
         public string ErrorMessage { get; set; }
         public string APIResult { get; set; }
     }
-    public class RESTService {
+    public class RESTService
+    {
         private string BaseURL { get; set; }
         private string Username { get; set; }
         private string Password { get; set; }
@@ -48,22 +49,17 @@ namespace RESTModule {
         public Uri CookieURI { get; set; }
         private Cookie CookieValue { get; set; }
         private string ContentType { get; set; }
-        private string EndPoint { get; set; } =ConfigurationManager.AppSettings["MixBookEndPoint"].ToString();
+        private string EndPoint { get; set; }
 
-        public RESTService(bool isPitney = false,string token="") {
-            if (isPitney)
-            {
-                if (!string.IsNullOrEmpty(token)) {
-                    AuthHeaderName = "Authorization";
-                    AuthHeaderString = "Basic " + token;
-                }
-               
-            }
+        public RESTService(string _endpoint = "")
+        {
+            this.EndPoint = _endpoint;
         }
 
-      
 
-        public async Task<ApiProcessingResult<RESTAPIResult>> MakeRESTCall(string actionType=default(string), string sentRequestData=default(string), List<Header> headers =default(List<Header>),string vEndPoint="",string vContentType= "application/xml") {
+
+        public async Task<ApiProcessingResult<RESTAPIResult>> MakeRESTCall(string actionType = default(string), string sentRequestData = default(string), List<Header> headers = default(List<Header>), string vEndPoint = "", string vContentType = "application/xml")
+        {
             var result = new ApiProcessingResult<RESTAPIResult> { IsError = false, Data = new RESTAPIResult() };
             this.AdditionalHeaders = headers;
             this.ContentType = vContentType;
@@ -77,63 +73,78 @@ namespace RESTModule {
                 RequestMethod = actionType,
                 RequestTimestamp = DateTime.Now,
                 RequestUri = EndPoint,
-                Source="RestApiCall"
+                Source = "RestApiCall"
             };
-   
-            try {
+
+            try
+            {
                 var cookieContainer = new CookieContainer();
-               
+
                 using (var handler = new HttpClientHandler() { CookieContainer = cookieContainer })
-                using (var httpClient = new HttpClient(handler) { BaseAddress = new Uri(EndPoint) }) {
+                using (var httpClient = new HttpClient(handler) { BaseAddress = new Uri(EndPoint) })
+                {
                     if (!string.IsNullOrEmpty(AuthHeaderName) && AuthHeaderValue != null) { httpClient.DefaultRequestHeaders.Add(AuthHeaderName, AuthHeaderValue.ToString()); }
                     if (!string.IsNullOrEmpty(AuthHeaderName) && AuthHeaderString != null) { httpClient.DefaultRequestHeaders.Add(AuthHeaderName, AuthHeaderString); }
 
-                    if (AdditionalHeaders != null) {
-                        foreach (Header header in AdditionalHeaders) {
+                    if (AdditionalHeaders != null)
+                    {
+                        foreach (Header header in AdditionalHeaders)
+                        {
                             httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
                         }
                     }
 
-                    if (CookieURI != null && CookieValue != null) {
+                    if (CookieURI != null && CookieValue != null)
+                    {
                         cookieContainer.Add(CookieURI, CookieValue);
                     }
-                    
-                
 
-                    var requestData = new StringContent(sentRequestData,Encoding.UTF8, this.ContentType);
+
+
+                    var requestData = new StringContent(sentRequestData, Encoding.UTF8, this.ContentType);
                     var apiResponse = new HttpResponseMessage();
-                    if (actionType.ToUpper() == "POST") {
-                        
-                            apiResponse = await httpClient.PostAsync(EndPoint, requestData);
-                        
-                    } else if (actionType.ToUpper() == "DELETE") {
+                    if (actionType.ToUpper() == "POST")
+                    {
+
+                        apiResponse = await httpClient.PostAsync(EndPoint, requestData);
+
+                    }
+                    else if (actionType.ToUpper() == "DELETE")
+                    {
                         apiResponse = await httpClient.DeleteAsync(EndPoint);
-                    } else {
+                    }
+                    else
+                    {
                         apiResponse = await httpClient.GetAsync(EndPoint);
                     }
 
-                        var responseContent = "";
-                        if (apiResponse.StatusCode == HttpStatusCode.Unauthorized) {
-                            result.IsError = true;
-                            result.Errors.Add(new ApiProcessingError("An error occurred API (Unauthorized). Please try again, if error persists contact support", "An error occurred calling  API (Unauthorized). Please try again, if error persists contact support", "401"));
+                    var responseContent = "";
+                    if (apiResponse.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        result.IsError = true;
+                        result.Errors.Add(new ApiProcessingError("An error occurred API (Unauthorized). Please try again, if error persists contact support", "An error occurred calling  API (Unauthorized). Please try again, if error persists contact support", "401"));
                         logData.ResponseStatusCode = apiResponse.StatusCode;
                         logData.ResponseContent = "An error occurred API (Unauthorized). Please try again, if error persists contact support";
                         logData.ResponseTimestamp = DateTime.Now;
-                    } else if (apiResponse.StatusCode == HttpStatusCode.BadRequest) {
+                    }
+                    else if (apiResponse.StatusCode == HttpStatusCode.BadRequest)
+                    {
                         responseContent = await apiResponse.Content.ReadAsStringAsync();
                         result.IsError = true;
-                            result.Errors.Add(new ApiProcessingError("An error occurred calling  API (Bad request). Please try again, if error persists contact support", "An error occurred calling  API (Bad request). Please try again, if error persists contact support", "400"));
+                        result.Errors.Add(new ApiProcessingError("An error occurred calling  API (Bad request). Please try again, if error persists contact support", "An error occurred calling  API (Bad request). Please try again, if error persists contact support", "400"));
                         logData.ResponseStatusCode = apiResponse.StatusCode;
                         logData.ResponseContent = "An error occurred calling  API (Bad request), if error persists contact support";
                         logData.ResponseTimestamp = DateTime.Now;
-                    } else if (apiResponse.StatusCode == HttpStatusCode.InternalServerError) {
-                            result.IsError = true;
-                            result.Errors.Add(new ApiProcessingError("An error occurred calling  API (External API error). Please try again, if error persists contact support", "An error occurred calling  API (External API error). Please try again, if error persists contact support", "500"));
+                    }
+                    else if (apiResponse.StatusCode == HttpStatusCode.InternalServerError)
+                    {
+                        result.IsError = true;
+                        result.Errors.Add(new ApiProcessingError("An error occurred calling  API (External API error). Please try again, if error persists contact support", "An error occurred calling  API (External API error). Please try again, if error persists contact support", "500"));
                         if (apiResponse.Content != null)
                         {
                             logData.ResponseContent = await apiResponse.Content.ReadAsStringAsync();
                             result.Data.APIResult = responseContent;
-                          
+
 
                         }
                         else
@@ -142,35 +153,44 @@ namespace RESTModule {
                         }
                         logData.ResponseStatusCode = apiResponse.StatusCode;
                         logData.ResponseTimestamp = DateTime.Now;
-                    } else if (!apiResponse.IsSuccessStatusCode) {
-                            result.IsError = true;
-                            if (apiResponse.Content != null)
-                            {
-                               responseContent = await apiResponse.Content.ReadAsStringAsync();
+                    }
+                    else if (!apiResponse.IsSuccessStatusCode)
+                    {
+                        result.IsError = true;
+                        if (apiResponse.Content != null)
+                        {
+                            responseContent = await apiResponse.Content.ReadAsStringAsync();
                             result.Data.APIResult = responseContent;
                             logData.ResponseStatusCode = apiResponse.StatusCode;
                             logData.ResponseContent = responseContent;
                             logData.ResponseTimestamp = DateTime.Now;
                         }
-                       
-                            result.Errors.Add(new ApiProcessingError("An error occurred calling  API (Unsuccessful Status Code -  Response: " + responseContent, "An error occurred calling  API (Unsuccessful Response - " + apiResponse.StatusCode + "). Please try again, if error persists contact support", ""));
-                        } else if (apiResponse.Content == null) {
-                            result.Data.IsError = true;
-                            result.Data.ErrorMessage = "An error occurred calling  API (No data). Please try again, if error persists contact support";
-                        } else {
+
+                        result.Errors.Add(new ApiProcessingError("An error occurred calling  API (Unsuccessful Status Code -  Response: " + responseContent, "An error occurred calling  API (Unsuccessful Response - " + apiResponse.StatusCode + "). Please try again, if error persists contact support", ""));
+                    }
+                    else if (apiResponse.Content == null)
+                    {
+                        result.Data.IsError = true;
+                        result.Data.ErrorMessage = "An error occurred calling  API (No data). Please try again, if error persists contact support";
+                    }
+                    else
+                    {
                         //good calll 200
-                            responseContent = await apiResponse.Content.ReadAsStringAsync();
-                            responseContent = responseContent.Trim();
-                            result.Data.APIResult = responseContent;
+                        responseContent = await apiResponse.Content.ReadAsStringAsync();
+                        responseContent = responseContent.Trim();
+                        result.Data.APIResult = responseContent;
                         logData.ResponseStatusCode = apiResponse.StatusCode;
                         logData.ResponseContent = responseContent;
                         logData.ResponseTimestamp = DateTime.Now;
                     }
-                    }
-                } catch (WebException exception) {
+                }
+            }
+            catch (WebException exception)
+            {
                 string responseText;
 
-                using (var reader = new StreamReader(exception.Response.GetResponseStream())) {
+                using (var reader = new StreamReader(exception.Response.GetResponseStream()))
+                {
                     responseText = reader.ReadToEnd();
                 }
                 //exception.ToExceptionless()
@@ -180,8 +200,10 @@ namespace RESTModule {
                 result.IsError = true;
                 result.Data.IsError = false;
                 result.Errors.Add(new ApiProcessingError("Error calling   API - " + responseText, "Error calling  API - " + responseText, ""));
-              
-            } catch (Exception ex) {
+
+            }
+            catch (Exception ex)
+            {
                 //ex.ToExceptionless()
                 //   .SetMessage("Error calling " + ApiName )
                 //   .MarkAsCritical()
@@ -240,9 +262,9 @@ namespace RESTModule {
             return true;
         }
     }
-public class Header
-{
-    public string Key { get; set; }
-    public string Value { get; set; }
-}
+    public class Header
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+    }
 }

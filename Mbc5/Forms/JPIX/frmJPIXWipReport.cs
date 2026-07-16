@@ -50,7 +50,7 @@ namespace Mbc5.Forms.JPIX
                     Left Join Wip W ON JO.Invno=W.Invno                              
                     Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail  Where DescripId=29  ) WD29 On JO.Invno=WD29.Invno                               
                     Left Join (Select Invno,DescripId,Convert(VARCHAR,War,22)As War From WipDetail Where DescripId=40  ) WD40 On JO.Invno=WD40.Invno                                
-                    Where  JO.OrderStatus !='Cancelled' and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Jo.DateReceived,JO.Invno,P.Kitrecvd";
+                    Where (JO.OrderStatus !='Cancelled' OR JO.OrderStatus IS NULL ) and P.Kitrecvd IS NOT NULL AND P.Shpdate IS NULL Order By Jo.DateReceived,JO.Invno,P.Kitrecvd";
             sqlClient.CommandText(cmd);
             var orderResult = sqlClient.SelectMany<JPIXWipReportModel>();
             if (orderResult.IsError)
@@ -80,11 +80,7 @@ namespace Mbc5.Forms.JPIX
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //reportViewer1.LocalReport.DataSources.Clear();
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", bsWip));
 
-            //reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.JPIXFlyerWipReport.rdlc";
-            //this.reportViewer1.RefreshReport();
 
             if (bsWip.Count < 1)
             {
@@ -98,9 +94,9 @@ namespace Mbc5.Forms.JPIX
                 saveFileDialog1.ShowDialog();
                 //using (var mem = new MemoryStream())
                 using (var writer = new StreamWriter(saveFileDialog1.FileName))
-                using (var csvWriter = new CsvWriter(writer))
+                using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.InvariantCulture))
                 {
-                    csvWriter.Configuration.Delimiter = ",";
+                    csvWriter.Context.Configuration.Delimiter = ",";
                     //csvWriter.Configuration.HasHeaderRecord = true;
                     // csvWriter.Configuration.AutoMap<InqCountModel>();
 
