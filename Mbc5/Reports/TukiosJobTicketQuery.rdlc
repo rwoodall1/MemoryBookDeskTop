@@ -413,7 +413,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>="*"+RTrim(LTrim(Str(Fields!ClientOrderId.Value)))+"*"</Value>
+                                      <Value>="*"+Fields!ClientOrderId.Value+"*"</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
                                         <FontSize>26pt</FontSize>
@@ -425,7 +425,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Invno</rd:DefaultName>
                               <Top>2.10069in</Top>
-                              <Left>4.43053in</Left>
+                              <Left>4.44792in</Left>
                               <Height>0.41667in</Height>
                               <Width>3.38891in</Width>
                               <ZIndex>7</ZIndex>
@@ -449,7 +449,7 @@
                                       <Value>=Fields!YBBarcode.Value</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
-                                        <FontSize>22pt</FontSize>
+                                        <FontSize>26pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -460,7 +460,7 @@
                               <Top>1.19445in</Top>
                               <Left>0.13193in</Left>
                               <Height>0.25in</Height>
-                              <Width>3.71875in</Width>
+                              <Width>5.60417in</Width>
                               <ZIndex>8</ZIndex>
                               <Style>
                                 <Border>
@@ -576,7 +576,7 @@
                                       <Value>=Fields!SCBarcode.Value</Value>
                                       <Style>
                                         <FontFamily>3 of 9 Barcode</FontFamily>
-                                        <FontSize>24pt</FontSize>
+                                        <FontSize>26pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -589,7 +589,7 @@
                               <Top>7.96875in</Top>
                               <Left>0.30555in</Left>
                               <Height>0.25in</Height>
-                              <Width>3.96875in</Width>
+                              <Width>4.3125in</Width>
                               <ZIndex>12</ZIndex>
                               <Style>
                                 <Border>
@@ -1259,7 +1259,7 @@
                                           <Value>="*" + First(Fields!ClientOrderId.Value, "DataSet1") + "*"</Value>
                                           <Style>
                                             <FontFamily>3 of 9 Barcode</FontFamily>
-                                            <FontSize>24pt</FontSize>
+                                            <FontSize>26pt</FontSize>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -1269,7 +1269,7 @@
                                   <rd:DefaultName>ClientOrderId</rd:DefaultName>
                                   <Top>0.05556in</Top>
                                   <Left>3.26313in</Left>
-                                  <Height>0.25in</Height>
+                                  <Height>0.30556in</Height>
                                   <Width>3.21836in</Width>
                                   <ZIndex>1</ZIndex>
                                   <Style>
@@ -1292,7 +1292,7 @@
                                           <Value>="*" +CStr(First(Fields!Invno.Value, "DataSet1")) + "*"</Value>
                                           <Style>
                                             <FontFamily>3 of 9 Barcode</FontFamily>
-                                            <FontSize>24pt</FontSize>
+                                            <FontSize>26pt</FontSize>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -1300,7 +1300,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Invno1</rd:DefaultName>
-                                  <Top>0.30556in</Top>
+                                  <Top>0.43056in</Top>
                                   <Left>4.01313in</Left>
                                   <Height>0.25in</Height>
                                   <Width>3.09336in</Width>
@@ -1335,7 +1335,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox43</rd:DefaultName>
-                                  <Top>0.30556in</Top>
+                                  <Top>0.43056in</Top>
                                   <Left>3.4645in</Left>
                                   <Height>0.25in</Height>
                                   <Width>0.46881in</Width>

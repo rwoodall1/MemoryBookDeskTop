@@ -232,7 +232,7 @@
                     <Value>=Fields!YBBarcode.Value</Value>
                     <Style>
                       <FontFamily>3 of 9 Barcode</FontFamily>
-                      <FontSize>22pt</FontSize>
+                      <FontSize>26pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -242,8 +242,8 @@
             <rd:DefaultName>YBBarcode</rd:DefaultName>
             <Top>1.71466in</Top>
             <Left>0.24065in</Left>
-            <Height>0.25in</Height>
-            <Width>3.71875in</Width>
+            <Height>0.31249in</Height>
+            <Width>4.63195in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -466,15 +466,15 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Center</TextAlign>
+                  <TextAlign>Left</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>SCBarcode</rd:DefaultName>
             <Top>7.71117in</Top>
             <Left>0.55316in</Left>
-            <Height>0.25in</Height>
-            <Width>3.96875in</Width>
+            <Height>0.35418in</Height>
+            <Width>4.0625in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -666,39 +666,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Invno">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="*"+Str(First(Fields!ClientOrderId.Value, "DataSet1"))+"*"</Value>
-                    <Style>
-                      <FontFamily>3 of 9 Barcode</FontFamily>
-                      <FontSize>26pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Invno</rd:DefaultName>
-            <Top>2.40562in</Top>
-            <Left>5.03581in</Left>
-            <Height>0.41667in</Height>
-            <Width>2.54859in</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="OrderReceivedDate1">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -718,7 +685,7 @@
             <Left>1.29278in</Left>
             <Height>0.25in</Height>
             <Width>1.79167in</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -752,7 +719,7 @@
             <Left>4.49071in</Left>
             <Height>0.25in</Height>
             <Width>2.19098in</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -784,7 +751,7 @@
             <Left>6.71364in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -815,7 +782,7 @@
             <Left>0.22677in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>19</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -846,7 +813,7 @@
             <Left>0.22677in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
-            <ZIndex>20</ZIndex>
+            <ZIndex>19</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -862,7 +829,7 @@
             <Left>1.25455in</Left>
             <Height>0in</Height>
             <Width>1.04167in</Width>
-            <ZIndex>21</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -874,7 +841,7 @@
             <Left>1.25455in</Left>
             <Height>0in</Height>
             <Width>1.04167in</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -904,7 +871,7 @@
             <Left>3.3101in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>
-            <ZIndex>23</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -929,15 +896,17 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
             <Top>3.14173in</Top>
             <Left>5.06357in</Left>
-            <Height>0.35417in</Height>
+            <Height>0.43577in</Height>
             <Width>2.89237in</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -962,7 +931,9 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
@@ -970,7 +941,7 @@
             <Left>5.06357in</Left>
             <Height>0.35417in</Height>
             <Width>2.89237in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1004,7 +975,7 @@
             <Left>3.3101in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1039,7 +1010,7 @@
             <Left>5.54968in</Left>
             <Height>0.25in</Height>
             <Width>0.81944in</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1074,7 +1045,7 @@
             <Left>0.40039in</Left>
             <Height>0.25in</Height>
             <Width>0.82986in</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1093,7 +1064,7 @@
             <Left>2.81705in</Left>
             <Height>2.45in</Height>
             <Width>2.30208in</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1124,7 +1095,7 @@
             <Left>2.80316in</Left>
             <Height>0.25in</Height>
             <Width>0.82986in</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1143,7 +1114,7 @@
             <Left>0.24066in</Left>
             <Height>2.45in</Height>
             <Width>2.50694in</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1158,7 +1129,7 @@
             <Left>5.2213in</Left>
             <Height>2.45in</Height>
             <Width>2.49234in</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1189,7 +1160,7 @@
             <Left>0.26844in</Left>
             <Height>0.33333in</Height>
             <Width>1.5625in</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1222,7 +1193,7 @@
             <Left>0.45708in</Left>
             <Height>0.61458in</Height>
             <Width>2.29052in</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1278,17 +1249,19 @@
                         <Value>="*"+First(Fields!ClientOrderId.Value, "DataSet1")+"*"</Value>
                         <Style>
                           <FontFamily>3 of 9 Barcode</FontFamily>
-                          <FontSize>24pt</FontSize>
+                          <FontSize>26pt</FontSize>
                         </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>ClientOrderId</rd:DefaultName>
                 <Top>0.05556in</Top>
                 <Left>3.14469in</Left>
-                <Height>0.25in</Height>
+                <Height>0.30556in</Height>
                 <Width>3.73919in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -1311,17 +1284,19 @@
                         <Value>="*"+CStr(First(Fields!Invno.Value, "DataSet1"))+"*"</Value>
                         <Style>
                           <FontFamily>3 of 9 Barcode</FontFamily>
-                          <FontSize>24pt</FontSize>
+                          <FontSize>26pt</FontSize>
                         </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Invno1</rd:DefaultName>
-                <Top>0.30556in</Top>
+                <Top>0.43056in</Top>
                 <Left>4.51313in</Left>
-                <Height>0.25in</Height>
+                <Height>0.3125in</Height>
                 <Width>2.36771in</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
@@ -1354,7 +1329,7 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox43</rd:DefaultName>
-                <Top>0.30556in</Top>
+                <Top>0.43056in</Top>
                 <Left>3.9645in</Left>
                 <Height>0.25in</Height>
                 <Width>0.46881in</Width>
@@ -1373,17 +1348,50 @@
             <KeepTogether>true</KeepTogether>
             <Top>8.79736in</Top>
             <Left>0.45708in</Left>
-            <Height>0.76389in</Height>
+            <Height>0.74306in</Height>
             <Width>7.13388in</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>34</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
             </Style>
           </Rectangle>
+          <Textbox Name="ClientOrderId1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="*"+First(Fields!ClientOrderId.Value, "DataSet1")+"*"</Value>
+                    <Style>
+                      <FontFamily>3 of 9 Barcode</FontFamily>
+                      <FontSize>26pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ClientOrderId1</rd:DefaultName>
+            <Top>2.40562in</Top>
+            <Left>4.97021in</Left>
+            <Height>0.25in</Height>
+            <Width>2.01042in</Width>
+            <ZIndex>35</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>9.70709in</Height>
+        <Height>9.66542in</Height>
         <Style />
       </Body>
       <Width>7.99875in</Width>
