@@ -40,6 +40,10 @@ namespace Mbc5.Forms.Tukios
 
         private void TextBox1_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(TextBox1.Text))
+            {
+                return;
+            }
             string _company = TextBox1.Text.Substring(0, 3).ToUpper();
             if (_company != "TUK")
             {

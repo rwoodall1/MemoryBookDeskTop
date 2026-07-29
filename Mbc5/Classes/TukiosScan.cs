@@ -255,9 +255,9 @@ namespace Mbc5.Classes
                         sqlClient.AddParameter("@WAR", vDateTime);
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@WTR", this.data.Department.AutoTime);
-
+                        sqlClient.AddParameter("@MxbLocation", Scanform.txtLocation.Text);
                         sqlClient.AddParameter("@Schcode", "1");
-                        sqlClient.CommandText(@"Update WipDetail SET WAR= @WAR , WIR =@WIR,WTR=@WTR ,Schcode=@Schcode  WHERE Invno=@Invno AND DescripID=@DescripID ");
+                        sqlClient.CommandText(@"Update WipDetail SET WAR= @WAR , WIR =@WIR,WTR=@WTR ,Schcode=@Schcode,MxbLocation=@MxbLocation  WHERE Invno=@Invno AND DescripID=@DescripID ");
                         var mxResult11 = sqlClient.Update();
                         if (mxResult11.IsError)
                         {
@@ -273,9 +273,10 @@ namespace Mbc5.Classes
                         sqlClient.AddParameter("@WIR", vWIR);
                         sqlClient.AddParameter("@WTR", this.data.Department.AutoTime);
                         sqlClient.AddParameter("@Schcode", "1");
+                        sqlClient.AddParameter("@MxbLocation", Scanform.txtLocation.Text);
                         sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
                                                                     Begin
-                                                                    INSERT INTO WipDetail (DescripID,War,Wir,WTR,Invno,Schcode) VALUES(@DescripID,@WAR,@WIR,@WTR,@Invno,@Schcode);
+                                                                    INSERT INTO WipDetail (DescripID,War,Wir,WTR,Invno,Schcode,MxbLocation) VALUES(@DescripID,@WAR,@WIR,@WTR,@Invno,@Schcode,@MxbLocation);
                                                                     END
                                                                     ");
 
