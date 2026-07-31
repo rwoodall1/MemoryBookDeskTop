@@ -154,7 +154,6 @@
       <Body>
         <ReportItems>
           <Textbox Name="ShipName">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -162,7 +161,7 @@
                   <TextRun>
                     <Value>=Fields!ShipName.Value</Value>
                     <Style>
-                      <FontSize>18pt</FontSize>
+                      <FontSize>14pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -260,7 +259,7 @@
                   <TextRun>
                     <Value>Ship Date </Value>
                     <Style>
-                      <FontSize>18pt</FontSize>
+                      <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -295,7 +294,7 @@
                   <TextRun>
                     <Value>=FormatDateTime(Fields!RequestedShipDate.Value,DateFormat.ShortDate)</Value>
                     <Style>
-                      <FontSize>18pt</FontSize>
+                      <FontSize>14pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -764,7 +763,7 @@
                   <TextRun>
                     <Value>=First(Fields!DSInvno.Value, "DataSet1")</Value>
                     <Style>
-                      <FontSize>18pt</FontSize>
+                      <FontSize>14pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -806,9 +805,9 @@
             </Paragraphs>
             <rd:DefaultName>Invno</rd:DefaultName>
             <Top>1.65278in</Top>
-            <Left>5.66541in</Left>
+            <Left>5.37104in</Left>
             <Height>0.41667in</Height>
-            <Width>2.39237in</Width>
+            <Width>2.88604in</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -953,7 +952,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
             <Top>2.42015in</Top>
-            <Left>4.03346in</Left>
+            <Left>3.72102in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>
             <ZIndex>20</ZIndex>
@@ -986,9 +985,9 @@
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
             <Top>2.42015in</Top>
-            <Left>5.66541in</Left>
+            <Left>5.38911in</Left>
             <Height>0.35417in</Height>
-            <Width>2.39237in</Width>
+            <Width>2.88604in</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -1019,9 +1018,9 @@
             </Paragraphs>
             <rd:DefaultName>ProdCopies</rd:DefaultName>
             <Top>3.2118in</Top>
-            <Left>5.66541in</Left>
+            <Left>5.35297in</Left>
             <Height>0.35417in</Height>
-            <Width>2.39237in</Width>
+            <Width>2.88604in</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1053,7 +1052,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox43</rd:DefaultName>
             <Top>3.2118in</Top>
-            <Left>4.03346in</Left>
+            <Left>3.69878in</Left>
             <Height>0.25in</Height>
             <Width>1.5625in</Width>
             <ZIndex>23</ZIndex>
@@ -1127,7 +1126,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.77431in</Top>
-            <Left>4.03346in</Left>
+            <Left>3.68071in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>26</ZIndex>
@@ -1143,7 +1142,7 @@
           </Textbox>
           <Line Name="Line2">
             <Top>4.02431in</Top>
-            <Left>5.06124in</Left>
+            <Left>4.70849in</Left>
             <Height>0in</Height>
             <Width>1.04167in</Width>
             <ZIndex>27</ZIndex>

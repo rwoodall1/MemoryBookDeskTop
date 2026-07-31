@@ -947,7 +947,6 @@ ShipZip,
             {
                 data.LastPageLocation = lastPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1066,7 +1065,6 @@ ShipZip,
             {
                 data.FirstPageLocation = firstPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1185,7 +1183,6 @@ ShipZip,
             {
                 data.CoverPageLocation = coverPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1889,36 +1886,48 @@ ShipZip,
 
         private void tukiosOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) return;
+
+            string colName = tukiosOrderDataGridView.Columns[e.ColumnIndex].Name;
+
+            if (colName == "CoverUrl" || colName == "BookUrl" || colName == "prodticket")
+            {
                 if (tukiosOrderDataGridView.CurrentCell != null && tukiosOrderDataGridView.CurrentCell.Value != null)
                 {
                     try
-                    { Process.Start(tukiosOrderDataGridView.CurrentCell.Value.ToString()); }
+                    {
+                        Process.Start(tukiosOrderDataGridView.CurrentCell.Value.ToString());
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Url is invalid.");
                         Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
                     }
                 }
-            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
+            }
+
+            if (colName == "dataGridViewTextBoxColumn1")
             {
 
             }
         }
 
-
-
         private void tukiosOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) return;
+
+            string colName = tukiosOrderDataGridView.Columns[e.ColumnIndex].Name;
+
+            if (colName == "CoverUrl")
             {
                 e.Value = "Cover.pdf";
             }
-            if (e.ColumnIndex == 7)
+            if (colName == "BookUrl")
             {
                 e.Value = "Book.pdf";
             }
         }
+
         private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
         {
             if (tukiosOrderDataGridView.CurrentRow != null)
