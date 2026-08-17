@@ -50,26 +50,30 @@
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label groupIdLabel;
             System.Windows.Forms.Label bookTypeLabel;
-            System.Windows.Forms.Label coverURLLabel;
-            System.Windows.Forms.Label bookBlockURLLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.tukiosOrderDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
             this.tukiosOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTukiosOrders = new Mbc5.DataSets.TukiosOrders();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
-            this.bookBlockURLTextBox = new System.Windows.Forms.TextBox();
-            this.coverURLTextBox = new System.Windows.Forms.TextBox();
             this.bookTypeLabel1 = new System.Windows.Forms.Label();
             this.groupIdLabel1 = new System.Windows.Forms.Label();
             this.btnCancelOrder = new System.Windows.Forms.Button();
@@ -131,14 +135,6 @@
             this.JobTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RemakeTicketQueryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblcvrStatus = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.copiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoverUrl = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BookUrl = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.prodticket = new System.Windows.Forms.DataGridViewLinkColumn();
             notesLabel = new System.Windows.Forms.Label();
             weightLabel = new System.Windows.Forms.Label();
             trackingNumberLabel = new System.Windows.Forms.Label();
@@ -160,8 +156,6 @@
             requestedShipMethodLabel = new System.Windows.Forms.Label();
             groupIdLabel = new System.Windows.Forms.Label();
             bookTypeLabel = new System.Windows.Forms.Label();
-            coverURLLabel = new System.Windows.Forms.Label();
-            bookBlockURLLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tukiosOrderDataGridView)).BeginInit();
@@ -388,24 +382,6 @@
             bookTypeLabel.TabIndex = 343;
             bookTypeLabel.Text = "Book Type:";
             // 
-            // coverURLLabel
-            // 
-            coverURLLabel.AutoSize = true;
-            coverURLLabel.Location = new System.Drawing.Point(227, 228);
-            coverURLLabel.Name = "coverURLLabel";
-            coverURLLabel.Size = new System.Drawing.Size(63, 13);
-            coverURLLabel.TabIndex = 344;
-            coverURLLabel.Text = "Cover URL:";
-            // 
-            // bookBlockURLLabel
-            // 
-            bookBlockURLLabel.AutoSize = true;
-            bookBlockURLLabel.Location = new System.Drawing.Point(200, 199);
-            bookBlockURLLabel.Name = "bookBlockURLLabel";
-            bookBlockURLLabel.Size = new System.Drawing.Size(90, 13);
-            bookBlockURLLabel.TabIndex = 345;
-            bookBlockURLLabel.Text = "Book Block URL:";
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -464,6 +440,78 @@
             this.tukiosOrderDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tukiosOrderDataGridView_CellFormatting);
             this.tukiosOrderDataGridView.Enter += new System.EventHandler(this.tukiosOrderDataGridView_Enter);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // ItemId
+            // 
+            this.ItemId.DataPropertyName = "BookId";
+            this.ItemId.HeaderText = "Item Id";
+            this.ItemId.Name = "ItemId";
+            this.ItemId.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // copiesDataGridViewTextBoxColumn
+            // 
+            this.copiesDataGridViewTextBoxColumn.DataPropertyName = "Copies";
+            this.copiesDataGridViewTextBoxColumn.HeaderText = "Copies";
+            this.copiesDataGridViewTextBoxColumn.Name = "copiesDataGridViewTextBoxColumn";
+            this.copiesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.copiesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // pagesDataGridViewTextBoxColumn
+            // 
+            this.pagesDataGridViewTextBoxColumn.DataPropertyName = "Pages";
+            this.pagesDataGridViewTextBoxColumn.HeaderText = "Pages";
+            this.pagesDataGridViewTextBoxColumn.Name = "pagesDataGridViewTextBoxColumn";
+            this.pagesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pagesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // CoverUrl
+            // 
+            this.CoverUrl.DataPropertyName = "CoverURL";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CoverUrl.HeaderText = "Cover Url";
+            this.CoverUrl.Name = "CoverUrl";
+            this.CoverUrl.ReadOnly = true;
+            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CoverUrl.Text = "";
+            // 
+            // BookUrl
+            // 
+            this.BookUrl.DataPropertyName = "BookBlockURL";
+            this.BookUrl.HeaderText = "Book Url";
+            this.BookUrl.Name = "BookUrl";
+            this.BookUrl.ReadOnly = true;
+            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BookUrl.Text = "";
+            // 
+            // prodticket
+            // 
+            this.prodticket.HeaderText = "";
+            this.prodticket.Name = "prodticket";
+            this.prodticket.ReadOnly = true;
+            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.prodticket.Text = "Print Ticket";
+            this.prodticket.UseColumnTextForLinkValue = true;
+            this.prodticket.Visible = false;
+            this.prodticket.Width = 75;
+            // 
             // tukiosOrderBindingSource
             // 
             this.tukiosOrderBindingSource.DataMember = "TukiosOrder";
@@ -510,10 +558,6 @@
             // 
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlOrder.Controls.Add(bookBlockURLLabel);
-            this.pnlOrder.Controls.Add(this.bookBlockURLTextBox);
-            this.pnlOrder.Controls.Add(coverURLLabel);
-            this.pnlOrder.Controls.Add(this.coverURLTextBox);
             this.pnlOrder.Controls.Add(bookTypeLabel);
             this.pnlOrder.Controls.Add(this.bookTypeLabel1);
             this.pnlOrder.Controls.Add(groupIdLabel);
@@ -562,22 +606,6 @@
             this.pnlOrder.Size = new System.Drawing.Size(1230, 286);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
-            // 
-            // bookBlockURLTextBox
-            // 
-            this.bookBlockURLTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "BookBlockURL", true));
-            this.bookBlockURLTextBox.Location = new System.Drawing.Point(296, 196);
-            this.bookBlockURLTextBox.Name = "bookBlockURLTextBox";
-            this.bookBlockURLTextBox.Size = new System.Drawing.Size(316, 20);
-            this.bookBlockURLTextBox.TabIndex = 346;
-            // 
-            // coverURLTextBox
-            // 
-            this.coverURLTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "CoverURL", true));
-            this.coverURLTextBox.Location = new System.Drawing.Point(296, 225);
-            this.coverURLTextBox.Name = "coverURLTextBox";
-            this.coverURLTextBox.Size = new System.Drawing.Size(316, 20);
-            this.coverURLTextBox.TabIndex = 345;
             // 
             // bookTypeLabel1
             // 
@@ -1178,78 +1206,6 @@
             this.lblcvrStatus.Size = new System.Drawing.Size(100, 23);
             this.lblcvrStatus.TabIndex = 10027;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // ItemId
-            // 
-            this.ItemId.DataPropertyName = "BookId";
-            this.ItemId.HeaderText = "Item Id";
-            this.ItemId.Name = "ItemId";
-            this.ItemId.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // copiesDataGridViewTextBoxColumn
-            // 
-            this.copiesDataGridViewTextBoxColumn.DataPropertyName = "Copies";
-            this.copiesDataGridViewTextBoxColumn.HeaderText = "Copies";
-            this.copiesDataGridViewTextBoxColumn.Name = "copiesDataGridViewTextBoxColumn";
-            this.copiesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.copiesDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // pagesDataGridViewTextBoxColumn
-            // 
-            this.pagesDataGridViewTextBoxColumn.DataPropertyName = "Pages";
-            this.pagesDataGridViewTextBoxColumn.HeaderText = "Pages";
-            this.pagesDataGridViewTextBoxColumn.Name = "pagesDataGridViewTextBoxColumn";
-            this.pagesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pagesDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // CoverUrl
-            // 
-            this.CoverUrl.DataPropertyName = "CoverURL";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CoverUrl.HeaderText = "Cover Url";
-            this.CoverUrl.Name = "CoverUrl";
-            this.CoverUrl.ReadOnly = true;
-            this.CoverUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CoverUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CoverUrl.Text = "";
-            // 
-            // BookUrl
-            // 
-            this.BookUrl.DataPropertyName = "BookBlockURL";
-            this.BookUrl.HeaderText = "Book Url";
-            this.BookUrl.Name = "BookUrl";
-            this.BookUrl.ReadOnly = true;
-            this.BookUrl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BookUrl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BookUrl.Text = "";
-            // 
-            // prodticket
-            // 
-            this.prodticket.HeaderText = "";
-            this.prodticket.Name = "prodticket";
-            this.prodticket.ReadOnly = true;
-            this.prodticket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.prodticket.Text = "Print Ticket";
-            this.prodticket.UseColumnTextForLinkValue = true;
-            this.prodticket.Visible = false;
-            this.prodticket.Width = 75;
-            // 
             // frmTKOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1380,8 +1336,6 @@
         private System.Windows.Forms.BindingSource RemakeTicketQueryBindingSource;
         private System.Windows.Forms.Label bookTypeLabel1;
         private System.Windows.Forms.Label lblcvrStatus;
-        private System.Windows.Forms.TextBox bookBlockURLTextBox;
-        private System.Windows.Forms.TextBox coverURLTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;

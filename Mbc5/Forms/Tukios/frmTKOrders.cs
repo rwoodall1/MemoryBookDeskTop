@@ -33,7 +33,7 @@ namespace Mbc5.Forms.Tukios
             this.OrderId = clientId;
         }
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\TukiosLastPageImage\\";
-        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosBookArchive\\";
+        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosArchive\\";
         public string OrderId { get; set; } = "";
         public UserPrincipal ApplicationUser { get; set; }
 
