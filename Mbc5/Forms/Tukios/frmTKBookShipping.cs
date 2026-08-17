@@ -332,6 +332,7 @@ namespace Mbc5.Forms.Tukios
 
 
             }
+            txtClientIdLookup.Select();
         }
         private void UpdateShippingWip()
         {
