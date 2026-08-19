@@ -44,7 +44,7 @@ namespace Mbc5.Forms.Tukios
                         ,T.ShipState
                         ,T.ShipZip
                         ,''''+ Convert(VARCHAR, T.TrackingNumber) AS TrackingNumber
-                        ,TS.Cost As Freight
+                        ,T.Cost As Freight
                         ,TP.SellPrice As UnitPrice 
                         ,TP.SellPrice * T.Copies AS UnitTotal
                         ,TP.PerPage * (T.Pages * T.Copies )AS PageFee

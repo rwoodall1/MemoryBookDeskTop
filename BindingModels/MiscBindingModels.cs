@@ -2,6 +2,13 @@
 
 namespace BindingModels
 {
+    public class TukiosFreight
+    {
+        public string TrackingNumber { get; set; }
+        public decimal Freight { get; set; }
+        public string CostCenter { get; set; }
+
+    }
     public class UPSInvoceData
     {
         public string InvoiceNumber { get; set; }

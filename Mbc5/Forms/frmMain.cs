@@ -3173,6 +3173,13 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             frmTukiosUPSImport.Show();
         }
 
+        private void importFreightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmImportTkFreight frmImportTkFreight = new frmImportTkFreight(this.ApplicationUser);
+            frmImportTkFreight.MdiParent = this;
+            frmImportTkFreight.Show();
+        }
+
 
         #endregion
         //nothing below here

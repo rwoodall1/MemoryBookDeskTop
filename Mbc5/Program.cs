@@ -1,4 +1,5 @@
 ﻿using Mbc5.Forms;
+using Mbc5.Forms.Tukios;
 using NLog;
 using System;
 using System.IO;
@@ -36,7 +37,7 @@ namespace Mbc5
                 NativePathHelper.AddPdfiumNativePath();
 
                 Application.Run(new frmMain());
-                //Application.Run(new frmTukiosUPSImport());
+               // Application.Run(new frmImportTkFreight());
 
             }
             catch (Exception ex)
