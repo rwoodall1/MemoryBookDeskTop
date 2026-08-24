@@ -45,6 +45,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(126, 43);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -65,6 +67,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "CSV Files |*.csv";
             this.openFileDialog1.Multiselect = true;
             // 
             // bsData
@@ -115,7 +118,6 @@
             this.lblSum.Name = "lblSum";
             this.lblSum.Size = new System.Drawing.Size(100, 23);
             this.lblSum.TabIndex = 7;
-            this.lblSum.Text = "label1";
             // 
             // button1
             // 

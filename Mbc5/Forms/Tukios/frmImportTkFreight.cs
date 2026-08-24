@@ -91,12 +91,13 @@ namespace Mbc5.Forms.Tukios
                 }
                 if (TKFreight.Count > 0)
                 {
-                    MessageBox.Show("Data Loaded, ready to be saved!");
+                  
                     bsData.DataSource = TKFreight;
                     dataGridView1.DataSource = bsData;
                 
                     lblCount.Text = "Count: " + TKFreight.Count.ToString();
                     lblSum.Text = TKFreight.Sum(x => x.Freight).ToString("C");
+                    MessageBox.Show("Data Loaded, ready to be saved!");
                 }
                 else
                 {
@@ -122,6 +123,7 @@ namespace Mbc5.Forms.Tukios
                     MessageBox.Show("Failed to update record: " + item.TrackingNumber + " Error: " + result.Errors[0].DeveloperMessage);
                 }
             }
+            MbcMessageBox.Information("Import complete");
         }
 
 
