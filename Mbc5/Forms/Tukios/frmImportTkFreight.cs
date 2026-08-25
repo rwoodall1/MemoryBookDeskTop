@@ -56,9 +56,9 @@ namespace Mbc5.Forms.Tukios
 
                             while (csv.Read())
                             {
-                                tmpTrackingNumber = csv.GetField("Customer IMPb");
-                                var tmpFreight = csv.GetField("UPSMI");
-                                var tmpCostCenter = csv.GetField("Cost Center Name");
+                                tmpTrackingNumber = csv.GetField("Customer IMPb");//K
+                                var tmpFreight = csv.GetField("UPSMI");//R
+                                var tmpCostCenter = csv.GetField("Cost Center Name");//F
                                 if (tmpCostCenter.ToUpper() == "TUKIOS" && tmpTrackingNumber.Length > 5)
                                 {
                                     decimal _freight = 0;
@@ -116,7 +116,7 @@ namespace Mbc5.Forms.Tukios
             {
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@TrackingNumber", "%" + item.TrackingNumber + "%");
-                sqlClient.AddParameter("@Freight", item.Freight);
+                sqlClient.AddParameter("@Freight", item.Freight+3);
                 var result = sqlClient.Update();
                 if (result.IsError)
                 {
