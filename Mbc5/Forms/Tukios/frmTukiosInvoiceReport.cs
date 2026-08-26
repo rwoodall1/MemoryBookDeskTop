@@ -50,7 +50,7 @@ namespace Mbc5.Forms.Tukios
                         ,TP.SellPrice As UnitPrice 
                         ,TP.SellPrice * T.Copies AS UnitTotal
                         ,TP.PerPage * (T.Pages * T.Copies )AS PageFee
-                        ,TP.HandlingPerBox AS Fulfillment
+                        ,(TP.HandlingPerBox * T.Copies) AS Fulfillment
                         ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox) + T.Freight AS Total
                         FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
                         Left Join TukiosShipping TS On T.ClientOrderId=TS.ClientOrderId

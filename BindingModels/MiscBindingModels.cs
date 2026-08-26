@@ -7,7 +7,14 @@ namespace BindingModels
         public string TrackingNumber { get; set; }
         public decimal Freight { get; set; }
         public string CostCenter { get; set; }
-
+        public string PieceId { get; set; }
+    }
+    public class TukiosBadRec
+    {
+        public string TrackingNumber { get; set; }
+        public string Freight { get; set; }
+        public string CostCenter { get; set; }
+        public string PieceId { get; set; }
     }
     public class UPSInvoceData
     {

@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MixBook
 ,MP.SellPrice As UnitPrice 
 ,MP.SellPrice * M.Copies AS UnitTotal
 ,MP.PerPage * (M.Pages * M.Copies )AS PageFee
-,MP.HandlingPerBox AS Fulfillment
+,(M.Copies*MP.HandlingPerBox) AS Fulfillment
 ,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId

@@ -87,6 +87,7 @@
             this.dataGridView1.DataSource = this.bsData;
             this.dataGridView1.Location = new System.Drawing.Point(28, 93);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(484, 393);
             this.dataGridView1.TabIndex = 5;
             // 
@@ -96,12 +97,14 @@
             this.trackingNumberDataGridViewTextBoxColumn.DataPropertyName = "TrackingNumber";
             this.trackingNumberDataGridViewTextBoxColumn.HeaderText = "TrackingNumber";
             this.trackingNumberDataGridViewTextBoxColumn.Name = "trackingNumberDataGridViewTextBoxColumn";
+            this.trackingNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // freightDataGridViewTextBoxColumn
             // 
             this.freightDataGridViewTextBoxColumn.DataPropertyName = "Freight";
             this.freightDataGridViewTextBoxColumn.HeaderText = "Freight";
             this.freightDataGridViewTextBoxColumn.Name = "freightDataGridViewTextBoxColumn";
+            this.freightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // lblCount
             // 

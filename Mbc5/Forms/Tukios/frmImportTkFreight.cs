@@ -1,17 +1,19 @@
 ﻿using BaseClass;
 using BaseClass.Classes;
+using BindingModels;
 using CsvHelper;
+using NLog.LayoutRenderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BindingModels;
 namespace Mbc5.Forms.Tukios
 {
     public partial class frmImportTkFreight : BaseClass.frmBase
@@ -43,6 +45,7 @@ namespace Mbc5.Forms.Tukios
 
                     };
                     string tmpTrackingNumber = "";
+                    var badRecords = new List<TukiosBadRec>();
                     try
                     {
                         using (var reader = new StreamReader(textBox1.Text))
@@ -50,7 +53,7 @@ namespace Mbc5.Forms.Tukios
                         {
 
                             var records = new List<TukiosFreight>();
-                            //start reading at 4th line.
+                           
                             csv.Read();
                             csv.ReadHeader();
 
@@ -59,23 +62,45 @@ namespace Mbc5.Forms.Tukios
                                 tmpTrackingNumber = csv.GetField("Customer IMPb");//K
                                 var tmpFreight = csv.GetField("UPSMI");//R
                                 var tmpCostCenter = csv.GetField("Cost Center Name");//F
-                                if (tmpCostCenter.ToUpper() == "TUKIOS" && tmpTrackingNumber.Length > 5)
+                                var pieceId= csv.GetField("Piece ID");
+                                if ( tmpTrackingNumber!=null && tmpTrackingNumber.Length > 5)
                                 {
                                     decimal _freight = 0;
                                     if (!decimal.TryParse(tmpFreight, out _freight))
                                     {
                                        MbcMessageBox.Error(tmpTrackingNumber + " has an invalid freight value: " + tmpFreight);
+                                        var _rec = new TukiosBadRec()
+                                        {
+                                            TrackingNumber = tmpTrackingNumber,
+                                            Freight = tmpFreight,
+                                            CostCenter = tmpCostCenter,
+                                            PieceId = pieceId
+                                        };
+                                        badRecords.Add(_rec);
+                                        continue;
                                     }
                                     var record = new TukiosFreight
                                     {
 
                                         TrackingNumber = tmpTrackingNumber,
-                                        Freight = _freight,
-                                        CostCenter = tmpCostCenter
+                                        Freight = _freight+3,
+                                        CostCenter = tmpCostCenter,
+                                        PieceId=pieceId
                                     };
                                    
                                         records.Add(record);
-                                    }
+                                }
+                                else
+                                {
+                                    var _rec = new TukiosBadRec()
+                                    {
+                                        TrackingNumber = tmpTrackingNumber,
+                                        Freight = tmpFreight,
+                                        CostCenter = tmpCostCenter,
+                                        PieceId = pieceId
+                                    };
+                                    badRecords.Add(_rec);
+                                }
                                 }
                             TKFreight.AddRange(records);
                         }
@@ -86,6 +111,12 @@ namespace Mbc5.Forms.Tukios
                         return;
                     }
 
+            
+                    using (var writer = new StreamWriter("c:\\temp\\BadCSVRecords.csv"))
+                    using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    {
+                        csv.WriteRecords(badRecords);
+                    }
 
 
                 }
@@ -109,6 +140,7 @@ namespace Mbc5.Forms.Tukios
 
         private void button1_Click(object sender, EventArgs e)
         {
+             var notUpdated = new List<TukiosBadRec>();
             var sqlClient = new SQLCustomClient().CommandText(@"
                 Update TukiosOrder Set Freight = @Freight Where TrackingNumber LIKE @TrackingNumber
                 ");
@@ -116,12 +148,42 @@ namespace Mbc5.Forms.Tukios
             {
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@TrackingNumber", "%" + item.TrackingNumber + "%");
-                sqlClient.AddParameter("@Freight", item.Freight+3);
+                sqlClient.AddParameter("@Freight", item.Freight);
                 var result = sqlClient.Update();
                 if (result.IsError)
                 {
                     MessageBox.Show("Failed to update record: " + item.TrackingNumber + " Error: " + result.Errors[0].DeveloperMessage);
+                    var _rec = new TukiosBadRec()
+                    {
+                        TrackingNumber = item.TrackingNumber,
+                        Freight = item.Freight.ToString(),
+                        CostCenter = item.CostCenter,
+                        PieceId = item.PieceId
+                    };
+
+                    notUpdated.Add(_rec);
+                    continue;
                 }
+                if (result.Data==0)
+                {
+                   // MessageBox.Show("Failed to update record not found: " + item.TrackingNumber);
+                    var _rec = new TukiosBadRec()
+                    {
+                        TrackingNumber = item.TrackingNumber,
+                        Freight =item.Freight.ToString(),
+                        CostCenter = item.CostCenter,
+                        PieceId = item.PieceId
+                    };
+                  
+                    notUpdated.Add(_rec);
+                    
+                }
+            }
+         
+            using (var writer = new StreamWriter("c:\\temp\\NotUpdated.csv"))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(notUpdated);
             }
             MbcMessageBox.Information("Import complete");
         }
@@ -132,5 +194,6 @@ namespace Mbc5.Forms.Tukios
 
         //end of class
     }
+  
     
-    }
+}
