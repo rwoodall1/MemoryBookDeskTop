@@ -87,7 +87,7 @@ Where M.MixbookOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL
 ,M.ShipName
 ,M.ShipState
 ,M.ShipZip
-,''''+ Convert(VARCHAR, M.TrackingNumber) AS TrackingNumber
+,''''+ Convert(VARCHAR(50), M.TrackingNumber) AS TrackingNumber
 ,MS.Cost As Freight
 ,MP.SellPrice As UnitPrice 
 ,MP.SellPrice * M.Copies AS UnitTotal
