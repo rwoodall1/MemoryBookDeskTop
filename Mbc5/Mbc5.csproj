@@ -695,12 +695,6 @@
     <Compile Include="Forms\Tukios\frmTukiosShippingReport.Designer.cs">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tukios\frmTukiosUPSImport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Tukios\frmTukiosUPSImport.Designer.cs">
-      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Tukios\frmTukiosWipReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -957,9 +951,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosShippingReport.resx">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tukios\frmTukiosUPSImport.resx">
-      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosWipReport.resx">
       <DependentUpon>frmTukiosWipReport.cs</DependentUpon>

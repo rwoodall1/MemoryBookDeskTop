@@ -48,7 +48,7 @@ namespace Mbc5.Forms.MixBook
 ,MP.SellPrice * M.Copies AS UnitTotal
 ,MP.PerPage * (M.Pages * M.Copies )AS PageFee
 ,(M.Copies*MP.HandlingPerBox) AS Fulfillment
-,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox) AS Total
+,(MP.SellPrice * M.Copies)+(MP.PerPage * (M.Pages * M.Copies ))+(MP.HandlingPerBox*M.Copies) AS Total
 FROM MixbookOrder M INNER JOIN MixBookPricing MP ON M.ItemCode=MP.ItemCode
 Left Join MixbookShipping MS ON M.ClientOrderId=MS.ClientOrderId
 Where M.MixbookOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)And (M.DateShipped >= @DateFrom And M.DateShipped <= @DateTo)  Order By DateShipped,Invno";
