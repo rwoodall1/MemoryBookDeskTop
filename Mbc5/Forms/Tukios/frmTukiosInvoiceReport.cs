@@ -45,7 +45,7 @@ namespace Mbc5.Forms.Tukios
                         ,T.ShipName
                         ,T.ShipState
                         ,T.ShipZip
-                        ,''''+ Convert(VARCHAR, T.TrackingNumber) AS TrackingNumber
+                        ,''''+ Convert(VARCHAR(50), T.TrackingNumber) AS TrackingNumber
                         ,T.Freight
                         ,TP.SellPrice As UnitPrice 
                         ,TP.SellPrice * T.Copies AS UnitTotal
@@ -91,7 +91,7 @@ namespace Mbc5.Forms.Tukios
 ,T.ShipName
 ,T.ShipState
 ,T.ShipZip
-,''''+ Convert(VARCHAR, T.TrackingNumber) AS TrackingNumber
+,''''+ Convert(VARCHAR(50), T.TrackingNumber) AS TrackingNumber
 ,TS.Cost As Freight
 ,TP.SellPrice As UnitPrice 
 ,TP.SellPrice * T.Copies AS UnitTotal
