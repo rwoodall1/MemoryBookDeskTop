@@ -54,7 +54,7 @@ namespace Mbc5.Forms.Tukios
                         ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox*T.Copies) + T.Freight AS Total
                         FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
                         Left Join TukiosShipping TS On T.ClientOrderId=TS.ClientOrderId
-                        Where T.TukiosOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)   AND(T.DateShipped >= @DateFrom And T.DateShipped <= @DateTo)                       
+                        Where T.Freight>0 AND T.TukiosOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)   AND(T.DateShipped >= @DateFrom And T.DateShipped <= @DateTo)                       
                             Order By DateShipped,Invno";
 
             sqlClient.CommandText(cmd);
