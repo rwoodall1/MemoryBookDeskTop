@@ -417,12 +417,12 @@ namespace Mbc5.Forms.Tukios
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill tukios orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (txtStatus.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (orderStatusLabel2.Text.ToUpper() == "HOLD" || orderStatusLabel2.Text.ToUpper() == "ON HOLD")
+            if (txtStatus.Text.ToUpper() == "HOLD" || txtStatus.Text.ToUpper() == "ON HOLD")
             {
                 lblHold.Visible = true;
                 lblHold.BringToFront();
@@ -1513,7 +1513,7 @@ ShipZip,
                 MbcMessageBox.Error("Invoice number is not valid");
                 return;
             }
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED" || orderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (txtStatus.Text.ToUpper() == "CANCELLED" || txtStatus.Text.ToUpper() == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1610,18 +1610,18 @@ ShipZip,
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(orderStatusLabel2.Text))
+            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(txtStatus.Text))
             {
                 return;
             }
             var sqlClient = new SQLCustomClient();
             string status = "";
-            if (orderStatusLabel2.Text == "Hold" || orderStatusLabel2.Text == "On Hold")
+            if (txtStatus.Text == "Hold" || txtStatus.Text == "On Hold")
             {
                 sqlClient.AddParameter("@OrderStatus", "In Process");
                 status = "In Process";
             }
-            else if (orderStatusLabel2.Text == "In Process")
+            else if (txtStatus.Text == "In Process")
             {
                 sqlClient.AddParameter("@OrderStatus", "On Hold");
                 status = "On Hold";
@@ -1648,7 +1648,7 @@ ShipZip,
 
         private void cmdJobTicket_Click(object sender, EventArgs e)
         {
-            if (orderStatusLabel2.Text == "CANCELLED" || orderStatusLabel2.Text == "HOLD")
+            if (txtStatus.Text == "CANCELLED" || txtStatus.Text == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1778,12 +1778,12 @@ ShipZip,
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (txtStatus.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (orderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (txtStatus.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
@@ -1976,5 +1976,19 @@ ShipZip,
         }
 
 
+
+        private void txtStatus_MouseDown(object sender, MouseEventArgs e)
+        {
+            List<string> mylistPurge = new List<string>(new string[] { "SA", "Administrator", "MBLead" });
+            if (e.Button == MouseButtons.Right && this.ApplicationUser.IsInOneOfRoles(mylistPurge))
+            {
+                txtStatus.ReadOnly = false;
+            }
+        }
+
+        private void txtStatus_Leave(object sender, EventArgs e)
+        {
+            txtStatus.ReadOnly = true;
+        }
     }
 }

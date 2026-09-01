@@ -50,12 +50,12 @@
             System.Windows.Forms.Label requestedShipMethodLabel;
             System.Windows.Forms.Label groupIdLabel;
             System.Windows.Forms.Label bookTypeLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTKOrders));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableAdapterManager = new Mbc5.DataSets.MixBookOrdersTableAdapters.TableAdapterManager();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -74,6 +74,7 @@
             this.btnMixbookPkgList = new System.Windows.Forms.Button();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.bookTypeLabel1 = new System.Windows.Forms.Label();
             this.groupIdLabel1 = new System.Windows.Forms.Label();
             this.btnCancelOrder = new System.Windows.Forms.Button();
@@ -88,7 +89,6 @@
             this.lblDateShipped = new System.Windows.Forms.Label();
             this.weightTextBox = new System.Windows.Forms.TextBox();
             this.trackingNumberTextBox = new System.Windows.Forms.TextBox();
-            this.orderStatusLabel2 = new System.Windows.Forms.Label();
             this.invnoLabel1 = new System.Windows.Forms.Label();
             this.shipZipTextBox = new System.Windows.Forms.TextBox();
             this.shipCityTextBox = new System.Windows.Forms.TextBox();
@@ -409,14 +409,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tukiosOrderDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tukiosOrderDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.tukiosOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tukiosOrderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -482,8 +482,8 @@
             // CoverUrl
             // 
             this.CoverUrl.DataPropertyName = "CoverURL";
-            dataGridViewCellStyle2.NullValue = null;
-            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.NullValue = null;
+            this.CoverUrl.DefaultCellStyle = dataGridViewCellStyle10;
             this.CoverUrl.HeaderText = "Cover Url";
             this.CoverUrl.Name = "CoverUrl";
             this.CoverUrl.ReadOnly = true;
@@ -541,9 +541,9 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = null;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource13.Name = "DataSet1";
+            reportDataSource13.Value = null;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource13);
             this.reportViewer2.LocalReport.EnableExternalImages = true;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTicketSingle.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(9, 373);
@@ -558,6 +558,7 @@
             // 
             this.pnlOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlOrder.Controls.Add(this.txtStatus);
             this.pnlOrder.Controls.Add(bookTypeLabel);
             this.pnlOrder.Controls.Add(this.bookTypeLabel1);
             this.pnlOrder.Controls.Add(groupIdLabel);
@@ -579,7 +580,6 @@
             this.pnlOrder.Controls.Add(this.weightTextBox);
             this.pnlOrder.Controls.Add(trackingNumberLabel);
             this.pnlOrder.Controls.Add(this.trackingNumberTextBox);
-            this.pnlOrder.Controls.Add(this.orderStatusLabel2);
             this.pnlOrder.Controls.Add(orderStatusLabel);
             this.pnlOrder.Controls.Add(invnoLabel);
             this.pnlOrder.Controls.Add(this.invnoLabel1);
@@ -606,6 +606,18 @@
             this.pnlOrder.Size = new System.Drawing.Size(1230, 286);
             this.pnlOrder.TabIndex = 10016;
             this.pnlOrder.EnabledChanged += new System.EventHandler(this.pnlOrder_EnabledChanged);
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "TukiosOrderStatus", true));
+            this.txtStatus.Location = new System.Drawing.Point(1003, 119);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(105, 13);
+            this.txtStatus.TabIndex = 345;
+            this.txtStatus.Leave += new System.EventHandler(this.txtStatus_Leave);
+            this.txtStatus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtStatus_MouseDown);
             // 
             // bookTypeLabel1
             // 
@@ -755,22 +767,13 @@
             this.trackingNumberTextBox.Size = new System.Drawing.Size(247, 44);
             this.trackingNumberTextBox.TabIndex = 328;
             // 
-            // orderStatusLabel2
-            // 
-            this.orderStatusLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderStatusLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "TukiosOrderStatus", true));
-            this.orderStatusLabel2.Location = new System.Drawing.Point(1003, 119);
-            this.orderStatusLabel2.Name = "orderStatusLabel2";
-            this.orderStatusLabel2.Size = new System.Drawing.Size(139, 23);
-            this.orderStatusLabel2.TabIndex = 326;
-            // 
             // invnoLabel1
             // 
             this.invnoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tukiosOrderBindingSource, "Invno", true));
             this.invnoLabel1.Location = new System.Drawing.Point(1003, 91);
             this.invnoLabel1.Name = "invnoLabel1";
-            this.invnoLabel1.Size = new System.Drawing.Size(139, 23);
+            this.invnoLabel1.Size = new System.Drawing.Size(105, 23);
             this.invnoLabel1.TabIndex = 324;
             // 
             // shipZipTextBox
@@ -898,12 +901,12 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource2.Name = "dsMxPackingSlip";
-            reportDataSource2.Value = null;
-            reportDataSource3.Name = "dsMixBookRemakeTkt";
-            reportDataSource3.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource14.Name = "dsMxPackingSlip";
+            reportDataSource14.Value = null;
+            reportDataSource15.Name = "dsMixBookRemakeTkt";
+            reportDataSource15.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource14);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource15);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixBookRemakeTkt.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(9, 313);
             this.reportViewer1.Name = "reportViewer1";
@@ -1277,7 +1280,6 @@
         private System.Windows.Forms.Label lblDateShipped;
         private System.Windows.Forms.TextBox weightTextBox;
         private System.Windows.Forms.TextBox trackingNumberTextBox;
-        private System.Windows.Forms.Label orderStatusLabel2;
         private System.Windows.Forms.Label invnoLabel1;
         private System.Windows.Forms.TextBox shipZipTextBox;
         private System.Windows.Forms.TextBox shipCityTextBox;
@@ -1344,5 +1346,6 @@
         private System.Windows.Forms.DataGridViewLinkColumn CoverUrl;
         private System.Windows.Forms.DataGridViewLinkColumn BookUrl;
         private System.Windows.Forms.DataGridViewLinkColumn prodticket;
+        private System.Windows.Forms.TextBox txtStatus;
     }
 }

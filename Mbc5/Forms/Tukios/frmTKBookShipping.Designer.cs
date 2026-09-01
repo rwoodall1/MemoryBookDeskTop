@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBkLoc = new System.Windows.Forms.Label();
             this.lblBkLocation = new System.Windows.Forms.Label();
             this.lbllastscanlbl = new System.Windows.Forms.Label();
@@ -73,6 +73,7 @@
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.plnTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
@@ -197,6 +198,7 @@
             this.txtTrackingNo.Name = "txtTrackingNo";
             this.txtTrackingNo.Size = new System.Drawing.Size(220, 20);
             this.txtTrackingNo.TabIndex = 2;
+            this.txtTrackingNo.TextChanged += new System.EventHandler(this.txtTrackingNo_TextChanged);
             this.txtTrackingNo.Leave += new System.EventHandler(this.txtTrackingNo_Leave);
             this.txtTrackingNo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtTrackingNo_MouseDoubleClick);
             this.txtTrackingNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtTrackingNo_Validating);
@@ -345,14 +347,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Invno,
@@ -499,10 +501,21 @@
             // 
             this.itemsBindingSource.DataSource = typeof(BindingModels.TItem);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(352, 376);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10038;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmTKBookShipping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(766, 421);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddPkg);
             this.Controls.Add(this.pnlGrid);
             this.Controls.Add(this.lblShpMethod);
@@ -541,6 +554,7 @@
             this.Controls.SetChildIndex(this.lblShpMethod, 0);
             this.Controls.SetChildIndex(this.pnlGrid, 0);
             this.Controls.SetChildIndex(this.btnAddPkg, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.plnTracking.ResumeLayout(false);
             this.plnTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -599,5 +613,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clientOrderIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
     }
 }

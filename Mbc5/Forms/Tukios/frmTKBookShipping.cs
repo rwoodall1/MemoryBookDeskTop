@@ -622,6 +622,12 @@ namespace Mbc5.Forms.Tukios
 
                 }
                 vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+                if (txtTrackingNo.Text.Length>=11)
+                {
+                    txtTrackingNo.Text = txtTrackingNo.Text.Trim().Substring(8);
+                }
+                
+              
             }
             catch (Exception ex)
             {
@@ -848,6 +854,18 @@ namespace Mbc5.Forms.Tukios
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string trkNum = "4200286592419903104652513003000898";
+            if (trkNum.Length >= 11)
+            {
+                trkNum = trkNum.Trim().Substring(8);
+            }
+        }
 
+        private void txtTrackingNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
