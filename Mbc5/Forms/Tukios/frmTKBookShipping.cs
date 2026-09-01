@@ -622,7 +622,7 @@ namespace Mbc5.Forms.Tukios
 
                 }
                 vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
-                if (txtTrackingNo.Text.Length>=11)
+                if (txtTrackingNo.Text.Length>=11 && lblShpMethod.Text=="Mail Innovations")
                 {
                     txtTrackingNo.Text = txtTrackingNo.Text.Trim().Substring(8);
                 }
