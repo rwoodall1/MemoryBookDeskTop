@@ -14,7 +14,7 @@ namespace Mbc5.Classes
             this.ApplicationUser = userPrincipal;
             // Constructor logic if needed
         }
-        UserPrincipal ApplicationUser { get; set; }
+        public UserPrincipal ApplicationUser { get; set; }
         string Invno { get; set; }
         protected Logger Log { get; set; }
         protected JPIXScanData data { get; set; }
