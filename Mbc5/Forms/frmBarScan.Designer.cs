@@ -339,7 +339,6 @@
             this.cmbLogin.Name = "cmbLogin";
             this.cmbLogin.Size = new System.Drawing.Size(169, 21);
             this.cmbLogin.TabIndex = 10027;
-            this.cmbLogin.Visible = false;
             this.cmbLogin.SelectedValueChanged += new System.EventHandler(this.cmbLogin_SelectedValueChanged);
             // 
             // label9
