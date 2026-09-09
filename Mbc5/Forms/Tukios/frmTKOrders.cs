@@ -74,8 +74,9 @@ namespace Mbc5.Forms.Tukios
         }
 
 
-        public void SaveOrder()
+        public override BaseClass.Core.ApiProcessingResult<bool> Save()
         {
+            var result = new BaseClass.Core.ApiProcessingResult<bool>() { Data = true };
             try
             {
                 this.Validate();
@@ -88,8 +89,12 @@ namespace Mbc5.Forms.Tukios
             {
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
+                result.IsError = true;
+                result.Errors.Add(new BaseClass.Core.ApiProcessingError(ex.ToString(), ex.Message, "ERR_SAVE"));
+                result.Data = false;
             }
             this.Fill();
+            return result;
         }
 
 
@@ -1961,7 +1966,7 @@ ShipZip,
 
         private void tukiosOrderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            this.SaveOrder();
+            this.Save();
         }
 
         private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

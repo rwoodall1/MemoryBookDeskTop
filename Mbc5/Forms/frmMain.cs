@@ -2125,8 +2125,23 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             {
 
 
-                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                activeform.Save(true);
+                // If the active MDI child is a Tukios orders form call its parameterless Save()
+                var tkForm = this.ActiveMdiChild as Mbc5.Forms.Tukios.frmTKOrders;
+                var mbForm = this.ActiveMdiChild as Mbc5.Forms.MixBook.frmMBOrders;
+                if (tkForm != null)
+                {
+                    tkForm.Save();
+                }
+                else if(mbForm!=null)
+                {
+                    mbForm.Save();
+                  
+                }
+                else
+                {
+                    var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                    activeform.Save(true);
+                }
 
 
             }
