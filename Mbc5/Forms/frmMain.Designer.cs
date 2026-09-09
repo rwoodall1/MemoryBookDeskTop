@@ -48,6 +48,7 @@
             this.caseMatchScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingScanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.shippingCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFreightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +91,6 @@
             this.wIPReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.scanCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceReportToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importUPSShippingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetJobTicketsByBatchToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.jPIXReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wipReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -261,7 +261,8 @@
             this.tukiosCoverSearchToolStripMenuItem,
             this.caseMatchScanToolStripMenuItem1,
             this.shippingScanToolStripMenuItem1,
-            this.shippingCheckToolStripMenuItem});
+            this.shippingCheckToolStripMenuItem,
+            this.importFreightToolStripMenuItem});
             this.tukiosToolStripMenuItem.Name = "tukiosToolStripMenuItem";
             this.tukiosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.tukiosToolStripMenuItem.Text = "Tukios";
@@ -300,6 +301,13 @@
             this.shippingCheckToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.shippingCheckToolStripMenuItem.Text = "Shipping Check";
             this.shippingCheckToolStripMenuItem.Click += new System.EventHandler(this.shippingCheckToolStripMenuItem_Click);
+            // 
+            // importFreightToolStripMenuItem
+            // 
+            this.importFreightToolStripMenuItem.Name = "importFreightToolStripMenuItem";
+            this.importFreightToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.importFreightToolStripMenuItem.Text = "Import Freight";
+            this.importFreightToolStripMenuItem.Click += new System.EventHandler(this.importFreightToolStripMenuItem_Click);
             // 
             // productionToolStripMenuItem
             // 
@@ -441,7 +449,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -455,7 +463,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             this.labelsToolStripMenuItem.Visible = false;
             // 
@@ -511,7 +519,7 @@
             this.memeroyBookToolStripMenuItem,
             this.meridianInqCountToolStripMenuItem});
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -540,7 +548,7 @@
             this.resetJobTicketsByBatchToolStripMenuItem,
             this.scnCheckToolStripMenuItem});
             this.mixbookReportsToolStripMenuItem.Name = "mixbookReportsToolStripMenuItem";
-            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mixbookReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mixbookReportsToolStripMenuItem.Text = "Mixbook Reports";
             this.mixbookReportsToolStripMenuItem.Click += new System.EventHandler(this.mixbookReportsToolStripMenuItem_Click);
             // 
@@ -595,10 +603,9 @@
             this.wIPReportToolStripMenuItem2,
             this.scanCheckToolStripMenuItem,
             this.invoiceReportToolStripMenuItem2,
-            this.importUPSShippingToolStripMenuItem,
             this.resetJobTicketsByBatchToolStripMenuItem2});
             this.tukiosReportsToolStripMenuItem.Name = "tukiosReportsToolStripMenuItem";
-            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.tukiosReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tukiosReportsToolStripMenuItem.Text = "Tukios Reports";
             // 
             // printJobTicketsToolStripMenuItem
@@ -636,13 +643,6 @@
             this.invoiceReportToolStripMenuItem2.Text = "Invoice Report";
             this.invoiceReportToolStripMenuItem2.Click += new System.EventHandler(this.invoiceReportToolStripMenuItem2_Click);
             // 
-            // importUPSShippingToolStripMenuItem
-            // 
-            this.importUPSShippingToolStripMenuItem.Name = "importUPSShippingToolStripMenuItem";
-            this.importUPSShippingToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.importUPSShippingToolStripMenuItem.Text = "Import UPS Shipping";
-            this.importUPSShippingToolStripMenuItem.Click += new System.EventHandler(this.importUPSShippingToolStripMenuItem_Click);
-            // 
             // resetJobTicketsByBatchToolStripMenuItem2
             // 
             this.resetJobTicketsByBatchToolStripMenuItem2.Name = "resetJobTicketsByBatchToolStripMenuItem2";
@@ -657,7 +657,7 @@
             this.invoiceReportToolStripMenuItem1,
             this.resetJobTicketsByBatchToolStripMenuItem1});
             this.jPIXReportsToolStripMenuItem.Name = "jPIXReportsToolStripMenuItem";
-            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.jPIXReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jPIXReportsToolStripMenuItem.Text = "JPIX Reports";
             // 
             // wipReportToolStripMenuItem1
@@ -1176,7 +1176,7 @@
         private System.Windows.Forms.ToolStripMenuItem scanCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shippingCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceReportToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem importUPSShippingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetJobTicketsByBatchToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem importFreightToolStripMenuItem;
     }
 }

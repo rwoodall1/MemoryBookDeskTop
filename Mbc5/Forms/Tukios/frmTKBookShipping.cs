@@ -319,7 +319,7 @@ namespace Mbc5.Forms.Tukios
                 }
 
                 //end new
-                UpdateShippingWip();
+                SetTrackingNumber();
                 UpdateTukiosShipmentJSON();
 
                 ClearShipment();
@@ -332,71 +332,25 @@ namespace Mbc5.Forms.Tukios
 
 
             }
+            txtClientIdLookup.Select();
         }
-        private void UpdateShippingWip()
+        private void SetTrackingNumber()
         {
             var sqlClient = new SQLCustomClient();
-            string vDeptCode = "40";
-            string vWIR = "SH";
-
             foreach (var pkg in Shipment.Packages)
             {
                 foreach (var item in pkg.Items)
                 {
 
 
-                    sqlClient.ClearParameters();
-                    sqlClient.CommandText(@"Update WIPDetail SET
-                                        WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
-                    sqlClient.AddParameter("@Invno", item.Invno);
-                    sqlClient.AddParameter("@DescripID", vDeptCode);
-                    sqlClient.AddParameter("@WAR", DateTime.Now);
-                    sqlClient.AddParameter("@WIR", vWIR);
-
-                    var mxResult4 = sqlClient.Update();
-                    if (mxResult4.IsError)
-                    {
-
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update  tukiosshipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
-                        MessageBox.Show("Failed to updatetukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    sqlClient.ClearParameters();
-                    sqlClient.ReturnSqlIdentityId(true);
-                    sqlClient.AddParameter("@Invno", item.Invno);
-                    sqlClient.AddParameter("@DescripID", vDeptCode);
-                    sqlClient.AddParameter("@WAR", DateTime.Now);
-                    sqlClient.AddParameter("@WIR", vWIR);
-
-                    sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                                        Begin
-                                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
-                                                        END
-                                                        ");
-
-                    var result4 = sqlClient.Insert();
-                    if (result4.IsError)
-                    {
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert tukios shipping WIP:" + result4.Errors[0].DeveloperMessage);
-                        MessageBox.Show("Failed to insert tukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    sqlClient.ClearParameters();
-                    sqlClient.CommandText(@"UPDATE Produtn Set Shpdate=GETDATE() where Invno=@Invno");
-                    sqlClient.AddParameter("@Invno", item.Invno);
-
-                    var produtnResult = sqlClient.Update();
-                    if (produtnResult.IsError)
-                    {
-                        Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update production tukios ship date:" + produtnResult.Errors[0].DeveloperMessage);
-                        MbcMessageBox.Error("Failed to update tukios shipdate on production screen.");
-
-                    }
+                    
+                   
+                  
                     sqlClient.ClearParameters();
 
                     sqlClient.CommandText(@"UPDATE TukiosOrder  Set Weight = Coalesce(Weight,0)+@Weight
                                             ,TrackingNumber=@TrackingNumber + COALESCE(CONVERT(nvarchar(max),TrackingNumber),CONVERT(nvarchar(max),''))
-                                            ,TukiosOrderStatus='Shipped'
+                                           
                                             ,DateShipped=GETDATE()
                                             ,DateModified=GETDATE()
                                             ,ModifiedBy='SYS' where Invno=@Invno");
@@ -668,6 +622,12 @@ namespace Mbc5.Forms.Tukios
 
                 }
                 vPartTrack = txtTrackingNo.Text.Trim().Substring(0, 3);
+                if (txtTrackingNo.Text.Length>=11 && lblShpMethod.Text=="Mail Innovations")
+                {
+                    txtTrackingNo.Text = txtTrackingNo.Text.Trim().Substring(8);
+                }
+                
+              
             }
             catch (Exception ex)
             {
@@ -894,6 +854,18 @@ namespace Mbc5.Forms.Tukios
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string trkNum = "4200286592419903104652513003000898";
+            if (trkNum.Length >= 11)
+            {
+                trkNum = trkNum.Trim().Substring(8);
+            }
+        }
 
+        private void txtTrackingNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

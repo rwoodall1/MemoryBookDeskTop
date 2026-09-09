@@ -148,7 +148,8 @@ namespace Mbc5.Forms.Tukios
                 }
                 else
                 {
-                    AddTukiosEventLog(OrderInfo.ClientOrderId, "Shipped Error", "", vReturnNotification, false);
+                    AddTukiosEventLog(OrderInfo.ClientOrderId, "Shipped Error", restServiceResult.Errors[0].DeveloperMessage, vReturnNotification, false);
+                    Log.Error("Tukios Notifiction Failed:" + restServiceResult.Errors[0].DeveloperMessage);
                     var emailHelper = new EmailHelper();
                     emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + OrderInfo.ClientOrderId, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
                     MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
@@ -224,7 +225,7 @@ namespace Mbc5.Forms.Tukios
             this.OrderInfo = null;
             this.InvnoInOrder = null;
             this.CurrentInvno = null;
-
+            this.lstInvno.Items.Clear();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -257,7 +258,7 @@ namespace Mbc5.Forms.Tukios
         }
         public void Clear()
         {
-            ResetOrderShipping();
+            //ResetOrderShipping();
             ResetScreen();
             OrderInfo = null;
             InvnoInOrder = null;
@@ -414,6 +415,7 @@ namespace Mbc5.Forms.Tukios
             if (result.IsError)
             {
                 MessageBox.Show("Failed to mark order in Database as shipped");
+                
             }
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"Update produtn Set shpdate=GETDATE() Where Invno=@Invno");
@@ -426,6 +428,45 @@ namespace Mbc5.Forms.Tukios
                 {
                     MessageBox.Show("Failed to update production table for Invno:" + item.Invno.ToString());
                 }
+                sqlClient.ClearParameters();
+                string vDeptCode = "40";
+                string vWIR = "SH";
+                sqlClient.CommandText(@"Update WIPDetail SET
+                                        WAR= @WAR, WIR =@WIR WHERE Invno=@Invno AND DescripID=@DescripID ");
+                sqlClient.AddParameter("@Invno", item.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                sqlClient.AddParameter("@WAR", DateTime.Now);
+                sqlClient.AddParameter("@WIR", vWIR);
+
+                var mxResult4 = sqlClient.Update();
+                if (mxResult4.IsError)
+                {
+
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to update  tukiosshipping WIP:" + mxResult4.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to updatetukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                sqlClient.ClearParameters();
+                sqlClient.ReturnSqlIdentityId(true);
+                sqlClient.AddParameter("@Invno", item.Invno);
+                sqlClient.AddParameter("@DescripID", vDeptCode);
+                sqlClient.AddParameter("@WAR", DateTime.Now);
+                sqlClient.AddParameter("@WIR", vWIR);
+
+                sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                        Begin
+                                                        INSERT INTO WipDetail (DescripID,War,Wir,Invno) VALUES(@DescripID,@WAR,@WIR,@Invno);
+                                                        END
+                                                        ");
+
+                var result4 = sqlClient.Insert();
+                if (result4.IsError)
+                {
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Failed to insert tukios shipping WIP:" + result4.Errors[0].DeveloperMessage);
+                    MessageBox.Show("Failed to insert tukios shipping WIP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
             }
 
 
@@ -433,45 +474,46 @@ namespace Mbc5.Forms.Tukios
 
 
         }
-        public void ResetOrderShipping()
-        {
-            if (InvnoInOrder == null || InvnoInOrder.Count == 0)
-            {
-                return;
-            }
-            var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set TrackingNumber='',BookStatus=@BookStatus,TukiosOrderStatus=@TukiosOrderStatus Where ClientOrderId=@ClientOrderId");
-            sqlClient.AddParameter("@ClientOrderId", txtClientOrderId.Text.Trim());
-            sqlClient.AddParameter("@BookStatus", "Quality");
-            sqlClient.AddParameter("@TukiosOrderStatus", "In Process");
-            var updateResult = sqlClient.Update();
-            if (updateResult.IsError)
-            {
-                MessageBox.Show("Failed to reset Shipping");
-            }
-            sqlClient.ClearParameters();
-            sqlClient.CommandText(@"Update produtn Set shpdate=NULL Where Invno=@Invno");
-            foreach (var item in InvnoInOrder)
-            {
-                sqlClient.ClearParameters();
-                sqlClient.AddParameter("@Invno", item.Invno);
-                var updateResult1 = sqlClient.Update();
-                if (updateResult1.IsError)
-                {
-                    MessageBox.Show("Failed to update production table for Invno:" + item.Invno.ToString());
-                    return;
-                }
-                sqlClient.ClearParameters();
-                sqlClient.CommandText(@"Delete from  WipDetail where Invno=@Invno and DescripId=@DescripId");
-                sqlClient.AddParameter("@Invno", item.Invno);
-                sqlClient.AddParameter("@DescripId", 40);
-                var deleteResult = sqlClient.Delete();
-                if (deleteResult.IsError)
-                {
-                    MessageBox.Show("Failed to delete WipDetail for Invno:" + item.Invno.ToString());
-                    return;
-                }
-            }
-        }
+      
+        //public void ResetOrderShipping()
+        //{
+        //    if (InvnoInOrder == null || InvnoInOrder.Count == 0)
+        //    {
+        //        return;
+        //    }
+        //    var sqlClient = new SQLCustomClient().CommandText(@"Update TukiosOrder Set TrackingNumber='',BookStatus=@BookStatus,TukiosOrderStatus=@TukiosOrderStatus Where ClientOrderId=@ClientOrderId");
+        //    sqlClient.AddParameter("@ClientOrderId", txtClientOrderId.Text.Trim());
+        //    sqlClient.AddParameter("@BookStatus", "Quality");
+        //    sqlClient.AddParameter("@TukiosOrderStatus", "In Process");
+        //    var updateResult = sqlClient.Update();
+        //    if (updateResult.IsError)
+        //    {
+        //        MessageBox.Show("Failed to reset Shipping");
+        //    }
+        //    sqlClient.ClearParameters();
+        //    sqlClient.CommandText(@"Update produtn Set shpdate=NULL Where Invno=@Invno");
+        //    foreach (var item in InvnoInOrder)
+        //    {
+        //        sqlClient.ClearParameters();
+        //        sqlClient.AddParameter("@Invno", item.Invno);
+        //        var updateResult1 = sqlClient.Update();
+        //        if (updateResult1.IsError)
+        //        {
+        //            MessageBox.Show("Failed to update production table for Invno:" + item.Invno.ToString());
+        //            return;
+        //        }
+        //        sqlClient.ClearParameters();
+        //        sqlClient.CommandText(@"Delete from  WipDetail where Invno=@Invno and DescripId=@DescripId");
+        //        sqlClient.AddParameter("@Invno", item.Invno);
+        //        sqlClient.AddParameter("@DescripId", 40);
+        //        var deleteResult = sqlClient.Delete();
+        //        if (deleteResult.IsError)
+        //        {
+        //            MessageBox.Show("Failed to delete WipDetail for Invno:" + item.Invno.ToString());
+        //            return;
+        //        }
+        //    }
+        //}
 
 
         public class TukiosChkData

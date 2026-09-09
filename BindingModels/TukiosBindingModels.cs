@@ -53,6 +53,7 @@ namespace BindingModels
         public int Copies { get; set; }
         public int Pages { get; set; }
         public decimal Weight { get; set; }
+ 
         public string ShipMethod { get; set; }
         public string ShipName { get; set; }
         public string ShipState { get; set; }

@@ -338,6 +338,12 @@
     <Compile Include="Forms\MixBook\frmMxInvoiceReport.Designer.cs">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Tukios\frmImportTkFreight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tukios\frmImportTkFreight.Designer.cs">
+      <DependentUpon>frmImportTkFreight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Tukios\frmTukiosInvoiceReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -659,12 +665,6 @@
     <Compile Include="Forms\Tukios\frmTKBookShipping.Designer.cs">
       <DependentUpon>frmTKBookShipping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tukios\frmTKInvoiceReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Tukios\frmTKInvoiceReport.Designer.cs">
-      <DependentUpon>frmTKInvoiceReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Tukios\frmTukiosCaseMatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -694,12 +694,6 @@
     </Compile>
     <Compile Include="Forms\Tukios\frmTukiosShippingReport.Designer.cs">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Tukios\frmTukiosUPSImport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Tukios\frmTukiosUPSImport.Designer.cs">
-      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tukios\frmTukiosWipReport.cs">
       <SubType>Form</SubType>
@@ -792,6 +786,7 @@
     <None Include="Properties\DataSources\BindingModels.MixbookRemakeTicket.datasource" />
     <None Include="Properties\DataSources\BindingModels.Package.datasource" />
     <None Include="Properties\DataSources\BindingModels.RemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TukiosFreight.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosRemakeTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.UPSInvoceData.datasource" />
@@ -818,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MixBook\frmMxInvoiceReport.resx">
       <DependentUpon>frmMxInvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tukios\frmImportTkFreight.resx">
+      <DependentUpon>frmImportTkFreight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosInvoiceReport.resx">
       <DependentUpon>frmTukiosInvoiceReport.cs</DependentUpon>
@@ -939,9 +937,6 @@
     <EmbeddedResource Include="Forms\Tukios\frmTKBookShipping.resx">
       <DependentUpon>frmTKBookShipping.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tukios\frmTKInvoiceReport.resx">
-      <DependentUpon>frmTKInvoiceReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosCaseMatch.resx">
       <DependentUpon>frmTukiosCaseMatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -956,9 +951,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosShippingReport.resx">
       <DependentUpon>frmTukiosShippingReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tukios\frmTukiosUPSImport.resx">
-      <DependentUpon>frmTukiosUPSImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tukios\frmTukiosWipReport.resx">
       <DependentUpon>frmTukiosWipReport.cs</DependentUpon>

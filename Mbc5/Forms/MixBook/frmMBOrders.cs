@@ -75,11 +75,12 @@ namespace Mbc5.Forms.MixBook
 
         private void mixBookOrderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.SaveOrder();
+            this.Save();
 
         }
-        public void SaveOrder()
+        public override BaseClass.Core.ApiProcessingResult<bool> Save()
         {
+            var result = new BaseClass.Core.ApiProcessingResult<bool>() { Data = true };
             try
             {
                 this.Validate();
@@ -94,6 +95,7 @@ namespace Mbc5.Forms.MixBook
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
             }
             this.Fill();
+            return result;
         }
 
 

@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Drawing.Printing;
 using System.Net.Sockets;
 using System.Text;
+using System.Security.Principal;
 using System.Windows.Forms;
 namespace Mbc5.Forms.MixBook
 {
@@ -48,45 +49,7 @@ namespace Mbc5.Forms.MixBook
         {
             this.SetDepartmentCode();
 
-            switch (ApplicationUser.UserName.ToUpper())
-            {
-                case "PRESS":
-
-                    break;
-                case "TRIMMING":
-
-                    break;
-                case "BINDING":
-                    chkPrToLabeler.Visible = true;
-                    pnlQty.Visible = true;
-                    btnClearPrinter.Visible = true;
-                    pnlBookLocation.Visible = true;
-                    break;
-                case "BINDING2":
-                    pnlQty.Visible = true;
-                    chkPrToLabeler.Visible = true;
-                    btnClearPrinter.Visible = true;
-                    pnlBookLocation.Visible = true;
-                    break;
-                case "ONBOARD":
-                    pnlBookLocation.Visible = true;
-                    break;
-
-                case "QUALITY":
-                    pnlHoldLocation.Visible = true;
-                    break;
-                case "SHIPPING":
-                    pnlTracking.Visible = true;
-                    txtTrackingNumber.Focus();
-                    break;
-                case "SA":
-                    pnlImpersonate.Visible = true;
-                    break;
-                default:
-                    var a = 1;
-                    break;
-
-            }
+            SetForm();
             if (ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" }))
             {
 
@@ -156,6 +119,49 @@ namespace Mbc5.Forms.MixBook
                 ClearScan();
             }
 
+        }
+        private void SetForm()
+        {
+            var currentUser=GetEffectiveUserPrincipal();
+            switch (currentUser.UserName.ToUpper())
+            {
+                case "PRESS":
+
+                    break;
+                case "TRIMMING":
+
+                    break;
+                case "BINDING":
+                    chkPrToLabeler.Visible = true;
+                    pnlQty.Visible = true;
+                    btnClearPrinter.Visible = true;
+                    pnlBookLocation.Visible = true;
+                    break;
+                case "BINDING2":
+                    pnlQty.Visible = true;
+                    chkPrToLabeler.Visible = true;
+                    btnClearPrinter.Visible = true;
+                    pnlBookLocation.Visible = true;
+                    break;
+                case "ONBOARD":
+                    pnlBookLocation.Visible = true;
+                    break;
+
+                case "QUALITY":
+                    pnlHoldLocation.Visible = true;
+                    break;
+                case "SHIPPING":
+                    pnlTracking.Visible = true;
+                    txtTrackingNumber.Focus();
+                    break;
+                case "SA":
+                    pnlImpersonate.Visible = true;
+                    break;
+                default:
+
+                    break;
+
+            }
         }
         private void SetDepartmentCode()
         {
@@ -1149,6 +1155,9 @@ namespace Mbc5.Forms.MixBook
         {
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
             JPIXScanData _scanData = new JPIXScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData);
+            // apply impersonation (if a login is selected use that, otherwise use the application user)
+            this.JPIXScanner.ApplicationUser = GetEffectiveUserPrincipal();
+
             bool completed = this.JPIXScanner.Scan(new ScanData(_scanData, null));
             if (completed)
             {
@@ -1162,11 +1171,26 @@ namespace Mbc5.Forms.MixBook
             //_____________________________________Good above
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
             TUKScanData _scanData = new TUKScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, null, this);
+            // apply impersonation (if a login is selected use that, otherwise use the application user)
+            this.TUKScanner.ApplicationUser = GetEffectiveUserPrincipal();
+
             bool completed = this.TUKScanner.Scan(new ScanData(null, null, _scanData));
             if (completed)
             {
                 ClearScan();
             }
+        }
+
+        private UserPrincipal GetEffectiveUserPrincipal()
+        {
+            string name = ApplicationUser?.UserName ?? "";
+            if (!string.IsNullOrWhiteSpace(cmbLogin.Text))
+            {
+                name = cmbLogin.Text.Trim().ToUpper();
+            }
+            var principal = new UserPrincipal(new GenericIdentity(name), new string[] { });
+            principal.UserName = name;
+            return principal;
         }
         //private void ScanRemake(string currentUser)
         //{
@@ -1914,7 +1938,17 @@ namespace Mbc5.Forms.MixBook
 
         private void cmbLogin_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.SetDepartmentCode(cmbLogin.SelectedItem.ToString());
+            var sel = cmbLogin.SelectedItem;
+            if (sel != null && !string.IsNullOrWhiteSpace(sel.ToString()))
+            {
+                this.SetDepartmentCode(sel.ToString());
+                this.SetForm();
+            }
+            else
+            {
+                // if blank selected, reset to application user
+                this.SetDepartmentCode(ApplicationUser.UserName.ToUpper());
+            }
         }
 
         private void pnlBookLocation_Paint(object sender, PaintEventArgs e)

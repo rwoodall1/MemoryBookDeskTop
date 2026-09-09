@@ -33,7 +33,7 @@ namespace Mbc5.Forms.Tukios
             this.OrderId = clientId;
         }
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\TukiosLastPageImage\\";
-        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosBookArchive\\";
+        private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\TukiosArchive\\";
         public string OrderId { get; set; } = "";
         public UserPrincipal ApplicationUser { get; set; }
 
@@ -74,8 +74,9 @@ namespace Mbc5.Forms.Tukios
         }
 
 
-        public void SaveOrder()
+        public override BaseClass.Core.ApiProcessingResult<bool> Save()
         {
+            var result = new BaseClass.Core.ApiProcessingResult<bool>() { Data = true };
             try
             {
                 this.Validate();
@@ -88,8 +89,12 @@ namespace Mbc5.Forms.Tukios
             {
                 // var a = dsmixBookOrders.Tables["MixBookOrder"].GetErrors();
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to update order,INVNO:" + Invno.ToString());
+                result.IsError = true;
+                result.Errors.Add(new BaseClass.Core.ApiProcessingError(ex.ToString(), ex.Message, "ERR_SAVE"));
+                result.Data = false;
             }
             this.Fill();
+            return result;
         }
 
 
@@ -417,12 +422,12 @@ namespace Mbc5.Forms.Tukios
                 MbcMessageBox.Error(ex.Message);
                 Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Failed to fill tukios orders data adapters,INVNO:" + Invno.ToString());
             }
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (txtStatus.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (orderStatusLabel2.Text.ToUpper() == "HOLD" || orderStatusLabel2.Text.ToUpper() == "ON HOLD")
+            if (txtStatus.Text.ToUpper() == "HOLD" || txtStatus.Text.ToUpper() == "ON HOLD")
             {
                 lblHold.Visible = true;
                 lblHold.BringToFront();
@@ -947,7 +952,6 @@ ShipZip,
             {
                 data.LastPageLocation = lastPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1066,7 +1070,6 @@ ShipZip,
             {
                 data.FirstPageLocation = firstPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1185,7 +1188,6 @@ ShipZip,
             {
                 data.CoverPageLocation = coverPageImageFilePath;
                 return data;
-
             }
             Stream pdfStream = null;
             if (pdfPath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
@@ -1516,7 +1518,7 @@ ShipZip,
                 MbcMessageBox.Error("Invoice number is not valid");
                 return;
             }
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED" || orderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (txtStatus.Text.ToUpper() == "CANCELLED" || txtStatus.Text.ToUpper() == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1613,18 +1615,18 @@ ShipZip,
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(orderStatusLabel2.Text))
+            if (string.IsNullOrEmpty(invnoLabel1.Text) || string.IsNullOrEmpty(txtStatus.Text))
             {
                 return;
             }
             var sqlClient = new SQLCustomClient();
             string status = "";
-            if (orderStatusLabel2.Text == "Hold" || orderStatusLabel2.Text == "On Hold")
+            if (txtStatus.Text == "Hold" || txtStatus.Text == "On Hold")
             {
                 sqlClient.AddParameter("@OrderStatus", "In Process");
                 status = "In Process";
             }
-            else if (orderStatusLabel2.Text == "In Process")
+            else if (txtStatus.Text == "In Process")
             {
                 sqlClient.AddParameter("@OrderStatus", "On Hold");
                 status = "On Hold";
@@ -1651,7 +1653,7 @@ ShipZip,
 
         private void cmdJobTicket_Click(object sender, EventArgs e)
         {
-            if (orderStatusLabel2.Text == "CANCELLED" || orderStatusLabel2.Text == "HOLD")
+            if (txtStatus.Text == "CANCELLED" || txtStatus.Text == "HOLD")
             {
                 MbcMessageBox.Information("Order is on hold.", "HOLD");
                 return;
@@ -1781,12 +1783,12 @@ ShipZip,
 
         private void lblHold_Paint(object sender, PaintEventArgs e)
         {
-            if (orderStatusLabel2.Text.ToUpper() == "CANCELLED")
+            if (txtStatus.Text.ToUpper() == "CANCELLED")
             {
                 lblCanceled.Visible = true;
             }
             else { lblCanceled.Visible = false; }
-            if (orderStatusLabel2.Text.ToUpper() == "HOLD")
+            if (txtStatus.Text.ToUpper() == "HOLD")
             {
                 lblHold.Visible = true;
             }
@@ -1889,36 +1891,48 @@ ShipZip,
 
         private void tukiosOrderDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(6) || tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(7))
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) return;
+
+            string colName = tukiosOrderDataGridView.Columns[e.ColumnIndex].Name;
+
+            if (colName == "CoverUrl" || colName == "BookUrl" || colName == "prodticket")
+            {
                 if (tukiosOrderDataGridView.CurrentCell != null && tukiosOrderDataGridView.CurrentCell.Value != null)
                 {
                     try
-                    { Process.Start(tukiosOrderDataGridView.CurrentCell.Value.ToString()); }
+                    {
+                        Process.Start(tukiosOrderDataGridView.CurrentCell.Value.ToString());
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Url is invalid.");
                         Log.WithProperty("Property1", this.ApplicationUser.UserName).Error(ex, "Url is invalid.");
                     }
                 }
-            if (tukiosOrderDataGridView.CurrentCell.ColumnIndex.Equals(0))
+            }
+
+            if (colName == "dataGridViewTextBoxColumn1")
             {
 
             }
         }
 
-
-
         private void tukiosOrderDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) return;
+
+            string colName = tukiosOrderDataGridView.Columns[e.ColumnIndex].Name;
+
+            if (colName == "CoverUrl")
             {
                 e.Value = "Cover.pdf";
             }
-            if (e.ColumnIndex == 7)
+            if (colName == "BookUrl")
             {
                 e.Value = "Book.pdf";
             }
         }
+
         private void tukiosOrderDataGridView_Enter(object sender, EventArgs e)
         {
             if (tukiosOrderDataGridView.CurrentRow != null)
@@ -1952,7 +1966,7 @@ ShipZip,
 
         private void tukiosOrderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            this.SaveOrder();
+            this.Save();
         }
 
         private void tukiosOrderDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1967,5 +1981,19 @@ ShipZip,
         }
 
 
+
+        private void txtStatus_MouseDown(object sender, MouseEventArgs e)
+        {
+            List<string> mylistPurge = new List<string>(new string[] { "SA", "Administrator", "MBLead" });
+            if (e.Button == MouseButtons.Right && this.ApplicationUser.IsInOneOfRoles(mylistPurge))
+            {
+                txtStatus.ReadOnly = false;
+            }
+        }
+
+        private void txtStatus_Leave(object sender, EventArgs e)
+        {
+            txtStatus.ReadOnly = true;
+        }
     }
 }

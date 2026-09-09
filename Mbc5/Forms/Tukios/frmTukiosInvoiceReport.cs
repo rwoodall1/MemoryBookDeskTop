@@ -2,10 +2,12 @@
 using BaseClass.Classes;
 using BindingModels;
 using CsvHelper;
+using CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 namespace Mbc5.Forms.Tukios
 {
     public partial class frmTukiosInvoiceReport : BaseClass.frmBase
@@ -43,17 +45,16 @@ namespace Mbc5.Forms.Tukios
                         ,T.ShipName
                         ,T.ShipState
                         ,T.ShipZip
-                        ,''''+ Convert(VARCHAR, T.TrackingNumber) AS TrackingNumber
-                        ,TS.Cost As Freight
+                        ,''''+ Convert(VARCHAR(50), T.TrackingNumber) AS TrackingNumber
+                        ,T.Freight
                         ,TP.SellPrice As UnitPrice 
                         ,TP.SellPrice * T.Copies AS UnitTotal
                         ,TP.PerPage * (T.Pages * T.Copies )AS PageFee
-                        ,TP.HandlingPerBox AS Fulfillment
-                        ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox) + TS.Cost AS Total
+                        ,(TP.HandlingPerBox * T.Copies) AS Fulfillment
+                        ,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox*T.Copies) + T.Freight AS Total
                         FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
                         Left Join TukiosShipping TS On T.ClientOrderId=TS.ClientOrderId
-                        Where T.TukiosOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0) 
-                          AND (T.DateShipped >= @DateFrom And T.DateShipped <= @DateTo)
+                        Where T.Freight>0 AND T.TukiosOrderStatus='Shipped' and (OrderReprint=0 OR OrderReprint IS NULL) and (Invoiced IS NULL OR Invoiced =0)   AND(T.DateShipped >= @DateFrom And T.DateShipped <= @DateTo)                       
                             Order By DateShipped,Invno";
 
             sqlClient.CommandText(cmd);
@@ -90,13 +91,13 @@ namespace Mbc5.Forms.Tukios
 ,T.ShipName
 ,T.ShipState
 ,T.ShipZip
-,''''+ Convert(VARCHAR, T.TrackingNumber) AS TrackingNumber
+,''''+ Convert(VARCHAR(50), T.TrackingNumber) AS TrackingNumber
 ,TS.Cost As Freight
 ,TP.SellPrice As UnitPrice 
 ,TP.SellPrice * T.Copies AS UnitTotal
 ,TP.PerPage * (T.Pages * T.Copies )AS PageFee
 ,TP.HandlingPerBox AS Fulfillment
-,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox)+ TS.Cost AS Total
+,(TP.SellPrice * T.Copies)+(TP.PerPage * (T.Pages * T.Copies ))+(TP.HandlingPerBox)+ T.Freight AS Total
 FROM TukiosOrder T INNER JOIN TukiosPricing TP ON T.ItemCode=TP.ItemCode
 Left Join TukiosShipping TS ON T.ClientOrderId=TS.ClientOrderId
 Where (T.Invoiced IS NULL OR T.Invoiced =0) and T.Invno IN(Select Invno from WipDetail where Invno=T.invno) AND T.TukiosOrderStatus ='Cancelled' ";
@@ -186,7 +187,8 @@ Where (T.Invoiced IS NULL OR T.Invoiced =0) and T.Invno IN(Select Invno from Wip
 
         private void frmMxInvoiceReport_Load(object sender, EventArgs e)
         {
-
+            dtTo.Value = DateTime.Now;
+            dtFrom.Value = DateTime.Now.AddDays(-30);
         }
     }
 }

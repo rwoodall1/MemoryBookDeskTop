@@ -266,7 +266,14 @@ namespace BindingModels
             }
             set
             {
-                this.DateNeedsByDate = DateTime.Parse(value.Substring(0, 4) + "-" + value.Substring(4, 2) + "-" + value.Substring(6));
+                try {
+                    this.DateNeedsByDate = DateTime.Parse(value.Substring(0, 4) + "-" + value.Substring(4, 2) + "-" + value.Substring(6));
+                }
+                catch (Exception ex)
+                {
+                    this.DateNeedsByDate = DateTime.Now;
+                }
+               
                 this.needsByDateField = value;
             }
         }

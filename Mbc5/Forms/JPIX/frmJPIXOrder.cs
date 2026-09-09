@@ -169,7 +169,7 @@ Values(
                 if (result.IsError)
                 {
                     Log.Error("Failed to insert record for JPXIX document:" + order.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "Name:" + order.ShipToCustomerName + "|" + result.Errors[0].DeveloperMessage);
-                    MbcMessageBox.Error("Failed to insert record for document:" + order.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "Name:" + order.ShipToCustomerName + "|" + result.Errors[0].DeveloperMessage);
+                   // MbcMessageBox.Error("Failed to insert record for document:" + order.Document + " RequestId:" + jpixOrders.RequestId.ToString() + "Name:" + order.ShipToCustomerName + "|" + result.Errors[0].DeveloperMessage);
                     continue;
                 }
                 await InsertProduction(order, result.Data);

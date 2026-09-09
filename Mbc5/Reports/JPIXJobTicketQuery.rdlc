@@ -109,6 +109,22 @@
           <DataField>PticketPrinted</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="OrderStatus">
+          <DataField>OrderStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Invoiced">
+          <DataField>Invoiced</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="EventCode">
+          <DataField>EventCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsJPIXOrders</rd:DataSetName>
@@ -146,7 +162,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!ShipToCustomerName.Value</Value>
+                                      <Value>=Fields!ShipToCustomerName.Value +"("+Fields!EventCode.Value+")"</Value>
                                       <Style>
                                         <FontSize>18pt</FontSize>
                                       </Style>

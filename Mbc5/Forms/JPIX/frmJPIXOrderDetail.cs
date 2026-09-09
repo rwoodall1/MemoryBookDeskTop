@@ -126,6 +126,11 @@ namespace Mbc5.Forms.JPIX
 
             }
         }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
