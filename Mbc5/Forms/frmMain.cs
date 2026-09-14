@@ -355,6 +355,7 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
 
                 productionToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem.Visible = true;
                 shippingScanToolStripMenuItem_Click(null, null);
 
             }
@@ -385,7 +386,7 @@ namespace Mbc5.Forms
                 mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
-
+                shippingScanToolStripMenuItem.Visible = true;
 
                 productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });

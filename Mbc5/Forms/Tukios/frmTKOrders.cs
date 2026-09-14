@@ -1995,5 +1995,16 @@ ShipZip,
         {
             txtStatus.ReadOnly = true;
         }
+
+        private void txtStatus_TextChanged(object sender, EventArgs e)
+        {
+            if (txtStatus.Text=="Shipped" && pnlOrder.Enabled == true )
+            {
+                var sqlClient = new SQLCustomClient().CommandText("Update Produtn Set Shpdate=@shpdate where invno=@invno");
+                sqlClient.AddParameter("@shpdate", DateTime.Now);
+                sqlClient.AddParameter("@invno", this.Invno);
+                var result = sqlClient.Update();
+            }
+        }
     }
 }
