@@ -142,7 +142,7 @@ namespace Mbc5.Forms.Tukios
         {
              var notUpdated = new List<TukiosBadRec>();
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Update TukiosOrder Set Freight = @Freight Where TrackingNumber LIKE @TrackingNumber
+                Update TukiosOrder Set Freight = @Freight Where TrackingNumber LIKE @TrackingNumber and Invoiced !=1
                 ");
             foreach (var item in TKFreight)
             {
