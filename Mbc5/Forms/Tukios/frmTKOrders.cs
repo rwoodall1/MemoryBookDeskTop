@@ -4,10 +4,12 @@ using BindingModels;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
 using Microsoft.Reporting.WinForms;
-using Newtonsoft.Json;
+using System.Text.Json;
 using PdfiumViewer;
+using RESTModule;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -2004,7 +2006,117 @@ ShipZip,
                 sqlClient.AddParameter("@shpdate", DateTime.Now);
                 sqlClient.AddParameter("@invno", this.Invno);
                 var result = sqlClient.Update();
+                NotifyTukiosOfShipment();
             }
         }
+
+       private async void NotifyTukiosOfShipment()
+        {
+            string _invno = invnoLabel1.Text;
+            var sqlClient = new SQLCustomClient().CommandText("Select [ShipNotification] from TukiosOrder where invno=@invno");
+            sqlClient.AddParameter("@invno", _invno);
+            var result = sqlClient.SelectSingleColumn();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error("Failed to retrieve ShipNotification for order " + this.Invno + ":" + result.Errors[0].DeveloperMessage);
+                return;
+            }
+            string vReturnNotification =result.Data;
+            try
+            {
+
+                string endpoint;
+                if (bookTypeLabel1.Text.ToUpper()== "PHOTO")
+                {
+
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPPhoto"].ToString();
+                }
+                else
+                {
+                    endpoint = ConfigurationManager.AppSettings["TukiosEPFuneral"].ToString();
+                }
+                string AccessKey = ConfigurationManager.AppSettings["TukiosApiKey"].ToString();
+                string curDate = DateTime.UtcNow.ToString();
+                string accessString = curDate + "|" + AccessKey;
+                string headerValue = Encryptor.Encrypt(accessString, ConfigurationManager.AppSettings["TukiosPassPhrase"].ToString(), true);
+
+                var headers = new List<RESTModule.Header>()
+                {
+                    new RESTModule.Header()
+                    {
+                       Key="Authorize",
+                       Value=headerValue
+
+                    },
+
+                };
+
+                var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
+                TukiosResponse response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
+                if (!restServiceResult.IsError)
+                {
+                    if (response.success == true)
+                    {
+                        //if not set to notified scheduled task will try again
+                        MessageBox.Show("Tukios notification success.");
+                      
+                        AddTukiosEventLog(orderIdLabel1.Text, "Shipped OrderScreen", "", vReturnNotification, true);
+                    }
+                    else
+                    {
+                        string msg = restServiceResult.Data.APIResult.ToString();
+                        AddTukiosEventLog(orderIdLabel1.Text, "Shippped OrderScreen ERROR 2", msg, vReturnNotification, false);
+                        var emailHelper = new EmailHelper();
+                        string emailmsg = msg;
+                        emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + orderIdLabel1.Text, "randy.woodall@jostens.com", null, msg, EmailType.System);
+                        MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+                    }
+
+
+                }
+                else
+                {
+                    AddTukiosEventLog(orderIdLabel1.Text, "Shipped OrderScreen Error", restServiceResult.Errors[0].DeveloperMessage, vReturnNotification, false);
+                    Log.Error("Tukios Notifiction Failed:" + restServiceResult.Errors[0].DeveloperMessage);
+                    var emailHelper = new EmailHelper();
+                    emailHelper.SendEmail("Failed to notify Tukios of shipped order:" + orderIdLabel1.Text, "randy.woodall@jostens.com", null, restServiceResult.Errors[0].ErrorMessage, EmailType.System);
+                    MbcMessageBox.Hand("Failed to notify Tukios of shipment, please rescan the item. If you don't succede place the package to the side and notify a supervisor.", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error notifying tukios of ClientOrderId " + orderIdLabel1.Text + " shipment:" + ex.Message);
+                MbcMessageBox.Error("Error notifying tukios of shipment:" + ex.Message);
+               
+
+                return;
+
+            }
+
+
+        }
+        public string AddTukiosEventLog(string jobId, string status, string note, string notificationJson, bool notified)
+        {
+            var retval = "0";
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into TukiosEventLog (DateCreated,ModifiedDate,ClientOrderId,StatusChangedTo,Notified,Note,NotificationJSON) Values(GetDate(),GETDATE(),@JobId,@StatusChangedTo,@Notified,@Note,@NotificationJSON)");
+            sqlClient.AddParameter("@Jobid", jobId);
+            sqlClient.AddParameter("@StatusChangedTo", status);
+            sqlClient.AddParameter("@Notified", notified);
+            sqlClient.AddParameter("@Note", note);
+            sqlClient.AddParameter("@NotificationJSON", notificationJson);
+            var sqlResult = sqlClient.Insert();
+            if (sqlResult.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("AddTukiosEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
+
+                //var emailHelper = new EmailHelper();
+                //string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
+                //emailHelper.SendEmail("Failed to insert event log", "randy.woodall@jostens.com", null, vBody, EmailType.System);
+                return retval;
+            }
+            retval = sqlResult.Data;
+            return retval;
+        }
     }
-}
+    }

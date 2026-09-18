@@ -857,7 +857,7 @@
             this.reportViewer3.DocumentMapWidth = 35;
             this.reportViewer3.LocalReport.EnableExternalImages = true;
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MixbookJobTicketSingle.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(23, 425);
+            this.reportViewer3.Location = new System.Drawing.Point(0, 425);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
             this.reportViewer3.Size = new System.Drawing.Size(102, 111);

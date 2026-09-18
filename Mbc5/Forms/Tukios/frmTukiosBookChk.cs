@@ -123,7 +123,7 @@ namespace Mbc5.Forms.Tukios
                 };
 
                 var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
-                var response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
+                TukiosResponse response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
 
                 if (!restServiceResult.IsError)
                 {
