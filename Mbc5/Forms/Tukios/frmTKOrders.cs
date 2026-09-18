@@ -1837,8 +1837,8 @@ ShipZip,
             var result = sqlClient.Update();
             if (result.IsError)
             {
-                Log.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
-                MbcMessageBox.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(result));
+                Log.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonSerializer.Serialize(result));
+                MbcMessageBox.Error("Failed to update tukios order " + orderIdLabel1.Text + ":" + JsonSerializer.Serialize(result));
 
                 return;
             }
@@ -1849,9 +1849,9 @@ ShipZip,
             var prodResult = sqlClient.Update();
             if (prodResult.IsError)
             {
-                Log.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+                Log.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonSerializer.Serialize(prodResult));
 
-                MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonConvert.SerializeObject(prodResult));
+                MbcMessageBox.Error("Failed to update produtn for cancel order " + orderIdLabel1.Text + ":" + JsonSerializer.Serialize(prodResult));
                 return;
 
             }

@@ -2,7 +2,7 @@
 using BaseClass.Classes;
 using BaseClass.Core;
 using BindingModels;
-using Exceptionless;
+
 using Mbc5.Classes;
 using Microsoft.Reporting.WinForms;
 using RESTModule;
@@ -3161,10 +3161,7 @@ namespace Mbc5.Forms
             if (sqlResult.IsError)
             {
 
-                ExceptionlessClient.Default.CreateLog("AddMbEventLog failure")
-                .AddObject(sqlResult)
-                .MarkAsCritical()
-                .Submit();
+               
                 var emailHelper = new EmailHelper();
                 string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
                 emailHelper.SendEmail("AddMbEventLog", ConfigurationManager.AppSettings["SystemEmailAddress"].ToString(), null, vBody, EmailType.System);

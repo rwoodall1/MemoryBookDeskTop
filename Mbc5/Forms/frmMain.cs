@@ -1,7 +1,7 @@
 ﻿using BaseClass;
 using BaseClass.Classes;
 using BindingModels;
-using Exceptionless;
+
 //using Mbc5.Reports;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -575,8 +575,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
+               
 
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -600,9 +599,7 @@ namespace Mbc5.Forms
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
                 if (result1 != 1)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                  
 
                 }
 
@@ -611,10 +608,7 @@ namespace Mbc5.Forms
             {
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+                
 
             }
             string vprodNum = prodNum.ToString();
@@ -638,9 +632,6 @@ namespace Mbc5.Forms
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
                 if (result1 != 1)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
 
                 }
 
@@ -648,10 +639,7 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+              
 
             }
 
@@ -2922,9 +2910,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
                 this.Close();
                 return;
             }
@@ -2941,8 +2927,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+                
                 return;
             }
 
