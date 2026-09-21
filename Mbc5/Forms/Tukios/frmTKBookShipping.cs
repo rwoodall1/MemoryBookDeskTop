@@ -234,7 +234,7 @@ namespace Mbc5.Forms.Tukios
                     return;
                 }
                 var vItem = (TItem)result.Data;
-                if (txtClientIdLookup.Text != vItem.ClientOrderId.ToString())
+                if (txtClientIdLookup.Text.ToUpper() != vItem.ClientOrderId.ToString().ToUpper())
                 {
                     MessageBox.Show("The scanned item was not found in the order. Check that you have scanned the correct packing list.");
                     txtItemBarcode.Tag = "Cancel";

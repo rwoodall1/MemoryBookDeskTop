@@ -89,8 +89,8 @@ namespace Mbc5.Forms.Tukios
                     processingResult.IsError = true;
 
                     return processingResult;
+                    }
                 }
-            }
 
             string vReturnNotification = OrderInfo.ShipNotification;
             try
@@ -293,8 +293,8 @@ namespace Mbc5.Forms.Tukios
 
 
             }
-
             if (!string.IsNullOrWhiteSpace(scannedLabel) && OrderInfo.TrackingNumber.Contains(scannedLabel))
+
             {
 
 
