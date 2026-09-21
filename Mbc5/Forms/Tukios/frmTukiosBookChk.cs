@@ -414,8 +414,9 @@ namespace Mbc5.Forms.Tukios
             var result = sqlClient.Update();
             if (result.IsError)
             {
+                Log.Error("Failed to mark order:"+ this.OrderInfo.ClientOrderId+"Shipped. |"+result.Errors[0].DeveloperMessage);
                 MessageBox.Show("Failed to mark order in Database as shipped");
-                
+                AddTukiosEventLog(OrderInfo.ClientOrderId, "MarkedShippedFailed", result.Errors[0].DeveloperMessage, "", false);
             }
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"Update produtn Set shpdate=GETDATE() Where Invno=@Invno");
@@ -470,7 +471,7 @@ namespace Mbc5.Forms.Tukios
             }
 
 
-
+            AddTukiosEventLog(OrderInfo.ClientOrderId, "MarkedShipped","" ,"", false);
 
 
         }
