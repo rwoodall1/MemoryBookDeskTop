@@ -1369,7 +1369,7 @@
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox43</rd:DefaultName>
                                   <Top>0.04167in</Top>
-                                  <Left>2.37424in</Left>
+                                  <Left>0.04162in</Left>
                                   <Height>0.25in</Height>
                                   <Width>0.73616in</Width>
                                   <Style>
@@ -1392,7 +1392,7 @@
                                           <Value>="*" + Fields!ClientOrderId.Value + "*"</Value>
                                           <Style>
                                             <FontFamily>3 of 9 Barcode</FontFamily>
-                                            <FontSize>24pt</FontSize>
+                                            <FontSize>20pt</FontSize>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -1401,9 +1401,9 @@
                                   </Paragraphs>
                                   <rd:DefaultName>ClientOrderId</rd:DefaultName>
                                   <Top>0.04167in</Top>
-                                  <Left>3.16596in</Left>
+                                  <Left>0.84722in</Left>
                                   <Height>0.25in</Height>
-                                  <Width>3.63267in</Width>
+                                  <Width>6.89585in</Width>
                                   <ZIndex>1</ZIndex>
                                   <Style>
                                     <Border>
@@ -1498,9 +1498,9 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>ShipAddr</rd:DefaultName>
-                                  <Top>0.04167in</Top>
+                                  <Top>0.42709in</Top>
                                   <Left>0.07752in</Left>
-                                  <Height>0.61458in</Height>
+                                  <Height>0.47916in</Height>
                                   <Width>2.29052in</Width>
                                   <ZIndex>4</ZIndex>
                                   <Style>
@@ -1549,8 +1549,8 @@
                               <KeepTogether>true</KeepTogether>
                               <Top>8.12848in</Top>
                               <Left>0.24652in</Left>
-                              <Height>0.88195in</Height>
-                              <Width>7.12732in</Width>
+                              <Height>0.90625in</Height>
+                              <Width>7.74307in</Width>
                               <ZIndex>35</ZIndex>
                               <Style>
                                 <Border>

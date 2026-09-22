@@ -1958,6 +1958,11 @@ namespace Mbc5.Forms.MixBook
         {
 
         }
+
+        private void txtBarCode_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
     public class PackageData
     {
