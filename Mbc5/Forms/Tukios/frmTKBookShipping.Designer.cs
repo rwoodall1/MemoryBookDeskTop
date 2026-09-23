@@ -219,7 +219,7 @@
             this.txtClientIdLookup.Name = "txtClientIdLookup";
             this.txtClientIdLookup.Size = new System.Drawing.Size(135, 20);
             this.txtClientIdLookup.TabIndex = 1;
-            this.txtClientIdLookup.Leave += new System.EventHandler(this.txtClientIdLookup_Leave);
+            this.txtClientIdLookup.Leave += new System.EventHandler(this.timer1_Tick);
             // 
             // errorProvider1
             // 
