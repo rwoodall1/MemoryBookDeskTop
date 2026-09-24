@@ -38,9 +38,10 @@ namespace Mbc5.Forms.Tukios
         }
         private void LoadMailInnovation()
         {
+            // Clear previous data and bindings so reload works repeatedly
             TKFreight.Clear();
-            bsData.Clear();
-            dataGridView1.DataSource = bsData;
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
 
             lblCount.Text = "";
             lblSum.Text = "";
@@ -344,6 +345,14 @@ namespace Mbc5.Forms.Tukios
                 dataGridView1.Visible = false;
                 dataGridView2.Visible = true;
             }
+            lblCount.Text = "Count: " ;
+            lblSum.Text = "";
+            UPSFreight.Clear();
+            bsData2.DataSource = null;
+            dataGridView2.DataSource = null;
+            TKFreight.Clear();
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
         }
 
         private void rdbUpsGround_Click(object sender, EventArgs e)
@@ -358,6 +367,14 @@ namespace Mbc5.Forms.Tukios
                 dataGridView2.Visible = false;
                 dataGridView2.Visible = true;
             }
+            lblCount.Text = "Count: ";
+            lblSum.Text = "";
+            UPSFreight.Clear();
+            bsData2.DataSource = null;
+            dataGridView2.DataSource = null;
+            TKFreight.Clear();
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
         }
 
 
