@@ -2007,6 +2007,7 @@ ShipZip,
                 sqlClient.AddParameter("@invno", this.Invno);
                 var result = sqlClient.Update();
                 NotifyTukiosOfShipment();
+                this.Save();
             }
         }
 

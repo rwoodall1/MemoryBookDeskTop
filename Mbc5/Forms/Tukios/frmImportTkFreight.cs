@@ -23,14 +23,27 @@ namespace Mbc5.Forms.Tukios
         {
             InitializeComponent();
         }
-        public List<TukiosFreight> TKFreight = new List<TukiosFreight>();   
+        public List<TukiosFreight> TKFreight = new List<TukiosFreight>();
+        public List<UPSFreight> UPSFreight = new List<UPSFreight>();
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            if (rdbMailInovation.Checked)
+            {
+                LoadMailInnovation();
+            }
+            else
+            {
+                LoadUpsGround();
+            }
+        }
+        private void LoadMailInnovation()
+        {
+            // Clear previous data and bindings so reload works repeatedly
             TKFreight.Clear();
-            bsData.Clear();
-            dataGridView1.DataSource = bsData;
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
 
-            lblCount.Text = "" ;
+            lblCount.Text = "";
             lblSum.Text = "";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -53,7 +66,7 @@ namespace Mbc5.Forms.Tukios
                         {
 
                             var records = new List<TukiosFreight>();
-                           
+
                             csv.Read();
                             csv.ReadHeader();
 
@@ -62,13 +75,14 @@ namespace Mbc5.Forms.Tukios
                                 tmpTrackingNumber = csv.GetField("Customer IMPb");//K
                                 var tmpFreight = csv.GetField("UPSMI");//R
                                 var tmpCostCenter = csv.GetField("Cost Center Name");//F
-                                var pieceId= csv.GetField("Piece ID");
-                                if ( tmpTrackingNumber!=null && tmpTrackingNumber.Length > 5)
+                                var pieceId = csv.GetField("Piece ID");
+
+                                if (tmpTrackingNumber != null && tmpTrackingNumber.Length > 5)
                                 {
                                     decimal _freight = 0;
                                     if (!decimal.TryParse(tmpFreight, out _freight))
                                     {
-                                       MbcMessageBox.Error(tmpTrackingNumber + " has an invalid freight value: " + tmpFreight);
+                                        MbcMessageBox.Error(tmpTrackingNumber + " has an invalid freight value: " + tmpFreight);
                                         var _rec = new TukiosBadRec()
                                         {
                                             TrackingNumber = tmpTrackingNumber,
@@ -83,12 +97,12 @@ namespace Mbc5.Forms.Tukios
                                     {
 
                                         TrackingNumber = tmpTrackingNumber,
-                                        Freight = _freight+3,
+                                        Freight = _freight + 3,
                                         CostCenter = tmpCostCenter,
-                                        PieceId=pieceId
+                                        PieceId = pieceId
                                     };
-                                   
-                                        records.Add(record);
+
+                                    records.Add(record);
                                 }
                                 else
                                 {
@@ -101,7 +115,7 @@ namespace Mbc5.Forms.Tukios
                                     };
                                     badRecords.Add(_rec);
                                 }
-                                }
+                            }
                             TKFreight.AddRange(records);
                         }
                     }
@@ -111,7 +125,7 @@ namespace Mbc5.Forms.Tukios
                         return;
                     }
 
-            
+
                     using (var writer = new StreamWriter("c:\\temp\\BadCSVRecords.csv"))
                     using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                     {
@@ -122,10 +136,10 @@ namespace Mbc5.Forms.Tukios
                 }
                 if (TKFreight.Count > 0)
                 {
-                  
+
                     bsData.DataSource = TKFreight;
                     dataGridView1.DataSource = bsData;
-                
+
                     lblCount.Text = "Count: " + TKFreight.Count.ToString();
                     lblSum.Text = TKFreight.Sum(x => x.Freight).ToString("C");
                     MessageBox.Show("Data Loaded, ready to be saved!");
@@ -136,16 +150,17 @@ namespace Mbc5.Forms.Tukios
                 }
 
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        }
+        private void InsertMailInnovation()
         {
-             var notUpdated = new List<TukiosBadRec>();
+            var notUpdated = new List<TukiosBadRec>();
             var sqlClient = new SQLCustomClient().CommandText(@"
-                Update TukiosOrder Set Freight = @Freight Where TrackingNumber LIKE @TrackingNumber and Invoiced !=1
+                Update TukiosOrder Set Freight = @Freight Where TrackingNumber LIKE @TrackingNumber and (Invoiced IS NULL OR Invoiced !=1)
                 ");
             foreach (var item in TKFreight)
             {
+
                 sqlClient.ClearParameters();
                 sqlClient.AddParameter("@TrackingNumber", "%" + item.TrackingNumber + "%");
                 sqlClient.AddParameter("@Freight", item.Freight);
@@ -164,22 +179,22 @@ namespace Mbc5.Forms.Tukios
                     notUpdated.Add(_rec);
                     continue;
                 }
-                if (result.Data==0)
+                if (result.Data == 0)
                 {
-                   // MessageBox.Show("Failed to update record not found: " + item.TrackingNumber);
+                    // MessageBox.Show("Failed to update record not found: " + item.TrackingNumber);
                     var _rec = new TukiosBadRec()
                     {
                         TrackingNumber = item.TrackingNumber,
-                        Freight =item.Freight.ToString(),
+                        Freight = item.Freight.ToString(),
                         CostCenter = item.CostCenter,
                         PieceId = item.PieceId
                     };
-                  
+
                     notUpdated.Add(_rec);
-                    
+
                 }
             }
-         
+
             using (var writer = new StreamWriter("c:\\temp\\NotUpdated.csv"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
@@ -187,6 +202,181 @@ namespace Mbc5.Forms.Tukios
             }
             MbcMessageBox.Information("Import complete");
         }
+        private void LoadUpsGround()
+        {
+            // Clear any previous data and bindings so reload works repeatedly
+            UPSFreight.Clear();
+            bsData2.DataSource = null;
+            dataGridView2.DataSource = null;
+
+            lblCount.Text = "";
+            lblSum.Text = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                int numRecs = openFileDialog1.FileNames.Count();
+                for (int i = 0; i < numRecs; i++)
+                {
+                    textBox1.Text = openFileDialog1.FileNames[i];
+
+                    var config = new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
+                    {
+                        MissingFieldFound = null,
+
+                    };
+                    string tmpInvno = "";
+                    
+                    try
+                    {
+                        using (var reader = new StreamReader(textBox1.Text))
+                        using (var csv = new CsvReader(reader, config))
+                        {
+
+                            var records = new List<UPSFreight>();
+
+                            csv.Read();
+                            csv.ReadHeader();
+
+                            while (csv.Read())
+                            {
+                                tmpInvno = csv.GetField("Invno");//K
+                                var tmpFreight = csv.GetField("Freight");//R
+                              
+
+                                if (tmpInvno != null && tmpInvno.Length > 4)
+                                {
+                                    decimal _freight = 0;
+                                    int _invno = 0;
+                                    if (!decimal.TryParse(tmpFreight, out _freight))
+                                    {
+                                        MbcMessageBox.Error(tmpInvno + " has an invalid freight value: " + tmpFreight);
+                                       
+                                        continue;
+                                    }
+                                    if (!int.TryParse(tmpInvno,out _invno)) {
+                                        MbcMessageBox.Error(tmpInvno + " has an invalid value: " + tmpFreight);
+
+                                        continue;
+                                    }
+                                    var record = new UPSFreight()
+                                    {
+                                        Freight = _freight + 3,
+                                        Invno = _invno
+                                    };
+
+                                    records.Add(record);
+                                }
+                               
+                            }
+                            // add newly read records to the list
+                            UPSFreight.AddRange(records);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to import data:" + ex.Message);
+                        return;
+                    }
+                }
+                if (UPSFreight.Count > 0)
+                {
+
+                    bsData2.DataSource = UPSFreight;
+                    dataGridView2.DataSource = bsData2;
+
+                    lblCount.Text = "Count: " + UPSFreight.Count.ToString();
+                    lblSum.Text =UPSFreight.Sum(x => x.Freight).ToString("C");
+                    MessageBox.Show("Data Loaded, ready to be saved!");
+                }
+                else
+                {
+                    MessageBox.Show("No records loaded");
+                }
+
+            }
+
+        }
+        private void InsertUpsGround()
+        {
+            var notUpdated = new List<TukiosBadRec>();
+            var sqlClient = new SQLCustomClient().CommandText(@"
+                Update TukiosOrder Set Freight = @Freight Where Invno=@Invno and (Invoiced IS NULL OR Invoiced !=1)
+                ");
+            foreach (var item in UPSFreight)
+            {
+
+                sqlClient.ClearParameters();
+                sqlClient.AddParameter("@Invno", item.Invno);
+                sqlClient.AddParameter("@Freight", item.Freight);
+                var result = sqlClient.Update();
+                if (result.IsError)
+                {
+                    MessageBox.Show("Failed to update record: " + item.Invno.ToString() + " Error: " + result.Errors[0].DeveloperMessage);
+                   
+
+                    continue;
+                }
+                }
+           
+            
+            MbcMessageBox.Information("Import complete");
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (rdbMailInovation.Checked)
+            {
+                InsertMailInnovation();
+
+            }
+            else
+            {
+                InsertUpsGround();
+            }
+            
+        }
+
+        private void rdbMailInovation_Click(object sender, EventArgs e)
+        {
+            if (rdbMailInovation.Checked)
+            {
+                dataGridView1.Visible = true;
+                dataGridView2.Visible = false;
+            }
+            else {
+                dataGridView1.Visible = false;
+                dataGridView2.Visible = true;
+            }
+            lblCount.Text = "Count: " ;
+            lblSum.Text = "";
+            UPSFreight.Clear();
+            bsData2.DataSource = null;
+            dataGridView2.DataSource = null;
+            TKFreight.Clear();
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
+        }
+
+        private void rdbUpsGround_Click(object sender, EventArgs e)
+        {
+            if (rdbUpsGround.Checked)
+            {
+                dataGridView2.Visible = true;
+                dataGridView1.Visible = false;
+            }
+            else
+            {
+                dataGridView2.Visible = false;
+                dataGridView2.Visible = true;
+            }
+            lblCount.Text = "Count: ";
+            lblSum.Text = "";
+            UPSFreight.Clear();
+            bsData2.DataSource = null;
+            dataGridView2.DataSource = null;
+            TKFreight.Clear();
+            bsData.DataSource = null;
+            dataGridView1.DataSource = null;
+        }
+
 
 
 

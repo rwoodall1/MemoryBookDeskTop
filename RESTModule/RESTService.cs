@@ -79,7 +79,7 @@ namespace RESTModule
             try
             {
                 var cookieContainer = new CookieContainer();
-
+               
                 using (var handler = new HttpClientHandler() { CookieContainer = cookieContainer })
                 using (var httpClient = new HttpClient(handler) { BaseAddress = new Uri(EndPoint) })
                 {
