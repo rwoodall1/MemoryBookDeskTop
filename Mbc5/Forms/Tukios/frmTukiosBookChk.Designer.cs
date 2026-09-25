@@ -107,7 +107,7 @@
             // 
             this.txtClientOrderId.Location = new System.Drawing.Point(12, 23);
             this.txtClientOrderId.Name = "txtClientOrderId";
-            this.txtClientOrderId.Size = new System.Drawing.Size(339, 20);
+            this.txtClientOrderId.Size = new System.Drawing.Size(423, 20);
             this.txtClientOrderId.TabIndex = 1;
             this.txtClientOrderId.TabStop = false;
             this.txtClientOrderId.Leave += new System.EventHandler(this.txtClientOrderId_Leave);
@@ -137,7 +137,7 @@
             // 
             this.lstInvno.BackColor = System.Drawing.SystemColors.Control;
             this.lstInvno.FormattingEnabled = true;
-            this.lstInvno.Location = new System.Drawing.Point(369, 23);
+            this.lstInvno.Location = new System.Drawing.Point(441, 23);
             this.lstInvno.Name = "lstInvno";
             this.lstInvno.Size = new System.Drawing.Size(189, 147);
             this.lstInvno.TabIndex = 7;
@@ -145,7 +145,7 @@
             // frmTukiosBookChk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(566, 248);
+            this.ClientSize = new System.Drawing.Size(643, 248);
             this.Controls.Add(this.lstInvno);
             this.Controls.Add(this.txtempty);
             this.Controls.Add(this.btnClear);
@@ -163,6 +163,7 @@
             this.Text = "Shipping Check";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmTukiosBookChk_Load);
+            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.txtBarcode, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtUPSLabel, 0);
@@ -172,7 +173,6 @@
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.btnClear, 0);
             this.Controls.SetChildIndex(this.txtempty, 0);
-            this.Controls.SetChildIndex(this.basePanel, 0);
             this.Controls.SetChildIndex(this.lstInvno, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bsDescriptions)).EndInit();
             this.ResumeLayout(false);
