@@ -364,7 +364,7 @@ namespace Mbc5.Forms.Tukios
                 if (result.Data != null)
                 {
                     this.OrderInfo = (TukiosChkData)result.Data;
-                    if (OrderInfo.ClientOrderId != txtClientOrderId.Text.Trim())
+                    if (OrderInfo.ClientOrderId.ToUpper() != txtClientOrderId.Text.ToUpper().Trim())
                     {
                         Log.Error("STOP Book and Production Ticket do not Match. Invno:" + CurrentInvno + " ClientOrderId:" + OrderInfo.ClientOrderId + " Scanned ClientOrderId:" + txtClientOrderId.Text.Trim());
                         MessageBox.Show("STOP Book and Production Ticket do not Match. Abort Shipping");
