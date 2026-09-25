@@ -131,7 +131,7 @@
             // txtDateTime
             // 
             this.txtDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateTime.Location = new System.Drawing.Point(606, 51);
+            this.txtDateTime.Location = new System.Drawing.Point(591, 51);
             this.txtDateTime.Name = "txtDateTime";
             this.txtDateTime.ReadOnly = true;
             this.txtDateTime.Size = new System.Drawing.Size(143, 22);
@@ -142,7 +142,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(523, 53);
+            this.label6.Location = new System.Drawing.Point(508, 53);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 10020;
@@ -168,7 +168,7 @@
             this.plnTracking.Controls.Add(this.lbl1);
             this.plnTracking.Location = new System.Drawing.Point(38, 51);
             this.plnTracking.Name = "plnTracking";
-            this.plnTracking.Size = new System.Drawing.Size(479, 82);
+            this.plnTracking.Size = new System.Drawing.Size(389, 82);
             this.plnTracking.TabIndex = 0;
             this.plnTracking.Leave += new System.EventHandler(this.plnTracking_Leave);
             // 
@@ -217,7 +217,7 @@
             // 
             this.txtClientIdLookup.Location = new System.Drawing.Point(164, 4);
             this.txtClientIdLookup.Name = "txtClientIdLookup";
-            this.txtClientIdLookup.Size = new System.Drawing.Size(312, 20);
+            this.txtClientIdLookup.Size = new System.Drawing.Size(197, 20);
             this.txtClientIdLookup.TabIndex = 1;
             this.txtClientIdLookup.Leave += new System.EventHandler(this.txtClientIdLookup_Leave);
             // 
@@ -280,7 +280,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(594, 94);
+            this.label2.Location = new System.Drawing.Point(579, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 10033;
@@ -290,7 +290,7 @@
             // 
             this.lblShpName.AutoSize = true;
             this.lblShpName.BackColor = System.Drawing.Color.LightYellow;
-            this.lblShpName.Location = new System.Drawing.Point(673, 94);
+            this.lblShpName.Location = new System.Drawing.Point(658, 94);
             this.lblShpName.Name = "lblShpName";
             this.lblShpName.Size = new System.Drawing.Size(0, 13);
             this.lblShpName.TabIndex = 10034;
@@ -299,7 +299,7 @@
             // 
             this.lblShpMethod.AutoSize = true;
             this.lblShpMethod.BackColor = System.Drawing.Color.LightYellow;
-            this.lblShpMethod.Location = new System.Drawing.Point(673, 111);
+            this.lblShpMethod.Location = new System.Drawing.Point(658, 111);
             this.lblShpMethod.Name = "lblShpMethod";
             this.lblShpMethod.Size = new System.Drawing.Size(0, 13);
             this.lblShpMethod.TabIndex = 10036;
@@ -308,7 +308,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(584, 111);
+            this.label4.Location = new System.Drawing.Point(569, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 10035;

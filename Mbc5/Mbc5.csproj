@@ -1015,7 +1015,6 @@
     <EmbeddedResource Include="Reports\test.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketSingle.rdlc" />
-    <EmbeddedResource Include="Reports\TukiosPkgList.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
