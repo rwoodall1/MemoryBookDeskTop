@@ -2,6 +2,12 @@
 
 namespace BindingModels
 {
+    public class UPSFreight
+    {
+        public int Invno { get; set; }
+        public decimal Freight { get; set; }
+      
+    }
     public class TukiosFreight
     {
         public string TrackingNumber { get; set; }

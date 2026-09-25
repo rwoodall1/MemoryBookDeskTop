@@ -1105,38 +1105,6 @@
               </Border>
             </Style>
           </Image>
-          <Textbox Name="ShipAddr">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!ShipAddr.Value+ " "+Fields!ShipAddr2.Value +Environment.NewLine
-+ Fields!ShipCity.Value.ToString().Trim()+", " +Fields!ShipState.Value.ToString().Trim()
-+" "+Fields!ShipZip.Value.ToString().Trim()</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>ShipAddr</rd:DefaultName>
-            <Top>8.5439in</Top>
-            <Left>0.4432in</Left>
-            <Height>0.61458in</Height>
-            <Width>2.29052in</Width>
-            <ZIndex>31</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Rectangle Name="Rectangle1">
             <ReportItems>
               <Textbox Name="Textbox66">
@@ -1159,7 +1127,6 @@
                 </Paragraphs>
                 <rd:DefaultName>Textbox43</rd:DefaultName>
                 <Top>0.05556in</Top>
-                <Left>2.32871in</Left>
                 <Height>0.25in</Height>
                 <Width>0.73616in</Width>
                 <Style>
@@ -1179,10 +1146,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>="*"+Fields!ClientOrderId.Value +"*"</Value>
+                        <Value>="*"+LCase(Fields!ClientOrderId.Value) +"*"</Value>
                         <Style>
                           <FontFamily>3 of 9 Barcode</FontFamily>
-                          <FontSize>26pt</FontSize>
+                          <FontSize>20pt</FontSize>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -1193,9 +1160,9 @@
                 </Paragraphs>
                 <rd:DefaultName>ClientOrderId</rd:DefaultName>
                 <Top>0.05556in</Top>
-                <Left>3.14469in</Left>
+                <Left>0.76969in</Left>
                 <Height>0.30556in</Height>
-                <Width>3.73919in</Width>
+                <Width>6.28624in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
@@ -1297,8 +1264,40 @@
                 <Top>0.41668in</Top>
                 <Left>3.16899in</Left>
                 <Height>0.19444in</Height>
-                <Width>2.35417in</Width>
+                <Width>2.85499in</Width>
                 <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ShipAddr">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!ShipAddr.Value+ " "+Fields!ShipAddr2.Value +Environment.NewLine
++ Fields!ShipCity.Value.ToString().Trim()+", " +Fields!ShipState.Value.ToString().Trim()
++" "+Fields!ShipZip.Value.ToString().Trim()</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ShipAddr</rd:DefaultName>
+                <Top>0.57293in</Top>
+                <Left>0.01122in</Left>
+                <Height>0.45833in</Height>
+                <Width>2.29052in</Width>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1311,11 +1310,11 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>8.5439in</Top>
-            <Left>0.43279in</Left>
+            <Top>8.47791in</Top>
+            <Left>0.64383in</Left>
             <Height>1.11806in</Height>
             <Width>7.13388in</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1344,7 +1343,7 @@
             <Left>4.92207in</Left>
             <Height>0.41667in</Height>
             <Width>2.92663in</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>

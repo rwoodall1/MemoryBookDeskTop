@@ -241,6 +241,9 @@ namespace Mbc5.Forms.MixBook
             //_____________________________________Good above
             RemakeData vremakeData = new RemakeData(chkRemake.Checked, txtReasonCode.Text, txtRemakeQty.Text);
             MXBScanData _scanData = new MXBScanData(txtBarCode.Text, this.Department, txtTrackingNumber.Text, vremakeData, chkPrToLabeler.Checked, null, this);
+            // apply impersonation (if a login is selected use that, otherwise use the application user)
+            this.MXBScanner.ApplicationUser = GetEffectiveUserPrincipal();
+
             bool completed = this.MXBScanner.Scan(new ScanData(null, _scanData));
             if (completed)
             {
@@ -1952,6 +1955,11 @@ namespace Mbc5.Forms.MixBook
         }
 
         private void pnlBookLocation_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtBarCode_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

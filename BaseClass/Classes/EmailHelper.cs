@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using BaseClass.Classes;
-using Exceptionless.Models;
-using Exceptionless;
+
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using BindingModels;
@@ -204,8 +203,7 @@ namespace BaseClass.Classes
                 return true;
             }catch(Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+               
                 MessageBox.Show("Failed to send email:" + ex.Message);
                 return false;
             }
@@ -252,8 +250,7 @@ namespace BaseClass.Classes
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+               
                 MessageBox.Show("Failed to send email:" + ex.Message);
                 return false;
             }
@@ -304,9 +301,7 @@ namespace BaseClass.Classes
             }
             catch (SmtpFailedRecipientException ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
                 if (!string.IsNullOrEmpty(ex.FailedRecipient))
                 {
                     MessageBox.Show("Failed to send  email to:" + ex.FailedRecipient+ " Be sure email address is good.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -316,9 +311,7 @@ namespace BaseClass.Classes
           
             }catch(Exception ex1)
             {
-                    ex1.ToExceptionless()
-                    .AddObject(ex1)
-                    .Submit();
+                   
                 MessageBox.Show("Failed to send  email:" + ex1.Message);
                 return false;
             }
@@ -367,8 +360,7 @@ namespace BaseClass.Classes
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+               
                 MessageBox.Show("Failed to send email:" + ex.Message);
                 return false;
             }
@@ -428,8 +420,7 @@ namespace BaseClass.Classes
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+               
                 MessageBox.Show("Failed to send email:" + ex.Message);
                 return false;
             }
@@ -472,10 +463,7 @@ namespace BaseClass.Classes
                 mailItem.Display(true);
                 return true;
                 }catch(Exception ex) {
-                ex.ToExceptionless()
-                  .MarkAsCritical()
-                  .AddTags("Outlook Error")
-                  .Submit();
+                
                 MessageBox.Show("Failed to send email:" + ex.Message);
                 return false;
                 }
@@ -523,10 +511,7 @@ namespace BaseClass.Classes
                 mailItem.Display(true);
                 return true;
                 }catch(Exception ex1) {
-                ex1.ToExceptionless()
-              .MarkAsCritical()
-              .AddTags("Outlook Error")
-              .Submit();
+                
                 MessageBox.Show("Failed to send email:" + ex1.Message);
                 return false;
                 }
@@ -569,10 +554,7 @@ namespace BaseClass.Classes
                 mailItem.Display(true);
                 return true;
                 } catch (Exception ex1) {
-                ex1.ToExceptionless()
-              .MarkAsCritical()
-              .AddTags("Outlook Error")
-              .Submit();
+               
                 MessageBox.Show("Failed to send email:" + ex1.Message);
                 return false;
                 }
@@ -611,10 +593,7 @@ namespace BaseClass.Classes
                 mailItem.Display(true);
                 return true;
                 } catch (Exception ex1) {
-                ex1.ToExceptionless()
-              .MarkAsCritical()
-              .AddTags("Outlook Error")
-              .Submit();
+              
                 MessageBox.Show("Failed to send email:" + ex1.Message);
                 return false;
                 }

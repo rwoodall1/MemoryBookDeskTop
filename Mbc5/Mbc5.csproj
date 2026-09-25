@@ -92,9 +92,6 @@
     <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
     </Reference>
-    <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
-    </Reference>
     <Reference Include="GenCode128, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\GenCode128.dll</HintPath>
@@ -272,8 +269,8 @@
     <Reference Include="System.Text.Encodings.Web, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.11.0.0-preview.4.26230.115\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=10.0.0.8, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.10.0.8\lib\net462\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.12\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -789,6 +786,7 @@
     <None Include="Properties\DataSources\BindingModels.TukiosFreight.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosJobTicketQuery.datasource" />
     <None Include="Properties\DataSources\BindingModels.TukiosRemakeTicketQuery.datasource" />
+    <None Include="Properties\DataSources\BindingModels.UPSFreight.datasource" />
     <None Include="Properties\DataSources\BindingModels.UPSInvoceData.datasource" />
     <None Include="Properties\DataSources\BindingModels.WipReportModel.datasource" />
     <None Include="Resources\Whistling.wav" />
@@ -1017,7 +1015,6 @@
     <EmbeddedResource Include="Reports\test.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosJobTicketSingle.rdlc" />
-    <EmbeddedResource Include="Reports\TukiosPkgList.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketQuery.rdlc" />
     <EmbeddedResource Include="Reports\TukiosRemakeTicketSingle.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />

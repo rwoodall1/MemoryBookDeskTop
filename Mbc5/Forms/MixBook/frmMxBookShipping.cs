@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 namespace Mbc5.Forms.MixBook
 {
     public partial class frmMxBookShipping : BaseClass.frmBase
@@ -512,14 +513,14 @@ namespace Mbc5.Forms.MixBook
         public async Task<ApiProcessingResult> NotifyMixbookOfShipment()
         {
             var processingResult = new ApiProcessingResult();
-
+            string MixbookURL=ConfigurationManager.AppSettings["MixBookEndPoint"];
 
             ShipNotification.Request.identifier = MbxModel.JobId;//needs to be set with jobid should always have one element
             ShipNotification.Request.Status.occurredAt = DateTime.Now;
             ShipNotification.Request.Status.Value = "Shipped";
             var vReturnNotification = Serialize.ToXml(this.ShipNotification);
 
-            var restServiceResult = await new RESTService().MakeRESTCall("POST", vReturnNotification);
+            var restServiceResult = await new RESTService().MakeRESTCall("POST",vReturnNotification,null, MixbookURL);
             if (!restServiceResult.IsError)
             {
                 if (restServiceResult.Data.APIResult.ToString().Contains("Success"))

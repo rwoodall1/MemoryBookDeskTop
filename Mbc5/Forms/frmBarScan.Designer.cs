@@ -89,6 +89,7 @@
             this.txtBarCode.Name = "txtBarCode";
             this.txtBarCode.Size = new System.Drawing.Size(143, 22);
             this.txtBarCode.TabIndex = 0;
+            this.txtBarCode.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtBarCode_MaskInputRejected);
             this.txtBarCode.Leave += new System.EventHandler(this.txtBarCode_Leave);
             this.txtBarCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtBarCode_Validating);
             // 

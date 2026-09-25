@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BindingModels;
 using BaseClass;
-using Exceptionless;
+
 using Mbc5.Forms;
 namespace Mbc5.Dialogs
 {
@@ -46,9 +46,7 @@ namespace Mbc5.Dialogs
             }
             catch(Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+              
                 MbcMessageBox.Error("Error retrieving information:" + ex.Message);
                 this.Close();
                 return;

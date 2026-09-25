@@ -234,7 +234,7 @@ namespace Mbc5.Forms.Tukios
                     return;
                 }
                 var vItem = (TItem)result.Data;
-                if (txtClientIdLookup.Text != vItem.ClientOrderId.ToString())
+                if (txtClientIdLookup.Text.ToUpper() != vItem.ClientOrderId.ToString().ToUpper())
                 {
                     MessageBox.Show("The scanned item was not found in the order. Check that you have scanned the correct packing list.");
                     txtItemBarcode.Tag = "Cancel";
@@ -263,7 +263,7 @@ namespace Mbc5.Forms.Tukios
         private void btnShip_Click(object sender, EventArgs e)
         {
             this.btnShip.Enabled = false;
-
+            Log.Warn("btnShip_Click shpform by user:" + txtClientIdLookup.Text+ this.ApplicationUser.UserName);
             foreach (var pkg in Shipment.Packages)
             {
                 if (pkg.Items == null || pkg.Items.Count == 0)
@@ -738,11 +738,6 @@ namespace Mbc5.Forms.Tukios
 
         }
 
-        private void txtItemBarcode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtItemBarcode_Enter(object sender, EventArgs e)
         {
 
@@ -853,7 +848,29 @@ namespace Mbc5.Forms.Tukios
 
 
         }
+        public string AddTukiosEventLog(string jobId, string status, string note, string notificationJson, bool notified)
+        {
+            var retval = "0";
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into TukiosEventLog (DateCreated,ModifiedDate,ClientOrderId,StatusChangedTo,Notified,Note,NotificationJSON) Values(GetDate(),GETDATE(),@JobId,@StatusChangedTo,@Notified,@Note,@NotificationJSON)");
+            sqlClient.AddParameter("@Jobid", jobId);
+            sqlClient.AddParameter("@StatusChangedTo", status);
+            sqlClient.AddParameter("@Notified", notified);
+            sqlClient.AddParameter("@Note", note);
+            sqlClient.AddParameter("@NotificationJSON", notificationJson);
+            var sqlResult = sqlClient.Insert();
+            if (sqlResult.IsError)
+            {
+                Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("AddTukiosEventLog failure:" + sqlResult.Errors[0].DeveloperMessage);
 
+                //var emailHelper = new EmailHelper();
+                //string vBody = "Failed to insert values JobId:" + jobId + " StatusChangedTo:" + status + " Notified:" + notified + " Note:" + note;
+                //emailHelper.SendEmail("Failed to insert event log", "randy.woodall@jostens.com", null, vBody, EmailType.System);
+                return retval;
+            }
+            retval = sqlResult.Data;
+            return retval;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string trkNum = "4200286592419903104652513003000898";

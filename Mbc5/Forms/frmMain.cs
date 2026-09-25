@@ -1,7 +1,7 @@
 ﻿using BaseClass;
 using BaseClass.Classes;
 using BindingModels;
-using Exceptionless;
+
 //using Mbc5.Reports;
 using Mbc5.Classes;
 using Mbc5.Dialogs;
@@ -23,6 +23,8 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Mbc5.Forms
 {
@@ -34,6 +36,49 @@ namespace Mbc5.Forms
             InitializeComponent();
             Log = LogManager.GetLogger(GetType().FullName);
 
+        }
+
+        /// <summary>
+        /// Save an Image to disk safely by writing to a temporary file in the same directory then moving it into place.
+        /// This avoids common GDI+ "A generic error occurred in GDI+" when saving directly to network shares or when the target file is locked.
+        /// </summary>
+        private void SaveImageSafely(Image image, string fullPath)
+        {
+            try
+            {
+                var dir = Path.GetDirectoryName(fullPath);
+                
+                if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+                var tempPath = Path.Combine(dir, Path.GetRandomFileName() + ".jpg");
+                // Save to temporary file first
+                image.Save(tempPath, ImageFormat.Jpeg);
+
+                // Try to remove existing file then move into place
+                try
+                {
+                    if (File.Exists(fullPath)) File.Delete(fullPath);
+                }
+                catch (Exception ex)
+                {
+                    Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Warn("Could not delete existing image before replacing: " + ex.ToString());
+                }
+
+                File.Move(tempPath, fullPath);
+            }
+            catch (Exception ex)
+            {
+                // Best-effort fallback to direct save (may still fail). Log full error to aid diagnosis.
+                Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Failed to save image safely to " + fullPath + ": " + ex.ToString());
+                try
+                {
+                    image.Save(fullPath, ImageFormat.Jpeg);
+                }
+                catch (Exception innerEx)
+                {
+                    Log?.WithProperty("Property1", this.ApplicationUser?.UserName).Error("Fallback direct save also failed for " + fullPath + ": " + innerEx.ToString());
+                }
+            }
         }
         private static string LastPageStorage = "\\\\sedsujpisl01\\workflow\\MixbookLastPageImage\\";
         private static string BookArchivePath = "\\\\sedsujpisl01\\workflow\\MixBookArchive\\";
@@ -151,6 +196,7 @@ namespace Mbc5.Forms
                 try
                 {
                     TukiosSetPageImage();
+                 
                 }
                 catch (Exception ex)
                 {
@@ -355,6 +401,7 @@ namespace Mbc5.Forms
                 productionWIPToolStripMenuItem.Visible = false;
 
                 productionToolStripMenuItem.Visible = false;
+                shippingScanToolStripMenuItem.Visible = true;
                 shippingScanToolStripMenuItem_Click(null, null);
 
             }
@@ -385,7 +432,7 @@ namespace Mbc5.Forms
                 mixBookToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 mixBookOrdersToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 this.mixBookLoadTestToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA" });
-
+                shippingScanToolStripMenuItem.Visible = true;
 
                 productionToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
                 productionWIPToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MB", "MBLead" });
@@ -574,8 +621,7 @@ namespace Mbc5.Forms
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                       .SetMessage("Failed to get invoice number for a new record");
+               
 
                 MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -599,9 +645,7 @@ namespace Mbc5.Forms
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
                 if (result1 != 1)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                  
 
                 }
 
@@ -610,10 +654,7 @@ namespace Mbc5.Forms
             {
                 MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+                
 
             }
             string vprodNum = prodNum.ToString();
@@ -637,9 +678,6 @@ namespace Mbc5.Forms
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
                 if (result1 != 1)
                 {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
 
                 }
 
@@ -647,10 +685,7 @@ namespace Mbc5.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+              
 
             }
 
@@ -1223,10 +1258,10 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                         }
 
                         // Render page to a Bitmap using Pdfium (includes annotations)
-                        using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
+                            using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                         {
-
-                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            // Save via helper to avoid GDI+ "generic error" when writing to network shares or when files are locked.
+                            SaveImageSafely(rendered, fullPath);
                             data.LastPageLocation = lastPageImageFilePath;
                             return data;
                             //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1353,8 +1388,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                         // Render page to a Bitmap using Pdfium (includes annotations)
                         using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                         {
-
-                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            SaveImageSafely(rendered, fullPath);
                             data.FirstPageLocation = firstPageImageFilePath;
                             return data;
                             //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1482,8 +1516,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                         // Render page to a Bitmap using Pdfium (includes annotations)
                         using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                         {
-
-                            rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            SaveImageSafely(rendered, fullPath);
                             data.CoverPageLocation = coverPageImageFilePath;
                             return data;
                             //MessageBox.Show(this, "Saved image: " + sfd.FileName, "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1627,8 +1660,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
 
                             using (var rendered = doc.Render(pageIndex, pixelWidth, pixelHeight, dpi, dpi, PdfRenderFlags.Annotations))
                             {
-
-                                rendered.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                SaveImageSafely(rendered, fullPath);
 
                                 // Store file:// URI so the report's external image control can read it
                                 data.LastPageLocation = new Uri(fullPath).AbsoluteUri;
@@ -1641,7 +1673,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
                 catch (Exception ex)
                 {
                     //MessageBox.Show(this, "Error processing PDF: " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno " + data.Invno.ToString() + ":" + ex.ToString());
+                    Log.WithProperty("Property1", this.ApplicationUser.UserName).Error("Error processing PDF for Invno frmMain " + data.Invno.ToString() + ":" + ex.ToString());
                     //new EmailHelper().SendOutLookEmail("Error creating last page image. Check error logs, INVNO:" + data.Invno.ToString(), "randy.woodall@jostens.com", null, "Prod ticket last page image did not print", EmailType.System);
                     continue;
                 }
@@ -2921,9 +2953,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .Submit();
+               
                 this.Close();
                 return;
             }
@@ -2940,8 +2970,7 @@ Where (TukiosOrderStatus ='In Process') AND (JobTicketPrinted Is Null OR JobTick
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless()
-                    .Submit();
+                
                 return;
             }
 

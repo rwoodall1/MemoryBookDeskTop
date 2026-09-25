@@ -32,16 +32,28 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bsData = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.trackingNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.freightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsData = new System.Windows.Forms.BindingSource(this.components);
             this.lblCount = new System.Windows.Forms.Label();
             this.lblSum = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
+            this.rdbMailInovation = new System.Windows.Forms.RadioButton();
+            this.rdbUpsGround = new System.Windows.Forms.RadioButton();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Invno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsData2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // basePanel
+            // 
+            this.basePanel.Location = new System.Drawing.Point(452, 0);
             // 
             // textBox1
             // 
@@ -69,10 +81,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "CSV Files |*.csv";
             this.openFileDialog1.Multiselect = true;
-            // 
-            // bsData
-            // 
-            this.bsData.DataSource = typeof(BindingModels.TukiosFreight);
             // 
             // dataGridView1
             // 
@@ -106,6 +114,10 @@
             this.freightDataGridViewTextBoxColumn.Name = "freightDataGridViewTextBoxColumn";
             this.freightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // bsData
+            // 
+            this.bsData.DataSource = typeof(BindingModels.TukiosFreight);
+            // 
             // lblCount
             // 
             this.lblCount.AutoSize = true;
@@ -132,11 +144,77 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // rdbMailInovation
+            // 
+            this.rdbMailInovation.AutoSize = true;
+            this.rdbMailInovation.Checked = true;
+            this.rdbMailInovation.Location = new System.Drawing.Point(6, 6);
+            this.rdbMailInovation.Name = "rdbMailInovation";
+            this.rdbMailInovation.Size = new System.Drawing.Size(97, 17);
+            this.rdbMailInovation.TabIndex = 9;
+            this.rdbMailInovation.TabStop = true;
+            this.rdbMailInovation.Text = "Mail Innovation";
+            this.rdbMailInovation.UseVisualStyleBackColor = true;
+            this.rdbMailInovation.Click += new System.EventHandler(this.rdbMailInovation_Click);
+            // 
+            // rdbUpsGround
+            // 
+            this.rdbUpsGround.AutoSize = true;
+            this.rdbUpsGround.Location = new System.Drawing.Point(113, 6);
+            this.rdbUpsGround.Name = "rdbUpsGround";
+            this.rdbUpsGround.Size = new System.Drawing.Size(85, 17);
+            this.rdbUpsGround.TabIndex = 10;
+            this.rdbUpsGround.TabStop = true;
+            this.rdbUpsGround.Text = "UPS Ground";
+            this.rdbUpsGround.UseVisualStyleBackColor = true;
+            this.rdbUpsGround.Click += new System.EventHandler(this.rdbUpsGround_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Invno,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGridView2.DataSource = this.bsData2;
+            this.dataGridView2.Location = new System.Drawing.Point(28, 93);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(484, 393);
+            this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.Visible = false;
+            // 
+            // Invno
+            // 
+            this.Invno.DataPropertyName = "Invno";
+            this.Invno.HeaderText = "Invno";
+            this.Invno.Name = "Invno";
+            this.Invno.ReadOnly = true;
+            this.Invno.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Freight";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Freight";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // bsData2
+            // 
+            this.bsData2.DataSource = typeof(BindingModels.UPSFreight);
+            // 
             // frmImportTkFreight
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 535);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.rdbUpsGround);
+            this.Controls.Add(this.rdbMailInovation);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblSum);
             this.Controls.Add(this.lblCount);
@@ -152,8 +230,13 @@
             this.Controls.SetChildIndex(this.lblCount, 0);
             this.Controls.SetChildIndex(this.lblSum, 0);
             this.Controls.SetChildIndex(this.button1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.bsData)).EndInit();
+            this.Controls.SetChildIndex(this.rdbMailInovation, 0);
+            this.Controls.SetChildIndex(this.rdbUpsGround, 0);
+            this.Controls.SetChildIndex(this.dataGridView2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +254,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn freightDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rdbMailInovation;
+        private System.Windows.Forms.RadioButton rdbUpsGround;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource bsData2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Invno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

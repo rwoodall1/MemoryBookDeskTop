@@ -37,12 +37,14 @@ namespace Mbc5.Forms.Tukios
                 txtempty.Select();
                 return;
             }
+            Log.Warn("txtClientOrderId_Leave:" + txtClientOrderId.Text + " by user:" + this.ApplicationUser.UserName);
             var sqlClient = new SQLCustomClient().CommandText(@"Select Invno from TukiosOrder Where ClientOrderId=@ClientOrderId");
             sqlClient.AddParameter("@ClientOrderId", this.txtClientOrderId.Text);
             sqlClient.AddParameter("@TukiosOrderStatus", "In Process");
             var result = sqlClient.SelectMany<TukiosInvno>();
             if (result.IsError)
             {
+                Log.Error(Log.WithProperty("Property1", this.ApplicationUser.UserName).ToString() + "Error getting order information for Client Order ID:" + txtClientOrderId.Text + " Error:" + result.Errors[0].DeveloperMessage);
                 MbcMessageBox.Error("Error getting order information. Rescan Client Order ID");
                 txtClientOrderId.Select();
                 return;
@@ -50,6 +52,7 @@ namespace Mbc5.Forms.Tukios
             InvnoInOrder = (List<TukiosInvno>)result.Data;
             if (InvnoInOrder == null || InvnoInOrder.Count == 0)
             {
+                Log.Error("No order found with Client Order ID:" + txtClientOrderId.Text + " by user:" + this.ApplicationUser.UserName);
                 MbcMessageBox.Error("No order found with this Client Order ID");
                 txtClientOrderId.Select();
                 return;
@@ -81,6 +84,7 @@ namespace Mbc5.Forms.Tukios
         public async Task<ApiProcessingResult> NotifyTukiosOfShipment()
         {
             var processingResult = new ApiProcessingResult();
+            
             foreach (var item in InvnoInOrder)
             {
                 if (!item.Checked)
@@ -89,10 +93,11 @@ namespace Mbc5.Forms.Tukios
                     processingResult.IsError = true;
 
                     return processingResult;
+                    }
                 }
-            }
 
             string vReturnNotification = OrderInfo.ShipNotification;
+            AddTukiosEventLog(OrderInfo.ClientOrderId, "NotifyTukiosStart", "", vReturnNotification, false);
             try
             {
 
@@ -123,8 +128,8 @@ namespace Mbc5.Forms.Tukios
                 };
 
                 var restServiceResult = await new RESTService(endpoint).MakeRESTCall("POST", vReturnNotification, headers, null, "application/json");
-                var response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
-
+                TukiosResponse response = JsonSerializer.Deserialize<TukiosResponse>(restServiceResult.Data.APIResult.ToString());
+                AddTukiosEventLog(OrderInfo.ClientOrderId, "NotifyTukiosStartAfterResponse", "", vReturnNotification, false);
                 if (!restServiceResult.IsError)
                 {
                     if (response.success == true)
@@ -176,6 +181,7 @@ namespace Mbc5.Forms.Tukios
 
         private void btnShipped_Click(object sender, EventArgs e)
         {
+            AddTukiosEventLog(OrderInfo.ClientOrderId, "MrkShipButtonclicked", "", "", false);
             if (InvnoInOrder == null || InvnoInOrder.Count == 0)
             {
                 MessageBox.Show("There are no orders scanned to ship");
@@ -184,6 +190,7 @@ namespace Mbc5.Forms.Tukios
             }
             foreach (var item in InvnoInOrder)
             {
+                AddTukiosEventLog(OrderInfo.ClientOrderId, "MrkShipButtonclicked2", item.Invno.ToString(), "", false);
                 if (!item.Checked)
                 {
                     MessageBox.Show("Not all items in the order have been checked, please check all items before marking as shipped");
@@ -269,6 +276,7 @@ namespace Mbc5.Forms.Tukios
 
         private void txtUPSLabel_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Log.Warn("txtUPSLabel_Validating:" + txtUPSLabel.Text.Trim()+"|"+txtClientOrderId.Text.Trim() + " by user:" + this.ApplicationUser.UserName);
             string scannedLabel = txtUPSLabel.Text.Trim();
             if (string.IsNullOrEmpty(scannedLabel) || scannedLabel.Length < 18)
             {
@@ -293,8 +301,8 @@ namespace Mbc5.Forms.Tukios
 
 
             }
-
             if (!string.IsNullOrWhiteSpace(scannedLabel) && OrderInfo.TrackingNumber.Contains(scannedLabel))
+
             {
 
 
@@ -341,13 +349,14 @@ namespace Mbc5.Forms.Tukios
                     return;
 
                 }
-
+                Log.Warn("txtBarcode_Validating:" + txtClientOrderId.Text + " by user:" + this.ApplicationUser.UserName);
                 var sqlClient = new SQLCustomClient().CommandText(@"Select ClientOrderId,BookType,TrackingNumber,ShipNotification,Invno from TukiosOrder Where Invno=@Invno");
                 sqlClient.AddParameter("@Invno", CurrentInvno);
                 sqlClient.AddParameter("@ClientOrderId", txtClientOrderId.Text.Trim());
                 var result = sqlClient.Select<TukiosChkData>();
                 if (result.IsError)
                 {
+                    Log.Error("Failed to retrieve order information for Invno validating barcode:" + CurrentInvno + " Error:" + result.Errors[0].DeveloperMessage);
                     MessageBox.Show("Failed to retrieve order");
                     this.txtBarcode.Select();
                     return;
@@ -355,8 +364,9 @@ namespace Mbc5.Forms.Tukios
                 if (result.Data != null)
                 {
                     this.OrderInfo = (TukiosChkData)result.Data;
-                    if (OrderInfo.ClientOrderId != txtClientOrderId.Text.Trim())
+                    if (OrderInfo.ClientOrderId.ToUpper() != txtClientOrderId.Text.ToUpper().Trim())
                     {
+                        Log.Error("STOP Book and Production Ticket do not Match. Invno:" + CurrentInvno + " ClientOrderId:" + OrderInfo.ClientOrderId + " Scanned ClientOrderId:" + txtClientOrderId.Text.Trim());
                         MessageBox.Show("STOP Book and Production Ticket do not Match. Abort Shipping");
                         Clear();
                         return;
@@ -364,6 +374,7 @@ namespace Mbc5.Forms.Tukios
 
                     if (string.IsNullOrEmpty(OrderInfo.TrackingNumber))
                     {
+                        Log.Error("Tracking number not found for Invno:" + CurrentInvno + " ClientOrderId:" + OrderInfo.ClientOrderId);
                         MessageBox.Show("Tracking number has not been entered for this book, abort shipping and scan book into MBC");
                         Clear();
                         return;
@@ -379,6 +390,7 @@ namespace Mbc5.Forms.Tukios
                 }
                 else //data null
                 {
+                    Log.Error("No order found with that invoice number:" + CurrentInvno + " by user:" + this.ApplicationUser.UserName);
                     var dresult = MessageBox.Show("No order found with that invoice number,would you like to clear the scan?", "Error", MessageBoxButtons.YesNo);
                     if (dresult == DialogResult.Yes)
                     {
@@ -414,8 +426,9 @@ namespace Mbc5.Forms.Tukios
             var result = sqlClient.Update();
             if (result.IsError)
             {
+                Log.Error("Failed to mark order:"+ this.OrderInfo.ClientOrderId+"Shipped. |"+result.Errors[0].DeveloperMessage);
                 MessageBox.Show("Failed to mark order in Database as shipped");
-                
+                AddTukiosEventLog(OrderInfo.ClientOrderId, "MarkedShippedFailed", result.Errors[0].DeveloperMessage, "", false);
             }
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"Update produtn Set shpdate=GETDATE() Where Invno=@Invno");
@@ -470,7 +483,7 @@ namespace Mbc5.Forms.Tukios
             }
 
 
-
+            AddTukiosEventLog(OrderInfo.ClientOrderId, "MarkedShipped","" ,"", false);
 
 
         }
