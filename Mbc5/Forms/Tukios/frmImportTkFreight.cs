@@ -228,45 +228,76 @@ namespace Mbc5.Forms.Tukios
                     try
                     {
                         using (var reader = new StreamReader(textBox1.Text))
-                        using (var csv = new CsvReader(reader, config))
                         {
+                            // Read the header line manually to handle variations in header text and delimiter
+                            var headerLine = reader.ReadLine();
+                            if (headerLine == null)
+                                continue;
+
+                            // Detect delimiter (prefer comma over tab if equal)
+                            char delimiter = headerLine.Count(c => c == ',') >= headerLine.Count(c => c == '\t') ? ',' : '\t';
+                            var headers = headerLine.Split(delimiter);
+
+                            // Determine column indexes for Invno and Freight to tolerate header name variations
+                            int invnoIdx = -1;
+                            int freightIdx = -1;
+                            for (int col = 0; col < headers.Length; col++)
+                            {
+                                var h = (headers[col] ?? string.Empty).Trim();
+                                if (invnoIdx == -1 && (h.Equals("Invno", StringComparison.OrdinalIgnoreCase) || h.IndexOf("Invno", StringComparison.OrdinalIgnoreCase) >= 0))
+                                    invnoIdx = col;
+                                if (freightIdx == -1 && (h.Equals("Freight", StringComparison.OrdinalIgnoreCase) || h.IndexOf("Freight", StringComparison.OrdinalIgnoreCase) >= 0))
+                                    freightIdx = col;
+                            }
+
+                            if (invnoIdx == -1 || freightIdx == -1)
+                            {
+                                var hdrs = headers != null ? string.Join("|", headers) : "<no headers>";
+                                MessageBox.Show($"CSV is missing required columns 'Invno' or 'Freight'. Found headers: {hdrs}");
+                                continue;
+                            }
+
+                            // Create CsvReader starting at the first data line (we already consumed the header)
+                            var cfg = new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
+                            {
+                                MissingFieldFound = null,
+                                HasHeaderRecord = false,
+                                Delimiter = delimiter.ToString()
+                            };
 
                             var records = new List<UPSFreight>();
-
-                            csv.Read();
-                            csv.ReadHeader();
-
-                            while (csv.Read())
+                            using (var csv = new CsvReader(reader, cfg))
                             {
-                                tmpInvno = csv.GetField("Invno");//K
-                                var tmpFreight = csv.GetField("Freight");//R
-                              
-
-                                if (tmpInvno != null && tmpInvno.Length > 4)
+                                while (csv.Read())
                                 {
-                                    decimal _freight = 0;
-                                    int _invno = 0;
-                                    if (!decimal.TryParse(tmpFreight, out _freight))
-                                    {
-                                        MbcMessageBox.Error(tmpInvno + " has an invalid freight value: " + tmpFreight);
-                                       
-                                        continue;
-                                    }
-                                    if (!int.TryParse(tmpInvno,out _invno)) {
-                                        MbcMessageBox.Error(tmpInvno + " has an invalid value: " + tmpFreight);
+                                    tmpInvno = csv.GetField(invnoIdx);//K
+                                    var tmpFreight = csv.GetField(freightIdx);//R
 
-                                        continue;
-                                    }
-                                    var record = new UPSFreight()
+                                    if (tmpInvno != null && tmpInvno.Length > 4)
                                     {
-                                        Freight = _freight + 3,
-                                        Invno = _invno
-                                    };
+                                        decimal _freight = 0;
+                                        int _invno = 0;
+                                        if (!decimal.TryParse(tmpFreight, out _freight))
+                                        {
+                                            MbcMessageBox.Error(tmpInvno + " has an invalid freight value: " + tmpFreight);
+                                            continue;
+                                        }
+                                        if (!int.TryParse(tmpInvno, out _invno))
+                                        {
+                                            MbcMessageBox.Error(tmpInvno + " has an invalid value: " + tmpFreight);
+                                            continue;
+                                        }
+                                        var record = new UPSFreight()
+                                        {
+                                            Freight = _freight + 3,
+                                            Invno = _invno
+                                        };
 
-                                    records.Add(record);
+                                        records.Add(record);
+                                    }
                                 }
-                               
                             }
+
                             // add newly read records to the list
                             UPSFreight.AddRange(records);
                         }
