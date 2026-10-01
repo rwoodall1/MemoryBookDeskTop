@@ -551,13 +551,7 @@ SELECT Invno, OrderReceivedDate, RequestedShipDate, DateShipped, ShipMethod, Shi
               <xs:element name="OrderRePrint" msprop:Generator_ColumnPropNameInTable="OrderRePrintColumn" msprop:Generator_ColumnPropNameInRow="OrderRePrint" msprop:Generator_UserColumnName="OrderRePrint" msprop:Generator_ColumnVarNameInTable="columnOrderRePrint" type="xs:boolean" minOccurs="0" />
               <xs:element name="JobPrintBatch" msprop:Generator_ColumnPropNameInTable="JobPrintBatchColumn" msprop:Generator_ColumnPropNameInRow="JobPrintBatch" msprop:Generator_UserColumnName="JobPrintBatch" msprop:Generator_ColumnVarNameInTable="columnJobPrintBatch" type="xs:int" minOccurs="0" />
               <xs:element name="JobPrintDate" msprop:Generator_ColumnPropNameInTable="JobPrintDateColumn" msprop:Generator_ColumnPropNameInRow="JobPrintDate" msprop:Generator_UserColumnName="JobPrintDate" msprop:Generator_ColumnVarNameInTable="columnJobPrintDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="ClientOrderId" msprop:Generator_ColumnPropNameInTable="ClientOrderIdColumn" msprop:Generator_ColumnPropNameInRow="ClientOrderId" msprop:Generator_UserColumnName="ClientOrderId" msprop:Generator_ColumnVarNameInTable="columnClientOrderId">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="ClientOrderId" msprop:Generator_ColumnPropNameInTable="ClientOrderIdColumn" msprop:Generator_ColumnPropNameInRow="ClientOrderId" msprop:Generator_UserColumnName="ClientOrderId" msprop:Generator_ColumnVarNameInTable="columnClientOrderId" type="xs:string" />
               <xs:element name="GroupId" msprop:Generator_ColumnPropNameInTable="GroupIdColumn" msprop:Generator_ColumnPropNameInRow="GroupId" msprop:Generator_UserColumnName="GroupId" msprop:Generator_ColumnVarNameInTable="columnGroupId" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>

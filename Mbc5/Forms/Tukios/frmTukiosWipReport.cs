@@ -62,7 +62,7 @@ namespace Mbc5.Forms.Tukios
                                     ,'*MXB'+CAST(TO1.Invno as varchar)+'SC*' AS SCBarcode
                                     ,'*MXB'+CAST(TO1.Invno as varchar)+'YB*' AS YBBarcode
                                     ,SH.Carrier As ShipCarrier
-                                    ,'*'+CAST(TO1.ClientOrderId AS varchar)+'*' AS ClientOrderId
+                                    ,'*'+CAST(TO1.ClientOrderId AS varchar(MAX))+'*' AS ClientOrderId
                                  from TukiosOrder TO1 
                                  Left Join ShipCarriers SH On TO1.ShipMethod=SH.ShipAlias
                                  Left Join Produtn P On TO1.Invno=P.Invno

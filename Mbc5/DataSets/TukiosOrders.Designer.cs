@@ -1140,7 +1140,6 @@ namespace Mbc5.DataSets {
                 this.columnJobTicketPrinted.AllowDBNull = false;
                 this.columnRemakeTicketPrinted.AllowDBNull = false;
                 this.columnClientOrderId.AllowDBNull = false;
-                this.columnClientOrderId.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
